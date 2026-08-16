@@ -9,6 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Gita">
 <meta name="format-detection" content="telephone=no">
+<meta name="author" content="Dhruba Chapain">
 <meta name="description" content="Bhagavad Gita — interactive trilingual study edition (English · नेपाली · हिन्दी), 18 chapters, 700 verses, offline.">
 
 <!-- Link preview (WhatsApp, Messenger, Facebook, Telegram, X…).
@@ -221,6 +222,10 @@
 
   .m-count{ color:var(--ink-soft); font-size:.85rem; font-weight:600;}
   footer{ text-align:center; color:var(--ink-soft); font-size:.82rem; padding:18px 20px 26px; border-top:2px solid var(--line);}
+  /* plain inline text — no flex gap, or the <b> would push the comma away */
+  footer .credit{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
+                  font-size:.8rem; color:var(--ink-soft); display:block; text-align:center;}
+  footer .credit b{ color:var(--teal); font-weight:700;}
   .fade-in{ animation:fadein .28s ease;} @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
   @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:1.12rem;} }
 
@@ -413,7 +418,12 @@
   </noscript>
 </div>
 
-<footer id="appFooter">ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Devanagari, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.</footer>
+<footer>
+  <div id="appFooter">ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Devanagari, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.</div>
+  <!-- Credit lives in its own element: applyStatic() replaces #appFooter's
+       textContent on every language switch and would otherwise wipe it. -->
+  <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
+</footer>
 
 <div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
   <div class="modal" id="modal"></div>
