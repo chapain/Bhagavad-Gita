@@ -1,2 +1,2 @@
 # Bhagavad-Gita
-learn gita
+Learn Srimad Bhagavad Gita
