@@ -10,6 +10,32 @@
 <meta name="apple-mobile-web-app-title" content="Gita">
 <meta name="format-detection" content="telephone=no">
 <meta name="description" content="Bhagavad Gita — interactive trilingual study edition (English · नेपाली · हिन्दी), 18 chapters, 700 verses, offline.">
+
+<!-- Link preview (WhatsApp, Messenger, Facebook, Telegram, X…).
+     Absolute URLs are required: chat apps fetch these from their own servers.
+     Harmless when the file is opened locally — the tags are simply ignored. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bhagavad Gita — Interactive Study">
+<meta property="og:title" content="Bhagavad Gita — 700 verses, trilingual">
+<meta property="og:description" content="All 18 chapters in English · नेपाली · हिन्दी, with word-by-word meanings for every verse. Works offline.">
+<meta property="og:url" content="https://chapain.github.io/Bhagavad-Gita/">
+<meta property="og:image" content="https://chapain.github.io/Bhagavad-Gita/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ॐ श्रीमद्भगवद्गीता — Bhagavad Gita, 700 verses">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="hi_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bhagavad Gita — 700 verses, trilingual">
+<meta name="twitter:description" content="All 18 chapters in English · नेपाली · हिन्दी, with word-by-word meanings. Works offline.">
+<meta name="twitter:image" content="https://chapain.github.io/Bhagavad-Gita/og-card.png">
+
+<!-- Icons: relative paths, so they resolve on any host or sub-path. -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <title>Bhagavad Gita — Interactive Study</title>
 <style>
   :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-soft:#FBE3C0; --teal:#0F4C5C; --teal-mid:#1E6E7E;
@@ -980,6 +1006,15 @@ document.addEventListener('keydown', e=>{
     navSutra(dx < 0 ? 1 : -1);              // swipe left → next, swipe right → previous
   }, {passive:true});
 })();
+/* Offline support when served over http(s): the service worker caches the app so
+   it opens with no connection and "Add to Home Screen" behaves like a real app.
+   Deliberately skipped for file:// (WhatsApp/Drive downloads) — SWs are not
+   allowed there and would throw. Failure is always non-fatal. */
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){ /* offline cache unavailable — app still works */ });
+  });
+}
 applyStatic();
 showWelcome();
 </script>
