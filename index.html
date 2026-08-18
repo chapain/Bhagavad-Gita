@@ -540,6 +540,7 @@ function onSearchInput(v){ clearTimeout(searchTimer); searchTimer = setTimeout(d
 function doSearch(){
   const q = ($('#searchInput').value || '').trim();
   if(!q){ clearSearch(); return; }
+  rememberOrigin();
   state.view = 'search'; state.chapter = null; state.theme = null; renderCrumbs();
   const nq = normTxt(q);
   const num = digitNorm(q).match(/^(\d{1,2})[.\s]+(\d{1,2})$/);
@@ -586,7 +587,7 @@ function doSearch(){
 }
 function clearSearch(){
   $('#searchInput').value = '';
-  state.view = 'chapters'; showChapters();
+  goToOrigin();
 }
 
 // ---------- favorites (localStorage with in-memory fallback) ----------
@@ -602,7 +603,29 @@ function toggleFav(id){
   if(b){ const on = FAV.includes(id); b.textContent = on ? L('saved_verse') : L('save_verse'); b.classList.toggle('saved', on); }
   if(state.view === 'favorites') showFavorites();
 }
+/* Search and Favorites are "detours": they replace the main view but the reader
+   should still be able to get back to whatever they were reading. Before either
+   takes over, remember the browsing position so renderCrumbs() can offer it as a
+   real trail. Only recorded when leaving an actual browsing view, so repeatedly
+   tapping Favorites doesn't overwrite the origin with itself. */
+function rememberOrigin(){
+  if(['welcome','sections','chapters','themes','verses'].includes(state.view)){
+    state.origin = { view: state.view, section: state.section,
+                     chapter: state.chapter, theme: state.theme };
+  }
+}
+function goToOrigin(){
+  const o = state.origin;
+  if(!o){ showChapters(state.section || 0); return; }
+  $('#searchInput').value = '';
+  if(o.view === 'welcome') showWelcome();
+  else if(o.view === 'sections') showSections();
+  else if(o.view === 'verses' && o.chapter != null && o.theme != null) showVerses(o.chapter, o.theme);
+  else if(o.view === 'themes' && o.chapter != null) showThemes(o.chapter);
+  else showChapters(o.section || 0);
+}
 function showFavorites(){
+  rememberOrigin();
   state.view = 'favorites'; state.chapter = null; state.theme = null; renderCrumbs();
   const saved = FAV.map(verseLoc).filter(Boolean);
   FAV_LIST = saved;
@@ -648,25 +671,39 @@ function scrollViewTop(){
   if(state.keepScroll) return;
   try{ window.scrollTo({top:0, behavior:'auto'}); }catch(e){ window.scrollTo(0,0); }
 }
+function crumbSep(){ const s=document.createElement('span'); s.className='sep'; s.textContent='›'; return s; }
+/* Breadcrumbs appear only on the "detour" views — Search and Favorites — because
+   the browsing views carry their own back buttons and mini-crumb. The trail shows
+   where the reader came FROM (state.origin), every step of it clickable, with the
+   detour itself as the disabled current step. Without this the first crumb was
+   rendered disabled and the reader had no way back. */
 function renderCrumbs(){
   scrollViewTop();
   crumbs.innerHTML='';
-  if(state.view==='welcome' || state.view==='sections' || state.view==='chapters' || state.view==='themes' || state.view==='verses') return;
-  crumbs.appendChild(crumb('🏠 '+L('chapters'), ()=>showChapters(state.section||0), state.chapter==null && state.section==null));
-  if(state.section != null){
-    const s1=document.createElement('span'); s1.className='sep'; s1.textContent='›'; crumbs.appendChild(s1);
-    crumbs.appendChild(crumb(L('tab_'+['','karma','bhakti','jnana'][state.section]), ()=>showChapters(state.section), state.chapter==null));
+  if(state.view!=='search' && state.view!=='favorites') return;
+  const o = state.origin || {};
+  const here = state.view==='favorites' ? L('favorites') : L('search_results');
+
+  // 🏠 Chapters — always a live link back to the chapter grid
+  crumbs.appendChild(crumb('🏠 '+L('chapters'), ()=>{ $('#searchInput').value=''; showChapters(o.section||0); }, false));
+
+  if(o.section != null){
+    crumbs.appendChild(crumbSep());
+    crumbs.appendChild(crumb(L('tab_'+['','karma','bhakti','jnana'][o.section]),
+      ()=>{ $('#searchInput').value=''; showChapters(o.section); }, false));
   }
-  if(state.chapter != null){
-    const ch = DATA[state.chapter];
-    const s1=document.createElement('span'); s1.className='sep'; s1.textContent='›'; crumbs.appendChild(s1);
-    crumbs.appendChild(crumb(T(ch.names), ()=>showThemes(state.chapter), state.theme==null));
-    if(state.theme != null){
-      const t = ch.themes[state.theme];
-      const s2=document.createElement('span'); s2.className='sep'; s2.textContent='›'; crumbs.appendChild(s2);
-      crumbs.appendChild(crumb(T(t.titles), ()=>showThemes(state.chapter), true));
+  if(o.chapter != null){
+    const ch = DATA[o.chapter];
+    crumbs.appendChild(crumbSep());
+    crumbs.appendChild(crumb(T(ch.names), ()=>{ $('#searchInput').value=''; showThemes(o.chapter); }, false));
+    if(o.theme != null && o.view === 'verses'){
+      const t = ch.themes[o.theme];
+      crumbs.appendChild(crumbSep());
+      crumbs.appendChild(crumb(T(t.titles), ()=>{ $('#searchInput').value=''; showVerses(o.chapter, o.theme); }, false));
     }
   }
+  crumbs.appendChild(crumbSep());
+  crumbs.appendChild(crumb(here, null, true));   // current step, not clickable
 }
 
 function showChapters(section){
@@ -703,6 +740,7 @@ function dayVerse(){
 function goHome(){
   if($('#modalBg').classList.contains('open')) closeModal();
   $('#searchInput').value = '';
+  state.origin = null;
   showWelcome();
 }
 function showWelcome(){
