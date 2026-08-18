@@ -286,6 +286,7 @@ HTML = r"""<!DOCTYPE html>
   .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
   .crumbs{ display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--ink-soft); margin-bottom:18px; flex-wrap:wrap;}
   .crumbs button{ background:none; border:none; color:var(--teal); font-weight:600; cursor:pointer; font-size:.9rem; padding:4px 6px; border-radius:8px;}
+  .crumbs .crumb-label{ color:var(--ink-soft); font-weight:600; font-size:.88rem; margin-right:2px;}
   .crumbs button:hover{ background:var(--teal-soft);} .crumbs .sep{ color:var(--line);} .crumbs .cur{ color:var(--saffron-dark); font-weight:700;}
   .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
   .view-sub{ color:var(--ink-soft); font-size:.98rem; margin-bottom:22px; max-width:880px;}
@@ -880,38 +881,58 @@ function scrollViewTop(){
   try{ window.scrollTo({top:0, behavior:'auto'}); }catch(e){ window.scrollTo(0,0); }
 }
 function crumbSep(){ const s=document.createElement('span'); s.className='sep'; s.textContent='›'; return s; }
-/* Breadcrumbs appear only on the "detour" views — Search and Favorites — because
-   the browsing views carry their own back buttons and mini-crumb. The trail shows
-   where the reader came FROM (state.origin), every step of it clickable, with the
-   detour itself as the disabled current step. Without this the first crumb was
-   rendered disabled and the reader had no way back. */
+/* Breadcrumbs appear only on the "detour" views — Search and Favorites — because the
+   browsing views carry their own back buttons and mini-crumb.
+
+   The trail reconstructs the route the reader actually walked (state.origin), so every
+   step is real and goes where it says:
+       Home                     -> ← Back to  ॐ
+       Three Yogas              -> ← Back to  Three Yogas
+       a yoga's chapter list    -> ← Back to  Three Yogas › Bhakti-Yoga
+       all-18 chapter list      -> ← Back to  Chapters
+       a chapter's themes       -> ← Back to  … › Bhakti Yoga
+       a theme's verses         -> ← Back to  … › Bhakti Yoga › The Royal Secret
+   There is no trailing "you are here" chip: the label already says Back, and the page
+   heading below states which detour you are on. */
 function renderCrumbs(){
   scrollViewTop();
   crumbs.innerHTML='';
   if(state.view!=='search' && state.view!=='favorites') return;
-  const o = state.origin || {};
-  const here = state.view==='favorites' ? L('favorites') : L('search_results');
+  const o = state.origin || { view:'welcome' };
+  const steps = [];
+  const clear = fn => { $('#searchInput').value=''; fn(); };
 
-  // 🏠 Chapters — always a live link back to the chapter grid
-  crumbs.appendChild(crumb('🏠 '+L('chapters'), ()=>{ $('#searchInput').value=''; showChapters(o.section||0); }, false));
-
-  if(o.section != null){
-    crumbs.appendChild(crumbSep());
-    crumbs.appendChild(crumb(L('tab_'+['','karma','bhakti','jnana'][o.section]),
-      ()=>{ $('#searchInput').value=''; showChapters(o.section); }, false));
-  }
-  if(o.chapter != null){
-    const ch = DATA[o.chapter];
-    crumbs.appendChild(crumbSep());
-    crumbs.appendChild(crumb(T(ch.names), ()=>{ $('#searchInput').value=''; showThemes(o.chapter); }, false));
-    if(o.theme != null && o.view === 'verses'){
-      const t = ch.themes[o.theme];
-      crumbs.appendChild(crumbSep());
-      crumbs.appendChild(crumb(T(t.titles), ()=>{ $('#searchInput').value=''; showVerses(o.chapter, o.theme); }, false));
+  if(o.view === 'welcome'){
+    steps.push(['ॐ', ()=>clear(showWelcome)]);
+  } else {
+    if(o.section != null){
+      // came through the Three Yogas picker
+      steps.push([L('sections_title'), ()=>clear(showSections)]);
+      steps.push([L('tab_'+['','karma','bhakti','jnana'][o.section]), ()=>clear(()=>showChapters(o.section))]);
+    } else if(o.view === 'sections'){
+      steps.push([L('sections_title'), ()=>clear(showSections)]);
+    } else {
+      // came through the full chapter list
+      steps.push([L('chapters'), ()=>clear(()=>showChapters(0))]);
+    }
+    if(o.chapter != null){
+      const ch = DATA[o.chapter];
+      // 'Chapter 6 · Dhyāna Yoga' — the number disambiguates it from a section
+      // name (ch.6 is 'Dhyāna Yoga', and there is also a Jñāna-Yoga section).
+      steps.push([`${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`, ()=>clear(()=>showThemes(o.chapter))]);
+      if(o.theme != null && o.view === 'verses'){
+        steps.push([T(ch.themes[o.theme].titles), ()=>clear(()=>showVerses(o.chapter, o.theme))]);
+      }
     }
   }
-  crumbs.appendChild(crumbSep());
-  crumbs.appendChild(crumb(here, null, true));   // current step, not clickable
+
+  const lab = document.createElement('span');
+  lab.className = 'crumb-label'; lab.textContent = L('back_to');
+  crumbs.appendChild(lab);
+  steps.forEach(([label, action], i)=>{
+    if(i) crumbs.appendChild(crumbSep());
+    crumbs.appendChild(crumb(label, action, false));
+  });
 }
 
 function showChapters(section){
