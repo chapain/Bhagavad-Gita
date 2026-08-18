@@ -285,17 +285,9 @@ HTML = r"""<!DOCTYPE html>
   .header-inner .tag b{ color:var(--saffron); font-family:Georgia,serif; font-size:1.15rem;}
   .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
   .crumbs{ display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--ink-soft); margin-bottom:18px; flex-wrap:wrap;}
-  /* Crumb steps reuse the .mini-crumb visual family (the breadcrumb shown above a
-     theme's verses) so the app has one breadcrumb look — but on a single line, since
-     this trail can be four steps deep and two-line cards would swamp a phone. */
-  .crumbs button{ background:var(--paper); border:2px solid var(--line); border-radius:12px; cursor:pointer;
-                  color:var(--teal); font-weight:700; font-size:.85rem; padding:7px 13px; line-height:1.3;
-                  transition:.15s; max-width:22ch; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-                  vertical-align:middle;}
-  .crumbs button:hover{ border-color:var(--saffron); background:var(--saffron-soft); transform:translateY(-2px);}
-  .crumbs .crumb-label{ color:var(--ink-soft); font-weight:600; font-size:.88rem; margin-right:2px;}
-  .crumbs .sep{ align-self:center; color:var(--line); font-weight:800; font-size:1rem; padding:0 2px;}
-  .crumbs .cur{ color:var(--saffron-dark); font-weight:700;}
+  /* Search/Favorites show one .back-top button (see renderCrumbs), so .crumbs is
+     just its wrapper. Long chapter names ellipsise rather than wrap. */
+  .crumbs .back-top{ margin:0 0 4px; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
   .view-sub{ color:var(--ink-soft); font-size:.98rem; margin-bottom:22px; max-width:880px;}
   .grid{ display:grid; gap:20px; }
@@ -510,7 +502,7 @@ HTML = r"""<!DOCTYPE html>
     .view-title{ font-size:1.35rem; }
     .view-sub{ font-size:.92rem; margin-bottom:16px; }
     .crumbs{ font-size:.84rem; gap:6px; margin-bottom:14px; }
-    .crumbs button{ font-size:.8rem; padding:6px 12px; min-height:32px; max-width:17ch; }
+    .crumbs .back-top{ font-size:.82rem; padding:7px 14px; min-height:36px; }
     .grid{ gap:12px; }
     .grid.chapters, .grid.themes, .grid.verses, .grid.sections{ grid-template-columns:1fr; }
     .card{ padding:14px 16px; border-radius:14px; }
@@ -891,66 +883,48 @@ function scrollViewTop(){
   if(state.keepScroll) return;
   try{ window.scrollTo({top:0, behavior:'auto'}); }catch(e){ window.scrollTo(0,0); }
 }
-function crumbSep(){ const s=document.createElement('span'); s.className='sep'; s.textContent='»'; return s; }
-/* Breadcrumbs appear only on the "detour" views — Search and Favorites — because the
-   browsing views carry their own back buttons and mini-crumb.
-
-   The trail reconstructs the route the reader actually walked (state.origin), so every
-   step is real and goes where it says:
-       Home                     -> ← Back to  ॐ
-       Three Yogas              -> ← Back to  Three Yogas
-       a yoga's chapter list    -> ← Back to  Three Yogas › Bhakti-Yoga
-       all-18 chapter list      -> ← Back to  Chapters
-       a chapter's themes       -> ← Back to  … › Bhakti Yoga
-       a theme's verses         -> ← Back to  … › Bhakti Yoga › The Royal Secret
-   There is no trailing "you are here" chip: the label already says Back, and the page
-   heading below states which detour you are on. */
+/* Search and Favorites are "detours" off the browsing hierarchy. Rather than a
+   breadcrumb trail, they show a single back button naming the page the reader came
+   from — the same control and wording as the app's "← Back to themes" / "← Back to
+   chapters" buttons, so Favorites is not a special case. Nothing becomes
+   unreachable: that destination carries its own back button, so the hierarchy is
+   walked one level at a time. */
 function renderCrumbs(){
   scrollViewTop();
   crumbs.innerHTML='';
   if(state.view!=='search' && state.view!=='favorites') return;
   const o = state.origin || { view:'welcome' };
-  const steps = [];
   const clear = fn => { $('#searchInput').value=''; fn(); };
 
+  let label, action;
   if(o.view === 'welcome'){
-    steps.push(['ॐ', ()=>clear(showWelcome)]);
+    label = L('home_plain');            action = ()=>clear(showWelcome);
+  } else if(o.chapter != null && o.theme != null && o.view === 'verses'){
+    // Name each level as what it is — "Theme 1 · The Royal Secret", not just the
+    // title, which can echo the chapter name (ch.9's theme 1 is "राजगुह्य", the
+    // chapter "राजविद्या राजगुह्य योग"). Matches the verse modal's own wording.
+    const ch = DATA[o.chapter];
+    label = `${L('theme_sg')} ${numL(o.theme+1)} · ${T(ch.themes[o.theme].titles)}`;
+    action = ()=>clear(()=>showVerses(o.chapter, o.theme));
+  } else if(o.chapter != null){
+    const ch = DATA[o.chapter];
+    label = `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`;
+    action = ()=>clear(()=>showThemes(o.chapter));
+  } else if(o.section != null){
+    label = L('tab_'+['','karma','bhakti','jnana'][o.section]);
+    action = ()=>clear(()=>showChapters(o.section));
+  } else if(o.view === 'sections'){
+    label = L('sections_title');        action = ()=>clear(showSections);
   } else {
-    if(o.section != null){
-      // came through the Three Yogas picker
-      steps.push([L('sections_title'), ()=>clear(showSections)]);
-      steps.push([L('tab_'+['','karma','bhakti','jnana'][o.section]), ()=>clear(()=>showChapters(o.section))]);
-    } else if(o.view === 'sections'){
-      steps.push([L('sections_title'), ()=>clear(showSections)]);
-    } else {
-      // came through the full chapter list
-      steps.push([L('chapters'), ()=>clear(()=>showChapters(0))]);
-    }
-    if(o.chapter != null){
-      const ch = DATA[o.chapter];
-      // 'Chapter 6 · Dhyāna Yoga' — the number disambiguates it from a section
-      // name (ch.6 is 'Dhyāna Yoga', and there is also a Jñāna-Yoga section).
-      steps.push([`${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`, ()=>clear(()=>showThemes(o.chapter))]);
-      if(o.theme != null && o.view === 'verses'){
-        steps.push([T(ch.themes[o.theme].titles), ()=>clear(()=>showVerses(o.chapter, o.theme))]);
-      }
-    }
+    label = L('chapters');              action = ()=>clear(()=>showChapters(0));
   }
 
-  /* A deep trail wraps to three or four rows on a phone and pushes the results out
-     of sight. Past two steps, show only the page the reader actually came from —
-     the same idiom as the app's "← Back to themes" / "← Back to chapters" buttons.
-     Nothing is lost: that destination carries its own back button, so the hierarchy
-     is still walkable one level at a time. */
-  const shown = steps.length > 2 ? steps.slice(-1) : steps;
-
-  const lab = document.createElement('span');
-  lab.className = 'crumb-label'; lab.textContent = L('back_to');
-  crumbs.appendChild(lab);
-  shown.forEach(([label, action], i)=>{
-    if(i) crumbs.appendChild(crumbSep());
-    crumbs.appendChild(crumb(label, action, false));
-  });
+  const b = document.createElement('button');
+  b.className = 'back-top';
+  b.textContent = L('back_to_x').replace('{x}', label);
+  b.title = b.textContent; b.setAttribute('aria-label', b.textContent);
+  b.onclick = action;
+  crumbs.appendChild(b);
 }
 
 function showChapters(section){
