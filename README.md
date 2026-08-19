@@ -98,6 +98,13 @@ Edit the file in `source/`, then run `python3 build.py`. Never edit `index.html`
 | a translation | `source/translations_ne.py`, `source/translations_hi.py` |
 | theme/part titles and ranges | `source/gita_data*.py` (en), `themes_ne.py`, `themes_hi.py` |
 | the Devanagari or IAST of a verse | `source/ch*.json` |
+
+The verse as you read it on screen is printed **verbatim** from `source/ch*.json`.
+The text is stored as segments separated by `।` — two verse lines, plus a speaker
+where there is one — and the app carries those segments through untouched, in order.
+So fixing a verse is a one-line edit to the JSON, and the display is guaranteed to
+match it. The four-pāda split shown inside the verse popup is separate data
+(`source/padachheda_ch*.py`) and does not affect the flowing verse.
 | interface wording | `source/i18n_ui.py` |
 
 `check_padas.py` runs on every build and re-derives each pāda from its split words

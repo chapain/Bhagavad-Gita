@@ -244,13 +244,12 @@ def parse_verse(itrans, words=None):
                 p1_ia, p2_ia = snap_pair(p1_ia, p2_ia, wA[-1][1], wB[0][1])
         d1 = iast_to_deva(p1_ia).strip()
         d2 = iast_to_deva(p2_ia).strip()
-        # A pāda boundary can fall *inside* a word: the metre breaks mid-compound,
-        # e.g. 16.1  sattvasaṃśuddhir | jñānayogavyavasthitiḥ. When the first half
-        # ends on a virāma (halanta) the consonant must join what follows, so the
-        # display must NOT insert a space. Record it here — the renderer cannot
-        # tell, and a space would break the word.
-        joins = d1.endswith("\u094d")
-        flow.append({"k": "p", "d": d1, "t": p1_ia, "n": syll_iast(p1_ia), "j": 1 if joins else 0})
+        # NOTE: a pāda boundary can fall inside a word (16.1 saṃśuddhir|jñāna,
+        # 16.3 śaucam|adroho), so these halves do NOT always concatenate back
+        # into the verse. That is fine: the running verse is rendered verbatim
+        # from the source JSON by verse_lines() in build_gita.py. These pādas
+        # are only for the modal's 2x2 boxes and the pada-chheda word splits.
+        flow.append({"k": "p", "d": d1, "t": p1_ia, "n": syll_iast(p1_ia)})
         flow.append({"k": "p", "d": d2, "t": p2_ia, "n": syll_iast(p2_ia)})
         pidx += 2
 

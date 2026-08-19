@@ -239,21 +239,44 @@ ok(/<span class="pb-num">\$\{esc\(L\('pada_label'\)\)\}/.test(html), 'pāda-box 
 ok(byRef['1.08'].d.endsWith('सौमदत्तिस्तथैव च'), '1.08 uses the Śaṅkara reading saumadattistathaiva ca');
 ok(!html.includes('सौमदत्तिर्जयद्रथः'), '1.08 jayadratha variant not present');
 ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" left in the IAST fields');
-// A pāda boundary can fall inside a word (16.1 sattvasaṃśuddhir|jñānayoga…). Those
-// pādas carry j:1 so the display joins them with no space; a space would split the
-// word. Guard both the flag and the renderer that consumes it.
+// The running verse is rendered verbatim from source/ch*.json — no re-joining.
+// This is the strongest check in the suite: every displayed line, and the speaker,
+// must be character-for-character what the source file says.
 {
-  const joiners = allV.flatMap(({ v }) => v.flow.filter(f => f.k === 'p' && f.j === 1));
-  ok(joiners.length > 0, `some pādas are marked as joining the next (${joiners.length})`);
-  ok(joiners.every(f => f.d.endsWith('\u094d')), 'every joining pāda ends in a virāma');
-  // Only pādas 1 and 3 join a following half; 2 and 4 end a line, where a virāma is
-  // simply the word's own ending and needs no flag.
-  const unmarked = allV.flatMap(({ v }) => {
-    const p = v.flow.filter(f => f.k === 'p');
-    return [0, 2].filter(k => p[k] && p[k].d.endsWith('\u094d') && !p[k].j).map(k => v.n);
-  });
-  ok(unmarked.length === 0, `no first/third pāda ending in virāma is left unmarked (${unmarked.slice(0,3)})`);
-  ok(/const gap = k => pads\[k\]\.j \? '' : ' ';/.test(html), 'padaLines honours the join flag');
+  const chDir = path.join(__dirname, 'source');
+  let checkedLines = 0;
+  const lineBad = [];
+  for (const { v } of allV) {
+    const [cn, vn] = v.n.split('.');
+    const src = JSON.parse(fs.readFileSync(path.join(chDir, `ch${Number(cn)}.json`), 'utf8')).verses[String(Number(vn))];
+    const segsD = src.deva.split('।').map(x => x.trim()).filter(Boolean);
+    const segsT = src.iast.split('।').map(x => x.trim()).filter(Boolean);
+    const got = v.lines || [];
+    if (got.length !== segsD.length) { lineBad.push(`${v.n}: ${got.length} vs ${segsD.length} segments`); continue; }
+    for (let i = 0; i < segsD.length; i++) {
+      if (got[i].d !== segsD[i]) lineBad.push(`${v.n}[${i}] deva`);
+      if (got[i].t !== segsT[i]) lineBad.push(`${v.n}[${i}] iast`);
+      const isSpk = segsT[i].endsWith('uvāca');
+      if ((got[i].k === 's') !== isSpk) lineBad.push(`${v.n}[${i}] speaker flag`);
+      checkedLines++;
+    }
+  }
+  ok(lineBad.length === 0, `every verse line matches source/ch*.json verbatim (${checkedLines} segments; ${lineBad.slice(0,3).join(', ') || 'clean'})`);
+  ok(allV.every(({ v }) => (v.lines || []).filter(l => l.k === 'l').length === 2), 'every verse has exactly two display lines');
+  // 1.21 and 1.28 put the speaker *between* the two lines; verbatim rendering keeps it there.
+  ok(byRef['1.21'].lines[1].k === 's' && byRef['1.21'].lines[1].d === 'अर्जुन उवाच',
+     '1.21 keeps its mid-verse speaker in place');
+  ok(byRef['1.28'].lines[1].k === 's', '1.28 keeps its mid-verse speaker in place');
+  // 16.3 was the sandhi-recombination bug; 16.1 the concatenation bug. Both are now
+  // impossible by construction, but pin the exact text so a source edit is deliberate.
+  ok(byRef['16.03'].lines[0].d === 'तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता',
+     '16.3 renders शौचमद्रोहो (not शौचम्अद्रोहो)');
+  ok(byRef['16.01'].lines[1].d.includes('संशुद्धिर्ज्ञानयोग'),
+     '16.1 renders संशुद्धिर्ज्ञानयोग as one word');
+  // the join machinery must be gone — no flag, no table, no joiner
+  ok(!/joinHalves/.test(html), 'joinHalves removed');
+  ok(!/const MATRA =/.test(html), 'JS mātrā table removed');
+  ok(allV.every(({ v }) => v.flow.every(f => f.j === undefined)), 'no pāda carries a stale join flag');
 }
 // verse text and its pāda split must agree everywhere (build-time invariant, re-checked here)
 const strip = x => x.replace(/[\s|।॥’]/g, '');

@@ -104,6 +104,29 @@ def i18n_word(w):
 def i18n_words(wl):
     return [i18n_word(w) for w in wl]
 
+
+def verse_lines(deva, iast):
+    """Display lines for the running verse, taken verbatim from the source JSON.
+
+    Every verse in source/ch*.json is written as segments separated by `।`:
+    either two verse lines, or a speaker followed by two verse lines (and in
+    1.21 / 1.28 the speaker sits *between* the two lines). We simply carry the
+    segments through untouched, so what the app shows is exactly what the
+    source says. Fix a verse by editing the JSON — nothing here re-derives it.
+
+    Pādas are still parsed separately for the modal's 2x2 boxes and the
+    pada-chheda word splits; that is genuine pāda work and is unaffected.
+    """
+    ds = [x.strip() for x in deva.split("।") if x.strip()]
+    ts = [x.strip() for x in iast.split("।") if x.strip()]
+    assert len(ds) == len(ts), f"deva/iast segment mismatch: {deva!r}"
+    out = []
+    for d, t in zip(ds, ts):
+        spk = t.endswith("uvāca")
+        out.append({"k": "s" if spk else "l", "d": d, "t": t})
+    assert sum(1 for x in out if x["k"] == "l") == 2, f"expected 2 verse lines: {deva!r}"
+    return out
+
 def i18n_speaker_words(wl):
     # श्रीभगवान् (the Blessed Lord) takes the Nepali honorific verb: उवाच → भन्नुभयो
     honorific = any(w[0] == "श्रीभगवान्" for w in wl)
@@ -151,6 +174,7 @@ for (num, name, deva, count, blurb) in CHAPTERS:
                         elif it["k"] == "s":
                             it["words"] = i18n_speaker_words(wd.get("s", []))
                     vs.append({"n": f"{num}.{n:02d}", "d": v["deva"], "t": v["iast"],
+                               "lines": verse_lines(v["deva"], v["iast"]),
                                "flow": pd["flow"], "padas": pd["padas"], "speakers": pd["speakers"],
                                "meter": pd["meter"], "mt": pd["mt"],
                                "lits": {"en": lit, "ne": trn[0], "hi": trh[0]},
@@ -1038,43 +1062,20 @@ function pDanda(i, total){
   if(total === 2) return (i===0) ? '।' : '॥';
   return (i%4===1)?'।':((i%4===3)?'॥':'');
 }
-function padaLines(pads, fld, escF){
-  const n = pads.length;
-  if(n === 2) return [`<span class="gp">${escF(pads[0][fld])}${pDanda(0,2)}</span>`,
-                      `<span class="gp">${escF(pads[1][fld])}${pDanda(1,2)}</span>`];
-  // pads[k].j === 1 means the metrical break falls inside a word (the pāda ends on a
-  // virāma), so the halves must be printed with no space between them — otherwise
-  // e.g. 16.1 reads "…संशुद्धिर् ज्ञानयोग…" instead of the single compound.
-  const gap = k => pads[k].j ? '' : ' ';
-  return [`<span class="gp">${escF(pads[0][fld])}</span>${gap(0)}<span class="gp">${escF(pads[1][fld])}${pDanda(1,4)}</span>`,
-          `<span class="gp">${escF(pads[2][fld])}</span>${gap(2)}<span class="gp">${escF(pads[3][fld])}${pDanda(3,4)}</span>`];
-}
+/* The running verse is rendered verbatim from the source JSON.
+   v.lines is the list of `।`-separated segments as they appear in
+   source/ch*.json: two verse lines, plus a speaker where the source has one
+   (in 1.21 and 1.28 the speaker falls between the two lines, and it renders
+   in place because we never reorder). Nothing is re-joined or re-derived, so
+   the display cannot drift from the source. To correct a verse, edit the JSON.
+   The pāda split is still shown in the modal's 2x2 boxes; that data is
+   separate and untouched. */
 function padaBlockDeva(s){
-  // two lines: pādas 1-2 on the first line, pādas 3-4 on the second (traditional); 2-pāda verses get one pāda per line
-  let html = ''; let pads = []; let topS = '', midS = '';
-  for(const it of s.flow){
-    if(it.k==='s'){ (pads.length < 2 ? (topS = it.d) : (midS = it.d)); }
-    else pads.push(it);
+  let html = '', li = 0;
+  for(const it of (s.lines || [])){
+    if(it.k === 's') html += `<span class="spk">${it.d}</span>`;
+    else { html += `<div class="gline">${it.d}${li ? '॥' : '।'}</div>`; li++; }
   }
-  if(topS) html += `<span class="spk">${topS}</span>`;
-  const L = padaLines(pads, 'd', x=>x);
-  html += `<div class="gline">${L[0]}</div>`;
-  if(midS) html += `<span class="spk">${midS}</span>`;
-  html += `<div class="gline">${L[1]}</div>`;
-  return html;
-}
-function padaBlockIast(s){
-  // two lines, transliteration only (used in the verse cards)
-  let html = ''; let pads = []; let topS = '', midS = '';
-  for(const it of s.flow){
-    if(it.k==='s'){ (pads.length < 2 ? (topS = it.t) : (midS = it.t)); }
-    else pads.push(it);
-  }
-  if(topS) html += `<span class="spk">${esc(topS)}</span>`;
-  const L = padaLines(pads, 't', esc);
-  html += `<div class="gline">${L[0]}</div>`;
-  if(midS) html += `<span class="spk">${esc(midS)}</span>`;
-  html += `<div class="gline">${L[1]}</div>`;
   return html;
 }
 
