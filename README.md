@@ -55,13 +55,16 @@ source/                 ← edit here
   gloss_ne.py             Nepali word-meanings
   gloss_hi.py             Hindi word-meanings
   padachheda_ch*.py       per-pāda word splits, chapter by chapter
+  padas_ch*.py            the four pādas of every verse
   i18n_ui.py              interface strings (en/ne/hi)
   ch*.json                Devanagari + IAST verse text
-  gita_conv.py            ITRANS → Devanagari/IAST conversion, metre detection
-  check_padas.py          pāda verification
+  i18n_chapters.py        chapter names and blurbs (ne/hi)
+  verify.py               two helpers used to check your data
+  check_padas.py          verifies word splits against the pādas
+  prove_data_only.py      proves the build renders data, never generates it
 
 rebuild.sh              build + run both test suites
-run_gita_app.js         362 assertions on the built document
+run_gita_app.js         394 assertions on the built document
 browser_checks.py       41 live-browser checks (rendering, i18n, touch, offline)
 ```
 
@@ -89,62 +92,119 @@ python3 build.py --serve    build, verify, then serve at http://localhost:8000
 
 ### Fixing content
 
-Edit the file in `source/`, then run `python3 build.py`. Never edit `index.html`.
+**Every part of the app is meant to be corrected by hand.** Edit the file in
+`source/`, run `python3 build.py`, and the app shows exactly what you wrote.
+Never edit `index.html` — it is generated and your change would be overwritten.
 
 | what you want to fix | file |
 |---|---|
-| how a verse splits into its four pādas | `source/padachheda_ch*.py` |
-| a word's meaning (ne/hi) | `source/gloss_ne.py`, `source/gloss_hi.py` |
-| a translation | `source/translations_ne.py`, `source/translations_hi.py` |
-| theme/part titles and ranges | `source/gita_data*.py` (en), `themes_ne.py`, `themes_hi.py` |
 | the Devanagari or IAST of a verse | `source/ch*.json` |
+| where a verse divides into pādas | `source/padas_ch*.py` |
+| the word-by-word split and its English meanings | `source/padachheda_ch*.py` |
+| a word's meaning in Nepali / Hindi | `source/gloss_ne.py`, `source/gloss_hi.py` |
+| a verse translation (en) | `source/gita_data*.py` |
+| a verse translation (ne / hi) | `source/translations_ne.py`, `source/translations_hi.py` |
+| chapter names | `source/i18n_chapters.py` |
+| theme and part titles, blurbs, verse ranges (en) | `source/gita_data*.py` |
+| theme and part titles, blurbs (ne / hi) | `source/themes_ne.py`, `source/themes_hi.py` |
+| interface wording (buttons, labels) | `source/i18n_ui.py` |
 
-The verse as you read it on screen is printed **verbatim** from `source/ch*.json`.
-The text is stored as segments separated by `।` — two verse lines, plus a speaker
-where there is one — and the app carries those segments through untouched, in order.
-So fixing a verse is a one-line edit to the JSON, and the display is guaranteed to
-match it. The four-pāda split shown inside the verse popup is separate data
-(`source/padachheda_ch*.py`) and does not affect the flowing verse.
-| interface wording | `source/i18n_ui.py` |
+#### The verse you read
 
-`check_padas.py` runs on every build and re-derives each pāda from its split words
-using external sandhi, so a mistake in `padachheda_ch*.py` is caught immediately:
+Printed **verbatim** from `source/ch*.json`. The text is stored as segments
+separated by `।` — two verse lines, plus a speaker where there is one — and the
+app carries those segments through untouched, in order. Nothing is re-joined or
+re-derived, so the display cannot drift from the file. Fix a verse by editing
+that one line of JSON.
 
-```
-pādas checked: 2800 | residual flags: 0
-```
+#### The pāda split
 
-If a check fails, the build says so and exits non-zero — fix the source and run again.
+The four quarter-boxes in the verse popup. This is **plain data** in
+`source/padas_ch*.py` — one entry per verse, read straight through:
 
-That runs the builder, regenerates `index.html` and `site/`, then executes both test
-suites. A clean run reports:
-
-```
-source-integrity issues: NONE ✓
-pādas checked: 2800 | residual flags: 0
-run_gita_app.js: 362 assertions passed, 0 failed      ALL GREEN ✓
-browser_checks.py: 41 passed, 0 failed                ALL GREEN ✓
-```
-
-`browser_checks.py` needs Playwright (skipped automatically if absent):
-
-```bash
-pip install playwright && python3 -m playwright install chromium --with-deps
-python3 browser_checks.py --serve                     # test locally, incl. offline
-python3 browser_checks.py https://chapain.github.io/Bhagavad-Gita/
+```python
+"16.03": [
+    ("p", "तेजः क्षमा धृतिः शौचम्", "tejaḥ kṣamā dhṛtiḥ śaucam", 8),
+    ("p", "अद्रोहो नातिमानिता",      "adroho nātimānitā",        8),
+    ("p", "भवन्ति सम्पदं दैवीम्",     "bhavanti sampadaṃ daivīm", 8),
+    ("p", "अभिजातस्य भारत",         "abhijātasya bhārata",      8),
+],
 ```
 
-### What the tests cover
+`("p", devanagari, iast, syllables)` is a pāda; `("s", devanagari, iast)` is a
+speaker line. They render in the order written, which is why the speaker in 1.21
+and 1.28 correctly appears between the two halves.
 
-**`run_gita_app.js`** — 18 chapters · 700 verses · 182 themes · 559 parts; trilingual
-coverage with no English fallback; script purity (no Latin residue in ne/hi fields);
-every pāda's words present; metre badges; the mobile layer; Devanagari-numeral rules;
-Open Graph tags, manifest and service-worker invariants; and content regression locks
-on specific verses.
+To move a boundary, move the word in both the Devanagari and the IAST and adjust
+the two syllable counts. The build then checks that the pādas still spell the
+verse in `ch*.json` and that every count is right, and stops with a clear message
+if not — so the two files cannot drift apart.
 
-**`browser_checks.py`** — drives a real browser: rendering, navigation, English
-wording, Devanagari numerals, search in both scripts, swipe and back-button, four
-viewport sizes, and a genuine offline reload with the network disconnected.
+#### The build checks that your edit took effect
+
+Every build runs a **manual-edit audit** and stops if a source file says
+something the app would not show:
+
+* a verse with no Nepali or Hindi translation, which would silently show English
+* an `ne`/`hi` theme file whose structure does not mirror the English one
+* a verse that no part's range covers, making it unreachable in the app
+* pādas in `padas_ch*.py` that no longer spell the verse in `ch*.json`
+* a pāda whose syllable count does not match its text
+
+```
+pāda overrides applied: 1 ✓
+manual-edit audit: NONE ✓
+```
+
+`build.py` also clears `__pycache__` before every build, so an edit can never be
+masked by a stale compiled copy of a source file.
+
+#### Proving the app only renders data
+
+If you want to satisfy yourself that nothing is being generated any more:
+
+```
+cd source
+python3 prove_data_only.py
+```
+
+It runs two opposite experiments and restores everything afterwards:
+
+1. **Breaks the generator** — replaces the four functions that used to produce
+   displayed text with ones returning the word `SABOTAGED`, then rebuilds. If the
+   app still generated anything, `index.html` would change. It does not: the file
+   comes out byte-identical and the word never appears.
+2. **Changes the data** — edits one pāda in `padas_ch16.py` and rebuilds. The new
+   text appears in `index.html`, so the data file wins and is not overwritten.
+
+```
+  PASS  generator broken -> output unchanged
+  PASS  data changed -> output changes
+  CONCLUSION: the app renders the data files; it does not generate them.
+```
+
+The quickest informal version of the same check: note the hash printed by
+`build.py`, edit any data file, rebuild, and confirm the hash moved and your
+words are on the page.
+
+#### No code generates content
+
+The app's content is complete, so the build does not derive anything — it reads
+the data files and renders them. The old ITRANS converter and metre-splitter
+(`gita_conv.py`), the freeze tool (`freeze_padas.py`), the override workaround
+(`pada_overrides.py`) and the unused `sandhi.py` have all been **deleted**, along
+with the raw `.itx` source texts they were built from. The test suite asserts
+they stay gone and that the builder never calls a conversion function.
+
+What remains is small and only ever *checks* your data:
+
+| file | what it does |
+|---|---|
+| `verify.py` | flattens IAST accents and counts syllables, so the build can compare your pādas against `ch*.json` |
+| `check_padas.py` | rebuilds each pāda from its word split to catch a typo in `padachheda_ch*.py` |
+| `prove_data_only.py` | edits each kind of data in turn and proves the change reaches the page |
+
+None of them can change what the app shows.
 
 ---
 

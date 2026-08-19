@@ -278,6 +278,33 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
   ok(!/const MATRA =/.test(html), 'JS mātrā table removed');
   ok(allV.every(({ v }) => v.flow.every(f => f.j === undefined)), 'no pāda carries a stale join flag');
 }
+// Everything on screen must be hand-editable from source/. These assertions pin the
+// mechanisms that make that true, so they cannot be removed by accident.
+{
+  const srcDir = path.join(__dirname, 'source');
+  const bgSrc = fs.readFileSync(path.join(srcDir, 'build_gita.py'), 'utf8');
+  // the pāda split is frozen data, not a computation
+  for (const n of [1, 16, 18]) {
+    ok(fs.existsSync(path.join(srcDir, `padas_ch${n}.py`)), `padas_ch${n}.py exists`);
+  }
+  ok(/PADAS\.update/.test(bgSrc), 'the builder reads the pāda data files');
+  ok(/no longer spell the verse/.test(bgSrc), 'the build checks the pādas against ch*.json');
+  ok(/syllables but has/.test(bgSrc), 'the build checks the syllable counts');
+  ok(/MANUAL-EDIT AUDIT FAILED/.test(bgSrc), 'the builder audits that hand edits took effect');
+  ok(/raise SystemExit\(1\)/.test(bgSrc), 'a failed audit stops the build');
+  // the generator is gone: no code may derive displayed text any more
+  for (const gone of ['gita_conv.py', 'pada_overrides.py', 'freeze_padas.py', 'sandhi.py']) {
+    ok(!fs.existsSync(path.join(srcDir, gone)), `${gone} is deleted — nothing generates content`);
+  }
+  for (const fn of ['iast_to_deva', 'to_deva', 'split_half_padas', 'snap_pair', 'parse_verse']) {
+    ok(!new RegExp(`\\b${fn}\\(`).test(bgSrc), `the builder never calls ${fn}()`);
+  }
+  const bp = fs.readFileSync(path.join(__dirname, 'build.py'), 'utf8');
+  ok(/def clear_pycache/.test(bp), 'build.py clears __pycache__ so edits are never stale');
+  // translations must be real, not an English fallback silently shown as ne/hi
+  const sameAsEn = allV.filter(({ v }) => v.lits.ne === v.lits.en || v.lits.hi === v.lits.en).map(({ v }) => v.n);
+  ok(sameAsEn.length === 0, `no verse falls back to English for ne/hi (${sameAsEn.slice(0,3).join(',') || 'clean'})`);
+}
 // verse text and its pāda split must agree everywhere (build-time invariant, re-checked here)
 const strip = x => x.replace(/[\s|।॥’]/g, '');
 const splitBad = allV.filter(({ v }) => strip(v.flow.map(f => f.t).join('')) !== strip(v.t)).map(({ v }) => v.n);
