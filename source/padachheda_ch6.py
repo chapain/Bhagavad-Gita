@@ -1,0 +1,682 @@
+# -*- coding: utf-8 -*-
+"""padachheda_ch6.py — per-pāda pada-chheda (word splits) for all 47 verses of Gita Chapter 6.
+
+Structure: verse_number -> {
+    "s": [[deva_word, iast, meaning], ...]   # speaker line words (if any)
+    0..3: [[deva_word, iast, meaning], ...]  # the four pādas
+}
+Readings aligned to the Śaṅkara-bhāṣya edition."""
+
+GITA_CH6_WORDS = {
+1: {"s": [
+    ["श्रीभगवान्", "śrībhagavān", "the Blessed Lord"],
+    ["उवाच", "uvāca", "said"]
+],
+    0: [
+    ["अनाश्रितः", "anāśritaḥ", "not relying on"],
+        ["कर्मफलम्", "karmaphalam", "the fruit of action"]],
+    1: [
+    ["कार्यम्", "kāryam", "the bounden duty"], ["कर्म", "karma", "action"],
+        ["करोति", "karoti", "performs"], ["यः", "yaḥ", "who"]],
+    2: [
+    ["सः", "saḥ", "he"], ["सन्न्यासी", "sannyāsī", "a renouncer"], ["च", "ca", "and"],
+        ["योगी", "yogī", "a yogi"], ["च", "ca", "and"]],
+    3: [
+    ["न", "na", "not"], ["निरग्निः", "niragniḥ", "without fire (rites)"],
+        ["न", "na", "nor"], ["च", "ca", "and"], ["अक्रियः", "akriyaḥ", "without action"]]
+},
+2: {"s": [],
+    0: [
+    ["यम्", "yam", "which"], ["सन्न्यासम्", "sannyāsam", "renunciation"],
+        ["इति", "iti", "thus"], ["प्राहुः", "prāhuḥ", "they call"]],
+    1: [
+    ["योगम्", "yogam", "yoga"], ["तम्", "tam", "that"], ["विद्धि", "viddhi", "know"],
+        ["पाण्डव", "pāṇḍava", "O son of Pāṇḍu"]],
+    2: [
+    ["न", "na", "not"], ["हि", "hi", "indeed"],
+        ["असन्न्यस्त", "asannyasta", "not renounced"],
+        ["सङ्कल्पः", "saṅkalpaḥ", "whose resolve"]],
+    3: [
+    ["योगी", "yogī", "a yogi"], ["भवति", "bhavati", "becomes"],
+        ["कश्चन", "kaścana", "any"]]
+},
+3: {"s": [],
+    0: [
+    ["आरुरुक्षोः", "ārurukṣoḥ", "of one desiring to ascend"],
+        ["मुनेः", "muneḥ", "of the sage"], ["योगम्", "yogam", "in yoga"]],
+    1: [
+    ["कर्म", "karma", "action"], ["कारणम्", "kāraṇam", "the means"],
+        ["उच्यते", "ucyate", "is said"]],
+    2: [
+    ["योगारूढस्य", "yogārūḍhasya", "of one who has ascended in yoga"],
+        ["तस्य", "tasya", "of him"], ["एव", "eva", "indeed"]],
+    3: [
+    ["शमः", "śamaḥ", "quiescence"], ["कारणम्", "kāraṇam", "the means"],
+        ["उच्यते", "ucyate", "is said"]]
+},
+4: {"s": [],
+    0: [
+    ["यदा", "yadā", "when"], ["हि", "hi", "indeed"], ["न", "na", "neither"],
+        ["इन्द्रियार्थेषु", "indriyārtheṣu", "in sense-objects"]],
+    1: [
+    ["न", "na", "nor"], ["कर्मसु", "karmasu", "in actions"],
+        ["अनुषज्जते", "anuṣajjate", "is attached"]],
+    2: [
+    ["सर्व", "sarva", "all"], ["सङ्कल्प", "saṅkalpa", "intentions"],
+        ["संन्यासी", "sannyāsī", "renouncer"]],
+    3: [
+    ["योगारूढः", "yogārūḍhaḥ", "ascended in yoga"], ["तदा", "tadā", "then"],
+        ["उच्यते", "ucyate", "he is said to be"]]
+},
+5: {"s": [],
+    0: [
+    ["उद्धरेत्", "uddharet", "should lift"], ["आत्मना", "ātmanā", "by the Self"],
+        ["आत्मानम्", "ātmānam", "the self"]],
+    1: [
+    ["न", "na", "not"], ["आत्मानम्", "ātmānam", "the self"],
+        ["अवसादयेत्", "avasādayet", "should degrade"]],
+    2: [
+    ["आत्मा", "ātmā", "the Self"], ["एव", "eva", "alone"], ["हि", "hi", "indeed"],
+        ["आत्मनः", "ātmanaḥ", "of the self"], ["बन्धुः", "bandhuḥ", "the friend"]],
+    3: [
+    ["आत्मा", "ātmā", "the Self"], ["एव", "eva", "alone"], ["रिपुः", "ripuḥ", "the enemy"],
+        ["आत्मनः", "ātmanaḥ", "of the self"]]
+},
+6: {"s": [],
+    0: [
+    ["बन्धुः", "bandhuḥ", "a friend"], ["आत्मा", "ātmā", "the Self"],
+        ["आत्मनः", "ātmanaḥ", "of the self"], ["तस्य", "tasya", "of him"]],
+    1: [
+    ["येन", "yena", "by whom"], ["आत्मा", "ātmā", "the self"], ["एव", "eva", "indeed"],
+        ["आत्मना", "ātmanā", "by the Self"], ["जितः", "jitaḥ", "conquered"]],
+    2: [
+    ["अनात्मनः", "anātmanaḥ", "of one who has not conquered the self"],
+        ["तु", "tu", "but"], ["शत्रुत्वे", "śatrutve", "as an enemy"]],
+    3: [
+    ["वर्तेत", "varteta", "would abide"], ["आत्मा", "ātmā", "the Self"],
+        ["एव", "eva", "indeed"], ["शत्रुवत्", "śatruvat", "like an enemy"]]
+},
+7: {"s": [],
+    0: [
+    ["जितात्मनः", "jitātmanaḥ", "of the self-conquered"],
+        ["प्रशान्तस्य", "praśāntasya", "of the tranquil"]],
+    1: [
+    ["परमात्मा", "paramātmā", "the supreme Self"],
+        ["समाहितः", "samāhitaḥ", "established, poised"]],
+    2: [
+    ["शीतोष्ण", "śītoṣṇa", "cold and heat"], ["सुख", "sukha", "pleasure"],
+        ["दुःखेषु", "duḥkheṣu", "and pain"]],
+    3: [
+    ["तथा", "tathā", "likewise"], ["मान", "māna", "honour"],
+        ["अपमानयोः", "apamānayoḥ", "and dishonour"]]
+},
+8: {"s": [],
+    0: [
+    ["ज्ञान", "jñāna", "with knowledge"], ["विज्ञान", "vijñāna", "and realization"],
+        ["तृप्तात्मा", "tṛptātmā", "content in self"]],
+    1: [
+    ["कूटस्थः", "kūṭasthaḥ", "unmoved, steadfast"],
+        ["विजितेन्द्रियः", "vijitendriyaḥ", "senses conquered"]],
+    2: [
+    ["युक्तः", "yuktaḥ", "yoked"], ["इति", "iti", "thus"],
+        ["उच्यते", "ucyate", "is called"], ["योगी", "yogī", "the yogi"]],
+    3: [
+    ["समलोष्ट", "samaloṣṭa", "to whom a clod"], ["अश्म", "aśma", "a stone"],
+        ["काञ्चनः", "kāñcanaḥ", "and gold (are equal)"]]
+},
+9: {"s": [],
+    0: [
+    ["सुहृत्", "suhṛt", "well-wisher"], ["मित्र", "mitra", "friend"],
+        ["अरि", "ari", "foe"], ["उदासीन", "udāsīna", "indifferent"]],
+    1: [
+    ["मध्यस्थ", "madhyastha", "neutral"], ["द्वेष्य", "dveṣya", "hateful"],
+        ["बन्धुषु", "bandhuṣu", "among kinsmen"]],
+    2: [
+    ["साधुषु", "sādhuṣu", "among the righteous"], ["अपि", "api", "also"],
+        ["च", "ca", "and"], ["पापेषु", "pāpeṣu", "among sinners"]],
+    3: [
+    ["समबुद्धिः", "samabuddhiḥ", "of equal mind"], ["विशिष्यते", "viśiṣyate", "excels"]]
+},
+10: {"s": [],
+    0: [
+    ["योगी", "yogī", "the yogi"], ["युञ्जीत", "yuñjīta", "should practise"],
+        ["सततम्", "satatam", "constantly"]],
+    1: [
+    ["आत्मानम्", "ātmānam", "the self"], ["रहसि", "rahasi", "in solitude"],
+        ["स्थितः", "sthitaḥ", "abiding"]],
+    2: [
+    ["एकाकी", "ekākī", "alone"], ["यत", "yata", "controlled"],
+        ["चित्तात्मा", "cittātmā", "mind and self"]],
+    3: [
+    ["निराशीः", "nirāśīḥ", "free from desire"],
+        ["अपरिग्रहः", "aparigrahaḥ", "free from possessiveness"]]
+},
+11: {"s": [],
+    0: [
+    ["शुचौ", "śucau", "in a pure"], ["देशे", "deśe", "place"],
+        ["प्रतिष्ठाप्य", "pratiṣṭhāpya", "having established"]],
+    1: [
+    ["स्थिरम्", "sthiram", "firm"], ["आसनम्", "āsanam", "seat"],
+        ["आत्मनः", "ātmanaḥ", "his own"]],
+    2: [
+    ["न", "na", "not"], ["अत्युच्छ्रितम्", "atyucchritam", "too high"], ["न", "na", "nor"],
+        ["अति", "ati", "too"], ["नीचम्", "nīcam", "low"]],
+    3: [
+    ["चैल", "caila", "cloth"], ["अजिन", "ajina", "antelope skin"],
+        ["कुश", "kuśa", "kuśa grass"], ["उत्तरम्", "uttaram", "spread over"]]
+},
+12: {"s": [],
+    0: [
+    ["तत्र", "tatra", "there"], ["एकाग्रम्", "ekāgram", "one-pointed"],
+        ["मनः", "manaḥ", "the mind"], ["कृत्वा", "kṛtvā", "having made"]],
+    1: [
+    ["यत", "yata", "restrained"], ["चित्त", "citta", "of mind"],
+        ["इन्द्रिय", "indriya", "and senses"], ["क्रियः", "kriyaḥ", "whose activities"]],
+    2: [
+    ["उपविश्य", "upaviśya", "having sat down"], ["आसने", "āsane", "on the seat"],
+        ["युञ्ज्यात्", "yuñjyāt", "should practise"]],
+    3: [
+    ["योगम्", "yogam", "yoga"],
+        ["आत्मविशुद्धये", "ātmaviśuddhaye", "for the purification of the self"]]
+},
+13: {"s": [],
+    0: [
+    ["समम्", "samam", "straight"], ["काय", "kāya", "body"], ["शिरः", "śiraḥ", "head"],
+        ["ग्रीवम्", "grīvam", "neck"]],
+    1: [
+    ["धारयन्", "dhārayan", "holding"], ["अचलम्", "acalam", "motionless"],
+        ["स्थिरः", "sthiraḥ", "steady"]],
+    2: [
+    ["सम्प्रेक्ष्य", "samprekṣya", "gazing at"],
+        ["नासिकाग्रम्", "nāsikāgram", "the tip of the nose"], ["स्वम्", "svam", "his own"]],
+    3: [
+    ["दिशः", "diśaḥ", "the directions"], ["च", "ca", "and"],
+        ["अनवलोकयन्", "anavalokayan", "not looking at"]]
+},
+14: {"s": [],
+    0: [
+    ["प्रशान्तात्मा", "praśāntātmā", "of serene mind"],
+        ["विगतभीः", "vigatabhīḥ", "fearless"]],
+    1: [
+    ["ब्रह्मचारिव्रते", "brahmacārivrate", "in the vow of celibacy"],
+        ["स्थितः", "sthitaḥ", "established"]],
+    2: [
+    ["मनः", "manaḥ", "the mind"], ["संयम्य", "saṁyamya", "having controlled"],
+        ["मच्चित्तः", "maccittaḥ", "thoughts fixed on me"]],
+    3: [
+    ["युक्तः", "yuktaḥ", "yoked"], ["आसीत", "āsīta", "should sit"],
+        ["मत्परः", "matparaḥ", "devoted to me"]]
+},
+15: {"s": [],
+    0: [
+    ["युञ्जन्", "yuñjan", "disciplining"], ["एवम्", "evam", "thus"],
+        ["सदा", "sadā", "always"], ["आत्मानम्", "ātmānam", "the self"]],
+    1: [
+    ["योगी", "yogī", "the yogi"], ["नियतमानसः", "niyatamānasaḥ", "of controlled mind"]],
+    2: [
+    ["शान्तिम्", "śāntim", "peace"],
+        ["निर्वाणपरमाम्", "nirvāṇaparamām", "the supreme nirvāṇa"]],
+    3: [
+    ["मत्संस्थाम्", "matsaṁsthām", "abiding in me"],
+        ["अधिगच्छति", "adhigacchati", "attains"]]
+},
+16: {"s": [],
+    0: [
+    ["न", "na", "not"], ["अति", "ati", "too much"], ["अश्नतः", "aśnataḥ", "of one eating"],
+        ["तु", "tu", "but"], ["योगः", "yogaḥ", "yoga"], ["अस्ति", "asti", "is"]],
+    1: [
+    ["न", "na", "nor"], ["च", "ca", "and"], ["एकान्तम्", "ekāntam", "altogether"],
+        ["अनश्नतः", "anaśnataḥ", "of one not eating"]],
+    2: [
+    ["न", "na", "nor"], ["च", "ca", "and"], ["अति", "ati", "too much"],
+        ["स्वप्न", "svapna", "sleep"], ["शीलस्य", "śīlasya", "of one addicted to"]],
+    3: [
+    ["जाग्रतः", "jāgrataḥ", "of one keeping awake"], ["न", "na", "nor"],
+        ["एव", "eva", "indeed"], ["च", "ca", "and"], ["अर्जुन", "arjuna", "O Arjuna"]]
+},
+17: {"s": [],
+    0: [
+    ["युक्त", "yukta", "moderate"], ["आहार", "āhāra", "in food"],
+        ["विहारस्य", "vihārasya", "in recreation"]],
+    1: [
+    ["युक्त", "yukta", "moderate"], ["चेष्टस्य", "ceṣṭasya", "in effort"],
+        ["कर्मसु", "karmasu", "in works"]],
+    2: [
+    ["युक्त", "yukta", "moderate"], ["स्वप्न", "svapna", "in sleep"],
+        ["अवबोधस्य", "avabodhasya", "in waking"]],
+    3: [
+    ["योगः", "yogaḥ", "yoga"], ["भवति", "bhavati", "becomes"],
+        ["दुःखहा", "duḥkhahā", "the destroyer of sorrow"]]
+},
+18: {"s": [],
+    0: [
+    ["यदा", "yadā", "when"], ["विनियतम्", "viniyatam", "well-restrained"],
+        ["चित्तम्", "cittam", "the mind"]],
+    1: [
+    ["आत्मनि", "ātmani", "in the Self"], ["एव", "eva", "alone"],
+        ["अवतिष्ठते", "avatiṣṭhate", "rests"]],
+    2: [
+    ["निःस्पृहः", "niḥspṛhaḥ", "free from longing"], ["सर्व", "sarva", "all"],
+        ["कामेभ्यः", "kāmebhyaḥ", "from desires"]],
+    3: [
+    ["युक्तः", "yuktaḥ", "yoked"], ["इति", "iti", "thus"],
+        ["उच्यते", "ucyate", "he is said to be"], ["तदा", "tadā", "then"]]
+},
+19: {"s": [],
+    0: [
+    ["यदा", "yadā", "when, as"], ["दीपः", "dīpaḥ", "a lamp"],
+        ["निवातस्थः", "nivātasthaḥ", "in a windless place"]],
+    1: [
+    ["नेङ्गते", "neṅgate", "does not flicker"], ["सः", "saḥ", "that"],
+        ["उपमा", "upamā", "the simile"], ["स्मृता", "smṛtā", "is declared"]],
+    2: [
+    ["योगिनः", "yoginaḥ", "of the yogi"],
+        ["यतचित्तस्य", "yatacittasya", "of controlled mind"]],
+    3: [
+    ["युञ्जतः", "yuñjataḥ", "practising"], ["योगम्", "yogam", "yoga"],
+        ["आत्मनः", "ātmanaḥ", "of the Self"]]
+},
+20: {"s": [],
+    0: [
+    ["यत्र", "yatra", "where"], ["उपरमते", "uparamate", "comes to rest"],
+        ["चित्तम्", "cittam", "the mind"]],
+    1: [
+    ["निरुद्धम्", "niruddham", "restrained"], ["योग", "yoga", "of yoga"],
+        ["सेवया", "sevayā", "by the practice"]],
+    2: [
+    ["यत्र", "yatra", "where"], ["च", "ca", "and"], ["एव", "eva", "indeed"],
+        ["आत्मना", "ātmanā", "by the Self"], ["आत्मानम्", "ātmānam", "the Self"]],
+    3: [
+    ["पश्यन्", "paśyan", "beholding"], ["आत्मनि", "ātmani", "in the Self"],
+        ["तुष्यति", "tuṣyati", "is content"]]
+},
+21: {"s": [],
+    0: [
+    ["सुखम्", "sukham", "joy"], ["आत्यन्तिकम्", "ātyantikam", "boundless"],
+        ["यत्", "yat", "which"], ["तत्", "tat", "that"]],
+    1: [
+    ["बुद्धि", "buddhi", "by the intellect"],
+        ["ग्राह्यम्", "grāhyam", "to be apprehended"],
+        ["अतीन्द्रियम्", "atīndriyam", "beyond the senses"]],
+    2: [
+    ["वेत्ति", "vetti", "one knows"], ["यत्र", "yatra", "in which"], ["न", "na", "never"],
+        ["च", "ca", "and"], ["एव", "eva", "indeed"], ["अयम्", "ayam", "this"]],
+    3: [
+    ["स्थितः", "sthitaḥ", "established"], ["चलति", "calati", "moves"],
+        ["तत्त्वतः", "tattvataḥ", "from the truth"]]
+},
+22: {"s": [],
+    0: [
+    ["यम्", "yam", "which"], ["लब्ध्वा", "labdhvā", "having obtained"], ["च", "ca", "and"],
+        ["अपरम्", "aparam", "another"], ["लाभम्", "lābham", "gain"]],
+    1: [
+    ["मन्यते", "manyate", "deems"], ["न", "na", "no"], ["अधिकम्", "adhikam", "greater"],
+        ["ततः", "tataḥ", "than that"]],
+    2: [
+    ["यस्मिन्", "yasmin", "in which"], ["स्थितः", "sthitaḥ", "established"],
+        ["न", "na", "not"], ["दुःखेन", "duḥkhena", "by sorrow"]],
+    3: [
+    ["गुरुणा", "guruṇā", "heavy"], ["अपि", "api", "even"],
+        ["विचाल्यते", "vicālyate", "is shaken"]]
+},
+23: {"s": [],
+    0: [
+    ["तम्", "tam", "that"], ["विद्यात्", "vidyāt", "one should know"],
+        ["दुःखसंयोग", "duḥkhasaṁyoga", "of union with sorrow"]],
+    1: [
+    ["वियोगम्", "viyogam", "the disconnection"],
+        ["योगसंज्ञितम्", "yogasaṁjñitam", "called yoga"]],
+    2: [
+    ["सः", "saḥ", "that"], ["निश्चयेन", "niścayena", "with firm resolve"],
+        ["योक्तव्यः", "yoktavyaḥ", "should be practised"]],
+    3: [
+    ["योगः", "yogaḥ", "yoga"], ["अनिर्विण्ण", "anirviṇṇa", "undiscouraged"],
+        ["चेतसा", "cetasā", "with the mind"]]
+},
+24: {"s": [],
+    0: [
+    ["सङ्कल्प", "saṅkalpa", "of intention"], ["प्रभवान्", "prabhavān", "born of"],
+        ["कामान्", "kāmān", "desires"]],
+    1: [
+    ["त्यक्त्वा", "tyaktvā", "having abandoned"], ["सर्वान्", "sarvān", "all"],
+        ["अशेषतः", "aśeṣataḥ", "without exception"]],
+    2: [
+    ["मनसा", "manasā", "by the mind"], ["एव", "eva", "alone"],
+        ["इन्द्रियग्रामम्", "indriyagrāmam", "the whole host of senses"]],
+    3: [
+    ["विनियम्य", "viniyamya", "having restrained"],
+        ["समन्ततः", "samantataḥ", "on every side"]]
+},
+25: {"s": [],
+    0: [
+    ["शनैः", "śanaiḥ", "slowly"], ["शनैः", "śanaiḥ", "gradually"],
+        ["उपरमेत्", "uparamet", "should come to rest"]],
+    1: [
+    ["बुद्ध्या", "buddhyā", "by the intellect"],
+        ["धृतिगृहीतया", "dhṛtigṛhītayā", "held firm by resolve"]],
+    2: [
+    ["आत्मसंस्थम्", "ātmasaṁstham", "resting in the Self"], ["मनः", "manaḥ", "the mind"],
+        ["कृत्वा", "kṛtvā", "having made"], ["न", "na", "not"]],
+    3: [
+    ["किञ्चित्", "kiñcit", "anything"], ["अपि", "api", "at all"],
+        ["चिन्तयेत्", "cintayet", "should think of"]]
+},
+26: {"s": [],
+    0: [
+    ["यतः", "yataḥ", "from whatever"], ["यतः", "yataḥ", "from whatever"],
+        ["निश्चरति", "niścarati", "wanders away"]],
+    1: [
+    ["मनः", "manaḥ", "the mind"], ["चञ्चलम्", "cañcalam", "restless"],
+        ["अस्थिरम्", "asthiram", "unsteady"]],
+    2: [
+    ["ततः", "tataḥ", "from there"], ["ततः", "tataḥ", "from there"],
+        ["नियम्य", "niyamya", "having restrained"], ["एतत्", "etat", "it"]],
+    3: [
+    ["आत्मनि", "ātmani", "in the Self"], ["एव", "eva", "indeed"],
+        ["वशम्", "vaśam", "under control"], ["नयेत्", "nayet", "should bring"]]
+},
+27: {"s": [],
+    0: [
+    ["प्रशान्त", "praśānta", "peaceful"], ["मनसम्", "manasam", "of mind"],
+        ["हि", "hi", "indeed"], ["एनम्", "enam", "this"]],
+    1: [
+    ["योगिनम्", "yoginam", "yogi"], ["सुखम्", "sukham", "bliss"],
+        ["उत्तमम्", "uttamam", "supreme"]],
+    2: [
+    ["उपैति", "upaiti", "comes to"], ["शान्त", "śānta", "stilled"],
+        ["रजसम्", "rajasam", "whose passion"]],
+    3: [
+    ["ब्रह्मभूतम्", "brahmabhūtam", "become Brahman"],
+        ["अकल्मषम्", "akalmaṣam", "free from taint"]]
+},
+28: {"s": [],
+    0: [
+    ["युञ्जन्", "yuñjan", "disciplining"], ["एवम्", "evam", "thus"],
+        ["सदा", "sadā", "always"], ["आत्मानम्", "ātmānam", "the self"]],
+    1: [
+    ["योगी", "yogī", "the yogi"], ["विगतकल्मषः", "vigatakalmaṣaḥ", "freed from taint"]],
+    2: [
+    ["सुखेन", "sukhena", "easily"],
+        ["ब्रह्मसंस्पर्शम्", "brahmasaṁsparśam", "the touch of Brahman"]],
+    3: [
+    ["अत्यन्तम्", "atyantam", "boundless"], ["सुखम्", "sukham", "joy"],
+        ["अश्नुते", "aśnute", "attains"]]
+},
+29: {"s": [],
+    0: [
+    ["सर्वभूतस्थम्", "sarvabhūtastham", "dwelling in all beings"],
+        ["आत्मानम्", "ātmānam", "the Self"]],
+    1: [
+    ["सर्वभूतानि", "sarvabhūtāni", "all beings"], ["च", "ca", "and"],
+        ["आत्मनि", "ātmani", "in the Self"]],
+    2: [
+    ["ईक्षते", "īkṣate", "sees"],
+        ["योगयुक्तात्मा", "yogayuktātmā", "with the self joined in yoga"]],
+    3: [
+    ["सर्वत्र", "sarvatra", "everywhere"], ["समदर्शनः", "samadarśanaḥ", "seeing equally"]]
+},
+30: {"s": [],
+    0: [
+    ["यः", "yaḥ", "who"], ["माम्", "mām", "me"], ["पश्यति", "paśyati", "sees"],
+        ["सर्वत्र", "sarvatra", "everywhere"]],
+    1: [
+    ["सर्वम्", "sarvam", "everything"], ["च", "ca", "and"], ["मयि", "mayi", "in me"],
+        ["पश्यति", "paśyati", "sees"]],
+    2: [
+    ["तस्य", "tasya", "for him"], ["अहम्", "aham", "I"], ["न", "na", "not"],
+        ["प्रणश्यामि", "praṇaśyāmi", "am lost"]],
+    3: [
+    ["सः", "saḥ", "he"], ["च", "ca", "and"], ["मे", "me", "to me"], ["न", "na", "not"],
+        ["प्रणश्यति", "praṇaśyati", "is lost"]]
+},
+31: {"s": [],
+    0: [
+    ["सर्वभूतस्थितम्", "sarvabhūtasthitam", "abiding in all beings"], ["यः", "yaḥ", "who"],
+        ["माम्", "mām", "me"]],
+    1: [
+    ["भजति", "bhajati", "worships"], ["एकत्वम्", "ekatvam", "in oneness"],
+        ["आस्थितः", "āsthitaḥ", "established"]],
+    2: [
+    ["सर्वथा", "sarvathā", "in every way"], ["वर्तमानः", "vartamānaḥ", "abiding"],
+        ["अपि", "api", "even"]],
+    3: [
+    ["सः", "saḥ", "he"], ["योगी", "yogī", "the yogi"], ["मयि", "mayi", "in me"],
+        ["वर्तते", "vartate", "lives"]]
+},
+32: {"s": [],
+    0: [
+    ["आत्मौपम्येन", "ātmaupamyena", "by comparison with oneself"],
+        ["सर्वत्र", "sarvatra", "everywhere"]],
+    1: [
+    ["समम्", "samam", "the same"], ["पश्यति", "paśyati", "sees"], ["यः", "yaḥ", "who"],
+        ["अर्जुन", "arjuna", "O Arjuna"]],
+    2: [
+    ["सुखम्", "sukham", "in pleasure"], ["वा", "vā", "or"], ["यदि", "yadi", "if"],
+        ["वा", "vā", "or"], ["दुःखम्", "duḥkham", "in pain"]],
+    3: [
+    ["सः", "saḥ", "he"], ["योगी", "yogī", "the yogi"], ["परमः", "paramaḥ", "supreme"],
+        ["मतः", "mataḥ", "is deemed"]]
+},
+33: {"s": [
+    ["अर्जुनः", "arjunaḥ", "Arjuna"],
+    ["उवाच", "uvāca", "said"]
+],
+    0: [
+    ["यः", "yaḥ", "which"], ["अयम्", "ayam", "this"], ["योगः", "yogaḥ", "yoga"],
+        ["त्वया", "tvayā", "by you"], ["प्रोक्तः", "proktaḥ", "taught"]],
+    1: [
+    ["साम्येन", "sāmyena", "as equanimity"], ["मधुसूदन", "madhusūdana", "O Madhusūdana"]],
+    2: [
+    ["एतस्य", "etasya", "of this"], ["अहम्", "aham", "I"], ["न", "na", "not"],
+        ["पश्यामि", "paśyāmi", "see"]],
+    3: [
+    ["चञ्चलत्वात्", "cañcalatvāt", "because of restlessness"],
+        ["स्थितिम्", "sthitim", "a firm foundation"], ["स्थिराम्", "sthirām", "lasting"]]
+},
+34: {"s": [],
+    0: [
+    ["चञ्चलम्", "cañcalam", "restless"], ["हि", "hi", "indeed"],
+        ["मनः", "manaḥ", "the mind"], ["कृष्ण", "kṛṣṇa", "O Kṛṣṇa"]],
+    1: [
+    ["प्रमाथि", "pramāthi", "turbulent"], ["बलवत्", "balavat", "strong"],
+        ["दृढम्", "dṛḍham", "unyielding"]],
+    2: [
+    ["तस्य", "tasya", "of it"], ["अहम्", "aham", "I"],
+        ["निग्रहम्", "nigraham", "the restraint"], ["मन्ये", "manye", "think"]],
+    3: [
+    ["वायोः", "vāyoḥ", "of the wind"], ["इव", "iva", "like"],
+        ["सुदुष्करम्", "suduṣkaram", "very hard to do"]]
+},
+35: {"s": [
+    ["श्रीभगवान्", "śrībhagavān", "the Blessed Lord"],
+    ["उवाच", "uvāca", "said"]
+],
+    0: [
+    ["असंशयम्", "asaṁśayam", "undoubtedly"], ["महाबाहो", "mahābāho", "O mighty-armed one"]],
+    1: [
+    ["मनः", "manaḥ", "the mind"], ["दुर्निग्रहम्", "durnigraham", "hard to restrain"],
+        ["चलम्", "calam", "restless"]],
+    2: [
+    ["अभ्यासेन", "abhyāsena", "by practice"], ["तु", "tu", "but"],
+        ["कौन्तेय", "kaunteya", "O son of Kuntī"]],
+    3: [
+    ["वैराग्येण", "vairāgyeṇa", "by dispassion"], ["च", "ca", "and"],
+        ["गृह्यते", "gṛhyate", "is restrained"]]
+},
+36: {"s": [],
+    0: [
+    ["असंयतात्मना", "asaṁyatātmanā", "by one of unrestrained self"],
+        ["योगः", "yogaḥ", "yoga"]],
+    1: [
+    ["दुष्प्रापः", "duṣprāpaḥ", "hard to attain"], ["इति", "iti", "thus"],
+        ["मे", "me", "in my"], ["मतिः", "matiḥ", "opinion"]],
+    2: [
+    ["वश्यात्मना", "vaśyātmanā", "by one of controlled self"], ["तु", "tu", "but"],
+        ["यतता", "yatatā", "striving"]],
+    3: [
+    ["शक्यः", "śakyaḥ", "attainable"], ["अवाप्तुम्", "avāptum", "to be reached"],
+        ["उपायतः", "upāyataḥ", "by the proper means"]]
+},
+37: {"s": [
+    ["अर्जुनः", "arjunaḥ", "Arjuna"],
+    ["उवाच", "uvāca", "said"]
+],
+    0: [
+    ["अयतिः", "ayatiḥ", "without self-control"], ["श्रद्धया", "śraddhayā", "with faith"],
+        ["उपेतः", "upetaḥ", "endowed"]],
+    1: [
+    ["योगात्", "yogāt", "from yoga"],
+        ["चलितमानसः", "calitamānasaḥ", "whose mind has wandered"]],
+    2: [
+    ["अप्राप्य", "aprāpya", "not attaining"],
+        ["योगसंसिद्धिम्", "yogasaṁsiddhim", "perfection in yoga"]],
+    3: [
+    ["काम्", "kām", "what"], ["गतिम्", "gatim", "end, path"],
+        ["कृष्ण", "kṛṣṇa", "O Kṛṣṇa"], ["गच्छति", "gacchati", "does he go"]]
+},
+38: {"s": [],
+    0: [
+    ["कच्चित्", "kaccit", "whether, surely"], ["न", "na", "not"],
+        ["उभय", "ubhaya", "both"], ["विभ्रष्टः", "vibhraṣṭaḥ", "fallen from"]],
+    1: [
+    ["छिन्न", "chinna", "torn"], ["अभ्रम्", "abhram", "cloud"], ["इव", "iva", "like"],
+        ["नश्यति", "naśyati", "perishes"]],
+    2: [
+    ["अप्रतिष्ठः", "apratiṣṭhaḥ", "without support"],
+        ["महाबाहो", "mahābāho", "O mighty-armed one"]],
+    3: [
+    ["विमूढः", "vimūḍhaḥ", "deluded"], ["ब्रह्मणः", "brahmaṇaḥ", "of Brahman"],
+        ["पथि", "pathi", "on the path"]]
+},
+39: {"s": [],
+    0: [
+    ["एतत्", "etat", "this"], ["मे", "me", "my"], ["संशयम्", "saṁśayam", "doubt"],
+        ["कृष्ण", "kṛṣṇa", "O Kṛṣṇa"]],
+    1: [
+    ["छेत्तुम्", "chettum", "to cut, dispel"], ["अर्हसि", "arhasi", "you should"],
+        ["अशेषतः", "aśeṣataḥ", "completely"]],
+    2: [
+    ["त्वदन्यः", "tvadanyaḥ", "other than you"],
+        ["संशयस्य", "saṁśayasya", "of this doubt"], ["अस्य", "asya", "this"]],
+    3: [
+    ["छेत्ता", "chettā", "the cutter, dispeller"], ["न", "na", "not"],
+        ["हि", "hi", "indeed"], ["उपपद्यते", "upapadyate", "is found"]]
+},
+40: {"s": [
+    ["श्रीभगवान्", "śrībhagavān", "the Blessed Lord"],
+    ["उवाच", "uvāca", "said"]
+],
+    0: [
+    ["पार्थ", "pārtha", "O Pārtha"], ["न", "na", "not"], ["एव", "eva", "indeed"],
+        ["इह", "iha", "here"], ["न", "na", "nor"],
+        ["अमुत्र", "amutra", "in the next world"]],
+    1: [
+    ["विनाशः", "vināśaḥ", "destruction"], ["तस्य", "tasya", "of him"],
+        ["विद्यते", "vidyate", "there is"]],
+    2: [
+    ["न", "na", "not"], ["हि", "hi", "indeed"],
+        ["कल्याणकृत्", "kalyāṇakṛt", "the doer of good"], ["कश्चित्", "kaścit", "anyone"]],
+    3: [
+    ["दुर्गतिम्", "durgatim", "to an evil end"], ["तात", "tāta", "my son"],
+        ["गच्छति", "gacchati", "goes"]]
+},
+41: {"s": [],
+    0: [
+    ["प्राप्य", "prāpya", "having attained"],
+        ["पुण्यकृताम्", "puṇyakṛtām", "of the doers of good"],
+        ["लोकान्", "lokān", "the worlds"]],
+    1: [
+    ["उषित्वा", "uṣitvā", "having dwelt"], ["शाश्वतीः", "śāśvatīḥ", "for immemorial"],
+        ["समाः", "samāḥ", "years"]],
+    2: [
+    ["शुचीनाम्", "śucīnām", "of the pure"], ["श्रीमताम्", "śrīmatām", "of the prosperous"],
+        ["गेहे", "gehe", "in the house"]],
+    3: [
+    ["योगभ्रष्टः", "yogabhraṣṭaḥ", "he who fell from yoga"],
+        ["अभिजायते", "abhijāyate", "is born"]]
+},
+42: {"s": [],
+    0: [
+    ["अथवा", "athavā", "or"], ["योगिनाम्", "yoginām", "of the yogis"],
+        ["एव", "eva", "indeed"]],
+    1: [
+    ["कुले", "kule", "in the family"], ["भवति", "bhavati", "is born"],
+        ["धीमताम्", "dhīmatām", "of the wise"]],
+    2: [
+    ["एतत्", "etat", "this"], ["हि", "hi", "indeed"],
+        ["दुर्लभतरम्", "durlabhataram", "very hard to obtain"]],
+    3: [
+    ["लोके", "loke", "in the world"], ["जन्म", "janma", "birth"], ["यत्", "yat", "which"],
+        ["ईदृशम्", "īdṛśam", "such as this"]]
+},
+43: {"s": [],
+    0: [
+    ["तत्र", "tatra", "there"], ["तम्", "tam", "him"],
+        ["बुद्धिसंयोगम्", "buddhisaṁyogam", "the union with wisdom"]],
+    1: [
+    ["लभते", "labhate", "he gains"],
+        ["पौर्वदेहिकम्", "paurvadehikam", "of the former body"]],
+    2: [
+    ["यतते", "yatate", "he strives"], ["च", "ca", "and"], ["ततः", "tataḥ", "from there"],
+        ["भूयः", "bhūyaḥ", "again"]],
+    3: [
+    ["संसिद्धौ", "saṁsiddhau", "for perfection"],
+        ["कुरुनन्दन", "kurunandana", "O joy of the Kurus"]]
+},
+44: {"s": [],
+    0: [
+    ["पूर्वाभ्यासेन", "pūrvābhyāsena", "by the former practice"],
+        ["तेन", "tena", "by that"], ["एव", "eva", "indeed"]],
+    1: [
+    ["ह्रियते", "hriyate", "is carried"], ["हि", "hi", "indeed"],
+        ["अवशः", "avaśaḥ", "involuntarily"], ["अपि", "api", "even"], ["सः", "saḥ", "he"]],
+    2: [
+    ["जिज्ञासुः", "jijñāsuḥ", "one desiring to know"], ["अपि", "api", "even"],
+        ["योगस्य", "yogasya", "of yoga"]],
+    3: [
+    ["शब्दब्रह्म", "śabdabrahma", "the word-Brahman (Vedas)"],
+        ["अतिवर्तते", "ativartate", "goes beyond"]]
+},
+45: {"s": [],
+    0: [
+    ["प्रयत्नात्", "prayatnāt", "with effort"], ["यतमानः", "yatamānaḥ", "striving"],
+        ["तु", "tu", "but"]],
+    1: [
+    ["योगी", "yogī", "the yogi"],
+        ["संशुद्धकिल्बिषः", "saṁśuddhakilbiṣaḥ", "purified of sin"]],
+    2: [
+    ["अनेक", "aneka", "many"], ["जन्म", "janma", "births"],
+        ["संसिद्धः", "saṁsiddhaḥ", "perfected through"]],
+    3: [
+    ["ततः", "tataḥ", "then"], ["याति", "yāti", "he goes"],
+        ["पराम्", "parām", "to the highest"], ["गतिम्", "gatim", "state"]]
+},
+46: {"s": [],
+    0: [
+    ["तपस्विभ्यः", "tapasvibhyaḥ", "than the ascetics"], ["अधिकः", "adhikaḥ", "greater"],
+        ["योगी", "yogī", "the yogi"]],
+    1: [
+    ["ज्ञानिभ्यः", "jñānibhyaḥ", "than the men of knowledge"], ["अपि", "api", "also"],
+        ["मतः", "mataḥ", "deemed"], ["अधिकः", "adhikaḥ", "greater"]],
+    2: [
+    ["कर्मिभ्यः", "karmibhyaḥ", "than the men of action"], ["च", "ca", "and"],
+        ["अधिकः", "adhikaḥ", "greater"], ["योगी", "yogī", "the yogi"]],
+    3: [
+    ["तस्मात्", "tasmāt", "therefore"], ["योगी", "yogī", "a yogi"],
+        ["भव", "bhava", "become"], ["अर्जुन", "arjuna", "O Arjuna"]]
+},
+47: {"s": [],
+    0: [
+    ["योगिनाम्", "yoginām", "of the yogis"], ["अपि", "api", "even"],
+        ["सर्वेषाम्", "sarveṣām", "of all"]],
+    1: [
+    ["मद्गतेन", "madgatena", "fixed on me"],
+        ["अन्तरात्मना", "antarātmanā", "with the inmost self"]],
+    2: [
+    ["श्रद्धावान्", "śraddhāvān", "full of faith"], ["भजते", "bhajate", "worships"],
+        ["यः", "yaḥ", "who"], ["माम्", "mām", "me"]],
+    3: [
+    ["सः", "saḥ", "he"], ["मे", "me", "in my view"],
+        ["युक्ततमः", "yuktatamaḥ", "the most yoked"], ["मतः", "mataḥ", "is deemed"]]
+},
+}

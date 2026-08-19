@@ -48,10 +48,25 @@ def run(cmd, cwd, label, tail=None, optional=False):
     return True
 
 
+def clear_pycache():
+    """Delete every __pycache__ under the project.
+
+    Python caches compiled source files, and a stale cache can make an edit you
+    just made to a source/*.py file appear to have no effect. Clearing it first
+    means a hand edit always takes effect on the very next build.
+    """
+    for dirpath, dirnames, _ in os.walk(ROOT):
+        for d in list(dirnames):
+            if d == "__pycache__":
+                shutil.rmtree(os.path.join(dirpath, d), ignore_errors=True)
+                dirnames.remove(d)
+
+
 def main():
     if not os.path.isdir(SRC):
         sys.exit(f"source/ not found next to {__file__}")
 
+    clear_pycache()
     if not run([PY, "build_gita.py"], SRC, "build", tail=4):
         sys.exit(1)
 
