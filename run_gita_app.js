@@ -239,6 +239,22 @@ ok(/<span class="pb-num">\$\{esc\(L\('pada_label'\)\)\}/.test(html), 'pāda-box 
 ok(byRef['1.08'].d.endsWith('सौमदत्तिस्तथैव च'), '1.08 uses the Śaṅkara reading saumadattistathaiva ca');
 ok(!html.includes('सौमदत्तिर्जयद्रथः'), '1.08 jayadratha variant not present');
 ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" left in the IAST fields');
+// A pāda boundary can fall inside a word (16.1 sattvasaṃśuddhir|jñānayoga…). Those
+// pādas carry j:1 so the display joins them with no space; a space would split the
+// word. Guard both the flag and the renderer that consumes it.
+{
+  const joiners = allV.flatMap(({ v }) => v.flow.filter(f => f.k === 'p' && f.j === 1));
+  ok(joiners.length > 0, `some pādas are marked as joining the next (${joiners.length})`);
+  ok(joiners.every(f => f.d.endsWith('\u094d')), 'every joining pāda ends in a virāma');
+  // Only pādas 1 and 3 join a following half; 2 and 4 end a line, where a virāma is
+  // simply the word's own ending and needs no flag.
+  const unmarked = allV.flatMap(({ v }) => {
+    const p = v.flow.filter(f => f.k === 'p');
+    return [0, 2].filter(k => p[k] && p[k].d.endsWith('\u094d') && !p[k].j).map(k => v.n);
+  });
+  ok(unmarked.length === 0, `no first/third pāda ending in virāma is left unmarked (${unmarked.slice(0,3)})`);
+  ok(/const gap = k => pads\[k\]\.j \? '' : ' ';/.test(html), 'padaLines honours the join flag');
+}
 // verse text and its pāda split must agree everywhere (build-time invariant, re-checked here)
 const strip = x => x.replace(/[\s|।॥’]/g, '');
 const splitBad = allV.filter(({ v }) => strip(v.flow.map(f => f.t).join('')) !== strip(v.t)).map(({ v }) => v.n);

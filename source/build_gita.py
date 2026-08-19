@@ -1042,8 +1042,12 @@ function padaLines(pads, fld, escF){
   const n = pads.length;
   if(n === 2) return [`<span class="gp">${escF(pads[0][fld])}${pDanda(0,2)}</span>`,
                       `<span class="gp">${escF(pads[1][fld])}${pDanda(1,2)}</span>`];
-  return [`<span class="gp">${escF(pads[0][fld])}</span> <span class="gp">${escF(pads[1][fld])}${pDanda(1,4)}</span>`,
-          `<span class="gp">${escF(pads[2][fld])}</span> <span class="gp">${escF(pads[3][fld])}${pDanda(3,4)}</span>`];
+  // pads[k].j === 1 means the metrical break falls inside a word (the pāda ends on a
+  // virāma), so the halves must be printed with no space between them — otherwise
+  // e.g. 16.1 reads "…संशुद्धिर् ज्ञानयोग…" instead of the single compound.
+  const gap = k => pads[k].j ? '' : ' ';
+  return [`<span class="gp">${escF(pads[0][fld])}</span>${gap(0)}<span class="gp">${escF(pads[1][fld])}${pDanda(1,4)}</span>`,
+          `<span class="gp">${escF(pads[2][fld])}</span>${gap(2)}<span class="gp">${escF(pads[3][fld])}${pDanda(3,4)}</span>`];
 }
 function padaBlockDeva(s){
   // two lines: pādas 1-2 on the first line, pādas 3-4 on the second (traditional); 2-pāda verses get one pāda per line

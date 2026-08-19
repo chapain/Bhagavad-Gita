@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""build.py — rebuild the app and verify it. Cross-platform alternative to rebuild.sh.
+
+Use this from an IDE (Antigravity, VS Code, PyCharm…) where a .sh file cannot be
+launched directly: just press Run on this file, or:
+
+    python3 build.py            build + verify   (what you normally want)
+    python3 build.py --fast     build only, skip the tests
+    python3 build.py --serve    build, verify, then serve locally at :8000
+
+It runs, in order:
+    1. source/build_gita.py   regenerates index.html from source/
+    2. source/check_padas.py  verifies every pāda reconstructs from its split words
+    3. run_gita_app.js        366 assertions on the built document        (needs node)
+    4. browser_checks.py      41 live-browser checks                 (needs playwright)
+
+Steps 3 and 4 are skipped with a warning if node / playwright are missing — the
+build itself still completes.
+"""
+import os
+import shutil
+import subprocess
+import sys
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+SRC = os.path.join(ROOT, "source")
+PY = sys.executable or "python3"
+
+FAST = "--fast" in sys.argv
+SERVE = "--serve" in sys.argv
+
+
+def run(cmd, cwd, label, tail=None, optional=False):
+    """Run a command; print its tail. Returns True on success."""
+    print(f"\n--- {label} ---")
+    try:
+        p = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
+    except FileNotFoundError:
+        msg = f"({label} skipped — {cmd[0]} not installed)"
+        print(msg if optional else f"ERROR: {msg}")
+        return optional
+    out = (p.stdout or "") + (p.stderr or "")
+    lines = out.strip().splitlines()
+    print("\n".join(lines[-tail:] if tail else lines))
+    if p.returncode != 0 and not optional:
+        print(f"\n*** {label} FAILED (exit {p.returncode}) ***")
+        return False
+    return True
+
+
+def main():
+    if not os.path.isdir(SRC):
+        sys.exit(f"source/ not found next to {__file__}")
+
+    if not run([PY, "build_gita.py"], SRC, "build", tail=4):
+        sys.exit(1)
+
+    if FAST:
+        print("\nOK: index.html rebuilt (tests skipped: --fast)")
+        return
+
+    ok = True
+    ok &= run([PY, "check_padas.py"], SRC, "pāda check", tail=1)
+
+    node = shutil.which("node")
+    if node:
+        ok &= run([node, "run_gita_app.js"], ROOT, "document tests", tail=6)
+    else:
+        print("\n--- document tests ---\n(skipped — node not installed)")
+
+    try:
+        import playwright  # noqa: F401
+        args = [PY, "browser_checks.py"] + (["--serve"] if not SERVE else ["--serve"])
+        ok &= run(args, ROOT, "browser tests", tail=3, optional=True)
+    except ImportError:
+        print("\n--- browser tests ---")
+        print("(skipped — pip install playwright && python3 -m playwright install chromium)")
+
+    print()
+    if ok:
+        print("OK: index.html is fresh — commit and push to publish.")
+    else:
+        print("Build finished, but a check FAILED — see above.")
+        sys.exit(1)
+
+    if SERVE:
+        import http.server
+        import socketserver
+        os.chdir(ROOT)
+        print("\nServing http://localhost:8000/  (Ctrl+C to stop)")
+        with socketserver.TCPServer(("", 8000), http.server.SimpleHTTPRequestHandler) as httpd:
+            try:
+                httpd.serve_forever()
+            except KeyboardInterrupt:
+                print("\nstopped.")
+
+
+if __name__ == "__main__":
+    main()

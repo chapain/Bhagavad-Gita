@@ -74,8 +74,40 @@ lets it be shared as a single file. Gzipped it transfers as ~670 KB.
 ## Building
 
 ```bash
-bash rebuild.sh
+python3 build.py        # works anywhere, including from an IDE's Run button
+bash rebuild.sh         # same thing, if you have a shell
 ```
+
+`build.py` exists because a `.sh` file cannot be launched directly from most IDEs.
+Both do the same work. Options:
+
+```bash
+python3 build.py            build + verify   (what you normally want)
+python3 build.py --fast     build only, skip the tests
+python3 build.py --serve    build, verify, then serve at http://localhost:8000
+```
+
+### Fixing content
+
+Edit the file in `source/`, then run `python3 build.py`. Never edit `index.html`.
+
+| what you want to fix | file |
+|---|---|
+| how a verse splits into its four pādas | `source/padachheda_ch*.py` |
+| a word's meaning (ne/hi) | `source/gloss_ne.py`, `source/gloss_hi.py` |
+| a translation | `source/translations_ne.py`, `source/translations_hi.py` |
+| theme/part titles and ranges | `source/gita_data*.py` (en), `themes_ne.py`, `themes_hi.py` |
+| the Devanagari or IAST of a verse | `source/ch*.json` |
+| interface wording | `source/i18n_ui.py` |
+
+`check_padas.py` runs on every build and re-derives each pāda from its split words
+using external sandhi, so a mistake in `padachheda_ch*.py` is caught immediately:
+
+```
+pādas checked: 2800 | residual flags: 0
+```
+
+If a check fails, the build says so and exits non-zero — fix the source and run again.
 
 That runs the builder, regenerates `index.html` and `site/`, then executes both test
 suites. A clean run reports:
