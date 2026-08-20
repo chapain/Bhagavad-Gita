@@ -35,11 +35,17 @@ ok(/^<!DOCTYPE html>/i.test(html.trim()), 'starts with <!DOCTYPE html>');
 ok(html.includes('<title>Bhagavad Gita — Interactive Study</title>'), 'title present');
 ok(/<\/html>\s*$/.test(html), 'ends with </html>');
 const scriptBlocks = html.match(/<script>[\s\S]*?<\/script>/g) || [];
-ok(scriptBlocks.length === 1, 'exactly one <script> block');
-const scriptBody = scriptBlocks[0].replace(/^<script>/, '').replace(/<\/script>$/, '');
+// Two blocks: a tiny one in <head> that applies the saved theme before the page
+// paints (so dark-mode users never see a white flash), and the app itself.
+ok(scriptBlocks.length === 2, `two <script> blocks: theme-boot + app (got ${scriptBlocks.length})`);
+const bodies = scriptBlocks.map(b => b.replace(/^<script>/, '').replace(/<\/script>$/, ''));
+const scriptBody = bodies[bodies.length - 1];
+ok(/data-theme/.test(bodies[0]) && bodies[0].length < 1200, 'first block is the small theme-boot script');
 let scriptParses = true;
-try { new Function(scriptBody); } catch (e) { scriptParses = false; console.error('   parse error:', e.message); }
-ok(scriptParses, 'app script parses (SyntaxError-free)');
+for (const b of bodies) {
+  try { new Function(b); } catch (e) { scriptParses = false; console.error('   parse error:', e.message); }
+}
+ok(scriptParses, 'app scripts parse (SyntaxError-free)');
 for (const id of ['appTitle', 'appSub', 'tagVerses', 'langbar', 'homeBtn', 'searchInput',
                   'clearBtn', 'randomBtn', 'favBtnTool', 'crumbs', 'view', 'appFooter',
                   'modalBg', 'modal', 'favBtn']) {
@@ -64,7 +70,7 @@ group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
 for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`);
 const enKeys = Object.keys(UI.en);
-ok(enKeys.length === 72, `UI has 72 keys (got ${enKeys.length})`);
+ok(enKeys.length === 74, `UI has 74 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -277,6 +283,25 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
   ok(!/joinHalves/.test(html), 'joinHalves removed');
   ok(!/const MATRA =/.test(html), 'JS mātrā table removed');
   ok(allV.every(({ v }) => v.flow.every(f => f.j === undefined)), 'no pāda carries a stale join flag');
+}
+// ---- dark mode ----------------------------------------------------------
+{
+  ok(/html\[data-theme="dark"\]/.test(html), 'a dark theme block exists');
+  ok(/id="themeBtn"/.test(html) && /function toggleTheme/.test(html), 'the theme toggle exists');
+  ok(/prefers-color-scheme: dark/.test(html), 'follows the phone\'s own setting');
+  ok(/localStorage\.setItem\('gitaTheme'/.test(html), 'remembers the reader\'s choice');
+  // localStorage throws in some in-app browsers (WhatsApp); the app must survive it
+  const themeCalls = (html.match(/localStorage\.(get|set)Item\('gitaTheme'/g) || []).length;
+  const guarded = (html.match(/try\{[^}]*localStorage\.(get|set)Item\('gitaTheme'/g) || []).length;
+  ok(themeCalls > 0 && guarded === themeCalls,
+     `every gitaTheme storage call is inside try/catch (${guarded}/${themeCalls})`);
+  // light mode must be untouched: these are the original brand colours
+  ok(/--cream:#FFF8EC/.test(html) && /--teal:#0F4C5C/.test(html) && /--saffron:#E8912C/.test(html),
+     'light mode keeps its original palette');
+  // dark mode must not use pure black or pure white — Devanagari shimmers at max contrast
+  const darkBlock = (html.match(/html\[data-theme="dark"\]\{[\s\S]*?\}/) || [''])[0];
+  ok(darkBlock.length > 100, 'dark block has content');
+  ok(!/#000\b|#000000|#fff\b|#FFFFFF/i.test(darkBlock), 'dark mode avoids pure black and pure white');
 }
 // Everything on screen must be hand-editable from source/. These assertions pin the
 // mechanisms that make that true, so they cannot be removed by accident.

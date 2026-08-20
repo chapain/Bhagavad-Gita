@@ -159,6 +159,27 @@ manual-edit audit: NONE ✓
 `build.py` also clears `__pycache__` before every build, so an edit can never be
 masked by a stale compiled copy of a source file.
 
+#### Dark mode
+
+The app follows the phone's own light/dark setting. A ☾ / ☀ button in the
+language bar overrides it, and that choice is remembered.
+
+It is presentation only — no data file is involved. The colours live in two
+blocks at the top of the CSS in `source/build_gita.py`: `:root` for light and
+`html[data-theme="dark"]` for dark. Both define the same token names, so every
+rule just uses `var(--x)` and nothing else changes.
+
+Two deliberate choices, worth keeping if you edit the palette:
+
+* **warm, not neutral** — a dark brown-black keeps the manuscript feel rather
+  than looking like a generic app;
+* **never pure black or pure white** — Devanagari has fine strokes, and maximum
+  contrast makes them shimmer. The test suite fails the build if `#000` or
+  `#fff` appears in the dark block.
+
+All verse text passes WCAG AA in both themes (measured: 10.1:1 Devanagari,
+7.3:1 transliteration, 15.1:1 translation on dark).
+
 #### Proving the app only renders data
 
 If you want to satisfy yourself that nothing is being generated any more:
