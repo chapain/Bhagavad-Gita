@@ -321,8 +321,8 @@ GITA_CH4_PADAS = {
 "4.42": [
     ("p", "तस्मादज्ञानसम्भूतं", "tasmādajñānasambhūtaṃ", 8),
     ("p", "हृत्स्थं ज्ञानासिनात्मनः", "hṛtsthaṃ jñānāsinātmanaḥ", 8),
-    ("p", "छित्त्वैनं संशयं योग", "chittvainaṃ saṃśayaṃ yoga", 8),
-    ("p", "मातिष्ठोत्तिष्ठ भारत", "mātiṣṭhottiṣṭha bhārata", 8),
+    ("p", "छित्त्वैनं संशयं योगम्", "chittvainaṃ saṃśayaṃ yogam", 8),
+    ("p", "आतिष्ठोत्तिष्ठ भारत", "ātiṣṭhottiṣṭha bhārata", 8),
 ],
 
 }

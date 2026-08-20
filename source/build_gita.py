@@ -308,6 +308,36 @@ for ch in data:
                             f"padas_ch*.py: {v['n']} pāda \"{x['t']}\" is marked {x['n']} "
                             f"syllables but has {real} — fix the number.")
 
+# 1b. a pāda must not begin with a consonant stranded from the previous pāda's
+#     last word (16.19: "…aśubhā" | "nāsurīṣveva" instead of "…aśubhān" |
+#     "āsurīṣveva"). Both spell the verse, so check 1 cannot see it; the tell is
+#     that the pāda stops one letter short of its own last word.
+_CONS = "kgcjtdpbnmrlsvyh\u015b\u1e63\u1e47\u1e6d\u1e0d\u00f1\u1e45"
+for ch in data:
+    for t in ch["themes"]:
+        for p in t["parts"]:
+            for v in p["sutras"]:
+                pads = [x for x in v["flow"] if x["k"] == "p"]
+                wl_by_i = [x.get("words") or [] for x in pads]
+                for i in range(len(pads) - 1):
+                    wl = wl_by_i[i]
+                    if not wl:
+                        continue
+                    last = norm1(wl[-1][1]).replace(" ", "")
+                    text = norm1(pads[i]["t"]).replace(" ", "")
+                    nxt = norm1(pads[i + 1]["t"]).replace(" ", "")
+                    if not last or last[-1] not in _CONS:
+                        continue
+                    if text.endswith(last):
+                        continue
+                    if text.endswith(last[:-1]) and nxt[:1] == last[-1]:
+                        problems.append(
+                            f"padas_ch*.py: {v['n']} pāda {i+1} ends one letter short of its "
+                            f"last word '{wl[-1][1]}' — the '{last[-1]}' is stranded at the "
+                            f"start of pāda {i+2}. Move it back.\n"
+                            f"      pāda {i+1}: {pads[i]['t']}\n"
+                            f"      pāda {i+2}: {pads[i+1]['t']}")
+
 # 2. no translation may fall back to English
 fb_ne = [v["n"] for ch in data for t in ch["themes"] for p in t["parts"] for v in p["sutras"]
          if not TRANS_NE.get(v["n"])]
@@ -380,7 +410,21 @@ HTML = r"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0F4C5C">
+<meta name="theme-color" content="#0F4C5C" id="themeColor">
+<script>
+/* Runs before the page paints, so a dark-mode user never sees a white flash.
+   Order of preference: a choice they made here, else the phone's own setting.
+   localStorage is wrapped because some in-app browsers (WhatsApp, Facebook)
+   throw on access — the app must still work there, just without remembering. */
+(function(){
+  var saved = null;
+  try{ saved = localStorage.getItem('gitaTheme'); }catch(e){}
+  var sysDark = false;
+  try{ sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){}
+  var dark = (saved === 'dark') || (saved === null && sysDark);
+  if(dark) document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -416,21 +460,50 @@ HTML = r"""<!DOCTYPE html>
 <link rel="manifest" href="manifest.webmanifest">
 <title>Bhagavad Gita — Interactive Study</title>
 <style>
+  /* ---- colour tokens -------------------------------------------------
+     Light is the default. The dark theme below overrides these same names,
+     so every rule keeps using var(--x) and nothing else has to change.
+     --on-accent is the text colour that sits on saffron/teal fills; it stays
+     near-cream in both themes because both fills stay dark enough for it.  */
   :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-soft:#FBE3C0; --teal:#0F4C5C; --teal-mid:#1E6E7E;
-         --teal-soft:#DDEFF2; --cream:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --paper:#FFFFFF; --line:#E7D9C2; }
+         --teal-soft:#DDEFF2; --cream:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --paper:#FFFFFF; --line:#E7D9C2;
+         --on-accent:#FFF8EC; --hdr-a:#0F4C5C; --hdr-b:#17566B; --hdr-c:#1E6E7E; --hdr-sub:#CDE7EE;
+         --toolbar:#FDF3E0; --field:#FFFFFF; --muted:#9AA0A6; --danger:#C0392B;
+         --shadow:42,33,24; --scrim:rgba(15,42,52,.72); --fade:255,248,236;
+         --chip:rgba(255,248,236,.12); --chip-hover:rgba(255,248,236,.25); --chip-line:rgba(255,248,236,.35); }
+
+  /* ---- dark theme ----------------------------------------------------
+     Warm, not neutral: a dark brown-black keeps the manuscript feel rather
+     than looking like a generic app. Never pure black and never pure white —
+     Devanagari has fine strokes, and maximum contrast makes them shimmer.
+     Saffron and teal are both lifted, because the light-mode values go muddy
+     against a dark ground.                                                */
+  html[data-theme="dark"]{
+    --saffron:#F0A64A; --saffron-dark:#E8912C; --saffron-soft:#4A3418;
+    --teal:#7FD4E8; --teal-mid:#9FE0EF; --teal-soft:#123039;
+    --cream:#17130E; --paper:#211B14; --ink:#F2E7D5; --ink-soft:#B8A88F; --line:#3A2F22;
+    --on-accent:#1A1209; --hdr-a:#0A2830; --hdr-b:#0D323C; --hdr-c:#123F4B; --hdr-sub:#CFE6EC;
+    --toolbar:#1E1811; --field:#2A2219; --muted:#8A7F6E; --danger:#E86B5C;
+    --shadow:0,0,0; --scrim:rgba(0,0,0,.78); --fade:23,19,14;
+    --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
+  }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; color:var(--ink);
         background:var(--cream); line-height:1.55; display:flex; flex-direction:column; min-height:100vh;}
-  header{ background:linear-gradient(135deg, var(--teal) 0%, #17566B 55%, var(--teal-mid) 100%); color:#FFF8EC;
+  header{ background:linear-gradient(135deg, var(--hdr-a) 0%, var(--hdr-b) 55%, var(--hdr-c) 100%); color:var(--hdr-sub);
           padding:24px 20px; border-bottom:5px solid var(--saffron);}
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
   .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--saffron);}
   .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem;}
-  .header-inner .tag{ color:#CDE7EE; font-size:.9rem; margin-left:auto; text-align:right;}
+  .header-inner .tag{ color:var(--hdr-sub); font-size:.9rem; margin-left:auto; text-align:right;}
   .langbar{ display:flex; gap:6px; margin-left:auto;}
-  .lang-btn{ background:rgba(255,248,236,.12); color:#FFF8EC; border:2px solid rgba(255,248,236,.35); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600;}
-  .lang-btn:hover{ background:rgba(255,248,236,.25);}
-  .lang-btn.on{ background:var(--saffron); border-color:var(--saffron); color:#FFF8EC;}
+  .lang-btn{ background:var(--chip); color:var(--hdr-sub); border:2px solid var(--chip-line); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600;}
+  .lang-btn:hover{ background:var(--chip-hover);}
+  .lang-btn.on{ background:var(--saffron); border-color:var(--saffron); color:var(--on-accent);}
+  /* the theme toggle lives in the language bar; it must not stretch like the
+     language buttons do on mobile, so it opts out of flex:1 and stays square */
+  .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--saffron); border-color:var(--chip-line);}
+  .theme-btn:hover{ background:var(--chip-hover);}
   @media (max-width:640px){ .langbar{ width:100%; justify-content:center; margin-left:0;} .lang-btn{ flex:1; text-align:center;} }
   .header-inner .tag b{ color:var(--saffron); font-family:Georgia,serif; font-size:1.15rem;}
   .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
@@ -445,24 +518,24 @@ HTML = r"""<!DOCTYPE html>
   .grid.themes{ grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); }
   .grid.verses{ grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:14px; }
   .card{ background:var(--paper); border:2px solid var(--line); border-radius:16px; padding:16px 18px;
-         box-shadow:0 6px 18px rgba(42,33,24,.08); cursor:pointer; transition:.18s; display:flex; flex-direction:column;}
-  .card:hover{ transform:translateY(-4px); box-shadow:0 12px 26px rgba(42,33,24,.14); border-color:var(--saffron);}
-  .card .chip{ align-self:flex-start; background:var(--saffron); color:#FFF8EC; font-weight:700; font-size:.72rem;
+         box-shadow:0 6px 18px rgba(var(--shadow),.08); cursor:pointer; transition:.18s; display:flex; flex-direction:column;}
+  .card:hover{ transform:translateY(-4px); box-shadow:0 12px 26px rgba(var(--shadow),.14); border-color:var(--saffron);}
+  .card .chip{ align-self:flex-start; background:var(--saffron); color:var(--on-accent); font-weight:700; font-size:.72rem;
                letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:999px; margin-bottom:8px;}
-  .card .chip.locked{ background:#9AA0A6;}
+  .card .chip.locked{ background:var(--muted);}
   .card h3{ font-family:Georgia,serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
   .card .meta{ margin-top:10px; font-size:.8rem; color:var(--ink-soft); font-weight:600;}
   .card .go{ margin-top:10px; color:var(--teal); font-weight:700; font-size:.88rem;}
-  .card .soon{ margin-top:10px; color:#9AA0A6; font-weight:600; font-size:.85rem; font-style:italic;}
+  .card .soon{ margin-top:10px; color:var(--muted); font-weight:600; font-size:.85rem; font-style:italic;}
   .part{ margin-bottom:26px;}
   .part-head{ display:flex; align-items:baseline; gap:12px; border-bottom:3px solid var(--saffron); padding-bottom:8px; margin-bottom:14px; flex-wrap:wrap;}
   .part-head .pnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem;}
   .part-head .ptitle{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); font-weight:700;}
   .part-head .pdesc{ color:var(--ink-soft); font-size:.86rem; margin-left:auto;}
   .mini{ background:var(--paper); border:2px solid var(--line); border-radius:12px; padding:11px 14px; cursor:pointer;
-         transition:.15s; box-shadow:0 4px 12px rgba(42,33,24,.06);}
-  .mini:hover{ border-color:var(--saffron); transform:translateY(-3px); box-shadow:0 10px 20px rgba(42,33,24,.12);}
+         transition:.15s; box-shadow:0 4px 12px rgba(var(--shadow),.06);}
+  .mini:hover{ border-color:var(--saffron); transform:translateY(-3px); box-shadow:0 10px 20px rgba(var(--shadow),.12);}
   .mini .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.95rem; margin-bottom:4px;}
   .mini .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
   .mini .padas .spk{ display:block; color:var(--saffron-dark); font-size:.82rem; font-style:italic; margin-bottom:2px;}
@@ -471,7 +544,7 @@ HTML = r"""<!DOCTYPE html>
   .mini .vhint{ color:var(--ink-soft); font-size:.78rem; font-style:italic; line-height:1.4; margin-top:6px;}
   .back-top{ display:inline-block; margin:4px 0 16px; background:none; border:2px solid var(--teal); color:var(--teal);
              font-weight:700; padding:8px 18px; border-radius:999px; cursor:pointer; font-size:.9rem;}
-  .back-top:hover{ background:var(--teal); color:#fff;}
+  .back-top:hover{ background:var(--teal); color:var(--on-accent);}
   .mini-crumb{ display:flex; gap:10px; margin:2px 0 16px; flex-wrap:wrap;}
   .mini-crumb .bc-btn{ background:var(--paper); border:2px solid var(--line); border-radius:12px; cursor:pointer;
              display:flex; flex-direction:column; align-items:flex-start; gap:1px; padding:8px 14px; transition:.15s;}
@@ -487,7 +560,7 @@ HTML = r"""<!DOCTYPE html>
   .sec-tab{ background:var(--paper); border:2px solid var(--line); color:var(--teal); font-weight:700; font-size:.95rem;
             padding:10px 20px; border-radius:12px; cursor:pointer; transition:.15s; font-family:"Noto Serif Devanagari", Georgia, serif;}
   .sec-tab:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
-  .sec-tab.on{ background:var(--saffron); border-color:var(--saffron); color:#FFF8EC;}
+  .sec-tab.on{ background:var(--saffron); border-color:var(--saffron); color:var(--on-accent);}
   .sec-tab .sec-range{ font-family:"Segoe UI", system-ui, sans-serif; font-size:.78rem; opacity:.85; margin-left:6px; font-weight:600;}
 
   .welcome{ text-align:center; padding:44px 12px 30px; max-width:860px; margin:0 auto;}
@@ -496,8 +569,8 @@ HTML = r"""<!DOCTYPE html>
   .welcome .tool-btn.big{ font-size:1.02rem; padding:14px 36px; margin-top:20px;}
   .welcome .w-foot{ color:var(--ink-soft); font-size:.9rem; margin-top:30px; letter-spacing:.05em;}
   .welcome .w-day{ max-width:560px; margin:26px auto 6px; background:var(--paper); border:2px solid var(--saffron); border-radius:16px;
-                   padding:18px 22px; cursor:pointer; box-shadow:0 10px 26px rgba(42,33,24,.12); transition:.18s; text-align:left;}
-  .welcome .w-day:hover{ transform:translateY(-3px); box-shadow:0 16px 32px rgba(42,33,24,.18);}
+                   padding:18px 22px; cursor:pointer; box-shadow:0 10px 26px rgba(var(--shadow),.12); transition:.18s; text-align:left;}
+  .welcome .w-day:hover{ transform:translateY(-3px); box-shadow:0 16px 32px rgba(var(--shadow),.18);}
   .welcome .wd-label{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem; margin-bottom:10px; text-align:center; letter-spacing:.04em;}
   .welcome .wd-verse{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.15rem; line-height:1.6; text-align:center;}
   .welcome .wd-ref{ color:var(--ink-soft); font-size:.88rem; text-align:center; margin-top:8px;}
@@ -513,33 +586,33 @@ HTML = r"""<!DOCTYPE html>
   .sect-all .browse-all:hover{ color:var(--teal); background:var(--teal-soft);}
 
 
-  .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:#FDF3E0; border-bottom:2px solid var(--line);}
+  .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:2px solid var(--line);}
   .toolbar .searchwrap{ display:flex; align-items:center; gap:6px; flex:1; min-width:240px; max-width:640px;}
-  .toolbar input[type=search]{ flex:1; padding:9px 14px; border:2px solid var(--line); border-radius:999px; font-size:.92rem; background:#fff; color:var(--ink); outline:none;}
+  .toolbar input[type=search]{ flex:1; padding:9px 14px; border:2px solid var(--line); border-radius:999px; font-size:.92rem; background:var(--field); color:var(--ink); outline:none;}
   .toolbar input[type=search]:focus{ border-color:var(--saffron);}
   .tool-btn{ background:var(--paper); border:2px solid var(--line); color:var(--teal); font-weight:700; font-size:.85rem; padding:8px 16px; border-radius:999px; cursor:pointer; transition:.15s;}
   .tool-btn:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
-  .tool-btn.primary{ background:var(--saffron); border-color:var(--saffron); color:#FFF8EC;}
+  .tool-btn.primary{ background:var(--saffron); border-color:var(--saffron); color:var(--on-accent);}
   .tool-btn.primary:hover{ background:var(--saffron-dark);}
   .tool-btn.clear{ color:var(--ink-soft);}
   .fav-btn{ background:var(--saffron-soft); border:2px solid var(--saffron); color:var(--saffron-dark); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
-  .fav-btn.saved{ background:var(--saffron); color:#FFF8EC;}
+  .fav-btn.saved{ background:var(--saffron); color:var(--on-accent);}
   .res-head{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
   .res-count{ color:var(--ink-soft); font-size:.9rem; margin-bottom:16px;}
   .res-card{ background:var(--paper); border:2px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:12px; cursor:pointer; transition:.15s;}
-  .res-card:hover{ border-color:var(--saffron); transform:translateY(-2px); box-shadow:0 8px 18px rgba(42,33,24,.1);}
+  .res-card:hover{ border-color:var(--saffron); transform:translateY(-2px); box-shadow:0 8px 18px rgba(var(--shadow),.1);}
   .res-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
   .res-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);}
   .res-title{ font-weight:600; color:var(--teal); font-size:.9rem;}
   .res-deva{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1rem; line-height:1.55; background:var(--cream); border-radius:8px; padding:7px 10px; margin-bottom:6px;}
   .res-lit{ color:var(--ink-soft); font-size:.88rem; line-height:1.5;}
   .res-remove{ margin-left:auto; background:none; border:2px solid var(--line); color:var(--ink-soft); font-size:.72rem; font-weight:700; padding:3px 10px; border-radius:999px; cursor:pointer;}
-  .res-remove:hover{ border-color:#C0392B; color:#C0392B;}
-  .modal-bg{ position:fixed; inset:0; background:rgba(15,42,52,.72); display:none; align-items:center; justify-content:center; z-index:50; padding:20px;}
+  .res-remove:hover{ border-color:var(--danger); color:var(--danger);}
+  .modal-bg{ position:fixed; inset:0; background:var(--scrim); display:none; align-items:center; justify-content:center; z-index:50; padding:20px;}
   .modal-bg.open{ display:flex;}
   .modal{ background:var(--cream); border-radius:20px; max-width:820px; width:100%; max-height:92vh; overflow-y:auto;
           box-shadow:0 24px 60px rgba(0,0,0,.45); border:4px solid var(--saffron); position:relative; padding:24px 30px 28px;}
-  .modal .m-close{ position:sticky; top:0; float:right; background:var(--saffron); color:#FFF8EC; border:none; width:38px;
+  .modal .m-close{ position:sticky; top:0; float:right; background:var(--saffron); color:var(--on-accent); border:none; width:38px;
                    height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:700; margin:-8px -12px 0 0;}
   .m-num{ font-family:Georgia,serif; font-size:1.4rem; color:var(--saffron-dark); font-weight:700;}
   .m-part{ color:var(--teal); font-size:.88rem; font-weight:600; margin-bottom:2px;}
@@ -570,7 +643,7 @@ HTML = r"""<!DOCTYPE html>
   .m-verse .wrow .wmean{ display:block; color:var(--ink); font-size:.9rem; margin-left:14px; margin-top:1px; overflow-wrap:anywhere; word-break:break-word;}
   .words-bar{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
   .words-bar .wb-hint{ color:var(--ink-soft); font-size:.78rem; font-style:italic;}
-  .words-bar .wb-btn{ background:var(--teal); color:#FFF8EC; border:none; padding:4px 14px; border-radius:999px; cursor:pointer; font-size:.8rem; font-weight:600;}
+  .words-bar .wb-btn{ background:var(--teal); color:var(--on-accent); border:none; padding:4px 14px; border-radius:999px; cursor:pointer; font-size:.8rem; font-weight:600;}
   .words-bar .wb-btn:hover{ background:var(--teal-mid);}
   /* four pāda boxes in a 2x2 grid */
   .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
@@ -586,17 +659,17 @@ HTML = r"""<!DOCTYPE html>
   .m-verse .spk-line{ margin:6px 0; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-dark); font-style:italic; font-size:1.05rem; cursor:pointer; border-radius:6px; padding:2px 4px;}
   .m-verse .spk-line .iast{ font-family:Georgia, serif; font-size:.85rem; color:var(--ink-soft); margin-left:10px;}
   .m-line{ margin-top:14px;}
-  .m-line .lb{ display:inline-block; background:var(--teal); color:#FFF8EC; font-size:.72rem; font-weight:700;
+  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:700;
                letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:999px; margin-bottom:5px;}
   .m-line .lt{ color:var(--ink); font-size:1rem;}
   .m-line.para .lb{ background:var(--saffron);}
   .m-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:10px;}
-  .m-nav button{ background:var(--teal); color:#FFF8EC; border:none; padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:600; font-size:.9rem;}
+  .m-nav button{ background:var(--teal); color:var(--on-accent); border:none; padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:600; font-size:.9rem;}
   .m-nav button:hover{ background:var(--teal-mid);} .m-nav button:disabled{ opacity:.35; cursor:default;}
-  .m-nav .m-random{ margin:0 auto; background:var(--saffron); color:#FFF8EC; border:none; padding:12px 26px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.98rem; font-family:"Noto Serif Devanagari", Georgia, serif;}
+  .m-nav .m-random{ margin:0 auto; background:var(--saffron); color:var(--on-accent); border:none; padding:12px 26px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.98rem; font-family:"Noto Serif Devanagari", Georgia, serif;}
   .m-nav .m-random:hover{ background:var(--saffron-dark);}
   .m-nav .m-back{ background:var(--teal-soft); color:var(--teal); border:2px solid var(--teal); padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.9rem;}
-  .m-nav .m-back:hover{ background:var(--teal); color:#FFF8EC;}
+  .m-nav .m-back:hover{ background:var(--teal); color:var(--on-accent);}
 
   .m-count{ color:var(--ink-soft); font-size:.85rem; font-weight:600;}
   footer{ text-align:center; color:var(--ink-soft); font-size:.82rem; padding:18px 20px 26px; border-top:2px solid var(--line);}
@@ -617,7 +690,7 @@ HTML = r"""<!DOCTYPE html>
   .modal, .wrap{ -webkit-overflow-scrolling:touch; }
   /* Hover lifts are a mouse idiom — on touch they stick after a tap */
   @media (hover:none){
-    .card:hover, .mini:hover, .res-card:hover, .mini-crumb .bc-btn:hover, .welcome .w-day:hover{ transform:none; box-shadow:0 6px 18px rgba(42,33,24,.08); }
+    .card:hover, .mini:hover, .res-card:hover, .mini-crumb .bc-btn:hover, .welcome .w-day:hover{ transform:none; box-shadow:0 6px 18px rgba(var(--shadow),.08); }
     .card:active, .mini:active, .res-card:active, .welcome .w-day:active{ transform:scale(.985); border-color:var(--saffron); }
     .tool-btn:active, .lang-btn:active, .sec-tab:active, .m-nav button:active{ filter:brightness(.93); }
     .pada-box:hover{ background:var(--paper); border-color:var(--line); }
@@ -641,7 +714,7 @@ HTML = r"""<!DOCTYPE html>
     /* ---- toolbar: sticky so search / home stay reachable ---- */
     .toolbar{ position:sticky; top:0; z-index:30; gap:8px; padding:9px 12px;
               padding-left:calc(12px + env(safe-area-inset-left,0px)); padding-right:calc(12px + env(safe-area-inset-right,0px));
-              box-shadow:0 2px 10px rgba(42,33,24,.07); }
+              box-shadow:0 2px 10px rgba(var(--shadow),.07); }
     .toolbar .searchwrap{ order:-1; width:100%; flex:1 0 100%; max-width:none; min-width:0; }
     .toolbar input[type=search]{ min-height:42px; }
     .toolbar .tool-btn{ flex:1; min-height:40px; padding:9px 8px; font-size:.82rem; white-space:nowrap; }
@@ -702,7 +775,7 @@ HTML = r"""<!DOCTYPE html>
     .m-nav{ position:sticky; bottom:0; margin:18px -14px 0;
             margin-bottom:calc(-26px - env(safe-area-inset-bottom,0px));
             padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
-            background:linear-gradient(to bottom, rgba(255,248,236,.75), var(--cream) 45%);
+            background:linear-gradient(to bottom, rgba(var(--fade),.75), var(--cream) 45%);
             border-top:1px solid var(--line); gap:8px; }
     .m-nav button{ min-height:46px; padding:11px 14px; font-size:.9rem; flex:1; }
     .m-nav .m-count{ flex:0 0 auto; font-size:.8rem; text-align:center; }
@@ -732,7 +805,7 @@ HTML = r"""<!DOCTYPE html>
   /* ---- no-JavaScript fallback (WhatsApp / Gmail in-app viewers) ---- */
   .ns-box{ max-width:640px; margin:10px auto 40px; background:var(--paper);
            border:2px solid var(--saffron); border-radius:16px; padding:22px 22px 24px;
-           box-shadow:0 8px 22px rgba(42,33,24,.10); }
+           box-shadow:0 8px 22px rgba(var(--shadow),.10); }
   .ns-box .ns-om{ font-size:2.6rem; color:var(--saffron); text-align:center; line-height:1; margin-bottom:6px; }
   .ns-box h2{ font-family:Georgia,serif; color:var(--teal); font-size:1.25rem; text-align:center; margin-bottom:12px; }
   .ns-box p{ color:var(--ink); font-size:.95rem; margin-bottom:10px; }
@@ -748,13 +821,14 @@ HTML = r"""<!DOCTYPE html>
     <span class="om">ॐ</span>
     <div>
       <h1 id="appTitle">Bhagavad Gita — Interactive Study</h1>
-      <div id="appSub" style="font-size:.82rem; color:#CDE7EE;">श्रीमद्भगवद्गीता · chapters → themes → subthemes → verses · each verse in its 4 pādas</div>
+      <div id="appSub" style="font-size:.82rem; color:var(--hdr-sub);">श्रीमद्भगवद्गीता · chapters → themes → subthemes → verses · each verse in its 4 pādas</div>
     </div>
     <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     <div class="langbar" id="langbar">
       <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
       <button class="lang-btn" data-lang="ne" onclick="setLang('ne')">नेपाली</button>
       <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
+      <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon">☾</span></button>
     </div>
   </div>
 </header>
@@ -951,6 +1025,37 @@ function clearSearch(){
 
 // ---------- favorites (localStorage with in-memory fallback) ----------
 let FAV = [];
+// ---------- dark mode ----------
+// The <head> script has already applied the theme. These functions handle the
+// toggle, keep the button label and the browser chrome colour in step, and
+// follow the phone's setting until the reader overrides it.
+function themeIsDark(){ return document.documentElement.getAttribute('data-theme') === 'dark'; }
+function paintTheme(){
+  const dark = themeIsDark();
+  const icon = $('#themeIcon'); if(icon) icon.textContent = dark ? '☀' : '☾';
+  const btn = $('#themeBtn');
+  if(btn) btn.setAttribute('aria-label', dark ? L('theme_light') : L('theme_dark'));
+  // colour the phone's status bar / address bar to match
+  const mc = document.getElementById('themeColor');
+  if(mc) mc.setAttribute('content', dark ? '#0A2830' : '#0F4C5C');
+}
+function setTheme(dark, remember){
+  if(dark) document.documentElement.setAttribute('data-theme','dark');
+  else document.documentElement.removeAttribute('data-theme');
+  if(remember){ try{ localStorage.setItem('gitaTheme', dark ? 'dark' : 'light'); }catch(e){} }
+  paintTheme();
+}
+function toggleTheme(){ setTheme(!themeIsDark(), true); }
+// If the reader has never chosen, keep following the phone as it changes
+// (e.g. an automatic switch at sunset).
+try{
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const onSys = e => { let saved=null; try{ saved=localStorage.getItem('gitaTheme'); }catch(_){}
+                       if(saved === null) setTheme(e.matches, false); };
+  if(mq.addEventListener) mq.addEventListener('change', onSys);
+  else if(mq.addListener) mq.addListener(onSys);
+}catch(e){}
+
 function favLoad(){ try{ return JSON.parse(localStorage.getItem('gitaFavs') || '[]'); }catch(e){ return []; } }
 FAV = favLoad();
 function favSave(){ try{ localStorage.setItem('gitaFavs', JSON.stringify(FAV)); }catch(e){} }
@@ -1435,6 +1540,7 @@ if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
   });
 }
 applyStatic();
+paintTheme();
 showWelcome();
 </script>
 </body>

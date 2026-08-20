@@ -82,13 +82,13 @@ GITA_CH5_PADAS = {
 "5.08": [
     ("p", "नैव किञ्चित्करोमीति", "naiva kiñcitkaromīti", 8),
     ("p", "युक्तो मन्येत तत्त्ववित्", "yukto manyeta tattvavit", 8),
-    ("p", "पश्यञ्शृण्वन्स्पृशञ्जिघ्र", "paśyañśṛṇvanspṛśañjighra", 8),
-    ("p", "न्नश्नन्गच्छन्स्वपञ्श्वसन्", "nnaśnangacchansvapañśvasan", 8),
+    ("p", "पश्यञ्शृण्वन्स्पृशञ्जिघ्रन्न्", "paśyañśṛṇvanspṛśañjighrann", 8),
+    ("p", "अश्नन्गच्छन्स्वपञ्श्वसन्", "aśnangacchansvapañśvasan", 8),
 ],
 
 "5.09": [
-    ("p", "प्रलपन् विसृजन्गृह्ण", "pralapan visṛjangṛhṇa", 8),
-    ("p", "न्नुन्मिषन्निमिषन्नपि", "nnunmiṣannimiṣannapi", 8),
+    ("p", "प्रलपन् विसृजन्गृह्णन्न्", "pralapan visṛjangṛhṇann", 8),
+    ("p", "उन्मिषन्निमिषन्नपि", "unmiṣannimiṣannapi", 8),
     ("p", "इन्द्रियाणीन्द्रियार्थेषु", "indriyāṇīndriyārtheṣu", 8),
     ("p", "वर्तन्त इति धारयन्", "vartanta iti dhārayan", 8),
 ],

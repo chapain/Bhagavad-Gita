@@ -232,6 +232,9 @@ for ch, W, jf in CHS:
             cands |= {c[:-1] for c in cands if c.endswith("t")}
             cands |= {c[:-1] for c in cands if c.endswith("m")}
             cands |= {c[:-1] for c in cands if c.endswith("n")}
+            # gemination: a short vowel + final n doubles before a vowel, and when the
+            # pāda ends there the second n stays with this pāda (5.08 jighrann | aśnan)
+            cands |= {c + "n" for c in cands if c.endswith("n")}
             cands |= {c[:-1] for c in cands if c.endswith("k")}
             cands |= {c[:-1] + "ṃś" for c in cands if c.endswith("n")}
             cands |= {c[:-1] + "ṃ" for c in cands if c.endswith("n")}

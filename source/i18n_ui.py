@@ -4,6 +4,8 @@
 UI = {
  "en": {
   "app_title": "Bhagavad Gita — Interactive Study",
+  "theme_dark": "Switch to dark mode",
+  "theme_light": "Switch to light mode",
   "app_sub": "श्रीमद्भगवद्गीता · chapters → themes → subthemes → verses · each verse in its 4 quarters",
   "tag_sub": "18 chapters · 700 verses · study edition",
   "choose_chapter": "Choose a Chapter",
@@ -79,6 +81,8 @@ UI = {
  },
  "ne": {
   "app_title": "भगवद्गीता — अन्तरक्रियात्मक अध्ययन",
+  "theme_dark": "डार्क मोडमा जानुहोस्",
+  "theme_light": "लाइट मोडमा जानुहोस्",
   "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → उपविषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा",
   "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण",
   "choose_chapter": "अध्याय छान्नुहोस्",
@@ -154,6 +158,8 @@ UI = {
  },
  "hi": {
   "app_title": "भगवद्गीता — इंटरैक्टिव अध्ययन",
+  "theme_dark": "डार्क मोड पर जाएँ",
+  "theme_light": "लाइट मोड पर जाएँ",
   "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → उपविषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में",
   "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण",
   "choose_chapter": "अध्याय चुनें",
