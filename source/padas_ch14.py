@@ -173,8 +173,8 @@ GITA_CH14_PADAS = {
     ("s", "अर्जुन उवाच।", "arjuna uvāca"),
     ("p", "कैर्लिङ्गैस्त्रीन्गुणानेतान्", "kairliṅgaistrīnguṇānetān", 8),
     ("p", "अतीतो भवति प्रभो", "atīto bhavati prabho", 8),
-    ("p", "किमाचारः कथं चैतां", "kimācāraḥ kathaṃ caitāṃ", 8),
-    ("p", "स्त्रीन्गुणानतिवर्तते", "strīnguṇānativartate", 8),
+    ("p", "किमाचारः कथं चैतांस्", "kimācāraḥ kathaṃ caitāṃs", 8),
+    ("p", "त्रीन्गुणानतिवर्तते", "trīnguṇānativartate", 8),
 ],
 
 "14.22": [

@@ -238,8 +238,8 @@ GITA_CH11_PADAS = {
 ],
 
 "11.30": [
-    ("p", "लेलिह्यसे ग्रसमानः समन्ता", "lelihyase grasamānaḥ samantā", 11),
-    ("p", "ल्लोकान्समग्रान्वदनैर्ज्वलद्भिः", "llokānsamagrānvadanairjvaladbhiḥ", 11),
+    ("p", "लेलिह्यसे ग्रसमानः समन्ताल्", "lelihyase grasamānaḥ samantāl", 11),
+    ("p", "लोकान्समग्रान्वदनैर्ज्वलद्भिः", "lokānsamagrānvadanairjvaladbhiḥ", 11),
     ("p", "तेजोभिरापूर्य जगत्समग्रं", "tejobhirāpūrya jagatsamagraṃ", 11),
     ("p", "भासस्तवोग्राः प्रतपन्ति विष्णो", "bhāsastavogrāḥ pratapanti viṣṇo", 11),
 ],
@@ -366,8 +366,8 @@ GITA_CH11_PADAS = {
 ],
 
 "11.48": [
-    ("p", "न वेदयज्ञाध्ययनैर्न दानै", "na vedayajñādhyayanairna dānai", 11),
-    ("p", "र्न च क्रियाभिर्न तपोभिरुग्रैः", "rna ca kriyābhirna tapobhirugraiḥ", 11),
+    ("p", "न वेदयज्ञाध्ययनैर्न दानैर्", "na vedayajñādhyayanairna dānair", 11),
+    ("p", "न च क्रियाभिर्न तपोभिरुग्रैः", "na ca kriyābhirna tapobhirugraiḥ", 11),
     ("p", "एवंरूपः शक्य अहं नृलोके", "evaṃrūpaḥ śakya ahaṃ nṛloke", 11),
     ("p", "द्रष्टुं त्वदन्येन कुरुप्रवीर", "draṣṭuṃ tvadanyena kurupravīra", 11),
 ],

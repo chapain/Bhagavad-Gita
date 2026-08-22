@@ -256,8 +256,8 @@ GITA_CH4_PADAS = {
 ],
 
 "4.33": [
-    ("p", "श्रेयान्द्रव्यमयाद्यज्ञा", "śreyāndravyamayādyajñā", 8),
-    ("p", "ज्ज्ञानयज्ञः परन्तप", "jjñānayajñaḥ parantapa", 8),
+    ("p", "श्रेयान्द्रव्यमयाद्यज्ञाज्", "śreyāndravyamayādyajñāj", 8),
+    ("p", "ज्ञानयज्ञः परन्तप", "jñānayajñaḥ parantapa", 8),
     ("p", "सर्वं कर्माखिलं पार्थ", "sarvaṃ karmākhilaṃ pārtha", 8),
     ("p", "ज्ञाने परिसमाप्यते", "jñāne parisamāpyate", 8),
 ],

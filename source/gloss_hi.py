@@ -318,7 +318,7 @@ GLOSS_HI.update({
 "aharāgame": "दिन के आगमन पर", "agniṣu": "अग्नियों में", "adhyātma": "अध्यात्म",
 "adhiṣṭhāya": "अधिष्ठित होकर", "adhiṣṭhānam": "आधार", "adhiyajñaḥ": "अधियज्ञ",
 "adhidaivam": "अधिदैव", "adhibhūtam": "अधिभूत", "adharmam": "अधर्म",
-"acireṇa": "शीघ्र", "acalam": "अचल", "abhāvaḥ": "अभाव",
+"acireṇa": "शीघ्र", "nacireṇa": "शीघ्र", "acalam": "अचल", "abhāvaḥ": "अभाव",
 "abhyāsāt": "अभ्यास से", "abhirakṣitam": "रक्षित",
 "abhijātasya": "जन्मे हुए का", "abhayam": "अभय", "a": "बिना",
 })

@@ -318,7 +318,7 @@ GLOSS_NE.update({
 "aharāgame": "दिनको आगमनमा", "agniṣu": "अग्निहरूमा", "adhyātma": "अध्यात्म",
 "adhiṣṭhāya": "अधिकार गरेर", "adhiṣṭhānam": "आधार", "adhiyajñaḥ": "अधियज्ञ",
 "adhidaivam": "अधिदैव", "adhibhūtam": "अधिभूत", "adharmam": "अधर्म",
-"acireṇa": "छिट्टै", "acalam": "अचल", "abhāvaḥ": "अभाव",
+"acireṇa": "छिट्टै", "nacireṇa": "छिट्टै", "acalam": "अचल", "abhāvaḥ": "अभाव",
 "abhyāsāt": "अभ्यासबाट", "abhirakṣitam": "रक्षा गरिएको",
 "abhijātasya": "जन्मेकाको", "abhayam": "अभय", "a": "बिना",
 })

@@ -235,6 +235,17 @@ for ch, W, jf in CHS:
             # gemination: a short vowel + final n doubles before a vowel, and when the
             # pāda ends there the second n stays with this pāda (5.08 jighrann | aśnan)
             cands |= {c + "n" for c in cands if c.endswith("n")}
+            # A pāda may END on the first half of a consonant that sandhi doubles or
+            # assimilates across the break (2.57 ...snehas | tattat..., 4.33 ...yajñāj |
+            # jñāna..., 11.30 ...samantāl | lokān...). Allow the trailing joint letter.
+            cands |= {c[:-1] + x for c in cands if c.endswith("ḥ") for x in ("s","r","ś","ṣ","l","o")}
+            cands |= {c + x for c in cands for x in ("j","l","s","d","m","g","ṃs","’")}
+            # final k/t voice to g/d before a vowel (5.04 samyak -> samyag)
+            cands |= {c[:-1] + "g" for c in cands if c.endswith("k")}
+            cands |= {c[:-1] + "d" for c in cands if c.endswith("t")}
+            # a pāda may open after an elided initial a- marked by the avagraha
+            # (8.20 ...bhāvo’nyo’ | vyakto’vyaktāt...)
+            cands |= {c[1:] for c in cands if c[:1] == "a"}
             cands |= {c[:-1] for c in cands if c.endswith("k")}
             cands |= {c[:-1] + "ṃś" for c in cands if c.endswith("n")}
             cands |= {c[:-1] + "ṃ" for c in cands if c.endswith("n")}

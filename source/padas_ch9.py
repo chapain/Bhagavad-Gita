@@ -249,8 +249,8 @@ GITA_CH9_PADAS = {
 "9.32": [
     ("p", "मां हि पार्थ व्यपाश्रित्य", "māṃ hi pārtha vyapāśritya", 8),
     ("p", "येऽपि स्युः पापयोनयः", "ye’pi syuḥ pāpayonayaḥ", 8),
-    ("p", "स्त्रियो वैश्यास्तथा शूद्रा", "striyo vaiśyāstathā śūdrā", 8),
-    ("p", "स्तेऽपि यान्ति परां गतिम्", "ste’pi yānti parāṃ gatim", 8),
+    ("p", "स्त्रियो वैश्यास्तथा शूद्रास्", "striyo vaiśyāstathā śūdrās", 8),
+    ("p", "तेऽपि यान्ति परां गतिम्", "te’pi yānti parāṃ gatim", 8),
 ],
 
 "9.33": [
@@ -263,8 +263,8 @@ GITA_CH9_PADAS = {
 "9.34": [
     ("p", "मन्मना भव मद्भक्तो", "manmanā bhava madbhakto", 8),
     ("p", "मद्याजी मां नमस्कुरु", "madyājī māṃ namaskuru", 8),
-    ("p", "मामेवैष्यसि युक्त्वैव", "māmevaiṣyasi yuktvaiva", 8),
-    ("p", "मात्मानं मत्परायणः", "mātmānaṃ matparāyaṇaḥ", 8),
+    ("p", "मामेवैष्यसि युक्त्वैवम्", "māmevaiṣyasi yuktvaivam", 8),
+    ("p", "आत्मानं मत्परायणः", "ātmānaṃ matparāyaṇaḥ", 8),
 ],
 
 }

@@ -100,7 +100,7 @@ GITA_CH5_WORDS = {
     ["योगयुक्तः", "yogayuktaḥ", "devoted to yoga"], ["मुनिः", "muniḥ", "the sage"],
         ["ब्रह्म", "brahma", "Brahman"]],
     3: [
-    ["अचिरेण", "acireṇa", "before long"], ["अधिगच्छति", "adhigacchati", "attains"]]
+    ["नचिरेण", "nacireṇa", "before long"], ["अधिगच्छति", "adhigacchati", "attains"]]
 },
 7: {"s": [],
     0: [["योगयुक्तः", "yogayuktaḥ", "devoted to yoga"],

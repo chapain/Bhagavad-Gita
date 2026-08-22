@@ -355,6 +355,41 @@ for ch in data:
                             problems.append(f"padas_ch*.py: {v['n']} has a double space in its "
                                             f"{what}: {txt!r}")
 
+# 1d. metre: an anuṣṭubh verse (32 syllables) must divide 8/8/8/8 and a triṣṭubh
+#     (44) must divide 11/11/11/11. A pāda that is short or long by one is almost
+#     always a boundary placed inside a word — the fault behind 17.28 and the
+#     twelve verses that began with a consonant stranded from the pāda before.
+for ch in data:
+    for t in ch["themes"]:
+        for p in t["parts"]:
+            for v in p["sutras"]:
+                pads = [x for x in v["flow"] if x["k"] == "p"]
+                counts = [x["n"] for x in pads]
+                total = sum(counts)
+                if len(counts) != 4:
+                    continue
+                want = 8 if total == 32 else (11 if total == 44 else None)
+                if want and any(c != want for c in counts):
+                    problems.append(
+                        f"padas_ch*.py: {v['n']} is {total} syllables, so each pāda should be "
+                        f"{want}, but they are {counts} — a boundary is inside a word.")
+
+# 1e. an avagraha (ऽ / ’) marks an elided initial vowel, so it belongs at the
+#     START of the pāda whose word lost that vowel, never dangling at the end of
+#     the pāda before (8.20 ...bhāvo’nyo | ’vyakto..., not ...bhāvo’nyo’ | vyakto...).
+for ch in data:
+    for t in ch["themes"]:
+        for p in t["parts"]:
+            for v in p["sutras"]:
+                for it in v["flow"]:
+                    if it["k"] != "p":
+                        continue
+                    if it["t"].endswith("\u2019") or it["d"].endswith("\u0951") or it["d"].endswith("\u093d"):
+                        problems.append(
+                            f"padas_ch*.py: {v['n']} ends a pāda with an avagraha: {it['t']!r}. "
+                            f"It marks the next word's elided vowel, so move it to the start "
+                            f"of the following pāda.")
+
 # 2. no translation may fall back to English
 fb_ne = [v["n"] for ch in data for t in ch["themes"] for p in t["parts"] for v in p["sutras"]
          if not TRANS_NE.get(v["n"])]

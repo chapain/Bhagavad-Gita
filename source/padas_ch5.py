@@ -54,8 +54,8 @@ GITA_CH5_PADAS = {
 "5.04": [
     ("p", "साङ्ख्ययोगौ पृथग्बालाः", "sāṅkhyayogau pṛthagbālāḥ", 8),
     ("p", "प्रवदन्ति न पण्डिताः", "pravadanti na paṇḍitāḥ", 8),
-    ("p", "एकमप्यास्थितः सम्य", "ekamapyāsthitaḥ samya", 8),
-    ("p", "गुभयोर्विन्दते फलम्", "gubhayorvindate phalam", 8),
+    ("p", "एकमप्यास्थितः सम्यग्", "ekamapyāsthitaḥ samyag", 8),
+    ("p", "उभयोर्विन्दते फलम्", "ubhayorvindate phalam", 8),
 ],
 
 "5.05": [

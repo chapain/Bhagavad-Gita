@@ -428,8 +428,8 @@ GITA_CH2_PADAS = {
 ],
 
 "2.57": [
-    ("p", "यः सर्वत्रानभिस्नेह", "yaḥ sarvatrānabhisneha", 8),
-    ("p", "स्तत्तत्प्राप्य शुभाशुभम्", "stattatprāpya śubhāśubham", 8),
+    ("p", "यः सर्वत्रानभिस्नेहस्", "yaḥ sarvatrānabhisnehas", 8),
+    ("p", "तत्तत्प्राप्य शुभाशुभम्", "tattatprāpya śubhāśubham", 8),
     ("p", "नाभिनन्दति न द्वेष्टि", "nābhinandati na dveṣṭi", 8),
     ("p", "तस्य प्रज्ञा प्रतिष्ठिता", "tasya prajñā pratiṣṭhitā", 8),
 ],

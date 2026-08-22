@@ -207,8 +207,8 @@ GITA_CH6_PADAS = {
 "6.26": [
     ("p", "यतो यतो निश्चरति", "yato yato niścarati", 8),
     ("p", "मनश्चञ्चलमस्थिरम्", "manaścañcalamasthiram", 8),
-    ("p", "ततस्ततो नियम्यैत", "tatastato niyamyaita", 8),
-    ("p", "दात्मन्येव वशं नयेत्", "dātmanyeva vaśaṃ nayet", 8),
+    ("p", "ततस्ततो नियम्यैतद्", "tatastato niyamyaitad", 8),
+    ("p", "आत्मन्येव वशं नयेत्", "ātmanyeva vaśaṃ nayet", 8),
 ],
 
 "6.27": [
