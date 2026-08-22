@@ -390,6 +390,22 @@ for ch in data:
                             f"It marks the next word's elided vowel, so move it to the start "
                             f"of the following pāda.")
 
+# 1f. unapplied sandhi: a word ending -aḥ becomes -o before a voiced consonant
+#     (1.15 hṛṣīkeśaḥ devadattaṃ should read hṛṣīkeśo devadattaṃ). Leaving the
+#     visarga is a transcription slip, not a variant reading.
+_VOICED = set("gjdbnmyrlvh\u1e45\u00f1\u1e47\u1e0d")
+for ch in data:
+    for t in ch["themes"]:
+        for p in t["parts"]:
+            for v in p["sutras"]:
+                for m in re.finditer(r"(\w*a\u1e25)\s+([a-z\u0101\u012b\u016b\u1e5b\u1e5d\u1e37\u1e45\u00f1\u1e6d\u1e0d\u1e47\u015b\u1e63\u1e43\u1e25])", v["t"]):
+                    if m.group(2) in _VOICED:
+                        good = m.group(1)[:-2] + "o"
+                        problems.append(
+                            f"ch*.json: {v['n']} has '{m.group(1)} {m.group(2)}...' — before a "
+                            f"voiced consonant the visarga becomes o, so this should read "
+                            f"'{good} {m.group(2)}...'.")
+
 # 2. no translation may fall back to English
 fb_ne = [v["n"] for ch in data for t in ch["themes"] for p in t["parts"] for v in p["sutras"]
          if not TRANS_NE.get(v["n"])]

@@ -47,7 +47,7 @@ GITA_CH17_PADAS = {
 "17.03": [
     ("p", "सत्त्वानुरूपा सर्वस्य", "sattvānurūpā sarvasya", 8),
     ("p", "श्रद्धा भवति भारत", "śraddhā bhavati bhārata", 8),
-    ("p", "श्रद्धामयोऽयं पुरुषः", "śraddhāmayo’yaṃ puruṣaḥ", 8),
+    ("p", "श्रद्धामयोऽयं पुरुषो", "śraddhāmayo’yaṃ puruṣo", 8),
     ("p", "यो यच्छ्रद्धः स एव सः", "yo yacchraddhaḥ sa eva saḥ", 8),
 ],
 
@@ -101,7 +101,7 @@ GITA_CH17_PADAS = {
 ],
 
 "17.11": [
-    ("p", "अफलाकाङ्क्षिभिर्यज्ञः", "aphalākāṅkṣibhiryajñaḥ", 8),
+    ("p", "अफलाकाङ्क्षिभिर्यज्ञो", "aphalākāṅkṣibhiryajño", 8),
     ("p", "विधिदृष्टो य इज्यते", "vidhidṛṣṭo ya ijyate", 8),
     ("p", "यष्टव्यमेवेति मनः", "yaṣṭavyameveti manaḥ", 8),
     ("p", "समाधाय स सात्त्विकः", "samādhāya sa sāttvikaḥ", 8),
@@ -185,7 +185,7 @@ GITA_CH17_PADAS = {
 ],
 
 "17.23": [
-    ("p", "ओं तत्सदिति निर्देशः", "oṃ tatsaditi nirdeśaḥ", 8),
+    ("p", "ओं तत्सदिति निर्देशो", "oṃ tatsaditi nirdeśo", 8),
     ("p", "ब्रह्मणस्त्रिविधः स्मृतः", "brahmaṇastrividhaḥ smṛtaḥ", 8),
     ("p", "ब्राह्मणास्तेन वेदाश्च", "brāhmaṇāstena vedāśca", 8),
     ("p", "यज्ञाश्च विहिताः पुरा", "yajñāśca vihitāḥ purā", 8),

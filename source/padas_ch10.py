@@ -53,7 +53,7 @@ GITA_CH10_PADAS = {
 "10.04": [
     ("p", "बुद्धिर्ज्ञानमसम्मोहः", "buddhirjñānamasammohaḥ", 8),
     ("p", "क्षमा सत्यं दमः शमः", "kṣamā satyaṃ damaḥ śamaḥ", 8),
-    ("p", "सुखं दुःखं भवोऽभावः", "sukhaṃ duḥkhaṃ bhavo’bhāvaḥ", 8),
+    ("p", "सुखं दुःखं भवोऽभावो", "sukhaṃ duḥkhaṃ bhavo’bhāvo", 8),
     ("p", "भयं चाभयमेव च", "bhayaṃ cābhayameva ca", 8),
 ],
 
@@ -79,7 +79,7 @@ GITA_CH10_PADAS = {
 ],
 
 "10.08": [
-    ("p", "अहं सर्वस्य प्रभवः", "ahaṃ sarvasya prabhavaḥ", 8),
+    ("p", "अहं सर्वस्य प्रभवो", "ahaṃ sarvasya prabhavo", 8),
     ("p", "मत्तः सर्वं प्रवर्तते", "mattaḥ sarvaṃ pravartate", 8),
     ("p", "इति मत्वा भजन्ते मां", "iti matvā bhajante māṃ", 8),
     ("p", "बुधा भावसमन्विताः", "budhā bhāvasamanvitāḥ", 8),
@@ -102,7 +102,7 @@ GITA_CH10_PADAS = {
 "10.11": [
     ("p", "तेषामेवानुकम्पार्थं", "teṣāmevānukampārthaṃ", 8),
     ("p", "अहमज्ञानजं तमः", "ahamajñānajaṃ tamaḥ", 8),
-    ("p", "नाशयाम्यात्मभावस्थः", "nāśayāmyātmabhāvasthaḥ", 8),
+    ("p", "नाशयाम्यात्मभावस्थो", "nāśayāmyātmabhāvastho", 8),
     ("p", "ज्ञानदीपेन भास्वता", "jñānadīpena bhāsvatā", 8),
 ],
 
@@ -258,7 +258,7 @@ GITA_CH10_PADAS = {
 "10.33": [
     ("p", "अक्षराणामकारोऽस्मि", "akṣarāṇāmakāro’smi", 8),
     ("p", "द्वन्द्वः सामासिकस्य च", "dvandvaḥ sāmāsikasya ca", 8),
-    ("p", "अहमेवाक्षयः कालः", "ahamevākṣayaḥ kālaḥ", 8),
+    ("p", "अहमेवाक्षयः कालो", "ahamevākṣayaḥ kālo", 8),
     ("p", "धाताहं विश्वतोमुखः", "dhātāhaṃ viśvatomukhaḥ", 8),
 ],
 
@@ -307,7 +307,7 @@ GITA_CH10_PADAS = {
 "10.40": [
     ("p", "नान्तोऽस्ति मम दिव्यानां", "nānto’sti mama divyānāṃ", 8),
     ("p", "विभूतीनां परन्तप", "vibhūtīnāṃ parantapa", 8),
-    ("p", "एष तूद्देशतः प्रोक्तः", "eṣa tūddeśataḥ proktaḥ", 8),
+    ("p", "एष तूद्देशतः प्रोक्तो", "eṣa tūddeśataḥ prokto", 8),
     ("p", "विभूतेर्विस्तरो मया", "vibhūtervistaro mayā", 8),
 ],
 

@@ -67,7 +67,7 @@ GITA_CH2_PADAS = {
 ],
 
 "2.06": [
-    ("p", "न चैतद्विद्मः कतरन्नो गरीयः", "na caitadvidmaḥ kataranno garīyaḥ", 12),
+    ("p", "न चैतद्विद्मः कतरन्नो गरीयो", "na caitadvidmaḥ kataranno garīyo", 12),
     ("p", "यद्वा जयेम यदि वा नो जयेयुः", "yadvā jayema yadi vā no jayeyuḥ", 12),
     ("p", "यानेव हत्वा न जिजीविषामः", "yāneva hatvā na jijīviṣāmaḥ", 11),
     ("p", "तेऽवस्थिताः प्रमुखे धार्तराष्ट्राः", "te’vasthitāḥ pramukhe dhārtarāṣṭrāḥ", 11),
