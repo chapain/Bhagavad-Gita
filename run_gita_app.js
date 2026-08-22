@@ -4,7 +4,7 @@
  * Usage:  node run_gita_app.js          (from the project root)
  *
  * Parses bhagavad_gita.html, extracts the embedded DATA and UI objects, and
- * re-checks every integrity invariant: 18 chapters · 700 verses · 182 themes ·
+ * re-checks every integrity invariant: 18 chapters · 700 verses · 183 themes ·
  * 559 parts, trilingual coverage, word-by-word glosses, script purity,
  * Latin-residue checks on Nepali/Hindi fields, and content regression locks
  * (incl. the ch.15 पथ/पथिक theme). Mirrors run_bs_app.js of the Brahma-Sūtras
@@ -70,7 +70,7 @@ group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
 for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`);
 const enKeys = Object.keys(UI.en);
-ok(enKeys.length === 74, `UI has 74 keys (got ${enKeys.length})`);
+ok(enKeys.length === 77, `UI has 77 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -95,7 +95,7 @@ ok(devaBad.length === 0, `chapter deva names pure Devanagari (${devaBad.join(','
 ok(nameBad.length === 0, `chapter names+subs ×3 languages (${nameBad.join(',') || 'clean'})`);
 
 const allThemes = DATA.flatMap(c => c.themes);
-ok(allThemes.length === 182, `182 themes (got ${allThemes.length})`);
+ok(allThemes.length === 183, `183 themes (got ${allThemes.length})`);
 const allParts = allThemes.flatMap(t => t.parts);
 ok(allParts.length === 559, `559 parts (got ${allParts.length})`);
 const tfBad = [], pfBad = [];
