@@ -129,8 +129,8 @@ GITA_CH18_PADAS = {
 ],
 
 "18.15": [
-    ("p", "शरीरवाङ्मनोभिर्", "śarīravāṅmanobhir", 7),
-    ("p", "यत्कर्म प्रारभते नरः", "yatkarma prārabhate naraḥ", 9),
+    ("p", "शरीरवाङ्मनोभिर्यत्", "śarīravāṅmanobhiryat", 8),
+    ("p", "कर्म प्रारभते नरः", "karma prārabhate naraḥ", 8),
     ("p", "न्याय्यं वा विपरीतं वा", "nyāyyaṃ vā viparītaṃ vā", 8),
     ("p", "पञ्चैते तस्य हेतवः", "pañcaite tasya hetavaḥ", 8),
 ],
@@ -446,8 +446,8 @@ GITA_CH18_PADAS = {
 "18.60": [
     ("p", "स्वभावजेन कौन्तेय", "svabhāvajena kaunteya", 8),
     ("p", "निबद्धः स्वेन कर्मणा", "nibaddhaḥ svena karmaṇā", 8),
-    ("p", "कर्तुं नेच्छसि यन्", "kartuṃ necchasi yan", 6),
-    ("p", "मोहात्करिष्यस्यवशोऽपि तत्", "mohātkariṣyasyavaśo’pi tat", 10),
+    ("p", "कर्तुं नेच्छसि यन्मोहात्", "kartuṃ necchasi yanmohāt", 8),
+    ("p", "करिष्यस्यवशोऽपि तत्", "kariṣyasyavaśo’pi tat", 8),
 ],
 
 "18.61": [
@@ -568,7 +568,7 @@ GITA_CH18_PADAS = {
     ("p", "तच्च संस्मृत्य संस्मृत्य", "tacca saṃsmṛtya saṃsmṛtya", 8),
     ("p", "रूपमत्यद्भुतं हरेः", "rūpamatyadbhutaṃ hareḥ", 8),
     ("p", "विस्मयो मे महान्राजन्", "vismayo me mahānrājan", 8),
-    ("p", "हृष्यामि च पुनः पुनः", " hṛṣyāmi ca punaḥ punaḥ", 8),
+    ("p", "हृष्यामि च पुनः पुनः", "hṛṣyāmi ca punaḥ punaḥ", 8),
 ],
 
 "18.78": [

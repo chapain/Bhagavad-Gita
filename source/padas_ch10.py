@@ -139,12 +139,12 @@ GITA_CH10_PADAS = {
     ("p", "वक्तुमर्हस्यशेषेण", "vaktumarhasyaśeṣeṇa", 8),
     ("p", "दिव्या ह्यात्मविभूतयः", "divyā hyātmavibhūtayaḥ", 8),
     ("p", "याभिर्विभूतिभिर्लोकान्", "yābhirvibhūtibhirlokān", 8),
-    ("p", "इमांस्त्वं व्याप्य तिष्ठसि", " imāṃstvaṃ vyāpya tiṣṭhasi", 8),
+    ("p", "इमांस्त्वं व्याप्य तिष्ठसि", "imāṃstvaṃ vyāpya tiṣṭhasi", 8),
 ],
 
 "10.17": [
     ("p", "कथं विद्यामहं योगिन्", "kathaṃ vidyāmahaṃ yogin", 8),
-    ("p", "त्वां सदा परिचिन्तयन्", " tvāṃ sadā paricintayan", 8),
+    ("p", "त्वां सदा परिचिन्तयन्", "tvāṃ sadā paricintayan", 8),
     ("p", "केषु केषु च भावेषु", "keṣu keṣu ca bhāveṣu", 8),
     ("p", "चिन्त्योऽसि भगवन्मया", "cintyo’si bhagavanmayā", 8),
 ],
@@ -300,8 +300,8 @@ GITA_CH10_PADAS = {
 "10.39": [
     ("p", "यच्चापि सर्वभूतानां", "yaccāpi sarvabhūtānāṃ", 8),
     ("p", "बीजं तदहमर्जुन", "bījaṃ tadahamarjuna", 8),
-    ("p", "न तदस्ति विना यत्", "na tadasti vinā yat", 7),
-    ("p", "स्यात् मया भूतं चराचरम्", "syāt mayā bhūtaṃ carācaram", 9),
+    ("p", "न तदस्ति विना यत्स्यात्", "na tadasti vinā yatsyāt", 8),
+    ("p", "मया भूतं चराचरम्", "mayā bhūtaṃ carācaram", 8),
 ],
 
 "10.40": [

@@ -61,7 +61,7 @@ GITA_CH2_PADAS = {
 
 "2.05": [
     ("p", "गुरूनहत्वा हि महानुभावान्", "gurūnahatvā hi mahānubhāvān", 11),
-    ("p", "श्रेयो भोक्तुं भैक्षमपीह लोके", " śreyo bhoktuṃ bhaikṣamapīha loke", 11),
+    ("p", "श्रेयो भोक्तुं भैक्षमपीह लोके", "śreyo bhoktuṃ bhaikṣamapīha loke", 11),
     ("p", "हत्वार्थकामांस्तु गुरूनिहैव", "hatvārthakāmāṃstu gurūnihaiva", 11),
     ("p", "भुञ्जीय भोगान् रुधिरप्रदिग्धान्", "bhuñjīya bhogān rudhirapradigdhān", 11),
 ],
@@ -82,7 +82,7 @@ GITA_CH2_PADAS = {
 
 "2.08": [
     ("p", "न हि प्रपश्यामि ममापनुद्यात्", "na hi prapaśyāmi mamāpanudyāt", 11),
-    ("p", "यच्छोकमुच्छोषणमिन्द्रियाणाम्", " yacchokamucchoṣaṇamindriyāṇām", 11),
+    ("p", "यच्छोकमुच्छोषणमिन्द्रियाणाम्", "yacchokamucchoṣaṇamindriyāṇām", 11),
     ("p", "अवाप्य भूमावसपत्नमृद्धं", "avāpya bhūmāvasapatnamṛddhaṃ", 11),
     ("p", "राज्यं सुराणामपि चाधिपत्यम्", "rājyaṃ surāṇāmapi cādhipatyam", 11),
 ],
@@ -168,7 +168,7 @@ GITA_CH2_PADAS = {
 
 "2.20": [
     ("p", "न जायते म्रियते वा कदाचिन्", "na jāyate mriyate vā kadācin", 11),
-    ("p", "नायं भूत्वा भविता वा न भूयः", " nāyaṃ bhūtvā bhavitā vā na bhūyaḥ", 11),
+    ("p", "नायं भूत्वा भविता वा न भूयः", "nāyaṃ bhūtvā bhavitā vā na bhūyaḥ", 11),
     ("p", "अजो नित्यः शाश्वतोऽयं पुराणो", "ajo nityaḥ śāśvato’yaṃ purāṇo", 11),
     ("p", "न हन्यते हन्यमाने शरीरे", "na hanyate hanyamāne śarīre", 11),
 ],
@@ -358,8 +358,8 @@ GITA_CH2_PADAS = {
 "2.47": [
     ("p", "कर्मण्येवाधिकारस्ते", "karmaṇyevādhikāraste", 8),
     ("p", "मा फलेषु कदाचन", "mā phaleṣu kadācana", 8),
-    ("p", "मा कर्मफलहेतुर्भूर्मा", "mā karmaphalaheturbhūrmā", 9),
-    ("p", "ते सङ्गोऽस्त्वकर्मणि", " te saṅgo’stvakarmaṇi", 7),
+    ("p", "मा कर्मफलहेतुर्भूर्", "mā karmaphalaheturbhūr", 8),
+    ("p", "मा ते सङ्गोऽस्त्वकर्मणि", "mā te saṅgo’stvakarmaṇi", 8),
 ],
 
 "2.48": [

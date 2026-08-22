@@ -31,7 +31,7 @@ GITA_CH11_PADAS = {
 "11.01": [
     ("s", "अर्जुन उवाच।", "arjuna uvāca"),
     ("p", "मदनुग्रहाय परमं", "madanugrahāya paramaṃ", 9),
-    ("p", "गुह्यमध्यात्मसंज्ञितम्", " guhyamadhyātmasaṃjñitam", 8),
+    ("p", "गुह्यमध्यात्मसंज्ञितम्", "guhyamadhyātmasaṃjñitam", 8),
     ("p", "यत्त्वयोक्तं वचस्तेन", "yattvayoktaṃ vacastena", 8),
     ("p", "मोहोऽयं विगतो मम", "moho’yaṃ vigato mama", 8),
 ],

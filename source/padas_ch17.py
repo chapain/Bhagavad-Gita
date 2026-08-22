@@ -122,8 +122,8 @@ GITA_CH17_PADAS = {
 ],
 
 "17.14": [
-    ("p", "देवद्विजगुरुप्राज्ञपूजनं", "devadvijaguruprājñapūjanaṃ", 11),
-    ("p", "शौचमार्जवम्", " śaucamārjavam", 5),
+    ("p", "देवद्विजगुरुप्राज्ञ", "devadvijaguruprājña", 8),
+    ("p", "पूजनं शौचमार्जवम्", "pūjanaṃ śaucamārjavam", 8),
     ("p", "ब्रह्मचर्यमहिंसा च", "brahmacaryamahiṃsā ca", 8),
     ("p", "शारीरं तप उच्यते", "śārīraṃ tapa ucyate", 8),
 ],
@@ -139,7 +139,7 @@ GITA_CH17_PADAS = {
     ("p", "मनःप्रसादः सौम्यत्वं", "manaḥprasādaḥ saumyatvaṃ", 8),
     ("p", "मौनमात्मविनिग्रहः", "maunamātmavinigrahaḥ", 8),
     ("p", "भावसंशुद्धिरित्येतत्", "bhāvasaṃśuddhirityetat", 8),
-    ("p", "तपो मानसमुच्यते", " tapo mānasamucyate", 8),
+    ("p", "तपो मानसमुच्यते", "tapo mānasamucyate", 8),
 ],
 
 "17.17": [
@@ -157,10 +157,10 @@ GITA_CH17_PADAS = {
 ],
 
 "17.19": [
-    ("p", "मूढग्राहेणात्मनो", "mūḍhagrāheṇātmano", 7),
-    ("p", "यत् पीडया क्रियते तपः", " yat pīḍayā kriyate tapaḥ", 9),
-    ("p", "परस्योत्सादनार्थं", "parasyotsādanārthaṃ", 7),
-    ("p", "वातत्तामसमुदाहृतम्", " vātattāmasamudāhṛtam", 9),
+    ("p", "मूढग्राहेणात्मनो यत्", "mūḍhagrāheṇātmano yat", 8),
+    ("p", "पीडया क्रियते तपः", "pīḍayā kriyate tapaḥ", 8),
+    ("p", "परस्योत्सादनार्थं वा", "parasyotsādanārthaṃ vā", 8),
+    ("p", "तत्तामसमुदाहृतम्", "tattāmasamudāhṛtam", 8),
 ],
 
 "17.20": [
@@ -220,8 +220,8 @@ GITA_CH17_PADAS = {
 ],
 
 "17.28": [
-    ("p", "अश्रद्धया हुतं", "aśraddhayā hutaṃ", 6),
-    ("p", "दत्तंतपस्तप्तं कृतं च यत्", " dattaṃtapastaptaṃ kṛtaṃ ca yat", 10),
+    ("p", "अश्रद्धया हुतं दत्तं", "aśraddhayā hutaṃ dattaṃ", 8),
+    ("p", "तपस्तप्तं कृतं च यत्", "tapastaptaṃ kṛtaṃ ca yat", 8),
     ("p", "असदित्युच्यते पार्थ", "asadityucyate pārtha", 8),
     ("p", "न च तत्प्रेत्य नो इह", "na ca tatpretya no iha", 8),
 ],

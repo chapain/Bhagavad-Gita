@@ -45,7 +45,7 @@ GITA_CH15_PADAS = {
 
 "15.03": [
     ("p", "न रूपमस्येह तथोपलभ्यते", "na rūpamasyeha tathopalabhyate", 12),
-    ("p", "नान्तो न चादिर्न च सम्प्रतिष्ठा", " nānto na cādirna ca sampratiṣṭhā", 11),
+    ("p", "नान्तो न चादिर्न च सम्प्रतिष्ठा", "nānto na cādirna ca sampratiṣṭhā", 11),
     ("p", "अश्वत्थमेनं सुविरूढमूलम्", "aśvatthamenaṃ suvirūḍhamūlam", 11),
     ("p", "असङ्गशस्त्रेण दृढेन छित्त्वा", "asaṅgaśastreṇa dṛḍhena chittvā", 11),
 ],

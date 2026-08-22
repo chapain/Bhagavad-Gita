@@ -93,8 +93,8 @@ GITA_CH9_PADAS = {
 ],
 
 "9.10": [
-    ("p", "मयाध्यक्षेण", "mayādhyakṣeṇa", 5),
-    ("p", "प्रकृतिःसूयते सचराचरम्", " prakṛtiḥsūyate sacarācaram", 11),
+    ("p", "मयाध्यक्षेण प्रकृतिः", "mayādhyakṣeṇa prakṛtiḥ", 8),
+    ("p", "सूयते सचराचरम्", "sūyate sacarācaram", 8),
     ("p", "हेतुनानेन कौन्तेय", "hetunānena kaunteya", 8),
     ("p", "जगद्विपरिवर्तते", "jagadviparivartate", 8),
 ],
@@ -219,10 +219,10 @@ GITA_CH9_PADAS = {
 ],
 
 "9.28": [
-    ("p", "शुभाशुभफलैरेवंमोक्ष्यसे", "śubhāśubhaphalairevaṃmokṣyase", 11),
-    ("p", "कर्मबन्धनैः", " karmabandhanaiḥ", 5),
-    ("p", "सन्न्यासयोगयुक्तात्माविमुक्तो", "sannyāsayogayuktātmāvimukto", 11),
-    ("p", "मामुपैष्यसि", " māmupaiṣyasi", 5),
+    ("p", "शुभाशुभफलैरेवं", "śubhāśubhaphalairevaṃ", 8),
+    ("p", "मोक्ष्यसे कर्मबन्धनैः", "mokṣyase karmabandhanaiḥ", 8),
+    ("p", "सन्न्यासयोगयुक्तात्मा", "sannyāsayogayuktātmā", 8),
+    ("p", "विमुक्तो मामुपैष्यसि", "vimukto māmupaiṣyasi", 8),
 ],
 
 "9.29": [
@@ -256,8 +256,8 @@ GITA_CH9_PADAS = {
 "9.33": [
     ("p", "किं पुनर्ब्राह्मणाः पुण्या", "kiṃ punarbrāhmaṇāḥ puṇyā", 8),
     ("p", "भक्ता राजर्षयस्तथा", "bhaktā rājarṣayastathā", 8),
-    ("p", "अनित्यमसुखं लोकमिमं", "anityamasukhaṃ lokamimaṃ", 10),
-    ("p", "प्राप्य भजस्व माम्", " prāpya bhajasva mām", 6),
+    ("p", "अनित्यमसुखं लोकम्", "anityamasukhaṃ lokam", 8),
+    ("p", "इमं प्राप्य भजस्व माम्", "imaṃ prāpya bhajasva mām", 8),
 ],
 
 "9.34": [

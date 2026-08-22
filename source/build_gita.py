@@ -338,6 +338,23 @@ for ch in data:
                             f"      pāda {i+1}: {pads[i]['t']}\n"
                             f"      pāda {i+2}: {pads[i+1]['t']}")
 
+# 1c. typography of the pāda text itself: no stray space at either end and no
+#     double space. These are invisible in HTML, so nothing else would catch
+#     them, but they live in your data files and travel with copied text.
+for ch in data:
+    for t in ch["themes"]:
+        for p in t["parts"]:
+            for v in p["sutras"]:
+                for it in v["flow"]:
+                    for fld, what in (("d", "Devanagari"), ("t", "IAST")):
+                        txt = it.get(fld, "")
+                        if txt != txt.strip():
+                            problems.append(f"padas_ch*.py: {v['n']} has a stray space at the "
+                                            f"start or end of its {what}: {txt!r}")
+                        elif "  " in txt:
+                            problems.append(f"padas_ch*.py: {v['n']} has a double space in its "
+                                            f"{what}: {txt!r}")
+
 # 2. no translation may fall back to English
 fb_ne = [v["n"] for ch in data for t in ch["themes"] for p in t["parts"] for v in p["sutras"]
          if not TRANS_NE.get(v["n"])]
@@ -1339,7 +1356,7 @@ function showVerses(ci,ti){
     </div>
     <div class="view-title fade-in">${esc(T(t.titles))}</div>
     <div class="view-sub fade-in">${esc(T(t.descs))}</div>
-    <div class="view-sub fade-in">${L('verses_across_parts').replace('{v}',numL(vCount(t))).replace('{p}',numL(t.parts.length))}. ${L('click_hint')}.</div>
+    <div class="view-sub fade-in">${(t.parts.length===1 ? (vCount(t)===1 ? L('verse_across_part1') : L('verses_across_part1')) : L('verses_across_parts')).replace('{v}',numL(vCount(t))).replace('{p}',numL(t.parts.length))}. ${L('click_hint')}.</div>
     ${blocks}`;
 }
 
@@ -1430,7 +1447,7 @@ function fillModal(){
     <div class="m-meter">${esc(meterText(s))}</div>
     <div class="m-verse">
       <div class="words-bar">
-        <span class="wb-hint">${L('click_hint')} ·</span>
+        <span class="wb-hint">${L('click_hint_pada')} ·</span>
         <button class="wb-btn" onclick="toggleAllMeanings(this)">${L('hide_meanings')}</button>
       </div>
       ${spkHtml(topS)}

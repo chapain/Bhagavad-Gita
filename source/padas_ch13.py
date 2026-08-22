@@ -72,8 +72,8 @@ GITA_CH13_PADAS = {
 ],
 
 "13.07": [
-    ("p", "अमानित्वमदम्भित्वमहिंसा", "amānitvamadambhitvamahiṃsā", 11),
-    ("p", "क्षान्तिरार्जवम्", " kṣāntirārjavam", 5),
+    ("p", "अमानित्वमदम्भित्वम्", "amānitvamadambhitvam", 8),
+    ("p", "अहिंसा क्षान्तिरार्जवम्", "ahiṃsā kṣāntirārjavam", 8),
     ("p", "आचार्योपासनं शौचं", "ācāryopāsanaṃ śaucaṃ", 8),
     ("p", "स्थैर्यमात्मविनिग्रहः", "sthairyamātmavinigrahaḥ", 8),
 ],
@@ -163,8 +163,8 @@ GITA_CH13_PADAS = {
 ],
 
 "13.20": [
-    ("p", "कार्यकरणकर्तृत्वेहेतुः", "kāryakaraṇakartṛtvehetuḥ", 10),
-    ("p", "प्रकृतिरुच्यते", " prakṛtirucyate", 6),
+    ("p", "कार्यकरणकर्तृत्वे", "kāryakaraṇakartṛtve", 8),
+    ("p", "हेतुः प्रकृतिरुच्यते", "hetuḥ prakṛtirucyate", 8),
     ("p", "पुरुषः सुखदुःखानां", "puruṣaḥ sukhaduḥkhānāṃ", 8),
     ("p", "भोक्तृत्वे हेतुरुच्यते", "bhoktṛtve heturucyate", 8),
 ],
@@ -177,8 +177,8 @@ GITA_CH13_PADAS = {
 ],
 
 "13.22": [
-    ("p", "उपद्रष्टानुमन्ता चभर्ता", "upadraṣṭānumantā cabhartā", 10),
-    ("p", "भोक्ता महेश्वरः", " bhoktā maheśvaraḥ", 6),
+    ("p", "उपद्रष्टानुमन्ता च", "upadraṣṭānumantā ca", 8),
+    ("p", "भर्ता भोक्ता महेश्वरः", "bhartā bhoktā maheśvaraḥ", 8),
     ("p", "परमात्मेति चाप्युक्तो", "paramātmeti cāpyukto", 8),
     ("p", "देहेऽस्मिन्पुरुषः परः", "dehe’sminpuruṣaḥ paraḥ", 8),
 ],
@@ -261,8 +261,8 @@ GITA_CH13_PADAS = {
 ],
 
 "13.34": [
-    ("p", "क्षेत्रक्षेत्रज्ञयोरेवमन्तरं", "kṣetrakṣetrajñayorevamantaraṃ", 11),
-    ("p", "ज्ञानचक्षुषा", " jñānacakṣuṣā", 5),
+    ("p", "क्षेत्रक्षेत्रज्ञयोरेवम्", "kṣetrakṣetrajñayorevam", 8),
+    ("p", "अन्तरं ज्ञानचक्षुषा", "antaraṃ jñānacakṣuṣā", 8),
     ("p", "भूतप्रकृतिमोक्षं च", "bhūtaprakṛtimokṣaṃ ca", 8),
     ("p", "ये विदुर्यान्ति ते परम्", "ye viduryānti te param", 8),
 ],

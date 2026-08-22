@@ -200,8 +200,8 @@ GITA_CH6_PADAS = {
 "6.25": [
     ("p", "शनैः शनैरुपरमेद्", "śanaiḥ śanairuparamed", 8),
     ("p", "बुद्ध्या धृतिगृहीतया", "buddhyā dhṛtigṛhītayā", 8),
-    ("p", "आत्मसंस्थं मनः कृत्वान", "ātmasaṃsthaṃ manaḥ kṛtvāna", 9),
-    ("p", "किञ्चिदपि चिन्तयेत्", " kiñcidapi cintayet", 7),
+    ("p", "आत्मसंस्थं मनः कृत्वा", "ātmasaṃsthaṃ manaḥ kṛtvā", 8),
+    ("p", "न किञ्चिदपि चिन्तयेत्", "na kiñcidapi cintayet", 8),
 ],
 
 "6.26": [
