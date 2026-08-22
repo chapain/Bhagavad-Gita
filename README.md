@@ -90,6 +90,46 @@ python3 build.py --fast     build only, skip the tests
 python3 build.py --serve    build, verify, then serve at http://localhost:8000
 ```
 
+### Editing in your browser
+
+For browsing the whole book and fixing things as you notice them:
+
+```
+python3 edit.py
+```
+
+It opens `http://127.0.0.1:8765` with every editable field laid out by chapter:
+
+| tab | what you can change |
+|---|---|
+| Verses & pādas | the verse Devanagari/IAST, and the four quarter-boxes with their syllable counts |
+| Word meanings | the word-by-word split and its English meaning, per quarter |
+| Translations | literal + paraphrase, in English, Nepali and Hindi |
+| Themes & parts | theme and part titles, descriptions and verse ranges, in all three languages |
+| Chapter names | Nepali and Hindi chapter names and blurbs |
+| Interface text | all 77 UI strings in three languages |
+
+Press **Save** on any block and it writes the real file in `source/`, then rebuilds
+`index.html`. The **Run full build** button runs the complete suite when you want it.
+
+**A bad edit cannot get in.** Every save is written, then validated by the same
+checks the build uses. If a pāda no longer spells its verse, or a syllable count
+is wrong, or a word runs into the next quarter, the change is **rolled back** and
+you are told exactly what was wrong:
+
+```
+Not saved — this change would break the data:
+✗ padas_ch*.py: 17.28 is 32 syllables, so each pāda should be 8,
+  but they are [6, 10, 8, 8] — a boundary is inside a word.
+Your file was left exactly as it was.
+```
+
+The previous version of every file it touches is also kept in `source/.backup/`.
+
+This is a **local tool**. It binds to `127.0.0.1`, so nothing outside your own
+computer can reach it, and it is not part of `index.html` — the file you share
+with friends contains no editing code at all.
+
 ### Fixing content
 
 **Every part of the app is meant to be corrected by hand.** Edit the file in

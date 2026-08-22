@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gita — Content Editor</title>
+<style>
+  :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --teal:#0F4C5C; --teal-mid:#1E6E7E;
+         --cream:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --paper:#FFF; --line:#E7D9C2;
+         --ok:#2E7D52; --bad:#C0392B; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif; color:var(--ink);
+        background:var(--cream); line-height:1.5;}
+  header{ background:linear-gradient(135deg,var(--teal),#17566B 55%,var(--teal-mid));
+          color:#FFF8EC; padding:12px 18px; border-bottom:4px solid var(--saffron);
+          display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+          position:sticky; top:0; z-index:20;}
+  header h1{ font-family:Georgia,serif; font-size:1.15rem;}
+  header .sp{ margin-left:auto; display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+  select,input[type=search]{ padding:7px 10px; border-radius:8px; border:2px solid var(--line);
+        font-size:.9rem; background:#fff; color:var(--ink); max-width:60vw;}
+  button{ font:inherit; cursor:pointer; border-radius:999px; border:2px solid transparent; padding:7px 14px; font-weight:600;}
+  .btn{ background:var(--saffron); color:#FFF8EC;}
+  .btn.ghost{ background:transparent; color:#FFF8EC; border-color:rgba(255,248,236,.45);}
+  .btn.sm{ padding:4px 11px; font-size:.82rem;}
+  .btn.teal{ background:var(--teal); color:#FFF8EC;}
+  .wrap{ max-width:1000px; margin:0 auto; padding:18px 16px 90px;}
+  .card{ background:var(--paper); border:2px solid var(--line); border-radius:12px;
+         padding:14px 16px; margin-bottom:14px;}
+  .card h2{ font-family:Georgia,serif; color:var(--teal); font-size:1.1rem; margin-bottom:2px;}
+  .card .sub{ color:var(--ink-soft); font-size:.85rem; margin-bottom:10px;}
+  .deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal); font-size:1.1rem; line-height:1.75;}
+  .iast{ font-style:italic; color:var(--ink-soft); font-size:.9rem;}
+  .row{ display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; margin-bottom:8px;}
+  .row > label{ min-width:120px; font-size:.82rem; font-weight:700; color:var(--ink-soft); padding-top:8px;}
+  .row > .f{ flex:1; min-width:240px;}
+  textarea,.txt{ width:100%; padding:8px 10px; border:2px solid var(--line); border-radius:8px;
+        font:inherit; font-size:.95rem; background:#fff; color:var(--ink); resize:vertical;}
+  textarea.dv,.txt.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem;}
+  .pada{ display:grid; grid-template-columns:1fr 1fr 70px; gap:8px; margin-bottom:6px; align-items:center;}
+  .pada .n{ text-align:center;}
+  .words{ display:grid; grid-template-columns:1fr 1fr 1fr 26px; gap:6px; margin-bottom:5px;}
+  .qh{ font-weight:700; color:var(--saffron-dark); font-size:.8rem; margin:10px 0 4px;}
+  .msg{ position:fixed; left:50%; transform:translateX(-50%); bottom:20px; z-index:50;
+        padding:11px 18px; border-radius:10px; color:#fff; font-weight:600; max-width:90vw;
+        white-space:pre-wrap; box-shadow:0 8px 24px rgba(0,0,0,.25); display:none; font-size:.9rem;}
+  .msg.ok{ background:var(--ok);} .msg.bad{ background:var(--bad);}
+  .tabs{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px;}
+  .tab{ background:#fff; border:2px solid var(--line); color:var(--teal);}
+  .tab.on{ background:var(--teal); color:#FFF8EC; border-color:var(--teal);}
+  .hint{ background:#FDF3E0; border-left:4px solid var(--saffron); padding:9px 12px;
+         border-radius:0 8px 8px 0; font-size:.85rem; color:var(--ink-soft); margin-bottom:14px;}
+  .del{ background:none; border:2px solid var(--line); color:var(--bad); border-radius:8px;
+        padding:0; font-weight:700; cursor:pointer;}
+  .muted{ color:var(--ink-soft); font-size:.82rem;}
+</style>
+</head>
+<body>
+<header>
+  <h1>ॐ Content Editor</h1>
+  <div class="sp">
+    <select id="chSel"></select>
+    <input type="search" id="find" placeholder="jump to verse, e.g. 17.28">
+    <button class="btn ghost" id="buildBtn">Run full build</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="hint" id="hint"></div>
+  <div id="view"><p class="muted">Loading…</p></div>
+</div>
+<div class="msg" id="msg"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+let DATA = null, CH = 1, TAB = 'verses';
+
+const esc = s => String(s??'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(text, ok=true){
+  const m=$('#msg'); m.textContent=text; m.className='msg '+(ok?'ok':'bad'); m.style.display='block';
+  clearTimeout(m._t); m._t=setTimeout(()=>m.style.display='none', ok?2600:9000);
+}
+async function save(kind, payload, btn){
+  if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
+  try{
+    const r = await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({kind,payload})});
+    const j = await r.json();
+    toast(j.message || (j.ok?'Saved.':'Failed.'), j.ok);
+    if(j.ok) await load(false);
+  }catch(e){ toast('Could not reach the editor server: '+e.message,false); }
+  if(btn){ btn.disabled=false; btn.textContent='Save'; }
+}
+async function load(first=true){
+  const r = await fetch('/api/content'); const j = await r.json();
+  if(!j.ok){ toast('Load failed: '+j.error,false); return; }
+  DATA = j.data;
+  if(first){
+    $('#chSel').innerHTML = DATA.chapters.map(c=>`<option value="${c.num}">Chapter ${c.num} · ${esc(c.name)}</option>`).join('');
+    $('#tabs').innerHTML = [['verses','Verses & pādas'],['words','Word meanings'],
+      ['trans','Translations'],['themes','Themes & parts'],['chapter','Chapter names'],['ui','Interface text']]
+      .map(([k,l])=>`<button class="tab${k===TAB?' on':''}" data-tab="${k}">${l}</button>`).join('');
+    $('#tabs').onclick = e => { const b=e.target.closest('.tab'); if(!b) return;
+      TAB=b.dataset.tab; document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t===b)); render(); };
+    $('#chSel').onchange = e => { CH=+e.target.value; render(); };
+    $('#find').onchange = e => {
+      const m=(e.target.value||'').match(/(\d+)\D+(\d+)/); if(!m) return;
+      CH=+m[1]; $('#chSel').value=CH; TAB='verses';
+      document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.tab==='verses'));
+      render(); const el=document.getElementById('v'+(+m[2])); if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+    };
+    $('#buildBtn').onclick = async ev => {
+      ev.target.disabled=true; ev.target.textContent='Building…';
+      const r=await fetch('/api/build'); const j=await r.json();
+      toast(j.ok?'Full build passed — all checks green.':'Build FAILED:\n'+j.log.slice(-700), j.ok);
+      ev.target.disabled=false; ev.target.textContent='Run full build';
+    };
+  }
+  render();
+}
+const chap = () => DATA.chapters.find(c=>c.num===CH);
+const ref = v => CH+'.'+String(v).padStart(2,'0');
+
+const HINTS = {
+ verses:'The verse text is what readers see, printed exactly as written here. The four pādas below it are the quarter-boxes in the popup — they must spell the verse and their syllable counts must be right, or the save is refused.',
+ words:'The word-by-word split shown when a reader taps a pāda. The Devanagari and IAST here are the true forms before sandhi (yajñāt, etān), unlike the pāda text which shows the joined form.',
+ trans:'Two translations per verse in each language: a literal rendering and a freer paraphrase.',
+ themes:'Themes group verses; each theme has parts. The ranges decide which verses appear where — every verse must fall in exactly one part.',
+ chapter:'Chapter names and one-line blurbs in Nepali and Hindi. English lives in gita_data.py.',
+ ui:'Every button and label in the app, in all three languages.'
+};
+
+function render(){
+  $('#hint').textContent = HINTS[TAB] || '';
+  $('#view').innerHTML = ({verses:vVerses, words:vWords, trans:vTrans,
+                           themes:vThemes, chapter:vChapter, ui:vUI})[TAB]();
+}
+
+/* ---------- verses & pādas ---------- */
+function vVerses(){
+  const c=chap(); let h='';
+  for(const v of Object.keys(c.verses).sort((a,b)=>a-b)){
+    const r=ref(v), vv=c.verses[v], rows=c.padas[r]||[];
+    h+=`<div class="card" id="v${v}"><h2>Verse ${r}</h2>
+      <div class="sub">the running verse — shown exactly as written</div>
+      <div class="row"><label>Devanagari</label><div class="f"><textarea class="dv" rows="2" id="d${v}">${esc(vv.deva)}</textarea></div></div>
+      <div class="row"><label>IAST</label><div class="f"><textarea rows="2" id="i${v}">${esc(vv.iast)}</textarea></div></div>
+      <div class="row" style="margin-bottom:4px"><label>Replace</label><div class="f" style="display:flex;gap:6px;flex-wrap:wrap">
+        <input class="txt" style="max-width:190px" id="fa${v}" placeholder="find e.g. hṛṣīkeśaḥ">
+        <input class="txt" style="max-width:190px" id="fb${v}" placeholder="replace e.g. hṛṣīkeśo">
+        <button class="btn sm" onclick="replaceAll(${v},this)">Apply to verse + quarters</button>
+      </div></div>
+      <div class="muted" style="margin-bottom:8px">Changes the verse text and any quarter containing it, then saves both together.</div>
+      <div class="qh">The four quarters (pādas)</div>`;
+    rows.forEach((row,idx)=>{
+      const isP=row[0]==='p';
+      h+=`<div class="pada" data-r="${r}" data-i="${idx}">
+        <input class="txt dv" value="${esc(row[1])}" data-f="deva">
+        <input class="txt" value="${esc(row[2])}" data-f="iast">
+        ${isP?`<input class="txt n" value="${row[3]}" data-f="n">`:`<span class="muted" style="text-align:center">speaker</span>`}
+      </div>`;
+    });
+    h+=`<div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn sm teal" onclick="saveAll('${r}',${v},this)">Save verse + quarters together</button>
+      <button class="btn sm" onclick="savePadas('${r}',this)">Save quarters only</button>
+      </div></div>`;
+  }
+  return h;
+}
+function saveVerse(v,btn){ save('verse',{ch:CH,v,deva:$('#d'+v).value,iast:$('#i'+v).value},btn); }
+function padaRows(r){
+  return [...document.querySelectorAll(`.pada[data-r="${CSS.escape(r)}"]`)].map(el=>{
+    const g=f=>el.querySelector(`[data-f="${f}"]`), n=g('n');
+    return n ? ['p',g('deva').value,g('iast').value,parseInt(n.value||'0',10)]
+             : ['s',g('deva').value,g('iast').value];
+  });
+}
+/* The verse text and its quarters are the same words. Change one alone and the
+   build rightly refuses it, so this saves both in a single step. */
+function saveAll(r,v,btn){
+  save('verse_all',{ch:CH,v,ref:r,deva:$('#d'+v).value,iast:$('#i'+v).value,rows:padaRows(r)},btn);
+}
+/* Fix a spelling once and have it applied to the verse and every quarter that
+   contains it — the usual case, e.g. hṛṣīkeśaḥ -> hṛṣīkeśo. */
+function replaceAll(v,btn){
+  const from=$('#fa'+v).value, to=$('#fb'+v).value;
+  if(!from){ toast('Type the text to find.',false); return; }
+  let hits=0;
+  for(const id of ['#d'+v,'#i'+v]){
+    const el=$(id); if(el.value.includes(from)){ el.value=el.value.split(from).join(to); hits++; }
+  }
+  document.querySelectorAll(`.pada[data-r="${CSS.escape(ref(v))}"] .txt`).forEach(el=>{
+    if(el.dataset.f!=='n' && el.value.includes(from)){ el.value=el.value.split(from).join(to); hits++; }
+  });
+  if(!hits){ toast('“'+from+'” was not found in this verse.',false); return; }
+  toast('Replaced in '+hits+' field'+(hits>1?'s':'')+' — now press “Save verse + quarters together”.');
+}
+function savePadas(r,btn){ save('padas',{ch:CH,ref:r,rows:padaRows(r)},btn); }
+
+/* ---------- word meanings ---------- */
+function vWords(){
+  const c=chap(); let h='';
+  for(const v of Object.keys(c.words).sort((a,b)=>a-b)){
+    const e=c.words[v];
+    h+=`<div class="card" id="w${v}"><h2>Verse ${ref(v)} — words</h2>
+        <div class="sub">Devanagari · IAST · English meaning</div>`;
+    for(const k of ['s','0','1','2','3']){
+      const list=e[k]||[]; if(k==='s' && !list.length) continue;
+      h+=`<div class="qh">${k==='s'?'Speaker line':'Quarter '+(+k+1)}</div>`;
+      list.forEach((w,i)=>{
+        h+=`<div class="words" data-v="${v}" data-k="${k}" data-i="${i}">
+          <input class="txt dv" value="${esc(w[0])}" data-f="0">
+          <input class="txt" value="${esc(w[1])}" data-f="1">
+          <input class="txt" value="${esc(w[2])}" data-f="2">
+          <button class="del" onclick="this.parentElement.remove()" title="remove">×</button></div>`;
+      });
+      h+=`<button class="btn sm" onclick="addWord(${v},'${k}',this)">+ word</button>`;
+    }
+    h+=`<div style="margin-top:10px"><button class="btn sm teal" onclick="saveWords(${v},this)">Save words</button></div></div>`;
+  }
+  return h;
+}
+function addWord(v,k,btn){
+  const d=document.createElement('div'); d.className='words'; d.dataset.v=v; d.dataset.k=k;
+  d.innerHTML=`<input class="txt dv" data-f="0"><input class="txt" data-f="1"><input class="txt" data-f="2">
+               <button class="del" onclick="this.parentElement.remove()">×</button>`;
+  btn.parentElement.insertBefore(d, btn);
+}
+function saveWords(v,btn){
+  const words={};
+  for(const k of ['s','0','1','2','3']){
+    words[k]=[...document.querySelectorAll(`.words[data-v="${v}"][data-k="${k}"]`)]
+      .map(el=>['0','1','2'].map(f=>el.querySelector(`[data-f="${f}"]`).value))
+      .filter(w=>w[0].trim()||w[1].trim());
+  }
+  save('words',{ch:CH,v,words},btn);
+}
+
+/* ---------- translations ---------- */
+function vTrans(){
+  const c=chap(); let h='';
+  for(const v of Object.keys(c.verses).sort((a,b)=>a-b)){
+    const r=ref(v);
+    const en=c.trans_en[v]||['',''], ne=DATA.trans_ne[r]||['',''], hi=DATA.trans_hi[r]||['',''];
+    h+=`<div class="card" id="t${v}"><h2>Verse ${r}</h2>
+        <div class="deva">${esc(c.verses[v].deva)}</div><div class="sub"></div>`;
+    const blk=(lang,label,val,cls)=>`
+      <div class="qh">${label}</div>
+      <div class="row"><label>Literal</label><div class="f"><textarea rows="2" class="${cls}" id="${lang}l${v}">${esc(val[0])}</textarea></div></div>
+      <div class="row"><label>Paraphrase</label><div class="f"><textarea rows="2" class="${cls}" id="${lang}p${v}">${esc(val[1])}</textarea></div></div>
+      <button class="btn sm" onclick="saveTrans('${lang}',${v},this)">Save ${label}</button>`;
+    h+=blk('en','English',en,'')+blk('ne','नेपाली',ne,'dv')+blk('hi','हिन्दी',hi,'dv');
+    h+=`</div>`;
+  }
+  return h;
+}
+function saveTrans(lang,v,btn){
+  const lit=$('#'+lang+'l'+v).value, para=$('#'+lang+'p'+v).value;
+  if(lang==='en') save('trans_en',{ch:CH,v,lit,para},btn);
+  else save('trans_'+lang,{ref:ref(v),lit,para},btn);
+}
+
+/* ---------- themes & parts ---------- */
+function vThemes(){
+  const c=chap(); let h='';
+  for(const lang of ['en','ne','hi']){
+    const list=c['themes_'+lang]||[];
+    h+=`<div class="card"><h2>${{en:'English',ne:'नेपाली',hi:'हिन्दी'}[lang]} — ${list.length} themes</h2>
+        <div class="sub">the three languages must have the same number of themes and parts</div>`;
+    list.forEach((t,ti)=>{
+      h+=`<div class="qh">Theme ${ti+1}</div>
+        <div class="row"><label>Title</label><div class="f"><input class="txt ${lang==='en'?'':'dv'}" data-l="${lang}" data-t="${ti}" data-f="title" value="${esc(t[0])}"></div></div>
+        <div class="row"><label>Description</label><div class="f"><textarea rows="2" class="${lang==='en'?'':'dv'}" data-l="${lang}" data-t="${ti}" data-f="desc">${esc(t[1])}</textarea></div></div>`;
+      t[2].forEach((p,pi)=>{
+        h+=`<div class="row" style="margin-left:14px"><label>Part ${pi+1}</label><div class="f">
+          <input class="txt ${lang==='en'?'':'dv'}" data-l="${lang}" data-t="${ti}" data-p="${pi}" data-f="ptitle" value="${esc(p[0])}" placeholder="title">
+          <textarea rows="2" class="${lang==='en'?'':'dv'}" data-l="${lang}" data-t="${ti}" data-p="${pi}" data-f="pdesc" placeholder="description">${esc(p[1])}</textarea>
+          <div style="display:flex;gap:8px;margin-top:5px">
+            <input class="txt" style="max-width:110px" data-l="${lang}" data-t="${ti}" data-p="${pi}" data-f="start" value="${esc(p[2])}">
+            <input class="txt" style="max-width:110px" data-l="${lang}" data-t="${ti}" data-p="${pi}" data-f="end" value="${esc(p[3])}">
+          </div></div></div>`;
+      });
+    });
+    h+=`<div style="margin-top:10px"><button class="btn sm teal" onclick="saveThemes('${lang}',this)">Save ${lang.toUpperCase()} themes</button></div></div>`;
+  }
+  return h;
+}
+function saveThemes(lang,btn){
+  const c=chap(); const src=c['themes_'+lang]||[];
+  const g=(sel)=>document.querySelector(sel);
+  const themes=src.map((t,ti)=>{
+    const q=f=>g(`[data-l="${lang}"][data-t="${ti}"][data-f="${f}"]:not([data-p])`).value;
+    const parts=t[2].map((p,pi)=>{
+      const r=f=>g(`[data-l="${lang}"][data-t="${ti}"][data-p="${pi}"][data-f="${f}"]`).value;
+      return [r('ptitle'),r('pdesc'),r('start'),r('end')];
+    });
+    return [q('title'),q('desc'),parts];
+  });
+  save('themes_'+lang,{ch:CH,themes},btn);
+}
+
+/* ---------- chapter names ---------- */
+function vChapter(){
+  const d=DATA.chapter_i18n; let h=`<div class="card"><h2>Chapter names & blurbs</h2>
+    <div class="sub">Nepali and Hindi; English names come from gita_data.py</div>`;
+  DATA.chapters.forEach(c=>{
+    h+=`<div class="qh">Chapter ${c.num} · ${esc(c.name)}</div>
+      <div class="row"><label>नेपाली name</label><div class="f"><input class="txt dv" data-ci="${c.num}" data-f="names_ne" value="${esc(d.names_ne[c.num]||'')}"></div></div>
+      <div class="row"><label>नेपाली blurb</label><div class="f"><textarea rows="2" class="dv" data-ci="${c.num}" data-f="subs_ne">${esc(d.subs_ne[c.num]||'')}</textarea></div></div>
+      <div class="row"><label>हिन्दी name</label><div class="f"><input class="txt dv" data-ci="${c.num}" data-f="names_hi" value="${esc(d.names_hi[c.num]||'')}"></div></div>
+      <div class="row"><label>हिन्दी blurb</label><div class="f"><textarea rows="2" class="dv" data-ci="${c.num}" data-f="subs_hi">${esc(d.subs_hi[c.num]||'')}</textarea></div></div>`;
+  });
+  return h+`<div style="margin-top:10px"><button class="btn sm teal" onclick="saveChapters(this)">Save chapter names</button></div></div>`;
+}
+function saveChapters(btn){
+  const out={names_ne:{},names_hi:{},subs_ne:{},subs_hi:{}};
+  document.querySelectorAll('[data-ci]').forEach(el=>{ out[el.dataset.f][el.dataset.ci]=el.value; });
+  save('chapter_i18n',{data:out},btn);
+}
+
+/* ---------- interface text ---------- */
+function vUI(){
+  const ui=DATA.ui; let h=`<div class="card"><h2>Interface text — ${Object.keys(ui.en).length} keys</h2>
+    <div class="sub">every button and label; each row saves on its own</div>`;
+  Object.keys(ui.en).forEach(k=>{
+    h+=`<div class="qh">${esc(k)}</div>`;
+    for(const lang of ['en','ne','hi']){
+      h+=`<div class="row"><label>${lang}</label><div class="f" style="display:flex;gap:8px">
+        <input class="txt ${lang==='en'?'':'dv'}" id="ui_${lang}_${esc(k)}" value="${esc(ui[lang][k]||'')}">
+        <button class="btn sm" onclick="saveUI('${lang}','${esc(k)}',this)">Save</button></div></div>`;
+    }
+  });
+  return h+`</div>`;
+}
+function saveUI(lang,key,btn){
+  save('ui',{lang,key,value:document.getElementById(`ui_${lang}_${key}`).value},btn);
+}
+
+load();
+</script>
+</body>
+</html>
