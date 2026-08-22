@@ -4,8 +4,8 @@
  * Usage:  node run_gita_app.js          (from the project root)
  *
  * Parses bhagavad_gita.html, extracts the embedded DATA and UI objects, and
- * re-checks every integrity invariant: 18 chapters · 700 verses · 183 themes ·
- * 559 parts, trilingual coverage, word-by-word glosses, script purity,
+ * re-checks every integrity invariant: 18 chapters · 700 verses · 182 themes ·
+ * 558 parts, trilingual coverage, word-by-word glosses, script purity,
  * Latin-residue checks on Nepali/Hindi fields, and content regression locks
  * (incl. the ch.15 पथ/पथिक theme). Mirrors run_bs_app.js of the Brahma-Sūtras
  * project.
@@ -95,9 +95,9 @@ ok(devaBad.length === 0, `chapter deva names pure Devanagari (${devaBad.join(','
 ok(nameBad.length === 0, `chapter names+subs ×3 languages (${nameBad.join(',') || 'clean'})`);
 
 const allThemes = DATA.flatMap(c => c.themes);
-ok(allThemes.length === 183, `183 themes (got ${allThemes.length})`);
+ok(allThemes.length === 182, `182 themes (got ${allThemes.length})`);
 const allParts = allThemes.flatMap(t => t.parts);
-ok(allParts.length === 559, `559 parts (got ${allParts.length})`);
+ok(allParts.length === 558, `558 parts (got ${allParts.length})`);
 const tfBad = [], pfBad = [];
 for (const t of allThemes) {
   for (const l of LANGS) if (!t.titles[l] || !t.titles[l].trim() || !t.descs[l] || !t.descs[l].trim())
