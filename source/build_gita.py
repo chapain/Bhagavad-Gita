@@ -732,6 +732,7 @@ HTML = r"""<!DOCTYPE html>
   .m-line .lt{ color:var(--ink); font-size:1rem;}
   .m-line.para .lb{ background:var(--saffron);}
   .m-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:10px;}
+  .m-tail{ display:none;}   /* only needed where .m-nav is sticky (phones) */
   .m-nav button{ background:var(--teal); color:var(--on-accent); border:none; padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:600; font-size:.9rem;}
   .m-nav button:hover{ background:var(--teal-mid);} .m-nav button:disabled{ opacity:.35; cursor:default;}
   .m-nav .m-random{ margin:0 auto; background:var(--saffron); color:var(--on-accent); border:none; padding:12px 26px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.98rem; font-family:"Noto Serif Devanagari", Georgia, serif;}
@@ -822,8 +823,13 @@ HTML = r"""<!DOCTYPE html>
     .modal-bg{ padding:0; align-items:stretch; }
     .modal{ max-width:none; width:100%; max-height:none; height:100%; border-radius:0; border:none;
             border-top:4px solid var(--saffron);
-            padding:12px 14px calc(26px + env(safe-area-inset-bottom,0px));
-            padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px)); }
+            /* top padding clears the notch/status bar — without the inset the
+               first line of a verse hides behind it and cannot be scrolled to */
+            padding-top:calc(14px + env(safe-area-inset-top,0px));
+            padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));
+            padding-left:calc(14px + env(safe-area-inset-left,0px));
+            padding-right:calc(14px + env(safe-area-inset-right,0px));
+            overscroll-behavior:contain; }
     .modal .m-close{ position:fixed; top:calc(10px + env(safe-area-inset-top,0px));
                      right:calc(12px + env(safe-area-inset-right,0px)); float:none; margin:0; z-index:5;
                      width:44px; height:44px; font-size:1.2rem; box-shadow:0 4px 14px rgba(0,0,0,.3); }
@@ -840,10 +846,15 @@ HTML = r"""<!DOCTYPE html>
     .m-verse .wrow{ padding:5px 0; }
     .m-line .lt{ font-size:.98rem; }
     /* nav bar pinned to the bottom of the sheet, thumb-reachable */
+    /* A sticky bar floats above the content, so the sheet ends with a spacer
+       (.m-tail) tall enough for the last line to clear it when fully scrolled.
+       Without it the paraphrase stays hidden behind Previous/Next. */
+    .m-tail{ display:block; height:76px; }
     .m-nav{ position:sticky; bottom:0; margin:18px -14px 0;
             margin-bottom:calc(-26px - env(safe-area-inset-bottom,0px));
             padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
-            background:linear-gradient(to bottom, rgba(var(--fade),.75), var(--cream) 45%);
+            background:var(--cream);
+            box-shadow:0 -10px 16px -8px rgba(var(--shadow),.28);
             border-top:1px solid var(--line); gap:8px; }
     .m-nav button{ min-height:46px; padding:11px 14px; font-size:.9rem; flex:1; }
     .m-nav .m-count{ flex:0 0 auto; font-size:.8rem; text-align:center; }
@@ -1510,6 +1521,7 @@ function fillModal(){
     </div>
     <div class="m-line"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
     <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+    <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
       ${state.mode==='random'
         ? `<button class="m-random" onclick="randomVerse()">${esc(L('next_random'))}</button>`
