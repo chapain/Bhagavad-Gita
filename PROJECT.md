@@ -67,7 +67,7 @@ source/
   themes_ne/hi.py     Nepali/Hindi themes and parts
   translations_ne/hi.py
   i18n_chapters.py    chapter names/blurbs (ne, hi)
-  i18n_ui.py          77 UI strings × 3 languages
+  i18n_ui.py          78 UI strings × 3 languages
   build_gita.py       the builder + the manual-edit audit
   dataio.py           safe read/write of every data file (used by edit.py)
   verify.py           norm1() and syll_iast() — used ONLY to check data

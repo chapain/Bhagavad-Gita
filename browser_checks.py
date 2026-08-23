@@ -130,6 +130,27 @@ def run(pw, url, offline_capable=False):
     ok(pg.evaluate("document.documentElement.scrollWidth===document.documentElement.clientWidth"),
        "no horizontal overflow")
 
+    # The list pages run 4-5 screens on a phone, so the top crumb is repeated at
+    # the foot. It must appear only where there is a parent to go back to, and
+    # must say the same thing as the crumb above it.
+    for js, expect_foot in [("showSections()", False), ("showChapters(0)", False),
+                            ("showChapters(1)", True), ("showThemes(1)", True),
+                            ("showVerses(1,0)", True)]:
+        pg.evaluate(js)
+        pg.wait_for_timeout(450)
+        top = pg.eval_on_selector_all(".back-top:not(.back-foot .back-top)", "e=>e.map(x=>x.textContent.trim())")
+        foot = pg.eval_on_selector_all(".back-foot .back-top", "e=>e.map(x=>x.textContent.trim())")
+        ok(bool(foot) == expect_foot, f"{js}: foot back-button {'present' if expect_foot else 'absent'}")
+        if expect_foot:
+            ok(foot and top and foot[0] == top[0],
+               f"{js}: foot button says the same as the crumb ({foot[:1]} vs {top[:1]})")
+    pg.evaluate("showVerses(1,0)")
+    pg.wait_for_timeout(500)
+    pg.locator(".back-foot .back-top").click()
+    pg.wait_for_timeout(600)
+    ok("Themes" in pg.eval_on_selector(".view-title", "e=>e.textContent"),
+       "the foot back-button actually navigates")
+
     # The verse sheet is full-screen on a phone with a sticky Previous/Next bar.
     # Two things used to go wrong: the last line stayed hidden behind that bar
     # however far you scrolled, and the title sat under the notch unreachably.
