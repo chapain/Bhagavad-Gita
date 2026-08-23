@@ -105,7 +105,7 @@ CH9_TRANSLATIONS = {
 28: ("Thus you shall be freed from the bonds of actions, which bear good and evil fruit; with the self yoked in renunciation, liberated, you shall come to me.",
     "“Doing this, you are freed from the ties of karma and their fruits of good and evil; renouncing in yoga, liberated, you come to me.”"),
 29: ("I am the same to all beings; none is dear or hated by me; but those who worship me with devotion — they are in me, and I am in them.",
-    "“I am equal to all — no one is dear or disliked by me. Yet those who worship me with devotion live in me, and I in them.”"),
+    "“I play no favourites. Nobody is dearer to me than anyone else. But love me, and you will find you are living in me, and I in you.”"),
 30: ("Even if a man of very evil conduct worships me with single-minded devotion, he is to be regarded as good, for he is rightly resolved.",
     "“Even a most wicked person who worships me with undivided love must be counted among the good — for his resolve is right.”"),
 31: ("Quickly he becomes righteous of soul and attains lasting peace; know this for certain, O son of Kuntī: my devotee never perishes.",

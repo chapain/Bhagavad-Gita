@@ -703,6 +703,18 @@ __FONTS__
      unlike a back button, which belongs on the left text edge. Styled as a quiet
      outlined pill so it matches the app's other buttons and stays lighter than
      the three cards above it; it used to be the only underlined text anywhere. */
+  /* Top-level route chooser. Deliberately a different shape from .sec-tabs (the
+     three ways) — a segmented control rather than separate pills — so the two
+     strips never read as one row of five choices. */
+  .top-tabs{ display:inline-flex; gap:0; margin:0 0 20px; padding:4px;
+             background:var(--toolbar); border:2px solid var(--line); border-radius:999px;}
+  .top-tab{ background:none; border:none; color:var(--ink-soft); font-weight:700; font-size:.9rem;
+            padding:9px 18px; border-radius:999px; cursor:pointer; min-height:40px; transition:.15s;
+            white-space:nowrap;}
+  .top-tab:hover{ color:var(--teal);}
+  .top-tab.on{ background:var(--teal); color:var(--on-accent);}
+  @media (max-width:400px){ .top-tabs{ display:flex; width:100%;} .top-tab{ flex:1; padding:9px 8px; font-size:.84rem;} }
+
   .sect-all{ margin-top:34px; text-align:center;}
   .sect-all .browse-all{ display:inline-block; color:var(--teal); font-size:.9rem; font-weight:600;
              cursor:pointer; border:2px solid var(--line); background:var(--paper);
@@ -1007,7 +1019,7 @@ __FONTS__
 </div>
 
 <footer>
-  <div id="appFooter">ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Devanagari, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.</div>
+  <div id="appFooter">ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.</div>
   <!-- Credit lives in its own element: applyStatic() replaces #appFooter's
        textContent on every language switch and would otherwise wipe it. -->
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
@@ -1380,7 +1392,8 @@ function showChapters(section){
     html = `<button class="back-top" onclick="showSections()">${esc(L('back_ways'))}</button>
       ${sectionTabs()}`;
   } else {
-    html = `<div class="view-title fade-in">${esc(L('choose_chapter'))}</div>
+    html = `${topTabs()}
+      <div class="view-title fade-in">${esc(L('choose_chapter'))}</div>
       <div class="view-sub fade-in">${esc(L('choose_chapter_sub'))}</div>`;
   }
   view.innerHTML = html + `
@@ -1437,6 +1450,7 @@ function sectionCard(k, chip, title, desc){
 function showSections(){
   state.view='sections'; state.chapter=null; state.theme=null; state.section=null; renderCrumbs();
   view.innerHTML = `
+    ${topTabs()}
     <div class="view-title fade-in">${esc(L('sections_title'))}</div>
     <div class="view-sub fade-in">${esc(L('sections_sub'))}</div>
     <div class="grid sections fade-in">
@@ -1444,9 +1458,18 @@ function showSections(){
       ${sectionCard(2, chaptersRange(7,12), L('sec_bhakti'), L('sec_bhakti_desc'))}
       ${sectionCard(3, chaptersRange(13,18), L('sec_jnana'), L('sec_jnana_desc'))}
     </div>
-    <div class="sect-all fade-in">
-      <a class="browse-all" onclick="showChapters(0)">${esc(L('browse_all'))}</a>
-    </div>`;
+    `;
+}
+/* The book can be entered two ways: grouped into the three niṣṭhās, or as a
+   flat list of eighteen chapters. Those are peers, so they are tabs at the top
+   rather than a link buried under the cards. Shown only on those two pages —
+   once you are inside a way, the way-tabs below take over. */
+function topTabs(){
+  const onWays = state.view === 'sections';
+  return `<div class="top-tabs fade-in">
+    <button class="top-tab${onWays?' on':''}" onclick="showSections()">${esc(L('tab_ways'))}</button>
+    <button class="top-tab${onWays?'':' on'}" onclick="showChapters(0)">${esc(L('tab_all18'))}</button>
+  </div>`;
 }
 function sectionTabs(){
   const cur = state.section ? state.section : (state.chapter != null ? Math.ceil(DATA[state.chapter].num/6) : 0);

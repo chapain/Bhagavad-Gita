@@ -66,7 +66,7 @@ CH8_TRANSLATIONS = {
 8: ("United with the yoga of practice, with a mind that goes nowhere else — one reaches the supreme divine Person, contemplating him.",
     "“Practising with a one-pointed mind, meditating on the supreme divine Person, the yogi reaches him.”"),
 9: ("He who meditates on the ancient seer, the ruler, subtler than the subtle, the support of all, of inconceivable form, radiant as the sun, beyond darkness —",
-    "“One who contemplates the ancient seer — subtler than the subtle, the support of all, of inconceivable form, shining beyond darkness —”"),
+    "“Hold your mind on the ancient one: finer than anything fine, the ground that carries everything, past imagining, glowing like the sun on the far side of all darkness —”"),
 10: ("— at the time of death, with an unwavering mind, united with devotion and the power of yoga, breath fixed between the brows — he reaches that supreme divine Person.",
     "“— at death, with a steady mind, devotion, and yogic power, breath held between the brows — reaches that supreme divine Person.”"),
 11: ("That which the knowers of the Vedas call the imperishable, which the desireless ascetics enter, desiring which they practise celibacy — that goal I shall declare to you briefly.",

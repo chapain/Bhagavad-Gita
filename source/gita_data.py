@@ -97,7 +97,7 @@ CH1_TRANSLATIONS = {
 15: ("Hṛṣīkeśa blew Pāñcajanya; Dhanañjaya blew Devadatta; and Bhīma, the doer of herculean deeds, blew the great conch Pauṇḍra.",
     "Kṛṣṇa sounded his conch Pāñcajanya, Arjuna his Devadatta, and the mighty Bhīma, famed for his great deeds, blew the colossal Pauṇḍra."),
 16: ("King Yudhiṣṭhira, son of Kuntī, blew Anantavijaya; Nakula and Sahadeva blew Sughoṣa and Maṇipuṣpaka.",
-    "King Yudhiṣṭhira, Kuntī's son, sounded Anantavijaya, while Nakula and Sahadeva blew their conches Sughoṣa and Maṇipuṣpaka."),
+    "“King Yudhiṣṭhira sounded the conch called Endless Victory; Nakula and Sahadeva sounded theirs, Sweet-Toned and Jewel-Blossom.”"),
 17: ("And the king of Kāśī, the supreme archer, Śikhaṇḍī the great chariot-warrior, Dhṛṣṭadyumna, Virāṭa, and the unconquered Sātyaki.",
     "So too the great archer of Kāśī, Śikhaṇḍī the mighty warrior, Dhṛṣṭadyumna, King Virāṭa, and the never-defeated Sātyaki."),
 18: ("Drupada and the sons of Draupadī, O lord of the earth, and the mighty-armed son of Subhadrā — all blew their conches, each his own.",

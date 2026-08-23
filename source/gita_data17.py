@@ -97,7 +97,7 @@ CH17_TRANSLATIONS = {
 22: ("The gift given at the wrong place and time, to unworthy persons, without respect and with contempt — is declared tāmasic.",
     "“A gift given at the wrong time and place, to the undeserving, without respect or with disdain — that is tāmasic.”"),
 23: ("Om Tat Sat — this is the threefold designation of Brahman; by it were ordained of old the brāhmaṇas, the Vedas and the sacrifices.",
-    "“Om Tat Sat — this is the threefold name of Brahman. By it, long ago, were created the brāhmaṇas, the Vedas, and the sacrifices.”"),
+    "“Om Tat Sat: three syllables that stand for Brahman. From them, in the beginning, came the brāhmaṇas, the Vedas and the rites.”"),
 24: ("Therefore, uttering Om, the acts of sacrifice, gift and austerity ordained by rule are begun, ever, by the knowers of Brahman.",
     "“So the knowers of Brahman begin every act of sacrifice, charity, and penance — as scripture ordains — uttering Om.”"),
 25: ("Uttering Tat, without desiring fruit, are the acts of sacrifice, austerity and the various acts of giving performed by seekers of liberation.",

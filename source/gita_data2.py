@@ -195,7 +195,7 @@ CH2_TRANSLATIONS = {
 57: ("One who is without affection everywhere, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set.",
     "“One who clings to nothing, who is neither elated by the good nor upset by the bad — that person's understanding stands firm.”"),
 58: ("When, like a tortoise drawing in its limbs from all sides, one withdraws the senses from their objects — that one's wisdom is firmly set.",
-    "“Just as a tortoise draws in its limbs, when a person withdraws the senses from their objects — that one's wisdom is firmly established.”"),
+    "“A tortoise pulls in its legs and head at the first sign of danger. Do that with your senses, and your wisdom is steady.”"),
 59: ("The objects fall away from the self-controlled one, but the taste for them remains; and when the Supreme is seen, even that taste departs.",
     "“Sense objects drop away from the one who abstains, yet the craving for them lingers; but when one sees the Supreme, even that craving falls away.”"),
 60: ("Even for the striving sage, O son of Kuntī, the turbulent senses forcibly carry away the mind.",

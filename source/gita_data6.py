@@ -147,7 +147,7 @@ CH6_TRANSLATIONS = {
 41: ("Having attained the worlds of the righteous and dwelt there for immemorial years, he who fell from yoga is born again in the house of the pure and prosperous.",
     "“He enjoys the realms of the virtuous for ages, then is reborn in a pure and fortunate family.”"),
 42: ("Or he is born into a family of wise yogis; truly a birth like this is very hard to obtain in this world.",
-    "“Or he is born among wise yogis — a birth that is very hard to gain in this world.”"),
+    "“Or else he is born into a household of seasoned yogis — and that is the rarest birth of all.”"),
 43: ("There he regains the understanding of his former body, O son of the Kurus, and from there he strives again for perfection.",
     "“There the wisdom of his past life returns, and from that point he presses on toward perfection.”"),
 44: ("By that very former practice he is carried along, even in spite of himself; even the one who merely wishes to know yoga transcends the mere word of the Vedas.",
