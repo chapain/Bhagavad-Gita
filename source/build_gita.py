@@ -613,6 +613,10 @@ HTML = r"""<!DOCTYPE html>
   .back-top{ display:inline-block; margin:4px 0 16px; background:none; border:2px solid var(--teal); color:var(--teal);
              font-weight:700; padding:8px 18px; border-radius:999px; cursor:pointer; font-size:.9rem;}
   .back-top:hover{ background:var(--teal); color:var(--on-accent);}
+  /* the same back button repeated at the end of a long list, so a reader who has
+     scrolled to the bottom does not have to scroll all the way up again */
+  .back-foot{ margin:26px 0 4px; padding-top:20px; border-top:2px solid var(--line); text-align:center;}
+  .back-foot .back-top{ margin:0;}
   .mini-crumb{ display:flex; gap:10px; margin:2px 0 16px; flex-wrap:wrap;}
   .mini-crumb .bc-btn{ background:var(--paper); border:2px solid var(--line); border-radius:12px; cursor:pointer;
              display:flex; flex-direction:column; align-items:flex-start; gap:1px; padding:8px 14px; transition:.15s;}
@@ -1223,6 +1227,12 @@ function scrollViewTop(){
    chapters" buttons, so Favorites is not a special case. Nothing becomes
    unreachable: that destination carries its own back button, so the hierarchy is
    walked one level at a time. */
+/* These lists run four to five screens on a phone, and the only way back used to
+   be the crumb at the very top. backFoot() repeats that one button at the end —
+   same destination, same wording, so there is nothing new to learn. */
+function backFoot(onclick, label){
+  return `<div class="back-foot"><button class="back-top" onclick="${onclick}">${esc(label)}</button></div>`;
+}
 function renderCrumbs(){
   scrollViewTop();
   crumbs.innerHTML='';
@@ -1267,7 +1277,7 @@ function showChapters(section){
   const list = section ? DATA.filter(ch => ch.num >= (section-1)*6+1 && ch.num <= section*6) : DATA;
   let html;
   if(section){
-    html = `<button class="back-top" onclick="showSections()">← ${esc(L('sections_title'))}</button>
+    html = `<button class="back-top" onclick="showSections()">${esc(L('back_ways'))}</button>
       ${sectionTabs()}`;
   } else {
     html = `<div class="view-title fade-in">${esc(L('choose_chapter'))}</div>
@@ -1284,7 +1294,7 @@ function showChapters(section){
           <div class="meta">${numL(ch.verses)} ${L('verses')}</div>
           <div class="go">${L('open_themes')}</div>
         </div>`;}).join('')}
-    </div>`;
+    </div>` + (section ? backFoot('showSections()', L('back_ways')) : '');
 }
 
 function dayVerse(){
@@ -1361,7 +1371,7 @@ function showThemes(ci){
           <div class="meta">${numL(t.parts.length)} ${L('part')} · ${numL(vCount(t))} ${vCount(t)===1?L('verse'):L('verses')}</div>
           <div class="go">${L('open_verses')}</div>
         </div>`).join('')}
-    </div>`;
+        </div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
 }
 
 function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
@@ -1419,7 +1429,7 @@ function showVerses(ci,ti){
     <div class="view-title fade-in">${esc(T(t.titles))}</div>
     <div class="view-sub fade-in">${esc(T(t.descs))}</div>
     <div class="view-sub fade-in">${(t.parts.length===1 ? (vCount(t)===1 ? L('verse_across_part1') : L('verses_across_part1')) : L('verses_across_parts')).replace('{v}',numL(vCount(t))).replace('{p}',numL(t.parts.length))}. ${L('click_hint')}.</div>
-    ${blocks}`;
+    ${blocks}` + backFoot(`showThemes(${ci})`, L('back_themes'));
 }
 
 let SRCH_HITS = [], FAV_LIST = [];
