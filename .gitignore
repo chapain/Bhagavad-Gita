@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS junk
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# editors
+.vscode/
+.idea/
+*.swp
+
+# working copies / backups
+.backup/
+*.bak
+*.bak[0-9]
+*.shipped
+*.orig
+
+# test artefacts
+.pytest_cache/
+playwright-report/
