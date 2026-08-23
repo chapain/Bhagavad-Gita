@@ -20,7 +20,7 @@ app and works with no internet connection.
 
 ## What it does
 
-- **Browse** chapters → themes → parts → verses, or start from the three yogas
+- **Browse** chapters → themes → parts → verses, or start from the three ways
   (कर्मयोग 1–6 · भक्तियोग 7–12 · ज्ञानयोग 13–18).
 - **Every verse in its four quarters (pādas)** — Devanagari, IAST transliteration,
   a literal translation and a flowing paraphrase.
