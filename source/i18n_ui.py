@@ -39,7 +39,7 @@ UI = {
   "welcome_enter": "Enter the Gita",
   "welcome_foot": "ॐ 700 verses · three ways · one goal",
   "sections_title": "The Three Ways",
-  "sections_sub": "The Gita's eighteen chapters in three ways — action, devotion, knowledge — one leading to the other. Pick a way, or read straight through.",
+  "sections_sub": "The Gita's eighteen chapters in three ways — action, devotion, knowledge — one leading to the other.",
   "sec_karma": "कर्मनिष्ठा · The Way of Karma",
   "sec_karma_desc": "Chapters 1–6 · action, duty, and renouncing the fruits of action.",
   "sec_bhakti": "भक्तिनिष्ठा · The Way of Bhakti",
