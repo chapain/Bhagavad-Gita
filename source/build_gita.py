@@ -528,6 +528,7 @@ HTML = r"""<!DOCTYPE html>
 <link rel="manifest" href="manifest.webmanifest">
 <title>Bhagavad Gita — Interactive Study</title>
 <style>
+__FONTS__
   /* ---- colour tokens -------------------------------------------------
      Light is the default. The dark theme below overrides these same names,
      so every rule keeps using var(--x) and nothing else has to change.
@@ -619,6 +620,48 @@ HTML = r"""<!DOCTYPE html>
      page, so it sits on the same left edge as every heading and card. A back
      affordance is an escape hatch, not a call to action — findable, not loud. */
   .back-foot{ margin:26px 0 4px; padding-top:20px; border-top:2px solid var(--line);}
+
+  /* ---- favourites: ordering + a personal note ---- */
+  .fav-tools{ display:inline-flex; gap:6px; align-items:center; margin-left:auto;}
+  .fav-move{ background:none; border:2px solid var(--line); color:var(--teal); border-radius:8px;
+             width:30px; height:30px; font-weight:700; cursor:pointer; line-height:1; padding:0;}
+  .fav-move:hover:not(:disabled){ border-color:var(--teal); background:var(--teal-soft);}
+  .fav-move:disabled{ opacity:.3; cursor:default;}
+  .fav-note{ margin-top:9px; display:flex; gap:8px; align-items:flex-start;}
+  .fav-note label{ font-size:.74rem; font-weight:700; color:var(--ink-soft); text-transform:uppercase;
+                   letter-spacing:.04em; padding-top:7px; flex:0 0 auto;}
+  .fav-note textarea{ flex:1; border:2px solid var(--line); border-radius:8px; padding:5px 9px;
+                      font:inherit; font-size:.88rem; background:var(--cream); color:var(--ink);
+                      resize:none; overflow:hidden; min-height:34px;}
+  .fav-note textarea:focus{ outline:none; border-color:var(--saffron); background:var(--paper);}
+
+  /* ---- continuous reading ---- */
+  .read-btn{ display:inline-block; margin:0 0 18px; background:var(--teal); color:var(--on-accent);
+             border:none; padding:9px 20px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.9rem;}
+  .read-btn:hover{ background:var(--teal-mid);}
+  .read-tabs{ display:flex; gap:8px; margin:0 0 16px; flex-wrap:wrap;}
+  .read-tab{ background:var(--paper); border:2px solid var(--line); color:var(--teal); font-weight:700;
+             font-size:.9rem; padding:9px 20px; border-radius:999px; cursor:pointer; min-height:44px;
+             font-family:"Noto Serif Devanagari", Georgia, serif; transition:.15s;}
+  .read-tab:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
+  .read-tab.on{ background:var(--saffron); border-color:var(--saffron); color:var(--on-accent);}
+  /* mūla: the verses run closer together, the way a printed pāṭha is set */
+  .reading.mula .rd-v{ padding:9px 0 10px;}
+  .reading.mula .rd-deva{ margin-bottom:0;}
+  .reading{ background:var(--paper); border:2px solid var(--line); border-radius:14px; padding:14px 18px 6px;}
+  /* the speaker is named only when the voice changes, so it must stand out */
+  .rd-spk{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--saffron-dark);
+           font-weight:700; font-size:1rem; margin:20px 0 8px; padding-bottom:5px;
+           border-bottom:2px solid var(--saffron-soft);}
+  .rd-deva .rd-spk{ margin:6px 0 8px;}
+  .rd-v:first-child .rd-spk, .rd-spk:first-child{ margin-top:4px;}
+  .rd-v{ padding:12px 0 14px; border-bottom:1px solid var(--line); cursor:pointer; position:relative;}
+  .rd-v:last-child{ border-bottom:none;}
+  .rd-v:hover{ background:var(--cream);}
+  .rd-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.82rem;}
+  .rd-deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
+            font-size:1.12rem; line-height:1.85; margin-bottom:5px;}
+  .rd-tr{ color:var(--ink-soft); font-size:.95rem; line-height:1.6;}
   .back-foot .back-top{ margin:0;}
   .mini-crumb{ display:flex; gap:10px; margin:2px 0 16px; flex-wrap:wrap;}
   .mini-crumb .bc-btn{ background:var(--paper); border:2px solid var(--line); border-radius:12px; cursor:pointer;
@@ -655,10 +698,17 @@ HTML = r"""<!DOCTYPE html>
   .card.sect{ border-top:6px solid var(--saffron);}
   .card.sect h3{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:1.32rem;}
   .card.sect p{ font-size:.92rem;}
-  .sect-all{ margin-top:28px; text-align:center;}
-  .sect-all .browse-all{ display:inline-block; margin-top:6px; color:var(--ink-soft); font-size:.92rem; text-decoration:underline;
-             text-underline-offset:3px; cursor:pointer; border:none; background:none; padding:6px 10px; border-radius:8px;}
-  .sect-all .browse-all:hover{ color:var(--teal); background:var(--teal-soft);}
+  /* The alternative route, after the three cards: "or skip the grouping and see
+     all eighteen". Centred because it is a terminal choice that closes the page —
+     unlike a back button, which belongs on the left text edge. Styled as a quiet
+     outlined pill so it matches the app's other buttons and stays lighter than
+     the three cards above it; it used to be the only underlined text anywhere. */
+  .sect-all{ margin-top:34px; text-align:center;}
+  .sect-all .browse-all{ display:inline-block; color:var(--teal); font-size:.9rem; font-weight:600;
+             cursor:pointer; border:2px solid var(--line); background:var(--paper);
+             padding:10px 22px; border-radius:999px; min-height:44px; line-height:22px;
+             transition:.15s;}
+  .sect-all .browse-all:hover{ border-color:var(--teal); background:var(--teal-soft);}
 
 
   .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:2px solid var(--line);}
@@ -994,6 +1044,7 @@ function setLang(l){ state.lang = l; try{ document.documentElement.lang = l; }ca
   else if(state.view === 'sections'){ showSections(); }
   else if(state.view === 'search'){ doSearch(); }
   else if(state.view === 'favorites'){ showFavorites(); }
+  else if(state.view === 'read'){ showRead(state.chapter, state.readMode); }
   else {
     const ch = state.chapter, th = state.theme;
     if(ch == null) showChapters(state.section || 0);
@@ -1110,7 +1161,7 @@ function clearSearch(){
 }
 
 // ---------- favorites (localStorage with in-memory fallback) ----------
-let FAV = [];
+let FAV = [], FAVNOTE = {};
 // ---------- dark mode ----------
 // The <head> script has already applied the theme. These functions handle the
 // toggle, keep the button label and the browser chrome colour in step, and
@@ -1142,8 +1193,10 @@ try{
   else if(mq.addListener) mq.addListener(onSys);
 }catch(e){}
 
+function favNoteLoad(){ try{ return JSON.parse(localStorage.getItem('gitaFavNotes') || '{}'); }catch(e){ return {}; } }
+function favNoteSave(){ try{ localStorage.setItem('gitaFavNotes', JSON.stringify(FAVNOTE)); }catch(e){} }
 function favLoad(){ try{ return JSON.parse(localStorage.getItem('gitaFavs') || '[]'); }catch(e){ return []; } }
-FAV = favLoad();
+FAV = favLoad(); FAVNOTE = favNoteLoad();
 function favSave(){ try{ localStorage.setItem('gitaFavs', JSON.stringify(FAV)); }catch(e){} }
 function toggleFav(id){
   const i = FAV.indexOf(id);
@@ -1188,14 +1241,47 @@ function showFavorites(){
     <div class="res-count fade-in">${numL(saved.length)} ${esc(L('results'))}</div>
     ${saved.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
+      const note = FAVNOTE[v.n] || '';
       return `<div class="res-card" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i})">
         <div class="res-top"><span class="res-num">${esc(fmtNL(v.n))}</span><span class="res-title">${esc(T(ch.names))}</span>
-        <button class="res-remove" onclick="event.stopPropagation();removeFav('${esc(v.n)}')">${esc(L('remove_fav'))}</button></div>
+        <span class="fav-tools" onclick="event.stopPropagation()">
+          <button class="fav-move" onclick="moveFav(${i},-1)" ${i===0?'disabled':''} aria-label="up">${L('fav_up')}</button>
+          <button class="fav-move" onclick="moveFav(${i},1)" ${i===saved.length-1?'disabled':''} aria-label="down">${L('fav_down')}</button>
+          <button class="res-remove" onclick="removeFav('${esc(v.n)}')">${esc(L('remove_fav'))}</button>
+        </span></div>
         <div class="res-deva">${padaBlockDeva(v)}</div>
         <div class="res-lit">${esc(T(v.lits))}</div>
+        <div class="fav-note" onclick="event.stopPropagation()">
+          <label>${esc(L('fav_note'))}</label>
+          <textarea rows="1" placeholder="${esc(L('fav_note_ph'))}"
+            oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
+            onchange="setFavNote('${esc(v.n)}', this.value)">${esc(note)}</textarea>
+        </div>
       </div>`;}).join('')}`;
+  // grow each note box to fit what is already written
+  view.querySelectorAll('.fav-note textarea').forEach(t=>{
+    if(t.value){ t.style.height='auto'; t.style.height=t.scrollHeight+'px'; }
+  });
 }
-function removeFav(id){ const i = FAV.indexOf(id); if(i>=0){ FAV.splice(i,1); favSave(); } showFavorites(); }
+function removeFav(id){
+  const i = FAV.indexOf(id);
+  if(i>=0){ FAV.splice(i,1); favSave(); }
+  if(FAVNOTE[id]){ delete FAVNOTE[id]; favNoteSave(); }
+  showFavorites();
+}
+/* Favourites are a personal collection, so the reader orders them and can say
+   why a verse matters. Both are stored beside the list itself. */
+function moveFav(i, d){
+  const j = i + d;
+  if(j < 0 || j >= FAV.length) return;
+  [FAV[i], FAV[j]] = [FAV[j], FAV[i]];
+  favSave(); showFavorites();
+}
+function setFavNote(id, text){
+  text = (text||'').trim();
+  if(text) FAVNOTE[id] = text; else delete FAVNOTE[id];
+  favNoteSave();
+}
 
 // ---------- random verse ----------
 function randomVerse(){
@@ -1364,6 +1450,7 @@ function showThemes(ci){
     ${sectionTabs()}
     <button class="back-top" onclick="showChapters(${state.section||0})">${esc(L('back_chapters'))}</button>
     <div class="view-title fade-in">${esc(L('chapter'))} ${numL(ch.num)} · ${esc(T(ch.names))} — ${L('themes')}</div>
+    <button class="read-btn" onclick="showRead(${ci})">${esc(L('read_chapter'))}</button>
     <div class="view-sub fade-in">${ch.deva} · ${esc(T(ch.subs))} — ${L('pick_theme')}</div>
     <div class="grid themes fade-in">
       ${ch.themes.map((t,ti)=>`
@@ -1375,6 +1462,57 @@ function showThemes(ci){
           <div class="go">${L('open_verses')}</div>
         </div>`).join('')}
         </div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
+}
+
+/* ---------- continuous reading ----------
+   The chapter -> theme -> part -> verse structure is right for study, but the
+   Gita is also something you sit and read straight through. This shows one
+   chapter as flowing text: speaker, verse, translation, nothing else. Tapping a
+   verse still opens the popup with its quarters and word meanings. */
+function showRead(ci, mode){
+  rememberOrigin();
+  // 'mula' — the root text alone, as a pāṭha is recited; 'full' — each verse
+  // followed by its meaning. The reader is doing two different things.
+  state.readMode = mode || state.readMode || 'mula';
+  state.view='read'; state.chapter=ci; state.theme=null; renderCrumbs();
+  const ch = DATA[ci];
+  const all = [];
+  ch.themes.forEach((t,ti)=>t.parts.forEach(p=>p.sutras.forEach((sv,si)=>
+    all.push({sv, ti, idx: flatIndex(t,p,si)}))));
+  let lastSpeaker = '';
+  const body = all.map(({sv,ti,idx})=>{
+    /* Render sv.lines in the order the source gives them, so a speaker that sits
+       BETWEEN the two lines stays there (1.21, 1.28) instead of being hoisted to
+       the top. Show the speaker only when the voice changes — losing track of who
+       is talking changes the meaning of a dialogue. */
+    let li = 0, inner = '';
+    for(const x of sv.lines){
+      if(x.k === 's'){
+        const name = x.d.replace(/।\s*$/, '');
+        if(name !== lastSpeaker){ lastSpeaker = name; inner += `<div class="rd-spk">${name}</div>`; }
+      } else {
+        // the verse number belongs at the end of the second line, between the
+        // daṇḍas, as printed editions set it
+        const tail = li ? `॥ <span class="rd-n">${esc(fmtNL(sv.n))}</span> ॥` : '।';
+        inner += `<div class="gline">${x.d}${tail}</div>`;
+        li++;
+      }
+    }
+    return `<div class="rd-v" onclick="openModal(${ci},${ti},${idx},'read')">
+      <div class="rd-deva">${inner}</div>
+      ${state.readMode === 'full' ? `<div class="rd-tr">${esc(T(sv.lits))}</div>` : ''}
+    </div>`;
+  }).join('');
+  view.innerHTML = `
+    ${sectionTabs()}
+    <button class="back-top" onclick="showThemes(${ci})">${esc(L('back_read'))}</button>
+    <div class="view-title fade-in">${esc(L('read_title').replace('{ch}', `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`))}</div>
+    <div class="view-sub fade-in">${esc(L('read_sub'))}</div>
+    <div class="read-tabs fade-in">
+      <button class="read-tab${state.readMode==='mula'?' on':''}" onclick="showRead(${ci},'mula')">${esc(L('read_mula'))}</button>
+      <button class="read-tab${state.readMode==='full'?' on':''}" onclick="showRead(${ci},'full')">${esc(L('read_full'))}</button>
+    </div>
+    <div class="reading ${state.readMode} fade-in">${body}</div>` + backFoot(`showThemes(${ci})`, L('back_read'));
 }
 
 function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
@@ -1640,7 +1778,30 @@ showWelcome();
 </html>
 """
 
-out = HTML.replace("__DATA__", json.dumps(data, ensure_ascii=False)).replace("__UI__", json.dumps(UI, ensure_ascii=False))
+# ---------------- embedded Devanagari font ----------------
+# The app asked for "Noto Serif Devanagari" but shipped no font, so on any device
+# without it installed (older Android, most Windows) the conjuncts — क्ष, द्ध,
+# ङ्ग — break apart or show as boxes. The reader would see a broken page and we
+# would never know. These are subset to the Devanagari block only: ~42 KB each,
+# about 2% of the file, and they guarantee every reader sees the same text.
+# Noto Serif Devanagari, SIL Open Font License 1.1 — see source/fonts/OFL-*.txt
+def _font_face():
+    import base64
+    faces = []
+    for weight, fname in ((400, "noto-deva-regular.woff2"), (700, "noto-deva-bold.woff2")):
+        path = os.path.join(BASE, "fonts", fname)
+        if not os.path.exists(path):
+            print(f"WARNING: {fname} missing — Devanagari will fall back to a system font")
+            continue
+        with open(path, "rb") as fh:
+            b64 = base64.b64encode(fh.read()).decode("ascii")
+        faces.append(
+            '  @font-face{ font-family:"Noto Serif Devanagari"; font-style:normal;\n'
+            f'    font-weight:{weight}; font-display:swap;\n'
+            f'    src:url(data:font/woff2;base64,{b64}) format("woff2"); }}')
+    return "\n".join(faces)
+
+out = HTML.replace("__FONTS__", _font_face()).replace("__DATA__", json.dumps(data, ensure_ascii=False)).replace("__UI__", json.dumps(UI, ensure_ascii=False))
 
 # ---- site base URL, used only for the absolute og:image / og:url ----
 # Override with:  SITE_BASE=https://user.github.io/repo python3 build_gita.py
