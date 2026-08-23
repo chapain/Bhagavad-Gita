@@ -662,7 +662,11 @@ function doSearch(){
   rememberOrigin();
   state.view = 'search'; state.chapter = null; state.theme = null; renderCrumbs();
   const nq = normTxt(q);
-  const num = digitNorm(q).match(/^(\d{1,2})[.\s]+(\d{1,2})$/);
+  /* Accept whatever separator the reader's keyboard gives. On a Devanagari
+     layout the danda । sits where the full stop is, so १।१ is the natural way to
+     type 1.1; also allow : - / , the double danda, and stray surrounding dandas. */
+  const num = digitNorm(q).replace(/^[\s।॥]+|[\s।॥]+$/g, '')
+                          .match(/^(\d{1,2})[.।॥:\-\/,\s]+(\d{1,2})$/);
   let hits;
   if(num){
     const target = parseInt(num[1],10) + '.' + parseInt(num[2],10);
@@ -684,8 +688,15 @@ function doSearch(){
       }
     }
   } else {
+    /* Free text. The index holds verse numbers as ASCII ("1.1"), so a query in
+       Devanagari digits — १, १७ — has to be converted too, or typing १ finds
+       nothing while 1 finds the whole chapter. Try both forms. */
+    const nqd = normTxt(digitNorm(q).replace(/[।॥]/g, '.'));
     hits = [];
-    VERSES.forEach((loc, i)=>{ if(VERSE_TEXT[i].includes(nq)) hits.push(loc); });
+    VERSES.forEach((loc, i)=>{
+      const t = VERSE_TEXT[i];
+      if(t.includes(nq) || (nqd !== nq && t.includes(nqd))) hits.push(loc);
+    });
   }
   if(hits.length === 0){
     view.innerHTML = `<div class="res-head fade-in">${esc(L('search_results'))}</div>
