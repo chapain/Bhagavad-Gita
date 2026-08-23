@@ -615,7 +615,10 @@ HTML = r"""<!DOCTYPE html>
   .back-top:hover{ background:var(--teal); color:var(--on-accent);}
   /* the same back button repeated at the end of a long list, so a reader who has
      scrolled to the bottom does not have to scroll all the way up again */
-  .back-foot{ margin:26px 0 4px; padding-top:20px; border-top:2px solid var(--line); text-align:center;}
+  /* left, not centred: this is the same button as the crumb at the top of the
+     page, so it sits on the same left edge as every heading and card. A back
+     affordance is an escape hatch, not a call to action — findable, not loud. */
+  .back-foot{ margin:26px 0 4px; padding-top:20px; border-top:2px solid var(--line);}
   .back-foot .back-top{ margin:0;}
   .mini-crumb{ display:flex; gap:10px; margin:2px 0 16px; flex-wrap:wrap;}
   .mini-crumb .bc-btn{ background:var(--paper); border:2px solid var(--line); border-radius:12px; cursor:pointer;
