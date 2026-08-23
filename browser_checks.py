@@ -104,6 +104,36 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(300)
 
     group("search")
+    # a previous group may have left the verse sheet open
+    if pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"):
+        pg.keyboard.press("Escape")
+        pg.wait_for_timeout(500)
+    # On a Devanagari keyboard the danda । sits where the full stop is, so १।१ is
+    # the natural way to type 1.1. Accept every separator a reader might produce.
+    for q, label in [("१.१", "devanagari digits"), ("१।१", "danda separator"),
+                     ("२।४७", "danda, two digits"), ("॥१।१॥", "wrapped in dandas"),
+                     ("१:१", "colon"), ("१-१", "hyphen")]:
+        pg.click("#searchInput")
+        pg.fill("#searchInput", "")
+        pg.type("#searchInput", q, delay=15)
+        pg.wait_for_timeout(600)
+        hits = pg.eval_on_selector_all(".mini .vnum", "e=>e.map(x=>x.textContent.trim())")
+        ok(len(hits) == 1, f"searching {q!r} ({label}) finds the verse ({hits[:1]})")
+    # A bare number is a free-text search, and the index stores verse numbers as
+    # ASCII — so a Devanagari digit must be converted too, or १ finds nothing
+    # while 1 finds the whole chapter.
+    def count(q):
+        pg.click("#searchInput")
+        pg.fill("#searchInput", "")
+        pg.type("#searchInput", q, delay=12)
+        pg.wait_for_timeout(600)
+        return pg.locator(".mini").count()
+    for ascii_q, deva_q in [("1", "१"), ("7", "७"), ("17", "१७"), ("12", "१२")]:
+        a, d = count(ascii_q), count(deva_q)
+        ok(a == d and a > 0, f"searching {deva_q!r} matches {ascii_q!r} ({d} vs {a})")
+    ok(count("धर्मक्षेत्रे") == 1, "Devanagari word search still finds its verse")
+    pg.fill("#searchInput", "")
+    pg.wait_for_timeout(400)
     for q in ("2.47", "२.४७", "16.6", "yoga", "कर्म"):
         pg.evaluate("closeModal()")
         pg.wait_for_timeout(150)
