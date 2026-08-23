@@ -284,6 +284,23 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
   ok(!/const MATRA =/.test(html), 'JS mātrā table removed');
   ok(allV.every(({ v }) => v.flow.every(f => f.j === undefined)), 'no pāda carries a stale join flag');
 }
+// ---- PROJECT.md must stay true ------------------------------------------
+// It is the handover document: if its numbers drift from reality it becomes a
+// liability rather than a help, so the build checks the facts it states.
+{
+  const pm = fs.readFileSync(path.join(__dirname, 'PROJECT.md'), 'utf8');
+  ok(/18 chapters · 182 themes · 558 parts · 700 verses/.test(pm),
+     'PROJECT.md states the current totals');
+  ok(new RegExp(`${Object.keys(UI.en).length} UI strings`).test(pm),
+     `PROJECT.md states the current UI key count (${Object.keys(UI.en).length})`);
+  for (const f of ['gita_conv.py', 'pada_overrides.py', 'freeze_padas.py', 'sandhi.py']) {
+    ok(pm.includes(f), `PROJECT.md records that ${f} was deleted`);
+  }
+  for (const ref of ['11.01', '2.29', '8.10', '15.03', '2.06']) {
+    ok(pm.includes(ref), `PROJECT.md lists irregular verse ${ref}`);
+  }
+  ok(/renders data\. It never generates/.test(pm), 'PROJECT.md states the governing rule');
+}
 // ---- dark mode ----------------------------------------------------------
 {
   ok(/html\[data-theme="dark"\]/.test(html), 'a dark theme block exists');

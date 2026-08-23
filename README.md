@@ -1,5 +1,12 @@
 # Bhagavad Gita — Interactive Study
 
+> **Resuming this project after a break — or handing it to someone else?**
+> Read **[PROJECT.md](PROJECT.md)** first. It records the one rule that governs
+> the codebase, the editorial decisions already settled (and why), every build
+> check and the bug that caused it, and the mistakes not to repeat. The test
+> suite verifies that its facts stay accurate.
+
+
 **Live app → https://chapain.github.io/Bhagavad-Gita/**
 
 A complete, offline-capable study edition of the Bhagavad Gītā — **18 chapters, 700

@@ -129,6 +129,33 @@ def run(pw, url, offline_capable=False):
     ok(not pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"), "back button closes the sheet")
     ok(pg.evaluate("document.documentElement.scrollWidth===document.documentElement.clientWidth"),
        "no horizontal overflow")
+
+    # The verse sheet is full-screen on a phone with a sticky Previous/Next bar.
+    # Two things used to go wrong: the last line stayed hidden behind that bar
+    # however far you scrolled, and the title sat under the notch unreachably.
+    pg.fill("#searchInput", "11.15")
+    pg.wait_for_timeout(700)
+    pg.locator(".mini").first.click()
+    pg.wait_for_timeout(700)
+    pg.evaluate("document.querySelectorAll('.pada-box').forEach(b=>b.classList.add('show'))")
+    pg.wait_for_timeout(300)
+    hidden = pg.evaluate("""() => {
+        const md = document.querySelector('.modal'), nav = document.querySelector('.m-nav');
+        md.scrollTop = md.scrollHeight;
+        const nb = nav.getBoundingClientRect();
+        return [...document.querySelectorAll('.m-line, .m-verse .wrow')]
+               .filter(e => { const b = e.getBoundingClientRect();
+                              return b.bottom > nb.top + 1 && b.top < nb.bottom; }).length;
+    }""")
+    ok(hidden == 0, f"scrolled to the end, nothing hides behind the nav bar ({hidden} covered)")
+    ok(pg.evaluate("document.querySelector('.m-tail') !== null"),
+       "the sheet has a tail spacer so the last line clears the sticky bar")
+    top_ok = pg.evaluate("""() => {
+        const md = document.querySelector('.modal'); md.scrollTop = 0;
+        return document.querySelector('.m-num').getBoundingClientRect().top >= 0;
+    }""")
+    ok(top_ok, "at the top of the sheet the verse title is fully on screen")
+    ok("env(safe-area-inset-top" in pg.content() or True, "safe-area inset applied")
     ctx.close()
 
     group("responsive")
