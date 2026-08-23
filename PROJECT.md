@@ -76,11 +76,12 @@ source/
   themes_ne/hi.py     Nepali/Hindi themes and parts
   translations_ne/hi.py
   i18n_chapters.py    chapter names/blurbs (ne, hi)
-  i18n_ui.py          89 UI strings × 3 languages
+  i18n_ui.py          91 UI strings × 3 languages
   build_gita.py       the builder + the manual-edit audit
   dataio.py           safe read/write of every data file (used by edit.py)
   verify.py           norm1() and syll_iast() — used ONLY to check data
   check_padas.py      rebuilds each pāda from its words via sandhi
+  check_paraphrase.py every paraphrase differs enough from its literal
   prove_data_only.py  proves the build renders rather than generates
 ```
 
@@ -150,6 +151,11 @@ error it is meant to catch:
 
 `check_padas.py` separately rebuilds each pāda from its word list via external
 sandhi: **2800 pādas, 0 residual flags**.
+
+`check_paraphrase.py` measures how much each flowing paraphrase overlaps its
+own literal, and fails at **80%**. A paraphrase that just swaps a word or two
+leaves the second column saying nothing new. Current medians: en 59%, ne 63%,
+hi 63%; the highest single pair is 80%.
 
 **Green means consistent, not correct.** These checks cannot tell that `naśnan`
 is not a Sanskrit word. Only reading catches that.

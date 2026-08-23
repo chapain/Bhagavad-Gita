@@ -160,6 +160,31 @@ def run(pw, url, offline_capable=False):
     ok(pg.evaluate("document.documentElement.scrollWidth===document.documentElement.clientWidth"),
        "no horizontal overflow")
 
+    # Two ways into the book — grouped as the three niṣṭhās, or all eighteen
+    # chapters flat. They are peers, so they are tabs at the top rather than a
+    # link buried under the cards. They must appear on exactly those two pages:
+    # once you are inside a way, the way-tabs take over and two strips would confuse.
+    pg.evaluate("showSections()")
+    pg.wait_for_timeout(500)
+    tt = pg.eval_on_selector_all(".top-tab", "e=>e.map(x=>x.textContent.trim()+(x.classList.contains('on')?'*':''))")
+    ok(len(tt) == 2 and tt[0].endswith("*"), f"the three ways is the default tab ({tt})")
+    ok(pg.locator(".browse-all").count() == 0, "the old browse-all link is gone")
+    pg.locator(".top-tab").nth(1).click()
+    pg.wait_for_timeout(600)
+    tt = pg.eval_on_selector_all(".top-tab", "e=>e.map(x=>x.textContent.trim()+(x.classList.contains('on')?'*':''))")
+    ok(len(tt) == 2 and tt[1].endswith("*"), f"'all 18 chapters' becomes the active tab ({tt})")
+    ok(pg.locator(".card").count() == 18, "the all-chapters tab lists all eighteen")
+    pg.locator(".top-tab").nth(0).click()
+    pg.wait_for_timeout(600)
+    ok(pg.locator(".card.sect").count() == 3, "switching back shows the three ways")
+    for js, label in [("showChapters(2)", "inside a way"), ("showThemes(8)", "a chapter's themes")]:
+        pg.evaluate(js)
+        pg.wait_for_timeout(500)
+        ok(pg.locator(".top-tab").count() == 0 and pg.locator(".sec-tab").count() == 3,
+           f"{label}: only the way-tabs show, never two strips at once")
+    pg.evaluate("showSections()")
+    pg.wait_for_timeout(400)
+
     # The list pages run 4-5 screens on a phone, so the top crumb is repeated at
     # the foot. It must appear only where there is a parent to go back to, and
     # must say the same thing as the crumb above it.
