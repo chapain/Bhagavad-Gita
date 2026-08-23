@@ -19,9 +19,18 @@ Owner: Dhruba Chapain. Licence: none — all rights reserved.
 Devanagari, IAST, a four-pāda division, word-by-word meanings, a literal
 translation and a paraphrase, in **English, Nepali and Hindi**.
 
-**Features:** trilingual switching, global search, favourites, random verse,
-verse popup with 2×2 pāda boxes and pada-chheda toggles, keyboard navigation,
-welcome screen, three-yoga sections, dark mode.
+**Features:** trilingual switching, global search, favourites (orderable, each
+with a private note), random verse, verse popup with 2×2 pāda boxes and
+pada-chheda toggles, continuous chapter reading, keyboard navigation, welcome
+screen, the three ways (niṣṭhā), dark mode.
+
+**The Devanagari font is embedded** as a base64 woff2 data URI, built at compile
+time by `_font_face()` in `build_gita.py` from `source/fonts/*.woff2`. Do not
+remove it: the CSS asks for "Noto Serif Devanagari", and on any device that does
+not ship it (older Android, most Windows) the conjuncts — क्ष, द्ध, ङ्ग — break
+apart or show as boxes. The author's own phone has the font, so he would never
+see the failure. Subset to the Devanagari block: ~42 KB regular + ~46 KB bold,
+about 2% of the file. SIL Open Font License 1.1, see `source/fonts/OFL-*.txt`.
 
 ---
 
@@ -67,7 +76,7 @@ source/
   themes_ne/hi.py     Nepali/Hindi themes and parts
   translations_ne/hi.py
   i18n_chapters.py    chapter names/blurbs (ne, hi)
-  i18n_ui.py          78 UI strings × 3 languages
+  i18n_ui.py          89 UI strings × 3 languages
   build_gita.py       the builder + the manual-edit audit
   dataio.py           safe read/write of every data file (used by edit.py)
   verify.py           norm1() and syll_iast() — used ONLY to check data

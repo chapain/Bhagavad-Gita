@@ -151,6 +151,94 @@ def run(pw, url, offline_capable=False):
     ok("Themes" in pg.eval_on_selector(".view-title", "e=>e.textContent"),
        "the foot back-button actually navigates")
 
+    # The Devanagari font is embedded as a data URI. Without it, devices that do
+    # not ship Noto Serif Devanagari (older Android, most Windows) break the
+    # conjuncts — and the author would never see it on his own phone.
+    fonts = pg.evaluate("""async () => { await document.fonts.ready;
+        return {list: [...document.fonts].map(f => f.family),
+                ok: document.fonts.check('16px "Noto Serif Devanagari"')}; }""")
+    ok(fonts["ok"] and "Noto Serif Devanagari" in fonts["list"],
+       f"the Devanagari font is embedded and loads ({fonts['list']})")
+
+    # Continuous reading: the chapter as flowing text, speaker shown when it changes.
+    pg.evaluate("showThemes(1)")
+    pg.wait_for_timeout(500)
+    ok(pg.locator(".read-btn").count() == 1, "themes page offers 'read the whole chapter'")
+    pg.locator(".read-btn").click()
+    pg.wait_for_timeout(700)
+    n_v = pg.locator(".rd-v").count()
+    n_s = pg.locator(".rd-spk").count()
+    ok(n_v == 72, f"reading view shows every verse of chapter 2 ({n_v})")
+    ok(n_s >= 3, f"reading view marks the speaker when the voice changes ({n_s})")
+    pg.locator(".rd-v").first.click()
+    pg.wait_for_timeout(600)
+    ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
+       "tapping a verse in the reading view opens its quarters")
+    pg.keyboard.press("Escape")
+    pg.wait_for_timeout(400)
+
+    # Switching language must stay in the reading view, not bounce to the chapter.
+    pg.evaluate("showRead(0)")
+    pg.wait_for_timeout(600)
+    pg.evaluate("setLang('ne')")
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("state.view") == "read", "changing language keeps you in the reading view")
+    pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(600)
+
+    # The verse number sits at the end of the second line between daṇḍas, and a
+    # speaker that falls between the two lines stays there (1.21, 1.28).
+    shape = pg.evaluate("""() => {
+        const cards = [...document.querySelectorAll('.rd-v')];
+        const rows = i => [...cards[i].querySelector('.rd-deva').children]
+                           .map(e => e.className.trim());
+        return {first: rows(0), v21: rows(20), v28: rows(27),
+                tail: cards[0].querySelector('.rd-deva').lastElementChild.textContent.trim()};
+    }""")
+    ok(shape["first"] == ["rd-spk", "gline", "gline"],
+       f"1.1 opens with its speaker then two lines ({shape['first']})")
+    ok(shape["v21"] == ["gline", "rd-spk", "gline"],
+       f"1.21 keeps its speaker between the two lines ({shape['v21']})")
+    ok(shape["v28"] == ["gline", "rd-spk", "gline"],
+       f"1.28 keeps its speaker between the two lines ({shape['v28']})")
+    ok(shape["tail"].endswith("॥") and "1.1" in shape["tail"],
+       f"the verse number closes the second line between daṇḍas ({shape['tail'][-18:]})")
+
+    # Two ways to read: मूल — the root text alone, as a pāṭha is recited — and the
+    # same verses each followed by its meaning.
+    tabs = pg.eval_on_selector_all(".read-tab", "e=>e.map(x=>x.textContent.trim())")
+    ok(len(tabs) == 2, f"the reading view offers two modes ({tabs})")
+    pg.evaluate("showRead(0,'mula')")
+    pg.wait_for_timeout(500)
+    ok(pg.locator(".rd-tr").count() == 0, "मूल shows the verses without translations")
+    ok(pg.locator(".rd-v").count() == 47, "मूल still shows every verse of chapter 1")
+    pg.evaluate("showRead(0,'full')")
+    pg.wait_for_timeout(500)
+    ok(pg.locator(".rd-tr").count() == 47, "'with meaning' adds a translation to every verse")
+    pg.evaluate("setLang('ne')")
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("state.readMode") == "full" and pg.evaluate("state.view") == "read",
+       "the chosen reading mode survives a language change")
+    pg.evaluate("setLang('en'); showRead(0,'mula')")
+    pg.wait_for_timeout(500)
+
+    # Favourites: the reader can order them and say why a verse matters.
+    pg.evaluate("FAV=['2.47','2.20','18.66']; favSave(); FAVNOTE={}; favNoteSave(); showFavorites();")
+    pg.wait_for_timeout(600)
+    before = pg.eval_on_selector_all(".res-num", "e=>e.map(x=>x.textContent.trim())")
+    pg.locator(".fav-move").nth(3).click()
+    pg.wait_for_timeout(500)
+    after = pg.eval_on_selector_all(".res-num", "e=>e.map(x=>x.textContent.trim())")
+    ok(before != after and sorted(before) == sorted(after), f"favourites reorder ({before} -> {after})")
+    pg.locator(".fav-note textarea").first.fill("test note")
+    pg.locator(".fav-note textarea").first.dispatch_event("change")
+    pg.wait_for_timeout(400)
+    pg.evaluate("showFavorites()")
+    pg.wait_for_timeout(500)
+    ok(pg.eval_on_selector(".fav-note textarea", "e=>e.value") == "test note",
+       "a favourite's note is saved and survives a re-render")
+    pg.evaluate("FAV=[]; favSave(); FAVNOTE={}; favNoteSave();")
+
     # The verse sheet is full-screen on a phone with a sticky Previous/Next bar.
     # Two things used to go wrong: the last line stayed hidden behind that bar
     # however far you scrolled, and the title sat under the notch unreachably.
