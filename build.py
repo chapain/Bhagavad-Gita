@@ -12,8 +12,8 @@ It runs, in order:
     1. source/build_gita.py   regenerates index.html from source/
     2. source/check_padas.py  verifies every pāda reconstructs from its split words
     2b. source/check_paraphrase.py  every paraphrase differs enough from its literal
-    3. run_gita_app.js        460 assertions on the built document        (needs node)
-    4. browser_checks.py      100 live-browser checks                 (needs playwright)
+    3. run_gita_app.js        524 assertions on the built document        (needs node)
+    4. browser_checks.py      106 live-browser checks                 (needs playwright)
 
 Steps 3 and 4 are skipped with a warning if node / playwright are missing — the
 build itself still completes.

@@ -9,9 +9,27 @@ code alone cannot tell you.
 
 ## 1. What this is
 
-A Bhagavad Gita study app. The deliverable is **one standalone `index.html`**
-(~5 MB) that works offline and can be sent to friends over WhatsApp. It is also
-published at **https://chapain.github.io/Bhagavad-Gita/**.
+A Bhagavad Gita study app, published at
+**https://chapain.github.io/Bhagavad-Gita/**. It is a **split site**: a light
+`index.html` shell (~120 KB gzipped) plus one data file per chapter
+(`data/ch<N>.js`, 18 files) that the shell loads in parallel at startup and the
+service worker precaches. First paint arrives after ~120 KB instead of ~5 MB,
+and editing one verse invalidates one small file, not the whole app. After the
+first visit the service worker has every file, so the app is fully offline and
+installable ("Add to Home Screen").
+
+The app is shared **by link**. There is no all-in-one file: the owner retired
+the WhatsApp/download single-file deliverable on 2026-08-24 ("I don't care
+about the whatsapp. i can simply share the link to the site"). A split app
+cannot run from `file://` — browsers block `fetch`/XHR of local files — so if a
+single shareable file is ever wanted again, it must be re-added as a separate
+generated artefact (it was `gita-standalone.html`, removed here); do not try to
+open the split site from a downloaded folder.
+
+*Decision history:* until 2026-08-24 the deliverable was one standalone
+`index.html`. The owner first lifted the one-file condition, then dropped
+file-sharing entirely, so the split site is now the sole artefact. Everything
+is generated; nothing is edited by hand.
 
 Owner: Dhruba Chapain. Licence: none — all rights reserved.
 
@@ -59,12 +77,15 @@ This was a deliberate migration, and it is *proven*, not assumed:
 ## 3. Layout
 
 ```
-index.html            the app — GENERATED, never edit by hand
+index.html            the app SHELL — GENERATED, never edit by hand
+data/ch*.js           18 per-chapter data files — GENERATED (loaded by the shell)
 sw.js, manifest, icons/
+sitemap.xml, robots.txt   GENERATED — crawler files (see §10)
+chapter/ + chapter.css    GENERATED — 18 SEO landing pages (see §10)
 build.py              build + verify (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       460 assertions on the built document      (needs node)
-browser_checks.py     100 live-browser checks                 (needs playwright)
+run_gita_app.js       524 assertions on the built document      (needs node)
+browser_checks.py     106 live-browser checks                 (needs playwright)
 edit.py               local browser-based content editor
 editor.html           its interface
 source/
@@ -128,6 +149,13 @@ appears in the dark block.
 **4.8 Naming.** Breadcrumbs read `Chapter <n> · <name>` and `Theme <n> · <title>`,
 never a bare title. Devanagari puts the destination before the verb, so
 interpolated labels need per-language templates (`{x}मा फर्कनुहोस्`).
+
+**4.9 Credit and AI disclosure.** The footer credit names the author; the AI
+disclosure lives in `LICENSE.md` ("AI disclosure") and the README — not in the
+visible footer. The owner chose this placement on 2026-08-24 (disclosed, but
+not prominent). The test suite locks both the footer wording *and* the presence
+of the LICENSE section, so neither the credit nor the disclosure can drift
+silently. Do not remove the LICENSE section without the owner's say-so.
 
 ---
 
@@ -227,12 +255,95 @@ Practical consequences:
 
 ## 9. State at the time of writing
 
-* `index.html` = **`0add281058fd`**, `sw.js` cache matches.
-* Live site was last confirmed at `57799836af9e` — **behind by the 11 sandhi
-  fixes**. Check `curl -sL https://chapain.github.io/Bhagavad-Gita/ | sha256sum`.
-* `build.py`: **460 assertions + 100 browser checks + 2800 pādas + 2100 paraphrase pairs, all green.**
-* `.gitignore` exists locally but is **missing on GitHub** (Finder hides
-  dotfiles; Cmd+Shift+. reveals them).
+*Verified 2026-08-24 on a clean sandbox after resuming from a crash:*
+
+* **Split build** (2026-08-24, standalone retired): `index.html` =
+  **`7443c7be6204`**, a **116 KB gzipped shell** that loads 18
+  `data/ch<N>.js` files in parallel at startup and boots when all arrive.
+  `sw.js` = **`1e8af1526877`**, cache `gita-7227d0e5f4c4`, precaches the shell
+  **and all 18 data files** — fully offline after the first visit. There is no
+  `gita-standalone.html` any more; the app is shared by link. **Not yet
+  uploaded** — publish `index.html`, `sw.js`, `manifest.webmanifest`,
+  `sitemap.xml`, `robots.txt`, `chapter.css`, the `data/` folder, the
+  `chapter/` folder, and the icons.
+* Earlier discoverability work (still in place): long-tail `<title>`, canonical
+  + JSON-LD, `sitemap.xml` (19 URLs) + `robots.txt`, **18 full-text chapter
+  pages** (`chapter/<n>/` + `chapter.css`), `#chapter=N` deep-link routing,
+  the SW shell-cache guard, the dormant `source/gsc_token.txt` mechanism, the
+  footer credit naming the author (AI disclosure in LICENSE.md + README,
+  §4.9), and the `colophon.itrans` remnants
+  removed (see §10).
+* Live site https://chapain.github.io/Bhagavad-Gita/ confirmed at
+  **`b839cd7103e6`** (the previous build, without the SEO tags). Recheck with
+  `curl -sL https://chapain.github.io/Bhagavad-Gita/ | sha256sum`.
+* GitHub repo is clean: the 7 stale `source/` files (`gita_conv.py`,
+  `pada_overrides.py`, `freeze_padas.py`, `sandhi.py`, `bg.itx`,
+  `gita_shankarabhashya.itx`, `shankara_verses.json`) all return 404 —
+  deleted. `.gitignore` is present. `source/` is in sync (86 files + `fonts/`
+  with 3 = 89 files, 118 total in the repo including `.gitignore`).
+* Full suite green: **524 assertions + 106 browser checks (incl. offline SW) +
+  2800 pādas + 2100 paraphrase pairs**, and `prove_data_only.py` passes all 7
+  cases against the published build.
 * Upload method: unzip → select everything *inside* → **Add file → Upload files**
   → Commit. Uploading never deletes; removed files must be deleted by hand, or
   delete the `source/` directory first and re-upload it.
+
+---
+
+## 10. Discoverability (Google / SEO)
+
+The app was invisible in search — a `site:` query found nothing. What was added
+and why:
+
+* **`<link rel="canonical">` + JSON-LD `WebApplication`** in the head, built
+  from `__BASE__` like the og: tags. The JSON-LD is deliberately `WebApplication`
+  with Dhruba as `author`, not `Book` — the Gita's authorship is Vyasa's; this is
+  a study *edition*, and the structured data should not claim otherwise.
+* **`sitemap.xml` and `robots.txt`** are generated at build time (never checked
+  in by hand) so `lastmod` always matches the build and the URLs follow
+  `SITE_BASE`. They publish alongside `index.html`.
+* **18 chapter pages** (`chapter/<n>/index.html` + one shared `chapter.css`)
+  are generated from the same `data` the app renders — each is the **full
+  readable chapter**: name in three languages, blurb, theme list with anchors,
+  and every verse printed as-is (Devanagari, IAST, literal translation in all
+  three languages, English paraphrase) with per-verse `id="v<ch.n>"` anchors,
+  plus CTAs that deep-link into the app via `index.html#chapter=<n>` (hash
+  routing in the boot script). This is the discoverability layer: static,
+  crawlable text for long-tail queries ("bhagavad gita chapter 2 in nepali",
+  verse-level searches), while the app itself is the interactive split site.
+  Publishing them is optional for the app but they are listed in the sitemap.
+* **The site is a split build** (see §1): shell + `data/ch*.js`, no all-in-one
+  file. The service worker precaches every data file, so after the first visit
+  the app is fully offline and installable. The test suite and
+  `check_paraphrase.py` read the published `data/ch*.js` directly, and
+  `prove_data_only.py` checks the union of the shell and all data files, so
+  the published bytes are what gets verified — there is no separate copy to
+  drift.
+* **The `<title>` targets the long tail** — "Bhagavad Gita — English, Nepali,
+  Hindi · 700 Verses". The `<h1>`, manifest name and JSON-LD keep the branding
+  "Interactive Study"; this split is deliberate. The suite locks the exact
+  title in two places (`run_gita_app.js`, `browser_checks.py`).
+* **Search Console verification** is supported by a placeholder: put the token
+  (the `content` value of Google's meta tag — it is public, not a secret) in
+  `source/gsc_token.txt` and rebuild; the tag appears. No file → no tag.
+* **SW shell-cache guard:** the service worker stores a navigation response as
+  `./index.html` only when the URL *is* the app root — otherwise visiting a
+  chapter page would poison the offline fallback. There is a live browser
+  check for exactly this.
+* **`robots.txt` on a sub-path is advisory for Google.** Google only reads
+  `github.io/robots.txt` (GitHub's, which allows everything). The real channel
+  is **Google Search Console**: verify the property
+  `https://chapain.github.io/Bhagavad-Gita/`, submit `sitemap.xml`, then use
+  *URL inspection → Request indexing*. Until that is done, none of the above
+  matters much.
+* **hreflang is deliberately absent.** All three languages live at one URL
+  (in-page switching); hreflang requires distinct URLs and would be wrong here.
+  The `og:locale:alternate` tags already cover the sharing case.
+* **Realistic strategy.** The head term "bhagavad gita" belongs to Wikipedia
+  and the big Gita sites. The winnable queries are the long tail this app
+  uniquely answers — *bhagavad gita in nepali*, *भगवद्गीता नेपाली अनुवाद*,
+  *gita word-by-word meaning* — plus backlinks (GitHub repo topics, Reddit
+  r/Hinduism / r/bhagavadgita, Quora, Facebook groups for Nepali readers).
+* **Title and description are branding decisions** — the suite locks the exact
+  `<title>`; changing it means updating `run_gita_app.js` and
+  `browser_checks.py` deliberately, together with this file.

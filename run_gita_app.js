@@ -13,8 +13,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 460;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 100;   // browser_checks.py
+const TOTAL_ASSERTIONS = 524;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 106;   // browser_checks.py
 const path = require('path');
 
 const ROOT = __dirname;
@@ -32,9 +32,10 @@ function group(name) { console.log('\n== ' + name + ' =='); }
 group('document');
 ok(fs.existsSync(HTML_PATH), 'index.html exists');
 const html = fs.readFileSync(HTML_PATH, 'utf8');
-ok(html.length > 2.5 * 1024 * 1024, `document is a full app (${(html.length / 1024 / 1024).toFixed(1)} MB)`);
+ok(html.length > 150 * 1024 && html.length < 1.5 * 1024 * 1024,
+   `shell is light (${(html.length / 1024 / 1024).toFixed(2)} MB)`);
 ok(/^<!DOCTYPE html>/i.test(html.trim()), 'starts with <!DOCTYPE html>');
-ok(html.includes('<title>Bhagavad Gita — Interactive Study</title>'), 'title present');
+ok(html.includes('<title>Bhagavad Gita — English, Nepali, Hindi · 700 Verses</title>'), 'title targets the trilingual long tail');
 ok(/<\/html>\s*$/.test(html), 'ends with </html>');
 const scriptBlocks = html.match(/<script>[\s\S]*?<\/script>/g) || [];
 // Two blocks: a tiny one in <head> that applies the saved theme before the page
@@ -55,17 +56,42 @@ for (const id of ['appTitle', 'appSub', 'tagVerses', 'langbar', 'homeBtn', 'sear
 }
 
 // ---------- extract DATA / UI ----------
+// DATA now lives in data/ch<N>.js (one file per chapter); the shell loads and
+// assembles it at runtime. The suite reads the same files and assembles it the
+// same way, so every downstream assertion checks the real published payload.
 function extractConst(html, name) {
-  const start = html.indexOf(`const ${name} = `);
-  if (start < 0) return null;
-  const i = start + `const ${name} = `.length;
-  const end = html.indexOf(';\n', i);
-  return JSON.parse(html.slice(i, end));
+  for (const kw of [`const ${name} = `, `let ${name} = `]) {
+    const start = html.indexOf(kw);
+    if (start < 0) continue;
+    const i = start + kw.length;
+    const end = html.indexOf(';\n', i);
+    return JSON.parse(html.slice(i, end));
+  }
+  return null;
 }
-const DATA = extractConst(html, 'DATA');
+const DATA = [];
+for (let n = 1; n <= 18; n++) {
+  const f = path.join(ROOT, 'data', `ch${n}.js`);
+  if (!fs.existsSync(f)) continue;
+  const m = fs.readFileSync(f, 'utf8').match(/^GITA_CH\[(\d+)\] = ([\s\S]*);\n$/);
+  if (!m || Number(m[1]) !== n) continue;
+  try { DATA.push(JSON.parse(m[2])); } catch (e) { /* counted below */ }
+}
 const UI = extractConst(html, 'UI');
-ok(Array.isArray(DATA), 'DATA extracted');
+ok(DATA.length === 18 && DATA.every((c, i) => c.num === i + 1),
+   'DATA assembled from all 18 data/ch<N>.js files, in order');
 ok(UI && typeof UI === 'object', 'UI extracted');
+
+// ---------- split build: shell + per-chapter data files ----------
+{
+  ok(!/"d":\s*"धर्मक्षेत्रे/.test(html), 'shell carries no verse payload');
+  ok(/<script src="data\/ch1\.js" onload="__gitaLoaded\(\)"/.test(html), 'shell loads data/ch1.js at startup');
+  ok(/<script src="data\/ch18\.js" onload="__gitaLoaded\(\)"/.test(html), 'shell loads all 18 data files');
+  ok(/let DATA = null;/.test(html), 'shell starts with DATA unloaded');
+  ok(/Object\.keys\(GITA_CH\)\.length < 18/.test(html), 'loader boots only when every chapter file arrived');
+  ok(/function gitaBoot\(\)\{[\s\S]*buildIndex\(\);[\s\S]*applyStatic\(\);/.test(html),
+     'gitaBoot builds the index and paints in one step');
+}
 
 // ---------- i18n ----------
 group('i18n');
@@ -445,9 +471,28 @@ for (const [re, label] of [
   [/<link rel="manifest" href="manifest\.webmanifest"/, 'manifest link'],
 ]) ok(re.test(html), `${label} present`);
 ok(!html.includes('__BASE__'), 'og base placeholder was substituted');
+// ---- discoverability (SEO) ----------------------------------------------
+// Added when the published site proved invisible in search: without these a
+// crawler has nothing but rendered text, and no machine-readable description.
+ok(/<link rel="canonical" href="https?:\/\/[^"]+\/">/.test(html), 'canonical link (absolute URL)');
+{
+  const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  let ld = null;
+  try { ld = m && JSON.parse(m[1]); } catch (e) { ld = null; }
+  ok(!!ld, 'JSON-LD block present and valid JSON');
+  ok(ld && ld['@type'] === 'WebApplication', 'JSON-LD describes a WebApplication');
+  const canon = (html.match(/<link rel="canonical" href="([^"]+)"/) || [])[1];
+  ok(ld && ld.url === canon, 'JSON-LD url matches the canonical URL');
+  ok(ld && Array.isArray(ld.inLanguage) && ld.inLanguage.length === 3,
+     'JSON-LD lists all three languages');
+}
 // author credit — must survive language switches, so it lives outside #appFooter
 ok(/<meta name="author" content="Dhruba Chapain">/.test(html), 'author meta tag');
-ok(/<div class="credit">Created by <b>Dhruba Chapain<\/b>, Pokhara, Nepal\.<\/div>/.test(html), 'footer credit present');
+ok(/<div class="credit">Created by <b>Dhruba Chapain<\/b>, Pokhara, Nepal\.<\/div>/.test(html), 'footer credit names the author');
+{
+  const lic = fs.readFileSync(path.join(__dirname, 'LICENSE.md'), 'utf8');
+  ok(/## AI disclosure/i.test(lic), 'LICENSE.md carries the AI disclosure');
+}
 ok(/<div id="appFooter">/.test(html), '#appFooter is its own element (credit not clobbered)');
 ok(!/<footer id="appFooter">/.test(html), 'credit sits outside the translated blurb');
 // credit is deliberately plain static text — same in every language, no i18n key
@@ -466,7 +511,8 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(fs.existsSync(S), 'site/ bundle generated');
   for (const f of ['index.html', 'manifest.webmanifest', 'sw.js', 'favicon.ico',
                    'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
-                   'apple-touch-icon.png', 'og-card.png']) {
+                   'apple-touch-icon.png', 'og-card.png',
+                   'sitemap.xml', 'robots.txt']) {
     ok(fs.existsSync(path.join(S, f)), `site/${f} exists`);
   }
   const idx = fs.readFileSync(path.join(S, 'index.html'), 'utf8');
@@ -480,8 +526,49 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   const sw = fs.readFileSync(path.join(S, 'sw.js'), 'utf8');
   ok(/const CACHE = 'gita-[0-9a-f]{12}'/.test(sw), 'sw.js cache name is content-versioned');
   ok(sw.includes("'./index.html'"), 'sw.js precaches index.html');
+  ok(sw.includes("'./data/ch18.js'"), 'sw.js precaches the chapter data files');
   ok(/req\.mode === 'navigate'/.test(sw), 'sw.js network-first for navigations');
   ok(/url\.origin !== location\.origin/.test(sw), 'sw.js ignores cross-origin requests');
+  ok(sw.includes("root + 'index.html'"), "sw.js shell-caches only the app root (a chapter page cannot poison it)");
+  const sm = fs.readFileSync(path.join(S, 'sitemap.xml'), 'utf8');
+  ok(/<loc>https?:\/\/[^<]+\/<\/loc>/.test(sm), 'sitemap.xml lists the absolute site URL');
+  ok((sm.match(/<loc>/g) || []).length === DATA.length + 1, 'sitemap lists the app plus all 18 chapter pages');
+  const rb = fs.readFileSync(path.join(S, 'robots.txt'), 'utf8');
+  ok(!/Disallow/i.test(rb), 'robots.txt disallows nothing');
+  ok(/Sitemap: https?:\/\/\S+\/sitemap\.xml/.test(rb), 'robots.txt points at the sitemap');
+}
+
+// ---------- chapter landing pages (generated SEO satellites) ----------
+{
+  let canonOK = 0, titleOK = 0, ctaOK = 0, fullTextOK = 0, sizeOK = 0;
+  for (const ch of DATA) {
+    const n = ch.num;
+    const f = path.join(ROOT, 'chapter', String(n), 'index.html');
+    ok(fs.existsSync(f), `chapter/${n}/ landing page exists`);
+    if (!fs.existsSync(f)) continue;
+    const s = fs.readFileSync(f, 'utf8');
+    if (new RegExp(`<link rel="canonical" href="https?://[^"]+/chapter/${n}/">`).test(s)) canonOK++;
+    if (s.includes(`<title>Bhagavad Gita Chapter ${n} — `)) titleOK++;
+    if (s.includes(`href="../../index.html#chapter=${n}"`)) ctaOK++;
+    if (fs.statSync(f).size < 400 * 1024) sizeOK++;
+    let have = 0, total = 0;
+    for (const t of ch.themes) for (const p of t.parts) for (const su of p.sutras) {
+      total++;
+      if (s.includes(su.d)) have++;
+    }
+    if (have === total) fullTextOK++;
+    ok(have === total, `chapter/${n}/ carries the full text of all ${total} verses`);
+  }
+  ok(canonOK === DATA.length, 'every landing page canonicalises to its own URL');
+  ok(titleOK === DATA.length, 'every landing page title names its chapter');
+  ok(ctaOK === DATA.length, 'every landing page deep-links into the app');
+  ok(sizeOK === DATA.length, 'every chapter page stays light (< 400 KB)');
+  ok(fs.existsSync(path.join(ROOT, 'chapter.css')), 'chapter.css exists');
+  const c2 = fs.readFileSync(path.join(ROOT, 'chapter', '2', 'index.html'), 'utf8');
+  ok(c2.includes('id="v2.47"'), 'verses carry stable per-verse anchors');
+  ok(c2.includes('karmaṇyevādhikāraste'), 'IAST transliteration is printed too');
+  ok(html.includes('/^#chapter=([1-9]|1[0-8])$/') && html.includes('showThemes(parseInt(m[1], 10) - 1)'),
+     'the app routes #chapter=N deep links');
 }
 
 // ---------- summary ----------

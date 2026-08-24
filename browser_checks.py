@@ -47,7 +47,7 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(1500)
 
     group("rendering")
-    ok(pg.title() == "Bhagavad Gita — Interactive Study", "title")
+    ok(pg.title() == "Bhagavad Gita — English, Nepali, Hindi · 700 Verses", "title")
     ok("Welcome" in pg.inner_text("#view"), "welcome renders (JS runs)")
     ok(pg.evaluate("DATA.length") == 18, "18 chapters")
     ok(pg.evaluate("VERSES.length") == 700, "700 verses indexed")
@@ -387,6 +387,42 @@ def run(pw, url, offline_capable=False):
            f"{name}: no overflow")
         c.close()
 
+    group("chapter landing pages")
+    ch_url = (url + "chapter/1/") if url.startswith("http") \
+        else (ROOT / "chapter" / "1" / "index.html").as_uri()
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    q.goto(ch_url, wait_until="load", timeout=30000)
+    q.wait_for_timeout(400)
+    ok("Chapter 1" in q.inner_text("h1"), "chapter 1 landing page renders")
+    ch2_url = (url + "chapter/2/") if url.startswith("http") \
+        else (ROOT / "chapter" / "2" / "index.html").as_uri()
+    q.goto(ch2_url, wait_until="load", timeout=30000)
+    q.wait_for_timeout(300)
+    ok("कर्मण्येवाधिकारस्ते" in q.content(), "chapter 2 page carries the full verse text (2.47)")
+    c.close()
+    dl = (url + "#chapter=2") if url.startswith("http") \
+        else (ROOT / "index.html").as_uri() + "#chapter=2"
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    q.goto(dl, wait_until="load", timeout=90000)
+    q.wait_for_timeout(1200)
+    ok("Themes" in q.inner_text(".view-title"), "#chapter=2 deep link opens chapter 2's themes")
+    c.close()
+
+    group("split build")
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    q.goto(url, wait_until="load", timeout=90000)
+    q.wait_for_timeout(1500)
+    if url.startswith("http"):
+        df_txt = q.evaluate("fetch('data/ch2.js').then(r => r.text())")
+    else:
+        df_txt = (ROOT / "data" / "ch2.js").read_text(encoding="utf-8")
+    ok(df_txt.startswith("GITA_CH[2] = "), "chapter data files are served")
+    ok(q.evaluate("DATA.length") == 18, "all 18 chapters loaded and assembled at runtime")
+    c.close()
+
     if offline_capable:
         group("offline (service worker)")
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
@@ -408,6 +444,15 @@ def run(pw, url, offline_capable=False):
         q.locator(".mini").first.click()
         q.wait_for_timeout(600)
         ok("2.47" in q.eval_on_selector(".m-num", "e=>e.textContent"), "OFFLINE verse opens")
+        c.set_offline(False)
+        # navigating to a chapter landing page must NOT overwrite the shell cache
+        q.goto(url + "chapter/1/", wait_until="load", timeout=30000)
+        q.wait_for_timeout(1200)
+        c.set_offline(True)
+        q.goto(url, wait_until="load", timeout=30000)
+        q.wait_for_timeout(1000)
+        ok(q.evaluate("!!document.querySelector('#appTitle')") and "Chapter 1" not in q.inner_text("h1"),
+           "OFFLINE root still serves the app after a chapter-page visit (shell cache not poisoned)")
         c.set_offline(False)
         c.close()
 

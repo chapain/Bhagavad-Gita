@@ -1,5 +1,19 @@
 # Licence and attribution
 
+## AI disclosure
+
+**AI tools were used in making this app.** Large language models assisted with
+drafting the translations and paraphrases, writing and checking the code, and
+finding inconsistencies across the 700 verses. They were used strictly as
+tools, under the author's direction: the content was reviewed, corrected and
+approved by Dhruba Chapain — who has personally caught and fixed errors the
+automated checks missed — and the selection, arrangement, structure and final
+wording of everything here are his editorial work.
+
+This disclosure is deliberate, and it does not give anything away: copyright
+protects human authorship, and the author's corrections, choices, structure
+and arrangement remain his, as stated below.
+
 ## What is yours
 
 **© 2026 Dhruba Chapain. All rights reserved.**
@@ -18,6 +32,16 @@ Original to this project, and owned by the author:
 These are original works of authorship. Under Indian and international copyright
 law a translation is a derivative work in which the translator holds copyright
 independently, even when the underlying text is public domain.
+
+A note on convergence: for the most famous verses the Sanskrit constrains the
+wording so tightly that short phrases may coincide with old public-domain
+translations (for example the many 19th- and early-20th-century renderings of
+2.47). That convergence is inherent to translating a fixed, compact original —
+it is not copying. No modern copyrighted translation, commentary or edition has
+been reproduced here; the literal renderings and paraphrases were drafted for
+this project and checked against the Sanskrit, and the paraphrase checker in
+the build (`source/check_paraphrase.py`) enforces that every paraphrase says
+substantially more than its literal.
 
 ## What is not yours, and why that is fine
 
@@ -54,7 +78,8 @@ The Devanagari and IAST were originally derived from a freely circulated ITRANS
 encoding of the Gītā. Because such encodings are typically offered for personal
 study rather than redistribution, the project has:
 
-* removed the `itrans` field from all 700 verses — it was unused by the build;
+* removed the `itrans` field from all 700 verses and from the two chapter
+  colophons — it was unused by the build;
 * kept only the Devanagari and IAST, which are the public-domain scripture
   itself rather than any contributor's encoding.
 

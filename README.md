@@ -72,13 +72,15 @@ source/                 ← edit here
   prove_data_only.py      proves the build renders data, never generates it
 
 rebuild.sh              build + run both test suites
-run_gita_app.js         460 assertions on the built document
-browser_checks.py       100 live-browser checks (rendering, i18n, touch, offline)
+run_gita_app.js         524 assertions on the built document
+browser_checks.py       106 live-browser checks (rendering, i18n, touch, offline)
 ```
 
-`index.html` is a **single-file application**: the app shell and all content compile
-into one document. That is deliberate — it makes the app work offline immediately and
-lets it be shared as a single file. Gzipped it transfers as ~670 KB.
+`index.html` is a **split-site shell**: the app chrome, styles, embedded font and
+interface in one small document (~116 KB gzipped), with the verses in 18
+`data/ch<N>.js` files it loads in parallel and the service worker precaches. First
+paint arrives almost immediately; after the first visit everything is cached, so the
+app runs offline and installs to the home screen. Share it by link.
 
 ---
 
@@ -287,9 +289,39 @@ The count locks in `run_gita_app.js` are intentional: if you add or remove a the
 part, the suite fails until you update the expected number. That is the check catching
 your change, not a bug — update the lock deliberately.
 
-To publish: upload the built files (`index.html`, `manifest.webmanifest`, `sw.js`, and
-the icons) to the repository root. GitHub Pages serves them within a minute or two.
+To publish: upload the built files (`index.html`, `manifest.webmanifest`,
+`sw.js`, `sitemap.xml`, `robots.txt`, `chapter.css`, the `data/` folder, the
+`chapter/` folder, and the icons) to the repository root. GitHub Pages serves
+them within a minute or two.
 Note that Pages sets a 10-minute cache, so hard-refresh to see an update immediately.
+Share the site **by link** — `https://chapain.github.io/Bhagavad-Gita/`. The
+service worker caches everything on the first visit, so it works offline and
+installs to the home screen after that. (The split site cannot run from a
+downloaded folder or `file://`; there is no single-file export.)
+
+---
+
+## Being found on Google
+
+The page carries everything a crawler needs — a keyword-targeted `<title>`,
+canonical URL, JSON-LD description, 18 generated **full-text chapter pages**
+(every verse as static, crawlable text), `sitemap.xml` and `robots.txt`. But on a GitHub project page none of that
+substitutes for telling Google the site exists. One time, in a browser:
+
+1. Open [Google Search Console](https://search.google.com/search-console) and
+   sign in.
+2. **Add property → URL prefix** → `https://chapain.github.io/Bhagavad-Gita/`
+3. Verify with the **HTML tag**: copy the token (the `content="…"` value),
+   paste it into `source/gsc_token.txt`, rebuild and publish — the build emits
+   the meta tag automatically. (Or use their HTML-file-upload method instead:
+   upload the verification file to the repository root; no rebuild needed.)
+4. **Sitemaps** → submit `sitemap.xml` (the app + all 18 chapter pages).
+5. **URL inspection** on the site address → **Request indexing**.
+
+Then get the link seen: set the GitHub repo topics (`bhagavad-gita`, `hinduism`,
+`sanskrit`, `nepali`), and share it where readers are — r/Hinduism,
+r/bhagavadgita, Quora, and Nepali Facebook groups. Indexing takes days, not
+minutes; rankings on the long tail (e.g. *bhagavad gita in nepali*) take weeks.
 
 ---
 
@@ -304,7 +336,9 @@ Metres are detected from syllable counts: 644 verses are anuṣṭubh (4 quarter
 
 ---
 
-Created by **Dhruba Chapain**, Pokhara, Nepal.
+Created by **Dhruba Chapain**, Pokhara, Nepal. Built with AI tools, used under
+the author's direction; the content was reviewed, corrected and approved by him
+(see `LICENSE.md`).
 
 © 2026 Dhruba Chapain. All rights reserved.
 

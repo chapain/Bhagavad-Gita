@@ -2,10 +2,11 @@
    Strategy: cache-first for the shell (the app is one static file and never
    changes between deploys), with a network revalidation for navigations so a
    new deploy is picked up on the next visit. */
-const CACHE = 'gita-b839cd7103e6';
+const CACHE = 'gita-7227d0e5f4c4';
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 './icon-192.png', './icon-512.png', './icon-maskable-512.png',
-                './apple-touch-icon.png', './favicon.ico'];
+                './apple-touch-icon.png', './favicon.ico',
+                './data/ch1.js', './data/ch2.js', './data/ch3.js', './data/ch4.js', './data/ch5.js', './data/ch6.js', './data/ch7.js', './data/ch8.js', './data/ch9.js', './data/ch10.js', './data/ch11.js', './data/ch12.js', './data/ch13.js', './data/ch14.js', './data/ch15.js', './data/ch16.js', './data/ch17.js', './data/ch18.js'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE)
@@ -27,12 +28,18 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return;   // never touch cross-origin requests
 
   if (req.mode === 'navigate') {
-    // network-first for the page itself, so updates land; fall back to cache offline
+    // network-first for the page itself, so updates land; fall back to cache offline.
+    // Only the app root is stored as the shell: caching any other page (e.g. a
+    // /chapter/N/ landing page) as './index.html' would poison the offline fallback.
     e.respondWith(
       fetch(req)
-        .then(res => { const copy = res.clone();
-                       caches.open(CACHE).then(c => c.put('./index.html', copy));
-                       return res; })
+        .then(res => {
+          const u = new URL(req.url), root = new URL('./', location.href).pathname;
+          if (u.pathname === root || u.pathname === root + 'index.html') {
+            const copy = res.clone();
+            caches.open(CACHE).then(c => c.put('./index.html', copy));
+          }
+          return res; })
         .catch(() => caches.match('./index.html').then(r => r || caches.match('./')))
     );
     return;
