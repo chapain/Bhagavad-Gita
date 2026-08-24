@@ -42,8 +42,8 @@ So it is worth doing, but nothing is broken while you have not.
 
 ## Checking you got them all
 
-After deleting, your `source/` folder on GitHub should contain **84 files**, and
-none of the seven names above. The whole repo should be **108 files**.
+After deleting, your `source/` folder on GitHub should contain **89 files**, and
+none of the seven names above. The whole repo should be **117 files**.
 
 ## The alternative: delete the folder first
 

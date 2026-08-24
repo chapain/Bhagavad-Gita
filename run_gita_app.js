@@ -13,6 +13,8 @@
 'use strict';
 
 const fs = require('fs');
+const TOTAL_ASSERTIONS = 460;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 95;   // browser_checks.py
 const path = require('path');
 
 const ROOT = __dirname;
@@ -300,6 +302,22 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
     ok(pm.includes(ref), `PROJECT.md lists irregular verse ${ref}`);
   }
   ok(/renders data\. It never generates/.test(pm), 'PROJECT.md states the governing rule');
+
+  // The suite sizes drifted once across PROJECT.md, README.md and build.py --
+  // three files each claiming a different, wrong number. Assert them here so a
+  // grown suite must update its own documentation.
+  const rd = fs.readFileSync(path.join(__dirname, 'README.md'), 'utf8');
+  const bp = fs.readFileSync(path.join(__dirname, 'build.py'), 'utf8');
+  const nAssert = (fs.readFileSync(path.join(__dirname, 'run_gita_app.js'), 'utf8')
+                     .match(/^ *ok\(/gm) || []).length;
+  for (const [name, doc] of [['PROJECT.md', pm], ['README.md', rd], ['build.py', bp]]) {
+    ok(new RegExp(`${TOTAL_ASSERTIONS} assertions`).test(doc),
+       `${name} states the assertion count (${TOTAL_ASSERTIONS})`);
+    ok(new RegExp(`${TOTAL_BROWSER_CHECKS} (live-)?browser checks`).test(doc),
+       `${name} states the browser-check count (${TOTAL_BROWSER_CHECKS})`);
+  }
+  ok(new RegExp(`${Object.keys(UI.en).length} UI strings`).test(rd),
+     `README.md states the current UI key count (${Object.keys(UI.en).length})`);
 }
 // ---- dark mode ----------------------------------------------------------
 {

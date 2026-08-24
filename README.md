@@ -72,8 +72,8 @@ source/                 ← edit here
   prove_data_only.py      proves the build renders data, never generates it
 
 rebuild.sh              build + run both test suites
-run_gita_app.js         394 assertions on the built document
-browser_checks.py       41 live-browser checks (rendering, i18n, touch, offline)
+run_gita_app.js         460 assertions on the built document
+browser_checks.py       95 live-browser checks (rendering, i18n, touch, offline)
 ```
 
 `index.html` is a **single-file application**: the app shell and all content compile
@@ -115,7 +115,7 @@ It opens `http://127.0.0.1:8765` with every editable field laid out by chapter:
 | Translations | literal + paraphrase, in English, Nepali and Hindi |
 | Themes & parts | theme and part titles, descriptions and verse ranges, in all three languages |
 | Chapter names | Nepali and Hindi chapter names and blurbs |
-| Interface text | all 77 UI strings in three languages |
+| Interface text | all 91 UI strings in three languages |
 
 Press **Save** on any block and it writes the real file in `source/`, then rebuilds
 `index.html`. The **Run full build** button runs the complete suite when you want it.

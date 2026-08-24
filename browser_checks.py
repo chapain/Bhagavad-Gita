@@ -52,6 +52,35 @@ def run(pw, url, offline_capable=False):
     ok(pg.evaluate("DATA.length") == 18, "18 chapters")
     ok(pg.evaluate("VERSES.length") == 700, "700 verses indexed")
 
+    group("verse of the day card")
+    # The number belongs inside the closing daṇḍas of the last line, as a
+    # printed edition sets it -- not on a line of its own. The speaker must not
+    # be the same colour as the verse, or it reads as part of the verse text.
+    pg.evaluate("""() => {
+      const flat = [];
+      DATA.forEach(c => c.themes.forEach(t => t.parts.forEach(
+        p => p.sutras.forEach(s => flat.push({ s, c })))));
+      const hit = flat.find(x => x.s.n === '2.11');   // has a speaker line
+      document.querySelector('.wd-verse').innerHTML = padaBlockDeva(hit.s, true);
+      document.querySelector('.wd-ref').textContent =
+        L('chapter') + ' ' + numL(hit.c.num) + ': ' + T(hit.c.names);
+    }""")
+    last_line = pg.locator(".wd-verse .gline").last.inner_text()
+    ok("2.11" in last_line, f"verse number sits inside the last line ({last_line[-14:]})")
+    ok(pg.locator(".wd-verse .gl-n").count() == 1, "exactly one inline number")
+    ok(pg.locator(".wd-ref").inner_text().startswith("Chapter 2:"),
+       "reference reads 'Chapter N: <name>'")
+    vcol = pg.locator(".wd-verse .gline").first.evaluate("e => getComputedStyle(e).color")
+    scol = pg.locator(".wd-verse .spk").first.evaluate("e => getComputedStyle(e).color")
+    ok(vcol != scol, f"speaker colour differs from the verse ({scol} vs {vcol})")
+    ok(pg.locator(".wd-verse .spk").first.evaluate(
+        "e => getComputedStyle(e).fontStyle") == "italic", "speaker is italic")
+    ok(not pg.evaluate(
+        "() => { const e = document.querySelector('.w-day');"
+        " return e.scrollWidth > e.clientWidth; }"), "card does not overflow")
+    pg.reload(wait_until="load")
+    pg.wait_for_timeout(400)
+
     group("navigation")
     pg.get_by_role("button", name="Enter", exact=False).first.click()
     pg.wait_for_timeout(400)
