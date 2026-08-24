@@ -472,6 +472,8 @@ HTML = r"""<!DOCTYPE html>
       source/i18n_ui.py        interface strings (en/ne/hi)
 
   Created by Dhruba Chapain, Pokhara, Nepal.  All rights reserved.
+  AI tools were used in making this app, under the author's direction; the
+  content was reviewed, corrected and approved by him.  See LICENSE.md.
   https://github.com/chapain/Bhagavad-Gita
 -->
 <html lang="en">
@@ -521,12 +523,41 @@ HTML = r"""<!DOCTYPE html>
 <meta name="twitter:description" content="All 18 chapters in English · नेपाली · हिन्दी, with word-by-word meanings. Works offline.">
 <meta name="twitter:image" content="__BASE__/og-card.png">
 
+<!-- Search engines. The canonical URL tells Google this is the one address of
+     the app; the JSON-LD describes what it is in a form no crawler can get
+     wrong by mis-rendering the page. Absolute URLs via __BASE__, like og:url.
+     The GSC placeholder is replaced with the Search Console verification meta
+     tag when source/gsc_token.txt exists; otherwise it is removed. -->
+<!--GSC-->
+<link rel="canonical" href="__BASE__/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Bhagavad Gita — Interactive Study",
+  "alternateName": "श्रीमद्भगवद्गीता",
+  "url": "__BASE__/",
+  "description": "Read and study all 18 chapters and 700 verses of the Bhagavad Gita in English, Nepali and Hindi, with word-by-word meanings, the four pādas of every verse, themes, search and favourites. Works offline.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any web browser",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": ["en", "ne", "hi"],
+  "isAccessibleForFree": true,
+  "author": {
+    "@type": "Person",
+    "name": "Dhruba Chapain",
+    "address": {"@type": "PostalAddress", "addressLocality": "Pokhara", "addressCountry": "NP"}
+  },
+  "sameAs": "https://github.com/chapain/Bhagavad-Gita"
+}
+</script>
+
 <!-- Icons: relative paths, so they resolve on any host or sub-path. -->
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Bhagavad Gita — Interactive Study</title>
+<title>Bhagavad Gita — English, Nepali, Hindi · 700 Verses</title>
 <style>
 __FONTS__
   /* ---- colour tokens -------------------------------------------------
@@ -1012,7 +1043,7 @@ __FONTS__
 
 <div class="wrap">
   <nav class="crumbs" id="crumbs"></nav>
-  <main id="view"></main>
+  <main id="view"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ Loading the 700 verses…</div></main>
 
   <!-- Shown only when JavaScript is disabled — e.g. the in-app file viewers of
        WhatsApp / Gmail / some file managers, which render HTML without running
@@ -1056,7 +1087,12 @@ __FONTS__
 </div>
 
 <script>
-const DATA = __DATA__;
+let DATA = null;
+/* The verses arrive from data/ch<N>.js — one file per chapter, loaded by the
+   script tags at the end of <body>. The loader assembles DATA and boots the
+   app when the last one lands. */
+const GITA_CH = {};
+__DATALOADER__
 const UI = __UI__;
 const state = { chapter:null, theme:null, idx:0, lang:'en', view:'welcome', section:null };
 function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
@@ -1099,11 +1135,11 @@ const crumbs = $('#crumbs'), view = $('#view');
 
 // ---------- global verse index (search / favorites / random) ----------
 const VERSES = [];
-(function buildIndex(){
+function buildIndex(){
   DATA.forEach((ch, ci)=> ch.themes.forEach((t, ti)=>{
     t.parts.forEach(p=> p.sutras.forEach((s, k)=> VERSES.push({ id:s.n, norm:fmtN(s.n), ci, ti, si:flatIndex(t,p,k) })));
   }));
-})();
+}
 function verseLoc(id){ return VERSES.find(v=>v.id===id); }
 function verseAt(loc){ const t = DATA[loc.ci].themes[loc.ti]; return sutraAt(t, loc.si).s; }
 function normTxt(s){ return String(s||'').toLowerCase().replace(/[\u0300-\u036f]/g,''); }
@@ -1140,7 +1176,7 @@ function verseSearchText(v){
     + ' ' + v.paras.en + ' ' + v.paras.ne + ' ' + v.paras.hi + ' ' + T(v.lits));
 }
 const VERSE_TEXT = [];
-(function(){ DATA.forEach(ch=> ch.themes.forEach(t=> t.parts.forEach(p=> p.sutras.forEach(s=> VERSE_TEXT.push(verseSearchText(s)))))); })();
+function buildVerseText(){ DATA.forEach(ch=> ch.themes.forEach(t=> t.parts.forEach(p=> p.sutras.forEach(s=> VERSE_TEXT.push(verseSearchText(s)))))); }
 
 // ---------- search ----------
 let searchTimer = null;
@@ -1839,10 +1875,20 @@ if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
     navigator.serviceWorker.register('sw.js').catch(function(){ /* offline cache unavailable — app still works */ });
   });
 }
-applyStatic();
-paintTheme();
-showWelcome();
+function gitaBoot(){
+  buildIndex();
+  buildVerseText();
+  applyStatic();
+  paintTheme();
+  /* Deep links: the chapter landing pages (and any shared URL) can open a
+     chapter directly — index.html#chapter=7 shows chapter 7's themes. */
+  (function(){
+    var m = /^#chapter=([1-9]|1[0-8])$/.exec(location.hash || '');
+    if(m){ showThemes(parseInt(m[1], 10) - 1); } else { showWelcome(); }
+  })();
+}
 </script>
+__DATASCRIPTS__
 </body>
 </html>
 """
@@ -1870,26 +1916,74 @@ def _font_face():
             f'    src:url(data:font/woff2;base64,{b64}) format("woff2"); }}')
     return "\n".join(faces)
 
-out = HTML.replace("__FONTS__", _font_face()).replace("__DATA__", json.dumps(data, ensure_ascii=False)).replace("__UI__", json.dumps(UI, ensure_ascii=False))
+# ---- one artefact: the split site ------------------------------------------
+# A light shell (index.html) + one data file per chapter (data/ch<N>.js) that
+# the shell loads at startup and the service worker precaches. First paint
+# arrives after ~120 KB instead of ~5 MB, and editing one verse invalidates one
+# small file, not the whole app. The owner retired the all-in-one file
+# (2026-08-24): the site is shared by link, and the service worker still makes
+# it fully offline after the first visit.
+_ui_js = json.dumps(UI, ensure_ascii=False)
+_font_css = _font_face()
+data_js = [f"GITA_CH[{ch['num']}] = {json.dumps(ch, ensure_ascii=False)};\n" for ch in data]
+
+_loader = (
+    "window.__gitaLoaded = function(){\n"
+    f"  if (DATA || Object.keys(GITA_CH).length < {len(data)}) return;\n"
+    "  DATA = [];\n"
+    f"  for (var n = 1; n <= {len(data)}; n++) DATA.push(GITA_CH[n]);\n"
+    "  gitaBoot();\n"
+    "};\n"
+    "function gitaLoadFail(){ var b = document.getElementById('bootNote');\n"
+    "  if (b) b.textContent = 'Could not load the verse data. Check your connection and reload.'; }")
+_tags = "\n".join(
+    f'<script src="data/ch{ch["num"]}.js" onload="__gitaLoaded()" onerror="gitaLoadFail()"></script>'
+    for ch in data)
+
+shell = (HTML
+         .replace("__FONTS__", _font_css)
+         .replace("__UI__", _ui_js)
+         .replace("__DATALOADER__", _loader)
+         .replace("__DATASCRIPTS__", _tags))
 
 # ---- site base URL, used only for the absolute og:image / og:url ----
 # Override with:  SITE_BASE=https://user.github.io/repo python3 build_gita.py
 SITE_BASE = os.environ.get("SITE_BASE", "https://chapain.github.io/Bhagavad-Gita").rstrip("/")
-out = out.replace("__BASE__", SITE_BASE)
+shell = shell.replace("__BASE__", SITE_BASE)
 
+# Optional Google Search Console verification. The token is not secret — it
+# ships inside the public page — so it lives in a plain file: paste the value
+# of the google-site-verification meta tag into source/gsc_token.txt and
+# rebuild. No file (or an empty one) → no tag is emitted.
+_gsc_path = os.path.join(BASE, "gsc_token.txt")
+_gsc = open(_gsc_path, encoding="utf-8").read().strip().strip('"') if os.path.exists(_gsc_path) else ""
+if _gsc:
+    _gsc_tag = f'<meta name="google-site-verification" content="{_gsc}">\n'
+else:
+    _gsc_tag = ""
+shell = shell.replace("<!--GSC-->\n", _gsc_tag)
+
+out = shell
 path = os.path.join(GITA_DIR, "index.html")
 with open(path, "w", encoding="utf-8") as f:
     f.write(out)
-print("written:", path, round(len(out)/1024), "KB")
+print("written:", path, round(len(out)/1024), "KB shell")
+_datadir = os.path.join(GITA_DIR, "data")
+os.makedirs(_datadir, exist_ok=True)
+for _ch, _js in zip(data, data_js):
+    with open(os.path.join(_datadir, f"ch{_ch['num']}.js"), "w", encoding="utf-8") as f:
+        f.write(_js)
+print(f"written: {len(data_js)} chapter data files under {_datadir}/")
 
 # ---------------- web-app files (published alongside index.html) ----------------
-# Only meaningful when the app is hosted; ignored by a standalone file:// copy.
 SITE_DIR = GITA_DIR          # in this repo the root *is* the published site
 os.makedirs(SITE_DIR, exist_ok=True)
 
-# cache version — bump automatically from the app's content hash so a rebuilt
-# app always invalidates the old service-worker cache.
-CACHE_VER = hashlib.sha256(out.encode("utf-8")).hexdigest()[:12]
+# cache version — bump automatically from the content hash of every published
+# artefact (shell + all data files) so any change invalidates the old
+# service-worker cache.
+CACHE_VER = hashlib.sha256(
+    (out + "".join(data_js)).encode("utf-8")).hexdigest()[:12]
 
 manifest = {
     "name": "Bhagavad Gita — Interactive Study",
@@ -1921,7 +2015,8 @@ SW = """/* sw.js — offline cache for the Bhagavad Gita study app.
 const CACHE = 'gita-%%VER%%';
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 './icon-192.png', './icon-512.png', './icon-maskable-512.png',
-                './apple-touch-icon.png', './favicon.ico'];
+                './apple-touch-icon.png', './favicon.ico',
+                %%DATAASSETS%%];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE)
@@ -1943,12 +2038,18 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return;   // never touch cross-origin requests
 
   if (req.mode === 'navigate') {
-    // network-first for the page itself, so updates land; fall back to cache offline
+    // network-first for the page itself, so updates land; fall back to cache offline.
+    // Only the app root is stored as the shell: caching any other page (e.g. a
+    // /chapter/N/ landing page) as './index.html' would poison the offline fallback.
     e.respondWith(
       fetch(req)
-        .then(res => { const copy = res.clone();
-                       caches.open(CACHE).then(c => c.put('./index.html', copy));
-                       return res; })
+        .then(res => {
+          const u = new URL(req.url), root = new URL('./', location.href).pathname;
+          if (u.pathname === root || u.pathname === root + 'index.html') {
+            const copy = res.clone();
+            caches.open(CACHE).then(c => c.put('./index.html', copy));
+          }
+          return res; })
         .catch(() => caches.match('./index.html').then(r => r || caches.match('./')))
     );
     return;
@@ -1963,9 +2064,202 @@ self.addEventListener('fetch', e => {
     }).catch(() => hit))
   );
 });
-""".replace("%%VER%%", CACHE_VER)
+""".replace("%%VER%%", CACHE_VER) \
+   .replace("%%DATAASSETS%%", ", ".join(f"'./data/ch{ch['num']}.js'" for ch in data))
 with open(os.path.join(SITE_DIR, "sw.js"), "w", encoding="utf-8") as f:
     f.write(SW)
+
+# ---------------- chapter landing pages (SEO satellites) ----------------
+# Eighteen small static pages, one per chapter, rendered purely from the same
+# `data` the app displays — no new content, no derivation. They give search
+# engines lightweight, keyword-rich entry points ("bhagavad gita chapter 2 in
+# nepali") and hand the reader to the full app through a #chapter=N deep link.
+# The app itself is the split site: a shell plus data/ch<N>.js per chapter.
+import base64 as _b64
+import html as _h
+
+_ch_font = ""
+_ch_font_path = os.path.join(BASE, "fonts", "noto-deva-regular.woff2")
+if os.path.exists(_ch_font_path):
+    with open(_ch_font_path, "rb") as fh:
+        _ch_font = ('@font-face{font-family:"Noto Serif Devanagari";font-style:normal;'
+                    'font-weight:400;font-display:swap;src:url(data:font/woff2;base64,'
+                    + _b64.b64encode(fh.read()).decode("ascii") + ') format("woff2");}')
+
+# One shared stylesheet for all 18 pages (cached after the first visit).
+# Warm dark mode like the app — never pure black or white (PROJECT.md §4.7).
+CHAPTER_CSS = _ch_font + """
+:root{ --paper:#FFF8EC; --ink:#2A2118; --soft:#6B5D4F; --accent:#0F4C5C;
+       --saffron:#B45A24; --card:#FFFCF4; --line:#E6D9C3; }
+@media (prefers-color-scheme:dark){
+  :root{ --paper:#1F1A14; --ink:#EDE3D0; --soft:#B0A28C; --accent:#8CC0CC;
+         --saffron:#DE8F52; --card:#272018; --line:#3B3227; }
+}
+*{ box-sizing:border-box; }
+body{ margin:0; background:var(--paper); color:var(--ink);
+      font:17px/1.65 Georgia,"Noto Serif Devanagari",serif; }
+main{ max-width:680px; margin:0 auto; padding:26px 20px 10px; }
+.crumb{ font-size:.85rem; color:var(--soft); margin:0 0 18px; }
+.crumb a{ color:var(--accent); text-decoration:none; }
+h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent); }
+.deva{ font-family:"Noto Serif Devanagari",serif; font-size:1.25rem;
+       margin:2px 0 16px; color:var(--saffron); }
+.blurb{ margin:0 0 14px; }
+.blurb span{ display:block; font-size:.95rem; color:var(--soft); margin-top:4px; }
+.verse{ margin:18px 0; padding:16px 18px; background:var(--card);
+        border:1px solid var(--line); border-radius:14px; }
+.verse blockquote{ margin:0; font-family:"Noto Serif Devanagari",serif;
+        font-size:1.12rem; line-height:2; }
+.verse figcaption{ margin-top:10px; font-size:.82rem; color:var(--soft); }
+h2{ font-size:1.05rem; margin:24px 0 10px; color:var(--accent); }
+ol.themes{ margin:0; padding-left:22px; }
+ol.themes li{ margin:6px 0; }
+ol.themes .rng{ color:var(--soft); font-size:.8rem; white-space:nowrap; }
+.cta{ display:inline-block; margin:26px 0 8px; padding:13px 22px;
+      background:var(--accent); color:#FFF8EC; border-radius:12px;
+      text-decoration:none; font-weight:700; font-size:1.02rem; }
+footer{ max-width:680px; margin:0 auto; padding:20px 20px 34px;
+        font-size:.85rem; color:var(--soft); }
+footer a{ color:var(--accent); text-decoration:none; }
+ol.toc a{ color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--soft); }
+section.theme{ margin:26px 0; }
+h3.th{ font-size:1.02rem; color:var(--accent); margin:20px 0 10px;
+       border-bottom:1px solid var(--line); padding-bottom:6px; }
+h3.th .rng{ color:var(--soft); font-weight:400; font-size:.8rem; margin-left:8px;
+       white-space:nowrap; }
+.v{ margin:16px 0 22px; }
+.vnum{ font-size:.78rem; font-weight:700; color:var(--saffron); letter-spacing:.04em; }
+.vdev{ font-family:"Noto Serif Devanagari",serif; font-size:1.14rem; line-height:2;
+       margin:2px 0 3px; }
+.viast{ font-style:italic; color:var(--soft); font-size:.85rem; margin:0 0 7px; }
+.vtr{ margin:4px 0; font-size:.95rem; }
+.vtr .para{ display:block; color:var(--soft); font-size:.9rem; margin-top:2px; }
+@media (prefers-color-scheme:dark){ .cta{ color:#1F1A14; background:var(--saffron); } }
+"""
+with open(os.path.join(SITE_DIR, "chapter.css"), "w", encoding="utf-8") as f:
+    f.write(CHAPTER_CSS)
+
+for _ch in data:
+    _n = _ch["num"]
+    _en = _ch["names"]["en"]
+    _url = f"{SITE_BASE}/chapter/{_n}/"
+    _nverses = _ch["verses"]
+    _desc = (f"Read Chapter {_n} of the Bhagavad Gita ({_en}) — all {_nverses} verses "
+             f"in Sanskrit with translations in English, Nepali and Hindi.")
+    _toc = "\n".join(
+        f'      <li><a href="#theme-{i}">{_h.escape(t["titles"]["en"])} '
+        f'<span class="rng">{_h.escape(t["range"])}</span></a></li>'
+        for i, t in enumerate(_ch["themes"], 1))
+    # The full chapter text: every verse under its theme, printed as-is from
+    # the same data the app renders (§4.1 — no re-joining, no repair).
+    _sections = []
+    for _i, _t in enumerate(_ch["themes"], 1):
+        _vblocks = []
+        for _p in _t["parts"]:
+            for _s in _p["sutras"]:
+                _para = _s["paras"].get("en", "")
+                _vblocks.append(
+                    f'<div class="v" id="v{_h.escape(str(_s["n"]))}">'
+                    f'<div class="vnum">{_h.escape(str(_s["n"]))}</div>'
+                    f'<div class="vdev">{_h.escape(_s["d"])}</div>'
+                    f'<div class="viast">{_h.escape(_s["t"])}</div>'
+                    f'<div class="vtr">{_h.escape(_s["lits"]["en"])}'
+                    + (f'<span class="para">{_h.escape(_para)}</span>' if _para else "")
+                    + f'</div>'
+                    f'<div class="vtr" lang="ne">{_h.escape(_s["lits"]["ne"])}</div>'
+                    f'<div class="vtr" lang="hi">{_h.escape(_s["lits"]["hi"])}</div>'
+                    f'</div>')
+        _sections.append(
+            f'  <section class="theme" id="theme-{_i}">\n'
+            f'    <h3 class="th">{_i}. {_h.escape(_t["titles"]["en"])}'
+            f'<span class="rng">{_h.escape(_t["range"])}</span></h3>\n'
+            + "\n".join("    " + v for v in _vblocks) + '\n  </section>')
+    _text = "\n".join(_sections)
+    _ld = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": f"Bhagavad Gita — Chapter {_n}: {_en}",
+        "url": _url,
+        "description": _desc,
+        "inLanguage": ["en", "ne", "hi"],
+        "isPartOf": {"@type": "WebApplication",
+                     "name": "Bhagavad Gita — Interactive Study",
+                     "url": f"{SITE_BASE}/"},
+    }, ensure_ascii=False, indent=2)
+    _page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhagavad Gita Chapter {_n} — {_h.escape(_en)} | Sanskrit, English, Nepali, Hindi</title>
+<meta name="description" content="{_h.escape(_desc)}">
+<meta name="author" content="Dhruba Chapain">
+<link rel="canonical" href="{_url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bhagavad Gita Chapter {_n} — {_h.escape(_en)}">
+<meta property="og:description" content="{_h.escape(_desc)}">
+<meta property="og:url" content="{_url}">
+<meta property="og:image" content="{SITE_BASE}/og-card.png">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="stylesheet" href="../../chapter.css">
+<script type="application/ld+json">
+{_ld}
+</script>
+</head>
+<body>
+<main>
+  <p class="crumb"><a href="../../">Bhagavad Gita</a> › Chapter {_n}</p>
+  <h1>Chapter {_n} — {_h.escape(_en)}</h1>
+  <p class="deva">{_ch["deva"]}</p>
+  <p class="blurb">{_h.escape(_ch["subs"]["en"])}
+    <span lang="ne">{_h.escape(_ch["subs"]["ne"])}</span>
+    <span lang="hi">{_h.escape(_ch["subs"]["hi"])}</span></p>
+  <p><a class="cta" href="../../index.html#chapter={_n}">Study chapter {_n} in the app — word-by-word meanings →</a></p>
+  <h2 id="themes">{len(_ch["themes"])} themes in this chapter</h2>
+  <ol class="toc themes">
+{_toc}
+  </ol>
+  <h2 id="text">The full text — {_nverses} verses</h2>
+{_text}
+  <p><a class="cta" href="../../index.html#chapter={_n}">Study chapter {_n} in the app — word-by-word meanings →</a></p>
+</main>
+<footer>
+  <a href="../../">← Bhagavad Gita — Interactive Study</a><br>
+  Sanskrit text: public domain · Translations © 2026 Dhruba Chapain<br>
+  Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.
+</footer>
+</body>
+</html>
+"""
+    _dir = os.path.join(SITE_DIR, "chapter", str(_n))
+    os.makedirs(_dir, exist_ok=True)
+    with open(os.path.join(_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(_page)
+print(f"chapter pages: {len(data)} full-text chapters written under {os.path.join(SITE_DIR, 'chapter')}/ + chapter.css")
+
+# sitemap.xml + robots.txt — the crawler-facing pair. Generated rather than
+# checked in, so lastmod always matches the build and the URLs follow
+# SITE_BASE. Honest note: on a GitHub *project* page Google only reads
+# github.io/robots.txt, so this robots.txt is advisory for Google (Search
+# Console is the real channel); other crawlers do read it. The sitemap is
+# what gets submitted in Search Console.
+import datetime as _dt
+_today = _dt.date.today().isoformat()
+_urls = [f'  <url>\n    <loc>{SITE_BASE}/</loc>\n    <lastmod>{_today}</lastmod>\n    <priority>1.0</priority>\n  </url>']
+for _ch in data:
+    _urls.append(f'  <url>\n    <loc>{SITE_BASE}/chapter/{_ch["num"]}/</loc>\n    <lastmod>{_today}</lastmod>\n    <priority>0.8</priority>\n  </url>')
+SITEMAP = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           + "\n".join(_urls) + '\n'
+           '</urlset>\n')
+with open(os.path.join(SITE_DIR, "sitemap.xml"), "w", encoding="utf-8") as f:
+    f.write(SITEMAP)
+ROBOTS = ('User-agent: *\n'
+          'Allow: /\n'
+          '\n'
+          f'Sitemap: {SITE_BASE}/sitemap.xml\n')
+with open(os.path.join(SITE_DIR, "robots.txt"), "w", encoding="utf-8") as f:
+    f.write(ROBOTS)
 
 # index.html + icons
 dst = os.path.join(SITE_DIR, "index.html")
@@ -1979,4 +2273,4 @@ if os.path.isdir(ICON_SRC):
         src = os.path.join(ICON_SRC, n)
         if os.path.exists(src):
             shutil.copyfile(src, os.path.join(SITE_DIR, n)); copied += 1
-print(f"site/: index.html + manifest + sw.js (cache {CACHE_VER}) + {copied} icons  ->  {SITE_DIR}")
+print(f"site/: index.html + manifest + sw.js (cache {CACHE_VER}) + sitemap + robots + {copied} icons  ->  {SITE_DIR}")

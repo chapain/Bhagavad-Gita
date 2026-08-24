@@ -9,7 +9,7 @@ between the two strings and fails when any pair is too similar.
     python3 check_paraphrase.py
 
 Threshold: 80%. Typical healthy medians are ~59% (en) and ~63% (ne/hi).
-Reads the built index.html, so run it after build_gita.py.
+Reads the built data/ch*.js files, so run it after build_gita.py.
 """
 import difflib
 import json
@@ -21,7 +21,7 @@ import sys
 LIMIT = 0.80
 LANGS = ("en", "ne", "hi")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-HTML = os.path.join(ROOT, "index.html")
+DATA_DIR = os.path.join(ROOT, "data")
 
 
 def norm(s):
@@ -29,14 +29,23 @@ def norm(s):
     return re.sub(r"\s+", " ", s.strip().strip('\u201c\u201d"\''))
 
 
+def load_data():
+    """Assemble the chapter list from the published data/ch<N>.js files."""
+    data = []
+    for n in range(1, 19):
+        p = os.path.join(DATA_DIR, f"ch{n}.js")
+        if not os.path.exists(p):
+            sys.exit(f"data/ch{n}.js not found — run build_gita.py first")
+        src = open(p, encoding="utf-8").read()
+        m = re.match(r"^GITA_CH\[(\d+)\] = (\{.*\});\n$", src, re.S)
+        if not m or int(m.group(1)) != n:
+            sys.exit(f"data/ch{n}.js is malformed")
+        data.append(json.loads(m.group(2)))
+    return data
+
+
 def main():
-    if not os.path.exists(HTML):
-        sys.exit("index.html not found — run build_gita.py first")
-    src = open(HTML, encoding="utf-8").read()
-    m = re.search(r"const DATA = (\[.*?\]);\n", src, re.S)
-    if not m:
-        sys.exit("could not locate const DATA in index.html")
-    data = json.loads(m.group(1))
+    data = load_data()
     verses = [v for c in data for t in c["themes"]
               for p in t["parts"] for v in p["sutras"]]
 

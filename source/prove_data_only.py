@@ -23,7 +23,21 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PY = sys.executable or "python3"
+# The build publishes a shell (index.html — UI + interface wording) plus one
+# data file per chapter (data/ch<N>.js — verses, translations, names). An edit
+# can land in either, so the proof reads the union of every published artefact.
 INDEX = os.path.join(ROOT, "index.html")
+DATA_DIR = os.path.join(ROOT, "data")
+
+
+def artifacts():
+    """Every published file the app is built from: the shell + all data files."""
+    paths = [INDEX] + [os.path.join(DATA_DIR, f"ch{n}.js") for n in range(1, 19)]
+    return [p for p in paths if os.path.exists(p)]
+
+
+def artifact_text():
+    return "".join(open(p, encoding="utf-8").read() for p in artifacts())
 
 MARK = "PROOF-DATA-WINS"
 
@@ -51,8 +65,11 @@ CASES = [
 
 
 def digest():
-    with open(INDEX, "rb") as f:
-        return hashlib.sha256(f.read()).hexdigest()[:12]
+    h = hashlib.sha256()
+    for p in artifacts():
+        with open(p, "rb") as f:
+            h.update(f.read())
+    return h.hexdigest()[:12]
 
 
 def build():
@@ -66,7 +83,7 @@ def main():
     if not ok:
         sys.exit("the project does not currently build:\n" + out[-1500:])
     baseline = digest()
-    print(f"baseline index.html = {baseline}\n")
+    print(f"baseline build (index.html + data/) = {baseline}\n")
 
     results = []
     for label, fname, find, repl, expect in CASES:
@@ -81,10 +98,10 @@ def main():
         try:
             open(path, "w", encoding="utf-8").write(original.replace(find, repl, 1))
             built, out = build()
-            shown = built and expect in open(INDEX, encoding="utf-8").read()
+            shown = built and expect in artifact_text()
             moved = digest() != baseline
             results.append((label, fname, built and shown and moved,
-                            "edit appeared in index.html" if shown
+                            "edit appeared in the built app" if shown
                             else ("build failed" if not built else "edit did NOT appear")))
         finally:
             open(path, "w", encoding="utf-8").write(original)
@@ -99,7 +116,7 @@ def main():
         if not passed:
             print(f"        {detail}")
         allok &= passed
-    print(f"\n  restored index.html = {final} "
+    print(f"\n  restored build = {final} "
           f"({'matches baseline' if final == baseline else 'DOES NOT MATCH — investigate'})")
     allok &= final == baseline
     print("=" * 68)
