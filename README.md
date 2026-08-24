@@ -73,7 +73,7 @@ source/                 ← edit here
 
 rebuild.sh              build + run both test suites
 run_gita_app.js         460 assertions on the built document
-browser_checks.py       95 live-browser checks (rendering, i18n, touch, offline)
+browser_checks.py       100 live-browser checks (rendering, i18n, touch, offline)
 ```
 
 `index.html` is a **single-file application**: the app shell and all content compile

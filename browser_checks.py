@@ -214,6 +214,24 @@ def run(pw, url, offline_capable=False):
     pg.evaluate("showSections()")
     pg.wait_for_timeout(400)
 
+    # The top tabs now use the same pill as .read-tab / .sec-tab: one button
+    # language across the app. Assert the shape, not just the behaviour, so a
+    # future restyle cannot quietly reintroduce a second control style.
+    tb = pg.locator(".top-tab").first
+    sb = pg.locator(".sec-tab").first if pg.locator(".sec-tab").count() else None
+    ok(tb.evaluate("e=>getComputedStyle(e).borderTopWidth") == "2px",
+       "top tab has the 2px pill border")
+    ok(round(tb.bounding_box()["height"]) >= 44,
+       f"top tab meets the 44px touch target ({round(tb.bounding_box()['height'])}px)")
+    ok(tb.evaluate("e=>getComputedStyle(e).backgroundColor") == "rgb(232, 145, 44)",
+       "active top tab uses saffron, like every other active tab")
+    ok(pg.locator(".top-tab").nth(1).evaluate(
+        "e=>getComputedStyle(e).backgroundColor") == "rgb(255, 255, 255)",
+       "inactive top tab uses the paper background")
+    ok(not pg.evaluate("() => { const e = document.querySelector('.top-tabs');"
+                       " return e.scrollWidth > e.clientWidth + 1; }"),
+       "top tabs do not overflow")
+
     # The list pages run 4-5 screens on a phone, so the top crumb is repeated at
     # the foot. It must appear only where there is a parent to go back to, and
     # must say the same thing as the crumb above it.

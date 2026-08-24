@@ -264,17 +264,19 @@
      unlike a back button, which belongs on the left text edge. Styled as a quiet
      outlined pill so it matches the app's other buttons and stays lighter than
      the three cards above it; it used to be the only underlined text anywhere. */
-  /* Top-level route chooser. Deliberately a different shape from .sec-tabs (the
-     three ways) — a segmented control rather than separate pills — so the two
-     strips never read as one row of five choices. */
-  .top-tabs{ display:inline-flex; gap:0; margin:0 0 20px; padding:4px;
-             background:var(--toolbar); border:2px solid var(--line); border-radius:999px;}
-  .top-tab{ background:none; border:none; color:var(--ink-soft); font-weight:700; font-size:.9rem;
-            padding:9px 18px; border-radius:999px; cursor:pointer; min-height:40px; transition:.15s;
-            white-space:nowrap;}
-  .top-tab:hover{ color:var(--teal);}
-  .top-tab.on{ background:var(--teal); color:var(--on-accent);}
-  @media (max-width:400px){ .top-tabs{ display:flex; width:100%;} .top-tab{ flex:1; padding:9px 8px; font-size:.84rem;} }
+  /* Top-level route chooser. Same shape as .read-tab (mūla / with meaning),
+     because it is the same kind of choice: one of two views of the same
+     material. The two strips never share a screen — showChapters() renders
+     either topTabs() or sectionTabs(), never both — so matching them costs no
+     clarity and buys one button language across the whole app. Separate pills
+     also wrap on their own, which the old fixed-track segmented control could
+     not do without shrinking the type. */
+  .top-tabs{ display:flex; gap:8px; margin:0 0 20px; flex-wrap:wrap;}
+  .top-tab{ background:var(--paper); border:2px solid var(--line); color:var(--teal); font-weight:700;
+            font-size:.9rem; padding:9px 20px; border-radius:999px; cursor:pointer; min-height:44px;
+            font-family:"Noto Serif Devanagari", Georgia, serif; transition:.15s;}
+  .top-tab:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
+  .top-tab.on{ background:var(--saffron); border-color:var(--saffron); color:var(--on-accent);}
 
   .sect-all{ margin-top:34px; text-align:center;}
   .sect-all .browse-all{ display:inline-block; color:var(--teal); font-size:.9rem; font-weight:600;
@@ -439,6 +441,7 @@
     .part-head .pdesc{ margin-left:0; flex:1 0 100%; }
     .sec-tabs{ gap:8px; }
     .sec-tab{ flex:1 1 auto; padding:11px 14px; font-size:.9rem; min-height:44px; }
+    .top-tab{ flex:1 1 auto; padding:11px 14px; font-size:.9rem; }
     .mini .padas{ font-size:1.06rem; }
     .back-top{ min-height:44px; }
     .mini-crumb{ gap:6px; }

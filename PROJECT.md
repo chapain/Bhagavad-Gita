@@ -64,7 +64,7 @@ sw.js, manifest, icons/
 build.py              build + verify (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
 run_gita_app.js       460 assertions on the built document      (needs node)
-browser_checks.py     95 live-browser checks                 (needs playwright)
+browser_checks.py     100 live-browser checks                 (needs playwright)
 edit.py               local browser-based content editor
 editor.html           its interface
 source/
@@ -230,7 +230,7 @@ Practical consequences:
 * `index.html` = **`0add281058fd`**, `sw.js` cache matches.
 * Live site was last confirmed at `57799836af9e` — **behind by the 11 sandhi
   fixes**. Check `curl -sL https://chapain.github.io/Bhagavad-Gita/ | sha256sum`.
-* `build.py`: **460 assertions + 95 browser checks + 2800 pādas + 2100 paraphrase pairs, all green.**
+* `build.py`: **460 assertions + 100 browser checks + 2800 pādas + 2100 paraphrase pairs, all green.**
 * `.gitignore` exists locally but is **missing on GitHub** (Finder hides
   dotfiles; Cmd+Shift+. reveals them).
 * Upload method: unzip → select everything *inside* → **Add file → Upload files**
