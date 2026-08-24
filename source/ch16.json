@@ -2,123 +2,99 @@
  "verses": {
   "1": {
    "deva": "श्रीभगवानुवाच । अभयं सत्त्वसंशुद्धिर्ज्ञानयोगव्यवस्थितिः । दानं दमश्च यज्ञश्च स्वाध्यायस्तप आर्जवम्",
-   "iast": "śrībhagavānuvāca । abhayaṃ sattvasaṃśuddhirjñānayogavyavasthitiḥ । dānaṃ damaśca yajñaśca svādhyāyastapa ārjavam",
-   "itrans": "shrIbhagavAnuvAcha | abhayaM sattvasaMshuddhirj~nAnayogavyavasthitiH | dAnaM damashcha yaj~nashcha svAdhyAyastapa Arjavam"
+   "iast": "śrībhagavānuvāca । abhayaṃ sattvasaṃśuddhirjñānayogavyavasthitiḥ । dānaṃ damaśca yajñaśca svādhyāyastapa ārjavam"
   },
   "2": {
    "deva": "अहिंसा सत्यमक्रोधस्त्यागः शान्तिरपैशुनम् । दया भूतेष्वलोलुप्त्वं मार्दवं ह्रीरचापलम्",
-   "iast": "ahiṃsā satyamakrodhastyāgaḥ śāntirapaiśunam । dayā bhūteṣvaloluptvaṃ mārdavaṃ hrīracāpalam",
-   "itrans": "ahiMsA satyamakrodhastyAgaH shAntirapaishunam | dayA bhUteShvaloluptvaM mArdavaM hrIrachApalam"
+   "iast": "ahiṃsā satyamakrodhastyāgaḥ śāntirapaiśunam । dayā bhūteṣvaloluptvaṃ mārdavaṃ hrīracāpalam"
   },
   "3": {
    "deva": "तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता । भवन्ति सम्पदं दैवीमभिजातस्य भारत",
-   "iast": "tejaḥ kṣamā dhṛtiḥ śaucamadroho nātimānitā । bhavanti sampadaṃ daivīmabhijātasya bhārata",
-   "itrans": "tejaH kShamA dhR^itiH shauchamadroho nAtimAnitA | bhavanti sampadaM daivImabhijAtasya bhArata"
+   "iast": "tejaḥ kṣamā dhṛtiḥ śaucamadroho nātimānitā । bhavanti sampadaṃ daivīmabhijātasya bhārata"
   },
   "4": {
    "deva": "दम्भो दर्पोऽतिमानश्च क्रोधः पारुष्यमेव च । अज्ञानं चाभिजातस्य पार्थ सम्पदमासुरीम्",
-   "iast": "dambho darpo’timānaśca krodhaḥ pāruṣyameva ca । ajñānaṃ cābhijātasya pārtha sampadamāsurīm",
-   "itrans": "dambho darpo.atimAnashcha krodhaH pAruShyameva cha | aj~nAnaM chAbhijAtasya pArtha sampadamAsurIm"
+   "iast": "dambho darpo’timānaśca krodhaḥ pāruṣyameva ca । ajñānaṃ cābhijātasya pārtha sampadamāsurīm"
   },
   "5": {
    "deva": "दैवी सम्पद्विमोक्षाय निबन्धायासुरी मता । मा शुचः सम्पदं दैवीमभिजातोऽसि पाण्डव",
-   "iast": "daivī sampadvimokṣāya nibandhāyāsurī matā । mā śucaḥ sampadaṃ daivīmabhijāto’si pāṇḍava",
-   "itrans": "daivI sampadvimokShAya nibandhAyAsurI matA | mA shuchaH sampadaM daivImabhijAto.asi pANDava"
+   "iast": "daivī sampadvimokṣāya nibandhāyāsurī matā । mā śucaḥ sampadaṃ daivīmabhijāto’si pāṇḍava"
   },
   "6": {
    "deva": "द्वौ भूतसर्गौ लोकेऽस्मिन्दैव आसुर एव च । दैवो विस्तरशः प्रोक्त आसुरं पार्थ मे शृणु",
-   "iast": "dvau bhūtasargau loke’smindaiva āsura eva ca । daivo vistaraśaḥ prokta āsuraṃ pārtha me śṛṇu",
-   "itrans": "dvau bhUtasargau loke.asmindaiva Asura eva cha | daivo vistarashaH prokta AsuraM pArtha me shR^iNu"
+   "iast": "dvau bhūtasargau loke’smindaiva āsura eva ca । daivo vistaraśaḥ prokta āsuraṃ pārtha me śṛṇu"
   },
   "7": {
    "deva": "प्रवृत्तिं च निवृत्तिं च जना न विदुरासुराः । न शौचं नापि चाचारो न सत्यं तेषु विद्यते",
-   "iast": "pravṛttiṃ ca nivṛttiṃ ca janā na vidurāsurāḥ । na śaucaṃ nāpi cācāro na satyaṃ teṣu vidyate",
-   "itrans": "pravR^ittiM cha nivR^ittiM cha janA na vidurAsurAH | na shauchaM nApi chAchAro na satyaM teShu vidyate"
+   "iast": "pravṛttiṃ ca nivṛttiṃ ca janā na vidurāsurāḥ । na śaucaṃ nāpi cācāro na satyaṃ teṣu vidyate"
   },
   "8": {
    "deva": "असत्यमप्रतिष्ठं ते जगदाहुरनीश्वरम् । अपरस्परसम्भूतं किमन्यत्कामहैतुकम्",
-   "iast": "asatyamapratiṣṭhaṃ te jagadāhuranīśvaram । aparasparasambhūtaṃ kimanyatkāmahaitukam",
-   "itrans": "asatyamapratiShThaM te jagadAhuranIshvaram | aparasparasambhUtaM kimanyatkAmahaitukam"
+   "iast": "asatyamapratiṣṭhaṃ te jagadāhuranīśvaram । aparasparasambhūtaṃ kimanyatkāmahaitukam"
   },
   "9": {
    "deva": "एतां दृष्टिमवष्टभ्य नष्टात्मानोऽल्पबुद्धयः । प्रभवन्त्युग्रकर्माणः क्षयाय जगतोऽहिताः",
-   "iast": "etāṃ dṛṣṭimavaṣṭabhya naṣṭātmāno’lpabuddhayaḥ । prabhavantyugrakarmāṇaḥ kṣayāya jagato’hitāḥ",
-   "itrans": "etAM dR^iShTimavaShTabhya naShTAtmAno.alpabuddhayaH | prabhavantyugrakarmANaH kShayAya jagato.ahitAH"
+   "iast": "etāṃ dṛṣṭimavaṣṭabhya naṣṭātmāno’lpabuddhayaḥ । prabhavantyugrakarmāṇaḥ kṣayāya jagato’hitāḥ"
   },
   "10": {
    "deva": "काममाश्रित्य दुष्पूरं दम्भमानमदान्विताः । मोहाद्गृहीत्वाऽसद्ग्राहान्प्रवर्तन्तेऽशुचिव्रताः",
-   "iast": "kāmamāśritya duṣpūraṃ dambhamānamadānvitāḥ । mohādgṛhītvā’sadgrāhānpravartante’śucivratāḥ",
-   "itrans": "kAmamAshritya duShpUraM dambhamAnamadAnvitAH | mohAdgR^ihItvA.asadgrAhAnpravartante.ashuchivratAH"
+   "iast": "kāmamāśritya duṣpūraṃ dambhamānamadānvitāḥ । mohādgṛhītvā’sadgrāhānpravartante’śucivratāḥ"
   },
   "11": {
    "deva": "चिन्तामपरिमेयां च प्रलयान्तामुपाश्रिताः । कामोपभोगपरमा एतावदिति निश्चिताः",
-   "iast": "cintāmaparimeyāṃ ca pralayāntāmupāśritāḥ । kāmopabhogaparamā etāvaditi niścitāḥ",
-   "itrans": "chintAmaparimeyAM cha pralayAntAmupAshritAH | kAmopabhogaparamA etAvaditi nishchitAH"
+   "iast": "cintāmaparimeyāṃ ca pralayāntāmupāśritāḥ । kāmopabhogaparamā etāvaditi niścitāḥ"
   },
   "12": {
    "deva": "आशापाशशतैर्बद्धाः कामक्रोधपरायणाः । ईहन्ते कामभोगार्थमन्यायेनार्थसञ्चयान्",
-   "iast": "āśāpāśaśatairbaddhāḥ kāmakrodhaparāyaṇāḥ । īhante kāmabhogārthamanyāyenārthasañcayān",
-   "itrans": "AshApAshashatairbaddhAH kAmakrodhaparAyaNAH | Ihante kAmabhogArthamanyAyenArthasa~nchayAn"
+   "iast": "āśāpāśaśatairbaddhāḥ kāmakrodhaparāyaṇāḥ । īhante kāmabhogārthamanyāyenārthasañcayān"
   },
   "13": {
    "deva": "इदमद्य मया लब्धमिदं प्राप्स्ये मनोरथम् । इदमस्तीदमपि मे भविष्यति पुनर्धनम्",
-   "iast": "idamadya mayā labdhamidaṃ prāpsye manoratham । idamastīdamapi me bhaviṣyati punardhanam",
-   "itrans": "idamadya mayA labdhamidaM prApsye manoratham | idamastIdamapi me bhaviShyati punardhanam"
+   "iast": "idamadya mayā labdhamidaṃ prāpsye manoratham । idamastīdamapi me bhaviṣyati punardhanam"
   },
   "14": {
    "deva": "असौ मया हतः शत्रुर्हनिष्ये चापरानपि । ईश्वरोऽहमहं भोगी सिद्धोऽहं बलवान्सुखी",
-   "iast": "asau mayā hataḥ śatrurhaniṣye cāparānapi । īśvaro’hamahaṃ bhogī siddho’haṃ balavānsukhī",
-   "itrans": "asau mayA hataH shatrurhaniShye chAparAnapi | Ishvaro.ahamahaM bhogI siddho.ahaM balavAnsukhI"
+   "iast": "asau mayā hataḥ śatrurhaniṣye cāparānapi । īśvaro’hamahaṃ bhogī siddho’haṃ balavānsukhī"
   },
   "15": {
    "deva": "आढ्योऽभिजनवानस्मि कोऽन्योऽस्ति सदृशो मया । यक्ष्ये दास्यामि मोदिष्य इत्यज्ञानविमोहिताः",
-   "iast": "āḍhyo’bhijanavānasmi ko’nyo’sti sadṛśo mayā । yakṣye dāsyāmi modiṣya ityajñānavimohitāḥ",
-   "itrans": "ADhyo.abhijanavAnasmi ko.anyo.asti sadR^isho mayA | yakShye dAsyAmi modiShya ityaj~nAnavimohitAH"
+   "iast": "āḍhyo’bhijanavānasmi ko’nyo’sti sadṛśo mayā । yakṣye dāsyāmi modiṣya ityajñānavimohitāḥ"
   },
   "16": {
    "deva": "अनेकचित्तविभ्रान्ता मोहजालसमावृताः । प्रसक्ताः कामभोगेषु पतन्ति नरकेऽशुचौ",
-   "iast": "anekacittavibhrāntā mohajālasamāvṛtāḥ । prasaktāḥ kāmabhogeṣu patanti narake’śucau",
-   "itrans": "anekachittavibhrAntA mohajAlasamAvR^itAH | prasaktAH kAmabhogeShu patanti narake.ashuchau"
+   "iast": "anekacittavibhrāntā mohajālasamāvṛtāḥ । prasaktāḥ kāmabhogeṣu patanti narake’śucau"
   },
   "17": {
    "deva": "आत्मसम्भाविताः स्तब्धा धनमानमदान्विताः । यजन्ते नामयज्ञैस्ते दम्भेनाविधिपूर्वकम्",
-   "iast": "ātmasambhāvitāḥ stabdhā dhanamānamadānvitāḥ । yajante nāmayajñaiste dambhenāvidhipūrvakam",
-   "itrans": "AtmasambhAvitAH stabdhA dhanamAnamadAnvitAH | yajante nAmayaj~naiste dambhenAvidhipUrvakam"
+   "iast": "ātmasambhāvitāḥ stabdhā dhanamānamadānvitāḥ । yajante nāmayajñaiste dambhenāvidhipūrvakam"
   },
   "18": {
    "deva": "अहङ्कारं बलं दर्पं कामं क्रोधं च संश्रिताः । मामात्मपरदेहेषु प्रद्विषन्तोऽभ्यसूयकाः",
-   "iast": "ahaṅkāraṃ balaṃ darpaṃ kāmaṃ krodhaṃ ca saṃśritāḥ । māmātmaparadeheṣu pradviṣanto’bhyasūyakāḥ",
-   "itrans": "aha~NkAraM balaM darpaM kAmaM krodhaM cha saMshritAH | mAmAtmaparadeheShu pradviShanto.abhyasUyakAH"
+   "iast": "ahaṅkāraṃ balaṃ darpaṃ kāmaṃ krodhaṃ ca saṃśritāḥ । māmātmaparadeheṣu pradviṣanto’bhyasūyakāḥ"
   },
   "19": {
    "deva": "तानहं द्विषतः क्रूरान्संसारेषु नराधमान् । क्षिपाम्यजस्रमशुभानासुरीष्वेव योनिषु",
-   "iast": "tānahaṃ dviṣataḥ krūrānsaṃsāreṣu narādhamān । kṣipāmyajasramaśubhānāsurīṣveva yoniṣu",
-   "itrans": "tAnahaM dviShataH krUrAnsaMsAreShu narAdhamAn | kShipAmyajasramashubhAnAsurIShveva yoniShu"
+   "iast": "tānahaṃ dviṣataḥ krūrānsaṃsāreṣu narādhamān । kṣipāmyajasramaśubhānāsurīṣveva yoniṣu"
   },
   "20": {
    "deva": "आसुरीं योनिमापन्ना मूढा जन्मनि जन्मनि । मामप्राप्यैव कौन्तेय ततो यान्त्यधमां गतिम्",
-   "iast": "āsurīṃ yonimāpannā mūḍhā janmani janmani । māmaprāpyaiva kaunteya tato yāntyadhamāṃ gatim",
-   "itrans": "AsurIM yonimApannA mUDhA janmani janmani | mAmaprApyaiva kaunteya tato yAntyadhamAM gatim"
+   "iast": "āsurīṃ yonimāpannā mūḍhā janmani janmani । māmaprāpyaiva kaunteya tato yāntyadhamāṃ gatim"
   },
   "21": {
    "deva": "त्रिविधं नरकस्येदं द्वारं नाशनमात्मनः । कामः क्रोधस्तथा लोभस्तस्मादेतत्त्रयं त्यजेत्",
-   "iast": "trividhaṃ narakasyedaṃ dvāraṃ nāśanamātmanaḥ । kāmaḥ krodhastathā lobhastasmādetattrayaṃ tyajet",
-   "itrans": "trividhaM narakasyedaM dvAraM nAshanamAtmanaH | kAmaH krodhastathA lobhastasmAdetattrayaM tyajet"
+   "iast": "trividhaṃ narakasyedaṃ dvāraṃ nāśanamātmanaḥ । kāmaḥ krodhastathā lobhastasmādetattrayaṃ tyajet"
   },
   "22": {
    "deva": "एतैर्विमुक्तः कौन्तेय तमोद्वारैस्त्रिभिर्नरः । आचरत्यात्मनः श्रेयस्ततो याति परां गतिम्",
-   "iast": "etairvimuktaḥ kaunteya tamodvāraistribhirnaraḥ । ācaratyātmanaḥ śreyastato yāti parāṃ gatim",
-   "itrans": "etairvimuktaH kaunteya tamodvAraistribhirnaraH | AcharatyAtmanaH shreyastato yAti parAM gatim"
+   "iast": "etairvimuktaḥ kaunteya tamodvāraistribhirnaraḥ । ācaratyātmanaḥ śreyastato yāti parāṃ gatim"
   },
   "23": {
    "deva": "यः शास्त्रविधिमुत्सृज्य वर्तते कामकारतः । न स सिद्धिमवाप्नोति न सुखं न परां गतिम्",
-   "iast": "yaḥ śāstravidhimutsṛjya vartate kāmakārataḥ । na sa siddhimavāpnoti na sukhaṃ na parāṃ gatim",
-   "itrans": "yaH shAstravidhimutsR^ijya vartate kAmakArataH | na sa siddhimavApnoti na sukhaM na parAM gatim"
+   "iast": "yaḥ śāstravidhimutsṛjya vartate kāmakārataḥ । na sa siddhimavāpnoti na sukhaṃ na parāṃ gatim"
   },
   "24": {
    "deva": "तस्माच्छास्त्रं प्रमाणं ते कार्याकार्यव्यवस्थितौ । ज्ञात्वा शास्त्रविधानोक्तं कर्म कर्तुमिहार्हसि",
-   "iast": "tasmācchāstraṃ pramāṇaṃ te kāryākāryavyavasthitau । jñātvā śāstravidhānoktaṃ karma kartumihārhasi",
-   "itrans": "tasmAchChAstraM pramANaM te kAryAkAryavyavasthitau | j~nAtvA shAstravidhAnoktaM karma kartumihArhasi"
+   "iast": "tasmācchāstraṃ pramāṇaṃ te kāryākāryavyavasthitau । jñātvā śāstravidhānoktaṃ karma kartumihārhasi"
   }
  }
 }

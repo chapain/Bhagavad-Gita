@@ -547,7 +547,9 @@ __FONTS__
      Devanagari has fine strokes, and maximum contrast makes them shimmer.
      Saffron and teal are both lifted, because the light-mode values go muddy
      against a dark ground.                                                */
+  html{ color-scheme: light; }
   html[data-theme="dark"]{
+    color-scheme: dark;
     --saffron:#F0A64A; --saffron-dark:#E8912C; --saffron-soft:#4A3418;
     --teal:#7FD4E8; --teal-mid:#9FE0EF; --teal-soft:#123039;
     --cream:#17130E; --paper:#211B14; --ink:#F2E7D5; --ink-soft:#B8A88F; --line:#3A2F22;
@@ -691,7 +693,17 @@ __FONTS__
   .welcome .w-day:hover{ transform:translateY(-3px); box-shadow:0 16px 32px rgba(var(--shadow),.18);}
   .welcome .wd-label{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem; margin-bottom:10px; text-align:center; letter-spacing:.04em;}
   .welcome .wd-verse{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.15rem; line-height:1.6; text-align:center;}
-  .welcome .wd-ref{ color:var(--ink-soft); font-size:.88rem; text-align:center; margin-top:8px;}
+  /* The speaker is not part of the verse, so it must not read as verse text.
+     Saffron + italic everywhere else in the app — match that here. */
+  .welcome .wd-verse .spk{ display:block; color:var(--saffron-dark); font-style:italic;
+                  font-size:.92rem; margin-bottom:4px;}
+  /* Verse number set inside the closing daṇḍas, as a printed edition does. */
+  .gl-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.8rem;}
+  /* The chapter line is the card's anchor — it says where you are. It was a
+     faint grey afterthought; give it weight and the saffron the app uses for
+     locators. */
+  .welcome .wd-ref{ color:var(--saffron-dark); font-weight:700; font-size:.94rem;
+                  text-align:center; margin-top:12px; letter-spacing:.01em;}
   .welcome .wd-open{ color:var(--teal); font-weight:700; font-size:.9rem; text-align:center; margin-top:8px;}
 
   .grid.sections{ grid-template-columns:repeat(auto-fill, minmax(270px,1fr));}
@@ -815,6 +827,10 @@ __FONTS__
   footer .credit{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
                   font-size:.8rem; color:var(--ink-soft); display:block; text-align:center;}
   footer .credit b{ color:var(--teal); font-weight:700;}
+  footer .credit.attrib{ margin-top:6px; padding-top:6px; border-top:none;
+                  font-size:.72rem; line-height:1.55; color:var(--muted); max-width:62ch;
+                  margin-left:auto; margin-right:auto;}
+  footer .credit.attrib a{ color:var(--muted); text-decoration:underline;}
   .fade-in{ animation:fadein .28s ease;} @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
   @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:1.12rem;} }
 
@@ -1023,6 +1039,13 @@ __FONTS__
   <!-- Credit lives in its own element: applyStatic() replaces #appFooter's
        textContent on every language switch and would otherwise wipe it. -->
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
+  <!-- OFL clause 2 asks that the copyright notice travel with the font. It is
+       preserved inside the embedded woff2 metadata, but a reader cannot
+       "easily view" that, so it is stated here in the page as well. -->
+  <div class="credit attrib">Sanskrit text of the Bhagavad Gītā: public domain.
+    Translations, word meanings and commentary &copy; 2026 Dhruba Chapain.
+    Typeface: Noto Serif Devanagari, &copy; 2022 The Noto Project Authors,
+    <a href="https://openfontlicense.org" target="_blank" rel="noopener">SIL Open Font License 1.1</a>.</div>
 </footer>
 
 <div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
@@ -1431,8 +1454,8 @@ function showWelcome(){
       ${(()=>{ const dv = dayVerse(); const c = DATA[dv.ci], v = verseAt(dv);
         return `<div class="w-day fade-in" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book')">
           <div class="wd-label">${esc(L('verse_of_day'))}</div>
-          <div class="wd-verse">${padaBlockDeva(v)}</div>
-          <div class="wd-ref">${esc(fmtNL(v.n))} · ${esc(T(c.names))}</div>
+          <div class="wd-verse">${padaBlockDeva(v, true)}</div>
+          <div class="wd-ref">${esc(L('chapter'))} ${numL(c.num)}: ${esc(T(c.names))}</div>
           <div class="wd-open">${esc(L('open_verse'))} →</div>
         </div>`; })()}
       <button class="tool-btn primary big" onclick="showSections()">${esc(L('welcome_enter'))}</button>
@@ -1565,11 +1588,20 @@ function pDanda(i, total){
    the display cannot drift from the source. To correct a verse, edit the JSON.
    The pāda split is still shown in the modal's 2x2 boxes; that data is
    separate and untouched. */
-function padaBlockDeva(s){
+function padaBlockDeva(s, withNum){
+  /* withNum puts the verse number inside the closing daṇḍas of the final line
+     — ॥ १.२५ ॥ — the way a printed edition sets it, instead of on a line of
+     its own below. Same construction as the reading view's rd-n. */
+  const ls = (s.lines || []), last = ls.reduce((a,it,i)=> it.k === 's' ? a : i, -1);
   let html = '', li = 0;
-  for(const it of (s.lines || [])){
-    if(it.k === 's') html += `<span class="spk">${it.d}</span>`;
-    else { html += `<div class="gline">${it.d}${li ? '॥' : '।'}</div>`; li++; }
+  for(let i = 0; i < ls.length; i++){
+    const it = ls[i];
+    if(it.k === 's'){ html += `<span class="spk">${it.d}</span>`; continue; }
+    const tail = li
+      ? (withNum && i === last ? `॥ <span class="gl-n">${esc(fmtNL(s.n))}</span> ॥` : '॥')
+      : '।';
+    html += `<div class="gline">${it.d}${tail}</div>`;
+    li++;
   }
   return html;
 }

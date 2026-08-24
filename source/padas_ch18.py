@@ -543,7 +543,7 @@ GITA_CH18_PADAS = {
 ],
 
 "18.74": [
-    ("s", "संजय उवाच।", "saṃjaya uvāca"),
+    ("s", "सञ्जय उवाच।", "sañjaya uvāca"),
     ("p", "इत्यहं वासुदेवस्य", "ityahaṃ vāsudevasya", 8),
     ("p", "पार्थस्य च महात्मनः", "pārthasya ca mahātmanaḥ", 8),
     ("p", "संवादमिममश्रौषम्", "saṃvādamimamaśrauṣam", 8),
