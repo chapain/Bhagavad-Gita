@@ -39,6 +39,7 @@ h3.th .rng{ color:var(--soft); font-weight:400; font-size:.8rem; margin-left:8px
        white-space:nowrap; }
 .v{ margin:16px 0 22px; }
 .vnum{ font-size:.78rem; font-weight:700; color:var(--saffron); letter-spacing:.04em; }
+.vnum a{ color:inherit; text-decoration:none; border-bottom:1px dotted var(--saffron); }
 .vdev{ font-family:"Noto Serif Devanagari",serif; font-size:1.14rem; line-height:2;
        margin:2px 0 3px; }
 .viast{ font-style:italic; color:var(--soft); font-size:.85rem; margin:0 0 7px; }
