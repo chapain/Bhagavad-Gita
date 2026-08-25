@@ -2,7 +2,7 @@
    Strategy: cache-first for the shell (the app is one static file and never
    changes between deploys), with a network revalidation for navigations so a
    new deploy is picked up on the next visit. */
-const CACHE = 'gita-7227d0e5f4c4';
+const CACHE = 'gita-9cc0e7c0d825';
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 './icon-192.png', './icon-512.png', './icon-maskable-512.png',
                 './apple-touch-icon.png', './favicon.ico',
