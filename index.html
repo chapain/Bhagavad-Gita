@@ -793,8 +793,8 @@ function doSearch(){
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
       const pi = th.parts.indexOf(part);
       return `<div class="mini" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'search',${i})">
-        <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-part-title">${esc(T(part.titles))}</div>
+        <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="padas">${padaBlockDeva(v)}</div>
         <div class="vhint">${esc(T(v.paras).slice(0,80))}…</div>
       </div>`;}).join('')}</div>`;
@@ -1053,8 +1053,8 @@ function showWelcome(){
         const part = sutraAt(c.themes[dv.ti], dv.si).part;
         return `<div class="w-day fade-in" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book')">
           <div class="wd-label">${esc(L('verse_of_day'))}</div>
-          <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="m-part-title">${esc(T(part.titles))}</div>
+          <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="padas">${padaBlockDeva(v)}</div>
           <div class="vhint">${esc(T(v.paras).slice(0,80))}…</div>
         </div>`; })()}
