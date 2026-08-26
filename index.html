@@ -279,6 +279,10 @@
                    padding:18px 22px; cursor:pointer; box-shadow:0 10px 26px rgba(var(--shadow),.12); transition:.18s; text-align:left;}
   .welcome .w-day:hover{ transform:translateY(-3px); box-shadow:0 16px 32px rgba(var(--shadow),.18);}
   .welcome .wd-label{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem; margin-bottom:10px; text-align:center; letter-spacing:.04em;}
+  /* the welcome card is a display piece, not a list item — centre it, while
+     the search/theme grids stay left-aligned for reading */
+  .welcome .w-day .vnum, .welcome .w-day .m-part-title,
+  .welcome .w-day .padas, .welcome .w-day .vhint{ text-align:center; }
   /* The speaker is not part of the verse, so it must not read as verse text.
      Saffron + italic everywhere else in the app — match that here. */
   /* Verse number set inside the closing daṇḍas, as a printed edition does. */
