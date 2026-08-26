@@ -186,15 +186,13 @@
   .mini{ background:var(--paper); border:2px solid var(--line); border-radius:12px; padding:11px 14px; cursor:pointer;
          transition:.15s; box-shadow:0 4px 12px rgba(var(--shadow),.06);}
   .mini:hover{ border-color:var(--saffron); transform:translateY(-3px); box-shadow:0 10px 20px rgba(var(--shadow),.12);}
-  .mini .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.95rem; margin-bottom:4px;}
-  .mini .m-part-title{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.95rem; margin-bottom:6px;}
-  .mini .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
-  .mini .padas .spk{ display:block; color:var(--saffron-dark); font-size:.82rem; font-style:italic; margin-bottom:2px;}
-  .mini .padas .gline{ display:block; line-height:1.6;}
-  .mini .padas .gp{ display:inline;}
-  .mini .vhint{ color:var(--ink-soft); font-size:.78rem; font-style:italic; line-height:1.4; margin-top:6px;}
-  .mini .m-ref{ color:var(--ink-soft); font-size:.8rem; margin-top:7px;}
-  .mini .m-open{ color:var(--saffron-dark); font-weight:700; font-size:.82rem; margin-top:4px;}
+  .mini .vnum, .w-day .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.95rem; margin-bottom:4px;}
+  .mini .m-part-title, .w-day .m-part-title{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.95rem; margin-bottom:6px;}
+  .mini .padas, .w-day .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
+  .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-dark); font-size:.82rem; font-style:italic; margin-bottom:2px;}
+  .mini .padas .gline, .w-day .padas .gline{ display:block; line-height:1.6;}
+  .mini .padas .gp, .w-day .padas .gp{ display:inline;}
+  .mini .vhint, .w-day .vhint{ color:var(--ink-soft); font-size:.78rem; font-style:italic; line-height:1.4; margin-top:6px;}
   .share-panel{ display:none; flex-direction:column; align-items:flex-start; gap:8px; margin:10px 0 0;
     background:var(--cream); border:1px solid var(--line); border-radius:14px; padding:12px 14px;}
   .sp-hint{ font-size:.85rem; color:var(--ink-soft); line-height:1.5;}
@@ -281,21 +279,10 @@
                    padding:18px 22px; cursor:pointer; box-shadow:0 10px 26px rgba(var(--shadow),.12); transition:.18s; text-align:left;}
   .welcome .w-day:hover{ transform:translateY(-3px); box-shadow:0 16px 32px rgba(var(--shadow),.18);}
   .welcome .wd-label{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem; margin-bottom:10px; text-align:center; letter-spacing:.04em;}
-  .welcome .wd-part{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.95rem; margin-bottom:8px; text-align:center;}
-  .welcome .wd-verse{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.15rem; line-height:1.6; text-align:center;}
-  .welcome .wd-hint{ color:var(--ink-soft); font-size:.8rem; font-style:italic; line-height:1.5; margin-top:8px; text-align:center;}
   /* The speaker is not part of the verse, so it must not read as verse text.
      Saffron + italic everywhere else in the app — match that here. */
-  .welcome .wd-verse .spk{ display:block; color:var(--saffron-dark); font-style:italic;
-                  font-size:.92rem; margin-bottom:4px;}
   /* Verse number set inside the closing daṇḍas, as a printed edition does. */
   .gl-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.8rem;}
-  /* The chapter line is the card's anchor — it says where you are. It was a
-     faint grey afterthought; give it weight and the saffron the app uses for
-     locators. */
-  .welcome .wd-ref{ color:var(--saffron-dark); font-weight:700; font-size:.94rem;
-                  text-align:center; margin-top:12px; letter-spacing:.01em;}
-  .welcome .wd-open{ color:var(--teal); font-weight:700; font-size:.9rem; text-align:center; margin-top:8px;}
 
   .grid.sections{ grid-template-columns:repeat(auto-fill, minmax(270px,1fr));}
   .card.sect{ border-top:6px solid var(--saffron);}
@@ -484,7 +471,7 @@
     .sec-tabs{ gap:8px; }
     .sec-tab{ flex:1 1 auto; padding:11px 14px; font-size:.9rem; min-height:44px; }
     .top-tab{ flex:1 1 auto; padding:11px 14px; font-size:.9rem; }
-    .mini .padas{ font-size:1.06rem; }
+    .mini .padas, .w-day .padas{ font-size:1.06rem; }
     .back-top{ min-height:44px; }
     .mini-crumb{ gap:6px; }
     .mini-crumb .bc-btn, .mini-crumb .bc-cur{ padding:7px 10px; }
@@ -496,8 +483,6 @@
     .welcome .view-title{ font-size:1.55rem; }
     .welcome .tool-btn.big{ width:100%; padding:15px 20px; font-size:1rem; min-height:50px; }
     .welcome .w-day{ padding:16px 16px; }
-    .welcome .wd-verse{ font-size:1.05rem; }
-
     /* ---- verse modal: full-screen sheet ---- */
     .modal-bg{ padding:0; align-items:stretch; }
     .modal{ max-width:none; width:100%; max-height:none; height:100%; border-radius:0; border:none;
@@ -801,13 +786,13 @@ function doSearch(){
     <div class="res-count fade-in">${numL(hits.length)} ${esc(L('results'))}</div>
     <div class="grid verses fade-in">${hits.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
-      const part = sutraAt(ch.themes[loc.ti], loc.si).part;
+      const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
+      const pi = th.parts.indexOf(part);
       return `<div class="mini" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'search',${i})">
+        <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-part-title">${esc(T(part.titles))}</div>
-        <div class="padas">${padaBlockDeva(v, true)}</div>
-        <div class="vhint">${esc(T(v.lits))}</div>
-        <div class="m-ref">${esc(L('chapter'))} ${numL(ch.num)}: ${esc(T(ch.names))}</div>
-        <div class="m-open">${esc(L('open_verse'))} →</div>
+        <div class="padas">${padaBlockDeva(v)}</div>
+        <div class="vhint">${esc(T(v.paras).slice(0,80))}…</div>
       </div>`;}).join('')}</div>`;
 }
 function clearSearch(){
@@ -1064,11 +1049,10 @@ function showWelcome(){
         const part = sutraAt(c.themes[dv.ti], dv.si).part;
         return `<div class="w-day fade-in" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book')">
           <div class="wd-label">${esc(L('verse_of_day'))}</div>
-          <div class="wd-part">${esc(T(part.titles))}</div>
-          <div class="wd-verse">${padaBlockDeva(v, true)}</div>
-          <div class="wd-hint">${esc(T(v.lits))}</div>
-          <div class="wd-ref">${esc(L('chapter'))} ${numL(c.num)}: ${esc(T(c.names))}</div>
-          <div class="wd-open">${esc(L('open_verse'))} →</div>
+          <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
+          <div class="m-part-title">${esc(T(part.titles))}</div>
+          <div class="padas">${padaBlockDeva(v)}</div>
+          <div class="vhint">${esc(T(v.paras).slice(0,80))}…</div>
         </div>`; })()}
       <button class="tool-btn primary big" onclick="showSections()">${esc(L('welcome_enter'))}</button>
       <div class="w-foot">${esc(L('welcome_foot'))}</div>
@@ -1369,7 +1353,7 @@ function fillModal(){
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
     </div>
-    ${state.mode==='theme' ? `<div class="m-part">${esc(L('theme_sg'))} ${numL(state.theme+1)} · ${esc(T(t.titles))} » ${esc(L('part'))} ${numL(partIdx+1)} · ${esc(T(part.titles))}</div>` : ''}
+    <div class="m-part">${esc(L('theme_sg'))} ${numL(state.theme+1)} · ${esc(T(t.titles))} » ${esc(L('part'))} ${numL(partIdx+1)} · ${esc(T(part.titles))}</div>
     <div class="m-meter">${esc(meterText(s))}</div>
     <div class="m-verse">
       <div class="words-bar">
