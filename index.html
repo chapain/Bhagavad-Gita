@@ -228,10 +228,11 @@
   .fav-note textarea:focus{ outline:none; border-color:var(--saffron); background:var(--paper);}
 
   /* ---- continuous reading ---- */
-  .read-btn{ display:inline-block; margin:0 0 18px; background:var(--teal); color:var(--on-accent);
-             border:none; padding:9px 20px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.9rem;}
-  .read-btn:hover{ background:var(--teal-mid);}
   .read-tabs{ display:flex; gap:8px; margin:0 0 16px; flex-wrap:wrap;}
+  /* The chapter tab bar must stay ONE line on a small phone: three equal
+     segments with tight padding, never a wrapped orphan pill. */
+  .ch-tabs{ flex-wrap:nowrap;}
+  .ch-tabs .read-tab{ flex:1 1 0; padding:9px 6px; font-size:.85rem; white-space:nowrap; text-align:center;}
   .read-tab{ background:var(--paper); border:2px solid var(--line); color:var(--teal); font-weight:700;
              font-size:.9rem; padding:9px 20px; border-radius:999px; cursor:pointer; min-height:44px;
              font-family:"Noto Serif Devanagari", Georgia, serif; transition:.15s;}
@@ -254,6 +255,9 @@
   .rd-deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
             font-size:1.12rem; line-height:1.85; margin-bottom:5px;}
   .rd-tr{ color:var(--ink-soft); font-size:.95rem; line-height:1.6;}
+  /* the paraphrase is the flowing read — set lighter and italic under the
+     literal, so the eye gets "what it says" then "what it means" */
+  .rd-par{ color:var(--ink-soft); font-size:.88rem; line-height:1.55; font-style:italic; margin-top:3px;}
   .back-foot .back-top{ margin:0;}
   .mini-crumb{ display:flex; gap:10px; margin:2px 0 16px; flex-wrap:wrap;}
   .mini-crumb .bc-btn{ background:var(--paper); border:2px solid var(--line); border-radius:12px; cursor:pointer;
@@ -299,31 +303,6 @@
   .card.sect{ border-top:6px solid var(--saffron);}
   .card.sect h3{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:1.32rem;}
   .card.sect p{ font-size:.92rem;}
-  /* The alternative route, after the three cards: "or skip the grouping and see
-     all eighteen". Centred because it is a terminal choice that closes the page —
-     unlike a back button, which belongs on the left text edge. Styled as a quiet
-     outlined pill so it matches the app's other buttons and stays lighter than
-     the three cards above it; it used to be the only underlined text anywhere. */
-  /* Top-level route chooser. Same shape as .read-tab (mūla / with meaning),
-     because it is the same kind of choice: one of two views of the same
-     material. The two strips never share a screen — showChapters() renders
-     either topTabs() or sectionTabs(), never both — so matching them costs no
-     clarity and buys one button language across the whole app. Separate pills
-     also wrap on their own, which the old fixed-track segmented control could
-     not do without shrinking the type. */
-  .top-tabs{ display:flex; gap:8px; margin:0 0 20px; flex-wrap:wrap;}
-  .top-tab{ background:var(--paper); border:2px solid var(--line); color:var(--teal); font-weight:700;
-            font-size:.9rem; padding:9px 20px; border-radius:999px; cursor:pointer; min-height:44px;
-            font-family:"Noto Serif Devanagari", Georgia, serif; transition:.15s;}
-  .top-tab:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
-  .top-tab.on{ background:var(--saffron); border-color:var(--saffron); color:var(--on-accent);}
-
-  .sect-all{ margin-top:34px; text-align:center;}
-  .sect-all .browse-all{ display:inline-block; color:var(--teal); font-size:.9rem; font-weight:600;
-             cursor:pointer; border:2px solid var(--line); background:var(--paper);
-             padding:10px 22px; border-radius:999px; min-height:44px; line-height:22px;
-             transition:.15s;}
-  .sect-all .browse-all:hover{ border-color:var(--teal); background:var(--teal-soft);}
 
 
   .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:2px solid var(--line);}
@@ -481,7 +460,6 @@
     .part-head .pdesc{ margin-left:0; flex:1 0 100%; }
     .sec-tabs{ gap:8px; }
     .sec-tab{ flex:1 1 auto; padding:11px 14px; font-size:.9rem; min-height:44px; }
-    .top-tab{ flex:1 1 auto; padding:11px 14px; font-size:.9rem; }
     .mini .padas, .w-day .padas{ font-size:1.06rem; }
     .back-top{ min-height:44px; }
     .mini-crumb{ gap:6px; }
@@ -656,7 +634,7 @@ window.__gitaLoaded = function(){
 };
 function gitaLoadFail(){ var b = document.getElementById('bootNote');
   if (b) b.textContent = 'Could not load the verse data. Check your connection and reload.'; }
-const UI = {"en": {"app_title": "Bhagavad Gita — an Interactive Study", "tab_ways": "The Three Ways", "tab_all18": "All 18 Chapters", "read_mula": "मूल · Verses only", "read_full": "With meaning", "read_chapter": "📖 Read the whole chapter", "read_title": "{ch} — continuous reading", "read_sub": "The chapter straight through. Tap any verse to open its quarters and word meanings.", "back_read": "← Back to themes", "fav_note": "note", "fav_note_ph": "why this verse matters to you…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "saved", "theme_dark": "Switch to dark mode", "theme_light": "Switch to light mode", "app_sub": "श्रीमद्भगवद्गीता · chapters → themes → subthemes → verses · each verse in its 4 quarters", "tag_sub": "18 chapters · 700 verses · study edition", "choose_chapter": "Choose a Chapter", "choose_chapter_sub": "The eighteen chapters of the Bhagavad Gita — every verse with Sanskrit, transliteration, word-by-word meaning, a literal translation and a paraphrase.", "chapters": "Chapters", "chapter": "Chapter", "themes": "Themes", "theme_sg": "Theme", "verse": "Verse", "verses": "verses", "part": "Part", "parts_postfix": "across", "verses_across_parts": "{v} verses across {p} parts", "verses_across_part1": "{v} verses in 1 part", "verse_across_part1": "1 verse in 1 part", "open_themes": "Open themes →", "open_verses": "Open verses →", "literal": "Literal", "in_other_words": "In other words", "previous": "← Previous", "next": "Next →", "hide_meanings": "🙈 Hide meanings", "show_meanings": "👁 Show meanings", "click_hint": "Click any verse for word-by-word meanings", "click_hint_pada": "Click any quarter for word-by-word meanings", "pick_theme": "Pick a theme to open its verses.", "of": "of", "footer": "ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.", "welcome_title": "Welcome to the Bhagavad Gita", "welcome_sub": "The timeless dialogue between Kṛṣṇa and Arjuna on the battlefield of Kurukṣetra — 700 verses, three ways, one goal. Begin with the three ways, or explore all eighteen chapters.", "welcome_enter": "Enter the Gita", "welcome_foot": "ॐ 700 verses · three ways · one goal", "sections_title": "The Three Ways", "sections_sub": "The Gita's eighteen chapters in three ways — action, devotion, knowledge — each ripening into the next.", "sec_karma": "कर्मनिष्ठा · The Way of Karma", "sec_karma_desc": "Chapters 1–6 · action, duty, and renouncing the fruits of action.", "sec_bhakti": "भक्तिनिष्ठा · The Way of Bhakti", "sec_bhakti_desc": "Chapters 7–12 · devotion and surrender to the Lord.", "sec_jnana": "ज्ञाननिष्ठा · The Way of Jñāna", "sec_jnana_desc": "Chapters 13–18 · knowledge, the guṇas, and liberation.", "tab_karma": "Way of Karma", "tab_bhakti": "Way of Bhakti", "tab_jnana": "Way of Jñāna", "back_ways": "← Back to the Three Ways", "back_chapters": "← Back to chapters", "back_themes": "← Back to themes", "home": "🏠 Home", "verse_of_day": "Verse of the Day", "verse_topic": "Verse topic", "open_verse": "Open verse", "browse_all": "Browse all 18 chapters →", "range_chapters": "Chapters {a}–{b}", "next_random": "🎲 Next Random", "back_to_theme": "← Back to theme", "search_ph": "Search e.g. 1.1", "clear": "Clear", "search_results": "Search results", "no_results": "No matches — try a verse number (e.g. 2.47), a Sanskrit word, or an English word.", "results": "results", "favorites": "☆ Favorites", "no_favorites": "No saved verses yet — tap ☆ on any verse to save it here.", "random": "Random", "save_verse": "☆ Save", "saved_verse": "★ Saved", "share": "Share", "link_copied": "Link copied", "share_hint": "Like this verse? Copy the link and share it with friends.", "copy_link": "Copy verse link", "remove_fav": "✕ remove", "oob_verse": "Chapter {ch} has only {n} verses.", "oob_chapter": "The Gita has only 18 chapters.", "pada_label": "Quarter", "back_to_x": "← Back to {x}", "home_plain": "home", "meter_anustubh": "anuṣṭubh", "meter_trishtubh": "triṣṭubh", "meter_irregular": "irregular", "meter_syllables": "{n} syllables", "meter_padas": "{n} quarters", "meter_padas_of": "{n} quarters of {k}"}, "ne": {"app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "tab_ways": "तीन निष्ठा", "tab_all18": "सम्पूर्ण १८ अध्याय", "read_mula": "मूल", "read_full": "अर्थसहित", "read_chapter": "📖 पूरा अध्याय पढ्नुहोस्", "read_title": "{ch} — निरन्तर पाठ", "read_sub": "पूरा अध्याय एकैसाथ। पाद र शब्दार्थ हेर्न कुनै पनि श्लोकमा थिच्नुहोस्।", "back_read": "← विषयहरूमा फर्कनुहोस्", "fav_note": "टिप्पणी", "fav_note_ph": "यो श्लोक किन महत्त्वपूर्ण छ…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "सुरक्षित", "theme_dark": "डार्क मोडमा जानुहोस्", "theme_light": "लाइट मोडमा जानुहोस्", "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → उपविषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "choose_chapter": "अध्याय छान्नुहोस्", "choose_chapter_sub": "भगवद्गीताका अठार अध्यायहरू — प्रत्येक श्लोक संस्कृत, लिप्यन्तरण, शब्दार्थ, शाब्दिक अनुवाद र सरल अर्थ सहित।", "chapters": "अध्यायहरू", "chapter": "अध्याय", "themes": "विषयहरू", "theme_sg": "विषय", "verse": "श्लोक", "verses": "श्लोकहरू", "part": "भाग", "parts_postfix": "भागमा", "verses_across_parts": "{v} श्लोकहरू {p} भागमा", "verses_across_part1": "{v} श्लोकहरू १ भागमा", "verse_across_part1": "१ श्लोक १ भागमा", "open_themes": "विषयहरू खोल्नुहोस् →", "open_verses": "श्लोकहरू खोल्नुहोस् →", "literal": "शाब्दिक अनुवाद", "in_other_words": "सरल अर्थमा", "previous": "← अघिल्लो", "next": "अर्को →", "hide_meanings": "🙈 अर्थ लुकाउनुहोस्", "show_meanings": "👁 अर्थ देखाउनुहोस्", "click_hint": "शब्दार्थका लागि कुनै पनि श्लोकमा क्लिक गर्नुहोस्", "click_hint_pada": "शब्दार्थका लागि कुनै पनि पादमा क्लिक गर्नुहोस्", "pick_theme": "यसका श्लोकहरू खोल्न विषय छान्नुहोस्।", "of": "मध्ये", "footer": "ॐ · भगवद्गीताको अध्ययन संस्करण — प्रत्येक श्लोक यसका परम्परागत चार पादमा, संस्कृत, लिप्यन्तरण, शब्दार्थ, शाब्दिक अनुवाद र सरल अर्थ सहित।", "welcome_title": "भगवद्गीतामा स्वागत छ", "welcome_sub": "कुरुक्षेत्रको युद्धभूमिमा कृष्ण र अर्जुनको कालातीत संवाद — ७०० श्लोक, तीन निष्ठा, एउटै लक्ष्य। तीन निष्ठाबाट सुरु गर्नुहोस्, वा अठारै अध्याय खोल्नुहोस्।", "welcome_enter": "गीतामा प्रवेश गर्नुहोस्", "welcome_foot": "ॐ ७०० श्लोक · तीन निष्ठा · एउटै लक्ष्य", "sections_title": "तीन निष्ठा", "sections_sub": "गीताका अठार अध्याय तीन निष्ठामा — कर्म, भक्ति र ज्ञान — एउटा अर्कोमा परिपक्व हुँदै।", "sec_karma": "कर्मनिष्ठा", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य र कर्मफलको त्याग।", "sec_bhakti": "भक्तिनिष्ठा", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान्प्रतिको भक्ति र समर्पण।", "sec_jnana": "ज्ञाननिष्ठा", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण र मुक्ति।", "tab_karma": "कर्मनिष्ठा", "tab_bhakti": "भक्तिनिष्ठा", "tab_jnana": "ज्ञाननिष्ठा", "next_random": "🎲 अर्को यादृच्छिक", "back_to_theme": "← विषयमा फर्कनुहोस्", "back_ways": "← तीन निष्ठामा फर्कनुहोस्", "back_chapters": "← अध्यायहरूमा फर्कनुहोस्", "back_themes": "← विषयहरूमा फर्कनुहोस्", "home": "🏠 गृह", "verse_of_day": "आजको श्लोक", "verse_topic": "श्लोक विषय", "open_verse": "श्लोक खोल्नुहोस्", "browse_all": "सबै १८ अध्याय हेर्नुहोस् →", "range_chapters": "अध्याय {a}–{b}", "search_ph": "खोज्नुहोस् जस्तै १.१", "clear": "मेट्नुहोस्", "search_results": "खोज परिणामहरू", "no_results": "केही भेटिएन — श्लोक सङ्ख्या (जस्तै २.४७), संस्कृत वा अङ्ग्रेजी शब्द प्रयास गर्नुहोस्।", "results": "परिणामहरू", "favorites": "☆ मनपर्ने", "no_favorites": "अहिलेसम्म कुनै सुरक्षित श्लोक छैन — कुनै श्लोकमा ☆ थिच्नुहोस्।", "random": "यादृच्छिक", "save_verse": "☆ सुरक्षित गर्नुहोस्", "saved_verse": "★ सुरक्षित", "share": "शेयर गर्नुहोस्", "link_copied": "लिङ्क कपी भयो", "share_hint": "यो श्लोक मन पर्यो? लिङ्क कपी गरेर साथीहरूसँग साझा गर्नुहोस्।", "copy_link": "श्लोक लिङ्क कपी गर्नुहोस्", "remove_fav": "✕ हटाउनुहोस्", "oob_verse": "अध्याय {ch} मा मात्र {n} श्लोक छन्।", "oob_chapter": "गीतामा मात्र १८ अध्याय छन्।", "pada_label": "पाद", "back_to_x": "← {x}मा फर्कनुहोस्", "home_plain": "गृह", "meter_anustubh": "अनुष्टुभ्", "meter_trishtubh": "त्रिष्टुभ्", "meter_irregular": "अनियमित", "meter_syllables": "{n} अक्षर", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)"}, "hi": {"app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "tab_ways": "तीन निष्ठाएँ", "tab_all18": "सम्पूर्ण १८ अध्याय", "read_mula": "मूल", "read_full": "अर्थ सहित", "read_chapter": "📖 पूरा अध्याय पढ़ें", "read_title": "{ch} — निरंतर पाठ", "read_sub": "पूरा अध्याय एक साथ। पाद और शब्दार्थ देखने के लिए किसी भी श्लोक पर टैप करें।", "back_read": "← विषयों पर लौटें", "fav_note": "टिप्पणी", "fav_note_ph": "यह श्लोक आपके लिए क्यों महत्त्वपूर्ण है…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "सहेजा", "theme_dark": "डार्क मोड पर जाएँ", "theme_light": "लाइट मोड पर जाएँ", "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → उपविषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "choose_chapter": "अध्याय चुनें", "choose_chapter_sub": "भगवद्गीता के अठारह अध्याय — प्रत्येक श्लोक संस्कृत, लिप्यंतरण, शब्दार्थ, शाब्दिक अनुवाद और सरल अर्थ सहित।", "chapters": "अध्याय", "chapter": "अध्याय", "themes": "विषय", "theme_sg": "विषय", "verse": "श्लोक", "verses": "श्लोक", "part": "भाग", "parts_postfix": "भागमें", "verses_across_parts": "{v} श्लोक {p} भागों में", "verses_across_part1": "{v} श्लोक १ भाग में", "verse_across_part1": "१ श्लोक १ भाग में", "open_themes": "विषय खोलें →", "open_verses": "श्लोक खोलें →", "literal": "शाब्दिक अनुवाद", "in_other_words": "सरल शब्दों में", "previous": "← पिछला", "next": "अगला →", "hide_meanings": "🙈 अर्थ छिपाएँ", "show_meanings": "👁 अर्थ दिखाएँ", "click_hint": "शब्दार्थ के लिए किसी भी श्लोक पर क्लिक करें", "click_hint_pada": "शब्दार्थ के लिए किसी भी पाद पर क्लिक करें", "pick_theme": "इसके श्लोक खोलने के लिए विषय चुनें।", "of": "में से", "footer": "ॐ · भगवद्गीता का अध्ययन संस्करण — प्रत्येक श्लोक अपने पारंपरिक चार पादों में, संस्कृत, लिप्यंतरण, शब्दार्थ, शाब्दिक अनुवाद और सरल अर्थ सहित।", "welcome_title": "भगवद्गीता में आपका स्वागत है", "welcome_sub": "कुरुक्षेत्र के रणक्षेत्र में कृष्ण और अर्जुन का कालातीत संवाद — ७०० श्लोक, तीन निष्ठा, एक लक्ष्य। तीन निष्ठाओं से आरम्भ करें, या अठारहों अध्याय देखें।", "welcome_enter": "गीता में प्रवेश करें", "welcome_foot": "ॐ ७०० श्लोक · तीन निष्ठा · एक लक्ष्य", "sections_title": "तीन निष्ठाएँ", "sections_sub": "गीता के अठारह अध्याय तीन निष्ठाओं में — कर्म, भक्ति और ज्ञान — एक अगली में परिपक्व होती हुई।", "sec_karma": "कर्मनिष्ठा", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य और कर्म-फल का त्याग।", "sec_bhakti": "भक्तिनिष्ठा", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान् के प्रति भक्ति और समर्पण।", "sec_jnana": "ज्ञाननिष्ठा", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण और मुक्ति।", "tab_karma": "कर्मनिष्ठा", "tab_bhakti": "भक्तिनिष्ठा", "tab_jnana": "ज्ञाननिष्ठा", "next_random": "🎲 अगला यादृच्छिक", "back_to_theme": "← विषय पर लौटें", "back_ways": "← तीन निष्ठाओं पर लौटें", "back_chapters": "← अध्यायों पर लौटें", "back_themes": "← विषयों पर लौटें", "home": "🏠 गृह", "verse_of_day": "आज का श्लोक", "verse_topic": "श्लोक विषय", "open_verse": "श्लोक खोलें", "browse_all": "सभी १८ अध्याय देखें →", "range_chapters": "अध्याय {a}–{b}", "search_ph": "खोजें जैसे १.१", "clear": "हटाएँ", "search_results": "खोज परिणाम", "no_results": "कुछ नहीं मिला — श्लोक संख्या (जैसे २.४७), संस्कृत या अंग्रेज़ी शब्द आज़माएँ।", "results": "परिणाम", "favorites": "☆ पसंदीदा", "no_favorites": "अभी कोई सहेजा गया श्लोक नहीं — किसी श्लोक पर ☆ दबाएँ।", "random": "यादृच्छिक", "save_verse": "☆ सुरक्षित करें", "saved_verse": "★ सुरक्षित", "share": "शेयर करें", "link_copied": "लिंक कॉपी हुआ", "share_hint": "यह श्लोक पसंद आया? लिंक कॉपी करके मित्रों के साथ साझा करें।", "copy_link": "श्लोक लिंक कॉपी करें", "remove_fav": "✕ हटाएँ", "oob_verse": "अध्याय {ch} में केवल {n} श्लोक हैं।", "oob_chapter": "गीता में केवल १८ अध्याय हैं।", "pada_label": "पाद", "back_to_x": "← {x} पर लौटें", "home_plain": "गृह", "meter_anustubh": "अनुष्टुभ्", "meter_trishtubh": "त्रिष्टुभ्", "meter_irregular": "अनियमित", "meter_syllables": "{n} अक्षर", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)"}};
+const UI = {"en": {"app_title": "Bhagavad Gita — an Interactive Study", "read_mula": "मूल · Mula", "read_full": "With meaning", "tab_study": "Study guide", "read_sub": "Each verse with its literal translation and a flowing paraphrase — tap any verse for word-by-word meanings.", "read_sub_mula": "The root text alone, as a pāṭha is recited — tap any verse for meanings.", "back_read": "← Back to themes", "fav_note": "note", "fav_note_ph": "why this verse matters to you…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "saved", "theme_dark": "Switch to dark mode", "theme_light": "Switch to light mode", "app_sub": "श्रीमद्भगवद्गीता · chapters → themes → subthemes → verses · each verse in its 4 quarters", "tag_sub": "18 chapters · 700 verses · study edition", "chapters": "Chapters", "chapter": "Chapter", "themes": "Themes", "theme_sg": "Theme", "verse": "Verse", "verses": "verses", "part": "Part", "parts_postfix": "across", "verses_across_parts": "{v} verses across {p} parts", "verses_across_part1": "{v} verses in 1 part", "verse_across_part1": "1 verse in 1 part", "open_chapter": "Open chapter →", "open_chapters": "Open chapters →", "open_verses": "Open verses →", "literal": "Literal", "in_other_words": "In other words", "previous": "← Previous", "next": "Next →", "hide_meanings": "🙈 Hide meanings", "show_meanings": "👁 Show meanings", "click_hint": "Click any verse for word-by-word meanings", "click_hint_pada": "Click any quarter for word-by-word meanings", "pick_theme": "Pick a theme to open its verses.", "of": "of", "footer": "ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.", "welcome_title": "Welcome to the Bhagavad Gita", "welcome_sub": "The timeless dialogue between Kṛṣṇa and Arjuna on the battlefield of Kurukṣetra — 700 verses, three ways, one goal. Begin with the three ways, or explore all eighteen chapters.", "welcome_enter": "Enter the Gita", "welcome_foot": "ॐ 700 verses · three ways · one goal", "sections_title": "The Three Ways", "sections_sub": "The Gita's eighteen chapters in three ways — action, devotion, knowledge — each ripening into the next.", "sec_karma": "कर्मनिष्ठा · The Way of Karma", "sec_karma_desc": "Chapters 1–6 · action, duty, and renouncing the fruits of action.", "sec_bhakti": "भक्तिनिष्ठा · The Way of Bhakti", "sec_bhakti_desc": "Chapters 7–12 · devotion and surrender to the Lord.", "sec_jnana": "ज्ञाननिष्ठा · The Way of Jñāna", "sec_jnana_desc": "Chapters 13–18 · knowledge, the guṇas, and liberation.", "tab_karma": "Way of Karma", "tab_bhakti": "Way of Bhakti", "tab_jnana": "Way of Jñāna", "back_ways": "← Back to the Three Ways", "back_chapters": "← Back to chapters", "back_themes": "← Back to themes", "home": "🏠 Home", "verse_of_day": "Verse of the Day", "verse_topic": "Verse topic", "open_verse": "Open verse", "range_chapters": "Chapters {a}–{b}", "next_random": "🎲 Next Random", "back_to_theme": "← Back to theme", "search_ph": "Search e.g. 1.1", "clear": "Clear", "search_results": "Search results", "no_results": "No matches — try a verse number (e.g. 2.47), a Sanskrit word, or an English word.", "results": "results", "favorites": "☆ Favorites", "no_favorites": "No saved verses yet — tap ☆ on any verse to save it here.", "random": "Random", "save_verse": "☆ Save", "saved_verse": "★ Saved", "share": "Share", "link_copied": "Link copied", "share_hint": "Like this verse? Copy the link and share it with friends.", "copy_link": "Copy verse link", "remove_fav": "✕ remove", "oob_verse": "Chapter {ch} has only {n} verses.", "oob_chapter": "The Gita has only 18 chapters.", "pada_label": "Quarter", "back_to_x": "← Back to {x}", "home_plain": "home", "meter_anustubh": "anuṣṭubh", "meter_trishtubh": "triṣṭubh", "meter_irregular": "irregular", "meter_syllables": "{n} syllables", "meter_padas": "{n} quarters", "meter_padas_of": "{n} quarters of {k}"}, "ne": {"app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "read_mula": "मूल", "read_full": "अर्थसहित", "tab_study": "अध्ययन गाइड", "read_sub": "प्रत्येक श्लोक शाब्दिक अनुवाद र बग्ने व्याख्या सहित — शब्दार्थका लागि श्लोक थिच्नुहोस्।", "read_sub_mula": "पाठ जस्तै उच्चारिने मूल मात्र — अर्थका लागि कुनै श्लोक थिच्नुहोस्।", "back_read": "← विषयहरूमा फर्कनुहोस्", "fav_note": "टिप्पणी", "fav_note_ph": "यो श्लोक किन महत्त्वपूर्ण छ…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "सुरक्षित", "theme_dark": "डार्क मोडमा जानुहोस्", "theme_light": "लाइट मोडमा जानुहोस्", "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → उपविषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "chapters": "अध्यायहरू", "chapter": "अध्याय", "themes": "विषयहरू", "theme_sg": "विषय", "verse": "श्लोक", "verses": "श्लोकहरू", "part": "भाग", "parts_postfix": "भागमा", "verses_across_parts": "{v} श्लोकहरू {p} भागमा", "verses_across_part1": "{v} श्लोकहरू १ भागमा", "verse_across_part1": "१ श्लोक १ भागमा", "open_chapter": "अध्याय खोल्नुहोस् →", "open_chapters": "अध्यायहरू खोल्नुहोस् →", "open_verses": "श्लोकहरू खोल्नुहोस् →", "literal": "शाब्दिक अनुवाद", "in_other_words": "सरल अर्थमा", "previous": "← अघिल्लो", "next": "अर्को →", "hide_meanings": "🙈 अर्थ लुकाउनुहोस्", "show_meanings": "👁 अर्थ देखाउनुहोस्", "click_hint": "शब्दार्थका लागि कुनै पनि श्लोकमा क्लिक गर्नुहोस्", "click_hint_pada": "शब्दार्थका लागि कुनै पनि पादमा क्लिक गर्नुहोस्", "pick_theme": "यसका श्लोकहरू खोल्न विषय छान्नुहोस्।", "of": "मध्ये", "footer": "ॐ · भगवद्गीताको अध्ययन संस्करण — प्रत्येक श्लोक यसका परम्परागत चार पादमा, संस्कृत, लिप्यन्तरण, शब्दार्थ, शाब्दिक अनुवाद र सरल अर्थ सहित।", "welcome_title": "भगवद्गीतामा स्वागत छ", "welcome_sub": "कुरुक्षेत्रको युद्धभूमिमा कृष्ण र अर्जुनको कालातीत संवाद — ७०० श्लोक, तीन निष्ठा, एउटै लक्ष्य। तीन निष्ठाबाट सुरु गर्नुहोस्, वा अठारै अध्याय खोल्नुहोस्।", "welcome_enter": "गीतामा प्रवेश गर्नुहोस्", "welcome_foot": "ॐ ७०० श्लोक · तीन निष्ठा · एउटै लक्ष्य", "sections_title": "तीन निष्ठा", "sections_sub": "गीताका अठार अध्याय तीन निष्ठामा — कर्म, भक्ति र ज्ञान — एउटा अर्कोमा परिपक्व हुँदै।", "sec_karma": "कर्मनिष्ठा", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य र कर्मफलको त्याग।", "sec_bhakti": "भक्तिनिष्ठा", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान्प्रतिको भक्ति र समर्पण।", "sec_jnana": "ज्ञाननिष्ठा", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण र मुक्ति।", "tab_karma": "कर्मनिष्ठा", "tab_bhakti": "भक्तिनिष्ठा", "tab_jnana": "ज्ञाननिष्ठा", "next_random": "🎲 अर्को यादृच्छिक", "back_to_theme": "← विषयमा फर्कनुहोस्", "back_ways": "← तीन निष्ठामा फर्कनुहोस्", "back_chapters": "← अध्यायहरूमा फर्कनुहोस्", "back_themes": "← विषयहरूमा फर्कनुहोस्", "home": "🏠 गृह", "verse_of_day": "आजको श्लोक", "verse_topic": "श्लोक विषय", "open_verse": "श्लोक खोल्नुहोस्", "range_chapters": "अध्याय {a}–{b}", "search_ph": "खोज्नुहोस् जस्तै १.१", "clear": "मेट्नुहोस्", "search_results": "खोज परिणामहरू", "no_results": "केही भेटिएन — श्लोक सङ्ख्या (जस्तै २.४७), संस्कृत वा अङ्ग्रेजी शब्द प्रयास गर्नुहोस्।", "results": "परिणामहरू", "favorites": "☆ मनपर्ने", "no_favorites": "अहिलेसम्म कुनै सुरक्षित श्लोक छैन — कुनै श्लोकमा ☆ थिच्नुहोस्।", "random": "यादृच्छिक", "save_verse": "☆ सुरक्षित गर्नुहोस्", "saved_verse": "★ सुरक्षित", "share": "शेयर गर्नुहोस्", "link_copied": "लिङ्क कपी भयो", "share_hint": "यो श्लोक मन पर्यो? लिङ्क कपी गरेर साथीहरूसँग साझा गर्नुहोस्।", "copy_link": "श्लोक लिङ्क कपी गर्नुहोस्", "remove_fav": "✕ हटाउनुहोस्", "oob_verse": "अध्याय {ch} मा मात्र {n} श्लोक छन्।", "oob_chapter": "गीतामा मात्र १८ अध्याय छन्।", "pada_label": "पाद", "back_to_x": "← {x}मा फर्कनुहोस्", "home_plain": "गृह", "meter_anustubh": "अनुष्टुभ्", "meter_trishtubh": "त्रिष्टुभ्", "meter_irregular": "अनियमित", "meter_syllables": "{n} अक्षर", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)"}, "hi": {"app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "read_mula": "मूल", "read_full": "अर्थ सहित", "tab_study": "अध्ययन गाइड", "read_sub": "प्रत्येक श्लोक शाब्दिक अनुवाद और प्रवाहमयी व्याख्या सहित — शब्दार्थ के लिए श्लोक पर टैप करें।", "read_sub_mula": "पाठ की तरह पढ़ा जाने वाला मूल मात्र — अर्थ के लिए किसी श्लोक पर टैप करें।", "back_read": "← विषयों पर लौटें", "fav_note": "टिप्पणी", "fav_note_ph": "यह श्लोक आपके लिए क्यों महत्त्वपूर्ण है…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "सहेजा", "theme_dark": "डार्क मोड पर जाएँ", "theme_light": "लाइट मोड पर जाएँ", "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → उपविषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "chapters": "अध्याय", "chapter": "अध्याय", "themes": "विषय", "theme_sg": "विषय", "verse": "श्लोक", "verses": "श्लोक", "part": "भाग", "parts_postfix": "भागमें", "verses_across_parts": "{v} श्लोक {p} भागों में", "verses_across_part1": "{v} श्लोक १ भाग में", "verse_across_part1": "१ श्लोक १ भाग में", "open_chapter": "अध्याय खोलें →", "open_chapters": "अध्याय खोलें →", "open_verses": "श्लोक खोलें →", "literal": "शाब्दिक अनुवाद", "in_other_words": "सरल शब्दों में", "previous": "← पिछला", "next": "अगला →", "hide_meanings": "🙈 अर्थ छिपाएँ", "show_meanings": "👁 अर्थ दिखाएँ", "click_hint": "शब्दार्थ के लिए किसी भी श्लोक पर क्लिक करें", "click_hint_pada": "शब्दार्थ के लिए किसी भी पाद पर क्लिक करें", "pick_theme": "इसके श्लोक खोलने के लिए विषय चुनें।", "of": "में से", "footer": "ॐ · भगवद्गीता का अध्ययन संस्करण — प्रत्येक श्लोक अपने पारंपरिक चार पादों में, संस्कृत, लिप्यंतरण, शब्दार्थ, शाब्दिक अनुवाद और सरल अर्थ सहित।", "welcome_title": "भगवद्गीता में आपका स्वागत है", "welcome_sub": "कुरुक्षेत्र के रणक्षेत्र में कृष्ण और अर्जुन का कालातीत संवाद — ७०० श्लोक, तीन निष्ठा, एक लक्ष्य। तीन निष्ठाओं से आरम्भ करें, या अठारहों अध्याय देखें।", "welcome_enter": "गीता में प्रवेश करें", "welcome_foot": "ॐ ७०० श्लोक · तीन निष्ठा · एक लक्ष्य", "sections_title": "तीन निष्ठाएँ", "sections_sub": "गीता के अठारह अध्याय तीन निष्ठाओं में — कर्म, भक्ति और ज्ञान — एक अगली में परिपक्व होती हुई।", "sec_karma": "कर्मनिष्ठा", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य और कर्म-फल का त्याग।", "sec_bhakti": "भक्तिनिष्ठा", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान् के प्रति भक्ति और समर्पण।", "sec_jnana": "ज्ञाननिष्ठा", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण और मुक्ति।", "tab_karma": "कर्मनिष्ठा", "tab_bhakti": "भक्तिनिष्ठा", "tab_jnana": "ज्ञाननिष्ठा", "next_random": "🎲 अगला यादृच्छिक", "back_to_theme": "← विषय पर लौटें", "back_ways": "← तीन निष्ठाओं पर लौटें", "back_chapters": "← अध्यायों पर लौटें", "back_themes": "← विषयों पर लौटें", "home": "🏠 गृह", "verse_of_day": "आज का श्लोक", "verse_topic": "श्लोक विषय", "open_verse": "श्लोक खोलें", "range_chapters": "अध्याय {a}–{b}", "search_ph": "खोजें जैसे १.१", "clear": "हटाएँ", "search_results": "खोज परिणाम", "no_results": "कुछ नहीं मिला — श्लोक संख्या (जैसे २.४७), संस्कृत या अंग्रेज़ी शब्द आज़माएँ।", "results": "परिणाम", "favorites": "☆ पसंदीदा", "no_favorites": "अभी कोई सहेजा गया श्लोक नहीं — किसी श्लोक पर ☆ दबाएँ।", "random": "यादृच्छिक", "save_verse": "☆ सुरक्षित करें", "saved_verse": "★ सुरक्षित", "share": "शेयर करें", "link_copied": "लिंक कॉपी हुआ", "share_hint": "यह श्लोक पसंद आया? लिंक कॉपी करके मित्रों के साथ साझा करें।", "copy_link": "श्लोक लिंक कॉपी करें", "remove_fav": "✕ हटाएँ", "oob_verse": "अध्याय {ch} में केवल {n} श्लोक हैं।", "oob_chapter": "गीता में केवल १८ अध्याय हैं।", "pada_label": "पाद", "back_to_x": "← {x} पर लौटें", "home_plain": "गृह", "meter_anustubh": "अनुष्टुभ्", "meter_trishtubh": "त्रिष्टुभ्", "meter_irregular": "अनियमित", "meter_syllables": "{n} अक्षर", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)"}};
 const state = { chapter:null, theme:null, idx:0, lang:'en', view:'welcome', section:null };
 function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
 function L(k){ const u = UI[state.lang] || UI.en; return (u[k] !== undefined) ? u[k] : k; }
@@ -684,7 +662,7 @@ function setLang(l){ state.lang = l; try{ document.documentElement.lang = l; }ca
   else if(state.view === 'read'){ showRead(state.chapter, state.readMode); }
   else {
     const ch = state.chapter, th = state.theme;
-    if(ch == null) showChapters(state.section || 0);
+    if(ch == null){ if(state.section) showChapters(state.section); else showSections(); }
     else if(th == null) showThemes(ch);
     else { showVerses(ch, th); }
   }
@@ -870,13 +848,14 @@ function rememberOrigin(){
 }
 function goToOrigin(){
   const o = state.origin;
-  if(!o){ showChapters(state.section || 0); return; }
+  if(!o){ showSections(); return; }
   $('#searchInput').value = '';
   if(o.view === 'welcome') showWelcome();
   else if(o.view === 'sections') showSections();
   else if(o.view === 'verses' && o.chapter != null && o.theme != null) showVerses(o.chapter, o.theme);
   else if(o.view === 'themes' && o.chapter != null) showThemes(o.chapter);
-  else showChapters(o.section || 0);
+  else if(o.section != null) showChapters(o.section);
+  else showSections();
 }
 function showFavorites(){
   rememberOrigin();
@@ -997,10 +976,8 @@ function renderCrumbs(){
   } else if(o.section != null){
     label = L('tab_'+['','karma','bhakti','jnana'][o.section]);
     action = ()=>clear(()=>showChapters(o.section));
-  } else if(o.view === 'sections'){
-    label = L('sections_title');        action = ()=>clear(showSections);
   } else {
-    label = L('chapters');              action = ()=>clear(()=>showChapters(0));
+    label = L('sections_title');        action = ()=>clear(showSections);
   }
 
   const b = document.createElement('button');
@@ -1012,30 +989,24 @@ function renderCrumbs(){
 }
 
 function showChapters(section){
-  if(section === undefined) section = state.section || 0;
-  state.view='chapters'; state.section = section || null; state.chapter=null; state.theme=null; renderCrumbs();
-  const list = section ? DATA.filter(ch => ch.num >= (section-1)*6+1 && ch.num <= section*6) : DATA;
-  let html;
-  if(section){
-    html = `<button class="back-top" onclick="showSections()">${esc(L('back_ways'))}</button>
-      ${sectionTabs()}`;
-  } else {
-    html = `${topTabs()}
-      <div class="view-title fade-in">${esc(L('choose_chapter'))}</div>
-      <div class="view-sub fade-in">${esc(L('choose_chapter_sub'))}</div>`;
-  }
-  view.innerHTML = html + `
+  /* The Three Ways is the door; there is no flat all-18 list. Every chapter
+     list lives inside its way, so the niṣṭhā framing is never skipped. */
+  state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; renderCrumbs();
+  const list = DATA.filter(ch => ch.num >= (section-1)*6+1 && ch.num <= section*6);
+  view.innerHTML = `
+    <button class="back-top" onclick="showSections()">${esc(L('back_ways'))}</button>
+    ${sectionTabs()}
     <div class="grid chapters fade-in">
       ${list.map(ch=>{
         const ci = DATA.indexOf(ch);
-        return `<div class="card" onclick="showThemes(${ci})">
+        return `<div class="card" onclick="showRead(${ci},'mula')">
           <span class="chip">${L('chapter')} ${numL(ch.num)}</span>
           <h3>${esc(T(ch.names))}</h3>
           <p>${esc(T(ch.subs))}</p>
           <div class="meta">${numL(ch.verses)} ${L('verses')}</div>
-          <div class="go">${L('open_themes')}</div>
+          <div class="go">${L('open_chapter')}</div>
         </div>`;}).join('')}
-    </div>` + (section ? backFoot('showSections()', L('back_ways')) : '');
+    </div>` + backFoot('showSections()', L('back_ways'));
 }
 
 function dayVerse(){
@@ -1074,13 +1045,12 @@ function sectionCard(k, chip, title, desc){
     <span class="chip">${esc(chip)}</span>
     <h3>${esc(title)}</h3>
     <p>${esc(desc)}</p>
-    <div class="go">${esc(L('open_themes'))}</div>
+    <div class="go">${esc(L('open_chapters'))}</div>
   </div>`;
 }
 function showSections(){
   state.view='sections'; state.chapter=null; state.theme=null; state.section=null; renderCrumbs();
   view.innerHTML = `
-    ${topTabs()}
     <div class="view-title fade-in">${esc(L('sections_title'))}</div>
     <div class="view-sub fade-in">${esc(L('sections_sub'))}</div>
     <div class="grid sections fade-in">
@@ -1090,31 +1060,32 @@ function showSections(){
     </div>
     `;
 }
-/* The book can be entered two ways: grouped into the three niṣṭhās, or as a
-   flat list of eighteen chapters. Those are peers, so they are tabs at the top
-   rather than a link buried under the cards. Shown only on those two pages —
-   once you are inside a way, the way-tabs below take over. */
-function topTabs(){
-  const onWays = state.view === 'sections';
-  return `<div class="top-tabs fade-in">
-    <button class="top-tab${onWays?' on':''}" onclick="showSections()">${esc(L('tab_ways'))}</button>
-    <button class="top-tab${onWays?'':' on'}" onclick="showChapters(0)">${esc(L('tab_all18'))}</button>
-  </div>`;
-}
+
 function sectionTabs(){
   const cur = state.section ? state.section : (state.chapter != null ? Math.ceil(DATA[state.chapter].num/6) : 0);
   const act = state.section || cur;
   return '<div class="sec-tabs fade-in">' + [1,2,3].map(k =>
     `<button class="sec-tab${act===k?' on':''}" title="${esc(L('sec_'+['','karma','bhakti','jnana'][k]+'_desc'))}" onclick="showChapters(${k})">${esc(L('tab_'+['','karma','bhakti','jnana'][k]))} <span class="sec-range">(${esc(chaptersRange((k-1)*6+1, k*6))})</span></button>`).join('') + '</div>';
 }
+/* A chapter is three different reading acts: the root text as recited, the
+   text with its meaning, and the thematic study breakdown. The tabs make the
+   three peers — none buried behind a button. */
+function chapterTabs(ci){
+  const on = state.view === 'themes' ? 'study' : state.readMode;
+  return `<div class="read-tabs ch-tabs fade-in">
+    <button class="read-tab${on==='mula'?' on':''}" onclick="showRead(${ci},'mula')">${esc(L('read_mula'))}</button>
+    <button class="read-tab${on==='full'?' on':''}" onclick="showRead(${ci},'full')">${esc(L('read_full'))}</button>
+    <button class="read-tab${on==='study'?' on':''}" onclick="showThemes(${ci})">${esc(L('tab_study'))}</button>
+  </div>`;
+}
 function showThemes(ci){
-  state.view='themes'; state.chapter=ci; state.theme=null; renderCrumbs();
+  state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; renderCrumbs();
   const ch = DATA[ci];
   view.innerHTML = `
     ${sectionTabs()}
     <button class="back-top" onclick="showChapters(${state.section||0})">${esc(L('back_chapters'))}</button>
-    <div class="view-title fade-in">${esc(L('chapter'))} ${numL(ch.num)} · ${esc(T(ch.names))} — ${L('themes')}</div>
-    <button class="read-btn" onclick="showRead(${ci})">${esc(L('read_chapter'))}</button>
+    <div class="view-title fade-in">${esc(L('chapter'))} ${numL(ch.num)} · ${esc(T(ch.names))}</div>
+    ${chapterTabs(ci)}
     <div class="view-sub fade-in">${ch.deva} · ${esc(T(ch.subs))} — ${L('pick_theme')}</div>
     <div class="grid themes fade-in">
       ${ch.themes.map((t,ti)=>`
@@ -1138,7 +1109,7 @@ function showRead(ci, mode){
   // 'mula' — the root text alone, as a pāṭha is recited; 'full' — each verse
   // followed by its meaning. The reader is doing two different things.
   state.readMode = mode || state.readMode || 'mula';
-  state.view='read'; state.chapter=ci; state.theme=null; renderCrumbs();
+  state.view='read'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; renderCrumbs();
   const ch = DATA[ci];
   const all = [];
   ch.themes.forEach((t,ti)=>t.parts.forEach(p=>p.sutras.forEach((sv,si)=>
@@ -1164,19 +1135,16 @@ function showRead(ci, mode){
     }
     return `<div class="rd-v" onclick="openModal(${ci},${ti},${idx},'read')">
       <div class="rd-deva">${inner}</div>
-      ${state.readMode === 'full' ? `<div class="rd-tr">${esc(T(sv.lits))}</div>` : ''}
+      ${state.readMode === 'full' ? `<div class="rd-tr">${esc(T(sv.lits))}</div><div class="rd-par">${esc(T(sv.paras))}</div>` : ''}
     </div>`;
   }).join('');
   view.innerHTML = `
     ${sectionTabs()}
-    <button class="back-top" onclick="showThemes(${ci})">${esc(L('back_read'))}</button>
-    <div class="view-title fade-in">${esc(L('read_title').replace('{ch}', `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`))}</div>
-    <div class="view-sub fade-in">${esc(L('read_sub'))}</div>
-    <div class="read-tabs fade-in">
-      <button class="read-tab${state.readMode==='mula'?' on':''}" onclick="showRead(${ci},'mula')">${esc(L('read_mula'))}</button>
-      <button class="read-tab${state.readMode==='full'?' on':''}" onclick="showRead(${ci},'full')">${esc(L('read_full'))}</button>
-    </div>
-    <div class="reading ${state.readMode} fade-in">${body}</div>` + backFoot(`showThemes(${ci})`, L('back_read'));
+    <button class="back-top" onclick="showChapters(${state.section||0})">${esc(L('back_chapters'))}</button>
+    <div class="view-title fade-in">${esc(L('chapter'))} ${numL(ch.num)} · ${esc(T(ch.names))}</div>
+    ${chapterTabs(ci)}
+    <div class="view-sub fade-in">${esc(L(state.readMode === 'full' ? 'read_sub' : 'read_sub_mula'))}</div>
+    <div class="reading ${state.readMode} fade-in">${body}</div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
 }
 
 function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
@@ -1495,8 +1463,9 @@ function gitaBoot(){
     if (v) { var hp = v[1].split('.');
       var loc = verseLoc(hp[0] + '.' + (hp[1].length === 1 ? '0' + hp[1] : hp[1]));
       if (loc) { showThemes(loc.ci); openModal(loc.ci, loc.ti, loc.si, 'book'); return; } }
-    var m = /^#chapter=([1-9]|1[0-8])$/.exec(location.hash || '');
-    if(m){ showThemes(parseInt(m[1], 10) - 1); } else { showWelcome(); }
+    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study))?$/.exec(location.hash || '');
+    if(m){ const ci = parseInt(m[1], 10) - 1; const tb = m[3] || 'mula';
+      if(tb === 'study'){ showThemes(ci); } else { showRead(ci, tb); } } else { showWelcome(); }
   })();
 }
 </script>
