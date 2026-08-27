@@ -372,6 +372,8 @@
   .words-bar .wb-hint{ color:var(--ink-soft); font-size:.78rem; font-style:italic;}
   .words-bar .wb-btn{ background:var(--teal); color:var(--on-accent); border:none; padding:4px 14px; border-radius:999px; cursor:pointer; font-size:.8rem; font-weight:600;}
   .words-bar .wb-btn:hover{ background:var(--teal-mid);}
+  .words-bar .wb-btn:disabled{ opacity:.45; cursor:default; }
+  .words-bar .wb-btn:disabled:hover{ background:var(--teal); }
   /* four pāda boxes in a 2x2 grid */
   .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
   .m-verse .pada-row{ display:flex; gap:12px;}
@@ -1345,7 +1347,7 @@ function fillModal(){
     <div class="m-verse">
       <div class="words-bar">
         <span class="wb-hint">${L('click_hint_pada')} ·</span>
-        <button class="wb-btn" onclick="toggleAllMeanings(this)">${L('hide_meanings')}</button>
+        <button class="wb-btn" onclick="toggleAllMeanings(this)" disabled>${L('hide_meanings')}</button>
       </div>
       ${spkHtml(topS)}
       <div class="pada-grid">
@@ -1382,6 +1384,21 @@ function toggleWords(el){
   const words = cont.querySelector('.words');
   if(!words) return;
   const open = words.classList.toggle('open');
+  refreshWordsBtn();
+}
+/* The master hide/show switch only means something once at least one quarter
+   is open — before that there is no meaning on screen to hide. So it waits,
+   disabled, until a pada is clicked (owner, 2026-08-27). */
+function refreshWordsBtn(){
+  const btn = document.querySelector('#modal .wb-btn');
+  if(!btn) return;
+  const anyOpen = !!document.querySelector('#modal .words.open');
+  btn.disabled = !anyOpen;
+  if(!anyOpen){   // fresh slate: next opening shows meanings again
+    btn.dataset.state = '';
+    btn.textContent = L('hide_meanings');
+    document.querySelectorAll('#modal .words').forEach(w=>w.classList.remove('mean-off'));
+  }
 }
 // toggle meaning visibility across all word-splits in the modal
 function toggleAllMeanings(btn){
