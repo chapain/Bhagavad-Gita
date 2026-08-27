@@ -1212,9 +1212,8 @@ function showVerses(ci,ti){
   const blocks = t.parts.map((p,pi)=>`
     <div class="part fade-in">
       <div class="part-head">
-        <span class="pnum">${L('part')} ${numL(pi+1)}</span>
         <span class="ptitle">${esc(T(p.titles))}</span>
-        <span class="pdesc">${esc(T(p.descs))} · ${numL(p.sutras.length)} ${p.sutras.length===1?L('verse'):L('verses')} (${fmtRangeL(p.range)})</span>
+        <span class="pdesc">${esc(T(p.descs))}</span>
       </div>
       <div class="grid verses">
         ${p.sutras.map((s,si)=>`
@@ -1289,8 +1288,14 @@ function openSharePanel(){
 }
 function copyVerseLink(){
   const t = $('#spLink').textContent;
-  function copied(){ const b = $('#shCp'); if(!b) return; b.textContent = L('link_copied');
-    setTimeout(function(){ b.textContent = L('copy_link'); }, 1600); }
+  function copied(){
+    /* Job done — collapse the panel right away and flash the confirmation on
+       the Share button itself, so the reader is straight back on the verse. */
+    const p = $('#sharePanel'); if(p) p.style.display = 'none';
+    const sh = $('#shareBtn');
+    if(sh){ sh.textContent = L('link_copied');
+      setTimeout(function(){ sh.textContent = L('share'); }, 1600); }
+  }
   try { navigator.clipboard.writeText(t).then(copied, copied); }
   catch(e){ const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta);
     ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); copied(); }
@@ -1357,7 +1362,7 @@ function fillModal(){
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
     </div>
-    <div class="m-part">${esc(L('theme_sg'))} ${numL(state.theme+1)} · ${esc(T(t.titles))} » ${esc(L('part'))} ${numL(partIdx+1)} · ${esc(T(part.titles))}</div>
+    <div class="m-part">${esc(L('theme_sg'))} ${numL(state.theme+1)} · ${esc(T(t.titles))} » ${esc(T(part.titles))}</div>
     <div class="m-meter">${esc(meterText(s))}</div>
     <div class="m-verse">
       <div class="words-bar">
