@@ -55,6 +55,8 @@
 <meta property="og:title" content="Bhagavad Gita — an Interactive Study · 700 verses, trilingual">
 <meta property="og:description" content="All 18 chapters in English · नेपाली · हिन्दी, with word-by-word meanings for every verse. Works offline.">
 <meta property="og:url" content="https://chapain.github.io/Bhagavad-Gita/">
+<meta property="og:image" content="https://chapain.github.io/Bhagavad-Gita/icon-512.png">
+<meta name="twitter:card" content="summary">
 <meta property="og:image" content="https://chapain.github.io/Bhagavad-Gita/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -324,11 +326,19 @@
   .sw-ic{ position:absolute; left:13px; top:50%; transform:translateY(-50%);
           color:var(--ink-soft); display:flex; pointer-events:none; }
   .sw-ic .ic{ width:15px; height:15px; margin:0; }
+  .sw-x{ position:absolute; right:7px; top:50%; transform:translateY(-50%); width:30px; height:30px;
+         border:none; border-radius:50%; background:transparent; color:var(--ink-soft);
+         display:none; align-items:center; justify-content:center; cursor:pointer; padding:0; }
+  .sw-x .ic{ margin:0; width:15px; height:15px; }
+  .sw-x:hover{ background:var(--saffron-soft); color:var(--saffron-dark); }
+  .sw-field.has-x .sw-x{ display:flex; }
+  .sw-field.has-x input[type=search]{ padding-right:40px; }
+  .sw-field input[type=search]::-webkit-search-cancel-button{ -webkit-appearance:none; display:none; }
+  ::selection{ background:var(--saffron-soft); color:var(--ink); }
   .tool-btn{ background:var(--paper); border:2px solid var(--line); color:var(--teal); font-weight:700; font-size:.85rem; padding:8px 16px; border-radius:999px; cursor:pointer; transition:.15s;}
   .tool-btn:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
   .tool-btn.primary{ background:var(--saffron); border-color:var(--saffron); color:var(--on-accent);}
   .tool-btn.primary:hover{ background:var(--saffron-dark);}
-  .tool-btn.clear{ color:var(--ink-soft);}
   .fav-btn{ background:var(--saffron-soft); border:2px solid var(--saffron); color:var(--saffron-dark); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
   .fav-btn.saved{ background:var(--saffron); color:var(--on-accent);}
   .res-head{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
@@ -464,7 +474,6 @@
     .toolbar .searchwrap{ order:-1; width:100%; flex:1 0 100%; max-width:none; min-width:0; }
     .toolbar input[type=search]{ min-height:42px; }
     .toolbar .tool-btn{ flex:1; min-height:40px; padding:9px 8px; font-size:.82rem; white-space:nowrap; }
-    .toolbar .tool-btn.clear{ flex:0 0 auto; }
 
     /* ---- content ---- */
     .wrap{ padding:16px 14px 40px; padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px)); }
@@ -591,8 +600,8 @@
     <div class="sw-field">
       <span class="sw-ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
       <input type="search" id="searchInput" placeholder="…" aria-label="search" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
+      <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
-    <button class="tool-btn clear" onclick="clearSearch()" id="clearBtn">Clear</button>
   </div>
   <button class="tool-btn" onclick="randomVerse()" id="randomBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg><span id="randLbl">Random</span></button>
   <button class="tool-btn" onclick="showFavorites()" id="favBtnTool"><svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span id="favLbl">Favorites</span></button>
@@ -679,10 +688,10 @@ const ICONS = {
 };
 function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub').textContent = L('app_sub');
   $('#tagVerses').textContent = L('tag_sub'); $('#appFooter').textContent = L('footer');
-  $('#clearBtn').textContent = L('clear');
+  $('#clearBtn').setAttribute('aria-label', L('clear'));
   $('#randLbl').textContent = L('random'); $('#favLbl').textContent = L('favorites');
   $('#homeLbl').textContent = L('home');
-  $('#searchInput').placeholder = L('search_ph'); }
+  $('#searchInput').placeholder = L('search_ph'); searchX(); }
 function setLang(l){ state.lang = l; try{ document.documentElement.lang = l; }catch(e){}
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('on', b.dataset.lang===l));
   applyStatic();
@@ -757,7 +766,11 @@ function buildVerseText(){ DATA.forEach(ch=> ch.themes.forEach(t=> t.parts.forEa
 
 // ---------- search ----------
 let searchTimer = null;
-function onSearchInput(v){ clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); }
+function onSearchInput(v){ clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); searchX(); }
+/* the in-field ✕ exists only while there is text to clear — the modern
+   pattern; a standing "Clear" button was dead chrome on an empty field */
+function searchX(){ const f = document.querySelector('.sw-field');
+  if(f) f.classList.toggle('has-x', ($('#searchInput').value || '').length > 0); }
 function doSearch(){
   const q = ($('#searchInput').value || '').trim();
   if(!q){ clearSearch(); return; }
@@ -822,6 +835,7 @@ function doSearch(){
 }
 function clearSearch(){
   $('#searchInput').value = '';
+  searchX();
   goToOrigin();
 }
 
