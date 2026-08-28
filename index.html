@@ -131,10 +131,12 @@
   html{ color-scheme: light; }
   html[data-theme="dark"]{
     color-scheme: dark;
-    --saffron:#F0A64A; --saffron-dark:#E8912C; --saffron-soft:#4A3418;
-    --teal:#7FD4E8; --teal-mid:#9FE0EF; --teal-soft:#123039;
-    --cream:#17130E; --paper:#211B14; --ink:#F2E7D5; --ink-soft:#B8A88F; --line:#3A2F22;
-    --on-accent:#1A1209; --hdr-a:#0A2830; --hdr-b:#0D323C; --hdr-c:#123F4B; --hdr-sub:#CFE6EC;
+    /* Apple-dark discipline: accents muted a notch, text never glaring.
+       The old #E8912C/#7FD4E8 pair neon'd against the warm black. */
+    --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-soft:#43301A;
+    --teal:#8FC1CE; --teal-mid:#A9D3DD; --teal-soft:#123039;
+    --cream:#16120D; --paper:#201A13; --ink:#E9DCC3; --ink-soft:#A79A80; --line:#382D20;
+    --on-accent:#1A1209; --hdr-a:#0A2830; --hdr-b:#0D323C; --hdr-c:#123F4B; --hdr-sub:#BFD9DF;
     --toolbar:#1E1811; --field:#2A2219; --muted:#8A7F6E; --danger:#E86B5C;
     --shadow:0,0,0; --scrim:rgba(0,0,0,.78); --fade:23,19,14;
     --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
@@ -148,15 +150,20 @@
   .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--saffron);}
   .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem;}
   .header-inner .tag{ color:var(--hdr-sub); font-size:.9rem; margin-left:auto; text-align:right;}
-  .langbar{ display:flex; gap:6px; margin-left:auto;}
+  .langbar{ display:flex; gap:8px; margin-left:auto; align-items:center;}
+  /* iOS-style segmented control: one translucent track, the active language
+     raised as a neutral segment — chrome stays quiet, no orange in the header */
+  .seg{ display:flex; gap:2px; background:var(--chip); border:1px solid var(--chip-line); border-radius:999px; padding:3px; }
+  .seg .lang-btn{ background:transparent; border:none; color:var(--hdr-sub); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; }
+  .seg .lang-btn:hover{ color:var(--ink); background:var(--chip-hover); }
+  .seg .lang-btn.on{ background:var(--paper); color:var(--ink); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,.28); }
   .lang-btn{ background:var(--chip); color:var(--hdr-sub); border:1px solid var(--chip-line); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600;}
   .lang-btn:hover{ background:var(--chip-hover);}
-  .lang-btn.on{ background:var(--saffron); border-color:var(--saffron); color:var(--on-accent);}
   /* the theme toggle lives in the language bar; it must not stretch like the
      language buttons do on mobile, so it opts out of flex:1 and stays square */
   .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--saffron); border-color:var(--chip-line);}
   .theme-btn:hover{ background:var(--chip-hover);}
-  @media (max-width:640px){ .langbar{ width:100%; justify-content:center; margin-left:0;} .lang-btn{ flex:1; text-align:center;} }
+  @media (max-width:640px){ .langbar{ width:100%; justify-content:center; margin-left:0;} .seg{ flex:1; } .seg .lang-btn{ flex:1; text-align:center;} }
   .header-inner .tag b{ color:var(--saffron); font-family:Georgia,serif; font-size:1.15rem;}
   .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
   .crumbs{ display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--ink-soft); margin-bottom:18px; flex-wrap:wrap;}
@@ -585,9 +592,11 @@
     </div>
     <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     <div class="langbar" id="langbar">
-      <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
-      <button class="lang-btn" data-lang="ne" onclick="setLang('ne')">नेपाली</button>
-      <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
+      <div class="seg">
+        <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
+        <button class="lang-btn" data-lang="ne" onclick="setLang('ne')">नेपाली</button>
+        <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
+      </div>
       <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
     </div>
   </div>
