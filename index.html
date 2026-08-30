@@ -153,12 +153,16 @@
   .langbar{ display:flex; gap:8px; margin-left:auto; align-items:center;}
   /* iOS-style segmented control: one translucent track, the active language
      raised as a neutral segment — chrome stays quiet, no orange in the header */
-  .seg{ display:flex; gap:2px; background:var(--chip); border:1px solid var(--chip-line); border-radius:999px; padding:3px; }
-  .seg .lang-btn{ background:transparent; border:none; color:var(--hdr-sub); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; }
-  .seg .lang-btn:hover{ color:var(--ink); background:var(--chip-hover); }
-  .seg .lang-btn.on{ background:var(--paper); color:var(--ink); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,.28); }
-  .lang-btn{ background:var(--chip); color:var(--hdr-sub); border:1px solid var(--chip-line); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600;}
-  .lang-btn:hover{ background:var(--chip-hover);}
+  /* The language bar wears the same chip grammar as the trail and the
+     study-style chooser (owner 2026-08-30): soft pill = an option, gold =
+     the tongue you're in, hover = the door warming. The round boundary is
+     what makes them read as clean options. */
+  .seg{ display:flex; gap:6px; }
+  .seg .lang-btn{ background:var(--saffron-soft); border:none; color:var(--saffron-dark); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:700; transition:background-color .15s, color .15s; }
+  .seg .lang-btn:hover{ background:var(--saffron-dark); color:var(--on-saffron); }
+  .seg .lang-btn.on{ background:var(--saffron); color:var(--on-saffron); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,.28); }
+  .lang-btn{ background:var(--saffron-soft); color:var(--saffron-dark); border:none; padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:700; transition:background-color .15s, color .15s;}
+  .lang-btn:hover{ background:var(--saffron-dark); color:var(--on-saffron);}
   /* the theme toggle lives in the language bar; it must not stretch like the
      language buttons do on mobile, so it opts out of flex:1 and stays square */
   .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--saffron); border-color:var(--chip-line);}
@@ -196,18 +200,17 @@
              padding:14px 18px; margin:0 0 18px; display:flex; flex-direction:column;
              gap:10px; align-items:flex-start; box-shadow:0 1px 2px rgba(var(--shadow),.05); }
   .mode-lbl{ font-size:.9rem; color:var(--saffron-dark); font-weight:600; }
-  .mode-seg{ display:inline-flex; gap:2px; background:var(--field); border:1px solid var(--line);
-             border-radius:999px; padding:3px; max-width:100%; }
-  .mode-seg .ms-btn{ background:transparent; border:none; color:var(--ink-soft); padding:7px 16px;
-             border-radius:999px; cursor:pointer; font-size:.86rem; font-weight:600;
-             font-family:inherit; transition:color .15s, background-color .15s; }
-  /* Owner 2026-08-30 handed over the brush: the tray is the one saffron
-     object on the chapter page — frame, instruction and states all speak
-     the accent. Hover warms the segment with the chip's saffron-soft wash;
-     the chosen way rises as gold leaf — saffron ground, lamp-black letter. */
-  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ color:var(--saffron-dark);
-             background:var(--saffron-soft); outline:none; }
-  .mode-seg .ms-btn.on{ background:var(--saffron); color:var(--on-saffron); font-weight:700;
+  /* Owner 2026-08-30, second pass: every chooser in the app speaks ONE chip
+     grammar — soft pill = an option, gold pill = where you are, hover = the
+     door warming to saffron-dark. The segments ARE crumbs now; the paper
+     track retired because the pills carry their own round boundary. */
+  .mode-seg{ display:flex; gap:8px; flex-wrap:wrap; max-width:100%; }
+  .mode-seg .ms-btn{ background:var(--saffron-soft); border:none; color:var(--saffron-dark);
+             border-radius:999px; padding:7px 16px; cursor:pointer; font-size:.86rem;
+             font-weight:700; font-family:inherit; transition:color .15s, background-color .15s; }
+  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-dark);
+             color:var(--on-saffron); outline:none; }
+  .mode-seg .ms-btn.on{ background:var(--saffron); color:var(--on-saffron);
              box-shadow:0 1px 3px rgba(var(--shadow),.25); }
   .mode-seg .ms-btn.on:hover{ background:var(--saffron); color:var(--on-saffron); }
   /* purana chapter view: clean hairline cards; saffron only for numbers */
@@ -217,12 +220,12 @@
   .th-flow h3{ font-family:Georgia,serif; color:var(--teal); font-size:1.05rem; margin:0 0 6px; }
   .th-flow h3 .rng{ color:var(--ink-soft); font-weight:400; font-size:.78rem; margin-left:8px; white-space:nowrap; }
   .th-flow .tdesc{ margin:0 0 6px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
-  .vrows{ margin-top:6px; }
-  .vrow{ padding:10px 8px; border-top:1px solid var(--line); cursor:pointer; border-radius:8px; }
-  .vrow:hover{ background:var(--cream); }
-  .vrow .vt{ color:var(--teal); font-weight:700; font-size:.9rem; }
-  .vrow .vt b{ color:var(--saffron-dark); margin-right:6px; }
-  .vrow .vd{ color:var(--ink-soft); font-size:.84rem; margin-top:2px; line-height:1.5; }
+  .vcards{ margin-top:12px; display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:12px; }
+  /* display-only: same card body, but no pointer, no hover lift — an object
+     to read, not a button to press */
+  .vcard{ cursor:default; }
+  .vcard:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); }
+  .vcard h3{ font-size:1rem; }   /* the theme title outranks its verses */
   .chdeva{ color:var(--saffron-dark); font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem; }
   .card h3{ font-family:Georgia,serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
@@ -332,7 +335,7 @@
   .way-crumb{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:2px 0 18px;
               font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, "Noto Serif Devanagari", sans-serif; }
   .wc-chip{ background:var(--saffron-soft); color:var(--saffron-dark); border:none; border-radius:999px;
-            padding:6px 14px; font-size:.8rem; font-weight:700; font-family:inherit; line-height:1.4;
+            padding:7px 16px; font-size:.88rem; font-weight:700; font-family:inherit; line-height:1.4;
             transition:background-color .15s, color .15s; }
   button.wc-chip{ cursor:pointer; }
   button.wc-chip:hover, button.wc-chip:focus-visible{ background:var(--saffron-dark); color:var(--on-saffron); outline:none; }
@@ -520,9 +523,8 @@
     .header-inner .tag{ display:none; }
     .langbar{ width:100%; gap:8px; margin-left:0; }
     .lang-btn{ flex:1; padding:9px 6px; font-size:.82rem; min-height:40px; }
-    .mode-seg{ display:flex; width:100%; }
     .mode-box{ padding:12px 14px; }
-    .mode-seg .ms-btn{ flex:1; text-align:center; padding:9px 6px; font-size:.82rem; min-height:40px; }
+    .mode-seg .ms-btn{ padding:9px 14px; font-size:.82rem; min-height:40px; }
 
     /* ---- toolbar: sticky so search / home stay reachable ---- */
     .toolbar{ position:sticky; top:0; z-index:30; gap:8px; padding:9px 12px;
@@ -538,11 +540,12 @@
     .view-sub{ font-size:.92rem; margin-bottom:16px; }
     .crumbs{ font-size:.84rem; gap:6px; margin-bottom:14px; }
     .way-crumb{ gap:6px; }
-    .wc-chip{ padding:7px 12px; font-size:.74rem; min-height:32px; }
+    .wc-chip{ padding:7px 13px; font-size:.8rem; min-height:34px; }
     .toolbar input[type=search]{ font-size:16px; }  /* iOS zooms on focus below 16px */
     .crumbs .back-top{ font-size:.82rem; padding:7px 14px; min-height:36px; }
     .grid{ gap:12px; }
     .grid.chapters, .grid.themes, .grid.verses, .grid.sections{ grid-template-columns:1fr; }
+    .vcards{ grid-template-columns:1fr; }
     .card{ padding:14px 16px; border-radius:14px; }
     .card h3{ font-size:1.08rem; }
     .card.sect h3{ font-size:1.2rem; }
@@ -1228,15 +1231,20 @@ function showThemes(ci){
     ${modeSwitch(ci)}
     <div class="view-sub fade-in">${esc(T(ch.subs))} — ${L('pick_theme')}</div>
     <div class="th-flow fade-in">
-      ${ch.themes.map((t,ti)=>{ let s0=0;
-        const rows = t.parts.map(p=>{ const a=s0; s0+=p.sutras.length;
-          return `<div class="vrow" role="button" tabindex="0" onclick="event.stopPropagation(); openModal(${ci},${ti},${a},'book')">
-            <div class="vt"><b>${vn2(p.sutras[0].n)}</b>${esc(T(p.titles))}</div>
-            <div class="vd">${esc(T(p.descs))}</div></div>`; }).join('');
+      ${ch.themes.map((t,ti)=>{
+        /* Owner 2026-08-30: the theme stays a door; its verses become
+           display-only cards in the chapter-list grammar — a tap target
+           nested inside a tap target was an ambiguity too many. Word-by-word
+           lives one level deeper, in the verse grid. */
+        const cards = t.parts.map(p=>
+          `<div class="card vcard">
+            <span class="chip">${vn2(p.sutras[0].n)}</span>
+            <h3>${esc(T(p.titles))}</h3>
+            <p>${esc(T(p.descs))}</p></div>`).join('');
         return `<div class="theme" role="button" tabindex="0" onclick="showVerses(${ci},${ti})">
           <h3>${esc(T(t.titles))}<span class="rng">${fmtRangeL(t.range)}</span></h3>
           <p class="tdesc">${esc(T(t.descs))}</p>
-          <div class="vrows">${rows}</div>
+          <div class="vcards">${cards}</div>
         </div>`; }).join('')}
     </div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
 }
