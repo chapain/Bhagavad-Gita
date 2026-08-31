@@ -1397,10 +1397,11 @@ function shareUrl(){
      crashes some Chromes. Share the live site's address instead (the og:url
      tag carries it), so shares from ANY copy land on the public verse. */
   const og = document.querySelector('meta[property="og:url"]');
-  const base = (location.protocol === 'http:' || location.protocol === 'https:')
-    ? location.href.split('#')[0]
-    : (og ? og.content : 'https://chapain.github.io/Bhagavad-Gita/');
-  return base + '#v=' + sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s.n;
+  const root = (og ? og.content : 'https://chapain.github.io/Bhagavad-Gita/').replace(/\/$/, '');
+  /* Owner 2026-08-31: shares point at the verse's OWN page (v/N.N/) so the
+     WhatsApp/Facebook preview shows the verse, not the app logo. The page
+     bounces humans into the app's invitation landing. */
+  return root + '/v/' + sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s.n + '/';
 }
 function openSharePanel(){
   $('#spLink').textContent = shareUrl();
