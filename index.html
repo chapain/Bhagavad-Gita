@@ -153,15 +153,14 @@
   .langbar{ display:flex; gap:8px; margin-left:auto; align-items:center;}
   /* iOS-style segmented control: one translucent track, the active language
      raised as a neutral segment — chrome stays quiet, no orange in the header */
-  /* The language bar wears the same chip grammar as the trail and the
-     study-style chooser (owner 2026-08-30): soft pill = an option, gold =
-     the tongue you're in, hover = the door warming. The round boundary is
-     what makes them read as clean options. */
-  .seg{ display:flex; gap:6px; }
-  .seg .lang-btn{ background:var(--saffron-soft); border:none; color:var(--saffron-dark); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:700; transition:background-color .15s, color .15s; }
+  /* Language bar: the owner's iOS-segment look, restored 2026-08-30 after the
+     chip experiment ("revert to previous looks") — but the hover keeps the
+     warming the chip pass taught it: saffron-dark fill, lamp-black letter. */
+  .seg{ display:flex; gap:2px; background:var(--chip); border:1px solid var(--chip-line); border-radius:999px; padding:3px; }
+  .seg .lang-btn{ background:transparent; border:none; color:var(--hdr-sub); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:background-color .15s, color .15s; }
   .seg .lang-btn:hover{ background:var(--saffron-dark); color:var(--on-saffron); }
-  .seg .lang-btn.on{ background:var(--saffron); color:var(--on-saffron); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,.28); }
-  .lang-btn{ background:var(--saffron-soft); color:var(--saffron-dark); border:none; padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:700; transition:background-color .15s, color .15s;}
+  .seg .lang-btn.on{ background:var(--paper); color:var(--ink); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,.28); }
+  .lang-btn{ background:var(--chip); color:var(--hdr-sub); border:1px solid var(--chip-line); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:background-color .15s, color .15s;}
   .lang-btn:hover{ background:var(--saffron-dark); color:var(--on-saffron);}
   /* the theme toggle lives in the language bar; it must not stretch like the
      language buttons do on mobile, so it opts out of flex:1 and stays square */
