@@ -195,7 +195,7 @@
      2026-08-30: "put the choose and the three options in a box, and make it
      instructive"). Same body as every card — paper, hairline, 16px radius —
      so the chrome reads as one quiet object set apart from the scripture. */
-  .mode-box{ background:var(--paper); border:1px solid var(--saffron); border-radius:16px;
+  .mode-box{ background:var(--paper); border:1px solid var(--line); border-radius:16px;
              padding:14px 18px; margin:0 0 18px; display:flex; flex-direction:column;
              gap:10px; align-items:flex-start; box-shadow:0 1px 2px rgba(var(--shadow),.05); }
   .mode-lbl{ font-size:.9rem; color:var(--saffron-dark); font-weight:600; }
@@ -333,12 +333,17 @@
      and tracking strains the mātrā flow. */
   .way-crumb{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:2px 0 18px;
               font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, "Noto Serif Devanagari", sans-serif; }
-  .wc-chip{ background:var(--saffron-soft); color:var(--saffron-dark); border:none; border-radius:999px;
+  /* Volume control (owner 2026-08-31: "too much orange"): one gold per page.
+     Gold = the decision you're IN (the raised segment in the tray). The trail
+     steps down: current page = soft pill, ancestors = neutral hairline pills —
+     prominent by size and shape, not by hue. Hover still warms, one step. */
+  .wc-chip{ background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); border-radius:999px;
             padding:7px 16px; font-size:.88rem; font-weight:700; font-family:inherit; line-height:1.4;
-            transition:background-color .15s, color .15s; }
+            transition:background-color .15s, color .15s, border-color .15s; }
   button.wc-chip{ cursor:pointer; }
-  button.wc-chip:hover, button.wc-chip:focus-visible{ background:var(--saffron-dark); color:var(--on-saffron); outline:none; }
-  .wc-chip.wc-cur{ background:var(--saffron); color:var(--on-saffron); }
+  button.wc-chip:hover, button.wc-chip:focus-visible{ background:var(--saffron-soft); color:var(--saffron-dark);
+            border-color:var(--saffron-soft); outline:none; }
+  .wc-chip.wc-cur{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
   .wc-sep{ color:var(--muted); font-size:.78rem; }
 
   .welcome{ text-align:center; padding:44px 12px 30px; max-width:860px; margin:0 auto;}
