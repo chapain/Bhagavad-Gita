@@ -1697,7 +1697,7 @@ function lrDrill(ci, ti, vs){
    one verse from this theme with its four pādas shuffled, reorder, then pull
    another. Deliberately OUTSIDE the queue engine — nothing is scored, nothing
    is required, and leaving costs nothing. Practice, not examination. */
-var FP = {ci:0, ti:0, v:null, order:[], picked:[]};
+var FP = {ci:0, ti:0, v:null, order:[], deal:[], picked:[]};
 function lrFree(ci, ti){
   state.view='learn'; state.chapter=ci; state.theme=ti;
   state.lrAt = {kind:'theme', ti:ti};
@@ -1715,6 +1715,19 @@ function lrFreePick(){
   }
   FP.v = v; FP.picked = [];
   FP.order = (v.flow||[]).filter(f=>f.k==='p');
+  /* The pādas must appear SHUFFLED or there is nothing to put in order — they
+     were rendering in their natural sequence, which made the whole mode a
+     no-op (owner 2026-09-01). Shuffle a display order ONCE per verse and keep
+     it in state: reshuffling inside the paint would move the chips on every
+     tap. Guard against the identity permutation, which would look like the
+     bug even though the code was right. */
+  const n = FP.order.length;
+  let deal = FP.order.map((_,i)=>i);
+  for(let guard=0; guard<20; guard++){
+    deal = lrShuffle(FP.order.map((_,i)=>i));
+    if(n < 2 || deal.some((ix,k)=>ix!==k)) break;
+  }
+  FP.deal = deal;
   lrFreePaint();
 }
 function lrFreePaint(){
@@ -1732,9 +1745,9 @@ function lrFreePaint(){
         <div class="lr-ask">${esc(fmt(L('learn_qorder'),{v:fmtNL(v.n)}))}</div>
         <div class="lr-slots" id="fpSlots">${FP.picked.map((ix,k)=>
           `<span class="lr-slot dv" lang="sa">${numL(k+1)}. ${esc(FP.order[ix].d)}</span>`).join('')}</div>
-        <div class="lr-chips" id="fpChips">${FP.order.map((q,i)=>
-          FP.picked.indexOf(i) >= 0 ? '' :
-          `<button class="lr-chip2 dv" lang="sa" onclick="lrFreeTap(${i})">${esc(q.d)}</button>`
+        <div class="lr-chips" id="fpChips">${(FP.deal||FP.order.map((_,i)=>i)).map(ix=>
+          FP.picked.indexOf(ix) >= 0 ? '' :
+          `<button class="lr-chip2 dv" lang="sa" onclick="lrFreeTap(${ix})">${esc(FP.order[ix].d)}</button>`
         ).join('')}</div>
         <div class="lr-fb" id="fpFb">${done
           ? `<div class="good">${esc(L('learn_thread_ok'))}</div>
