@@ -30,7 +30,7 @@ h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent); }
 h2{ font-size:1.05rem; margin:24px 0 10px; color:var(--accent); }
 ol.themes{ margin:0; padding-left:22px; }
 ol.themes li{ margin:6px 0; }
-ol.themes .rng{ color:var(--ink-soft); font-size:.8rem; white-space:nowrap; }
+ol.themes .rng{ color:var(--saffron); font-weight:600; font-size:.8rem; white-space:nowrap; }
 .cta{ display:inline-block; margin:26px 0 8px; padding:13px 22px;
       background:var(--accent); color:#FFF8EC; border-radius:12px;
       text-decoration:none; font-weight:700; font-size:1.02rem; }
@@ -41,7 +41,7 @@ ol.toc a{ color:var(--ink); text-decoration:none; border-bottom:1px dotted var(-
 section.theme{ margin:26px 0; }
 h2.th{ font-size:1.02rem; color:var(--accent); margin:20px 0 10px;
        border-bottom:1px solid var(--line); padding-bottom:6px; }
-h2.th .rng{ color:var(--ink-soft); font-weight:400; font-size:.8rem; margin-left:8px;
+h2.th .rng{ color:var(--saffron); font-weight:600; font-size:.8rem; margin-left:8px;
        white-space:nowrap; }
 .v{ margin:16px 0 22px; }
 .vnum{ font-size:.78rem; font-weight:700; color:var(--saffron); letter-spacing:.04em; }
