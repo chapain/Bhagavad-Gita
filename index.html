@@ -1639,14 +1639,16 @@ function lrDrill(ci, ti, vs){
       });
       items.push({kind:'pick',
         ask: esc(fmt(L('learn_missing'),{q:numL(c.qi+1), v:fmtNL(s.n)}))
-             + `<div class="lr-split" lang="sa">${split}</div>`
-             /* The recited line is the cue — but only when sandhi actually
-                HIDES the answer inside it. In 47.5% of pādas the dictionary
-                form survives unchanged (मामकाः in मामकाः पाण्डवाश्चैव), and
-                printing the line then hands over the answer. Show the cue only
-                when the word is not literally present (owner 2026-09-01). */
-             + (c.q.d.indexOf(c.w[0]) < 0
-                  ? `<div class="lr-cue" lang="sa">${c.q.d}</div>` : ''),
+             /* NO recited-line cue. It was added to help where sandhi
+                transforms a word, but measured against the real data it gives
+                the answer away in 6,069 of 6,394 questions — either literally
+                (मामकाः inside मामकाः पाण्डवाश्चैव) or all but a letter
+                (कुर्वत inside किमकुर्वत). Only 325 would keep a cue that
+                genuinely helps, which is not worth a 95% leak.
+                The surrounding words of the split ARE the context: supplying
+                the missing word of a pāda you know is exactly the recall being
+                tested (owner caught both leaks, 2026-09-01). */
+             + `<div class="lr-split" lang="sa">${split}</div>`,
         opts: lrShuffle([c.w].concat(dw)).map(function(o){
                 return {label:o[0], sub:o[1], deva:1, ok:o===c.w}; }),
         note: `<b lang="sa">${esc(c.w[0])}</b> (${esc(c.w[1])}) — ${esc(c.w[2])}`});
@@ -1816,6 +1818,11 @@ function lrChip(el, id){
   const it = LQ[LQi], want = it.answer[LQpick.length];
   const fb = document.getElementById('lrFb');
   if(id === want){
+    /* Clear any standing "not there yet" the moment the reader gets it right.
+       Without this the correction stays on screen for the rest of the question
+       and reads as though the new, correct answer were also wrong
+       (owner 2026-09-01). */
+    if(fb) fb.innerHTML = '';
     LQpick.push(id); el.disabled = true; el.classList.add('used');
     /* carry the chip's script class through, or a Devanagari pāda drops back
        to the Latin face the moment it is placed */
