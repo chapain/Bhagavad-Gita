@@ -361,13 +361,18 @@
   .lr-cue{ margin-top:8px; text-align:center; font-family:"Noto Serif Devanagari",Georgia,serif;
            font-size:.95rem; color:var(--ink-soft);}
   .lr-opts{ display:grid; gap:9px;}
-  .lr-opt{ display:flex; align-items:baseline; gap:10px; text-align:left; width:100%;
+  /* Options are whole ślokas now (66-134 characters), so they stack: the verse
+     takes the full width and its number sits underneath, instead of the two
+     competing for one line (owner 2026-09-01). */
+  .lr-opt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px;
+           text-align:left; width:100%;
            padding:13px 15px; border-radius:12px; background:var(--paper);
            border:1px solid var(--line); cursor:pointer; font-family:inherit; transition:.15s;}
   .lr-opt:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
   .lr-opt:disabled{ cursor:default;}
-  .lr-opt .ol{ flex:1; font-size:.96rem; line-height:1.5;}
-  .lr-opt .ol.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.06rem;}
+  .lr-opt .ol{ width:100%; font-size:.96rem; line-height:1.5;}
+  .lr-opt .ol.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.04rem;
+                  line-height:1.85;}
   .lr-opt .os{ font-family:system-ui,sans-serif; font-size:.72rem; color:var(--ink-soft);}
   .lr-opt.right{ border-color:var(--teal); background:var(--teal-soft);}
   .lr-opt.wrong{ border-color:var(--saffron-dark); opacity:.8;}
@@ -1621,13 +1626,17 @@ function lrDrill(ci, ti, vs){
        pada is identical to the answer would render two indistinguishable
        choices with one marked wrong. 6.15 and 6.28 open with the same line
        (युञ्जन्नेवं सदात्मानं) — rare, but it must never happen. */
-    const _p0 = v => { const f = (v.flow||[]).find(x=>x.k==='p'); return f ? f.d : v.d; };
-    const mine = _p0(s);
-    const wrong = lrSample(others.filter(o=>o.n!==s.n && _p0(o)!==mine), 3);
+    /* Options are WHOLE VERSES, not opening lines — a first pāda is not a
+       verse, and picking between four fragments is a shallower task than
+       picking between four ślokas (owner 2026-09-01). Full verses are also
+       unique book-wide, where four pairs share a first pāda. */
+    const _full = v => v.d;
+    const mine = _full(s);
+    const wrong = lrSample(others.filter(o=>o.n!==s.n && _full(o)!==mine), 3);
     items.push({kind:'pick',
       ask: esc(L('learn_which')) + `<div class="lr-qsub">${esc(T(s.paras))}</div>`,
       opts: lrShuffle([s].concat(wrong)).map(o=>
-        ({label: _p0(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
+        ({label: _full(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`});
 
     /* Cloze on the AUTHORED WORD-SPLIT, never by blanking the recited line.
@@ -1858,7 +1867,14 @@ function plPool(){
   });
   return out;
 }
-const plP0 = v => { const f=(v.flow||[]).find(x=>x.k==='p'); return f ? f.d : v.d; };
+/* An option is a WHOLE VERSE, never its opening line: a first pāda is not a
+   verse, and choosing between four fragments is a different (easier, shallower)
+   task than choosing between four ślokas — owner 2026-09-01.
+   A welcome consequence: full verses are unique book-wide (verified across all
+   700), whereas four PAIRS share a first pāda — 3.35/18.47, 6.15/6.28,
+   9.34/18.65, 16.07/18.30 — so the identical-option guard that case needed is
+   no longer required. It stays as an assertion in the health checks. */
+const plFull = v => v.d;
 
 function plStart(mode){
   PL.mode = mode; PL.run = 0;
@@ -1876,11 +1892,11 @@ function plNext(){
        answer's opening line: four verse PAIRS in the Gita open identically
        (3.35/18.47, 6.15/6.28, 9.34/18.65, 16.07/18.30), which would render two
        indistinguishable options with one marked wrong. */
-    const mine = plP0(s);
-    const wrong = lrSample(pool.filter(o=>o.n!==s.n && plP0(o)!==mine), 3);
+    const mine = plFull(s);
+    const wrong = lrSample(pool.filter(o=>o.n!==s.n && plFull(o)!==mine), 3);
     item = {kind:'pick',
       ask: esc(fmt(L('play_q1'),{v:fmtNL(s.n)})),
-      opts: lrShuffle([s].concat(wrong)).map(o=>({label:plP0(o), deva:1, ok:o===s})),
+      opts: lrShuffle([s].concat(wrong)).map(o=>({label:plFull(o), deva:1, ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`};
 
   }else if(PL.mode === 2){
@@ -1906,15 +1922,21 @@ function plNext(){
   }
   /* A one-item run: when it finishes, deal another. That is the endless game. */
   lrRun(0, [item], L('play_title') + (PL.run ? ' · ' + fmt(L('play_round'),{n:numL(PL.run)}) : ''),
-        ()=>{ PL.run++; plNext(); });
+        ()=>{ PL.run++; plNext(); },
+        {fn:'showPlay()', label:'play_title'});
 }
 
 /* ---------------- the drill engine ----------------
    One queue. A miss is not a failure: it goes to the back and comes round
    again, and the run ends only when the queue is genuinely empty. */
 var LQ=[], LQi=0, LQmiss=0, LQdone=null, LQlab='', LQpick=[], LQci=0;
-function lrRun(ci, items, label, done){
-  LQci=ci; LQ=items.slice(); LQi=0; LQmiss=0; LQlab=label; LQdone=done; lrPaint();
+/* Where the queue's footer should lead. The learn path is inside a chapter;
+   Play is not — it passed ci=0 and so offered "back to chapter", which sent the
+   reader to chapter 1 from a game that spans the whole Gītā (owner
+   2026-09-01). */
+var LQback = null;
+function lrRun(ci, items, label, done, back){
+  LQci=ci; LQback=back||null; LQ=items.slice(); LQi=0; LQmiss=0; LQlab=label; LQdone=done; lrPaint();
 }
 function lrPaint(){
   if(LQi >= LQ.length) return LQdone();
@@ -1936,7 +1958,9 @@ function lrPaint(){
          <button class="lr-chip2${c.deva?' dv':''}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})">${esc(c.label)}</button>`).join('')}</div>`;
   view.innerHTML = `<div class="lrn fade-in">${head}
     <div class="lr-qbox">${body}<div class="lr-fb" id="lrFb"></div></div>
-    </div>` + backFoot(`showRead(${LQci},'full')`, L('back_chapter_one'));
+    </div>` + (LQback
+      ? backFoot(LQback.fn, L(LQback.label))
+      : backFoot(`showRead(${LQci},'full')`, L('back_chapter_one')));
   scrollViewTop();
 }
 function lrPick(i){
