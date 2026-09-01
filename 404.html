@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, follow">
+<title>Page not found — Bhagavad Gita</title>
+<link rel="icon" href="/Bhagavad-Gita/favicon.ico" sizes="any">
+<style>
+  :root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#0F4C5C; --saffron:#B45A24; }
+  @media (prefers-color-scheme:dark){
+    :root{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8CC0CC; --saffron:#DE8F52; }
+  }
+  body{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+        background:var(--paper); color:var(--ink); text-align:center;
+        font:17px/1.65 Georgia,serif; padding:24px; }
+  .om{ font-size:3rem; color:var(--saffron); margin:0 0 6px; }
+  h1{ font-size:1.4rem; color:var(--accent); margin:0 0 10px; }
+  p{ color:var(--ink-soft); margin:0 0 22px; }
+  a.cta{ display:inline-block; padding:13px 22px; background:var(--accent); color:#FFF8EC;
+         border-radius:12px; text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<main>
+  <p class="om" lang="sa">ॐ</p>
+  <h1>This page has moved on</h1>
+  <p>The verse you wanted is still here — the address just isn't.</p>
+  <p><a class="cta" id="home" href="https://chapain.github.io/Bhagavad-Gita/">Open the Bhagavad Gita →</a></p>
+</main>
+<script>
+/* If the dead URL still names a verse or chapter, carry it into the app so the
+   reader lands where they meant to go instead of on the welcome page. */
+(function(){
+  var p = location.pathname, a = document.getElementById('home');
+  /* An old share link: /v/2.47/. Those 700 pages were retired on 2026-09-01,
+     but the links are out in the world forever — forward them to the verse's
+     new home on its chapter page so nobody hits a dead end. */
+  var m = p.match(/\/v\/(\d+)\.(\d+)\/?$/);
+  if (m) {
+    a.href = 'https://chapain.github.io/Bhagavad-Gita/chapter/' + m[1] + '/#v' + m[1] + '.' + m[2];
+    a.textContent = 'Read Bhagavad Gita ' + m[1] + '.' + parseInt(m[2], 10) + ' →';
+    location.replace(a.href);
+    return;
+  }
+  var c = p.match(/\/chapter\/(\d+)\/?$/);
+  if (c) a.href = 'https://chapain.github.io/Bhagavad-Gita/#chapter=' + c[1];
+})();
+</script>
+</body>
+</html>

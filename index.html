@@ -55,8 +55,13 @@
 <meta property="og:title" content="Bhagavad Gita — an Interactive Study · 700 verses, trilingual">
 <meta property="og:description" content="All 18 chapters in English · नेपाली · हिन्दी, with word-by-word meanings for every verse. Works offline.">
 <meta property="og:url" content="https://chapain.github.io/Bhagavad-Gita/">
-<meta property="og:image" content="https://chapain.github.io/Bhagavad-Gita/icon-512.png">
-<meta name="twitter:card" content="summary">
+<!-- EXACTLY ONE og:image and ONE twitter:card. Both were once declared twice
+     with conflicting values (icon-512.png + summary, then og-card.png +
+     summary_large_image). Crawlers take the FIRST og:image, so the homepage
+     previewed with the square app icon while the 1200×630 width/height tags
+     described the second image — the mismatch made some crawlers drop the
+     card entirely. og-card.png is the site's one face; the square icon is for
+     the manifest, never for a link preview. -->
 <meta property="og:image" content="https://chapain.github.io/Bhagavad-Gita/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -173,6 +178,9 @@
   /* Search/Favorites show one .back-top button (see renderCrumbs), so .crumbs is
      just its wrapper. Long chapter names ellipsise rather than wrap. */
   .crumbs .back-top{ margin:0 0 4px; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  /* Visually hidden but readable by assistive tech — used by #srStatus. */
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+            overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
   .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--ink); margin-bottom:6px;}
   .view-sub{ color:var(--ink-soft); font-size:.98rem; margin-bottom:22px; max-width:880px;}
   .grid{ display:grid; gap:20px; }
@@ -678,6 +686,10 @@
 
 <div class="wrap">
   <nav class="crumbs" id="crumbs"></nav>
+  <!-- Announces each view change to screen readers. The app never reloads, so
+       without this a reader who taps "Chapter 2" hears silence: the heading
+       changed but focus did not move. Polite, so it never interrupts. -->
+  <p id="srStatus" role="status" aria-live="polite" class="sr-only"></p>
   <main id="view"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ Loading the 700 verses…</div></main>
 
   <!-- Shown only when JavaScript is disabled — e.g. the in-app file viewers of
@@ -942,9 +954,30 @@ try{
   else if(mq.addListener) mq.addListener(onSys);
 }catch(e){}
 
-function favNoteLoad(){ try{ return JSON.parse(localStorage.getItem('gitaFavNotes') || '{}'); }catch(e){ return {}; } }
+/* JSON.parse succeeding does NOT mean we got the shape we want: a stored
+   'null', '5' or '{}' parses fine and then explodes on the first .indexOf /
+   .includes — and FAV.includes() runs on every verse modal, so one bad write
+   (a sync bug, a shared-device mishap, a hand-edited devtools value) would
+   brick the app on every verse with no way back except clearing storage.
+   Validate the TYPE, not just the parse, and fall back to empty. */
+function favNoteLoad(){
+  try{
+    const o = JSON.parse(localStorage.getItem('gitaFavNotes') || '{}');
+    if(!o || typeof o !== 'object' || Array.isArray(o)) return {};
+    const out = {};
+    for(const k in o) if(typeof o[k] === 'string') out[k] = o[k];
+    return out;
+  }catch(e){ return {}; }
+}
 function favNoteSave(){ try{ localStorage.setItem('gitaFavNotes', JSON.stringify(FAVNOTE)); }catch(e){} }
-function favLoad(){ try{ return JSON.parse(localStorage.getItem('gitaFavs') || '[]'); }catch(e){ return []; } }
+function favLoad(){
+  try{
+    const a = JSON.parse(localStorage.getItem('gitaFavs') || '[]');
+    /* keep only well-formed verse ids, so a corrupt entry cannot poison the
+       favourites list or render a broken card */
+    return Array.isArray(a) ? a.filter(x => typeof x === 'string' && /^\d{1,2}\.\d{1,2}$/.test(x)) : [];
+  }catch(e){ return []; }
+}
 FAV = favLoad(); FAVNOTE = favNoteLoad();
 function favSave(){ try{ localStorage.setItem('gitaFavs', JSON.stringify(FAV)); }catch(e){} }
 function toggleFav(id){
@@ -1057,8 +1090,29 @@ function scrollViewTop(){
   const sig = [state.view, state.section, state.chapter, state.theme].join('|');
   if(sig === LAST_VIEW_SIG) return;
   LAST_VIEW_SIG = sig;
+  announceView();
   if(state.keepScroll) return;
   try{ window.scrollTo({top:0, behavior:'auto'}); }catch(e){ window.scrollTo(0,0); }
+}
+/* Speak the new view to screen readers. This app never navigates, so the only
+   signal a non-sighted reader gets is this live region — the same signature
+   scrollViewTop already dedupes on, so it fires exactly once per real change
+   and stays silent when a re-render lands on the same place. */
+function announceView(){
+  const el = document.getElementById('srStatus');
+  if(!el) return;
+  let msg = '';
+  try{
+    const ch = (state.chapter != null && DATA[state.chapter]) ? DATA[state.chapter] : null;
+    if(state.view === 'welcome')        msg = L('welcome_title');
+    else if(state.view === 'search')    msg = L('search_results');
+    else if(state.view === 'favorites') msg = L('favorites');
+    else if(state.view === 'verses' && ch && state.theme != null)
+      msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.themes[state.theme].titles)}`;
+    else if(ch) msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`;
+    else if(state.section) msg = L('sections_title');
+  }catch(e){}
+  if(msg) el.textContent = msg;
 }
 /* Search and Favorites are "detours" off the browsing hierarchy. Rather than a
    breadcrumb trail, they show a single back button naming the page the reader came
@@ -1144,7 +1198,9 @@ function showWelcome(){
   view.innerHTML = `
     <div class="welcome fade-in">
       <div class="w-om">ॐ</div>
-      <h1 class="view-title">${esc(L('welcome_title'))}</h1>
+      <!-- h2, not h1: #appTitle in the banner is this document's single h1.
+           .view-title carries all the styling, so this is semantics only. -->
+      <h2 class="view-title">${esc(L('welcome_title'))}</h2>
       <p class="view-sub">${esc(L('welcome_sub'))}</p>
       ${(()=>{ const sv = state.shared; const dv = sv || dayVerse(); const c = DATA[dv.ci], v = verseAt(dv);
         const part = sutraAt(c.themes[dv.ti], dv.si).part;
@@ -1202,7 +1258,6 @@ function wayCrumbs(items){
 function wayName(k){ /* the trail carries the Sanskrit niṣṭhā name, as the
   landing cards do — "कर्मनिष्ठा · The Way of Karma" — so the map is always
   rooted in the tradition, in every language */ return L('sec_'+['','karma','bhakti','jnana'][k]); }
-function chLabel(ci){ return `${L('chapter')} ${numL(DATA[ci].num)} · ${T(DATA[ci].names)}`; }
 /* The chapter's three views live in one quiet "View mode" chooser under the
    breadcrumb (owner, 2026-08-28) — a book folio control, not a strip of pills.
    Mula is the default because that is what a chapter *is*; the rest are views. */
@@ -1398,10 +1453,15 @@ function shareUrl(){
      tag carries it), so shares from ANY copy land on the public verse. */
   const og = document.querySelector('meta[property="og:url"]');
   const root = (og ? og.content : 'https://chapain.github.io/Bhagavad-Gita/').replace(/\/$/, '');
-  /* Owner 2026-08-31: shares point at the verse's OWN page (v/N.N/) so the
-     WhatsApp/Facebook preview shows the verse, not the app logo. The page
-     bounces humans into the app's invitation landing. */
-  return root + '/v/' + sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s.n + '/';
+  /* Owner 2026-09-01: shares point at the verse's anchor on its CHAPTER page
+     (/chapter/N/#vN.NN). The 700 one-per-verse v/ pages are gone — GitHub's
+     web uploader caps at 100 files, so republishing them was seven manual
+     drags every time. The chapter page already carries the full verse in all
+     four scripts and is already indexed; its inline script opens the folded
+     <details> and highlights the verse, so the link still lands on the verse.
+     Trade-off: the link PREVIEW is the chapter's, not the verse's. */
+  const n = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s.n;
+  return root + '/chapter/' + n.split('.')[0] + '/#v' + n;
 }
 function openSharePanel(){
   $('#spLink').textContent = shareUrl();
