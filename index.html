@@ -1113,10 +1113,11 @@ function setLang(l){ state.lang = l; try{ document.documentElement.lang = l; }ca
      half-answered question's options were built from the old strings.
      Progress is already saved. */
   else if(state.view === 'learn'){ lrRelang(state.chapter); }
-  /* Play holds its question in the drill queue, built from the old language's
-     strings. Return to its menu — the scope and mode are remembered, so it is
-     one tap back into the game. */
-  else if(state.view === 'play'){ showPlay(); }
+  /* Play rebuilds the question it is showing, in the new language, rather than
+     quitting the game: PL.q holds the verse and the option order, and only the
+     prompt, the note and the numerals were language-bound. If no question is
+     open, fall back to the menu. */
+  else if(state.view === 'play'){ if(PL.q && PL.mode) plNext(PL.q); else showPlay(); }
   else {
     const ch = state.chapter, th = state.theme;
     if(ch == null){ if(state.section) showChapters(state.section); else showSections(); }
@@ -1927,7 +1928,7 @@ function lrFreeTap(i){
    heart is the path with gating and progress; Play is the shuffle you drop
    into. If Play started tracking progress the two would blur (owner 2026-09-01).
    Everything here reuses lrRun/lrPaint/lrPick/lrChip. */
-var PL = {scope:'all', ch:0, mode:0, run:0};
+var PL = {scope:'all', ch:0, mode:0, run:0, q:null};
 
 function showPlay(){
   rememberOrigin();
@@ -1977,14 +1978,21 @@ function plPool(){
 const plFull = v => v.d;
 
 function plStart(mode){
-  PL.mode = mode; PL.run = 0;
+  PL.mode = mode; PL.run = 0; PL.q = null;
   plNext();
 }
 /* One question at a time, drawn fresh — an endless game, not a finite queue. */
-function plNext(){
+function plNext(keep){
   const pool = plPool();
   if(pool.length < 4){ showPlay(); return; }
-  const s = pool[Math.floor(Math.random()*pool.length)];
+  /* `keep` rebuilds the question that is already on screen — used when the
+     reader switches language mid-game. Only the ASK, the NOTE and the numerals
+     are language-bound; the verses and pādas are Devanagari either way, so the
+     question is fully derivable from the verse id plus the option order we
+     stored. Quitting to the menu for a language change was needless
+     (owner 2026-09-02). */
+  const s = keep ? (pool.find(v=>v.n === keep.n) || pool[Math.floor(Math.random()*pool.length)])
+                 : pool[Math.floor(Math.random()*pool.length)];
   let item;
 
   if(PL.mode === 1){
@@ -1993,10 +2001,14 @@ function plNext(){
        (3.35/18.47, 6.15/6.28, 9.34/18.65, 16.07/18.30), which would render two
        indistinguishable options with one marked wrong. */
     const mine = plFull(s);
-    const wrong = lrSample(pool.filter(o=>o.n!==s.n && plFull(o)!==mine), 3);
+    const ordered = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean)
+                         : null;
+    const four = (ordered && ordered.length===4) ? ordered
+               : lrShuffle([s].concat(lrSample(pool.filter(o=>o.n!==s.n && plFull(o)!==mine), 3)));
+    PL.q = {n:s.n, ord:four.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(fmt(L('play_q1'),{v:fmtNL(s.n)})),
-      opts: lrShuffle([s].concat(wrong)).map(o=>({label:plFull(o), deva:1, ok:o===s})),
+      opts: four.map(o=>({label:plFull(o), deva:1, ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`};
 
   }else if(PL.mode === 2){
@@ -2007,14 +2019,18 @@ function plNext(){
     const near = same.sort((a,b)=>
       Math.abs(parseInt(a.n.split('.')[1],10) - parseInt(s.n.split('.')[1],10)) -
       Math.abs(parseInt(b.n.split('.')[1],10) - parseInt(s.n.split('.')[1],10))).slice(0,6);
-    const wrong = lrSample(near.length >= 3 ? near : pool.filter(o=>o.n!==s.n), 3);
+    const ordered2 = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean) : null;
+    const four2 = (ordered2 && ordered2.length===4) ? ordered2
+                : lrShuffle([s].concat(lrSample(near.length >= 3 ? near : pool.filter(o=>o.n!==s.n), 3)));
+    PL.q = {n:s.n, ord:four2.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(L('play_q2')) + `<div class="lr-qsub dv" lang="sa">${s.d}</div>`,
-      opts: lrShuffle([s].concat(wrong)).map(o=>({label:fmtNL(o.n), ok:o===s})),
+      opts: four2.map(o=>({label:fmtNL(o.n), ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`};
 
   }else{
     const qq = (s.flow||[]).filter(f=>f.k==='p');
+    PL.q = {n:s.n, ord:[]};
     item = {kind:'order',
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(s.n)})),
       chips: qq.map((q,i)=>({id:i, label:q.d, deva:1})),
