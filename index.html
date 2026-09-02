@@ -196,6 +196,22 @@
   .card{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:16px 18px;
          box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer; transition:.18s; display:flex; flex-direction:column;}
   .card:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);}
+  /* ---- the house idiom (owner 2026-09-02: "every page must represent our
+     colours"). Until now every surface in the app was a --paper box with a grey
+     outline: the saffron and teal accents inside had nothing to belong to.
+     A 3px brand edge on the leading side of a card costs nothing, reads in both
+     themes, and ties a screen together without shouting over the scripture.
+     Saffron = something you act on. Teal = something already yours. */
+  .edge-s{ border-left:3px solid var(--saffron); }
+  .edge-t{ border-left:3px solid var(--teal); }
+  .card{ border-left:3px solid var(--saffron); }
+  .card:hover{ border-left-color:var(--saffron-dark); }
+  .theme{ border-left:3px solid var(--saffron); }
+  .theme:hover{ border-left-color:var(--saffron-dark); }
+  .res-card{ border-left:3px solid var(--teal-soft); }
+  .res-card:hover{ border-left-color:var(--teal); }
+  .mode-box{ border-left:3px solid var(--saffron); }
+  .welcome .w-day{ border-left:3px solid var(--saffron); }
   .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-dark); font-weight:700; font-size:.72rem;
                letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:999px; margin-bottom:8px;}
   .card .chip.locked{ background:var(--muted);}
@@ -220,27 +236,34 @@
   .mode-lbl{ font-size:.9rem; color:var(--ink-soft); font-weight:600; }
 
   /* ---------- Play ---------- */
-  .pl-scope{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin:4px 0 20px;}
+  /* The scope row is the same segmented-pill grammar as the chapter chooser:
+     soft pill = an option, gold pill = where you are (PROJECT.md, mode-box). */
+  .pl-scope{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0 22px;}
   .pl-scope .pl-lb{ font-family:system-ui,sans-serif; font-size:.74rem; letter-spacing:.14em;
                     text-transform:uppercase; color:var(--ink-soft);}
   .pl-scope .lr-ghost.on{ background:var(--saffron); border-color:var(--saffron);
                           color:var(--on-saffron);}
-  .pl-sel{ padding:8px 12px; border-radius:999px; border:1px solid var(--line);
-           background:var(--paper); color:var(--ink); font-family:inherit; font-size:.85rem;
-           max-width:100%;}
+  /* matches .tool-btn geometry so the select sits level with the pills */
+  .pl-sel{ padding:8px 16px; border-radius:999px; border:1px solid var(--line);
+           background:var(--paper); color:var(--teal); font-family:inherit;
+           font-weight:700; font-size:.85rem; max-width:100%; cursor:pointer;
+           transition:.15s;}
+  .pl-sel:hover{ border-color:var(--saffron);}
   .pl-modes{ display:grid; gap:11px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
   /* same shape as .card: --paper, 16px radius, 1px shadow, saffron on hover */
   .pl-mode{ display:flex; gap:13px; align-items:flex-start; text-align:left; padding:16px 18px;
             border-radius:16px; background:var(--paper); border:1px solid var(--line);
+            border-left:3px solid var(--saffron);
             box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer;
             font-family:inherit; transition:.18s;}
-  .pl-mode:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);
-                  transform:translateY(-2px);}
+  .pl-mode:hover{ border-color:var(--saffron); border-left-color:var(--saffron-dark);
+                  box-shadow:0 4px 14px rgba(var(--shadow),.10); transform:translateY(-2px);}
   .pl-mode .n{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
                background:var(--saffron-soft); color:var(--saffron-dark);
                font-family:system-ui,sans-serif; font-weight:700; font-size:.85rem;}
   .pl-mode .b{ flex:1; min-width:0;}
-  .pl-mode .b b{ display:block; font-size:1.02rem; color:var(--teal); margin-bottom:3px;}
+  .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--teal);
+                 margin-bottom:4px;}
   .pl-mode .b span{ display:block; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
   @media (max-width:640px){ .pl-modes{ grid-template-columns:1fr;} .pl-sel{ flex:1 0 100%;} }
 
@@ -271,8 +294,11 @@
   /* matches .card: --paper, 16px radius, the same 1px shadow */
   .lr-step{ display:flex; gap:14px; padding:16px 18px; border-radius:16px; margin-bottom:13px;
             background:var(--paper); border:1px solid var(--line);
+            border-left:3px solid var(--saffron);
             box-shadow:0 1px 2px rgba(var(--shadow),.05); transition:.18s;}
-  .lr-step.now{ border-color:var(--saffron);}
+  /* the step you are on wears the full saffron edge; a finished one turns teal */
+  .lr-step.now{ border-color:var(--saffron); border-left-color:var(--saffron-dark);}
+  .lr-step.done{ border-left-color:var(--teal);}
   .lr-step.locked{ opacity:.55;}
   .lr-badge{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
              background:var(--saffron-soft); color:var(--saffron-dark);
@@ -285,10 +311,11 @@
 
   .lr-grid{ display:grid; gap:8px; grid-template-columns:repeat(auto-fill,minmax(196px,1fr));}
   .lr-chip{ display:flex; align-items:center; gap:9px; text-align:left; padding:10px 12px;
-            border-radius:11px; background:var(--paper); border:1px solid var(--line);
+            border-radius:12px; background:var(--paper); border:1px solid var(--line);
+            border-left:3px solid var(--saffron);
             cursor:pointer; font-family:inherit; transition:.15s;}
   .lr-chip:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);}
-  .lr-chip.ok{ border-color:var(--teal); background:var(--teal-soft);}
+  .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
   .lr-chip .n{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center;
                background:var(--chip); font-size:.7rem; font-family:system-ui,sans-serif;
                color:var(--ink-soft);}
@@ -314,8 +341,9 @@
             color:var(--saffron-dark); margin:10px 0 12px;}
   .lr-quarters{ display:flex; flex-direction:column; gap:9px;}
   .lr-q{ border-radius:16px; background:var(--paper); border:1px solid var(--line);
+         border-left:3px solid var(--saffron);
          box-shadow:0 1px 2px rgba(var(--shadow),.05); overflow:hidden; transition:.18s;}
-  .lr-q.open{ border-color:var(--saffron);}
+  .lr-q.open{ border-color:var(--saffron); border-left-color:var(--saffron-dark);}
   .lr-qh{ display:flex; gap:12px; align-items:center; width:100%; text-align:left;
           padding:14px 16px; background:none; border:none; cursor:pointer; font-family:inherit;}
   .lr-qh .pip{ flex:0 0 25px; height:25px; border-radius:50%; display:grid; place-items:center;
@@ -330,7 +358,8 @@
   .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron);}
   .lr-words{ display:grid; gap:8px; padding:2px 16px 16px;
              grid-template-columns:repeat(auto-fill,minmax(148px,1fr));}
-  .lr-word{ padding:9px 11px; border-radius:10px; background:var(--paper); border:1px solid var(--line);}
+  .lr-word{ padding:9px 11px; border-radius:10px; background:var(--paper);
+            border:1px solid var(--line); border-left:2px solid var(--saffron);}
   .lr-word .d{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
                font-size:1rem; color:var(--saffron-dark);}
   .lr-word .i{ display:block; font-size:.71rem; font-style:italic; color:var(--ink-soft); margin:1px 0 3px;}
@@ -344,9 +373,19 @@
   .lr-hint{ flex:1; text-align:center; font-family:system-ui,sans-serif;
             font-size:.76rem; color:var(--ink-soft);}
 
-  .lr-qbox{ padding:16px 18px; border-radius:16px; background:var(--paper);
-            border:1px solid var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05);}
-  .lr-ask{ font-size:1.04rem; line-height:1.55; margin-bottom:15px;}
+  /* The question card sits on --cream so the --paper options READ as raised
+     cards on top of it. Both were --paper, so every boundary vanished and the
+     screen went flat white (owner 2026-09-01). */
+  .lr-qbox{ padding:18px; border-radius:16px; background:var(--cream);
+            border:1px solid var(--line); border-left:3px solid var(--teal);
+            box-shadow:0 1px 2px rgba(var(--shadow),.05);}
+  /* the question is the loudest thing on the screen, and saffron-soft under a
+     saffron rule marks it as the prompt rather than more prose */
+  .lr-ask{ font-size:1.06rem; line-height:1.6; margin:-2px -4px 16px; padding:12px 14px;
+           border-radius:12px; background:var(--saffron-soft);
+           border-left:3px solid var(--saffron); color:var(--ink);}
+  .pl-head{ margin:6px 0 14px !important; color:var(--saffron-dark) !important;
+            font-weight:700; letter-spacing:.1em; text-transform:uppercase;}
   .lr-qsub{ margin-top:10px; padding:12px 14px; border-radius:11px; background:var(--paper);
             border:1px solid var(--line); color:var(--ink-soft); font-size:.92rem; line-height:1.6;}
   .lr-qsub.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.1rem; color:var(--ink);}
@@ -364,25 +403,37 @@
   /* Options are whole ślokas now (66-134 characters), so they stack: the verse
      takes the full width and its number sits underneath, instead of the two
      competing for one line (owner 2026-09-01). */
+  /* --paper on --cream is only a 1.06:1 step, so the SHADOW does the lifting,
+     not the fill: without it the options dissolve into the question card. */
   .lr-opt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px;
            text-align:left; width:100%;
            padding:13px 15px; border-radius:12px; background:var(--paper);
-           border:1px solid var(--line); cursor:pointer; font-family:inherit; transition:.15s;}
+           border:1px solid var(--line); border-left:3px solid var(--saffron);
+           cursor:pointer; font-family:inherit;
+           box-shadow:0 1px 3px rgba(var(--shadow),.10); transition:.15s;}
   .lr-opt:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
   .lr-opt:disabled{ cursor:default;}
-  .lr-opt .ol{ width:100%; font-size:.96rem; line-height:1.5;}
+  .lr-opt .ol{ width:100%; font-size:.96rem; line-height:1.5; color:var(--ink);}
   .lr-opt .ol.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.04rem;
                   line-height:1.85;}
-  .lr-opt .os{ font-family:system-ui,sans-serif; font-size:.72rem; color:var(--ink-soft);}
-  .lr-opt.right{ border-color:var(--teal); background:var(--teal-soft);}
-  .lr-opt.wrong{ border-color:var(--saffron-dark); opacity:.8;}
+  /* the verse number under an option is a NUMBER — saffron, like every other
+     verse number in the app */
+  .lr-opt .os{ font-family:system-ui,sans-serif; font-size:.74rem; font-weight:700;
+               color:var(--saffron-dark);}
+  /* the verdict must be unmistakable at a glance, not a 1px border change */
+  .lr-opt.right{ border-color:var(--teal); border-left-color:var(--teal);
+                 border-width:2px; background:var(--teal-soft);
+                 box-shadow:0 2px 10px rgba(var(--shadow),.14);}
+  .lr-opt.wrong{ border-color:var(--danger); border-left-color:var(--danger);
+                 border-width:2px; opacity:.75; box-shadow:none;}
 
   .lr-chips{ display:flex; flex-wrap:wrap; gap:8px;}
   .lr-chip2{ padding:11px 15px; border-radius:12px; background:var(--paper);
-             border:1px solid var(--line); cursor:pointer; font-family:inherit;
+             border:1px solid var(--line); border-left:3px solid var(--saffron);
+             cursor:pointer; font-family:inherit;
              font-size:.87rem; text-align:left; max-width:100%; transition:.15s;}
   .lr-chip2:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
-  .lr-chip2.used{ opacity:.3; cursor:default;}
+  .lr-chip2.used{ opacity:.3; cursor:default; border-left-color:var(--teal);}
   /* Quarter chips carry Devanagari and need the Sanskrit face at a readable
      size — the Latin default renders the conjuncts too small to compare. */
   .lr-chip2.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem;
@@ -390,8 +441,9 @@
   .lr-chip2.shake{ animation:lrshk .34s; border-color:var(--saffron-dark);}
   @keyframes lrshk{ 0%,100%{transform:none} 22%{transform:translateX(-6px)} 66%{transform:translateX(6px)} }
   .lr-slots{ display:flex; flex-direction:column; gap:6px; margin-bottom:13px;}
-  .lr-slot{ padding:10px 13px; border-radius:11px; background:var(--teal-soft);
-            border:1px solid var(--teal); font-size:.87rem;}
+  .lr-slot{ padding:10px 13px; border-radius:12px; background:var(--teal-soft);
+            border:1px solid var(--teal); border-left:3px solid var(--teal);
+            font-size:.87rem;}
   .lr-slot.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.02rem;}
 
   .lr-fb{ margin-top:14px;}
@@ -400,7 +452,9 @@
   .lr-fb .nt{ margin:10px 0 13px; padding:12px 14px; border-radius:11px; background:var(--paper);
               border:1px solid var(--line); color:var(--ink-soft); font-size:.88rem; line-height:1.6;}
 
-  .lr-finis{ text-align:center; padding:40px 18px;}
+  /* the seal screen earns a teal wash — this is the one moment of arrival */
+  .lr-finis{ text-align:center; padding:40px 18px; border-radius:18px;
+             background:var(--teal-soft); border:1px solid var(--teal);}
   .lr-seal{ width:58px; height:58px; margin:0 auto 16px; border-radius:50%; display:grid;
             place-items:center; background:var(--teal-soft); color:var(--teal); font-size:1.6rem;}
   .lr-finis h2{ margin:0 0 8px; font-size:1.35rem; color:var(--teal);}
@@ -729,7 +783,13 @@
   /* iOS zooms any input whose font-size is < 16px on focus */
   .toolbar input[type=search]{ font-size:16px; }
   .modal, .wrap{ -webkit-overflow-scrolling:touch; }
-  /* Hover lifts are a mouse idiom — on touch they stick after a tap */
+  /* Hover lifts are a mouse idiom — on touch they STICK after a tap, so the
+     last thing you touched keeps looking selected. Every hover in the app must
+     be cancelled here and answered with an :active state instead, or a phone
+     shows a phantom selection (owner 2026-09-01).
+     This block covered only the original components; the learn path and Play
+     were added later and were never listed, which is exactly why their chips
+     and cards stayed lit after a tap. */
   @media (hover:none){
     .card:hover, .mini:hover, .res-card:hover, .mini-crumb .bc-btn:hover, .welcome .w-day:hover{ transform:none; box-shadow:0 6px 18px rgba(var(--shadow),.08); }
     .card:active, .mini:active, .res-card:active, .welcome .w-day:active{ transform:scale(.985); border-color:var(--saffron); }
@@ -737,6 +797,27 @@
     .pada-box:hover{ background:var(--paper); border-color:var(--line); }
     .pada-box:active{ background:var(--saffron-soft); border-color:var(--saffron); }
     .m-verse .spk-line:hover{ background:none; }
+
+    /* ---- learn path + Play: cancel every hover, answer with :active ---- */
+    .lr-cta:hover{ background:var(--saffron); border-color:var(--saffron); }
+    .lr-cta:active{ background:var(--saffron-dark); border-color:var(--saffron-dark); }
+    .lr-ghost:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-ghost:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-chip:hover{ border-color:var(--line); box-shadow:none; transform:none; }
+    .lr-chip:active{ border-color:var(--saffron); }
+    .lr-chip.ok:hover{ border-color:var(--teal); }
+    .lr-opt:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-opt:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-chip2:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-chip2:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-q:hover{ border-color:var(--line); }
+    .lr-qh:hover{ background:none; }
+    .pl-mode:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); transform:none; }
+    .pl-mode:active{ border-color:var(--saffron); transform:scale(.985); }
+    .pl-sel:hover{ border-color:var(--line); }
+    .pl-sel:active{ border-color:var(--saffron); }
+    /* a selected scope must still read as selected — it is state, not hover */
+    .pl-scope .lr-ghost.on:hover{ background:var(--saffron); border-color:var(--saffron); }
   }
 
   @media (max-width:760px){
@@ -1941,10 +2022,17 @@ function lrRun(ci, items, label, done, back){
 function lrPaint(){
   if(LQi >= LQ.length) return LQdone();
   const it = LQ[LQi]; LQpick = [];
+  /* A one-item queue (Play) has no progress to show: the bar would sit at 0%
+     forever and the counter would read "1 / 1". Show the run's streak instead,
+     which is the only number that means anything in an endless game
+     (owner 2026-09-01). */
+  const single = LQ.length === 1 && LQback;
   const pct = Math.round(LQi/LQ.length*100);
-  const head = `<div class="lr-prog"><i style="width:${pct}%"></i></div>
-    <div class="lr-progl">${esc(LQlab)} · ${numL(LQi+1)} / ${numL(LQ.length)}${
-      LQmiss?' · '+esc(fmt(L('learn_revisit'),{n:numL(LQmiss)})):''}</div>`;
+  const head = single
+    ? `<div class="lr-progl pl-head">${esc(LQlab)}</div>`
+    : `<div class="lr-prog"><i style="width:${pct}%"></i></div>
+       <div class="lr-progl">${esc(LQlab)} · ${numL(LQi+1)} / ${numL(LQ.length)}${
+         LQmiss?' · '+esc(fmt(L('learn_revisit'),{n:numL(LQmiss)})):''}</div>`;
   const body = it.kind === 'pick'
     ? `<div class="lr-ask">${it.ask}</div>
        <div class="lr-opts">${it.opts.map((o,i)=>`
