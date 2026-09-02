@@ -199,19 +199,22 @@
   /* ---- the house idiom (owner 2026-09-02: "every page must represent our
      colours"). Until now every surface in the app was a --paper box with a grey
      outline: the saffron and teal accents inside had nothing to belong to.
-     A 3px brand edge on the leading side of a card costs nothing, reads in both
-     themes, and ties a screen together without shouting over the scripture.
+     A 2px brand hairline on the leading side of a card costs nothing, reads in
+     both themes, and ties a screen together without shouting over the
+     scripture. 2px, not 3: at 3 it reads as a highlighter stripe and the page
+     starts to look like a dashboard (owner 2026-09-02: "not gaudy, Apple
+     style"). The restraint is the point.
      Saffron = something you act on. Teal = something already yours. */
-  .edge-s{ border-left:3px solid var(--saffron); }
-  .edge-t{ border-left:3px solid var(--teal); }
-  .card{ border-left:3px solid var(--saffron); }
+  .edge-s{ border-left:2px solid var(--saffron); }
+  .edge-t{ border-left:2px solid var(--teal); }
+  .card{ border-left:2px solid var(--saffron); }
   .card:hover{ border-left-color:var(--saffron-dark); }
-  .theme{ border-left:3px solid var(--saffron); }
+  .theme{ border-left:2px solid var(--saffron); }
   .theme:hover{ border-left-color:var(--saffron-dark); }
-  .res-card{ border-left:3px solid var(--teal-soft); }
+  .res-card{ border-left:2px solid var(--teal-soft); }
   .res-card:hover{ border-left-color:var(--teal); }
-  .mode-box{ border-left:3px solid var(--saffron); }
-  .welcome .w-day{ border-left:3px solid var(--saffron); }
+  .mode-box{ border-left:2px solid var(--saffron); }
+  .welcome .w-day{ border-left:2px solid var(--saffron); }
   .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-dark); font-weight:700; font-size:.72rem;
                letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:999px; margin-bottom:8px;}
   .card .chip.locked{ background:var(--muted);}
@@ -253,7 +256,7 @@
   /* same shape as .card: --paper, 16px radius, 1px shadow, saffron on hover */
   .pl-mode{ display:flex; gap:13px; align-items:flex-start; text-align:left; padding:16px 18px;
             border-radius:16px; background:var(--paper); border:1px solid var(--line);
-            border-left:3px solid var(--saffron);
+            border-left:2px solid var(--saffron);
             box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer;
             font-family:inherit; transition:.18s;}
   .pl-mode:hover{ border-color:var(--saffron); border-left-color:var(--saffron-dark);
@@ -294,7 +297,7 @@
   /* matches .card: --paper, 16px radius, the same 1px shadow */
   .lr-step{ display:flex; gap:14px; padding:16px 18px; border-radius:16px; margin-bottom:13px;
             background:var(--paper); border:1px solid var(--line);
-            border-left:3px solid var(--saffron);
+            border-left:2px solid var(--saffron);
             box-shadow:0 1px 2px rgba(var(--shadow),.05); transition:.18s;}
   /* the step you are on wears the full saffron edge; a finished one turns teal */
   .lr-step.now{ border-color:var(--saffron); border-left-color:var(--saffron-dark);}
@@ -312,7 +315,7 @@
   .lr-grid{ display:grid; gap:8px; grid-template-columns:repeat(auto-fill,minmax(196px,1fr));}
   .lr-chip{ display:flex; align-items:center; gap:9px; text-align:left; padding:10px 12px;
             border-radius:12px; background:var(--paper); border:1px solid var(--line);
-            border-left:3px solid var(--saffron);
+            border-left:2px solid var(--saffron);
             cursor:pointer; font-family:inherit; transition:.15s;}
   .lr-chip:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);}
   .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
@@ -341,7 +344,7 @@
             color:var(--saffron-dark); margin:10px 0 12px;}
   .lr-quarters{ display:flex; flex-direction:column; gap:9px;}
   .lr-q{ border-radius:16px; background:var(--paper); border:1px solid var(--line);
-         border-left:3px solid var(--saffron);
+         border-left:2px solid var(--saffron);
          box-shadow:0 1px 2px rgba(var(--shadow),.05); overflow:hidden; transition:.18s;}
   .lr-q.open{ border-color:var(--saffron); border-left-color:var(--saffron-dark);}
   .lr-qh{ display:flex; gap:12px; align-items:center; width:100%; text-align:left;
@@ -377,13 +380,13 @@
      cards on top of it. Both were --paper, so every boundary vanished and the
      screen went flat white (owner 2026-09-01). */
   .lr-qbox{ padding:18px; border-radius:16px; background:var(--cream);
-            border:1px solid var(--line); border-left:3px solid var(--teal);
+            border:1px solid var(--line); border-left:2px solid var(--teal);
             box-shadow:0 1px 2px rgba(var(--shadow),.05);}
   /* the question is the loudest thing on the screen, and saffron-soft under a
      saffron rule marks it as the prompt rather than more prose */
   .lr-ask{ font-size:1.06rem; line-height:1.6; margin:-2px -4px 16px; padding:12px 14px;
            border-radius:12px; background:var(--saffron-soft);
-           border-left:3px solid var(--saffron); color:var(--ink);}
+           border-left:2px solid var(--saffron); color:var(--ink);}
   .pl-head{ margin:6px 0 14px !important; color:var(--saffron-dark) !important;
             font-weight:700; letter-spacing:.1em; text-transform:uppercase;}
   .lr-qsub{ margin-top:10px; padding:12px 14px; border-radius:11px; background:var(--paper);
@@ -408,7 +411,7 @@
   .lr-opt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px;
            text-align:left; width:100%;
            padding:13px 15px; border-radius:12px; background:var(--paper);
-           border:1px solid var(--line); border-left:3px solid var(--saffron);
+           border:1px solid var(--line); border-left:2px solid var(--saffron);
            cursor:pointer; font-family:inherit;
            box-shadow:0 1px 3px rgba(var(--shadow),.10); transition:.15s;}
   .lr-opt:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
@@ -429,7 +432,7 @@
 
   .lr-chips{ display:flex; flex-wrap:wrap; gap:8px;}
   .lr-chip2{ padding:11px 15px; border-radius:12px; background:var(--paper);
-             border:1px solid var(--line); border-left:3px solid var(--saffron);
+             border:1px solid var(--line); border-left:2px solid var(--saffron);
              cursor:pointer; font-family:inherit;
              font-size:.87rem; text-align:left; max-width:100%; transition:.15s;}
   .lr-chip2:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
@@ -442,7 +445,7 @@
   @keyframes lrshk{ 0%,100%{transform:none} 22%{transform:translateX(-6px)} 66%{transform:translateX(6px)} }
   .lr-slots{ display:flex; flex-direction:column; gap:6px; margin-bottom:13px;}
   .lr-slot{ padding:10px 13px; border-radius:12px; background:var(--teal-soft);
-            border:1px solid var(--teal); border-left:3px solid var(--teal);
+            border:1px solid var(--teal); border-left:2px solid var(--teal);
             font-size:.87rem;}
   .lr-slot.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.02rem;}
 
