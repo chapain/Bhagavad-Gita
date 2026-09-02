@@ -515,6 +515,10 @@
      number in the app is saffron. Weight 600 because at .78rem the colour
      alone is thin on white (--saffron-dark measures 3.28:1 there). */
   .th-flow h3 .rng{ color:var(--saffron-dark); font-weight:600; font-size:.78rem; margin-left:8px; white-space:nowrap; }
+  /* the same range beside a view title: it must not inherit the 1.7rem
+     heading size, or the number shouts louder than the theme's name */
+  .view-title .rng{ color:var(--saffron-dark); font-weight:600; font-size:.8rem;
+                    margin-left:10px; white-space:nowrap; vertical-align:.32em; }
   .th-flow .tdesc{ margin:0 0 6px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
   .vcards{ margin-top:12px; display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:12px; }
   /* display-only: same card body, but no pointer, no hover lift — an object
@@ -2441,6 +2445,12 @@ function showVerses(ci,ti){
     </div>`).join('');
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)} · ${L('opt_study_g')}`, `showThemes(${ci})`], [`${L('theme_sg')} ${numL(ti+1)} · ${T(t.titles)}`, null]])}
+    <!-- Owner 2026-09-02: this was the ONLY view in the app with no heading —
+         the theme's name appeared in the crumb trail and then nowhere on the
+         page itself, so the reader arrived at a description with no subject.
+         Same shape as the learn path's theme screen: title, then range, then
+         the description. -->
+    <div class="view-title fade-in">${esc(T(t.titles))}<span class="rng">${fmtRangeL(t.range)}</span></div>
     <div class="view-sub fade-in">${esc(T(t.descs))}</div>
     <div class="view-sub fade-in">${numL(vCount(t))} ${vCount(t)===1?L('verse'):L('verses')}. ${L('click_hint')}.</div>
     ${blocks}` + backFoot(`showThemes(${ci})`, L('back_themes'));
