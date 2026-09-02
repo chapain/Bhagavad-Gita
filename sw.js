@@ -2,7 +2,7 @@
    Strategy: cache-first for the shell (the app is one static file and never
    changes between deploys), with a network revalidation for navigations so a
    new deploy is picked up on the next visit. */
-const CACHE = 'gita-cf8998d88f1d';
+const CACHE = 'gita-40f1dcc7a415';
 /* chapter.css is precached even though the app itself never loads it: a reader
    who arrives on a /chapter/N/ landing page and later opens it offline would
    otherwise get an unstyled wall of text, while the manifest and README both
@@ -15,7 +15,7 @@ const CACHE = 'gita-cf8998d88f1d';
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 './icon-192.png', './icon-512.png', './icon-maskable-512.png',
                 './apple-touch-icon.png', './favicon.ico', './chapter.css',
-                './noto-deva-regular.woff2',
+                './noto-deva-regular.woff2', './noto-deva-bold.woff2',
                 './data/ch1.js', './data/ch2.js', './data/ch3.js', './data/ch4.js', './data/ch5.js', './data/ch6.js', './data/ch7.js', './data/ch8.js', './data/ch9.js', './data/ch10.js', './data/ch11.js', './data/ch12.js', './data/ch13.js', './data/ch14.js', './data/ch15.js', './data/ch16.js', './data/ch17.js', './data/ch18.js'];
 
 self.addEventListener('install', e => {
