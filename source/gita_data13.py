@@ -4,7 +4,7 @@ Aligned to the Śaṅkara-bhāṣya readings."""
 
 CH13_THEMES = [
     ("The Field and the Knower",
-     "Kṛṣṇa opens the teaching: the body is the field, the knower of the field is the Self — and the knowledge of both is true knowledge.",
+     "Kṛṣṇa opens the teaching: the body is the field; know Me as the knower of the field in all fields — and the knowledge of field and knower is true knowledge.",
      [("The Body Is the Field", "This body, O Kaunteya, is called the field; he who knows it, the sages call the knower of the field.", "13.01", "13.01"),
       ("Know Me as the Knower", "Know me as the knower of the field in all fields; the knowledge of field and knower is my true knowledge.", "13.02", "13.02")]),
     ("What the Field Is",
@@ -18,7 +18,7 @@ CH13_THEMES = [
     ("The Means of Knowledge",
      "Humility, non-violence, service to the teacher, purity, steadfastness, dispassion, absence of ego, and constant meditation — these are declared knowledge.",
      [("The Virtues", "Humility, modesty, non-violence, forbearance, uprightness, service to the teacher, purity, steadfastness, self-control,", "13.07", "13.08"),
-      ("Non-attachment and Evenness", "— non-attachment, non-clinging to son, wife and home, and constant even-mindedness toward whatever comes, welcome or unwelcome,", "13.09", "13.09"),
+      ("Non-attachment and Evenness", "— non-attachment, non-clinging to son, wife and home, and constant even-mindedness toward gain and loss,", "13.09", "13.09"),
       ("Devotion, Solitude, Self-Knowledge", "— unwavering devotion to me, a love of solitude, no taste for crowds, constant commitment to Self-knowledge and insight into the purpose of truth: all this is knowledge; the rest is ignorance.", "13.10", "13.11")]),
 
     ("The Knowable",

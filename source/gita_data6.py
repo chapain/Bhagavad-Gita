@@ -14,7 +14,7 @@ CH6_THEMES = [
      [("The Self Is the Friend and the Enemy of the Self", "Let a man lift himself by his own Self, and not degrade himself; the Self alone is the friend of the self, and the Self alone its enemy. For him who has conquered the self by the Self, the Self is a friend — but for the unconquered, it remains hostile like an enemy.", "6.05", "6.06"),
       ("The Self-Conquered Is at Peace", "The self-conquered and peaceful man is settled in the supreme Self, alike in cold and heat, pleasure and pain, honour and dishonour.", "6.07", "6.07"),
       ("A Clod, a Stone, and Gold Alike", "The yogi satisfied with knowledge and realization, unmoved, master of the senses, is said to be united — to whom a clod, a stone and gold are the same.", "6.08", "6.08"),
-      ("Equal to Friend and Foe", "He excels who is equal-minded toward well-wishers, friends, enemies, the indifferent, the hateful, kinsmen, the righteous and the sinful alike.", "6.09", "6.09")]),
+      ("Equal to Friend and Foe", "He excels who is equal-minded toward well-wishers, friends, enemies, the indifferent, the hateful, kinsmen and the righteous alike.", "6.09", "6.09")]),
     ("The Seat of Meditation",
      "The practical instructions: a solitary place, a firm seat neither too high nor too low, the body held erect and still.",
      [("Alone, in Solitude", "Let the yogi constantly discipline himself, remaining in solitude, alone, with mind and body controlled, free from desire and possessions.", "6.10", "6.10"),

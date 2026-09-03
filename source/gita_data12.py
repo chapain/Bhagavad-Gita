@@ -25,7 +25,7 @@ CH12_THEMES = [
     ("He Who Is Dear to Me",
      "The portrait of the devotee: hating no being, friendly and compassionate, undisturbed by the world and not disturbing it.",
      [("Hating No Being, Friendly and Compassionate", "He who hates no being, who is friendly and compassionate, free from possessiveness and egoism, the same in pleasure and pain, forgiving — ever content, steady in meditation, self-controlled, of firm conviction, with mind and intellect given to me: that devotee of mine is dear to me.", "12.13", "12.14"),
-      ("He by Whom the World Is Not Disturbed", "He by whom the world is not troubled and who is not troubled by the world, who is free from joy, envy, fear and anxiety — he is dear to me.", "12.15", "12.15"),
+      ("He by Whom the World Is Not Disturbed", "He by whom the world is not disturbed, and who is not disturbed by the world — freed from joy, anger, fear and anxiety — he is dear to me.", "12.15", "12.15"),
       ("Unattached, Pure, Capable, Untroubled", "He who is free from wants, pure, capable, unconcerned, untroubled, renouncing every undertaking — he who is thus devoted to me is dear to me.", "12.16", "12.16")]),
     ("Equal in All Things",
      "Neither rejoicing nor hating, equal to friend and foe, honour and dishonour — such a devotee is exceedingly dear to me.",
