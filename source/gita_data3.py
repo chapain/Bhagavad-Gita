@@ -14,14 +14,14 @@ CH3_THEMES = [
      'A twofold steadfastness was declared by me of old: jñāna-yoga for the Sāṅkhyas, karma-yoga for the yogis.',
      [
       ('Knowledge for some, action for others', 'A twofold steadfastness was declared by me of old: jñāna-yoga for the Sāṅkhyas, karma-yoga for the yogis.', '3.03', '3.03'),
-      ('Not by abstaining', 'No freedom comes from non-performance; no one stays actionless even for a moment, driven by the guṇas.', '3.04', '3.04'),
+      ('Not by abstaining', 'Not by non-performance of actions does one attain freedom from action, nor by mere renunciation alone does one reach perfection.', '3.04', '3.04'),
       ('No one can sit idle', 'Nobody can sit idle even for a second — the forces of nature drive all to act.', '3.05', '3.05'),
      ]),
     ('Act Unattached, Not Idle',
      'The hypocrite idles in body while the mind craves; the true yogi acts with the body, unattached, and excels.',
      [
       ('Still in body, craving in mind', 'He who restrains the organs of action but sits recollecting sense-objects is called a hypocrite.', '3.06', '3.06'),
-      ('He who acts unattached excels', 'He who controls the senses by the mind and acts unattached excels; act, for action is better than inaction.', '3.07', '3.07'),
+      ('He who acts unattached excels', 'He who controls the senses by the mind and undertakes karma-yoga with the organs of action, unattached — he excels.', '3.07', '3.07'),
       ('Do the allotted duty', 'Discipline the senses with the mind and act with the body; do the duty allotted to you, for action beats inaction.', '3.08', '3.08'),
       ('Act for sacrifice alone', 'The world is bound by action except when done as sacrifice; act free from attachment.', '3.09', '3.09'),
      ]),
@@ -30,13 +30,13 @@ CH3_THEMES = [
      [
       ("Prajāpati made beings with sacrifice", 'Created with sacrifice, beings were told: by this shall you prosper; nourish the gods and they will nourish you.', '3.10', '3.10'),
       ('Serve and be sustained', 'Serve the higher powers through sacrifice and they will sustain you; giving and receiving, you gain the good.', '3.11', '3.11'),
-      ('He who enjoys without giving is a thief', "The gods give what you desire; he who enjoys their gift without offering back is a thief. The good eat sacrifice's remnant; the wicked cook for themselves and eat sin.", '3.12', '3.12'),
+      ('He who enjoys without giving is a thief', "Nourished by sacrifice, the gods will give the joys you desire; he who enjoys what they have given without offering back is a thief.", '3.12', '3.12'),
       ('The leftovers cleanse', 'Those who share the leftovers of the offering are cleansed of sin; those who cook only for themselves eat sin.', '3.13', '3.13'),
      ]),
     ('Who Does Not Turn the Wheel Lives in Vain',
      'He who does not follow the wheel thus set in motion, delighting in the senses, lives in vain.',
      [
-      ('From food, from rain, from sacrifice', 'Beings from food, food from rain, rain from sacrifice, sacrifice from action; action from Brahman, Brahman from the Imperishable.', '3.14', '3.14'),
+      ('From food, from rain, from sacrifice', 'Beings arise from food; food from rain; rain from sacrifice; sacrifice from action.', '3.14', '3.14'),
       ('The wheel springs from Brahman', 'Life from food, food from rain, rain from sacrifice, sacrifice from action; action springs from the eternal Brahman.', '3.15', '3.15'),
       ('Who does not turn the wheel lives in vain', 'He who does not follow the wheel thus set in motion, delighting in the senses, lives in vain.', '3.16', '3.16'),
      ]),
@@ -61,7 +61,7 @@ CH3_THEMES = [
      [
       ('Act as the unwise act — But unattached', 'As the unwise act with attachment, so let the wise act unattached, desiring the welfare of the world.', '3.25', '3.25'),
       ('Do not unsettle the ignorant', 'Let him not disturb the minds of the ignorant attached to action; acting with devotion, let him engage them in all actions.', '3.26', '3.26'),
-      ('The Guṇas are the doers', "All actions are performed by the guṇas; deluded by ego one thinks 'I am the doer'. The knower of truth, seeing the guṇas move among the guṇas, is unattached.", '3.27', '3.27'),
+      ('The Guṇas are the doers', "All actions are performed by the guṇas of prakṛti; the one deluded by egoism thinks, 'I am the doer.'", '3.27', '3.27'),
       ('Qualities act on qualities', 'The wise understand that qualities interact with qualities; they never idle, nor unsettle the unwise.', '3.28', '3.28'),
       ('Let the knower not disturb them', 'Those deluded by the guṇas cling to their actions; let the man of complete knowledge not unsettle the partial knowers.', '3.29', '3.29'),
      ]),
@@ -84,13 +84,13 @@ CH3_THEMES = [
      [
       ("Arjuna asks what drives a man to sin", 'Then impelled by what does a man commit evil, even against his will, as if driven by force?', '3.36', '3.36'),
       ('Desire and anger, the all-devourer', 'It is desire, it is anger, born of rajo-guṇa — all-devouring, greatly sinful; know this as the enemy here.', '3.37', '3.37'),
-      ('Smoke, dust, and the womb', 'As fire is veiled by smoke, a mirror by dust, an embryo by the womb, so is knowledge covered by desire — the insatiable enemy of the wise, like fire.', '3.38', '3.38'),
+      ('Smoke, dust, and the womb', 'As fire is enveloped by smoke, a mirror by dust, an embryo by its membrane, so is this (knowledge) covered by desire.', '3.38', '3.38'),
       ('Smoke on fire, dust on a mirror', "This insatiable desire, the constant enemy of the wise, covers wisdom as fire is veiled by smoke.", '3.39', '3.39'),
      ]),
     ('Slay desire, the enemy within',
      'Knowing Him beyond the intellect, steadying the self by the Self, slay this enemy in the form of desire, so hard to conquer.',
      [
-      ('Its seat: Senses, mind, intellect', 'The senses, mind and intellect are its seat; veiling knowledge by these, it deludes the embodied. Therefore first control the senses and cast off this destroyer of knowledge.', '3.40', '3.40'),
+      ('Its seat: Senses, mind, intellect', 'The senses, mind and intellect are said to be its seat; covering wisdom by these, it deludes the embodied soul.', '3.40', '3.40'),
       ('Rein in the senses first', 'Desire lives in the senses, mind and intellect; so first rein in the senses and kill this destroyer of knowledge.', '3.41', '3.41'),
       ('Higher than the intellect is he', 'The senses are high; higher is the mind; higher than the mind, the intellect — but higher than the intellect is He.', '3.42', '3.42'),
       ('Slay the enemy', 'Knowing Him beyond the intellect, steadying the self by the Self, slay this enemy in the form of desire, so hard to conquer.', '3.43', '3.43'),

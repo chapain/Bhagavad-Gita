@@ -8,7 +8,7 @@ CH8_THEMES = [
      [("The eight questions", "What is that Brahman, what the Self, what action? What is declared the adhibhūta, and what the adhidaiva? Who is the adhiyajña here in this body, and how? And how at the time of departure are you to be known by the self-controlled?", "8.01", "8.01"),
       ("Who is the adhiyajña, and how known at death?", "And what is adhiyajña in this body — and how can those of steady mind know you at the hour of death?", "8.02", "8.02")]),
     ("Kṛṣṇa answers the eight questions",
-     "Brahman is the imperishable supreme; its own nature is called adhyātma; the creative force is action.",
+     "Brahman is the imperishable supreme; one's own nature is adhyātma; the creative force is action; the perishable is adhibhūta, the Puruṣa adhidaiva — and I myself am adhiyajña in the body.",
      [("Brahman, Adhyātma, Karma", "Brahman is the imperishable, the supreme; its essential nature is called adhyātma; the creative force that brings beings into existence is called action.", "8.03", "8.03"),
       ("Adhibhūta, adhidaiva, adhiyajña", "The perishable world is adhibhūta; the Puruṣa is adhidaiva; and I myself am adhiyajña in the body.", "8.04", "8.04")]),
     ("Remembering at the End",

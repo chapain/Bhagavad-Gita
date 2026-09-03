@@ -22,7 +22,7 @@ CH5_THEMES = [
       ("Action for self-purification", "With body, mind, intellect, or the senses alone, yogis act — abandoning attachment — for the purification of the self.", "5.11", "5.11"),
       ("Peace through giving up the fruit", "The steadfast, abandoning the fruit of action, attains lasting peace; the unsteady, attached to fruit through desire, is bound.", "5.12", "5.12")]),
     ("The City of Nine Gates",
-     "Renouncing all actions by the mind, the embodied one rests happily in the city of nine gates — neither acting nor causing action.",
+     "Renouncing all actions by the mind, the embodied one rests happily in the city of nine gates; the Lord creates neither agency nor fruit — nature operates; knowledge, veiled by ignorance, reveals the Supreme like the sun.",
      [("The city of nine gates", "Renouncing all actions by the mind, the embodied one rests happily in the city of nine gates — neither acting at all nor causing action.", "5.13", "5.13"),
       ("The Lord creates no doership", "The Lord creates neither agency nor actions for the world, nor the union of action with its fruit — it is nature that operates.", "5.14", "5.14"),
       ("Nor does he take on sin", "The all-pervading takes on neither the sin nor the merit of any; knowledge is veiled by ignorance, and by that beings are deluded.", "5.15", "5.15"),

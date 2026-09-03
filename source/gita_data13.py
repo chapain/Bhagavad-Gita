@@ -4,7 +4,7 @@ Aligned to the Śaṅkara-bhāṣya readings."""
 
 CH13_THEMES = [
     ("The body is the field, the Self its knower",
-     "Kṛṣṇa opens the teaching: the body is the field, the knower of the field is the Self — and the knowledge of both is true knowledge.",
+     "Kṛṣṇa opens the teaching: the body is the field, know Me as the knower of the field in all fields — and the knowledge of field and knower is true knowledge.",
      [("The body is the field", "This body, O Kaunteya, is called the field; he who knows it, the sages call the knower of the field.", "13.01", "13.01"),
       ("Know me as the knower", "Know me as the knower of the field in all fields; the knowledge of field and knower is my true knowledge.", "13.02", "13.02")]),
     ("Kṛṣṇa will describe the field",
@@ -19,7 +19,7 @@ CH13_THEMES = [
      "Humility, non-violence, service to the teacher, purity, steadfastness, dispassion, absence of ego, and constant meditation — these are declared knowledge.",
      [("Humility, non-violence, service to the teacher", "Humility, modesty, non-violence, forbearance, uprightness, service to the teacher, purity, steadfastness, self-control,", "13.07", "13.07"),
       ("Seeing the misery of birth", "— disinterest in sense-pleasures, no ego, and the clear seeing of the misery of birth, death, age, and disease.", "13.08", "13.08"),
-      ("Non-attachment and evenness", "— non-attachment, non-clinging to son, wife and home, and constant even-mindedness toward whatever comes, welcome or unwelcome,", "13.09", "13.09"),
+      ("Non-attachment and evenness", "— non-attachment, non-clinging to son, wife and home, and constant even-mindedness toward gain and loss,", "13.09", "13.09"),
       ("Devotion, solitude, self-knowledge", "— unwavering devotion to me, delight in solitude and distaste for crowds.", "13.10", "13.10"),
       ("The aim of truth-knowledge", "— constant pursuit of knowledge of the Self, and seeing the aim of truth-knowledge: this is called knowledge; all else is ignorance.", "13.11", "13.11")]),
     ("The knowable is beginningless Brahman",

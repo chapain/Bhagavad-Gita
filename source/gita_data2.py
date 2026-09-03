@@ -21,7 +21,7 @@ CH2_THEMES = [
      'My nature is overcome, my mind confused about duty — I take refuge in you: teach me.',
      [
       ('Teach me, I am your disciple', 'My nature is overcome, my mind confused about duty — I take refuge in you: teach me.', '2.07', '2.07'),
-      ('I will not fight', 'No kingdom on earth or lordship over the gods could drive away this grief; Arjuna falls silent.', '2.08', '2.08'),
+      ('This grief no kingdom could drive away', 'I do not see what could drive away this grief that dries up my senses — not even an unrivaled kingdom or lordship over the gods.', '2.08', '2.08'),
       ('I will not fight, he said', "Declaring 'I will not fight,' Arjuna fell silent before Kṛṣṇa.", '2.09', '2.09'),
      ]),
     ('Kṛṣṇa smiles and begins to teach',
@@ -114,12 +114,12 @@ CH2_THEMES = [
     ('Rise above the three guṇas, Arjuna',
      'The command turned back on Arjuna: the Vedas treat of the three guṇas — go beyond them, free of the pairs of opposites, self-possessed.',
      [
-      ('Rise above the three Guṇas', 'Be free from the pairs of opposites, ever in sattva; the Vedas serve the knower as a well serves a flooded land.', '2.45', '2.45'),
+      ('Rise above the three Guṇas', 'The Vedas deal with the three guṇas; rise above them — free from the pairs of opposites, ever in sattva, self-possessed.', '2.45', '2.45'),
      ]),
     ('A well is little use in a flood',
      'The image that closes the argument: to the brāhmaṇa who knows, all the Vedas are worth as much as a well when water stands everywhere.',
      [
-      ('The well and the flood', 'As a well in a flood is of use everywhere, so are all the Vedas to the brāhmaṇa who knows.', '2.46', '2.46'),
+      ('The well and the flood', 'As much use as a well is when water floods everywhere — so much is all the Veda for a brāhmaṇa of understanding.', '2.46', '2.46'),
      ]),
     ('Your right is to action, never to its fruits',
      'The heart of karma-yoga: act because it is right, not for what it yields; and act established in evenness, the same in success and failure.',
@@ -130,10 +130,10 @@ CH2_THEMES = [
     ('Take refuge in the intellect',
      'The turn from action to discernment: mere action is far inferior to buddhi-yoga. Take refuge in the intellect — and once it stands unmoved in samādhi, you have attained yoga.',
      [
-      ('Yoga is skill in action', 'Action is far inferior to the yoga of discernment; take refuge in the intellect — yoga is skill in action.', '2.49', '2.49'),
-      ('Skill in action, evenness of mind', 'Action with desire for fruit is far inferior; take refuge in evenness; the skillful abandon both good and bad fruit.', '2.50', '2.50'),
+      ('Yoga is skill in action', 'Action is far inferior to the yoga of discernment; take refuge in the intellect — pitiful are those who act for results.', '2.49', '2.49'),
+      ('Skill in action, evenness of mind', 'Joined to the intellect, one leaves behind both good deeds and bad; therefore devote yourself to yoga — yoga is skill in action.', '2.50', '2.50'),
       ('Freed from the bonds of birth', 'The wise, renouncing the fruit of action, are released from birth and reach the place beyond all ill.', '2.51', '2.51'),
-      ('Beyond the mire of delusion', 'When your intellect crosses the thicket of delusion and stands unmoved in samādhi, you will attain yoga.', '2.52', '2.52'),
+      ('Beyond the mire of delusion', 'When your intellect crosses beyond the mire of delusion, you will grow indifferent to what has been heard and what is yet to be heard.', '2.52', '2.52'),
       ('The mind stands fixed', "When the intellect, bewildered by the Vedas' words, stands fixed in samādhi — then you attain yoga.", '2.53', '2.53'),
      ]),
     ('What marks the man of steady wisdom?',

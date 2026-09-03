@@ -15,7 +15,7 @@ CH16_THEMES = [
      "The divine endowment leads to liberation, the demoniac to bondage; Kṛṣṇa reassures Arjuna that he is born to the divine.",
      [("Liberation and bondage", "The divine endowment leads to liberation, the demoniac to bondage — grieve not, O Pāṇḍava, you are born to the divine destiny.", "16.05", "16.05")]),
     ("The demoniac deny God and truth",
-     "Two creations exist in this world. The demoniac know neither right action nor renunciation, and hold the world to be without truth, without order, without a Lord.",
+     "Two creations exist in this world. The demoniac know neither right action nor renunciation, and hold the world to be without truth, without foundation, without a Lord.",
      [("The two creations", "There are two creations of beings in this world — the divine and the demoniac; the divine has been described at length — now hear of the demoniac, O Pārtha.", "16.06", "16.06"),
       ("Without truth or purity", "The demoniac do not know right action or renunciation; there is no purity, no conduct, no truth in them.", "16.07", "16.07"),
       ("The godless world-view", "They say the world is unreal, without foundation, without a Lord — produced by mutual union, born of lust.", "16.08", "16.08")]),

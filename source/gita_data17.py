@@ -29,7 +29,7 @@ CH17_THEMES = [
       ("The Rājasic sacrifice", "But the sacrifice offered seeking fruit and for the sake of display, O best of the Bhāratas — know that as rājasic.", "17.12", "17.12"),
       ("The Tāmasic sacrifice", "The sacrifice without rule, without food-gifts, without mantra, without fees, devoid of faith — is declared tāmasic.", "17.13", "17.13")]),
     ("Austerity of body, speech and mind",
-     "Austerity is threefold: of body, speech and mind — each sāttvic, rājasic or tāmasic.",
+     "Austerity is threefold: of the body, of speech, and of the mind.",
      [("The austerity of body", "Worship of gods, the twice-born, teachers and the wise; purity, uprightness, chastity and non-violence — this is the austerity of the body.", "17.14", "17.14"),
       ("The austerity of speech", "Speech that causes no distress, that is truthful, pleasant and beneficial, and the regular study of scripture — this is the austerity of speech.", "17.15", "17.15"),
       ("The austerity of mind", "Serenity of mind, gentleness, silence, self-control, and purity of heart — this is called the austerity of the mind.", "17.16", "17.16")]),

@@ -19,7 +19,7 @@ CH11_THEMES = [
      "The narrator's voice: if a thousand suns should rise together, that might resemble the splendour of that great Self.",
      [("The great Lord of Yoga showed his form", "Having spoken thus, the great Lord of yoga, Hari, showed to Arjuna his supreme sovereign form — with many mouths and eyes, many wondrous sights, many divine ornaments and uplifted divine weapons.", "11.09", "11.09"),
       ("Marvels beyond count", "— with innumerable faces and eyes, marvels beyond count, celestial ornaments, and weapons raised on every side.", "11.10", "11.10"),
-      ("If a thousand suns should rise", "Wearing divine garlands and robes, anointed with divine perfumes, all-wonderful, resplendent, boundless, facing every direction. If the light of a thousand suns were to blaze forth at once in the sky, that might resemble the splendour of that great Self.", "11.11", "11.11"),
+      ("If a thousand suns should rise", "Wearing divine garlands and robes, anointed with divine perfumes, full of all wonders — the infinite God, facing everywhere.", "11.11", "11.11"),
       ("Brighter than a thousand suns at once", "If a thousand suns blazed up together in the sky, it would not match the glory of that great being.", "11.12", "11.12"),
       ("The whole universe in one place", "There Arjuna beheld the whole universe, divided in many ways, standing as one in the body of the God of gods.", "11.13", "11.13"),
       ("Hair on end, bowing with folded hands", "Then Arjuna, filled with amazement, his hair standing on end, bowed his head to the God and spoke with folded hands.", "11.14", "11.14")]),

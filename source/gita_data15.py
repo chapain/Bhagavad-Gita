@@ -9,7 +9,7 @@ CH15_THEMES = [
       ("Its branches below", "Its branches spread below and above, nourished by the guṇas, with sense-objects as shoots; its roots bind one to action in the world of men.", "15.02", "15.02"),
       ("Cut this rooted tree with detachment", "Its true form is not seen thus, nor its end, beginning or support; cut this firmly-rooted aśvattha with the strong axe of detachment,", "15.03", "15.03")]),
     ("The Path to the Supreme Abode",
-     "Then seek the goal from which none return; freed from pride and delusion, having conquered the guṇas, the wise reach that imperishable abode.",
+     "Then seek the goal from which none return; freed from pride and delusion, attachment conquered, desires turned away, the undeluded reach that imperishable goal.",
      [("Seek the supreme goal", "Then seek that state from which, having gone, none returns — I take refuge in the primal Person from whom flows the ancient course.", "15.04", "15.04"),
       ("Free of pride and delusion, they reach it", "Free from pride and delusion, having conquered the fault of attachment, ever in the Self, desires turned away — freed from the pairs, they reach that imperishable goal.", "15.05", "15.05")]),
     ("The Abode of the Lord",
