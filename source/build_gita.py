@@ -1632,7 +1632,7 @@ function verseLoc(id){ return VERSES.find(v=>v.id===id); }
 function verseAt(loc){ const t = DATA[loc.ci].themes[loc.ti]; return sutraAt(t, loc.si).s; }
 function normTxt(s){ return String(s||'').toLowerCase().replace(/[\u0300-\u036f]/g,''); }
 function fmtN(n){ const m = String(n).split('.'); return m.length===2 ? (parseInt(m[0],10)+'.'+parseInt(m[1],10)) : String(n); }
-function fmtRange(r){ const parts = String(r).split('–').map(x=>x.trim()?fmtN(x):x); return (parts.length===2 && parts[0]===parts[1]) ? parts[0] : parts.join('–'); }
+function fmtRange(r){ const parts = String(r).split(/[–-]/).map(x=>x.trim()?fmtN(x):x); return (parts.length===2 && parts[0]===parts[1]) ? parts[0] : parts.join('–'); }
 function digitNorm(s){ return String(s).replace(/[०-९]/g, d => '0123456789'['०१२३४५६७८९'.indexOf(d)]); }
 function devaDigits(s){ return String(s).replace(/[0-9]/g, d => '०१२३४५६७८९'[d]); }
 function numL(n){ return (state.lang==='ne'||state.lang==='hi') ? devaDigits(n) : String(n); }
@@ -1951,7 +1951,12 @@ function backFoot(onclick, label){
 /* Theme ranges arrive padded (2.01-2.03); humans read 2.1-2.3 (PROJECT.md).
    The builder has _drange() for the static pages; the app needs it at runtime. */
 function _drangeJS(r){
-  return String(r||'').replace(/(\d+)\.0*(\d+)/g, function(m,a,b){ return a+'.'+parseInt(b,10); });
+  r = String(r||'');
+  r = r.replace(/(\d+)\.0*(\d+)\s*[–-]\s*(\d+)\.0*(\d+)/g, function(m,a,b,c,d){
+    const x = a+'.'+parseInt(b,10), y = c+'.'+parseInt(d,10);
+    return x===y ? x : x+'–'+y;
+  });
+  return r.replace(/(\d+)\.0*(\d+)/g, function(m,a,b){ return a+'.'+parseInt(b,10); });
 }
 
 /* ==================== Learn by heart ==================== */
@@ -3609,11 +3614,12 @@ for _ch in data:
         _c, _v = str(_x).split(".")
         return f"{_c}.{int(_v)}"
     def _drange(_r):
-        # "1.01–1.03" -> "1.1–1.3" (en dash preserved)
+        # "1.01–1.03" -> "1.1–1.3"; a single verse is "2.10" not "2.10–2.10"
         for _sep in ("–", "-"):
             if _sep in _r:
                 _a, _b = _r.split(_sep, 1)
-                return _dnum(_a.strip()) + _sep + _dnum(_b.strip())
+                _a, _b = _dnum(_a.strip()), _dnum(_b.strip())
+                return _a if _a == _b else _a + "–" + _b
         return _dnum(_r)
 
     _sections = []
