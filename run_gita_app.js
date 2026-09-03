@@ -5,7 +5,7 @@
  *
  * Parses bhagavad_gita.html, extracts the embedded DATA and UI objects, and
  * re-checks every integrity invariant: 18 chapters · 700 verses · 182 themes ·
- * 558 parts, trilingual coverage, word-by-word glosses, script purity,
+ * 585 parts, trilingual coverage, word-by-word glosses, script purity,
  * Latin-residue checks on Nepali/Hindi fields, and content regression locks
  * (incl. the ch.15 पथ/पथिक theme). Mirrors run_bs_app.js of the Brahma-Sūtras
  * project.
@@ -13,8 +13,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 524;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 106;   // browser_checks.py
+const TOTAL_ASSERTIONS = 553;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 141;   // browser_checks.py
 const path = require('path');
 
 const ROOT = __dirname;
@@ -98,7 +98,7 @@ group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
 for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`);
 const enKeys = Object.keys(UI.en);
-ok(enKeys.length === 91, `UI has 91 keys (got ${enKeys.length})`);
+ok(enKeys.length === 165, `UI has 165 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -107,6 +107,9 @@ const uiLatinBad = [];
 for (const l of ['ne', 'hi']) for (const [k, v] of Object.entries(UI[l]))
   if (LATIN.test(stripPlaceholders(v))) uiLatinBad.push(`${l}.${k}`);
 ok(uiLatinBad.length === 0, `UI ne/hi values free of Latin residue (${uiLatinBad.join(', ') || 'clean'})`);
+const CHOOSE_KEYS = ['choose_title','opt_full_d','opt_study_d','opt_go'];
+const copiedNeHi = CHOOSE_KEYS.filter(k => UI.ne[k] === UI.hi[k]);
+ok(copiedNeHi.length === 0, `hi choice strings are genuine Hindi, not copied from \u0928\u0947\u092a\u093e\u0932\u0940 (${copiedNeHi.join(', ') || 'clean'})`);
 
 // ---------- structure ----------
 group('structure');
@@ -123,9 +126,9 @@ ok(devaBad.length === 0, `chapter deva names pure Devanagari (${devaBad.join(','
 ok(nameBad.length === 0, `chapter names+subs ×3 languages (${nameBad.join(',') || 'clean'})`);
 
 const allThemes = DATA.flatMap(c => c.themes);
-ok(allThemes.length === 182, `182 themes (got ${allThemes.length})`);
+ok(allThemes.length === 222, `222 themes (got ${allThemes.length})`);
 const allParts = allThemes.flatMap(t => t.parts);
-ok(allParts.length === 558, `558 parts (got ${allParts.length})`);
+ok(allParts.length === 700, `700 parts (got ${allParts.length})`);
 const tfBad = [], pfBad = [];
 for (const t of allThemes) {
   for (const l of LANGS) if (!t.titles[l] || !t.titles[l].trim() || !t.descs[l] || !t.descs[l].trim())
@@ -233,15 +236,16 @@ ok(byRef['18.66'].d.startsWith('सर्वधर्मान्परित्
 ok(byRef['18.78'].d.startsWith('यत्र योगेश्वरः कृष्णो'), 'final verse 18.78 yatra yogeśvaraḥ kṛṣṇo');
 const ch15 = DATA[14].themes.find(t => t.range === '15.04–15.05');
 ok(!!ch15, 'ch.15 theme 15.04–15.05 exists');
-ok(ch15.titles.en === 'The Path to the Supreme Abode / the Traveler', 'ch.15 EN title: path/traveler lock');
-ok(ch15.titles.ne === 'परम-पदको पथ/पथिक', 'ch.15 NE title: परम-पदको पथ/पथिक lock');
-ok(ch15.titles.hi === 'परम-पद का मार्ग/पथिक', 'ch.15 HI title: परम-पद का मार्ग/पथिक lock');
+ok(ch15.titles.en === 'The Path to the Supreme Abode', 'ch.15 EN title: path to the abode lock');
+ok(ch15.titles.ne === 'परम-पदको पथ', 'ch.15 NE title: परम-पदको पथ lock');
+ok(ch15.titles.hi === 'परम-पद का मार्ग', 'ch.15 HI title: परम-पद का मार्ग lock');
 ok(!html.includes('The Path Beyond') && !html.includes('पार का मार्ग'), 'stale ch.15 titles fully replaced');
-// every drill-down level offers a visible way back out, in all three languages
-ok(/onclick="showChapters\(\$\{state\.section\|\|0\}\)">\$\{esc\(L\('back_chapters'\)\)\}/.test(html),
-   'themes view has a "back to chapters" button');
-ok(/class="back-top" onclick="showThemes\(\$\{ci\}\)">\$\{esc\(L\('back_themes'\)\)\}/.test(html),
-   'verses view has a "back to themes" button');
+// the pill strips and top back-buttons became one breadcrumb: the full trail,
+// ancestors as links, current page last — on every drill-down view
+ok(/function wayCrumbs\(/.test(html) && /wc-link/.test(html) && /wc-cur/.test(html),
+   'drill-down views navigate by breadcrumb (links + current)');
+ok((html.match(/wayCrumbs\(\[\[L\('sections_title'\)/g) || []).length >= 4,
+   'all four drill-down views root their breadcrumb at The Three Ways');
 for (const l of LANGS) ok('back_themes' in UI[l], `UI key 'back_themes' present in ${l}`);
 // Only 644/700 verses are 4×8 (anuṣṭubh); 51 are triṣṭubh (4×11) and 5 irregular.
 // No blanket "8 syllables each" claim may reappear in the UI copy or the footer.
@@ -317,7 +321,7 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
 // liability rather than a help, so the build checks the facts it states.
 {
   const pm = fs.readFileSync(path.join(__dirname, 'PROJECT.md'), 'utf8');
-  ok(/18 chapters · 182 themes · 558 parts · 700 verses/.test(pm),
+  ok(/18 chapters · 222 themes · 700 parts · 700 verses/.test(pm),
      'PROJECT.md states the current totals');
   ok(new RegExp(`${Object.keys(UI.en).length} UI strings`).test(pm),
      `PROJECT.md states the current UI key count (${Object.keys(UI.en).length})`);
@@ -549,7 +553,7 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
     const s = fs.readFileSync(f, 'utf8');
     if (new RegExp(`<link rel="canonical" href="https?://[^"]+/chapter/${n}/">`).test(s)) canonOK++;
     if (s.includes(`<title>Bhagavad Gita Chapter ${n} — `)) titleOK++;
-    if (s.includes(`href="../../index.html#chapter=${n}"`)) ctaOK++;
+    if (s.includes(`href="../../index.html#chapter=${n}&tab=study"`)) ctaOK++;
     if (fs.statSync(f).size < 400 * 1024) sizeOK++;
     let have = 0, total = 0;
     for (const t of ch.themes) for (const p of t.parts) for (const su of p.sutras) {
@@ -566,9 +570,43 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(fs.existsSync(path.join(ROOT, 'chapter.css')), 'chapter.css exists');
   const c2 = fs.readFileSync(path.join(ROOT, 'chapter', '2', 'index.html'), 'utf8');
   ok(c2.includes('id="v2.47"'), 'verses carry stable per-verse anchors');
+  ok(c2.includes('index.html#v=2.47'), 'chapter pages link each verse into the app');
+  /* The 700 per-verse v/ pages were retired 2026-09-01: GitHub's web uploader
+     refuses more than 100 files at a time, so republishing them meant seven
+     manual drag-and-drops. A shared verse now points at its anchor on the
+     chapter page, which already carries the full verse and is already indexed. */
+  ok(!fs.existsSync(path.join(__dirname, 'v')), 'the v/ share pages stay retired');
+  ok(/root \+ '\/chapter\/' \+ n\.split/.test(html),
+     'the share button builds /chapter/N/#vN.NN links');
+  ok(!html.includes("root + '/v/'"), 'the app builds no /v/ links any more');
+  ok(c2.includes('id="v2.47"'), 'the shared verse has an anchor on its chapter page');
+  ok(c2.includes('d.open = true') && c2.includes('id="det-'),
+     'a deep link opens the folded <details> so the verse is actually visible');
+  const nf = fs.readFileSync(path.join(__dirname, '404.html'), 'utf8');
+  ok(nf.includes("/chapter/' + m[1] + '/#v"),
+     'old /v/ links already sent are forwarded, not dropped');
   ok(c2.includes('karmaṇyevādhikāraste'), 'IAST transliteration is printed too');
-  ok(html.includes('/^#chapter=([1-9]|1[0-8])$/') && html.includes('showThemes(parseInt(m[1], 10) - 1)'),
-     'the app routes #chapter=N deep links');
+  ok(html.includes('/^#v=([1-9]'), 'the app restores #v=N.N deep links on load');
+  ok(html.includes('m-topic') && html.includes('mt-lab'),
+     'verse cards show the topic on its own labelled line under the number');
+  ok(/function openSharePanel\(/.test(html) && /function copyVerseLink\(/.test(html),
+     'the share button opens a copy-link panel (no native share, no crash path)');
+  ok(/const root = \(og \? og\.content/.test(html) && /meta\[property="og:url"\]/.test(html)
+     && html.includes("'/chapter/' +"),
+     'shares always derive from the live og:url, never a file:// path');
+  ok(html.includes('/^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study))?$/') && html.includes("tb === 'study'"),
+     'the app routes #chapter=N deep links, with an optional tab');
+  ok(html.includes('function modeSwitch(') && html.includes('opt_full') && html.includes('opt_study_s'),
+     'the chapter page offers the two ways as a segmented control (translation / study)');
+  ok(!html.includes("btn('mula'"), 'the retired mula pill is gone from the chooser');
+  ok(html.includes("btn('learn'") && html.includes('function showLearn('),
+     'the chooser offers Learn by heart as the third way');
+  ok(html.includes('function lrDrill(') && html.includes('function lrRun('),
+     'the learn path carries its drill engine');
+  ok(html.includes("LQ.push(it)"),
+     'a missed drill item is requeued, so recall is earned not skipped');
+  ok(html.includes("if(mode === 'mula') mode = 'full'"),
+     'a shared #tab=mula link still works — it lands on the translation view');
 }
 
 // ---------- summary ----------

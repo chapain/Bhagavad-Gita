@@ -12,8 +12,11 @@ It runs, in order:
     1. source/build_gita.py   regenerates index.html from source/
     2. source/check_padas.py  verifies every pāda reconstructs from its split words
     2b. source/check_paraphrase.py  every paraphrase differs enough from its literal
-    3. run_gita_app.js        524 assertions on the built document        (needs node)
-    4. browser_checks.py      106 live-browser checks                 (needs playwright)
+    2c. source/check_seo.py   sitemap + robots proof (local; add --live to fetch the site)
+    2d. source/check_site_health.py  chapter pages, CSS vars, og tags, SW, a11y
+    2e. source/audit_titles.py  every title/desc against its own verse
+    3. run_gita_app.js        553 assertions on the built document        (needs node)
+    4. browser_checks.py      141 live-browser checks                 (needs playwright)
 
 Steps 3 and 4 are skipped with a warning if node / playwright are missing — the
 build itself still completes.
@@ -78,6 +81,22 @@ def main():
     ok = True
     ok &= run([PY, "check_padas.py"], SRC, "pāda check", tail=1)
     ok &= run([PY, "check_paraphrase.py"], SRC, "paraphrase check", tail=5)
+
+    # Sitemap/robots proof. Local-only by default so a build never needs the
+    # network; run  SEO_LIVE=1 python3 build.py  to also fetch the published
+    # sitemap and diff it against the build (that is what catches the
+    # "Search Console says Couldn't fetch" class of problem).
+    seo = [PY, "check_seo.py"] + (["--live"] if os.environ.get("SEO_LIVE") else [])
+    ok &= run(seo, SRC, "sitemap / robots proof", tail=4)
+
+    # The generated CHAPTER pages, the CSS and the <head> block — the parts no
+    # other suite reads. Every assertion here is a fault that actually shipped.
+    ok &= run([PY, "check_site_health.py"], SRC, "site health", tail=6)
+
+    # Titles and descriptions read against the verses they represent. Blocks
+    # only on possessive inversion (the 1.10 class, zero false positives);
+    # everything else is advisory and printed for a human to read.
+    ok &= run([PY, "audit_titles.py"], SRC, "titles vs verses", tail=3)
 
     node = shutil.which("node")
     if node:

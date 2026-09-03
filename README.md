@@ -38,7 +38,7 @@ app and works with no internet connection.
 | | |
 |---|---|
 | Chapters · verses | 18 · 700 |
-| Themes · parts | 182 · 558 |
+| Themes · parts | 222 · 700 |
 | Word-instances glossed | 9,480 — each with English, Nepali **and** Hindi meanings |
 | Languages | English, नेपाली, हिन्दी (no English fallback anywhere) |
 
@@ -51,6 +51,14 @@ index.html              the built app — GENERATED, do not edit
 manifest.webmanifest    PWA manifest (Add to Home Screen)
 sw.js                   service worker (offline cache)
 icons + og-card.png     app icons and link-preview card
+404.html                not-found page; recovers #v= / #chapter= deep links
+chapter.css             shared stylesheet for the 18 chapter pages (4 KB)
+noto-deva-regular.woff2 Devanagari face for the chapter pages — a real file,
+                        fetched once and shared by all 18 (was inlined as
+                        base64, which made chapter.css 60 KB)
+chapter/N/              full-text landing page per chapter (crawler-facing)
+                        Verse links are /chapter/N/#vN.NN — the page opens
+                        the folded block and highlights that verse.
 
 source/                 ← edit here
   build_gita.py           the builder: writes index.html
@@ -70,10 +78,12 @@ source/                 ← edit here
   check_padas.py          verifies word splits against the pādas
   check_paraphrase.py     paraphrases must not echo their literals
   prove_data_only.py      proves the build renders data, never generates it
+  check_seo.py            sitemap/robots proof (`--live` also fetches the site)
+  check_site_health.py    chapter pages, CSS vars, og: tags, offline, a11y
 
 rebuild.sh              build + run both test suites
-run_gita_app.js         524 assertions on the built document
-browser_checks.py       106 live-browser checks (rendering, i18n, touch, offline)
+run_gita_app.js         553 assertions on the built document
+browser_checks.py       141 live-browser checks (rendering, i18n, touch, offline)
 ```
 
 `index.html` is a **split-site shell**: the app chrome, styles, embedded font and
@@ -117,7 +127,7 @@ It opens `http://127.0.0.1:8765` with every editable field laid out by chapter:
 | Translations | literal + paraphrase, in English, Nepali and Hindi |
 | Themes & parts | theme and part titles, descriptions and verse ranges, in all three languages |
 | Chapter names | Nepali and Hindi chapter names and blurbs |
-| Interface text | all 91 UI strings in three languages |
+| Interface text | all 165 UI strings in three languages |
 
 Press **Save** on any block and it writes the real file in `source/`, then rebuilds
 `index.html`. The **Run full build** button runs the complete suite when you want it.
@@ -317,6 +327,13 @@ substitutes for telling Google the site exists. One time, in a browser:
    upload the verification file to the repository root; no rebuild needed.)
 4. **Sitemaps** → submit `sitemap.xml` (the app + all 18 chapter pages).
 5. **URL inspection** on the site address → **Request indexing**.
+
+**If Search Console says "Couldn't fetch":** the status is usually stale, or
+the URL you typed is not the file. Run `python3 source/check_seo.py --live` —
+it prints the published status code and content-type, parses the XML, fetches
+every URL inside it, and tests the near-miss spellings. On this site the file
+is fine (200, `application/xml`) and `sitemap.xml/` with a trailing slash is a
+**404**, so submit exactly `sitemap.xml` — no slash, no query string.
 
 Then get the link seen: set the GitHub repo topics (`bhagavad-gita`, `hinduism`,
 `sanskrit`, `nepali`), and share it where readers are — r/Hinduism,

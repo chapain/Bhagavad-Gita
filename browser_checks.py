@@ -53,28 +53,46 @@ def run(pw, url, offline_capable=False):
     ok(pg.evaluate("VERSES.length") == 700, "700 verses indexed")
 
     group("verse of the day card")
-    # The number belongs inside the closing daṇḍas of the last line, as a
-    # printed edition sets it -- not on a line of its own. The speaker must not
-    # be the same colour as the verse, or it reads as part of the verse text.
+    # same anatomy as the theme cards: vnum line, topic line, Devanagari,
+    # paraphrase snippet — the VotD label being the only addition.
+    ok(pg.eval_on_selector(".w-day .m-topic", "e=>e.textContent.trim().length") > 0,
+       "verse-of-the-day card carries the verse topic line")
+    ok(pg.eval_on_selector(".w-day .vhint", "e=>e.textContent.trim().length") > 0,
+       "verse-of-the-day card carries the paraphrase, like the theme cards")
+    # The number is the vnum line, exactly as on the theme cards; the speaker
+    # must not be the same colour as the verse, or it reads as part of the verse.
     pg.evaluate("""() => {
       const flat = [];
-      DATA.forEach(c => c.themes.forEach(t => t.parts.forEach(
-        p => p.sutras.forEach(s => flat.push({ s, c })))));
+      DATA.forEach(c => c.themes.forEach((t, ti) => t.parts.forEach(
+        p => p.sutras.forEach(s => flat.push({ s, c, ti })))));
       const hit = flat.find(x => x.s.n === '2.11');   // has a speaker line
-      document.querySelector('.wd-verse').innerHTML = padaBlockDeva(hit.s, true);
-      document.querySelector('.wd-ref').textContent =
-        L('chapter') + ' ' + numL(hit.c.num) + ': ' + T(hit.c.names);
+      document.querySelector('.w-day .padas').innerHTML = padaBlockDeva(hit.s);
+      document.querySelector('.w-day .vnum').textContent =
+        L('verse') + ' ' + fmtNL(hit.s.n);
     }""")
-    last_line = pg.locator(".wd-verse .gline").last.inner_text()
-    ok("2.11" in last_line, f"verse number sits inside the last line ({last_line[-14:]})")
-    ok(pg.locator(".wd-verse .gl-n").count() == 1, "exactly one inline number")
-    ok(pg.locator(".wd-ref").inner_text().startswith("Chapter 2:"),
-       "reference reads 'Chapter N: <name>'")
-    vcol = pg.locator(".wd-verse .gline").first.evaluate("e => getComputedStyle(e).color")
-    scol = pg.locator(".wd-verse .spk").first.evaluate("e => getComputedStyle(e).color")
+    ok("2.11" in pg.locator(".w-day .vnum").inner_text(), "verse number shown in the vnum line")
+    ok(pg.locator(".w-day .padas .gl-n").count() == 0,
+       "no inline daṇa number — same look as the theme cards")
+    vcol = pg.locator(".w-day .padas .gline").first.evaluate("e => getComputedStyle(e).color")
+    scol = pg.locator(".w-day .padas .spk").first.evaluate("e => getComputedStyle(e).color")
     ok(vcol != scol, f"speaker colour differs from the verse ({scol} vs {vcol})")
-    ok(pg.locator(".wd-verse .spk").first.evaluate(
+    ok(pg.locator(".w-day .padas .spk").first.evaluate(
         "e => getComputedStyle(e).fontStyle") == "italic", "speaker is italic")
+    ok(pg.locator(".w-day .padas .gline").first.evaluate(
+        "e => getComputedStyle(e).textAlign") == "center",
+       "verse of the day is centred, like a display piece")
+    ok(pg.evaluate("(()=>{const a=document.querySelector('.w-day .vnum'),"
+                   "b=document.querySelector('.w-day .m-topic');"
+                   "return !!(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING);})()"),
+       "verse number sits above the topic line")
+    # the owner's brief: label in an oval tag, topic in a colour of its own —
+    # no orange pile-up on top of the card
+    ok(float(pg.eval_on_selector(".w-day .wd-label",
+        "e=>parseFloat(getComputedStyle(e).borderRadius)")) > 8,
+       "the 'Verse of the Day' label is an oval pill")
+    ok(pg.eval_on_selector(".w-day .m-topic", "e=>getComputedStyle(e).color") !=
+       pg.eval_on_selector(".w-day .vnum", "e=>getComputedStyle(e).color"),
+       "topic line is a different colour than the verse number")
     ok(not pg.evaluate(
         "() => { const e = document.querySelector('.w-day');"
         " return e.scrollWidth > e.clientWidth; }"), "card does not overflow")
@@ -148,6 +166,19 @@ def run(pw, url, offline_capable=False):
         pg.wait_for_timeout(600)
         hits = pg.eval_on_selector_all(".mini .vnum", "e=>e.map(x=>x.textContent.trim())")
         ok(len(hits) == 1, f"searching {q!r} ({label}) finds the verse ({hits[:1]})")
+    pg.fill("#searchInput", "2.47")
+    pg.wait_for_timeout(600)
+    head = pg.evaluate("document.querySelector('.mini .m-topic').textContent")
+    exp = pg.evaluate("(()=>{const loc=VERSES.find(v=>v.id==='2.47');"
+                      "return sutraAt(DATA[loc.ci].themes[loc.ti],loc.si).part.titles.en;})()")
+    ok(exp in head and head.strip().startswith("Verse topic:"),
+       "search card shows 'Verse topic: <part title>' on one line")
+    pg.locator(".mini").first.click()
+    pg.wait_for_timeout(400)
+    ok(pg.evaluate("!!document.querySelector('.m-part')"),
+       "the crumb line shows even when the verse was opened from search")
+    pg.keyboard.press("Escape")
+    pg.wait_for_timeout(300)
     # A bare number is a free-text search, and the index stores verse numbers as
     # ASCII — so a Devanagari digit must be converted too, or १ finds nothing
     # while 1 finds the whole chapter.
@@ -189,69 +220,159 @@ def run(pw, url, offline_capable=False):
     ok(pg.evaluate("document.documentElement.scrollWidth===document.documentElement.clientWidth"),
        "no horizontal overflow")
 
-    # Two ways into the book — grouped as the three niṣṭhās, or all eighteen
-    # chapters flat. They are peers, so they are tabs at the top rather than a
-    # link buried under the cards. They must appear on exactly those two pages:
-    # once you are inside a way, the way-tabs take over and two strips would confuse.
+    # The door is the Three Ways itself — no tab strip, no flat all-18 list
+    # (owner's call, 2026-08-27). A way opens onto its six chapters; a chapter
+    # card opens on Mula.
     pg.evaluate("showSections()")
     pg.wait_for_timeout(500)
-    tt = pg.eval_on_selector_all(".top-tab", "e=>e.map(x=>x.textContent.trim()+(x.classList.contains('on')?'*':''))")
-    ok(len(tt) == 2 and tt[0].endswith("*"), f"the three ways is the default tab ({tt})")
-    ok(pg.locator(".browse-all").count() == 0, "the old browse-all link is gone")
-    pg.locator(".top-tab").nth(1).click()
+    ok(pg.locator(".top-tabs").count() == 0 and pg.locator(".browse-all").count() == 0,
+       "the landing has no tab strip and no browse-all link")
+    ok(pg.locator(".card.sect").count() == 3, "the landing shows exactly the three ways")
+    pg.locator(".card.sect").first.click()
     pg.wait_for_timeout(600)
-    tt = pg.eval_on_selector_all(".top-tab", "e=>e.map(x=>x.textContent.trim()+(x.classList.contains('on')?'*':''))")
-    ok(len(tt) == 2 and tt[1].endswith("*"), f"'all 18 chapters' becomes the active tab ({tt})")
-    ok(pg.locator(".card").count() == 18, "the all-chapters tab lists all eighteen")
-    pg.locator(".top-tab").nth(0).click()
-    pg.wait_for_timeout(600)
-    ok(pg.locator(".card.sect").count() == 3, "switching back shows the three ways")
+    ok(pg.locator(".card").count() == 6 and pg.locator(".way-crumb .wc-cur").count() == 1,
+       "a way opens onto its six chapters under a breadcrumb")
+    pg.locator(".card").first.click()
+    pg.wait_for_timeout(700)
+    ok(pg.evaluate("state.view") == "read" and pg.locator(".mode-seg .ms-btn").count() == 3,
+       "a chapter opens straight into its text, the three ways riding along as a segmented control")
     for js, label in [("showChapters(2)", "inside a way"), ("showThemes(8)", "a chapter's themes")]:
         pg.evaluate(js)
         pg.wait_for_timeout(500)
-        ok(pg.locator(".top-tab").count() == 0 and pg.locator(".sec-tab").count() == 3,
-           f"{label}: only the way-tabs show, never two strips at once")
+        ok(pg.locator(".top-tab").count() == 0 and pg.locator(".sec-tab").count() == 0
+           and pg.locator(".way-crumb").count() == 1,
+           f"{label}: a breadcrumb, never a second tab strip")
     pg.evaluate("showSections()")
     pg.wait_for_timeout(400)
 
-    # The top tabs now use the same pill as .read-tab / .sec-tab: one button
-    # language across the app. Assert the shape, not just the behaviour, so a
-    # future restyle cannot quietly reintroduce a second control style.
-    tb = pg.locator(".top-tab").first
-    sb = pg.locator(".sec-tab").first if pg.locator(".sec-tab").count() else None
-    ok(tb.evaluate("e=>getComputedStyle(e).borderTopWidth") == "2px",
-       "top tab has the 2px pill border")
-    ok(round(tb.bounding_box()["height"]) >= 44,
-       f"top tab meets the 44px touch target ({round(tb.bounding_box()['height'])}px)")
-    ok(tb.evaluate("e=>getComputedStyle(e).backgroundColor") == "rgb(232, 145, 44)",
-       "active top tab uses saffron, like every other active tab")
-    ok(pg.locator(".top-tab").nth(1).evaluate(
-        "e=>getComputedStyle(e).backgroundColor") == "rgb(255, 255, 255)",
-       "inactive top tab uses the paper background")
-    ok(not pg.evaluate("() => { const e = document.querySelector('.top-tabs');"
-                       " return e.scrollWidth > e.clientWidth + 1; }"),
-       "top tabs do not overflow")
+    # The breadcrumb names the whole trail and its links walk it back up.
+    pg.evaluate("showThemes(1)")
+    pg.wait_for_timeout(500)
+    cr = pg.eval_on_selector_all(".way-crumb > *", "e=>e.map(x=>x.textContent.trim())")
+    ok(len(cr) == 5 and cr[0] == "The Three Ways" and cr[4] == "Chapter 2 · अध्ययन",
+       f"the themes page trail names the way and ends at 'Chapter 2 · अध्ययन' ({cr})")
+    ok("कर्मनिष्ठा" in cr[2], f"the way crumb carries its Sanskrit niṣhā name ({cr[2]})")
+    chipc = pg.eval_on_selector_all(".way-crumb .wc-chip",
+        "e=>e.map(x=>[x.className.includes('wc-cur'), getComputedStyle(x).backgroundColor])")
+    SOFT=("rgb(251, 227, 192)","rgb(67, 48, 26)"); PAPER=("rgb(255, 255, 255)","rgb(32, 26, 19)")
+    ok(all((c[0] and c[1].startswith(SOFT)) or (not c[0] and c[1].startswith(PAPER)) for c in chipc),
+       f"volume control: current page soft, ancestors neutral — one gold left on the page ({chipc})")
+    pg.locator(".way-crumb .wc-link").first.hover()
+    pg.wait_for_timeout(300)
+    hov = pg.evaluate("getComputedStyle(document.querySelector('.way-crumb .wc-link')).backgroundColor")
+    ok(hov.startswith("rgb(251, 227, 192)") or hov.startswith("rgb(67, 48, 26)"),
+       f"hovering an ancestor warms it one step to saffron-soft ({hov})")
+    pg.mouse.move(2,2)
+    pg.wait_for_timeout(250)
+    pg.locator(".way-crumb .wc-link").first.click()
+    pg.wait_for_timeout(500)
+    ok(pg.locator(".card.sect").count() == 3,
+       "the breadcrumb's first crumb returns to the Three Ways")
 
-    # The list pages run 4-5 screens on a phone, so the top crumb is repeated at
-    # the foot. It must appear only where there is a parent to go back to, and
-    # must say the same thing as the crumb above it.
-    for js, expect_foot in [("showSections()", False), ("showChapters(0)", False),
+    # Audit 2026-08-30: keyboard parity and the saffron-ink discipline.
+    pg.evaluate("document.querySelector('.card.sect').focus()")
+    pg.keyboard.press("Enter")
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("state.view") == "chapters",
+       "Enter on a focused card opens it — the mouse has no monopoly")
+    pg.evaluate("showWelcome()")
+    pg.wait_for_timeout(500)
+    cta = pg.evaluate("getComputedStyle(document.querySelector('.tool-btn.primary')).color")
+    ok(cta.startswith("rgb(42, 33, 24)") or cta.startswith("rgb(26, 18, 9)"),
+       f"saffron grounds carry the lamp-black letter, never cream ({cta})")
+
+    # The segmented control (owner 2026-08-30, final form): one quiet line
+    # says Choose, the raised segment says where you are, and switching
+    # language never moves the reader.
+    pg.evaluate("showRead(1,'mula')")
+    pg.wait_for_timeout(600)
+    ok(pg.locator(".mode-seg .ms-btn").count() == 3
+       and pg.locator(".mode-seg .ms-btn.on").count() == 1,
+       "the chapter page carries the three ways as one segmented control, exactly one raised")
+    ok(pg.eval_on_selector(".mode-lbl", "e=>e.textContent").strip()
+       == "How would you like to receive this chapter?"
+       and pg.locator(".mode-box .mode-seg").count() == 1,
+       "an instructive line and the control sit together in one tray")
+    boxc = pg.evaluate("getComputedStyle(document.querySelector('.mode-box')).borderTopColor")
+    lblc = pg.evaluate("getComputedStyle(document.querySelector('.mode-lbl')).color")
+    onc  = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn.on')).backgroundColor")
+    ok((boxc.startswith("rgb(231, 217, 194)") or boxc.startswith("rgb(56, 45, 32)"))
+       and (lblc.startswith("rgb(201, 122, 32)") or lblc.startswith("rgb(200, 134, 47)"))
+       and (onc.startswith("rgb(232, 145, 44)") or onc.startswith("rgb(225, 149, 58)")),
+       f"the tray wears the card hairline; saffron lives in its words and its raised segment ({boxc} {lblc} {onc})")
+    rest = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn:not(.on)')).backgroundColor")
+    ok(rest.startswith("rgb(251, 227, 192)") or rest.startswith("rgb(67, 48, 26)"),
+       f"an unchosen segment wears the soft option pill, like an ancestor crumb ({rest})")
+    pg.locator(".mode-seg .ms-btn:not(.on)").first.hover()
+    pg.wait_for_timeout(300)
+    hov = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn:not(.on)')).backgroundColor")
+    ok(hov.startswith("rgb(201, 122, 32)") or hov.startswith("rgb(200, 134, 47)"),
+       f"hover warms it to saffron-dark, exactly like the crumbs ({hov})")
+    lang = pg.evaluate("getComputedStyle(document.querySelector('.seg .lang-btn.on')).backgroundColor")
+    ok(lang.startswith("rgb(255, 255, 255)") or lang.startswith("rgb(32, 26, 19)"),
+       f"the language bar keeps its iOS-segment look: the active tongue raised on paper ({lang})")
+    pg.locator(".seg .lang-btn:not(.on)").first.hover()
+    pg.wait_for_timeout(300)
+    langhov = pg.evaluate("getComputedStyle(document.querySelector('.seg .lang-btn:not(.on)')).backgroundColor")
+    ok(langhov.startswith("rgb(201, 122, 32)") or langhov.startswith("rgb(200, 134, 47)"),
+       f"but its hover warms like the rest of the app ({langhov})")
+    pg.locator(".seg .lang-btn.on").click()   # click the active tongue: no-op, stays put
+    pg.wait_for_timeout(300)
+    pg.mouse.move(2,2)
+    pg.wait_for_timeout(250)
+    lbls = pg.eval_on_selector_all(".mode-seg .ms-btn", "e=>e.map(x=>x.textContent.trim())")
+    ok(lbls == ["Verses only", "Verses with translation", "Study guide"],
+       f"the segments are the three ways in the current language ({lbls})")
+    cr = pg.eval_on_selector_all(".way-crumb > *", "e=>e.map(x=>x.textContent.trim())")
+    ok(cr[-1] == "Chapter 2 · मूल", f"the running head reads 'Chapter 2 · मूल' ({cr})")
+    pg.locator(".mode-seg .ms-btn").nth(2).click()
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("state.view") == "themes" and pg.locator(".th-flow .theme").count() > 0
+       and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == "Study guide",
+       "the study segment opens the thematic breakdown and raises itself")
+
+    # Owner 2026-08-30: in the study guide the theme is the door and the
+    # verses are display-only cards — readable, not pressable.
+    vc = pg.locator(".th-flow .vcard")
+    ok(vc.count() > 0 and pg.locator(".vcard[role], .vcard[onclick]").count() == 0,
+       f"every verse of the chapter shows as a card, none of them a button ({vc.count()})")
+    anat = pg.eval_on_selector(".th-flow .vcard",
+        "x=>[(x.querySelector('.chip')||{}).textContent||'', !!x.querySelector('h3'), !!x.querySelector('p')]")
+    ok(anat[0] and anat[1] and anat[2], f"verse card = number chip + title + description ({anat})")
+    pg.locator(".th-flow .vcard").first.click()
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("state.view") == "verses" and not pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
+       "pressing a verse card behaves like pressing its theme — the grid opens, no modal")
+    pg.evaluate("showThemes(1)")
+    pg.wait_for_timeout(500)
+    pg.evaluate("setLang('ne')")
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("state.view") == "themes"
+       and pg.eval_on_selector(".mode-lbl", "e=>e.textContent").strip() == "यो अध्याय कसरी पढ्न चाहनुहुन्छ?",
+       "changing language never moves the reader off the chapter")
+    pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(500)
+    pg.locator(".mode-seg .ms-btn").first.click()
+    pg.wait_for_timeout(600)
+
+    # The breadcrumb sits at the top; on long list pages the same parent is
+    # repeated at the foot. It must appear only where a parent exists.
+    for js, expect_foot in [("showSections()", False),
                             ("showChapters(1)", True), ("showThemes(1)", True),
                             ("showVerses(1,0)", True)]:
         pg.evaluate(js)
         pg.wait_for_timeout(450)
-        top = pg.eval_on_selector_all(".back-top:not(.back-foot .back-top)", "e=>e.map(x=>x.textContent.trim())")
         foot = pg.eval_on_selector_all(".back-foot .back-top", "e=>e.map(x=>x.textContent.trim())")
         ok(bool(foot) == expect_foot, f"{js}: foot back-button {'present' if expect_foot else 'absent'}")
         if expect_foot:
-            ok(foot and top and foot[0] == top[0],
-               f"{js}: foot button says the same as the crumb ({foot[:1]} vs {top[:1]})")
+            ok(foot and foot[0].startswith("←"),
+               f"{js}: foot button is a labelled back link ({foot[:1]})")
     pg.evaluate("showVerses(1,0)")
     pg.wait_for_timeout(500)
     pg.locator(".back-foot .back-top").click()
     pg.wait_for_timeout(600)
-    ok("Themes" in pg.eval_on_selector(".view-title", "e=>e.textContent"),
-       "the foot back-button actually navigates")
+    ok(pg.eval_on_selector(".way-crumb .wc-cur", "e=>e.textContent").strip() == "Chapter 2 · अध्ययन",
+       "the foot back-button actually navigates (trail ends at 'Chapter 2 · अध्ययन')")
 
     # The Devanagari font is embedded as a data URI. Without it, devices that do
     # not ship Noto Serif Devanagari (older Android, most Windows) break the
@@ -263,10 +384,8 @@ def run(pw, url, offline_capable=False):
        f"the Devanagari font is embedded and loads ({fonts['list']})")
 
     # Continuous reading: the chapter as flowing text, speaker shown when it changes.
-    pg.evaluate("showThemes(1)")
-    pg.wait_for_timeout(500)
-    ok(pg.locator(".read-btn").count() == 1, "themes page offers 'read the whole chapter'")
-    pg.locator(".read-btn").click()
+    pg.evaluate("showRead(1,'mula')")
+    pg.wait_for_timeout(600)
     pg.wait_for_timeout(700)
     n_v = pg.locator(".rd-v").count()
     n_s = pg.locator(".rd-spk").count()
@@ -276,6 +395,18 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(600)
     ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
        "tapping a verse in the reading view opens its quarters")
+    # the master hide/show-meanings switch sleeps until a quarter is opened —
+    # before that there is nothing on screen for it to hide
+    ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
+       "the hide/show meanings switch is inactive before any quarter is opened")
+    pg.locator(".pada-box").first.click()
+    pg.wait_for_timeout(300)
+    ok(not pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
+       "opening a quarter wakes the switch")
+    pg.locator(".pada-box").first.click()
+    pg.wait_for_timeout(300)
+    ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
+       "closing the last open quarter puts the switch back to sleep")
     pg.keyboard.press("Escape")
     pg.wait_for_timeout(400)
 
@@ -308,15 +439,27 @@ def run(pw, url, offline_capable=False):
 
     # Two ways to read: मूल — the root text alone, as a pāṭha is recited — and the
     # same verses each followed by its meaning.
-    tabs = pg.eval_on_selector_all(".read-tab", "e=>e.map(x=>x.textContent.trim())")
-    ok(len(tabs) == 2, f"the reading view offers two modes ({tabs})")
     pg.evaluate("showRead(0,'mula')")
+    pg.wait_for_timeout(400)
+    opts = pg.eval_on_selector_all(".mode-seg .ms-btn", "e=>e.map(x=>x.textContent.trim())")
+    ok(len(opts) == 3 and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == opts[0],
+       f"the chapter page offers all three ways, mula raised first ({opts})")
     pg.wait_for_timeout(500)
     ok(pg.locator(".rd-tr").count() == 0, "मूल shows the verses without translations")
     ok(pg.locator(".rd-v").count() == 47, "मूल still shows every verse of chapter 1")
     pg.evaluate("showRead(0,'full')")
     pg.wait_for_timeout(500)
     ok(pg.locator(".rd-tr").count() == 47, "'with meaning' adds a translation to every verse")
+    ok(pg.locator(".rd-par").count() == 47,
+       "'with meaning' also sets the flowing paraphrase under each literal")
+    # word-by-word stays out of the continuous read — it belongs to the study
+    # guide. The segmented control leads there.
+    pg.locator(".mode-seg .ms-btn").nth(2).click()
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("state.view") == "themes" and pg.locator(".th-flow .theme").count() > 0,
+       "the study guide tab returns to the thematic breakdown")
+    pg.evaluate("showRead(0,'full')")
+    pg.wait_for_timeout(500)
     pg.evaluate("setLang('ne')")
     pg.wait_for_timeout(600)
     ok(pg.evaluate("state.readMode") == "full" and pg.evaluate("state.view") == "read",
@@ -401,13 +544,22 @@ def run(pw, url, offline_capable=False):
     q.wait_for_timeout(300)
     ok("कर्मण्येवाधिकारस्ते" in q.content(), "chapter 2 page carries the full verse text (2.47)")
     c.close()
-    dl = (url + "#chapter=2") if url.startswith("http") \
-        else (ROOT / "index.html").as_uri() + "#chapter=2"
+    base_dl = url if url.startswith("http") else (ROOT / "index.html").as_uri()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
-    q.goto(dl, wait_until="load", timeout=90000)
+    q.goto(base_dl + "#chapter=2", wait_until="load", timeout=90000)
     q.wait_for_timeout(1200)
-    ok("Themes" in q.inner_text(".view-title"), "#chapter=2 deep link opens chapter 2's themes")
+    ok(q.evaluate("state.view") == "read" and q.locator(".mode-seg .ms-btn").count() == 3,
+       "a bare #chapter=2 deep link opens the chapter itself, control and all")
+    c.close()
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    q.goto(base_dl + "#chapter=2&tab=study", wait_until="load", timeout=90000)
+    q.wait_for_timeout(1200)
+    ok(q.inner_text(".way-crumb .wc-cur").strip() == "Chapter 2 · अध्ययन"
+       and q.locator(".th-flow .theme").count() > 0
+       and q.locator(".mode-seg .ms-btn.on").inner_text().strip() == "Study guide",
+       "#chapter=2&tab=study opens the study guide (the SEO pages' CTA)")
     c.close()
 
     group("split build")
@@ -421,6 +573,72 @@ def run(pw, url, offline_capable=False):
         df_txt = (ROOT / "data" / "ch2.js").read_text(encoding="utf-8")
     ok(df_txt.startswith("GITA_CH[2] = "), "chapter data files are served")
     ok(q.evaluate("DATA.length") == 18, "all 18 chapters loaded and assembled at runtime")
+    c.close()
+
+    group("verse deep links")
+    base = url if url.startswith("http") else (ROOT / "index.html").as_uri()
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    q.goto(base, wait_until="load", timeout=90000)
+    q.wait_for_function("DATA && DATA.length===18", timeout=20000)
+    q.evaluate("openModal(1,7,0)")   # ch2 · theme 8 (Neither Slays Nor Is Slain), first sutra = 2.19
+    q.wait_for_timeout(300)
+    ok(q.evaluate("location.hash") == "#v=2.19", "opening a verse writes the #v= deep link")
+    q.evaluate("openSharePanel()")
+    q.wait_for_timeout(200)
+    ok("/chapter/2/#v2.19" in q.inner_text("#spLink"),
+       "share panel offers the verse's chapter anchor for copying")
+    q.click("#shCp")   # a real click on "Copy verse link"
+    q.wait_for_timeout(300)
+    ok(q.evaluate("getComputedStyle(document.querySelector('#sharePanel')).display") == "none",
+       "copying the verse link collapses the share panel")
+    ok(q.inner_text("#shareBtn").strip() == "Link copied",
+       "the Share button itself flashes the copied confirmation")
+    q.evaluate("closeModal()")
+    q.wait_for_timeout(400)
+    ok(q.evaluate("location.hash") == "", "closing the sheet restores the clean URL")
+    c.close()
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    q.goto(base + "#v=2.19", wait_until="load", timeout=90000)
+    q.wait_for_timeout(1500)
+    ok(q.evaluate("state.view") == "welcome" and not q.evaluate("!!document.querySelector('#modalBg.open')")
+       and "2.19" in q.inner_text(".w-day") and "Click the verse" in q.inner_text(".w-day"),
+       "a shared #v= link lands as an invitation: verse shown, meaning one click away, no popup")
+    q.locator(".w-day").click()
+    q.wait_for_timeout(700)
+    ok(q.evaluate("!!document.querySelector('#modalBg.open')") and "2.19" in q.inner_text(".m-num"),
+       "clicking the shared verse opens the four-quarter word-meaning sheet")
+    c.close()
+    # from a downloaded copy (file://), the share link must point at the live
+    # site — a file path is useless to recipients and crashes some Chromes
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    q.goto((ROOT / "index.html").as_uri(), wait_until="load", timeout=90000)
+    q.wait_for_function("DATA && DATA.length===18", timeout=20000)
+    q.evaluate("openModal(1,7,0)")
+    q.wait_for_timeout(200)
+    ok(q.evaluate("shareUrl()") == "https://chapain.github.io/Bhagavad-Gita/chapter/2/#v2.19",
+       "from a downloaded copy, the share link points at the live verse anchor")
+    c.close()
+
+    # A shared verse link, opened the way a recipient actually opens it. The
+    # verse lives inside a COLLAPSED <details>, so this is the check that the
+    # 2026-09-01 retirement of the v/ pages hinges on: the block must open and
+    # the verse must really be on screen, not merely present in the DOM.
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    q.goto(base + "chapter/2/#v2.19", wait_until="load", timeout=90000)
+    q.wait_for_timeout(800)
+    ok(q.evaluate("!!document.querySelector('#v2\\\\.19')"),
+       "a shared verse link finds its anchor on the chapter page")
+    ok(q.evaluate("document.querySelector('#v2\\\\.19').closest('details').open"),
+       "the folded <details> is opened so the verse is reachable")
+    ok(q.evaluate("document.querySelector('#v2\\\\.19').classList.contains('target')"),
+       "the shared verse is highlighted as the one the reader came for")
+    ok(q.evaluate("(r => r.top < innerHeight && r.bottom > 0)"
+                  "(document.querySelector('#v2\\\\.19').getBoundingClientRect())"),
+       "the shared verse is scrolled into the viewport, not left off-screen")
     c.close()
 
     if offline_capable:
