@@ -5,10 +5,10 @@
    (breadcrumb, IAST, verse description, theme range, paraphrase) fell back to
    full --ink, flattening the hierarchy on all 18 pages. Keep the two names
    identical — source/check_chapter_css.py now fails the build if they drift. */
-:root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#0F4C5C;
+:root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#1A5648;
        --saffron:#B45A24; --card:#FFFCF4; --line:#E6D9C3; }
 @media (prefers-color-scheme:dark){
-  :root{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8CC0CC;
+  :root{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8FBEB0;
          --saffron:#DE8F52; --card:#272018; --line:#3B3227; }
 }
 *{ box-sizing:border-box; }
