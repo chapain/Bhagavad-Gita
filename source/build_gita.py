@@ -516,7 +516,7 @@ HTML = r"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0F4C5C" id="themeColor">
+<meta name="theme-color" content="#1A5648" id="themeColor">
 <script>
 /* Runs before the page paints, so a dark-mode user never sees a white flash.
    Order of preference: a choice they made here, else the phone's own setting.
@@ -608,9 +608,9 @@ __FONTS__
      so every rule keeps using var(--x) and nothing else has to change.
      --on-accent is the text colour that sits on saffron/teal fills; it stays
      near-cream in both themes because both fills stay dark enough for it.  */
-  :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-soft:#FBE3C0; --teal:#0F4C5C; --teal-mid:#1E6E7E;
-         --teal-soft:#DDEFF2; --cream:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --paper:#FFFFFF; --line:#E7D9C2;
-         --on-accent:#FFF8EC; --on-saffron:#2A2118; --hdr-a:#0F4C5C; --hdr-b:#17566B; --hdr-c:#1E6E7E; --hdr-sub:#CDE7EE;
+  :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-soft:#FBE3C0; --teal:#1A5648; --teal-mid:#2A7A68;
+         --teal-soft:#E6EFE8; --cream:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --paper:#FFFFFF; --line:#E7D9C2;
+         --on-accent:#FFF8EC; --on-saffron:#2A2118; --hdr-a:#1A5648; --hdr-b:#226B5A; --hdr-c:#2A806C; --hdr-sub:#C5DDD4;
          --toolbar:#FDF3E0; --field:#FFFFFF; --muted:#9AA0A6; --danger:#C0392B; --danger-soft:#FBE6E3; --on-danger:#FFFFFF;
          --shadow:42,33,24; --scrim:rgba(15,42,52,.72); --fade:255,248,236;
          --chip:rgba(255,248,236,.12); --chip-hover:rgba(255,248,236,.25); --chip-line:rgba(255,248,236,.35); }
@@ -627,16 +627,45 @@ __FONTS__
     /* Apple-dark discipline: accents muted a notch, text never glaring.
        The old #E8912C/#7FD4E8 pair neon'd against the warm black. */
     --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-soft:#43301A;
-    --teal:#8FC1CE; --teal-mid:#A9D3DD; --teal-soft:#123039;
+    --teal:#8FBEB0; --teal-mid:#A8D0C4; --teal-soft:#1A2E28;
     --cream:#16120D; --paper:#201A13; --ink:#E9DCC3; --ink-soft:#A79A80; --line:#382D20;
-    --on-accent:#1A1209; --on-saffron:#1A1209; --hdr-a:#0A2830; --hdr-b:#0D323C; --hdr-c:#123F4B; --hdr-sub:#BFD9DF;
+    --on-accent:#1A1209; --on-saffron:#1A1209; --hdr-a:#0E2A24; --hdr-b:#143832; --hdr-c:#1A4840; --hdr-sub:#C5DDD4;
     --toolbar:#1E1811; --field:#2A2219; --muted:#8A7F6E; --danger:#E86B5C; --danger-soft:#3A211C; --on-danger:#1A1209;
     --shadow:0,0,0; --scrim:rgba(0,0,0,.78); --fade:23,19,14;
     --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; color:var(--ink);
-        background:var(--cream); line-height:1.55; display:flex; flex-direction:column; min-height:100vh;}
+        line-height:1.55; display:flex; flex-direction:column; min-height:100vh;}
+  /* Quiet devotion (owner 2026-09-04): sandalwood on the paper, a peacock
+     feather as a watermark. Opacity is the whole design — if you notice it
+     first, it is too loud. pointer-events:none so it never steals a tap. */
+  body{ background:
+        radial-gradient(900px 420px at 50% -60px, rgba(232,145,44,.07), transparent 62%),
+        var(--cream); }
+  html[data-theme="dark"] body{ background:
+        radial-gradient(900px 420px at 50% -60px, rgba(225,149,58,.08), transparent 62%),
+        var(--cream); }
+  .atm{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  header, .toolbar, .wrap, footer{ position:relative; z-index:1; }
+  .atm-wisp{ position:absolute; bottom:-12%; width:260px; height:72%;
+             left:50%; margin-left:-130px;
+             background:radial-gradient(ellipse at 50% 88%, rgba(196,154,108,.22), transparent 68%);
+             filter:blur(32px); opacity:.5;
+             animation:atmRise 32s ease-in-out infinite; }
+  .atm-wisp.b{ left:36%; margin-left:-110px; width:220px; opacity:.32; animation-delay:-11s; }
+  .atm-wisp.c{ left:64%; margin-left:-100px; width:200px; opacity:.28; animation-delay:-19s; }
+  @keyframes atmRise{
+    0%,100%{ transform:translateY(0) scaleX(1); }
+    50%{ transform:translateY(-6%) scaleX(1.06); }
+  }
+  .atm-feather{ position:absolute; right:max(8px, env(safe-area-inset-right,0px));
+                top:28%; width:86px; height:210px; opacity:.12; color:var(--teal); }
+  html[data-theme="dark"] .atm-wisp{ opacity:.18; }
+  html[data-theme="dark"] .atm-feather{ opacity:.14; color:var(--saffron); }
+  @media (max-width:640px){ .atm-feather{ width:64px; height:156px; opacity:.09; } }
+
+
   header{ background:var(--hdr-a); color:var(--hdr-sub);
           padding:24px 20px; }
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
@@ -699,7 +728,7 @@ __FONTS__
   .card:hover{ border-left-color:var(--saffron-dark); }
   .theme{ border-left:2px solid var(--saffron); }
   .theme:hover{ border-left-color:var(--saffron-dark); }
-  .res-card{ border-left:2px solid var(--teal-soft); }
+  .res-card{ border-left:2px solid var(--teal); }
   .res-card:hover{ border-left-color:var(--teal); }
   .mode-box{ border-left:2px solid var(--saffron); }
   .welcome .w-day{ border-left:2px solid var(--saffron); }
@@ -753,7 +782,7 @@ __FONTS__
                background:var(--saffron-soft); color:var(--saffron-dark);
                font-family:system-ui,sans-serif; font-weight:700; font-size:.85rem;}
   .pl-mode .b{ flex:1; min-width:0;}
-  .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--teal);
+  .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--ink);
                  margin-bottom:4px;}
   .pl-mode .b span{ display:block; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
   @media (max-width:640px){ .pl-modes{ grid-template-columns:1fr;} .pl-sel{ flex:1 0 100%;} }
@@ -777,7 +806,7 @@ __FONTS__
   .lr-ghost:disabled{ opacity:.35; cursor:default;}
   .lr-ghost.sm{ font-size:.76rem; padding:7px 13px;}
 
-  .lr-prog{ height:5px; border-radius:3px; background:var(--chip); overflow:hidden; margin-top:8px;}
+  .lr-prog{ height:5px; border-radius:3px; background:var(--line); overflow:hidden; margin-top:8px;}
   .lr-prog i{ display:block; height:100%; background:var(--saffron); border-radius:3px;
               transition:width .45s cubic-bezier(.2,.8,.2,1);}
   .lr-progl{ font-family:system-ui,sans-serif; font-size:.74rem; color:var(--ink-soft); margin:7px 0 18px;}
@@ -797,7 +826,7 @@ __FONTS__
   .lr-step.now .lr-badge{ background:var(--saffron); color:var(--on-saffron);}
   .lr-step.done .lr-badge{ background:var(--teal); color:var(--on-accent);}
   .lr-body{ flex:1; min-width:0;}
-  .lr-body h3{ margin:1px 0 5px; font-size:1.06rem; font-weight:700; color:var(--teal);}
+  .lr-body h3{ margin:1px 0 5px; font-size:1.06rem; font-weight:700; color:var(--ink);}
   .lr-body p{ margin:0 0 11px; color:var(--ink-soft); font-size:.88rem; line-height:1.55;}
 
   .lr-grid{ display:grid; gap:8px; grid-template-columns:repeat(auto-fill,minmax(196px,1fr));}
@@ -808,8 +837,8 @@ __FONTS__
   .lr-chip:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);}
   .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
   .lr-chip .n{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center;
-               background:var(--chip); font-size:.7rem; font-family:system-ui,sans-serif;
-               color:var(--ink-soft);}
+               background:var(--saffron-soft); font-size:.7rem; font-family:system-ui,sans-serif;
+               color:var(--saffron-dark);}
   .lr-chip.ok .n{ background:var(--teal); color:var(--on-accent); font-weight:700;}
   .lr-chip .t{ flex:1; font-size:.85rem; line-height:1.3;}
   .lr-chip .v{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft);}
@@ -824,7 +853,7 @@ __FONTS__
   .lr-thread .bead{ flex:0 0 26px; height:26px; border-radius:50%; display:grid; place-items:center;
             background:var(--saffron-soft); color:var(--saffron-dark); z-index:1;
             font-family:system-ui,sans-serif; font-size:.75rem; font-weight:700;}
-  .lr-thread b{ font-weight:700; font-size:1rem; color:var(--teal);}
+  .lr-thread b{ font-weight:700; font-size:1rem; color:var(--ink);}
   .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--saffron-dark); font-weight:600; margin-left:7px;}
   .lr-thread p{ margin:4px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
 
@@ -872,7 +901,7 @@ __FONTS__
      cards on top of it. Both were --paper, so every boundary vanished and the
      screen went flat white (owner 2026-09-01). */
   .lr-qbox{ padding:18px; border-radius:16px; background:var(--cream);
-            border:1px solid var(--line); border-left:2px solid var(--teal);
+            border:1px solid var(--line); border-left:2px solid var(--saffron);
             box-shadow:0 1px 2px rgba(var(--shadow),.05);}
   /* the question is the loudest thing on the screen, and saffron-soft under a
      saffron rule marks it as the prompt rather than more prose */
@@ -968,7 +997,7 @@ __FONTS__
              background:var(--teal-soft); border:1px solid var(--teal);}
   .lr-seal{ width:58px; height:58px; margin:0 auto 16px; border-radius:50%; display:grid;
             place-items:center; background:var(--teal-soft); color:var(--teal); font-size:1.6rem;}
-  .lr-finis h2{ margin:0 0 8px; font-size:1.35rem; color:var(--teal);}
+  .lr-finis h2{ margin:0 0 8px; font-size:1.35rem; color:var(--ink);}
   .lr-finis p{ color:var(--ink-soft); max-width:50ch; margin:0 auto 16px; line-height:1.65;}
   .lr-finis .lr-all{ color:var(--saffron-dark); font-weight:700;}
   .lr-finis .lr-cta,.lr-finis .lr-ghost{ margin:5px;}
@@ -1043,7 +1072,7 @@ __FONTS__
   .sp-hint{ font-size:.85rem; color:var(--ink-soft); line-height:1.5;}
   .sp-link{ width:100%; font-size:.76rem; color:var(--teal); background:var(--paper);
     border:1px dashed var(--line); border-radius:8px; padding:7px 9px; word-break:break-all;}
-  .sp-copy{ background:var(--saffron); color:#FFF8EC; border:none; border-radius:999px;
+  .sp-copy{ background:var(--saffron); color:var(--on-saffron); border:none; border-radius:999px;
     padding:9px 18px; font-weight:700; font-size:.85rem; cursor:pointer;}
   .back-top{ display:inline-block; margin:4px 0 16px; background:none; border:1px solid var(--teal); color:var(--teal);
              font-weight:700; padding:8px 18px; border-radius:999px; cursor:pointer; font-size:.9rem;}
@@ -1464,6 +1493,20 @@ __FONTS__
 </head>
 <body>
 
+<div class="atm" aria-hidden="true">
+  <div class="atm-wisp"></div>
+  <div class="atm-wisp b"></div>
+  <div class="atm-wisp c"></div>
+  <svg class="atm-feather" viewBox="0 0 80 200" fill="none">
+    <path d="M40 198 C40 140 40 96 40 64" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    <ellipse cx="40" cy="46" rx="22" ry="38" stroke="currentColor" stroke-width="1.1"/>
+    <ellipse cx="40" cy="40" rx="12" ry="20" stroke="currentColor" stroke-width="1"/>
+    <circle cx="40" cy="36" r="5.5" fill="currentColor" opacity=".35"/>
+    <path d="M40 84 C28 70 22 52 24 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
+    <path d="M40 84 C52 70 58 52 56 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
+  </svg>
+</div>
+
 <header>
   <div class="header-inner">
     <span class="om">ॐ</span>
@@ -1756,7 +1799,7 @@ function paintTheme(){
   if(btn) btn.setAttribute('aria-label', dark ? L('theme_light') : L('theme_dark'));
   // colour the phone's status bar / address bar to match
   const mc = document.getElementById('themeColor');
-  if(mc) mc.setAttribute('content', dark ? '#0A2830' : '#0F4C5C');
+  if(mc) mc.setAttribute('content', dark ? '#0E2A24' : '#1A5648');
 }
 function setTheme(dark, remember){
   if(dark) document.documentElement.setAttribute('data-theme','dark');
@@ -3400,10 +3443,10 @@ CHAPTER_CSS = _ch_font + """
    (breadcrumb, IAST, verse description, theme range, paraphrase) fell back to
    full --ink, flattening the hierarchy on all 18 pages. Keep the two names
    identical — source/check_chapter_css.py now fails the build if they drift. */
-:root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#0F4C5C;
+:root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#1A5648;
        --saffron:#B45A24; --card:#FFFCF4; --line:#E6D9C3; }
 @media (prefers-color-scheme:dark){
-  :root{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8CC0CC;
+  :root{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8FBEB0;
          --saffron:#DE8F52; --card:#272018; --line:#3B3227; }
 }
 *{ box-sizing:border-box; }
@@ -3502,7 +3545,7 @@ manifest = {
     "display": "standalone",
     "orientation": "any",
     "background_color": "#FFF8EC",
-    "theme_color": "#0F4C5C",
+    "theme_color": "#1A5648",
     "lang": "en",
     "dir": "ltr",
     "categories": ["books", "education", "lifestyle"],
@@ -3798,7 +3841,7 @@ if _HAVE_PIL:
     _deva_f  = lambda px: ImageFont.truetype(os.path.join(_FW, "share-deva.ttf"), px)
     _lat_f   = lambda px: ImageFont.truetype(os.path.join(_FW, "share-latin.ttf"), px)
     _latb_f  = lambda px: ImageFont.truetype(os.path.join(_FW, "share-latin-bold.ttf"), px)
-    _CREAM, _INK, _TEAL, _SAF, _SAFD, _SOFTL = "#FFF8EC", "#2A2118", "#0F4C5C", "#E8912C", "#C97A20", "#5C5142"
+    _CREAM, _INK, _TEAL, _SAF, _SAFD, _SOFTL = "#FFF8EC", "#2A2118", "#1A5648", "#E8912C", "#C97A20", "#5C5142"
 
     def _wrap(draw, text, font, maxw):
         words, lines, cur = text.split(), [], ""
@@ -3818,7 +3861,7 @@ if _HAVE_PIL:
     _ad.rectangle([40, 40, 1159, 150], fill=_TEAL)
     _ad.text((70, 58), "ॐ", font=_deva_f(58), fill=_SAF)
     _ad.text((150, 66), "Bhagavad Gita — an Interactive Study", font=_latb_f(40), fill=_CREAM)
-    _ad.text((150, 112), "श्रीमद्भगवद्गीता · १८ अध्याय · ७०० श्लोक", font=_deva_f(24), fill="#CDE7EE")
+    _ad.text((150, 112), "श्रीमद्भगवद्गीता · १८ अध्याय · ७०० श्लोक", font=_deva_f(24), fill="#C5DDD4")
     _t = "श्रीमद्भगवद्गीता"; _w = _ad.textlength(_t, font=_deva_f(64))
     _ad.text(((1200 - _w) / 2, 240), _t, font=_deva_f(64), fill=_INK)
     _t = "Every verse in its four quarters, with word-by-word meanings"
@@ -3874,9 +3917,9 @@ NOT_FOUND = f"""<!DOCTYPE html>
 <title>Page not found — Bhagavad Gita</title>
 <link rel="icon" href="/Bhagavad-Gita/favicon.ico" sizes="any">
 <style>
-  :root{{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#0F4C5C; --saffron:#B45A24; }}
+  :root{{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#1A5648; --saffron:#B45A24; }}
   @media (prefers-color-scheme:dark){{
-    :root{{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8CC0CC; --saffron:#DE8F52; }}
+    :root{{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8FBEB0; --saffron:#DE8F52; }}
   }}
   body{{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
         background:var(--paper); color:var(--ink); text-align:center;
