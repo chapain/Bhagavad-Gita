@@ -872,7 +872,8 @@ __FONTS__
   .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
   .lr-qh .tx{ flex:1; min-width:0;}
   .lr-qh .dv{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
-              font-size:1.12rem; line-height:1.7;}
+              font-size:1.12rem; line-height:1.7; color:var(--teal-mid);
+              -webkit-text-fill-color:var(--teal-mid);}
   .lr-qh .ia{ display:block; font-size:.78rem; font-style:italic; color:var(--ink-soft); margin-top:2px;}
   .lr-qh .chev{ color:var(--ink-soft); transition:transform .22s;}
   .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron);}
@@ -885,7 +886,7 @@ __FONTS__
   .lr-word{ padding:9px 11px; border-radius:10px; background:var(--paper);
             border:1px solid var(--line); border-left:2px solid var(--saffron);}
   .lr-word .d{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
-               font-size:1rem; color:var(--saffron-dark);}
+               font-size:1rem; color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
   .lr-word .i{ display:block; font-size:.71rem; font-style:italic; color:var(--ink-soft); margin:1px 0 3px;}
   .lr-word .m{ display:block; font-size:.84rem; line-height:1.4;}
   .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:14px;
@@ -912,11 +913,13 @@ __FONTS__
             font-weight:700; letter-spacing:.1em; text-transform:uppercase;}
   .lr-qsub{ margin-top:10px; padding:12px 14px; border-radius:11px; background:var(--paper);
             border:1px solid var(--line); color:var(--ink-soft); font-size:.92rem; line-height:1.6;}
-  .lr-qsub.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.1rem; color:var(--ink);}
+  .lr-qsub.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.1rem;
+               color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
   .lr-split{ margin-top:11px; padding:14px; border-radius:11px; background:var(--paper);
              border:1px solid var(--line); display:flex; flex-wrap:wrap; gap:7px;
              align-items:center; justify-content:center;}
-  .lr-tok{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.1rem;}
+  .lr-tok{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.1rem;
+            color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
   .lr-plus{ color:var(--ink-soft); font-size:.8rem;}
   .lr-blank{ display:inline-grid; place-items:center; min-width:52px; padding:2px 12px;
              border-radius:8px; background:var(--saffron-soft); color:var(--saffron-dark);
@@ -939,7 +942,7 @@ __FONTS__
   .lr-opt:disabled{ cursor:default;}
   .lr-opt .ol{ width:100%; font-size:.96rem; line-height:1.5; color:var(--ink);}
   .lr-opt .ol.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.04rem;
-                  line-height:1.85;}
+                  line-height:1.85; color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
   /* the verse number under an option is a NUMBER — saffron, like every other
      verse number in the app */
   .lr-opt .os{ font-family:system-ui,sans-serif; font-size:.74rem; font-weight:700;
@@ -970,21 +973,29 @@ __FONTS__
   .lr-chips{ display:flex; flex-wrap:wrap; gap:8px;}
   .lr-chip2{ padding:11px 15px; border-radius:12px; background:var(--paper);
              border:1px solid var(--line); border-left:2px solid var(--saffron);
-             cursor:pointer; font-family:inherit;
-             font-size:.87rem; text-align:left; max-width:100%; transition:.15s;}
+             cursor:pointer; font-family:inherit; color:var(--ink);
+             font-size:.87rem; text-align:left; max-width:100%; transition:.15s;
+             min-height:44px;}
   .lr-chip2:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
+  .lr-chip2.dv:hover:not(:disabled){ -webkit-text-fill-color:var(--teal-mid); color:var(--teal-mid);}
   .lr-chip2.used{ opacity:.3; cursor:default; border-left-color:var(--teal);}
   /* Quarter chips carry Devanagari and need the Sanskrit face at a readable
      size — the Latin default renders the conjuncts too small to compare. */
   .lr-chip2.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem;
-                line-height:1.75;}
+                line-height:1.75; background:var(--cream); color:var(--teal-mid); }
+  /* iOS paints <button> text in black/system-blue and ignores color on the
+     button itself. The letters live in an inner span so WebKit has to honour them.
+     --teal-mid (not --teal): #1A5648 on white reads as black on a phone. */
+  .lr-chip2 .lr-t{ color:inherit; -webkit-text-fill-color:currentColor; }
+  .lr-chip2.dv .lr-t{ color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid); }
   .lr-chip2.shake{ animation:lrshk .34s; border-color:var(--saffron-dark);}
   @keyframes lrshk{ 0%,100%{transform:none} 22%{transform:translateX(-6px)} 66%{transform:translateX(6px)} }
   .lr-slots{ display:flex; flex-direction:column; gap:6px; margin-bottom:13px;}
   .lr-slot{ padding:10px 13px; border-radius:12px; background:var(--teal-soft);
             border:1px solid var(--teal); border-left:2px solid var(--teal);
             font-size:.87rem;}
-  .lr-slot.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.02rem;}
+  .lr-slot.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.02rem;
+               color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
 
   .lr-fb{ margin-top:14px;}
   .lr-fb .good{ color:var(--teal); font-weight:700; font-size:.92rem;}
@@ -1007,6 +1018,8 @@ __FONTS__
     .lr-words{ grid-template-columns:repeat(auto-fill,minmax(124px,1fr));}
     .lr-nav .lr-cta,.lr-nav .lr-ghost{ flex:1;}
     .lr-hint{ flex:1 0 100%; order:3;}
+    .lr-chips{ flex-direction:column; }
+    .lr-chip2{ width:100%; }
   }
 
   /* Owner 2026-08-30, second pass: every chooser in the app speaks ONE chip
@@ -1323,7 +1336,10 @@ __FONTS__
   @media (prefers-reduced-motion: reduce){
     *, *::before, *::after{ animation:none !important; transition:none !important; }
   }
-  input, button, select, textarea{ font-family:inherit; }
+  /* iOS Safari paints a naked <button> in system blue (#007AFF),
+     ignoring the page ink. Inherit so Play chips, Learn quarters and
+     every other unstyled control follow the theme. */
+  input, button, select, textarea{ font-family:inherit; color:inherit; -webkit-appearance:none; appearance:none; }
   /* iOS zooms any input whose font-size is < 16px on focus */
   .toolbar input[type=search]{ font-size:16px; }
   .modal, .wrap{ -webkit-overflow-scrolling:touch; }
@@ -1369,11 +1385,14 @@ __FONTS__
     header{ padding:12px 14px calc(10px + env(safe-area-inset-bottom,0px));
             padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px));
             padding-top:calc(12px + env(safe-area-inset-top,0px)); }
-    .header-inner{ gap:10px; }
-    .header-inner .om{ font-size:1.5rem; }
-    .header-inner h1{ font-size:1.05rem; line-height:1.3; }
-    #appSub{ display:none; }
-    .header-inner .tag{ display:none; }
+    .header-inner{ gap:8px 12px; align-items:flex-start; }
+    .header-inner .om{ font-size:1.5rem; line-height:1.2; padding-top:2px; }
+    .header-inner > div:first-of-type{ flex:1 1 0; min-width:0; }
+    .header-inner h1{ font-size:1.12rem; line-height:1.35; white-space:normal; }
+    #appSub{ display:block; font-size:.72rem !important; line-height:1.45;
+             margin-top:4px; color:var(--hdr-sub); }
+    .header-inner .tag{ display:block; width:100%; margin-left:0; text-align:left;
+                        font-size:.78rem; order:3; }
     .langbar{ width:100%; gap:8px; margin-left:0; }
     .lang-btn{ flex:1; padding:9px 6px; font-size:.82rem; min-height:40px; }
     .mode-box{ padding:12px 14px; }
@@ -2426,7 +2445,7 @@ function lrFreePaint(){
           `<span class="lr-slot dv" lang="sa">${numL(k+1)}. ${esc(FP.order[ix].d)}</span>`).join('')}</div>
         <div class="lr-chips" id="fpChips">${(FP.deal||FP.order.map((_,i)=>i)).map(ix=>
           FP.picked.indexOf(ix) >= 0 ? '' :
-          `<button class="lr-chip2 dv" lang="sa" onclick="lrFreeTap(${ix})">${esc(FP.order[ix].d)}</button>`
+          `<button class="lr-chip2 dv" lang="sa" onclick="lrFreeTap(${ix})"><span class="lr-t">${esc(FP.order[ix].d)}</span></button>`
         ).join('')}</div>
         <div class="lr-fb" id="fpFb">${done
           ? `<div class="good">${esc(L('learn_thread_ok'))}</div>
@@ -2623,7 +2642,7 @@ function lrPaint(){
     : `<div class="lr-ask">${it.ask}</div>
        <div class="lr-slots" id="lrSlots"></div>
        <div class="lr-chips">${lrShuffle(it.chips).map(c=>`
-         <button class="lr-chip2${c.deva?' dv':''}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})">${esc(c.label)}</button>`).join('')}</div>`;
+         <button class="lr-chip2${c.deva?' dv':''}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})"><span class="lr-t">${esc(c.label)}</span></button>`).join('')}</div>`;
   view.innerHTML = `<div class="lrn fade-in">${head}
     <div class="lr-qbox">${body}<div class="lr-fb" id="lrFb"></div></div>
     </div>` + (LQback
