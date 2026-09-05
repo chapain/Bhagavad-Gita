@@ -183,7 +183,9 @@
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
   .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--saffron);}
   .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem;}
-  .header-inner .tag{ display:none; }
+  .hdr-copy{ flex:1 1 200px; min-width:0; }
+  .header-inner .tag{ display:block; color:var(--hdr-sub); font-size:.82rem;
+                      margin:4px 0 0; text-align:left; }
   .langbar{ display:flex; gap:8px; margin-left:auto; align-items:center;}
   /* iOS-style segmented control: one translucent track, the active language
      raised as a neutral segment — chrome stays quiet, no orange in the header */
@@ -897,13 +899,12 @@
     header{ padding:12px 14px calc(10px + env(safe-area-inset-bottom,0px));
             padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px));
             padding-top:calc(12px + env(safe-area-inset-top,0px)); }
-    .header-inner{ gap:8px 12px; align-items:flex-start; }
+    .header-inner{ align-items:flex-start; }
     .header-inner .om{ font-size:1.5rem; line-height:1.2; padding-top:2px; }
-    .header-inner > div:first-of-type{ flex:1 1 0; min-width:0; }
+    .hdr-copy{ flex:1 1 0; min-width:0; }
     .header-inner h1{ font-size:1.12rem; line-height:1.35; white-space:normal; }
-    #appSub{ display:none; }
-    .header-inner .tag{ display:block; flex:1 0 100%; margin:0; text-align:left;
-                        font-size:.78rem; color:var(--hdr-sub); }
+    #appSub{ display:none !important; }
+    .header-inner .tag{ display:block; margin-top:4px; font-size:.78rem; }
     .langbar{ width:100%; gap:8px; margin-left:0; }
     .lang-btn{ flex:1; padding:9px 6px; font-size:.82rem; min-height:40px; }
     .mode-box{ padding:12px 14px; }
@@ -1040,11 +1041,11 @@
 <header>
   <div class="header-inner">
     <span class="om">ॐ</span>
-    <div>
+    <div class="hdr-copy">
       <h1 id="appTitle">Bhagavad Gita — an Interactive Study</h1>
       <div id="appSub" style="font-size:.82rem; color:var(--hdr-sub);">श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 pādas</div>
+      <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     </div>
-    <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     <div class="langbar" id="langbar">
       <div class="seg">
         <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
