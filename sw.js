@@ -2,7 +2,7 @@
    Strategy: cache-first for the shell (the app is one static file and never
    changes between deploys), with a network revalidation for navigations so a
    new deploy is picked up on the next visit. */
-const CACHE = 'gita-1a7128ac7543';
+const CACHE = 'gita-83d67b8cc1b9';
 /* chapter.css is precached even though the app itself never loads it: a reader
    who arrives on a /chapter/N/ landing page and later opens it offline would
    otherwise get an unstyled wall of text, while the manifest and README both
