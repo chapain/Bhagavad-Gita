@@ -183,7 +183,7 @@
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
   .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--saffron);}
   .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem;}
-  .header-inner .tag{ color:var(--hdr-sub); font-size:.9rem; margin-left:auto; text-align:right;}
+  .header-inner .tag{ display:none; }
   .langbar{ display:flex; gap:8px; margin-left:auto; align-items:center;}
   /* iOS-style segmented control: one translucent track, the active language
      raised as a neutral segment — chrome stays quiet, no orange in the header */
@@ -903,8 +903,7 @@
     .header-inner h1{ font-size:1.12rem; line-height:1.35; white-space:normal; }
     #appSub{ display:block; font-size:.72rem !important; line-height:1.45;
              margin-top:4px; color:var(--hdr-sub); }
-    .header-inner .tag{ display:block; width:100%; margin-left:0; text-align:left;
-                        font-size:.78rem; order:3; }
+    .header-inner .tag{ display:none; }
     .langbar{ width:100%; gap:8px; margin-left:0; }
     .lang-btn{ flex:1; padding:9px 6px; font-size:.82rem; min-height:40px; }
     .mode-box{ padding:12px 14px; }
