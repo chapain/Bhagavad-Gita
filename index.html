@@ -482,8 +482,9 @@
   .lr-chips{ display:flex; flex-wrap:wrap; gap:8px;}
   .lr-chip2{ padding:11px 15px; border-radius:12px; background:var(--paper);
              border:1px solid var(--line); border-left:2px solid var(--saffron);
-             cursor:pointer; font-family:inherit;
-             font-size:.87rem; text-align:left; max-width:100%; transition:.15s;}
+             cursor:pointer; font-family:inherit; color:var(--ink);
+             font-size:.87rem; text-align:left; max-width:100%; transition:.15s;
+             min-height:44px;}
   .lr-chip2:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
   .lr-chip2.used{ opacity:.3; cursor:default; border-left-color:var(--teal);}
   /* Quarter chips carry Devanagari and need the Sanskrit face at a readable
@@ -519,6 +520,8 @@
     .lr-words{ grid-template-columns:repeat(auto-fill,minmax(124px,1fr));}
     .lr-nav .lr-cta,.lr-nav .lr-ghost{ flex:1;}
     .lr-hint{ flex:1 0 100%; order:3;}
+    .lr-chips{ flex-direction:column; }
+    .lr-chip2{ width:100%; }
   }
 
   /* Owner 2026-08-30, second pass: every chooser in the app speaks ONE chip
@@ -835,7 +838,10 @@
   @media (prefers-reduced-motion: reduce){
     *, *::before, *::after{ animation:none !important; transition:none !important; }
   }
-  input, button, select, textarea{ font-family:inherit; }
+  /* iOS Safari paints a naked <button> in system blue (#007AFF),
+     ignoring the page ink. Inherit so Play chips, Learn quarters and
+     every other unstyled control follow the theme. */
+  input, button, select, textarea{ font-family:inherit; color:inherit; -webkit-appearance:none; appearance:none; }
   /* iOS zooms any input whose font-size is < 16px on focus */
   .toolbar input[type=search]{ font-size:16px; }
   .modal, .wrap{ -webkit-overflow-scrolling:touch; }
