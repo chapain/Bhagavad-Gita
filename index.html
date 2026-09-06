@@ -547,14 +547,17 @@
      door warming to saffron-dark. The segments ARE crumbs now; the paper
      track retired because the pills carry their own round boundary. */
   .mode-seg{ display:flex; gap:8px; flex-wrap:wrap; max-width:100%; }
-  .mode-seg .ms-btn{ background:var(--saffron-soft); border:none; color:var(--saffron-dark);
+  /* Same metal as .wc-chip: paper doors, one soft-saffron “you are here”.
+     Solid gold fill was a second, louder crumb language on the same page. */
+  .mode-seg .ms-btn{ background:var(--paper); color:var(--ink-soft); border:1px solid var(--line);
              border-radius:999px; padding:7px 16px; cursor:pointer; font-size:.86rem;
-             font-weight:700; font-family:inherit; transition:color .15s, background-color .15s; }
-  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-dark);
-             color:var(--on-saffron); outline:none; }
-  .mode-seg .ms-btn.on{ background:var(--saffron); color:var(--on-saffron);
-             box-shadow:0 1px 3px rgba(var(--shadow),.25); }
-  .mode-seg .ms-btn.on:hover{ background:var(--saffron); color:var(--on-saffron); }
+             font-weight:700; font-family:inherit; line-height:1.4;
+             transition:background-color .15s, color .15s, border-color .15s; }
+  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-soft);
+             color:var(--saffron-dark); border-color:var(--saffron-soft); outline:none; }
+  .mode-seg .ms-btn.on{ background:var(--saffron-soft); color:var(--saffron-dark);
+             border-color:var(--saffron-soft); box-shadow:none; }
+  .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-dark); }
   /* purana chapter view: clean hairline cards; saffron only for numbers */
   .th-flow .theme{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
                    padding:16px 18px; margin:0 0 14px; cursor:pointer; transition:border-color .15s; }
@@ -603,6 +606,12 @@
   .mini .padas, .w-day .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
   .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-dark); font-size:.82rem; font-style:italic; margin-bottom:2px;}
   .mini .padas .gline, .w-day .padas .gline{ display:block; line-height:1.6;}
+  .mini .padas .giast, .w-day .padas .giast, .res-deva .giast{
+    display:block; font-family:Georgia,serif; font-style:italic; font-size:.82rem;
+    color:var(--ink-soft); line-height:1.45; margin:0 0 4px; }
+  .mini .padas .spk-iast, .w-day .padas .spk-iast{
+    display:block; font-family:Georgia,serif; font-style:italic; font-size:.78rem;
+    color:var(--ink-soft); margin:0 0 4px; }
   .mini .padas .gp, .w-day .padas .gp{ display:inline;}
   .mini .vhint, .w-day .vhint{ color:var(--ink-soft); font-size:.78rem; font-style:italic; line-height:1.4; margin-top:6px;}
   .share-panel{ display:none; flex-direction:column; align-items:flex-start; gap:8px; margin:10px 0 0;
@@ -652,6 +661,9 @@
   .rd-deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
             font-size:1.12rem; line-height:1.85; margin-bottom:5px;}
   .rd-tr{ color:var(--ink-soft); font-size:.95rem; line-height:1.6;}
+  .rd-iast{ font-family:Georgia,serif; font-style:italic; font-size:.88rem;
+            color:var(--ink-soft); line-height:1.45; margin:0 0 6px; font-weight:400; }
+  .rd-spk .rd-iast{ display:inline; margin:0 0 0 8px; font-size:.82rem; }
   /* quiet labels name each translation, so the two voices never blur */
   .rd-lb{ color:var(--ink-soft); font-size:.74rem; font-weight:700; letter-spacing:.05em;
           text-transform:uppercase; margin:8px 0 2px; opacity:.8; }
@@ -2452,12 +2464,13 @@ function showRead(ci, mode){
     for(const x of sv.lines){
       if(x.k === 's'){
         const name = x.d.replace(/।\s*$/, '');
-        if(name !== lastSpeaker){ lastSpeaker = name; inner += `<div class="rd-spk">${name}</div>`; }
+        if(name !== lastSpeaker){ lastSpeaker = name; inner += `<div class="rd-spk">${name}${x.t?` <span class="rd-iast" lang="sa-Latn">${esc(x.t)}</span>`:''}</div>`; }
       } else {
         // the verse number belongs at the end of the second line, between the
         // daṇḍas, as printed editions set it
         const tail = li ? `॥ <span class="rd-n">${esc(fmtNL(sv.n))}</span> ॥` : '।';
         inner += `<div class="gline">${x.d}${tail}</div>`;
+        if(x.t) inner += `<div class="rd-iast" lang="sa-Latn">${esc(x.t)}</div>`;
         li++;
       }
     }
@@ -2498,11 +2511,16 @@ function padaBlockDeva(s, withNum){
   let html = '', li = 0;
   for(let i = 0; i < ls.length; i++){
     const it = ls[i];
-    if(it.k === 's'){ html += `<span class="spk">${it.d}</span>`; continue; }
+    if(it.k === 's'){
+      html += `<span class="spk">${it.d}</span>`;
+      if(it.t) html += `<span class="spk-iast" lang="sa-Latn">${esc(it.t)}</span>`;
+      continue;
+    }
     const tail = li
       ? (withNum && i === last ? `॥ <span class="gl-n">${esc(fmtNL(s.n))}</span> ॥` : '॥')
       : '।';
     html += `<div class="gline">${it.d}${tail}</div>`;
+    if(it.t) html += `<div class="giast" lang="sa-Latn">${esc(it.t)}</div>`;
     li++;
   }
   return html;
