@@ -17,11 +17,13 @@ body{ margin:0; background:var(--paper); color:var(--ink);
 main{ max-width:680px; margin:0 auto; padding:26px 20px 10px; }
 .crumb{ font-size:.85rem; color:var(--ink-soft); margin:0 0 18px; }
 .crumb a{ color:var(--accent); text-decoration:none; }
-h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent); }
+h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent);
+    width:fit-content; max-width:100%; padding-bottom:4px;
+    border-bottom:1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
 .deva{ font-family:"Noto Serif Devanagari",serif; font-size:1.25rem;
-       margin:2px 0 16px; color:var(--accent); }
-.deva::after{ content:""; display:block; width:2.4rem; height:1px;
-              background:var(--accent); opacity:.38; margin:8px 0 0; }
+       margin:2px 0 16px; color:var(--accent); width:fit-content; max-width:100%;
+       border-bottom:1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+       padding-bottom:4px; }
 .blurb{ margin:0 0 14px; }
 .blurb span{ display:block; font-size:.95rem; color:var(--ink-soft); margin-top:4px; }
 .verse{ margin:18px 0; padding:16px 18px; background:var(--card);
