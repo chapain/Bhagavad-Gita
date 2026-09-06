@@ -2400,7 +2400,7 @@ function showThemes(ci){
             <h3>${esc(T(p.titles))}</h3>
             <p>${esc(T(p.descs))}</p></div>`).join('');
         return `<div class="theme" role="button" tabindex="0" onclick="showVerses(${ci},${ti})">
-          <h3>${esc(T(t.titles))}<span class="rng">${fmtRangeL(t.range)}</span></h3>
+          <h3>${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></h3>
           <p class="tdesc">${esc(T(t.descs))}</p>
           <div class="vcards">${cards}</div>
         </div>`; }).join('')}
@@ -2517,7 +2517,7 @@ function showVerses(ci,ti){
          page itself, so the reader arrived at a description with no subject.
          Same shape as the learn path's theme screen: title, then range, then
          the description. -->
-    <div class="view-title fade-in">${esc(T(t.titles))}<span class="rng">${fmtRangeL(t.range)}</span></div>
+    <div class="view-title fade-in">${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></div>
     <div class="view-sub fade-in">${esc(T(t.descs))}</div>
     <div class="view-sub fade-in">${numL(vCount(t))} ${vCount(t)===1?L('verse'):L('verses')}. ${L('click_hint')}.</div>
     ${blocks}` + backFoot(`showThemes(${ci})`, L('back_themes'));
