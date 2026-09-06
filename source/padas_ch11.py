@@ -28,6 +28,7 @@ printed verbatim from ch11.json.
 """
 
 GITA_CH11_PADAS = {
+
 "11.01": [
     ("s", "अर्जुन उवाच।", "arjuna uvāca"),
     ("p", "मदनुग्रहाय परमं", "madanugrahāya paramaṃ", 9),
@@ -51,7 +52,6 @@ GITA_CH11_PADAS = {
 ],
 
 "11.04": [
-    ("s", "श्रीभगवानुवाच।", "śrībhagavānuvāca"),
     ("p", "मन्यसे यदि तच्छक्यं", "manyase yadi tacchakyaṃ", 8),
     ("p", "मया द्रष्टुमिति प्रभो", "mayā draṣṭumiti prabho", 8),
     ("p", "योगेश्वर ततो मे त्वं", "yogeśvara tato me tvaṃ", 8),
@@ -59,7 +59,7 @@ GITA_CH11_PADAS = {
 ],
 
 "11.05": [
-    ("s", "सञ्जय उवाच।", "sañjaya uvāca"),
+    ("s", "श्रीभगवानुवाच।", "śrībhagavānuvāca"),
     ("p", "पश्य मे पार्थ रूपाणि", "paśya me pārtha rūpāṇi", 8),
     ("p", "शतशोऽथ सहस्रशः", "śataśo’tha sahasraśaḥ", 8),
     ("p", "नानाविधानि दिव्यानि", "nānāvidhāni divyāni", 8),
@@ -81,7 +81,6 @@ GITA_CH11_PADAS = {
 ],
 
 "11.08": [
-    ("s", "श्रीभगवानुवाच।", "śrībhagavānuvāca"),
     ("p", "न तु मां शक्यसे द्रष्टुम्", "na tu māṃ śakyase draṣṭum", 8),
     ("p", "अनेनैव स्वचक्षुषा", "anenaiva svacakṣuṣā", 8),
     ("p", "दिव्यं ददामि ते चक्षुः", "divyaṃ dadāmi te cakṣuḥ", 8),
@@ -89,7 +88,7 @@ GITA_CH11_PADAS = {
 ],
 
 "11.09": [
-    ("s", "अर्जुन उवाच।", "arjuna uvāca"),
+    ("s", "सञ्जय उवाच।", "sañjaya uvāca"),
     ("p", "एवमुक्त्वा ततो राजन्", "evamuktvā tato rājan", 8),
     ("p", "महायोगेश्वरो हरिः", "mahāyogeśvaro hariḥ", 8),
     ("p", "दर्शयामास पार्थाय", "darśayāmāsa pārthāya", 8),
@@ -132,7 +131,7 @@ GITA_CH11_PADAS = {
 ],
 
 "11.15": [
-    ("s", "सञ्जय उवाच।", "sañjaya uvāca"),
+    ("s", "अर्जुन उवाच।", "arjuna uvāca"),
     ("p", "पश्यामि देवांस्तव देव देहे", "paśyāmi devāṃstava deva dehe", 11),
     ("p", "सर्वांस्तथा भूतविशेषसङ्घान्", "sarvāṃstathā bhūtaviśeṣasaṅghān", 11),
     ("p", "ब्रह्माणमीशं कमलासनस्थम्", "brahmāṇamīśaṃ kamalāsanastham", 11),
@@ -252,6 +251,7 @@ GITA_CH11_PADAS = {
 ],
 
 "11.32": [
+    ("s", "श्रीभगवानुवाच।", "śrībhagavānuvāca"),
     ("p", "कालोऽस्मि लोकक्षयकृत्प्रवृद्धो", "kālo’smi lokakṣayakṛtpravṛddho", 11),
     ("p", "लोकान्समाहर्तुमिह प्रवृत्तः", "lokānsamāhartumiha pravṛttaḥ", 11),
     ("p", "ऋतेऽपि त्वा न भविष्यन्ति सर्वे", "ṛte’pi tvā na bhaviṣyanti sarve", 11),
@@ -273,6 +273,7 @@ GITA_CH11_PADAS = {
 ],
 
 "11.35": [
+    ("s", "सञ्जय उवाच।", "sañjaya uvāca"),
     ("p", "एतच्छ्रुत्वा वचनं केशवस्य", "etacchrutvā vacanaṃ keśavasya", 11),
     ("p", "कृताञ्जलिर्वेपमानः किरीटी", "kṛtāñjalirvepamānaḥ kirīṭī", 11),
     ("p", "नमस्कृत्वा भूय एवाह कृष्णं", "namaskṛtvā bhūya evāha kṛṣṇaṃ", 11),
@@ -396,6 +397,7 @@ GITA_CH11_PADAS = {
 ],
 
 "11.52": [
+    ("s", "श्रीभगवानुवाच।", "śrībhagavānuvāca"),
     ("p", "सुदुर्दर्शमिदं रूपं", "sudurdarśamidaṃ rūpaṃ", 8),
     ("p", "दृष्टवानसि यन्मम", "dṛṣṭavānasi yanmama", 8),
     ("p", "देवा अप्यस्य रूपस्य", "devā apyasya rūpasya", 8),
@@ -417,7 +419,6 @@ GITA_CH11_PADAS = {
 ],
 
 "11.55": [
-    ("s", "श्रीभगवानुवाच।", "śrībhagavānuvāca"),
     ("p", "मत्कर्मकृन्मत्परमो", "matkarmakṛnmatparamo", 8),
     ("p", "मद्भक्तः सङ्गवर्जितः", "madbhaktaḥ saṅgavarjitaḥ", 8),
     ("p", "निर्वैरः सर्वभूतेषु", "nirvairaḥ sarvabhūteṣu", 8),

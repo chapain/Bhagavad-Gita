@@ -114,7 +114,7 @@ GITA_CH11_WORDS = {
         ["द्रष्टुम्", "draṣṭum", "to see"],
         ["इच्छसि", "icchasi", "you wish"]]},
 
-8: {"s": [["श्रीभगवान्", "śrībhagavān", "the Blessed Lord"], ["उवाच", "uvāca", "said"]],
+8: {"s": [],
     0: [["न", "na", "not"],
         ["तु", "tu", "but"],
         ["माम्", "mām", "me"],
