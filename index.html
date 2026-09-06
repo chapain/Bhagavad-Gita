@@ -1859,13 +1859,13 @@ function lrDrill(ci, ti, vs){
        verse, and picking between four fragments is a shallower task than
        picking between four ślokas (owner 2026-09-01). Full verses are also
        unique book-wide, where four pairs share a first pāda. */
-    const _full = v => v.d;
+    const _full = v => slokaDeva(v);
     const mine = _full(s);
     const wrong = lrSample(others.filter(o=>o.n!==s.n && _full(o)!==mine), 3);
     items.push({kind:'pick',
       ask: esc(L('learn_which')) + `<div class="lr-qsub">${esc(T(s.paras))}</div>`,
       opts: lrShuffle([s].concat(wrong)).map(o=>
-        ({label: _full(o), iast:o.t, sub: fmtNL(o.n), deva:1, ok:o===s})),
+        ({label: _full(o), iast:slokaIast(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`});
 
     /* Cloze on the AUTHORED WORD-SPLIT, never by blanking the recited line.
@@ -1942,7 +1942,7 @@ function lrDrill(ci, ti, vs){
     const qq = (qv.flow||[]).filter(f=>f.k==='p');
     if(qq.length > 2) items.push({kind:'order',
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(qv.n)})),
-      chips: qq.map((q,i)=>({id:i, label:q.d, iast:q.t, deva:1})),
+      chips: qq.map((q,i)=>({id:i, label:q.d + pDanda(i, qq.length), iast:(q.t||'') + pDandaLatn(i, qq.length), deva:1})),
       answer: qq.map((_,i)=>i)});
   });
 
@@ -2104,10 +2104,23 @@ function plPool(){
    700), whereas four PAIRS share a first pāda — 3.35/18.47, 6.15/6.28,
    9.34/18.65, 16.07/18.30 — so the identical-option guard that case needed is
    no longer required. It stays as an assertion in the health checks. */
-const plFull = v => v.d;
+function hemiSplit(s){
+  return String(s||'').split(/[।|]/).map(x => x.replace(/[॥\|\s]+$/g,'').trim()).filter(Boolean);
+}
+function slokaDeva(s){
+  const h = hemiSplit(s && s.d);
+  if(h.length < 2) return (s && s.d) || '';
+  return h.map((p,i) => p + ((i % 2 === 0 && i < h.length - 1) ? ' ।' : ' ॥')).join(' ');
+}
+function slokaIast(s){
+  const h = hemiSplit(s && s.t);
+  if(h.length < 2) return (s && s.t) || '';
+  return h.map((p,i) => p + ((i % 2 === 0 && i < h.length - 1) ? ' |' : ' ||')).join(' ');
+}
+const plFull = v => slokaDeva(v);
 function saAsk(s){
-  return `<div class="lr-qsub dv" lang="sa">${s.d}`
-    + (s.t ? `<div class="giast" lang="sa-Latn">${esc(s.t)}</div>` : '')
+  return `<div class="lr-qsub dv" lang="sa">${esc(slokaDeva(s))}`
+    + (s.t ? `<div class="giast" lang="sa-Latn">${esc(slokaIast(s))}</div>` : '')
     + `</div>`;
 }
 
@@ -2167,7 +2180,7 @@ function plNext(keep){
     PL.q = {n:s.n, ord:four2.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(L('play_q2')) + saAsk(s),
-      opts: four2.map(o=>({label:plFull(o), iast:o.t, deva:1, ok:o===nxt})),
+      opts: four2.map(o=>({label:plFull(o), iast:slokaIast(o), deva:1, ok:o===nxt})),
       note: `${esc(fmtNL(s.n))} → ${esc(fmtNL(nxt.n))} — ${esc(T(nxt.lits))}`};
 
   }else{
@@ -2175,7 +2188,7 @@ function plNext(keep){
     PL.q = {n:s.n, ord:[]};
     item = {kind:'order',
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(s.n)})),
-      chips: qq.map((q,i)=>({id:i, label:q.d, iast:q.t, deva:1})),
+      chips: qq.map((q,i)=>({id:i, label:q.d + pDanda(i, qq.length), iast:(q.t||'') + pDandaLatn(i, qq.length), deva:1})),
       answer: qq.map((_,i)=>i)};
   }
   /* A one-item run: when it finishes, deal another. That is the endless game. */
@@ -2587,8 +2600,12 @@ function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {
 
 // pāda display: Devanagari block with pādas on separate lines (speakers inline)
 function pDanda(i, total){
-  if(total === 2) return (i===0) ? '।' : '॥';
-  return (i%4===1)?'।':((i%4===3)?'॥':'');
+  if(total === 2) return (i===0) ? ' ।' : ' ॥';
+  return (i%4===1)?' ।':((i%4===3)?' ॥':'');
+}
+function pDandaLatn(i, total){
+  if(total === 2) return (i===0) ? ' |' : ' ||';
+  return (i%4===1)?' |':((i%4===3)?' ||':'');
 }
 /* The running verse is rendered verbatim from the source JSON.
    v.lines is the list of `।`-separated segments as they appear in
@@ -2784,7 +2801,7 @@ function fillModal(){
         <span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span>
       </div>
       <div class="pb-deva">${pad.d}${pDanda(idx,total)}</div>
-      <div class="pb-iast" lang="sa-Latn">${esc(pad.t)}</div>
+      <div class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</div>
       <div class="words">${wordsHtml(pad)}</div>
     </div>`;
   }
