@@ -388,6 +388,10 @@
               font-size:1.12rem; line-height:1.7; color:var(--teal-mid);
               -webkit-text-fill-color:var(--teal-mid);}
   .lr-qh .ia{ display:block; font-size:.78rem; font-style:italic; color:var(--ink-soft); margin-top:2px;}
+  .lr-opt .giast, .lr-chip2 .giast, .lr-slot .giast, .lr-qsub .giast{
+    display:block; font-family:Georgia,serif; font-size:.8rem; font-style:italic;
+    font-weight:400; color:var(--ink-soft); margin-top:4px; line-height:1.4; }
+  .lr-chip2{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
   .lr-qh .chev{ color:var(--ink-soft); transition:transform .22s;}
   .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron);}
   /* [hidden] is only display:none at the UA default, so ANY explicit display
@@ -1305,7 +1309,7 @@ function doSearch(){
   const q = ($('#searchInput').value || '').trim();
   if(!q){ clearSearch(); return; }
   rememberOrigin();
-  state.view = 'search'; state.chapter = null; state.theme = null; renderCrumbs();
+  state.view = 'search'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
   const nq = normTxt(q);
   /* Accept whatever separator the reader's keyboard gives. On a Devanagari
      layout the danda । sits where the full stop is, so १।१ is the natural way to
@@ -1461,7 +1465,7 @@ function goToOrigin(){
 function showFavorites(){
   if(!allChReady()){ loadAllChapters().then(showFavorites); return; }
   rememberOrigin();
-  state.view = 'favorites'; state.chapter = null; state.theme = null; renderCrumbs();
+  state.view = 'favorites'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
   const saved = FAV.map(verseLoc).filter(Boolean);
   FAV_LIST = saved;
   if(saved.length === 0){
@@ -1635,7 +1639,7 @@ function thVerses(t){ const out=[]; t.parts.forEach(p=>p.sutras.forEach(s=>out.p
 function showLearn(ci){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showLearn(ci)); return; }
   rememberOrigin();
-  state.view='learn'; state.chapter=ci; state.lrAt = null;
+  state.view='learn'; state.chapter=ci; persistView(); state.lrAt = null;
   state.section = state.section || Math.ceil(DATA[ci].num/6);
   state.theme=null; renderCrumbs();
   const ch = DATA[ci], p = lrGet(ch.num);
@@ -1704,7 +1708,7 @@ function lrSkip(ci){ const n=DATA[ci].num, p=lrGet(n); p.story=1; lrPut(n,p); sh
 function lrPlan(ch){ return ch.themes.length >= 10 ? [0,1,2,3] : [0,3]; }
 
 function lrStory(ci, step){
-  state.view='learn'; state.chapter=ci; state.theme=null;
+  state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
   state.lrAt = {kind:'story', step:step};
   const ch = DATA[ci], th = ch.themes, plan = lrPlan(ch);
   const k = plan.indexOf(step), n = plan.length;
@@ -1771,7 +1775,7 @@ function lrStoryDone(ci){
 
 /* ---------------- stage 2: the verses of one theme ---------------- */
 function lrTheme(ci, ti, k){
-  state.view='learn'; state.chapter=ci; state.theme=ti;
+  state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
   /* Remember the sub-view. A language switch cannot re-render a half-answered
      question — its options were built from the old language's strings — but it
      CAN put the reader back at the top of the same theme rather than at the
@@ -1861,7 +1865,7 @@ function lrDrill(ci, ti, vs){
     items.push({kind:'pick',
       ask: esc(L('learn_which')) + `<div class="lr-qsub">${esc(T(s.paras))}</div>`,
       opts: lrShuffle([s].concat(wrong)).map(o=>
-        ({label: _full(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
+        ({label: _full(o), iast:o.t, sub: fmtNL(o.n), deva:1, ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`});
 
     /* Cloze on the AUTHORED WORD-SPLIT, never by blanking the recited line.
@@ -1916,7 +1920,7 @@ function lrDrill(ci, ti, vs){
                 tested (owner caught both leaks, 2026-09-01). */
              + `<div class="lr-split" lang="sa">${split}</div>`,
         opts: lrShuffle([c.w].concat(dw)).map(function(o){
-                return {label:o[0], sub:o[1], deva:1, ok:o===c.w}; }),
+                return {label:o[0], iast:o[1], deva:1, ok:o===c.w}; }),
         note: `<b lang="sa">${esc(c.w[0])}</b>${state.lang==='en' ? ` (${esc(c.w[1])})` : ''} — ${esc(c.w[2])}`});
     }
   });
@@ -1938,7 +1942,7 @@ function lrDrill(ci, ti, vs){
     const qq = (qv.flow||[]).filter(f=>f.k==='p');
     if(qq.length > 2) items.push({kind:'order',
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(qv.n)})),
-      chips: qq.map((q,i)=>({id:i, label:q.d, deva:1})),
+      chips: qq.map((q,i)=>({id:i, label:q.d, iast:q.t, deva:1})),
       answer: qq.map((_,i)=>i)});
   });
 
@@ -1965,7 +1969,7 @@ function lrDrill(ci, ti, vs){
    is required, and leaving costs nothing. Practice, not examination. */
 var FP = {ci:0, ti:0, v:null, order:[], deal:[], picked:[]};
 function lrFree(ci, ti){
-  state.view='learn'; state.chapter=ci; state.theme=ti;
+  state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
   state.lrAt = {kind:'theme', ti:ti};
   FP.ci = ci; FP.ti = ti;
   lrFreePick();
@@ -2057,7 +2061,7 @@ var PL = {scope:'all', ch:0, mode:0, run:0, q:null};
 function showPlay(){
   if(!allChReady()){ loadAllChapters().then(showPlay); return; }
   rememberOrigin();
-  state.view='play'; state.chapter=null; state.theme=null; renderCrumbs();
+  state.view='play'; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="lrn fade-in">
       <h2 class="view-title">${esc(L('play_title'))}</h2>
@@ -2101,6 +2105,11 @@ function plPool(){
    9.34/18.65, 16.07/18.30 — so the identical-option guard that case needed is
    no longer required. It stays as an assertion in the health checks. */
 const plFull = v => v.d;
+function saAsk(s){
+  return `<div class="lr-qsub dv" lang="sa">${s.d}`
+    + (s.t ? `<div class="giast" lang="sa-Latn">${esc(s.t)}</div>` : '')
+    + `</div>`;
+}
 
 function plNextId(n){
   const p = n.split('.');
@@ -2134,7 +2143,7 @@ function plNext(keep){
                : lrShuffle([s].concat(lrSample(distract, 3)));
     PL.q = {n:s.n, ord:four.map(o=>o.n)};
     item = {kind:'pick',
-      ask: esc(L('play_q1')) + `<div class="lr-qsub dv" lang="sa">${s.d}</div>`,
+      ask: esc(L('play_q1')) + saAsk(s),
       opts: four.map(o=>({label:sense(o), ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`};
 
@@ -2157,8 +2166,8 @@ function plNext(keep){
                 : lrShuffle([nxt].concat(lrSample(distract, 3)));
     PL.q = {n:s.n, ord:four2.map(o=>o.n)};
     item = {kind:'pick',
-      ask: esc(L('play_q2')) + `<div class="lr-qsub dv" lang="sa">${s.d}</div>`,
-      opts: four2.map(o=>({label:plFull(o), deva:1, ok:o===nxt})),
+      ask: esc(L('play_q2')) + saAsk(s),
+      opts: four2.map(o=>({label:plFull(o), iast:o.t, deva:1, ok:o===nxt})),
       note: `${esc(fmtNL(s.n))} → ${esc(fmtNL(nxt.n))} — ${esc(T(nxt.lits))}`};
 
   }else{
@@ -2166,7 +2175,7 @@ function plNext(keep){
     PL.q = {n:s.n, ord:[]};
     item = {kind:'order',
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(s.n)})),
-      chips: qq.map((q,i)=>({id:i, label:q.d, deva:1})),
+      chips: qq.map((q,i)=>({id:i, label:q.d, iast:q.t, deva:1})),
       answer: qq.map((_,i)=>i)};
   }
   /* A one-item run: when it finishes, deal another. That is the endless game. */
@@ -2214,12 +2223,13 @@ function lrPaint(){
        <div class="lr-opts">${it.opts.map((o,i)=>`
          <button class="lr-opt" onclick="lrPick(${i})">
            <span class="ol${o.deva?' dv':''}"${o.deva?' lang="sa"':''}>${o.deva?o.label:esc(o.label)}</span>
+           ${o.iast?`<span class="giast" lang="sa-Latn">${esc(o.iast)}</span>`:''}
            ${o.sub?`<span class="os">${esc(o.sub)}</span>`:''}
          </button>`).join('')}</div>`
     : `<div class="lr-ask">${it.ask}</div>
        <div class="lr-slots" id="lrSlots"></div>
        <div class="lr-chips">${lrShuffle(it.chips).map(c=>`
-         <button class="lr-chip2${c.deva?' dv':''}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})"><span class="lr-t">${esc(c.label)}</span></button>`).join('')}</div>`;
+         <button class="lr-chip2${c.deva?' dv':''}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})"><span class="lr-t">${esc(c.label)}</span>${c.iast?`<span class="giast" lang="sa-Latn">${esc(c.iast)}</span>`:''}</button>`).join('')}</div>`;
   view.innerHTML = `<div class="lrn fade-in">${head}
     <div class="lr-qbox">${body}<div class="lr-fb" id="lrFb"></div></div>
     </div>` + (LQback
@@ -2263,8 +2273,10 @@ function lrChip(el, id){
     /* carry the chip's script class through, or a Devanagari pāda drops back
        to the Latin face the moment it is placed */
     const dv = el.classList.contains('dv') ? ' dv' : '';
+    const chp = it.chips.find(c=>c.id===id);
+    const iast = (chp && chp.iast) ? `<span class="giast" lang="sa-Latn">${esc(chp.iast)}</span>` : '';
     document.getElementById('lrSlots').insertAdjacentHTML('beforeend',
-      `<span class="lr-slot${dv}"${dv?' lang="sa"':''}>${numL(LQpick.length)}. ${esc(el.textContent.trim())}</span>`);
+      `<span class="lr-slot${dv}"${dv?' lang="sa"':''}>${numL(LQpick.length)}. ${esc(chp?chp.label:el.textContent.trim())}${iast}</span>`);
     if(LQpick.length === it.answer.length){
       fb.innerHTML = `<div class="good">${esc(L('learn_thread_ok'))}</div>`;
       LQi++; setTimeout(lrPaint, 700);
@@ -2320,7 +2332,7 @@ function showChapters(section){
   if(_need.length){ Promise.all(_need.map(loadChapter)).then(()=>showChapters(section)); return; }
   /* The Three Ways is the door; there is no flat all-18 list. Every chapter
      list lives inside its way, so the niṣṭhā framing is never skipped. */
-  state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; renderCrumbs();
+  state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
   const list = DATA.filter(ch => ch.num >= (section-1)*6+1 && ch.num <= section*6);
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(section), null]])}
@@ -2356,6 +2368,30 @@ function dayVerse(){
   const dayNum = d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate();
   return VERSES[dayNum % VERSES.length];
 }
+function viewHash(){
+  if(state.view==='play') return '#play';
+  if(state.view==='favorites') return '#favorites';
+  if(state.view==='search') return '#search';
+  if(state.view==='sections') return '#ways';
+  if(state.view==='chapters' && state.section) return '#way='+state.section;
+  if(state.view==='learn' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=learn';
+  if(state.view==='themes' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=study';
+  if(state.view==='read' && state.chapter!=null)
+    return '#chapter='+(state.chapter+1)+'&tab='+(state.readMode||'full');
+  if(state.view==='verses' && state.chapter!=null && state.theme!=null)
+    return '#theme='+(state.chapter+1)+'.'+state.theme;
+  return '';
+}
+function persistView(){
+  const h = viewHash();
+  try{ sessionStorage.setItem('gita.route', h || '#'); }catch(e){}
+  const modal = document.getElementById('modalBg');
+  if(modal && modal.classList.contains('open')) return;
+  const cur = location.hash || '';
+  if(cur === h) return;
+  if(!h && !cur) return;
+  try{ history.replaceState(history.state, '', h || (location.pathname + location.search)); }catch(e){}
+}
 function goHome(){
   if($('#modalBg').classList.contains('open')) closeModal();
   $('#searchInput').value = '';
@@ -2363,7 +2399,7 @@ function goHome(){
   showWelcome();
 }
 function showWelcome(){
-  state.view='welcome'; state.chapter=null; state.theme=null; state.section=null; renderCrumbs();
+  state.view='welcome'; state.chapter=null; state.theme=null; state.section=null; persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="welcome fade-in">
       <div class="w-om">ॐ</div>
@@ -2400,7 +2436,7 @@ function sectionCard(k, chip, title, desc){
   </div>`;
 }
 function showSections(){
-  state.view='sections'; state.chapter=null; state.theme=null; state.section=null; state.shared=null; renderCrumbs();
+  state.view='sections'; state.chapter=null; state.theme=null; state.section=null; state.shared=null; persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="view-title fade-in">${esc(L('sections_title'))}</div>
     <div class="view-sub fade-in">${esc(L('sections_sub'))}</div>
@@ -2467,7 +2503,7 @@ function chTitle(ch){
 }
 function showThemes(ci){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showThemes(ci)); return; }
-  state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; renderCrumbs();
+  state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; persistView(); renderCrumbs();
   const ch = DATA[ci];
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)} · ${L('opt_study_g')}`, null]])}
@@ -2508,7 +2544,7 @@ function showRead(ci, mode){
      simply lands on 'full'. */
   if(mode === 'mula') mode = 'full';
   state.readMode = mode || state.readMode || 'full';
-  state.view='read'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; renderCrumbs();
+  state.view='read'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; persistView(); renderCrumbs();
   const ch = DATA[ci];
   const all = [];
   ch.themes.forEach((t,ti)=>t.parts.forEach(p=>p.sutras.forEach((sv,si)=>
@@ -2587,7 +2623,7 @@ function padaBlockDeva(s, withNum){
 
 function showVerses(ci,ti){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showVerses(ci,ti)); return; }
-  state.view='verses'; state.chapter=ci; state.theme=ti; renderCrumbs();
+  state.view='verses'; state.chapter=ci; state.theme=ti; persistView(); renderCrumbs();
   const ch = DATA[ci], t = ch.themes[ti];
   const blocks = t.parts.map((p,pi)=>`
     <div class="part fade-in">
@@ -2661,6 +2697,7 @@ function closeModal(){
   const wasOpen = $('#modalBg').classList.contains('open');
   $('#modalBg').classList.remove('open'); document.body.style.overflow='';
   if(wasOpen) popModalHistory();
+  persistView();
 }
 /* ---------- share a verse: native share sheet where available, else copy ---------- */
 function shareUrl(){
@@ -2935,11 +2972,45 @@ function gitaBoot(){
     var tm = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(location.hash || '');
     if (tm) { const ci = parseInt(tm[1], 10) - 1, ti = parseInt(tm[2], 10);
       loadChapter(ci+1).then(function(){ showVerses(ci, ti); }); return; }
-    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study))?$/.exec(location.hash || '');
+    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(location.hash || '');
     if(m){ const ci = parseInt(m[1], 10) - 1; const tb = m[3];
       loadChapter(ci+1).then(function(){
-        if(tb === 'study'){ showThemes(ci); } else if(tb){ showRead(ci, tb); } else { showRead(ci, 'full'); }
-      }); } else { showWelcome(); }
+        if(tb === 'study'){ showThemes(ci); }
+        else if(tb === 'learn'){ showLearn(ci); }
+        else if(tb){ showRead(ci, tb); }
+        else { showRead(ci, 'full'); }
+      }); return; }
+    var h = location.hash || '';
+    if(h === '#play'){ showPlay(); return; }
+    if(h === '#favorites'){ showFavorites(); return; }
+    if(h === '#search'){ doSearch(); return; }
+    if(h === '#ways'){ showSections(); return; }
+    var wy = /^#way=([123])$/.exec(h);
+    if(wy){ showChapters(+wy[1]); return; }
+    var stay = '';
+    try{ stay = sessionStorage.getItem('gita.route')||''; }catch(e){}
+    if(stay==='#play'){ showPlay(); return; }
+    if(stay==='#favorites'){ showFavorites(); return; }
+    if(stay==='#search'){ doSearch(); return; }
+    if(stay==='#ways'){ showSections(); return; }
+    var sw = /^#way=([123])$/.exec(stay);
+    if(sw){ showChapters(+sw[1]); return; }
+    var sm = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(stay);
+    if(sm){
+      const ci = parseInt(sm[1],10)-1, tb=sm[3];
+      loadChapter(ci+1).then(function(){
+        if(tb==='study') showThemes(ci);
+        else if(tb==='learn') showLearn(ci);
+        else if(tb) showRead(ci, tb);
+        else showRead(ci,'full');
+      }); return;
+    }
+    var st = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(stay);
+    if(st){
+      const ci=parseInt(st[1],10)-1, ti=parseInt(st[2],10);
+      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }); return;
+    }
+    showWelcome();
   })();
   var _idle = window.requestIdleCallback || function(fn){ setTimeout(fn, 1200); };
   _idle(function(){ loadAllChapters(); });
