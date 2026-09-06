@@ -219,11 +219,6 @@
   .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
             overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
   .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
-  /* Underline is the title's own width — an inline mark, not a 2.4rem tick
-     and not a full-row rule. The range sits beside it, unmarked. */
-  .vt-mark{ border-bottom:1px solid color-mix(in srgb, var(--teal) 45%, transparent);
-            padding-bottom:3px; box-decoration-break:clone;
-            -webkit-box-decoration-break:clone; }
   .view-sub{ color:var(--ink-soft); font-size:.98rem; margin-bottom:22px; max-width:880px;}
   .grid{ display:grid; gap:20px; }
   .grid.chapters{ grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); }
@@ -566,7 +561,7 @@
   .th-flow h3 .rng{ color:var(--teal); font-weight:600; font-size:.78rem; margin-left:8px; white-space:nowrap; }
   /* the same range beside a view title: it must not inherit the 1.7rem
      heading size, or the number shouts louder than the theme's name */
-  .view-title .rng{ color:var(--teal); font-weight:600; font-size:.8rem;
+  .view-title .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem;
                     margin-left:10px; white-space:nowrap; vertical-align:.32em; }
   .th-flow .tdesc{ margin:0 0 6px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
   .vcards{ margin-top:12px; display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:12px; }
@@ -582,9 +577,9 @@
   .card .go{ margin-top:10px; color:var(--teal); font-weight:700; font-size:.88rem;}
   .card .soon{ margin-top:10px; color:var(--muted); font-weight:600; font-size:.85rem; font-style:italic;}
   .part{ margin-bottom:26px;}
-  .part-head{ display:flex; align-items:baseline; gap:12px; border-bottom:3px solid var(--saffron); padding-bottom:8px; margin-bottom:14px; flex-wrap:wrap;}
+  .part-head{ display:flex; align-items:baseline; gap:12px; padding:0 0 6px; margin:18px 0 8px; flex-wrap:wrap;}
   .part-head .pnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem;}
-  .part-head .ptitle{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); font-weight:700;}
+  .part-head .ptitle{ font-family:Georgia,serif; font-size:1.05rem; color:var(--teal); font-weight:600;}
   .part-head .pdesc{ color:var(--ink-soft); font-size:.86rem; margin-left:auto;}
   .mini{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 14px; cursor:pointer;
          transition:.15s; box-shadow:0 4px 12px rgba(var(--shadow),.06);}
@@ -2384,7 +2379,7 @@ function modeSwitch(ci){
     </div>
   </div>`;
 }
-function chTitle(ch){ return `<div class="view-title fade-in"><span class="vt-mark"><span class="chdeva">${ch.deva}</span> · ${esc(T(ch.names))}</span></div>`; }
+function chTitle(ch){ return `<div class="view-title fade-in"><span class="chdeva">${ch.deva}</span> · ${esc(T(ch.names))}</div>`; }
 function showThemes(ci){
   state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; renderCrumbs();
   const ch = DATA[ci];
@@ -2522,7 +2517,7 @@ function showVerses(ci,ti){
          page itself, so the reader arrived at a description with no subject.
          Same shape as the learn path's theme screen: title, then range, then
          the description. -->
-    <div class="view-title fade-in"><span class="vt-mark">${esc(T(t.titles))}</span> <span class="rng">${fmtRangeL(t.range)}</span></div>
+    <div class="view-title fade-in">${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></div>
     <div class="view-sub fade-in">${esc(T(t.descs))}</div>
     <div class="view-sub fade-in">${numL(vCount(t))} ${vCount(t)===1?L('verse'):L('verses')}. ${L('click_hint')}.</div>
     ${blocks}` + backFoot(`showThemes(${ci})`, L('back_themes'));
