@@ -5,11 +5,11 @@
    (breadcrumb, IAST, verse description, theme range, paraphrase) fell back to
    full --ink, flattening the hierarchy on all 18 pages. Keep the two names
    identical — source/check_chapter_css.py now fails the build if they drift. */
-:root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#1A5648;
-       --saffron:#B45A24; --card:#FFFCF4; --line:#E6D9C3; }
+:root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --accent:#1A5648;
+       --saffron:#E8912C; --saffron-dark:#C97A20; --card:#FFFFFF; --line:#E7D9C2; }
 @media (prefers-color-scheme:dark){
-  :root{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8FBEB0;
-         --saffron:#DE8F52; --card:#272018; --line:#3B3227; }
+  :root{ --paper:#16120D; --ink:#E9DCC3; --ink-soft:#A79A80; --accent:#8FBEB0;
+         --saffron:#E1953A; --saffron-dark:#C8862F; --card:#201A13; --line:#382D20; }
 }
 *{ box-sizing:border-box; }
 body{ margin:0; background:var(--paper); color:var(--ink);
@@ -30,10 +30,10 @@ h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent); }
 h2{ font-size:1.05rem; margin:24px 0 10px; color:var(--accent); }
 ol.themes{ margin:0; padding-left:22px; }
 ol.themes li{ margin:6px 0; }
-ol.themes .rng{ color:var(--accent); font-weight:600; font-size:.8rem; white-space:nowrap; }
-.cta{ display:inline-block; margin:26px 0 8px; padding:13px 22px;
-      background:var(--accent); color:#FFF8EC; border-radius:12px;
-      text-decoration:none; font-weight:700; font-size:1.02rem; }
+ol.themes .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem; white-space:nowrap; }
+.cta{ display:inline-block; margin:18px 0 10px; padding:10px 22px;
+      background:var(--saffron); color:#2A2118; border-radius:999px;
+      text-decoration:none; font-weight:700; font-size:.92rem; }
 footer{ max-width:680px; margin:0 auto; padding:20px 20px 34px;
         font-size:.85rem; color:var(--ink-soft); }
 footer a{ color:var(--accent); text-decoration:none; }
@@ -41,17 +41,17 @@ ol.toc a{ color:var(--ink); text-decoration:none; border-bottom:1px dotted var(-
 section.theme{ margin:26px 0; }
 h2.th{ font-size:1.02rem; color:var(--accent); margin:20px 0 10px;
        border-bottom:1px solid var(--line); padding-bottom:6px; }
-h2.th .rng{ color:var(--accent); font-weight:600; font-size:.8rem; margin-left:8px;
+h2.th .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem; margin-left:8px;
        white-space:nowrap; }
 .v{ margin:16px 0 22px; }
 .vnum{ font-size:.78rem; font-weight:700; color:var(--saffron); letter-spacing:.04em; }
 .vnum a{ color:inherit; text-decoration:none; border-bottom:1px dotted var(--saffron); }
-.vdev{ font-family:"Noto Serif Devanagari",serif; font-size:1.14rem; line-height:2;
-       margin:2px 0 3px; }
+.vdev{ font-family:"Noto Serif Devanagari",serif; font-size:1.14rem; line-height:1.85;
+       margin:2px 0 3px; color:var(--accent); }
 .viast{ font-style:italic; color:var(--ink-soft); font-size:.85rem; margin:0 0 7px; }
 .vtr{ margin:4px 0; font-size:.95rem; }
 .vtr .para{ display:block; color:var(--ink-soft); font-size:.9rem; margin-top:2px; }
-@media (prefers-color-scheme:dark){ .cta{ color:#1F1A14; background:var(--saffron); } }
+@media (prefers-color-scheme:dark){ .cta{ color:#1A1209; background:var(--saffron); } }
 /* purana chapter page: clean hairline cards; saffron only for numbers */
 .np{ color:var(--ink-soft); font-size:.9rem; margin:0 0 6px; }
 section.theme{ background:var(--card); border:1px solid var(--line); border-radius:12px;
@@ -59,7 +59,7 @@ section.theme{ background:var(--card); border:1px solid var(--line); border-radi
 section.theme:hover{ border-color:var(--saffron); }
 .th-link{ text-decoration:none; }
 .th-link h2.th{ margin:0 0 6px; border-bottom:none; padding-bottom:0; }
-.th-link:hover h2.th{ color:var(--saffron); }
+.th-link:hover h2.th{ color:var(--accent); }
 .tdesc{ margin:0 0 6px; color:var(--ink-soft); font-size:.95rem; }
 .vrows{ margin-top:6px; }
 a.vrow{ display:block; padding:10px 8px; border-top:1px solid var(--line);
@@ -77,4 +77,4 @@ a.vrow:hover{ background:var(--paper); }
   html{ scroll-behavior:smooth; }
 }
 details{ margin:4px 0 0; }
-summary{ cursor:pointer; color:var(--saffron); font-weight:700; font-size:.88rem; }
+summary{ cursor:pointer; color:var(--saffron-dark); font-weight:600; font-size:.88rem; }
