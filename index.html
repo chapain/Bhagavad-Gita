@@ -147,8 +147,11 @@
     --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{ font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; color:var(--ink);
-        line-height:1.55; display:flex; flex-direction:column; min-height:100vh;}
+  body{ font-family:Georgia, "Noto Serif Devanagari", "Times New Roman", serif; color:var(--ink);
+        line-height:1.58; display:flex; flex-direction:column; min-height:100vh;}
+  /* Chrome stays a UI face; the scripture and its names stay serif. */
+  button, input, .seg, .lang-btn, .tool-btn, .wc-chip, .chip, .toolbar,
+  .ms-btn, .fav-btn, .lr-cta, .lr-ghost{ font-family:system-ui, -apple-system, "Segoe UI", sans-serif; }
   /* Quiet devotion (owner 2026-09-04): sandalwood on the paper, a peacock
      feather as a watermark. Opacity is the whole design — if you notice it
      first, it is too loud. pointer-events:none so it never steals a tap. */
@@ -182,7 +185,7 @@
           padding:24px 20px; }
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
   .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--saffron);}
-  .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem;}
+  .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem; color:#FFF8EC; font-weight:normal;}
   .hdr-copy{ flex:1 1 200px; min-width:0; }
   .header-inner .tag{ display:block; color:var(--hdr-sub); font-size:.82rem;
                       margin:4px 0 0; text-align:left; }
@@ -219,6 +222,9 @@
   .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
             overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
   .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
+  /* IAST is an English bridge. Devanagari readers don't need it. */
+  html[lang="ne"] [lang="sa-Latn"],
+  html[lang="hi"] [lang="sa-Latn"]{ display:none !important; }
   .view-sub{ color:var(--ink-soft); font-size:.98rem; margin-bottom:22px; max-width:880px;}
   .grid{ display:grid; gap:20px; }
   .grid.chapters{ grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); }
@@ -242,8 +248,8 @@
   .card:hover{ border-left-color:var(--saffron-dark); }
   .theme{ border-left:2px solid var(--saffron); }
   .theme:hover{ border-left-color:var(--saffron-dark); }
-  .res-card{ border-left:2px solid var(--teal); }
-  .res-card:hover{ border-left-color:var(--teal); }
+  .res-card{ border-left:2px solid var(--saffron); }
+  .res-card:hover{ border-left-color:var(--saffron-dark); }
   .mode-box{ border-left:2px solid var(--saffron); }
   .welcome .w-day{ border-left:2px solid var(--saffron); }
   .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-dark); font-weight:700; font-size:.72rem;
@@ -368,7 +374,7 @@
             background:var(--saffron-soft); color:var(--saffron-dark); z-index:1;
             font-family:system-ui,sans-serif; font-size:.75rem; font-weight:700;}
   .lr-thread b{ font-weight:700; font-size:1rem; color:var(--ink);}
-  .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--saffron-dark); font-weight:600; margin-left:7px;}
+  .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft); font-weight:500; margin-left:7px;}
   .lr-thread p{ margin:4px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
 
   .lr-vnum{ font-family:system-ui,sans-serif; font-size:1.3rem; font-weight:700;
@@ -558,7 +564,7 @@
      It was --ink-soft, so it sank into the description text while every other
      number in the app is saffron. Weight 600 because at .78rem the colour
      alone is thin on white (--saffron-dark measures 3.28:1 there). */
-  .th-flow h3 .rng{ color:var(--teal); font-weight:600; font-size:.78rem; margin-left:8px; white-space:nowrap; }
+  .th-flow h3 .rng{ color:var(--ink-soft); font-weight:500; font-size:.78rem; margin-left:8px; white-space:nowrap; }
   /* the same range beside a view title: it must not inherit the 1.7rem
      heading size, or the number shouts louder than the theme's name */
   .view-title .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem;
@@ -574,7 +580,7 @@
   .card h3{ font-family:Georgia,serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
   .card .meta{ margin-top:10px; font-size:.8rem; color:var(--ink-soft); font-weight:600;}
-  .card .go{ margin-top:10px; color:var(--teal); font-weight:700; font-size:.88rem;}
+  .card .go{ margin-top:10px; color:var(--saffron-dark); font-weight:700; font-size:.88rem;}
   .card .soon{ margin-top:10px; color:var(--muted); font-weight:600; font-size:.85rem; font-style:italic;}
   .part{ margin-bottom:26px;}
   .part-head{ display:flex; align-items:center; gap:12px; padding:0 0 6px; margin:18px 0 8px; flex-wrap:nowrap;}
@@ -1874,7 +1880,7 @@ function lrDrill(ci, ti, vs){
              + `<div class="lr-split" lang="sa">${split}</div>`,
         opts: lrShuffle([c.w].concat(dw)).map(function(o){
                 return {label:o[0], sub:o[1], deva:1, ok:o===c.w}; }),
-        note: `<b lang="sa">${esc(c.w[0])}</b> (${esc(c.w[1])}) — ${esc(c.w[2])}`});
+        note: `<b lang="sa">${esc(c.w[0])}</b>${state.lang==='en' ? ` (${esc(c.w[1])})` : ''} — ${esc(c.w[2])}`});
     }
   });
   /* Reorder the verses of the theme. The chip must NOT carry the verse number:
@@ -2276,7 +2282,6 @@ function showChapters(section){
           <h3>${esc(T(ch.names))}</h3>
           <p>${esc(T(ch.subs))}</p>
           <div class="meta">${numL(ch.verses)} ${L('verses')}</div>
-          <div class="go">${L('open_chapter')}</div>
         </div>`;}).join('')}
     </div>` + backFoot('showSections()', L('back_ways'));
 }
@@ -2323,7 +2328,6 @@ function sectionCard(k, chip, title, desc){
     <span class="chip">${esc(chip)}</span>
     <h3>${esc(title)}</h3>
     <p>${esc(desc)}</p>
-    <div class="go">${esc(L('open_chapters'))}</div>
   </div>`;
 }
 function showSections(){
@@ -2385,7 +2389,13 @@ function modeSwitch(ci){
     </div>
   </div>`;
 }
-function chTitle(ch){ return `<div class="view-title fade-in"><span class="chdeva">${ch.deva}</span> · ${esc(T(ch.names))}</div>`; }
+function chTitle(ch){
+  const name = esc(T(ch.names));
+  const head = state.lang === 'en'
+    ? `<span class="chdeva">${ch.deva}</span> · ${name}`
+    : name;
+  return `<div class="view-title fade-in">${head}</div>`;
+}
 function showThemes(ci){
   state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; renderCrumbs();
   const ch = DATA[ci];
@@ -2643,12 +2653,12 @@ function fillModal(){
   }
   const LI = {en:0, ne:1, hi:2}[state.lang] || 0;
   function wordsHtml(it){
-    return (it.words||[]).map(w=>`<div class="wrow"><span class="wdeva">${w[0]}</span><span class="wiast">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('');
+    return (it.words||[]).map(w=>`<div class="wrow"><span class="wdeva">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('');
   }
   function spkHtml(list){
     return list.map(x=>`
       <div class="spk-line" onclick="toggleWords(this)">
-        <span class="spk-main">${x.d} <span class="iast">${esc(x.t)}</span></span>
+        <span class="spk-main">${x.d} <span class="iast" lang="sa-Latn">${esc(x.t)}</span></span>
         <div class="words">${wordsHtml(x)}</div>
       </div>`).join('');
   }
@@ -2658,7 +2668,7 @@ function fillModal(){
         <span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span>
       </div>
       <div class="pb-deva">${pad.d}${pDanda(idx,total)}</div>
-      <div class="pb-iast">${esc(pad.t)}</div>
+      <div class="pb-iast" lang="sa-Latn">${esc(pad.t)}</div>
       <div class="words">${wordsHtml(pad)}</div>
     </div>`;
   }
