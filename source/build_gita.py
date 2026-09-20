@@ -635,16 +635,21 @@ __FONTS__
     --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{ font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif; color:var(--ink);
-        line-height:1.55; display:flex; flex-direction:column; min-height:100vh;}
+  body{ font-family:Georgia, "Noto Serif Devanagari", "Times New Roman", serif; color:var(--ink);
+        line-height:1.58; display:flex; flex-direction:column; min-height:100vh;}
+  /* Chrome stays a UI face; the scripture and its names stay serif. */
+  button, input, .seg, .lang-btn, .tool-btn, .wc-chip, .chip, .toolbar,
+  .ms-btn, .fav-btn, .lr-cta, .lr-ghost{ font-family:system-ui, -apple-system, "Segoe UI", sans-serif; }
   /* Quiet devotion (owner 2026-09-04): sandalwood on the paper, a peacock
      feather as a watermark. Opacity is the whole design — if you notice it
      first, it is too loud. pointer-events:none so it never steals a tap. */
   body{ background:
         radial-gradient(900px 420px at 50% -60px, rgba(232,145,44,.07), transparent 62%),
+        radial-gradient(520px 380px at 108% 78%, rgba(26,86,72,.06), transparent 70%),
         var(--cream); }
   html[data-theme="dark"] body{ background:
         radial-gradient(900px 420px at 50% -60px, rgba(225,149,58,.08), transparent 62%),
+        radial-gradient(520px 380px at 108% 78%, rgba(143,190,176,.06), transparent 70%),
         var(--cream); }
   .atm{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
   header, .toolbar, .wrap, footer{ position:relative; z-index:1; }
@@ -660,18 +665,26 @@ __FONTS__
     50%{ transform:translateY(-6%) scaleX(1.06); }
   }
   .atm-feather{ position:absolute; right:max(8px, env(safe-area-inset-right,0px));
-                top:28%; width:86px; height:210px; opacity:.12; color:var(--teal); }
+                top:26%; width:92px; height:220px; opacity:.15; color:var(--teal); }
+  .atm-feather.l{ right:auto; left:max(6px, env(safe-area-inset-left,0px));
+                  top:58%; width:70px; height:170px; opacity:.10; transform:rotate(-18deg); }
   html[data-theme="dark"] .atm-wisp{ opacity:.18; }
-  html[data-theme="dark"] .atm-feather{ opacity:.14; color:var(--saffron); }
-  @media (max-width:640px){ .atm-feather{ width:64px; height:156px; opacity:.09; } }
+  html[data-theme="dark"] .atm-feather{ opacity:.16; color:var(--saffron); }
+  html[data-theme="dark"] .atm-feather.l{ opacity:.11; }
+  @media (max-width:640px){
+    .atm-feather{ width:64px; height:156px; opacity:.11; }
+    .atm-feather.l{ width:48px; height:120px; opacity:.08; }
+  }
 
 
   header{ background:var(--hdr-a); color:var(--hdr-sub);
           padding:24px 20px; }
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
   .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--saffron);}
-  .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem;}
-  .header-inner .tag{ color:var(--hdr-sub); font-size:.9rem; margin-left:auto; text-align:right;}
+  .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem; color:#FFF8EC; font-weight:normal;}
+  .hdr-copy{ flex:1 1 200px; min-width:0; }
+  .header-inner .tag{ display:block; color:var(--hdr-sub); font-size:.82rem;
+                      margin:4px 0 0; text-align:left; }
   .langbar{ display:flex; gap:8px; margin-left:auto; align-items:center;}
   /* iOS-style segmented control: one translucent track, the active language
      raised as a neutral segment — chrome stays quiet, no orange in the header */
@@ -680,10 +693,10 @@ __FONTS__
      warming the chip pass taught it: saffron-dark fill, lamp-black letter. */
   .seg{ display:flex; gap:2px; background:var(--chip); border:1px solid var(--chip-line); border-radius:999px; padding:3px; }
   .seg .lang-btn{ background:transparent; border:none; color:var(--hdr-sub); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:background-color .15s, color .15s; }
-  .seg .lang-btn:hover{ background:var(--saffron-dark); color:var(--on-saffron); }
+  .seg .lang-btn:hover{ background:var(--chip-hover); color:#FFF8EC; }
   .seg .lang-btn.on{ background:var(--paper); color:var(--ink); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,.28); }
   .lang-btn{ background:var(--chip); color:var(--hdr-sub); border:1px solid var(--chip-line); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:background-color .15s, color .15s;}
-  .lang-btn:hover{ background:var(--saffron-dark); color:var(--on-saffron);}
+  .lang-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
   /* the theme toggle lives in the language bar; it must not stretch like the
      language buttons do on mobile, so it opts out of flex:1 and stays square */
   .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--saffron); border-color:var(--chip-line);}
@@ -693,7 +706,7 @@ __FONTS__
      next to its neighbours. Inheriting .lang-btn:hover gives it the same
      --saffron-dark fill; --on-saffron drives the icon too, because .ic is
      stroke:currentColor. Only the resting colour stays saffron. */
-  .theme-btn:hover{ background:var(--saffron-dark); color:var(--on-saffron);}
+  .theme-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
   @media (max-width:640px){ .langbar{ width:100%; justify-content:center; margin-left:0;} .seg{ flex:1; } .seg .lang-btn{ flex:1; text-align:center;} }
   .header-inner .tag b{ color:var(--saffron); font-family:Georgia,serif; font-size:1.15rem;}
   .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
@@ -704,7 +717,10 @@ __FONTS__
   /* Visually hidden but readable by assistive tech — used by #srStatus. */
   .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
             overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
-  .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--ink); margin-bottom:6px;}
+  .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
+  /* IAST is an English bridge. Devanagari readers don't need it. */
+  html[lang="ne"] [lang="sa-Latn"],
+  html[lang="hi"] [lang="sa-Latn"]{ display:none !important; }
   .view-sub{ color:var(--ink-soft); font-size:.98rem; margin-bottom:22px; max-width:880px;}
   .grid{ display:grid; gap:20px; }
   .grid.chapters{ grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); }
@@ -712,7 +728,7 @@ __FONTS__
   .grid.verses{ grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:14px; }
   .card{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:16px 18px;
          box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer; transition:.18s; display:flex; flex-direction:column;}
-  .card:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);}
+  .card:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   /* ---- the house idiom (owner 2026-09-02: "every page must represent our
      colours"). Until now every surface in the app was a --paper box with a grey
      outline: the saffron and teal accents inside had nothing to belong to.
@@ -722,18 +738,9 @@ __FONTS__
      starts to look like a dashboard (owner 2026-09-02: "not gaudy, Apple
      style"). The restraint is the point.
      Saffron = something you act on. Teal = something already yours. */
-  .edge-s{ border-left:2px solid var(--saffron); }
-  .edge-t{ border-left:2px solid var(--teal); }
-  .card{ border-left:2px solid var(--saffron); }
-  .card:hover{ border-left-color:var(--saffron-dark); }
-  .theme{ border-left:2px solid var(--saffron); }
-  .theme:hover{ border-left-color:var(--saffron-dark); }
-  .res-card{ border-left:2px solid var(--teal); }
-  .res-card:hover{ border-left-color:var(--teal); }
-  .mode-box{ border-left:2px solid var(--saffron); }
-  .welcome .w-day{ border-left:2px solid var(--saffron); }
-  .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-dark); font-weight:700; font-size:.72rem;
-               letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:999px; margin-bottom:8px;}
+  .mode-box{ border-left:1px solid var(--line); }
+  .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-dark); font-weight:600; font-size:.72rem;
+               letter-spacing:.02em; padding:4px 10px; border-radius:999px; margin-bottom:8px;}
   .card .chip.locked{ background:var(--muted);}
   /* The three ways of receiving a chapter live ON the chapter page as an
      iOS-style segmented control — the same grammar as the language pills in
@@ -759,10 +766,9 @@ __FONTS__
   /* The scope row is the same segmented-pill grammar as the chapter chooser:
      soft pill = an option, gold pill = where you are (PROJECT.md, mode-box). */
   .pl-scope{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0 22px;}
-  .pl-scope .pl-lb{ font-family:system-ui,sans-serif; font-size:.74rem; letter-spacing:.14em;
-                    text-transform:uppercase; color:var(--ink-soft);}
-  .pl-scope .lr-ghost.on{ background:var(--saffron); border-color:var(--saffron);
-                          color:var(--on-saffron);}
+  .pl-scope .pl-lb{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--ink-soft);}
+  .pl-scope .lr-ghost.on{ background:var(--saffron-soft); border-color:var(--saffron-soft);
+                          color:var(--saffron-dark);}
   /* matches .tool-btn geometry so the select sits level with the pills */
   .pl-sel{ padding:8px 16px; border-radius:999px; border:1px solid var(--line);
            background:var(--paper); color:var(--teal); font-family:inherit;
@@ -773,11 +779,10 @@ __FONTS__
   /* same shape as .card: --paper, 16px radius, 1px shadow, saffron on hover */
   .pl-mode{ display:flex; gap:13px; align-items:flex-start; text-align:left; padding:16px 18px;
             border-radius:16px; background:var(--paper); border:1px solid var(--line);
-            border-left:2px solid var(--saffron);
-            box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer;
+                        box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer;
             font-family:inherit; transition:.18s;}
-  .pl-mode:hover{ border-color:var(--saffron); border-left-color:var(--saffron-dark);
-                  box-shadow:0 4px 14px rgba(var(--shadow),.10); transform:translateY(-2px);}
+  .pl-mode:hover{ border-color:var(--saffron); background:var(--teal-soft);
+                  box-shadow:0 3px 12px rgba(var(--shadow),.08); transform:translateY(-1px);}
   .pl-mode .n{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
                background:var(--saffron-soft); color:var(--saffron-dark);
                font-family:system-ui,sans-serif; font-weight:700; font-size:.85rem;}
@@ -789,8 +794,7 @@ __FONTS__
 
   /* ---------- Learn by heart ---------- */
   .lrn{ max-width:760px; }
-  .lr-k{ font-family:system-ui,sans-serif; font-size:.68rem; letter-spacing:.2em;
-         text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px;}
+  .lr-k{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--ink-soft); margin-bottom:4px;}
   /* Owner 2026-09-01: the drill must not look like a different app. These
      mirror .tool-btn / .tool-btn.primary exactly — same padding, weight, size
      and hover — so a button here behaves like a button anywhere else. */
@@ -814,8 +818,7 @@ __FONTS__
   /* matches .card: --paper, 16px radius, the same 1px shadow */
   .lr-step{ display:flex; gap:14px; padding:16px 18px; border-radius:16px; margin-bottom:13px;
             background:var(--paper); border:1px solid var(--line);
-            border-left:2px solid var(--saffron);
-            box-shadow:0 1px 2px rgba(var(--shadow),.05); transition:.18s;}
+                        box-shadow:0 1px 2px rgba(var(--shadow),.05); transition:.18s;}
   /* the step you are on wears the full saffron edge; a finished one turns teal */
   .lr-step.now{ border-color:var(--saffron); border-left-color:var(--saffron-dark);}
   .lr-step.done{ border-left-color:var(--teal);}
@@ -832,9 +835,8 @@ __FONTS__
   .lr-grid{ display:grid; gap:8px; grid-template-columns:repeat(auto-fill,minmax(196px,1fr));}
   .lr-chip{ display:flex; align-items:center; gap:9px; text-align:left; padding:10px 12px;
             border-radius:12px; background:var(--paper); border:1px solid var(--line);
-            border-left:2px solid var(--saffron);
-            cursor:pointer; font-family:inherit; transition:.15s;}
-  .lr-chip:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);}
+                        cursor:pointer; font-family:inherit; transition:.15s;}
+  .lr-chip:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
   .lr-chip .n{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center;
                background:var(--saffron-soft); font-size:.7rem; font-family:system-ui,sans-serif;
@@ -854,15 +856,14 @@ __FONTS__
             background:var(--saffron-soft); color:var(--saffron-dark); z-index:1;
             font-family:system-ui,sans-serif; font-size:.75rem; font-weight:700;}
   .lr-thread b{ font-weight:700; font-size:1rem; color:var(--ink);}
-  .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--saffron-dark); font-weight:600; margin-left:7px;}
+  .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft); font-weight:500; margin-left:7px;}
   .lr-thread p{ margin:4px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
 
   .lr-vnum{ font-family:system-ui,sans-serif; font-size:1.3rem; font-weight:700;
             color:var(--saffron-dark); margin:10px 0 12px;}
   .lr-quarters{ display:flex; flex-direction:column; gap:9px;}
   .lr-q{ border-radius:16px; background:var(--paper); border:1px solid var(--line);
-         border-left:2px solid var(--saffron);
-         box-shadow:0 1px 2px rgba(var(--shadow),.05); overflow:hidden; transition:.18s;}
+                  box-shadow:0 1px 2px rgba(var(--shadow),.05); overflow:hidden; transition:.18s;}
   .lr-q.open{ border-color:var(--saffron); border-left-color:var(--saffron-dark);}
   .lr-qh{ display:flex; gap:12px; align-items:center; width:100%; text-align:left;
           padding:14px 16px; background:none; border:none; cursor:pointer; font-family:inherit;}
@@ -870,11 +871,18 @@ __FONTS__
           background:var(--saffron-soft); color:var(--saffron-dark);
           font-family:system-ui,sans-serif; font-size:.73rem; font-weight:700;}
   .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
-  .lr-qh .tx{ flex:1; min-width:0;}
+  .lr-qh{ flex-wrap:nowrap; }
+  .lr-qh .tx{ flex:1; min-width:0; display:flex; flex-wrap:nowrap; align-items:center;
+              gap:2px; white-space:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .lr-qh .tx .dv{ display:inline; white-space:nowrap; }
   .lr-qh .dv{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
               font-size:1.12rem; line-height:1.7; color:var(--teal-mid);
               -webkit-text-fill-color:var(--teal-mid);}
   .lr-qh .ia{ display:block; font-size:.78rem; font-style:italic; color:var(--ink-soft); margin-top:2px;}
+  .lr-opt .giast, .lr-chip2 .giast, .lr-slot .giast, .lr-qsub .giast{
+    display:block; font-family:Georgia,serif; font-size:.8rem; font-style:italic;
+    font-weight:400; color:var(--ink-soft); margin-top:4px; line-height:1.4; }
+  .lr-chip2{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
   .lr-qh .chev{ color:var(--ink-soft); transition:transform .22s;}
   .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron);}
   /* [hidden] is only display:none at the UA default, so ANY explicit display
@@ -884,15 +892,15 @@ __FONTS__
   .lr-words{ display:grid; gap:8px; padding:2px 16px 16px;
              grid-template-columns:repeat(auto-fill,minmax(148px,1fr));}
   .lr-word{ padding:9px 11px; border-radius:10px; background:var(--paper);
-            border:1px solid var(--line); border-left:2px solid var(--saffron);}
+            border:1px solid var(--line); }
   .lr-word .d{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
                font-size:1rem; color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
   .lr-word .i{ display:block; font-size:.71rem; font-style:italic; color:var(--ink-soft); margin:1px 0 3px;}
   .lr-word .m{ display:block; font-size:.84rem; line-height:1.4;}
   .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:14px;
             background:var(--saffron-soft); border:1px solid var(--line);}
-  .lr-mean .lb{ display:block; font-family:system-ui,sans-serif; font-size:.65rem;
-                letter-spacing:.18em; text-transform:uppercase; color:var(--saffron-dark); margin-bottom:5px;}
+  .lr-mean .lb{ display:block; font-family:system-ui,sans-serif; font-size:.72rem;
+                color:var(--saffron-dark); margin-bottom:5px;}
 
   .lr-nav{ display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-top:20px;}
   .lr-hint{ flex:1; text-align:center; font-family:system-ui,sans-serif;
@@ -902,15 +910,14 @@ __FONTS__
      cards on top of it. Both were --paper, so every boundary vanished and the
      screen went flat white (owner 2026-09-01). */
   .lr-qbox{ padding:18px; border-radius:16px; background:var(--cream);
-            border:1px solid var(--line); border-left:2px solid var(--saffron);
-            box-shadow:0 1px 2px rgba(var(--shadow),.05);}
+            border:1px solid var(--line);             box-shadow:0 1px 2px rgba(var(--shadow),.05);}
   /* the question is the loudest thing on the screen, and saffron-soft under a
      saffron rule marks it as the prompt rather than more prose */
   .lr-ask{ font-size:1.06rem; line-height:1.6; margin:-2px -4px 16px; padding:12px 14px;
            border-radius:12px; background:var(--saffron-soft);
-           border-left:2px solid var(--saffron); color:var(--ink);}
+            color:var(--ink);}
   .pl-head{ margin:6px 0 14px !important; color:var(--saffron-dark) !important;
-            font-weight:700; letter-spacing:.1em; text-transform:uppercase;}
+            font-weight:700;}
   .lr-qsub{ margin-top:10px; padding:12px 14px; border-radius:11px; background:var(--paper);
             border:1px solid var(--line); color:var(--ink-soft); font-size:.92rem; line-height:1.6;}
   .lr-qsub.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.1rem;
@@ -932,11 +939,12 @@ __FONTS__
      competing for one line (owner 2026-09-01). */
   /* --paper on --cream is only a 1.06:1 step, so the SHADOW does the lifting,
      not the fill: without it the options dissolve into the question card. */
+  .lr-opt .onum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);
+                 font-size:.82rem; line-height:1; margin-bottom:2px; }
   .lr-opt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px;
            text-align:left; width:100%;
            padding:13px 15px; border-radius:12px; background:var(--paper);
-           border:1px solid var(--line); border-left:2px solid var(--saffron);
-           cursor:pointer; font-family:inherit;
+           border:1px solid var(--line);            cursor:pointer; font-family:inherit;
            box-shadow:0 1px 3px rgba(var(--shadow),.10); transition:.15s;}
   .lr-opt:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
   .lr-opt:disabled{ cursor:default;}
@@ -970,10 +978,23 @@ __FONTS__
      measures only 3.14:1. Each palette supplies the ink its own red needs. */
   .lr-opt.wrong::after{ content:"\2715"; background:var(--danger); color:var(--on-danger);}
 
+  .lr-match{ display:grid; grid-template-columns:minmax(92px,22%) 1fr; gap:10px; align-items:start; }
+  .lr-mcol{ display:flex; flex-direction:column; gap:8px; }
+  .lr-mbtn{ text-align:left; width:100%; padding:12px 12px; border-radius:12px;
+            background:var(--paper); border:1px solid var(--line); cursor:pointer;
+            font-family:inherit; box-shadow:0 1px 3px rgba(var(--shadow),.10); }
+  .lr-mbtn.num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);
+                font-size:1.05rem; text-align:center; }
+  .lr-mbtn.vs .ol{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
+                   font-size:.98rem; line-height:1.7; color:var(--teal-mid);
+                   -webkit-text-fill-color:var(--teal-mid); }
+  .lr-mbtn.on{ border-color:var(--saffron); background:var(--saffron-soft); }
+  .lr-mbtn.right{ border-color:var(--teal); background:var(--teal-soft); }
+  .lr-mbtn:disabled{ cursor:default; }
+  @media (max-width:640px){ .lr-match{ grid-template-columns:minmax(72px,26%) 1fr; } }
   .lr-chips{ display:flex; flex-wrap:wrap; gap:8px;}
   .lr-chip2{ padding:11px 15px; border-radius:12px; background:var(--paper);
-             border:1px solid var(--line); border-left:2px solid var(--saffron);
-             cursor:pointer; font-family:inherit; color:var(--ink);
+             border:1px solid var(--line);              cursor:pointer; font-family:inherit; color:var(--ink);
              font-size:.87rem; text-align:left; max-width:100%; transition:.15s;
              min-height:44px;}
   .lr-chip2:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
@@ -1013,7 +1034,28 @@ __FONTS__
   .lr-finis .lr-all{ color:var(--saffron-dark); font-weight:700;}
   .lr-finis .lr-cta,.lr-finis .lr-ghost{ margin:5px;}
 
+
+  .lr-ladder{ margin:8px 0 16px; padding:12px 14px; border-radius:14px;
+              background:var(--paper); border:1px solid var(--line); }
+  .lr-lads{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:8px 0; }
+  .lr-lad{ text-align:left; padding:8px 10px; border-radius:12px; cursor:pointer;
+           background:var(--cream); border:1px solid var(--line); font-family:inherit; transition:border-color .15s, background .15s; }
+  .lr-lad:hover:not(.on){ border-color:var(--saffron); background:var(--teal-soft); }
+  .lr-lad b{ display:block; font-size:.82rem; color:var(--teal); }
+  .lr-lad span{ display:block; font-size:.68rem; color:var(--ink-soft); margin-top:2px; }
+  .lr-lad.on{ border-color:var(--saffron); background:var(--saffron-soft); }
+  .lr-lad.on b{ color:var(--saffron-dark); }
+  .lr-gap{ flex:0 0 auto; min-width:2em; padding:2px 10px; margin:0 2px; border-radius:8px;
+           background:var(--saffron-soft); color:var(--saffron-dark);
+           border:1px dashed var(--saffron); font-weight:700; cursor:pointer; font-family:inherit;
+           display:inline-flex; align-items:center; justify-content:center; line-height:1.4; }
+  .lr-tokw{ flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center;
+            margin:0 4px; vertical-align:middle; }
+  .lr-tokw .d{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.12rem; color:var(--teal); }
+  .lr-tokw .i{ font-size:.7rem; font-style:italic; color:var(--ink-soft); }
+  .lr-ghost.on{ border-color:var(--saffron); background:var(--saffron-soft); }
   @media (max-width:640px){
+    .lr-lads{ grid-template-columns:1fr 1fr; }
     .lr-grid{ grid-template-columns:1fr;}
     .lr-words{ grid-template-columns:repeat(auto-fill,minmax(124px,1fr));}
     .lr-nav .lr-cta,.lr-nav .lr-ghost{ flex:1;}
@@ -1027,27 +1069,35 @@ __FONTS__
      door warming to saffron-dark. The segments ARE crumbs now; the paper
      track retired because the pills carry their own round boundary. */
   .mode-seg{ display:flex; gap:8px; flex-wrap:wrap; max-width:100%; }
-  .mode-seg .ms-btn{ background:var(--saffron-soft); border:none; color:var(--saffron-dark);
+  /* Same metal as .wc-chip: paper doors, one soft-saffron “you are here”.
+     Solid gold fill was a second, louder crumb language on the same page. */
+  .mode-seg .ms-btn{ background:var(--paper); color:var(--ink-soft); border:1px solid var(--line);
              border-radius:999px; padding:7px 16px; cursor:pointer; font-size:.86rem;
-             font-weight:700; font-family:inherit; transition:color .15s, background-color .15s; }
-  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-dark);
-             color:var(--on-saffron); outline:none; }
-  .mode-seg .ms-btn.on{ background:var(--saffron); color:var(--on-saffron);
-             box-shadow:0 1px 3px rgba(var(--shadow),.25); }
-  .mode-seg .ms-btn.on:hover{ background:var(--saffron); color:var(--on-saffron); }
+             font-weight:700; font-family:inherit; line-height:1.4;
+             transition:background-color .15s, color .15s, border-color .15s; }
+  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-soft);
+             color:var(--saffron-dark); border-color:var(--saffron-soft); outline:none; }
+  .mode-seg .ms-btn.on{ background:var(--saffron-soft); color:var(--saffron-dark);
+             border-color:var(--saffron-soft); box-shadow:none; }
+  .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-dark); }
   /* purana chapter view: clean hairline cards; saffron only for numbers */
   .th-flow .theme{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
-                   padding:16px 18px; margin:0 0 14px; cursor:pointer; transition:border-color .15s; }
-  .th-flow .theme:hover{ border-color:var(--saffron); }
+                   padding:16px 18px; margin:0 0 14px; cursor:pointer;
+                   transition:border-color .15s, background .15s, box-shadow .15s; }
+  .th-flow .theme:hover{
+    border-color:var(--saffron);
+    background:var(--teal-soft);
+    box-shadow:0 3px 12px rgba(var(--shadow),.08);
+  }
   .th-flow h3{ font-family:Georgia,serif; color:var(--teal); font-size:1.05rem; margin:0 0 6px; }
   /* Owner 2026-09-01: the verse range is a verse NUMBER and must read as one.
      It was --ink-soft, so it sank into the description text while every other
      number in the app is saffron. Weight 600 because at .78rem the colour
      alone is thin on white (--saffron-dark measures 3.28:1 there). */
-  .th-flow h3 .rng{ color:var(--saffron-dark); font-weight:600; font-size:.78rem; margin-left:8px; white-space:nowrap; }
+  .th-flow h3 .rng{ color:var(--ink-soft); font-weight:500; font-size:.78rem; margin-left:8px; white-space:nowrap; }
   /* the same range beside a view title: it must not inherit the 1.7rem
      heading size, or the number shouts louder than the theme's name */
-  .view-title .rng{ color:var(--saffron-dark); font-weight:600; font-size:.8rem;
+  .view-title .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem;
                     margin-left:10px; white-space:nowrap; vertical-align:.32em; }
   .th-flow .tdesc{ margin:0 0 6px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
   .vcards{ margin-top:12px; display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:12px; }
@@ -1056,20 +1106,25 @@ __FONTS__
   .vcard{ cursor:default; }
   .vcard:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); }
   .vcard h3{ font-size:1rem; }   /* the theme title outranks its verses */
-  .chdeva{ color:var(--saffron-dark); font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem; }
+  .chdeva{ color:var(--teal); font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem; }
   .card h3{ font-family:Georgia,serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
   .card .meta{ margin-top:10px; font-size:.8rem; color:var(--ink-soft); font-weight:600;}
-  .card .go{ margin-top:10px; color:var(--teal); font-weight:700; font-size:.88rem;}
+  .card .go{ margin-top:10px; color:var(--saffron-dark); font-weight:700; font-size:.88rem;}
   .card .soon{ margin-top:10px; color:var(--muted); font-weight:600; font-size:.85rem; font-style:italic;}
   .part{ margin-bottom:26px;}
-  .part-head{ display:flex; align-items:baseline; gap:12px; border-bottom:3px solid var(--saffron); padding-bottom:8px; margin-bottom:14px; flex-wrap:wrap;}
+  .part-head{ display:flex; align-items:center; gap:12px; padding:0 0 6px; margin:18px 0 8px; flex-wrap:nowrap;}
   .part-head .pnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem;}
-  .part-head .ptitle{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); font-weight:700;}
-  .part-head .pdesc{ color:var(--ink-soft); font-size:.86rem; margin-left:auto;}
+  .part-head .ptitle{ font-family:Georgia,serif; font-size:1.05rem; color:var(--teal); font-weight:600;
+                      order:1; flex:0 1 auto; max-width:42%; }
+  .part-head::before{ content:""; order:2; flex:1 1 20px; min-width:16px; height:1px;
+                      background:color-mix(in srgb, var(--saffron) 42%, transparent);
+                      align-self:center; }
+  .part-head .pdesc{ color:var(--ink-soft); font-size:.86rem; order:3; flex:0 1 46%;
+                     margin-left:0; line-height:1.45; }
   .mini{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 14px; cursor:pointer;
          transition:.15s; box-shadow:0 4px 12px rgba(var(--shadow),.06);}
-  .mini:hover{ border-color:var(--saffron); box-shadow:0 4px 12px rgba(var(--shadow),.10);}
+  .mini:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   .mini .vnum, .w-day .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.98rem; margin-bottom:5px; letter-spacing:.03em;}
   /* The topic line is quiet metadata, not a headline: same soft colour as its
      "Verse topic" prefix, so the Devanagari below stays the star of the card. */
@@ -1078,6 +1133,12 @@ __FONTS__
   .mini .padas, .w-day .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
   .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-dark); font-size:.82rem; font-style:italic; margin-bottom:2px;}
   .mini .padas .gline, .w-day .padas .gline{ display:block; line-height:1.6;}
+  .mini .padas .giast, .w-day .padas .giast, .res-deva .giast{
+    display:block; font-family:Georgia,serif; font-style:italic; font-size:.82rem;
+    color:var(--ink-soft); line-height:1.45; margin:0 0 4px; }
+  .mini .padas .spk-iast, .w-day .padas .spk-iast{
+    display:block; font-family:Georgia,serif; font-style:italic; font-size:.78rem;
+    color:var(--ink-soft); margin:0 0 4px; }
   .mini .padas .gp, .w-day .padas .gp{ display:inline;}
   .mini .vhint, .w-day .vhint{ color:var(--ink-soft); font-size:.78rem; font-style:italic; line-height:1.4; margin-top:6px;}
   .share-panel{ display:none; flex-direction:column; align-items:flex-start; gap:8px; margin:10px 0 0;
@@ -1104,8 +1165,8 @@ __FONTS__
   .fav-move:hover:not(:disabled){ border-color:var(--teal); background:var(--teal-soft);}
   .fav-move:disabled{ opacity:.3; cursor:default;}
   .fav-note{ margin-top:9px; display:flex; gap:8px; align-items:flex-start;}
-  .fav-note label{ font-size:.74rem; font-weight:700; color:var(--ink-soft); text-transform:uppercase;
-                   letter-spacing:.04em; padding-top:7px; flex:0 0 auto;}
+  .fav-note label{ font-size:.74rem; font-weight:600; color:var(--ink-soft);
+                   padding-top:7px; flex:0 0 auto;}
   .fav-note textarea{ flex:1; border:1px solid var(--line); border-radius:8px; padding:5px 9px;
                       font:inherit; font-size:.88rem; background:var(--cream); color:var(--ink);
                       resize:none; overflow:hidden; min-height:34px;}
@@ -1122,14 +1183,17 @@ __FONTS__
   .rd-v:first-child .rd-spk, .rd-spk:first-child{ margin-top:4px;}
   .rd-v{ padding:12px 0 14px; border-bottom:1px solid var(--line); cursor:pointer; position:relative;}
   .rd-v:last-child{ border-bottom:none;}
-  .rd-v:hover{ background:var(--cream);}
+  .rd-v:hover{ background:var(--teal-soft);}
   .rd-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.82rem;}
   .rd-deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
             font-size:1.12rem; line-height:1.85; margin-bottom:5px;}
   .rd-tr{ color:var(--ink-soft); font-size:.95rem; line-height:1.6;}
+  .rd-iast{ font-family:Georgia,serif; font-style:italic; font-size:.88rem;
+            color:var(--ink-soft); line-height:1.45; margin:0 0 6px; font-weight:400; }
+  .rd-spk .rd-iast{ display:inline; margin:0 0 0 8px; font-size:.82rem; }
   /* quiet labels name each translation, so the two voices never blur */
-  .rd-lb{ color:var(--ink-soft); font-size:.74rem; font-weight:700; letter-spacing:.05em;
-          text-transform:uppercase; margin:8px 0 2px; opacity:.8; }
+  .rd-lb{ color:var(--ink-soft); font-size:.74rem; font-weight:600;
+          margin:8px 0 2px; opacity:.85; }
   .rd-lb:first-of-type{ margin-top:6px; }
   /* the paraphrase is the flowing read — set lighter and italic under the
      literal, so the eye gets "what it says" then "what it means" */
@@ -1161,7 +1225,7 @@ __FONTS__
      No uppercase/letter-spacing here: the crumbs mix Latin and Devanagari,
      and tracking strains the mātrā flow. */
   .way-crumb{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:2px 0 18px;
-              font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, "Noto Serif Devanagari", sans-serif; }
+              font-family:system-ui, -apple-system, "Segoe UI", "Noto Serif Devanagari", sans-serif; }
   /* Volume control (owner 2026-08-31: "too much orange"): one gold per page.
      Gold = the decision you're IN (the raised segment in the tray). The trail
      steps down: current page = soft pill, ancestors = neutral hairline pills —
@@ -1188,11 +1252,11 @@ __FONTS__
                    font-size:.82rem; line-height:1.6; font-style:italic;}
   .welcome .w-day{ max-width:560px; margin:26px auto 6px; background:var(--paper); border:1px solid var(--line); border-radius:16px;
                    padding:18px 22px; cursor:pointer; box-shadow:0 1px 2px rgba(var(--shadow),.05); transition:.18s; text-align:left;}
-  .welcome .w-day:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);}
+  .welcome .w-day:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   /* A small oval tag, not a headline — the card already has a saffron frame,
      so the label wears the soft variant and lets the verse number lead. */
   .welcome .wd-label{ display:table; margin:0 auto 12px; background:var(--saffron-soft); color:var(--saffron-dark);
-    font-family:Georgia,serif; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase;
+    font-family:Georgia,serif; font-weight:600; font-size:.78rem; letter-spacing:.02em;
     border-radius:999px; padding:6px 18px; }
   /* the welcome card is a display piece, not a list item — centre it, while
      the search/theme grids stay left-aligned for reading */
@@ -1208,7 +1272,7 @@ __FONTS__
   .card.sect p{ font-size:.92rem;}
 
 
-  .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:2px solid var(--line);}
+  .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:1px solid var(--line);}
   .toolbar .searchwrap{ display:flex; align-items:center; gap:6px; flex:1; min-width:240px; max-width:640px;}
   .toolbar input[type=search]{ flex:1; padding:9px 14px; border:1px solid var(--line); border-radius:999px; font-size:.92rem; background:var(--field); color:var(--ink); outline:none;}
   .toolbar input[type=search]:focus{ border-color:var(--saffron);}
@@ -1236,11 +1300,11 @@ __FONTS__
   .tool-btn.primary{ background:var(--saffron); border-color:var(--saffron); color:var(--on-saffron);}
   .tool-btn.primary:hover{ background:var(--saffron-dark);}
   .fav-btn{ background:var(--saffron-soft); border:1px solid var(--saffron); color:var(--saffron-dark); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
-  .fav-btn.saved{ background:var(--saffron); color:var(--on-accent);}
+  .fav-btn.saved{ background:var(--saffron); color:var(--on-saffron);}
   .res-head{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
   .res-count{ color:var(--ink-soft); font-size:.9rem; margin-bottom:16px;}
   .res-card{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:12px; cursor:pointer; transition:.15s;}
-  .res-card:hover{ border-color:var(--saffron); box-shadow:0 4px 12px rgba(var(--shadow),.08);}
+  .res-card:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   .res-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
   .res-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);}
   .res-title{ font-weight:600; color:var(--teal); font-size:.9rem;}
@@ -1252,10 +1316,15 @@ __FONTS__
   .modal-bg.open{ display:flex;}
   .modal{ background:var(--cream); border-radius:20px; max-width:820px; width:100%; max-height:92vh; overflow-y:auto;
           box-shadow:0 24px 60px rgba(0,0,0,.35); border:1px solid var(--line); position:relative; padding:24px 30px 28px;}
-  .modal .m-close{ position:sticky; top:0; float:right; background:var(--saffron); color:var(--on-saffron); border:none; width:38px;
-                   height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:700; margin:-8px -12px 0 0;}
-  .m-num{ font-family:Georgia,serif; font-size:1.4rem; color:var(--saffron-dark); font-weight:700;}
-  .m-part{ color:var(--teal); font-size:.88rem; font-weight:600; margin-bottom:2px;}
+  .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
+                   height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
+  .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft);}
+  .m-ch{ font-family:Georgia,serif; font-size:1.05rem; color:var(--teal); font-weight:600;
+         margin:0 52px 4px 0; line-height:1.35; }
+  .m-part{ color:var(--teal); font-size:.92rem; font-weight:600; margin:0 0 8px; line-height:1.4;}
+  .m-num{ font-family:Georgia,serif; font-size:1.2rem; color:var(--saffron-dark); font-weight:700;
+          display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
+  .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
   .m-meter{ display:inline-block; background:var(--teal-soft); color:var(--teal); font-size:.78rem; font-weight:700;
             padding:3px 12px; border-radius:999px; margin:6px 0 12px; letter-spacing:.03em;}
   .m-verse{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:6px 0 4px;}
@@ -1301,8 +1370,8 @@ __FONTS__
   .m-verse .spk-line{ margin:6px 0; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-dark); font-style:italic; font-size:1.05rem; cursor:pointer; border-radius:6px; padding:2px 4px;}
   .m-verse .spk-line .iast{ font-family:Georgia, serif; font-size:.85rem; color:var(--ink-soft); margin-left:10px;}
   .m-line{ margin-top:14px;}
-  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:700;
-               letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:999px; margin-bottom:5px;}
+  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
+               padding:3px 10px; border-radius:999px; margin-bottom:5px;}
   .m-line .lt{ color:var(--ink); font-size:1rem;}
   .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
   .m-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:10px;}
@@ -1315,7 +1384,8 @@ __FONTS__
   .m-nav .m-back:hover{ background:var(--teal); color:var(--on-accent);}
 
   .m-count{ color:var(--ink-soft); font-size:.85rem; font-weight:600;}
-  footer{ text-align:center; color:var(--ink-soft); font-size:.82rem; padding:18px 20px 26px; border-top:1px solid var(--line);}
+  footer{ text-align:center; color:var(--ink-soft); font-size:.82rem; padding:18px 20px 26px;
+          border-top:1px solid color-mix(in srgb, var(--teal) 42%, transparent);}
   /* plain inline text — no flex gap, or the <b> would push the comma away */
   footer .credit{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
                   font-size:.8rem; color:var(--ink-soft); display:block; text-align:center;}
@@ -1330,7 +1400,7 @@ __FONTS__
   /* ==================== MOBILE / TOUCH (Android · iOS) ==================== */
   html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   body{ -webkit-tap-highlight-color:rgba(232,145,44,.18); overscroll-behavior-y:none; }
-  button, .card, .mini, .res-card, .pada-box, .spk-line, .lang-btn{ -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+  button, .card, .mini, .res-card, .theme, .pada-box, .spk-line, .lang-btn, .rd-v, .pl-mode, .lr-chip, .welcome .w-day{ -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   /* modern basics: visible keyboard focus, and stillness for those who ask */
   :focus-visible{ outline:2px solid var(--saffron); outline-offset:2px; }
   @media (prefers-reduced-motion: reduce){
@@ -1351,20 +1421,56 @@ __FONTS__
      were added later and were never listed, which is exactly why their chips
      and cards stayed lit after a tap. */
   @media (hover:none){
-    .card:hover, .mini:hover, .res-card:hover, .mini-crumb .bc-btn:hover, .welcome .w-day:hover{ transform:none; box-shadow:0 6px 18px rgba(var(--shadow),.08); }
-    .card:active, .mini:active, .res-card:active, .welcome .w-day:active{ transform:scale(.985); border-color:var(--saffron); }
+    /* Phone has no hover: undo laptop fills so a tap does not leave a stuck
+       highlight, then replay the same fill on :active. */
+    .card:hover, .mini:hover, .res-card:hover, .welcome .w-day:hover,
+    .th-flow .theme:hover, .lr-chip:hover, .pl-mode:hover{
+      background:var(--paper); border-color:var(--line);
+      box-shadow:0 1px 2px rgba(var(--shadow),.05); transform:none;
+    }
+    .th-flow .theme:hover{ box-shadow:none; }
+    .lr-chip.ok:hover{ border-color:var(--teal); background:var(--teal-soft); }
+    .card:active, .mini:active, .res-card:active, .welcome .w-day:active,
+    .th-flow .theme:active, .lr-chip:active, .pl-mode:active{
+      background:var(--teal-soft); border-color:var(--saffron);
+      transform:scale(.985);
+    }
+    .rd-v:hover{ background:transparent; }
+    .rd-v:active{ background:var(--teal-soft); }
+    .lr-lad:hover:not(.on){ background:var(--cream); border-color:var(--line); }
+    .lr-lad:active:not(.on){ background:var(--teal-soft); border-color:var(--saffron); }
+    .mini-crumb .bc-btn:hover{ background:var(--paper); border-color:var(--line); }
+    .mini-crumb .bc-btn:active{ background:var(--saffron-soft); border-color:var(--saffron); }
+    .tool-btn:hover{ background:var(--paper); border-color:var(--line); }
+    .tool-btn.primary:hover{ background:var(--saffron); border-color:var(--saffron); }
     .tool-btn:active, .lang-btn:active, .m-nav button:active{ filter:brightness(.93); }
-    .pada-box:hover{ background:var(--paper); border-color:var(--line); }
-    .pada-box:active{ background:var(--saffron-soft); border-color:var(--saffron); }
+    .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--paper); color:var(--ink-soft); border-color:var(--line); }
+    .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
+    .mode-seg .ms-btn:active{ background:var(--saffron-soft); }
+    button.wc-chip:hover{ background:transparent; color:inherit; border-color:transparent; }
+    button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
+    button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    .fav-move:hover:not(:disabled){ border-color:var(--line); background:transparent; }
+    .fav-move:active:not(:disabled){ border-color:var(--teal); background:var(--teal-soft); }
+    .modal .m-close:hover{ background:transparent; color:inherit; border-color:transparent; }
+    .modal .m-close:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    .words-bar .wb-btn:hover{ background:var(--teal); }
+    .words-bar .wb-btn:active{ background:var(--teal-mid); }
+    .m-nav .m-back:hover{ background:var(--teal-soft); color:var(--teal); }
+    .m-nav .m-back:active{ background:var(--teal); color:var(--on-accent); }
+    .m-verse .pada-box:hover, .pada-box:hover{ background:var(--paper); border-color:var(--line); }
+    .m-verse .pada-box:active, .pada-box:active{ background:var(--saffron-soft); border-color:var(--saffron); }
     .m-verse .spk-line:hover{ background:none; }
+    .m-verse .spk-line:active{ background:var(--saffron-soft); }
+    .sw-x:hover{ background:transparent; color:inherit; }
+    .sw-x:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    .res-remove:hover{ border-color:var(--line); color:var(--ink-soft); }
+    .res-remove:active{ border-color:var(--danger); color:var(--danger); }
 
-    /* ---- learn path + Play: cancel every hover, answer with :active ---- */
     .lr-cta:hover{ background:var(--saffron); border-color:var(--saffron); }
     .lr-cta:active{ background:var(--saffron-dark); border-color:var(--saffron-dark); }
     .lr-ghost:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
     .lr-ghost:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
-    .lr-chip:hover{ border-color:var(--line); box-shadow:none; transform:none; }
-    .lr-chip:active{ border-color:var(--saffron); }
     .lr-chip.ok:hover{ border-color:var(--teal); }
     .lr-opt:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
     .lr-opt:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
@@ -1372,12 +1478,9 @@ __FONTS__
     .lr-chip2:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
     .lr-q:hover{ border-color:var(--line); }
     .lr-qh:hover{ background:none; }
-    .pl-mode:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); transform:none; }
-    .pl-mode:active{ border-color:var(--saffron); transform:scale(.985); }
     .pl-sel:hover{ border-color:var(--line); }
     .pl-sel:active{ border-color:var(--saffron); }
-    /* a selected scope must still read as selected — it is state, not hover */
-    .pl-scope .lr-ghost.on:hover{ background:var(--saffron); border-color:var(--saffron); }
+    .pl-scope .lr-ghost.on:hover{ background:var(--saffron-soft); border-color:var(--saffron-soft); }
   }
 
   @media (max-width:760px){
@@ -1385,14 +1488,12 @@ __FONTS__
     header{ padding:12px 14px calc(10px + env(safe-area-inset-bottom,0px));
             padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px));
             padding-top:calc(12px + env(safe-area-inset-top,0px)); }
-    .header-inner{ gap:8px 12px; align-items:flex-start; }
+    .header-inner{ align-items:flex-start; }
     .header-inner .om{ font-size:1.5rem; line-height:1.2; padding-top:2px; }
-    .header-inner > div:first-of-type{ flex:1 1 0; min-width:0; }
+    .hdr-copy{ flex:1 1 0; min-width:0; }
     .header-inner h1{ font-size:1.12rem; line-height:1.35; white-space:normal; }
-    #appSub{ display:block; font-size:.72rem !important; line-height:1.45;
-             margin-top:4px; color:var(--hdr-sub); }
-    .header-inner .tag{ display:block; width:100%; margin-left:0; text-align:left;
-                        font-size:.78rem; order:3; }
+    #appSub{ display:none !important; }
+    .header-inner .tag{ display:block; margin-top:4px; font-size:.78rem; }
     .langbar{ width:100%; gap:8px; margin-left:0; }
     .lang-btn{ flex:1; padding:9px 6px; font-size:.82rem; min-height:40px; }
     .mode-box{ padding:12px 14px; }
@@ -1421,8 +1522,9 @@ __FONTS__
     .card{ padding:14px 16px; border-radius:14px; }
     .card h3{ font-size:1.08rem; }
     .card.sect h3{ font-size:1.2rem; }
-    .part-head{ gap:6px; }
-    .part-head .ptitle{ font-size:1.1rem; }
+    .part-head{ gap:6px; flex-wrap:wrap; }
+    .part-head .ptitle{ font-size:1.1rem; max-width:100%; }
+    .part-head::before{ display:none; }
     .part-head .pdesc{ margin-left:0; flex:1 0 100%; }
     .mini .padas, .w-day .padas{ font-size:1.06rem; }
     .back-top{ min-height:44px; }
@@ -1450,7 +1552,8 @@ __FONTS__
     .modal .m-close{ position:fixed; top:calc(10px + env(safe-area-inset-top,0px));
                      right:calc(12px + env(safe-area-inset-right,0px)); float:none; margin:0; z-index:5;
                      width:44px; height:44px; font-size:1.2rem; box-shadow:0 4px 14px rgba(0,0,0,.3); }
-    .m-num{ font-size:1.15rem; padding-right:52px; }
+    .m-ch{ margin-right:52px; font-size:.98rem; }
+    .m-num{ font-size:1.08rem; }
     .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
     .m-part{ font-size:.82rem; }
     .m-verse{ padding:12px 12px; }
@@ -1521,6 +1624,16 @@ __FONTS__
     <ellipse cx="40" cy="46" rx="22" ry="38" stroke="currentColor" stroke-width="1.1"/>
     <ellipse cx="40" cy="40" rx="12" ry="20" stroke="currentColor" stroke-width="1"/>
     <circle cx="40" cy="36" r="5.5" fill="currentColor" opacity=".35"/>
+    <circle cx="40" cy="36" r="2.2" fill="#E8912C" opacity=".45"/>
+    <path d="M40 84 C28 70 22 52 24 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
+    <path d="M40 84 C52 70 58 52 56 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
+  </svg>
+  <svg class="atm-feather l" viewBox="0 0 80 200" fill="none">
+    <path d="M40 198 C40 140 40 96 40 64" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    <ellipse cx="40" cy="46" rx="22" ry="38" stroke="currentColor" stroke-width="1.1"/>
+    <ellipse cx="40" cy="40" rx="12" ry="20" stroke="currentColor" stroke-width="1"/>
+    <circle cx="40" cy="36" r="5.5" fill="currentColor" opacity=".35"/>
+    <circle cx="40" cy="36" r="2.2" fill="#E8912C" opacity=".4"/>
     <path d="M40 84 C28 70 22 52 24 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
     <path d="M40 84 C52 70 58 52 56 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
   </svg>
@@ -1529,11 +1642,11 @@ __FONTS__
 <header>
   <div class="header-inner">
     <span class="om">ॐ</span>
-    <div>
+    <div class="hdr-copy">
       <h1 id="appTitle">Bhagavad Gita — an Interactive Study</h1>
-      <div id="appSub" style="font-size:.82rem; color:var(--hdr-sub);">श्रीमद्भगवद्गीता · chapters → themes → subthemes → verses · each verse in its 4 pādas</div>
+      <div id="appSub" style="font-size:.82rem; color:var(--hdr-sub);">श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 pādas</div>
+      <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     </div>
-    <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     <div class="langbar" id="langbar">
       <div class="seg">
         <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
@@ -1565,7 +1678,7 @@ __FONTS__
        without this a reader who taps "Chapter 2" hears silence: the heading
        changed but focus did not move. Polite, so it never interrupts. -->
   <p id="srStatus" role="status" aria-live="polite" class="sr-only"></p>
-  <main id="view"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ Loading the 700 verses…</div></main>
+  <main id="view"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ</div></main>
 
   <!-- Shown only when JavaScript is disabled — e.g. the in-app file viewers of
        WhatsApp / Gmail / some file managers, which render HTML without running
@@ -1595,13 +1708,6 @@ __FONTS__
   <!-- Credit lives in its own element: applyStatic() replaces #appFooter's
        textContent on every language switch and would otherwise wipe it. -->
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
-  <!-- OFL clause 2 asks that the copyright notice travel with the font. It is
-       preserved inside the embedded woff2 metadata, but a reader cannot
-       "easily view" that, so it is stated here in the page as well. -->
-  <div class="credit attrib">Sanskrit text of the Bhagavad Gītā: public domain.
-    Translations, word meanings and commentary &copy; 2026 Dhruba Chapain.
-    Typeface: Noto Serif Devanagari, &copy; 2022 The Noto Project Authors,
-    <a href="https://openfontlicense.org" target="_blank" rel="noopener">SIL Open Font License 1.1</a>.</div>
 </footer>
 
 <div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
@@ -1686,9 +1792,12 @@ const crumbs = $('#crumbs'), view = $('#view');
 // ---------- global verse index (search / favorites / random) ----------
 const VERSES = [];
 function buildIndex(){
-  DATA.forEach((ch, ci)=> ch.themes.forEach((t, ti)=>{
-    t.parts.forEach(p=> p.sutras.forEach((s, k)=> VERSES.push({ id:s.n, norm:fmtN(s.n), ci, ti, si:flatIndex(t,p,k) })));
-  }));
+  VERSES.length = 0;
+  (DATA||[]).forEach((ch, ci)=>{ if(!ch||!ch.themes) return;
+    ch.themes.forEach((t, ti)=>{
+      t.parts.forEach(p=> p.sutras.forEach((s, k)=> VERSES.push({ id:s.n, norm:fmtN(s.n), ci, ti, si:flatIndex(t,p,k) })));
+    });
+  });
 }
 function verseLoc(id){ return VERSES.find(v=>v.id===id); }
 function verseAt(loc){ const t = DATA[loc.ci].themes[loc.ti]; return sutraAt(t, loc.si).s; }
@@ -1727,7 +1836,15 @@ function verseSearchText(v){
     + ' ' + v.paras.en + ' ' + v.paras.ne + ' ' + v.paras.hi + ' ' + T(v.lits));
 }
 const VERSE_TEXT = [];
-function buildVerseText(){ DATA.forEach(ch=> ch.themes.forEach(t=> t.parts.forEach(p=> p.sutras.forEach(s=> VERSE_TEXT.push(verseSearchText(s)))))); }
+function buildVerseText(){ VERSE_TEXT.length = 0;
+  (DATA||[]).forEach(ch=>{ if(!ch||!ch.themes) return;
+    ch.themes.forEach(t=> t.parts.forEach(p=> p.sutras.forEach(s=> VERSE_TEXT.push(verseSearchText(s))))); }); }
+function assembleData(){
+  DATA = [];
+  for(var n=1;n<=18;n++) DATA.push(GITA_CH[n] || null);
+  buildIndex(); buildVerseText();
+}
+function allChReady(){ for(var n=1;n<=18;n++) if(!GITA_CH[n]||!GITA_CH[n].themes) return false; return true; }
 
 // ---------- search ----------
 let searchTimer = null;
@@ -1737,10 +1854,11 @@ function onSearchInput(v){ clearTimeout(searchTimer); searchTimer = setTimeout(d
 function searchX(){ const f = document.querySelector('.sw-field');
   if(f) f.classList.toggle('has-x', ($('#searchInput').value || '').length > 0); }
 function doSearch(){
+  if(!allChReady()){ loadAllChapters().then(doSearch); return; }
   const q = ($('#searchInput').value || '').trim();
   if(!q){ clearSearch(); return; }
   rememberOrigin();
-  state.view = 'search'; state.chapter = null; state.theme = null; renderCrumbs();
+  state.view = 'search'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
   const nq = normTxt(q);
   /* Accept whatever separator the reader's keyboard gives. On a Devanagari
      layout the danda । sits where the full stop is, so १।१ is the natural way to
@@ -1894,8 +2012,9 @@ function goToOrigin(){
   else showSections();
 }
 function showFavorites(){
+  if(!allChReady()){ loadAllChapters().then(showFavorites); return; }
   rememberOrigin();
-  state.view = 'favorites'; state.chapter = null; state.theme = null; renderCrumbs();
+  state.view = 'favorites'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
   const saved = FAV.map(verseLoc).filter(Boolean);
   FAV_LIST = saved;
   if(saved.length === 0){
@@ -1951,6 +2070,7 @@ function setFavNote(id, text){
 
 // ---------- random verse ----------
 function randomVerse(){
+  if(!allChReady()){ loadAllChapters().then(randomVerse); return; }
   const v = VERSES[Math.floor(Math.random()*VERSES.length)];
   openModal(v.ci, v.ti, v.si, 'random');
 }
@@ -2038,12 +2158,26 @@ function lrAll(){
       const th = {};
       if(c.themes && typeof c.themes === 'object' && !Array.isArray(c.themes))
         for(const t in c.themes) if(/^\d+$/.test(t) && c.themes[t] === 1) th[t] = 1;
-      out[k] = {story: c.story === 1 ? 1 : 0, themes: th};
+      const hd = {};
+      if(c.held && typeof c.held === 'object' && !Array.isArray(c.held))
+        for(const v in c.held) if(c.held[v] === 1) hd[v] = 1;
+      out[k] = {story: c.story === 1 ? 1 : 0, themes: th, held: hd};
     }
     return out;
   }catch(e){ return {}; }
 }
-function lrGet(n){ const a = lrAll(); return a[n] || {story:0, themes:{}}; }
+function lrGet(n){ const a = lrAll(); const o = a[n] || {story:0, themes:{}, held:{}}; if(!o.held) o.held = {}; return o; }
+function lrIast(){ return state.lang === 'en'; }
+function lrGloss(w){
+  return state.lang==='ne' ? (w[3]||w[2]) : state.lang==='hi' ? (w[4]||w[2]) : w[2];
+}
+function lrHeldOn(n, vn){ const p = lrGet(n); return !!(p.held||{})[vn]; }
+function lrHold(n, vn, on){
+  const p = lrGet(n); p.held = p.held || {};
+  if(on) p.held[vn] = 1; else delete p.held[vn];
+  lrPut(n, p);
+}
+function chVerseN(ch){ let n=0; ch.themes.forEach(t=> n += vCount(t)); return n; }
 function lrPut(n, o){
   const a = lrAll(); a[n] = o;
   try{ localStorage.setItem('gitaLearn', JSON.stringify(a)); }catch(e){}
@@ -2066,13 +2200,15 @@ function thVerses(t){ const out=[]; t.parts.forEach(p=>p.sutras.forEach(s=>out.p
 
 /* ---------------- the path ---------------- */
 function showLearn(ci){
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showLearn(ci)); return; }
   rememberOrigin();
-  state.view='learn'; state.chapter=ci; state.lrAt = null;
+  state.view='learn'; state.chapter=ci; persistView(); state.lrAt = null;
   state.section = state.section || Math.ceil(DATA[ci].num/6);
   state.theme=null; renderCrumbs();
   const ch = DATA[ci], p = lrGet(ch.num);
   const total = ch.themes.length, done = Object.keys(p.themes).length;
-  const pct = Math.round((p.story + done) / (1 + total) * 100);
+  const nv = chVerseN(ch), nh = Object.keys(p.held||{}).length;
+  const pct = Math.round((p.story + done + nh) / (1 + total + nv) * 100);
 
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
@@ -2083,7 +2219,8 @@ function showLearn(ci){
     <div class="lrn fade-in">
       <div class="view-sub">${esc(fmt(L('learn_sub'),{}))}</div>
       <div class="lr-prog"><i style="width:${pct}%"></i></div>
-      <div class="lr-progl">${esc(fmt(L('learn_walked'),{p:numL(pct)}))}</div>
+      <div class="lr-progl">${esc(fmt(L('learn_walked'),{p:numL(pct)}))}
+        · ${esc(fmt(L('learn_held_n'),{a:numL(nh),b:numL(nv)}))}</div>
 
       <div class="lr-step ${p.story?'done':'now'}">
         <div class="lr-badge">${p.story?'✓':numL(1)}</div>
@@ -2095,25 +2232,32 @@ function showLearn(ci){
         </div>
       </div>
 
-      <div class="lr-step ${p.story?(done===total?'done':'now'):'locked'}">
-        <div class="lr-badge">${(p.story&&done===total)?'✓':numL(2)}</div>
+      <div class="lr-step ${done===total?'done':'now'}">
+        <div class="lr-badge">${done===total?'✓':numL(2)}</div>
         <div class="lr-body">
           <h3>${esc(L('learn_s2'))}</h3>
-          <p>${p.story ? esc(fmt(L('learn_s2_d'),{a:numL(done),b:numL(total)}))
-                       : esc(L('learn_s2_locked'))}</p>
-          ${p.story ? `<div class="lr-grid">${ch.themes.map((t,ti)=>`
+          <p>${esc(fmt(L('learn_s2_d'),{a:numL(done),b:numL(total)}))}</p>
+          <div class="lr-grid">${ch.themes.map((t,ti)=>`
             <button class="lr-chip${p.themes[ti]?' ok':''}" onclick="lrTheme(${ci},${ti},0)">
               <span class="n">${p.themes[ti]?'✓':numL(ti+1)}</span>
               <span class="t">${esc(T(t.titles))}</span>
               <span class="v">${numL(vCount(t))}</span>
-            </button>`).join('')}</div>`
-          : `<button class="lr-ghost" onclick="lrSkip(${ci})">${esc(L('learn_skip'))}</button>`}
+            </button>`).join('')}</div>
+        </div>
+      </div>
+
+      <div class="lr-step now">
+        <div class="lr-badge">${numL(3)}</div>
+        <div class="lr-body">
+          <h3>${esc(L('learn_s3'))}</h3>
+          <p>${esc(L('learn_s3_d'))}</p>
+          <button class="lr-ghost" onclick="lrFreeCh(${ci})">${esc(L('learn_free_go'))}</button>
         </div>
       </div>
 
       <div class="lr-foot">
         <span>${esc(L('learn_local'))}</span>
-        ${(p.story||done)?`<button class="lr-ghost sm" onclick="lrReset(${ch.num})">${esc(L('learn_restart'))}</button>`:''}
+        ${(p.story||done||nh)?`<button class="lr-ghost sm" onclick="lrReset(${ch.num})">${esc(L('learn_restart'))}</button>`:''}
       </div>
     </div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
   scrollViewTop();
@@ -2136,7 +2280,7 @@ function lrSkip(ci){ const n=DATA[ci].num, p=lrGet(n); p.story=1; lrPut(n,p); sh
 function lrPlan(ch){ return ch.themes.length >= 10 ? [0,1,2,3] : [0,3]; }
 
 function lrStory(ci, step){
-  state.view='learn'; state.chapter=ci; state.theme=null;
+  state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
   state.lrAt = {kind:'story', step:step};
   const ch = DATA[ci], th = ch.themes, plan = lrPlan(ch);
   const k = plan.indexOf(step), n = plan.length;
@@ -2170,6 +2314,7 @@ function lrStory(ci, step){
     nxt === undefined ? ()=>lrStoryDone(ci) : ()=>lrStory(ci, nxt));
 }
 
+var lrTest = 0, lrOpen = {};
 function lrStoryRead(ci, ch, th, k, n){
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
@@ -2179,11 +2324,18 @@ function lrStoryRead(ci, ch, th, k, n){
       <div class="lr-k">${esc(fmt(L('learn_step'),{a:numL(k),b:numL(n)}))}</div>
       <h2 class="view-title">${esc(fmt(L('learn_read_h'),{n:numL(ch.num)}))}</h2>
       <div class="view-sub">${esc(L('learn_read_d'))}</div>
-      <ol class="lr-thread">${th.map((t,i)=>`
-        <li><span class="bead">${numL(i+1)}</span>
+      <div class="lr-nav" style="margin-top:8px">
+        <button class="lr-ghost${lrTest?' on':''}" onclick="lrTest=lrTest?0:1;lrOpen={};lrStoryRead(${ci},DATA[${ci}],DATA[${ci}].themes,${k},${n})">${esc(L('learn_test'))}</button>
+      </div>
+      <ol class="lr-thread">${th.map((t,i)=>{
+        const hide = lrTest && !lrOpen[i];
+        return `<li><span class="bead">${numL(i+1)}</span>
           <div><b>${esc(T(t.titles))}</b>
             <span class="rg">${esc(_drangeJS(t.range))}</span>
-            <p>${esc(T(t.descs))}</p></div></li>`).join('')}</ol>
+            ${hide
+              ? `<button class="lr-ghost sm" onclick="lrOpen[${i}]=1;lrStoryRead(${ci},DATA[${ci}],DATA[${ci}].themes,${k},${n})">${esc(L('learn_reveal'))}</button>`
+              : `<p>${esc(T(t.descs))}</p>`}</div></li>`;
+      }).join('')}</ol>
       <div class="lr-nav">
         <button class="lr-cta" onclick="lrStory(${ci},${lrPlan(ch)[1]})">${esc(L('learn_read_go'))}</button>
       </div>
@@ -2203,7 +2355,7 @@ function lrStoryDone(ci){
 
 /* ---------------- stage 2: the verses of one theme ---------------- */
 function lrTheme(ci, ti, k){
-  state.view='learn'; state.chapter=ci; state.theme=ti;
+  state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
   /* Remember the sub-view. A language switch cannot re-render a half-answered
      question — its options were built from the old language's strings — but it
      CAN put the reader back at the top of the same theme rather than at the
@@ -2211,10 +2363,45 @@ function lrTheme(ci, ti, k){
   state.lrAt = {kind:'theme', ti:ti};
   const ch = DATA[ci], t = ch.themes[ti], vs = thVerses(t);
   if(k < vs.length) return lrMeet(ci, ti, k, vs);
-  lrDrill(ci, ti, vs);
+  lrThemeLand(ci, ti, vs);
+}
+var LV = {level:'full', shown:{}};
+function lrSetLevel(lv){ LV.level = lv; LV.shown = {}; lrMeet(LV.ci, LV.ti, LV.k, LV.vs); }
+function lrPeek(id){ LV.shown[id] = 1; lrMeet(LV.ci, LV.ti, LV.k, LV.vs); }
+function lrHideAt(level, wi){
+  if(level==='full') return false;
+  if(level==='first') return wi !== 0;
+  if(level==='half') return wi % 2 === 1;
+  if(level==='blind') return true;
+  return false;
+}
+function lrThemeLand(ci, ti, vs){
+  const ch = DATA[ci], t = ch.themes[ti];
+  const p = lrGet(ch.num); p.themes[ti] = 1; lrPut(ch.num, p);
+  const nxt = ch.themes.findIndex((_,i)=>!lrGet(ch.num).themes[i]);
+  view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
+      <div class="lr-seal">✓</div>
+      <h2>${esc(T(t.titles))}</h2>
+      <p>${esc(L('learn_land_d'))}</p>
+      <button class="lr-cta" onclick="lrFree(${ci},${ti})">${esc(L('learn_free_go'))}</button>
+      <button class="lr-ghost" onclick="lrDrill(${ci},${ti},thVerses(DATA[${ci}].themes[${ti}]))">${esc(L('learn_recall_opt'))}</button>
+      ${nxt>=0 ? `<button class="lr-cta" onclick="lrTheme(${ci},${nxt},0)">${esc(L('learn_next_theme'))}</button>`
+               : `<p class="lr-all">${esc(fmt(L('learn_all_done'),{n:numL(ch.num)}))}</p>`}
+      <button class="lr-ghost" onclick="showLearn(${ci})">${esc(L('opt_learn_s'))}</button>
+    </div></div>`;
+  scrollViewTop();
 }
 function lrMeet(ci, ti, k, vs){
   const ch = DATA[ci], t = ch.themes[ti], s = vs[k], last = k === vs.length-1;
+  LV.ci=ci; LV.ti=ti; LV.k=k; LV.vs=vs;
+  const held = lrHeldOn(ch.num, s.n);
+  const qs = (s.flow||[]).filter(f=>f.k==='p');
+  const levels = [
+    ['full','learn_lad_full','learn_lad_full_s'],
+    ['first','learn_lad_first','learn_lad_first_s'],
+    ['half','learn_lad_half','learn_lad_half_s'],
+    ['blind','learn_lad_blind','learn_lad_blind_s']
+  ];
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${ci})`],
@@ -2222,32 +2409,64 @@ function lrMeet(ci, ti, k, vs){
     <div class="lrn fade-in">
       <div class="lr-k">${esc(L('learn_meet'))} · ${numL(k+1)} / ${numL(vs.length)}</div>
       <h2 class="view-title">${esc(T(t.titles))}</h2>
-      <div class="lr-vnum">${esc(fmtNL(s.n))}</div>
-      <div class="lr-quarters">${(s.flow||[]).filter(f=>f.k==='p').map((q,qi)=>`
-        <div class="lr-q" id="lrq${qi}">
+      <div class="lr-vnum">${esc(fmtNL(s.n))}${held?' · '+esc(L('learn_held')):''}</div>
+      <div class="lr-ladder">
+        <div class="lr-k">${esc(L('learn_ladder'))}</div>
+        <div class="lr-lads">${levels.map(([id,a,b])=>`
+          <button type="button" class="lr-lad${LV.level===id?' on':''}" onclick="lrSetLevel('${id}')">
+            <b>${esc(L(a))}</b><span>${esc(L(b))}</span>
+          </button>`).join('')}</div>
+        <div class="lr-hint">${esc(L('learn_tap_blank'))}</div>
+      </div>
+      <div class="lr-quarters">${qs.map((q,qi)=>{
+        const words = q.words||[];
+        const useSplit = words.length > 1;
+        let line;
+        if(!useSplit){
+          line = `<span class="dv" lang="sa">${q.d}</span>` + (lrIast()?`<span class="ia" lang="sa-Latn">${esc(q.t)}</span>`:'');
+        } else {
+          line = words.map((w,wi)=>{
+            const id = qi+'_'+wi;
+            const hide = lrHideAt(LV.level, wi) && !LV.shown[id];
+            if(hide) return `<button type="button" class="lr-gap" onclick="lrPeek('${id}')">?</button>`;
+            return `<span class="lr-tokw"><span class="d" lang="sa">${w[0]}</span>`
+              + (lrIast()?`<span class="i" lang="sa-Latn">${esc(w[1])}</span>`:'')
+              + `</span>`;
+          }).join('');
+        }
+        return `<div class="lr-q" id="lrq${qi}">
           <button class="lr-qh" onclick="lrTog(${qi})" aria-expanded="false" aria-controls="lrw${qi}">
             <span class="pip">${numL(qi+1)}</span>
-            <span class="tx"><span class="dv" lang="sa">${q.d}</span>
-              <span class="ia" lang="sa-Latn">${esc(q.t)}</span></span>
+            <span class="tx">${line}</span>
             <span class="chev">▾</span>
           </button>
-          <div class="lr-words" id="lrw${qi}" hidden>${(q.words||[]).map(w=>`
+          <div class="lr-words" id="lrw${qi}" hidden>${words.map(w=>`
             <div class="lr-word">
               <span class="d" lang="sa">${w[0]}</span>
-              <span class="i" lang="sa-Latn">${esc(w[1])}</span>
-              <span class="m">${esc(state.lang==='ne'?(w[3]||w[2]):state.lang==='hi'?(w[4]||w[2]):w[2])}</span>
+              ${lrIast()?`<span class="i" lang="sa-Latn">${esc(w[1])}</span>`:''}
+              <span class="m">${esc(lrGloss(w))}</span>
             </div>`).join('')}</div>
-        </div>`).join('')}</div>
+        </div>`;
+      }).join('')}</div>
       <div class="lr-mean"><span class="lb">${esc(L('in_other_words'))}</span>
         <div>${esc(T(s.paras))}</div></div>
       <div class="lr-nav">
-        <button class="lr-ghost" onclick="lrTheme(${ci},${ti},${k-1})" ${k?'':'disabled'}>${esc(L('previous'))}</button>
-        <span class="lr-hint">${esc(L('learn_meet_hint'))}</span>
-        <button class="lr-cta" onclick="lrTheme(${ci},${ti},${k+1})">
-          ${esc(last?L('learn_recall'):L('learn_next_verse'))}</button>
+        <button class="lr-ghost" onclick="LV.shown={};lrTheme(${ci},${ti},${k-1})" ${k?'':'disabled'}>${esc(L('previous'))}</button>
+        <button class="lr-ghost" onclick="lrHold(${ch.num},'${s.n}',${held?0:1});lrMeet(${ci},${ti},${k},LV.vs)">${esc(held?L('learn_unhold'):L('learn_mark_held'))}</button>
+        <button class="lr-cta" onclick="LV.shown={};lrTheme(${ci},${ti},${k+1})">
+          ${esc(last?L('learn_read_go'):L('learn_next_verse'))}</button>
       </div>
     </div>` + backFoot(`showRead(${ci},'full')`, L('back_chapter_one'));
   scrollViewTop();
+}
+
+function lrMeetGo(d){
+  if(state.view !== 'learn' || !LV || !LV.vs) return;
+  if($('#modalBg') && $('#modalBg').classList.contains('open')) return;
+  const k = LV.k + d;
+  if(k < 0 || k >= LV.vs.length) return;
+  LV.shown = {};
+  lrTheme(LV.ci, LV.ti, k);
 }
 function lrTog(i){
   const box = document.getElementById('lrq'+i), w = document.getElementById('lrw'+i);
@@ -2287,13 +2506,13 @@ function lrDrill(ci, ti, vs){
        verse, and picking between four fragments is a shallower task than
        picking between four ślokas (owner 2026-09-01). Full verses are also
        unique book-wide, where four pairs share a first pāda. */
-    const _full = v => v.d;
+    const _full = v => slokaDeva(v);
     const mine = _full(s);
     const wrong = lrSample(others.filter(o=>o.n!==s.n && _full(o)!==mine), 3);
     items.push({kind:'pick',
       ask: esc(L('learn_which')) + `<div class="lr-qsub">${esc(T(s.paras))}</div>`,
       opts: lrShuffle([s].concat(wrong)).map(o=>
-        ({label: _full(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
+        ({label: _full(o), iast:slokaIast(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`});
 
     /* Cloze on the AUTHORED WORD-SPLIT, never by blanking the recited line.
@@ -2348,8 +2567,8 @@ function lrDrill(ci, ti, vs){
                 tested (owner caught both leaks, 2026-09-01). */
              + `<div class="lr-split" lang="sa">${split}</div>`,
         opts: lrShuffle([c.w].concat(dw)).map(function(o){
-                return {label:o[0], sub:o[1], deva:1, ok:o===c.w}; }),
-        note: `<b lang="sa">${esc(c.w[0])}</b> (${esc(c.w[1])}) — ${esc(c.w[2])}`});
+                return {label:o[0], iast:o[1], deva:1, ok:o===c.w}; }),
+        note: `<b lang="sa">${esc(c.w[0])}</b>${state.lang==='en' ? ` (${esc(c.w[1])})` : ''} — ${esc(c.w[2])}`});
     }
   });
   /* Reorder the verses of the theme. The chip must NOT carry the verse number:
@@ -2370,7 +2589,7 @@ function lrDrill(ci, ti, vs){
     const qq = (qv.flow||[]).filter(f=>f.k==='p');
     if(qq.length > 2) items.push({kind:'order',
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(qv.n)})),
-      chips: qq.map((q,i)=>({id:i, label:q.d, deva:1})),
+      chips: qq.map((q,i)=>({id:i, label:q.d + pDanda(i, qq.length), iast:(q.t||'') + pDandaLatn(i, qq.length), deva:1})),
       answer: qq.map((_,i)=>i)});
   });
 
@@ -2397,13 +2616,23 @@ function lrDrill(ci, ti, vs){
    is required, and leaving costs nothing. Practice, not examination. */
 var FP = {ci:0, ti:0, v:null, order:[], deal:[], picked:[]};
 function lrFree(ci, ti){
-  state.view='learn'; state.chapter=ci; state.theme=ti;
+  state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
   state.lrAt = {kind:'theme', ti:ti};
   FP.ci = ci; FP.ti = ti;
   lrFreePick();
 }
+function lrFreeCh(ci){
+  state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
+  state.lrAt = {kind:'story'};
+  FP.ci = ci; FP.ti = -1;
+  lrFreePick();
+}
 function lrFreePick(){
-  const ch = DATA[FP.ci], t = ch.themes[FP.ti], vs = thVerses(t);
+  const ch = DATA[FP.ci];
+  const vs = FP.ti < 0
+    ? ch.themes.reduce((a,th)=>a.concat(thVerses(th)), [])
+    : thVerses(ch.themes[FP.ti]);
+  const t = FP.ti < 0 ? null : ch.themes[FP.ti];
   /* avoid handing back the same verse twice running when the theme has
      more than one to choose from */
   let v = vs[Math.floor(Math.random()*vs.length)];
@@ -2429,15 +2658,16 @@ function lrFreePick(){
   lrFreePaint();
 }
 function lrFreePaint(){
-  const ch = DATA[FP.ci], t = ch.themes[FP.ti], v = FP.v;
+  const ch = DATA[FP.ci], t = FP.ti < 0 ? null : ch.themes[FP.ti], v = FP.v;
+  const tlab = t ? T(t.titles) : T(ch.names);
   const done = FP.picked.length === FP.order.length;
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${FP.ci})`],
-      [T(t.titles), null]])}
+      [tlab, null]])}
     <div class="lrn fade-in">
       <div class="lr-k">${esc(L('learn_free'))}</div>
-      <h2 class="view-title">${esc(T(t.titles))}</h2>
+      <h2 class="view-title">${esc(tlab)}</h2>
       <div class="view-sub">${esc(L('learn_free_d'))}</div>
       <div class="lr-qbox">
         <div class="lr-ask">${esc(fmt(L('learn_qorder'),{v:fmtNL(v.n)}))}</div>
@@ -2487,8 +2717,9 @@ function lrFreeTap(i){
 var PL = {scope:'all', ch:0, mode:0, run:0, q:null};
 
 function showPlay(){
+  if(!allChReady()){ loadAllChapters().then(showPlay); return; }
   rememberOrigin();
-  state.view='play'; state.chapter=null; state.theme=null; renderCrumbs();
+  state.view='play'; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="lrn fade-in">
       <h2 class="view-title">${esc(L('play_title'))}</h2>
@@ -2504,10 +2735,10 @@ function showPlay(){
       </div>
 
       <div class="pl-modes">
-        ${[[1,'play_m1','play_m1_d'],[2,'play_m2','play_m2_d'],[3,'play_m3','play_m3_d']].map(([m,t,d])=>`
+        ${[[1,'play_m1','play_m1_d'],[2,'play_m2','play_m2_d'],[3,'play_m3','play_m3_d']].map(([m,tk,d])=>`
           <button class="pl-mode" onclick="plStart(${m})">
             <span class="n">${numL(m)}</span>
-            <span class="b"><b>${esc(L(t))}</b><span>${esc(L(d))}</span></span>
+            <span class="b"><b>${esc(L(tk))}</b><span>${esc(L(d))}</span></span>
           </button>`).join('')}
       </div>
     </div>` + backFoot('showWelcome()', L('home_plain'));
@@ -2531,8 +2762,30 @@ function plPool(){
    700), whereas four PAIRS share a first pāda — 3.35/18.47, 6.15/6.28,
    9.34/18.65, 16.07/18.30 — so the identical-option guard that case needed is
    no longer required. It stays as an assertion in the health checks. */
-const plFull = v => v.d;
+function hemiSplit(s){
+  return String(s||'').split(/[।|]/).map(x => x.replace(/[॥\|\s]+$/g,'').trim()).filter(Boolean);
+}
+function slokaDeva(s){
+  const h = hemiSplit(s && s.d);
+  if(h.length < 2) return (s && s.d) || '';
+  return h.map((p,i) => p + ((i % 2 === 0 && i < h.length - 1) ? ' ।' : ' ॥')).join(' ');
+}
+function slokaIast(s){
+  const h = hemiSplit(s && s.t);
+  if(h.length < 2) return (s && s.t) || '';
+  return h.map((p,i) => p + ((i % 2 === 0 && i < h.length - 1) ? ' |' : ' ||')).join(' ');
+}
+const plFull = v => slokaDeva(v);
+function saAsk(s){
+  return `<div class="lr-qsub dv" lang="sa">${esc(slokaDeva(s))}`
+    + (s.t ? `<div class="giast" lang="sa-Latn">${esc(slokaIast(s))}</div>` : '')
+    + `</div>`;
+}
 
+function plNextId(n){
+  const p = n.split('.');
+  return p[0] + '.' + String(+p[1] + 1).padStart(2,'0');
+}
 function plStart(mode){
   PL.mode = mode; PL.run = 0; PL.q = null;
   plNext();
@@ -2542,54 +2795,58 @@ function plNext(keep){
   const pool = plPool();
   if(pool.length < 4){ showPlay(); return; }
   /* `keep` rebuilds the question that is already on screen — used when the
-     reader switches language mid-game. Only the ASK, the NOTE and the numerals
-     are language-bound; the verses and pādas are Devanagari either way, so the
-     question is fully derivable from the verse id plus the option order we
-     stored. Quitting to the menu for a language change was needless
-     (owner 2026-09-02). */
-  const s = keep ? (pool.find(v=>v.n === keep.n) || pool[Math.floor(Math.random()*pool.length)])
-                 : pool[Math.floor(Math.random()*pool.length)];
+     reader switches language mid-game. */
+  let s = keep ? (pool.find(v=>v.n === keep.n) || pool[Math.floor(Math.random()*pool.length)])
+               : pool[Math.floor(Math.random()*pool.length)];
   let item;
 
   if(PL.mode === 1){
-    /* Given the number, choose the verse. Distractors must not share the
-       answer's opening line: four verse PAIRS in the Gita open identically
-       (3.35/18.47, 6.15/6.28, 9.34/18.65, 16.07/18.30), which would render two
-       indistinguishable options with one marked wrong. */
-    const mine = plFull(s);
-    const ordered = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean)
-                         : null;
+    /* Manana: the śloka is given; the work is to take its sense.
+       Distractors are other paraphrases, preferably the same chapter so
+       the topic cannot give the answer away. */
+    const sense = o => T(o.paras);
+    const mine = sense(s);
+    const same = pool.filter(o=>o.n.split('.')[0]===s.n.split('.')[0] && o.n!==s.n && sense(o)!==mine);
+    const rest = pool.filter(o=>o.n!==s.n && sense(o)!==mine);
+    const distract = same.length >= 3 ? same : rest;
+    const ordered = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean) : null;
     const four = (ordered && ordered.length===4) ? ordered
-               : lrShuffle([s].concat(lrSample(pool.filter(o=>o.n!==s.n && plFull(o)!==mine), 3)));
+               : lrShuffle([s].concat(lrSample(distract, 3)));
     PL.q = {n:s.n, ord:four.map(o=>o.n)};
     item = {kind:'pick',
-      ask: esc(fmt(L('play_q1'),{v:fmtNL(s.n)})),
-      opts: four.map(o=>({label:plFull(o), deva:1, ok:o===s})),
+      ask: esc(L('play_q1')) + saAsk(s),
+      opts: four.map(o=>({label:sense(o), ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`};
 
   }else if(PL.mode === 2){
-    /* Given the verse, choose its number. Distractors are NEAR MISSES from the
-       same chapter — random numbers from elsewhere would be given away by
-       chapter recognition alone, testing nothing. */
-    const same = pool.filter(o=>o.n.split('.')[0] === s.n.split('.')[0] && o.n !== s.n);
-    const near = same.sort((a,b)=>
-      Math.abs(parseInt(a.n.split('.')[1],10) - parseInt(s.n.split('.')[1],10)) -
-      Math.abs(parseInt(b.n.split('.')[1],10) - parseInt(s.n.split('.')[1],10))).slice(0,6);
+    /* Sandarbha: the argument is a chain. Given this verse, which follows?
+       Last-of-chapter verses have no successor — draw again. */
+    if(!keep){
+      let guard = 0;
+      while(guard++ < 40 && !pool.find(o=>o.n===plNextId(s.n)))
+        s = pool[Math.floor(Math.random()*pool.length)];
+    }
+    const nxt = pool.find(o=>o.n===plNextId(s.n));
+    if(!nxt){ showPlay(); return; }
+    const ch = s.n.split('.')[0];
+    const same = pool.filter(o=>o.n.split('.')[0]===ch && o.n!==s.n && o.n!==nxt.n);
+    const rest = pool.filter(o=>o.n!==s.n && o.n!==nxt.n);
+    const distract = same.length >= 3 ? same : rest;
     const ordered2 = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean) : null;
     const four2 = (ordered2 && ordered2.length===4) ? ordered2
-                : lrShuffle([s].concat(lrSample(near.length >= 3 ? near : pool.filter(o=>o.n!==s.n), 3)));
+                : lrShuffle([nxt].concat(lrSample(distract, 3)));
     PL.q = {n:s.n, ord:four2.map(o=>o.n)};
     item = {kind:'pick',
-      ask: esc(L('play_q2')) + `<div class="lr-qsub dv" lang="sa">${s.d}</div>`,
-      opts: four2.map(o=>({label:fmtNL(o.n), ok:o===s})),
-      note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`};
+      ask: esc(L('play_q2')) + saAsk(s),
+      opts: four2.map(o=>({label:plFull(o), iast:slokaIast(o), deva:1, ok:o===nxt})),
+      note: esc(T(nxt.lits))};
 
   }else{
     const qq = (s.flow||[]).filter(f=>f.k==='p');
     PL.q = {n:s.n, ord:[]};
     item = {kind:'order',
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(s.n)})),
-      chips: qq.map((q,i)=>({id:i, label:q.d, deva:1})),
+      chips: qq.map((q,i)=>({id:i, label:q.d + pDanda(i, qq.length), iast:(q.t||'') + pDandaLatn(i, qq.length), deva:1})),
       answer: qq.map((_,i)=>i)};
   }
   /* A one-item run: when it finishes, deal another. That is the endless game. */
@@ -2632,17 +2889,34 @@ function lrPaint(){
      looks the answer up by position (owner 2026-09-02). */
   if(it.kind === 'pick' && it._seen) it.opts = lrShuffle(it.opts);
   it._seen = 1;
-  const body = it.kind === 'pick'
-    ? `<div class="lr-ask">${it.ask}</div>
+  let body;
+  if(it.kind === 'pick'){
+    body = `<div class="lr-ask">${it.ask}</div>
        <div class="lr-opts">${it.opts.map((o,i)=>`
          <button class="lr-opt" onclick="lrPick(${i})">
+           <span class="onum">${numL(i+1)}</span>
            <span class="ol${o.deva?' dv':''}"${o.deva?' lang="sa"':''}>${o.deva?o.label:esc(o.label)}</span>
+           ${o.iast?`<span class="giast" lang="sa-Latn">${esc(o.iast)}</span>`:''}
            ${o.sub?`<span class="os">${esc(o.sub)}</span>`:''}
-         </button>`).join('')}</div>`
-    : `<div class="lr-ask">${it.ask}</div>
+         </button>`).join('')}</div>`;
+  }else if(it.kind === 'match'){
+    LQpick = {left:null, done:{}};
+    body = `<div class="lr-ask">${it.ask}</div>
+      <div class="lr-match">
+        <div class="lr-mcol nums">${it.left.map((o,i)=>`
+          <button class="lr-mbtn num" data-n="${esc(o.n)}" onclick="lrMpick('left',${i})">${esc(o.lab)}</button>`).join('')}</div>
+        <div class="lr-mcol vs">${it.right.map((o,i)=>`
+          <button class="lr-mbtn vs" data-n="${esc(o.n)}" onclick="lrMpick('right',${i})">
+            <span class="ol dv" lang="sa">${o.lab}</span>
+            ${o.iast?`<span class="giast" lang="sa-Latn">${esc(o.iast)}</span>`:''}
+          </button>`).join('')}</div>
+      </div>`;
+  }else{
+    body = `<div class="lr-ask">${it.ask}</div>
        <div class="lr-slots" id="lrSlots"></div>
        <div class="lr-chips">${lrShuffle(it.chips).map(c=>`
-         <button class="lr-chip2${c.deva?' dv':''}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})"><span class="lr-t">${esc(c.label)}</span></button>`).join('')}</div>`;
+         <button class="lr-chip2${c.deva?' dv':''}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})"><span class="lr-t">${esc(c.label)}</span>${c.iast?`<span class="giast" lang="sa-Latn">${esc(c.iast)}</span>`:''}</button>`).join('')}</div>`;
+  }
   view.innerHTML = `<div class="lrn fade-in">${head}
     <div class="lr-qbox">${body}<div class="lr-fb" id="lrFb"></div></div>
     </div>` + (LQback
@@ -2673,6 +2947,41 @@ function lrPick(i){
       + `<button class="lr-cta" onclick="LQi++;lrPaint()">${esc(L('learn_retry'))}</button>`;
   }
 }
+function lrMpick(side, i){
+  const it = LQ[LQi];
+  if(!LQpick || typeof LQpick !== 'object' || Array.isArray(LQpick)) LQpick = {left:null, done:{}};
+  const col = side === 'left' ? it.left : it.right;
+  const o = col[i];
+  if(LQpick.done[o.n]) return;
+  const btns = document.querySelectorAll(side==='left' ? '.lr-mbtn.num' : '.lr-mbtn.vs');
+  btns.forEach(b=>b.classList.remove('on'));
+  LQpick[side] = i;
+  if(btns[i]) btns[i].classList.add('on');
+  if(LQpick.left==null || LQpick.right==null) return;
+  const a = it.left[LQpick.left], b = it.right[LQpick.right];
+  const lb = document.querySelectorAll('.lr-mbtn.num')[LQpick.left];
+  const rb = document.querySelectorAll('.lr-mbtn.vs')[LQpick.right];
+  const fb = document.getElementById('lrFb');
+  if(a.n === b.n){
+    LQpick.done[a.n] = 1;
+    if(lb){ lb.classList.add('right'); lb.disabled = true; lb.classList.remove('on'); }
+    if(rb){ rb.classList.add('right'); rb.disabled = true; rb.classList.remove('on'); }
+    LQpick.left = LQpick.right = null;
+    if(Object.keys(LQpick.done).length >= it.left.length){
+      if(fb) fb.innerHTML = `<div class="good">${esc(L('learn_yes'))}</div>`;
+      LQi++; setTimeout(lrPaint, 700);
+    }
+  }else{
+    if(lb) lb.classList.add('shake');
+    if(rb) rb.classList.add('shake');
+    setTimeout(()=>{
+      if(lb){ lb.classList.remove('shake','on'); }
+      if(rb){ rb.classList.remove('shake','on'); }
+    }, 380);
+    LQpick.left = LQpick.right = null;
+    if(fb) fb.innerHTML = '';
+  }
+}
 function lrChip(el, id){
   const it = LQ[LQi], want = it.answer[LQpick.length];
   const fb = document.getElementById('lrFb');
@@ -2686,8 +2995,10 @@ function lrChip(el, id){
     /* carry the chip's script class through, or a Devanagari pāda drops back
        to the Latin face the moment it is placed */
     const dv = el.classList.contains('dv') ? ' dv' : '';
+    const chp = it.chips.find(c=>c.id===id);
+    const iast = (chp && chp.iast) ? `<span class="giast" lang="sa-Latn">${esc(chp.iast)}</span>` : '';
     document.getElementById('lrSlots').insertAdjacentHTML('beforeend',
-      `<span class="lr-slot${dv}"${dv?' lang="sa"':''}>${numL(LQpick.length)}. ${esc(el.textContent.trim())}</span>`);
+      `<span class="lr-slot${dv}"${dv?' lang="sa"':''}>${numL(LQpick.length)}. ${esc(chp?chp.label:el.textContent.trim())}${iast}</span>`);
     if(LQpick.length === it.answer.length){
       fb.innerHTML = `<div class="good">${esc(L('learn_thread_ok'))}</div>`;
       LQi++; setTimeout(lrPaint, 700);
@@ -2737,9 +3048,13 @@ function renderCrumbs(){
 }
 
 function showChapters(section){
+  const _from = (section-1)*6+1, _to = Math.min(18, section*6);
+  const _need = [];
+  for(let n=_from;n<=_to;n++) if(!GITA_CH[n]||!GITA_CH[n].themes) _need.push(n);
+  if(_need.length){ Promise.all(_need.map(loadChapter)).then(()=>showChapters(section)); return; }
   /* The Three Ways is the door; there is no flat all-18 list. Every chapter
      list lives inside its way, so the niṣṭhā framing is never skipped. */
-  state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; renderCrumbs();
+  state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
   const list = DATA.filter(ch => ch.num >= (section-1)*6+1 && ch.num <= section*6);
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(section), null]])}
@@ -2751,15 +3066,53 @@ function showChapters(section){
           <h3>${esc(T(ch.names))}</h3>
           <p>${esc(T(ch.subs))}</p>
           <div class="meta">${numL(ch.verses)} ${L('verses')}</div>
-          <div class="go">${L('open_chapter')}</div>
         </div>`;}).join('')}
     </div>` + backFoot('showSections()', L('back_ways'));
 }
 
+function daySpec(){
+  const d = new Date();
+  const dayNum = d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate();
+  let total = 0; for(const n of CH_LEN) total += n;
+  let k = dayNum % total, acc = 0;
+  for(let i=0;i<CH_LEN.length;i++){
+    if(k < acc + CH_LEN[i]){
+      const v = k - acc + 1;
+      return {ch:i+1, id:(i+1)+'.'+String(v).padStart(2,'0')};
+    }
+    acc += CH_LEN[i];
+  }
+  return {ch:1, id:'1.01'};
+}
 function dayVerse(){
+  if(!VERSES.length) return null;
   const d = new Date();
   const dayNum = d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate();
   return VERSES[dayNum % VERSES.length];
+}
+function viewHash(){
+  if(state.view==='play') return '#play';
+  if(state.view==='favorites') return '#favorites';
+  if(state.view==='search') return '#search';
+  if(state.view==='sections') return '#ways';
+  if(state.view==='chapters' && state.section) return '#way='+state.section;
+  if(state.view==='learn' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=learn';
+  if(state.view==='themes' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=study';
+  if(state.view==='read' && state.chapter!=null)
+    return '#chapter='+(state.chapter+1)+'&tab='+(state.readMode||'full');
+  if(state.view==='verses' && state.chapter!=null && state.theme!=null)
+    return '#theme='+(state.chapter+1)+'.'+state.theme;
+  return '';
+}
+function persistView(){
+  const h = viewHash();
+  try{ sessionStorage.setItem('gita.route', h || '#'); }catch(e){}
+  const modal = document.getElementById('modalBg');
+  if(modal && modal.classList.contains('open')) return;
+  const cur = location.hash || '';
+  if(cur === h) return;
+  if(!h && !cur) return;
+  try{ history.replaceState(history.state, '', h || (location.pathname + location.search)); }catch(e){}
 }
 function goHome(){
   if($('#modalBg').classList.contains('open')) closeModal();
@@ -2768,41 +3121,44 @@ function goHome(){
   showWelcome();
 }
 function showWelcome(){
-  state.view='welcome'; state.chapter=null; state.theme=null; state.section=null; renderCrumbs();
+  state.view='welcome'; state.chapter=null; state.theme=null; state.section=null; persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="welcome fade-in">
       <div class="w-om">ॐ</div>
-      <!-- h2, not h1: #appTitle in the banner is this document's single h1.
-           .view-title carries all the styling, so this is semantics only. -->
       <h2 class="view-title">${esc(L('welcome_title'))}</h2>
       <p class="view-sub">${esc(L('welcome_sub'))}</p>
-      ${(()=>{ const sv = state.shared; const dv = sv || dayVerse(); const c = DATA[dv.ci], v = verseAt(dv);
-        const part = sutraAt(c.themes[dv.ti], dv.si).part;
-        return `<div class="w-day fade-in" role="button" tabindex="0" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book')">
-          <div class="wd-label">${esc(sv ? L('shared_label') : L('verse_of_day'))}</div>
+      <div id="wDay"></div>
+      <button class="tool-btn primary big" onclick="showSections()">${esc(L('welcome_enter'))}</button>
+      <div class="w-foot">${esc(L('welcome_foot'))}</div>
+    </div>`;
+  const paint = (dv, shared)=>{
+    if(!dv || state.view!=='welcome' || !DATA || !DATA[dv.ci]) return;
+    const c = DATA[dv.ci], v = verseAt(dv);
+    const part = sutraAt(c.themes[dv.ti], dv.si).part;
+    const el = document.getElementById('wDay'); if(!el) return;
+    el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book')">
+          <div class="wd-label">${esc(shared ? L('shared_label') : L('verse_of_day'))}</div>
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
           <div class="padas">${padaBlockDeva(v)}</div>
-          <div class="vhint">${sv ? esc(L('shared_hint')) : esc(T(v.paras).slice(0,80)) + '…'}</div>
-        </div>`; })()}
-      <button class="tool-btn primary big" onclick="showSections()">${esc(L('welcome_enter'))}</button>
-      <div class="w-foot">${esc(L('welcome_foot'))}</div>
-      <!-- Owner 2026-09-01: say plainly that the app is still being built.
-           Placed after the footer line so it reads as a quiet note, not a
-           disclaimer competing with the invitation to enter. -->
-      <p class="w-wip">${esc(L('wip'))}</p>
-    </div>`;
+          <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras).slice(0,80)) + '…'}</div>
+        </div>`;
+  };
+  if(state.shared){ loadChapter(state.shared.ci+1).then(()=>paint(state.shared, true)); }
+  else {
+    const sp = daySpec();
+    loadChapter(sp.ch).then(()=>paint(verseLoc(sp.id), false));
+  }
 }
 function sectionCard(k, chip, title, desc){
   return `<div class="card sect" role="button" tabindex="0" onclick="showChapters(${k})">
     <span class="chip">${esc(chip)}</span>
     <h3>${esc(title)}</h3>
     <p>${esc(desc)}</p>
-    <div class="go">${esc(L('open_chapters'))}</div>
   </div>`;
 }
 function showSections(){
-  state.view='sections'; state.chapter=null; state.theme=null; state.section=null; state.shared=null; renderCrumbs();
+  state.view='sections'; state.chapter=null; state.theme=null; state.section=null; state.shared=null; persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="view-title fade-in">${esc(L('sections_title'))}</div>
     <div class="view-sub fade-in">${esc(L('sections_sub'))}</div>
@@ -2860,9 +3216,16 @@ function modeSwitch(ci){
     </div>
   </div>`;
 }
-function chTitle(ch){ return `<div class="view-title fade-in"><span class="chdeva">${ch.deva}</span> · ${esc(T(ch.names))}</div>`; }
+function chTitle(ch){
+  const name = esc(T(ch.names));
+  const head = state.lang === 'en'
+    ? `<span class="chdeva">${ch.deva}</span> · ${name}`
+    : name;
+  return `<div class="view-title fade-in">${head}</div>`;
+}
 function showThemes(ci){
-  state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; renderCrumbs();
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showThemes(ci)); return; }
+  state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; persistView(); renderCrumbs();
   const ch = DATA[ci];
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)} · ${L('opt_study_g')}`, null]])}
@@ -2881,7 +3244,7 @@ function showThemes(ci){
             <h3>${esc(T(p.titles))}</h3>
             <p>${esc(T(p.descs))}</p></div>`).join('');
         return `<div class="theme" role="button" tabindex="0" onclick="showVerses(${ci},${ti})">
-          <h3>${esc(T(t.titles))}<span class="rng">${fmtRangeL(t.range)}</span></h3>
+          <h3>${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></h3>
           <p class="tdesc">${esc(T(t.descs))}</p>
           <div class="vcards">${cards}</div>
         </div>`; }).join('')}
@@ -2894,6 +3257,7 @@ function showThemes(ci){
    chapter as flowing text: speaker, verse, translation, nothing else. Tapping a
    verse still opens the popup with its quarters and word meanings. */
 function showRead(ci, mode){
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showRead(ci, mode)); return; }
   rememberOrigin();
   /* Owner 2026-09-01: "Verses only" (mūla) was retired. This is a LEARNING
      app — the root text with no meaning served the reciter, not the student,
@@ -2902,7 +3266,7 @@ function showRead(ci, mode){
      simply lands on 'full'. */
   if(mode === 'mula') mode = 'full';
   state.readMode = mode || state.readMode || 'full';
-  state.view='read'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; renderCrumbs();
+  state.view='read'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; persistView(); renderCrumbs();
   const ch = DATA[ci];
   const all = [];
   ch.themes.forEach((t,ti)=>t.parts.forEach(p=>p.sutras.forEach((sv,si)=>
@@ -2917,12 +3281,13 @@ function showRead(ci, mode){
     for(const x of sv.lines){
       if(x.k === 's'){
         const name = x.d.replace(/।\s*$/, '');
-        if(name !== lastSpeaker){ lastSpeaker = name; inner += `<div class="rd-spk">${name}</div>`; }
+        if(name !== lastSpeaker){ lastSpeaker = name; inner += `<div class="rd-spk">${name}${x.t?` <span class="rd-iast" lang="sa-Latn">${esc(x.t)}</span>`:''}</div>`; }
       } else {
         // the verse number belongs at the end of the second line, between the
         // daṇḍas, as printed editions set it
         const tail = li ? `॥ <span class="rd-n">${esc(fmtNL(sv.n))}</span> ॥` : '।';
         inner += `<div class="gline">${x.d}${tail}</div>`;
+        if(x.t) inner += `<div class="rd-iast" lang="sa-Latn">${esc(x.t)}</div>`;
         li++;
       }
     }
@@ -2944,8 +3309,12 @@ function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {
 
 // pāda display: Devanagari block with pādas on separate lines (speakers inline)
 function pDanda(i, total){
-  if(total === 2) return (i===0) ? '।' : '॥';
-  return (i%4===1)?'।':((i%4===3)?'॥':'');
+  if(total === 2) return (i===0) ? ' ।' : ' ॥';
+  return (i%4===1)?' ।':((i%4===3)?' ॥':'');
+}
+function pDandaLatn(i, total){
+  if(total === 2) return (i===0) ? ' |' : ' ||';
+  return (i%4===1)?' |':((i%4===3)?' ||':'');
 }
 /* The running verse is rendered verbatim from the source JSON.
    v.lines is the list of `।`-separated segments as they appear in
@@ -2963,18 +3332,42 @@ function padaBlockDeva(s, withNum){
   let html = '', li = 0;
   for(let i = 0; i < ls.length; i++){
     const it = ls[i];
-    if(it.k === 's'){ html += `<span class="spk">${it.d}</span>`; continue; }
+    if(it.k === 's'){
+      html += `<span class="spk">${it.d}</span>`;
+      if(it.t) html += `<span class="spk-iast" lang="sa-Latn">${esc(it.t)}</span>`;
+      continue;
+    }
     const tail = li
       ? (withNum && i === last ? `॥ <span class="gl-n">${esc(fmtNL(s.n))}</span> ॥` : '॥')
       : '।';
     html += `<div class="gline">${it.d}${tail}</div>`;
+    if(it.t) html += `<div class="giast" lang="sa-Latn">${esc(it.t)}</div>`;
     li++;
   }
   return html;
 }
 
+
+function themeGo(d){
+  if(state.view !== 'verses') return;
+  if($('#modalBg') && $('#modalBg').classList.contains('open')) return;
+  const ci = state.chapter, ti = state.theme;
+  if(ci == null || ti == null || !DATA[ci] || !DATA[ci].themes) return;
+  const t2 = ti + d;
+  if(t2 < 0 || t2 >= DATA[ci].themes.length) return;
+  showVerses(ci, t2);
+}
+function themeNav(ci, ti){
+  const n = DATA[ci].themes.length;
+  return `<div class="lr-nav th-turn">
+    <button class="lr-ghost" ${ti>0?'':'disabled'} onclick="showVerses(${ci},${ti-1})">${esc(L('prev_theme'))}</button>
+    <span class="lr-hint">${esc(L('theme_sg'))} ${numL(ti+1)} / ${numL(n)}</span>
+    <button class="lr-ghost" ${ti<n-1?'':'disabled'} onclick="showVerses(${ci},${ti+1})">${esc(L('next_theme'))}</button>
+  </div>`;
+}
 function showVerses(ci,ti){
-  state.view='verses'; state.chapter=ci; state.theme=ti; renderCrumbs();
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showVerses(ci,ti)); return; }
+  state.view='verses'; state.chapter=ci; state.theme=ti; persistView(); renderCrumbs();
   const ch = DATA[ci], t = ch.themes[ti];
   const blocks = t.parts.map((p,pi)=>`
     <div class="part fade-in">
@@ -2998,10 +3391,12 @@ function showVerses(ci,ti){
          page itself, so the reader arrived at a description with no subject.
          Same shape as the learn path's theme screen: title, then range, then
          the description. -->
-    <div class="view-title fade-in">${esc(T(t.titles))}<span class="rng">${fmtRangeL(t.range)}</span></div>
+    <div class="view-title fade-in">${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></div>
     <div class="view-sub fade-in">${esc(T(t.descs))}</div>
     <div class="view-sub fade-in">${numL(vCount(t))} ${vCount(t)===1?L('verse'):L('verses')}. ${L('click_hint')}.</div>
-    ${blocks}` + backFoot(`showThemes(${ci})`, L('back_themes'));
+    ${themeNav(ci, ti)}
+    ${blocks}
+    ${themeNav(ci, ti)}` + backFoot(`showThemes(${ci})`, L('back_themes'));
 }
 
 let SRCH_HITS = [], FAV_LIST = [];
@@ -3015,6 +3410,7 @@ function themeBounds(t){
   return {start:0, end:Math.max(0, n-1)};
 }
 function openModal(ci,ti,si, mode, navIdx){
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx)); return; }
   mode = mode || 'theme';
   state.chapter=ci; state.theme=ti; state.idx=si; state.mode=mode;
   state.gpos = VERSES.findIndex(e => e.ci===ci && e.ti===ti && e.si===si);
@@ -3047,6 +3443,7 @@ function closeModal(){
   const wasOpen = $('#modalBg').classList.contains('open');
   $('#modalBg').classList.remove('open'); document.body.style.overflow='';
   if(wasOpen) popModalHistory();
+  persistView();
 }
 /* ---------- share a verse: native share sheet where available, else copy ---------- */
 function shareUrl(){
@@ -3118,12 +3515,12 @@ function fillModal(){
   }
   const LI = {en:0, ne:1, hi:2}[state.lang] || 0;
   function wordsHtml(it){
-    return (it.words||[]).map(w=>`<div class="wrow"><span class="wdeva">${w[0]}</span><span class="wiast">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('');
+    return (it.words||[]).map(w=>`<div class="wrow"><span class="wdeva">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('');
   }
   function spkHtml(list){
     return list.map(x=>`
       <div class="spk-line" onclick="toggleWords(this)">
-        <span class="spk-main">${x.d} <span class="iast">${esc(x.t)}</span></span>
+        <span class="spk-main">${x.d} <span class="iast" lang="sa-Latn">${esc(x.t)}</span></span>
         <div class="words">${wordsHtml(x)}</div>
       </div>`).join('');
   }
@@ -3133,13 +3530,15 @@ function fillModal(){
         <span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span>
       </div>
       <div class="pb-deva">${pad.d}${pDanda(idx,total)}</div>
-      <div class="pb-iast">${esc(pad.t)}</div>
+      <div class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</div>
       <div class="words">${wordsHtml(pad)}</div>
     </div>`;
   }
   $('#modal').innerHTML = `
     <button class="m-close" onclick="closeModal()">✕</button>
-    <div class="m-num">${L('verse')} ${fmtNL(s.n)} · ${esc(T(ch.names))}
+    <div class="m-ch">${esc(L('chapter'))} ${numL(ch.num)} · ${esc(T(ch.names))}</div>
+    <div class="m-part">${esc(L('theme_sg'))} ${numL(state.theme+1)} · ${esc(T(t.titles))}</div>
+    <div class="m-num">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span>
       <button class="fav-btn" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
       <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
     <div class="share-panel" id="sharePanel">
@@ -3147,7 +3546,6 @@ function fillModal(){
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
     </div>
-    <div class="m-part">${esc(L('theme_sg'))} ${numL(state.theme+1)} · ${esc(T(t.titles))} » ${esc(T(part.titles))}</div>
     <div class="m-meter">${esc(meterText(s))}</div>
     <div class="m-verse">
       <div class="words-bar">
@@ -3168,11 +3566,11 @@ function fillModal(){
       ${state.mode==='random'
         ? `<button class="m-random" onclick="randomVerse()">${ICONS.shuffle}<span>${esc(L('next_random'))}</span></button>`
         : state.mode==='theme'
-          ? `<button onclick="navSutra(-1)" ${state.idx>state.pStart?'':'disabled'}>${L('previous')}</button>
+          ? `<button onclick="navSutra(-1)" ${(state.idx>state.pStart||state.theme>0)?'':'disabled'}>${(state.idx===state.pStart && state.theme>0)?L('prev_theme'):L('previous')}</button>
              <span class="m-count">${Lof(state.idx-state.pStart+1, state.pEnd-state.pStart+1)}</span>
-             ${state.idx===state.pEnd
+             ${state.idx===state.pEnd && state.theme===DATA[state.chapter].themes.length-1
                ? `<button class="m-back" onclick="backToTheme()">${esc(L('back_to_theme'))}</button>`
-               : `<button onclick="navSutra(1)">${L('next')}</button>`}`
+               : `<button onclick="navSutra(1)">${state.idx===state.pEnd?L('next_theme'):L('next')}</button>`}`
           : state.mode==='read'
           ? `<button onclick="navSutra(-1)" ${state.gpos>state.cStart?'':'disabled'}>${L('previous')}</button>
              <span class="m-count">${Lof(state.gpos-state.cStart+1, state.cEnd-state.cStart+1)}</span>
@@ -3221,8 +3619,17 @@ function toggleAllMeanings(btn){
 function navSutra(d){
   if(state.mode === 'theme'){
     const n = state.idx + d;
-    if(n < state.pStart || n > state.pEnd) return;
-    state.idx = n;
+    if(n >= state.pStart && n <= state.pEnd){
+      state.idx = n;
+    } else if(d > 0 && state.theme + 1 < DATA[state.chapter].themes.length){
+      state.theme += 1;
+      const b = themeBounds(DATA[state.chapter].themes[state.theme]);
+      state.pStart = b.start; state.pEnd = b.end; state.idx = b.start;
+    } else if(d < 0 && state.theme > 0){
+      state.theme -= 1;
+      const b = themeBounds(DATA[state.chapter].themes[state.theme]);
+      state.pStart = b.start; state.pEnd = b.end; state.idx = b.end;
+    } else return;
   } else if(state.mode === 'read'){
     const n = (state.gpos || 0) + d;
     if(n < state.cStart || n > state.cEnd) return;
@@ -3253,12 +3660,52 @@ document.addEventListener('keydown', e=>{
      && document.activeElement.matches && document.activeElement.matches('[role="button"]')){
     e.preventDefault(); document.activeElement.click(); return;
   }
-  if(!$('#modalBg').classList.contains('open')) return;
-  if(e.key==='Escape') closeModal();
-  if(state.mode==='random') return;
-  if(e.key==='ArrowLeft') navSutra(-1);
-  if(e.key==='ArrowRight') navSutra(1);
+  const tag = (e.target && e.target.tagName) ? e.target.tagName : '';
+  if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+  if($('#modalBg').classList.contains('open')){
+    if(e.key==='Escape') closeModal();
+    if(state.mode==='random') return;
+    if(e.key==='ArrowLeft') navSutra(-1);
+    if(e.key==='ArrowRight') navSutra(1);
+    return;
+  }
+  if(state.view === 'learn' && LV && LV.vs){
+    if(e.key==='ArrowLeft'){ e.preventDefault(); lrMeetGo(-1); }
+    if(e.key==='ArrowRight'){ e.preventDefault(); lrMeetGo(1); }
+  } else if(state.view === 'verses'){
+    if(e.key==='ArrowLeft'){ e.preventDefault(); themeGo(-1); }
+    if(e.key==='ArrowRight'){ e.preventDefault(); themeGo(1); }
+  }
 });
+
+
+/* Learn-by-heart: swipe between verses of the open theme (same as Previous/Next). */
+(function(){
+  const el = document.getElementById('view'); if(!el) return;
+  let x0=null, y0=null, t0=0, lock=null;
+  el.addEventListener('touchstart', e=>{
+    if(e.touches.length!==1){ x0=null; return; }
+    if(e.target && e.target.closest && e.target.closest('.lr-qh .tx')){
+      const tx = e.target.closest('.tx');
+      if(tx && tx.scrollWidth > tx.clientWidth + 4){ x0=null; return; }
+    }
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; t0 = Date.now(); lock = null;
+  }, {passive:true});
+  el.addEventListener('touchmove', e=>{
+    if(x0==null || e.touches.length!==1) return;
+    const dx = e.touches[0].clientX - x0, dy = e.touches[0].clientY - y0;
+    if(lock===null && (Math.abs(dx) > 12 || Math.abs(dy) > 12)) lock = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+  }, {passive:true});
+  el.addEventListener('touchend', e=>{
+    if(x0==null || lock!=='x'){ x0=null; return; }
+    const dx = (e.changedTouches[0].clientX - x0);
+    const dt = Date.now() - t0;
+    x0 = null;
+    if(dt > 800 || Math.abs(dx) < 60) return;
+    if(state.view === 'learn') lrMeetGo(dx < 0 ? 1 : -1);
+    else if(state.view === 'verses') themeGo(dx < 0 ? 1 : -1);
+  }, {passive:true});
+})();
 
 /* ---------- mobile: horizontal swipe inside the verse sheet = prev / next ---------- */
 (function(){
@@ -3290,11 +3737,17 @@ document.addEventListener('keydown', e=>{
 if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
   window.addEventListener('load', function(){
     navigator.serviceWorker.register('sw.js').catch(function(){ /* offline cache unavailable — app still works */ });
+    /* A new SW skipWaiting()+claim() does not replace the JS already running.
+       Reload only when this tab already had a controller — first install must
+       not bounce the reader. */
+    var had = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', function(){
+      if (had) location.reload();
+    });
   });
 }
 function gitaBoot(){
-  buildIndex();
-  buildVerseText();
+  assembleData();
   applyStatic();
   paintTheme();
   /* Deep links: the chapter landing pages (and shared messages) can open a
@@ -3306,14 +3759,57 @@ function gitaBoot(){
       /* Owner 2026-08-31: a shared verse lands as an INVITATION, not a popup —
          the verse is shown on the welcome page with "click to see the
          meanings"; the four-pāda sheet opens when the receiver clicks. */
-      if (loc) { state.shared = loc; showWelcome(); return; } }
+      if (loc) { state.shared = loc; showWelcome(); return; }
+      loadChapter(parseInt(hp[0],10)).then(function(){
+        loc = verseLoc(hp[0] + '.' + (hp[1].length === 1 ? '0' + hp[1] : hp[1]));
+        if (loc) { state.shared = loc; showWelcome(); }
+      });
+      return; }
     var tm = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(location.hash || '');
     if (tm) { const ci = parseInt(tm[1], 10) - 1, ti = parseInt(tm[2], 10);
-      if (DATA[ci] && DATA[ci].themes[ti]) { showVerses(ci, ti); return; } }
-    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study))?$/.exec(location.hash || '');
+      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }); return; }
+    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(location.hash || '');
     if(m){ const ci = parseInt(m[1], 10) - 1; const tb = m[3];
-      if(tb === 'study'){ showThemes(ci); } else if(tb){ showRead(ci, tb); } else { showRead(ci, 'full'); } } else { showWelcome(); }
+      loadChapter(ci+1).then(function(){
+        if(tb === 'study'){ showThemes(ci); }
+        else if(tb === 'learn'){ showLearn(ci); }
+        else if(tb){ showRead(ci, tb); }
+        else { showRead(ci, 'full'); }
+      }); return; }
+    var h = location.hash || '';
+    if(h === '#play'){ showPlay(); return; }
+    if(h === '#favorites'){ showFavorites(); return; }
+    if(h === '#search'){ doSearch(); return; }
+    if(h === '#ways'){ showSections(); return; }
+    var wy = /^#way=([123])$/.exec(h);
+    if(wy){ showChapters(+wy[1]); return; }
+    var stay = '';
+    try{ stay = sessionStorage.getItem('gita.route')||''; }catch(e){}
+    if(stay==='#play'){ showPlay(); return; }
+    if(stay==='#favorites'){ showFavorites(); return; }
+    if(stay==='#search'){ doSearch(); return; }
+    if(stay==='#ways'){ showSections(); return; }
+    var sw = /^#way=([123])$/.exec(stay);
+    if(sw){ showChapters(+sw[1]); return; }
+    var sm = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(stay);
+    if(sm){
+      const ci = parseInt(sm[1],10)-1, tb=sm[3];
+      loadChapter(ci+1).then(function(){
+        if(tb==='study') showThemes(ci);
+        else if(tb==='learn') showLearn(ci);
+        else if(tb) showRead(ci, tb);
+        else showRead(ci,'full');
+      }); return;
+    }
+    var st = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(stay);
+    if(st){
+      const ci=parseInt(st[1],10)-1, ti=parseInt(st[2],10);
+      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }); return;
+    }
+    showWelcome();
   })();
+  var _idle = window.requestIdleCallback || function(fn){ setTimeout(fn, 1200); };
+  _idle(function(){ loadAllChapters(); });
 }
 </script>
 __DATASCRIPTS__
@@ -3376,18 +3872,32 @@ _ui_js = json.dumps(UI, ensure_ascii=False)
 _font_css = _font_face()
 data_js = [f"GITA_CH[{ch['num']}] = {json.dumps(ch, ensure_ascii=False)};\n" for ch in data]
 
+_ch_len = "[" + ",".join(str(ch["verses"]) for ch in data) + "]"
 _loader = (
-    "window.__gitaLoaded = function(){\n"
-    f"  if (DATA || Object.keys(GITA_CH).length < {len(data)}) return;\n"
-    "  DATA = [];\n"
-    f"  for (var n = 1; n <= {len(data)}; n++) DATA.push(GITA_CH[n]);\n"
-    "  gitaBoot();\n"
-    "};\n"
+    f"const CH_LEN = {_ch_len};\n"
+    "const _chWait = {};\n"
+    "function loadChapter(n){\n"
+    "  n = +n;\n"
+    "  if (GITA_CH[n] && GITA_CH[n].themes) return Promise.resolve();\n"
+    "  if (_chWait[n]) return _chWait[n];\n"
+    "  _chWait[n] = new Promise(function(resolve, reject){\n"
+    "    var s = document.createElement('script');\n"
+    "    s.src = 'data/ch' + n + '.js';\n"
+    "    s.onload = function(){ assembleData(); resolve(); };\n"
+    "    s.onerror = function(){ gitaLoadFail(); reject(); };\n"
+    "    document.head.appendChild(s);\n"
+    "  });\n"
+    "  return _chWait[n];\n"
+    "}\n"
+    "function loadAllChapters(){\n"
+    "  var ps = []; for (var n = 1; n <= 18; n++) ps.push(loadChapter(n));\n"
+    "  return Promise.all(ps);\n"
+    "}\n"
     "function gitaLoadFail(){ var b = document.getElementById('bootNote');\n"
-    "  if (b) b.textContent = 'Could not load the verse data. Check your connection and reload.'; }")
-_tags = "\n".join(
-    f'<script src="data/ch{ch["num"]}.js" onload="__gitaLoaded()" onerror="gitaLoadFail()"></script>'
-    for ch in data)
+    "  if (b) b.textContent = 'Could not load the verse data. Check your connection and reload.'; }\n"
+    "window.__gitaLoaded = function(){};\n"
+)
+_tags = "<script>gitaBoot();</script>"
 
 shell = (HTML
          .replace("__FONTS__", _font_css)
@@ -3462,11 +3972,11 @@ CHAPTER_CSS = _ch_font + """
    (breadcrumb, IAST, verse description, theme range, paraphrase) fell back to
    full --ink, flattening the hierarchy on all 18 pages. Keep the two names
    identical — source/check_chapter_css.py now fails the build if they drift. */
-:root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#1A5648;
-       --saffron:#B45A24; --card:#FFFCF4; --line:#E6D9C3; }
+:root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --accent:#1A5648;
+       --saffron:#E8912C; --saffron-dark:#C97A20; --card:#FFFFFF; --line:#E7D9C2; }
 @media (prefers-color-scheme:dark){
-  :root{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8FBEB0;
-         --saffron:#DE8F52; --card:#272018; --line:#3B3227; }
+  :root{ --paper:#16120D; --ink:#E9DCC3; --ink-soft:#A79A80; --accent:#8FBEB0;
+         --saffron:#E1953A; --saffron-dark:#C8862F; --card:#201A13; --line:#382D20; }
 }
 *{ box-sizing:border-box; }
 body{ margin:0; background:var(--paper); color:var(--ink);
@@ -3476,7 +3986,7 @@ main{ max-width:680px; margin:0 auto; padding:26px 20px 10px; }
 .crumb a{ color:var(--accent); text-decoration:none; }
 h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent); }
 .deva{ font-family:"Noto Serif Devanagari",serif; font-size:1.25rem;
-       margin:2px 0 16px; color:var(--saffron); }
+       margin:2px 0 16px; color:var(--accent); }
 .blurb{ margin:0 0 14px; }
 .blurb span{ display:block; font-size:.95rem; color:var(--ink-soft); margin-top:4px; }
 .verse{ margin:18px 0; padding:16px 18px; background:var(--card);
@@ -3487,10 +3997,10 @@ h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent); }
 h2{ font-size:1.05rem; margin:24px 0 10px; color:var(--accent); }
 ol.themes{ margin:0; padding-left:22px; }
 ol.themes li{ margin:6px 0; }
-ol.themes .rng{ color:var(--saffron); font-weight:600; font-size:.8rem; white-space:nowrap; }
-.cta{ display:inline-block; margin:26px 0 8px; padding:13px 22px;
-      background:var(--accent); color:#FFF8EC; border-radius:12px;
-      text-decoration:none; font-weight:700; font-size:1.02rem; }
+ol.themes .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem; white-space:nowrap; }
+.cta{ display:inline-block; margin:18px 0 10px; padding:10px 22px;
+      background:var(--saffron); color:#2A2118; border-radius:999px;
+      text-decoration:none; font-weight:700; font-size:.92rem; }
 footer{ max-width:680px; margin:0 auto; padding:20px 20px 34px;
         font-size:.85rem; color:var(--ink-soft); }
 footer a{ color:var(--accent); text-decoration:none; }
@@ -3498,17 +4008,17 @@ ol.toc a{ color:var(--ink); text-decoration:none; border-bottom:1px dotted var(-
 section.theme{ margin:26px 0; }
 h2.th{ font-size:1.02rem; color:var(--accent); margin:20px 0 10px;
        border-bottom:1px solid var(--line); padding-bottom:6px; }
-h2.th .rng{ color:var(--saffron); font-weight:600; font-size:.8rem; margin-left:8px;
+h2.th .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem; margin-left:8px;
        white-space:nowrap; }
 .v{ margin:16px 0 22px; }
 .vnum{ font-size:.78rem; font-weight:700; color:var(--saffron); letter-spacing:.04em; }
 .vnum a{ color:inherit; text-decoration:none; border-bottom:1px dotted var(--saffron); }
-.vdev{ font-family:"Noto Serif Devanagari",serif; font-size:1.14rem; line-height:2;
-       margin:2px 0 3px; }
+.vdev{ font-family:"Noto Serif Devanagari",serif; font-size:1.14rem; line-height:1.85;
+       margin:2px 0 3px; color:var(--accent); }
 .viast{ font-style:italic; color:var(--ink-soft); font-size:.85rem; margin:0 0 7px; }
 .vtr{ margin:4px 0; font-size:.95rem; }
 .vtr .para{ display:block; color:var(--ink-soft); font-size:.9rem; margin-top:2px; }
-@media (prefers-color-scheme:dark){ .cta{ color:#1F1A14; background:var(--saffron); } }
+@media (prefers-color-scheme:dark){ .cta{ color:#1A1209; background:var(--saffron); } }
 /* purana chapter page: clean hairline cards; saffron only for numbers */
 .np{ color:var(--ink-soft); font-size:.9rem; margin:0 0 6px; }
 section.theme{ background:var(--card); border:1px solid var(--line); border-radius:12px;
@@ -3516,7 +4026,7 @@ section.theme{ background:var(--card); border:1px solid var(--line); border-radi
 section.theme:hover{ border-color:var(--saffron); }
 .th-link{ text-decoration:none; }
 .th-link h2.th{ margin:0 0 6px; border-bottom:none; padding-bottom:0; }
-.th-link:hover h2.th{ color:var(--saffron); }
+.th-link:hover h2.th{ color:var(--accent); }
 .tdesc{ margin:0 0 6px; color:var(--ink-soft); font-size:.95rem; }
 .vrows{ margin-top:6px; }
 a.vrow{ display:block; padding:10px 8px; border-top:1px solid var(--line);
@@ -3534,7 +4044,7 @@ a.vrow:hover{ background:var(--paper); }
   html{ scroll-behavior:smooth; }
 }
 details{ margin:4px 0 0; }
-summary{ cursor:pointer; color:var(--saffron); font-weight:700; font-size:.88rem; }
+summary{ cursor:pointer; color:var(--saffron-dark); font-weight:600; font-size:.88rem; }
 """
 
 # cache version — bump automatically from the content hash of EVERY precached
@@ -3711,7 +4221,7 @@ for _ch in data:
         _sections.append(
             f'  <section class="theme" id="theme-{_i}">\n'
             f'    <a class="th-link" href="../../index.html#theme={_n}.{_i - 1}">'
-            f'<h2 class="th">{_h.escape(_t["titles"]["en"])}'
+            f'<h2 class="th">{_h.escape(_t["titles"]["en"])} '
             f'<span class="rng">{_h.escape(_drange(_t["range"]))}</span></h2></a>\n'
             f'    <p class="tdesc">{_h.escape(_t["descs"]["en"])}</p>\n'
             f'    <div class="vrows">{_rows}</div>\n'
@@ -3765,10 +4275,10 @@ for _ch in data:
   <p class="blurb">{_h.escape(_ch["subs"]["en"])}
     <span lang="ne">{_h.escape(_ch["subs"]["ne"])}</span>
     <span lang="hi">{_h.escape(_ch["subs"]["hi"])}</span></p>
-  <p><a class="cta" href="../../index.html#chapter={_n}&tab=study">Study chapter {_n} in the app — word-by-word meanings →</a></p>
+  <p><a class="cta" href="../../index.html#chapter={_n}&tab=study">Enter chapter {_n} →</a></p>
   <p class="np">{_nverses} verses · {len(_ch["themes"])} themes — tap a theme's title to study it in the app.</p>
 {_text}
-  <p><a class="cta" href="../../index.html#chapter={_n}&tab=study">Study chapter {_n} in the app — word-by-word meanings →</a></p>
+  <p><a class="cta" href="../../index.html#chapter={_n}&tab=study">Enter chapter {_n} →</a></p>
 </main>
 <footer>
   <a href="../../">← Bhagavad Gita — an Interactive Study</a><br>

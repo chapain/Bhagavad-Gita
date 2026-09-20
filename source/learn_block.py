@@ -33,7 +33,10 @@ function lrAll(){
       const th = {};
       if(c.themes && typeof c.themes === 'object' && !Array.isArray(c.themes))
         for(const t in c.themes) if(/^\d+$/.test(t) && c.themes[t] === 1) th[t] = 1;
-      out[k] = {story: c.story === 1 ? 1 : 0, themes: th};
+      const hd = {};
+      if(c.held && typeof c.held === 'object' && !Array.isArray(c.held))
+        for(const v in c.held) if(c.held[v] === 1) hd[v] = 1;
+      out[k] = {story: c.story === 1 ? 1 : 0, themes: th, held: hd};
     }
     return out;
   }catch(e){ return {}; }
@@ -67,7 +70,8 @@ function showLearn(ci){
   state.theme=null; renderCrumbs();
   const ch = DATA[ci], p = lrGet(ch.num);
   const total = ch.themes.length, done = Object.keys(p.themes).length;
-  const pct = Math.round((p.story + done) / (1 + total) * 100);
+  const nv = chVerseN(ch), nh = Object.keys(p.held||{}).length;
+  const pct = Math.round((p.story + done + nh) / (1 + total + nv) * 100);
 
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
@@ -78,7 +82,8 @@ function showLearn(ci){
     <div class="lrn fade-in">
       <div class="view-sub">${esc(fmt(L('learn_sub'),{}))}</div>
       <div class="lr-prog"><i style="width:${pct}%"></i></div>
-      <div class="lr-progl">${esc(fmt(L('learn_walked'),{p:numL(pct)}))}</div>
+      <div class="lr-progl">${esc(fmt(L('learn_walked'),{p:numL(pct)}))}
+        · ${esc(fmt(L('learn_held_n'),{a:numL(nh),b:numL(nv)}))}</div>
 
       <div class="lr-step ${p.story?'done':'now'}">
         <div class="lr-badge">${p.story?'✓':numL(1)}</div>
@@ -90,25 +95,32 @@ function showLearn(ci){
         </div>
       </div>
 
-      <div class="lr-step ${p.story?(done===total?'done':'now'):'locked'}">
-        <div class="lr-badge">${(p.story&&done===total)?'✓':numL(2)}</div>
+      <div class="lr-step ${done===total?'done':'now'}">
+        <div class="lr-badge">${done===total?'✓':numL(2)}</div>
         <div class="lr-body">
           <h3>${esc(L('learn_s2'))}</h3>
-          <p>${p.story ? esc(fmt(L('learn_s2_d'),{a:numL(done),b:numL(total)}))
-                       : esc(L('learn_s2_locked'))}</p>
-          ${p.story ? `<div class="lr-grid">${ch.themes.map((t,ti)=>`
+          <p>${esc(fmt(L('learn_s2_d'),{a:numL(done),b:numL(total)}))}</p>
+          <div class="lr-grid">${ch.themes.map((t,ti)=>`
             <button class="lr-chip${p.themes[ti]?' ok':''}" onclick="lrTheme(${ci},${ti},0)">
               <span class="n">${p.themes[ti]?'✓':numL(ti+1)}</span>
               <span class="t">${esc(T(t.titles))}</span>
               <span class="v">${numL(vCount(t))}</span>
-            </button>`).join('')}</div>`
-          : `<button class="lr-ghost" onclick="lrSkip(${ci})">${esc(L('learn_skip'))}</button>`}
+            </button>`).join('')}</div>
+        </div>
+      </div>
+
+      <div class="lr-step now">
+        <div class="lr-badge">${numL(3)}</div>
+        <div class="lr-body">
+          <h3>${esc(L('learn_s3'))}</h3>
+          <p>${esc(L('learn_s3_d'))}</p>
+          <button class="lr-ghost" onclick="lrFreeCh(${ci})">${esc(L('learn_free_go'))}</button>
         </div>
       </div>
 
       <div class="lr-foot">
         <span>${esc(L('learn_local'))}</span>
-        ${(p.story||done)?`<button class="lr-ghost sm" onclick="lrReset(${ch.num})">${esc(L('learn_restart'))}</button>`:''}
+        ${(p.story||done||nh)?`<button class="lr-ghost sm" onclick="lrReset(${ch.num})">${esc(L('learn_restart'))}</button>`:''}
       </div>
     </div>` + backFoot(`showRead(${ci},'full')`, L('back_chapter_one'));
   scrollViewTop();
@@ -165,6 +177,7 @@ function lrStory(ci, step){
     nxt === undefined ? ()=>lrStoryDone(ci) : ()=>lrStory(ci, nxt));
 }
 
+var lrTest = 0, lrOpen = {};
 function lrStoryRead(ci, ch, th, k, n){
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
@@ -174,11 +187,18 @@ function lrStoryRead(ci, ch, th, k, n){
       <div class="lr-k">${esc(fmt(L('learn_step'),{a:numL(k),b:numL(n)}))}</div>
       <h2 class="view-title">${esc(fmt(L('learn_read_h'),{n:numL(ch.num)}))}</h2>
       <div class="view-sub">${esc(L('learn_read_d'))}</div>
-      <ol class="lr-thread">${th.map((t,i)=>`
-        <li><span class="bead">${numL(i+1)}</span>
+      <div class="lr-nav" style="margin-top:8px">
+        <button class="lr-ghost${lrTest?' on':''}" onclick="lrTest=lrTest?0:1;lrStoryRead(${ci},DATA[${ci}],DATA[${ci}].themes,${k},${n})">${esc(L('learn_test'))}</button>
+      </div>
+      <ol class="lr-thread">${th.map((t,i)=>{
+        const hide = lrTest && !lrOpen[i];
+        return `<li><span class="bead">${numL(i+1)}</span>
           <div><b>${esc(T(t.titles))}</b>
             <span class="rg">${esc(_drangeJS(t.range))}</span>
-            <p>${esc(T(t.descs))}</p></div></li>`).join('')}</ol>
+            ${hide
+              ? `<button class="lr-ghost sm" onclick="lrOpen[${i}]=1;lrStoryRead(${ci},DATA[${ci}],DATA[${ci}].themes,${k},${n})">${esc(L('learn_reveal'))}</button>`
+              : `<p>${esc(T(t.descs))}</p>`}</div></li>`;
+      }).join('')}</ol>
       <div class="lr-nav">
         <button class="lr-cta" onclick="lrStory(${ci},${lrPlan(ch)[1]})">${esc(L('learn_read_go'))}</button>
       </div>
@@ -206,10 +226,45 @@ function lrTheme(ci, ti, k){
   state.lrAt = {kind:'theme', ti:ti};
   const ch = DATA[ci], t = ch.themes[ti], vs = thVerses(t);
   if(k < vs.length) return lrMeet(ci, ti, k, vs);
-  lrDrill(ci, ti, vs);
+  lrThemeLand(ci, ti, vs);
+}
+var LV = {level:'full', shown:{}};
+function lrSetLevel(lv){ LV.level = lv; LV.shown = {}; lrMeet(LV.ci, LV.ti, LV.k, LV.vs); }
+function lrPeek(id){ LV.shown[id] = 1; lrMeet(LV.ci, LV.ti, LV.k, LV.vs); }
+function lrHideAt(level, wi){
+  if(level==='full') return false;
+  if(level==='first') return wi !== 0;
+  if(level==='half') return wi % 2 === 1;
+  if(level==='blind') return true;
+  return false;
+}
+function lrThemeLand(ci, ti, vs){
+  const ch = DATA[ci], t = ch.themes[ti];
+  const p = lrGet(ch.num); p.themes[ti] = 1; lrPut(ch.num, p);
+  const nxt = ch.themes.findIndex((_,i)=>!lrGet(ch.num).themes[i]);
+  view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
+      <div class="lr-seal">✓</div>
+      <h2>${esc(T(t.titles))}</h2>
+      <p>${esc(L('learn_land_d'))}</p>
+      <button class="lr-cta" onclick="lrFree(${ci},${ti})">${esc(L('learn_free_go'))}</button>
+      <button class="lr-ghost" onclick="lrDrill(${ci},${ti},thVerses(DATA[${ci}].themes[${ti}]))">${esc(L('learn_recall_opt'))}</button>
+      ${nxt>=0 ? `<button class="lr-cta" onclick="lrTheme(${ci},${nxt},0)">${esc(L('learn_next_theme'))}</button>`
+               : `<p class="lr-all">${esc(fmt(L('learn_all_done'),{n:numL(ch.num)}))}</p>`}
+      <button class="lr-ghost" onclick="showLearn(${ci})">${esc(L('opt_learn_s'))}</button>
+    </div></div>`;
+  scrollViewTop();
 }
 function lrMeet(ci, ti, k, vs){
   const ch = DATA[ci], t = ch.themes[ti], s = vs[k], last = k === vs.length-1;
+  LV.ci=ci; LV.ti=ti; LV.k=k; LV.vs=vs;
+  const held = lrHeldOn(ch.num, s.n);
+  const qs = (s.flow||[]).filter(f=>f.k==='p');
+  const levels = [
+    ['full','learn_lad_full','learn_lad_full_s'],
+    ['first','learn_lad_first','learn_lad_first_s'],
+    ['half','learn_lad_half','learn_lad_half_s'],
+    ['blind','learn_lad_blind','learn_lad_blind_s']
+  ];
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${ci})`],
@@ -217,32 +272,64 @@ function lrMeet(ci, ti, k, vs){
     <div class="lrn fade-in">
       <div class="lr-k">${esc(L('learn_meet'))} · ${numL(k+1)} / ${numL(vs.length)}</div>
       <h2 class="view-title">${esc(T(t.titles))}</h2>
-      <div class="lr-vnum">${esc(fmtNL(s.n))}</div>
-      <div class="lr-quarters">${(s.flow||[]).filter(f=>f.k==='p').map((q,qi)=>`
-        <div class="lr-q" id="lrq${qi}">
+      <div class="lr-vnum">${esc(fmtNL(s.n))}${held?' · '+esc(L('learn_held')):''}</div>
+      <div class="lr-ladder">
+        <div class="lr-k">${esc(L('learn_ladder'))}</div>
+        <div class="lr-lads">${levels.map(([id,a,b])=>`
+          <button type="button" class="lr-lad${LV.level===id?' on':''}" onclick="lrSetLevel('${id}')">
+            <b>${esc(L(a))}</b><span>${esc(L(b))}</span>
+          </button>`).join('')}</div>
+        <div class="lr-hint">${esc(L('learn_tap_blank'))}</div>
+      </div>
+      <div class="lr-quarters">${qs.map((q,qi)=>{
+        const words = q.words||[];
+        const useSplit = words.length > 1;
+        let line;
+        if(!useSplit){
+          line = `<span class="dv" lang="sa">${q.d}</span>` + (lrIast()?`<span class="ia" lang="sa-Latn">${esc(q.t)}</span>`:'');
+        } else {
+          line = words.map((w,wi)=>{
+            const id = qi+'_'+wi;
+            const hide = lrHideAt(LV.level, wi) && !LV.shown[id];
+            if(hide) return `<button type="button" class="lr-gap" onclick="lrPeek('${id}')">?</button>`;
+            return `<span class="lr-tokw"><span class="d" lang="sa">${w[0]}</span>`
+              + (lrIast()?`<span class="i" lang="sa-Latn">${esc(w[1])}</span>`:'')
+              + `</span>`;
+          }).join('');
+        }
+        return `<div class="lr-q" id="lrq${qi}">
           <button class="lr-qh" onclick="lrTog(${qi})" aria-expanded="false" aria-controls="lrw${qi}">
             <span class="pip">${numL(qi+1)}</span>
-            <span class="tx"><span class="dv" lang="sa">${q.d}</span>
-              <span class="ia" lang="sa-Latn">${esc(q.t)}</span></span>
+            <span class="tx">${line}</span>
             <span class="chev">▾</span>
           </button>
-          <div class="lr-words" id="lrw${qi}" hidden>${(q.words||[]).map(w=>`
+          <div class="lr-words" id="lrw${qi}" hidden>${words.map(w=>`
             <div class="lr-word">
               <span class="d" lang="sa">${w[0]}</span>
-              <span class="i" lang="sa-Latn">${esc(w[1])}</span>
-              <span class="m">${esc(state.lang==='ne'?(w[3]||w[2]):state.lang==='hi'?(w[4]||w[2]):w[2])}</span>
+              ${lrIast()?`<span class="i" lang="sa-Latn">${esc(w[1])}</span>`:''}
+              <span class="m">${esc(lrGloss(w))}</span>
             </div>`).join('')}</div>
-        </div>`).join('')}</div>
+        </div>`;
+      }).join('')}</div>
       <div class="lr-mean"><span class="lb">${esc(L('in_other_words'))}</span>
         <div>${esc(T(s.paras))}</div></div>
       <div class="lr-nav">
-        <button class="lr-ghost" onclick="lrTheme(${ci},${ti},${k-1})" ${k?'':'disabled'}>${esc(L('previous'))}</button>
-        <span class="lr-hint">${esc(L('learn_meet_hint'))}</span>
-        <button class="lr-cta" onclick="lrTheme(${ci},${ti},${k+1})">
-          ${esc(last?L('learn_recall'):L('learn_next_verse'))}</button>
+        <button class="lr-ghost" onclick="LV.shown={};lrTheme(${ci},${ti},${k-1})" ${k?'':'disabled'}>${esc(L('previous'))}</button>
+        <button class="lr-ghost" onclick="lrHold(${ch.num},'${s.n}',${held?0:1});lrMeet(${ci},${ti},${k},LV.vs)">${esc(held?L('learn_unhold'):L('learn_mark_held'))}</button>
+        <button class="lr-cta" onclick="LV.shown={};lrTheme(${ci},${ti},${k+1})">
+          ${esc(last?L('learn_read_go'):L('learn_next_verse'))}</button>
       </div>
     </div>` + backFoot(`showRead(${ci},'full')`, L('back_chapter_one'));
   scrollViewTop();
+}
+
+function lrMeetGo(d){
+  if(state.view !== 'learn' || !LV || !LV.vs) return;
+  if($('#modalBg') && $('#modalBg').classList.contains('open')) return;
+  const k = LV.k + d;
+  if(k < 0 || k >= LV.vs.length) return;
+  LV.shown = {};
+  lrTheme(LV.ci, LV.ti, k);
 }
 function lrTog(i){
   const box = document.getElementById('lrq'+i), w = document.getElementById('lrw'+i);
@@ -397,8 +484,18 @@ function lrFree(ci, ti){
   FP.ci = ci; FP.ti = ti;
   lrFreePick();
 }
+function lrFreeCh(ci){
+  state.view='learn'; state.chapter=ci; state.theme=null;
+  state.lrAt = {kind:'story'};
+  FP.ci = ci; FP.ti = -1;
+  lrFreePick();
+}
 function lrFreePick(){
-  const ch = DATA[FP.ci], t = ch.themes[FP.ti], vs = thVerses(t);
+  const ch = DATA[FP.ci];
+  const vs = FP.ti < 0
+    ? ch.themes.reduce((a,t)=>a.concat(thVerses(t)), [])
+    : thVerses(ch.themes[FP.ti]);
+  const t = FP.ti < 0 ? null : ch.themes[FP.ti];
   /* avoid handing back the same verse twice running when the theme has
      more than one to choose from */
   let v = vs[Math.floor(Math.random()*vs.length)];
@@ -424,15 +521,16 @@ function lrFreePick(){
   lrFreePaint();
 }
 function lrFreePaint(){
-  const ch = DATA[FP.ci], t = ch.themes[FP.ti], v = FP.v;
+  const ch = DATA[FP.ci], t = FP.ti < 0 ? null : ch.themes[FP.ti], v = FP.v;
+  const tlab = t ? T(t.titles) : T(ch.names);
   const done = FP.picked.length === FP.order.length;
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${FP.ci})`],
-      [T(t.titles), null]])}
+      [tlab, null]])}
     <div class="lrn fade-in">
       <div class="lr-k">${esc(L('learn_free'))}</div>
-      <h2 class="view-title">${esc(T(t.titles))}</h2>
+      <h2 class="view-title">${esc(tlab)}</h2>
       <div class="view-sub">${esc(L('learn_free_d'))}</div>
       <div class="lr-qbox">
         <div class="lr-ask">${esc(fmt(L('learn_qorder'),{v:fmtNL(v.n)}))}</div>
@@ -812,7 +910,10 @@ LEARN_CSS = r"""
           background:var(--saffron-soft); color:var(--saffron-dark);
           font-family:system-ui,sans-serif; font-size:.73rem; font-weight:700;}
   .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
-  .lr-qh .tx{ flex:1; min-width:0;}
+  .lr-qh{ flex-wrap:nowrap; }
+  .lr-qh .tx{ flex:1; min-width:0; display:flex; flex-wrap:nowrap; align-items:center;
+              gap:2px; white-space:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .lr-qh .tx .dv{ display:inline; white-space:nowrap; }
   .lr-qh .dv{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
               font-size:1.12rem; line-height:1.7;}
   .lr-qh .ia{ display:block; font-size:.78rem; font-style:italic; color:var(--ink-soft); margin-top:2px;}
@@ -944,7 +1045,26 @@ LEARN_CSS = r"""
   .lr-finis .lr-all{ color:var(--saffron-dark); font-weight:700;}
   .lr-finis .lr-cta,.lr-finis .lr-ghost{ margin:5px;}
 
+  .lr-ladder{ margin:8px 0 16px; padding:12px 14px; border-radius:14px;
+              background:var(--paper); border:1px solid var(--line); }
+  .lr-lads{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:8px 0; }
+  .lr-lad{ text-align:left; padding:8px 10px; border-radius:12px; cursor:pointer;
+           background:var(--cream); border:1px solid var(--line); font-family:inherit; }
+  .lr-lad b{ display:block; font-size:.82rem; color:var(--teal); }
+  .lr-lad span{ display:block; font-size:.68rem; color:var(--ink-soft); margin-top:2px; }
+  .lr-lad.on{ border-color:var(--saffron); background:var(--saffron-soft); }
+  .lr-lad.on b{ color:var(--saffron-dark); }
+  .lr-gap{ flex:0 0 auto; min-width:2em; padding:2px 10px; margin:0 2px; border-radius:8px;
+           background:var(--saffron-soft); color:var(--saffron-dark);
+           border:1px dashed var(--saffron); font-weight:700; cursor:pointer; font-family:inherit;
+           display:inline-flex; align-items:center; justify-content:center; line-height:1.4; }
+  .lr-tokw{ flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center;
+            margin:0 4px; vertical-align:middle; }
+  .lr-tokw .d{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.12rem; color:var(--teal); }
+  .lr-tokw .i{ font-size:.7rem; font-style:italic; color:var(--ink-soft); }
+  .lr-ghost.on{ border-color:var(--saffron); background:var(--saffron-soft); }
   @media (max-width:640px){
+    .lr-lads{ grid-template-columns:1fr 1fr; }
     .lr-grid{ grid-template-columns:1fr;}
     .lr-words{ grid-template-columns:repeat(auto-fill,minmax(124px,1fr));}
     .lr-nav .lr-cta,.lr-nav .lr-ghost{ flex:1;}
