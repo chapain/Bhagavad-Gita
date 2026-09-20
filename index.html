@@ -838,9 +838,8 @@
   .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
                    height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
   .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft);}
-  .m-ch{ font-family:Georgia,serif; font-size:1.05rem; color:var(--teal); font-weight:600;
-         margin:0 52px 4px 0; line-height:1.35; }
-  .m-part{ color:var(--teal); font-size:.92rem; font-weight:600; margin:0 0 8px; line-height:1.4;}
+  .m-part{ font-family:Georgia,serif; color:var(--teal); font-size:.95rem; font-weight:600;
+           margin:0 52px 8px 0; line-height:1.4;}
   .m-num{ font-family:Georgia,serif; font-size:1.2rem; color:var(--saffron-dark); font-weight:700;
           display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
   .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
@@ -1074,7 +1073,7 @@
     .modal .m-close{ position:fixed; top:calc(10px + env(safe-area-inset-top,0px));
                      right:calc(12px + env(safe-area-inset-right,0px)); float:none; margin:0; z-index:5;
                      width:44px; height:44px; font-size:1.2rem; box-shadow:0 4px 14px rgba(0,0,0,.3); }
-    .m-ch{ margin-right:52px; font-size:.98rem; }
+    .m-part{ margin-right:52px; font-size:.88rem; }
     .m-num{ font-size:1.08rem; }
     .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
     .m-part{ font-size:.82rem; }
@@ -2608,7 +2607,7 @@ function showChapters(section){
   /* The Three Ways is the door; there is no flat all-18 list. Every chapter
      list lives inside its way, so the niṣṭhā framing is never skipped. */
   state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
-  const list = DATA.filter(ch => ch.num >= (section-1)*6+1 && ch.num <= section*6);
+  const list = DATA.filter(ch => ch && ch.num >= (section-1)*6+1 && ch.num <= section*6);
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(section), null]])}
     <div class="grid chapters fade-in">
@@ -3089,8 +3088,7 @@ function fillModal(){
   }
   $('#modal').innerHTML = `
     <button class="m-close" onclick="closeModal()">✕</button>
-    <div class="m-ch">${esc(L('chapter'))} ${numL(ch.num)} · ${esc(T(ch.names))}</div>
-    <div class="m-part">${esc(L('theme_sg'))} ${numL(state.theme+1)} · ${esc(T(t.titles))}</div>
+    <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="m-num">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span>
       <button class="fav-btn" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
       <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
