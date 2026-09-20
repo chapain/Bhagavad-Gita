@@ -266,7 +266,10 @@
      so the chrome reads as one quiet object set apart from the scripture. */
   .mode-box{ background:var(--paper); border:1px solid var(--line); border-radius:16px;
              padding:14px 18px; margin:0 0 18px; display:flex; flex-direction:column;
-             gap:10px; align-items:flex-start; box-shadow:0 1px 2px rgba(var(--shadow),.05); }
+             gap:10px; align-items:flex-start; box-shadow:0 1px 2px rgba(var(--shadow),.05);
+             transition:border-color .15s, background .15s, box-shadow .15s; }
+  .mode-box:hover{ border-color:var(--saffron); background:var(--teal-soft);
+                   box-shadow:0 3px 12px rgba(var(--shadow),.08); }
   /* Owner 2026-09-01: this caption used to be --saffron-dark, the exact colour
      of the pills underneath it, so a non-interactive question looked clickable
      — and on white it measured 3.34:1, under the 4.5:1 AA floor. --ink-soft
@@ -936,17 +939,18 @@
     /* Phone has no hover: undo laptop fills so a tap does not leave a stuck
        highlight, then replay the same fill on :active. */
     .card:hover, .mini:hover, .res-card:hover, .welcome .w-day:hover,
-    .th-flow .theme:hover, .lr-chip:hover, .pl-mode:hover{
+    .th-flow .theme:hover, .lr-chip:hover, .pl-mode:hover, .mode-box:hover{
       background:var(--paper); border-color:var(--line);
       box-shadow:0 1px 2px rgba(var(--shadow),.05); transform:none;
     }
     .th-flow .theme:hover{ box-shadow:none; }
     .lr-chip.ok:hover{ border-color:var(--teal); background:var(--teal-soft); }
     .card:active, .mini:active, .res-card:active, .welcome .w-day:active,
-    .th-flow .theme:active, .lr-chip:active, .pl-mode:active{
+    .th-flow .theme:active, .lr-chip:active, .pl-mode:active, .mode-box:active{
       background:var(--teal-soft); border-color:var(--saffron);
       transform:scale(.985);
     }
+    .mode-box:active{ transform:none; }
     .rd-v:hover{ background:transparent; }
     .rd-v:active{ background:var(--teal-soft); }
     .lr-lad:hover:not(.on){ background:var(--cream); border-color:var(--line); }
