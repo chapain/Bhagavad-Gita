@@ -133,7 +133,7 @@ CH2_TRANSLATIONS = {
 2: ("The Blessed Lord said: Whence has come upon you, in this hour of peril, this dejection — unworthy of an Āryan, closing the door of heaven, and bringing disgrace, O Arjuna?",
     "Kṛṣṇa said: “Where has this weakness come from, Arjuna — at this very moment of crisis? It is unworthy of you, it shuts heaven's door, and it will bring you dishonour.”"),
 3: ("Yield not to unmanliness, O Pārtha — it does not become you. Cast off this petty faintness of heart and arise, O scorcher of foes!",
-    "“Do not give in to this cowardice, Arjuna — it ill becomes you. Shake off this small-hearted weakness, stand up, O burner of enemies!”"),
+    "“Do not give in to this unmanliness, Arjuna — it ill becomes you. Shake off this small-hearted weakness, stand up, O burner of enemies!”"),
 4: ("Arjuna said: How shall I strike Bhīṣma and Droṇa in battle with my arrows, O Madhusūdana — they who are worthy of worship, O slayer of foes?",
     "Arjuna asks: “How can I aim my arrows at Bhīṣma and Droṇa in war, Kṛṣṇa? They deserve my reverence, not my weapons.”"),
 5: ("Better in this world to live on alms as a beggar than to slay these noble teachers. Killing them — even with worldly aims in view — I would taste only pleasures stained with blood.",

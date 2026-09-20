@@ -1228,7 +1228,11 @@ __FONTS__
      No uppercase/letter-spacing here: the crumbs mix Latin and Devanagari,
      and tracking strains the mātrā flow. */
   .way-crumb{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:2px 0 18px;
-              font-family:system-ui, -apple-system, "Segoe UI", "Noto Serif Devanagari", sans-serif; }
+              padding:8px 12px; border-radius:14px; border:1px solid transparent;
+              font-family:system-ui, -apple-system, "Segoe UI", "Noto Serif Devanagari", sans-serif;
+              transition:background .15s, border-color .15s; }
+  /* Place, not a door: teal wash only. Saffron edge stays on the chooser box. */
+  .way-crumb:hover{ background:var(--teal-soft); border-color:var(--line); }
   /* Volume control (owner 2026-08-31: "too much orange"): one gold per page.
      Gold = the decision you're IN (the raised segment in the tray). The trail
      steps down: current page = soft pill, ancestors = neutral hairline pills —
@@ -1322,9 +1326,8 @@ __FONTS__
   .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
                    height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
   .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft);}
-  .m-ch{ font-family:Georgia,serif; font-size:1.05rem; color:var(--teal); font-weight:600;
-         margin:0 52px 4px 0; line-height:1.35; }
-  .m-part{ color:var(--teal); font-size:.92rem; font-weight:600; margin:0 0 8px; line-height:1.4;}
+  .m-part{ font-family:Georgia,serif; color:var(--teal); font-size:.95rem; font-weight:600;
+           margin:0 52px 8px 0; line-height:1.4;}
   .m-num{ font-family:Georgia,serif; font-size:1.2rem; color:var(--saffron-dark); font-weight:700;
           display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
   .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
@@ -1432,6 +1435,8 @@ __FONTS__
       box-shadow:0 1px 2px rgba(var(--shadow),.05); transform:none;
     }
     .th-flow .theme:hover{ box-shadow:none; }
+    .way-crumb:hover{ background:transparent; border-color:transparent; }
+    .way-crumb:active{ background:var(--teal-soft); border-color:var(--line); }
     .lr-chip.ok:hover{ border-color:var(--teal); background:var(--teal-soft); }
     .card:active, .mini:active, .res-card:active, .welcome .w-day:active,
     .th-flow .theme:active, .lr-chip:active, .pl-mode:active, .mode-box:active{
@@ -1556,7 +1561,7 @@ __FONTS__
     .modal .m-close{ position:fixed; top:calc(10px + env(safe-area-inset-top,0px));
                      right:calc(12px + env(safe-area-inset-right,0px)); float:none; margin:0; z-index:5;
                      width:44px; height:44px; font-size:1.2rem; box-shadow:0 4px 14px rgba(0,0,0,.3); }
-    .m-ch{ margin-right:52px; font-size:.98rem; }
+    .m-part{ margin-right:52px; font-size:.88rem; }
     .m-num{ font-size:1.08rem; }
     .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
     .m-part{ font-size:.82rem; }
@@ -3055,11 +3060,11 @@ function showChapters(section){
   const _from = (section-1)*6+1, _to = Math.min(18, section*6);
   const _need = [];
   for(let n=_from;n<=_to;n++) if(!GITA_CH[n]||!GITA_CH[n].themes) _need.push(n);
-  if(_need.length){ Promise.all(_need.map(loadChapter)).then(()=>showChapters(section)); return; }
+  if(_need.length){ Promise.all(_need.map(loadChapter)).then(()=>showChapters(section)).catch(function(){}); return; }
   /* The Three Ways is the door; there is no flat all-18 list. Every chapter
      list lives inside its way, so the niṣṭhā framing is never skipped. */
   state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
-  const list = DATA.filter(ch => ch.num >= (section-1)*6+1 && ch.num <= section*6);
+  const list = DATA.filter(ch => ch && ch.num >= (section-1)*6+1 && ch.num <= section*6);
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(section), null]])}
     <div class="grid chapters fade-in">
@@ -3540,8 +3545,7 @@ function fillModal(){
   }
   $('#modal').innerHTML = `
     <button class="m-close" onclick="closeModal()">✕</button>
-    <div class="m-ch">${esc(L('chapter'))} ${numL(ch.num)} · ${esc(T(ch.names))}</div>
-    <div class="m-part">${esc(L('theme_sg'))} ${numL(state.theme+1)} · ${esc(T(t.titles))}</div>
+    <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="m-num">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span>
       <button class="fav-btn" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
       <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
@@ -3740,7 +3744,7 @@ document.addEventListener('keydown', e=>{
    allowed there and would throw. Failure is always non-fatal. */
 if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
   window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js').catch(function(){ /* offline cache unavailable — app still works */ });
+    navigator.serviceWorker.register(appBase() + 'sw.js').catch(function(){ /* offline cache unavailable — app still works */ });
     /* A new SW skipWaiting()+claim() does not replace the JS already running.
        Reload only when this tab already had a controller — first install must
        not bounce the reader. */
@@ -3754,6 +3758,12 @@ function gitaBoot(){
   assembleData();
   applyStatic();
   paintTheme();
+  try{
+    var path = location.pathname || '/';
+    if (path.charAt(path.length-1) !== '/' && !/index.html$/i.test(path)){
+      history.replaceState(history.state, '', path + '/' + (location.search||'') + (location.hash||''));
+    }
+  }catch(e){}
   /* Deep links: the chapter landing pages (and shared messages) can open a
      specific verse — index.html#v=2.47 — or a whole chapter (#chapter=7). */
   (function(){
@@ -3880,13 +3890,19 @@ _ch_len = "[" + ",".join(str(ch["verses"]) for ch in data) + "]"
 _loader = (
     f"const CH_LEN = {_ch_len};\n"
     "const _chWait = {};\n"
+    "function appBase(){\n"
+    "  var path = location.pathname || '/';\n"
+    "  if (/\\/index\\.html$/i.test(path)) path = path.replace(/\\/index\\.html$/i, '/');\n"
+    "  else if (path.charAt(path.length-1) !== '/') path += '/';\n"
+    "  return location.origin + path;\n"
+    "}\n"
     "function loadChapter(n){\n"
     "  n = +n;\n"
     "  if (GITA_CH[n] && GITA_CH[n].themes) return Promise.resolve();\n"
     "  if (_chWait[n]) return _chWait[n];\n"
     "  _chWait[n] = new Promise(function(resolve, reject){\n"
     "    var s = document.createElement('script');\n"
-    "    s.src = 'data/ch' + n + '.js';\n"
+    "    s.src = appBase() + 'data/ch' + n + '.js';\n"
     "    s.onload = function(){ assembleData(); resolve(); };\n"
     "    s.onerror = function(){ gitaLoadFail(); reject(); };\n"
     "    document.head.appendChild(s);\n"
