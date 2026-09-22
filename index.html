@@ -745,6 +745,18 @@
               transition:background .15s, border-color .15s; }
   /* Place, not a door: teal wash only. Saffron edge stays on the chooser box. */
   .way-crumb:hover{ background:var(--teal-soft); border-color:var(--line); }
+
+  .card.is-press, .mini.is-press, .res-card.is-press, .welcome .w-day.is-press,
+  .th-flow .theme.is-press, .lr-chip.is-press, .pl-mode.is-press, .mode-box.is-press{
+    border-color:var(--saffron); background:var(--teal-soft);
+    box-shadow:0 3px 12px rgba(var(--shadow),.08);
+  }
+  .way-crumb.is-press{ background:var(--teal-soft); border-color:var(--line); }
+  .rd-v.is-press{ background:var(--teal-soft); }
+  .lr-opt.is-press:not(:disabled), .lr-chip2.is-press:not(:disabled),
+  .lr-ghost.is-press:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+  .lr-cta.is-press{ background:var(--saffron-dark); border-color:var(--saffron-dark); }
+
   /* Volume control (owner 2026-08-31: "too much orange"): one gold per page.
      Gold = the decision you're IN (the raised segment in the tray). The trail
      steps down: current page = soft pill, ancestors = neutral hairline pills —
@@ -3365,6 +3377,32 @@ function gitaBoot(){
   var _idle = window.requestIdleCallback || function(fn){ setTimeout(fn, 1200); };
   _idle(function(){ loadAllChapters(); });
 }
+
+(function(){
+  if (!window.matchMedia || !matchMedia('(hover: none)').matches) return;
+  var SEL = '.card,.theme,.mini,.res-card,.w-day,.lr-chip,.pl-mode,.mode-box,.way-crumb,.rd-v,.lr-opt,.lr-chip2,.lr-ghost,.lr-cta,.pl-sel,.ms-btn,.wc-link,.pada-box,.tool-btn';
+  var cur = null;
+  function hit(el){
+    while (el && el.nodeType === 1){
+      if (el.matches(SEL) && !el.classList.contains('vcard')) return el;
+      el = el.parentElement;
+    }
+    return null;
+  }
+  function at(x,y){
+    var n = hit(document.elementFromPoint(x,y));
+    if (n === cur) return;
+    if (cur) cur.classList.remove('is-press');
+    cur = n;
+    if (cur) cur.classList.add('is-press');
+  }
+  function clear(){ if (cur){ cur.classList.remove('is-press'); cur = null; } }
+  document.addEventListener('touchstart', function(e){ var t=e.touches[0]; if(t) at(t.clientX,t.clientY); }, {passive:true});
+  document.addEventListener('touchmove', function(e){ var t=e.touches[0]; if(t) at(t.clientX,t.clientY); }, {passive:true});
+  document.addEventListener('touchend', clear, {passive:true});
+  document.addEventListener('touchcancel', clear, {passive:true});
+})();
+
 </script>
 <script>gitaBoot();</script>
 </body>
