@@ -2600,10 +2600,7 @@ function showChapters(section){
   const _from = (section-1)*6+1, _to = Math.min(18, section*6);
   const _need = [];
   for(let n=_from;n<=_to;n++) if(!GITA_CH[n]||!GITA_CH[n].themes) _need.push(n);
-  if(_need.length){
-    Promise.all(_need.map(loadChapter)).then(()=>showChapters(section)).catch(function(){});
-    return;
-  }
+  if(_need.length){ Promise.all(_need.map(loadChapter)).then(()=>showChapters(section)).catch(function(){}); return; }
   /* The Three Ways is the door; there is no flat all-18 list. Every chapter
      list lives inside its way, so the niṣṭhā framing is never skipped. */
   state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
@@ -3301,12 +3298,9 @@ function gitaBoot(){
   assembleData();
   applyStatic();
   paintTheme();
-  /* GitHub Pages serves /Bhagavad-Gita (no slash). Relative data/chN.js then
-     resolves to /data/chN.js and the way list never paints — refresh shows the
-     boot ॐ forever. Keep a trailing slash so every relative URL stays in-app. */
   try{
     var path = location.pathname || '/';
-    if (path.charAt(path.length-1) !== '/' && !/index\.html$/i.test(path)){
+    if (path.charAt(path.length-1) !== '/' && !/index.html$/i.test(path)){
       history.replaceState(history.state, '', path + '/' + (location.search||'') + (location.hash||''));
     }
   }catch(e){}
