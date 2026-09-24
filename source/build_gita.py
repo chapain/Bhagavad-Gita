@@ -874,9 +874,12 @@ __FONTS__
           background:var(--saffron-soft); color:var(--saffron-dark);
           font-family:system-ui,sans-serif; font-size:.73rem; font-weight:700;}
   .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
-  .lr-qh{ flex-wrap:nowrap; }
-  .lr-qh .tx{ flex:1; min-width:0; display:flex; flex-wrap:nowrap; align-items:center;
-              gap:2px; white-space:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .lr-qh{ flex-wrap:nowrap !important; align-items:center; }
+  .lr-qh .tx{ flex:1 1 0; min-width:0; max-width:100%; display:flex; flex-direction:row;
+              flex-wrap:nowrap !important; align-items:baseline;
+              gap:2px; white-space:nowrap; overflow-x:auto; overflow-y:hidden;
+              -webkit-overflow-scrolling:touch; }
+  .lr-qh .tx > *{ flex:0 0 auto; }
   .lr-qh .tx .dv{ display:inline; white-space:nowrap; }
   .lr-qh .dv{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
               font-size:1.12rem; line-height:1.7; color:var(--teal-mid);
@@ -2449,7 +2452,7 @@ function lrMeet(ci, ti, k, vs){
           line = words.map((w,wi)=>{
             const id = qi+'_'+wi;
             const hide = lrHideAt(LV.level, wi) && !LV.shown[id];
-            if(hide) return `<button type="button" class="lr-gap" onclick="lrPeek('${id}')">?</button>`;
+            if(hide) return `<span class="lr-gap" role="button" tabindex="0" onclick="event.stopPropagation();lrPeek('${id}')">?</span>`;
             return `<span class="lr-tokw"><span class="d" lang="sa">${w[0]}</span>`
               + (lrIast()?`<span class="i" lang="sa-Latn">${esc(w[1])}</span>`:'')
               + `</span>`;
