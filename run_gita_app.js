@@ -3,18 +3,16 @@
  *
  * Usage:  node run_gita_app.js          (from the project root)
  *
- * Parses bhagavad_gita.html, extracts the embedded DATA and UI objects, and
- * re-checks every integrity invariant: 18 chapters · 700 verses · 182 themes ·
- * 585 parts, trilingual coverage, word-by-word glosses, script purity,
- * Latin-residue checks on Nepali/Hindi fields, and content regression locks
- * (incl. the ch.15 पथ/पथिक theme). Mirrors run_bs_app.js of the Brahma-Sūtras
- * project.
+ * Parses the split app shell and its 18 chapter payloads, then checks the
+ * integrity invariants: 18 chapters · 700 verses · 169 themes · 700 parts,
+ * trilingual coverage, word-by-word glosses, script purity, Latin-residue
+ * checks on Nepali/Hindi fields, and content regression locks.
  */
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 553;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 141;   // browser_checks.py
+const TOTAL_ASSERTIONS = 800;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 150;   // browser_checks.py
 const path = require('path');
 
 const ROOT = __dirname;
@@ -38,11 +36,11 @@ ok(/^<!DOCTYPE html>/i.test(html.trim()), 'starts with <!DOCTYPE html>');
 ok(html.includes('<title>Bhagavad Gita — English, Nepali, Hindi · 700 Verses</title>'), 'title targets the trilingual long tail');
 ok(/<\/html>\s*$/.test(html), 'ends with </html>');
 const scriptBlocks = html.match(/<script>[\s\S]*?<\/script>/g) || [];
-// Two blocks: a tiny one in <head> that applies the saved theme before the page
-// paints (so dark-mode users never see a white flash), and the app itself.
-ok(scriptBlocks.length === 2, `two <script> blocks: theme-boot + app (got ${scriptBlocks.length})`);
+// Three executable inline blocks: the pre-paint theme boot, the app, and its
+// final gitaBoot() call. JSON-LD is intentionally not counted as executable JS.
+ok(scriptBlocks.length === 3, `three executable <script> blocks (got ${scriptBlocks.length})`);
 const bodies = scriptBlocks.map(b => b.replace(/^<script>/, '').replace(/<\/script>$/, ''));
-const scriptBody = bodies[bodies.length - 1];
+const scriptBody = bodies.join('\n');
 ok(/data-theme/.test(bodies[0]) && bodies[0].length < 1200, 'first block is the small theme-boot script');
 let scriptParses = true;
 for (const b of bodies) {
@@ -85,12 +83,15 @@ ok(UI && typeof UI === 'object', 'UI extracted');
 // ---------- split build: shell + per-chapter data files ----------
 {
   ok(!/"d":\s*"धर्मक्षेत्रे/.test(html), 'shell carries no verse payload');
-  ok(/<script src="data\/ch1\.js" onload="__gitaLoaded\(\)"/.test(html), 'shell loads data/ch1.js at startup');
-  ok(/<script src="data\/ch18\.js" onload="__gitaLoaded\(\)"/.test(html), 'shell loads all 18 data files');
+  ok(/function loadChapter\(n\)[\s\S]*?s\.src = appBase\(\) \+ 'data\/ch' \+ n \+ '\.js';/.test(html)
+     && /_idle\(function\(\)\{ loadAllChapters\(\); \}\);/.test(html),
+     'chapter payloads load on demand and prefetch at idle');
+  ok(/function loadAllChapters\(\)\{[^}]*for \(var n = 1; n <= 18; n\+\+\) ps\.push\(loadChapter\(n\)\);[^}]*Promise\.all\(ps\);/.test(html),
+     'loader can fetch all 18 chapter files');
   ok(/let DATA = null;/.test(html), 'shell starts with DATA unloaded');
-  ok(/Object\.keys\(GITA_CH\)\.length < 18/.test(html), 'loader boots only when every chapter file arrived');
-  ok(/function gitaBoot\(\)\{[\s\S]*buildIndex\(\);[\s\S]*applyStatic\(\);/.test(html),
-     'gitaBoot builds the index and paints in one step');
+  ok(/function assembleData\(\)\{[\s\S]*?buildIndex\(\); buildVerseText\(\);[\s\S]*?\}/.test(html)
+     && /function gitaBoot\(\)\{[\s\S]*?assembleData\(\);[\s\S]*?applyStatic\(\);/.test(html),
+     'gitaBoot assembles the available data and paints the shell');
 }
 
 // ---------- i18n ----------
@@ -98,7 +99,7 @@ group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
 for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`);
 const enKeys = Object.keys(UI.en);
-ok(enKeys.length === 165, `UI has 165 keys (got ${enKeys.length})`);
+ok(enKeys.length === 201, `UI has 201 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -126,7 +127,161 @@ ok(devaBad.length === 0, `chapter deva names pure Devanagari (${devaBad.join(','
 ok(nameBad.length === 0, `chapter names+subs ×3 languages (${nameBad.join(',') || 'clean'})`);
 
 const allThemes = DATA.flatMap(c => c.themes);
-ok(allThemes.length === 222, `222 themes (got ${allThemes.length})`);
+ok(allThemes.length === 169, `169 themes (got ${allThemes.length})`);
+const mapContract = JSON.parse(fs.readFileSync(path.join(ROOT, 'source', 'study_map_contract.json'), 'utf8'));
+for (const chapter of DATA) {
+  ok(chapter.themes.map(t=>t.range).join('|') === mapContract.approved_maps[chapter.num].join('|'),
+     `chapter ${chapter.num}: complete reviewed story map, not merely revised titles`);
+}
+const ch2Themes = DATA[1].themes;
+const CH2_THEME_RANGES = [
+  '2.01–2.03', '2.04–2.06', '2.07–2.10', '2.11–2.15', '2.16–2.18',
+  '2.19–2.21', '2.22–2.25', '2.26–2.30', '2.31–2.34', '2.35–2.38',
+  '2.39–2.41', '2.42–2.46', '2.47–2.50', '2.51–2.53', '2.54–2.58',
+  '2.59–2.61', '2.62–2.63', '2.64–2.68', '2.69–2.72'
+];
+ok(ch2Themes.length === 19 && ch2Themes.map(t => t.range).join('|') === CH2_THEME_RANGES.join('|'),
+   'chapter 2 follows the approved 19-theme verse map');
+ok(ch2Themes.every(t => t.parts.reduce((n, p) => n + p.sutras.length, 0) <= 5),
+   'chapter 2 themes contain no more than five verses');
+const ch17Themes = DATA[16].themes;
+const CH17_THEME_RANGES = [
+  '17.01–17.03', '17.04–17.04', '17.05–17.06', '17.07–17.07', '17.08–17.10',
+  '17.11–17.13', '17.14–17.16', '17.17–17.19', '17.20–17.22', '17.23–17.27', '17.28–17.28'
+];
+ok(ch17Themes.length === 11 && ch17Themes.map(t => t.range).join('|') === CH17_THEME_RANGES.join('|'),
+   'chapter 17 retains its reviewed 11-theme verse map');
+ok(ch17Themes.every(t => t.parts.reduce((n, p) => n + p.sutras.length, 0) <= 5),
+   'chapter 17 themes contain no more than five verses');
+const ch17Austerity = ch17Themes.find(t => t.range === '17.17–17.19');
+const ch17Asat = ch17Themes.find(t => t.range === '17.28–17.28');
+ok(ch17Austerity && ch17Austerity.titles.en === 'Three kinds of austerity'
+   && ch17Austerity.titles.ne === 'तपका तीन प्रकार'
+   && ch17Austerity.titles.hi === 'तपस्या के तीन प्रकार'
+   && ch17Asat && ch17Asat.titles.en === 'Acts without faith are called Asat'
+   && ch17Asat.titles.ne === 'श्रद्धाविना गरिएका कर्मलाई असत् भनिन्छ'
+   && ch17Asat.titles.hi === 'श्रद्धा के बिना किए गए कर्म असत् कहलाते हैं'
+   && ch17Austerity.descs.en.includes('without desire for fruit')
+   && ch17Austerity.descs.ne.includes('फलको इच्छा नराखी')
+   && ch17Austerity.descs.hi.includes('फल की इच्छा के बिना')
+   && ch17Asat.descs.en.includes('called Asat')
+   && ch17Asat.descs.ne.includes('असत्')
+   && ch17Asat.descs.hi.includes('असत्'),
+   'chapter 17 reviewed austerity and Asat titles/descriptions stay aligned ×3');
+const ch17Page = fs.readFileSync(path.join(ROOT, 'chapter', '17', 'index.html'), 'utf8');
+ok(ch17Page.includes('Three kinds of austerity') && ch17Page.includes('Acts without faith are called Asat'),
+   'chapter 17 landing page carries the reviewed theme titles');
+// Individual pearls are addressed by canonical verse, never an old theme index.
+const reviewedPart = (ch, ref) => DATA[ch-1].themes.flatMap(t=>t.parts)
+  .find(p=>p.sutras.some(v=>v.n===ref));
+const reviewedTheme = (ch, ref) => DATA[ch-1].themes
+  .find(t=>t.parts.some(p=>p.sutras.some(v=>v.n===ref)));
+const reviewedPage = ch => fs.readFileSync(path.join(ROOT,'chapter',String(ch),'index.html'),'utf8');
+const ch3Enemy = reviewedTheme(3,'3.36');
+ok(ch3Enemy.titles.en === 'Desire and anger conceal wisdom'
+   && ch3Enemy.descs.ne.includes('सर्वभक्षी शत्रु') && ch3Enemy.descs.hi.includes('सर्वभक्षी शत्रु')
+   && reviewedPage(3).includes(ch3Enemy.titles.en),
+   'chapter 3 retains the all-devouring enemy and its correct thematic location ×3');
+const ch4BirthPart = reviewedPart(4,'4.05');
+ok(ch4BirthPart.titles.en === 'I know all our past births'
+   && ch4BirthPart.titles.ne === 'म हाम्रा सबै पूर्वजन्म जान्दछु'
+   && ch4BirthPart.titles.hi === 'मैं हमारे सभी पूर्वजन्म जानता हूँ'
+   && reviewedPage(4).includes(ch4BirthPart.titles.en),
+   'chapter 4 reviewed birth pearl survives regrouping unchanged ×3');
+const ch5Verse = reviewedPart(5,'5.19'), ch5Paths = reviewedPart(5,'5.04');
+ok(ch5Verse.titles.en === 'Equanimity conquers the world of birth and death'
+   && ch5Verse.titles.ne.includes('जन्म-मृत्यु') && ch5Verse.titles.hi.includes('जन्म-मृत्यु')
+   && ch5Paths.titles.en === 'Only children call Sāṅkhya and Yoga different'
+   && ch5Paths.titles.ne === 'बालकले मात्र साङ्ख्य र योगलाई फरक ठान्छन्'
+   && ch5Paths.titles.hi === 'बालक ही सांख्य और योग को भिन्न कहते हैं'
+   && reviewedPage(5).includes(ch5Paths.titles.en) && reviewedPage(5).includes(ch5Verse.titles.en),
+   'chapter 5 approved path/equanimity pearls stay trilingual and reachable');
+const ch6Meditation = reviewedTheme(6,'6.10'), ch6Resolve = reviewedPart(6,'6.23');
+const ch6FormerLife = reviewedPart(6,'6.43'), ch6Renunciation = reviewedPart(6,'6.01');
+ok(ch6Meditation.titles.en === 'Meditation: solitude, posture and focus'
+   && ch6Renunciation.titles.en === 'Renunciation is more than abandoning rites'
+   && ch6Resolve.titles.en === 'Practise with resolve and an undiscouraged mind'
+   && ch6Resolve.descs.ne.includes('निराश नभई') && ch6Resolve.descs.hi.includes('निराश हुए बिना')
+   && ch6FormerLife.titles.en === 'He regains spiritual insight from a past life'
+   && ch6FormerLife.titles.en.length <= 54 && reviewedPage(6).includes(ch6Meditation.titles.en),
+   'chapter 6 meditation, resolve and former-life insight retain their correct verses');
+const ch7Closing = reviewedTheme(7,'7.29');
+ok(ch7Closing.range === '7.28–7.30' && ch7Closing.titles.en === 'Beyond delusion, know me even at death'
+   && ch7Closing.descs.en.includes('all of adhyātma and action')
+   && ch7Closing.descs.ne.includes('सम्पूर्ण अध्यात्म र कर्म')
+   && ch7Closing.descs.hi.includes('सम्पूर्ण अध्यात्म और कर्म')
+   && reviewedPage(7).includes(ch7Closing.titles.en),
+   'chapter 7 puts freed knowers after delusion, retaining the full knowledge teaching ×3');
+const ch8Always = reviewedPart(8,'8.14'), ch8Cycle = reviewedTheme(8,'8.16');
+const ch8Path = reviewedTheme(8,'8.24');
+ok(ch8Always.titles.en === 'Easily reached by one who remembers me always'
+   && ch8Always.titles.ne.includes('सधैँ सम्झने') && ch8Always.titles.hi.includes('सदा मेरा स्मरण')
+   && ch8Cycle.descs.en.includes('Even Brahmā’s world is subject to return')
+   && ch8Path.descs.ne.includes('उत्तरायण') && ch8Path.descs.hi.includes('दक्षिणायन')
+   && reviewedPage(8).includes('The bright path and the returning path'),
+   'chapter 8 separates no-return practice from cosmic return without losing the path facts');
+const ch9Soma = reviewedPart(9,'9.20'), ch9Care = reviewedTheme(9,'9.22');
+ok(ch9Care.range === '9.20–9.25' && ch9Soma.titles.en === 'Soma drinkers seek heaven'
+   && ch9Soma.titles.ne.includes('स्वर्ग खोज्छन्') && ch9Soma.titles.hi.includes('स्वर्ग चाहते हैं')
+   && ch9Care.descs.en.includes('supplies what devotees lack and protects what they have')
+   && ch9Care.descs.en.includes('Heaven’s pleasures end')
+   && reviewedPage(9).includes(ch9Care.titles.en),
+   'chapter 9 pairs finite reward with sustained devotion, preserving the approved pearl');
+const ch10Part = reviewedPart(10,'10.16');
+ok(ch10Part.descs.ne.includes('केही नछुटाई बताउनुहोस्')
+   && ch10Part.descs.hi.includes('कुछ भी छोड़े बिना')
+   && !ch10Part.descs.ne.includes('हे परम पुरुष, हे परम पुरुष')
+   && !ch10Part.descs.hi.includes('हे परम पुरुष, हे परम पुरुष')
+   && reviewedPage(10).includes('Tell me how to recognise and remember you'),
+   'chapter 10 preserves its corrected localized request at 10.16');
+const ch11Warriors = reviewedTheme(11,'11.26'), ch11Victims = reviewedPart(11,'11.26');
+const ch11ForgivePart = reviewedPart(11,'11.44');
+ok(ch11Warriors.range === '11.26–11.30' && ch11Warriors.descs.en.includes('Warriors from both sides')
+   && ch11Victims.titles.ne.includes('धृतराष्ट्रका छोराहरू') && ch11Victims.titles.hi.includes('धृतराष्ट्र के पुत्र')
+   && ch11ForgivePart.titles.hi === 'जैसे पिता पुत्र को क्षमा करता है'
+   && ch11ForgivePart.descs.ne.includes('दण्डवत्')
+   && reviewedPage(11).includes('Time’s decree and Arjuna’s task'),
+   'chapter 11 places warrior destruction in its own passage before Time’s answer ×3');
+const ch12Close = reviewedPart(12,'12.20');
+ok(ch12Close.titles.en === 'They who follow this immortal dharma are dearest'
+   && ch12Close.titles.ne.includes('अत्यन्त प्रिय') && ch12Close.titles.hi.includes('अत्यन्त प्रिय')
+   && ch12Close.descs.en.includes('with faith')
+   && reviewedTheme(12,'12.09').descs.en.includes('A graded path')
+   && reviewedPage(12).includes(ch12Close.titles.en),
+   'chapter 12 retains the graduated practice and faithful closing pearl ×3');
+const ch13Field = reviewedTheme(13,'13.01'), ch13Knower = reviewedPart(13,'13.02');
+const ch13Means = reviewedTheme(13,'13.07');
+ok(ch13Field.range === '13.01–13.06' && ch13Knower.descs.en.includes('knower of the field in all fields')
+   && ch13Field.descs.ne.includes('सबै क्षेत्रका क्षेत्रज्ञ') && ch13Field.descs.hi.includes('सभी क्षेत्रों के क्षेत्रज्ञ')
+   && ch13Means.descs.en.includes('sustained Self-knowledge')
+   && reviewedPage(13).includes(ch13Field.titles.en),
+   'chapter 13 joins field definitions but preserves the universal knower and Self-knowledge');
+const ch14Transcend = reviewedTheme(14,'14.26'), ch14Rise = reviewedPart(14,'14.10');
+ok(ch14Rise.titles.en === 'The Guṇas overpower one another'
+   && ch14Transcend.descs.en.includes('makes one fit for Brahman')
+   && ch14Transcend.descs.ne.includes('ब्रह्मभावका लागि योग्य')
+   && ch14Transcend.descs.hi.includes('ब्रह्मभाव के योग्य')
+   && reviewedPage(14).includes(ch14Transcend.titles.en),
+   'chapter 14 retains the dynamics of the guṇas and qualification for Brahman ×3');
+const ch15Persons = reviewedTheme(15,'15.16'), ch15Heart = reviewedTheme(15,'15.15');
+ok(ch15Persons.range === '15.16–15.20'
+   && ch15Persons.descs.en.includes('perishable and imperishable') && ch15Persons.descs.en.includes('Supreme Person')
+   && ch15Persons.titles.ne.includes('पुरुषोत्तम') && ch15Persons.titles.hi.includes('पुरुषोत्तम')
+   && ch15Heart.descs.en.includes('forgetfulness') && reviewedPage(15).includes(ch15Persons.titles.en),
+   'chapter 15 keeps all three persons distinct and includes forgetfulness in the heart teaching');
+const ch16Scripture = reviewedPart(16,'16.23'), ch16Destiny = reviewedPart(16,'16.20');
+ok(ch16Scripture.descs.ne.includes('शास्त्रको विधान त्यागेर')
+   && !ch16Scripture.descs.ne.includes('थाती राखेर')
+   && ch16Scripture.descs.hi.includes('शास्त्र-विधान को त्यागकर')
+   && ch16Destiny.titles.ne === 'अधम गति' && ch16Destiny.descs.ne.includes('नीच अवस्थामा')
+   && reviewedPage(16).includes('Close hell’s gates and let scripture guide action'),
+   'chapter 16 preserves the corrected scripture/destiny pearls while joining the practical exit');
+const ch18Teaching = reviewedTheme(18,'18.67'), ch18Listener = reviewedPart(18,'18.71');
+ok(ch18Teaching.descs.en.includes('lacks austerity or devotion')
+   && ch18Teaching.descs.ne.includes('सुन्न नचाहने') && ch18Teaching.descs.hi.includes('कृष्ण में दोष देखने')
+   && ch18Listener.titles.en === 'The faithful listener is freed'
+   && reviewedPage(18).includes(ch18Teaching.titles.en),
+   'chapter 18 preserves the audience conditions, teacher and faithful listener');
 const allParts = allThemes.flatMap(t => t.parts);
 ok(allParts.length === 700, `700 parts (got ${allParts.length})`);
 const tfBad = [], pfBad = [];
@@ -208,7 +363,7 @@ ok(dBad.length === 0, `every verse Devanagari pure (${dBad.join(',') || 'clean'}
 ok(tBad.length === 0, `every verse carries an IAST transliteration (${tBad.join(',') || 'clean'})`);
 ok(flowBad === 0, 'every verse has well-formed flow segments (k ∈ {s,p})');
 ok(tupleBad.length === 0, `every word tuple = [deva, iast, en, ne, hi] (${tupleBad.join(',') || 'clean'})`);
-ok(wordTotal === 9480, `9,480 word-instances (got ${wordTotal})`);
+ok(wordTotal === 9484, `9,484 word-instances (got ${wordTotal})`);
 ok(padaWords === 9366, `9,366 pāda word-instances (got ${padaWords})`);
 ok(w0.length === 0, `word Devanagari column free of Latin (${w0.join(',') || 'clean'})`);
 ok(w1.length === 0, `word IAST well-formed (${w1.slice(0, 3).join(',') || 'clean'})`);
@@ -234,12 +389,18 @@ ok(byRef['2.47'].d.includes('कर्मण्येवाधिकारस्
 ok(byRef['4.13'].d.startsWith('चातुर्वर्ण्यं मया सृष्टं'), '4.13 cāturvarṇyaṃ mayā sṛṣṭam');
 ok(byRef['18.66'].d.startsWith('सर्वधर्मान्परित्यज्य मामेकं'), '18.66 sarvadharmān parityajya');
 ok(byRef['18.78'].d.startsWith('यत्र योगेश्वरः कृष्णो'), 'final verse 18.78 yatra yogeśvaraḥ kṛṣṇo');
-const ch15 = DATA[14].themes.find(t => t.range === '15.04–15.05');
-ok(!!ch15, 'ch.15 theme 15.04–15.05 exists');
-ok(ch15.titles.en === 'The Path to the Supreme Abode', 'ch.15 EN title: path to the abode lock');
-ok(ch15.titles.ne === 'परम-पदको पथ', 'ch.15 NE title: परम-पदको पथ lock');
-ok(ch15.titles.hi === 'परम-पद का मार्ग', 'ch.15 HI title: परम-पद का मार्ग lock');
-ok(!html.includes('The Path Beyond') && !html.includes('पार का मार्ग'), 'stale ch.15 titles fully replaced');
+// The path (15.04) and its travellers (15.05) are distinct pearls; their old
+// two-verse theme has deliberately been regrouped, not silently lost.
+const ch15Path = reviewedPart(15,'15.04'), ch15Travellers = reviewedPart(15,'15.05');
+ok(!!ch15Path && !!ch15Travellers, 'ch.15 path and traveller pearls both exist');
+ok(ch15Path.titles.en === 'Seek the supreme goal'
+   && ch15Travellers.descs.en.includes('Free from pride and delusion'), 'ch.15 EN path/traveller distinction survives regrouping');
+ok(ch15Path.titles.ne === 'परम लक्ष्य खोज'
+   && ch15Travellers.descs.ne.includes('अभिमान र मोहबाट मुक्त'), 'ch.15 NE keeps the sought goal distinct from the traveller');
+ok(ch15Path.titles.hi === 'परम लक्ष्य की खोज'
+   && ch15Travellers.descs.hi.includes('अभिमान और मोह से मुक्त'), 'ch.15 HI keeps the sought goal distinct from the traveller');
+ok(!allThemes.some(t=>t.titles.en==='The Path Beyond' || t.titles.hi==='पार का मार्ग'),
+   'stale ch.15 path titles cannot reappear');
 // the pill strips and top back-buttons became one breadcrumb: the full trail,
 // ancestors as links, current page last — on every drill-down view
 ok(/function wayCrumbs\(/.test(html) && /wc-link/.test(html) && /wc-cur/.test(html),
@@ -321,7 +482,7 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
 // liability rather than a help, so the build checks the facts it states.
 {
   const pm = fs.readFileSync(path.join(__dirname, 'PROJECT.md'), 'utf8');
-  ok(/18 chapters · 222 themes · 700 parts · 700 verses/.test(pm),
+  ok(/18 chapters · 169 themes · 700 parts · 700 verses/.test(pm),
      'PROJECT.md states the current totals');
   ok(new RegExp(`${Object.keys(UI.en).length} UI strings`).test(pm),
      `PROJECT.md states the current UI key count (${Object.keys(UI.en).length})`);
@@ -361,7 +522,7 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
   ok(themeCalls > 0 && guarded === themeCalls,
      `every gitaTheme storage call is inside try/catch (${guarded}/${themeCalls})`);
   // light mode must be untouched: these are the original brand colours
-  ok(/--cream:#FFF8EC/.test(html) && /--teal:#0F4C5C/.test(html) && /--saffron:#E8912C/.test(html),
+  ok(/--cream:#FFF8EC/.test(html) && /--teal:#1A5648/.test(html) && /--saffron:#E8912C/.test(html),
      'light mode keeps its original palette');
   // dark mode must not use pure black or pure white — Devanagari shimmers at max contrast
   const darkBlock = (html.match(/html\[data-theme="dark"\]\{[\s\S]*?\}/) || [''])[0];
@@ -504,7 +665,7 @@ for (const l of LANGS) ok(!('created_by' in UI[l]), `no stale created_by key in 
 ok(!html.includes("#creditBy"), 'no leftover creditBy wiring');
 // the service worker must never run from file:// (WhatsApp / downloaded copies)
 ok(/location\.protocol\.indexOf\('http'\) === 0/.test(html), 'SW registration guarded to http(s) only');
-ok(/navigator\.serviceWorker\.register\('sw\.js'\)/.test(html), 'SW registration present');
+ok(/navigator\.serviceWorker\.register\(appBase\(\) \+ 'sw\.js'\)/.test(html), 'SW registration resolves from the app base');
 ok(/\.catch\(function\(\)\{[^}]*\}\)/.test(html), 'SW registration failure is non-fatal');
 // icons are referenced relatively so they work on a project sub-path
 ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
@@ -526,7 +687,7 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(mf.start_url === './' && mf.scope === './', 'manifest: relative start_url/scope');
   ok(mf.icons.some(i => i.purpose === 'maskable'), 'manifest: has a maskable icon');
   ok(mf.icons.some(i => i.sizes === '512x512'), 'manifest: has a 512px icon');
-  ok(mf.theme_color === '#0F4C5C', 'manifest: theme colour matches the header');
+  ok(mf.theme_color === '#1A5648', 'manifest: theme colour matches the header');
   const sw = fs.readFileSync(path.join(S, 'sw.js'), 'utf8');
   ok(/const CACHE = 'gita-[0-9a-f]{12}'/.test(sw), 'sw.js cache name is content-versioned');
   ok(sw.includes("'./index.html'"), 'sw.js precaches index.html');
@@ -594,7 +755,7 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(/const root = \(og \? og\.content/.test(html) && /meta\[property="og:url"\]/.test(html)
      && html.includes("'/chapter/' +"),
      'shares always derive from the live og:url, never a file:// path');
-  ok(html.includes('/^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study))?$/') && html.includes("tb === 'study'"),
+  ok(html.includes('/^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/') && html.includes("tb === 'study'") && html.includes("tb === 'learn'"),
      'the app routes #chapter=N deep links, with an optional tab');
   ok(html.includes('function modeSwitch(') && html.includes('opt_full') && html.includes('opt_study_s'),
      'the chapter page offers the two ways as a segmented control (translation / study)');

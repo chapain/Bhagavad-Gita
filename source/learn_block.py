@@ -799,7 +799,7 @@ LEARN_CSS = r"""
   /* The scope row is the same segmented-pill grammar as the chapter chooser:
      soft pill = an option, gold pill = where you are (PROJECT.md, mode-box). */
   .pl-scope{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0 22px;}
-  .pl-scope .pl-lb{ font-family:system-ui,sans-serif; font-size:.74rem; letter-spacing:.14em;
+  .pl-scope .pl-lb{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; letter-spacing:.14em;
                     text-transform:uppercase; color:var(--ink-soft);}
   .pl-scope .lr-ghost.on{ background:var(--saffron); border-color:var(--saffron);
                           color:var(--on-saffron);}
@@ -820,7 +820,7 @@ LEARN_CSS = r"""
                   box-shadow:0 4px 14px rgba(var(--shadow),.10); transform:translateY(-2px);}
   .pl-mode .n{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
                background:var(--saffron-soft); color:var(--saffron-dark);
-               font-family:system-ui,sans-serif; font-weight:700; font-size:.85rem;}
+               font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-weight:700; font-size:.85rem;}
   .pl-mode .b{ flex:1; min-width:0;}
   .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--teal);
                  margin-bottom:4px;}
@@ -829,7 +829,7 @@ LEARN_CSS = r"""
 
   /* ---------- Learn by heart ---------- */
   .lrn{ max-width:760px; }
-  .lr-k{ font-family:system-ui,sans-serif; font-size:.68rem; letter-spacing:.2em;
+  .lr-k{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.68rem; letter-spacing:.2em;
          text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px;}
   /* Owner 2026-09-01: the drill must not look like a different app. These
      mirror .tool-btn / .tool-btn.primary exactly — same padding, weight, size
@@ -849,7 +849,7 @@ LEARN_CSS = r"""
   .lr-prog{ height:5px; border-radius:3px; background:var(--chip); overflow:hidden; margin-top:8px;}
   .lr-prog i{ display:block; height:100%; background:var(--saffron); border-radius:3px;
               transition:width .45s cubic-bezier(.2,.8,.2,1);}
-  .lr-progl{ font-family:system-ui,sans-serif; font-size:.74rem; color:var(--ink-soft); margin:7px 0 18px;}
+  .lr-progl{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; color:var(--ink-soft); margin:7px 0 18px;}
 
   /* matches .card: --paper, 16px radius, the same 1px shadow and hover lift */
   .lr-step{ display:flex; gap:14px; padding:16px 18px; border-radius:16px; margin-bottom:13px;
@@ -862,7 +862,7 @@ LEARN_CSS = r"""
   .lr-step.locked{ opacity:.55;}
   .lr-badge{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
              background:var(--saffron-soft); color:var(--saffron-dark);
-             font-family:system-ui,sans-serif; font-weight:700; font-size:.84rem;}
+             font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-weight:700; font-size:.84rem;}
   .lr-step.now .lr-badge{ background:var(--saffron); color:var(--on-saffron);}
   .lr-step.done .lr-badge{ background:var(--teal); color:var(--on-accent);}
   .lr-body{ flex:1; min-width:0;}
@@ -877,14 +877,14 @@ LEARN_CSS = r"""
   .lr-chip:hover{ border-color:var(--saffron); box-shadow:0 4px 14px rgba(var(--shadow),.10);}
   .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
   .lr-chip .n{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center;
-               background:var(--chip); font-size:.7rem; font-family:system-ui,sans-serif;
+               background:var(--chip); font-size:.7rem; font-family:system-ui,"Noto Serif Devanagari",sans-serif;
                color:var(--ink-soft);}
   .lr-chip.ok .n{ background:var(--teal); color:var(--on-accent); font-weight:700;}
   .lr-chip .t{ flex:1; font-size:.85rem; line-height:1.3;}
-  .lr-chip .v{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft);}
+  .lr-chip .v{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.7rem; color:var(--ink-soft);}
 
   .lr-foot{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:16px;
-            font-family:system-ui,sans-serif; font-size:.74rem; color:var(--ink-soft);}
+            font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; color:var(--ink-soft);}
 
   .lr-thread{ list-style:none; margin:16px 0 0; padding:0;}
   .lr-thread li{ display:flex; gap:13px; padding:12px 13px; border-radius:13px; position:relative;}
@@ -892,12 +892,12 @@ LEARN_CSS = r"""
             bottom:-2px; width:2px; background:var(--line);}
   .lr-thread .bead{ flex:0 0 26px; height:26px; border-radius:50%; display:grid; place-items:center;
             background:var(--saffron-soft); color:var(--saffron-dark); z-index:1;
-            font-family:system-ui,sans-serif; font-size:.75rem; font-weight:700;}
+            font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.75rem; font-weight:700;}
   .lr-thread b{ font-weight:700; font-size:1rem; color:var(--teal);}
-  .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--saffron-dark); font-weight:600; margin-left:7px;}
+  .lr-thread .rg{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.7rem; color:var(--saffron-dark); font-weight:600; margin-left:7px;}
   .lr-thread p{ margin:4px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
 
-  .lr-vnum{ font-family:system-ui,sans-serif; font-size:1.3rem; font-weight:700;
+  .lr-vnum{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:1.3rem; font-weight:700;
             color:var(--saffron-dark); margin:10px 0 12px;}
   .lr-quarters{ display:flex; flex-direction:column; gap:9px;}
   .lr-q{ border-radius:16px; background:var(--paper); border:1px solid var(--line);
@@ -908,7 +908,7 @@ LEARN_CSS = r"""
           padding:14px 16px; background:none; border:none; cursor:pointer; font-family:inherit;}
   .lr-qh .pip{ flex:0 0 25px; height:25px; border-radius:50%; display:grid; place-items:center;
           background:var(--saffron-soft); color:var(--saffron-dark);
-          font-family:system-ui,sans-serif; font-size:.73rem; font-weight:700;}
+          font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.73rem; font-weight:700;}
   .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
   .lr-qh{ flex-wrap:nowrap; }
   .lr-qh .tx{ flex:1; min-width:0; display:flex; flex-wrap:nowrap; align-items:center;
@@ -933,11 +933,11 @@ LEARN_CSS = r"""
   .lr-word .m{ display:block; font-size:.84rem; line-height:1.4;}
   .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:14px;
             background:var(--saffron-soft); border:1px solid var(--line);}
-  .lr-mean .lb{ display:block; font-family:system-ui,sans-serif; font-size:.65rem;
+  .lr-mean .lb{ display:block; font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.65rem;
                 letter-spacing:.18em; text-transform:uppercase; color:var(--saffron-dark); margin-bottom:5px;}
 
   .lr-nav{ display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-top:20px;}
-  .lr-hint{ flex:1; text-align:center; font-family:system-ui,sans-serif;
+  .lr-hint{ flex:1; text-align:center; font-family:system-ui,"Noto Serif Devanagari",sans-serif;
             font-size:.76rem; color:var(--ink-soft);}
 
   /* The question card sits on --cream so the --paper options READ as raised
@@ -985,7 +985,7 @@ LEARN_CSS = r"""
                   line-height:1.85;}
   /* the verse number under an option is a NUMBER — saffron, like every other
      verse number in the app */
-  .lr-opt .os{ font-family:system-ui,sans-serif; font-size:.74rem; font-weight:700;
+  .lr-opt .os{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; font-weight:700;
                color:var(--saffron-dark);}
   /* the verdict must be unmistakable at a glance, not a 1px border change */
   /* The verdict is carried by the OPTION, not by a line of prose underneath
@@ -995,7 +995,7 @@ LEARN_CSS = r"""
   .lr-opt.right::after, .lr-opt.wrong::after{
       position:absolute; right:13px; top:50%; transform:translateY(-50%);
       width:22px; height:22px; border-radius:50%; display:grid; place-items:center;
-      font-family:system-ui,sans-serif; font-size:.82rem; font-weight:700;
+      font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.82rem; font-weight:700;
       line-height:1;}
   .lr-opt.right{ border-color:var(--teal); border-left-color:var(--teal);
                  border-width:2px; background:var(--teal-soft);

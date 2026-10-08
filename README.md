@@ -38,8 +38,8 @@ app and works with no internet connection.
 | | |
 |---|---|
 | Chapters · verses | 18 · 700 |
-| Themes · parts | 222 · 700 |
-| Word-instances glossed | 9,480 — each with English, Nepali **and** Hindi meanings |
+| Themes · parts | 169 · 700 |
+| Word-instances glossed | 9,484 — each with English, Nepali **and** Hindi meanings |
 | Languages | English, नेपाली, हिन्दी (no English fallback anywhere) |
 
 ---
@@ -80,10 +80,12 @@ source/                 ← edit here
   prove_data_only.py      proves the build renders data, never generates it
   check_seo.py            sitemap/robots proof (`--live` also fetches the site)
   check_site_health.py    chapter pages, CSS vars, og: tags, offline, a11y
+  check_study_structure.py approved story maps, trilingual pearls, theme sizes
+  study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
 
-rebuild.sh              build + run both test suites
-run_gita_app.js         553 assertions on the built document
-browser_checks.py       141 live-browser checks (rendering, i18n, touch, offline)
+rebuild.sh              delegates to build.py (the same full validations)
+run_gita_app.js         800 assertions on the built document
+browser_checks.py       150 live-browser checks (rendering, i18n, touch, offline)
 ```
 
 `index.html` is a **split-site shell**: the app chrome, styles, embedded font and
@@ -91,6 +93,27 @@ interface in one small document (~116 KB gzipped), with the verses in 18
 `data/ch<N>.js` files it loads in parallel and the service worker precaches. First
 paint arrives almost immediately; after the first visit everything is cached, so the
 app runs offline and installs to the home screen. Share it by link.
+
+---
+
+## The study-guide map
+
+Themes carry the chapter's story; verse cards are its individual pearls.
+All **18 chapter maps have been reviewed**: Chapters 1, 2 and 17 keep their
+approved maps, and the other 15 have genuine structural revisions. The book
+has **169 themes and 700 one-verse parts**. Most themes hold no more than six
+verses; three seven-verse arguments/portraits stay together deliberately.
+
+`STUDY_MAPS.md` gives every storyline, range and before/after count. The exact
+reviewed maps are regression-locked in `source/study_map_contract.json`.
+Changing the thread does not change Sanskrit, translations, word meanings,
+or the existing trilingual verse titles/descriptions and verse identities.
+
+Saved learning progress follows retained verse ranges, not old theme indexes.
+When a map changes, the new story needs reviewing; held verses, favourites and
+notes survive. `source/check_study_structure.py --explain` lists the longer
+passages, and the Python/Node mutation tests prove the preservation/migration
+contracts reject regressions.
 
 ---
 
@@ -127,7 +150,7 @@ It opens `http://127.0.0.1:8765` with every editable field laid out by chapter:
 | Translations | literal + paraphrase, in English, Nepali and Hindi |
 | Themes & parts | theme and part titles, descriptions and verse ranges, in all three languages |
 | Chapter names | Nepali and Hindi chapter names and blurbs |
-| Interface text | all 165 UI strings in three languages |
+| Interface text | all 201 UI strings in three languages |
 
 Press **Save** on any block and it writes the real file in `source/`, then rebuilds
 `index.html`. The **Run full build** button runs the complete suite when you want it.

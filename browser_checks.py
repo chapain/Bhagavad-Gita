@@ -12,7 +12,9 @@ Usage:
 
 Needs:  pip install playwright && python3 -m playwright install chromium --with-deps
 """
+import os
 import pathlib
+import shlex
 import subprocess
 import sys
 import time
@@ -37,14 +39,32 @@ def group(n):
 
 
 def run(pw, url, offline_capable=False):
-    b = pw.chromium.launch()
+    # Allow a preinstalled Chromium in network-restricted development sandboxes.
+    # This changes the launcher only; every browser assertion still runs.
+    launch = {}
+    executable = os.environ.get("GITA_CHROMIUM_EXECUTABLE")
+    if executable:
+        launch["executable_path"] = executable
+        launch["args"] = shlex.split(os.environ.get("GITA_CHROMIUM_ARGS", ""))
+    b = pw.chromium.launch(**launch)
     ctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
                         has_touch=True, device_scale_factor=2, service_workers="allow")
     pg = ctx.new_page()
     errs = []
     pg.on("pageerror", lambda e: errs.append(str(e)))
     pg.goto(url, wait_until="load", timeout=90000)
-    pg.wait_for_timeout(1500)
+    pg.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+
+    def colour(token, page=pg):
+        # Resolve the current light/dark palette, not obsolete hard-coded RGBs.
+        return page.evaluate("""name => {
+            const el = document.createElement('span');
+            el.style.color = 'var(' + name + ')';
+            document.body.appendChild(el);
+            const result = getComputedStyle(el).color;
+            el.remove();
+            return result;
+        }""", token)
 
     group("rendering")
     ok(pg.title() == "Bhagavad Gita — English, Nepali, Hindi · 700 Verses", "title")
@@ -132,6 +152,13 @@ def run(pw, url, offline_capable=False):
         ok("श्लोक २.४७" in pg.eval_on_selector(".m-num", "e=>e.textContent"), f"{lang}: verse ref")
         ok("पाद १" in pg.eval_on_selector_all(".pb-num", "e=>e.map(x=>x.textContent).join()"), f"{lang}: पाद boxes")
         ok("अक्षर" in pg.eval_on_selector(".m-meter", "e=>e.textContent"), f"{lang}: meter localised")
+        stacks = pg.eval_on_selector_all("#appTitle, .seg .lang-btn, .m-title",
+            "els => els.map(e => ({lang:e.lang, family:getComputedStyle(e).fontFamily}))")
+        ok(len(stacks) == 5
+           and all("Noto Serif Devanagari" in item['family'] for item in stacks)
+           and all(item['family'].startswith('"Noto Serif Devanagari"')
+                   for item in stacks if item['lang'] in ('ne', 'hi')),
+           f"{lang}: headings and every language option use the bundled Devanagari face")
         cnt = pg.eval_on_selector(".m-count", "e=>e.textContent")
         # NB: '७'.isdigit() is True in Python — test for ASCII 0-9 specifically.
         ok(("मध्ये" in cnt or "में से" in cnt) and not any(c in "0123456789" for c in cnt),
@@ -254,14 +281,15 @@ def run(pw, url, offline_capable=False):
     ok("कर्मनिष्ठा" in cr[2], f"the way crumb carries its Sanskrit niṣhā name ({cr[2]})")
     chipc = pg.eval_on_selector_all(".way-crumb .wc-chip",
         "e=>e.map(x=>[x.className.includes('wc-cur'), getComputedStyle(x).backgroundColor])")
-    SOFT=("rgb(251, 227, 192)","rgb(67, 48, 26)"); PAPER=("rgb(255, 255, 255)","rgb(32, 26, 19)")
-    ok(all((c[0] and c[1].startswith(SOFT)) or (not c[0] and c[1].startswith(PAPER)) for c in chipc),
+    SOFT, PAPER = colour("--saffron-soft"), colour("--paper")
+    ok(all((c[0] and c[1] == SOFT) or (not c[0] and c[1] == PAPER) for c in chipc),
        f"volume control: current page soft, ancestors neutral — one gold left on the page ({chipc})")
     pg.locator(".way-crumb .wc-link").first.hover()
     pg.wait_for_timeout(300)
     hov = pg.evaluate("getComputedStyle(document.querySelector('.way-crumb .wc-link')).backgroundColor")
-    ok(hov.startswith("rgb(251, 227, 192)") or hov.startswith("rgb(67, 48, 26)"),
-       f"hovering an ancestor warms it one step to saffron-soft ({hov})")
+    touch_only = pg.evaluate("matchMedia('(hover:none)').matches")
+    ok(hov == ("rgba(0, 0, 0, 0)" if touch_only else colour("--saffron-soft")),
+       f"an ancestor hover stays inert on touch and warms on mouse devices ({hov})")
     pg.mouse.move(2,2)
     pg.wait_for_timeout(250)
     pg.locator(".way-crumb .wc-link").first.click()
@@ -278,7 +306,7 @@ def run(pw, url, offline_capable=False):
     pg.evaluate("showWelcome()")
     pg.wait_for_timeout(500)
     cta = pg.evaluate("getComputedStyle(document.querySelector('.tool-btn.primary')).color")
-    ok(cta.startswith("rgb(42, 33, 24)") or cta.startswith("rgb(26, 18, 9)"),
+    ok(cta == colour("--on-saffron"),
        f"saffron grounds carry the lamp-black letter, never cream ({cta})")
 
     # The segmented control (owner 2026-08-30, final form): one quiet line
@@ -296,36 +324,35 @@ def run(pw, url, offline_capable=False):
     boxc = pg.evaluate("getComputedStyle(document.querySelector('.mode-box')).borderTopColor")
     lblc = pg.evaluate("getComputedStyle(document.querySelector('.mode-lbl')).color")
     onc  = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn.on')).backgroundColor")
-    ok((boxc.startswith("rgb(231, 217, 194)") or boxc.startswith("rgb(56, 45, 32)"))
-       and (lblc.startswith("rgb(201, 122, 32)") or lblc.startswith("rgb(200, 134, 47)"))
-       and (onc.startswith("rgb(232, 145, 44)") or onc.startswith("rgb(225, 149, 58)")),
-       f"the tray wears the card hairline; saffron lives in its words and its raised segment ({boxc} {lblc} {onc})")
+    ok(boxc == colour("--line") and lblc == colour("--ink-soft")
+       and onc == colour("--saffron-soft"),
+       f"the tray has a hairline and quiet caption; its selected segment is soft saffron ({boxc} {lblc} {onc})")
     rest = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn:not(.on)')).backgroundColor")
-    ok(rest.startswith("rgb(251, 227, 192)") or rest.startswith("rgb(67, 48, 26)"),
-       f"an unchosen segment wears the soft option pill, like an ancestor crumb ({rest})")
+    ok(rest == colour("--paper"),
+       f"an unchosen segment stays on paper, like an ancestor crumb ({rest})")
     pg.locator(".mode-seg .ms-btn:not(.on)").first.hover()
     pg.wait_for_timeout(300)
     hov = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn:not(.on)')).backgroundColor")
-    ok(hov.startswith("rgb(201, 122, 32)") or hov.startswith("rgb(200, 134, 47)"),
-       f"hover warms it to saffron-dark, exactly like the crumbs ({hov})")
+    ok(hov == colour("--paper" if touch_only else "--saffron-soft"),
+       f"an unselected segment has no sticky touch hover; a mouse gets soft saffron ({hov})")
     lang = pg.evaluate("getComputedStyle(document.querySelector('.seg .lang-btn.on')).backgroundColor")
-    ok(lang.startswith("rgb(255, 255, 255)") or lang.startswith("rgb(32, 26, 19)"),
+    ok(lang == colour("--paper"),
        f"the language bar keeps its iOS-segment look: the active tongue raised on paper ({lang})")
     pg.locator(".seg .lang-btn:not(.on)").first.hover()
     pg.wait_for_timeout(300)
     langhov = pg.evaluate("getComputedStyle(document.querySelector('.seg .lang-btn:not(.on)')).backgroundColor")
-    ok(langhov.startswith("rgb(201, 122, 32)") or langhov.startswith("rgb(200, 134, 47)"),
-       f"but its hover warms like the rest of the app ({langhov})")
+    ok(langhov == colour("--chip-hover"),
+       f"the language control uses its shared hover wash ({langhov})")
     pg.locator(".seg .lang-btn.on").click()   # click the active tongue: no-op, stays put
     pg.wait_for_timeout(300)
     pg.mouse.move(2,2)
     pg.wait_for_timeout(250)
     lbls = pg.eval_on_selector_all(".mode-seg .ms-btn", "e=>e.map(x=>x.textContent.trim())")
-    ok(lbls == ["Verses only", "Verses with translation", "Study guide"],
+    ok(lbls == ["Verses with translation", "Study guide", "Learn by heart"],
        f"the segments are the three ways in the current language ({lbls})")
     cr = pg.eval_on_selector_all(".way-crumb > *", "e=>e.map(x=>x.textContent.trim())")
-    ok(cr[-1] == "Chapter 2 · मूल", f"the running head reads 'Chapter 2 · मूल' ({cr})")
-    pg.locator(".mode-seg .ms-btn").nth(2).click()
+    ok(cr[-1] == "Chapter 2 · अर्थ", f"the retired mula route now opens the translation view ({cr})")
+    pg.locator(".mode-seg .ms-btn").filter(has_text="Study guide").click()
     pg.wait_for_timeout(600)
     ok(pg.evaluate("state.view") == "themes" and pg.locator(".th-flow .theme").count() > 0
        and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == "Study guide",
@@ -374,14 +401,14 @@ def run(pw, url, offline_capable=False):
     ok(pg.eval_on_selector(".way-crumb .wc-cur", "e=>e.textContent").strip() == "Chapter 2 · अध्ययन",
        "the foot back-button actually navigates (trail ends at 'Chapter 2 · अध्ययन')")
 
-    # The Devanagari font is embedded as a data URI. Without it, devices that do
-    # not ship Noto Serif Devanagari (older Android, most Windows) break the
-    # conjuncts — and the author would never see it on his own phone.
+    # The bundled Devanagari face must load, including on devices that do not
+    # ship Noto Serif Devanagari. The two WOFF2 files are now shared with the
+    # chapter pages and precached; the shell no longer embeds base64 fonts.
     fonts = pg.evaluate("""async () => { await document.fonts.ready;
         return {list: [...document.fonts].map(f => f.family),
                 ok: document.fonts.check('16px "Noto Serif Devanagari"')}; }""")
     ok(fonts["ok"] and "Noto Serif Devanagari" in fonts["list"],
-       f"the Devanagari font is embedded and loads ({fonts['list']})")
+       f"the bundled Devanagari font loads ({fonts['list']})")
 
     # Continuous reading: the chapter as flowing text, speaker shown when it changes.
     pg.evaluate("showRead(1,'mula')")
@@ -399,11 +426,11 @@ def run(pw, url, offline_capable=False):
     # before that there is nothing on screen for it to hide
     ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
        "the hide/show meanings switch is inactive before any quarter is opened")
-    pg.locator(".pada-box").first.click()
+    pg.locator(".pada-toggle").first.click()
     pg.wait_for_timeout(300)
     ok(not pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
        "opening a quarter wakes the switch")
-    pg.locator(".pada-box").first.click()
+    pg.locator(".pada-toggle").first.click()
     pg.wait_for_timeout(300)
     ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
        "closing the last open quarter puts the switch back to sleep")
@@ -424,12 +451,15 @@ def run(pw, url, offline_capable=False):
     shape = pg.evaluate("""() => {
         const cards = [...document.querySelectorAll('.rd-v')];
         const rows = i => [...cards[i].querySelector('.rd-deva').children]
+                           .filter(e => !e.classList.contains('rd-iast'))
                            .map(e => e.className.trim());
+        const deva = [...cards[0].querySelectorAll('.rd-deva .gline')];
         return {first: rows(0), v21: rows(20), v28: rows(27),
-                tail: cards[0].querySelector('.rd-deva').lastElementChild.textContent.trim()};
+                iast: cards[0].querySelectorAll('.rd-deva > .rd-iast').length,
+                tail: deva[deva.length-1].textContent.trim()};
     }""")
-    ok(shape["first"] == ["rd-spk", "gline", "gline"],
-       f"1.1 opens with its speaker then two lines ({shape['first']})")
+    ok(shape["first"] == ["rd-spk", "gline", "gline"] and shape["iast"] == 2,
+       f"1.1 keeps its speaker and two Sanskrit lines, each with IAST ({shape['first']})")
     ok(shape["v21"] == ["gline", "rd-spk", "gline"],
        f"1.21 keeps its speaker between the two lines ({shape['v21']})")
     ok(shape["v28"] == ["gline", "rd-spk", "gline"],
@@ -437,16 +467,17 @@ def run(pw, url, offline_capable=False):
     ok(shape["tail"].endswith("॥") and "1.1" in shape["tail"],
        f"the verse number closes the second line between daṇḍas ({shape['tail'][-18:]})")
 
-    # Two ways to read: मूल — the root text alone, as a pāṭha is recited — and the
-    # same verses each followed by its meaning.
+    # The retired mula route remains compatible: it now opens the translation
+    # view, beside Study guide and Learn by heart, rather than a missing mode.
     pg.evaluate("showRead(0,'mula')")
     pg.wait_for_timeout(400)
     opts = pg.eval_on_selector_all(".mode-seg .ms-btn", "e=>e.map(x=>x.textContent.trim())")
     ok(len(opts) == 3 and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == opts[0],
-       f"the chapter page offers all three ways, mula raised first ({opts})")
+       f"the chapter page offers all three current ways, translation selected ({opts})")
     pg.wait_for_timeout(500)
-    ok(pg.locator(".rd-tr").count() == 0, "मूल shows the verses without translations")
-    ok(pg.locator(".rd-v").count() == 47, "मूल still shows every verse of chapter 1")
+    ok(pg.evaluate("state.readMode") == "full" and pg.locator(".rd-tr").count() == 47,
+       "a retired मूल link lands on the full translated chapter")
+    ok(pg.locator(".rd-v").count() == 47, "the compatible route still shows all 47 verses of chapter 1")
     pg.evaluate("showRead(0,'full')")
     pg.wait_for_timeout(500)
     ok(pg.locator(".rd-tr").count() == 47, "'with meaning' adds a translation to every verse")
@@ -454,7 +485,7 @@ def run(pw, url, offline_capable=False):
        "'with meaning' also sets the flowing paraphrase under each literal")
     # word-by-word stays out of the continuous read — it belongs to the study
     # guide. The segmented control leads there.
-    pg.locator(".mode-seg .ms-btn").nth(2).click()
+    pg.locator(".mode-seg .ms-btn").filter(has_text="Study guide").click()
     pg.wait_for_timeout(600)
     ok(pg.evaluate("state.view") == "themes" and pg.locator(".th-flow .theme").count() > 0,
        "the study guide tab returns to the thematic breakdown")
@@ -512,6 +543,37 @@ def run(pw, url, offline_capable=False):
     ok("env(safe-area-inset-top" in pg.content() or True, "safe-area inset applied")
     ctx.close()
 
+    group("map-aware learning progress")
+    # The primary touch context above is deliberately closed. Use a fresh
+    # context so this integration check has isolated, explicit stored state.
+    mctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    mp = mctx.new_page()
+    mp.on("pageerror", lambda error: errs.append(str(error)))
+    mp.goto(url, wait_until="load", timeout=90000)
+    mp.evaluate("loadAllChapters()")
+    mp.evaluate("""() => {
+        window.__previousLearn = localStorage.getItem('gitaLearn');
+        localStorage.setItem('gitaLearn', JSON.stringify({
+            3: {story: 1, themes: {0: 1, 2: 1}, held: {'3.06': 1}}
+        }));
+        showLearn(2);
+    }""")
+    mp.wait_for_selector(".lr-chip.ok")
+    progress = mp.evaluate("JSON.parse(JSON.stringify(lrGet(3)))")
+    ok(progress['story'] == 0 and progress['themes'] == {'1': 1}
+       and progress['held'] == {'3.06': 1},
+       "regrouping remaps only retained theme ranges and preserves held verses")
+    ok(mp.locator(".lr-chip.ok").count() == 1
+       and mp.locator(".lr-chip.ok .t").inner_text() == "Act without hypocrisy or attachment",
+       "the visible learned theme is the retained 3.6–3.9 group, not the old numeric index")
+    mp.evaluate("""() => {
+        if(window.__previousLearn === null) localStorage.removeItem('gitaLearn');
+        else localStorage.setItem('gitaLearn', window.__previousLearn);
+        delete window.__previousLearn;
+    }""")
+
+    mctx.close()
+
     group("responsive")
     for name, w, h, expect in [("iPhone SE", 375, 667, "column"), ("Pixel 7", 412, 915, "column"),
                                ("iPad mini", 768, 1024, "row"), ("Desktop", 1440, 900, "row")]:
@@ -528,6 +590,19 @@ def run(pw, url, offline_capable=False):
            f"{name}: quarters {expect}")
         ok(not q.evaluate("document.documentElement.scrollWidth>document.documentElement.clientWidth"),
            f"{name}: no overflow")
+        if name == "Desktop":
+            q.evaluate("closeModal()")
+            q.wait_for_timeout(350)
+            q.evaluate("showThemes(1)")
+            q.wait_for_selector(".way-crumb .wc-link")
+            q.locator(".way-crumb .wc-link").first.hover()
+            q.wait_for_timeout(250)
+            ok(q.eval_on_selector(".way-crumb .wc-link", "e=>getComputedStyle(e).backgroundColor")
+               == colour("--saffron-soft", q), "Desktop: a mouse hover warms the ancestor crumb")
+            q.locator(".mode-seg .ms-btn:not(.on)").first.hover()
+            q.wait_for_timeout(250)
+            ok(q.eval_on_selector(".mode-seg .ms-btn:not(.on)", "e=>getComputedStyle(e).backgroundColor")
+               == colour("--saffron-soft", q), "Desktop: a mouse hover warms an unselected mode")
         c.close()
 
     group("chapter landing pages")
@@ -580,8 +655,9 @@ def run(pw, url, offline_capable=False):
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
     q.goto(base, wait_until="load", timeout=90000)
-    q.wait_for_function("DATA && DATA.length===18", timeout=20000)
-    q.evaluate("openModal(1,7,0)")   # ch2 · theme 8 (Neither Slays Nor Is Slain), first sutra = 2.19
+    q.evaluate("loadAllChapters()")
+    q.evaluate("(() => {const v=verseLoc('2.19'); openModal(v.ci,v.ti,v.si);})()")
+    # Canonical IDs survive regrouping; a hard-coded theme index does not.
     q.wait_for_timeout(300)
     ok(q.evaluate("location.hash") == "#v=2.19", "opening a verse writes the #v= deep link")
     q.evaluate("openSharePanel()")
@@ -615,8 +691,8 @@ def run(pw, url, offline_capable=False):
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
     q.goto((ROOT / "index.html").as_uri(), wait_until="load", timeout=90000)
-    q.wait_for_function("DATA && DATA.length===18", timeout=20000)
-    q.evaluate("openModal(1,7,0)")
+    q.evaluate("loadAllChapters()")
+    q.evaluate("(() => {const v=verseLoc('2.19'); openModal(v.ci,v.ti,v.si);})()")
     q.wait_for_timeout(200)
     ok(q.evaluate("shareUrl()") == "https://chapain.github.io/Bhagavad-Gita/chapter/2/#v2.19",
        "from a downloaded copy, the share link points at the live verse anchor")

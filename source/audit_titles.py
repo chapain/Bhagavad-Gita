@@ -116,6 +116,26 @@ def norm(s):
     return (s or "").lower()
 
 
+def possessive_side(text, name):
+    """Return which army/person a nearby possessive assigns to name.
+
+    The marker can precede the name ("ours, guarded by Bhīṣma") or follow it
+    ("Bhīṣma guards our army"). Keep the match inside one clause so it cannot
+    cross a semicolon and borrow the other side's marker.
+    """
+    marker = r"(our|ours|my|mine|their|theirs|his|her)"
+    name = re.escape(name.lower())
+    patterns = (
+        r"\b" + marker + r"\b[^.;]{0,60}" + name,
+        name + r"[^.;]{0,60}\b" + marker + r"\b",
+    )
+    for pattern in patterns:
+        m = re.search(pattern, text)
+        if m:
+            return "our" if m.group(1) in {"our", "ours", "my", "mine"} else "their"
+    return None
+
+
 def strip_diacritics(s):
     import unicodedata
     return "".join(c for c in unicodedata.normalize("NFD", s)
@@ -190,22 +210,17 @@ def audit():
                             for name, frags in NAMES.items():
                                 if name not in title:
                                     continue
-                                # find which side the literal puts this name on
-                                m = re.search(
-                                    r"(ours?|theirs?|our|their)[^.;]{0,60}" +
-                                    re.escape(name.lower()), ll)
-                                if not m:
-                                    m = re.search(
-                                        re.escape(name.lower()) + r"[^.;]{0,60}(ours?|theirs?)",
-                                        ll)
-                                if m:
-                                    side = "our" if "our" in m.group(0) else "their"
-                                    said = "our" if has_our else "their"
-                                    if side != said:
-                                        flag("possessive-inverted", ref,
-                                             "title says '%s' but the verse puts %s on '%s'"
-                                             % (said, name, side),
-                                             title, lit[:130])
+                                # Find each name's side independently in both the
+                                # title and literal. A title can correctly mention
+                                # BOTH "our" and "their" armies, so a single
+                                # has_our flag cannot stand for every named person.
+                                said = possessive_side(tl, name)
+                                side = possessive_side(ll, name)
+                                if said and side and side != said:
+                                    flag("possessive-inverted", ref,
+                                         "title says '%s' but the verse puts %s on '%s'"
+                                         % (said, name, side),
+                                         title, lit[:130])
 
                     # 3. speaker attribution
                     spk = None

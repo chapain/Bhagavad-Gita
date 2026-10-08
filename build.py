@@ -15,8 +15,10 @@ It runs, in order:
     2c. source/check_seo.py   sitemap + robots proof (local; add --live to fetch the site)
     2d. source/check_site_health.py  chapter pages, CSS vars, og tags, SW, a11y
     2e. source/audit_titles.py  every title/desc against its own verse
-    3. run_gita_app.js        553 assertions on the built document        (needs node)
-    4. browser_checks.py      141 live-browser checks                 (needs playwright)
+    2f. source/check_study_structure.py  approved story maps and verse titles
+    2g. tests/  mutation/regression checks for the study structure
+    3. run_gita_app.js        800 assertions on the built document        (needs node)
+    4. browser_checks.py      150 live-browser checks                 (needs playwright)
 
 Steps 3 and 4 are skipped with a warning if node / playwright are missing — the
 build itself still completes.
@@ -98,16 +100,27 @@ def main():
     # everything else is advisory and printed for a human to read.
     ok &= run([PY, "audit_titles.py"], SRC, "titles vs verses", tail=3)
 
+    # Story turns must stay trilingual, contiguous, and small enough to learn.
+    # The approved longer passages are explicit, not an accidental loophole.
+    ok &= run([PY, "check_study_structure.py"], SRC, "study maps / verse titles", tail=2)
+    ok &= run([PY, "-m", "unittest", "discover", "-s", "tests"], ROOT,
+              "study-map mutation tests", tail=4)
+
     node = shutil.which("node")
     if node:
         ok &= run([node, "run_gita_app.js"], ROOT, "document tests", tail=6)
+        ok &= run([node, "tests/test_progress_maps.js"], ROOT,
+                  "saved-learning map migration", tail=3)
     else:
         print("\n--- document tests ---\n(skipped — node not installed)")
 
     try:
         import playwright  # noqa: F401
-        args = [PY, "browser_checks.py"] + (["--serve"] if not SERVE else ["--serve"])
-        ok &= run(args, ROOT, "browser tests", tail=3, optional=True)
+        target = os.environ.get("GITA_TEST_URL", "--serve")
+        args = [PY, "browser_checks.py", target]
+        # Once Playwright is installed, failures must fail the build. Marking
+        # this run optional used to report success even after failed assertions.
+        ok &= run(args, ROOT, "browser tests", tail=6)
     except ImportError:
         print("\n--- browser tests ---")
         print("(skipped — pip install playwright && python3 -m playwright install chromium)")
