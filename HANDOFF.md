@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-08 (Asia/Kathmandu) |
-| Updated by | Arena session on branch `arena/07dc9c71-bhagavad-gita` |
-| Base commit | `a353afa` on `main` |
+| Updated by | Arena session on branch `arena/b1caed3e-bhagavad-gita` |
+| Base commit | `0f3a182` on `main` |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,14 +20,19 @@ before you talk to the owner.
 
 ## 1. Where we are
 
-- **2026-10-08 — full review done** of code, data, docs and tests, plus a live
-  browser tour at phone width (390 px) in English, Nepali and Hindi, light and
-  dark. The findings are in §5.
-- **No app code or data has been changed yet.** This session only added this
-  file and a one-line pointer to it at the top of `PROJECT.md`.
-- **Waiting on the owner:** which phase to start (§7). Recommended: **Phase 1**
-  (correctness). It is small and safe, and every fix can be proven.
-- At `a353afa` the build and every test suite pass, including 150 browser checks.
+- **2026-10-08 — Phase 1 selected; step 1.1 complete.** Corrected the verse
+  text in **7.12** (`rājasāstāmasāśca`) and **9.13** (`mahātmānastu`) in both
+  the source verses and matching pāda lines. The generated chapter pages and
+  chapter data agree.
+- **Evidence:** both verses and their opened word lists were checked in the
+  rendered app at 390 × 844 px; the corrected text is visible in Devanagari
+  and IAST.
+- **Verification:** the full build is green, including 2,800 pādas (0 residual),
+  2,100 paraphrase pairs, 6 SEO checks, 572 site-health checks, 9,658 study
+  structure checks, 16 mutation tests, 800 document assertions, 15 learning-map
+  migration tests, and all 150 Chromium browser checks.
+- **Next:** step 1.2 — correct the word-list spellings in 11.27–29, 17.6, 1.1
+  and 2.14. The remaining owner decisions are listed in §7.
 
 ## 2. Resume in five minutes
 
@@ -245,15 +250,18 @@ Missing:
 
 ## 6. Plan — status board (tick as you go)
 
-**Phase 1 — Correctness (1–2 days)** · not started
-- [ ] 1.1 Fix the text errors in §5.1, including the 13.27 gloss-key rename.
-- [ ] 1.2 Add a strict validator that fails the build. Check each word's
+**Phase 1 — Correctness (1–2 days)** · in progress
+- [x] 1.1 Fix the verse text in 7.12 and 9.13 (source and matching pāda lines).
+- [ ] 1.2 Fix word-list spellings: 11.27–29, 17.6, 1.1 and 2.14.
+- [ ] 1.3 Fix 13.27’s IAST spelling and update its Nepali/Hindi gloss keys.
+- [ ] 1.4 Add a strict validator that fails the build. Check each word’s
       Devanagari against its own IAST, and each pāda line against its word
       split, without flattening diacritics. Appendix A §1–2 is the starting point.
-- [ ] 1.3 Search: NFD plus spelling folds; fix “1 results”.
-- [ ] 1.4 Replace “तीन निष्ठा / निष्ठाएँ” (wording from the owner).
-- [ ] 1.5 Fix the 18.66 and 15.7 paraphrases and the 2.47 Hindi.
+- [ ] 1.5 Search: NFD plus spelling folds; fix “1 results”.
 - [ ] 1.6 Fix the `LICENSE.md` counts; remove the README editor section (or restore the editor).
+- [ ] 1.7 Fix the Hindi grammar in the 2.47 paraphrase.
+- [ ] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” after the owner chooses the wording (§7).
+- [ ] 1.9 Revisit the 18.66 and 15.7 paraphrases after the owner’s decision (§7).
 
 **Phase 2 — Meaning**
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2).
@@ -284,8 +292,12 @@ Missing:
 
 ## 7. Decisions waiting on the owner
 
-1. Which phase to start (recommended: Phase 1).
-2. What replaces “तीन निष्ठा” (e.g. “तीन षट्क”, “तीन खण्ड”)?
+Phase 1 is selected (2026-10-08). After the mechanical fixes, these editorial
+choices remain open:
+
+1. What wording replaces “तीन निष्ठा / तीन निष्ठाएँ”? The suggestion in §5.3
+   is to name the three six-chapter groups as ṣaṭkas or kāṇḍas.
+2. How should the paraphrases of 18.66 and 15.7 be revised, if at all? See §5.3.
 3. OK to add Śaṅkara notes (source: Mahadeva Sastry, 1897)?
 4. Where audio would come from (licence, who records it).
 5. OK to merge “Verses with translation” and “Study guide” into one view?
@@ -295,6 +307,10 @@ Missing:
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-08 · `arena/b1caed3e-bhagavad-gita` · Phase 1 step 1.1: corrected the
+  Devanagari and IAST text of 7.12 and 9.13 in source and pāda data; rebuilt
+  generated outputs. Full build green, including 150 Chromium checks; both
+  verses and their word lists visually checked at 390 × 844 px.
 - 2026-10-08 · `arena/07dc9c71-bhagavad-gita` · Full review (code, data, docs,
   tests, 390 px browser tour in en/ne/hi). Created HANDOFF.md and added a
   pointer at the top of PROJECT.md. No app changes.
@@ -304,7 +320,7 @@ Missing:
 ## Appendix A — `audit.py`
 
 Run it from the repo root. It uses only the Python standard library and takes
-about a second. Expected output at `a353afa`:
+about a second. Expected output at `0f3a182` (before step 1.1):
 - §1 lists 1.1, 2.6, 2.14, 11.27–29, 13.27 and 17.6. The 2.6 line (यत् वा /
   yad vā) is a harmless spelling convention.
 - §2 lists 7.12, 9.13 and 13.27.

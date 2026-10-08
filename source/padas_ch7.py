@@ -108,7 +108,7 @@ GITA_CH7_PADAS = {
 
 "7.12": [
     ("p", "ये चैव सात्त्विका भावा", "ye caiva sāttvikā bhāvā", 8),
-    ("p", "राजसास्तमसाश्च ये", "rājasāstamasāśca ye", 8),
+    ("p", "राजसास्तामसाश्च ये", "rājasāstāmasāśca ye", 8),
     ("p", "मत्त एवेति तान्विद्धि", "matta eveti tānviddhi", 8),
     ("p", "न त्वहं तेषु ते मयि", "na tvahaṃ teṣu te mayi", 8),
 ],
