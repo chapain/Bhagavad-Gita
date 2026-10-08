@@ -5,7 +5,7 @@ Aligned to the Śaṅkara-bhāṣya readings."""
 CH12_THEMES = [
     ("Devotion or the unmanifest: the choice of path",
      "Arjuna compares devotion with the unmanifest path. Both reach Kṛṣṇa, but faith-filled personal devotion is praised; the unmanifest is harder for the embodied.",
-     [("Which knows Yoga better?", "Those devotees who, ever united, worship you — and those who worship the imperishable unmanifest — which of these are the better knowers of yoga?", "12.01", "12.01"),
+     [("Which knows yoga better?", "Those devotees who, ever united, worship you — and those who worship the imperishable unmanifest — which of these are the better knowers of yoga?", "12.01", "12.01"),
       ("Those ever-united in me are best in yoga", "Those who, fixing their minds on me, ever united, worship me with supreme faith — them I deem the most yoked.", "12.02", "12.02"),
       ("Some worship the imperishable unmanifest", "But those who worship the imperishable, the indefinable, the unmanifest — the all-pervading, unthinkable, unchanging, immovable, eternal —", "12.03", "12.03"),
       ("They too reach me", "— controlling all the senses, of equal mind everywhere, rejoicing in the welfare of all beings — they too reach me.", "12.04", "12.04"),
@@ -22,7 +22,7 @@ CH12_THEMES = [
       ("If not even that, renounce the fruit", "If you cannot do even this, then, taking refuge in my yoga, renounce the fruit of all actions — with the self controlled.", "12.11", "12.11"),
       ("Better than knowledge is renunciation of fruit", "Better indeed is knowledge than practice; better than knowledge is meditation; better than meditation is renunciation of the fruit of action — for from renunciation comes peace, immediately.", "12.12", "12.12")]),
     ("Compassion and self-mastery make a dear devotee",
-     "The dear devotee hates no being, is compassionate and steady, neither disturbs the world nor is disturbed by it, and acts without anxious claims.",
+     "The dear devotee hates no being, is compassionate and steady, neither disturbs the world nor is disturbed by it, free of expectation, and renounces all undertakings.",
      [("Hating no being, friendly and compassionate", "He who hates no being, is friendly and compassionate, free from possessiveness and ego, equal in pleasure and pain, forgiving —", "12.13", "12.13"),
       ("Ever content, resolved, given to me", "— ever content, a yogi, self-controlled, of firm resolve, mind and intellect offered to me — that devotee of mine is dear to me.", "12.14", "12.14"),
       ("He by whom the world is not disturbed", "He by whom the world is not disturbed, and who is not disturbed by the world — freed from joy, anger, fear and anxiety — he is dear to me.", "12.15", "12.15"),

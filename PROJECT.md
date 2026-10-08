@@ -12,6 +12,61 @@ code alone cannot tell you.
 For a brand-new session: read §1–§10, then this box, then build.
 
 
+### 2026-10-08 — audit of every verse and theme title and description
+
+* **Standard and coverage.** All 700 verse titles and descriptions were checked
+  first, then all 169 themes, in English, Nepali and Hindi, each against the
+  Sanskrit in `source/ch*.json`. A verse title or description must say exactly
+  what its verse says. A theme title or description must cover the verses in
+  its range and nothing outside them. Mechanical checks were only leads; each
+  lead was confirmed by reading the text. The 51 advisory lines from
+  `audit_titles.py` were each read against their verses. All are accurate
+  readings (speakers, counts, synonyms), so none changed.
+* **Verse meaning fixed.** 6.47 "Most yoked: he who worships me with faith"
+  (was "Dearest of all"); 1.17 names the heroes it lists (was "More Pāṇḍava
+  heroes sound their conches"); 2.70 "As waters enter the ocean"; 4.41 "Knowledge
+  destroys doubt; actions do not bind"; 8.09 EN desc "subtler than the atom";
+  9.12 "Vain hopes, vain works, vain knowledge"; 15.02
+  "Branches spread above and below". Nepali: 7.29 and 7.30 titles said "go to"
+  (जान्छन्) where the verses say "know" (जान्दछन्, चिन्छन्); 2.07 and 11.03 use
+  respectful address to Kṛṣṇa (तपाईं). Hindi: 2.07 and 11.03 (आप), 2.30 desc
+  (तुझे), 10.04 desc "जन्म, मृत्यु" (was "भव, अभव"), 18.38 title.
+* **Theme meaning fixed.** ch1 t3 (NE, HI) includes protecting Bhīṣma; ch1 t8
+  (NE, HI) "not joy" is "सुख नहीं", not sorrow; ch2 t19 "waters"; ch3 t3 "the
+  gods' gifts without giving back is theft; the good eat what remains of
+  sacrifice"; ch4 t1 asks how Kṛṣṇa could have taught it first, since Vivasvān
+  was born earlier (was "questions Kṛṣṇa's age"); ch4 t10 "the doubter
+  perishes"; ch9 t6 NE title (मकहाँ आउने; was मसम्मको, which
+  does not fit the verses); ch11 t9 forgiveness simile "as a father forgives a son, or a friend a friend"; ch12 t4
+  "renounces all undertakings"; ch13 34 title "Seeing field and knower apart
+  brings freedom" (was "The final vision", in all three languages); ch15 t2 NE
+  (sun, moon and fire do not give light there; the old wording said fire's
+  light was not needed); ch18 t5 names the tāmasic doer's
+  laziness (18.28), and "inertia" no longer sits in the action clause.
+* **Case (§0 policy).** Sentence case for all titles; mid-title guṇa, sāttvic,
+  rājasic, tāmasic, yoga, samādhi, sāṅkhya, māyā, sattva, rajas and tamas are
+  lowercase. Kept: Self, Brahman, Yoga-Māyā, Om Tat Sat, deities, place and
+  proper names, Brāhmī. The pronoun "me" stays lowercase in titles, as
+  elsewhere in the book. 5.29 title shortened to 50 characters (was 54; the
+  owner's guideline is 52).
+* **Open for the owner, not changed.** These sit in the translation layer,
+  outside the title and description scope: 2.07 Nepali paraphrase and Hindi
+  literal use informal address to Kṛṣṇa (`translations_ne.py`,
+  `translations_hi.py`); 2.30 Hindi paraphrase still says "तू"; 10.04 Hindi
+  literal "भव, अभव" (standard form अभाव). Deliberately kept: 8.09 literal and
+  paraphrase keep "subtle"; 8.21 Nepali "फर्कदैनन्" (both spellings occur);
+  12.19 "equal through praise and blame" is incomplete but accurate. 9.30–9.34
+  cites 18.65 for its four instructions. That is accurate, and the wording is a
+  recorded decision guarded by a test, so it stays. A strict reading of "nothing
+  outside the range" would drop it; that needs the owner's call.
+* **Build.** `python3 build.py` is green: 800 document assertions, 150 live
+  browser checks, study structure 9658, progress maps 15, advisory 51 (unchanged
+  count), blocking 0. The browser suite ran for the first time in this sandbox.
+  Playwright's own Chromium download is blocked here, so a Chromium from the npm
+  package `@sparticuz/chromium` stands in (launcher under `~/.cache/ms-playwright`,
+  outside the repo). On your machine the normal route is
+  `pip install playwright && python3 -m playwright install chromium`.
+
 ### 2026-10-08 — completing structural review of all remaining chapters
 
 The owner clarified that recovery of wording was not enough: complete the

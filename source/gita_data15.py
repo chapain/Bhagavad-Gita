@@ -5,8 +5,8 @@ Aligned to the Śaṅkara-bhāṣya readings."""
 CH15_THEMES = [
     ("Cut the world-tree and seek its source",
      "The upside-down tree grows through guṇas and attachment to action. Cut its roots with detachment, then seek the primal Person and the state without return.",
-     [("The Aśvattha tree", "They speak of the imperishable aśvattha with its root above and branches below; the Vedas are its leaves — he who knows it is a knower of the Vedas.", "15.01", "15.01"),
-      ("Its branches below", "Its branches spread above and below, nourished by the guṇas, with sense-objects as their shoots; and below its roots stretch down, binding to action in the world of men.", "15.02", "15.02"),
+     [("The aśvattha tree", "They speak of the imperishable aśvattha with its root above and branches below; the Vedas are its leaves — he who knows it is a knower of the Vedas.", "15.01", "15.01"),
+      ("Branches spread above and below", "Its branches spread above and below, nourished by the guṇas, with sense-objects as their shoots; and below its roots stretch down, binding to action in the world of men.", "15.02", "15.02"),
       ("Cut this rooted tree with detachment", "Its true form is not perceived here, nor its end, nor its beginning, nor its support; having cut this firmly-rooted aśvattha with the strong axe of detachment,", "15.03", "15.03"),
       ("Seek the supreme goal", "— then that state must be sought, going to which none returns; I take refuge in that primal Person from whom flows the ancient course.", "15.04", "15.04")]),
     ("Who reaches the imperishable abode",

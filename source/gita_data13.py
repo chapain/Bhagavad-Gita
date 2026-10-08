@@ -48,7 +48,7 @@ CH13_THEMES = [
       ("Without beginning or guṇas, it does not act", "Because it is beginningless and without guṇas, this supreme Self is imperishable — though dwelling in the body, it neither acts nor is stained.", "13.31", "13.31"),
       ("As space is unstained", "As the all-pervading space is not stained, being subtle, so the Self, present in every body, is not stained.", "13.32", "13.32"),
       ("The sun and the field", "As the one sun illumines this whole world, so the knower of the field illumines the whole field, O Bhārata.", "13.33", "13.33"),
-      ("The final vision", "Those who, with the eye of knowledge, see the distinction between the field and its knower, and the liberation from prakṛti — they reach the supreme.", "13.34", "13.34")]),
+      ("Seeing field and knower apart brings freedom", "Those who, with the eye of knowledge, see the distinction between the field and its knower, and the liberation from prakṛti — they reach the supreme.", "13.34", "13.34")]),
 ]
 
 CH13_TRANSLATIONS = {

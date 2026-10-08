@@ -5,7 +5,7 @@ Aligned to the Śaṅkara-bhāṣya readings."""
 CH7_THEMES = [
     ("Hear how to know me fully",
      "With mind and refuge in Kṛṣṇa, hear knowledge together with realization. Few strive for perfection; rarer still is knowing him in truth.",
-     [("Hear how to know Me fully", "With the mind attached to me, O Pārtha, practising yoga and taking refuge in me — how, without doubt, you will know me in full, that listen.", "7.01", "7.01"),
+     [("Hear how to know me fully", "With the mind attached to me, O Pārtha, practising yoga and taking refuge in me — how, without doubt, you will know me in full, that listen.", "7.01", "7.01"),
       ("Realization, not mere knowledge", "I shall declare to you this knowledge together with its realization, without remainder; knowing which, nothing further remains to be known here.", "7.02", "7.02"),
       ("One in thousands strives", "Among thousands of men, one perchance strives for perfection; and among those who strive, one perchance knows me in truth.", "7.03", "7.03")]),
     ("Two natures, one thread through everything",
@@ -24,7 +24,7 @@ CH7_THEMES = [
      "The guṇas arise from Kṛṣṇa yet conceal him from the deluded. His māyā is hard to cross; refuge in him opens the way beyond it.",
      [("They are in me, I am not in them", "And whatever states there are, of sattva, rajas or tamas — know them all as from me alone; yet I am not in them, they are in me.", "7.12", "7.12"),
       ("The world does not know me", "Deluded by these states made of the three guṇas, this entire world does not know me, who am beyond them, imperishable.", "7.13", "7.13"),
-      ("This divine Māyā is hard to cross", "This divine māyā of mine, consisting of the guṇas, is hard to overcome; but those who take refuge in me alone cross beyond this māyā.", "7.14", "7.14"),
+      ("This divine māyā is hard to cross", "This divine māyā of mine, consisting of the guṇas, is hard to overcome; but those who take refuge in me alone cross beyond this māyā.", "7.14", "7.14"),
       ("The evildoers do not come to me", "The wrong-doers, the deluded, the lowest of men do not resort to me; robbed of knowledge by māyā, they cling to a demoniac nature.", "7.15", "7.15")]),
     ("Four devotees; the wise know Vāsudeva as all",
      "Distress, inquiry, need and wisdom bring people to devotion. All are noble; the wise, after many births, know Vāsudeva as everything.",
