@@ -114,7 +114,7 @@ GITA_CH9_PADAS = {
 ],
 
 "9.13": [
-    ("p", "महात्मनस्तु मां पार्थ", "mahātmanastu māṃ pārtha", 8),
+    ("p", "महात्मानस्तु मां पार्थ", "mahātmānastu māṃ pārtha", 8),
     ("p", "दैवीं प्रकृतिमाश्रिताः", "daivīṃ prakṛtimāśritāḥ", 8),
     ("p", "भजन्त्यनन्यमनसो", "bhajantyananyamanaso", 8),
     ("p", "ज्ञात्वा भूतादिमव्ययम्", "jñātvā bhūtādimavyayam", 8),
