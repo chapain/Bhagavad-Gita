@@ -1,5 +1,8 @@
 # PROJECT.md — everything needed to pick this up cold
 
+> **Start with [`HANDOFF.md`](HANDOFF.md)**: the short, current status page
+> (latest review, the plan, open decisions). Then come back here for the history.
+
 If you are an assistant resuming this project with nothing but the repository,
 read this file first. `README.md` explains how to *use* the project; this file
 explains *why it is the way it is*, and records decisions and mistakes that the
