@@ -486,7 +486,7 @@ GLOSS_NE = {
 "avikāryaḥ": "अपरिवर्तनीय",
 "avināśi": "अविनाशी",
 "avināśinam": "अविनाशीलाई",
-"avināśyantam": "अविनाशीलाई",
+"avinaśyantam": "अविनाशीलाई",
 "avipaścitaḥ": "अज्ञानीहरू",
 "avyabhicāreṇa": "अविचलित",
 "avyabhicāriṇyā": "अविचलित",

@@ -486,7 +486,7 @@ GLOSS_HI = {
 "avikāryaḥ": "अपरिवर्तनीय",
 "avināśi": "अविनाशी",
 "avināśinam": "अविनाशी को",
-"avināśyantam": "अविनाशी को",
+"avinaśyantam": "अविनाशी को",
 "avipaścitaḥ": "अज्ञानी",
 "avyabhicāreṇa": "अविचलित",
 "avyabhicāriṇyā": "अविचलित",
