@@ -85,7 +85,7 @@ GITA_CH17_WORDS = {
     3: [["कामरागबलान्विताः", "kāmarāgabalānvitāḥ", "impelled by desire and attachment"]]},
 
 6: {"s": [],
-    0: [["कर्षयन्तः", "karśayantaḥ", "tormenting"],
+    0: [["कर्शयन्तः", "karśayantaḥ", "tormenting"],
         ["शरीरस्थम्", "śarīrastham", "dwelling in the body"]],
     1: [["भूतग्रामम्", "bhūtagrāmam", "the elements of the body"],
         ["अचेतसः", "acetasaḥ", "foolish"]],

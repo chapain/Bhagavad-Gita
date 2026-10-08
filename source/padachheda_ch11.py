@@ -422,7 +422,7 @@ GITA_CH11_WORDS = {
 
 27: {"s": [],
     0: [
-    ["वक्राणि", "vaktrāṇi", "the mouths"], ["ते", "te", "your"],
+    ["वक्त्राणि", "vaktrāṇi", "the mouths"], ["ते", "te", "your"],
         ["त्वरमाणाः", "tvaramāṇāḥ", "hurrying"], ["विशन्ति", "viśanti", "enter"]],
     1: [
     ["दंष्ट्राकरालानि", "daṁṣṭrākarālāni", "the terrible fanged"],
@@ -448,7 +448,7 @@ GITA_CH11_WORDS = {
          ["अमी", "amī", "these"],
          ["नरलोकवीराः", "naralokavīrāḥ", "heroes of the mortal world"]],
      3: [["विशन्ति", "viśanti", "enter"],
-         ["वक्राणि", "vaktrāṇi", "the mouths"],
+         ["वक्त्राणि", "vaktrāṇi", "the mouths"],
          ["अभिविज्वलन्ति", "abhivijvalanti", "blazing"]]},
 
 29: {"s": [],
@@ -466,7 +466,7 @@ GITA_CH11_WORDS = {
          ["लोकाः", "lokāḥ", "the worlds"]],
      3: [["तव", "tava", "your"],
          ["अपि", "api", "even"],
-         ["वक्राणि", "vaktrāṇi", "mouths"],
+         ["वक्त्राणि", "vaktrāṇi", "mouths"],
          ["समृद्धवेगाः", "samṛddhavegāḥ", "with full speed"]]},
 
 30: {"s": [],

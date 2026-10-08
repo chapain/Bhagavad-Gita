@@ -14,7 +14,7 @@ GITA_CH1_WORDS = {
         ["क्षेत्रे", "kṣetre", "on the field"],
         ["कुरु", "kuru", "of the Kurus", "कुरुको", "कुरुके"],
         ["क्षेत्रे", "kṣetre", "on the field"]],
-    1: [["समवेता", "samavetāḥ", "assembled"],
+    1: [["समवेताः", "samavetāḥ", "assembled"],
         ["युयुत्सवः", "yuyutsavaḥ", "desiring to fight"]],
     2: [["मामकाः", "māmakāḥ", "my people"],
         ["पाण्डवाः", "pāṇḍavāḥ", "the sons of Pāṇḍu"],
