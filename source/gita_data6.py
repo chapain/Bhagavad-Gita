@@ -6,7 +6,7 @@ CH6_THEMES = [
     ("Renunciation prepares the ascent in yoga",
      "Renunciation means relinquishing fruits and selfish intention, not merely rites. Action prepares the ascent; stillness belongs to the one established in yoga.",
      [("Renunciation is more than abandoning rites", "He who performs his bounden action without depending on its fruit — he is both a renouncer and a yogi, not he who is without fire and without rites.", "6.01", "6.01"),
-      ("Renunciation is Yoga", "That which they call renunciation, know that to be yoga, O son of Pāṇḍu; for none becomes a yogi who has not renounced selfish intention.", "6.02", "6.02"),
+      ("Renunciation is yoga", "That which they call renunciation, know that to be yoga, O son of Pāṇḍu; for none becomes a yogi who has not renounced selfish intention.", "6.02", "6.02"),
       ("Action for the ascending, stillness for the ascended", "For the sage who wishes to ascend in yoga, action is said to be the means; for him who has ascended, quiescence is said to be the means.", "6.03", "6.03"),
       ("Clinging to nothing, he has risen in yoga", "When one is attached neither to sense-objects nor to actions, having abandoned all selfish intentions — then he is said to have ascended in yoga.", "6.04", "6.04")]),
     ("Self-mastery brings an equal vision",
@@ -54,7 +54,7 @@ CH6_THEMES = [
      [("Arjuna: the mind is too restless for this", "This yoga of equanimity declared by you, O Madhusūdana — I see no firm foundation for it, because of restlessness.", "6.33", "6.33"),
       ("The mind is restless as the wind", "Verily the mind is restless, turbulent, strong and unyielding, O Kṛṣṇa; I think it is as hard to restrain as the wind.", "6.34", "6.34"),
       ("By practice and detachment", "Undoubtedly the mind is restless and hard to restrain, O mighty-armed one; but it is restrained, O son of Kuntī, by practice and by dispassion.", "6.35", "6.35"),
-      ("For the unrestrained, Yoga is hard", "Yoga is hard to attain, I think, for one whose self is unrestrained; but for the self-controlled one who strives by the proper means, it is attainable.", "6.36", "6.36")]),
+      ("For the unrestrained, yoga is hard", "Yoga is hard to attain, I think, for one whose self is unrestrained; but for the self-controlled one who strives by the proper means, it is attainable.", "6.36", "6.36")]),
     ("Arjuna fears the fate of a fallen yogi",
      "What happens to the faithful seeker who fails? Arjuna fears being lost like a torn cloud and asks Kṛṣṇa to remove this doubt completely.",
      [("Arjuna asks what befalls one who fails", "He who, full of faith but unable to control himself, whose mind has fallen away from yoga — not attaining perfection in yoga — what end does he reach, O Kṛṣṇa?", "6.37", "6.37"),
@@ -71,7 +71,7 @@ CH6_THEMES = [
      "Effort over many births brings perfection. Be a yogi; among yogis Kṛṣṇa esteems highest the one who worships him with faith and an inwardly devoted heart.",
      [("Perfected through many births", "But the yogi who strives with effort, purified of sin, perfected gradually through many births, then reaches the highest state.", "6.45", "6.45"),
       ("The yogi is greater than the ascetic", "The yogi is greater than the ascetic, deemed greater than the man of knowledge, and greater than the man of rites; therefore be a yogi, O Arjuna.", "6.46", "6.46"),
-      ("Dearest of all: He who worships me", "And among all yogis, he who, full of faith, worships me with his inmost self established in me — him I deem the most yoked, in my view.", "6.47", "6.47")]),
+      ("Most yoked: he who worships me with faith", "And among all yogis, he who, full of faith, worships me with his inmost self established in me — him I deem the most yoked, in my view.", "6.47", "6.47")]),
 ]
 
 CH6_TRANSLATIONS = {

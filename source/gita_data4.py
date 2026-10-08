@@ -4,7 +4,7 @@ Aligned to the Śaṅkara-bhāṣya readings."""
 
 CH4_THEMES = [
     ("Ancient yoga and the memory of past births",
-     "The ancient yoga passed through Vivasvān and the royal sages, then was lost. Arjuna questions Kṛṣṇa’s age; Kṛṣṇa recalls their many past births.",
+     "The ancient yoga passed through Vivasvān and the royal sages, then was lost. Arjuna asks how Kṛṣṇa could have taught it at the beginning, since Vivasvān was born earlier; Kṛṣṇa recalls their many past births.",
      [("Taught to Vivasvān", "I declared this imperishable yoga to Vivasvān; Vivasvān communicated it to Manu; Manu proclaimed it to Ikṣvāku.", "4.01", "4.01"),
       ("In time this yoga was lost", "Thus received in succession, the royal sages came to know it; but in the long course of time, this yoga was lost, O scorcher of foes.", "4.02", "4.02"),
       ("I declare that ancient yoga to you", "This same ancient yoga is now declared to you by me, because you are my devotee and friend — truly, this is the supreme secret.", "4.03", "4.03"),
@@ -61,9 +61,9 @@ CH4_THEMES = [
       ("Nothing purifies like knowledge", "Indeed, nothing here purifies like knowledge; in time, one perfected in yoga finds it within the Self.", "4.38", "4.38"),
       ("The faithful attains knowledge", "The faithful man, intent on it, with senses subdued, attains knowledge; and having attained knowledge, he soon reaches supreme peace.", "4.39", "4.39")]),
     ("Cut doubt and stand firm in yoga",
-     "Doubt destroys the path and its happiness. Renunciation through yoga and the sword of knowledge cut bondage: Kṛṣṇa calls Arjuna to rise.",
+     "The doubter perishes: neither this world, nor the next, nor happiness. Renunciation through yoga and the sword of knowledge cut bondage: Kṛṣṇa calls Arjuna to rise.",
      [("The doubting soul perishes", "But the ignorant man without faith, full of doubt, perishes; for the doubting soul there is neither this world, nor the next, nor happiness.", "4.40", "4.40"),
-      ("Yoga burns the doubt", "Actions do not bind him who has renounced actions through yoga, whose doubt is destroyed by knowledge, who is self-possessed, O Dhanañjaya.", "4.41", "4.41"),
+      ("Knowledge destroys doubt; actions do not bind", "Actions do not bind him who has renounced actions through yoga, whose doubt is destroyed by knowledge, who is self-possessed, O Dhanañjaya.", "4.41", "4.41"),
       ("Cut the doubt and take your stand", "Therefore, cutting with the sword of knowledge this doubt born of ignorance that dwells in your heart, stand firm in yoga — arise, O Bhārata!", "4.42", "4.42")]),
 ]
 

@@ -191,7 +191,7 @@ ok(ch4BirthPart.titles.en === 'I know all our past births'
 const ch5Verse = reviewedPart(5,'5.19'), ch5Paths = reviewedPart(5,'5.04');
 ok(ch5Verse.titles.en === 'Equanimity conquers the world of birth and death'
    && ch5Verse.titles.ne.includes('जन्म-मृत्यु') && ch5Verse.titles.hi.includes('जन्म-मृत्यु')
-   && ch5Paths.titles.en === 'Only children call Sāṅkhya and Yoga different'
+   && ch5Paths.titles.en === 'Only children call sāṅkhya and yoga different'
    && ch5Paths.titles.ne === 'बालकले मात्र साङ्ख्य र योगलाई फरक ठान्छन्'
    && ch5Paths.titles.hi === 'बालक ही सांख्य और योग को भिन्न कहते हैं'
    && reviewedPage(5).includes(ch5Paths.titles.en) && reviewedPage(5).includes(ch5Verse.titles.en),
@@ -257,7 +257,7 @@ ok(ch13Field.range === '13.01–13.06' && ch13Knower.descs.en.includes('knower o
    && reviewedPage(13).includes(ch13Field.titles.en),
    'chapter 13 joins field definitions but preserves the universal knower and Self-knowledge');
 const ch14Transcend = reviewedTheme(14,'14.26'), ch14Rise = reviewedPart(14,'14.10');
-ok(ch14Rise.titles.en === 'The Guṇas overpower one another'
+ok(ch14Rise.titles.en === 'The guṇas overpower one another'
    && ch14Transcend.descs.en.includes('makes one fit for Brahman')
    && ch14Transcend.descs.ne.includes('ब्रह्मभावका लागि योग्य')
    && ch14Transcend.descs.hi.includes('ब्रह्मभाव के योग्य')
