@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'source'))
-from check_study_structure import audit, load_book
+from check_study_structure import audit, load_book, APPROVED_MAPS, CONTRACT
 from audit_titles import possessive_side
 
 
@@ -46,6 +46,23 @@ class StudyStructureTests(unittest.TestCase):
         part = parts[0]
         parts[0] = (part[0], part[1], '1.02', '1.02')
         self.assert_rejected('ne verse ranges are misaligned')
+
+    def test_every_chapter_has_a_structurally_reviewed_contract(self):
+        self.assertEqual(set(APPROVED_MAPS), set(range(1, 19)))
+        self.assertEqual(CONTRACT['preserved_chapters'], [1, 2, 17])
+        for ch in list(range(3, 17)) + [18]:
+            with self.subTest(chapter=ch):
+                self.assertNotEqual(CONTRACT['previous_maps'][str(ch)], APPROVED_MAPS[ch])
+                self.assertTrue(CONTRACT['boundary_rationale'][str(ch)])
+
+    def test_remaining_chapter_boundaries_cannot_shift_unreviewed(self):
+        for ch in list(range(3, 17)) + [18]:
+            with self.subTest(chapter=ch):
+                book = copy.deepcopy(self.valid_book)
+                verse = book[1][ch][0][2].pop()
+                book[1][ch][1][2].insert(0, verse)
+                errors = audit(*book)[0]
+                self.assertIn(f'chapter {ch}: the reviewed story map changed', errors)
 
     def test_pilot_map_cannot_be_silently_recropped(self):
         verse = self.english[1][0][2].pop()

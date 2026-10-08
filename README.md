@@ -38,7 +38,7 @@ app and works with no internet connection.
 | | |
 |---|---|
 | Chapters · verses | 18 · 700 |
-| Themes · parts | 208 · 700 |
+| Themes · parts | 169 · 700 |
 | Word-instances glossed | 9,484 — each with English, Nepali **and** Hindi meanings |
 | Languages | English, नेपाली, हिन्दी (no English fallback anywhere) |
 
@@ -81,10 +81,11 @@ source/                 ← edit here
   check_seo.py            sitemap/robots proof (`--live` also fetches the site)
   check_site_health.py    chapter pages, CSS vars, og: tags, offline, a11y
   check_study_structure.py approved story maps, trilingual pearls, theme sizes
+  study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
 
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         782 assertions on the built document
-browser_checks.py       148 live-browser checks (rendering, i18n, touch, offline)
+run_gita_app.js         800 assertions on the built document
+browser_checks.py       150 live-browser checks (rendering, i18n, touch, offline)
 ```
 
 `index.html` is a **split-site shell**: the app chrome, styles, embedded font and
@@ -98,16 +99,21 @@ app runs offline and installs to the home screen. Share it by link.
 ## The study-guide map
 
 Themes carry the chapter's story; verse cards are its individual pearls.
-Chapter 1 has **10 story beats**, Chapter 2 has **19 themes with at most five
-verses each**, and Chapter 17 keeps its reviewed 11-theme map. Most themes
-contain no more than six verses. Six explicitly reviewed seven/eight-verse
-passages stay together to preserve an argument, question-and-answer, or
-continuous catalogue—not to satisfy an arbitrary chunk size.
+All **18 chapter maps have been reviewed**: Chapters 1, 2 and 17 keep their
+approved maps, and the other 15 have genuine structural revisions. The book
+has **169 themes and 700 one-verse parts**. Most themes hold no more than six
+verses; three seven-verse arguments/portraits stay together deliberately.
 
-Study titles and descriptions are editorial aids. Changing them does **not**
-change Sanskrit, translations, word meanings, or the identity of a verse.
-`source/check_study_structure.py --explain` lists the longer-passage reasons;
-`python3 -m unittest discover -s tests` proves the map checks reject regressions.
+`STUDY_MAPS.md` gives every storyline, range and before/after count. The exact
+reviewed maps are regression-locked in `source/study_map_contract.json`.
+Changing the thread does not change Sanskrit, translations, word meanings,
+or the existing trilingual verse titles/descriptions and verse identities.
+
+Saved learning progress follows retained verse ranges, not old theme indexes.
+When a map changes, the new story needs reviewing; held verses, favourites and
+notes survive. `source/check_study_structure.py --explain` lists the longer
+passages, and the Python/Node mutation tests prove the preservation/migration
+contracts reject regressions.
 
 ---
 

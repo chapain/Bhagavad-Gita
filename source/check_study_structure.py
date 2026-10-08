@@ -10,25 +10,12 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-APPROVED_MAPS = {
-    1: ['1.01–1.03', '1.04–1.09', '1.10–1.11', '1.12–1.13', '1.14–1.19',
-        '1.20–1.25', '1.26–1.30', '1.31–1.37', '1.38–1.44', '1.45–1.47'],
-    2: ['2.01–2.03', '2.04–2.06', '2.07–2.10', '2.11–2.15', '2.16–2.18',
-        '2.19–2.21', '2.22–2.25', '2.26–2.30', '2.31–2.34', '2.35–2.38',
-        '2.39–2.41', '2.42–2.46', '2.47–2.50', '2.51–2.53', '2.54–2.58',
-        '2.59–2.61', '2.62–2.63', '2.64–2.68', '2.69–2.72'],
-    17: ['17.01–17.03', '17.04–17.04', '17.05–17.06', '17.07–17.07',
-         '17.08–17.10', '17.11–17.13', '17.14–17.16', '17.17–17.19',
-         '17.20–17.22', '17.23–17.27', '17.28–17.28'],
-}
-LONG_THEME_EXCEPTIONS = {
-    '1.31–1.37': (7, "Arjuna's single argument that victory cannot justify killing his kin."),
-    '1.38–1.44': (7, 'One causal argument: family destruction, lost dharma, and fallen ancestors.'),
-    '6.37–6.43': (7, "Arjuna's question about the fallen yogi and Kṛṣṇa's reassuring answer."),
-    '7.24–7.30': (7, 'The contrast between the veiled Lord and those who come to know him.'),
-    '10.27–10.34': (8, 'A continuous catalogue of divine manifestations in beings and the world.'),
-    '18.49–18.55': (7, 'One progression from renunciation through Brahman-realisation to devotion.'),
-}
+CONTRACT_PATH = ROOT / 'source' / 'study_map_contract.json'
+CONTRACT = json.loads(CONTRACT_PATH.read_text(encoding='utf-8'))
+APPROVED_MAPS = {int(ch): ranges for ch, ranges in CONTRACT['approved_maps'].items()}
+LONG_THEME_EXCEPTIONS = {rng: (entry['verses'], entry['reason'])
+                         for rng, entry in CONTRACT['long_theme_exceptions'].items()}
+REVIEWED_TOTAL = sum(len(ranges) for ranges in APPROVED_MAPS.values())
 
 
 def literal_assignment(path, name):
@@ -65,7 +52,9 @@ def audit(metadata, english, localized, built):
 
     ok(len(metadata) == 18 and [row[0] for row in metadata] == list(range(1, 19)),
        'chapter metadata must cover chapters 1–18 in order')
-    ok(sum(len(ts) for ts in english.values()) == 208, 'the reviewed book has 208 themes')
+    ok(set(APPROVED_MAPS) == set(range(1, 19)), 'all 18 chapters require a reviewed map')
+    ok(sum(len(ts) for ts in english.values()) == REVIEWED_TOTAL,
+       f'the reviewed book has {REVIEWED_TOTAL} themes')
     for row in metadata:
         ch, count = row[0], row[3]
         themes = english[ch]
@@ -144,7 +133,7 @@ def main():
             print('  ✗', error)
         print(f'study structure: {checks} checks, {len(errors)} failed')
         return 1
-    print(f'study structure: {checks} checks passed — 208 story themes, 700 pearls, three languages')
+    print(f'study structure: {checks} checks passed — {REVIEWED_TOTAL} story themes, 700 pearls, three languages')
     if '--explain' in __import__('sys').argv:
         for rng, (count, reason) in LONG_THEME_EXCEPTIONS.items():
             print(f'  {rng} ({count} verses): {reason}')

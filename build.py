@@ -17,8 +17,8 @@ It runs, in order:
     2e. source/audit_titles.py  every title/desc against its own verse
     2f. source/check_study_structure.py  approved story maps and verse titles
     2g. tests/  mutation/regression checks for the study structure
-    3. run_gita_app.js        782 assertions on the built document        (needs node)
-    4. browser_checks.py      148 live-browser checks                 (needs playwright)
+    3. run_gita_app.js        800 assertions on the built document        (needs node)
+    4. browser_checks.py      150 live-browser checks                 (needs playwright)
 
 Steps 3 and 4 are skipped with a warning if node / playwright are missing — the
 build itself still completes.
@@ -109,6 +109,8 @@ def main():
     node = shutil.which("node")
     if node:
         ok &= run([node, "run_gita_app.js"], ROOT, "document tests", tail=6)
+        ok &= run([node, "tests/test_progress_maps.js"], ROOT,
+                  "saved-learning map migration", tail=3)
     else:
         print("\n--- document tests ---\n(skipped — node not installed)")
 

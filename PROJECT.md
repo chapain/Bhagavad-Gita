@@ -12,6 +12,62 @@ code alone cannot tell you.
 For a brand-new session: read §1–§10, then this box, then build.
 
 
+### 2026-10-08 — completing structural review of all remaining chapters
+
+The owner clarified that recovery of wording was not enough: complete the
+actual chapter-map pass, as for the reviewed pilots. The earlier recovery
+entry below is history, not a claim that all its maps had been reworked.
+
+* **All 15 remaining chapters now have real changes to boundaries and verse
+  membership:** 3–16 and 18. Chapters 1, 2 and 17 retain their exact reviewed
+  maps and teaching copy in every language. The book now has **169 themes**
+  (down from 208), still **700 one-verse pearls**. See `STUDY_MAPS.md` for
+  every range, storyline heading, before/after count, and boundary rationale.
+* Many small fragments are combined around a teaching turn; overloaded
+  passages are split at a real change. Chapter 15 moves 11→5, Chapter 16 10→5,
+  Chapter 12 8→5 and Chapter 13 14→6. Chapters 6, 7 and 10 each gain a theme
+  to distinguish experience/question/answer, delusion/knowledge, or different
+  subjects in the catalogue. No equal-sized slicing algorithm is used.
+* Five or six verses remains the guide. Only three seven-verse units stay
+  longer: the two preserved Chapter-1 arguments (1.31–1.37, 1.38–1.44) and the
+  complete knowable-Brahman portrait, with its closing summary, at 13.12–13.18.
+  The previous 6/7/10/18 long exceptions no longer exist after this review.
+* New theme headings and concise summaries are authored in **English,
+  Nepali and Hindi**. The existing 2,100 verse-card tuples (700 titles,
+  descriptions and individual ranges per language) are not edited in this
+  second pass. Neither are any translations, Sanskrit, IAST, word meanings,
+  pāda maps, chapter metadata or verse identities.
+* `source/study_map_contract.json` locks **all 18 maps**, not just the pilots.
+  It is a validation/migration contract; displayed chapter content still comes
+  solely from `gita_data*.py` and `themes_ne/hi.py`. The source checker verifies
+  contiguous coverage and source/build/language agreement. Two extra Python
+  tests cover the remaining chapters and reject unreviewed boundary changes.
+* Saved `gitaLearn` completion now records its actual range map. On change,
+  only mastery of an identical retained group migrates; the changed story is
+  reopened for learning. Canonical held verses, favourites and private notes
+  are untouched. Ambiguous unversioned Chapter-1/2 records never get mapped
+  to guessed new themes; unchanged Chapter 17 keeps its mastery. Lazy,
+  unavailable data never triggers a reset. The actual emitted functions are
+  covered by 15 Node migration tests and two browser integration checks.
+* Historical content regressions remain locked **by canonical verse**, not
+  an obsolete parent range: the path/traveller distinction in Chapter 15,
+  knowledge/forgetfulness, the scriptural-authority wording, the faithful
+  listener, and all other reviewed pearls survive regrouping unchanged.
+* **Complete-pass verification:** full build runs all installed suites and
+  passes: 2,800 pādas, 2,100 paraphrase pairs, 6 SEO checks, 572 site-health
+  checks, 9,658 map/source/language checks, 16 Python mutation/regression
+  tests, 15 Node saved-map migration tests, 800 document assertions and
+  150 real Chromium browser checks including offline and live migration.
+  The 51 title advisories were read: contextual speakers/names and counted
+  lists, with no blocking finding. The independent hash proof confirms all
+  700 rendered verse payloads, all 2,100 existing verse-card tuples, all pilot
+  maps/copy and 78 frozen source files are unchanged. All 54 chapter/language
+  study views pass at 390 px without empty headings, overflowing cards or JS
+  errors; representative en/ne/hi screenshots were inspected. These results
+  supersede, rather than reuse, the earlier 208-theme verification below.
+
+---
+
 ### 2026-10-08 — recovered study-guide work: the thread and the pearls
 
 The owner clarified the editorial purpose: themes are the story's turns;
@@ -1156,7 +1212,7 @@ into equal-size chunks or turn every change of wording into another theme.
   Study guide: theme box is the door, verses are display-only cards. No
   intermediary choice page.
 * **Suites:** `python3 build.py` → source checks + `run_gita_app.js`
-  (782 assertions) + `browser_checks.py` (148 checks). The doc-locks fail
+  (800 assertions) + `browser_checks.py` (150 checks). The doc-locks fail
   loudly if counts/keys drift from the docs — update them together.
 * **Sandbox quirks:** playwright must be reinstalled every session
   (`pip install -q playwright && python3 -m playwright install --with-deps
@@ -1194,7 +1250,7 @@ is generated; nothing is edited by hand.
 
 Owner: Dhruba Chapain. Licence: none — all rights reserved.
 
-**Content:** 18 chapters · 208 themes · 700 parts · 700 verses, each with
+**Content:** 18 chapters · 169 themes · 700 parts · 700 verses, each with
 Devanagari, IAST, a four-pāda division, word-by-word meanings, a literal
 translation and a paraphrase, in **English, Nepali and Hindi**.
 
@@ -1245,8 +1301,8 @@ sitemap.xml, robots.txt   GENERATED — crawler files (see §10)
 chapter/ + chapter.css    GENERATED — 18 SEO landing pages (see §10)
 build.py              build + verify (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       782 assertions on the built document      (needs node)
-browser_checks.py     148 live-browser checks                 (needs playwright)
+run_gita_app.js       800 assertions on the built document      (needs node)
+browser_checks.py     150 live-browser checks                 (needs playwright)
 edit.py               local browser-based content editor
 editor.html           its interface
 source/

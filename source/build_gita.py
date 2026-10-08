@@ -2247,13 +2247,17 @@ function _drangeJS(r){
    One key for all 18 chapters. Hardened like the favourites: a parse that
    succeeds still has to yield the shape we expect, or one bad value would
    throw on every render with no way back but clearing site data. */
+/* Theme positions may change; stored completion needs its verse-range map.
+   Historical maps are data, not guessed from the new index. Canonical verse
+   holdings and favourites are independent and must never be reset here. */
+const LR_LEGACY_MAP_OPTIONS = __LR_LEGACY_JSON__;
 function lrAll(){
   try{
     const o = JSON.parse(localStorage.getItem('gitaLearn') || 'null');
     if(!o || typeof o !== 'object' || Array.isArray(o)) return {};
     const out = {};
     for(const k in o){
-      if(!/^\d{1,2}$/.test(k)) continue;
+      if(!/^\d{1,2}$/.test(k) || +k < 1 || +k > 18) continue;
       const c = o[k];
       if(!c || typeof c !== 'object' || Array.isArray(c)) continue;
       const th = {};
@@ -2263,11 +2267,45 @@ function lrAll(){
       if(c.held && typeof c.held === 'object' && !Array.isArray(c.held))
         for(const v in c.held) if(c.held[v] === 1) hd[v] = 1;
       out[k] = {story: c.story === 1 ? 1 : 0, themes: th, held: hd};
+      if(Array.isArray(c.map) && c.map.length <= 78
+         && c.map.every(r=>typeof r==='string' && /^\d{1,2}\.\d{2}–\d{1,2}\.\d{2}$/.test(r)))
+        out[k].map = c.map.slice();
     }
     return out;
   }catch(e){ return {}; }
 }
-function lrGet(n){ const a = lrAll(); const o = a[n] || {story:0, themes:{}, held:{}}; if(!o.held) o.held = {}; return o; }
+function lrGet(n){
+  const a = lrAll(), existed = Object.prototype.hasOwnProperty.call(a, n);
+  const p = a[n] || {story:0, themes:{}, held:{}};
+  const ch = DATA && DATA[+n-1];
+  // Do not migrate a chapter while its lazy payload is still unavailable.
+  if(!ch || !ch.themes || !ch.themes.length) return p;
+  const next = ch.themes.map(t=>t.range), before = JSON.stringify(p);
+  let previous = p.map;
+  if(!previous){
+    const possibilities = LR_LEGACY_MAP_OPTIONS[n] || [];
+    // A legacy record with no version cannot distinguish two different maps.
+    // Do not transfer its numeric flags to an arbitrary interpretation.
+    previous = possibilities.length === 1 ? possibilities[0] : null;
+  }
+  const same = previous && previous.join('|') === next.join('|');
+  const kept = {};
+  if(previous){
+    for(const oldIndex in p.themes){
+      const range = previous[+oldIndex], newIndex = next.indexOf(range);
+      if(newIndex >= 0) kept[newIndex] = 1;
+    }
+  }
+  p.themes = kept;
+  if(!same) p.story = 0;  // the changed thread needs to be learned anew
+  p.map = next;
+  // p.held is deliberately untouched, even when an old theme disappears.
+  if(existed && JSON.stringify(p) !== before){
+    a[n] = p;
+    try{ localStorage.setItem('gitaLearn', JSON.stringify(a)); }catch(e){}
+  }
+  return p;
+}
 function lrIast(){ return state.lang === 'en'; }
 function lrGloss(w){
   return state.lang==='ne' ? (w[3]||w[2]) : state.lang==='hi' ? (w[4]||w[2]) : w[2];
@@ -4083,6 +4121,11 @@ def _font_face():
 # (2026-08-24): the site is shared by link, and the service worker still makes
 # it fully offline after the first visit.
 _ui_js = json.dumps(UI, ensure_ascii=False)
+# Historical verse-range maps protect saved learning progress during regrouping.
+# Current chapter content still comes exclusively from the source data above.
+with open(os.path.join(BASE, "study_map_contract.json"), encoding="utf-8") as _mf:
+    _legacy_maps = json.load(_mf)["legacy_map_options"]
+_legacy_maps_js = json.dumps(_legacy_maps, ensure_ascii=False, separators=(",", ":"))
 _font_css = _font_face()
 data_js = [f"GITA_CH[{ch['num']}] = {json.dumps(ch, ensure_ascii=False)};\n" for ch in data]
 
@@ -4122,6 +4165,7 @@ _tags = "<script>gitaBoot();</script>"
 shell = (HTML
          .replace("__FONTS__", _font_css)
          .replace("__UI__", _ui_js)
+         .replace("__LR_LEGACY_JSON__", _legacy_maps_js)
          .replace("__DATALOADER__", _loader)
          .replace("__DATASCRIPTS__", _tags))
 

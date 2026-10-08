@@ -543,6 +543,37 @@ def run(pw, url, offline_capable=False):
     ok("env(safe-area-inset-top" in pg.content() or True, "safe-area inset applied")
     ctx.close()
 
+    group("map-aware learning progress")
+    # The primary touch context above is deliberately closed. Use a fresh
+    # context so this integration check has isolated, explicit stored state.
+    mctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    mp = mctx.new_page()
+    mp.on("pageerror", lambda error: errs.append(str(error)))
+    mp.goto(url, wait_until="load", timeout=90000)
+    mp.evaluate("loadAllChapters()")
+    mp.evaluate("""() => {
+        window.__previousLearn = localStorage.getItem('gitaLearn');
+        localStorage.setItem('gitaLearn', JSON.stringify({
+            3: {story: 1, themes: {0: 1, 2: 1}, held: {'3.06': 1}}
+        }));
+        showLearn(2);
+    }""")
+    mp.wait_for_selector(".lr-chip.ok")
+    progress = mp.evaluate("JSON.parse(JSON.stringify(lrGet(3)))")
+    ok(progress['story'] == 0 and progress['themes'] == {'1': 1}
+       and progress['held'] == {'3.06': 1},
+       "regrouping remaps only retained theme ranges and preserves held verses")
+    ok(mp.locator(".lr-chip.ok").count() == 1
+       and mp.locator(".lr-chip.ok .t").inner_text() == "Act without hypocrisy or attachment",
+       "the visible learned theme is the retained 3.6–3.9 group, not the old numeric index")
+    mp.evaluate("""() => {
+        if(window.__previousLearn === null) localStorage.removeItem('gitaLearn');
+        else localStorage.setItem('gitaLearn', window.__previousLearn);
+        delete window.__previousLearn;
+    }""")
+
+    mctx.close()
+
     group("responsive")
     for name, w, h, expect in [("iPhone SE", 375, 667, "column"), ("Pixel 7", 412, 915, "column"),
                                ("iPad mini", 768, 1024, "row"), ("Desktop", 1440, 900, "row")]:
