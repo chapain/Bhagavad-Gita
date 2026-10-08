@@ -7,9 +7,9 @@ before you talk to the owner.
 
 | | |
 |---|---|
-| Last updated | 2026-10-08 (Asia/Kathmandu) |
-| Updated by | Arena session on branch `arena/b1caed3e-bhagavad-gita` |
-| Base commit | `0f3a182` on `main` |
+| Last updated | 2026-10-08 (Asia/Kathmandu, UTC+5:45) |
+| Updated by | Arena session on branch `arena/46a0836b-bhagavad-gita` |
+| Base commit | `dc70c82` on `main` (merge of PR #5, step 1.1) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -24,15 +24,24 @@ before you talk to the owner.
   text in **7.12** (`rājasāstāmasāśca`) and **9.13** (`mahātmānastu`) in both
   the source verses and matching pāda lines. The generated chapter pages and
   chapter data agree.
-- **Evidence:** both verses and their opened word lists were checked in the
-  rendered app at 390 × 844 px; the corrected text is visible in Devanagari
-  and IAST.
-- **Verification:** the full build is green, including 2,800 pādas (0 residual),
-  2,100 paraphrase pairs, 6 SEO checks, 572 site-health checks, 9,658 study
-  structure checks, 16 mutation tests, 800 document assertions, 15 learning-map
-  migration tests, and all 150 Chromium browser checks.
-- **Next:** step 1.2 — correct the word-list spellings in 11.27–29, 17.6, 1.1
-  and 2.14. The remaining owner decisions are listed in §7.
+- **2026-10-08 — step 1.2 complete (word-list spellings).** Corrected
+  वक्राणि → **वक्त्राणि** in 11.27, 11.28 and 11.29; कर्षयन्तः → **कर्शयन्तः**
+  in 17.6; समवेता → **समवेताः** in 1.1; आपायिनः → **अपायिनः** in 2.14. Only
+  `source/padachheda_ch{1,2,11,17}.py` changed; the verse lines were already right.
+  Commit `1491dae` was not present in this repo or on GitHub, so the four fixes
+  were reapplied by hand.
+- **Evidence:** the four word lists were opened in the app at 390 × 844 px and
+  show the corrected Devanagari with the IAST (1.1, 2.14, 11.27, 17.6). The
+  audit no longer reports 1.1, 2.14, 11.27–29 or 17.6.
+- **Verification:** `python3 build.py` is green: 2,800 pādas (0 residual), 2,100
+  paraphrase pairs, 6 SEO checks, 572 site-health checks, 9,658 study structure
+  checks, 16 mutation tests, 800 document assertions, 15 learning-map migration
+  tests and all 150 Chromium browser checks.
+- **Deploy:** the Pages run for PR #5's merge (`dc70c82`) was still *queued* at
+  14:44 UTC, about 19 minutes after it started. The live site still serves the
+  pre-1.1 build until it finishes.
+- **Next:** step 1.3 (13.27’s IAST and its gloss keys). Not started. The owner
+  decisions are listed in §7.
 
 ## 2. Resume in five minutes
 
@@ -250,9 +259,9 @@ Missing:
 
 ## 6. Plan — status board (tick as you go)
 
-**Phase 1 — Correctness (1–2 days)** · in progress
+**Phase 1 — Correctness (1–2 days)** · in progress (1.1–1.2 done)
 - [x] 1.1 Fix the verse text in 7.12 and 9.13 (source and matching pāda lines).
-- [ ] 1.2 Fix word-list spellings: 11.27–29, 17.6, 1.1 and 2.14.
+- [x] 1.2 Fix word-list spellings: 11.27–29, 17.6, 1.1 and 2.14.
 - [ ] 1.3 Fix 13.27’s IAST spelling and update its Nepali/Hindi gloss keys.
 - [ ] 1.4 Add a strict validator that fails the build. Check each word’s
       Devanagari against its own IAST, and each pāda line against its word
@@ -307,6 +316,12 @@ choices remain open:
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-08 · `arena/46a0836b-bhagavad-gita` · Phase 1 step 1.2: fixed 11.27–29
+  (वक्त्राणि), 17.6 (कर्शयन्तः), 1.1 (समवेताः) and 2.14 (अपायिनः) in the word
+  lists. Commit 1491dae was not on GitHub or in this repo, so the fixes were
+  reapplied. Full build green (150 browser checks); 390 px evidence for all four.
+  PR #5 was already merged; its Pages deploy was still queued at 14:44 UTC.
+  Stopped before step 1.3.
 - 2026-10-08 · `arena/b1caed3e-bhagavad-gita` · Phase 1 step 1.1: corrected the
   Devanagari and IAST text of 7.12 and 9.13 in source and pāda data; rebuilt
   generated outputs. Full build green, including 150 Chromium checks; both

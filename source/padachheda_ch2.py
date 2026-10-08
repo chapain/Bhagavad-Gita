@@ -249,7 +249,7 @@ GITA_CH2_WORDS = {
         ["दुःख", "duḥkha", "pain"],
         ["दाः", "dāḥ", "giving"]],
     2: [["आगम", "āgama", "coming"],
-        ["आपायिनः", "apāyinaḥ", "going"],
+        ["अपायिनः", "apāyinaḥ", "going"],
         ["अनित्याः", "anityāḥ", "impermanent"]],
     3: [["तान्", "tān", "them"],
         ["तितिक्षस्व", "titikṣasva", "endure"],
