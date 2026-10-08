@@ -18,7 +18,7 @@ CH10_THEMES = [
      "I am the origin of all; the wise, knowing this, worship me — and to them I give the yoga of understanding.",
      [("I am the origin of all; the wise worship me", "I am the source of all; everything proceeds from me. Knowing this, the wise worship me, filled with devotion.", "10.08", "10.08"),
       ("Speaking of me, my devotees rejoice", "Their thoughts on me, their lives given to me, enlightening one another, always speaking of me — they are content and rejoice.", "10.09", "10.09"),
-      ("To them I give the Yoga of understanding", "To them, ever devoted, worshipping me with love, I give the yoga of discernment, by which they come to me.", "10.10", "10.10"),
+      ("To them I give the Yoga of understanding", "To those who are ever devoted to me and worship me with love, I give the yoga of discernment by which they come to me.", "10.10", "10.10"),
       ("I destroy the darkness with the lamp of knowledge", "Out of compassion for them, dwelling in their hearts, I destroy the darkness born of ignorance with the shining lamp of knowledge.", "10.11", "10.11")]),
     ("Arjuna praises: you are supreme Brahman",
      "You are the supreme Brahman, the supreme abode; the sages and Nārada affirm it, and now you tell me yourself.",

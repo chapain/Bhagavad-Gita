@@ -3,7 +3,7 @@
 Aligned to the Śaṅkara-bhāṣya readings."""
 
 CH13_THEMES = [
-    ("The body is the field, the Self its knower",
+    ("The body is the field; I am its knower",
      "Kṛṣṇa opens the teaching: the body is the field, know Me as the knower of the field in all fields — and the knowledge of field and knower is true knowledge.",
      [("The body is the field", "This body, O son of Kuntī, is called the field; he who knows it, the wise call the knower of the field.", "13.01", "13.01"),
       ("Know me as the knower", "Know me also as the knower of the field in all fields, O Bhārata; the knowledge of the field and its knower is deemed by me true knowledge.", "13.02", "13.02")]),
@@ -13,10 +13,10 @@ CH13_THEMES = [
       ("Sung by the seers", "Sung by the seers in many ways, in diverse meters, and in the aphorisms of Brahman, with reasons, well-decided —", "13.04", "13.04")]),
     ("The field's twenty-four constituents",
      "The field comprises the great elements, ego, intellect, the unmanifest, the senses, and their objects — and desire, aversion, pleasure and pain.",
-     [("The elements of the field", "— the great elements, ego, intellect, the unmanifest, the ten senses and the one, the five objects of the senses,", "13.05", "13.05"),
+     [("The elements of the field", "— the great elements, ego, intellect, the unmanifest, the ten senses and the one mind, and the five sense-objects,", "13.05", "13.05"),
       ("Desire and aversion", "— desire, aversion, pleasure, pain, the body, consciousness and constancy: this is the field, in brief, with its modifications.", "13.06", "13.06")]),
     ("The Means of Knowledge",
-     "Humility, non-violence, service to the teacher, purity, steadfastness, dispassion, absence of ego, and constant meditation — these are declared knowledge.",
+     "Humility, non-violence, service to the teacher, purity, steadfastness, dispassion and absence of ego; unwavering devotion, solitude and steady commitment to Self-knowledge — these are declared knowledge.",
      [("Humility, non-violence, service to the teacher", "Humility, modesty, non-violence, forbearance, uprightness, service to the teacher, purity, steadfastness, self-control,", "13.07", "13.07"),
       ("Seeing the misery of birth", "— dispassion toward the objects of the senses, absence of ego, and the perception of the evil of birth, death, old age and disease,", "13.08", "13.08"),
       ("Non-attachment and evenness", "— non-attachment, non-clinging to son, wife and home, constant even-mindedness toward gain and loss,", "13.09", "13.09"),
@@ -37,7 +37,7 @@ CH13_THEMES = [
       ("The field, knowledge and the knowable", "Thus the field, knowledge and the knowable have been declared in brief; my devotee, knowing this, attains my being.", "13.18", "13.18")]),
     ("Prakṛti and puruṣa are both beginningless",
      "Kṛṣṇa declares prakṛti and puruṣa as beginningless; the guṇas arise from prakṛti, and it is the cause of agency, while puruṣa is the enjoyer.",
-     [("The two beginningless", "Know prakṛti and puruṣa both as beginningless; and know the modifications and the guṇas as born of prakṛti.", "13.19", "13.19"),
+     [("Both prakṛti and puruṣa are beginningless", "Know prakṛti and puruṣa both as beginningless; and know the modifications and the guṇas as born of prakṛti.", "13.19", "13.19"),
       ("Agency and enjoyment", "Prakṛti is declared the cause of agency in bringing about the effect; puruṣa is declared the cause of the enjoyment of pleasure and pain.", "13.20", "13.20"),
       ("Attachment to the guṇas causes birth", "Puruṣa, seated in prakṛti, enjoys the guṇas born of prakṛti; attachment to the guṇas is the cause of birth in good and evil wombs.", "13.21", "13.21")]),
     ("He who knows the supreme puruṣa is free",

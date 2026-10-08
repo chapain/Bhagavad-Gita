@@ -7,9 +7,90 @@ code alone cannot tell you.
 
 ---
 
-## 0. Handoff snapshot (keep current; last touched 2026-09-01)
+## 0. Handoff snapshot (keep current; last touched 2026-10-08)
 
 For a brand-new session: read §1–§10, then this box, then build.
+
+
+### 2026-10-08 — recovered study-guide work: the thread and the pearls
+
+The owner clarified the editorial purpose: themes are the story's turns;
+individual verses are the pearls. A student should see the chapter's map and
+recognise each verse from a concise, accurate title. Do not divide the text
+into equal-size chunks or turn every change of wording into another theme.
+
+* Compared against GitHub main **and the successfully deployed Pages commit**,
+  both `b7c72bf8`: Chapter 1 moves from **18 fragments to 10 story beats**;
+  Chapter 2 moves from **25 to 19 themes**, each holding **at most five verses**.
+  Chapter 17 retains its reviewed 11-theme map. The three saved editorial
+  batches are recovered across the remaining chapters: **208 themes total**.
+* The large patch was partially already present: the builder, UI strings,
+  shell and chapter CSS matched its resulting versions. `sw.js` conflicted,
+  and the handoff-ZIP diff contained no binary bytes. Compatible source data
+  and tooling were recovered; generated data/pages/cache were rebuilt instead
+  of forcing those hunks. The handoff archive is a delivery, not a Git asset.
+* **Translations are not part of this pass.** The patch's English, Nepali and
+  Hindi translation edits were deliberately omitted. Sanskrit, IAST, word
+  meanings, pāda maps, chapter metadata, all 700 verse IDs and individual
+  verse ranges stay unchanged. Theme grouping follows the recovered maps.
+* **26 pilot verse titles** were clarified in all three languages against
+  their own literal translations, not neighbouring verses. Examples:
+  "Place my chariot between the armies", "Better to beg than kill revered
+  teachers", and "The Self neither kills nor is killed". These are study
+  labels, not replacements for the translations.
+* A source-read found one imprecise cross-reference in the saved prose:
+  9.34 and 18.65 share their four instructions, not their entire second
+  lines. That theme description is corrected in all three languages; neither
+  verse nor its translation is changed.
+* **Five or six verses is a guideline, not a slicing algorithm.** Six longer
+  passages are retained deliberately: 1.31–1.37 (rejecting kin-killing),
+  1.38–1.44 (the family-dharma causal chain), 6.37–6.43 (the fallen yogi's
+  question and answer), 7.24–7.30 (the veiled Lord and those who know him),
+  10.27–10.34 (a continuous catalogue), and 18.49–18.55 (the progression from
+  renunciation to Brahman and devotion). Five hold seven verses; the catalogue
+  holds eight. All other themes hold at most six. Do not add another exception
+  without a reason and a deliberate update to the regression lock.
+* `source/check_study_structure.py` checks approved pilot maps, exact ordered
+  verse coverage, trilingual ranges/copy, unique concise English verse titles,
+  source-to-build agreement, and the explicit longer passages. Fourteen mutation/regression
+  tests in `tests/test_study_structure.py` prove that it rejects missing,
+  reordered, mistranslated, overlong, stale and duplicated structures.
+* The live-browser suite still assumed the retired Mūla/translation/study
+  controls, an older palette, no IAST rows, and fixed theme indexes. It now
+  checks the current translation/study/learn controls, canonical verse IDs,
+  the actual quarter-toggle buttons, and mouse versus touch behavior, without
+  skipping assertions. It has **148 checks**, including explicit desktop hover and localized-font guards.
+* One genuine inherited chapter-link bug was found: `querySelector('#v2.19')`
+  treats the dot as CSS syntax. Chapter pages now use a decoded ID lookup;
+  source-health checks lock it on every chapter, and the browser checks the
+  opened, highlighted, in-view verse. This is the builder's only JavaScript change;
+  the independent preservation proof explicitly checks that narrow exception.
+* The screenshot review caught a portability bug missed by text-only checks:
+  several headings, verse numbers, and language buttons overrode the body font
+  with bare Georgia/serif or system-ui/sans stacks. On a font-poor device the
+  Nepali/Hindi titles could be blank although their text existed. Explicit
+  bundled-Noto fallbacks are added to those CSS stacks in the builder and
+  learn styles, preserving the English-first font choices and all content. Native-script
+  language options explicitly prefer Noto, including when inactive.
+  The health suite rejects missing fallbacks, and the browser checks actual
+  localized heading/control font stacks. Inspect pixels, not just DOM text.
+* **Verification (2026-10-08):** full build passes with every installed suite
+  running: 2,800 pādas, 2,100 paraphrase pairs, 6 SEO checks, 572 site-health
+  checks, 10,074 study-structure checks, 14 mutation/regression tests,
+  782 document assertions, and 148 Chromium browser checks including offline.
+  The 34 title-audit advisories were read: contextual speakers/names and
+  enumerated lists, with no blocking finding. Independent main-to-build hashes
+  show all 700 verse payloads identical. Mobile visual checks at 390 px cover
+  Chapters 1 and 2 in en/ne/hi: correct map/card counts, no horizontal overflow,
+  and no JavaScript errors. Main remains the deployment source; merge the
+  recovery pull request to publish.
+* `rebuild.sh` now delegates to `build.py`, so both entry points run the same
+  complete checks. Once Playwright is installed, a failed browser suite fails
+  the build; the previous optional-run flag could falsely report success.
+  `GITA_CHROMIUM_EXECUTABLE`/`GITA_CHROMIUM_ARGS` select a preinstalled browser;
+  `GITA_TEST_URL` optionally reuses a running preview server. Defaults still
+  use Playwright's installed Chromium and the local test server.
+
 
 * **Study one at a time + resume (owner 2026-09-01).** The owner asked to
   paginate Mūla, Full and the themes page to one item per screen. Two of the
@@ -1075,7 +1156,7 @@ For a brand-new session: read §1–§10, then this box, then build.
   Study guide: theme box is the door, verses are display-only cards. No
   intermediary choice page.
 * **Suites:** `python3 build.py` → source checks + `run_gita_app.js`
-  (553 assertions) + `browser_checks.py` (141 checks). The doc-locks fail
+  (782 assertions) + `browser_checks.py` (148 checks). The doc-locks fail
   loudly if counts/keys drift from the docs — update them together.
 * **Sandbox quirks:** playwright must be reinstalled every session
   (`pip install -q playwright && python3 -m playwright install --with-deps
@@ -1113,7 +1194,7 @@ is generated; nothing is edited by hand.
 
 Owner: Dhruba Chapain. Licence: none — all rights reserved.
 
-**Content:** 18 chapters · 222 themes · 700 parts · 700 verses, each with
+**Content:** 18 chapters · 208 themes · 700 parts · 700 verses, each with
 Devanagari, IAST, a four-pāda division, word-by-word meanings, a literal
 translation and a paraphrase, in **English, Nepali and Hindi**.
 
@@ -1164,8 +1245,8 @@ sitemap.xml, robots.txt   GENERATED — crawler files (see §10)
 chapter/ + chapter.css    GENERATED — 18 SEO landing pages (see §10)
 build.py              build + verify (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       553 assertions on the built document      (needs node)
-browser_checks.py     141 live-browser checks                 (needs playwright)
+run_gita_app.js       782 assertions on the built document      (needs node)
+browser_checks.py     148 live-browser checks                 (needs playwright)
 edit.py               local browser-based content editor
 editor.html           its interface
 source/
@@ -1178,7 +1259,7 @@ source/
   themes_ne/hi.py     Nepali/Hindi themes and parts
   translations_ne/hi.py
   i18n_chapters.py    chapter names/blurbs (ne, hi)
-  i18n_ui.py          165 UI strings × 3 languages
+  i18n_ui.py          201 UI strings × 3 languages
   build_gita.py       the builder + the manual-edit audit
   dataio.py           safe read/write of every data file (used by edit.py)
   verify.py           norm1() and syll_iast() — used ONLY to check data

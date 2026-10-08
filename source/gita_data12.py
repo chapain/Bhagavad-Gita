@@ -17,10 +17,10 @@ CH12_THEMES = [
      [("Those who surrender all to me", "But those who surrender all actions to me, intent on me, worshipping me with undivided yoga and meditating on me,", "12.06", "12.06"),
       ("I become their deliverer from the ocean of death", "— for them, whose minds are fixed on me, O Pārtha, I swiftly become the deliverer from the ocean of death and rebirth.", "12.07", "12.07")]),
     ("Give me your mind and your intellect",
-     "The direct instruction, spoken to Arjuna alone: place the mind in me, settle the intellect in me — and you will dwell in me. Everything after this verse is a concession to those who cannot.",
+     "Place your mind in me and establish your intellect in me — then you will dwell in me. For those who cannot do this, Kṛṣṇa offers a sequence of alternative practices.",
      [("Fix your mind on me alone", "Fix your mind on me alone; establish your intellect in me; then you shall live in me alone — of this there is no doubt.", "12.08", "12.08")]),
     ("If you cannot fix your mind on me",
-     "The ladder of concession: if not steady meditation, then practice; if not practice, then work for me; if not that, then renounce the fruit.",
+     "A graded path: if steady concentration is difficult, practise; if practice is not possible, work for me; if not, renounce the fruits of action.",
      [("Then seek me by repeated practice", "If you cannot fix your mind steadily on me, then practise the yoga of repetition — seek to reach me by practice, O Dhanañjaya.", "12.09", "12.09"),
       ("If not, work for my sake", "If you are unable to practise even that, be devoted to working for me; even performing actions for my sake, you shall attain perfection.", "12.10", "12.10"),
       ("If not even that, renounce the fruit", "If you cannot do even this, then, taking refuge in my yoga, renounce the fruit of all actions — with the self controlled.", "12.11", "12.11"),
@@ -36,8 +36,8 @@ CH12_THEMES = [
      [("Neither rejoicing nor hating", "He who neither rejoices nor hates, neither grieves nor desires, renouncing good and evil — that devoted one is dear to me.", "12.17", "12.17"),
       ("Equal to friend and foe, honour and dishonour", "Equal to friend and foe, to honour and dishonour, to cold and heat, pleasure and pain, free from attachment —", "12.18", "12.18"),
       ("Silent, satisfied with anything", "— silent, content with anything, homeless, of steady mind, full of devotion — that man is dear to me.", "12.19", "12.19")]),
-    ("Follow this immortal dharma and be dearest to me",
-     "The chapter's seal: those who follow this whole teaching with faith, holding me as the supreme goal, are not merely dear but EXCEEDINGLY dear to me.",
+    ("Those who follow this dharma are exceedingly dear",
+     "Kṛṣṇa concludes that those who follow this teaching with faith, making him their supreme goal, are exceedingly dear to him.",
      [("They who follow this immortal dharma are dearest", "But those who follow this immortal dharma, as declared, with faith, making me the supreme goal — those devotees are exceedingly dear to me.", "12.20", "12.20")]),
 ]
 

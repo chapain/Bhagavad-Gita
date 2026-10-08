@@ -3,9 +3,9 @@
 Aligned to the Śaṅkara-bhāṣya readings."""
 
 CH7_THEMES = [
-    ("Know me fully, with realization",
+    ("Know Me Fully: Knowledge and Realization",
      "Hear how, with mind absorbed in me, you shall know me fully; scarcely one in thousands strives, and of those who strive, scarcely one knows me in truth.",
-     [("Hear how you shall know me fully", "With the mind attached to me, O Pārtha, practising yoga and taking refuge in me — how, without doubt, you will know me in full, that listen.", "7.01", "7.01"),
+     [("Hear how to know Me fully", "With the mind attached to me, O Pārtha, practising yoga and taking refuge in me — how, without doubt, you will know me in full, that listen.", "7.01", "7.01"),
       ("Realization, not mere knowledge", "I shall declare to you this knowledge together with its realization, without remainder; knowing which, nothing further remains to be known here.", "7.02", "7.02"),
       ("One in thousands strives", "Among thousands of men, one perchance strives for perfection; and among those who strive, one perchance knows me in truth.", "7.03", "7.03")]),
     ("My two natures, lower and higher",
@@ -14,8 +14,8 @@ CH7_THEMES = [
       ("The higher nature that sustains the world", "This is the lower nature; but know my other nature, higher than this, O mighty-armed one — the life-element, by which the world is upheld.", "7.05", "7.05"),
       ("The womb of all beings", "Know that these two natures are the womb of all beings; I am the origin and also the dissolution of the whole world.", "7.06", "7.06"),
       ("Strung on me like pearls on a thread", "There is nothing whatever higher than me, O Dhanañjaya; all this is strung on me, like a row of gems on a thread.", "7.07", "7.07")]),
-    ("I am the essence of every thing",
-     "The taste in water, the light of sun and moon, the fragrance of earth, the eternal seed of all beings.",
+    ("I am the essence of everything",
+     "Kṛṣṇa describes his presence throughout nature and beings: the taste in water, light of sun and moon, Om, sound, earth’s fragrance, fire’s heat, life, austerity, intelligence, splendour, strength and desire aligned with dharma.",
      [("The taste in water, the light in sun and moon", "I am the taste in waters, O son of Kuntī; I am the radiance of the moon and the sun; the sacred syllable Om in all the Vedas; the sound in ether; the manliness in men.", "7.08", "7.08"),
       ("The fragrance of earth, the heat in fire", "I am the pure fragrance of the earth and the heat of fire; the life of all beings and the austerity of the ascetics.", "7.09", "7.09"),
       ("The eternal seed of all beings", "Know me as the eternal seed of all beings; I am the intelligence of the intelligent, the splendour of the splendid.", "7.10", "7.10"),
@@ -38,15 +38,15 @@ CH7_THEMES = [
       ("I make a devotee's faith unshakeable", "Whatever divine form a devotee desires to worship with faith, I render that very faith of his steady.", "7.21", "7.21"),
       ("The desires are granted", "United with that faith, he engages in the worship of that deity, and from it obtains his desires — which are verily ordained by me.", "7.22", "7.22"),
       ("Finite fruit for the finite-minded", "But the fruit of those worshippers is limited; the fruit belongs to the small-minded. The worshippers of the gods go to the gods; my devotees come to me.", "7.23", "7.23")]),
-    ("The Unmanifest and the Undeluded",
-     "The unwise think the Unmanifest has become manifest; veiled by yoga-māyā I am not revealed to all — but those who know Brahman entire know me even at the hour of death.",
+    ("The Unmanifest and Those Who Know Me",
+     "The unwise mistake the Unmanifest for the manifest, and yoga-māyā veils me. Those who take refuge in me, freed from the delusion of dualities, know Brahman, all of adhyātma and action; with steady minds, they know me even at death.",
      [("The unwise think me manifest", "The unintelligent, not knowing my higher nature — imperishable and unsurpassed — think of me, the unmanifest, as one who has taken on manifestation.", "7.24", "7.24"),
       ("Veiled by my Yoga-Māyā", "I am not manifest to all, being enveloped by yoga-māyā; this deluded world does not know me, the unborn, the imperishable.", "7.25", "7.25"),
       ("I know all beings; none knows me", "I know, O Arjuna, the beings that have passed, that exist now, and that are to come; but no one knows me.", "7.26", "7.26"),
       ("Deluded by the pairs of opposites", "By the delusion of the pairs of opposites, arising from desire and aversion, O Bhārata, all beings go to delusion at birth, O scorcher of foes.", "7.27", "7.27"),
       ("Whose sin has ended, freed from the pairs", "But those men of good deeds whose sins have come to an end — freed from the delusion of the pairs of opposites — worship me with firm vows.", "7.28", "7.28"),
       ("Striving for freedom, they know Brahman", "Those who, striving for freedom from old age and death, take refuge in me — they know Brahman, the entire adhyātma, and all action.", "7.29", "7.29"),
-      ("Knowing me, they know me even at death", "Those who know me along with the elements, the deities and the sacrifice — even at the time of death, with minds established, they know me.", "7.30", "7.30")]),
+      ("They know me even at the hour of death", "Those who know me along with the elements, the deities and the sacrifice — even at the time of death, with minds established, they know me.", "7.30", "7.30")]),
 ]
 
 CH7_TRANSLATIONS = {

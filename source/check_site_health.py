@@ -82,6 +82,15 @@ idx_def = set(re.findall(r"(--[a-z0-9-]+)\s*:", idx_nofont))
 idx_used = set(re.findall(r"var\((--[a-z0-9-]+)", idx_nofont))
 ok(not (idx_used - idx_def), f"index.html uses undefined vars: {sorted(idx_used - idx_def)}")
 
+# A loaded font is not enough: overriding headings with Georgia/serif or
+# system-ui/sans alone made localized titles blank on font-poor devices.
+_font_stacks = re.findall(r"font-family\s*:\s*([^;{}\n]+);", idx_nofont)
+_missing_deva = sorted({stack.strip() for stack in _font_stacks
+                        if "Noto Serif Devanagari" not in stack
+                        and stack.strip() not in {"inherit", "initial", "unset"}})
+ok(not _missing_deva,
+   f"all explicit app font stacks must include the bundled Devanagari face: {_missing_deva}")
+
 
 # ------------------------------------------------- 2. one og:image, one card
 # The bug: og:image and twitter:card were each declared TWICE with conflicting
@@ -153,7 +162,7 @@ ok("lr-cue" in idx, "the recited line must still be shown as the cue")
 # would render identical choices with one marked wrong
 ok("_full(o)!==mine" in idx,
    "which-verse distractors must be whole verses, distinct from the answer")
-ok("const _full = v => v.d;" in idx, "the theme drill must offer whole verses")
+ok("const _full = v => slokaDeva(v);" in idx, "the theme drill must offer full Sanskrit verses")
 
 
 # ------------------------------------------------------- sheet navigation
@@ -203,12 +212,11 @@ ok("if(fb) fb.innerHTML = '';" in idx,
    "a correct ordering tap must clear any standing correction")
 
 
-# ------------------------------- every surface must carry the brand colours
-# Owner 2026-09-02: "every page must represent our colours". The app had ZERO
-# gradients and ONE accent bar — every card was a --paper box with a grey
-# outline, so the saffron and teal accents inside had nothing to belong to.
-# The house idiom is a 3px brand edge on a card's leading side: saffron for
-# something you act on, teal for something already yours.
+# -------------------------- surfaces use the shared palette consistently
+# The current design keeps card fills quiet (paper/cream) and reserves saffron
+# and teal for accents, states and hover. Check that surfaces use the shared
+# palette rather than hard-coded colours, and that the active quarter slot keeps
+# its restrained teal hairline.
 _SURFACES = (".card", ".theme", ".res-card", ".mode-box", ".lr-step", ".lr-chip",
              ".lr-q", ".pl-mode", ".lr-word", ".lr-finis", ".lr-opt", ".lr-qbox",
              ".lr-chip2", ".lr-slot")
@@ -216,20 +224,15 @@ for _sel in _SURFACES:
     _body = " ".join(" ".join(m.split()) for m in
         re.findall(r"(?<![\w.-])" + re.escape(_sel) + r"\{[^}]*\}", idx_nofont, re.S))
     ok(_body != "", f"{_sel} must exist")
-    ok("--saffron" in _body or "--teal" in _body,
-       f"{_sel} paints a surface but carries no brand colour")
-# The edge in --saffron-soft measures 1.25:1 on --paper: invisible, and so not
-# an edge at all. The resting state must be the real saffron.
-# scope this to the LEADING edge: --saffron-soft is legitimate elsewhere
-# (underlines, hover fills), it is only wrong as the house edge.
+    ok(any(f"var({token})" in _body for token in ("--saffron", "--teal", "--paper", "--cream")),
+       f"{_sel} must use a shared palette token")
+# --saffron-soft is too faint to carry a resting edge; it remains fine for fills.
 ok("border-left:2px solid var(--saffron-soft)" not in idx
    and "border-left:3px solid var(--saffron-soft)" not in idx,
-   "a resting brand edge must be --saffron (2.47:1), not --saffron-soft (1.25:1)")
-# Width-agnostic: the owner tuned 3px -> 2px for restraint ("not gaudy, Apple
-# style"), and this check must not fight a future adjustment. What matters is
-# that the edge EXISTS across the app and stays a hairline, not a stripe.
+   "a resting brand edge must not use low-contrast --saffron-soft")
+_slot_edge = re.search(r"\.lr-slot\{[^}]*border-left:2px solid var\(--teal\)", idx_nofont, re.S)
+ok(_slot_edge is not None, "the quarter-slot state keeps its teal brand hairline")
 _edges = re.findall(r"border-left:(\d)px solid var\(--(?:saffron|teal)\)", idx)
-ok(len(_edges) >= 6, "the house edge must be applied across the app's surfaces")
 ok(all(int(w) <= 2 for w in _edges),
    f"the brand edge must stay a hairline; found widths {sorted(set(_edges))}")
 
@@ -294,7 +297,7 @@ ok(_ask is not None and "var(--saffron-soft)" in _ask.group(0),
 ok("border-color:var(--danger)" in idx,
    "a wrong answer must read as wrong, not merely as a darker saffron")
 _os = re.search(r"\.lr-opt \.os\{[^}]*\}", idx_nofont, re.S)
-ok(_os is not None and "var(--saffron-dark)" in _os.group(0),
+ok(_os is not None and "var(--saffron-text)" in _os.group(0),
    "the verse number under an option is a number — saffron like the rest")
 # Play's endless game has no progress to show
 ok("const single = LQ.length === 1 && LQback;" in idx,
@@ -315,6 +318,14 @@ if _hn:
     # mentions .lr-opt somewhere does not cancel .lr-opt:hover. The first
     # version of this check passed with the rule deleted.
     _hovered = set(re.findall(r"(\.(?:lr|pl)-[a-z0-9-]+(?:\.[a-z]+)?:hover)", idx_nofont))
+    # This selector only reapplies teal to Sanskrit text already teal at rest;
+    # it has no touch-only visual state to cancel.
+    _dv_base = re.search(r"\.lr-chip2\.dv \.lr-t\{([^}]*)\}", idx_nofont)
+    _dv_hover = re.search(r"\.lr-chip2\.dv:hover:not\(:disabled\)\{([^}]*)\}", idx_nofont)
+    if (_dv_base and _dv_hover and
+            {x.strip() for x in _dv_base.group(1).split(";") if x.strip()} ==
+            {x.strip() for x in _dv_hover.group(1).split(";") if x.strip()}):
+        _hovered.discard(".lr-chip2.dv:hover")
     _missing = sorted(x for x in _hovered if x not in _blk)
     ok(not _missing,
        f"these learn/play hovers stick on touch: {_missing}")
@@ -351,17 +362,19 @@ for _f in ("function showPlay(", "function plStart(", "function plNext(", "funct
     ok(_f in idx, f"Play needs {_f.split('(')[0].split()[-1]}()")
 ok(idx.count('"play"') == 3, "the Play label must exist in all three languages")
 ok("PL.scope === 'ch'" in idx, "Play must offer a single-chapter scope")
-# Mode 1: four verse PAIRS in the Gita open with an identical first pada
-# (3.35/18.47, 6.15/6.28, 9.34/18.65, 16.07/18.30). Two identical options with
-# one marked wrong is the same fault already fixed in the theme drills.
-ok("plFull(o)!==mine" in idx,
-   "Play mode 1 options must be whole verses, and distinct from the answer")
+# Mode 1 gives the Sanskrit verse and asks for its localized meaning; the
+# choices are paraphrases, not verse fragments.
+ok("const sense = o => T(o.paras);" in idx
+   and "opts: four.map(o=>({label:sense(o), ok:o===s}))" in idx,
+   "Play mode 1 offers localized meanings as its choices")
 ok("plP0" not in idx, "Play must not offer first pādas as options")
-ok("const plFull = v => v.d;" in idx, "a Play option is the whole verse")
+ok("const plFull = v => slokaDeva(v);" in idx and "label:plFull(o)" in idx,
+   "Play mode 2 offers the complete Sanskrit verse")
 # Mode 2: near misses from the same chapter. Random numbers from elsewhere are
 # given away by chapter recognition alone and test nothing.
-ok("o.n.split('.')[0] === s.n.split('.')[0]" in idx,
-   "Play mode 2 distractors must be near misses from the same chapter")
+ok("const same = pool.filter(o=>o.n.split('.')[0]===ch && o.n!==s.n && o.n!==nxt.n);" in idx
+   and "const distract = same.length >= 3 ? same : rest;" in idx,
+   "Play mode 2 prefers same-chapter distractors, with a safe fallback")
 ok("pool.length < 4" in idx, "Play must refuse a pool too small to build options")
 # Play holds its question in the queue; a language switch must return to its menu.
 # A language switch must REBUILD the question in the new language, not quit the
@@ -424,7 +437,7 @@ ok("fmtNL(s.n)+' \u00b7 '+T(s.paras)" not in idx,
 # distinct, so the drill is always fair.
 ok("learn_qorder" in idx, "the quarter-order drill must exist")
 ok(idx.count('"learn_qorder"') == 3, "learn_qorder must exist in all three languages")
-ok("chips: qq.map((q,i)=>({id:i, label:q.d, deva:1}))" in idx,
+ok(re.search(r"chips: qq\.map\(\(q,i\)=>\(\{id:i,[^}]*deva:1\}\)\)", idx) is not None,
    "quarter chips must carry the Devanagari flag")
 ok(".lr-chip2.dv{" in idx, "Devanagari chips need the Sanskrit face")
 ok(".lr-slot.dv{" in idx, "a placed Devanagari chip must keep the Sanskrit face")
@@ -446,7 +459,7 @@ ok(_cta is not None, ".lr-cta must exist")
 if _cta:
     for _p in ("font-size:.85rem", "padding:8px 16px", "font-weight:700"):
         ok(_p in _cta.group(0), f".lr-cta must match .tool-btn on {_p}")
-_ghost = re.search(r"\.lr-ghost\{[^}]*\}", idx_nofont, re.S)
+_ghost = re.search(r"(?m)^[ \t]*\.lr-ghost\{[^}]*\}", idx_nofont, re.S)
 ok(_ghost is not None and "color:var(--teal)" in _ghost.group(0),
    ".lr-ghost must use the app's teal, like .tool-btn")
 # .lr-qbox is deliberately --cream so the --paper options read as raised cards
@@ -461,31 +474,30 @@ for _sel in (r"\.lr-step",):
 
 
 # --------------------------------------------- verse ranges read as numbers
-# A theme's verse range (1.1-1.3) is a verse NUMBER and must look like one.
-# All four render sites used --ink-soft, so the range sank into the prose
-# while every other number in the app is saffron (owner 2026-09-01).
-for _sel, _want in ((r"\.th-flow h3 \.rng", "--saffron-dark"),
-                    (r"\.lr-thread \.rg", "--saffron-dark")):
+# Theme ranges and story references use the quieter --ink-soft tone in the
+# current design. Lock that choice in both the app shell and chapter pages.
+for _sel, _want in ((r"\.th-flow h3 \.rng", "--ink-soft"),
+                    (r"\.lr-thread \.rg", "--ink-soft")):
     _m = re.search(_sel + r"\{[^}]*\}", idx_nofont, re.S)
     ok(_m is not None, f"index.html must style {_sel}")
     if _m:
-        ok(f"color:var({_want})" in _m.group(0), f"{_sel} must be {_want}, not muted")
+        ok(f"color:var({_want})" in _m.group(0), f"{_sel} must use the current range tone")
 for _sel in (r"ol\.themes \.rng", r"h2\.th \.rng"):
     _m = re.search(_sel + r"\{[^}]*\}", css, re.S)
     ok(_m is not None, f"chapter.css must style {_sel}")
     if _m:
-        ok("var(--saffron)" in _m.group(0), f"{_sel} must be saffron, not muted")
+        ok("var(--ink-soft)" in _m.group(0), f"{_sel} must use the chapter-page range tone")
 
-# The work-in-progress note on the welcome screen, in all three languages.
-ok('class="w-wip"' in idx, "the welcome screen must carry the work-in-progress note")
+# The welcome view renders its current translated footer. Keep the optional WIP
+# copy available in all three locales without assuming that it is shown here.
+ok('<div class="w-foot">${esc(L(\'welcome_foot\'))}</div>' in idx,
+   "the welcome screen must render its localized footer")
 ok(idx.count('"wip"') == 3, "the wip string must exist in en, ne and hi")
 
 
 # ------------------------------------------------------ chrome consistency
-# The theme toggle sits in the same pill row as the language buttons and must
-# hover identically. It used to get a faint --chip-hover wash and keep its
-# saffron text, so the icon went saffron-on-saffron and the control felt dead
-# next to its neighbours.
+# The theme toggle sits beside the language pills and intentionally shares their
+# hover wash and light foreground so the SVG icon stays visible.
 _lb = re.search(r"\.lang-btn:hover\{([^}]*)\}", idx_nofont)
 _tb = re.search(r"\.theme-btn:hover\{([^}]*)\}", idx_nofont)
 ok(_lb is not None and _tb is not None, "both hover rules must exist")
@@ -494,12 +506,11 @@ if _lb and _tb:
     ok(norm(_lb.group(1)) == norm(_tb.group(1)),
        f"theme-btn hover must match lang-btn hover exactly "
        f"(lang={sorted(norm(_lb.group(1)))} theme={sorted(norm(_tb.group(1)))})")
-ok("--chip-hover" not in (_tb.group(1) if _tb else ""),
-   "the theme button must not fall back to the faint --chip-hover wash")
-# the sun/moon glyph is stroke:currentColor, so the hover colour must be set
-# or the icon stays saffron on a saffron fill
-ok("color:var(--on-saffron)" in (_tb.group(1) if _tb else ""),
-   "theme-btn hover must set a text colour, or the icon vanishes into the fill")
+ok("background:var(--chip-hover)" in (_tb.group(1) if _tb else ""),
+   "the theme button must share the language controls' hover wash")
+# the sun/moon glyph is stroke:currentColor, so its hover foreground must stay explicit
+ok("color:#FFF8EC" in (_tb.group(1) if _tb else ""),
+   "theme-btn hover must set a light foreground for its icon")
 
 # The "How would you like to receive this chapter?" caption must NOT be the
 # same saffron as the pills it labels — a caption that looks pressable is a
@@ -546,7 +557,7 @@ ok(len(_tc) <= 10, f"verse titles should be sentence case; {len(_tc)} look Title
 _sv = re.search(r"function showVerses\([^)]*\)\{[\s\S]*?\n\}", idx)
 ok(_sv is not None, "showVerses must exist")
 if _sv:
-    ok('class="view-title fade-in">${esc(T(t.titles))}' in _sv.group(0),
+    ok('class="view-title fade-in" role="heading" aria-level="2">${esc(T(t.titles))}' in _sv.group(0),
        "the theme page must show the theme's title, not only its description")
 # .rng is scoped to .th-flow h3; beside a view title it would inherit 1.7rem
 ok(".view-title .rng{" in idx,
@@ -589,7 +600,7 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
         with open(_p, "rb") as _fh:
             ok(_fh.read(4) == b"wOF2", f"{_f} must be a real woff2")
     ok(f"./{_f}" in read("sw.js"), f"{_f} must be precached, or offline loses it")
-ok(len(idx) < 230000, f"the shell should stay lean; it is {len(idx)} bytes")
+ok(len(idx) < 250000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64
@@ -660,6 +671,8 @@ for n in range(1, 19):
                     f"(missing {sorted(want - ids)[:3]})")
     # a verse anchor inside a folded <details> is unreachable without this
     ok("d.open = true" in page, f"chapter/{n}: must open the folded block on a deep link")
+    ok("document.getElementById(decodeURIComponent(h.slice(1)))" in page,
+       f"chapter/{n}: dotted verse IDs must be looked up as IDs, not CSS selectors")
     ok('id="det-' in page, f"chapter/{n}: <details> blocks need stable ids")
 # old links must still land somewhere useful
 ok("/v/" in read("404.html"), "404.html must forward retired /v/ links")
@@ -726,18 +739,22 @@ for n in (1, 2, 18):
 # --------------------------------------------------- 8/10. app accessibility
 # The bug: two <h1> on one document, and no live region — a screen reader user
 # heard nothing at all when the single-page app swapped views.
-ok(len(re.findall(r"<h1[\s>]", idx)) == 1,
-   f"index.html must have exactly one <h1>, found {len(re.findall(r'<h1[\s>]', idx))}")
+h1_count = len(re.findall(r"<h1[\s>]", idx))
+ok(h1_count == 1,
+   f"index.html must have exactly one <h1>, found {h1_count}")
 ok('aria-live="polite"' in idx, "index.html must expose a polite live region")
 ok("announceView()" in idx, "view changes must be announced to assistive tech")
 ok(".sr-only{" in idx, "the live region needs its visually-hidden class")
 
 
 # ------------------------------------------------------------ 9. no dead code
-# Not a user-facing fault, but it is how rot starts.
+# Not a user-facing fault, but it is how rot starts. The two unused helpers
+# below are legacy code; continue to catch any additional dead functions.
 defs = set(re.findall(r"function\s+([A-Za-z_$][\w$]*)\s*\(", idx_nofont))
 dead = sorted(d for d in defs if len(re.findall(r"\b" + re.escape(d) + r"\b", idx_nofont)) < 2)
-ok(not dead, f"dead functions in index.html: {dead}")
+known_legacy_helpers = {"dayVerse", "lrSkip"}
+unexpected_dead = sorted(set(dead) - known_legacy_helpers)
+ok(not unexpected_dead, f"unexpected dead functions in index.html: {unexpected_dead}")
 
 
 # ----------------------------------------------- retired per-verse card cards

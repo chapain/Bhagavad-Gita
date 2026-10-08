@@ -20,7 +20,7 @@ CH14_THEMES = [
     ("The Guṇas in Conflict",
      "Sattva attaches to happiness, rajas to action, tamas covers knowledge; they prevail over one another in turn.",
      [("Each binds to its object", "Sattva attaches to happiness, rajas to action, O Bhārata; tamas, covering knowledge, attaches to heedlessness.", "14.09", "14.09"),
-      ("Their mutual rise", "Sattva arises by overpowering rajas and tamas; so rajas arises by overpowering sattva and tamas; and so tamas, overpowering both.", "14.10", "14.10")]),
+      ("The Guṇas overpower one another", "Sattva arises by overpowering rajas and tamas; so rajas arises by overpowering sattva and tamas; and so tamas, overpowering both.", "14.10", "14.10")]),
     ("Signs of the Prevailing Guṇa",
      "When illumination shines through all the gates of the body, know sattva to have grown; greed and restlessness mark rajas; darkness and delusion mark tamas.",
      [("When Sattva grows", "When illumination shines through all the gates of this body, then know that sattva has grown.", "14.11", "14.11"),
@@ -51,7 +51,7 @@ CH14_THEMES = [
       ("Equal in all things", "— equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in praise and blame —", "14.24", "14.24"),
       ("Equal in honour and dishonour", "— equal in honour and dishonour, equal to friend and foe, renouncing all undertakings — he is said to have transcended the guṇas.", "14.25", "14.25")]),
     ("The Way and the Goal",
-     "He who serves me with unwavering devotion transcends the guṇas and becomes Brahman; for I am the support of Brahman, immortality and eternal dharma.",
+     "One who serves me with unwavering devotion rises beyond the guṇas and becomes fit for Brahman; I am the support of Brahman, immortality, eternal dharma and absolute bliss.",
      [("Unwavering devotion carries one beyond", "He who serves me with the unwavering yoga of devotion — transcending these guṇas, he becomes fit for Brahman.", "14.26", "14.26"),
       ("I am the support", "For I am the support of Brahman, of immortality and the imperishable, of eternal dharma and of absolute bliss.", "14.27", "14.27")]),
 ]

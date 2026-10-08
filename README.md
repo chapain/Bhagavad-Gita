@@ -38,8 +38,8 @@ app and works with no internet connection.
 | | |
 |---|---|
 | Chapters · verses | 18 · 700 |
-| Themes · parts | 222 · 700 |
-| Word-instances glossed | 9,480 — each with English, Nepali **and** Hindi meanings |
+| Themes · parts | 208 · 700 |
+| Word-instances glossed | 9,484 — each with English, Nepali **and** Hindi meanings |
 | Languages | English, नेपाली, हिन्दी (no English fallback anywhere) |
 
 ---
@@ -80,10 +80,11 @@ source/                 ← edit here
   prove_data_only.py      proves the build renders data, never generates it
   check_seo.py            sitemap/robots proof (`--live` also fetches the site)
   check_site_health.py    chapter pages, CSS vars, og: tags, offline, a11y
+  check_study_structure.py approved story maps, trilingual pearls, theme sizes
 
-rebuild.sh              build + run both test suites
-run_gita_app.js         553 assertions on the built document
-browser_checks.py       141 live-browser checks (rendering, i18n, touch, offline)
+rebuild.sh              delegates to build.py (the same full validations)
+run_gita_app.js         782 assertions on the built document
+browser_checks.py       148 live-browser checks (rendering, i18n, touch, offline)
 ```
 
 `index.html` is a **split-site shell**: the app chrome, styles, embedded font and
@@ -91,6 +92,22 @@ interface in one small document (~116 KB gzipped), with the verses in 18
 `data/ch<N>.js` files it loads in parallel and the service worker precaches. First
 paint arrives almost immediately; after the first visit everything is cached, so the
 app runs offline and installs to the home screen. Share it by link.
+
+---
+
+## The study-guide map
+
+Themes carry the chapter's story; verse cards are its individual pearls.
+Chapter 1 has **10 story beats**, Chapter 2 has **19 themes with at most five
+verses each**, and Chapter 17 keeps its reviewed 11-theme map. Most themes
+contain no more than six verses. Six explicitly reviewed seven/eight-verse
+passages stay together to preserve an argument, question-and-answer, or
+continuous catalogue—not to satisfy an arbitrary chunk size.
+
+Study titles and descriptions are editorial aids. Changing them does **not**
+change Sanskrit, translations, word meanings, or the identity of a verse.
+`source/check_study_structure.py --explain` lists the longer-passage reasons;
+`python3 -m unittest discover -s tests` proves the map checks reject regressions.
 
 ---
 
@@ -127,7 +144,7 @@ It opens `http://127.0.0.1:8765` with every editable field laid out by chapter:
 | Translations | literal + paraphrase, in English, Nepali and Hindi |
 | Themes & parts | theme and part titles, descriptions and verse ranges, in all three languages |
 | Chapter names | Nepali and Hindi chapter names and blurbs |
-| Interface text | all 165 UI strings in three languages |
+| Interface text | all 201 UI strings in three languages |
 
 Press **Save** on any block and it writes the real file in `source/`, then rebuilds
 `index.html`. The **Run full build** button runs the complete suite when you want it.

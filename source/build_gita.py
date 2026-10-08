@@ -639,7 +639,7 @@ __FONTS__
         line-height:1.58; display:flex; flex-direction:column; min-height:100vh;}
   /* Chrome stays a UI face; the scripture and its names stay serif. */
   button, input, .seg, .lang-btn, .tool-btn, .wc-chip, .chip, .toolbar,
-  .ms-btn, .fav-btn, .lr-cta, .lr-ghost{ font-family:system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .ms-btn, .fav-btn, .lr-cta, .lr-ghost{ font-family:system-ui, -apple-system, "Segoe UI", "Noto Serif Devanagari", sans-serif; }
   /* Quiet devotion (owner 2026-09-04): sandalwood on the paper, a peacock
      feather as a watermark. Opacity is the whole design — if you notice it
      first, it is too loud. pointer-events:none so it never steals a tap. */
@@ -680,8 +680,8 @@ __FONTS__
   header{ background:var(--hdr-a); color:var(--hdr-sub);
           padding:24px 20px; }
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
-  .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--hdr-saffron-text);}
-  .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem; color:#FFF8EC; font-weight:normal;}
+  .header-inner .om{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.7rem; color:var(--hdr-saffron-text);}
+  .header-inner h1{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.4rem; color:#FFF8EC; font-weight:normal;}
   .hdr-copy{ flex:1 1 200px; min-width:0; }
   .header-inner .tag{ display:block; color:var(--hdr-sub); font-size:.82rem;
                       margin:4px 0 0; text-align:left; }
@@ -692,6 +692,8 @@ __FONTS__
      chip experiment ("revert to previous looks") — but the hover keeps the
      warming the chip pass taught it: saffron-dark fill, lamp-black letter. */
   .seg{ display:flex; gap:2px; background:var(--chip); border:1px solid var(--chip-line); border-radius:999px; padding:3px; }
+  /* Native-script language labels must not depend on a system UI font. */
+  .lang-btn[lang="ne"], .lang-btn[lang="hi"]{ font-family:"Noto Serif Devanagari",Georgia,serif; }
   .seg .lang-btn{ background:transparent; border:none; color:var(--hdr-sub); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:background-color .15s, color .15s; }
   .seg .lang-btn:hover{ background:var(--chip-hover); color:#FFF8EC; }
   .seg .lang-btn.on{ background:var(--paper); color:var(--ink); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,.28); }
@@ -708,7 +710,7 @@ __FONTS__
      stroke:currentColor. Only the resting colour stays saffron. */
   .theme-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
   @media (max-width:640px){ .langbar{ width:100%; justify-content:center; margin-left:0;} .seg{ flex:1; } .seg .lang-btn{ flex:1; text-align:center;} }
-  .header-inner .tag b{ color:var(--hdr-saffron-text); font-family:Georgia,serif; font-size:1.15rem;}
+  .header-inner .tag b{ color:var(--hdr-saffron-text); font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.15rem;}
   .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
   .crumbs{ display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--ink-soft); margin-bottom:18px; flex-wrap:wrap;}
   /* Search/Favorites show one .back-top button (see renderCrumbs), so .crumbs is
@@ -721,7 +723,7 @@ __FONTS__
             margin:0 0 8px; padding:6px 10px; overflow:visible; clip:auto; white-space:normal;
             border:1px solid var(--line); border-radius:8px; background:var(--paper);
             color:var(--teal); font:600 .82rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
-  .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
+  .view-title{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
   /* IAST is an English bridge. Devanagari readers don't need it. */
   html[lang="ne"] [lang="sa-Latn"],
   html[lang="hi"] [lang="sa-Latn"]{ display:none !important; }
@@ -773,7 +775,7 @@ __FONTS__
   /* The scope row is the same segmented-pill grammar as the chapter chooser:
      soft pill = an option, gold pill = where you are (PROJECT.md, mode-box). */
   .pl-scope{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0 22px;}
-  .pl-scope .pl-lb{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--ink-soft);}
+  .pl-scope .pl-lb{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.78rem; color:var(--ink-soft);}
   .pl-scope .lr-ghost.on{ background:var(--saffron-soft); border-color:var(--saffron-soft);
                           color:var(--saffron-text);}
   /* matches .tool-btn geometry so the select sits level with the pills */
@@ -792,7 +794,7 @@ __FONTS__
                   box-shadow:0 3px 12px rgba(var(--shadow),.08); transform:translateY(-1px);}
   .pl-mode .n{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
                background:var(--saffron-soft); color:var(--saffron-text);
-               font-family:system-ui,sans-serif; font-weight:700; font-size:.85rem;}
+               font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-weight:700; font-size:.85rem;}
   .pl-mode .b{ flex:1; min-width:0;}
   .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--ink);
                  margin-bottom:4px;}
@@ -801,7 +803,7 @@ __FONTS__
 
   /* ---------- Learn by heart ---------- */
   .lrn{ max-width:760px; }
-  .lr-k{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--ink-soft); margin-bottom:4px;}
+  .lr-k{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.78rem; color:var(--ink-soft); margin-bottom:4px;}
   /* Owner 2026-09-01: the drill must not look like a different app. These
      mirror .tool-btn / .tool-btn.primary exactly — same padding, weight, size
      and hover — so a button here behaves like a button anywhere else. */
@@ -820,7 +822,7 @@ __FONTS__
   .lr-prog{ height:5px; border-radius:3px; background:var(--line); overflow:hidden; margin-top:8px;}
   .lr-prog i{ display:block; height:100%; background:var(--saffron); border-radius:3px;
               transition:width .45s cubic-bezier(.2,.8,.2,1);}
-  .lr-progl{ font-family:system-ui,sans-serif; font-size:.74rem; color:var(--ink-soft); margin:7px 0 18px;}
+  .lr-progl{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; color:var(--ink-soft); margin:7px 0 18px;}
 
   /* matches .card: --paper, 16px radius, the same 1px shadow */
   .lr-step{ display:flex; gap:14px; padding:16px 18px; border-radius:16px; margin-bottom:13px;
@@ -832,7 +834,7 @@ __FONTS__
   .lr-step.locked{ opacity:.55;}
   .lr-badge{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
              background:var(--saffron-soft); color:var(--saffron-text);
-             font-family:system-ui,sans-serif; font-weight:700; font-size:.84rem;}
+             font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-weight:700; font-size:.84rem;}
   .lr-step.now .lr-badge{ background:var(--saffron); color:var(--on-saffron);}
   .lr-step.done .lr-badge{ background:var(--teal); color:var(--on-accent);}
   .lr-body{ flex:1; min-width:0;}
@@ -846,14 +848,14 @@ __FONTS__
   .lr-chip:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
   .lr-chip .n{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center;
-               background:var(--saffron-soft); font-size:.7rem; font-family:system-ui,sans-serif;
+               background:var(--saffron-soft); font-size:.7rem; font-family:system-ui,"Noto Serif Devanagari",sans-serif;
                color:var(--saffron-text);}
   .lr-chip.ok .n{ background:var(--teal); color:var(--on-accent); font-weight:700;}
   .lr-chip .t{ flex:1; font-size:.85rem; line-height:1.3;}
-  .lr-chip .v{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft);}
+  .lr-chip .v{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.7rem; color:var(--ink-soft);}
 
   .lr-foot{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:16px;
-            font-family:system-ui,sans-serif; font-size:.74rem; color:var(--ink-soft);}
+            font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; color:var(--ink-soft);}
 
   .lr-thread{ list-style:none; margin:16px 0 0; padding:0;}
   .lr-thread li{ display:flex; gap:13px; padding:12px 13px; border-radius:13px; position:relative;}
@@ -861,12 +863,12 @@ __FONTS__
             bottom:-2px; width:2px; background:var(--line);}
   .lr-thread .bead{ flex:0 0 26px; height:26px; border-radius:50%; display:grid; place-items:center;
             background:var(--saffron-soft); color:var(--saffron-text); z-index:1;
-            font-family:system-ui,sans-serif; font-size:.75rem; font-weight:700;}
+            font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.75rem; font-weight:700;}
   .lr-thread b{ font-weight:700; font-size:1rem; color:var(--ink);}
-  .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft); font-weight:500; margin-left:7px;}
+  .lr-thread .rg{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.7rem; color:var(--ink-soft); font-weight:500; margin-left:7px;}
   .lr-thread p{ margin:4px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
 
-  .lr-vnum{ font-family:system-ui,sans-serif; font-size:1.3rem; font-weight:700;
+  .lr-vnum{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:1.3rem; font-weight:700;
             color:var(--saffron-text); margin:10px 0 12px;}
   .lr-quarters{ display:flex; flex-direction:column; gap:9px;}
   .lr-q{ border-radius:16px; background:var(--paper); border:1px solid var(--line);
@@ -876,7 +878,7 @@ __FONTS__
           padding:14px 16px; background:none; border:none; cursor:pointer; font-family:inherit;}
   .lr-qh .pip{ flex:0 0 25px; height:25px; border-radius:50%; display:grid; place-items:center;
           background:var(--saffron-soft); color:var(--saffron-text);
-          font-family:system-ui,sans-serif; font-size:.73rem; font-weight:700;}
+          font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.73rem; font-weight:700;}
   .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
   .lr-qh{ flex-wrap:nowrap !important; align-items:center; }
   .lr-qh .tx{ flex:1 1 0; min-width:0; max-width:100%; display:flex; flex-direction:row;
@@ -890,7 +892,7 @@ __FONTS__
               -webkit-text-fill-color:var(--teal-mid);}
   .lr-qh .ia{ display:block; font-size:.78rem; font-style:italic; color:var(--ink-soft); margin-top:2px;}
   .lr-opt .giast, .lr-chip2 .giast, .lr-slot .giast, .lr-qsub .giast{
-    display:block; font-family:Georgia,serif; font-size:.8rem; font-style:italic;
+    display:block; font-family:Georgia,"Noto Serif Devanagari",serif; font-size:.8rem; font-style:italic;
     font-weight:400; color:var(--ink-soft); margin-top:4px; line-height:1.4; }
   .lr-chip2{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
   .lr-qh .chev{ color:var(--ink-soft); transition:transform .22s;}
@@ -909,11 +911,11 @@ __FONTS__
   .lr-word .m{ display:block; font-size:.84rem; line-height:1.4;}
   .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:14px;
             background:var(--saffron-soft); border:1px solid var(--line);}
-  .lr-mean .lb{ display:block; font-family:system-ui,sans-serif; font-size:.72rem;
+  .lr-mean .lb{ display:block; font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.72rem;
                 color:var(--saffron-text); margin-bottom:5px;}
 
   .lr-nav{ display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-top:20px;}
-  .lr-hint{ flex:1; text-align:center; font-family:system-ui,sans-serif;
+  .lr-hint{ flex:1; text-align:center; font-family:system-ui,"Noto Serif Devanagari",sans-serif;
             font-size:.76rem; color:var(--ink-soft);}
 
   /* The question card sits on --cream so the --paper options READ as raised
@@ -949,7 +951,7 @@ __FONTS__
      competing for one line (owner 2026-09-01). */
   /* --paper on --cream is only a 1.06:1 step, so the SHADOW does the lifting,
      not the fill: without it the options dissolve into the question card. */
-  .lr-opt .onum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);
+  .lr-opt .onum{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text);
                  font-size:.82rem; line-height:1; margin-bottom:2px; }
   .lr-opt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px;
            text-align:left; width:100%;
@@ -963,7 +965,7 @@ __FONTS__
                   line-height:1.85; color:var(--teal); -webkit-text-fill-color:var(--teal);}
   /* the verse number under an option is a NUMBER — saffron, like every other
      verse number in the app */
-  .lr-opt .os{ font-family:system-ui,sans-serif; font-size:.74rem; font-weight:700;
+  .lr-opt .os{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; font-weight:700;
                color:var(--saffron-text);}
   /* the verdict must be unmistakable at a glance, not a 1px border change */
   /* The verdict is carried by the OPTION, not by a line of prose underneath
@@ -973,7 +975,7 @@ __FONTS__
   .lr-opt.right::after, .lr-opt.wrong::after{
       position:absolute; right:13px; top:50%; transform:translateY(-50%);
       width:22px; height:22px; border-radius:50%; display:grid; place-items:center;
-      font-family:system-ui,sans-serif; font-size:.82rem; font-weight:700;
+      font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.82rem; font-weight:700;
       line-height:1;}
   .lr-opt.right{ border-color:var(--teal); border-left-color:var(--teal);
                  border-width:2px; background:var(--teal-soft);
@@ -993,7 +995,7 @@ __FONTS__
   .lr-mbtn{ text-align:left; width:100%; padding:12px 12px; border-radius:12px;
             background:var(--paper); border:1px solid var(--line); cursor:pointer;
             font-family:inherit; box-shadow:0 1px 3px rgba(var(--shadow),.10); }
-  .lr-mbtn.num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);
+  .lr-mbtn.num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text);
                 font-size:1.05rem; text-align:center; }
   .lr-mbtn.vs .ol{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
                    font-size:.98rem; line-height:1.7; color:var(--teal-mid);
@@ -1100,7 +1102,7 @@ __FONTS__
     background:var(--teal-soft);
     box-shadow:0 3px 12px rgba(var(--shadow),.08);
   }
-  .th-flow h3{ font-family:Georgia,serif; color:var(--teal); font-size:1.05rem; margin:0 0 6px; }
+  .th-flow h3{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:1.05rem; margin:0 0 6px; }
   /* Owner 2026-09-01: the verse range is a verse NUMBER and must read as one.
      It was --ink-soft, so it sank into the description text while every other
      number in the app is saffron. Weight 600 because at .78rem the colour
@@ -1118,15 +1120,15 @@ __FONTS__
   .vcard:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); }
   .vcard h3{ font-size:1rem; }   /* the theme title outranks its verses */
   .chdeva{ color:var(--teal); font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem; }
-  .card h3{ font-family:Georgia,serif; font-size:1.15rem; color:var(--teal);}
+  .card h3{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
   .card .meta{ margin-top:10px; font-size:.8rem; color:var(--ink-soft); font-weight:600;}
   .card .go{ margin-top:10px; color:var(--saffron-text); font-weight:700; font-size:.88rem;}
   .card .soon{ margin-top:10px; color:var(--muted); font-weight:600; font-size:.85rem; font-style:italic;}
   .part{ margin-bottom:26px;}
   .part-head{ display:flex; align-items:center; gap:12px; padding:0 0 6px; margin:18px 0 8px; flex-wrap:nowrap;}
-  .part-head .pnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:1.05rem;}
-  .part-head .ptitle{ font-family:Georgia,serif; font-size:1.05rem; color:var(--teal); font-weight:600;
+  .part-head .pnum{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:1.05rem;}
+  .part-head .ptitle{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.05rem; color:var(--teal); font-weight:600;
                       order:1; flex:0 1 auto; max-width:42%; }
   .part-head::before{ content:""; order:2; flex:1 1 20px; min-width:16px; height:1px;
                       background:color-mix(in srgb, var(--saffron) 42%, transparent);
@@ -1136,20 +1138,20 @@ __FONTS__
   .mini{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 14px; cursor:pointer;
          transition:.15s; box-shadow:0 4px 12px rgba(var(--shadow),.06);}
   .mini:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
-  .mini .vnum, .w-day .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.98rem; margin-bottom:5px; letter-spacing:.03em;}
+  .mini .vnum, .w-day .vnum{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.98rem; margin-bottom:5px; letter-spacing:.03em;}
   /* The topic line is quiet metadata, not a headline: same soft colour as its
      "Verse topic" prefix, so the Devanagari below stays the star of the card. */
-  .mini .m-topic, .w-day .m-topic{ font-family:Georgia,serif; font-weight:600; color:var(--ink-soft); font-size:.9rem; margin-bottom:7px; line-height:1.35;}
+  .mini .m-topic, .w-day .m-topic{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:600; color:var(--ink-soft); font-size:.9rem; margin-bottom:7px; line-height:1.35;}
   .mini .mt-lab, .w-day .mt-lab{ font-weight:400; font-style:italic; color:var(--ink-soft); font-size:.8rem; margin-right:2px;}
   .mini .padas, .w-day .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
   .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-text); font-size:.82rem; font-style:italic; margin-bottom:2px;}
   .mini .padas, .w-day .padas, .res-deva, .rd-deva{ overflow-wrap:anywhere; word-break:normal; }
   .mini .padas .gline, .w-day .padas .gline{ display:block; line-height:1.6;}
   .mini .padas .giast, .w-day .padas .giast, .res-deva .giast{
-    display:block; font-family:Georgia,serif; font-style:italic; font-size:.82rem;
+    display:block; font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic; font-size:.82rem;
     color:var(--ink-soft); line-height:1.45; margin:0 0 4px; }
   .mini .padas .spk-iast, .w-day .padas .spk-iast{
-    display:block; font-family:Georgia,serif; font-style:italic; font-size:.78rem;
+    display:block; font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic; font-size:.78rem;
     color:var(--ink-soft); margin:0 0 4px; }
   .mini .padas .gp, .w-day .padas .gp{ display:inline;}
   .mini .vhint, .w-day .vhint{ color:var(--ink-soft); font-size:.78rem; font-style:italic; line-height:1.4; margin-top:6px;}
@@ -1196,11 +1198,11 @@ __FONTS__
   .rd-v{ padding:12px 0 14px; border-bottom:1px solid var(--line); cursor:pointer; position:relative;}
   .rd-v:last-child{ border-bottom:none;}
   .rd-v:hover{ background:var(--teal-soft);}
-  .rd-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.82rem;}
+  .rd-n{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.82rem;}
   .rd-deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
             font-size:1.12rem; line-height:1.85; margin-bottom:5px;}
   .rd-tr{ color:var(--ink-soft); font-size:.95rem; line-height:1.6;}
-  .rd-iast{ font-family:Georgia,serif; font-style:italic; font-size:.88rem;
+  .rd-iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic; font-size:.88rem;
             color:var(--ink-soft); line-height:1.45; margin:0 0 6px; font-weight:400; }
   .rd-spk .rd-iast{ display:inline; margin:0 0 0 8px; font-size:.82rem; }
   /* quiet labels name each translation, so the two voices never blur */
@@ -1297,7 +1299,7 @@ __FONTS__
   /* A small oval tag, not a headline — the card already has a saffron frame,
      so the label wears the soft variant and lets the verse number lead. */
   .welcome .wd-label{ display:table; margin:0 auto 12px; background:var(--saffron-soft); color:var(--saffron-text);
-    font-family:Georgia,serif; font-weight:600; font-size:.78rem; letter-spacing:.02em;
+    font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:600; font-size:.78rem; letter-spacing:.02em;
     border-radius:999px; padding:6px 18px; }
   /* the welcome card is a display piece, not a list item — centre it, while
      the search/theme grids stay left-aligned for reading */
@@ -1306,7 +1308,7 @@ __FONTS__
   /* The speaker is not part of the verse, so it must not read as verse text.
      Saffron + italic everywhere else in the app — match that here. */
   /* Verse number set inside the closing daṇḍas, as a printed edition does. */
-  .gl-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.8rem;}
+  .gl-n{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.8rem;}
 
   .grid.sections{ grid-template-columns:repeat(auto-fill, minmax(270px,1fr));}
   .card.sect h3{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:1.32rem;}
@@ -1342,12 +1344,12 @@ __FONTS__
   .tool-btn.primary:hover{ background:var(--saffron-dark);}
   .fav-btn{ background:var(--saffron-soft); border:1px solid var(--saffron); color:var(--saffron-text); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
   .fav-btn.saved{ background:var(--saffron); color:var(--on-saffron);}
-  .res-head{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
+  .res-head{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
   .res-count{ color:var(--ink-soft); font-size:.9rem; margin-bottom:16px;}
   .res-card{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:12px; cursor:pointer; transition:.15s;}
   .res-card:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   .res-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
-  .res-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);}
+  .res-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text);}
   .res-title{ font-weight:600; color:var(--teal); font-size:.9rem;}
   .res-deva{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1rem; line-height:1.55; background:var(--cream); border-radius:8px; padding:7px 10px; margin-bottom:6px;}
   .res-lit{ color:var(--ink-soft); font-size:.88rem; line-height:1.5;}
@@ -1360,9 +1362,9 @@ __FONTS__
   .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
                    height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
   .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft);}
-  .m-part{ font-family:Georgia,serif; color:var(--teal); font-size:.95rem; font-weight:600;
+  .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:.95rem; font-weight:600;
            margin:0 52px 8px 0; line-height:1.4;}
-  .m-num{ font-family:Georgia,serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
+  .m-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
           display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
   .m-title{ margin:0; padding:0; flex:1 1 auto; min-width:0; color:inherit; font:inherit; }
   .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
@@ -1384,16 +1386,16 @@ __FONTS__
   .m-verse{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:6px 0 4px;}
   .m-verse .spk{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--saffron-text); font-size:calc(1.15rem * var(--reader-scale,1));
                  font-style:italic; margin-bottom:8px; border-bottom:1px dashed var(--line); padding-bottom:6px;}
-  .m-verse .spk .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-verse .spk .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-verse table{ width:100%; border-collapse:collapse;}
   .m-verse td{ vertical-align:top; padding:3px 2px;}
-  .m-verse td.pnum{ width:26px; font-family:Georgia,serif; color:var(--saffron-text); font-weight:700; font-size:.9rem; padding-top:6px;}
+  .m-verse td.pnum{ width:26px; font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--saffron-text); font-weight:700; font-size:.9rem; padding-top:6px;}
   .m-verse td.pd{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:calc(1.35rem * var(--reader-scale,1)); color:var(--teal); line-height:1.7; padding-right:14px;}
   .m-verse td.pi{ font-style:italic; color:var(--ink-soft); font-size:calc(.92rem * var(--reader-scale,1)); padding-top:8px;}
   .m-verse td.pi .danda{ color:var(--saffron-text); font-weight:700;}
   .m-verse tr.pair td.pd{ padding-bottom:4px;}
   .m-verse tr.spkrow td.pd.spk{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic; padding:8px 2px 10px; border-bottom:1px dashed var(--line); font-size:calc(1.1rem * var(--reader-scale,1));}
-  .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-verse .spk-line:hover{ background:var(--saffron-soft);}
   .m-verse .spk-main{ border-bottom:1px dotted var(--saffron); }
   .m-verse .words{ display:none; margin-top:6px; background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:8px 12px; min-width:0; max-width:100%;}
@@ -1417,7 +1419,7 @@ __FONTS__
   .m-verse .pada-box .pada-toggle{ display:block; width:100%; padding:0; margin:0; border:0;
       background:transparent; color:inherit; text-align:left; font:inherit; cursor:pointer; }
   .m-verse .pada-box .pb-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; gap:8px;}
-  .m-verse .pada-box .pb-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.85rem; white-space:nowrap;}
+  .m-verse .pada-box .pb-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.85rem; white-space:nowrap;}
 
   .m-verse .pada-box .pb-deva{ display:block; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.3rem * var(--reader-scale,1)); line-height:1.7; overflow-wrap:anywhere; word-break:normal;}
   .m-verse .pada-box:hover{ background:var(--saffron-soft); border-color:var(--saffron);}
@@ -1427,7 +1429,7 @@ __FONTS__
       font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic;
       font-size:calc(1.05rem * var(--reader-scale,1)); cursor:pointer; text-align:left;
       border-radius:6px; padding:4px;}
-  .m-verse .spk-line .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-verse .spk-line .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-line{ margin-top:14px;}
   .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
                padding:3px 10px; border-radius:999px; margin-bottom:5px;}
@@ -1676,7 +1678,7 @@ __FONTS__
            border:1px solid var(--saffron); border-radius:16px; padding:22px 22px 24px;
            box-shadow:0 8px 22px rgba(var(--shadow),.10); }
   .ns-box .ns-om{ font-size:2.6rem; color:var(--saffron-text); text-align:center; line-height:1; margin-bottom:6px; }
-  .ns-box h2{ font-family:Georgia,serif; color:var(--teal); font-size:1.25rem; text-align:center; margin-bottom:12px; }
+  .ns-box h2{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:1.25rem; text-align:center; margin-bottom:12px; }
   .ns-box p{ color:var(--ink); font-size:.95rem; margin-bottom:10px; }
   .ns-box .ns-how{ background:var(--saffron-soft); border-radius:10px; padding:10px 12px; }
   .ns-box hr{ border:none; border-top:2px dashed var(--line); margin:14px 0; }
@@ -4516,7 +4518,7 @@ for _ch in data:
     var h = location.hash;
     if(!h || h.charAt(1) !== 'v') return;
     var el;
-    try{{ el = document.querySelector(h); }}catch(e){{ return; }}
+    try{{ el = document.getElementById(decodeURIComponent(h.slice(1))); }}catch(e){{ return; }}
     if(!el) return;
     var d = el.closest('details');
     if(d && !d.open) d.open = true;
