@@ -608,12 +608,12 @@ __FONTS__
      so every rule keeps using var(--x) and nothing else has to change.
      --on-accent is the text colour that sits on saffron/teal fills; it stays
      near-cream in both themes because both fills stay dark enough for it.  */
-  :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-soft:#FBE3C0; --teal:#1A5648; --teal-mid:#2A7A68;
+  :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-text:#875519; --saffron-soft:#FBE3C0; --teal:#1A5648; --teal-mid:#2A7A68;
          --teal-soft:#E6EFE8; --cream:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --paper:#FFFFFF; --line:#E7D9C2;
-         --on-accent:#FFF8EC; --on-saffron:#2A2118; --hdr-a:#1A5648; --hdr-b:#226B5A; --hdr-c:#2A806C; --hdr-sub:#C5DDD4;
-         --toolbar:#FDF3E0; --field:#FFFFFF; --muted:#9AA0A6; --danger:#C0392B; --danger-soft:#FBE6E3; --on-danger:#FFFFFF;
+         --on-accent:#FFF8EC; --on-saffron:#2A2118; --hdr-a:#1A5648; --hdr-b:#226B5A; --hdr-c:#2A806C; --hdr-sub:#CDE2DA; --hdr-saffron-text:#F2B85F;
+         --toolbar:#FDF3E0; --field:#FFFFFF; --muted:#6B6258; --muted-fill:#EBE7E1; --focus:#875519; --danger:#C0392B; --danger-soft:#FBE6E3; --on-danger:#FFFFFF;
          --shadow:42,33,24; --scrim:rgba(15,42,52,.72); --fade:255,248,236;
-         --chip:rgba(255,248,236,.12); --chip-hover:rgba(255,248,236,.25); --chip-line:rgba(255,248,236,.35); }
+         --chip:rgba(255,248,236,.12); --chip-hover:rgba(255,248,236,.10); --chip-line:rgba(255,248,236,.35); }
 
   /* ---- dark theme ----------------------------------------------------
      Warm, not neutral: a dark brown-black keeps the manuscript feel rather
@@ -626,11 +626,11 @@ __FONTS__
     color-scheme: dark;
     /* Apple-dark discipline: accents muted a notch, text never glaring.
        The old #E8912C/#7FD4E8 pair neon'd against the warm black. */
-    --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-soft:#43301A;
+    --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-text:#D0AA70; --saffron-soft:#43301A;
     --teal:#8FBEB0; --teal-mid:#A8D0C4; --teal-soft:#1A2E28;
     --cream:#16120D; --paper:#201A13; --ink:#E9DCC3; --ink-soft:#A79A80; --line:#382D20;
-    --on-accent:#1A1209; --on-saffron:#1A1209; --hdr-a:#0E2A24; --hdr-b:#143832; --hdr-c:#1A4840; --hdr-sub:#C5DDD4;
-    --toolbar:#1E1811; --field:#2A2219; --muted:#8A7F6E; --danger:#E86B5C; --danger-soft:#3A211C; --on-danger:#1A1209;
+    --on-accent:#1A1209; --on-saffron:#1A1209; --hdr-a:#0E2A24; --hdr-b:#143832; --hdr-c:#1A4840; --hdr-sub:#C5DDD4; --hdr-saffron-text:#F2B85F;
+    --toolbar:#1E1811; --field:#2A2219; --muted:#A79A80; --muted-fill:#382F25; --focus:#F2B85F; --danger:#E86B5C; --danger-soft:#3A211C; --on-danger:#1A1209;
     --shadow:0,0,0; --scrim:rgba(0,0,0,.78); --fade:23,19,14;
     --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
   }
@@ -680,7 +680,7 @@ __FONTS__
   header{ background:var(--hdr-a); color:var(--hdr-sub);
           padding:24px 20px; }
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
-  .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--saffron);}
+  .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--hdr-saffron-text);}
   .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem; color:#FFF8EC; font-weight:normal;}
   .hdr-copy{ flex:1 1 200px; min-width:0; }
   .header-inner .tag{ display:block; color:var(--hdr-sub); font-size:.82rem;
@@ -699,7 +699,7 @@ __FONTS__
   .lang-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
   /* the theme toggle lives in the language bar; it must not stretch like the
      language buttons do on mobile, so it opts out of flex:1 and stays square */
-  .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--saffron); border-color:var(--chip-line);}
+  .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--hdr-saffron-text); border-color:var(--chip-line);}
   /* Owner 2026-09-01: the theme toggle must hover exactly like the language
      buttons. It used to get a faint --chip-hover wash and keep its saffron
      text colour, so the icon sat saffron-on-saffron and the button felt dead
@@ -708,7 +708,7 @@ __FONTS__
      stroke:currentColor. Only the resting colour stays saffron. */
   .theme-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
   @media (max-width:640px){ .langbar{ width:100%; justify-content:center; margin-left:0;} .seg{ flex:1; } .seg .lang-btn{ flex:1; text-align:center;} }
-  .header-inner .tag b{ color:var(--saffron); font-family:Georgia,serif; font-size:1.15rem;}
+  .header-inner .tag b{ color:var(--hdr-saffron-text); font-family:Georgia,serif; font-size:1.15rem;}
   .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
   .crumbs{ display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--ink-soft); margin-bottom:18px; flex-wrap:wrap;}
   /* Search/Favorites show one .back-top button (see renderCrumbs), so .crumbs is
@@ -717,6 +717,10 @@ __FONTS__
   /* Visually hidden but readable by assistive tech — used by #srStatus. */
   .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
             overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+  .sr-only.focusable:focus{ position:static; display:inline-block; width:auto; height:auto;
+            margin:0 0 8px; padding:6px 10px; overflow:visible; clip:auto; white-space:normal;
+            border:1px solid var(--line); border-radius:8px; background:var(--paper);
+            color:var(--teal); font:600 .82rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
   .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
   /* IAST is an English bridge. Devanagari readers don't need it. */
   html[lang="ne"] [lang="sa-Latn"],
@@ -739,9 +743,9 @@ __FONTS__
      style"). The restraint is the point.
      Saffron = something you act on. Teal = something already yours. */
   .mode-box{ border-left:1px solid var(--line); }
-  .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-dark); font-weight:600; font-size:.72rem;
+  .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-text); font-weight:600; font-size:.72rem;
                letter-spacing:.02em; padding:4px 10px; border-radius:999px; margin-bottom:8px;}
-  .card .chip.locked{ background:var(--muted);}
+  .card .chip.locked{ background:var(--muted-fill); color:var(--muted);}
   /* The three ways of receiving a chapter live ON the chapter page as an
      iOS-style segmented control — the same grammar as the language pills in
      the header (owner 2026-08-30: the intermediary choice page "was just
@@ -771,7 +775,7 @@ __FONTS__
   .pl-scope{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0 22px;}
   .pl-scope .pl-lb{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--ink-soft);}
   .pl-scope .lr-ghost.on{ background:var(--saffron-soft); border-color:var(--saffron-soft);
-                          color:var(--saffron-dark);}
+                          color:var(--saffron-text);}
   /* matches .tool-btn geometry so the select sits level with the pills */
   .pl-sel{ padding:8px 16px; border-radius:999px; border:1px solid var(--line);
            background:var(--paper); color:var(--teal); font-family:inherit;
@@ -787,7 +791,7 @@ __FONTS__
   .pl-mode:hover{ border-color:var(--saffron); background:var(--teal-soft);
                   box-shadow:0 3px 12px rgba(var(--shadow),.08); transform:translateY(-1px);}
   .pl-mode .n{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
-               background:var(--saffron-soft); color:var(--saffron-dark);
+               background:var(--saffron-soft); color:var(--saffron-text);
                font-family:system-ui,sans-serif; font-weight:700; font-size:.85rem;}
   .pl-mode .b{ flex:1; min-width:0;}
   .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--ink);
@@ -827,7 +831,7 @@ __FONTS__
   .lr-step.done{ border-left-color:var(--teal);}
   .lr-step.locked{ opacity:.55;}
   .lr-badge{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
-             background:var(--saffron-soft); color:var(--saffron-dark);
+             background:var(--saffron-soft); color:var(--saffron-text);
              font-family:system-ui,sans-serif; font-weight:700; font-size:.84rem;}
   .lr-step.now .lr-badge{ background:var(--saffron); color:var(--on-saffron);}
   .lr-step.done .lr-badge{ background:var(--teal); color:var(--on-accent);}
@@ -843,7 +847,7 @@ __FONTS__
   .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
   .lr-chip .n{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center;
                background:var(--saffron-soft); font-size:.7rem; font-family:system-ui,sans-serif;
-               color:var(--saffron-dark);}
+               color:var(--saffron-text);}
   .lr-chip.ok .n{ background:var(--teal); color:var(--on-accent); font-weight:700;}
   .lr-chip .t{ flex:1; font-size:.85rem; line-height:1.3;}
   .lr-chip .v{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft);}
@@ -856,14 +860,14 @@ __FONTS__
   .lr-thread li:not(:last-child):after{ content:''; position:absolute; left:28px; top:42px;
             bottom:-2px; width:2px; background:var(--line);}
   .lr-thread .bead{ flex:0 0 26px; height:26px; border-radius:50%; display:grid; place-items:center;
-            background:var(--saffron-soft); color:var(--saffron-dark); z-index:1;
+            background:var(--saffron-soft); color:var(--saffron-text); z-index:1;
             font-family:system-ui,sans-serif; font-size:.75rem; font-weight:700;}
   .lr-thread b{ font-weight:700; font-size:1rem; color:var(--ink);}
   .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft); font-weight:500; margin-left:7px;}
   .lr-thread p{ margin:4px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
 
   .lr-vnum{ font-family:system-ui,sans-serif; font-size:1.3rem; font-weight:700;
-            color:var(--saffron-dark); margin:10px 0 12px;}
+            color:var(--saffron-text); margin:10px 0 12px;}
   .lr-quarters{ display:flex; flex-direction:column; gap:9px;}
   .lr-q{ border-radius:16px; background:var(--paper); border:1px solid var(--line);
                   box-shadow:0 1px 2px rgba(var(--shadow),.05); overflow:hidden; transition:.18s;}
@@ -871,7 +875,7 @@ __FONTS__
   .lr-qh{ display:flex; gap:12px; align-items:center; width:100%; text-align:left;
           padding:14px 16px; background:none; border:none; cursor:pointer; font-family:inherit;}
   .lr-qh .pip{ flex:0 0 25px; height:25px; border-radius:50%; display:grid; place-items:center;
-          background:var(--saffron-soft); color:var(--saffron-dark);
+          background:var(--saffron-soft); color:var(--saffron-text);
           font-family:system-ui,sans-serif; font-size:.73rem; font-weight:700;}
   .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
   .lr-qh{ flex-wrap:nowrap !important; align-items:center; }
@@ -890,7 +894,7 @@ __FONTS__
     font-weight:400; color:var(--ink-soft); margin-top:4px; line-height:1.4; }
   .lr-chip2{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
   .lr-qh .chev{ color:var(--ink-soft); transition:transform .22s;}
-  .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron);}
+  .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron-text);}
   /* [hidden] is only display:none at the UA default, so ANY explicit display
      silently defeats it — the word grid was open on arrival despite carrying
      the attribute (owner 2026-09-02). Restore it explicitly. */
@@ -906,7 +910,7 @@ __FONTS__
   .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:14px;
             background:var(--saffron-soft); border:1px solid var(--line);}
   .lr-mean .lb{ display:block; font-family:system-ui,sans-serif; font-size:.72rem;
-                color:var(--saffron-dark); margin-bottom:5px;}
+                color:var(--saffron-text); margin-bottom:5px;}
 
   .lr-nav{ display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-top:20px;}
   .lr-hint{ flex:1; text-align:center; font-family:system-ui,sans-serif;
@@ -922,7 +926,7 @@ __FONTS__
   .lr-ask{ font-size:1.06rem; line-height:1.6; margin:-2px -4px 16px; padding:12px 14px;
            border-radius:12px; background:var(--saffron-soft);
             color:var(--ink);}
-  .pl-head{ margin:6px 0 14px !important; color:var(--saffron-dark) !important;
+  .pl-head{ margin:6px 0 14px !important; color:var(--saffron-text) !important;
             font-weight:700;}
   .lr-qsub{ margin-top:10px; padding:12px 14px; border-radius:11px; background:var(--paper);
             border:1px solid var(--line); color:var(--ink-soft); font-size:.92rem; line-height:1.6;}
@@ -935,7 +939,7 @@ __FONTS__
             color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
   .lr-plus{ color:var(--ink-soft); font-size:.8rem;}
   .lr-blank{ display:inline-grid; place-items:center; min-width:52px; padding:2px 12px;
-             border-radius:8px; background:var(--saffron-soft); color:var(--saffron-dark);
+             border-radius:8px; background:var(--saffron-soft); color:var(--saffron-text);
              border:2px dashed var(--saffron); font-weight:700; font-size:1.1rem;}
   .lr-cue{ margin-top:8px; text-align:center; font-family:"Noto Serif Devanagari",Georgia,serif;
            font-size:.95rem; color:var(--ink-soft);}
@@ -945,7 +949,7 @@ __FONTS__
      competing for one line (owner 2026-09-01). */
   /* --paper on --cream is only a 1.06:1 step, so the SHADOW does the lifting,
      not the fill: without it the options dissolve into the question card. */
-  .lr-opt .onum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);
+  .lr-opt .onum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);
                  font-size:.82rem; line-height:1; margin-bottom:2px; }
   .lr-opt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px;
            text-align:left; width:100%;
@@ -956,11 +960,11 @@ __FONTS__
   .lr-opt:disabled{ cursor:default;}
   .lr-opt .ol{ width:100%; font-size:.96rem; line-height:1.5; color:var(--ink);}
   .lr-opt .ol.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.04rem;
-                  line-height:1.85; color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
+                  line-height:1.85; color:var(--teal); -webkit-text-fill-color:var(--teal);}
   /* the verse number under an option is a NUMBER — saffron, like every other
      verse number in the app */
   .lr-opt .os{ font-family:system-ui,sans-serif; font-size:.74rem; font-weight:700;
-               color:var(--saffron-dark);}
+               color:var(--saffron-text);}
   /* the verdict must be unmistakable at a glance, not a 1px border change */
   /* The verdict is carried by the OPTION, not by a line of prose underneath
      (owner 2026-09-02). A tick and a cross in the leading edge, plus the fill,
@@ -989,12 +993,13 @@ __FONTS__
   .lr-mbtn{ text-align:left; width:100%; padding:12px 12px; border-radius:12px;
             background:var(--paper); border:1px solid var(--line); cursor:pointer;
             font-family:inherit; box-shadow:0 1px 3px rgba(var(--shadow),.10); }
-  .lr-mbtn.num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);
+  .lr-mbtn.num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);
                 font-size:1.05rem; text-align:center; }
   .lr-mbtn.vs .ol{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
                    font-size:.98rem; line-height:1.7; color:var(--teal-mid);
                    -webkit-text-fill-color:var(--teal-mid); }
   .lr-mbtn.on{ border-color:var(--saffron); background:var(--saffron-soft); }
+  .lr-mbtn.on .ol{ color:var(--teal); -webkit-text-fill-color:var(--teal); }
   .lr-mbtn.right{ border-color:var(--teal); background:var(--teal-soft); }
   .lr-mbtn:disabled{ cursor:default; }
   @media (max-width:640px){ .lr-match{ grid-template-columns:minmax(72px,26%) 1fr; } }
@@ -1004,7 +1009,7 @@ __FONTS__
              font-size:.87rem; text-align:left; max-width:100%; transition:.15s;
              min-height:44px;}
   .lr-chip2:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
-  .lr-chip2.dv:hover:not(:disabled){ -webkit-text-fill-color:var(--teal-mid); color:var(--teal-mid);}
+  .lr-chip2.dv:hover:not(:disabled){ -webkit-text-fill-color:var(--teal); color:var(--teal);}
   .lr-chip2.used{ opacity:.3; cursor:default; border-left-color:var(--teal);}
   /* Quarter chips carry Devanagari and need the Sanskrit face at a readable
      size — the Latin default renders the conjuncts too small to compare. */
@@ -1014,7 +1019,7 @@ __FONTS__
      button itself. The letters live in an inner span so WebKit has to honour them.
      --teal-mid (not --teal): #1A5648 on white reads as black on a phone. */
   .lr-chip2 .lr-t{ color:inherit; -webkit-text-fill-color:currentColor; }
-  .lr-chip2.dv .lr-t{ color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid); }
+  .lr-chip2.dv .lr-t{ color:var(--teal); -webkit-text-fill-color:var(--teal); }
   .lr-chip2.shake{ animation:lrshk .34s; border-color:var(--saffron-dark);}
   @keyframes lrshk{ 0%,100%{transform:none} 22%{transform:translateX(-6px)} 66%{transform:translateX(6px)} }
   .lr-slots{ display:flex; flex-direction:column; gap:6px; margin-bottom:13px;}
@@ -1022,11 +1027,11 @@ __FONTS__
             border:1px solid var(--teal); border-left:2px solid var(--teal);
             font-size:.87rem;}
   .lr-slot.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.02rem;
-               color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
+               color:var(--teal); -webkit-text-fill-color:var(--teal);}
 
   .lr-fb{ margin-top:14px;}
   .lr-fb .good{ color:var(--teal); font-weight:700; font-size:.92rem;}
-  .lr-fb .bad{ color:var(--saffron-dark); font-weight:700; font-size:.92rem;}
+  .lr-fb .bad{ color:var(--saffron-text); font-weight:700; font-size:.92rem;}
   .lr-fb .nt{ margin:10px 0 13px; padding:12px 14px; border-radius:11px; background:var(--paper);
               border:1px solid var(--line); color:var(--ink-soft); font-size:.88rem; line-height:1.6;}
 
@@ -1037,7 +1042,7 @@ __FONTS__
             place-items:center; background:var(--teal-soft); color:var(--teal); font-size:1.6rem;}
   .lr-finis h2{ margin:0 0 8px; font-size:1.35rem; color:var(--ink);}
   .lr-finis p{ color:var(--ink-soft); max-width:50ch; margin:0 auto 16px; line-height:1.65;}
-  .lr-finis .lr-all{ color:var(--saffron-dark); font-weight:700;}
+  .lr-finis .lr-all{ color:var(--saffron-text); font-weight:700;}
   .lr-finis .lr-cta,.lr-finis .lr-ghost{ margin:5px;}
 
 
@@ -1050,9 +1055,9 @@ __FONTS__
   .lr-lad b{ display:block; font-size:.82rem; color:var(--teal); }
   .lr-lad span{ display:block; font-size:.68rem; color:var(--ink-soft); margin-top:2px; }
   .lr-lad.on{ border-color:var(--saffron); background:var(--saffron-soft); }
-  .lr-lad.on b{ color:var(--saffron-dark); }
+  .lr-lad.on b{ color:var(--saffron-text); }
   .lr-gap{ flex:0 0 auto; min-width:2em; padding:2px 10px; margin:0 2px; border-radius:8px;
-           background:var(--saffron-soft); color:var(--saffron-dark);
+           background:var(--saffron-soft); color:var(--saffron-text);
            border:1px dashed var(--saffron); font-weight:700; cursor:pointer; font-family:inherit;
            display:inline-flex; align-items:center; justify-content:center; line-height:1.4; }
   .lr-tokw{ flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center;
@@ -1082,10 +1087,10 @@ __FONTS__
              font-weight:700; font-family:inherit; line-height:1.4;
              transition:background-color .15s, color .15s, border-color .15s; }
   .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-soft);
-             color:var(--saffron-dark); border-color:var(--saffron-soft); outline:none; }
-  .mode-seg .ms-btn.on{ background:var(--saffron-soft); color:var(--saffron-dark);
+             color:var(--saffron-text); border-color:var(--saffron-soft); }
+  .mode-seg .ms-btn.on{ background:var(--saffron-soft); color:var(--saffron-text);
              border-color:var(--saffron-soft); box-shadow:none; }
-  .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-dark); }
+  .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
   /* purana chapter view: clean hairline cards; saffron only for numbers */
   .th-flow .theme{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
                    padding:16px 18px; margin:0 0 14px; cursor:pointer;
@@ -1116,11 +1121,11 @@ __FONTS__
   .card h3{ font-family:Georgia,serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
   .card .meta{ margin-top:10px; font-size:.8rem; color:var(--ink-soft); font-weight:600;}
-  .card .go{ margin-top:10px; color:var(--saffron-dark); font-weight:700; font-size:.88rem;}
+  .card .go{ margin-top:10px; color:var(--saffron-text); font-weight:700; font-size:.88rem;}
   .card .soon{ margin-top:10px; color:var(--muted); font-weight:600; font-size:.85rem; font-style:italic;}
   .part{ margin-bottom:26px;}
   .part-head{ display:flex; align-items:center; gap:12px; padding:0 0 6px; margin:18px 0 8px; flex-wrap:nowrap;}
-  .part-head .pnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem;}
+  .part-head .pnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:1.05rem;}
   .part-head .ptitle{ font-family:Georgia,serif; font-size:1.05rem; color:var(--teal); font-weight:600;
                       order:1; flex:0 1 auto; max-width:42%; }
   .part-head::before{ content:""; order:2; flex:1 1 20px; min-width:16px; height:1px;
@@ -1131,13 +1136,14 @@ __FONTS__
   .mini{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 14px; cursor:pointer;
          transition:.15s; box-shadow:0 4px 12px rgba(var(--shadow),.06);}
   .mini:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
-  .mini .vnum, .w-day .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.98rem; margin-bottom:5px; letter-spacing:.03em;}
+  .mini .vnum, .w-day .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.98rem; margin-bottom:5px; letter-spacing:.03em;}
   /* The topic line is quiet metadata, not a headline: same soft colour as its
      "Verse topic" prefix, so the Devanagari below stays the star of the card. */
   .mini .m-topic, .w-day .m-topic{ font-family:Georgia,serif; font-weight:600; color:var(--ink-soft); font-size:.9rem; margin-bottom:7px; line-height:1.35;}
   .mini .mt-lab, .w-day .mt-lab{ font-weight:400; font-style:italic; color:var(--ink-soft); font-size:.8rem; margin-right:2px;}
   .mini .padas, .w-day .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
-  .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-dark); font-size:.82rem; font-style:italic; margin-bottom:2px;}
+  .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-text); font-size:.82rem; font-style:italic; margin-bottom:2px;}
+  .mini .padas, .w-day .padas, .res-deva, .rd-deva{ overflow-wrap:anywhere; word-break:normal; }
   .mini .padas .gline, .w-day .padas .gline{ display:block; line-height:1.6;}
   .mini .padas .giast, .w-day .padas .giast, .res-deva .giast{
     display:block; font-family:Georgia,serif; font-style:italic; font-size:.82rem;
@@ -1176,13 +1182,13 @@ __FONTS__
   .fav-note textarea{ flex:1; border:1px solid var(--line); border-radius:8px; padding:5px 9px;
                       font:inherit; font-size:.88rem; background:var(--cream); color:var(--ink);
                       resize:none; overflow:hidden; min-height:34px;}
-  .fav-note textarea:focus{ outline:none; border-color:var(--saffron); background:var(--paper);}
+  .fav-note textarea:focus{ border-color:var(--saffron); background:var(--paper);}
 
   /* ---- continuous reading ---- */
   /* mūla: the verses run closer together, the way a printed pāṭha is set */
   .reading{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:14px 18px 6px;}
   /* the speaker is named only when the voice changes, so it must stand out */
-  .rd-spk{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--saffron-dark);
+  .rd-spk{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--saffron-text);
            font-weight:700; font-size:1rem; margin:20px 0 8px; padding-bottom:5px;
            border-bottom:2px solid var(--saffron-soft);}
   .rd-deva .rd-spk{ margin:6px 0 8px;}
@@ -1190,7 +1196,7 @@ __FONTS__
   .rd-v{ padding:12px 0 14px; border-bottom:1px solid var(--line); cursor:pointer; position:relative;}
   .rd-v:last-child{ border-bottom:none;}
   .rd-v:hover{ background:var(--teal-soft);}
-  .rd-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.82rem;}
+  .rd-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.82rem;}
   .rd-deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
             font-size:1.12rem; line-height:1.85; margin-bottom:5px;}
   .rd-tr{ color:var(--ink-soft); font-size:.95rem; line-height:1.6;}
@@ -1213,7 +1219,7 @@ __FONTS__
   .mini-crumb .bc-name{ color:var(--ink-soft); font-size:.8rem;}
   .mini-crumb .bc-cur{ background:var(--saffron-soft); border:1px solid var(--saffron); border-radius:12px;
              display:flex; flex-direction:column; align-items:flex-start; gap:1px; padding:8px 14px;}
-  .mini-crumb .bc-cur .bc-num{ color:var(--saffron-dark);}
+  .mini-crumb .bc-cur .bc-num{ color:var(--saffron-text);}
   .mini-crumb .bc-sep{ align-self:center; color:var(--line); font-weight:800; font-size:1rem; padding:0 2px;}
 
   /* the breadcrumb: quiet names, not a second strip of pills */
@@ -1256,16 +1262,29 @@ __FONTS__
             padding:7px 16px; font-size:.88rem; font-weight:700; font-family:inherit; line-height:1.4;
             transition:background-color .15s, color .15s, border-color .15s; }
   button.wc-chip{ cursor:pointer; }
-  button.wc-chip:hover, button.wc-chip:focus-visible{ background:var(--saffron-soft); color:var(--saffron-dark);
-            border-color:var(--saffron-soft); outline:none; }
-  .wc-chip.wc-cur{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
+  button.wc-chip:hover, button.wc-chip:focus-visible{ background:var(--saffron-soft); color:var(--saffron-text);
+            border-color:var(--saffron-soft); }
+  .wc-chip.wc-cur{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
   .wc-sep{ color:var(--muted); font-size:.78rem; }
 
   .welcome{ text-align:center; padding:44px 12px 30px; max-width:860px; margin:0 auto;}
-  .welcome .w-om{ font-size:3.6rem; color:var(--saffron); line-height:1; margin-bottom:14px;}
+  .welcome .w-om{ font-size:3.6rem; color:var(--saffron-text); line-height:1; margin-bottom:14px;}
   .welcome .view-title{ font-size:2rem;}
   .welcome .tool-btn.big{ font-size:1.02rem; padding:14px 36px; margin-top:20px;}
   .welcome .w-foot{ color:var(--ink-soft); font-size:.9rem; margin-top:30px; letter-spacing:.05em;}
+  /* Native disclosure keeps the first-visit guide quiet until someone asks. */
+  .welcome-guide{ max-width:560px; margin:12px auto 0; text-align:center; }
+  .welcome-guide summary{ display:list-item; width:fit-content; max-width:100%; margin:0 auto;
+                          padding:7px 12px; border-radius:999px; color:var(--teal);
+                          font-size:.86rem; font-weight:700; cursor:pointer; }
+  .welcome-guide summary::marker{ color:var(--saffron-text); }
+  @media (hover:hover){ .welcome-guide summary:hover{ background:var(--teal-soft); } }
+  .welcome-guide[open]{ padding:4px 16px 12px; background:var(--paper); text-align:left;
+                         border:1px solid var(--line); border-radius:12px; }
+  .welcome-guide[open] summary{ margin:0; }
+  .welcome-guide ol{ margin:6px 0 0; padding-left:24px; color:var(--ink-soft);
+                     font-size:.86rem; line-height:1.55; }
+  .welcome-guide li+li{ margin-top:5px; }
   /* The work-in-progress note. Deliberately the quietest thing on the screen:
      --ink-soft, small, and set off by a hairline rule so it reads as an aside
      from the author rather than a warning about the text. */
@@ -1277,7 +1296,7 @@ __FONTS__
   .welcome .w-day:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   /* A small oval tag, not a headline — the card already has a saffron frame,
      so the label wears the soft variant and lets the verse number lead. */
-  .welcome .wd-label{ display:table; margin:0 auto 12px; background:var(--saffron-soft); color:var(--saffron-dark);
+  .welcome .wd-label{ display:table; margin:0 auto 12px; background:var(--saffron-soft); color:var(--saffron-text);
     font-family:Georgia,serif; font-weight:600; font-size:.78rem; letter-spacing:.02em;
     border-radius:999px; padding:6px 18px; }
   /* the welcome card is a display piece, not a list item — centre it, while
@@ -1287,7 +1306,7 @@ __FONTS__
   /* The speaker is not part of the verse, so it must not read as verse text.
      Saffron + italic everywhere else in the app — match that here. */
   /* Verse number set inside the closing daṇḍas, as a printed edition does. */
-  .gl-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.8rem;}
+  .gl-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.8rem;}
 
   .grid.sections{ grid-template-columns:repeat(auto-fill, minmax(270px,1fr));}
   .card.sect h3{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:1.32rem;}
@@ -1296,7 +1315,7 @@ __FONTS__
 
   .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:1px solid var(--line);}
   .toolbar .searchwrap{ display:flex; align-items:center; gap:6px; flex:1; min-width:240px; max-width:640px;}
-  .toolbar input[type=search]{ flex:1; padding:9px 14px; border:1px solid var(--line); border-radius:999px; font-size:.92rem; background:var(--field); color:var(--ink); outline:none;}
+  .toolbar input[type=search]{ flex:1; padding:9px 14px; border:1px solid var(--line); border-radius:999px; font-size:.92rem; background:var(--field); color:var(--ink);}
   .toolbar input[type=search]:focus{ border-color:var(--saffron);}
   /* inline stroke icons: sized and coloured by the surrounding text, so they
      behave like glyphs, not pictures — and follow both themes for free */
@@ -1312,7 +1331,7 @@ __FONTS__
          border:none; border-radius:50%; background:transparent; color:var(--ink-soft);
          display:none; align-items:center; justify-content:center; cursor:pointer; padding:0; }
   .sw-x .ic{ margin:0; width:15px; height:15px; }
-  .sw-x:hover{ background:var(--saffron-soft); color:var(--saffron-dark); }
+  .sw-x:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
   .sw-field.has-x .sw-x{ display:flex; }
   .sw-field.has-x input[type=search]{ padding-right:40px; }
   .sw-field input[type=search]::-webkit-search-cancel-button{ -webkit-appearance:none; display:none; }
@@ -1321,14 +1340,14 @@ __FONTS__
   .tool-btn:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
   .tool-btn.primary{ background:var(--saffron); border-color:var(--saffron); color:var(--on-saffron);}
   .tool-btn.primary:hover{ background:var(--saffron-dark);}
-  .fav-btn{ background:var(--saffron-soft); border:1px solid var(--saffron); color:var(--saffron-dark); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
+  .fav-btn{ background:var(--saffron-soft); border:1px solid var(--saffron); color:var(--saffron-text); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
   .fav-btn.saved{ background:var(--saffron); color:var(--on-saffron);}
   .res-head{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
   .res-count{ color:var(--ink-soft); font-size:.9rem; margin-bottom:16px;}
   .res-card{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:12px; cursor:pointer; transition:.15s;}
   .res-card:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   .res-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
-  .res-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);}
+  .res-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);}
   .res-title{ font-weight:600; color:var(--teal); font-size:.9rem;}
   .res-deva{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1rem; line-height:1.55; background:var(--cream); border-radius:8px; padding:7px 10px; margin-bottom:6px;}
   .res-lit{ color:var(--ink-soft); font-size:.88rem; line-height:1.5;}
@@ -1340,27 +1359,41 @@ __FONTS__
           box-shadow:0 24px 60px rgba(0,0,0,.35); border:1px solid var(--line); position:relative; padding:24px 30px 28px;}
   .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
                    height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
-  .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft);}
+  .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft);}
   .m-part{ font-family:Georgia,serif; color:var(--teal); font-size:.95rem; font-weight:600;
            margin:0 52px 8px 0; line-height:1.4;}
-  .m-num{ font-family:Georgia,serif; font-size:1.2rem; color:var(--saffron-dark); font-weight:700;
+  .m-num{ font-family:Georgia,serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
           display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
+  .m-title{ margin:0; padding:0; flex:1 1 auto; min-width:0; color:inherit; font:inherit; }
   .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
   .m-meter{ display:inline-block; background:var(--teal-soft); color:var(--teal); font-size:.78rem; font-weight:700;
             padding:3px 12px; border-radius:999px; margin:6px 0 12px; letter-spacing:.03em;}
+  .m-readerbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px 12px; }
+  .m-readerbar .m-meter{ margin:6px 0 12px; }
+  .reader-size{ display:flex; align-items:center; gap:4px; margin:6px 0 12px; color:var(--ink-soft);
+                font: .78rem/1.3 system-ui,-apple-system,"Segoe UI",sans-serif; white-space:nowrap; }
+  .reader-size .reader-size-label{ font-weight:600; margin-right:3px; }
+  .reader-size .reader-size-value{ min-width:3.5ch; text-align:center; font-variant-numeric:tabular-nums; }
+  .reader-size button{ min-width:36px; min-height:34px; padding:4px 8px; border:1px solid var(--line);
+                       border-radius:999px; background:var(--paper); color:var(--teal); cursor:pointer;
+                       font:700 .82rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
+                       transition:background-color .15s,border-color .15s; }
+  .reader-size button:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft); }
+  .reader-size button:disabled{ opacity:.45; cursor:default; }
+  .reader-copy{ --reader-scale:1; }
   .m-verse{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:6px 0 4px;}
-  .m-verse .spk{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--saffron-dark); font-size:1.15rem;
+  .m-verse .spk{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--saffron-text); font-size:calc(1.15rem * var(--reader-scale,1));
                  font-style:italic; margin-bottom:8px; border-bottom:1px dashed var(--line); padding-bottom:6px;}
-  .m-verse .spk .iast{ font-family:Georgia, serif; font-size:.85rem; color:var(--ink-soft); margin-left:10px;}
+  .m-verse .spk .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-verse table{ width:100%; border-collapse:collapse;}
   .m-verse td{ vertical-align:top; padding:3px 2px;}
-  .m-verse td.pnum{ width:26px; font-family:Georgia,serif; color:var(--saffron-dark); font-weight:700; font-size:.9rem; padding-top:6px;}
-  .m-verse td.pd{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:1.35rem; color:var(--teal); line-height:1.7; padding-right:14px;}
-  .m-verse td.pi{ font-style:italic; color:var(--ink-soft); font-size:.92rem; padding-top:8px;}
-  .m-verse td.pi .danda{ color:var(--saffron-dark); font-weight:700;}
+  .m-verse td.pnum{ width:26px; font-family:Georgia,serif; color:var(--saffron-text); font-weight:700; font-size:.9rem; padding-top:6px;}
+  .m-verse td.pd{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:calc(1.35rem * var(--reader-scale,1)); color:var(--teal); line-height:1.7; padding-right:14px;}
+  .m-verse td.pi{ font-style:italic; color:var(--ink-soft); font-size:calc(.92rem * var(--reader-scale,1)); padding-top:8px;}
+  .m-verse td.pi .danda{ color:var(--saffron-text); font-weight:700;}
   .m-verse tr.pair td.pd{ padding-bottom:4px;}
-  .m-verse tr.spkrow td.pd.spk{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-dark); font-style:italic; padding:8px 2px 10px; border-bottom:1px dashed var(--line); font-size:1.1rem;}
-  .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia, serif; font-size:.85rem; color:var(--ink-soft); margin-left:10px;}
+  .m-verse tr.spkrow td.pd.spk{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic; padding:8px 2px 10px; border-bottom:1px dashed var(--line); font-size:calc(1.1rem * var(--reader-scale,1));}
+  .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-verse .spk-line:hover{ background:var(--saffron-soft);}
   .m-verse .spk-main{ border-bottom:1px dotted var(--saffron); }
   .m-verse .words{ display:none; margin-top:6px; background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:8px 12px; min-width:0; max-width:100%;}
@@ -1368,9 +1401,9 @@ __FONTS__
   .m-verse .words.mean-off .wmean{ display:none;}
   .m-verse .wrow{ padding:3px 0; border-bottom:1px dotted var(--line); min-width:0; max-width:100%;}
   .m-verse .wrow:last-child{ border-bottom:none;}
-  .m-verse .wrow .wdeva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:1.12rem; overflow-wrap:anywhere; word-break:break-word;}
-  .m-verse .wrow .wiast{ font-style:italic; color:var(--ink-soft); font-size:.88rem; margin-left:10px; overflow-wrap:anywhere; word-break:break-word;}
-  .m-verse .wrow .wmean{ display:block; color:var(--ink); font-size:.9rem; margin-left:14px; margin-top:1px; overflow-wrap:anywhere; word-break:break-word;}
+  .m-verse .wrow .wdeva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.12rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .wrow .wiast{ font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); margin-left:10px; overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .wrow .wmean{ display:block; color:var(--ink); font-size:calc(.9rem * var(--reader-scale,1)); margin-left:14px; margin-top:1px; overflow-wrap:anywhere; word-break:normal;}
   .words-bar{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
   .words-bar .wb-hint{ color:var(--ink-soft); font-size:.78rem; font-style:italic;}
   .words-bar .wb-btn{ background:var(--teal); color:var(--on-accent); border:none; padding:4px 14px; border-radius:999px; cursor:pointer; font-size:.8rem; font-weight:600;}
@@ -1380,20 +1413,25 @@ __FONTS__
   /* four pāda boxes in a 2x2 grid */
   .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
   .m-verse .pada-row{ display:flex; gap:12px;}
-  .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; cursor:pointer; transition:border-color .15s, background .15s;}
+  .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; transition:border-color .15s, background .15s;}
+  .m-verse .pada-box .pada-toggle{ display:block; width:100%; padding:0; margin:0; border:0;
+      background:transparent; color:inherit; text-align:left; font:inherit; cursor:pointer; }
   .m-verse .pada-box .pb-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; gap:8px;}
-  .m-verse .pada-box .pb-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.85rem; white-space:nowrap;}
+  .m-verse .pada-box .pb-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.85rem; white-space:nowrap;}
 
-  .m-verse .pada-box .pb-deva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:1.3rem; line-height:1.7; cursor:pointer; overflow-wrap:anywhere; word-break:break-word;}
+  .m-verse .pada-box .pb-deva{ display:block; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.3rem * var(--reader-scale,1)); line-height:1.7; overflow-wrap:anywhere; word-break:normal;}
   .m-verse .pada-box:hover{ background:var(--saffron-soft); border-color:var(--saffron);}
-  .m-verse .pada-box .pb-iast{ font-style:italic; color:var(--ink-soft); font-size:.88rem; overflow-wrap:anywhere; word-break:break-word;}
+  .m-verse .pada-box .pb-iast{ display:block; font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
   .m-verse .spk-mid{ margin:2px 0;}
-  .m-verse .spk-line{ margin:6px 0; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-dark); font-style:italic; font-size:1.05rem; cursor:pointer; border-radius:6px; padding:2px 4px;}
-  .m-verse .spk-line .iast{ font-family:Georgia, serif; font-size:.85rem; color:var(--ink-soft); margin-left:10px;}
+  .m-verse .spk-line{ display:block; width:100%; min-height:32px; margin:6px 0; border:0; background:transparent;
+      font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic;
+      font-size:calc(1.05rem * var(--reader-scale,1)); cursor:pointer; text-align:left;
+      border-radius:6px; padding:4px;}
+  .m-verse .spk-line .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-line{ margin-top:14px;}
   .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
                padding:3px 10px; border-radius:999px; margin-bottom:5px;}
-  .m-line .lt{ color:var(--ink); font-size:1rem;}
+  .m-line .lt{ color:var(--ink); font-size:calc(1rem * var(--reader-scale,1));}
   .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
   .m-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:10px;}
   .m-tail{ display:none;}   /* only needed where .m-nav is sticky (phones) */
@@ -1416,14 +1454,15 @@ __FONTS__
                   margin-left:auto; margin-right:auto;}
   footer .credit.attrib a{ color:var(--muted); text-decoration:underline;}
   .fade-in{ animation:fadein .28s ease;} @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
-  @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:1.12rem;} }
+  @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:calc(1.12rem * var(--reader-scale,1));} }
 
   /* ==================== MOBILE / TOUCH (Android · iOS) ==================== */
   html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   body{ -webkit-tap-highlight-color:rgba(232,145,44,.18); overscroll-behavior-y:none; }
   button, .card, .mini, .res-card, .theme, .pada-box, .spk-line, .lang-btn, .rd-v, .pl-mode, .lr-chip, .welcome .w-day{ -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   /* modern basics: visible keyboard focus, and stillness for those who ask */
-  :focus-visible{ outline:2px solid var(--saffron); outline-offset:2px; }
+  :focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+  header :focus-visible{ outline-color:#FFF8EC; }
   @media (prefers-reduced-motion: reduce){
     *, *::before, *::after{ animation:none !important; transition:none !important; }
   }
@@ -1469,17 +1508,19 @@ __FONTS__
     .tool-btn.primary:hover{ background:var(--saffron); border-color:var(--saffron); }
     .tool-btn:active, .lang-btn:active, .m-nav button:active{ filter:brightness(.93); }
     .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--paper); color:var(--ink-soft); border-color:var(--line); }
-    .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
+    .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
     .mode-seg .ms-btn:active{ background:var(--saffron-soft); }
     button.wc-chip:hover{ background:transparent; color:inherit; border-color:transparent; }
-    button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
-    button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+    button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-text); }
     .fav-move:hover:not(:disabled){ border-color:var(--line); background:transparent; }
     .fav-move:active:not(:disabled){ border-color:var(--teal); background:var(--teal-soft); }
     .modal .m-close:hover{ background:transparent; color:inherit; border-color:transparent; }
-    .modal .m-close:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    .modal .m-close:active{ background:var(--saffron-soft); color:var(--saffron-text); }
     .words-bar .wb-btn:hover{ background:var(--teal); }
     .words-bar .wb-btn:active{ background:var(--teal-mid); }
+    .reader-size button:hover:not(:disabled){ border-color:var(--line); background:var(--paper); }
+    .reader-size button:active:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft); }
     .m-nav .m-back:hover{ background:var(--teal-soft); color:var(--teal); }
     .m-nav .m-back:active{ background:var(--teal); color:var(--on-accent); }
     .m-verse .pada-box:hover, .pada-box:hover{ background:var(--paper); border-color:var(--line); }
@@ -1487,7 +1528,7 @@ __FONTS__
     .m-verse .spk-line:hover{ background:none; }
     .m-verse .spk-line:active{ background:var(--saffron-soft); }
     .sw-x:hover{ background:transparent; color:inherit; }
-    .sw-x:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    .sw-x:active{ background:var(--saffron-soft); color:var(--saffron-text); }
     .res-remove:hover{ border-color:var(--line); color:var(--ink-soft); }
     .res-remove:active{ border-color:var(--danger); color:var(--danger); }
 
@@ -1580,15 +1621,16 @@ __FONTS__
     .m-num{ font-size:1.08rem; }
     .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
     .m-part{ font-size:.82rem; }
+    .reader-size button{ min-width:40px; min-height:40px; }
     .m-verse{ padding:12px 12px; }
     .words-bar .wb-btn{ min-height:34px; padding:6px 14px; }
     /* pādas stack one per row — two side by side is unreadable on a phone */
     .m-verse .pada-row{ flex-direction:column; gap:10px; }
     .m-verse .pada-grid{ gap:10px; }
     .m-verse .pada-box{ padding:10px 12px; }
-    .m-verse .pada-box .pb-deva{ font-size:1.24rem; }
+    .m-verse .pada-box .pb-deva{ font-size:calc(1.24rem * var(--reader-scale,1)); }
     .m-verse .wrow{ padding:5px 0; }
-    .m-line .lt{ font-size:.98rem; }
+    .m-line .lt{ font-size:calc(.98rem * var(--reader-scale,1)); }
     /* nav bar pinned to the bottom of the sheet, thumb-reachable */
     /* A sticky bar floats above the content, so the sheet ends with a spacer
        (.m-tail) tall enough for the last line to clear it when fully scrolled.
@@ -1610,8 +1652,12 @@ __FONTS__
   @media (max-width:380px){
     .header-inner h1{ font-size:.98rem; }
     .lang-btn{ font-size:.76rem; padding:9px 4px; }
-    .m-verse .pada-box .pb-deva{ font-size:1.16rem; }
-    .toolbar .tool-btn{ font-size:.76rem; }
+    .m-verse .pada-box .pb-deva{ font-size:calc(1.16rem * var(--reader-scale,1)); }
+    .toolbar .tool-btn{ flex:1 1 0; min-width:0; min-height:44px; padding:6px 4px;
+                         font-size:.72rem; line-height:1.15; white-space:normal;
+                         display:flex; flex-direction:column; justify-content:center; gap:2px; }
+    .toolbar .tool-btn .ic{ width:1em; height:1em; margin:0; }
+    .toolbar .tool-btn span{ max-width:100%; overflow-wrap:anywhere; text-align:center; }
   }
 
   /* landscape phones: keep the sheet scrollable, shrink vertical padding */
@@ -1629,7 +1675,7 @@ __FONTS__
   .ns-box{ max-width:640px; margin:10px auto 40px; background:var(--paper);
            border:1px solid var(--saffron); border-radius:16px; padding:22px 22px 24px;
            box-shadow:0 8px 22px rgba(var(--shadow),.10); }
-  .ns-box .ns-om{ font-size:2.6rem; color:var(--saffron); text-align:center; line-height:1; margin-bottom:6px; }
+  .ns-box .ns-om{ font-size:2.6rem; color:var(--saffron-text); text-align:center; line-height:1; margin-bottom:6px; }
   .ns-box h2{ font-family:Georgia,serif; color:var(--teal); font-size:1.25rem; text-align:center; margin-bottom:12px; }
   .ns-box p{ color:var(--ink); font-size:.95rem; margin-bottom:10px; }
   .ns-box .ns-how{ background:var(--saffron-soft); border-radius:10px; padding:10px 12px; }
@@ -1672,10 +1718,10 @@ __FONTS__
       <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     </div>
     <div class="langbar" id="langbar">
-      <div class="seg">
-        <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
-        <button class="lang-btn" data-lang="ne" onclick="setLang('ne')">नेपाली</button>
-        <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
+      <div class="seg" role="group" aria-label="Interface language">
+        <button class="lang-btn on" data-lang="en" lang="en" aria-pressed="true" onclick="setLang('en')">English</button>
+        <button class="lang-btn" data-lang="ne" lang="ne" aria-pressed="false" onclick="setLang('ne')">नेपाली</button>
+        <button class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false" onclick="setLang('hi')">हिन्दी</button>
       </div>
       <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
     </div>
@@ -1684,10 +1730,10 @@ __FONTS__
 
 <div class="toolbar">
   <button class="tool-btn" onclick="goHome()" id="homeBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span id="homeLbl">Home</span></button>
-  <div class="searchwrap">
+  <div class="searchwrap" role="search" aria-label="Search verses">
     <div class="sw-field">
       <span class="sw-ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
-      <input type="search" id="searchInput" placeholder="…" aria-label="search" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
+      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
       <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
   </div>
@@ -1697,12 +1743,12 @@ __FONTS__
 </div>
 
 <div class="wrap">
-  <nav class="crumbs" id="crumbs"></nav>
+  <nav class="crumbs" id="crumbs" aria-label="Breadcrumb navigation"></nav>
   <!-- Announces each view change to screen readers. The app never reloads, so
        without this a reader who taps "Chapter 2" hears silence: the heading
        changed but focus did not move. Polite, so it never interrupts. -->
   <p id="srStatus" role="status" aria-live="polite" class="sr-only"></p>
-  <main id="view"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ</div></main>
+  <main id="view" tabindex="-1"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ</div></main>
 
   <!-- Shown only when JavaScript is disabled — e.g. the in-app file viewers of
        WhatsApp / Gmail / some file managers, which render HTML without running
@@ -1734,8 +1780,8 @@ __FONTS__
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
 </footer>
 
-<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
-  <div class="modal" id="modal"></div>
+<div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></div>
 </div>
 
 <script>
@@ -1746,7 +1792,14 @@ let DATA = null;
 const GITA_CH = {};
 __DATALOADER__
 const UI = __UI__;
-const state = { chapter:null, theme:null, idx:0, lang:'en', view:'welcome', section:null, shared:null };
+const READER_SIZES = [80,90,100,110,120,130,140];
+function savedReaderSize(){
+  let size = 100;
+  try{ size = Number(localStorage.getItem('gitaReaderSize')); }catch(e){}
+  return READER_SIZES.includes(size) ? size : 100;
+}
+const state = { chapter:null, theme:null, idx:0, lang:'en', view:'welcome', section:null, shared:null,
+                readerSize:savedReaderSize() };
 function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
 function L(k){ const u = UI[state.lang] || UI.en; return (u[k] !== undefined) ? u[k] : k; }
 function Lof(cur,tot){ const rev=['ne','hi'].includes(state.lang);
@@ -1771,10 +1824,17 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   $('#randLbl').textContent = L('random'); $('#favLbl').textContent = L('favorites');
   $('#homeLbl').textContent = L('home');
   $('#searchInput').placeholder = L('search_ph');
+  $('#searchInput').setAttribute('aria-label', L('search_label'));
+  const search = document.querySelector('.searchwrap'); if(search) search.setAttribute('aria-label', L('search_label'));
+  const langGroup = document.querySelector('#langbar .seg'); if(langGroup) langGroup.setAttribute('aria-label', L('language'));
+  const breadcrumb = $('#crumbs'); if(breadcrumb) breadcrumb.setAttribute('aria-label', L('breadcrumb'));
   { const pb = $('#playLbl'); if(pb) pb.textContent = L('play'); }
   searchX(); }
 function setLang(l){ state.lang = l; try{ document.documentElement.lang = l; }catch(e){}
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('on', b.dataset.lang===l));
+  document.querySelectorAll('#langbar .seg .lang-btn').forEach(b=>{
+    const selected = b.dataset.lang === l; b.classList.toggle('on', selected);
+    b.setAttribute('aria-pressed', String(selected));
+  });
   applyStatic();
   // Remember which verse the modal is showing: doSearch()/showFavorites()
   // below null out state.chapter/state.theme while re-rendering the
@@ -1881,6 +1941,7 @@ function doSearch(){
   if(!allChReady()){ loadAllChapters().then(doSearch); return; }
   const q = ($('#searchInput').value || '').trim();
   if(!q){ clearSearch(); return; }
+  SRCH_HITS = [];
   rememberOrigin();
   state.view = 'search'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
   const nq = normTxt(q);
@@ -1903,9 +1964,10 @@ function doSearch(){
         msg = L('oob_chapter');
       }
       if(msg){
-        view.innerHTML = `<div class="res-head fade-in">${esc(L('search_results'))}</div>
+        view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
           <div class="res-count fade-in">${numL(0)} ${esc(L('results'))}</div>
           <div class="view-sub fade-in">${esc(msg)}</div>`;
+        announceView();
         return;
       }
     }
@@ -1921,24 +1983,26 @@ function doSearch(){
     });
   }
   if(hits.length === 0){
-    view.innerHTML = `<div class="res-head fade-in">${esc(L('search_results'))}</div>
+    view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
       <div class="res-count fade-in">${numL(0)} ${esc(L('results'))}</div>
       <div class="view-sub fade-in">${esc(L('no_results'))}</div>`;
+    announceView();
     return;
   }
   SRCH_HITS = hits;
-  view.innerHTML = `<div class="res-head fade-in">${esc(L('search_results'))}</div>
+  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
     <div class="res-count fade-in">${numL(hits.length)} ${esc(L('results'))}</div>
     <div class="grid verses fade-in">${hits.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
       const pi = th.parts.indexOf(part);
-      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'search',${i})">
+      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
         <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
-        <div class="padas">${padaBlockDeva(v)}</div>
+        <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
         <div class="vhint">${esc(T(v.paras).slice(0,80))}…</div>
       </div>`;}).join('')}</div>`;
+  announceView();
 }
 function clearSearch(){
   $('#searchInput').value = '';
@@ -2010,7 +2074,7 @@ function toggleFav(id){
   if(i >= 0) FAV.splice(i,1); else FAV.push(id);
   favSave();
   const b = document.getElementById('favBtn');
-  if(b){ const on = FAV.includes(id); b.innerHTML = (on ? ICONS.starF : ICONS.star) + esc(L(on ? 'saved_verse' : 'save_verse')); b.classList.toggle('saved', on); }
+  if(b){ const on = FAV.includes(id); b.innerHTML = (on ? ICONS.starF : ICONS.star) + esc(L(on ? 'saved_verse' : 'save_verse')); b.classList.toggle('saved', on); b.setAttribute('aria-pressed', String(on)); }
   if(state.view === 'favorites') showFavorites();
 }
 /* Search and Favorites are "detours": they replace the main view but the reader
@@ -2042,27 +2106,30 @@ function showFavorites(){
   const saved = FAV.map(verseLoc).filter(Boolean);
   FAV_LIST = saved;
   if(saved.length === 0){
-    view.innerHTML = `<div class="res-head fade-in">${esc(L('favorites'))}</div>
+    view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('favorites'))}</div>
       <div class="view-sub fade-in">${esc(L('no_favorites'))}</div>`;
+    announceView();
     return;
   }
-  view.innerHTML = `<div class="res-head fade-in">${esc(L('favorites'))}</div>
+  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('favorites'))}</div>
     <div class="res-count fade-in">${numL(saved.length)} ${esc(L('results'))}</div>
     ${saved.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const note = FAVNOTE[v.n] || '';
-      return `<div class="res-card" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i})">
+      return `<div class="res-card" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i},this.querySelector('.res-open'))">
+        <button type="button" class="sr-only focusable res-open" aria-label="${esc(L('open_verse'))} ${esc(fmtNL(v.n))}"
+          onclick="event.stopPropagation();openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i},this)"></button>
         <div class="res-top"><span class="res-num">${esc(fmtNL(v.n))}</span><span class="res-title">${esc(T(ch.names))}</span>
         <span class="fav-tools" onclick="event.stopPropagation()">
-          <button class="fav-move" onclick="moveFav(${i},-1)" ${i===0?'disabled':''} aria-label="up">${L('fav_up')}</button>
-          <button class="fav-move" onclick="moveFav(${i},1)" ${i===saved.length-1?'disabled':''} aria-label="down">${L('fav_down')}</button>
+          <button class="fav-move" onclick="moveFav(${i},-1)" ${i===0?'disabled':''} aria-label="${esc(L('fav_move_up'))}" title="${esc(L('fav_move_up'))}">${L('fav_up')}</button>
+          <button class="fav-move" onclick="moveFav(${i},1)" ${i===saved.length-1?'disabled':''} aria-label="${esc(L('fav_move_down'))}" title="${esc(L('fav_move_down'))}">${L('fav_down')}</button>
           <button class="res-remove" onclick="removeFav('${esc(v.n)}')">${esc(L('remove_fav'))}</button>
         </span></div>
-        <div class="res-deva">${padaBlockDeva(v)}</div>
+        <div class="res-deva" lang="sa">${padaBlockDeva(v)}</div>
         <div class="res-lit">${esc(T(v.lits))}</div>
         <div class="fav-note" onclick="event.stopPropagation()">
-          <label>${esc(L('fav_note'))}</label>
-          <textarea rows="1" placeholder="${esc(L('fav_note_ph'))}"
+          <label for="fav-note-${esc(v.n)}">${esc(L('fav_note'))}</label>
+          <textarea id="fav-note-${esc(v.n)}" rows="1" placeholder="${esc(L('fav_note_ph'))}"
             oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
             onchange="setFavNote('${esc(v.n)}', this.value)">${esc(note)}</textarea>
         </div>
@@ -2071,6 +2138,7 @@ function showFavorites(){
   view.querySelectorAll('.fav-note textarea').forEach(t=>{
     if(t.value){ t.style.height='auto'; t.style.height=t.scrollHeight+'px'; }
   });
+  announceView();
 }
 function removeFav(id){
   const i = FAV.indexOf(id);
@@ -2125,6 +2193,11 @@ function scrollViewTop(){
    signal a non-sighted reader gets is this live region — the same signature
    scrollViewTop already dedupes on, so it fires exactly once per real change
    and stays silent when a re-render lands on the same place. */
+function resultCountLabel(n){
+  const count = numL(n);
+  if(state.lang === 'en') return `${count} ${n === 1 ? 'result' : 'results'}`;
+  return `${count} ${L('results')}`;
+}
 function announceView(){
   const el = document.getElementById('srStatus');
   if(!el) return;
@@ -2132,8 +2205,10 @@ function announceView(){
   try{
     const ch = (state.chapter != null && DATA[state.chapter]) ? DATA[state.chapter] : null;
     if(state.view === 'welcome')        msg = L('welcome_title');
-    else if(state.view === 'search')    msg = L('search_results');
-    else if(state.view === 'favorites') msg = L('favorites');
+    else if(state.view === 'search')
+      msg = `${L('search_results')} · ${resultCountLabel(SRCH_HITS.length)}`;
+    else if(state.view === 'favorites')
+      msg = `${L('favorites')} · ${resultCountLabel(FAV_LIST.length)}`;
     else if(state.view === 'verses' && ch && state.theme != null)
       msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.themes[state.theme].titles)}`;
     else if(ch) msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`;
@@ -3153,6 +3228,14 @@ function showWelcome(){
       <p class="view-sub">${esc(L('welcome_sub'))}</p>
       <div id="wDay"></div>
       <button class="tool-btn primary big" onclick="showSections()">${esc(L('welcome_enter'))}</button>
+      <details class="welcome-guide">
+        <summary>${esc(L('guide_explore'))}</summary>
+        <ol>
+          <li>${esc(L('guide_way'))}</li>
+          <li>${esc(L('guide_chapter'))}</li>
+          <li>${esc(L('guide_verse'))}</li>
+        </ol>
+      </details>
       <div class="w-foot">${esc(L('welcome_foot'))}</div>
     </div>`;
   const paint = (dv, shared)=>{
@@ -3160,11 +3243,11 @@ function showWelcome(){
     const c = DATA[dv.ci], v = verseAt(dv);
     const part = sutraAt(c.themes[dv.ti], dv.si).part;
     const el = document.getElementById('wDay'); if(!el) return;
-    el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book')">
+    el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
           <div class="wd-label">${esc(shared ? L('shared_label') : L('verse_of_day'))}</div>
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
-          <div class="padas">${padaBlockDeva(v)}</div>
+          <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
           <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras).slice(0,80)) + '…'}</div>
         </div>`;
   };
@@ -3184,7 +3267,7 @@ function sectionCard(k, chip, title, desc){
 function showSections(){
   state.view='sections'; state.chapter=null; state.theme=null; state.section=null; state.shared=null; persistView(); renderCrumbs();
   view.innerHTML = `
-    <div class="view-title fade-in">${esc(L('sections_title'))}</div>
+    <div class="view-title fade-in" role="heading" aria-level="2">${esc(L('sections_title'))}</div>
     <div class="view-sub fade-in">${esc(L('sections_sub'))}</div>
     <div class="grid sections fade-in">
       ${sectionCard(1, chaptersRange(1,6), L('sec_karma'), L('sec_karma_desc'))}
@@ -3206,7 +3289,7 @@ function wayCrumbs(items){
      final crumb — and the chapter crumb before it stays a LIVE link back to
      the choice page (owner 2026-08-30: landing in a chapter left him no way
      back; wayCrumbs used to kill the action of a last-item link). */
-  return `<nav class="way-crumb fade-in" aria-label="breadcrumb">` + items.map((it,i)=>{
+  return `<nav class="way-crumb fade-in" aria-label="${esc(L('breadcrumb'))}">` + items.map((it,i)=>{
     const last = i === items.length - 1;
     const sep = i ? `<span class="wc-sep" aria-hidden="true">›</span>` : '';
     if(!last) return sep + `<button class="wc-chip wc-link" onclick="${it[1]}">${esc(it[0])}</button>`;
@@ -3230,7 +3313,7 @@ function modeSwitch(ci){
           : state.view === 'learn'  ? 'learn'
           : (state.readMode || 'full');
   const btn = (mode, lab, fn, tip) =>
-    `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" onclick="${fn}">${lab}</button>`;
+    `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
     <div class="mode-lbl">${esc(L('choose_title'))}</div>
     <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
@@ -3245,7 +3328,7 @@ function chTitle(ch){
   const head = state.lang === 'en'
     ? `<span class="chdeva">${ch.deva}</span> · ${name}`
     : name;
-  return `<div class="view-title fade-in">${head}</div>`;
+  return `<div class="view-title fade-in" role="heading" aria-level="2">${head}</div>`;
 }
 function showThemes(ci){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showThemes(ci)); return; }
@@ -3315,8 +3398,8 @@ function showRead(ci, mode){
         li++;
       }
     }
-    return `<div class="rd-v" role="button" tabindex="0" onclick="openModal(${ci},${ti},${idx},'read')">
-      <div class="rd-deva">${inner}</div>
+    return `<div class="rd-v" role="button" tabindex="0" onclick="openModal(${ci},${ti},${idx},'read',null,this)">
+      <div class="rd-deva" lang="sa">${inner}</div>
       ${state.readMode === 'full' ? `<div class="rd-lb">${esc(L('literal'))}:</div><div class="rd-tr">${esc(T(sv.lits))}</div><div class="rd-lb">${esc(L('in_other_words'))}:</div><div class="rd-par">${esc(T(sv.paras))}</div>` : ''}
     </div>`;
   }).join('');
@@ -3401,9 +3484,9 @@ function showVerses(ci,ti){
       </div>
       <div class="grid verses">
         ${p.sutras.map((s,si)=>`
-          <div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${flatIndex(t,p,si)},'theme')">
+          <div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${flatIndex(t,p,si)},'theme',null,this)">
             <div class="vnum">${L('verse')} ${fmtNL(s.n)}</div>
-            <div class="padas">${padaBlockDeva(s)}</div>
+            <div class="padas" lang="sa">${padaBlockDeva(s)}</div>
             <div class="vhint">${esc(T(s.paras).slice(0,80))}…</div>
           </div>`).join('')}
       </div>
@@ -3415,7 +3498,7 @@ function showVerses(ci,ti){
          page itself, so the reader arrived at a description with no subject.
          Same shape as the learn path's theme screen: title, then range, then
          the description. -->
-    <div class="view-title fade-in">${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></div>
+    <div class="view-title fade-in" role="heading" aria-level="2">${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></div>
     <div class="view-sub fade-in">${esc(T(t.descs))}</div>
     <div class="view-sub fade-in">${numL(vCount(t))} ${vCount(t)===1?L('verse'):L('verses')}. ${L('click_hint')}.</div>
     ${themeNav(ci, ti)}
@@ -3433,8 +3516,17 @@ function themeBounds(t){
   let n = 0; for(const p of t.parts) n += p.sutras.length;
   return {start:0, end:Math.max(0, n-1)};
 }
-function openModal(ci,ti,si, mode, navIdx){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx)); return; }
+function setAppInert(inert){
+  document.querySelectorAll('body > header, body > .toolbar, body > .wrap, body > footer')
+    .forEach(el=>{ el.inert = inert; });
+}
+function openModal(ci,ti,si, mode, navIdx, invoker){
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx, invoker)); return; }
+  const bg = $('#modalBg');
+  if(!bg.classList.contains('open')){
+    const active = document.activeElement;
+    MODAL_RETURN_FOCUS = invoker || (active && active !== document.body ? active : null);
+  }
   mode = mode || 'theme';
   state.chapter=ci; state.theme=ti; state.idx=si; state.mode=mode;
   state.gpos = VERSES.findIndex(e => e.ci===ci && e.ti===ti && e.si===si);
@@ -3456,7 +3548,10 @@ function openModal(ci,ti,si, mode, navIdx){
   } else if(mode === 'search'){ mode = 'book'; }
   else if(mode === 'fav'){ state.navList = FAV_LIST; state.navIdx = navIdx || 0; }
   state.mode = mode;
-  fillModal(); $('#modalBg').classList.add('open'); document.body.style.overflow='hidden';
+  fillModal();
+  bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
+  setAppInert(true); document.body.style.overflow='hidden';
+  const close = $('#modal .m-close'); if(close) close.focus({preventScroll:true});
   pushModalHistory();
   /* every verse has an address: the sheet writes #v=2.47 so the open verse
      can be shared and restored; the history entry keeps the old URL, so back
@@ -3464,9 +3559,18 @@ function openModal(ci,ti,si, mode, navIdx){
   try{ history.replaceState({gitaModal:true}, '', '#v=' + sutraAt(DATA[ci].themes[ti], si).s.n); }catch(e){}
 }
 function closeModal(){
-  const wasOpen = $('#modalBg').classList.contains('open');
-  $('#modalBg').classList.remove('open'); document.body.style.overflow='';
-  if(wasOpen) popModalHistory();
+  const bg = $('#modalBg');
+  const wasOpen = bg.classList.contains('open');
+  bg.classList.remove('open'); document.body.style.overflow='';
+  if(wasOpen){
+    setAppInert(false);
+    const target = MODAL_RETURN_FOCUS && MODAL_RETURN_FOCUS.isConnected && !MODAL_RETURN_FOCUS.disabled
+      ? MODAL_RETURN_FOCUS : document.getElementById('view');
+    MODAL_RETURN_FOCUS = null;
+    if(target && target.focus) target.focus({preventScroll:true});
+    bg.setAttribute('aria-hidden','true');
+    popModalHistory();
+  }
   persistView();
 }
 /* ---------- share a verse: native share sheet where available, else copy ---------- */
@@ -3507,7 +3611,7 @@ function copyVerseLink(){
     ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); copied(); }
 }
 /* ---------- mobile: Android hardware / iOS swipe "back" closes the verse sheet ---------- */
-let MODAL_HIST = false, MODAL_POPPING = false;
+let MODAL_HIST = false, MODAL_POPPING = false, MODAL_RETURN_FOCUS = null;
 function pushModalHistory(){
   if(MODAL_HIST) return;
   try{ history.pushState({gitaModal:true}, ''); MODAL_HIST = true; }catch(e){}
@@ -3538,52 +3642,65 @@ function fillModal(){
     else pads.push(it);
   }
   const LI = {en:0, ne:1, hi:2}[state.lang] || 0;
-  function wordsHtml(it){
-    return (it.words||[]).map(w=>`<div class="wrow"><span class="wdeva">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('');
+  let speakerId = 0;
+  function wordsHtml(it, id){
+    return `<div class="words" id="${id}">${(it.words||[]).map(w=>`<div class="wrow"><span class="wdeva" lang="sa">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('')}</div>`;
   }
   function spkHtml(list){
-    return list.map(x=>`
-      <div class="spk-line" onclick="toggleWords(this)">
-        <span class="spk-main">${x.d} <span class="iast" lang="sa-Latn">${esc(x.t)}</span></span>
-        <div class="words">${wordsHtml(x)}</div>
-      </div>`).join('');
+    return list.map(x=>{
+      const id = `words-speaker-${speakerId++}`;
+      return `<button type="button" class="spk-line" aria-expanded="false" aria-controls="${id}" aria-describedby="wordsHint" onclick="toggleWords(this)">
+        <span class="spk-main" lang="sa">${x.d} <span class="iast" lang="sa-Latn">${esc(x.t)}</span></span>
+      </button>${wordsHtml(x,id)}`;
+    }).join('');
   }
   function boxHtml(pad, idx, total){
-    return `<div class="pada-box" onclick="toggleWords(this)">
-      <div class="pb-top">
-        <span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span>
-      </div>
-      <div class="pb-deva">${pad.d}${pDanda(idx,total)}</div>
-      <div class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</div>
-      <div class="words">${wordsHtml(pad)}</div>
+    const id = `words-pada-${idx}`;
+    return `<div class="pada-box">
+      <button type="button" class="pada-toggle" aria-expanded="false" aria-controls="${id}" aria-describedby="wordsHint" onclick="toggleWords(this)">
+        <span class="pb-top"><span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span></span>
+        <span class="pb-deva" lang="sa">${pad.d}${pDanda(idx,total)}</span>
+        <span class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</span>
+      </button>${wordsHtml(pad,id)}
     </div>`;
   }
   $('#modal').innerHTML = `
-    <button class="m-close" onclick="closeModal()">✕</button>
+    <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
-    <div class="m-num">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span>
+    <div class="m-num"><h2 class="m-title" id="modalTitle" tabindex="-1">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span></h2>
       <button class="fav-btn" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
-      <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
+      <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" aria-pressed="${FAV.includes(s.n)}" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
     <div class="share-panel" id="sharePanel">
       <div class="sp-hint">${L('share_hint')}</div>
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
     </div>
-    <div class="m-meter">${esc(meterText(s))}</div>
-    <div class="m-verse">
-      <div class="words-bar">
-        <span class="wb-hint">${L('click_hint_pada')} ·</span>
-        <button class="wb-btn" onclick="toggleAllMeanings(this)" disabled>${ICONS.eyeOff}<span>${L('hide_meanings')}</span></button>
-      </div>
-      ${spkHtml(topS)}
-      <div class="pada-grid">
-        <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
-        ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
-        ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
+    <div class="m-readerbar">
+      <div class="m-meter">${esc(meterText(s))}</div>
+      <div class="reader-size" role="group" aria-label="${esc(L('reader_size'))}">
+        <span class="reader-size-label">${esc(L('reader_size'))}</span>
+        <button type="button" id="readerSizeDown" onclick="stepReaderSize(-1)" aria-label="${esc(L('reader_size_decrease'))}" title="${esc(L('reader_size_decrease'))}">A−</button>
+        <span class="reader-size-value" id="readerSizeValue" aria-live="polite" aria-atomic="true">${numL(state.readerSize)}%</span>
+        <button type="button" id="readerSizeUp" onclick="stepReaderSize(1)" aria-label="${esc(L('reader_size_increase'))}" title="${esc(L('reader_size_increase'))}">A+</button>
+        <button type="button" onclick="resetReaderSize()" aria-label="${esc(L('reader_size_reset'))}" title="${esc(L('reader_size_reset'))}">↺</button>
       </div>
     </div>
-    <div class="m-line"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
-    <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+    <div class="reader-copy">
+      <div class="m-verse">
+        <div class="words-bar">
+          <span class="wb-hint" id="wordsHint">${L('click_hint_pada')} ·</span>
+          <button class="wb-btn" onclick="toggleAllMeanings(this)" disabled aria-pressed="false">${ICONS.eyeOff}<span>${L('hide_meanings')}</span></button>
+        </div>
+        ${spkHtml(topS)}
+        <div class="pada-grid">
+          <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
+          ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
+          ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
+        </div>
+      </div>
+      <div class="m-line"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
+      <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+    </div>
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
       ${state.mode==='random'
@@ -3606,14 +3723,36 @@ function fillModal(){
              <span class="m-count">${Lof((state.navIdx||0)+1, state.navList?state.navList.length:1)}</span>
              <button onclick="navSutra(1)" ${(state.navIdx||0) < (state.navList?state.navList.length-1:0)?'':'disabled'}>${L('next')}</button>`}
     </div>`;
+  applyReaderSize();
+}
+function setReaderSize(size){
+  if(!READER_SIZES.includes(size)) return;
+  state.readerSize = size;
+  try{ localStorage.setItem('gitaReaderSize', String(size)); }catch(e){}
+  applyReaderSize();
+}
+function stepReaderSize(delta){
+  const i = READER_SIZES.indexOf(state.readerSize);
+  setReaderSize(READER_SIZES[Math.max(0, Math.min(READER_SIZES.length-1, i+delta))]);
+}
+function resetReaderSize(){ setReaderSize(100); }
+function applyReaderSize(){
+  const reader = document.querySelector('#modal .reader-copy');
+  if(reader) reader.style.setProperty('--reader-scale', String(state.readerSize / 100));
+  const value = document.getElementById('readerSizeValue');
+  if(value) value.textContent = numL(state.readerSize) + '%';
+  const down = document.getElementById('readerSizeDown');
+  const up = document.getElementById('readerSizeUp');
+  if(down) down.disabled = state.readerSize <= READER_SIZES[0];
+  if(up) up.disabled = state.readerSize >= READER_SIZES[READER_SIZES.length-1];
 }
 // toggle pada-chheda (word split) open/closed on the clicked element's box/line
 function toggleWords(el){
-  const cont = el.closest('.pada-box, .spk-line');
-  if(!cont) return;
-  const words = cont.querySelector('.words');
+  const id = el.getAttribute('aria-controls');
+  const words = id ? document.getElementById(id) : null;
   if(!words) return;
   const open = words.classList.toggle('open');
+  el.setAttribute('aria-expanded', String(open));
   refreshWordsBtn();
 }
 /* The master hide/show switch only means something once at least one quarter
@@ -3626,6 +3765,7 @@ function refreshWordsBtn(){
   btn.disabled = !anyOpen;
   if(!anyOpen){   // fresh slate: next opening shows meanings again
     btn.dataset.state = '';
+    btn.setAttribute('aria-pressed', 'false');
     btn.innerHTML = ICONS.eyeOff + `<span>${esc(L('hide_meanings'))}</span>`;
     document.querySelectorAll('#modal .words').forEach(w=>w.classList.remove('mean-off'));
   }
@@ -3634,6 +3774,7 @@ function refreshWordsBtn(){
 function toggleAllMeanings(btn){
   const hide = btn.dataset.state !== 'hidden';   // meanings start visible → first click hides
   btn.dataset.state = hide ? 'hidden' : 'shown';
+  btn.setAttribute('aria-pressed', String(hide));
   btn.innerHTML = (hide ? ICONS.eye : ICONS.eyeOff) + `<span>${esc(L(hide ? 'show_meanings' : 'hide_meanings'))}</span>`;
   document.querySelectorAll('#modal .words').forEach(w=>{
     w.classList.toggle('mean-off', hide);
@@ -3673,6 +3814,7 @@ function navSutra(d){
   state.gpos = VERSES.findIndex(e => e.ci===state.chapter && e.ti===state.theme && e.si===state.idx);
   if(state.gpos < 0) state.gpos = 0;
   fillModal();
+  const title = $('#modalTitle'); if(title) title.focus({preventScroll:true});
   const m = $('#modal'); if(m) m.scrollTo({top:0, behavior:'smooth'});
 }
 function backToTheme(){ closeModal(); showVerses(state.chapter, state.theme); }
@@ -3684,14 +3826,29 @@ document.addEventListener('keydown', e=>{
     e.preventDefault(); document.activeElement.click(); return;
   }
   const tag = (e.target && e.target.tagName) ? e.target.tagName : '';
-  if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
   if($('#modalBg').classList.contains('open')){
-    if(e.key==='Escape') closeModal();
+    if(e.key==='Tab'){
+      const modal = $('#modal');
+      const focusables = Array.from(modal.querySelectorAll(
+        'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+      )).filter(el=>el.getClientRects().length>0);
+      if(!focusables.length){ e.preventDefault(); modal.focus(); return; }
+      const first = focusables[0], last = focusables[focusables.length-1];
+      if(e.shiftKey && (document.activeElement===first || !modal.contains(document.activeElement))){
+        e.preventDefault(); last.focus();
+      } else if(!e.shiftKey && (document.activeElement===last || !modal.contains(document.activeElement))){
+        e.preventDefault(); first.focus();
+      }
+      return;
+    }
+    if(e.key==='Escape'){ closeModal(); return; }
     if(state.mode==='random') return;
+    if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
     if(e.key==='ArrowLeft') navSutra(-1);
     if(e.key==='ArrowRight') navSutra(1);
     return;
   }
+  if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
   if(state.view === 'learn' && LV && LV.vs){
     if(e.key==='ArrowLeft'){ e.preventDefault(); lrMeetGo(-1); }
     if(e.key==='ArrowRight'){ e.preventDefault(); lrMeetGo(1); }
@@ -4034,10 +4191,10 @@ CHAPTER_CSS = _ch_font + """
    full --ink, flattening the hierarchy on all 18 pages. Keep the two names
    identical — source/check_chapter_css.py now fails the build if they drift. */
 :root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --accent:#1A5648;
-       --saffron:#E8912C; --saffron-dark:#C97A20; --card:#FFFFFF; --line:#E7D9C2; }
+       --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-text:#875519; --card:#FFFFFF; --line:#E7D9C2; }
 @media (prefers-color-scheme:dark){
   :root{ --paper:#16120D; --ink:#E9DCC3; --ink-soft:#A79A80; --accent:#8FBEB0;
-         --saffron:#E1953A; --saffron-dark:#C8862F; --card:#201A13; --line:#382D20; }
+         --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-text:#D0AA70; --card:#201A13; --line:#382D20; }
 }
 *{ box-sizing:border-box; }
 body{ margin:0; background:var(--paper); color:var(--ink);
@@ -4047,13 +4204,13 @@ main{ max-width:680px; margin:0 auto; padding:26px 20px 10px; }
 .crumb a{ color:var(--accent); text-decoration:none; }
 h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent); }
 .deva{ font-family:"Noto Serif Devanagari",serif; font-size:1.25rem;
-       margin:2px 0 16px; color:var(--accent); }
+       margin:2px 0 16px; color:var(--accent); overflow-wrap:anywhere; word-break:normal; }
 .blurb{ margin:0 0 14px; }
 .blurb span{ display:block; font-size:.95rem; color:var(--ink-soft); margin-top:4px; }
 .verse{ margin:18px 0; padding:16px 18px; background:var(--card);
         border:1px solid var(--line); border-radius:14px; }
 .verse blockquote{ margin:0; font-family:"Noto Serif Devanagari",serif;
-        font-size:1.12rem; line-height:2; }
+        font-size:1.12rem; line-height:2; overflow-wrap:anywhere; word-break:normal; }
 .verse figcaption{ margin-top:10px; font-size:.82rem; color:var(--ink-soft); }
 h2{ font-size:1.05rem; margin:24px 0 10px; color:var(--accent); }
 ol.themes{ margin:0; padding-left:22px; }
@@ -4072,10 +4229,10 @@ h2.th{ font-size:1.02rem; color:var(--accent); margin:20px 0 10px;
 h2.th .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem; margin-left:8px;
        white-space:nowrap; }
 .v{ margin:16px 0 22px; }
-.vnum{ font-size:.78rem; font-weight:700; color:var(--saffron); letter-spacing:.04em; }
-.vnum a{ color:inherit; text-decoration:none; border-bottom:1px dotted var(--saffron); }
+.vnum{ font-size:.78rem; font-weight:700; color:var(--saffron-text); letter-spacing:.04em; }
+.vnum a{ color:inherit; text-decoration:none; border-bottom:1px dotted var(--saffron-text); }
 .vdev{ font-family:"Noto Serif Devanagari",serif; font-size:1.14rem; line-height:1.85;
-       margin:2px 0 3px; color:var(--accent); }
+       margin:2px 0 3px; color:var(--accent); overflow-wrap:anywhere; word-break:normal; }
 .viast{ font-style:italic; color:var(--ink-soft); font-size:.85rem; margin:0 0 7px; }
 .vtr{ margin:4px 0; font-size:.95rem; }
 .vtr .para{ display:block; color:var(--ink-soft); font-size:.9rem; margin-top:2px; }
@@ -4094,7 +4251,7 @@ a.vrow{ display:block; padding:10px 8px; border-top:1px solid var(--line);
         text-decoration:none; border-radius:8px; }
 a.vrow:hover{ background:var(--paper); }
 .vrow .vt{ color:var(--accent); font-weight:700; font-size:.9rem; }
-.vrow .vt b{ color:var(--saffron); margin-right:6px; }
+.vrow .vt b{ color:var(--saffron-text); margin-right:6px; }
 .vrow .vd{ color:var(--ink-soft); font-size:.85rem; margin-top:2px; line-height:1.5; }
 /* The verse a shared link points at. Also matches :target so it still reads
    as "the one you came for" when JS is off and the reader expands by hand. */
@@ -4105,7 +4262,7 @@ a.vrow:hover{ background:var(--paper); }
   html{ scroll-behavior:smooth; }
 }
 details{ margin:4px 0 0; }
-summary{ cursor:pointer; color:var(--saffron-dark); font-weight:600; font-size:.88rem; }
+summary{ cursor:pointer; color:var(--saffron-text); font-weight:600; font-size:.88rem; }
 """
 
 # cache version — bump automatically from the content hash of EVERY precached

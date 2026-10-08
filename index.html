@@ -120,12 +120,12 @@
      so every rule keeps using var(--x) and nothing else has to change.
      --on-accent is the text colour that sits on saffron/teal fills; it stays
      near-cream in both themes because both fills stay dark enough for it.  */
-  :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-soft:#FBE3C0; --teal:#1A5648; --teal-mid:#2A7A68;
+  :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-text:#875519; --saffron-soft:#FBE3C0; --teal:#1A5648; --teal-mid:#2A7A68;
          --teal-soft:#E6EFE8; --cream:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --paper:#FFFFFF; --line:#E7D9C2;
-         --on-accent:#FFF8EC; --on-saffron:#2A2118; --hdr-a:#1A5648; --hdr-b:#226B5A; --hdr-c:#2A806C; --hdr-sub:#C5DDD4;
-         --toolbar:#FDF3E0; --field:#FFFFFF; --muted:#9AA0A6; --danger:#C0392B; --danger-soft:#FBE6E3; --on-danger:#FFFFFF;
+         --on-accent:#FFF8EC; --on-saffron:#2A2118; --hdr-a:#1A5648; --hdr-b:#226B5A; --hdr-c:#2A806C; --hdr-sub:#CDE2DA; --hdr-saffron-text:#F2B85F;
+         --toolbar:#FDF3E0; --field:#FFFFFF; --muted:#6B6258; --muted-fill:#EBE7E1; --focus:#875519; --danger:#C0392B; --danger-soft:#FBE6E3; --on-danger:#FFFFFF;
          --shadow:42,33,24; --scrim:rgba(15,42,52,.72); --fade:255,248,236;
-         --chip:rgba(255,248,236,.12); --chip-hover:rgba(255,248,236,.25); --chip-line:rgba(255,248,236,.35); }
+         --chip:rgba(255,248,236,.12); --chip-hover:rgba(255,248,236,.10); --chip-line:rgba(255,248,236,.35); }
 
   /* ---- dark theme ----------------------------------------------------
      Warm, not neutral: a dark brown-black keeps the manuscript feel rather
@@ -138,11 +138,11 @@
     color-scheme: dark;
     /* Apple-dark discipline: accents muted a notch, text never glaring.
        The old #E8912C/#7FD4E8 pair neon'd against the warm black. */
-    --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-soft:#43301A;
+    --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-text:#D0AA70; --saffron-soft:#43301A;
     --teal:#8FBEB0; --teal-mid:#A8D0C4; --teal-soft:#1A2E28;
     --cream:#16120D; --paper:#201A13; --ink:#E9DCC3; --ink-soft:#A79A80; --line:#382D20;
-    --on-accent:#1A1209; --on-saffron:#1A1209; --hdr-a:#0E2A24; --hdr-b:#143832; --hdr-c:#1A4840; --hdr-sub:#C5DDD4;
-    --toolbar:#1E1811; --field:#2A2219; --muted:#8A7F6E; --danger:#E86B5C; --danger-soft:#3A211C; --on-danger:#1A1209;
+    --on-accent:#1A1209; --on-saffron:#1A1209; --hdr-a:#0E2A24; --hdr-b:#143832; --hdr-c:#1A4840; --hdr-sub:#C5DDD4; --hdr-saffron-text:#F2B85F;
+    --toolbar:#1E1811; --field:#2A2219; --muted:#A79A80; --muted-fill:#382F25; --focus:#F2B85F; --danger:#E86B5C; --danger-soft:#3A211C; --on-danger:#1A1209;
     --shadow:0,0,0; --scrim:rgba(0,0,0,.78); --fade:23,19,14;
     --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
   }
@@ -192,7 +192,7 @@
   header{ background:var(--hdr-a); color:var(--hdr-sub);
           padding:24px 20px; }
   .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
-  .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--saffron);}
+  .header-inner .om{ font-family:Georgia,serif; font-size:1.7rem; color:var(--hdr-saffron-text);}
   .header-inner h1{ font-family:Georgia,serif; font-size:1.4rem; color:#FFF8EC; font-weight:normal;}
   .hdr-copy{ flex:1 1 200px; min-width:0; }
   .header-inner .tag{ display:block; color:var(--hdr-sub); font-size:.82rem;
@@ -211,7 +211,7 @@
   .lang-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
   /* the theme toggle lives in the language bar; it must not stretch like the
      language buttons do on mobile, so it opts out of flex:1 and stays square */
-  .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--saffron); border-color:var(--chip-line);}
+  .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--hdr-saffron-text); border-color:var(--chip-line);}
   /* Owner 2026-09-01: the theme toggle must hover exactly like the language
      buttons. It used to get a faint --chip-hover wash and keep its saffron
      text colour, so the icon sat saffron-on-saffron and the button felt dead
@@ -220,7 +220,7 @@
      stroke:currentColor. Only the resting colour stays saffron. */
   .theme-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
   @media (max-width:640px){ .langbar{ width:100%; justify-content:center; margin-left:0;} .seg{ flex:1; } .seg .lang-btn{ flex:1; text-align:center;} }
-  .header-inner .tag b{ color:var(--saffron); font-family:Georgia,serif; font-size:1.15rem;}
+  .header-inner .tag b{ color:var(--hdr-saffron-text); font-family:Georgia,serif; font-size:1.15rem;}
   .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
   .crumbs{ display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--ink-soft); margin-bottom:18px; flex-wrap:wrap;}
   /* Search/Favorites show one .back-top button (see renderCrumbs), so .crumbs is
@@ -229,6 +229,10 @@
   /* Visually hidden but readable by assistive tech — used by #srStatus. */
   .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
             overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+  .sr-only.focusable:focus{ position:static; display:inline-block; width:auto; height:auto;
+            margin:0 0 8px; padding:6px 10px; overflow:visible; clip:auto; white-space:normal;
+            border:1px solid var(--line); border-radius:8px; background:var(--paper);
+            color:var(--teal); font:600 .82rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
   .view-title{ font-family:Georgia,serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
   /* IAST is an English bridge. Devanagari readers don't need it. */
   html[lang="ne"] [lang="sa-Latn"],
@@ -251,9 +255,9 @@
      style"). The restraint is the point.
      Saffron = something you act on. Teal = something already yours. */
   .mode-box{ border-left:1px solid var(--line); }
-  .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-dark); font-weight:600; font-size:.72rem;
+  .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-text); font-weight:600; font-size:.72rem;
                letter-spacing:.02em; padding:4px 10px; border-radius:999px; margin-bottom:8px;}
-  .card .chip.locked{ background:var(--muted);}
+  .card .chip.locked{ background:var(--muted-fill); color:var(--muted);}
   /* The three ways of receiving a chapter live ON the chapter page as an
      iOS-style segmented control — the same grammar as the language pills in
      the header (owner 2026-08-30: the intermediary choice page "was just
@@ -283,7 +287,7 @@
   .pl-scope{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0 22px;}
   .pl-scope .pl-lb{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--ink-soft);}
   .pl-scope .lr-ghost.on{ background:var(--saffron-soft); border-color:var(--saffron-soft);
-                          color:var(--saffron-dark);}
+                          color:var(--saffron-text);}
   /* matches .tool-btn geometry so the select sits level with the pills */
   .pl-sel{ padding:8px 16px; border-radius:999px; border:1px solid var(--line);
            background:var(--paper); color:var(--teal); font-family:inherit;
@@ -299,7 +303,7 @@
   .pl-mode:hover{ border-color:var(--saffron); background:var(--teal-soft);
                   box-shadow:0 3px 12px rgba(var(--shadow),.08); transform:translateY(-1px);}
   .pl-mode .n{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
-               background:var(--saffron-soft); color:var(--saffron-dark);
+               background:var(--saffron-soft); color:var(--saffron-text);
                font-family:system-ui,sans-serif; font-weight:700; font-size:.85rem;}
   .pl-mode .b{ flex:1; min-width:0;}
   .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--ink);
@@ -339,7 +343,7 @@
   .lr-step.done{ border-left-color:var(--teal);}
   .lr-step.locked{ opacity:.55;}
   .lr-badge{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
-             background:var(--saffron-soft); color:var(--saffron-dark);
+             background:var(--saffron-soft); color:var(--saffron-text);
              font-family:system-ui,sans-serif; font-weight:700; font-size:.84rem;}
   .lr-step.now .lr-badge{ background:var(--saffron); color:var(--on-saffron);}
   .lr-step.done .lr-badge{ background:var(--teal); color:var(--on-accent);}
@@ -355,7 +359,7 @@
   .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
   .lr-chip .n{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center;
                background:var(--saffron-soft); font-size:.7rem; font-family:system-ui,sans-serif;
-               color:var(--saffron-dark);}
+               color:var(--saffron-text);}
   .lr-chip.ok .n{ background:var(--teal); color:var(--on-accent); font-weight:700;}
   .lr-chip .t{ flex:1; font-size:.85rem; line-height:1.3;}
   .lr-chip .v{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft);}
@@ -368,14 +372,14 @@
   .lr-thread li:not(:last-child):after{ content:''; position:absolute; left:28px; top:42px;
             bottom:-2px; width:2px; background:var(--line);}
   .lr-thread .bead{ flex:0 0 26px; height:26px; border-radius:50%; display:grid; place-items:center;
-            background:var(--saffron-soft); color:var(--saffron-dark); z-index:1;
+            background:var(--saffron-soft); color:var(--saffron-text); z-index:1;
             font-family:system-ui,sans-serif; font-size:.75rem; font-weight:700;}
   .lr-thread b{ font-weight:700; font-size:1rem; color:var(--ink);}
   .lr-thread .rg{ font-family:system-ui,sans-serif; font-size:.7rem; color:var(--ink-soft); font-weight:500; margin-left:7px;}
   .lr-thread p{ margin:4px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
 
   .lr-vnum{ font-family:system-ui,sans-serif; font-size:1.3rem; font-weight:700;
-            color:var(--saffron-dark); margin:10px 0 12px;}
+            color:var(--saffron-text); margin:10px 0 12px;}
   .lr-quarters{ display:flex; flex-direction:column; gap:9px;}
   .lr-q{ border-radius:16px; background:var(--paper); border:1px solid var(--line);
                   box-shadow:0 1px 2px rgba(var(--shadow),.05); overflow:hidden; transition:.18s;}
@@ -383,7 +387,7 @@
   .lr-qh{ display:flex; gap:12px; align-items:center; width:100%; text-align:left;
           padding:14px 16px; background:none; border:none; cursor:pointer; font-family:inherit;}
   .lr-qh .pip{ flex:0 0 25px; height:25px; border-radius:50%; display:grid; place-items:center;
-          background:var(--saffron-soft); color:var(--saffron-dark);
+          background:var(--saffron-soft); color:var(--saffron-text);
           font-family:system-ui,sans-serif; font-size:.73rem; font-weight:700;}
   .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
   .lr-qh{ flex-wrap:nowrap !important; align-items:center; }
@@ -402,7 +406,7 @@
     font-weight:400; color:var(--ink-soft); margin-top:4px; line-height:1.4; }
   .lr-chip2{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
   .lr-qh .chev{ color:var(--ink-soft); transition:transform .22s;}
-  .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron);}
+  .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron-text);}
   /* [hidden] is only display:none at the UA default, so ANY explicit display
      silently defeats it — the word grid was open on arrival despite carrying
      the attribute (owner 2026-09-02). Restore it explicitly. */
@@ -418,7 +422,7 @@
   .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:14px;
             background:var(--saffron-soft); border:1px solid var(--line);}
   .lr-mean .lb{ display:block; font-family:system-ui,sans-serif; font-size:.72rem;
-                color:var(--saffron-dark); margin-bottom:5px;}
+                color:var(--saffron-text); margin-bottom:5px;}
 
   .lr-nav{ display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-top:20px;}
   .lr-hint{ flex:1; text-align:center; font-family:system-ui,sans-serif;
@@ -434,7 +438,7 @@
   .lr-ask{ font-size:1.06rem; line-height:1.6; margin:-2px -4px 16px; padding:12px 14px;
            border-radius:12px; background:var(--saffron-soft);
             color:var(--ink);}
-  .pl-head{ margin:6px 0 14px !important; color:var(--saffron-dark) !important;
+  .pl-head{ margin:6px 0 14px !important; color:var(--saffron-text) !important;
             font-weight:700;}
   .lr-qsub{ margin-top:10px; padding:12px 14px; border-radius:11px; background:var(--paper);
             border:1px solid var(--line); color:var(--ink-soft); font-size:.92rem; line-height:1.6;}
@@ -447,7 +451,7 @@
             color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
   .lr-plus{ color:var(--ink-soft); font-size:.8rem;}
   .lr-blank{ display:inline-grid; place-items:center; min-width:52px; padding:2px 12px;
-             border-radius:8px; background:var(--saffron-soft); color:var(--saffron-dark);
+             border-radius:8px; background:var(--saffron-soft); color:var(--saffron-text);
              border:2px dashed var(--saffron); font-weight:700; font-size:1.1rem;}
   .lr-cue{ margin-top:8px; text-align:center; font-family:"Noto Serif Devanagari",Georgia,serif;
            font-size:.95rem; color:var(--ink-soft);}
@@ -457,7 +461,7 @@
      competing for one line (owner 2026-09-01). */
   /* --paper on --cream is only a 1.06:1 step, so the SHADOW does the lifting,
      not the fill: without it the options dissolve into the question card. */
-  .lr-opt .onum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);
+  .lr-opt .onum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);
                  font-size:.82rem; line-height:1; margin-bottom:2px; }
   .lr-opt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px;
            text-align:left; width:100%;
@@ -468,11 +472,11 @@
   .lr-opt:disabled{ cursor:default;}
   .lr-opt .ol{ width:100%; font-size:.96rem; line-height:1.5; color:var(--ink);}
   .lr-opt .ol.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.04rem;
-                  line-height:1.85; color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
+                  line-height:1.85; color:var(--teal); -webkit-text-fill-color:var(--teal);}
   /* the verse number under an option is a NUMBER — saffron, like every other
      verse number in the app */
   .lr-opt .os{ font-family:system-ui,sans-serif; font-size:.74rem; font-weight:700;
-               color:var(--saffron-dark);}
+               color:var(--saffron-text);}
   /* the verdict must be unmistakable at a glance, not a 1px border change */
   /* The verdict is carried by the OPTION, not by a line of prose underneath
      (owner 2026-09-02). A tick and a cross in the leading edge, plus the fill,
@@ -501,12 +505,13 @@
   .lr-mbtn{ text-align:left; width:100%; padding:12px 12px; border-radius:12px;
             background:var(--paper); border:1px solid var(--line); cursor:pointer;
             font-family:inherit; box-shadow:0 1px 3px rgba(var(--shadow),.10); }
-  .lr-mbtn.num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);
+  .lr-mbtn.num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);
                 font-size:1.05rem; text-align:center; }
   .lr-mbtn.vs .ol{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
                    font-size:.98rem; line-height:1.7; color:var(--teal-mid);
                    -webkit-text-fill-color:var(--teal-mid); }
   .lr-mbtn.on{ border-color:var(--saffron); background:var(--saffron-soft); }
+  .lr-mbtn.on .ol{ color:var(--teal); -webkit-text-fill-color:var(--teal); }
   .lr-mbtn.right{ border-color:var(--teal); background:var(--teal-soft); }
   .lr-mbtn:disabled{ cursor:default; }
   @media (max-width:640px){ .lr-match{ grid-template-columns:minmax(72px,26%) 1fr; } }
@@ -516,7 +521,7 @@
              font-size:.87rem; text-align:left; max-width:100%; transition:.15s;
              min-height:44px;}
   .lr-chip2:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
-  .lr-chip2.dv:hover:not(:disabled){ -webkit-text-fill-color:var(--teal-mid); color:var(--teal-mid);}
+  .lr-chip2.dv:hover:not(:disabled){ -webkit-text-fill-color:var(--teal); color:var(--teal);}
   .lr-chip2.used{ opacity:.3; cursor:default; border-left-color:var(--teal);}
   /* Quarter chips carry Devanagari and need the Sanskrit face at a readable
      size — the Latin default renders the conjuncts too small to compare. */
@@ -526,7 +531,7 @@
      button itself. The letters live in an inner span so WebKit has to honour them.
      --teal-mid (not --teal): #1A5648 on white reads as black on a phone. */
   .lr-chip2 .lr-t{ color:inherit; -webkit-text-fill-color:currentColor; }
-  .lr-chip2.dv .lr-t{ color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid); }
+  .lr-chip2.dv .lr-t{ color:var(--teal); -webkit-text-fill-color:var(--teal); }
   .lr-chip2.shake{ animation:lrshk .34s; border-color:var(--saffron-dark);}
   @keyframes lrshk{ 0%,100%{transform:none} 22%{transform:translateX(-6px)} 66%{transform:translateX(6px)} }
   .lr-slots{ display:flex; flex-direction:column; gap:6px; margin-bottom:13px;}
@@ -534,11 +539,11 @@
             border:1px solid var(--teal); border-left:2px solid var(--teal);
             font-size:.87rem;}
   .lr-slot.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.02rem;
-               color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
+               color:var(--teal); -webkit-text-fill-color:var(--teal);}
 
   .lr-fb{ margin-top:14px;}
   .lr-fb .good{ color:var(--teal); font-weight:700; font-size:.92rem;}
-  .lr-fb .bad{ color:var(--saffron-dark); font-weight:700; font-size:.92rem;}
+  .lr-fb .bad{ color:var(--saffron-text); font-weight:700; font-size:.92rem;}
   .lr-fb .nt{ margin:10px 0 13px; padding:12px 14px; border-radius:11px; background:var(--paper);
               border:1px solid var(--line); color:var(--ink-soft); font-size:.88rem; line-height:1.6;}
 
@@ -549,7 +554,7 @@
             place-items:center; background:var(--teal-soft); color:var(--teal); font-size:1.6rem;}
   .lr-finis h2{ margin:0 0 8px; font-size:1.35rem; color:var(--ink);}
   .lr-finis p{ color:var(--ink-soft); max-width:50ch; margin:0 auto 16px; line-height:1.65;}
-  .lr-finis .lr-all{ color:var(--saffron-dark); font-weight:700;}
+  .lr-finis .lr-all{ color:var(--saffron-text); font-weight:700;}
   .lr-finis .lr-cta,.lr-finis .lr-ghost{ margin:5px;}
 
 
@@ -562,9 +567,9 @@
   .lr-lad b{ display:block; font-size:.82rem; color:var(--teal); }
   .lr-lad span{ display:block; font-size:.68rem; color:var(--ink-soft); margin-top:2px; }
   .lr-lad.on{ border-color:var(--saffron); background:var(--saffron-soft); }
-  .lr-lad.on b{ color:var(--saffron-dark); }
+  .lr-lad.on b{ color:var(--saffron-text); }
   .lr-gap{ flex:0 0 auto; min-width:2em; padding:2px 10px; margin:0 2px; border-radius:8px;
-           background:var(--saffron-soft); color:var(--saffron-dark);
+           background:var(--saffron-soft); color:var(--saffron-text);
            border:1px dashed var(--saffron); font-weight:700; cursor:pointer; font-family:inherit;
            display:inline-flex; align-items:center; justify-content:center; line-height:1.4; }
   .lr-tokw{ flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center;
@@ -594,10 +599,10 @@
              font-weight:700; font-family:inherit; line-height:1.4;
              transition:background-color .15s, color .15s, border-color .15s; }
   .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-soft);
-             color:var(--saffron-dark); border-color:var(--saffron-soft); outline:none; }
-  .mode-seg .ms-btn.on{ background:var(--saffron-soft); color:var(--saffron-dark);
+             color:var(--saffron-text); border-color:var(--saffron-soft); }
+  .mode-seg .ms-btn.on{ background:var(--saffron-soft); color:var(--saffron-text);
              border-color:var(--saffron-soft); box-shadow:none; }
-  .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-dark); }
+  .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
   /* purana chapter view: clean hairline cards; saffron only for numbers */
   .th-flow .theme{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
                    padding:16px 18px; margin:0 0 14px; cursor:pointer;
@@ -628,11 +633,11 @@
   .card h3{ font-family:Georgia,serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
   .card .meta{ margin-top:10px; font-size:.8rem; color:var(--ink-soft); font-weight:600;}
-  .card .go{ margin-top:10px; color:var(--saffron-dark); font-weight:700; font-size:.88rem;}
+  .card .go{ margin-top:10px; color:var(--saffron-text); font-weight:700; font-size:.88rem;}
   .card .soon{ margin-top:10px; color:var(--muted); font-weight:600; font-size:.85rem; font-style:italic;}
   .part{ margin-bottom:26px;}
   .part-head{ display:flex; align-items:center; gap:12px; padding:0 0 6px; margin:18px 0 8px; flex-wrap:nowrap;}
-  .part-head .pnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:1.05rem;}
+  .part-head .pnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:1.05rem;}
   .part-head .ptitle{ font-family:Georgia,serif; font-size:1.05rem; color:var(--teal); font-weight:600;
                       order:1; flex:0 1 auto; max-width:42%; }
   .part-head::before{ content:""; order:2; flex:1 1 20px; min-width:16px; height:1px;
@@ -643,13 +648,14 @@
   .mini{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 14px; cursor:pointer;
          transition:.15s; box-shadow:0 4px 12px rgba(var(--shadow),.06);}
   .mini:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
-  .mini .vnum, .w-day .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.98rem; margin-bottom:5px; letter-spacing:.03em;}
+  .mini .vnum, .w-day .vnum{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.98rem; margin-bottom:5px; letter-spacing:.03em;}
   /* The topic line is quiet metadata, not a headline: same soft colour as its
      "Verse topic" prefix, so the Devanagari below stays the star of the card. */
   .mini .m-topic, .w-day .m-topic{ font-family:Georgia,serif; font-weight:600; color:var(--ink-soft); font-size:.9rem; margin-bottom:7px; line-height:1.35;}
   .mini .mt-lab, .w-day .mt-lab{ font-weight:400; font-style:italic; color:var(--ink-soft); font-size:.8rem; margin-right:2px;}
   .mini .padas, .w-day .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
-  .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-dark); font-size:.82rem; font-style:italic; margin-bottom:2px;}
+  .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-text); font-size:.82rem; font-style:italic; margin-bottom:2px;}
+  .mini .padas, .w-day .padas, .res-deva, .rd-deva{ overflow-wrap:anywhere; word-break:normal; }
   .mini .padas .gline, .w-day .padas .gline{ display:block; line-height:1.6;}
   .mini .padas .giast, .w-day .padas .giast, .res-deva .giast{
     display:block; font-family:Georgia,serif; font-style:italic; font-size:.82rem;
@@ -688,13 +694,13 @@
   .fav-note textarea{ flex:1; border:1px solid var(--line); border-radius:8px; padding:5px 9px;
                       font:inherit; font-size:.88rem; background:var(--cream); color:var(--ink);
                       resize:none; overflow:hidden; min-height:34px;}
-  .fav-note textarea:focus{ outline:none; border-color:var(--saffron); background:var(--paper);}
+  .fav-note textarea:focus{ border-color:var(--saffron); background:var(--paper);}
 
   /* ---- continuous reading ---- */
   /* mūla: the verses run closer together, the way a printed pāṭha is set */
   .reading{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:14px 18px 6px;}
   /* the speaker is named only when the voice changes, so it must stand out */
-  .rd-spk{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--saffron-dark);
+  .rd-spk{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--saffron-text);
            font-weight:700; font-size:1rem; margin:20px 0 8px; padding-bottom:5px;
            border-bottom:2px solid var(--saffron-soft);}
   .rd-deva .rd-spk{ margin:6px 0 8px;}
@@ -702,7 +708,7 @@
   .rd-v{ padding:12px 0 14px; border-bottom:1px solid var(--line); cursor:pointer; position:relative;}
   .rd-v:last-child{ border-bottom:none;}
   .rd-v:hover{ background:var(--teal-soft);}
-  .rd-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.82rem;}
+  .rd-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.82rem;}
   .rd-deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
             font-size:1.12rem; line-height:1.85; margin-bottom:5px;}
   .rd-tr{ color:var(--ink-soft); font-size:.95rem; line-height:1.6;}
@@ -725,7 +731,7 @@
   .mini-crumb .bc-name{ color:var(--ink-soft); font-size:.8rem;}
   .mini-crumb .bc-cur{ background:var(--saffron-soft); border:1px solid var(--saffron); border-radius:12px;
              display:flex; flex-direction:column; align-items:flex-start; gap:1px; padding:8px 14px;}
-  .mini-crumb .bc-cur .bc-num{ color:var(--saffron-dark);}
+  .mini-crumb .bc-cur .bc-num{ color:var(--saffron-text);}
   .mini-crumb .bc-sep{ align-self:center; color:var(--line); font-weight:800; font-size:1rem; padding:0 2px;}
 
   /* the breadcrumb: quiet names, not a second strip of pills */
@@ -768,16 +774,29 @@
             padding:7px 16px; font-size:.88rem; font-weight:700; font-family:inherit; line-height:1.4;
             transition:background-color .15s, color .15s, border-color .15s; }
   button.wc-chip{ cursor:pointer; }
-  button.wc-chip:hover, button.wc-chip:focus-visible{ background:var(--saffron-soft); color:var(--saffron-dark);
-            border-color:var(--saffron-soft); outline:none; }
-  .wc-chip.wc-cur{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
+  button.wc-chip:hover, button.wc-chip:focus-visible{ background:var(--saffron-soft); color:var(--saffron-text);
+            border-color:var(--saffron-soft); }
+  .wc-chip.wc-cur{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
   .wc-sep{ color:var(--muted); font-size:.78rem; }
 
   .welcome{ text-align:center; padding:44px 12px 30px; max-width:860px; margin:0 auto;}
-  .welcome .w-om{ font-size:3.6rem; color:var(--saffron); line-height:1; margin-bottom:14px;}
+  .welcome .w-om{ font-size:3.6rem; color:var(--saffron-text); line-height:1; margin-bottom:14px;}
   .welcome .view-title{ font-size:2rem;}
   .welcome .tool-btn.big{ font-size:1.02rem; padding:14px 36px; margin-top:20px;}
   .welcome .w-foot{ color:var(--ink-soft); font-size:.9rem; margin-top:30px; letter-spacing:.05em;}
+  /* Native disclosure keeps the first-visit guide quiet until someone asks. */
+  .welcome-guide{ max-width:560px; margin:12px auto 0; text-align:center; }
+  .welcome-guide summary{ display:list-item; width:fit-content; max-width:100%; margin:0 auto;
+                          padding:7px 12px; border-radius:999px; color:var(--teal);
+                          font-size:.86rem; font-weight:700; cursor:pointer; }
+  .welcome-guide summary::marker{ color:var(--saffron-text); }
+  @media (hover:hover){ .welcome-guide summary:hover{ background:var(--teal-soft); } }
+  .welcome-guide[open]{ padding:4px 16px 12px; background:var(--paper); text-align:left;
+                         border:1px solid var(--line); border-radius:12px; }
+  .welcome-guide[open] summary{ margin:0; }
+  .welcome-guide ol{ margin:6px 0 0; padding-left:24px; color:var(--ink-soft);
+                     font-size:.86rem; line-height:1.55; }
+  .welcome-guide li+li{ margin-top:5px; }
   /* The work-in-progress note. Deliberately the quietest thing on the screen:
      --ink-soft, small, and set off by a hairline rule so it reads as an aside
      from the author rather than a warning about the text. */
@@ -789,7 +808,7 @@
   .welcome .w-day:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   /* A small oval tag, not a headline — the card already has a saffron frame,
      so the label wears the soft variant and lets the verse number lead. */
-  .welcome .wd-label{ display:table; margin:0 auto 12px; background:var(--saffron-soft); color:var(--saffron-dark);
+  .welcome .wd-label{ display:table; margin:0 auto 12px; background:var(--saffron-soft); color:var(--saffron-text);
     font-family:Georgia,serif; font-weight:600; font-size:.78rem; letter-spacing:.02em;
     border-radius:999px; padding:6px 18px; }
   /* the welcome card is a display piece, not a list item — centre it, while
@@ -799,7 +818,7 @@
   /* The speaker is not part of the verse, so it must not read as verse text.
      Saffron + italic everywhere else in the app — match that here. */
   /* Verse number set inside the closing daṇḍas, as a printed edition does. */
-  .gl-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.8rem;}
+  .gl-n{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.8rem;}
 
   .grid.sections{ grid-template-columns:repeat(auto-fill, minmax(270px,1fr));}
   .card.sect h3{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:1.32rem;}
@@ -808,7 +827,7 @@
 
   .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:1px solid var(--line);}
   .toolbar .searchwrap{ display:flex; align-items:center; gap:6px; flex:1; min-width:240px; max-width:640px;}
-  .toolbar input[type=search]{ flex:1; padding:9px 14px; border:1px solid var(--line); border-radius:999px; font-size:.92rem; background:var(--field); color:var(--ink); outline:none;}
+  .toolbar input[type=search]{ flex:1; padding:9px 14px; border:1px solid var(--line); border-radius:999px; font-size:.92rem; background:var(--field); color:var(--ink);}
   .toolbar input[type=search]:focus{ border-color:var(--saffron);}
   /* inline stroke icons: sized and coloured by the surrounding text, so they
      behave like glyphs, not pictures — and follow both themes for free */
@@ -824,7 +843,7 @@
          border:none; border-radius:50%; background:transparent; color:var(--ink-soft);
          display:none; align-items:center; justify-content:center; cursor:pointer; padding:0; }
   .sw-x .ic{ margin:0; width:15px; height:15px; }
-  .sw-x:hover{ background:var(--saffron-soft); color:var(--saffron-dark); }
+  .sw-x:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
   .sw-field.has-x .sw-x{ display:flex; }
   .sw-field.has-x input[type=search]{ padding-right:40px; }
   .sw-field input[type=search]::-webkit-search-cancel-button{ -webkit-appearance:none; display:none; }
@@ -833,14 +852,14 @@
   .tool-btn:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
   .tool-btn.primary{ background:var(--saffron); border-color:var(--saffron); color:var(--on-saffron);}
   .tool-btn.primary:hover{ background:var(--saffron-dark);}
-  .fav-btn{ background:var(--saffron-soft); border:1px solid var(--saffron); color:var(--saffron-dark); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
+  .fav-btn{ background:var(--saffron-soft); border:1px solid var(--saffron); color:var(--saffron-text); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
   .fav-btn.saved{ background:var(--saffron); color:var(--on-saffron);}
   .res-head{ font-family:Georgia,serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
   .res-count{ color:var(--ink-soft); font-size:.9rem; margin-bottom:16px;}
   .res-card{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:12px; cursor:pointer; transition:.15s;}
   .res-card:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
   .res-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
-  .res-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark);}
+  .res-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text);}
   .res-title{ font-weight:600; color:var(--teal); font-size:.9rem;}
   .res-deva{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1rem; line-height:1.55; background:var(--cream); border-radius:8px; padding:7px 10px; margin-bottom:6px;}
   .res-lit{ color:var(--ink-soft); font-size:.88rem; line-height:1.5;}
@@ -852,27 +871,41 @@
           box-shadow:0 24px 60px rgba(0,0,0,.35); border:1px solid var(--line); position:relative; padding:24px 30px 28px;}
   .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
                    height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
-  .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft);}
+  .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft);}
   .m-part{ font-family:Georgia,serif; color:var(--teal); font-size:.95rem; font-weight:600;
            margin:0 52px 8px 0; line-height:1.4;}
-  .m-num{ font-family:Georgia,serif; font-size:1.2rem; color:var(--saffron-dark); font-weight:700;
+  .m-num{ font-family:Georgia,serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
           display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
+  .m-title{ margin:0; padding:0; flex:1 1 auto; min-width:0; color:inherit; font:inherit; }
   .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
   .m-meter{ display:inline-block; background:var(--teal-soft); color:var(--teal); font-size:.78rem; font-weight:700;
             padding:3px 12px; border-radius:999px; margin:6px 0 12px; letter-spacing:.03em;}
+  .m-readerbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px 12px; }
+  .m-readerbar .m-meter{ margin:6px 0 12px; }
+  .reader-size{ display:flex; align-items:center; gap:4px; margin:6px 0 12px; color:var(--ink-soft);
+                font: .78rem/1.3 system-ui,-apple-system,"Segoe UI",sans-serif; white-space:nowrap; }
+  .reader-size .reader-size-label{ font-weight:600; margin-right:3px; }
+  .reader-size .reader-size-value{ min-width:3.5ch; text-align:center; font-variant-numeric:tabular-nums; }
+  .reader-size button{ min-width:36px; min-height:34px; padding:4px 8px; border:1px solid var(--line);
+                       border-radius:999px; background:var(--paper); color:var(--teal); cursor:pointer;
+                       font:700 .82rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
+                       transition:background-color .15s,border-color .15s; }
+  .reader-size button:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft); }
+  .reader-size button:disabled{ opacity:.45; cursor:default; }
+  .reader-copy{ --reader-scale:1; }
   .m-verse{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:6px 0 4px;}
-  .m-verse .spk{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--saffron-dark); font-size:1.15rem;
+  .m-verse .spk{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--saffron-text); font-size:calc(1.15rem * var(--reader-scale,1));
                  font-style:italic; margin-bottom:8px; border-bottom:1px dashed var(--line); padding-bottom:6px;}
-  .m-verse .spk .iast{ font-family:Georgia, serif; font-size:.85rem; color:var(--ink-soft); margin-left:10px;}
+  .m-verse .spk .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-verse table{ width:100%; border-collapse:collapse;}
   .m-verse td{ vertical-align:top; padding:3px 2px;}
-  .m-verse td.pnum{ width:26px; font-family:Georgia,serif; color:var(--saffron-dark); font-weight:700; font-size:.9rem; padding-top:6px;}
-  .m-verse td.pd{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:1.35rem; color:var(--teal); line-height:1.7; padding-right:14px;}
-  .m-verse td.pi{ font-style:italic; color:var(--ink-soft); font-size:.92rem; padding-top:8px;}
-  .m-verse td.pi .danda{ color:var(--saffron-dark); font-weight:700;}
+  .m-verse td.pnum{ width:26px; font-family:Georgia,serif; color:var(--saffron-text); font-weight:700; font-size:.9rem; padding-top:6px;}
+  .m-verse td.pd{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:calc(1.35rem * var(--reader-scale,1)); color:var(--teal); line-height:1.7; padding-right:14px;}
+  .m-verse td.pi{ font-style:italic; color:var(--ink-soft); font-size:calc(.92rem * var(--reader-scale,1)); padding-top:8px;}
+  .m-verse td.pi .danda{ color:var(--saffron-text); font-weight:700;}
   .m-verse tr.pair td.pd{ padding-bottom:4px;}
-  .m-verse tr.spkrow td.pd.spk{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-dark); font-style:italic; padding:8px 2px 10px; border-bottom:1px dashed var(--line); font-size:1.1rem;}
-  .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia, serif; font-size:.85rem; color:var(--ink-soft); margin-left:10px;}
+  .m-verse tr.spkrow td.pd.spk{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic; padding:8px 2px 10px; border-bottom:1px dashed var(--line); font-size:calc(1.1rem * var(--reader-scale,1));}
+  .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-verse .spk-line:hover{ background:var(--saffron-soft);}
   .m-verse .spk-main{ border-bottom:1px dotted var(--saffron); }
   .m-verse .words{ display:none; margin-top:6px; background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:8px 12px; min-width:0; max-width:100%;}
@@ -880,9 +913,9 @@
   .m-verse .words.mean-off .wmean{ display:none;}
   .m-verse .wrow{ padding:3px 0; border-bottom:1px dotted var(--line); min-width:0; max-width:100%;}
   .m-verse .wrow:last-child{ border-bottom:none;}
-  .m-verse .wrow .wdeva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:1.12rem; overflow-wrap:anywhere; word-break:break-word;}
-  .m-verse .wrow .wiast{ font-style:italic; color:var(--ink-soft); font-size:.88rem; margin-left:10px; overflow-wrap:anywhere; word-break:break-word;}
-  .m-verse .wrow .wmean{ display:block; color:var(--ink); font-size:.9rem; margin-left:14px; margin-top:1px; overflow-wrap:anywhere; word-break:break-word;}
+  .m-verse .wrow .wdeva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.12rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .wrow .wiast{ font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); margin-left:10px; overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .wrow .wmean{ display:block; color:var(--ink); font-size:calc(.9rem * var(--reader-scale,1)); margin-left:14px; margin-top:1px; overflow-wrap:anywhere; word-break:normal;}
   .words-bar{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
   .words-bar .wb-hint{ color:var(--ink-soft); font-size:.78rem; font-style:italic;}
   .words-bar .wb-btn{ background:var(--teal); color:var(--on-accent); border:none; padding:4px 14px; border-radius:999px; cursor:pointer; font-size:.8rem; font-weight:600;}
@@ -892,20 +925,25 @@
   /* four pāda boxes in a 2x2 grid */
   .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
   .m-verse .pada-row{ display:flex; gap:12px;}
-  .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; cursor:pointer; transition:border-color .15s, background .15s;}
+  .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; transition:border-color .15s, background .15s;}
+  .m-verse .pada-box .pada-toggle{ display:block; width:100%; padding:0; margin:0; border:0;
+      background:transparent; color:inherit; text-align:left; font:inherit; cursor:pointer; }
   .m-verse .pada-box .pb-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; gap:8px;}
-  .m-verse .pada-box .pb-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-dark); font-size:.85rem; white-space:nowrap;}
+  .m-verse .pada-box .pb-num{ font-family:Georgia,serif; font-weight:700; color:var(--saffron-text); font-size:.85rem; white-space:nowrap;}
 
-  .m-verse .pada-box .pb-deva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:1.3rem; line-height:1.7; cursor:pointer; overflow-wrap:anywhere; word-break:break-word;}
+  .m-verse .pada-box .pb-deva{ display:block; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.3rem * var(--reader-scale,1)); line-height:1.7; overflow-wrap:anywhere; word-break:normal;}
   .m-verse .pada-box:hover{ background:var(--saffron-soft); border-color:var(--saffron);}
-  .m-verse .pada-box .pb-iast{ font-style:italic; color:var(--ink-soft); font-size:.88rem; overflow-wrap:anywhere; word-break:break-word;}
+  .m-verse .pada-box .pb-iast{ display:block; font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
   .m-verse .spk-mid{ margin:2px 0;}
-  .m-verse .spk-line{ margin:6px 0; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-dark); font-style:italic; font-size:1.05rem; cursor:pointer; border-radius:6px; padding:2px 4px;}
-  .m-verse .spk-line .iast{ font-family:Georgia, serif; font-size:.85rem; color:var(--ink-soft); margin-left:10px;}
+  .m-verse .spk-line{ display:block; width:100%; min-height:32px; margin:6px 0; border:0; background:transparent;
+      font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic;
+      font-size:calc(1.05rem * var(--reader-scale,1)); cursor:pointer; text-align:left;
+      border-radius:6px; padding:4px;}
+  .m-verse .spk-line .iast{ font-family:Georgia, serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-line{ margin-top:14px;}
   .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
                padding:3px 10px; border-radius:999px; margin-bottom:5px;}
-  .m-line .lt{ color:var(--ink); font-size:1rem;}
+  .m-line .lt{ color:var(--ink); font-size:calc(1rem * var(--reader-scale,1));}
   .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
   .m-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:10px;}
   .m-tail{ display:none;}   /* only needed where .m-nav is sticky (phones) */
@@ -928,14 +966,15 @@
                   margin-left:auto; margin-right:auto;}
   footer .credit.attrib a{ color:var(--muted); text-decoration:underline;}
   .fade-in{ animation:fadein .28s ease;} @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
-  @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:1.12rem;} }
+  @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:calc(1.12rem * var(--reader-scale,1));} }
 
   /* ==================== MOBILE / TOUCH (Android · iOS) ==================== */
   html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   body{ -webkit-tap-highlight-color:rgba(232,145,44,.18); overscroll-behavior-y:none; }
   button, .card, .mini, .res-card, .theme, .pada-box, .spk-line, .lang-btn, .rd-v, .pl-mode, .lr-chip, .welcome .w-day{ -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   /* modern basics: visible keyboard focus, and stillness for those who ask */
-  :focus-visible{ outline:2px solid var(--saffron); outline-offset:2px; }
+  :focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+  header :focus-visible{ outline-color:#FFF8EC; }
   @media (prefers-reduced-motion: reduce){
     *, *::before, *::after{ animation:none !important; transition:none !important; }
   }
@@ -981,17 +1020,19 @@
     .tool-btn.primary:hover{ background:var(--saffron); border-color:var(--saffron); }
     .tool-btn:active, .lang-btn:active, .m-nav button:active{ filter:brightness(.93); }
     .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--paper); color:var(--ink-soft); border-color:var(--line); }
-    .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
+    .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
     .mode-seg .ms-btn:active{ background:var(--saffron-soft); }
     button.wc-chip:hover{ background:transparent; color:inherit; border-color:transparent; }
-    button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-dark); border-color:var(--saffron-soft); }
-    button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+    button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-text); }
     .fav-move:hover:not(:disabled){ border-color:var(--line); background:transparent; }
     .fav-move:active:not(:disabled){ border-color:var(--teal); background:var(--teal-soft); }
     .modal .m-close:hover{ background:transparent; color:inherit; border-color:transparent; }
-    .modal .m-close:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    .modal .m-close:active{ background:var(--saffron-soft); color:var(--saffron-text); }
     .words-bar .wb-btn:hover{ background:var(--teal); }
     .words-bar .wb-btn:active{ background:var(--teal-mid); }
+    .reader-size button:hover:not(:disabled){ border-color:var(--line); background:var(--paper); }
+    .reader-size button:active:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft); }
     .m-nav .m-back:hover{ background:var(--teal-soft); color:var(--teal); }
     .m-nav .m-back:active{ background:var(--teal); color:var(--on-accent); }
     .m-verse .pada-box:hover, .pada-box:hover{ background:var(--paper); border-color:var(--line); }
@@ -999,7 +1040,7 @@
     .m-verse .spk-line:hover{ background:none; }
     .m-verse .spk-line:active{ background:var(--saffron-soft); }
     .sw-x:hover{ background:transparent; color:inherit; }
-    .sw-x:active{ background:var(--saffron-soft); color:var(--saffron-dark); }
+    .sw-x:active{ background:var(--saffron-soft); color:var(--saffron-text); }
     .res-remove:hover{ border-color:var(--line); color:var(--ink-soft); }
     .res-remove:active{ border-color:var(--danger); color:var(--danger); }
 
@@ -1092,15 +1133,16 @@
     .m-num{ font-size:1.08rem; }
     .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
     .m-part{ font-size:.82rem; }
+    .reader-size button{ min-width:40px; min-height:40px; }
     .m-verse{ padding:12px 12px; }
     .words-bar .wb-btn{ min-height:34px; padding:6px 14px; }
     /* pādas stack one per row — two side by side is unreadable on a phone */
     .m-verse .pada-row{ flex-direction:column; gap:10px; }
     .m-verse .pada-grid{ gap:10px; }
     .m-verse .pada-box{ padding:10px 12px; }
-    .m-verse .pada-box .pb-deva{ font-size:1.24rem; }
+    .m-verse .pada-box .pb-deva{ font-size:calc(1.24rem * var(--reader-scale,1)); }
     .m-verse .wrow{ padding:5px 0; }
-    .m-line .lt{ font-size:.98rem; }
+    .m-line .lt{ font-size:calc(.98rem * var(--reader-scale,1)); }
     /* nav bar pinned to the bottom of the sheet, thumb-reachable */
     /* A sticky bar floats above the content, so the sheet ends with a spacer
        (.m-tail) tall enough for the last line to clear it when fully scrolled.
@@ -1122,8 +1164,12 @@
   @media (max-width:380px){
     .header-inner h1{ font-size:.98rem; }
     .lang-btn{ font-size:.76rem; padding:9px 4px; }
-    .m-verse .pada-box .pb-deva{ font-size:1.16rem; }
-    .toolbar .tool-btn{ font-size:.76rem; }
+    .m-verse .pada-box .pb-deva{ font-size:calc(1.16rem * var(--reader-scale,1)); }
+    .toolbar .tool-btn{ flex:1 1 0; min-width:0; min-height:44px; padding:6px 4px;
+                         font-size:.72rem; line-height:1.15; white-space:normal;
+                         display:flex; flex-direction:column; justify-content:center; gap:2px; }
+    .toolbar .tool-btn .ic{ width:1em; height:1em; margin:0; }
+    .toolbar .tool-btn span{ max-width:100%; overflow-wrap:anywhere; text-align:center; }
   }
 
   /* landscape phones: keep the sheet scrollable, shrink vertical padding */
@@ -1141,7 +1187,7 @@
   .ns-box{ max-width:640px; margin:10px auto 40px; background:var(--paper);
            border:1px solid var(--saffron); border-radius:16px; padding:22px 22px 24px;
            box-shadow:0 8px 22px rgba(var(--shadow),.10); }
-  .ns-box .ns-om{ font-size:2.6rem; color:var(--saffron); text-align:center; line-height:1; margin-bottom:6px; }
+  .ns-box .ns-om{ font-size:2.6rem; color:var(--saffron-text); text-align:center; line-height:1; margin-bottom:6px; }
   .ns-box h2{ font-family:Georgia,serif; color:var(--teal); font-size:1.25rem; text-align:center; margin-bottom:12px; }
   .ns-box p{ color:var(--ink); font-size:.95rem; margin-bottom:10px; }
   .ns-box .ns-how{ background:var(--saffron-soft); border-radius:10px; padding:10px 12px; }
@@ -1184,10 +1230,10 @@
       <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     </div>
     <div class="langbar" id="langbar">
-      <div class="seg">
-        <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
-        <button class="lang-btn" data-lang="ne" onclick="setLang('ne')">नेपाली</button>
-        <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
+      <div class="seg" role="group" aria-label="Interface language">
+        <button class="lang-btn on" data-lang="en" lang="en" aria-pressed="true" onclick="setLang('en')">English</button>
+        <button class="lang-btn" data-lang="ne" lang="ne" aria-pressed="false" onclick="setLang('ne')">नेपाली</button>
+        <button class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false" onclick="setLang('hi')">हिन्दी</button>
       </div>
       <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
     </div>
@@ -1196,10 +1242,10 @@
 
 <div class="toolbar">
   <button class="tool-btn" onclick="goHome()" id="homeBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span id="homeLbl">Home</span></button>
-  <div class="searchwrap">
+  <div class="searchwrap" role="search" aria-label="Search verses">
     <div class="sw-field">
       <span class="sw-ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
-      <input type="search" id="searchInput" placeholder="…" aria-label="search" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
+      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
       <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
   </div>
@@ -1209,12 +1255,12 @@
 </div>
 
 <div class="wrap">
-  <nav class="crumbs" id="crumbs"></nav>
+  <nav class="crumbs" id="crumbs" aria-label="Breadcrumb navigation"></nav>
   <!-- Announces each view change to screen readers. The app never reloads, so
        without this a reader who taps "Chapter 2" hears silence: the heading
        changed but focus did not move. Polite, so it never interrupts. -->
   <p id="srStatus" role="status" aria-live="polite" class="sr-only"></p>
-  <main id="view"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ</div></main>
+  <main id="view" tabindex="-1"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ</div></main>
 
   <!-- Shown only when JavaScript is disabled — e.g. the in-app file viewers of
        WhatsApp / Gmail / some file managers, which render HTML without running
@@ -1246,8 +1292,8 @@
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
 </footer>
 
-<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
-  <div class="modal" id="modal"></div>
+<div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></div>
 </div>
 
 <script>
@@ -1285,8 +1331,15 @@ function gitaLoadFail(){ var b = document.getElementById('bootNote');
   if (b) b.textContent = 'Could not load the verse data. Check your connection and reload.'; }
 window.__gitaLoaded = function(){};
 
-const UI = {"en": {"learn_retry": "Select again →", "play": "Play", "play_title": "Play", "play_sub": "Hear a śloka, take its sense, follow the argument, rebuild the line.", "play_scope": "Where from?", "play_all": "The whole Gītā", "play_ch": "One chapter", "play_m1": "What does it say?", "play_m1_d": "Read the Sanskrit. Choose the sense that belongs to this verse.", "play_m2": "What comes next?", "play_m2_d": "The Gītā is a chain. Given this verse, which śloka follows?", "play_m3": "Rebuild the śloka", "play_m3_d": "Four quarters, shuffled. Put them back in order.", "play_q1": "What does this śloka say?", "play_q2": "After this, which śloka comes next?", "play_again": "Play again", "play_stop": "Stop", "play_round": "{n} in a row", "learn_free": "Practise as long as you like", "learn_free_d": "A verse from this theme, its four quarters shuffled. Put them in order, then shuffle another — as often as you wish.", "learn_shuffle": "Shuffle another verse", "learn_free_go": "Practise the quarters →", "learn_done_free": "Done for now", "learn_qorder": "Put the four quarters of {v} back in order", "back_chapter_one": "← Back to chapter", "wip": "A work in progress — still building, still fixing, and dedicated to making the Gītā easier to study.", "opt_learn": "Learn by heart", "opt_learn_s": "Learn by heart", "opt_learn_d": "First the storyline, then the verses — recalled, not re-read.", "opt_learn_g": "कण्ठस्थ", "learn_title": "Learn chapter {n} by heart", "learn_sub": "First the story, then the verses. The story is the thread; without it the verses are beads on the floor.", "learn_walked": "{p}% of this chapter walked", "learn_s1": "The Story", "learn_s1_d": "Learn the {n} themes in order — the storyline of this chapter.", "learn_s2": "The Verses", "learn_s2_d": "Theme by theme — meet each verse, then recall it. {a} of {b} held.", "learn_s2_locked": "Opens once the story holds. The spine comes first.", "learn_begin": "Begin", "learn_again": "Walk it again", "learn_skip": "I already know the story — open the verses", "learn_restart": "Start this chapter over", "learn_restart_q": "Forget your progress for this chapter and start again?", "learn_step": "Step {a} of {b}", "learn_read_h": "The story of chapter {n}", "learn_read_d": "Walk down it once, slowly. Notice how each beat causes the next — that chain is what you will remember.", "learn_read_go": "I've read it →", "learn_order_few": "Put these {n} beats back in the order they happen", "learn_order_all": "The whole story — all {n} beats, in order", "learn_after": "After “{t}” — what comes next?", "learn_meet": "Meet the verses", "learn_meet_hint": "tap a quarter to show/hide its words", "learn_recall": "Now recall them →", "learn_next_verse": "Next verse →", "learn_which": "Which verse says this?", "learn_missing": "Quarter {q} of {v} — which word is missing?", "learn_vorder": "Put the verses of “{t}” back in order", "learn_yes": "Yes.", "learn_no": "Not quite.", "learn_thread_ok": "That's the thread.", "learn_nextis": "Not there yet — next comes", "learn_revisit": "{n} to revisit", "learn_story_done": "The story of chapter {n} is yours", "learn_story_done_d": "You can say what happens, in order, without looking. Every verse now has somewhere to belong.", "learn_to_verses": "On to the verses →", "learn_theme_done_d": "Held — {n} recalled without the page in front of you.", "learn_next_theme": "Next theme →", "learn_all_done": "Every theme of chapter {n} is yours.", "learn_ladder": "Memory ladder", "learn_lad_full": "Full read", "learn_lad_first": "First words", "learn_lad_half": "Half hidden", "learn_lad_blind": "From the heart", "learn_lad_full_s": "every word open", "learn_lad_first_s": "opening word of each quarter", "learn_lad_half_s": "every other word hidden", "learn_lad_blind_s": "all hidden — tap to peek", "learn_s3": "The quarters", "learn_s3_d": "Put each śloka back together, pāda by pāda — the way the mouth learns it.", "learn_tap_blank": "Tap a hidden word to peek", "learn_held": "Held", "learn_mark_held": "Mark held", "learn_unhold": "Unmark", "learn_test": "Self-test", "learn_reveal": "Recall, then tap to see", "learn_recall_opt": "Test recall →", "learn_land_d": "You have met the verses. Practise the quarters, or test recall — as gently as you like.", "learn_held_n": "{a} of {b} verses held", "learn_local": "Progress is kept in this browser only.", "app_title": "Bhagavad Gita — an Interactive Study", "read_full": "Verses with translation", "tab_study": "Study guide · thematic breakdown", "opt_full": "Verses with translation", "opt_full_d": "Each verse with its literal translation and the flowing paraphrase.", "opt_study": "Study guide · thematic breakdown", "opt_study_d": "Themes and their verses, with word-by-word meanings.", "opt_full_g": "अर्थ", "opt_study_g": "अध्ययन", "opt_go": "Choose →", "choose_title": "How would you like to receive this chapter?", "opt_study_s": "Study guide", "shared_label": "Shared verse", "shared_hint": "Click the verse to show/hide the word-by-word meanings.", "read_sub": "Each verse with its literal translation and a flowing paraphrase — tap any verse for word-by-word meanings.", "back_read": "← Back to themes", "fav_note": "note", "fav_note_ph": "why this verse matters to you…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "saved", "theme_dark": "Switch to dark mode", "theme_light": "Switch to light mode", "app_sub": "श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 quarters", "tag_sub": "18 chapters · 700 verses · study edition", "chapters": "Chapters", "chapter": "Chapter", "themes": "Themes", "theme_sg": "Theme", "verse": "Verse", "verses": "verses", "open_chapter": "Open chapter →", "open_chapters": "Open chapters →", "open_verses": "Open verses →", "literal": "Literal", "in_other_words": "In other words", "previous": "← Previous", "next": "Next →", "hide_meanings": "Hide meanings", "show_meanings": "Show meanings", "click_hint": "Click any verse to show/hide word-by-word meanings", "click_hint_pada": "Click any quarter to show/hide word-by-word meanings", "pick_theme": "Pick a theme to open its verses.", "of": "of", "footer": "ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.", "welcome_title": "Welcome to the Bhagavad Gita", "welcome_sub": "The timeless dialogue between Kṛṣṇa and Arjuna on the battlefield of Kurukṣetra — 700 verses, three ways, one goal.", "welcome_enter": "Enter the Gita", "welcome_foot": "ॐ 700 verses · three ways · one goal", "sections_title": "The Three Ways", "sections_sub": "The Gita's eighteen chapters in three ways — action, devotion, knowledge — each ripening into the next.", "sec_karma": "कर्मनिष्ठा · The Way of Karma", "sec_karma_desc": "Chapters 1–6 · action, duty, and renouncing the fruits of action.", "sec_bhakti": "भक्तिनिष्ठा · The Way of Bhakti", "sec_bhakti_desc": "Chapters 7–12 · devotion and surrender to the Lord.", "sec_jnana": "ज्ञाननिष्ठा · The Way of Jñāna", "sec_jnana_desc": "Chapters 13–18 · knowledge, the guṇas, and liberation.", "tab_karma": "Way of Karma", "tab_bhakti": "Way of Bhakti", "tab_jnana": "Way of Jñāna", "back_ways": "← Back to the Three Ways", "back_chapters": "← Back to chapters", "prev_theme": "← Previous theme", "next_theme": "Next theme →", "back_themes": "← Back to themes", "home": "Home", "verse_of_day": "Verse of the Day", "verse_topic": "Verse topic", "open_verse": "Open verse", "range_chapters": "Chapters {a}–{b}", "next_random": "Next Random", "back_to_theme": "← Back to theme", "search_ph": "Search e.g. 1.1", "clear": "Clear", "search_results": "Search results", "no_results": "No matches — try a verse number (e.g. 2.47), a Sanskrit word, or an English word.", "results": "results", "favorites": "Favorites", "no_favorites": "No saved verses yet — open any verse and tap Add to favorites.", "random": "Random", "save_verse": "Add to favorites", "saved_verse": "In favorites", "share": "Share", "link_copied": "Link copied", "share_hint": "Like this verse? Copy the link and share it with friends.", "copy_link": "Copy verse link", "remove_fav": "✕ remove", "oob_verse": "Chapter {ch} has only {n} verses.", "oob_chapter": "The Gita has only 18 chapters.", "pada_label": "Quarter", "back_to_x": "← Back to {x}", "home_plain": "home", "meter_anustubh": "anuṣṭubh", "meter_trishtubh": "triṣṭubh", "meter_irregular": "irregular", "meter_syllables": "{n} syllables", "meter_padas": "{n} quarters", "meter_padas_of": "{n} quarters of {k}"}, "ne": {"learn_retry": "फेरि चयन गर्नुहोस् →", "play": "खेल", "play_title": "खेल", "play_sub": "श्लोक पढ्नुहोस्, अर्थ लिनुहोस्, शृङ्खला समात्नुहोस्, पाद मिलाउनुहोस्।", "play_scope": "कहाँबाट?", "play_all": "पूरा गीता", "play_ch": "एउटा अध्याय", "play_m1": "के भन्छ?", "play_m1_d": "संस्कृत पढ्नुहोस्। यस श्लोकको अर्थ छान्नुहोस्।", "play_m2": "अर्को के आउँछ?", "play_m2_d": "गीता शृङ्खला हो। यो श्लोकपछि कुन श्लोक आउँछ?", "play_m3": "श्लोक जोड्नुहोस्", "play_m3_d": "चार पाद मिसाइएका। क्रममा मिलाउनुहोस्।", "play_q1": "यो श्लोकले के भन्छ?", "play_q2": "यसपछि कुन श्लोक आउँछ?", "play_again": "फेरि खेल्नुहोस्", "play_stop": "रोक्नुहोस्", "play_round": "लगातार {n}", "learn_free": "मन लागुन्जेल अभ्यास गर्नुहोस्", "learn_free_d": "यस विषयको कुनै श्लोक, यसका चार पाद मिसाइएका। क्रममा मिलाउनुहोस्, अनि अर्को श्लोक झिक्नुहोस् — जति पटक चाहनुहुन्छ।", "learn_shuffle": "अर्को श्लोक झिक्नुहोस्", "learn_free_go": "पाद अभ्यास गर्नुहोस् →", "learn_done_free": "अहिलेलाई पुग्यो", "learn_qorder": "{v} का चार पादलाई क्रममा मिलाउनुहोस्", "back_chapter_one": "← अध्यायमा फर्कनुहोस्", "wip": "निर्माणाधीन — अझै बन्दै, सुधार्दै; गीताको अध्ययन सजिलो बनाउनु नै लक्ष्य।", "opt_learn": "कण्ठस्थ पार्नुहोस्", "opt_learn_s": "कण्ठस्थ", "opt_learn_d": "पहिले कथासूत्र, अनि श्लोक — पढेर होइन, सम्झेर।", "opt_learn_g": "कण्ठस्थ", "learn_title": "अध्याय {n} कण्ठस्थ पार्नुहोस्", "learn_sub": "पहिले कथा, अनि श्लोक। कथा नै धागो हो; धागोबिना श्लोकहरू भुइँमा छरिएका मणि हुन्।", "learn_walked": "यो अध्यायको {p}% हिँडियो", "learn_s1": "कथा", "learn_s1_d": "{n} वटा विषय क्रमैसँग सिक्नुहोस् — यही यस अध्यायको कथासूत्र हो।", "learn_s2": "श्लोकहरू", "learn_s2_d": "विषय-विषय गरी — हरेक श्लोकसँग परिचित हुनुहोस्, अनि सम्झनुहोस्। {b} मध्ये {a} भयो।", "learn_s2_locked": "कथा बसेपछि खुल्छ। पहिले मेरुदण्ड।", "learn_begin": "सुरु गर्नुहोस्", "learn_again": "फेरि हिँड्नुहोस्", "learn_skip": "कथा थाहा छ — सिधै श्लोकमा जानुहोस्", "learn_restart": "यो अध्याय सुरुदेखि", "learn_restart_q": "यस अध्यायको प्रगति मेटेर फेरि सुरु गर्ने?", "learn_step": "चरण {a} / {b}", "learn_read_h": "अध्याय {n} को कथा", "learn_read_d": "एकपटक बिस्तारै हिँड्नुहोस्। हरेक चरणले अर्कोलाई कसरी जन्माउँछ — त्यही शृङ्खला सम्झनामा बस्छ।", "learn_read_go": "पढेँ →", "learn_order_few": "यी {n} चरणलाई घट्ने क्रममा मिलाउनुहोस्", "learn_order_all": "पूरा कथा — सबै {n} चरण, क्रमैसँग", "learn_after": "“{t}” पछि — के आउँछ?", "learn_meet": "श्लोकहरूसँग परिचय", "learn_meet_hint": "शब्दार्थ हेर्न/लुकाउन पादमा थिच्नुहोस्", "learn_recall": "अब सम्झनुहोस् →", "learn_next_verse": "अर्को श्लोक →", "learn_which": "कुन श्लोकले यो भन्छ?", "learn_missing": "{v} को {q} औं पाद — कुन शब्द छुट्यो?", "learn_vorder": "“{t}” का श्लोकहरू क्रममा मिलाउनुहोस्", "learn_yes": "ठीक!", "learn_no": "गलत।", "learn_thread_ok": "यही हो धागो।", "learn_nextis": "अहँ — अब आउने हो", "learn_revisit": "{n} फेरि हेर्न बाँकी", "learn_story_done": "अध्याय {n} को कथा तपाईंको भयो", "learn_story_done_d": "अब नहेरीकनै क्रमैसँग भन्न सक्नुहुन्छ। हरेक श्लोकले आफ्नो ठाउँ पायो।", "learn_to_verses": "अब श्लोकतिर →", "learn_theme_done_d": "भयो — {n} पानाविनै सम्झनुभयो।", "learn_next_theme": "अर्को विषय →", "learn_all_done": "अध्याय {n} का सबै विषय तपाईंको भयो।", "learn_ladder": "कण्ठस्थ सोपान", "learn_lad_full": "पूर्ण पठन", "learn_lad_first": "पहिलो शब्द", "learn_lad_half": "आधा गुप्त", "learn_lad_blind": "हृदयबाट", "learn_lad_full_s": "सबै शब्द खुला", "learn_lad_first_s": "प्रत्येक पादको पहिलो शब्द", "learn_lad_half_s": "एक अन्तर एक शब्द गुप्त", "learn_lad_blind_s": "सबै गुप्त — हेर्न थिच्नुहोस्", "learn_s3": "चार पाद", "learn_s3_d": "श्लोकलाई पाद-पाद मिलाएर कण्ठस्थ पार्नुहोस् — मुखले सिक्ने बाटो।", "learn_tap_blank": "लुकेको शब्द देखाउन थिच्नुहोस्", "learn_held": "कण्ठस्थ", "learn_mark_held": "कण्ठस्थ भयो", "learn_unhold": "हटाउनुहोस्", "learn_test": "आत्म-परीक्षा", "learn_reveal": "सम्झनुहोस्, अनि थिच्नुहोस्", "learn_recall_opt": "स्मरण जाँच →", "learn_land_d": "श्लोक भेटियो। पाद मिलाएर अभ्यास गर्नुहोस्, वा स्मरण जाँच गर्नुहोस् — जति नरम चाहियो।", "learn_held_n": "{b} श्लोकमध्ये {a} कण्ठस्थ", "learn_local": "प्रगति यही ब्राउजरमा मात्र रहन्छ।", "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "read_full": "अनुवादसहित श्लोक", "tab_study": "अध्ययन गाइड · विषयगत विभाजन", "opt_full": "अनुवादसहित श्लोक", "opt_full_d": "प्रत्येक श्लोक शाब्दिक अनुवाद र सरल अर्थसहित।", "opt_study": "अध्ययन गाइड · विषयगत विभाजन", "opt_study_d": "विषय र तिनका श्लोकहरू — शब्दार्थसहित।", "opt_full_g": "अर्थ", "opt_study_g": "अध्ययन", "opt_go": "छान्नुहोस् →", "choose_title": "यो अध्याय कसरी पढ्न चाहनुहुन्छ?", "opt_study_s": "अध्ययन गाइड", "shared_label": "साझा श्लोक", "shared_hint": "शब्दार्थ हेर्न/लुकाउन श्लोकमा क्लिक गर्नुहोस्।", "read_sub": "प्रत्येक श्लोकको शाब्दिक अनुवाद र सरल अर्थसहित — पदच्छेद/शब्दार्थका लागि श्लोकमा क्लिक गर्नुहोस्।", "back_read": "← विषयहरूमा फर्कनुहोस्", "fav_note": "टिप्पणी", "fav_note_ph": "यो श्लोक किन महत्त्वपूर्ण छ…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "सुरक्षित", "theme_dark": "डार्क मोडमा जानुहोस्", "theme_light": "लाइट मोडमा जानुहोस्", "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "chapters": "अध्यायहरू", "chapter": "अध्याय", "themes": "विषयहरू", "theme_sg": "विषय", "verse": "श्लोक", "verses": "श्लोकहरू", "open_chapter": "अध्याय खोल्नुहोस् →", "open_chapters": "अध्यायहरू खोल्नुहोस् →", "open_verses": "श्लोकहरू खोल्नुहोस् →", "literal": "शाब्दिक अनुवाद", "in_other_words": "सरल अर्थमा", "previous": "← अघिल्लो", "next": "अर्को →", "hide_meanings": "अर्थ लुकाउनुहोस्", "show_meanings": "अर्थ देखाउनुहोस्", "click_hint": "शब्दार्थ हेर्न/लुकाउन कुनै पनि श्लोकमा क्लिक गर्नुहोस्", "click_hint_pada": "शब्दार्थ हेर्न/लुकाउन कुनै पनि पादमा क्लिक गर्नुहोस्", "pick_theme": "यसका श्लोकहरू खोल्न विषय छान्नुहोस्।", "of": "मध्ये", "footer": "ॐ · भगवद्गीताको अध्ययन संस्करण — प्रत्येक श्लोक यसका परम्परागत चार पादमा, संस्कृत, शब्दार्थ, शाब्दिक अनुवाद र सरल अर्थ सहित।", "welcome_title": "भगवद्गीतामा स्वागत छ", "welcome_sub": "कुरुक्षेत्रको युद्धभूमिमा कृष्ण र अर्जुनको कालातीत संवाद — ७०० श्लोक, तीन निष्ठा, एउटै लक्ष्य।", "welcome_enter": "गीतामा प्रवेश गर्नुहोस्", "welcome_foot": "ॐ ७०० श्लोक · तीन निष्ठा · एउटै लक्ष्य", "sections_title": "तीन निष्ठा", "sections_sub": "गीताका अठार अध्याय तीन निष्ठामा — कर्म, भक्ति र ज्ञान — एउटा अर्कोमा परिपक्व हुँदै।", "sec_karma": "कर्मनिष्ठा", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य र कर्मफलको त्याग।", "sec_bhakti": "भक्तिनिष्ठा", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान्प्रतिको भक्ति र समर्पण।", "sec_jnana": "ज्ञाननिष्ठा", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण र मुक्ति।", "tab_karma": "कर्मनिष्ठा", "tab_bhakti": "भक्तिनिष्ठा", "tab_jnana": "ज्ञाननिष्ठा", "next_random": "अर्को यादृच्छिक", "back_to_theme": "← विषयमा फर्कनुहोस्", "back_ways": "← तीन निष्ठामा फर्कनुहोस्", "back_chapters": "← अध्यायहरूमा फर्कनुहोस्", "prev_theme": "← अघिल्लो विषय", "next_theme": "अर्को विषय →", "back_themes": "← विषयहरूमा फर्कनुहोस्", "home": "गृह", "verse_of_day": "आजको श्लोक", "verse_topic": "श्लोक विषय", "open_verse": "श्लोक खोल्नुहोस्", "range_chapters": "अध्याय {a}–{b}", "search_ph": "खोज्नुहोस् जस्तै १.१", "clear": "मेट्नुहोस्", "search_results": "खोज परिणामहरू", "no_results": "केही भेटिएन — श्लोक सङ्ख्या (जस्तै २.४७), संस्कृत वा अङ्ग्रेजी शब्द प्रयास गर्नुहोस्।", "results": "परिणामहरू", "favorites": "मनपर्ने", "no_favorites": "अहिलेसम्म कुनै सुरक्षित श्लोक छैन — कुनै श्लोक खोल्नुहोस् र मनपर्नेमा थप्नुहोस्।", "random": "यादृच्छिक", "save_verse": "मनपर्नेमा थप्नुहोस्", "saved_verse": "मनपर्नेमा", "share": "शेयर गर्नुहोस्", "link_copied": "लिङ्क कपी भयो", "share_hint": "यो श्लोक मन पर्यो? लिङ्क कपी गरेर साथीहरूसँग साझा गर्नुहोस्।", "copy_link": "श्लोक लिङ्क कपी गर्नुहोस्", "remove_fav": "✕ हटाउनुहोस्", "oob_verse": "अध्याय {ch} मा मात्र {n} श्लोक छन्।", "oob_chapter": "गीतामा मात्र १८ अध्याय छन्।", "pada_label": "पाद", "back_to_x": "← {x}मा फर्कनुहोस्", "home_plain": "गृह", "meter_anustubh": "अनुष्टुभ्", "meter_trishtubh": "त्रिष्टुभ्", "meter_irregular": "अनियमित", "meter_syllables": "{n} अक्षर", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)"}, "hi": {"learn_retry": "फिर चयन करें →", "play": "खेल", "play_title": "खेल", "play_sub": "श्लोक पढ़ें, अर्थ लें, शृंखला पकड़ें, पाद मिलाएँ।", "play_scope": "कहाँ से?", "play_all": "पूरी गीता", "play_ch": "एक अध्याय", "play_m1": "क्या कहता है?", "play_m1_d": "संस्कृत पढ़ें। इस श्लोक का अर्थ चुनें।", "play_m2": "आगे क्या आता है?", "play_m2_d": "गीता एक शृंखला है। इस श्लोक के बाद कौन-सा श्लोक आता है?", "play_m3": "श्लोक जोड़ें", "play_m3_d": "चार पाद मिश्रित। क्रम में लगाएँ।", "play_q1": "यह श्लोक क्या कहता है?", "play_q2": "इसके बाद कौन-सा श्लोक आता है?", "play_again": "फिर खेलें", "play_stop": "रोकें", "play_round": "लगातार {n}", "learn_free": "जब तक मन करे अभ्यास करें", "learn_free_d": "इस विषय का कोई श्लोक, उसके चारों पाद मिश्रित। क्रम में लगाएँ, फिर दूसरा श्लोक निकालें — जितनी बार चाहें।", "learn_shuffle": "दूसरा श्लोक निकालें", "learn_free_go": "पादों का अभ्यास करें →", "learn_done_free": "अभी के लिए बस", "learn_qorder": "{v} के चारों पादों को क्रम में लगाएँ", "back_chapter_one": "← अध्याय पर लौटें", "wip": "निर्माणाधीन — अभी बन रहा है, सुधर रहा है; गीता का अध्ययन सरल बनाना ही ध्येय है।", "opt_learn": "कंठस्थ करें", "opt_learn_s": "कंठस्थ", "opt_learn_d": "पहले कथासूत्र, फिर श्लोक — पढ़कर नहीं, स्मरण करके।", "opt_learn_g": "कण्ठस्थ", "learn_title": "अध्याय {n} कंठस्थ करें", "learn_sub": "पहले कथा, फिर श्लोक। कथा ही धागा है; धागे बिना श्लोक बिखरे मोती हैं।", "learn_walked": "इस अध्याय का {p}% चला", "learn_s1": "कथा", "learn_s1_d": "{n} विषय क्रम से सीखें — यही इस अध्याय का कथासूत्र है।", "learn_s2": "श्लोक", "learn_s2_d": "विषय-दर-विषय — हर श्लोक से मिलें, फिर उसे स्मरण करें। {b} में से {a} हुए।", "learn_s2_locked": "कथा बैठने पर खुलेगा। पहले रीढ़।", "learn_begin": "आरम्भ करें", "learn_again": "फिर से चलें", "learn_skip": "कथा आती है — सीधे श्लोक खोलें", "learn_restart": "यह अध्याय फिर से", "learn_restart_q": "इस अध्याय की प्रगति मिटाकर फिर से आरम्भ करें?", "learn_step": "चरण {a} / {b}", "learn_read_h": "अध्याय {n} की कथा", "learn_read_d": "एक बार धीरे-धीरे चलें। हर चरण अगले को कैसे जन्म देता है — वही शृंखला याद रहती है।", "learn_read_go": "पढ़ लिया →", "learn_order_few": "इन {n} चरणों को घटने के क्रम में लगाएँ", "learn_order_all": "पूरी कथा — सभी {n} चरण, क्रम से", "learn_after": "“{t}” के बाद — क्या आता है?", "learn_meet": "श्लोकों से परिचय", "learn_meet_hint": "शब्दार्थ देखने/छिपाने के लिए पाद पर टैप करें", "learn_recall": "अब स्मरण करें →", "learn_next_verse": "अगला श्लोक →", "learn_which": "कौन-सा श्लोक यह कहता है?", "learn_missing": "{v} का {q}वाँ पाद — कौन-सा शब्द छूटा?", "learn_vorder": "“{t}” के श्लोकों को क्रम में लगाएँ", "learn_yes": "ठीक!", "learn_no": "ग़लत।", "learn_thread_ok": "यही है धागा।", "learn_nextis": "अभी नहीं — अब आता है", "learn_revisit": "{n} फिर देखने हैं", "learn_story_done": "अध्याय {n} की कथा आपकी हुई", "learn_story_done_d": "अब बिना देखे क्रम से कह सकते हैं। हर श्लोक को अपनी जगह मिल गई।", "learn_to_verses": "अब श्लोकों की ओर →", "learn_theme_done_d": "हुआ — {n} बिना पन्ना देखे स्मरण किए।", "learn_next_theme": "अगला विषय →", "learn_all_done": "अध्याय {n} के सभी विषय आपके हुए।", "learn_ladder": "कंठस्थ सोपान", "learn_lad_full": "पूर्ण पठन", "learn_lad_first": "प्रथम शब्द", "learn_lad_half": "आधा गुप्त", "learn_lad_blind": "हृदय से", "learn_lad_full_s": "सभी शब्द खुले", "learn_lad_first_s": "प्रत्येक पाद का पहला शब्द", "learn_lad_half_s": "एक अंतर एक शब्द गुप्त", "learn_lad_blind_s": "सब गुप्त — देखने के लिए टैप करें", "learn_s3": "चार पाद", "learn_s3_d": "श्लोक को पाद-पाद जोड़कर कंठस्थ करें — मुख से सीखने का मार्ग।", "learn_tap_blank": "छिपे शब्द को देखने के लिए टैप करें", "learn_held": "कंठस्थ", "learn_mark_held": "कंठस्थ हुआ", "learn_unhold": "हटाएँ", "learn_test": "आत्म-परीक्षा", "learn_reveal": "स्मरण करें, फिर टैप करें", "learn_recall_opt": "स्मरण जाँच →", "learn_land_d": "श्लोक मिल गए। पाद जोड़कर अभ्यास करें, या स्मरण जाँचें — जितना नरम चाहें।", "learn_held_n": "{b} में से {a} श्लोक कंठस्थ", "learn_local": "प्रगति केवल इसी ब्राउज़र में रहती है।", "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "read_full": "अनुवाद सहित श्लोक", "tab_study": "अध्ययन गाइड · विषयगत विभाजन", "opt_full": "अनुवादसहित श्लोक", "opt_full_d": "प्रत्येक श्लोक शाब्दिक अनुवाद और सरल अर्थ सहित।", "opt_study": "अध्ययन गाइड · विषयगत विभाजन", "opt_study_d": "विषय और उनके श्लोक — शब्दार्थ सहित।", "opt_full_g": "अर्थ", "opt_study_g": "अध्ययन", "opt_go": "चुनें →", "choose_title": "इस अध्याय को आप कैसे पढ़ना चाहेंगे?", "opt_study_s": "अध्ययन गाइड", "shared_label": "साझा श्लोक", "shared_hint": "शब्दार्थ देखने/छिपाने के लिए श्लोक पर क्लिक करें।", "read_sub": "प्रत्येक श्लोक का शाब्दिक अनुवाद और सरल अर्थ सहित — पदच्छेद/शब्दार्थ के लिए श्लोक पर क्लिक करें।", "back_read": "← विषयों पर लौटें", "fav_note": "टिप्पणी", "fav_note_ph": "यह श्लोक आपके लिए क्यों महत्त्वपूर्ण है…", "fav_up": "↑", "fav_down": "↓", "fav_saved": "सहेजा", "theme_dark": "डार्क मोड पर जाएँ", "theme_light": "लाइट मोड पर जाएँ", "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "chapters": "अध्याय", "chapter": "अध्याय", "themes": "विषय", "theme_sg": "विषय", "verse": "श्लोक", "verses": "श्लोक", "open_chapter": "अध्याय खोलें →", "open_chapters": "अध्याय खोलें →", "open_verses": "श्लोक खोलें →", "literal": "शाब्दिक अनुवाद", "in_other_words": "सरल शब्दों में", "previous": "← पिछला", "next": "अगला →", "hide_meanings": "अर्थ छिपाएँ", "show_meanings": "अर्थ दिखाएँ", "click_hint": "शब्दार्थ देखने/छिपाने के लिए किसी भी श्लोक पर क्लिक करें", "click_hint_pada": "शब्दार्थ देखने/छिपाने के लिए किसी भी पाद पर क्लिक करें", "pick_theme": "इसके श्लोक खोलने के लिए विषय चुनें।", "of": "में से", "footer": "ॐ · भगवद्गीता का अध्ययन संस्करण — प्रत्येक श्लोक अपने पारंपरिक चार पादों में, संस्कृत, शब्दार्थ, शाब्दिक अनुवाद और सरल अर्थ सहित।", "welcome_title": "भगवद्गीता में आपका स्वागत है", "welcome_sub": "कुरुक्षेत्र के रणक्षेत्र में कृष्ण और अर्जुन का कालातीत संवाद — ७०० श्लोक, तीन निष्ठा, एक लक्ष्य।", "welcome_enter": "गीता में प्रवेश करें", "welcome_foot": "ॐ ७०० श्लोक · तीन निष्ठा · एक लक्ष्य", "sections_title": "तीन निष्ठाएँ", "sections_sub": "गीता के अठारह अध्याय तीन निष्ठाओं में — कर्म, भक्ति और ज्ञान — एक अगली में परिपक्व होती हुई।", "sec_karma": "कर्मनिष्ठा", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य और कर्म-फल का त्याग।", "sec_bhakti": "भक्तिनिष्ठा", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान् के प्रति भक्ति और समर्पण।", "sec_jnana": "ज्ञाननिष्ठा", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण और मुक्ति।", "tab_karma": "कर्मनिष्ठा", "tab_bhakti": "भक्तिनिष्ठा", "tab_jnana": "ज्ञाननिष्ठा", "next_random": "अगला यादृच्छिक", "back_to_theme": "← विषय पर लौटें", "back_ways": "← तीन निष्ठाओं पर लौटें", "back_chapters": "← अध्यायों पर लौटें", "prev_theme": "← पिछला विषय", "next_theme": "अगला विषय →", "back_themes": "← विषयों पर लौटें", "home": "गृह", "verse_of_day": "आज का श्लोक", "verse_topic": "श्लोक विषय", "open_verse": "श्लोक खोलें", "range_chapters": "अध्याय {a}–{b}", "search_ph": "खोजें जैसे १.१", "clear": "हटाएँ", "search_results": "खोज परिणाम", "no_results": "कुछ नहीं मिला — श्लोक संख्या (जैसे २.४७), संस्कृत या अंग्रेज़ी शब्द आज़माएँ।", "results": "परिणाम", "favorites": "पसंदीदा", "no_favorites": "अभी कोई सहेजा गया श्लोक नहीं — किसी श्लोक को खोलकर पसंदीदा में जोड़ें पर टैप करें।", "random": "यादृच्छिक", "save_verse": "पसंदीदा में जोड़ें", "saved_verse": "पसंदीदा में", "share": "शेयर करें", "link_copied": "लिंक कॉपी हुआ", "share_hint": "यह श्लोक पसंद आया? लिंक कॉपी करके मित्रों के साथ साझा करें।", "copy_link": "श्लोक लिंक कॉपी करें", "remove_fav": "✕ हटाएँ", "oob_verse": "अध्याय {ch} में केवल {n} श्लोक हैं।", "oob_chapter": "गीता में केवल १८ अध्याय हैं।", "pada_label": "पाद", "back_to_x": "← {x} पर लौटें", "home_plain": "गृह", "meter_anustubh": "अनुष्टुभ्", "meter_trishtubh": "त्रिष्टुभ्", "meter_irregular": "अनियमित", "meter_syllables": "{n} अक्षर", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)"}};
-const state = { chapter:null, theme:null, idx:0, lang:'en', view:'welcome', section:null, shared:null };
+const UI = {"en": {"learn_retry": "Select again →", "play": "Play", "play_title": "Play", "play_sub": "Hear a śloka, take its sense, follow the argument, rebuild the line.", "play_scope": "Where from?", "play_all": "The whole Gītā", "play_ch": "One chapter", "play_m1": "What does it say?", "play_m1_d": "Read the Sanskrit. Choose the sense that belongs to this verse.", "play_m2": "What comes next?", "play_m2_d": "The Gītā is a chain. Given this verse, which śloka follows?", "play_m3": "Rebuild the śloka", "play_m3_d": "Four quarters, shuffled. Put them back in order.", "play_q1": "What does this śloka say?", "play_q2": "After this, which śloka comes next?", "play_again": "Play again", "play_stop": "Stop", "play_round": "{n} in a row", "learn_free": "Practise as long as you like", "learn_free_d": "A verse from this theme, its four quarters shuffled. Put them in order, then shuffle another — as often as you wish.", "learn_shuffle": "Shuffle another verse", "learn_free_go": "Practise the quarters →", "learn_done_free": "Done for now", "learn_qorder": "Put the four quarters of {v} back in order", "back_chapter_one": "← Back to chapter", "wip": "A work in progress — still building, still fixing, and dedicated to making the Gītā easier to study.", "opt_learn": "Learn by heart", "opt_learn_s": "Learn by heart", "opt_learn_d": "First the storyline, then the verses — recalled, not re-read.", "opt_learn_g": "कण्ठस्थ", "learn_title": "Learn chapter {n} by heart", "learn_sub": "First the story, then the verses. The story is the thread; without it the verses are beads on the floor.", "learn_walked": "{p}% of this chapter walked", "learn_s1": "The Story", "learn_s1_d": "Learn the {n} themes in order — the storyline of this chapter.", "learn_s2": "The Verses", "learn_s2_d": "Theme by theme — meet each verse, then recall it. {a} of {b} held.", "learn_s2_locked": "Opens once the story holds. The spine comes first.", "learn_begin": "Begin", "learn_again": "Walk it again", "learn_skip": "I already know the story — open the verses", "learn_restart": "Start this chapter over", "learn_restart_q": "Forget your progress for this chapter and start again?", "learn_step": "Step {a} of {b}", "learn_read_h": "The story of chapter {n}", "learn_read_d": "Walk down it once, slowly. Notice how each beat causes the next — that chain is what you will remember.", "learn_read_go": "I've read it →", "learn_order_few": "Put these {n} beats back in the order they happen", "learn_order_all": "The whole story — all {n} beats, in order", "learn_after": "After “{t}” — what comes next?", "learn_meet": "Meet the verses", "learn_meet_hint": "tap a quarter to show/hide its words", "learn_recall": "Now recall them →", "learn_next_verse": "Next verse →", "learn_which": "Which verse says this?", "learn_missing": "Quarter {q} of {v} — which word is missing?", "learn_vorder": "Put the verses of “{t}” back in order", "learn_yes": "Yes.", "learn_no": "Not quite.", "learn_thread_ok": "That's the thread.", "learn_nextis": "Not there yet — next comes", "learn_revisit": "{n} to revisit", "learn_story_done": "The story of chapter {n} is yours", "learn_story_done_d": "You can say what happens, in order, without looking. Every verse now has somewhere to belong.", "learn_to_verses": "On to the verses →", "learn_theme_done_d": "Held — {n} recalled without the page in front of you.", "learn_next_theme": "Next theme →", "learn_all_done": "Every theme of chapter {n} is yours.", "learn_ladder": "Memory ladder", "learn_lad_full": "Full read", "learn_lad_first": "First words", "learn_lad_half": "Half hidden", "learn_lad_blind": "From the heart", "learn_lad_full_s": "every word open", "learn_lad_first_s": "opening word of each quarter", "learn_lad_half_s": "every other word hidden", "learn_lad_blind_s": "all hidden — tap to peek", "learn_s3": "The quarters", "learn_s3_d": "Put each śloka back together, pāda by pāda — the way the mouth learns it.", "learn_tap_blank": "Tap a hidden word to peek", "learn_held": "Held", "learn_mark_held": "Mark held", "learn_unhold": "Unmark", "learn_test": "Self-test", "learn_reveal": "Recall, then tap to see", "learn_recall_opt": "Test recall →", "learn_land_d": "You have met the verses. Practise the quarters, or test recall — as gently as you like.", "learn_held_n": "{a} of {b} verses held", "learn_local": "Progress is kept in this browser only.", "app_title": "Bhagavad Gita — an Interactive Study", "read_full": "Verses with translation", "tab_study": "Study guide · thematic breakdown", "opt_full": "Verses with translation", "opt_full_d": "Each verse with its literal translation and the flowing paraphrase.", "opt_study": "Study guide · thematic breakdown", "opt_study_d": "Themes and their verses, with word-by-word meanings.", "opt_full_g": "अर्थ", "opt_study_g": "अध्ययन", "opt_go": "Choose →", "choose_title": "How would you like to receive this chapter?", "opt_study_s": "Study guide", "shared_label": "Shared verse", "shared_hint": "Click the verse to show/hide the word-by-word meanings.", "read_sub": "Each verse with its literal translation and a flowing paraphrase — tap any verse for word-by-word meanings.", "back_read": "← Back to themes", "fav_note": "note", "fav_note_ph": "why this verse matters to you…", "fav_up": "↑", "fav_down": "↓", "fav_move_up": "Move favorite up", "fav_move_down": "Move favorite down", "fav_saved": "saved", "theme_dark": "Switch to dark mode", "theme_light": "Switch to light mode", "language": "Interface language", "app_sub": "श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 quarters", "tag_sub": "18 chapters · 700 verses · study edition", "chapters": "Chapters", "chapter": "Chapter", "themes": "Themes", "theme_sg": "Theme", "verse": "Verse", "verses": "verses", "open_chapter": "Open chapter →", "open_chapters": "Open chapters →", "open_verses": "Open verses →", "literal": "Literal", "in_other_words": "In other words", "previous": "← Previous", "next": "Next →", "hide_meanings": "Hide meanings", "show_meanings": "Show meanings", "click_hint": "Click any verse to show/hide word-by-word meanings", "click_hint_pada": "Select any quarter to show or hide word-by-word meanings", "pick_theme": "Pick a theme to open its verses.", "of": "of", "footer": "ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.", "welcome_title": "Welcome to the Bhagavad Gita", "welcome_sub": "The timeless dialogue between Kṛṣṇa and Arjuna on the battlefield of Kurukṣetra — 700 verses, three ways, one goal.", "welcome_enter": "Enter the Gita", "welcome_foot": "ॐ 700 verses · three ways · one goal", "guide_explore": "How to explore", "guide_way": "Choose a way — action, devotion, or knowledge — to find a chapter.", "guide_chapter": "In a chapter, choose verses with translation, a thematic study guide, or learn by heart.", "guide_verse": "Tap a verse or any of its four quarters to reveal word-by-word meanings.", "reader_size": "Text size", "reader_size_decrease": "Make verse text smaller", "reader_size_increase": "Make verse text larger", "reader_size_reset": "Reset verse text size", "sections_title": "The Three Ways", "sections_sub": "The Gita's eighteen chapters in three ways — action, devotion, knowledge — each ripening into the next.", "sec_karma": "कर्मनिष्ठा · The Way of Karma", "sec_karma_desc": "Chapters 1–6 · action, duty, and renouncing the fruits of action.", "sec_bhakti": "भक्तिनिष्ठा · The Way of Bhakti", "sec_bhakti_desc": "Chapters 7–12 · devotion and surrender to the Lord.", "sec_jnana": "ज्ञाननिष्ठा · The Way of Jñāna", "sec_jnana_desc": "Chapters 13–18 · knowledge, the guṇas, and liberation.", "tab_karma": "Way of Karma", "tab_bhakti": "Way of Bhakti", "tab_jnana": "Way of Jñāna", "back_ways": "← Back to the Three Ways", "back_chapters": "← Back to chapters", "prev_theme": "← Previous theme", "next_theme": "Next theme →", "back_themes": "← Back to themes", "home": "Home", "breadcrumb": "Breadcrumb navigation", "verse_of_day": "Verse of the Day", "verse_topic": "Verse topic", "open_verse": "Open verse", "close_verse": "Close verse", "range_chapters": "Chapters {a}–{b}", "next_random": "Next Random", "back_to_theme": "← Back to theme", "search_label": "Search verses", "search_ph": "Search e.g. 1.1", "clear": "Clear", "search_results": "Search results", "no_results": "No matches — try a verse number (e.g. 2.47), a Sanskrit word, or an English word.", "results": "results", "favorites": "Favorites", "no_favorites": "No saved verses yet — open any verse and tap Add to favorites.", "random": "Random", "save_verse": "Add to favorites", "saved_verse": "In favorites", "share": "Share", "link_copied": "Link copied", "share_hint": "Like this verse? Copy the link and share it with friends.", "copy_link": "Copy verse link", "remove_fav": "✕ remove", "oob_verse": "Chapter {ch} has only {n} verses.", "oob_chapter": "The Gita has only 18 chapters.", "pada_label": "Quarter", "back_to_x": "← Back to {x}", "home_plain": "home", "meter_anustubh": "anuṣṭubh", "meter_trishtubh": "triṣṭubh", "meter_irregular": "irregular", "meter_syllables": "{n} syllables", "meter_padas": "{n} quarters", "meter_padas_of": "{n} quarters of {k}"}, "ne": {"learn_retry": "फेरि चयन गर्नुहोस् →", "play": "खेल", "play_title": "खेल", "play_sub": "श्लोक पढ्नुहोस्, अर्थ लिनुहोस्, शृङ्खला समात्नुहोस्, पाद मिलाउनुहोस्।", "play_scope": "कहाँबाट?", "play_all": "पूरा गीता", "play_ch": "एउटा अध्याय", "play_m1": "के भन्छ?", "play_m1_d": "संस्कृत पढ्नुहोस्। यस श्लोकको अर्थ छान्नुहोस्।", "play_m2": "अर्को के आउँछ?", "play_m2_d": "गीता शृङ्खला हो। यो श्लोकपछि कुन श्लोक आउँछ?", "play_m3": "श्लोक जोड्नुहोस्", "play_m3_d": "चार पाद मिसाइएका। क्रममा मिलाउनुहोस्।", "play_q1": "यो श्लोकले के भन्छ?", "play_q2": "यसपछि कुन श्लोक आउँछ?", "play_again": "फेरि खेल्नुहोस्", "play_stop": "रोक्नुहोस्", "play_round": "लगातार {n}", "learn_free": "मन लागुन्जेल अभ्यास गर्नुहोस्", "learn_free_d": "यस विषयको कुनै श्लोक, यसका चार पाद मिसाइएका। क्रममा मिलाउनुहोस्, अनि अर्को श्लोक झिक्नुहोस् — जति पटक चाहनुहुन्छ।", "learn_shuffle": "अर्को श्लोक झिक्नुहोस्", "learn_free_go": "पाद अभ्यास गर्नुहोस् →", "learn_done_free": "अहिलेलाई पुग्यो", "learn_qorder": "{v} का चार पादलाई क्रममा मिलाउनुहोस्", "back_chapter_one": "← अध्यायमा फर्कनुहोस्", "wip": "निर्माणाधीन — अझै बन्दै, सुधार्दै; गीताको अध्ययन सजिलो बनाउनु नै लक्ष्य।", "opt_learn": "कण्ठस्थ पार्नुहोस्", "opt_learn_s": "कण्ठस्थ", "opt_learn_d": "पहिले कथासूत्र, अनि श्लोक — पढेर होइन, सम्झेर।", "opt_learn_g": "कण्ठस्थ", "learn_title": "अध्याय {n} कण्ठस्थ पार्नुहोस्", "learn_sub": "पहिले कथा, अनि श्लोक। कथा नै धागो हो; धागोबिना श्लोकहरू भुइँमा छरिएका मणि हुन्।", "learn_walked": "यो अध्यायको {p}% हिँडियो", "learn_s1": "कथा", "learn_s1_d": "{n} वटा विषय क्रमैसँग सिक्नुहोस् — यही यस अध्यायको कथासूत्र हो।", "learn_s2": "श्लोकहरू", "learn_s2_d": "विषय-विषय गरी — हरेक श्लोकसँग परिचित हुनुहोस्, अनि सम्झनुहोस्। {b} मध्ये {a} भयो।", "learn_s2_locked": "कथा बसेपछि खुल्छ। पहिले मेरुदण्ड।", "learn_begin": "सुरु गर्नुहोस्", "learn_again": "फेरि हिँड्नुहोस्", "learn_skip": "कथा थाहा छ — सिधै श्लोकमा जानुहोस्", "learn_restart": "यो अध्याय सुरुदेखि", "learn_restart_q": "यस अध्यायको प्रगति मेटेर फेरि सुरु गर्ने?", "learn_step": "चरण {a} / {b}", "learn_read_h": "अध्याय {n} को कथा", "learn_read_d": "एकपटक बिस्तारै हिँड्नुहोस्। हरेक चरणले अर्कोलाई कसरी जन्माउँछ — त्यही शृङ्खला सम्झनामा बस्छ।", "learn_read_go": "पढेँ →", "learn_order_few": "यी {n} चरणलाई घट्ने क्रममा मिलाउनुहोस्", "learn_order_all": "पूरा कथा — सबै {n} चरण, क्रमैसँग", "learn_after": "“{t}” पछि — के आउँछ?", "learn_meet": "श्लोकहरूसँग परिचय", "learn_meet_hint": "शब्दार्थ हेर्न/लुकाउन पादमा थिच्नुहोस्", "learn_recall": "अब सम्झनुहोस् →", "learn_next_verse": "अर्को श्लोक →", "learn_which": "कुन श्लोकले यो भन्छ?", "learn_missing": "{v} को {q} औं पाद — कुन शब्द छुट्यो?", "learn_vorder": "“{t}” का श्लोकहरू क्रममा मिलाउनुहोस्", "learn_yes": "ठीक!", "learn_no": "गलत।", "learn_thread_ok": "यही हो धागो।", "learn_nextis": "अहँ — अब आउने हो", "learn_revisit": "{n} फेरि हेर्न बाँकी", "learn_story_done": "अध्याय {n} को कथा तपाईंको भयो", "learn_story_done_d": "अब नहेरीकनै क्रमैसँग भन्न सक्नुहुन्छ। हरेक श्लोकले आफ्नो ठाउँ पायो।", "learn_to_verses": "अब श्लोकतिर →", "learn_theme_done_d": "भयो — {n} पानाविनै सम्झनुभयो।", "learn_next_theme": "अर्को विषय →", "learn_all_done": "अध्याय {n} का सबै विषय तपाईंको भयो।", "learn_ladder": "कण्ठस्थ सोपान", "learn_lad_full": "पूर्ण पठन", "learn_lad_first": "पहिलो शब्द", "learn_lad_half": "आधा गुप्त", "learn_lad_blind": "हृदयबाट", "learn_lad_full_s": "सबै शब्द खुला", "learn_lad_first_s": "प्रत्येक पादको पहिलो शब्द", "learn_lad_half_s": "एक अन्तर एक शब्द गुप्त", "learn_lad_blind_s": "सबै गुप्त — हेर्न थिच्नुहोस्", "learn_s3": "चार पाद", "learn_s3_d": "श्लोकलाई पाद-पाद मिलाएर कण्ठस्थ पार्नुहोस् — मुखले सिक्ने बाटो।", "learn_tap_blank": "लुकेको शब्द देखाउन थिच्नुहोस्", "learn_held": "कण्ठस्थ", "learn_mark_held": "कण्ठस्थ भयो", "learn_unhold": "हटाउनुहोस्", "learn_test": "आत्म-परीक्षा", "learn_reveal": "सम्झनुहोस्, अनि थिच्नुहोस्", "learn_recall_opt": "स्मरण जाँच →", "learn_land_d": "श्लोक भेटियो। पाद मिलाएर अभ्यास गर्नुहोस्, वा स्मरण जाँच गर्नुहोस् — जति नरम चाहियो।", "learn_held_n": "{b} श्लोकमध्ये {a} कण्ठस्थ", "learn_local": "प्रगति यही ब्राउजरमा मात्र रहन्छ।", "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "read_full": "अनुवादसहित श्लोक", "tab_study": "अध्ययन गाइड · विषयगत विभाजन", "opt_full": "अनुवादसहित श्लोक", "opt_full_d": "प्रत्येक श्लोक शाब्दिक अनुवाद र सरल अर्थसहित।", "opt_study": "अध्ययन गाइड · विषयगत विभाजन", "opt_study_d": "विषय र तिनका श्लोकहरू — शब्दार्थसहित।", "opt_full_g": "अर्थ", "opt_study_g": "अध्ययन", "opt_go": "छान्नुहोस् →", "choose_title": "यो अध्याय कसरी पढ्न चाहनुहुन्छ?", "opt_study_s": "अध्ययन गाइड", "shared_label": "साझा श्लोक", "shared_hint": "शब्दार्थ हेर्न/लुकाउन श्लोकमा क्लिक गर्नुहोस्।", "read_sub": "प्रत्येक श्लोकको शाब्दिक अनुवाद र सरल अर्थसहित — पदच्छेद/शब्दार्थका लागि श्लोकमा क्लिक गर्नुहोस्।", "back_read": "← विषयहरूमा फर्कनुहोस्", "fav_note": "टिप्पणी", "fav_note_ph": "यो श्लोक किन महत्त्वपूर्ण छ…", "fav_up": "↑", "fav_down": "↓", "fav_move_up": "मनपर्ने श्लोक माथि सार्नुहोस्", "fav_move_down": "मनपर्ने श्लोक तल सार्नुहोस्", "fav_saved": "सुरक्षित", "theme_dark": "डार्क मोडमा जानुहोस्", "theme_light": "लाइट मोडमा जानुहोस्", "language": "एपको भाषा", "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "chapters": "अध्यायहरू", "chapter": "अध्याय", "themes": "विषयहरू", "theme_sg": "विषय", "verse": "श्लोक", "verses": "श्लोकहरू", "open_chapter": "अध्याय खोल्नुहोस् →", "open_chapters": "अध्यायहरू खोल्नुहोस् →", "open_verses": "श्लोकहरू खोल्नुहोस् →", "literal": "शाब्दिक अनुवाद", "in_other_words": "सरल अर्थमा", "previous": "← अघिल्लो", "next": "अर्को →", "hide_meanings": "अर्थ लुकाउनुहोस्", "show_meanings": "अर्थ देखाउनुहोस्", "click_hint": "शब्दार्थ हेर्न/लुकाउन कुनै पनि श्लोकमा क्लिक गर्नुहोस्", "click_hint_pada": "शब्दार्थ हेर्न वा लुकाउन कुनै पनि पाद छान्नुहोस्", "pick_theme": "यसका श्लोकहरू खोल्न विषय छान्नुहोस्।", "of": "मध्ये", "footer": "ॐ · भगवद्गीताको अध्ययन संस्करण — प्रत्येक श्लोक यसका परम्परागत चार पादमा, संस्कृत, शब्दार्थ, शाब्दिक अनुवाद र सरल अर्थ सहित।", "welcome_title": "भगवद्गीतामा स्वागत छ", "welcome_sub": "कुरुक्षेत्रको युद्धभूमिमा कृष्ण र अर्जुनको कालातीत संवाद — ७०० श्लोक, तीन निष्ठा, एउटै लक्ष्य।", "welcome_enter": "गीतामा प्रवेश गर्नुहोस्", "welcome_foot": "ॐ ७०० श्लोक · तीन निष्ठा · एउटै लक्ष्य", "guide_explore": "यस अध्ययनमा कसरी अघि बढ्ने", "guide_way": "कर्म, भक्ति वा ज्ञानमध्ये एउटा मार्ग छानेर अध्याय खोल्नुहोस्।", "guide_chapter": "अध्यायमा अनुवादसहितका श्लोक, विषयगत अध्ययन वा कण्ठस्थ अभ्यास रोज्नुहोस्।", "guide_verse": "शब्दार्थ हेर्न श्लोक वा त्यसको कुनै पादमा थिच्नुहोस्।", "reader_size": "अक्षरको आकार", "reader_size_decrease": "श्लोकको अक्षर सानो बनाउनुहोस्", "reader_size_increase": "श्लोकको अक्षर ठूलो बनाउनुहोस्", "reader_size_reset": "श्लोकको अक्षरको आकार फेरि मिलाउनुहोस्", "sections_title": "तीन निष्ठा", "sections_sub": "गीताका अठार अध्याय तीन निष्ठामा — कर्म, भक्ति र ज्ञान — एउटा अर्कोमा परिपक्व हुँदै।", "sec_karma": "कर्मनिष्ठा", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य र कर्मफलको त्याग।", "sec_bhakti": "भक्तिनिष्ठा", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान्प्रतिको भक्ति र समर्पण।", "sec_jnana": "ज्ञाननिष्ठा", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण र मुक्ति।", "tab_karma": "कर्मनिष्ठा", "tab_bhakti": "भक्तिनिष्ठा", "tab_jnana": "ज्ञाननिष्ठा", "next_random": "अर्को यादृच्छिक", "back_to_theme": "← विषयमा फर्कनुहोस्", "back_ways": "← तीन निष्ठामा फर्कनुहोस्", "back_chapters": "← अध्यायहरूमा फर्कनुहोस्", "prev_theme": "← अघिल्लो विषय", "next_theme": "अर्को विषय →", "back_themes": "← विषयहरूमा फर्कनुहोस्", "home": "गृह", "breadcrumb": "नेभिगेसन मार्ग", "verse_of_day": "आजको श्लोक", "verse_topic": "श्लोक विषय", "open_verse": "श्लोक खोल्नुहोस्", "close_verse": "श्लोक बन्द गर्नुहोस्", "range_chapters": "अध्याय {a}–{b}", "search_label": "श्लोक खोज्नुहोस्", "search_ph": "खोज्नुहोस् जस्तै १.१", "clear": "मेट्नुहोस्", "search_results": "खोज परिणामहरू", "no_results": "केही भेटिएन — श्लोक सङ्ख्या (जस्तै २.४७), संस्कृत वा अङ्ग्रेजी शब्द प्रयास गर्नुहोस्।", "results": "परिणामहरू", "favorites": "मनपर्ने", "no_favorites": "अहिलेसम्म कुनै सुरक्षित श्लोक छैन — कुनै श्लोक खोल्नुहोस् र मनपर्नेमा थप्नुहोस्।", "random": "यादृच्छिक", "save_verse": "मनपर्नेमा थप्नुहोस्", "saved_verse": "मनपर्नेमा", "share": "शेयर गर्नुहोस्", "link_copied": "लिङ्क कपी भयो", "share_hint": "यो श्लोक मन पर्यो? लिङ्क कपी गरेर साथीहरूसँग साझा गर्नुहोस्।", "copy_link": "श्लोक लिङ्क कपी गर्नुहोस्", "remove_fav": "✕ हटाउनुहोस्", "oob_verse": "अध्याय {ch} मा मात्र {n} श्लोक छन्।", "oob_chapter": "गीतामा मात्र १८ अध्याय छन्।", "pada_label": "पाद", "back_to_x": "← {x}मा फर्कनुहोस्", "home_plain": "गृह", "meter_anustubh": "अनुष्टुभ्", "meter_trishtubh": "त्रिष्टुभ्", "meter_irregular": "अनियमित", "meter_syllables": "{n} अक्षर", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)"}, "hi": {"learn_retry": "फिर चयन करें →", "play": "खेल", "play_title": "खेल", "play_sub": "श्लोक पढ़ें, अर्थ लें, शृंखला पकड़ें, पाद मिलाएँ।", "play_scope": "कहाँ से?", "play_all": "पूरी गीता", "play_ch": "एक अध्याय", "play_m1": "क्या कहता है?", "play_m1_d": "संस्कृत पढ़ें। इस श्लोक का अर्थ चुनें।", "play_m2": "आगे क्या आता है?", "play_m2_d": "गीता एक शृंखला है। इस श्लोक के बाद कौन-सा श्लोक आता है?", "play_m3": "श्लोक जोड़ें", "play_m3_d": "चार पाद मिश्रित। क्रम में लगाएँ।", "play_q1": "यह श्लोक क्या कहता है?", "play_q2": "इसके बाद कौन-सा श्लोक आता है?", "play_again": "फिर खेलें", "play_stop": "रोकें", "play_round": "लगातार {n}", "learn_free": "जब तक मन करे अभ्यास करें", "learn_free_d": "इस विषय का कोई श्लोक, उसके चारों पाद मिश्रित। क्रम में लगाएँ, फिर दूसरा श्लोक निकालें — जितनी बार चाहें।", "learn_shuffle": "दूसरा श्लोक निकालें", "learn_free_go": "पादों का अभ्यास करें →", "learn_done_free": "अभी के लिए बस", "learn_qorder": "{v} के चारों पादों को क्रम में लगाएँ", "back_chapter_one": "← अध्याय पर लौटें", "wip": "निर्माणाधीन — अभी बन रहा है, सुधर रहा है; गीता का अध्ययन सरल बनाना ही ध्येय है।", "opt_learn": "कंठस्थ करें", "opt_learn_s": "कंठस्थ", "opt_learn_d": "पहले कथासूत्र, फिर श्लोक — पढ़कर नहीं, स्मरण करके।", "opt_learn_g": "कण्ठस्थ", "learn_title": "अध्याय {n} कंठस्थ करें", "learn_sub": "पहले कथा, फिर श्लोक। कथा ही धागा है; धागे बिना श्लोक बिखरे मोती हैं।", "learn_walked": "इस अध्याय का {p}% चला", "learn_s1": "कथा", "learn_s1_d": "{n} विषय क्रम से सीखें — यही इस अध्याय का कथासूत्र है।", "learn_s2": "श्लोक", "learn_s2_d": "विषय-दर-विषय — हर श्लोक से मिलें, फिर उसे स्मरण करें। {b} में से {a} हुए।", "learn_s2_locked": "कथा बैठने पर खुलेगा। पहले रीढ़।", "learn_begin": "आरम्भ करें", "learn_again": "फिर से चलें", "learn_skip": "कथा आती है — सीधे श्लोक खोलें", "learn_restart": "यह अध्याय फिर से", "learn_restart_q": "इस अध्याय की प्रगति मिटाकर फिर से आरम्भ करें?", "learn_step": "चरण {a} / {b}", "learn_read_h": "अध्याय {n} की कथा", "learn_read_d": "एक बार धीरे-धीरे चलें। हर चरण अगले को कैसे जन्म देता है — वही शृंखला याद रहती है।", "learn_read_go": "पढ़ लिया →", "learn_order_few": "इन {n} चरणों को घटने के क्रम में लगाएँ", "learn_order_all": "पूरी कथा — सभी {n} चरण, क्रम से", "learn_after": "“{t}” के बाद — क्या आता है?", "learn_meet": "श्लोकों से परिचय", "learn_meet_hint": "शब्दार्थ देखने/छिपाने के लिए पाद पर टैप करें", "learn_recall": "अब स्मरण करें →", "learn_next_verse": "अगला श्लोक →", "learn_which": "कौन-सा श्लोक यह कहता है?", "learn_missing": "{v} का {q}वाँ पाद — कौन-सा शब्द छूटा?", "learn_vorder": "“{t}” के श्लोकों को क्रम में लगाएँ", "learn_yes": "ठीक!", "learn_no": "ग़लत।", "learn_thread_ok": "यही है धागा।", "learn_nextis": "अभी नहीं — अब आता है", "learn_revisit": "{n} फिर देखने हैं", "learn_story_done": "अध्याय {n} की कथा आपकी हुई", "learn_story_done_d": "अब बिना देखे क्रम से कह सकते हैं। हर श्लोक को अपनी जगह मिल गई।", "learn_to_verses": "अब श्लोकों की ओर →", "learn_theme_done_d": "हुआ — {n} बिना पन्ना देखे स्मरण किए।", "learn_next_theme": "अगला विषय →", "learn_all_done": "अध्याय {n} के सभी विषय आपके हुए।", "learn_ladder": "कंठस्थ सोपान", "learn_lad_full": "पूर्ण पठन", "learn_lad_first": "प्रथम शब्द", "learn_lad_half": "आधा गुप्त", "learn_lad_blind": "हृदय से", "learn_lad_full_s": "सभी शब्द खुले", "learn_lad_first_s": "प्रत्येक पाद का पहला शब्द", "learn_lad_half_s": "एक अंतर एक शब्द गुप्त", "learn_lad_blind_s": "सब गुप्त — देखने के लिए टैप करें", "learn_s3": "चार पाद", "learn_s3_d": "श्लोक को पाद-पाद जोड़कर कंठस्थ करें — मुख से सीखने का मार्ग।", "learn_tap_blank": "छिपे शब्द को देखने के लिए टैप करें", "learn_held": "कंठस्थ", "learn_mark_held": "कंठस्थ हुआ", "learn_unhold": "हटाएँ", "learn_test": "आत्म-परीक्षा", "learn_reveal": "स्मरण करें, फिर टैप करें", "learn_recall_opt": "स्मरण जाँच →", "learn_land_d": "श्लोक मिल गए। पाद जोड़कर अभ्यास करें, या स्मरण जाँचें — जितना नरम चाहें।", "learn_held_n": "{b} में से {a} श्लोक कंठस्थ", "learn_local": "प्रगति केवल इसी ब्राउज़र में रहती है।", "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "read_full": "अनुवाद सहित श्लोक", "tab_study": "अध्ययन गाइड · विषयगत विभाजन", "opt_full": "अनुवादसहित श्लोक", "opt_full_d": "प्रत्येक श्लोक शाब्दिक अनुवाद और सरल अर्थ सहित।", "opt_study": "अध्ययन गाइड · विषयगत विभाजन", "opt_study_d": "विषय और उनके श्लोक — शब्दार्थ सहित।", "opt_full_g": "अर्थ", "opt_study_g": "अध्ययन", "opt_go": "चुनें →", "choose_title": "इस अध्याय को आप कैसे पढ़ना चाहेंगे?", "opt_study_s": "अध्ययन गाइड", "shared_label": "साझा श्लोक", "shared_hint": "शब्दार्थ देखने/छिपाने के लिए श्लोक पर क्लिक करें।", "read_sub": "प्रत्येक श्लोक का शाब्दिक अनुवाद और सरल अर्थ सहित — पदच्छेद/शब्दार्थ के लिए श्लोक पर क्लिक करें।", "back_read": "← विषयों पर लौटें", "fav_note": "टिप्पणी", "fav_note_ph": "यह श्लोक आपके लिए क्यों महत्त्वपूर्ण है…", "fav_up": "↑", "fav_down": "↓", "fav_move_up": "पसंदीदा श्लोक ऊपर ले जाएँ", "fav_move_down": "पसंदीदा श्लोक नीचे ले जाएँ", "fav_saved": "सहेजा", "theme_dark": "डार्क मोड पर जाएँ", "theme_light": "लाइट मोड पर जाएँ", "language": "ऐप की भाषा", "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "chapters": "अध्याय", "chapter": "अध्याय", "themes": "विषय", "theme_sg": "विषय", "verse": "श्लोक", "verses": "श्लोक", "open_chapter": "अध्याय खोलें →", "open_chapters": "अध्याय खोलें →", "open_verses": "श्लोक खोलें →", "literal": "शाब्दिक अनुवाद", "in_other_words": "सरल शब्दों में", "previous": "← पिछला", "next": "अगला →", "hide_meanings": "अर्थ छिपाएँ", "show_meanings": "अर्थ दिखाएँ", "click_hint": "शब्दार्थ देखने/छिपाने के लिए किसी भी श्लोक पर क्लिक करें", "click_hint_pada": "शब्दार्थ देखने या छिपाने के लिए कोई भी पाद चुनें", "pick_theme": "इसके श्लोक खोलने के लिए विषय चुनें।", "of": "में से", "footer": "ॐ · भगवद्गीता का अध्ययन संस्करण — प्रत्येक श्लोक अपने पारंपरिक चार पादों में, संस्कृत, शब्दार्थ, शाब्दिक अनुवाद और सरल अर्थ सहित।", "welcome_title": "भगवद्गीता में आपका स्वागत है", "welcome_sub": "कुरुक्षेत्र के रणक्षेत्र में कृष्ण और अर्जुन का कालातीत संवाद — ७०० श्लोक, तीन निष्ठा, एक लक्ष्य।", "welcome_enter": "गीता में प्रवेश करें", "welcome_foot": "ॐ ७०० श्लोक · तीन निष्ठा · एक लक्ष्य", "guide_explore": "इस अध्ययन को कैसे करें", "guide_way": "कर्म, भक्ति या ज्ञान में से एक मार्ग चुनकर अध्याय खोलें।", "guide_chapter": "अध्याय में अनुवाद सहित श्लोक, विषयगत अध्ययन या कंठस्थ अभ्यास चुनें।", "guide_verse": "शब्दार्थ देखने के लिए श्लोक या उसके किसी एक पाद पर टैप करें।", "reader_size": "पाठ का आकार", "reader_size_decrease": "श्लोक का अक्षर छोटा करें", "reader_size_increase": "श्लोक का अक्षर बड़ा करें", "reader_size_reset": "श्लोक का अक्षर सामान्य करें", "sections_title": "तीन निष्ठाएँ", "sections_sub": "गीता के अठारह अध्याय तीन निष्ठाओं में — कर्म, भक्ति और ज्ञान — एक अगली में परिपक्व होती हुई।", "sec_karma": "कर्मनिष्ठा", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य और कर्म-फल का त्याग।", "sec_bhakti": "भक्तिनिष्ठा", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान् के प्रति भक्ति और समर्पण।", "sec_jnana": "ज्ञाननिष्ठा", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण और मुक्ति।", "tab_karma": "कर्मनिष्ठा", "tab_bhakti": "भक्तिनिष्ठा", "tab_jnana": "ज्ञाननिष्ठा", "next_random": "अगला यादृच्छिक", "back_to_theme": "← विषय पर लौटें", "back_ways": "← तीन निष्ठाओं पर लौटें", "back_chapters": "← अध्यायों पर लौटें", "prev_theme": "← पिछला विषय", "next_theme": "अगला विषय →", "back_themes": "← विषयों पर लौटें", "home": "गृह", "breadcrumb": "नेविगेशन पथ", "verse_of_day": "आज का श्लोक", "verse_topic": "श्लोक विषय", "open_verse": "श्लोक खोलें", "close_verse": "श्लोक बंद करें", "range_chapters": "अध्याय {a}–{b}", "search_label": "श्लोक खोजें", "search_ph": "खोजें जैसे १.१", "clear": "हटाएँ", "search_results": "खोज परिणाम", "no_results": "कुछ नहीं मिला — श्लोक संख्या (जैसे २.४७), संस्कृत या अंग्रेज़ी शब्द आज़माएँ।", "results": "परिणाम", "favorites": "पसंदीदा", "no_favorites": "अभी कोई सहेजा गया श्लोक नहीं — किसी श्लोक को खोलकर पसंदीदा में जोड़ें पर टैप करें।", "random": "यादृच्छिक", "save_verse": "पसंदीदा में जोड़ें", "saved_verse": "पसंदीदा में", "share": "शेयर करें", "link_copied": "लिंक कॉपी हुआ", "share_hint": "यह श्लोक पसंद आया? लिंक कॉपी करके मित्रों के साथ साझा करें।", "copy_link": "श्लोक लिंक कॉपी करें", "remove_fav": "✕ हटाएँ", "oob_verse": "अध्याय {ch} में केवल {n} श्लोक हैं।", "oob_chapter": "गीता में केवल १८ अध्याय हैं।", "pada_label": "पाद", "back_to_x": "← {x} पर लौटें", "home_plain": "गृह", "meter_anustubh": "अनुष्टुभ्", "meter_trishtubh": "त्रिष्टुभ्", "meter_irregular": "अनियमित", "meter_syllables": "{n} अक्षर", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)"}};
+const READER_SIZES = [80,90,100,110,120,130,140];
+function savedReaderSize(){
+  let size = 100;
+  try{ size = Number(localStorage.getItem('gitaReaderSize')); }catch(e){}
+  return READER_SIZES.includes(size) ? size : 100;
+}
+const state = { chapter:null, theme:null, idx:0, lang:'en', view:'welcome', section:null, shared:null,
+                readerSize:savedReaderSize() };
 function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
 function L(k){ const u = UI[state.lang] || UI.en; return (u[k] !== undefined) ? u[k] : k; }
 function Lof(cur,tot){ const rev=['ne','hi'].includes(state.lang);
@@ -1311,10 +1364,17 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   $('#randLbl').textContent = L('random'); $('#favLbl').textContent = L('favorites');
   $('#homeLbl').textContent = L('home');
   $('#searchInput').placeholder = L('search_ph');
+  $('#searchInput').setAttribute('aria-label', L('search_label'));
+  const search = document.querySelector('.searchwrap'); if(search) search.setAttribute('aria-label', L('search_label'));
+  const langGroup = document.querySelector('#langbar .seg'); if(langGroup) langGroup.setAttribute('aria-label', L('language'));
+  const breadcrumb = $('#crumbs'); if(breadcrumb) breadcrumb.setAttribute('aria-label', L('breadcrumb'));
   { const pb = $('#playLbl'); if(pb) pb.textContent = L('play'); }
   searchX(); }
 function setLang(l){ state.lang = l; try{ document.documentElement.lang = l; }catch(e){}
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('on', b.dataset.lang===l));
+  document.querySelectorAll('#langbar .seg .lang-btn').forEach(b=>{
+    const selected = b.dataset.lang === l; b.classList.toggle('on', selected);
+    b.setAttribute('aria-pressed', String(selected));
+  });
   applyStatic();
   // Remember which verse the modal is showing: doSearch()/showFavorites()
   // below null out state.chapter/state.theme while re-rendering the
@@ -1421,6 +1481,7 @@ function doSearch(){
   if(!allChReady()){ loadAllChapters().then(doSearch); return; }
   const q = ($('#searchInput').value || '').trim();
   if(!q){ clearSearch(); return; }
+  SRCH_HITS = [];
   rememberOrigin();
   state.view = 'search'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
   const nq = normTxt(q);
@@ -1443,9 +1504,10 @@ function doSearch(){
         msg = L('oob_chapter');
       }
       if(msg){
-        view.innerHTML = `<div class="res-head fade-in">${esc(L('search_results'))}</div>
+        view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
           <div class="res-count fade-in">${numL(0)} ${esc(L('results'))}</div>
           <div class="view-sub fade-in">${esc(msg)}</div>`;
+        announceView();
         return;
       }
     }
@@ -1461,24 +1523,26 @@ function doSearch(){
     });
   }
   if(hits.length === 0){
-    view.innerHTML = `<div class="res-head fade-in">${esc(L('search_results'))}</div>
+    view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
       <div class="res-count fade-in">${numL(0)} ${esc(L('results'))}</div>
       <div class="view-sub fade-in">${esc(L('no_results'))}</div>`;
+    announceView();
     return;
   }
   SRCH_HITS = hits;
-  view.innerHTML = `<div class="res-head fade-in">${esc(L('search_results'))}</div>
+  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
     <div class="res-count fade-in">${numL(hits.length)} ${esc(L('results'))}</div>
     <div class="grid verses fade-in">${hits.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
       const pi = th.parts.indexOf(part);
-      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'search',${i})">
+      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
         <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
-        <div class="padas">${padaBlockDeva(v)}</div>
+        <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
         <div class="vhint">${esc(T(v.paras).slice(0,80))}…</div>
       </div>`;}).join('')}</div>`;
+  announceView();
 }
 function clearSearch(){
   $('#searchInput').value = '';
@@ -1550,7 +1614,7 @@ function toggleFav(id){
   if(i >= 0) FAV.splice(i,1); else FAV.push(id);
   favSave();
   const b = document.getElementById('favBtn');
-  if(b){ const on = FAV.includes(id); b.innerHTML = (on ? ICONS.starF : ICONS.star) + esc(L(on ? 'saved_verse' : 'save_verse')); b.classList.toggle('saved', on); }
+  if(b){ const on = FAV.includes(id); b.innerHTML = (on ? ICONS.starF : ICONS.star) + esc(L(on ? 'saved_verse' : 'save_verse')); b.classList.toggle('saved', on); b.setAttribute('aria-pressed', String(on)); }
   if(state.view === 'favorites') showFavorites();
 }
 /* Search and Favorites are "detours": they replace the main view but the reader
@@ -1582,27 +1646,30 @@ function showFavorites(){
   const saved = FAV.map(verseLoc).filter(Boolean);
   FAV_LIST = saved;
   if(saved.length === 0){
-    view.innerHTML = `<div class="res-head fade-in">${esc(L('favorites'))}</div>
+    view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('favorites'))}</div>
       <div class="view-sub fade-in">${esc(L('no_favorites'))}</div>`;
+    announceView();
     return;
   }
-  view.innerHTML = `<div class="res-head fade-in">${esc(L('favorites'))}</div>
+  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('favorites'))}</div>
     <div class="res-count fade-in">${numL(saved.length)} ${esc(L('results'))}</div>
     ${saved.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const note = FAVNOTE[v.n] || '';
-      return `<div class="res-card" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i})">
+      return `<div class="res-card" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i},this.querySelector('.res-open'))">
+        <button type="button" class="sr-only focusable res-open" aria-label="${esc(L('open_verse'))} ${esc(fmtNL(v.n))}"
+          onclick="event.stopPropagation();openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i},this)"></button>
         <div class="res-top"><span class="res-num">${esc(fmtNL(v.n))}</span><span class="res-title">${esc(T(ch.names))}</span>
         <span class="fav-tools" onclick="event.stopPropagation()">
-          <button class="fav-move" onclick="moveFav(${i},-1)" ${i===0?'disabled':''} aria-label="up">${L('fav_up')}</button>
-          <button class="fav-move" onclick="moveFav(${i},1)" ${i===saved.length-1?'disabled':''} aria-label="down">${L('fav_down')}</button>
+          <button class="fav-move" onclick="moveFav(${i},-1)" ${i===0?'disabled':''} aria-label="${esc(L('fav_move_up'))}" title="${esc(L('fav_move_up'))}">${L('fav_up')}</button>
+          <button class="fav-move" onclick="moveFav(${i},1)" ${i===saved.length-1?'disabled':''} aria-label="${esc(L('fav_move_down'))}" title="${esc(L('fav_move_down'))}">${L('fav_down')}</button>
           <button class="res-remove" onclick="removeFav('${esc(v.n)}')">${esc(L('remove_fav'))}</button>
         </span></div>
-        <div class="res-deva">${padaBlockDeva(v)}</div>
+        <div class="res-deva" lang="sa">${padaBlockDeva(v)}</div>
         <div class="res-lit">${esc(T(v.lits))}</div>
         <div class="fav-note" onclick="event.stopPropagation()">
-          <label>${esc(L('fav_note'))}</label>
-          <textarea rows="1" placeholder="${esc(L('fav_note_ph'))}"
+          <label for="fav-note-${esc(v.n)}">${esc(L('fav_note'))}</label>
+          <textarea id="fav-note-${esc(v.n)}" rows="1" placeholder="${esc(L('fav_note_ph'))}"
             oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
             onchange="setFavNote('${esc(v.n)}', this.value)">${esc(note)}</textarea>
         </div>
@@ -1611,6 +1678,7 @@ function showFavorites(){
   view.querySelectorAll('.fav-note textarea').forEach(t=>{
     if(t.value){ t.style.height='auto'; t.style.height=t.scrollHeight+'px'; }
   });
+  announceView();
 }
 function removeFav(id){
   const i = FAV.indexOf(id);
@@ -1665,6 +1733,11 @@ function scrollViewTop(){
    signal a non-sighted reader gets is this live region — the same signature
    scrollViewTop already dedupes on, so it fires exactly once per real change
    and stays silent when a re-render lands on the same place. */
+function resultCountLabel(n){
+  const count = numL(n);
+  if(state.lang === 'en') return `${count} ${n === 1 ? 'result' : 'results'}`;
+  return `${count} ${L('results')}`;
+}
 function announceView(){
   const el = document.getElementById('srStatus');
   if(!el) return;
@@ -1672,8 +1745,10 @@ function announceView(){
   try{
     const ch = (state.chapter != null && DATA[state.chapter]) ? DATA[state.chapter] : null;
     if(state.view === 'welcome')        msg = L('welcome_title');
-    else if(state.view === 'search')    msg = L('search_results');
-    else if(state.view === 'favorites') msg = L('favorites');
+    else if(state.view === 'search')
+      msg = `${L('search_results')} · ${resultCountLabel(SRCH_HITS.length)}`;
+    else if(state.view === 'favorites')
+      msg = `${L('favorites')} · ${resultCountLabel(FAV_LIST.length)}`;
     else if(state.view === 'verses' && ch && state.theme != null)
       msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.themes[state.theme].titles)}`;
     else if(ch) msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`;
@@ -2693,6 +2768,14 @@ function showWelcome(){
       <p class="view-sub">${esc(L('welcome_sub'))}</p>
       <div id="wDay"></div>
       <button class="tool-btn primary big" onclick="showSections()">${esc(L('welcome_enter'))}</button>
+      <details class="welcome-guide">
+        <summary>${esc(L('guide_explore'))}</summary>
+        <ol>
+          <li>${esc(L('guide_way'))}</li>
+          <li>${esc(L('guide_chapter'))}</li>
+          <li>${esc(L('guide_verse'))}</li>
+        </ol>
+      </details>
       <div class="w-foot">${esc(L('welcome_foot'))}</div>
     </div>`;
   const paint = (dv, shared)=>{
@@ -2700,11 +2783,11 @@ function showWelcome(){
     const c = DATA[dv.ci], v = verseAt(dv);
     const part = sutraAt(c.themes[dv.ti], dv.si).part;
     const el = document.getElementById('wDay'); if(!el) return;
-    el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book')">
+    el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
           <div class="wd-label">${esc(shared ? L('shared_label') : L('verse_of_day'))}</div>
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
-          <div class="padas">${padaBlockDeva(v)}</div>
+          <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
           <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras).slice(0,80)) + '…'}</div>
         </div>`;
   };
@@ -2724,7 +2807,7 @@ function sectionCard(k, chip, title, desc){
 function showSections(){
   state.view='sections'; state.chapter=null; state.theme=null; state.section=null; state.shared=null; persistView(); renderCrumbs();
   view.innerHTML = `
-    <div class="view-title fade-in">${esc(L('sections_title'))}</div>
+    <div class="view-title fade-in" role="heading" aria-level="2">${esc(L('sections_title'))}</div>
     <div class="view-sub fade-in">${esc(L('sections_sub'))}</div>
     <div class="grid sections fade-in">
       ${sectionCard(1, chaptersRange(1,6), L('sec_karma'), L('sec_karma_desc'))}
@@ -2746,7 +2829,7 @@ function wayCrumbs(items){
      final crumb — and the chapter crumb before it stays a LIVE link back to
      the choice page (owner 2026-08-30: landing in a chapter left him no way
      back; wayCrumbs used to kill the action of a last-item link). */
-  return `<nav class="way-crumb fade-in" aria-label="breadcrumb">` + items.map((it,i)=>{
+  return `<nav class="way-crumb fade-in" aria-label="${esc(L('breadcrumb'))}">` + items.map((it,i)=>{
     const last = i === items.length - 1;
     const sep = i ? `<span class="wc-sep" aria-hidden="true">›</span>` : '';
     if(!last) return sep + `<button class="wc-chip wc-link" onclick="${it[1]}">${esc(it[0])}</button>`;
@@ -2770,7 +2853,7 @@ function modeSwitch(ci){
           : state.view === 'learn'  ? 'learn'
           : (state.readMode || 'full');
   const btn = (mode, lab, fn, tip) =>
-    `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" onclick="${fn}">${lab}</button>`;
+    `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
     <div class="mode-lbl">${esc(L('choose_title'))}</div>
     <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
@@ -2785,7 +2868,7 @@ function chTitle(ch){
   const head = state.lang === 'en'
     ? `<span class="chdeva">${ch.deva}</span> · ${name}`
     : name;
-  return `<div class="view-title fade-in">${head}</div>`;
+  return `<div class="view-title fade-in" role="heading" aria-level="2">${head}</div>`;
 }
 function showThemes(ci){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showThemes(ci)); return; }
@@ -2855,8 +2938,8 @@ function showRead(ci, mode){
         li++;
       }
     }
-    return `<div class="rd-v" role="button" tabindex="0" onclick="openModal(${ci},${ti},${idx},'read')">
-      <div class="rd-deva">${inner}</div>
+    return `<div class="rd-v" role="button" tabindex="0" onclick="openModal(${ci},${ti},${idx},'read',null,this)">
+      <div class="rd-deva" lang="sa">${inner}</div>
       ${state.readMode === 'full' ? `<div class="rd-lb">${esc(L('literal'))}:</div><div class="rd-tr">${esc(T(sv.lits))}</div><div class="rd-lb">${esc(L('in_other_words'))}:</div><div class="rd-par">${esc(T(sv.paras))}</div>` : ''}
     </div>`;
   }).join('');
@@ -2941,9 +3024,9 @@ function showVerses(ci,ti){
       </div>
       <div class="grid verses">
         ${p.sutras.map((s,si)=>`
-          <div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${flatIndex(t,p,si)},'theme')">
+          <div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${flatIndex(t,p,si)},'theme',null,this)">
             <div class="vnum">${L('verse')} ${fmtNL(s.n)}</div>
-            <div class="padas">${padaBlockDeva(s)}</div>
+            <div class="padas" lang="sa">${padaBlockDeva(s)}</div>
             <div class="vhint">${esc(T(s.paras).slice(0,80))}…</div>
           </div>`).join('')}
       </div>
@@ -2955,7 +3038,7 @@ function showVerses(ci,ti){
          page itself, so the reader arrived at a description with no subject.
          Same shape as the learn path's theme screen: title, then range, then
          the description. -->
-    <div class="view-title fade-in">${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></div>
+    <div class="view-title fade-in" role="heading" aria-level="2">${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></div>
     <div class="view-sub fade-in">${esc(T(t.descs))}</div>
     <div class="view-sub fade-in">${numL(vCount(t))} ${vCount(t)===1?L('verse'):L('verses')}. ${L('click_hint')}.</div>
     ${themeNav(ci, ti)}
@@ -2973,8 +3056,17 @@ function themeBounds(t){
   let n = 0; for(const p of t.parts) n += p.sutras.length;
   return {start:0, end:Math.max(0, n-1)};
 }
-function openModal(ci,ti,si, mode, navIdx){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx)); return; }
+function setAppInert(inert){
+  document.querySelectorAll('body > header, body > .toolbar, body > .wrap, body > footer')
+    .forEach(el=>{ el.inert = inert; });
+}
+function openModal(ci,ti,si, mode, navIdx, invoker){
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx, invoker)); return; }
+  const bg = $('#modalBg');
+  if(!bg.classList.contains('open')){
+    const active = document.activeElement;
+    MODAL_RETURN_FOCUS = invoker || (active && active !== document.body ? active : null);
+  }
   mode = mode || 'theme';
   state.chapter=ci; state.theme=ti; state.idx=si; state.mode=mode;
   state.gpos = VERSES.findIndex(e => e.ci===ci && e.ti===ti && e.si===si);
@@ -2996,7 +3088,10 @@ function openModal(ci,ti,si, mode, navIdx){
   } else if(mode === 'search'){ mode = 'book'; }
   else if(mode === 'fav'){ state.navList = FAV_LIST; state.navIdx = navIdx || 0; }
   state.mode = mode;
-  fillModal(); $('#modalBg').classList.add('open'); document.body.style.overflow='hidden';
+  fillModal();
+  bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
+  setAppInert(true); document.body.style.overflow='hidden';
+  const close = $('#modal .m-close'); if(close) close.focus({preventScroll:true});
   pushModalHistory();
   /* every verse has an address: the sheet writes #v=2.47 so the open verse
      can be shared and restored; the history entry keeps the old URL, so back
@@ -3004,9 +3099,18 @@ function openModal(ci,ti,si, mode, navIdx){
   try{ history.replaceState({gitaModal:true}, '', '#v=' + sutraAt(DATA[ci].themes[ti], si).s.n); }catch(e){}
 }
 function closeModal(){
-  const wasOpen = $('#modalBg').classList.contains('open');
-  $('#modalBg').classList.remove('open'); document.body.style.overflow='';
-  if(wasOpen) popModalHistory();
+  const bg = $('#modalBg');
+  const wasOpen = bg.classList.contains('open');
+  bg.classList.remove('open'); document.body.style.overflow='';
+  if(wasOpen){
+    setAppInert(false);
+    const target = MODAL_RETURN_FOCUS && MODAL_RETURN_FOCUS.isConnected && !MODAL_RETURN_FOCUS.disabled
+      ? MODAL_RETURN_FOCUS : document.getElementById('view');
+    MODAL_RETURN_FOCUS = null;
+    if(target && target.focus) target.focus({preventScroll:true});
+    bg.setAttribute('aria-hidden','true');
+    popModalHistory();
+  }
   persistView();
 }
 /* ---------- share a verse: native share sheet where available, else copy ---------- */
@@ -3047,7 +3151,7 @@ function copyVerseLink(){
     ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); copied(); }
 }
 /* ---------- mobile: Android hardware / iOS swipe "back" closes the verse sheet ---------- */
-let MODAL_HIST = false, MODAL_POPPING = false;
+let MODAL_HIST = false, MODAL_POPPING = false, MODAL_RETURN_FOCUS = null;
 function pushModalHistory(){
   if(MODAL_HIST) return;
   try{ history.pushState({gitaModal:true}, ''); MODAL_HIST = true; }catch(e){}
@@ -3078,52 +3182,65 @@ function fillModal(){
     else pads.push(it);
   }
   const LI = {en:0, ne:1, hi:2}[state.lang] || 0;
-  function wordsHtml(it){
-    return (it.words||[]).map(w=>`<div class="wrow"><span class="wdeva">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('');
+  let speakerId = 0;
+  function wordsHtml(it, id){
+    return `<div class="words" id="${id}">${(it.words||[]).map(w=>`<div class="wrow"><span class="wdeva" lang="sa">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('')}</div>`;
   }
   function spkHtml(list){
-    return list.map(x=>`
-      <div class="spk-line" onclick="toggleWords(this)">
-        <span class="spk-main">${x.d} <span class="iast" lang="sa-Latn">${esc(x.t)}</span></span>
-        <div class="words">${wordsHtml(x)}</div>
-      </div>`).join('');
+    return list.map(x=>{
+      const id = `words-speaker-${speakerId++}`;
+      return `<button type="button" class="spk-line" aria-expanded="false" aria-controls="${id}" aria-describedby="wordsHint" onclick="toggleWords(this)">
+        <span class="spk-main" lang="sa">${x.d} <span class="iast" lang="sa-Latn">${esc(x.t)}</span></span>
+      </button>${wordsHtml(x,id)}`;
+    }).join('');
   }
   function boxHtml(pad, idx, total){
-    return `<div class="pada-box" onclick="toggleWords(this)">
-      <div class="pb-top">
-        <span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span>
-      </div>
-      <div class="pb-deva">${pad.d}${pDanda(idx,total)}</div>
-      <div class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</div>
-      <div class="words">${wordsHtml(pad)}</div>
+    const id = `words-pada-${idx}`;
+    return `<div class="pada-box">
+      <button type="button" class="pada-toggle" aria-expanded="false" aria-controls="${id}" aria-describedby="wordsHint" onclick="toggleWords(this)">
+        <span class="pb-top"><span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span></span>
+        <span class="pb-deva" lang="sa">${pad.d}${pDanda(idx,total)}</span>
+        <span class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</span>
+      </button>${wordsHtml(pad,id)}
     </div>`;
   }
   $('#modal').innerHTML = `
-    <button class="m-close" onclick="closeModal()">✕</button>
+    <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
-    <div class="m-num">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span>
+    <div class="m-num"><h2 class="m-title" id="modalTitle" tabindex="-1">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span></h2>
       <button class="fav-btn" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
-      <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
+      <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" aria-pressed="${FAV.includes(s.n)}" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
     <div class="share-panel" id="sharePanel">
       <div class="sp-hint">${L('share_hint')}</div>
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
     </div>
-    <div class="m-meter">${esc(meterText(s))}</div>
-    <div class="m-verse">
-      <div class="words-bar">
-        <span class="wb-hint">${L('click_hint_pada')} ·</span>
-        <button class="wb-btn" onclick="toggleAllMeanings(this)" disabled>${ICONS.eyeOff}<span>${L('hide_meanings')}</span></button>
-      </div>
-      ${spkHtml(topS)}
-      <div class="pada-grid">
-        <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
-        ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
-        ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
+    <div class="m-readerbar">
+      <div class="m-meter">${esc(meterText(s))}</div>
+      <div class="reader-size" role="group" aria-label="${esc(L('reader_size'))}">
+        <span class="reader-size-label">${esc(L('reader_size'))}</span>
+        <button type="button" id="readerSizeDown" onclick="stepReaderSize(-1)" aria-label="${esc(L('reader_size_decrease'))}" title="${esc(L('reader_size_decrease'))}">A−</button>
+        <span class="reader-size-value" id="readerSizeValue" aria-live="polite" aria-atomic="true">${numL(state.readerSize)}%</span>
+        <button type="button" id="readerSizeUp" onclick="stepReaderSize(1)" aria-label="${esc(L('reader_size_increase'))}" title="${esc(L('reader_size_increase'))}">A+</button>
+        <button type="button" onclick="resetReaderSize()" aria-label="${esc(L('reader_size_reset'))}" title="${esc(L('reader_size_reset'))}">↺</button>
       </div>
     </div>
-    <div class="m-line"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
-    <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+    <div class="reader-copy">
+      <div class="m-verse">
+        <div class="words-bar">
+          <span class="wb-hint" id="wordsHint">${L('click_hint_pada')} ·</span>
+          <button class="wb-btn" onclick="toggleAllMeanings(this)" disabled aria-pressed="false">${ICONS.eyeOff}<span>${L('hide_meanings')}</span></button>
+        </div>
+        ${spkHtml(topS)}
+        <div class="pada-grid">
+          <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
+          ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
+          ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
+        </div>
+      </div>
+      <div class="m-line"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
+      <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+    </div>
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
       ${state.mode==='random'
@@ -3146,14 +3263,36 @@ function fillModal(){
              <span class="m-count">${Lof((state.navIdx||0)+1, state.navList?state.navList.length:1)}</span>
              <button onclick="navSutra(1)" ${(state.navIdx||0) < (state.navList?state.navList.length-1:0)?'':'disabled'}>${L('next')}</button>`}
     </div>`;
+  applyReaderSize();
+}
+function setReaderSize(size){
+  if(!READER_SIZES.includes(size)) return;
+  state.readerSize = size;
+  try{ localStorage.setItem('gitaReaderSize', String(size)); }catch(e){}
+  applyReaderSize();
+}
+function stepReaderSize(delta){
+  const i = READER_SIZES.indexOf(state.readerSize);
+  setReaderSize(READER_SIZES[Math.max(0, Math.min(READER_SIZES.length-1, i+delta))]);
+}
+function resetReaderSize(){ setReaderSize(100); }
+function applyReaderSize(){
+  const reader = document.querySelector('#modal .reader-copy');
+  if(reader) reader.style.setProperty('--reader-scale', String(state.readerSize / 100));
+  const value = document.getElementById('readerSizeValue');
+  if(value) value.textContent = numL(state.readerSize) + '%';
+  const down = document.getElementById('readerSizeDown');
+  const up = document.getElementById('readerSizeUp');
+  if(down) down.disabled = state.readerSize <= READER_SIZES[0];
+  if(up) up.disabled = state.readerSize >= READER_SIZES[READER_SIZES.length-1];
 }
 // toggle pada-chheda (word split) open/closed on the clicked element's box/line
 function toggleWords(el){
-  const cont = el.closest('.pada-box, .spk-line');
-  if(!cont) return;
-  const words = cont.querySelector('.words');
+  const id = el.getAttribute('aria-controls');
+  const words = id ? document.getElementById(id) : null;
   if(!words) return;
   const open = words.classList.toggle('open');
+  el.setAttribute('aria-expanded', String(open));
   refreshWordsBtn();
 }
 /* The master hide/show switch only means something once at least one quarter
@@ -3166,6 +3305,7 @@ function refreshWordsBtn(){
   btn.disabled = !anyOpen;
   if(!anyOpen){   // fresh slate: next opening shows meanings again
     btn.dataset.state = '';
+    btn.setAttribute('aria-pressed', 'false');
     btn.innerHTML = ICONS.eyeOff + `<span>${esc(L('hide_meanings'))}</span>`;
     document.querySelectorAll('#modal .words').forEach(w=>w.classList.remove('mean-off'));
   }
@@ -3174,6 +3314,7 @@ function refreshWordsBtn(){
 function toggleAllMeanings(btn){
   const hide = btn.dataset.state !== 'hidden';   // meanings start visible → first click hides
   btn.dataset.state = hide ? 'hidden' : 'shown';
+  btn.setAttribute('aria-pressed', String(hide));
   btn.innerHTML = (hide ? ICONS.eye : ICONS.eyeOff) + `<span>${esc(L(hide ? 'show_meanings' : 'hide_meanings'))}</span>`;
   document.querySelectorAll('#modal .words').forEach(w=>{
     w.classList.toggle('mean-off', hide);
@@ -3213,6 +3354,7 @@ function navSutra(d){
   state.gpos = VERSES.findIndex(e => e.ci===state.chapter && e.ti===state.theme && e.si===state.idx);
   if(state.gpos < 0) state.gpos = 0;
   fillModal();
+  const title = $('#modalTitle'); if(title) title.focus({preventScroll:true});
   const m = $('#modal'); if(m) m.scrollTo({top:0, behavior:'smooth'});
 }
 function backToTheme(){ closeModal(); showVerses(state.chapter, state.theme); }
@@ -3224,14 +3366,29 @@ document.addEventListener('keydown', e=>{
     e.preventDefault(); document.activeElement.click(); return;
   }
   const tag = (e.target && e.target.tagName) ? e.target.tagName : '';
-  if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
   if($('#modalBg').classList.contains('open')){
-    if(e.key==='Escape') closeModal();
+    if(e.key==='Tab'){
+      const modal = $('#modal');
+      const focusables = Array.from(modal.querySelectorAll(
+        'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+      )).filter(el=>el.getClientRects().length>0);
+      if(!focusables.length){ e.preventDefault(); modal.focus(); return; }
+      const first = focusables[0], last = focusables[focusables.length-1];
+      if(e.shiftKey && (document.activeElement===first || !modal.contains(document.activeElement))){
+        e.preventDefault(); last.focus();
+      } else if(!e.shiftKey && (document.activeElement===last || !modal.contains(document.activeElement))){
+        e.preventDefault(); first.focus();
+      }
+      return;
+    }
+    if(e.key==='Escape'){ closeModal(); return; }
     if(state.mode==='random') return;
+    if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
     if(e.key==='ArrowLeft') navSutra(-1);
     if(e.key==='ArrowRight') navSutra(1);
     return;
   }
+  if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
   if(state.view === 'learn' && LV && LV.vs){
     if(e.key==='ArrowLeft'){ e.preventDefault(); lrMeetGo(-1); }
     if(e.key==='ArrowRight'){ e.preventDefault(); lrMeetGo(1); }

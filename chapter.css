@@ -6,10 +6,10 @@
    full --ink, flattening the hierarchy on all 18 pages. Keep the two names
    identical — source/check_chapter_css.py now fails the build if they drift. */
 :root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --accent:#1A5648;
-       --saffron:#E8912C; --saffron-dark:#C97A20; --card:#FFFFFF; --line:#E7D9C2; }
+       --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-text:#875519; --card:#FFFFFF; --line:#E7D9C2; }
 @media (prefers-color-scheme:dark){
   :root{ --paper:#16120D; --ink:#E9DCC3; --ink-soft:#A79A80; --accent:#8FBEB0;
-         --saffron:#E1953A; --saffron-dark:#C8862F; --card:#201A13; --line:#382D20; }
+         --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-text:#D0AA70; --card:#201A13; --line:#382D20; }
 }
 *{ box-sizing:border-box; }
 body{ margin:0; background:var(--paper); color:var(--ink);
@@ -19,13 +19,13 @@ main{ max-width:680px; margin:0 auto; padding:26px 20px 10px; }
 .crumb a{ color:var(--accent); text-decoration:none; }
 h1{ font-size:1.55rem; line-height:1.3; margin:0 0 4px; color:var(--accent); }
 .deva{ font-family:"Noto Serif Devanagari",serif; font-size:1.25rem;
-       margin:2px 0 16px; color:var(--accent); }
+       margin:2px 0 16px; color:var(--accent); overflow-wrap:anywhere; word-break:normal; }
 .blurb{ margin:0 0 14px; }
 .blurb span{ display:block; font-size:.95rem; color:var(--ink-soft); margin-top:4px; }
 .verse{ margin:18px 0; padding:16px 18px; background:var(--card);
         border:1px solid var(--line); border-radius:14px; }
 .verse blockquote{ margin:0; font-family:"Noto Serif Devanagari",serif;
-        font-size:1.12rem; line-height:2; }
+        font-size:1.12rem; line-height:2; overflow-wrap:anywhere; word-break:normal; }
 .verse figcaption{ margin-top:10px; font-size:.82rem; color:var(--ink-soft); }
 h2{ font-size:1.05rem; margin:24px 0 10px; color:var(--accent); }
 ol.themes{ margin:0; padding-left:22px; }
@@ -44,10 +44,10 @@ h2.th{ font-size:1.02rem; color:var(--accent); margin:20px 0 10px;
 h2.th .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem; margin-left:8px;
        white-space:nowrap; }
 .v{ margin:16px 0 22px; }
-.vnum{ font-size:.78rem; font-weight:700; color:var(--saffron); letter-spacing:.04em; }
-.vnum a{ color:inherit; text-decoration:none; border-bottom:1px dotted var(--saffron); }
+.vnum{ font-size:.78rem; font-weight:700; color:var(--saffron-text); letter-spacing:.04em; }
+.vnum a{ color:inherit; text-decoration:none; border-bottom:1px dotted var(--saffron-text); }
 .vdev{ font-family:"Noto Serif Devanagari",serif; font-size:1.14rem; line-height:1.85;
-       margin:2px 0 3px; color:var(--accent); }
+       margin:2px 0 3px; color:var(--accent); overflow-wrap:anywhere; word-break:normal; }
 .viast{ font-style:italic; color:var(--ink-soft); font-size:.85rem; margin:0 0 7px; }
 .vtr{ margin:4px 0; font-size:.95rem; }
 .vtr .para{ display:block; color:var(--ink-soft); font-size:.9rem; margin-top:2px; }
@@ -66,7 +66,7 @@ a.vrow{ display:block; padding:10px 8px; border-top:1px solid var(--line);
         text-decoration:none; border-radius:8px; }
 a.vrow:hover{ background:var(--paper); }
 .vrow .vt{ color:var(--accent); font-weight:700; font-size:.9rem; }
-.vrow .vt b{ color:var(--saffron); margin-right:6px; }
+.vrow .vt b{ color:var(--saffron-text); margin-right:6px; }
 .vrow .vd{ color:var(--ink-soft); font-size:.85rem; margin-top:2px; line-height:1.5; }
 /* The verse a shared link points at. Also matches :target so it still reads
    as "the one you came for" when JS is off and the reader expands by hand. */
@@ -77,4 +77,4 @@ a.vrow:hover{ background:var(--paper); }
   html{ scroll-behavior:smooth; }
 }
 details{ margin:4px 0 0; }
-summary{ cursor:pointer; color:var(--saffron-dark); font-weight:600; font-size:.88rem; }
+summary{ cursor:pointer; color:var(--saffron-text); font-weight:600; font-size:.88rem; }
