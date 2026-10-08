@@ -388,7 +388,7 @@ GITA_CH13_WORDS = {
     1: [["तिष्ठन्तम्", "tiṣṭhantam", "standing"],
         ["परमेश्वरम्", "parameśvaram", "the supreme Lord"]],
     2: [["विनश्यत्सु", "vinaśyatsu", "in the perishing"],
-        ["अविनश्यन्तम्", "avināśyantam", "the imperishable"]],
+        ["अविनश्यन्तम्", "avinaśyantam", "the imperishable"]],
     3: [["यः", "yaḥ", "who"],
         ["पश्यति", "paśyati", "sees"],
         ["सः", "saḥ", "he"],
