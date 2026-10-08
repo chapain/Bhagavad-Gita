@@ -36,9 +36,8 @@ For a brand-new session: read §1–§10, then this box, then build.
   gods' gifts without giving back is theft; the good eat what remains of
   sacrifice"; ch4 t1 asks how Kṛṣṇa could have taught it first, since Vivasvān
   was born earlier (was "questions Kṛṣṇa's age"); ch4 t10 "the doubter
-  perishes"; ch9 t6 NE title (मकहाँ आउने; was मसम्मको, which does not fit the verses); ch9 t8 drops a
-  pointer to 18.65, which is outside the range, in all three languages; ch11 t9
-  forgiveness simile "as a father forgives a son, or a friend a friend"; ch12 t4
+  perishes"; ch9 t6 NE title (मकहाँ आउने; was मसम्मको, which
+  does not fit the verses); ch11 t9 forgiveness simile "as a father forgives a son, or a friend a friend"; ch12 t4
   "renounces all undertakings"; ch13 34 title "Seeing field and knower apart
   brings freedom" (was "The final vision", in all three languages); ch15 t2 NE
   (sun, moon and fire do not give light there; the old wording said fire's
@@ -56,7 +55,10 @@ For a brand-new session: read §1–§10, then this box, then build.
   `translations_hi.py`); 2.30 Hindi paraphrase still says "तू"; 10.04 Hindi
   literal "भव, अभव" (standard form अभाव). Deliberately kept: 8.09 literal and
   paraphrase keep "subtle"; 8.21 Nepali "फर्कदैनन्" (both spellings occur);
-  12.19 "equal through praise and blame" is incomplete but accurate.
+  12.19 "equal through praise and blame" is incomplete but accurate. 9.30–9.34
+  cites 18.65 for its four instructions. That is accurate, and the wording is a
+  recorded decision guarded by a test, so it stays. A strict reading of "nothing
+  outside the range" would drop it; that needs the owner's call.
 * **Build.** `python3 build.py` is green: 800 document assertions, 150 live
   browser checks, study structure 9658, progress maps 15, advisory 51 (unchanged
   count), blocking 0. The browser suite ran for the first time in this sandbox.
