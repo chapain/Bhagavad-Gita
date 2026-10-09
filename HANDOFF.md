@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-09 (UTC) |
-| Updated by | Arena session on branch `arena/431645f7-bhagavad-gita` |
-| Base commit | `9db111e` on `main` (merge of PR #13, step 1.9) |
+| Updated by | Arena session on branch `arena/778427cd-bhagavad-gita` |
+| Base commit | `0ea44a3` on `main` (merge of PR #14, 2.1 batch 1) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -91,8 +91,18 @@ before you talk to the owner.
   word entries: nominative तिनीहरू (ne) / वे (hi), not तिम्रो / तुम्हारा (“your”).
   Audit §3 `te` count 26 → 0; 9,366 / 9,484 unchanged. Generated churn: `data/`
   for chapters 1, 2, 3, 5, 7, 8, 9, 10, 12, 13, 16, and `sw.js`.
-- **Next: 2.1 batch 2.** `me` (5 verses) plus `param` 2.12, `bhūtāni` 9.25 and
-  `yogam` 10.7 / 11.8. The owner confirms the batch before it starts.
+- **2.1 batch 2 done — `me`, `param`, `bhūtāni`, `yogam`.** `me` = “to me” (tell /
+  show / offer) now reads मलाई / मुझे in 2.7, 5.1, 6.30, 9.26, 11.4 and in 11.45’s
+  *darśaya me*, while 11.45’s *mano me* keeps मेरो / मेरा as its own entry — one
+  verse, two forms. `param` 2.12 → भविष्यमा / भविष्य में (was परम “supreme”),
+  `bhūtāni` 9.25 → भूतहरू / भूत (was प्राणीहरू; its own pāda says भूतपूजक), and
+  `yogam` 11.8 → ऐश्वर्य (en “sovereignty”, and the verse’s own literal). 6.30 and
+  `yogam` were the two owner calls; he left both to craft, so §5.2 records why
+  6.30 follows the corpus dative and 10.7 keeps योग. Audit §3 `me` 16 → 10;
+  9,366 / 9,484 unchanged. Generated churn: `data/ch2, ch5, ch6, ch9, ch11` +
+  `sw.js` cache id.
+- **Next: 2.1 batch 3.** The remainder of the 674 forms — the owner picks the
+  slice.
 
 ## 2. Resume in five minutes
 
@@ -197,15 +207,40 @@ Clear errors:
   (“your”) in 26 verses; they now read तिनीहरू / वे. The verses: 1.33, 2.6, 3.13,
   3.31, 5.19, 5.22, 7.12, 7.14, 7.28–30, 8.17, 9.20–21, 9.23–24, 9.29, 9.32,
   10.10, 12.2, 12.4, 12.20, 13.25, 13.34, 16.8, 16.17.
-- **`me` = “to me” → मेरो/मेरा** where the sense is tell / show / offer *to me*:
-  2.7, 5.1, 9.26, 11.4, 11.45 (6.30 borderline).
-  - Not errors: *sa me priyaḥ* (12.14–20, 18.64–69), where मेरो प्रिय is good Nepali.
-  - In 11.45, *mano me* (“my mind”) and *darśaya me* (“show to me”) both
-    become मेरो, while the English is right for both.
-- `param` “hereafter” → परम (“supreme”) in 2.12.
-- `bhūtāni` “spirits” → प्राणीहरू (“living beings”) in 9.25.
-- `yogam` “sovereignty/power” → योग in 10.7 and 11.8. This rendering is
-  traditional but opaque.
+- **FIXED (2.1 batch 2, 2026-10-09).** `me` = “to me” rendered मेरो/मेरा where the
+  sense is tell / show / offer *to me*: 2.7, 5.1, 9.26, 11.4, 11.45. Those now
+  carry `["मे", "me", "to me", "मलाई", "मुझे"]` — the corpus dative, already used 9×
+  for “to me” via `mām`.
+  - **6.30 also fixed.** It was the borderline one: *sa ca me na praṇaśyati*,
+    “he is not lost to me”. The owner left the call to craft (2026-10-09). The
+    possessive मेरो made the pāda read “my … is not lost”, which the verse does
+    not say, so it follows the same dative as the rest of the batch. Argument
+    *for* keeping it: the parallel pāda renders तस्य (“for him”) as त्यसको. If a
+    future session flips 6.30 back, audit §3 returns to 11 verses.
+  - Not errors, kept: *sa me priyaḥ* (12.14–20, 18.64–69), where मेरो प्रिय is good
+    Nepali, and 9.29 (*na me dveṣyo ’sti*). Audit §3 `me`: 16 → 10 verses.
+  - In 11.45, *mano me* (“my mind”) and *darśaya me* (“show to me”) both became
+    मेरो while the English was right for both. *mano me* now has its own
+    five-field entry `["मे", "me", "my", "मेरो", "मेरा"]` beside *darśaya me*’s
+    मलाई / मुझे, so the two occurrences no longer share one form.
+- **FIXED (2.1 batch 2).** `param` “hereafter” rendered परम (“supreme”) in 2.12;
+  now `["परम्", "param", "hereafter", "भविष्यमा", "भविष्य में"]`, matching the verse’s
+  own ne/hi literal (“भविष्यमा पनि…” / “भविष्य में भी…”). 2.59 keeps परम (“the
+  Supreme”) — correct there.
+- **FIXED (2.1 batch 2).** `bhūtāni` “spirits” rendered प्राणीहरू (“living beings”)
+  in 9.25; now भूतहरू / भूत, matching भूतेज्याः → भूतपूजकहरू in the same pāda and the
+  verse’s literal (“भूतका पूजक भूतमा” / “भूतों के पूजक भूतों को”). 9.5 / 9.6 keep
+  प्राणीहरू (“beings”) — correct there.
+- **PARTLY FIXED (2.1 batch 2).** `yogam` rendered योग (“traditional but opaque”)
+  in 10.7 and 11.8. **11.8 fixed** → `["योगम्", "yogam", "sovereignty", "ऐश्वर्य",
+  "ऐश्वर्य"]`: the English says “sovereignty” *and* the verse’s own ne/hi literal
+  says “मेरो दिव्य ऐश्वर्य हेर” / “मेरा दिव्य ऐश्वर्य देख”, so योग contradicted both on
+  the same sheet. **10.7 deliberately kept as योग**: its ne *and* hi literals say
+  “मेरो यो विभूति र योगलाई…” / “मेरी इस विभूति और योग को…”, so योग is the consistent
+  reading there; making it शक्ति would set the word list against its own literal.
+  Note 9.5 has the identical phrase *paśya me yogam aiśvaram* with en “yoga” and
+  योग in its literal — per-verse five-field entries are exactly why 9.5 and 11.8
+  may differ.
 
 **Fix path (no code change needed):** write five-field entries inline in
 `padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Before batch 1 only two
@@ -346,10 +381,12 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batch 1 done)
+**Phase 2 — Meaning** · in progress (2.1 batch 2 done)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress: batch 1 of N done** (`te`, 26 verses, 2026-10-09); batch 2
-      (`me` + param/bhūtāni/yogam) waits for the owner.
+      **in progress — batch 2 of N done** (`te` 26 verses; then `me` 6 verses
+      incl. 6.30, `param` 2.12, `bhūtāni` 9.25, `yogam` 11.8, with `yogam` 10.7
+      kept on purpose); batch 3 is the remainder of the 674 forms, owner picks
+      the slice.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -518,6 +555,25 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-09 · `arena/778427cd-bhagavad-gita` · Phase 2.1 batch 2 (`me`, param,
+  bhūtāni, yogam): verified PR #14 merged at `0ea44a3` (carrying `ee2e9af`), so
+  batch 1 was not repeated — the 26 `te` five-field entries are on `main` and
+  audit §3 `te` = 0. Added 10 five-field entries by AST span (some `["मे", "me",
+  "to me"]` strings are duplicated in a file, so no invented `old`): `me` “to me”
+  → मलाई / मुझे at 2.7, 5.1, 6.30, 9.26, 11.4 and 11.45-*darśaya*; 11.45-*mano*
+  pinned मेरो / मेरा; `param` 2.12 → भविष्यमा / भविष्य में; `bhūtāni` 9.25 →
+  भूतहरू / भूत; `yogam` 11.8 → ऐश्वर्य. `yogam` 10.7 kept as योग (its own literal
+  says योग). The two owner calls (6.30, yogam) came back “use your best
+  intelligence”, so craft decided both and §5.2 records the reasoning. Audit §3
+  `me` 16 → 10 (9.29 + the *sa me priyaḥ* set stay by design); 9,366 / 9,484
+  unchanged; a lockstep walk of every data leaf shows only `words[3]`/`words[4]`
+  moved (36 leaves = 9 edits × 2 languages × the flow+padas mirror), so no verse
+  text, pāda, English gloss, title or paraphrase changed. Full build green incl.
+  162 browser checks; 20 390 px ne/hi sheets for 2.07, 2.12, 5.01, 6.30, 9.25,
+  9.26, 11.04, 11.08 and 11.45 (both `me`) read back clean across chapters 2, 5,
+  6, 9 and 11. Generated churn: `data/ch2, ch5, ch6, ch9, ch11` + `sw.js` cache
+  id. Stopped before batch 3 (owner picks the slice).
 
 - 2026-10-09 · `arena/431645f7-bhagavad-gita` · Phase 2.1 batch 1 (`te`): verified
   PR #13 merged at `9db111e` (carrying `ad1f752`, `5c71004`, `d8a57f9`), so 1.9 was not

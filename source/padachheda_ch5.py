@@ -22,7 +22,7 @@ GITA_CH5_WORDS = {
         ["एतयोः", "etayoḥ", "of the two"],
         ["एकम्", "ekam", "one"]],
     3: [["तत्", "tat", "that"],
-        ["मे", "me", "to me"],
+        ["मे", "me", "to me", "मलाई", "मुझे"],
         ["ब्रूहि", "brūhi", "tell"],
         ["सुनिश्चितम्", "suniścitam", "decisively, for certain"]]},
 
