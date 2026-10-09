@@ -325,7 +325,7 @@ def run(pw, url, offline_capable=False):
     cr = pg.eval_on_selector_all(".way-crumb > *", "e=>e.map(x=>x.textContent.trim())")
     ok(len(cr) == 5 and cr[0] == "The Three Ways" and cr[4] == "Chapter 2 · अध्ययन",
        f"the themes page trail names the way and ends at 'Chapter 2 · अध्ययन' ({cr})")
-    ok("कर्मनिष्ठा" in cr[2], f"the way crumb carries its Sanskrit niṣhā name ({cr[2]})")
+    ok("कर्ममार्ग" in cr[2], f"the way crumb carries its Sanskrit mārga name ({cr[2]})")
     chipc = pg.eval_on_selector_all(".way-crumb .wc-chip",
         "e=>e.map(x=>[x.className.includes('wc-cur'), getComputedStyle(x).backgroundColor])")
     SOFT, PAPER = colour("--saffron-soft"), colour("--paper")
