@@ -37,7 +37,9 @@ before you talk to the owner.
   exact key, preserving distinctions such as a/ā, ś/ṣ and t/ṭ. Search and
   favorites now use singular/plural count labels in English, Nepali and Hindi.
 - **GitHub:** PR #8 was verified merged at 2026-10-09 01:34 UTC. Latest `main`
-  was verified as `bd4f5c3` (the PR #8 merge) before step 1.5 began.
+  was verified as `bd4f5c3` (the PR #8 merge) before step 1.5 began. Commit
+  `d2df966` is pushed on this assigned branch; PR #9 is open to `main`:
+  https://github.com/chapain/Bhagavad-Gita/pull/9.
 - **Verification:** `python3 build.py` passes: 9,366 strict word checks, 2,800
   strict line and reconstruction checks (0 flags), 2,100 paraphrase pairs,
   6 SEO checks, 572 site-health checks, 9,658 study-structure checks, 19 Python
@@ -331,8 +333,8 @@ choices remain open:
   Sanskrit distinctions. Fixed singular/plural count nouns in en/ne/hi and added
   7 focused Node regressions. Build green (802 document assertions); separate
   Playwright/Chromium run passed 162 browser checks. Verified PR #8 merged and latest
-  `main` at `bd4f5c3`; pushed to the assigned branch and opened the follow-up PR.
-  Stopped before 1.6.
+  `main` at `bd4f5c3`; pushed commit `d2df966` and opened PR #9 to `main`
+  (https://github.com/chapain/Bhagavad-Gita/pull/9). Stopped before 1.6.
 - 2026-10-09 · `arena/42b88b5d-bhagavad-gita` · Phase 1 step 1.4: added
   build-failing strict checks for 9,366 Devanagari/IAST word pairs and 2,800
   pāda/word-split lines, with narrow explicit sandhi/spelling conventions and
