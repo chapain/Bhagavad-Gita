@@ -126,7 +126,7 @@ GITA_CH2_WORDS = {
         ["निश्चितम्", "niścitam", "certainly"],
         ["ब्रूहि", "brūhi", "tell"],
         ["तत्", "tat", "that"],
-        ["मे", "me", "to me"]],
+        ["मे", "me", "to me", "मलाई", "मुझे"]],
     3: [["शिष्यः", "śiṣyaḥ", "a disciple"],
         ["ते", "te", "your"],
         ["अहम्", "aham", "I"],
@@ -220,7 +220,7 @@ GITA_CH2_WORDS = {
     3: [["सर्वे", "sarve", "all"],
         ["वयम्", "vayam", "we"],
         ["अतः", "ataḥ", "from now"],
-        ["परम्", "param", "hereafter"]]},
+        ["परम्", "param", "hereafter", "भविष्यमा", "भविष्य में"]]},
 
 13: {"s": [],
     0: [["देहिनः", "dehinaḥ", "of the embodied one"],
