@@ -20,7 +20,7 @@ before you talk to the owner.
 
 ## 1. Where we are
 
-- **2026-10-09 — Phase 1 steps 1.1–1.7 complete.** Step 1.4 made
+- **2026-10-09 — Phase 1 complete (steps 1.1–1.9).** Step 1.4 made
   `source/check_padas.py` a build-failing strict validator. It losslessly
   transliterates all 9,366 word entries and compares each word’s Devanagari
   with its own IAST; it also checks all 2,800 pādas against their word splits
@@ -70,14 +70,22 @@ before you talk to the owner.
   “कर्ममार्ग”, so step 1.8 is not repeated. PR #12 does **not** contain the §7.2
   decision (the owner gave it after the merge), so this session’s first commit
   writes it into the repo.
-- **§7.2 is decided** (owner, 2026-10-09): both paraphrases are re-aligned to
-  Śaṅkara — 18.66 drops “all other paths” for *all dharma and adharma, the
-  sense of doership itself*, and 15.7 gains the *aṃśa iva* hedge (“as if an
-  eternal portion”), with the same change mirrored in Nepali and Hindi. The
-  full spec is in §7.2; step 1.9 implements it.
-- **Next:** finish step 1.9 (§7.2) in this session, then stop. Phase 2 begins
-  only when the owner picks its first item. Other editorial decisions remain
-  listed in §7.
+- **Step 1.9 done — §7.2 implemented.** 18.66’s paraphrase now reads
+  Śaṅkara’s *sarvadharmān* — all dharma and adharma, the sense of doership
+  itself — instead of “all other paths”, in en/ne/hi; 15.7 carries the *aṃśa
+  iva* hedge (“As if an eternal portion of myself…” / मानौं / मानो) in the
+  three paraphrases and in the 15.7 theme/verse copy (`gita_data15.py`,
+  `themes_ne.py`, `themes_hi.py`, and the `STUDY_MAPS.md` line that quotes
+  it). Literals untouched; overlap with the literal fell for all six pairs
+  (worst 72.4 %), global max still 79.8 %. Exact strings in §7.2 and the PR.
+- **Verification (step 1.9):** `python3 build.py` green with the §4 Playwright
+  setup — strict word/line checks (0 flags), 2,100 paraphrase pairs, 6 SEO,
+  572 site-health, 9,658 study-structure, 19 Python tests, 802 document
+  assertions, 15 + 7 Node tests, 162 browser checks. Generated churn:
+  `data/ch15.js`, `data/ch18.js`, `chapter/15/`, `chapter/18/`, `sw.js` cache
+  id (the `v/` share pages were retired on 2026-09-01). `git status` clean.
+- **Next: Phase 2.** The owner picks the first item (§6 lists 2.1–2.5; §7.3–7.7
+  are the decisions still open). Do not start without his choice.
 
 ## 2. Resume in five minutes
 
@@ -314,7 +322,7 @@ Missing:
 
 ## 6. Plan — status board (tick as you go)
 
-**Phase 1 — Correctness (1–2 days)** · in progress (1.1–1.7 done)
+**Phase 1 — Correctness (1–2 days)** · **complete** (1.1–1.9 done, 2026-10-09)
 - [x] 1.1 Fix the verse text in 7.12 and 9.13 (source and matching pāda lines).
 - [x] 1.2 Fix word-list spellings: 11.27–29, 17.6, 1.1 and 2.14.
 - [x] 1.3 Fix 13.27’s IAST spelling and update its Nepali/Hindi gloss keys.
@@ -326,10 +334,11 @@ Missing:
 - [x] 1.7 Fix the Hindi grammar in the 2.47 paraphrase (की → के आलस्य).
 - [x] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” with the owner’s मार्ग wording (decided
       2026-10-09, spec in §7.1; value-only i18n change, keys and 202 count kept).
-- [ ] 1.9 Revise the 18.66 and 15.7 paraphrases to the owner’s Śaṅkara-aligned
-      wording — decided 2026-10-09, full spec in §7.2 (in progress in this session).
+- [x] 1.9 Revise the 18.66 and 15.7 paraphrases to the owner’s Śaṅkara-aligned
+      wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
+      15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning**
+**Phase 2 — Meaning** · next; the owner picks the first item
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2).
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
@@ -418,7 +427,7 @@ a chapter page showing the way crumb, and one English sections landing to show
 the Devanagari prefix. Then `grep -rn "तीन निष्ठा\|कर्मनिष्ठा\|भक्तिनिष्ठा\|ज्ञाननिष्ठा" source/
 run_gita_app.js browser_checks.py README.md` must be empty.
 
-### 7.2 Paraphrases of 18.66 and 15.7 — **DECIDED (owner, 2026-10-09)** · status: pending implementation by step 1.9
+### 7.2 Paraphrases of 18.66 and 15.7 — **DECIDED (owner, 2026-10-09)** · **IMPLEMENTED** (step 1.9, 2026-10-09)
 
 **Decision.** Both paraphrases are revised, and both follow Śaṅkara. The
 literal translations are not touched: the hedge and the gloss are
@@ -471,6 +480,24 @@ hi with the paraphrase visible, read back from the images (no truncation, no
 leftover “spark” / “other paths”); the §4 browser setup, with the sandbox font
 caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
 
+**As implemented (step 1.9).**
+- 18.66 en: “Let go of all dharma and adharma alike, every sense of being the
+  doer, and surrender to me alone. I will release you from all sin — do not
+  grieve.” · ne: “धर्म र अधर्म सबै — आफू कर्ता हुँ भन्ने भाव नै — छोडेर केवल ममा
+  समर्पण गर। …” · hi: “धर्म और अधर्म सब — अपने कर्ता होने का भाव ही — छोड़कर केवल
+  मुझ में समर्पण कर। …” (the promise half unchanged in all three).
+- 15.7 en: “As if an eternal portion of myself, the living soul in this world
+  draws to itself the five senses and the mind, which rest in nature.” · ne:
+  “यस संसारको जीवात्मा मानौं मेरै नित्य अंश हो; …” · hi: “इस संसार का जीवात्मा
+  मानो मेरा ही नित्य अंश है; …”. Theme desc: “The living soul — as if an eternal
+  portion of Kṛṣṇa — carries…” (ne/hi: “जीव — मानौं/मानो कृष्णको/कृष्ण का सनातन
+  अंश — …”); verse title “As if an eternal portion” (ne/hi “मानौं/मानो नित्य
+  अंश”); verse desc “As if an eternal portion of me, the living soul … draws…”.
+- Overlap after: 18.66 en 60.5 / ne 67.3 / hi 66.3 %; 15.7 en 72.4 / ne 55.1 /
+  hi 59.9 %. No assertion quoted the old strings. The `v/` pages no longer
+  exist, so the generated churn was `data/ch15.js`, `data/ch18.js`,
+  `chapter/15/`, `chapter/18/` and `sw.js`.
+
 ### 7.3–7.7 Still waiting on the owner
 
 3. OK to add Śaṅkara notes (source: Mahadeva Sastry, 1897)?
@@ -481,6 +508,17 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-09 · `arena/a27b2d91-bhagavad-gita` · Phase 1 step 1.9: verified PR #12
+  merged at 03:30 UTC (`0828287`, carrying `18b6074` + `681d12c`), so 1.8 was
+  not repeated. First commit wrote the owner’s §7.2 decision (and §1/§5.3/§6
+  annotations) into HANDOFF.md. Then re-aligned the 18.66 paraphrase (all dharma
+  and adharma, the sense of doership — no “other paths”) and the 15.7 paraphrase
+  (*aṃśa iva* hedge, “spark” gone) in en/ne/hi, hedging the 15.7 theme/verse copy
+  in `gita_data15.py`, `themes_ne.py`, `themes_hi.py` and the `STUDY_MAPS.md`
+  quote; literals untouched; all six overlaps fell (worst 72.4 %). Build green
+  incl. 162 browser checks; 390 px en/ne/hi sheets for both verses read back
+  clean. **Phase 1 complete.** Stopped before Phase 2 (owner picks the item).
 
 - 2026-10-09 · `arena/7d566d9b-bhagavad-gita` · Phase 1 step 1.8: verified PR #11
   merged at 02:43 UTC (`5010648`, carrying `b5a5bcd`), so step 1.7 was not
