@@ -579,7 +579,22 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
 
 ## 8. Session log (newest first, one line each)
 
-- 2026-10-09 · `arena/e1647b45-bhagavad-gita` · Phase 2.1 batch 3 (`tat`, `yat`): verified PR #15 merged and matched batch-2 source content on `main` (requested 6/1/1/1/1 entries); the clone was unshallowed before ancestry checks. Added 21 AST-located five-field entries across chapters 1, 2, 3, 9, 11, 13, 15 and 17. All `tat` “that” uses (73), 3.02 `therefore`, 14.07/14.08 `it`, all 55 `yat` “which” uses, 10.41×2 `whatever`, and 18.60 `what` were deliberately kept; other judgement calls and the omitted 11.07 “whatever” are recorded in §5.2. Appendix A §3 before/after unchanged (`te` 0; `me` 10); 9,366 / 9,484 counts unchanged. Lockstep data comparison: only `words[3]`/`words[4]` changed (42 mirrored leaves). Full build green incl. 162 browser checks; 20 390×844 ne/hi sheets read back across chapters 1, 3, 9, 13, 15 and 17. Generated `data/ch1, ch2, ch3, ch9, ch11, ch13, ch15, ch17` + `sw.js`. Commit `80cf25e`; PR #16: https://github.com/chapain/Bhagavad-Gita/pull/16.
+- 2026-10-09 · `arena/e1647b45-bhagavad-gita` · Phase 2.1 batch 3
+  (`tat`, `yat`): verified PR #15 merged and matched batch-2 source content on
+  `main` (requested 6/1/1/1/1 entries); unshallowed the clone, then checked
+  `origin/main` ancestry. Added 21 AST-located five-field entries across
+  chapters 1, 2, 3, 9, 11, 13, 15 and 17. All `tat` “that” uses (73), 3.02
+  “therefore”, 14.07/14.08 “it”, all 55 `yat` “which” uses, 10.41×2
+  “whatever”, and 18.60 “what” were deliberately kept; other judgement calls
+  and the 11.07 “whatever” entry (omitted from the prompt parenthetical) are in
+  §5.2. Appendix A §3 before/after unchanged (`te` 0; `me` 10); 9,366 / 9,484
+  counts unchanged. Lockstep data comparison: only `words[3]`/`words[4]`
+  changed (42 mirrored leaves). Full build green incl. 162 browser checks; 20
+  390×844 ne/hi sheets read back across chapters 1, 3, 9, 13, 15 and 17.
+  Generated `data/ch1, ch2, ch3, ch9, ch11, ch13, ch15, ch17` + `sw.js`.
+  Implementation commit `80cf25e`; PR #16:
+  https://github.com/chapain/Bhagavad-Gita/pull/16. Full repo zip:
+  `/home/user/Bhagavad-Gita-phase2.1-batch3.zip`.
 
 - 2026-10-09 · `arena/778427cd-bhagavad-gita` · Phase 2.1 batch 2 (`me`, param,
   bhūtāni, yogam): verified PR #14 merged at `0ea44a3` (carrying `ee2e9af`), so
