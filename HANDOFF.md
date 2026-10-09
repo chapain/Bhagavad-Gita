@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-09 (UTC) |
-| Updated by | Arena session on branch `arena/7d566d9b-bhagavad-gita` |
-| Base commit | `5010648` on `main` (merge of PR #11, step 1.7) |
+| Updated by | Arena session on branch `arena/a27b2d91-bhagavad-gita` |
+| Base commit | `0828287` on `main` (merge of PR #12, step 1.8) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -64,8 +64,20 @@ before you talk to the owner.
   6 SEO, 572 site-health, 9,658 study-structure, 19 Python tests, 802 document
   assertions, 15 + 7 Node tests and all 162 browser checks. The rebuild changed
   only `index.html` and the `sw.js` cache id; `git status` is clean afterwards.
-- **Next:** stop here. Step 1.9 (the 18.66 and 15.7 paraphrases) waits on the
-  owner’s §7.2 answer. Other editorial decisions remain listed in §7.
+- **GitHub (verified 2026-10-09):** PR #12 is **merged** (03:30 UTC) into `main`
+  at `0828287`, which is this session’s base, and it carries `18b6074` and
+  `681d12c`; `source/i18n_ui.py` on `main` already reads “तीन मार्ग” and
+  “कर्ममार्ग”, so step 1.8 is not repeated. PR #12 does **not** contain the §7.2
+  decision (the owner gave it after the merge), so this session’s first commit
+  writes it into the repo.
+- **§7.2 is decided** (owner, 2026-10-09): both paraphrases are re-aligned to
+  Śaṅkara — 18.66 drops “all other paths” for *all dharma and adharma, the
+  sense of doership itself*, and 15.7 gains the *aṃśa iva* hedge (“as if an
+  eternal portion”), with the same change mirrored in Nepali and Hindi. The
+  full spec is in §7.2; step 1.9 implements it.
+- **Next:** finish step 1.9 (§7.2) in this session, then stop. Phase 2 begins
+  only when the owner picks its first item. Other editorial decisions remain
+  listed in §7.
 
 ## 2. Resume in five minutes
 
@@ -204,6 +216,12 @@ then work through the rest of the 674 forms.
   - 15.7 “An eternal spark of myself” (`gita_data15.py:52`). Śaṅkara insists on
     *aṃśa iva*, “as if a part”. That file's header claims alignment with the
     Śaṅkara-bhāṣya.
+  - **Decided 2026-10-09 — see §7.2:** both are revised to the Śaṅkara reading
+    in en/ne/hi (step 1.9). 18.66: no “other paths” — all dharma *and* adharma,
+    the sense of doership itself; the refuge-and-promise half stays. 15.7: the
+    hedge “as if an eternal portion” in the paraphrases and in the 15.7 theme
+    title/desc; the literals stay literal. The 6.47 title is a separate,
+    still-open bullet.
   - The 6.47 title “Most yoked” is a calque.
 - **2.47 Hindi paraphrase:** “कुछ न करने की आलस्य” → “के आलस्य”, since आलस्य is
   masculine (`translations_hi.py:194`). (Fixed in step 1.7.)
@@ -308,7 +326,8 @@ Missing:
 - [x] 1.7 Fix the Hindi grammar in the 2.47 paraphrase (की → के आलस्य).
 - [x] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” with the owner’s मार्ग wording (decided
       2026-10-09, spec in §7.1; value-only i18n change, keys and 202 count kept).
-- [ ] 1.9 Revisit the 18.66 and 15.7 paraphrases after the owner’s decision (§7.2 — still open).
+- [ ] 1.9 Revise the 18.66 and 15.7 paraphrases to the owner’s Śaṅkara-aligned
+      wording — decided 2026-10-09, full spec in §7.2 (in progress in this session).
 
 **Phase 2 — Meaning**
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2).
@@ -339,7 +358,7 @@ Missing:
 
 ## 7. Decisions
 
-Phase 1 is selected (2026-10-08). §7.1 is decided; §7.2–§7.7 remain open.
+Phase 1 is selected (2026-10-08). §7.1 and §7.2 are decided; §7.3–§7.7 remain open.
 Numbering follows the old list, so “§7.1” and “§7.2” mean the same choices as
 before.
 
@@ -399,13 +418,58 @@ a chapter page showing the way crumb, and one English sections landing to show
 the Devanagari prefix. Then `grep -rn "तीन निष्ठा\|कर्मनिष्ठा\|भक्तिनिष्ठा\|ज्ञाननिष्ठा" source/
 run_gita_app.js browser_checks.py README.md` must be empty.
 
-### 7.2 Paraphrases of 18.66 and 15.7 — **OPEN (blocks step 1.9)**
+### 7.2 Paraphrases of 18.66 and 15.7 — **DECIDED (owner, 2026-10-09)** · status: pending implementation by step 1.9
 
-How should the paraphrases of 18.66 (“Give up all other paths”) and 15.7 (“An
-eternal spark of myself”) be revised, if at all? See §5.3: Śaṅkara reads 18.66
-as all dharma *and* adharma, and insists on *aṃśa iva*, “as if a part”, for
-15.7, whose file header claims alignment with the bhāṣya. Do not start 1.9
-until the owner answers.
+**Decision.** Both paraphrases are revised, and both follow Śaṅkara. The
+literal translations are not touched: the hedge and the gloss are
+interpretation and belong in the paraphrase and the theme/verse descriptions,
+so `gita_data15.py`’s header claim “Aligned to the Śaṅkara-bhāṣya readings”
+becomes true again and is kept.
+
+**18.66** (`gita_data18.py:254`, en paraphrase). The current “Give up all other
+paths and surrender to me alone. I will release you from all sin — do not
+grieve.” leans on “other paths”, as if one path were being chosen among
+several. Śaṅkara reads *sarvadharmān parityajya* as all dharma *and* adharma —
+every claim of doing, the sense of agency itself — not a menu of paths. The
+English paraphrase is rewritten to that sense, keeping the refuge-and-promise
+half of the verse. **Parity:** the Nepali (`translations_ne.py:1382`, “अरू सबै
+बाटो छोडेर…”) and Hindi (`translations_hi.py:1382`, “दूसरे सब मार्ग छोड़कर…”)
+paraphrases carry the same lean and are reworded with it — in Hindi
+especially, now that मार्ग is the UI’s word for the three ways (§7.1).
+
+**15.7** (`gita_data15.py:52`, en paraphrase). The current “An eternal spark of
+myself becomes the living soul in this world; …” adds a particle-image the
+verse does not have. Śaṅkara insists on *aṃśa iva* — “as if a part”, the self
+being indivisible and the “portion” figurative. Rewritten with the hedge (“As
+if an eternal portion of myself, …”). **Parity:** the ne/hi paraphrases
+(`translations_ne.py:1120`, `translations_hi.py:1120`) already say अंश but
+lack the hedge — it is added there too (मानौं / मानो); and the un-hedged theme
+title/desc in `gita_data15.py:17–18` (“The eternal portion” / “An eternal
+portion of Kṛṣṇa carries…”) rest on the same reading, so they are hedged or
+reworded consistently, with the ne/hi mirrors in `themes_ne.py` /
+`themes_hi.py` kept in step.
+
+**Out of scope.** The 6.47 title “Most yoked” (separate §5.3 bullet; locked by
+`study_map_contract.json` / `check_study_structure.py`, so it needs its own
+decision); the 10.41–42 “spark” imagery in `STUDY_MAPS.md` and `gita_data10.py`
+(different verse, correct as is); verse text, pādas and word lists; and
+everything step 1.8 touched.
+
+**Constraints and bookkeeping.** `source/check_paraphrase.py` caps
+paraphrase↔literal overlap at 80 % (global max 79.8 % before this step): the
+rewritten pairs must stay under it and still read as paraphrase, not copy. No
+exact-text assertion quotes these strings (verified in `run_gita_app.js`,
+`browser_checks.py`, `study_map_contract.json`); re-grep after rewording and,
+if any appears, update it to the new string keeping its strength. Rebuild with
+`build.py`; the expected generated churn is `data/ch15.js`, `data/ch18.js`,
+`v/15.7/`, `v/18.66/` (og:description) and the `sw.js` cache id. Commit source
+and generated files together.
+
+**Evidence required.** Before/after of every changed string in every language
+touched; 390 px screenshots of the 18.66 and 15.7 verse sheets in en, ne and
+hi with the paraphrase visible, read back from the images (no truncation, no
+leftover “spark” / “other paths”); the §4 browser setup, with the sandbox font
+caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
 
 ### 7.3–7.7 Still waiting on the owner
 
