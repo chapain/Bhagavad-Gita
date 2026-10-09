@@ -264,7 +264,7 @@ GITA_CH8_WORDS = {
          ["विदुः", "viduḥ", "they know"]],
      2: [["रात्रिम्", "rātrim", "the night"],
          ["युगसहस्रान्ताम्", "yugasahasrāntām", "ending in a thousand yugas"]],
-     3: [["ते", "te", "they"],
+     3: [["ते", "te", "they", "तिनीहरू", "वे"],
          ["अहोरात्रविदः", "ahorātravidaḥ", "knowers of day and night"],
          ["जनाः", "janāḥ", "people"]]},
 

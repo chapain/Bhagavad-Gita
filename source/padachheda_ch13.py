@@ -362,7 +362,7 @@ GITA_CH13_WORDS = {
     1: [["श्रुत्वा", "śrutvā", "having heard"],
         ["अन्येभ्यः", "anyebhyaḥ", "from others"],
         ["उपासते", "upāsate", "worship"]],
-    2: [["ते", "te", "they"],
+    2: [["ते", "te", "they", "तिनीहरू", "वे"],
         ["अपि", "api", "also"],
         ["च", "ca", "and"],
         ["अतितरन्ति", "atitaranti", "cross beyond"],
@@ -491,7 +491,7 @@ GITA_CH13_WORDS = {
     3: [["ये", "ye", "those who"],
         ["विदुः", "viduḥ", "know"],
         ["यान्ति", "yānti", "reach"],
-        ["ते", "te", "they"],
+        ["ते", "te", "they", "तिनीहरू", "वे"],
         ["परम्", "param", "the supreme"]]},
 
 }

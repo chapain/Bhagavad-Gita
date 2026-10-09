@@ -511,7 +511,7 @@ GITA_CH1_WORDS = {
         ["भोगाः", "bhogāḥ", "enjoyments"],
         ["सुखानि", "sukhāni", "pleasures"],
         ["च", "ca", "and"]],
-    2: [["ते", "te", "they"],
+    2: [["ते", "te", "they", "तिनीहरू", "वे"],
         ["इमे", "ime", "these"],
         ["अवस्थिताः", "avasthitāḥ", "stationed"],
         ["युद्धे", "yuddhe", "in battle"]],
