@@ -244,7 +244,7 @@ Keep cutting the tree with seeking its source; group the whole soul-journey and 
 
 1. **15.1–15.4 · Cut the world-tree and seek its source** — The upside-down tree grows through guṇas and attachment to action. Cut its roots with detachment, then seek the primal Person and the state without return.
 2. **15.5–15.6 · Who reaches the imperishable abode** — Free of pride, delusion, attachment and opposing pleasures, the undeluded reach the supreme abode. Neither sun, moon nor fire lights it; there is no return.
-3. **15.7–15.11 · The soul’s journey and the eyes that see it** — An eternal portion of Kṛṣṇa carries mind and senses from body to body, as wind carries fragrance. The disciplined see this; the deluded fail to recognise it.
+3. **15.7–15.11 · The soul’s journey and the eyes that see it** — The living soul — as if an eternal portion of Kṛṣṇa — carries mind and senses from body to body, as wind carries fragrance. The disciplined see this; the deluded fail to recognise it.
 4. **15.12–15.15 · The Lord sustains world, body and understanding** — Light, nourishment, digestion, memory, knowledge and forgetfulness arise from Kṛṣṇa. Seated in every heart, he is the one to be known through the Vedas.
 5. **15.16–15.20 · The Supreme Person beyond both kinds of being** — Beyond the perishable and imperishable stands the sustaining Supreme Person. Knowing Kṛṣṇa as Puruṣottama brings wholehearted worship and completes this secret teaching.
 

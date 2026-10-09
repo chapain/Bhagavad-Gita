@@ -251,7 +251,7 @@ CH18_TRANSLATIONS = {
 65: ("Fix your mind on me, be my devotee, offer to me, bow to me — you shall surely come to me; I promise you truly, for you are dear to me.",
     "“Set your heart on me, worship me, sacrifice to me, bow to me — you will surely reach me. This I promise, for you are dear to me.”"),
 66: ("Abandon all dharmas and take refuge in me alone; I will free you from all sins — grieve not.",
-    "“Give up all other paths and surrender to me alone. I will release you from all sin — do not grieve.”"),
+    "“Let go of all dharma and adharma alike, every sense of being the doer, and surrender to me alone. I will release you from all sin — do not grieve.”"),
 67: ("This is not to be spoken to one without austerity, nor to the faithless, nor to one who does not serve, nor to one who reviles me.",
     "“Do not teach this to one who lacks discipline, to the faithless, to the unwilling, or to one who despises me.”"),
 68: ("He who teaches this supreme secret to my devotees with supreme devotion — having given me his highest love, he shall come to me.",
