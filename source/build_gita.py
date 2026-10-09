@@ -3374,9 +3374,11 @@ function wayCrumbs(items){
     return sep + `<span class="wc-chip wc-cur" aria-current="page">${esc(it[0])}</span>`;
   }).join('') + `</nav>`;
 }
-function wayName(k){ /* the trail carries the Sanskrit niṣṭhā name, as the
-  landing cards do — "कर्मनिष्ठा · The Way of Karma" — so the map is always
-  rooted in the tradition, in every language */ return L('sec_'+['','karma','bhakti','jnana'][k]); }
+function wayName(k){ /* the trail carries the Sanskrit mārga name, as the
+  landing cards do — "कर्ममार्ग · The Way of Karma" — so the map is always
+  rooted in the tradition, in every language (owner 2026-10-09, HANDOFF §7.1:
+  the UI says मार्ग; निष्ठा belongs to the verses — 3.3 is dvividhā, two) */
+  return L('sec_'+['','karma','bhakti','jnana'][k]); }
 /* The chapter's three views live in one quiet "View mode" chooser under the
    breadcrumb (owner, 2026-08-28) — a book folio control, not a strip of pills.
    Mula is the default because that is what a chapter *is*; the rest are views. */

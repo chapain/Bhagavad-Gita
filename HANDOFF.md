@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-09 (UTC) |
-| Updated by | Arena session on branch `arena/f0f811fe-bhagavad-gita` |
-| Base commit | `6ee58aa` on `main` (merge of PR #10, step 1.6) |
+| Updated by | Arena session on branch `arena/7d566d9b-bhagavad-gita` |
+| Base commit | `5010648` on `main` (merge of PR #11, step 1.7) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -46,19 +46,26 @@ before you talk to the owner.
   (सङ्गः = attachment, अकर्मणि = in inaction). The “आलस्य” gloss of अकर्मणि is
   the paraphrase’s own interpretive word, left as it was; the 390 px Hindi
   render was re-shot and reads correctly.
-- **GitHub (verified 2026-10-09):** PR #10 is **merged** (02:14 UTC) into `main`
-  at `6ee58aa`, which is this session’s base — step 1.6 is in `main`, so it is
-  not repeated.
-- **Verification:** `python3 build.py` passes: 9,366 strict word checks, 2,800
-  strict line and reconstruction checks (0 flags), 2,100 paraphrase pairs,
-  6 SEO checks, 572 site-health checks, 9,658 study-structure checks, 19 Python
-  tests, 802 document assertions, 15 learning-map migration tests and 7 search
-  regression tests. This session set up Playwright + `@sparticuz/chromium` per
-  §4, so the 162 browser checks ran and passed too; the rebuild touched only
-  `data/ch2.js` and the `sw.js` cache id (a paraphrase-text change).
-- **Next:** stop here. Wait for the owner’s go-ahead before step 1.8 (“तीन
-  निष्ठा” wording, which needs his choice in §7.1) and step 1.9. Other editorial
-  decisions remain listed in §7.
+- **GitHub (verified 2026-10-09):** PR #11 is **merged** (02:43 UTC) into `main`
+  at `5010648`, which is this session’s base, and it carries step 1.7’s commit
+  `b5a5bcd`; `source/translations_hi.py` on `main` already reads “कुछ न करने के
+  आलस्य”, so step 1.7 is not repeated. PR #11 does **not** contain the §7.1
+  decision (the previous session recorded it after the merge and could no longer
+  push), so this session’s first commit writes it into the repo.
+- **Step 1.8 done — §7.1 implemented.** The UI framework now says **तीन मार्ग**
+  and the three cards/tabs are prefixed **कर्ममार्ग · भक्तिमार्ग · ज्ञानमार्ग** in
+  all three languages: 25 values in `i18n_ui.py`, every key kept (202 per
+  language), the wayName comment and `browser_checks.py:328` reworded to the
+  mārga name, and no verse-level निष्ठा touched (3.3, 5.17, 17.1, 18.50 and the
+  glosses keep it). The decision, its rationale and the exact string list live
+  in §7.1; evidence (before/after plus 390 px hi/ne/en shots) is in the PR.
+- **Verification:** `python3 build.py` passes with the §4 Playwright setup —
+  9,366 word checks and 2,800 line checks (0 flags), 2,100 paraphrase pairs,
+  6 SEO, 572 site-health, 9,658 study-structure, 19 Python tests, 802 document
+  assertions, 15 + 7 Node tests and all 162 browser checks. The rebuild changed
+  only `index.html` and the `sw.js` cache id; `git status` is clean afterwards.
+- **Next:** stop here. Step 1.9 (the 18.66 and 15.7 paraphrases) waits on the
+  owner’s §7.2 answer. Other editorial decisions remain listed in §7.
 
 ## 2. Resume in five minutes
 
@@ -185,6 +192,12 @@ then work through the rest of the 674 forms.
     `sections_sub` in `i18n_ui.py` (ne + hi). The English “Three Ways” is milder.
   - Suggestion: keep the three groups of six chapters but call them
     ṣaṭkas/kāṇḍas (Madhusūdana: karma · upāsanā · jñāna, or tvam · tat · asi).
+  - **Decided 2026-10-09 — see §7.1:** the UI keeps the three six-chapter groups
+    but says **तीन मार्ग** and prefixes the cards **कर्ममार्ग / भक्तिमार्ग /
+    ज्ञानमार्ग**; the ṣaṭka/kāṇḍa naming was not taken. Implemented in step 1.8
+    as a value-only i18n change (25 strings, keys and the 202-key count
+    unchanged). Verse-level निष्ठा — 3.3 द्विविधा निष्ठा, 5.17 तन्निष्ठाः, 17.1,
+    18.50, their glosses and the theme prose — stays exactly as it is.
 - **Paraphrases that lean away from Śaṅkara:**
   - 18.66 “Give up all other paths” (`gita_data18.py:254`). Śaṅkara reads it as
     all dharma *and* adharma, i.e. all action.
@@ -293,8 +306,9 @@ Missing:
 - [x] 1.5 Search: NFD plus explicit spelling folds; fix singular/plural result wording.
 - [x] 1.6 Fix the `LICENSE.md` counts (9,484 / 169 / 700); removed the stale README editor section (editor not restored).
 - [x] 1.7 Fix the Hindi grammar in the 2.47 paraphrase (की → के आलस्य).
-- [ ] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” after the owner chooses the wording (§7).
-- [ ] 1.9 Revisit the 18.66 and 15.7 paraphrases after the owner’s decision (§7).
+- [x] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” with the owner’s मार्ग wording (decided
+      2026-10-09, spec in §7.1; value-only i18n change, keys and 202 count kept).
+- [ ] 1.9 Revisit the 18.66 and 15.7 paraphrases after the owner’s decision (§7.2 — still open).
 
 **Phase 2 — Meaning**
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2).
@@ -323,14 +337,78 @@ Missing:
 - [ ] 5.4 Export/import of favourites, notes and Learn progress (notes on
       favourites already exist).
 
-## 7. Decisions waiting on the owner
+## 7. Decisions
 
-Phase 1 is selected (2026-10-08). After the mechanical fixes, these editorial
-choices remain open:
+Phase 1 is selected (2026-10-08). §7.1 is decided; §7.2–§7.7 remain open.
+Numbering follows the old list, so “§7.1” and “§7.2” mean the same choices as
+before.
 
-1. What wording replaces “तीन निष्ठा / तीन निष्ठाएँ”? The suggestion in §5.3
-   is to name the three six-chapter groups as ṣaṭkas or kāṇḍas.
-2. How should the paraphrases of 18.66 and 15.7 be revised, if at all? See §5.3.
+### 7.1 “तीन निष्ठा” → “तीन मार्ग” — **DECIDED (owner, 2026-10-09)** · **IMPLEMENTED** (step 1.8, 2026-10-09)
+
+**Decision.** The three six-chapter groups keep their shape, but the UI calls
+them **mārga**, not niṣṭhā. The Nepali and Hindi framework wording becomes
+**तीन मार्ग**, and the three section cards and their tabs are prefixed
+**कर्ममार्ग · भक्तिमार्ग · ज्ञानमार्ग** in *all three* languages — the English
+cards keep their “· The Way of Karma/Bhakti/Jñāna” suffix, and the English body
+text keeps “The Three Ways” / “Way of …”. This is a **value-only i18n change**:
+every key stays and the key count stays at **202** (`run_gita_app.js:102`
+asserts it).
+
+**Why.** निष्ठा is the Gītā’s own verse-level word: 3.3 *loke ’smin dvividhā
+niṣṭhā* says **two**, and 5.17 *tanniṣṭhāḥ*, 17.1 *teṣāṃ niṣṭhā tu kā kṛṣṇa*
+and 18.50 *niṣṭhā jñānasya yā parā* use it of one person’s steadfastness. A UI
+that announces “three niṣṭhās” contradicts the text it frames (and Śaṅkara,
+whose bhāṣya rests on exactly two). मार्ग makes no such claim, and `guide_way`
+already read “एउटा मार्ग छानेर…”, so the UI becomes self-consistent. The §5.3
+ṣaṭka/kāṇḍa suggestion was considered and **not** taken: it renames the
+six-chapter divisions instead of dropping the wrong word, and ṣaṭka is
+unfamiliar to this app’s readers.
+
+**Spelling (owner-approved).** Joined tatsama compounds in stem form —
+**भक्तिमार्ग**, *not* the sandhi form भक्तमार्ग — matching the existing lists
+“कर्म, भक्ति और ज्ञान”. मार्ग (masculine) in both Nepali and Hindi.
+
+**Scope — 25 values in `source/i18n_ui.py`.**
+- **EN** (3): only the Devanagari prefix of `sec_karma` → “कर्ममार्ग · The Way
+  of Karma”, `sec_bhakti` → “भक्तिमार्ग · The Way of Bhakti”, `sec_jnana` →
+  “ज्ञानमार्ग · The Way of Jñāna”.
+- **NE** (11) and **HI** (11): `welcome_sub`, `welcome_foot`, `sections_title`,
+  `sections_sub`, `sec_karma`, `sec_bhakti`, `sec_jnana`, `tab_karma`,
+  `tab_bhakti`, `tab_jnana`, `back_ways`.
+- Hindi `sections_sub` must agree with masculine मार्ग: “गीता के अठारह अध्याय
+  तीन **मार्गों** में — कर्म, भक्ति और ज्ञान — एक **अगले** में परिपक्व **होते
+  हुए**।” Nepali keeps its own construction (“तीन मार्गमा — …”).
+- Unchanged on purpose: EN `welcome_sub`/`welcome_foot` (“three ways”),
+  `sections_title` “The Three Ways”, `tab_*` “Way of …”, and `guide_way`.
+
+**Out of scope — no verse-level निष्ठा is touched.** `ch3.json` 3.3 “द्विविधा
+निष्ठा”, `ch5.json` 5.17 “तन्निष्ठाः”, the `niṣṭhā` and `tanniṣṭhāḥ` entries in
+`gloss_ne.py` / `gloss_hi.py`, the 17.1 and 18.50 verse texts, pādas and
+padachheda, and the theme prose about 3.3 or the three guṇas.
+
+**Downstream bookkeeping, same change.** The comment at `build_gita.py`
+~3377 (“the trail carries the Sanskrit niṣṭhā name … ‘कर्मनिष्ठा · The Way of
+Karma’”) must quote the new card text, and `browser_checks.py:328` must assert
+`"कर्ममार्ग" in cr[2]` with the message reworded to the mārga name — same
+strength, new string. Generated files (`index.html`, `data/`, `chapter/`,
+`sw.js`, `404.html`) are never hand-edited; `build.py` rebuilds them.
+
+**Evidence.** Before/after of every changed string, plus 390 px shots
+of the Hindi and Nepali welcome tagline, the sections landing (three cards) and
+a chapter page showing the way crumb, and one English sections landing to show
+the Devanagari prefix. Then `grep -rn "तीन निष्ठा\|कर्मनिष्ठा\|भक्तिनिष्ठा\|ज्ञाननिष्ठा" source/
+run_gita_app.js browser_checks.py README.md` must be empty.
+
+### 7.2 Paraphrases of 18.66 and 15.7 — **OPEN (blocks step 1.9)**
+
+How should the paraphrases of 18.66 (“Give up all other paths”) and 15.7 (“An
+eternal spark of myself”) be revised, if at all? See §5.3: Śaṅkara reads 18.66
+as all dharma *and* adharma, and insists on *aṃśa iva*, “as if a part”, for
+15.7, whose file header claims alignment with the bhāṣya. Do not start 1.9
+until the owner answers.
+
+### 7.3–7.7 Still waiting on the owner
+
 3. OK to add Śaṅkara notes (source: Mahadeva Sastry, 1897)?
 4. Where audio would come from (licence, who records it).
 5. OK to merge “Verses with translation” and “Study guide” into one view?
@@ -339,6 +417,17 @@ choices remain open:
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-09 · `arena/7d566d9b-bhagavad-gita` · Phase 1 step 1.8: verified PR #11
+  merged at 02:43 UTC (`5010648`, carrying `b5a5bcd`), so step 1.7 was not
+  repeated. First commit wrote the owner’s §7.1 decision (and §1/§5.3/§6
+  annotations) into HANDOFF.md, which PR #11 could not carry. Then implemented
+  §7.1: 25 value-only strings in `i18n_ui.py` (तीन मार्ग; कर्ममार्ग / भक्तिमार्ग /
+  ज्ञानमार्ग in en/ne/hi; Hindi sections_sub re-agreed to masculine मार्ग), keys
+  and the 202 count untouched, wayName() comment and browser_checks.py:328
+  reworded; verse-level निष्ठा (3.3, 5.17, 17.1, 18.50, glosses, themes) left
+  alone. Build green incl. 162 browser checks; 390 px hi/ne/en shots read back
+  clean; the §7.1 grep now empty. Stopped before 1.9 (§7.2 still open).
 
 - 2026-10-09 · `arena/f0f811fe-bhagavad-gita` · Phase 1 step 1.7: fixed the
   2.47 Hindi paraphrase in `translations_hi.py` — “कुछ न करने की आलस्य में” →
