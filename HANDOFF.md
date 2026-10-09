@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-09 (UTC) |
-| Updated by | Arena session on branch `arena/d4cdfd5b-bhagavad-gita` |
-| Base commit | `bd4f5c3` on `main` (merge of PR #8, step 1.4) |
+| Updated by | Arena session on branch `arena/a1d5250c-bhagavad-gita` |
+| Base commit | `e89b78c` on `main` (merge of PR #9, step 1.5) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,7 +20,7 @@ before you talk to the owner.
 
 ## 1. Where we are
 
-- **2026-10-09 — Phase 1 steps 1.1–1.5 complete.** Step 1.4 made
+- **2026-10-09 — Phase 1 steps 1.1–1.6 complete.** Step 1.4 made
   `source/check_padas.py` a build-failing strict validator. It losslessly
   transliterates all 9,366 word entries and compares each word’s Devanagari
   with its own IAST; it also checks all 2,800 pādas against their word splits
@@ -31,23 +31,27 @@ before you talk to the owner.
   and ś/ṣ/s. Regression tests prove 13.27 `avinaśyantam` passes while the
   incorrect `avināśyantam` fails; do not reverse the short-a correction.
 - Step 1.5 gives search a mark-preserving NFD key plus a separate, documented
-  ASCII fallback over the IAST field only: ā/ī/ū ↔ a/aa, i/ee, u/oo; ṛ/ri;
-  ś/ṣ/sh; ṇ/n; and c/ch.
-  Whitespace is ignored. Queries that include IAST diacritics use only the
-  exact key, preserving distinctions such as a/ā, ś/ṣ and t/ṭ. Search and
-  favorites now use singular/plural count labels in English, Nepali and Hindi.
-- **GitHub:** PR #8 was verified merged at 2026-10-09 01:34 UTC. Latest `main`
-  was verified as `bd4f5c3` (the PR #8 merge) before step 1.5 began. Commit
-  `d2df966` is pushed on this assigned branch; PR #9 is open to `main`:
-  https://github.com/chapain/Bhagavad-Gita/pull/9.
+  ASCII fallback over the IAST field only (see §5.4). Search and favorites use
+  singular/plural count labels in English, Nepali and Hindi.
+- Step 1.6 corrected `LICENSE.md` to the verified counts: **9,484** word
+  glosses (9,366 verse words + 118 speaker words), **169** themes and **700**
+  parts (was 9,480 / 182 / 558). It also removed the README “Editing in your
+  browser” section, which documented `edit.py` and `editor.html`; neither file
+  exists, and the editor is not restored. The README’s “202 UI strings” figure
+  moved into the “Fixing content” table so the document test still holds.
+- **GitHub (verified 2026-10-09):** PR #9 is **merged** (02:08 UTC) into `main`
+  at `e89b78c`, which is this session’s base. Commits `d2df966` and `f0d765d`
+  (step 1.5) are ancestors of `main`, so step 1.5 is not duplicated. PR #8 was
+  merged earlier (`bd4f5c3`).
 - **Verification:** `python3 build.py` passes: 9,366 strict word checks, 2,800
   strict line and reconstruction checks (0 flags), 2,100 paraphrase pairs,
   6 SEO checks, 572 site-health checks, 9,658 study-structure checks, 19 Python
   tests, 802 document assertions, 15 learning-map migration tests and 7 search
-  regression tests. The separate Playwright/Chromium run passed all 162 browser
-  checks; the system-python build skips them because Playwright is in a venv.
-- **Next:** stop here. Wait for the owner’s go-ahead before step 1.6. Other
-  editorial decisions remain listed in §7.
+  regression tests. The browser step was skipped in this sandbox (Playwright
+  not installed); `index.html` is byte-identical to the previous build, and
+  step 1.6 does not change app code.
+- **Next:** stop here. Wait for the owner’s go-ahead before step 1.7 (the
+  2.47 Hindi grammar). Other editorial decisions remain listed in §7.
 
 ## 2. Resume in five minutes
 
@@ -256,11 +260,12 @@ Missing:
   - `source/dataio.py`: nothing imports it.
   - `shoot_choose.py`: screenshots a page that has been retired.
   - `UPLOAD.md`: stale (“222 themes”).
-  - `README.md` around line 141 documents `edit.py` and `editor.html`, which
-    do not exist.
-- **Wrong counts:** `LICENSE.md:25–26` says 9,480 word glosses, 182 themes and
-  558 parts. The real figures are 9,484 (9,366 verse words + 118 speaker
-  words), 169 and 700. README and PROJECT already say 169.
+  - `README.md` documented `edit.py` and `editor.html`, which do not exist
+    (section removed in step 1.6). `UPLOAD.md` and `PROJECT.md` still mention
+    the editor.
+- **Wrong counts (fixed in step 1.6):** `LICENSE.md` said 9,480 word glosses, 182 themes
+  and 558 parts. The verified figures are 9,484 (9,366 verse words + 118 speaker
+  words), 169 and 700.
 - **Data:**
   - One verse's content is spread over about ten source files.
   - `data/ch*.js` is 5.3 MB raw (663 KB gzip), and all of it is fetched
@@ -271,7 +276,7 @@ Missing:
 
 ## 6. Plan — status board (tick as you go)
 
-**Phase 1 — Correctness (1–2 days)** · in progress (1.1–1.5 done)
+**Phase 1 — Correctness (1–2 days)** · in progress (1.1–1.6 done)
 - [x] 1.1 Fix the verse text in 7.12 and 9.13 (source and matching pāda lines).
 - [x] 1.2 Fix word-list spellings: 11.27–29, 17.6, 1.1 and 2.14.
 - [x] 1.3 Fix 13.27’s IAST spelling and update its Nepali/Hindi gloss keys.
@@ -279,7 +284,7 @@ Missing:
       Devanagari against its own IAST, and each pāda line against its word
       split, without flattening diacritics. Appendix A §1–2 is the starting point.
 - [x] 1.5 Search: NFD plus explicit spelling folds; fix singular/plural result wording.
-- [ ] 1.6 Fix the `LICENSE.md` counts; remove the README editor section (or restore the editor).
+- [x] 1.6 Fix the `LICENSE.md` counts (9,484 / 169 / 700); removed the stale README editor section (editor not restored).
 - [ ] 1.7 Fix the Hindi grammar in the 2.47 paraphrase.
 - [ ] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” after the owner chooses the wording (§7).
 - [ ] 1.9 Revisit the 18.66 and 15.7 paraphrases after the owner’s decision (§7).
@@ -328,6 +333,13 @@ choices remain open:
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-09 · `arena/a1d5250c-bhagavad-gita` · Phase 1 step 1.6: verified PR #9 merged
+  at 02:08 UTC and `main` at `e89b78c` containing step 1.5 (`d2df966`, `f0d765d`), so no
+  step 1.5 work repeated. LICENSE.md now says 9,484 / 169 / 700 (were 9,480 / 182 / 558).
+  Removed the README editor section (edit.py/editor.html do not exist). Removing it
+  dropped the only “202 UI strings” line, which `run_gita_app.js` checks in README;
+  moved the figure into the Fixing-content table. Build green (802 document assertions,
+  19 Python tests, 15 + 7 Node tests). Stopped before 1.7.
 - 2026-10-09 · `arena/d4cdfd5b-bhagavad-gita` · Phase 1 step 1.5: NFD exact
   search plus an explicit ASCII fallback scoped to verse IAST; marked queries keep
   Sanskrit distinctions. Fixed singular/plural count nouns in en/ne/hi and added

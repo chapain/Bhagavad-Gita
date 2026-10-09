@@ -22,8 +22,8 @@ Original to this project, and owned by the author:
 
 * the English, Nepali and Hindi **translations** — literal and flowing — of all
   700 verses;
-* the **word-by-word meanings** (9,480 word glosses in three languages);
-* the **theme and part structure** — 182 themes and 558 parts, with their titles
+* the **word-by-word meanings** (9,484 word glosses in three languages: 9,366 verse words and 118 speaker words);
+* the **theme and part structure** — 169 themes and 700 parts, with their titles
   and descriptions in three languages;
 * the **four-quarter (pāda) division** and the pada-chheda word splits as
   presented here;
