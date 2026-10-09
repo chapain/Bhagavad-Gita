@@ -120,7 +120,7 @@ GITA_CH2_WORDS = {
         ["धर्म", "dharma", "of duty"],
         ["सम्मूढ", "sammūḍha", "confused"],
         ["चेताः", "cetāḥ", "mind"]],
-    2: [["यत्", "yat", "what"],
+    2: [["यत्", "yat", "what", "के", "क्या"],
         ["श्रेयः", "śreyaḥ", "is good"],
         ["स्यात्", "syāt", "may be"],
         ["निश्चितम्", "niścitam", "certainly"],

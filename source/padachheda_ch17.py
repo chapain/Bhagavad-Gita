@@ -54,7 +54,7 @@ GITA_CH17_WORDS = {
         ["अयम्", "ayam", "this"],
         ["पुरुषः", "puruṣaḥ", "man"]],
     3: [["यः", "yaḥ", "who"],
-        ["यत्", "yat", "as his"],
+        ["यत्", "yat", "as his", "जस्तो", "जैसी"],
         ["श्रद्धः", "śraddhaḥ", "faith"],
         ["सः", "saḥ", "he"],
         ["एव", "eva", "indeed"],
@@ -332,7 +332,7 @@ GITA_CH17_WORDS = {
 
 23: {"s": [],
     0: [["ओम्", "om", "Om"],
-        ["तत्", "tat", "Tat"],
+        ["तत्", "tat", "Tat", "तत्", "तत्"],
         ["सत्", "sat", "Sat"],
         ["इति", "iti", "thus"],
         ["निर्देशः", "nirdeśaḥ", "the designation"]],
@@ -360,7 +360,7 @@ GITA_CH17_WORDS = {
         ["ब्रह्मवादिनाम्", "brahmavādinām", "of the knowers of Brahman"]]},
 
 25: {"s": [],
-    0: [["तत्", "tat", "Tat"],
+    0: [["तत्", "tat", "Tat", "तत्", "तत्"],
         ["इति", "iti", "thus"],
         ["अनभिसन्धाय", "anabhisandhāya", "without seeking"]],
     1: [["फलम्", "phalam", "fruit"],

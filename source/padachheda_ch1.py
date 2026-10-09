@@ -698,7 +698,7 @@ GITA_CH1_WORDS = {
     1: [["कर्तुम्", "kartum", "to commit"],
         ["व्यवसिताः", "vyavasitāḥ", "resolved"],
         ["वयम्", "vayam", "we"]],
-    2: [["यत्", "yat", "because"],
+    2: [["यत्", "yat", "because", "किनभने", "क्योंकि"],
         ["राज्य", "rājya", "kingdom"],
         ["सुख", "sukha", "pleasure"],
         ["लोभेन", "lobhena", "by greed"]],

@@ -108,7 +108,7 @@ GITA_CH11_WORDS = {
     2: [["मम", "mama", "my"],
         ["देहे", "dehe", "in the body"],
         ["गुडाकेश", "guḍākeśa", "O Guḍākeśa"]],
-    3: [["यत्", "yat", "whatever"],
+    3: [["यत्", "yat", "whatever", "जे", "जो"],
         ["च", "ca", "and"],
         ["अन्यत्", "anyat", "other"],
         ["द्रष्टुम्", "draṣṭum", "to see"],
@@ -716,7 +716,7 @@ GITA_CH11_WORDS = {
          ["अपि", "api", "indeed"]]},
 
 42: {"s": [],
-     0: [["यत्", "yat", "whatever"],
+     0: [["यत्", "yat", "whatever", "जे", "जो"],
          ["च", "ca", "and"],
          ["अवहासार्थम्", "avahāsārtham", "for the sake of jest"],
          ["असत्कृतः", "asatkṛtaḥ", "treated with disrespect"],
