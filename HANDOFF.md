@@ -101,8 +101,11 @@ before you talk to the owner.
   6.30 follows the corpus dative and 10.7 keeps योग. Audit §3 `me` 16 → 10;
   9,366 / 9,484 unchanged. Generated churn: `data/ch2, ch5, ch6, ch9, ch11` +
   `sw.js` cache id.
-- **Next: 2.1 batch 3.** The remainder of the 674 forms — the owner picks the
-  slice.
+- **2.1 batch 3 done — `tat` and `yat`.** Added 21 contextual entries across
+  chapters 1, 2, 3, 9, 11, 13, 15 and 17; only Nepali/Hindi word fields changed.
+  Audit §3 remains `te` 0 / `me` 10; 9,366 / 9,484 unchanged. Full build and
+  162 browser checks pass. Next: the remaining forms in the 674-form pool;
+  owner picks the slice.
 
 ## 2. Resume in five minutes
 
@@ -242,10 +245,30 @@ Clear errors:
   योग in its literal — per-verse five-field entries are exactly why 9.5 and 11.8
   may differ.
 
+- **FIXED (2.1 batch 3, 2026-10-09) — `tat`.** 3.01 “then” now uses
+  `त्यसो भए / तो`; 17.23 and 17.25 “Tat” in *oṃ tat sat* use `तत् / तत्`,
+  preserving the mantra syllable rather than translating it as “that”.
+  **Deliberately kept:** the 73 “that” entries, whose `tat` is demonstrative or
+  correlative; 14.07 and 14.08 “it”, where `tat` is anaphoric; and 3.02, where
+  `tad ekam` means “that one [thing]” and `त्यो / वह` follows the Sanskrit,
+  although the existing English word gloss says “therefore”. The English gloss
+  remains unchanged and that mismatch is out of scope.
+- **FIXED (2.1 batch 3, 2026-10-09) — `yat`.** 1.45 “because” → `किनभने / क्योंकि`;
+  15.06 “where” → `जहाँ / जहाँ`; both 15.08 “when / and when” → `जब / जब`;
+  2.07 and 13.03×3 “what” → `के / क्या`; 17.03 “as his” → `जस्तो / जैसी`,
+  matching “जस्तो उसको श्रद्धा / जैसी उसकी श्रद्धा”. **Judgement calls:** the
+  11 “whatever” entries at 3.21×2, 9.27×5, 10.41×2, 11.07 and 11.42 were
+  checked individually. Nepali becomes `जे` at 3.21, 9.27, 11.07 and 11.42,
+  matching those literals; 10.41 keeps `जुन` in `जुन-जुन प्राणी`. Hindi keeps
+  `जो` throughout, matching `जो / जो-जो` in the verse renderings. 18.60 “what”
+  keeps `जुन / जो`: it is a relative clause, not a question. All 55 “which” uses
+  keep `जुन / जो` as relative pronouns. The `11.07` “whatever” entry is the
+  eleventh instance (omitted from the initial parenthetical list).
+
 **Fix path (no code change needed):** write five-field entries inline in
-`padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Before batch 1 only two
-such entries existed; batch 1 added 26 (te). Next: me, param, bhūtāni, yogam,
-tat and yat, then work through the rest of the 674 forms.
+`padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Batch 1–3 now
+cover `te`, `me`, `param`, `bhūtāni`, `yogam`, `tat` and `yat`. Next: the
+remaining forms in the 674-form pool; the owner picks each slice.
 
 ### 5.3 Interpretation and framing (owner decides)
 
@@ -381,12 +404,12 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batch 2 done)
+**Phase 2 — Meaning** · in progress (2.1 batch 3 done)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batch 2 of N done** (`te` 26 verses; then `me` 6 verses
-      incl. 6.30, `param` 2.12, `bhūtāni` 9.25, `yogam` 11.8, with `yogam` 10.7
-      kept on purpose); batch 3 is the remainder of the 674 forms, owner picks
-      the slice.
+      **in progress — batch 3 of N** (`te` batch 1; `me`, `param`, `bhūtāni`,
+      `yogam` batch 2; `tat`, `yat` batch 3; settled keeps and rationale in
+      §5.2). Next: the remaining forms in the 674-form pool; owner picks the
+      slice.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -555,6 +578,23 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-09 · `arena/e1647b45-bhagavad-gita` · Phase 2.1 batch 3
+  (`tat`, `yat`): verified PR #15 merged and matched batch-2 source content on
+  `main` (requested 6/1/1/1/1 entries); unshallowed the clone, then checked
+  `origin/main` ancestry. Added 21 AST-located five-field entries across
+  chapters 1, 2, 3, 9, 11, 13, 15 and 17. All `tat` “that” uses (73), 3.02
+  “therefore”, 14.07/14.08 “it”, all 55 `yat` “which” uses, 10.41×2
+  “whatever”, and 18.60 “what” were deliberately kept; other judgement calls
+  and the 11.07 “whatever” entry (omitted from the prompt parenthetical) are in
+  §5.2. Appendix A §3 before/after unchanged (`te` 0; `me` 10); 9,366 / 9,484
+  counts unchanged. Lockstep data comparison: only `words[3]`/`words[4]`
+  changed (42 mirrored leaves). Full build green incl. 162 browser checks; 20
+  390×844 ne/hi sheets read back across chapters 1, 3, 9, 13, 15 and 17.
+  Generated `data/ch1, ch2, ch3, ch9, ch11, ch13, ch15, ch17` + `sw.js`.
+  Implementation commit `80cf25e`; PR #16:
+  https://github.com/chapain/Bhagavad-Gita/pull/16. Full repo zip:
+  `/home/user/Bhagavad-Gita-phase2.1-batch3.zip`.
 
 - 2026-10-09 · `arena/778427cd-bhagavad-gita` · Phase 2.1 batch 2 (`me`, param,
   bhūtāni, yogam): verified PR #14 merged at `0ea44a3` (carrying `ee2e9af`), so
