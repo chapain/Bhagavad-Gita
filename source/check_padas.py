@@ -1,13 +1,71 @@
 # -*- coding: utf-8 -*-
-"""check_padas.py — verify the word-by-word splits against the pādas.
+"""check_padas.py — strict spelling and word-split validation.
 
-For every pāda in padas_ch*.py, this rebuilds the pāda from the individual words
-listed in padachheda_ch*.py (applying external sandhi) and checks the two agree.
-It is how a typo in a word split gets caught. It only reads and reports; it never
-changes your data."""
-import sys, os, re, json
+Every word's Devanagari is transliterated and compared with its own IAST without
+flattening phonemic diacritics. For every pāda, the checker also rebuilds the
+line from its split words (applying external sandhi), then performs a lossless
+second pass for diacritic disagreements. Legitimate orthographic conventions
+are narrow, explicit rules. The checker only reads and reports; it never changes
+data, and any discrepancy fails the build."""
+import sys, os, re, json, unicodedata
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from verify import norm1
+
+# A lossless Devanagari → IAST transliterator for validating each pada-chheda
+# entry.  Unlike verify.norm1(), this preserves vowel length, retroflexion and
+# sibilants: exactly the distinctions this check exists to protect.
+CONSONANTS = dict(zip(
+    "क ख ग घ ङ च छ ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह ळ".split(),
+    "k kh g gh ṅ c ch j jh ñ ṭ ṭh ḍ ḍh ṇ t th d dh n p ph b bh m y r l v ś ṣ s h ḷ".split()))
+VOWELS = dict(zip("अ आ इ ई उ ऊ ऋ ॠ ऌ ॡ ए ऐ ओ औ".split(),
+                  "a ā i ī u ū ṛ ṝ ḷ ḹ e ai o au".split()))
+MARKS = dict(zip("ा ि ी ु ू ृ ॄ ॢ ॣ े ै ो ौ".split(),
+                 "ā i ī u ū ṛ ṝ ḷ ḹ e ai o au".split()))
+
+
+def deva_to_iast(text):
+    out, i = [], 0
+    while i < len(text):
+        char = text[i]
+        following = text[i + 1] if i + 1 < len(text) else ""
+        if char in CONSONANTS:
+            out.append(CONSONANTS[char])
+            if following == "्":
+                i += 2
+                continue
+            if following in MARKS:
+                out.append(MARKS[following])
+                i += 2
+                continue
+            out.append("a")
+        elif char in VOWELS:
+            out.append(VOWELS[char])
+        else:
+            out.append({"ं": "ṃ", "ः": "ḥ", "ऽ": "’", "ँ": "m̐"}.get(char, char))
+        i += 1
+    return "".join(out)
+
+
+def strict_key(text):
+    """Fold typography and standard anusvāra spelling, but no diacritics."""
+    text = unicodedata.normalize("NFC", text).lower()
+    text = re.sub(r"[\s।॥|\-'’]", "", text).replace("ṁ", "ṃ").replace("ṃn", "nn")
+    # Devanagari anusvāra may be transliterated either as ṃ or as its
+    # homorganic nasal (saṃgha/saṅgha). Final -m is conventionally written ṃ
+    # in continuous text. These are narrow orthographic folds, not phoneme
+    # flattening: ā/a, ṭ/t, ś/ṣ/s etc. remain distinct.
+    text = re.sub(r"[ṅñṇnm](?=[kgcjṭḍtdpbyrlvśṣsh])", "ṃ", text)
+    return re.sub(r"[ṃm]$", "ṃ", text)
+
+
+# Deliberate display/sandhi conventions that cannot be inferred from one word
+# in isolation. Keep this list exact and reviewable rather than weakening the
+# validator globally.
+WORD_SPELLING_CONVENTIONS = {
+    ("2.06", "यत् वा", "yad vā"),
+    ("9.16", "क्रतुः", "kratur"),
+}
+
 from padachheda_ch1 import GITA_CH1_WORDS as W1
 from padachheda_ch2 import GITA_CH2_WORDS as W2
 from padachheda_ch3 import GITA_CH3_WORDS as W3
@@ -210,7 +268,10 @@ CHS = [("1", W1, "ch1.json"), ("2", W2, "ch2.json"), ("3", W3, "ch3.json"),
        ("7", W7, "ch7.json"), ("8", W8, "ch8.json"), ("9", W9, "ch9.json"), ("10", W10, "ch10.json"), ("11", W11, "ch11.json"), ("12", W12, "ch12.json"), ("13", W13, "ch13.json"), ("14", W14, "ch14.json"), ("15", W15, "ch15.json"), ("16", W16, "ch16.json"), ("17", W17, "ch17.json"), ("18", W18, "ch18.json")]
 
 flags = []
+word_flags = []
+strict_line_flags = []
 checked = 0
+words_checked = 0
 for ch, W, jf in CHS:
     d = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), jf)))
     for vno, vd in sorted(W.items()):
@@ -220,8 +281,24 @@ for ch, W, jf in CHS:
             if p >= len(ptxt): continue
             wl = vd.get(p, [])
             if not wl: continue
+            verse = f"{ch}.{int(vno):02d}"
+            for word in wl:
+                words_checked += 1
+                convention = (verse, word[0], word[1]) in WORD_SPELLING_CONVENTIONS
+                if strict_key(deva_to_iast(word[0])) != strict_key(word[1]) and not convention:
+                    word_flags.append((verse, word[0], word[1], deva_to_iast(word[0])))
             checked += 1
+            # Full reconstruction permits Sanskrit sandhi but retains the
+            # established broad matcher. A second, strict pass below catches
+            # precisely the diacritic disagreements that matcher can hide.
             T = norm1(ptxt[p].replace(" ", ""))
+            line_strict = strict_key(ptxt[p])
+            line_flat = norm1(line_strict)
+            for word in wl:
+                core = strict_key(word[1])[1:-2]  # exclude sandhi zones
+                if (len(core) >= 4 and core not in line_strict and
+                        norm1(core) in line_flat):
+                    strict_line_flags.append((verse, p + 1, ptxt[p], word[1]))
             cands = reconstruct([w[1] for w in wl])
             cands |= {c[:-1] for c in cands if c.endswith("ḥ")}
             cands |= {c[:-1] + "r" for c in cands if c.endswith("ḥ")}
@@ -262,6 +339,14 @@ for ch, W, jf in CHS:
                   or (T[:1] == "'" and any(norm1(c) == "a" + T[1:] for c in cands)))
             if not ok:
                 flags.append((ch, vno, p, [w[1] for w in wl], ptxt[p]))
+print("words checked:", words_checked, "| spelling flags:", len(word_flags))
+for f in word_flags:
+    print("word spelling:", f)
+print("strict line checks:", checked, "| diacritic flags:", len(strict_line_flags))
+for f in strict_line_flags:
+    print("line spelling:", f)
 print("pādas checked:", checked, "| residual flags:", len(flags))
 for f in flags:
-    print(f)
+    print("pāda reconstruction:", f)
+if word_flags or strict_line_flags or flags:
+    sys.exit(1)
