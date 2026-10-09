@@ -35,7 +35,7 @@ GITA_CH12_WORDS = {
     2: [["श्रद्धया", "śraddhayā", "with faith"],
         ["परया", "parayā", "supreme"],
         ["उपेताः", "upetāḥ", "endowed"]],
-    3: [["ते", "te", "they"],
+    3: [["ते", "te", "they", "तिनीहरू", "वे"],
         ["मे", "me", "in my"],
         ["युक्ततमाः", "yuktatamāḥ", "the most yoked"],
         ["मताः", "matāḥ", "deemed"]]},
@@ -61,7 +61,7 @@ GITA_CH12_WORDS = {
     1: [
     ["सर्वत्र", "sarvatra", "everywhere"], ["समबुद्धयः", "samabuddhayaḥ", "of equal mind"]],
     2: [
-    ["ते", "te", "they"], ["प्राप्नुवन्ति", "prāpnuvanti", "reach"], ["माम्", "mām", "me"],
+    ["ते", "te", "they", "तिनीहरू", "वे"], ["प्राप्नुवन्ति", "prāpnuvanti", "reach"], ["माम्", "mām", "me"],
         ["एव", "eva", "indeed"]],
     3: [
     ["सर्वभूतहिते", "sarvabhūtahite", "in the welfare of all beings"],
@@ -300,7 +300,7 @@ GITA_CH12_WORDS = {
     ["श्रद्दधानाः", "śraddadhānāḥ", "having faith"],
         ["मत्परमाः", "matparamāḥ", "making me the supreme goal"]],
     3: [
-    ["भक्ताः", "bhaktāḥ", "devotees"], ["ते", "te", "they"],
+    ["भक्ताः", "bhaktāḥ", "devotees"], ["ते", "te", "they", "तिनीहरू", "वे"],
         ["अतीव", "atīva", "exceedingly"], ["मे", "me", "to me"],
         ["प्रियाः", "priyāḥ", "dear"]]
 },

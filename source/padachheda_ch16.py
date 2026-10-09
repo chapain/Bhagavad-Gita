@@ -120,7 +120,7 @@ GITA_CH16_WORDS = {
 8: {"s": [],
     0: [["असत्यम्", "asatyam", "unreal"],
         ["अप्रतिष्ठम्", "apratiṣṭham", "without foundation"],
-        ["ते", "te", "they"]],
+        ["ते", "te", "they", "तिनीहरू", "वे"]],
     1: [["जगत्", "jagat", "the world"],
         ["आहुः", "āhuḥ", "say"],
         ["अनीश्वरम्", "anīśvaram", "without a Lord"]],
@@ -240,7 +240,7 @@ GITA_CH16_WORDS = {
     1: [["धनमानमदान्विताः", "dhanamānamadānvitāḥ", "filled with the pride of wealth"]],
     2: [["यजन्ते", "yajante", "they perform sacrifices"],
         ["नामयज्ञैः", "nāmayajñaiḥ", "with sacrifices in name only"],
-        ["ते", "te", "they"]],
+        ["ते", "te", "they", "तिनीहरू", "वे"]],
     3: [["दम्भेन", "dambhena", "with hypocrisy"],
         ["अविधिपूर्वकम्", "avidhipūrvakam", "not according to the rule"]]},
 

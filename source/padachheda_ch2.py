@@ -105,7 +105,7 @@ GITA_CH2_WORDS = {
         ["हत्वा", "hatvā", "having slain"],
         ["न", "na", "not"],
         ["जिजीविषामः", "jijīviṣāmaḥ", "we would wish to live"]],
-    3: [["ते", "te", "they"],
+    3: [["ते", "te", "they", "तिनीहरू", "वे"],
         ["अवस्थिताः", "avasthitāḥ", "stand"],
         ["प्रमुखे", "pramukhe", "in front"],
         ["धार्तराष्ट्राः", "dhārtarāṣṭrāḥ", "the sons of Dhṛtarāṣṭra"]]},

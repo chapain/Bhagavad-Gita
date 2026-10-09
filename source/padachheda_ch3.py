@@ -214,7 +214,7 @@ GITA_CH3_WORDS = {
          ["सर्व", "sarva", "all"],
          ["किल्बिषैः", "kilbiṣaiḥ", "from sins"]],
      2: [["भुञ्जते", "bhuñjate", "they eat"],
-         ["ते", "te", "they"],
+         ["ते", "te", "they", "तिनीहरू", "वे"],
          ["तु", "tu", "but, indeed"],
          ["अघम्", "agham", "sin"],
          ["पापाः", "pāpāḥ", "the wicked"]],
@@ -507,7 +507,7 @@ GITA_CH3_WORDS = {
      2: [["श्रद्धावन्तः", "śraddhāvantaḥ", "having faith"],
          ["अनसूयन्तः", "anasūyantaḥ", "without finding fault, not grudging"]],
      3: [["मुच्यन्ते", "mucyante", "are released"],
-         ["ते", "te", "they"],
+         ["ते", "te", "they", "तिनीहरू", "वे"],
          ["अपि", "api", "even"],
          ["कर्मभिः", "karmabhiḥ", "from actions"]]},
 

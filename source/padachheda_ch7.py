@@ -193,7 +193,7 @@ GITA_CH7_WORDS = {
          ["तु", "tu", "but"],
          ["अहम्", "aham", "I"],
          ["तेषु", "teṣu", "in them"],
-         ["ते", "te", "they"],
+         ["ते", "te", "they", "तिनीहरू", "वे"],
          ["मयि", "mayi", "in me"]]},
 
 13: {"s": [],
@@ -227,7 +227,7 @@ GITA_CH7_WORDS = {
      3: [["मायाम्", "māyām", "this māyā"],
          ["एताम्", "etām", "this"],
          ["तरन्ति", "taranti", "they cross"],
-         ["ते", "te", "they"]]},
+         ["ते", "te", "they", "तिनीहरू", "वे"]]},
 
 15: {"s": [],
      0: [["न", "na", "not"],
@@ -435,7 +435,7 @@ GITA_CH7_WORDS = {
          ["पापम्", "pāpam", "sin"]],
      1: [["जनानाम्", "janānām", "of men"],
          ["पुण्यकर्मणाम्", "puṇyakarmaṇām", "of good deeds"]],
-     2: [["ते", "te", "they"],
+     2: [["ते", "te", "they", "तिनीहरू", "वे"],
          ["द्वन्द्वमोहनिर्मुक्ताः", "dvandvamohanirmuktāḥ", "freed from the delusion of the pairs"]],
      3: [["भजन्ते", "bhajante", "worship"],
          ["माम्", "mām", "me"],
@@ -449,7 +449,7 @@ GITA_CH7_WORDS = {
          ["आश्रित्य", "āśritya", "taking refuge in"],
          ["यतन्ति", "yatanti", "strive"],
          ["ये", "ye", "those who"]],
-     2: [["ते", "te", "they"],
+     2: [["ते", "te", "they", "तिनीहरू", "वे"],
          ["ब्रह्म", "brahma", "Brahman"],
          ["तत्", "tat", "that"],
          ["विदुः", "viduḥ", "know"],
@@ -470,7 +470,7 @@ GITA_CH7_WORDS = {
     ["प्रयाणकाले", "prayāṇakāle", "at the time of death"], ["अपि", "api", "even"],
         ["च", "ca", "and"], ["माम्", "mām", "me"]],
     3: [
-    ["ते", "te", "they"], ["विदुः", "viduḥ", "know"],
+    ["ते", "te", "they", "तिनीहरू", "वे"], ["विदुः", "viduḥ", "know"],
         ["युक्तचेतसः", "yuktacetasaḥ", "with minds established"]]
 },
 }

@@ -290,7 +290,7 @@ GITA_CH5_WORDS = {
         ["ब्रह्म", "brahma", "Brahman"]],
     3: [["तस्मात्", "tasmāt", "therefore"],
         ["ब्रह्मणि", "brahmaṇi", "in Brahman"],
-        ["ते", "te", "they"],
+        ["ते", "te", "they", "तिनीहरू", "वे"],
         ["स्थिताः", "sthitāḥ", "established"]]},
 
 20: {"s": [],
@@ -333,7 +333,7 @@ GITA_CH5_WORDS = {
         ["भोगाः", "bhogāḥ", "enjoyments, pleasures"]],
     1: [["दुःखयोनयः", "duḥkhayonayaḥ", "sources of sorrow"],
         ["एव", "eva", "only"],
-        ["ते", "te", "they"]],
+        ["ते", "te", "they", "तिनीहरू", "वे"]],
     2: [["आदि", "ādi", "beginning"],
         ["अन्तवन्तः", "antavantaḥ", "having an end"],
         ["कौन्तेय", "kaunteya", "O son of Kuntī"]],

@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-09 (UTC) |
-| Updated by | Arena session on branch `arena/a27b2d91-bhagavad-gita` |
-| Base commit | `0828287` on `main` (merge of PR #12, step 1.8) |
+| Updated by | Arena session on branch `arena/431645f7-bhagavad-gita` |
+| Base commit | `9db111e` on `main` (merge of PR #13, step 1.9) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -84,8 +84,15 @@ before you talk to the owner.
   assertions, 15 + 7 Node tests, 162 browser checks. Generated churn:
   `data/ch15.js`, `data/ch18.js`, `chapter/15/`, `chapter/18/`, `sw.js` cache
   id (the `v/` share pages were retired on 2026-09-01). `git status` clean.
-- **Next: Phase 2.** The owner picks the first item (§6 lists 2.1–2.5; §7.3–7.7
-  are the decisions still open). Do not start without his choice.
+- **GitHub (verified 2026-10-09):** PR #13 is **merged** into `main` at `9db111e`,
+  carrying `ad1f752`, `5c71004` and `d8a57f9`; the 18.66 and 15.7 lines on `main`
+  match §7.2, so step 1.9 is not repeated.
+- **2.1 batch 1 done — `te` = “they”.** The 26 verses in §5.2 now have five-field
+  word entries: nominative तिनीहरू (ne) / वे (hi), not तिम्रो / तुम्हारा (“your”).
+  Audit §3 `te` count 26 → 0; 9,366 / 9,484 unchanged. Generated churn: `data/`
+  for chapters 1, 2, 3, 5, 7, 8, 9, 10, 12, 13, 16, and `sw.js`.
+- **Next: 2.1 batch 2.** `me` (5 verses) plus `param` 2.12, `bhūtāni` 9.25 and
+  `yogam` 10.7 / 11.8. The owner confirms the batch before it starts.
 
 ## 2. Resume in five minutes
 
@@ -186,7 +193,8 @@ whatever the verse. 674 forms carry more than one English sense (4,532 of the
 9,366 verse-word instances), yet each gets a single Nepali/Hindi meaning.
 Clear errors:
 
-- **`te` = “they” → तिम्रो/तुम्हारा (“your”)** in 26 verses: 1.33, 2.6, 3.13,
+- **FIXED (2.1 batch 1, 2026-10-09).** `te` = “they” was rendered तिम्रो/तुम्हारा
+  (“your”) in 26 verses; they now read तिनीहरू / वे. The verses: 1.33, 2.6, 3.13,
   3.31, 5.19, 5.22, 7.12, 7.14, 7.28–30, 8.17, 9.20–21, 9.23–24, 9.29, 9.32,
   10.10, 12.2, 12.4, 12.20, 13.25, 13.34, 16.8, 16.17.
 - **`me` = “to me” → मेरो/मेरा** where the sense is tell / show / offer *to me*:
@@ -200,9 +208,9 @@ Clear errors:
   traditional but opaque.
 
 **Fix path (no code change needed):** write five-field entries inline in
-`padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Only two
-such entries exist today. Start with te, me, param, bhūtāni, yogam, tat and yat,
-then work through the rest of the 674 forms.
+`padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Before batch 1 only two
+such entries existed; batch 1 added 26 (te). Next: me, param, bhūtāni, yogam,
+tat and yat, then work through the rest of the 674 forms.
 
 ### 5.3 Interpretation and framing (owner decides)
 
@@ -338,8 +346,10 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · next; the owner picks the first item
-- [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2).
+**Phase 2 — Meaning** · in progress (2.1 batch 1 done)
+- [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
+      **in progress: batch 1 of N done** (`te`, 26 verses, 2026-10-09); batch 2
+      (`me` + param/bhūtāni/yogam) waits for the owner.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -508,6 +518,13 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-09 · `arena/431645f7-bhagavad-gita` · Phase 2.1 batch 1 (`te`): verified
+  PR #13 merged at `9db111e` (carrying `ad1f752`, `5c71004`, `d8a57f9`), so 1.9 was not
+  repeated. Five-field entries for the 26 §5.2 verses: nominative तिनीहरू / वे; all 26
+  read “they” in context, none “your”. Audit §3 `te` 26 → 0; 9,366 / 9,484 unchanged.
+  Full build green incl. 162 browser checks; 390 px ne/hi sheets for 1.33, 9.21,
+  16.08 and 13.25 read back. Stopped before batch 2 (`me`).
 
 - 2026-10-09 · `arena/a27b2d91-bhagavad-gita` · Phase 1 step 1.9: verified PR #12
   merged at 03:30 UTC (`0828287`, carrying `18b6074` + `681d12c`), so 1.8 was
