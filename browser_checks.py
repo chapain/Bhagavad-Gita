@@ -18,6 +18,7 @@ import shlex
 import subprocess
 import sys
 import time
+import unicodedata
 
 from playwright.sync_api import sync_playwright
 
@@ -227,6 +228,52 @@ def run(pw, url, offline_capable=False):
         pg.fill("#searchInput", q)
         pg.wait_for_timeout(800)
         ok(pg.eval_on_selector_all(".mini", "e=>e.length") > 0, f'search "{q}" finds hits')
+
+    # NFD/NFC IAST queries and plain-keyboard transliterations must reach the
+    # same verses as the canonical spellings in the shipped text.
+    nfc_query = "kṛṣṇa"
+    nfd_query = unicodedata.normalize("NFD", nfc_query)
+    nfc_hits = count(nfc_query)
+    nfd_hits = count(nfd_query)
+    ok(nfc_hits > 0 and nfc_hits == nfd_hits,
+       "NFC and NFD IAST queries return the same non-empty result set")
+    for query, ref in [
+        ("krishna", "1.28"),
+        ("karmanye vadhikaraste", "2.47"),
+        ("dharmakshetre", "1.1"),
+        ("yada yada hi dharmasya", "4.7"),
+        ("sarvadharman parityajya", "18.66"),
+    ]:
+        count(query)
+        shown = pg.eval_on_selector_all(".mini .vnum", "e=>e.map(x=>x.textContent.trim())")
+        ok(any(item.endswith(ref) for item in shown),
+           f'ASCII query "{query}" finds verse {ref}')
+
+    # The visible count uses a singular noun for one and a plural for many in
+    # each interface language (Hindi's noun is invariant in the direct case).
+    one = count("2.47")
+    one_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
+    ok(one == 1 and one_label == "1 result", "English single-result wording")
+    many = count("yoga")
+    many_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
+    ok(many > 1 and many_label == f"{many} results", "English plural-result wording")
+    deva_num = lambda n: str(n).translate(str.maketrans("0123456789", "०१२३४५६७८९"))
+    for lang, singular, plural in [
+        ("ne", "परिणाम", "परिणामहरू"),
+        ("hi", "परिणाम", "परिणाम"),
+    ]:
+        pg.evaluate(f"setLang('{lang}')")
+        pg.wait_for_timeout(400)
+        one = count("2.47")
+        one_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
+        ok(one == 1 and one_label == f"{deva_num(one)} {singular}",
+           f"{lang}: singular-result wording")
+        many = count("yoga")
+        many_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
+        ok(many > 1 and many_label == f"{deva_num(many)} {plural}",
+           f"{lang}: plural-result wording")
+    pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(300)
 
     group("touch / mobile")
     pg.fill("#searchInput", "1.1")

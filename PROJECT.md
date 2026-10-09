@@ -62,7 +62,7 @@ For a brand-new session: read §1–§10, then this box, then build.
   cites 18.65 for its four instructions. That is accurate, and the wording is a
   recorded decision guarded by a test, so it stays. A strict reading of "nothing
   outside the range" would drop it; that needs the owner's call.
-* **Build.** `python3 build.py` is green: 800 document assertions, 150 live
+* **Build.** `python3 build.py` is green: 802 document assertions, 162 live
   browser checks, study structure 9658, progress maps 15, advisory 51 (unchanged
   count), blocking 0. The browser suite ran for the first time in this sandbox.
   Playwright's own Chromium download is blocked here, so a Chromium from the npm
@@ -1359,8 +1359,8 @@ sitemap.xml, robots.txt   GENERATED — crawler files (see §10)
 chapter/ + chapter.css    GENERATED — 18 SEO landing pages (see §10)
 build.py              build + verify (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       800 assertions on the built document      (needs node)
-browser_checks.py     150 live-browser checks                 (needs playwright)
+run_gita_app.js       802 assertions on the built document      (needs node)
+browser_checks.py     162 live-browser checks                 (needs playwright)
 edit.py               local browser-based content editor
 editor.html           its interface
 source/
@@ -1373,7 +1373,7 @@ source/
   themes_ne/hi.py     Nepali/Hindi themes and parts
   translations_ne/hi.py
   i18n_chapters.py    chapter names/blurbs (ne, hi)
-  i18n_ui.py          201 UI strings × 3 languages
+  i18n_ui.py          202 UI strings × 3 languages
   build_gita.py       the builder + the manual-edit audit
   dataio.py           safe read/write of every data file (used by edit.py)
   verify.py           norm1() and syll_iast() — used ONLY to check data

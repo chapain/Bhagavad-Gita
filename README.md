@@ -84,8 +84,8 @@ source/                 ← edit here
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
 
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         800 assertions on the built document
-browser_checks.py       150 live-browser checks (rendering, i18n, touch, offline)
+run_gita_app.js         802 assertions on the built document
+browser_checks.py       162 live-browser checks (rendering, i18n, touch, offline)
 ```
 
 `index.html` is a **split-site shell**: the app chrome, styles, embedded font and
@@ -150,7 +150,7 @@ It opens `http://127.0.0.1:8765` with every editable field laid out by chapter:
 | Translations | literal + paraphrase, in English, Nepali and Hindi |
 | Themes & parts | theme and part titles, descriptions and verse ranges, in all three languages |
 | Chapter names | Nepali and Hindi chapter names and blurbs |
-| Interface text | all 201 UI strings in three languages |
+| Interface text | all 202 UI strings in three languages |
 
 Press **Save** on any block and it writes the real file in `source/`, then rebuilds
 `index.html`. The **Run full build** button runs the complete suite when you want it.
