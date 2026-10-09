@@ -7,9 +7,9 @@ before you talk to the owner.
 
 | | |
 |---|---|
-| Last updated | 2026-10-08 (Asia/Kathmandu, UTC+5:45) |
-| Updated by | Arena session on branch `arena/d05a372a-bhagavad-gita` |
-| Base commit | `21933ff` on `main` (merge of PR #6, step 1.2) |
+| Last updated | 2026-10-09 (UTC) |
+| Updated by | Arena session on branch `arena/42b88b5d-bhagavad-gita` |
+| Base commit | `3ccb222` on `main` (merge of PR #7, step 1.3) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,34 +20,24 @@ before you talk to the owner.
 
 ## 1. Where we are
 
-- **2026-10-08 — Phase 1 selected; steps 1.1–1.3 complete.** Step 1.1
-  corrected 7.12 (`rājasāstāmasāśca`) and 9.13 (`mahātmānastu`) in the source
-  verses and matching pāda lines. Step 1.2 corrected the word lists: वक्त्राणि
-  in 11.27–29, कर्शयन्तः in 17.6, समवेताः in 1.1 and अपायिनः in 2.14.
-- **Step 1.3 — 13.27 IAST and gloss keys.** Corrected the word-list spelling
-  `avināśyantam` → `avinaśyantam` in `source/padachheda_ch13.py`; renamed the
-  matching keys in `source/gloss_ne.py` and `source/gloss_hi.py`. The source
-  verse and pāda line already had `vinaśyatsvavinaśyantaṃ`, and the word’s
-  Devanagari अविनश्यन्तम् was already correct; both confirm short `a`. The build
-  regenerated `data/ch13.js` and the service-worker cache name.
-- **Evidence:** the 13.27 verse and its four pādas were checked in the built
-  app. At 390 × 844 px, the screenshot shows pāda 3 and its expanded list:
-  अविनश्यन्तम् / `avinaśyantam` / “the imperishable”. The Nepali and Hindi
-  rendered glosses are अविनाशीलाई and अविनाशी को; there were no JS errors.
-- **GitHub and deploy:** PR #5 (step 1.1) and PR #6 (step 1.2) are both merged.
-  Latest `main` is `21933ff` (PR #6). Its Pages build is `built`, and the
-  corresponding Actions run completed successfully. An older Actions run for
-  `dc70c82` still appears queued; it is not the latest-main run. The live site
-  shows the corrected 7.12 and 9.13 verse text; live `data/ch11.js` shows वक्त्राणि /
-  `vaktrāṇi` in the 11.27 word list. Step 1.3 is built and checked locally;
-  it is not live until this branch is merged and deployed.
-- **Verification:** `python3 build.py` passes: 2,800 pādas (0 residual), 2,100
-  paraphrase pairs, 6 SEO checks, 572 site-health checks, 9,658 study-structure
-  checks, 16 mutation tests, 800 document assertions, 15 learning-map migration
-  tests and all 150 Chromium browser checks. Appendix A no longer reports 13.27
-  in §1 or §2; its only remaining §1 spelling item is the known 2.06 `yad vā`
-  convention.
-- **Next:** stop here. Wait for the owner’s go-ahead before step 1.4. Other
+- **2026-10-09 — Phase 1 steps 1.1–1.4 complete.** Step 1.4 made
+  `source/check_padas.py` a build-failing strict validator. It losslessly
+  transliterates all 9,366 word entries and compares each word’s Devanagari
+  with its own IAST; it also checks all 2,800 pādas against their word splits
+  and runs a second, diacritic-preserving line check.
+- Legitimate conventions are explicit and narrow: anusvāra/homorganic nasal
+  spelling, final anusvāra, 2.06 `यत् वा` / `yad vā`, and 9.16 visarga sandhi
+  `क्रतुः` / `kratur`. Vowel length, retroflexion, and ś/ṣ/s are never flattened.
+  Regression tests prove that 13.27 `avinaśyantam` passes while the incorrect
+  `avināśyantam` fails; do not reverse the short-a correction.
+- **GitHub:** PR #7 was verified merged at 2026-10-08 15:24 UTC. Latest `main`
+  was verified as `3ccb222` (the PR #7 merge) before step 1.4 began.
+- **Verification:** `python3 build.py` passes: 9,366 strict word checks, 2,800
+  strict line and reconstruction checks (0 flags), 2,100 paraphrase pairs,
+  6 SEO checks, 572 site-health checks, 9,658 study-structure checks, 19 Python
+  tests, 800 document assertions and 15 learning-map migration tests. Browser
+  checks were skipped because Playwright is not installed in this sandbox.
+- **Next:** stop here. Wait for the owner’s go-ahead before step 1.5. Other
   editorial decisions remain listed in §7.
 
 ## 2. Resume in five minutes
@@ -270,7 +260,7 @@ Missing:
 - [x] 1.1 Fix the verse text in 7.12 and 9.13 (source and matching pāda lines).
 - [x] 1.2 Fix word-list spellings: 11.27–29, 17.6, 1.1 and 2.14.
 - [x] 1.3 Fix 13.27’s IAST spelling and update its Nepali/Hindi gloss keys.
-- [ ] 1.4 Add a strict validator that fails the build. Check each word’s
+- [x] 1.4 Add a strict validator that fails the build. Check each word’s
       Devanagari against its own IAST, and each pāda line against its word
       split, without flattening diacritics. Appendix A §1–2 is the starting point.
 - [ ] 1.5 Search: NFD plus spelling folds; fix “1 results”.
@@ -323,6 +313,12 @@ choices remain open:
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-09 · `arena/42b88b5d-bhagavad-gita` · Phase 1 step 1.4: added
+  build-failing strict checks for 9,366 Devanagari/IAST word pairs and 2,800
+  pāda/word-split lines, with narrow explicit sandhi/spelling conventions and
+  regression tests preserving 13.27’s short `a`. Full available build green;
+  browser checks skipped (Playwright unavailable). Verified PR #7 merged and
+  latest `main` at `3ccb222`. Stopped before 1.5.
 - 2026-10-08 · `arena/d05a372a-bhagavad-gita` · Phase 1 step 1.3: corrected
   13.27’s word-list IAST from `avināśyantam` to `avinaśyantam` and renamed the
   Nepali/Hindi gloss keys. The verse line and Devanagari were already correct.
