@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-09 (UTC) |
-| Updated by | Arena session on branch `arena/42b88b5d-bhagavad-gita` |
-| Base commit | `3ccb222` on `main` (merge of PR #7, step 1.3) |
+| Updated by | Arena session on branch `arena/d4cdfd5b-bhagavad-gita` |
+| Base commit | `bd4f5c3` on `main` (merge of PR #8, step 1.4) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,24 +20,31 @@ before you talk to the owner.
 
 ## 1. Where we are
 
-- **2026-10-09 — Phase 1 steps 1.1–1.4 complete.** Step 1.4 made
+- **2026-10-09 — Phase 1 steps 1.1–1.5 complete.** Step 1.4 made
   `source/check_padas.py` a build-failing strict validator. It losslessly
   transliterates all 9,366 word entries and compares each word’s Devanagari
   with its own IAST; it also checks all 2,800 pādas against their word splits
   and runs a second, diacritic-preserving line check.
-- Legitimate conventions are explicit and narrow: anusvāra/homorganic nasal
-  spelling, final anusvāra, 2.06 `यत् वा` / `yad vā`, and 9.16 visarga sandhi
-  `क्रतुः` / `kratur`. Vowel length, retroflexion, and ś/ṣ/s are never flattened.
-  Regression tests prove that 13.27 `avinaśyantam` passes while the incorrect
-  `avināśyantam` fails; do not reverse the short-a correction.
-- **GitHub:** PR #7 was verified merged at 2026-10-08 15:24 UTC. Latest `main`
-  was verified as `3ccb222` (the PR #7 merge) before step 1.4 began.
+- The validator’s conventions remain explicit and narrow: anusvāra/homorganic
+  nasal spelling, final anusvāra, 2.06 `यत् वा` / `yad vā`, and 9.16 visarga
+  sandhi `क्रतुः` / `kratur`. Its checks preserve vowel length, retroflexion,
+  and ś/ṣ/s. Regression tests prove 13.27 `avinaśyantam` passes while the
+  incorrect `avināśyantam` fails; do not reverse the short-a correction.
+- Step 1.5 gives search a mark-preserving NFD key plus a separate, documented
+  ASCII fallback over the IAST field only: ā/ī/ū ↔ a/aa, i/ee, u/oo; ṛ/ri;
+  ś/ṣ/sh; ṇ/n; and c/ch.
+  Whitespace is ignored. Queries that include IAST diacritics use only the
+  exact key, preserving distinctions such as a/ā, ś/ṣ and t/ṭ. Search and
+  favorites now use singular/plural count labels in English, Nepali and Hindi.
+- **GitHub:** PR #8 was verified merged at 2026-10-09 01:34 UTC. Latest `main`
+  was verified as `bd4f5c3` (the PR #8 merge) before step 1.5 began.
 - **Verification:** `python3 build.py` passes: 9,366 strict word checks, 2,800
   strict line and reconstruction checks (0 flags), 2,100 paraphrase pairs,
   6 SEO checks, 572 site-health checks, 9,658 study-structure checks, 19 Python
-  tests, 800 document assertions and 15 learning-map migration tests. Browser
-  checks were skipped because Playwright is not installed in this sandbox.
-- **Next:** stop here. Wait for the owner’s go-ahead before step 1.5. Other
+  tests, 802 document assertions, 15 learning-map migration tests and 7 search
+  regression tests. The separate Playwright/Chromium run passed all 162 browser
+  checks; the system-python build skips them because Playwright is in a venv.
+- **Next:** stop here. Wait for the owner’s go-ahead before step 1.6. Other
   editorial decisions remain listed in §7.
 
 ## 2. Resume in five minutes
@@ -89,7 +96,7 @@ python3 build.py          # build + all checks (~7 s without the browser step)
 python3 build.py --fast   # build only
 ```
 
-The browser step (150 checks) runs only when `playwright` is importable.
+The browser step (162 checks) runs only when `playwright` is importable.
 `playwright install chromium` is blocked in the Arena sandbox; this works instead.
 Nothing below is committed, so redo it for each new sandbox:
 
@@ -181,17 +188,23 @@ then work through the rest of the 674 forms.
   verses, drawn from A. Mahadeva Sastry's 1897 English translation of the
   bhāṣya (public domain).
 
-### 5.4 Search bug (`build_gita.py:1890`)
+### 5.4 Search (Phase 1 step 1.5 complete)
 
-`normTxt()` strips U+0300–036F but never calls `.normalize('NFD')`, so
-precomposed ā/ṇ/ṣ are never stripped. As a result, “krishna”, “karmanye
+The search matcher now NFD-normalizes its exact key, so NFC and NFD IAST
+queries compare equally without deleting combining marks. A separate fallback
+is used only for queries with no combining diacritics and compares against the
+IAST verse field only, not its translations. Its explicit equivalences are
+ā/ī/ū with a/aa, i/ee, u/oo; ṛ/ri; ś/ṣ/sh; ṇ/n; and c/ch. Both keys ignore
+whitespace. This restores ASCII searches such as “krishna”, “karmanye
 vadhikaraste”, “dharmakshetre”, “yada yada hi dharmasya” and “sarvadharman
-parityajya” all return **0 hits**.
+parityajya”. Marked IAST queries stay exact, so they can still distinguish
+short/long vowels, ś/ṣ and dental/retroflex consonants. These search folds are
+separate from — and do not weaken — the strict data validator.
 
-- Fix: apply NFD first, then fold common spellings (sh ↔ ś/ṣ, ri ↔ ṛ, ch ↔ c,
-  aa/ee/oo ↔ ā/ī/ū) and compare a spaceless key.
-- Also: the result count says “1 results” because `doSearch` ignores
-  `resultCountLabel()`, and results are not ranked.
+`doSearch()` and favorites now render `resultCountLabel()`: singular/plural
+nouns are selected for English, Nepali and Hindi, including the visible “1
+result” rather than “1 results”. Results remain in canonical verse order;
+ranking was not part of step 1.5.
 
 ### 5.5 UX at phone width (390 px)
 
@@ -256,14 +269,14 @@ Missing:
 
 ## 6. Plan — status board (tick as you go)
 
-**Phase 1 — Correctness (1–2 days)** · in progress (1.1–1.3 done)
+**Phase 1 — Correctness (1–2 days)** · in progress (1.1–1.5 done)
 - [x] 1.1 Fix the verse text in 7.12 and 9.13 (source and matching pāda lines).
 - [x] 1.2 Fix word-list spellings: 11.27–29, 17.6, 1.1 and 2.14.
 - [x] 1.3 Fix 13.27’s IAST spelling and update its Nepali/Hindi gloss keys.
 - [x] 1.4 Add a strict validator that fails the build. Check each word’s
       Devanagari against its own IAST, and each pāda line against its word
       split, without flattening diacritics. Appendix A §1–2 is the starting point.
-- [ ] 1.5 Search: NFD plus spelling folds; fix “1 results”.
+- [x] 1.5 Search: NFD plus explicit spelling folds; fix singular/plural result wording.
 - [ ] 1.6 Fix the `LICENSE.md` counts; remove the README editor section (or restore the editor).
 - [ ] 1.7 Fix the Hindi grammar in the 2.47 paraphrase.
 - [ ] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” after the owner chooses the wording (§7).
@@ -313,6 +326,13 @@ choices remain open:
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-09 · `arena/d4cdfd5b-bhagavad-gita` · Phase 1 step 1.5: NFD exact
+  search plus an explicit ASCII fallback scoped to verse IAST; marked queries keep
+  Sanskrit distinctions. Fixed singular/plural count nouns in en/ne/hi and added
+  7 focused Node regressions. Build green (802 document assertions); separate
+  Playwright/Chromium run passed 162 browser checks. Verified PR #8 merged and latest
+  `main` at `bd4f5c3`; pushed to the assigned branch and opened the follow-up PR.
+  Stopped before 1.6.
 - 2026-10-09 · `arena/42b88b5d-bhagavad-gita` · Phase 1 step 1.4: added
   build-failing strict checks for 9,366 Devanagari/IAST word pairs and 2,800
   pāda/word-split lines, with narrow explicit sandhi/spelling conventions and

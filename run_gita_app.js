@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 800;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 150;   // browser_checks.py
+const TOTAL_ASSERTIONS = 802;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 162;   // browser_checks.py
 const path = require('path');
 
 const ROOT = __dirname;
@@ -99,7 +99,7 @@ group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
 for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`);
 const enKeys = Object.keys(UI.en);
-ok(enKeys.length === 201, `UI has 201 keys (got ${enKeys.length})`);
+ok(enKeys.length === 202, `UI has 202 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -618,7 +618,7 @@ ok(html.includes('function fmtNL(') && html.includes('function fmtRangeL('),
 ok(!/\$\{esc\(fmtN\(v\.n\)\)\}/.test(html), 'no display site still uses the ASCII fmtN()');
 ok(!/\$\{fmtRange\(p\.range\)\}/.test(html), 'no display site still uses the ASCII fmtRange()');
 ok(/const c = numL\(cur\), t = numL\(tot\)/.test(html), 'Prev/Next counter localises its numbers');
-// …while the search matcher stays ASCII so both scripts can be typed
+// Verse references stay ASCII in the index; typed Devanagari numerals are converted
 ok(/function fmtN\(n\)\{[^}]*parseInt/.test(html), 'fmtN() kept ASCII for the search index');
 ok(html.includes("function digitNorm(s)"), 'digitNorm() folds Devanagari input for search');
 

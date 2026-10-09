@@ -1887,7 +1887,35 @@ function buildIndex(){
 }
 function verseLoc(id){ return VERSES.find(v=>v.id===id); }
 function verseAt(loc){ const t = DATA[loc.ci].themes[loc.ti]; return sutraAt(t, loc.si).s; }
-function normTxt(s){ return String(s||'').toLowerCase().replace(/[\u0300-\u036f]/g,''); }
+function normTxt(s){ return String(s||'').normalize('NFD').toLowerCase(); }
+function searchExactKey(s){ return normTxt(s).replace(/\s+/g, ''); }
+function hasSearchDiacritics(s){ return /[\u0300-\u036f]/.test(normTxt(s)); }
+/* Search-only ASCII fallback for the IAST verse field. These are deliberate
+   keyboard spellings, not the validator's Sanskrit comparison rules. Marked
+   IAST queries stay exact, preserving a/ā, ś/ṣ and t/ṭ. */
+function searchFoldKey(s){
+  return searchExactKey(s)
+    .replace(/r\u0323\u0304/g, 'rri')  // ṝ -> rri
+    .replace(/r\u0323/g, 'ri')         // ṛ -> ri
+    .replace(/s\u0301/g, 'sh')         // ś -> sh
+    .replace(/s\u0323/g, 'sh')         // ṣ -> sh
+    .replace(/n\u0323/g, 'n')          // ṇ -> n
+    .replace(/a\u0304/g, 'a')          // ā -> a (aa alias below)
+    .replace(/i\u0304/g, 'i')          // ī -> i (ee alias below)
+    .replace(/u\u0304/g, 'u')          // ū -> u (oo alias below)
+    .replace(/a{2,}/g, 'a')            // aa... -> a
+    .replace(/e{2,}/g, 'i')            // ee... -> i
+    .replace(/o{2,}/g, 'u')            // oo... -> u
+    .replace(/c(?!h)/g, 'ch');         // IAST c <-> common ch
+}
+function prepareSearchQuery(s){
+  const exact = searchExactKey(s);
+  return { exact, folded: hasSearchDiacritics(s) ? '' : searchFoldKey(s) };
+}
+function searchTextMatches(exactText, foldedText, query){
+  return (!!query.exact && exactText.includes(query.exact)) ||
+         (!!query.folded && foldedText.includes(query.folded));
+}
 function fmtN(n){ const m = String(n).split('.'); return m.length===2 ? (parseInt(m[0],10)+'.'+parseInt(m[1],10)) : String(n); }
 function fmtRange(r){ const parts = String(r).split(/[–-]/).map(x=>x.trim()?fmtN(x):x); return (parts.length===2 && parts[0]===parts[1]) ? parts[0] : parts.join('–'); }
 function digitNorm(s){ return String(s).replace(/[०-९]/g, d => '0123456789'['०१२३४५६७८९'.indexOf(d)]); }
@@ -1918,13 +1946,23 @@ function meterText(s){
   return bits.join(' · ');
 }
 function verseSearchText(v){
-  return normTxt(v.n + ' ' + fmtN(v.n) + ' ' + v.d + ' ' + v.t + ' ' + v.lits.en + ' ' + v.lits.ne + ' ' + v.lits.hi
-    + ' ' + v.paras.en + ' ' + v.paras.ne + ' ' + v.paras.hi + ' ' + T(v.lits));
+  return v.n + ' ' + fmtN(v.n) + ' ' + v.d + ' ' + v.t + ' ' + v.lits.en + ' ' + v.lits.ne + ' ' + v.lits.hi
+    + ' ' + v.paras.en + ' ' + v.paras.ne + ' ' + v.paras.hi + ' ' + T(v.lits);
 }
-const VERSE_TEXT = [];
-function buildVerseText(){ VERSE_TEXT.length = 0;
-  (DATA||[]).forEach(ch=>{ if(!ch||!ch.themes) return;
-    ch.themes.forEach(t=> t.parts.forEach(p=> p.sutras.forEach(s=> VERSE_TEXT.push(verseSearchText(s))))); }); }
+const VERSE_TEXT = [], VERSE_FOLDED_TEXT = [];
+function buildVerseText(){
+  VERSE_TEXT.length = 0;
+  VERSE_FOLDED_TEXT.length = 0;
+  (DATA||[]).forEach(ch=>{
+    if(!ch||!ch.themes) return;
+    ch.themes.forEach(t=> t.parts.forEach(p=> p.sutras.forEach(s=>{
+      const text = verseSearchText(s);
+      VERSE_TEXT.push(searchExactKey(text));
+      // Keep approximate folds out of English, Nepali, Hindi and Devanagari.
+      VERSE_FOLDED_TEXT.push(searchFoldKey(s.t));
+    })));
+  });
+}
 function assembleData(){
   DATA = [];
   for(var n=1;n<=18;n++) DATA.push(GITA_CH[n] || null);
@@ -1946,7 +1984,7 @@ function doSearch(){
   SRCH_HITS = [];
   rememberOrigin();
   state.view = 'search'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
-  const nq = normTxt(q);
+  const nq = prepareSearchQuery(q);
   /* Accept whatever separator the reader's keyboard gives. On a Devanagari
      layout the danda । sits where the full stop is, so १।१ is the natural way to
      type 1.1; also allow : - / , the double danda, and stray surrounding dandas. */
@@ -1967,7 +2005,7 @@ function doSearch(){
       }
       if(msg){
         view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
-          <div class="res-count fade-in">${numL(0)} ${esc(L('results'))}</div>
+          <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
           <div class="view-sub fade-in">${esc(msg)}</div>`;
         announceView();
         return;
@@ -1977,23 +2015,24 @@ function doSearch(){
     /* Free text. The index holds verse numbers as ASCII ("1.1"), so a query in
        Devanagari digits — १, १७ — has to be converted too, or typing १ finds
        nothing while 1 finds the whole chapter. Try both forms. */
-    const nqd = normTxt(digitNorm(q).replace(/[।॥]/g, '.'));
+    const nqd = prepareSearchQuery(digitNorm(q).replace(/[।॥]/g, '.'));
     hits = [];
     VERSES.forEach((loc, i)=>{
-      const t = VERSE_TEXT[i];
-      if(t.includes(nq) || (nqd !== nq && t.includes(nqd))) hits.push(loc);
+      const t = VERSE_TEXT[i], folded = VERSE_FOLDED_TEXT[i];
+      if(searchTextMatches(t, folded, nq) ||
+         (nqd.exact !== nq.exact && searchTextMatches(t, folded, nqd))) hits.push(loc);
     });
   }
   if(hits.length === 0){
     view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
-      <div class="res-count fade-in">${numL(0)} ${esc(L('results'))}</div>
+      <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
       <div class="view-sub fade-in">${esc(L('no_results'))}</div>`;
     announceView();
     return;
   }
   SRCH_HITS = hits;
   view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
-    <div class="res-count fade-in">${numL(hits.length)} ${esc(L('results'))}</div>
+    <div class="res-count fade-in">${esc(resultCountLabel(hits.length))}</div>
     <div class="grid verses fade-in">${hits.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
@@ -2114,7 +2153,7 @@ function showFavorites(){
     return;
   }
   view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('favorites'))}</div>
-    <div class="res-count fade-in">${numL(saved.length)} ${esc(L('results'))}</div>
+    <div class="res-count fade-in">${esc(resultCountLabel(saved.length))}</div>
     ${saved.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const note = FAVNOTE[v.n] || '';
@@ -2197,8 +2236,7 @@ function scrollViewTop(){
    and stays silent when a re-render lands on the same place. */
 function resultCountLabel(n){
   const count = numL(n);
-  if(state.lang === 'en') return `${count} ${n === 1 ? 'result' : 'results'}`;
-  return `${count} ${L('results')}`;
+  return `${count} ${L(n === 1 ? 'result' : 'results')}`;
 }
 function announceView(){
   const el = document.getElementById('srStatus');
