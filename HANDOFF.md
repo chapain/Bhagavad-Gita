@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-09 (UTC) |
-| Updated by | Arena session on branch `arena/a1d5250c-bhagavad-gita` |
-| Base commit | `e89b78c` on `main` (merge of PR #9, step 1.5) |
+| Updated by | Arena session on branch `arena/f0f811fe-bhagavad-gita` |
+| Base commit | `6ee58aa` on `main` (merge of PR #10, step 1.6) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,7 +20,7 @@ before you talk to the owner.
 
 ## 1. Where we are
 
-- **2026-10-09 — Phase 1 steps 1.1–1.6 complete.** Step 1.4 made
+- **2026-10-09 — Phase 1 steps 1.1–1.7 complete.** Step 1.4 made
   `source/check_padas.py` a build-failing strict validator. It losslessly
   transliterates all 9,366 word entries and compares each word’s Devanagari
   with its own IAST; it also checks all 2,800 pādas against their word splits
@@ -39,19 +39,26 @@ before you talk to the owner.
   browser” section, which documented `edit.py` and `editor.html`; neither file
   exists, and the editor is not restored. The README’s “202 UI strings” figure
   moved into the “Fixing content” table so the document test still holds.
-- **GitHub (verified 2026-10-09):** PR #9 is **merged** (02:08 UTC) into `main`
-  at `e89b78c`, which is this session’s base. Commits `d2df966` and `f0d765d`
-  (step 1.5) are ancestors of `main`, so step 1.5 is not duplicated. PR #8 was
-  merged earlier (`bd4f5c3`).
+- Step 1.7 fixed the one Hindi grammar fault Dhruba had caught in the 2.47
+  paraphrase (`translations_hi.py`): “कुछ न करने **की** आलस्य में” → “**के** आलस्य में”,
+  since आलस्य is masculine and is governed by में (oblique). Cross-checked against
+  `ch2.json` (मा ते सङ्गोऽस्त्वकर्मणि) and the `padachheda_ch2.py` split
+  (सङ्गः = attachment, अकर्मणि = in inaction). The “आलस्य” gloss of अकर्मणि is
+  the paraphrase’s own interpretive word, left as it was; the 390 px Hindi
+  render was re-shot and reads correctly.
+- **GitHub (verified 2026-10-09):** PR #10 is **merged** (02:14 UTC) into `main`
+  at `6ee58aa`, which is this session’s base — step 1.6 is in `main`, so it is
+  not repeated.
 - **Verification:** `python3 build.py` passes: 9,366 strict word checks, 2,800
   strict line and reconstruction checks (0 flags), 2,100 paraphrase pairs,
   6 SEO checks, 572 site-health checks, 9,658 study-structure checks, 19 Python
   tests, 802 document assertions, 15 learning-map migration tests and 7 search
-  regression tests. The browser step was skipped in this sandbox (Playwright
-  not installed); `index.html` is byte-identical to the previous build, and
-  step 1.6 does not change app code.
-- **Next:** stop here. Wait for the owner’s go-ahead before step 1.7 (the
-  2.47 Hindi grammar). Other editorial decisions remain listed in §7.
+  regression tests. This session set up Playwright + `@sparticuz/chromium` per
+  §4, so the 162 browser checks ran and passed too; the rebuild touched only
+  `data/ch2.js` and the `sw.js` cache id (a paraphrase-text change).
+- **Next:** stop here. Wait for the owner’s go-ahead before step 1.8 (“तीन
+  निष्ठा” wording, which needs his choice in §7.1) and step 1.9. Other editorial
+  decisions remain listed in §7.
 
 ## 2. Resume in five minutes
 
@@ -186,7 +193,7 @@ then work through the rest of the 674 forms.
     Śaṅkara-bhāṣya.
   - The 6.47 title “Most yoked” is a calque.
 - **2.47 Hindi paraphrase:** “कुछ न करने की आलस्य” → “के आलस्य”, since आलस्य is
-  masculine (`translations_hi.py:194`).
+  masculine (`translations_hi.py:194`). (Fixed in step 1.7.)
 - **Duplicate descriptions:** 593 of 700 English verse descriptions are
   identical to the literal translation (Nepali 566, Hindi 592), so the Study
   guide repeats itself.
@@ -276,7 +283,7 @@ Missing:
 
 ## 6. Plan — status board (tick as you go)
 
-**Phase 1 — Correctness (1–2 days)** · in progress (1.1–1.6 done)
+**Phase 1 — Correctness (1–2 days)** · in progress (1.1–1.7 done)
 - [x] 1.1 Fix the verse text in 7.12 and 9.13 (source and matching pāda lines).
 - [x] 1.2 Fix word-list spellings: 11.27–29, 17.6, 1.1 and 2.14.
 - [x] 1.3 Fix 13.27’s IAST spelling and update its Nepali/Hindi gloss keys.
@@ -285,7 +292,7 @@ Missing:
       split, without flattening diacritics. Appendix A §1–2 is the starting point.
 - [x] 1.5 Search: NFD plus explicit spelling folds; fix singular/plural result wording.
 - [x] 1.6 Fix the `LICENSE.md` counts (9,484 / 169 / 700); removed the stale README editor section (editor not restored).
-- [ ] 1.7 Fix the Hindi grammar in the 2.47 paraphrase.
+- [x] 1.7 Fix the Hindi grammar in the 2.47 paraphrase (की → के आलस्य).
 - [ ] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” after the owner chooses the wording (§7).
 - [ ] 1.9 Revisit the 18.66 and 15.7 paraphrases after the owner’s decision (§7).
 
@@ -332,6 +339,16 @@ choices remain open:
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-09 · `arena/f0f811fe-bhagavad-gita` · Phase 1 step 1.7: fixed the
+  2.47 Hindi paraphrase in `translations_hi.py` — “कुछ न करने की आलस्य में” →
+  “के आलस्य में” (आलस्य masculine, oblique before में), cross-checked against
+  `ch2.json` and the `padachheda_ch2.py` split; no other Hindi line contains
+  “की आलस्य”. Verified PR #10 merged at 02:14 UTC; latest `main` is `6ee58aa`
+  (this session’s base), so 1.6 was not repeated. Full build green including
+  162 browser checks (Playwright + sparticuz chromium per §4); 390 px Hindi
+  render of the sheet re-shot. Stopped before 1.8 pending the owner’s §7.1
+  wording choice.
 
 - 2026-10-09 · `arena/a1d5250c-bhagavad-gita` · Phase 1 step 1.6: verified PR #9 merged
   at 02:08 UTC and `main` at `e89b78c` containing step 1.5 (`d2df966`, `f0d765d`), so no
