@@ -52,21 +52,20 @@ before you talk to the owner.
   आलस्य”, so step 1.7 is not repeated. PR #11 does **not** contain the §7.1
   decision (the previous session recorded it after the merge and could no longer
   push), so this session’s first commit writes it into the repo.
-- **Verification (step 1.7):** `python3 build.py` passed: 9,366 strict word checks, 2,800
-  strict line and reconstruction checks (0 flags), 2,100 paraphrase pairs,
-  6 SEO checks, 572 site-health checks, 9,658 study-structure checks, 19 Python
-  tests, 802 document assertions, 15 learning-map migration tests and 7 search
-  regression tests. That session set up Playwright + `@sparticuz/chromium` per
-  §4, so the 162 browser checks ran and passed too; the rebuild touched only
-  `data/ch2.js` and the `sw.js` cache id (a paraphrase-text change).
-- **§7.1 is decided** (owner, 2026-10-09): the UI framework wording “तीन निष्ठा /
-  तीन निष्ठाएँ” becomes **तीन मार्ग**, and the three cards/tabs are prefixed
-  **कर्ममार्ग · भक्तिमार्ग · ज्ञानमार्ग**. The full spec, rationale, spelling
-  decisions and out-of-scope list are in §7.1; step 1.8 implements it and no
-  verse-level निष्ठा is touched.
-- **Next:** finish step 1.8 (§7.1) in this session, then stop. Step 1.9 (the
-  18.66 and 15.7 paraphrases) stays blocked on §7.2. Other editorial decisions
-  remain listed in §7.
+- **Step 1.8 done — §7.1 implemented.** The UI framework now says **तीन मार्ग**
+  and the three cards/tabs are prefixed **कर्ममार्ग · भक्तिमार्ग · ज्ञानमार्ग** in
+  all three languages: 25 values in `i18n_ui.py`, every key kept (202 per
+  language), the wayName comment and `browser_checks.py:328` reworded to the
+  mārga name, and no verse-level निष्ठा touched (3.3, 5.17, 17.1, 18.50 and the
+  glosses keep it). The decision, its rationale and the exact string list live
+  in §7.1; evidence (before/after plus 390 px hi/ne/en shots) is in the PR.
+- **Verification:** `python3 build.py` passes with the §4 Playwright setup —
+  9,366 word checks and 2,800 line checks (0 flags), 2,100 paraphrase pairs,
+  6 SEO, 572 site-health, 9,658 study-structure, 19 Python tests, 802 document
+  assertions, 15 + 7 Node tests and all 162 browser checks. The rebuild changed
+  only `index.html` and the `sw.js` cache id; `git status` is clean afterwards.
+- **Next:** stop here. Step 1.9 (the 18.66 and 15.7 paraphrases) waits on the
+  owner’s §7.2 answer. Other editorial decisions remain listed in §7.
 
 ## 2. Resume in five minutes
 
@@ -307,8 +306,8 @@ Missing:
 - [x] 1.5 Search: NFD plus explicit spelling folds; fix singular/plural result wording.
 - [x] 1.6 Fix the `LICENSE.md` counts (9,484 / 169 / 700); removed the stale README editor section (editor not restored).
 - [x] 1.7 Fix the Hindi grammar in the 2.47 paraphrase (की → के आलस्य).
-- [ ] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” with the owner’s मार्ग wording — decided
-      2026-10-09, full spec in §7.1 (in progress in this session).
+- [x] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” with the owner’s मार्ग wording (decided
+      2026-10-09, spec in §7.1; value-only i18n change, keys and 202 count kept).
 - [ ] 1.9 Revisit the 18.66 and 15.7 paraphrases after the owner’s decision (§7.2 — still open).
 
 **Phase 2 — Meaning**
@@ -344,7 +343,7 @@ Phase 1 is selected (2026-10-08). §7.1 is decided; §7.2–§7.7 remain open.
 Numbering follows the old list, so “§7.1” and “§7.2” mean the same choices as
 before.
 
-### 7.1 “तीन निष्ठा” → “तीन मार्ग” — **DECIDED (owner, 2026-10-09)** · status: pending implementation by step 1.8
+### 7.1 “तीन निष्ठा” → “तीन मार्ग” — **DECIDED (owner, 2026-10-09)** · **IMPLEMENTED** (step 1.8, 2026-10-09)
 
 **Decision.** The three six-chapter groups keep their shape, but the UI calls
 them **mārga**, not niṣṭhā. The Nepali and Hindi framework wording becomes
@@ -394,7 +393,7 @@ Karma’”) must quote the new card text, and `browser_checks.py:328` must asse
 strength, new string. Generated files (`index.html`, `data/`, `chapter/`,
 `sw.js`, `404.html`) are never hand-edited; `build.py` rebuilds them.
 
-**Evidence required.** Before/after of every changed string, plus 390 px shots
+**Evidence.** Before/after of every changed string, plus 390 px shots
 of the Hindi and Nepali welcome tagline, the sections landing (three cards) and
 a chapter page showing the way crumb, and one English sections landing to show
 the Devanagari prefix. Then `grep -rn "तीन निष्ठा\|कर्मनिष्ठा\|भक्तिनिष्ठा\|ज्ञाननिष्ठा" source/
@@ -418,6 +417,17 @@ until the owner answers.
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-09 · `arena/7d566d9b-bhagavad-gita` · Phase 1 step 1.8: verified PR #11
+  merged at 02:43 UTC (`5010648`, carrying `b5a5bcd`), so step 1.7 was not
+  repeated. First commit wrote the owner’s §7.1 decision (and §1/§5.3/§6
+  annotations) into HANDOFF.md, which PR #11 could not carry. Then implemented
+  §7.1: 25 value-only strings in `i18n_ui.py` (तीन मार्ग; कर्ममार्ग / भक्तिमार्ग /
+  ज्ञानमार्ग in en/ne/hi; Hindi sections_sub re-agreed to masculine मार्ग), keys
+  and the 202 count untouched, wayName() comment and browser_checks.py:328
+  reworded; verse-level निष्ठा (3.3, 5.17, 17.1, 18.50, glosses, themes) left
+  alone. Build green incl. 162 browser checks; 390 px hi/ne/en shots read back
+  clean; the §7.1 grep now empty. Stopped before 1.9 (§7.2 still open).
 
 - 2026-10-09 · `arena/f0f811fe-bhagavad-gita` · Phase 1 step 1.7: fixed the
   2.47 Hindi paraphrase in `translations_hi.py` — “कुछ न करने की आलस्य में” →
