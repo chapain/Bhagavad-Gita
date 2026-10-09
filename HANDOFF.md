@@ -36,8 +36,9 @@ before you talk to the owner.
 - Step 1.6 corrected `LICENSE.md` to the verified counts: **9,484** word
   glosses (9,366 verse words + 118 speaker words), **169** themes and **700**
   parts (was 9,480 / 182 / 558). It also removed the README “Editing in your
-  browser” section, which documented `edit.py` and `editor.html`; neither file
-  exists, and the editor is not restored. The README’s “202 UI strings” figure
+  browser” section, which documented `edit.py` and `editor.html`. Neither file
+  exists, so the editor is retired and its last helper, `source/dataio.py`, was
+  deleted in a follow-up cleanup. The README’s “202 UI strings” figure
   moved into the “Fixing content” table so the document test still holds.
 - **GitHub (verified 2026-10-09):** PR #9 is **merged** (02:08 UTC) into `main`
   at `e89b78c`, which is this session’s base. Commits `d2df966` and `f0d765d`
@@ -257,12 +258,8 @@ Missing:
   and strict data validators.
 - **Dead or stale files:**
   - `source/learn_block.py`: about 100 lines have drifted from the real copy.
-  - `source/dataio.py`: nothing imports it.
   - `shoot_choose.py`: screenshots a page that has been retired.
   - `UPLOAD.md`: stale (“222 themes”).
-  - `README.md` documented `edit.py` and `editor.html`, which do not exist
-    (section removed in step 1.6). `UPLOAD.md` and `PROJECT.md` still mention
-    the editor.
 - **Wrong counts (fixed in step 1.6):** `LICENSE.md` said 9,480 word glosses, 182 themes
   and 558 parts. The verified figures are 9,484 (9,366 verse words + 118 speaker
   words), 169 and 700.
@@ -284,7 +281,7 @@ Missing:
       Devanagari against its own IAST, and each pāda line against its word
       split, without flattening diacritics. Appendix A §1–2 is the starting point.
 - [x] 1.5 Search: NFD plus explicit spelling folds; fix singular/plural result wording.
-- [x] 1.6 Fix the `LICENSE.md` counts (9,484 / 169 / 700); removed the stale README editor section (editor not restored).
+- [x] 1.6 Fix the `LICENSE.md` counts (9,484 / 169 / 700); removed the stale README editor section; the editor is gone for good.
 - [ ] 1.7 Fix the Hindi grammar in the 2.47 paraphrase.
 - [ ] 1.8 Replace “तीन निष्ठा / निष्ठाएँ” after the owner chooses the wording (§7).
 - [ ] 1.9 Revisit the 18.66 and 15.7 paraphrases after the owner’s decision (§7).
@@ -333,6 +330,10 @@ choices remain open:
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-09 · `arena/a1d5250c-bhagavad-gita` · Editor cleanup (follow-up to 1.6):
+  the editor is retired. Deleted `source/dataio.py` (its only user), removed the
+  `.backup/` ignore rule, and stripped every editor reference from README, UPLOAD.md,
+  PROJECT.md (§3, §6, §7 and two history notes) and HANDOFF.md. Build green.
 - 2026-10-09 · `arena/a1d5250c-bhagavad-gita` · Phase 1 step 1.6: verified PR #9 merged
   at 02:08 UTC and `main` at `e89b78c` containing step 1.5 (`d2df966`, `f0d765d`), so no
   step 1.5 work repeated. LICENSE.md now says 9,484 / 169 / 700 (were 9,480 / 182 / 558).

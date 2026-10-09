@@ -930,7 +930,7 @@ into equal-size chunks or turn every change of wording into another theme.
   never confused with a part that shares its title — several do
   ("Behold These Kurus", "The Lord's Rebuke", "Bhīṣma's Lion-roar"). Titles
   only; descriptions, ranges and translations untouched. All editable
-  afterwards in editor.html -> "Themes & parts".
+  afterwards in the editor (since retired; see §6).
 
 * **Learn-by-heart audit #2 (2026-09-01) — three more defects, all silent.**
   Asked to re-examine the whole feature. The story drill and the verse-ordering
@@ -972,8 +972,7 @@ into equal-size chunks or turn every change of wording into another theme.
   agree on theme count, and replaces a title only when the old value matches
   exactly once inside that chapter's block, so a stale patch cannot overwrite
   the wrong theme. Titles only; descriptions, ranges and translations untouched.
-  All of it is editable afterwards in `editor.html` -> "Themes & parts", which
-  validates and rolls back a bad save.
+  Edit the titles in `source/` and rebuild (the editor has been retired; see §6).
 
 * **Cloze drill rewritten — it was wrong for half the Gītā (owner found it,
   2026-09-01).** The owner was drilled on 1.3 pāda 1 and reported: nothing was
@@ -1361,8 +1360,6 @@ build.py              build + verify (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
 run_gita_app.js       802 assertions on the built document      (needs node)
 browser_checks.py     162 live-browser checks                 (needs playwright)
-edit.py               local browser-based content editor
-editor.html           its interface
 source/
   ch*.json            verse Devanagari + IAST            <- the running verse
   padas_ch*.py        the four pādas of every verse      <- the popup boxes
@@ -1375,7 +1372,6 @@ source/
   i18n_chapters.py    chapter names/blurbs (ne, hi)
   i18n_ui.py          202 UI strings × 3 languages
   build_gita.py       the builder + the manual-edit audit
-  dataio.py           safe read/write of every data file (used by edit.py)
   verify.py           norm1() and syll_iast() — used ONLY to check data
   check_padas.py      rebuilds each pāda from its words via sandhi
   check_paraphrase.py every paraphrase differs enough from its literal
@@ -1480,20 +1476,18 @@ is not a Sanskrit word. Only reading catches that.
 
 ---
 
-## 6. The editor
+## 6. The editor (retired)
 
-`python3 edit.py` → `http://127.0.0.1:8765`. Six tabs covering every editable
-field. Local-only (binds `127.0.0.1`); none of it ships in `index.html`.
+The local browser editor (`edit.py`, `editor.html`) and its save layer
+(`source/dataio.py`) were removed on 2026-10-09 (step 1.6 follow-up). Nothing
+in the repo refers to them now. Edit `source/` directly and run `python3 build.py`.
 
-**Design rules, learned from breaking things:**
+The design rules it was built on still apply to any future data tool:
 
-* Never regex-patch a data file. Import the module, edit the dict, re-emit the
-  whole file, re-import and compare. `dataio.py` does this for all 15 writers.
-* A rejected save is **rolled back** — the file is restored byte-for-byte.
-* The verse text and its pādas must change **together** (`verse_all`), because
-  editing one alone always fails validation. There is also a per-verse
-  find/replace that updates the verse and every quarter at once.
-* Backups go to `source/.backup/`.
+* Never regex-patch a data file. Parse it, change the structure, and re-emit the
+  whole file; re-import and compare.
+* A rejected write must leave the file byte-for-byte unchanged.
+* A verse's text and its pādas must change together; validate after every write.
 
 ---
 
@@ -1510,7 +1504,7 @@ field. Local-only (binds `127.0.0.1`); none of it ships in `index.html`.
   correction was wrong: `naśnan` for `aśnan` (5.08) and the same in 5.09 — the
   `n` doubles and *both* belong to the previous pāda. Check the word list.
 * **Restoring text from memory.** A "reverted" Nepali paraphrase came back
-  subtly reworded and passed every check. Use `source/.backup/` or the zip.
+  subtly reworded and passed every check. Use git history or the zip.
 * **Trusting a test that never ran.** Several times a mutation test appeared to
   pass because the file was restored before the build read it, or because `grep`
   missed the output. Confirm the failure actually appears.

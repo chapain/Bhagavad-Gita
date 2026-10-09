@@ -40,7 +40,7 @@ Build inputs and tooling — they can live in the repo, but they are not part of
 the published site:
 
 `source/`, `build.py`, `rebuild.sh`, `browser_checks.py`, `run_gita_app.js`,
-`edit.py`, `editor.html`, `shoot_*.py`, `PROJECT.md`, `README.md`,
+`shoot_*.py`, `PROJECT.md`, `README.md`,
 `LICENSE.md`, `UPLOAD.md`
 
 ---
@@ -84,6 +84,5 @@ Suites: **644** document assertions · **420** site-health checks · 2,800 pāda
 
 **Known and deliberate:** the Nepali and Hindi teaching copy in the learn path
 and the retitled themes is a first draft. It is grammatical, but it should
-sound like a teacher rather than a translation — worth your ear. Everything is
-editable in `editor.html` → "Themes & parts", which validates and rolls back a
-bad save.
+sound like a teacher rather than a translation — worth your ear. Theme and part titles live in `source/gita_data*.py` and
+`source/themes_ne.py` / `source/themes_hi.py`. Edit them there and run `python3 build.py`.

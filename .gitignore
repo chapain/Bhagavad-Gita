@@ -15,7 +15,6 @@ Thumbs.db
 *.swp
 
 # working copies / backups
-.backup/
 *.bak
 *.bak[0-9]
 *.shipped
