@@ -619,7 +619,8 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
   24 mirrored `words[3]`/`words[4]` leaves changed. Full build green incl. 162
   browser checks; twelve 390×844 ne/hi sheets across chapters 1, 2, 10, 13,
   18 captured and read back. Full repo zip:
-  `/home/user/Bhagavad-Gita-phase2.1-batch4.zip`. Stop before batch 5.
+  `/home/user/Bhagavad-Gita-phase2.1-batch4.zip`. PR #17:
+  https://github.com/chapain/Bhagavad-Gita/pull/17. Stop before batch 5.
 
 - 2026-10-09 · `arena/e1647b45-bhagavad-gita` · Phase 2.1 batch 3
   (`tat`, `yat`): verified PR #15 merged and matched batch-2 source content on
