@@ -20,7 +20,7 @@ GITA_CH2_WORDS = {
 
 2: {"s": [["श्रीभगवान्", "śrībhagavān", "the Blessed Lord"],
           ["उवाच", "uvāca", "said"]],
-    0: [["कुतः", "kutaḥ", "whence"],
+    0: [["कुतः", "kutaḥ", "whence", "कहाँबाट", "कहाँ से"],
         ["त्वा", "tvā", "on you"],
         ["कश्मलम्", "kaśmalam", "faintness"],
         ["इदम्", "idam", "this"]],

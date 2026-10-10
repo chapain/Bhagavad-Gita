@@ -374,7 +374,7 @@ GITA_CH13_WORDS = {
     0: [["यावत्", "yāvat", "whatever"],
         ["सञ्जायते", "sañjāyate", "is born"],
         ["किञ्चित्", "kiñcit", "anything"]],
-    1: [["सत्त्वम्", "sattvam", "being"],
+    1: [["सत्त्वम्", "sattvam", "being", "प्राणी", "प्राणी"],
         ["स्थावरजङ्गमम्", "sthāvarajaṅgamam", "moving or unmoving"]],
     2: [["क्षेत्रक्षेत्रज्ञसंयोगात्", "kṣetrakṣetrajñasaṁyogāt", "from the union of field and knower"]],
     3: [["तत्", "tat", "that"],

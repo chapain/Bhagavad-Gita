@@ -7,9 +7,9 @@ before you talk to the owner.
 
 | | |
 |---|---|
-| Last updated | 2026-10-09 (UTC) |
-| Updated by | Arena session on branch `arena/778427cd-bhagavad-gita` |
-| Base commit | `0ea44a3` on `main` (merge of PR #14, 2.1 batch 1) |
+| Last updated | 2026-10-10 (Asia/Katmandu) |
+| Updated by | Arena session on branch `arena/dc2baaac-bhagavad-gita` |
+| Base commit | `87136f4` on `main` (merge of PR #16, 2.1 batch 3) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -104,8 +104,14 @@ before you talk to the owner.
 - **2.1 batch 3 done — `tat` and `yat`.** Added 21 contextual entries across
   chapters 1, 2, 3, 9, 11, 13, 15 and 17; only Nepali/Hindi word fields changed.
   Audit §3 remains `te` 0 / `me` 10; 9,366 / 9,484 unchanged. Full build and
-  162 browser checks pass. Next: the remaining forms in the 674-form pool;
-  owner picks the slice.
+  162 browser checks pass.
+- **2.1 batch 4 done — `bhīma`, `kutaḥ`, `sattvam`.** Six inline five-field
+  entries in chapters 1, 2, 10, 13, 18; all 19 occurrences reviewed, 13 kept.
+  Śaṅkara’s 18.40 “being” includes non-living things, so it uses जीव वा जड वस्तु /
+  जीव या जड़ वस्तु, not just प्राणी. Audit §3 before/after `te` 0 / `me` 10;
+  9,366 verse words / 9,484 glosses unchanged. Full build including 162 browser
+  checks green; 12 mobile ne/hi sheets read back. Next: the remaining forms
+  in the 674-form pool; owner picks the next slice.
 
 ## 2. Resume in five minutes
 
@@ -265,10 +271,35 @@ Clear errors:
   keep `जुन / जो` as relative pronouns. The `11.07` “whatever” entry is the
   eleventh instance (omitted from the initial parenthetical list).
 
+**FIXED (2.1 batch 4, 2026-10-10) — `bhīma`, `kutaḥ`, `sattvam`.** All 19
+occurrences were checked against their own pāda, English word gloss and verse
+literal; six entries changed (word[0–2] untouched):
+
+| Verse | Form / English | Old NE / HI | New NE / HI |
+|---|---|---|---|
+| 1.04 | `bhīma` “to Bhīma” (equal to Bhīma and Arjuna) | भयानक / भयंकर | भीमसँग / भीम से |
+| 1.10 | `bhīma` “by Bhīma” (force guarded by him) | भयानक / भयंकर | भीमले / भीम द्वारा |
+| 2.02 | `kutaḥ` “whence” (where from?) | कसरी / कैसे | कहाँबाट / कहाँ से |
+| 10.41 | `sattvam` “being” (glorious one) | सत्त्व / सत्त्व | प्राणी / प्राणी |
+| 13.26 | `sattvam` “being” (moving or unmoving) | सत्त्व / सत्त्व | प्राणी / प्राणी |
+| 18.40 | `sattvam` “being” (any entity under the guṇas) | सत्त्व / सत्त्व | जीव वा जड वस्तु / जीव या जड़ वस्तु |
+
+**Deliberately left alone (13 instances):** `bhīma` 1.15 (“terrific”,
+भयानक/भयंकर fits *bhīmakarmā*); `kutaḥ` 2.66 (“where”, but the verse says
+“how can there be happiness?”, so कसरी/कैसे follows the literal), 4.31
+(“how then”), 11.43 (“how then”); `sattvam` 10.36 (“goodness”, सत्त्व),
+14.05, 14.06, 14.09, 14.10×3, 14.11 and 17.01 (all refer to the sattva
+guṇa). The English word gloss in 2.66 stays out of scope. 18.40’s broader
+rendering follows Śaṅkara’s *sattvam* = “entity, living creatures … or
+non-living things” (https://www.bhagavad-gita.us/bhagavad-gita-18-40/);
+10.41 and 13.26 follow their existing ne/hi literals (“प्राणी”). Owner
+delegated the choices to editorial judgement after requesting research.
+
 **Fix path (no code change needed):** write five-field entries inline in
-`padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Batch 1–3 now
-cover `te`, `me`, `param`, `bhūtāni`, `yogam`, `tat` and `yat`. Next: the
-remaining forms in the 674-form pool; the owner picks each slice.
+`padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Batches
+1–4 cover `te`, `me`, `param`, `bhūtāni`, `yogam`, `tat`, `yat`, `bhīma`,
+`kutaḥ` and `sattvam`. Next: the remaining forms in the 674-form pool;
+the owner picks each slice.
 
 ### 5.3 Interpretation and framing (owner decides)
 
@@ -404,12 +435,12 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batch 3 done)
+**Phase 2 — Meaning** · in progress (2.1 batch 4 done)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batch 3 of N** (`te` batch 1; `me`, `param`, `bhūtāni`,
-      `yogam` batch 2; `tat`, `yat` batch 3; settled keeps and rationale in
-      §5.2). Next: the remaining forms in the 674-form pool; owner picks the
-      slice.
+      **in progress — batch 4 of N** (`te` batch 1; `me`, `param`, `bhūtāni`,
+      `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
+      settled keeps and rationale in §5.2). Next: remaining forms in the
+      674-form pool; owner picks the slice.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -578,6 +609,17 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-10 · `arena/dc2baaac-bhagavad-gita` · Phase 2.1 batch 4: PR #16
+  merged; unshallowed before ancestry checks; verified all 21 batch-3 five-field
+  entries and 9,366 / 9,484 counts on main by content. Owner delegated scope
+  and calls after review of the remaining pool. Six entries changed for
+  `bhīma`, `kutaḥ`, `sattvam`; all 19 occurrences reviewed, 13 deliberately
+  kept (§5.2). Audit §3 before/after `te` 0, `me` 10. Lockstep data diff: only
+  24 mirrored `words[3]`/`words[4]` leaves changed. Full build green incl. 162
+  browser checks; twelve 390×844 ne/hi sheets across chapters 1, 2, 10, 13,
+  18 captured and read back. Full repo zip:
+  `/home/user/Bhagavad-Gita-phase2.1-batch4.zip`. Stop before batch 5.
 
 - 2026-10-09 · `arena/e1647b45-bhagavad-gita` · Phase 2.1 batch 3
   (`tat`, `yat`): verified PR #15 merged and matched batch-2 source content on
