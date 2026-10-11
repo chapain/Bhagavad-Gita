@@ -188,6 +188,38 @@ before you talk to the owner.
   new meaning (the boxed toolbar labels are the known sandbox font artifact).
   Screenshots: `/home/user/evidence/batch7/`.
 
+- **2.1 batch 10 done — chapter 18 read verse by verse (2026-10-11).** The
+  remaining-chapter pool with the highest flag count (482 of 986 word
+  instances, 78 verses). Every verse was read with its en/ne/hi literal and
+  every word checked for (a) English gloss vs the verse in context, (b) Nepali
+  meaning vs the Nepali literal, (c) Hindi meaning vs the Hindi literal.
+  **20 five-field overrides** in `padachheda_ch18.py` (word[3]/word[4] only):
+  `kavayaḥ` 18.02 (the wise ≠ poets); `tyajet` 18.08 (indicative, not “must”)
+  and `labhet` 18.08; `me` = “from me” at 18.13 / 18.36 / 18.50 (NE मेरो→मबाट /
+  HI मेरा→मुझसे); `tathā` 18.14 (list “and”, not “thus”); `kṛtsnavat` 18.22 (NE
+  “as if not all” reversed → सबैझैं); `ebhiḥ` 18.40 (ablative “from”, not “by”);
+  `brahmakarma` 18.42 (NE ब्रह्मको→ब्राह्मणको); `pravṛttiḥ` 18.46 (origin ≠
+  tendency → स्रोत); `te` = “to you” at 18.63 / 18.65 and “by you” at 18.67;
+  `iṣṭaḥ` 18.64 (dear ≠ worshipped, where 18.70 keeps पूजित); `tasmāt` = “than
+  him” ×2 at 18.69 (not “therefore”); `matiḥ` 18.70 / 18.78 (opinion ≠
+  intellect → मत, matching 18.06 `matam`); `bhūtiḥ` 18.78 (glory ≠ prosperity,
+  which collided with `śrīḥ` in the same pāda). The remaining ~460 flagged
+  occurrences were read and left alone; settled keeps include `me` possessive
+  (18.04/06/64/70/77), `mayi` (18.68), `tathā` correlative (18.50/63), `niṣṭhā`
+  18.50 (protected by §7.1) and `padam` स्थान (corpus-consistent). **Owner
+  flags (not word-gloss fixes):** 4.16 has the *identical* `kavayaḥ` defect
+  (left for the ch-4 revisit per “one chapter per batch”); 18.53’s ne/hi
+  *literals* say the opposite of the Sanskrit for *nirmamaḥ* (“not giving up
+  ‘mine’”); `tathā` “also/and” and `matiḥ`/`pravṛttiḥ` shared forms still need
+  per-occurrence work in chs 1, 7–11, 13, 17. Appendix A before/after
+  identical (`te` 0 / `me` 2; 9,366 / 9,484; §3 674/4,532). Full Playwright
+  build green (2,800/0 pāda, 2,100 paraphrase, 6 SEO, 572 site-health, 9,658
+  study, 19 Py tests, 802 doc assertions, 15 + 7 Node, 162 browser). Twelve
+  390 × 844 ne/hi sheets for 18.02, 18.42, 18.69, 18.78 (ch18) plus 4.16 and
+  16.20 (cross-chapter renders) captured and read back. Screenshots:
+  `/home/user/evidence/batch10/`. GitHub: PR #21 from
+  `arena/207086dc-bhagavad-gita` — https://github.com/chapain/Bhagavad-Gita/pull/21.
+
 
 ## 2. Resume in five minutes
 
@@ -505,6 +537,48 @@ are correct; 4.42 `ātmanaḥ`
 parenthetical, “घमण्ड (ले)”; 16.13–14 `abhimāna` is inside the compound
 *abhimānāśrayaṁ* and is not split as its own word.
 
+**FIXED (2.1 batch 10, 2026-10-11) — chapter 18 verse by verse.** All 78
+verses were read with their en/ne/hi literals; 20 overrides (word[3]/word[4]
+only), ~460 further flagged occurrences read and left alone. The fixes and
+why:
+
+| Verse | Form / English | Old NE / HI | New NE / HI | Why |
+|---|---|---|---|---|
+| 18.02 | `kavayaḥ` “the wise” | कविहरू / कवि | ज्ञानीहरू / ज्ञानी | कवि = poets; the literal says ज्ञानी |
+| 18.08 | `tyajet` “one gives up” | त्याग्नुपर्छ / त्यागे | त्याग्छ / त्यागता है | descriptive, not “must”; HI literal present |
+| 18.08 | `labhet` “gains” | पाउँथ्यो / पाता | पाउँछ / पाता | past-habitual vs the verse’s present |
+| 18.13 | `me` “from me” | मेरो / मेरा | मबाट / मुझसे | *nibodha me* = learn from me |
+| 18.14 | `tathā` “and” | त्यसरी / वैसे ही | र / और | list conjunction, not “thus” |
+| 18.22 | `kṛtsnavat` “as if the whole” | सबै होइनझैं / सब कुछ की तरह | सबैझैं / सब कुछ की तरह | NE said the opposite (“as if not all”) |
+| 18.36 | `me` “from me” | मेरो / मेरा | मबाट / मुझसे | *śṛṇu me* = hear from me |
+| 18.40 | `ebhiḥ` “from these” | यिनीहरूद्वारा / इनसे | यिनीहरूबाट / इनसे | ablative “free from”, not instrumental |
+| 18.42 | `brahmakarma` “duty of the brāhmaṇa” | ब्रह्मको कर्तव्य / ब्राह्मण का कर्तव्य | ब्राह्मणको कर्तव्य / ब्राह्मण का कर्तव्य | NE said “of Brahman” |
+| 18.46 | `pravṛttiḥ` “the origin” | प्रवृत्ति / प्रवृत्ति | स्रोत / स्रोत | प्रवृत्ति = tendency; literal says स्रोत |
+| 18.50 | `me` “from me” | मेरो / मेरा | मबाट / मुझसे | *nibodha me* = learn from me |
+| 18.63 | `te` “to you” | तिम्रो / तुम्हारा | तिमीलाई / तुझे | *ākhyātaṃ te* = declared to you |
+| 18.64 | `iṣṭaḥ` “dear” | पूजित / पूजित | प्रिय / प्रिय | 18.70 keeps पूजित (“worshipped”) |
+| 18.65 | `te` “to you” | तिम्रो / तुम्हारा | तिमीलाई / तुझे | *satyaṃ te pratijāne* |
+| 18.67 | `te` “by you” | तिम्रो / तुम्हारा | तिमीद्वारा / तुम्हारे द्वारा | gerundive agent, not possessive |
+| 18.69 ×2 | `tasmāt` “than him” | त्यसकारण / इसलिए | उसभन्दा / उससे | ablative of comparison |
+| 18.70 | `matiḥ` “opinion” | बुद्धि / बुद्धि | मत / मत | intellect ≠ opinion; 18.06 `matam` is मत |
+| 18.78 | `matiḥ` “judgment” | बुद्धि / बुद्धि | मत / मत | same as 18.70 |
+| 18.78 | `bhūtiḥ` “glory” | समृद्धि / समृद्धि | वैभव / वैभव | collided with `śrīḥ` (also समृद्धि) |
+
+**Deliberately left alone:** `me` possessive 18.04 / 18.06 / 18.64 / 18.70 /
+18.77 (मेरो/मेरा matches each literal); `mayi` 18.68 (ममा, settled in batch 6);
+`tathā` correlative 18.50 / 18.63; `niṣṭhā` 18.50 (protected by §7.1); `padam`
+स्थान (corpus-consistent with 2.51 / 15.04 / 15.05); `te` possessive 18.59 /
+18.64 / 18.72; `iṣṭaḥ` 18.70 (“worshipped”, matches its literal); `tasmāt`
+“therefore” elsewhere correct.
+
+**Owner flags from batch 10 (not fixed, out of a word-gloss change):** 4.16
+carries the *same* `kavayaḥ` = “poets” defect as 18.02 — left for the chapter-4
+revisit because the standing rule is one chapter per batch (evidence in the
+batch-10 screenshots); 18.53’s ne/hi *literals* render *nirmamaḥ* backwards
+(“not giving up ‘mine’”) while the word gloss निर्मम is right; shared forms
+`tathā` “also/and” (chs 1, 7–11, 13, 17), `matiḥ` 6.36 and `pravṛttiḥ` 15.04
+still need their per-occurrence overrides in their own chapter batches.
+
 ### 5.3 Interpretation and framing (owner decides)
 
 - **“तीन निष्ठा / तीन निष्ठाएँ”** clashes with 3.3 *loke ’smin dvividhā niṣṭhā*
@@ -641,22 +715,24 @@ Missing:
 
 **Phase 2 — Meaning** · in progress (2.1 batches 7–9 done — ch4, ch14, ch16)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batches 1–9 done (chapters 4, 14, 16 read verse by verse)** (`te` batch 1;
+      **in progress — batches 1–10 done (chapters 4, 14, 16, 18 read verse by verse)** (`te` batch 1;
       `me`, `param`, `bhūtāni`, `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`,
       `kutaḥ`, `sattvam` batch 4; `arjuna`, `samāḥ` batch 5; `me` = "to me"
-      cleanup batch 6; **chapter 4 batch 7 (22 overrides), chapter 14 batch 8
-      (8), chapter 16 batch 9 (11)**; settled keeps and rationale in §5.2).
-      43 of 9,366 verse-word instances now carry per-verse Nepali/Hindi overrides.
-      Next: read the remaining 15 chapters verse by verse in the same way
-      (a chapter per batch); shared forms listed in §1 still need their
-      remaining per-occurrence overrides.
+      cleanup batch 6; **chapter 4 batch 7 (24), chapter 14 batch 8 (8),
+      chapter 16 batch 9 (11), chapter 18 batch 10 (20)**; settled keeps and
+      rationale in §5.2).
+      63 of 9,366 verse-word instances now carry per-verse Nepali/Hindi overrides.
+      Next: read the remaining 14 chapters verse by verse in the same way
+      (a chapter per batch); shared forms listed in §1 and the batch-10 owner
+      flags (4.16 `kavayaḥ`, `tathā`, `matiḥ` 6.36, `pravṛttiḥ` 15.04) still need
+      their per-occurrence overrides.
 - [ ] 2.1x **Verse-by-verse verification of all 700 verses** (standing owner
-      requirement, started 2026-10-11). Reviewed so far: **chs 4, 14, 16 =
-      93 verses** (ch4 42/42, ch14 27/27, ch16 24/24). Each verse is recorded
+      requirement, started 2026-10-11). Reviewed so far: **chs 4, 14, 16, 18 =
+      171 verses** (ch4 42/42, ch14 27/27, ch16 24/24, ch18 78/78). Each verse is recorded
       as reviewed with its word list, its en/ne/hi literals, the verdict
       (confirmed / corrected / flagged) and the reason; the per-verse ledger
-      for these three chapters is in PR #20. Remaining: 607 verses in 15
-      chapters. Nothing in the corpus may be called verified until all 700 are.
+      for chs 4/14/16 is in PR #20 and for ch 18 in this PR. Remaining: 529
+      verses in 14 chapters. Nothing in the corpus may be called verified until all 700 are.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -825,6 +901,21 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/207086dc-bhagavad-gita` · Phase 2.1 batch 10 (ch 18):
+  verified PR #20 merged at `9a56dea` on `main`; unshallowed; audit reproduced
+  (`te` 0 / `me` 2; 9,366 / 9,484; §3 674/4,532). Read all 78 verses of ch 18
+  against en/ne/hi literals; 20 five-field overrides (kavayaḥ, tyajet, labhet,
+  me-from ×3, tathā-and, kṛtsnavat, ebhiḥ, brahmakarma, pravṛttiḥ, te-to ×2,
+  te-by, iṣṭaḥ-dear, tasmāt-than ×2, matiḥ ×2, bhūtiḥ), ~460 flagged occurrences
+  read and left; keeps recorded (incl. §7.1 `niṣṭhā`). Flagged for owner: 4.16
+  same `kavayaḥ` defect, 18.53 backwards ne/hi literals for *nirmamaḥ*, and the
+  `tathā`/`matiḥ`/`pravṛttiḥ` shared-form pool. Full Playwright build green
+  (2,800/0, 2,100 paraphrase, 6 SEO, 572 health, 9,658 study, 19 Py, 802 doc,
+  15+7 Node, 162 browser); audit after identical. Twelve 390×844 ne/hi sheets
+  (18.02/42/69/78 + 4.16 + 16.20) captured and read back. Churn: data/ch18.js +
+  sw.js cache id. PR #21: https://github.com/chapain/Bhagavad-Gita/pull/21.
+  Stop before the next batch.
 
 - 2026-10-11 · `arena/5afb9e8c-bhagavad-gita` · Phase 2.1 batches 7–9:
   verified PR #19 merged at `7de6723` on `main` (batch 6 content re-verified:
