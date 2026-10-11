@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-11 (Asia/Katmandu) |
-| Updated by | Arena session on branch `arena/afa097ba-bhagavad-gita` |
-| Base commit | `4cd37cf` on `main` (merge of PR #17, 2.1 batch 4) |
+| Updated by | Arena session on branch `arena/a84af58b-bhagavad-gita` |
+| Base commit | `5d8cdfe` on `main` (merge of PR #18, 2.1 batch 5) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -128,9 +128,27 @@ before you talk to the owner.
   new meanings, the other two visually confirm settled batch-4 overrides.
   Screenshots: `/home/user/evidence/batch5/`.
 - **Full repository zip:** `/home/user/Bhagavad-Gita-phase2.1-batch5.zip`.
-- **GitHub (verified 2026-10-11):** PR #18 is open against `main`:
-  https://github.com/chapain/Bhagavad-Gita/pull/18. Implementation commit
-  `733393a` is on `arena/afa097ba-bhagavad-gita`.
+- **GitHub (verified 2026-10-11):** PR #18 is **merged** (04:18 UTC) into `main`
+  at `5d8cdfe`, which is this session's base.
+
+- **2.1 batch 6 done — `me` = "to me" cleanup (2026-10-11).** The remaining
+  10 audit-flagged `me` = "to me" verses were checked against each verse's
+  Sanskrit text and en/ne/hi literal translation. 9 entries across 8 verses
+  needed NE मेरो→मलाई / HI मेरा→मुझे; 2 were correctly possessive and left
+  alone: 9.29 (*na me dveṣyo'sti* — translation says मेरा) and 18.69 pāda 1
+  (*kaścinme priyakṛttamaḥ* — translation says मेरो सेवा). Five-field overrides
+  in `padachheda_ch12.py` (6 entries: 12.14–12.17, 12.19, 12.20) and
+  `padachheda_ch18.py` (3 entries: 18.64, 18.65, 18.69 pāda 2). All 84 `mām`,
+  24 `mama` and 20 `mayi` occurrences verified correct and left alone.
+  Appendix A §3 before `te` 0 / `me` 10; after `te` 0 / `me` 2;
+  9,366 / 9,484 unchanged.
+- **Verification (batch 6):** full build green: strict pāda check 2,800/0,
+  2,100 paraphrase pairs, 6 SEO, 572 site-health, 9,658 study-structure,
+  19 Python tests, 802 document assertions, 15 + 7 Node tests and all 162
+  Playwright browser checks. Six 390 × 844 ne/hi screenshots of 12.14, 18.65
+  and 9.29 (chapters 12, 18 and 9) captured and read back; 12.14 and 18.65
+  show मलाई/मुझे, 9.29 confirms मेरो/मेरा (possessive, left alone).
+  Screenshots: `/home/user/evidence/batch6/`.
 
 
 ## 2. Resume in five minutes
@@ -349,11 +367,39 @@ cross-chapter render checks. Small boxed toolbar labels are a sandbox font
 artifact, not a content issue. Generated churn: `data/ch1.js`, `sw.js` cache
 id, and `sitemap.xml` lastmod dates (2026-10-11).
 
+**FIXED (2.1 batch 6, 2026-10-11) — `me` = "to me" cleanup.** Each of the
+10 audit-flagged verses was checked against its Sanskrit text and own en/ne/hi
+literal translation. 9 entries across 8 verses needed NE मेरो→मलाई /
+HI मेरा→मुझे:
+
+| Verse | Form / English | Old NE / HI | New NE / HI |
+|---|---|---|---|
+| 12.14 | `me` "to me" | मेरो / मेरा | मलाई / मुझे |
+| 12.15 | `me` "to me" | मेरो / मेरा | मलाई / मुझे |
+| 12.16 | `me` "to me" | मेरो / मेरा | मलाई / मुझे |
+| 12.17 | `me` "to me" | मेरो / मेरा | मलाई / मुझे |
+| 12.19 | `me` "to me" | मेरो / मेरा | मलाई / मुझे |
+| 12.20 | `me` "to me" | मेरो / मेरा | मलाई / मुझे |
+| 18.64 | `me` "to me" | मेरो / मेरा | मलाई / मुझे |
+| 18.65 | `me` "to me" | मेरो / मेरा | मलाई / मुझे |
+| 18.69 | `me` "to me" (pāda 2) | मेरो / मेरा | मलाई / मुझे |
+
+**Deliberately left alone (2 entries in 2 verses):**
+- 9.29 *na me dveṣyo'sti na priyaḥ* — the Nepali literal says "कोही मेरा प्रिय
+  वा अप्रिय छैन" (possessive मेरा), not मलाई. Word NE=मेरो is correct.
+- 18.69 pāda 1 *kaścinme priyakṛttamaḥ* — the Nepali literal says "मेरो सेवा
+  गर्ने" (possessive मेरो), not मलाई. Word NE=मेरो is correct.
+
+All 84 `mām` occurrences (all मलाई/मुझे), all 24 `mama` (all मेरो/मेरा), and
+all 20 `mayi` (NE ममा / HI मुझमें, consistent with the verse translations)
+were verified and left alone. Generated churn: `data/ch9.js`, `data/ch12.js`,
+`data/ch18.js`, `sw.js` cache id.
+
 **Fix path (no code change needed):** write five-field entries inline in
 `padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Batches
-1–5 cover `te`, `me`, `param`, `bhūtāni`, `yogam`, `tat`, `yat`, `bhīma`,
-`kutaḥ`, `sattvam`, `arjuna` and `samāḥ`. Next: the remaining forms in the 674-form pool;
-the owner picks each slice.
+1–6 cover `te`, `me` (dative and possessive), `param`, `bhūtāni`, `yogam`,
+`tat`, `yat`, `bhīma`, `kutaḥ`, `sattvam`, `arjuna` and `samāḥ`. Next:
+the remaining forms in the 674-form pool; the owner picks each slice.
 
 ### 5.3 Interpretation and framing (owner decides)
 
@@ -489,13 +535,13 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batch 5 done)
+**Phase 2 — Meaning** · in progress (2.1 batch 6 done)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batch 5 of N** (`te` batch 1; `me`, `param`, `bhūtāni`,
+      **in progress — batch 6 of N** (`te` batch 1; `me`, `param`, `bhūtāni`,
       `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
-      `arjuna`, `samāḥ` batch 5; settled keeps and rationale in §5.2). Next:
-      remaining forms in the 674-form pool; stop here until the owner selects a
-      later slice.
+      `arjuna`, `samāḥ` batch 5; `me` = "to me" cleanup batch 6; settled keeps
+      and rationale in §5.2). Next: remaining forms in the 674-form pool;
+      the owner picks each slice.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -664,6 +710,22 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/a84af58b-bhagavad-gita` · Phase 2.1 batch 6
+  (`me` = "to me" cleanup): verified PR #18 merged at `5d8cdfe` on `main`;
+  unshallowed before ancestry checks; verified batch 5 on `origin/main` (two
+  five-field overrides at 1.04, 9,366 / 9,484 counts, audit `te` 0 / `me` 10).
+  Inspected the remaining pool; selected `me` = "to me" + NE मेरो (10 audit-
+  flagged verses). Each checked against its Sanskrit text and own en/ne/hi
+  literal translation: 9 entries across 8 verses needed मलाई/मुझे; 2 left
+  alone (9.29 possessive, 18.69 pāda 1 possessive). All 84 `mām`, 24 `mama`
+  and 20 `mayi` verified correct. Audit §3 before `te` 0 / `me` 10;
+  after `te` 0 / `me` 2; 9,366 / 9,484 unchanged. Full Playwright build green
+  incl. 162 browser checks. Six 390 × 844 ne/hi screenshots for 12.14, 18.65
+  and 9.29 across chapters 12, 18 and 9; all show correct meanings.
+  Generated churn: `data/ch9, ch12, ch18` + `sw.js` cache id. PR #19:
+  https://github.com/chapain/Bhagavad-Gita/pull/19. Full repository zip:
+  `/home/user/Bhagavad-Gita-phase2.1-batch6.zip`. Stop before the next batch.
 
 - 2026-10-11 · `arena/afa097ba-bhagavad-gita` · Phase 2.1 batch 5
   (`arjuna`, `samāḥ`): verified PR #17 merged; unshallowed before ancestry
