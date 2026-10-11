@@ -206,7 +206,7 @@ GITA_CH12_WORDS = {
      3: [["यः", "yaḥ", "who"],
          ["मद्भक्तः", "madbhaktaḥ", "my devotee"],
          ["सः", "saḥ", "he"],
-         ["मे", "me", "to me"],
+         ["मे", "me", "to me", "मलाई", "मुझे"],
          ["प्रियः", "priyaḥ", "dear"]]},
 
 15: {"s": [],
@@ -227,7 +227,7 @@ GITA_CH12_WORDS = {
          ["यः", "yaḥ", "who"],
          ["सः", "saḥ", "he"],
          ["च", "ca", "and"],
-         ["मे", "me", "to me"],
+         ["मे", "me", "to me", "मलाई", "मुझे"],
          ["प्रियः", "priyaḥ", "dear"]]},
 
 16: {"s": [],
@@ -240,7 +240,7 @@ GITA_CH12_WORDS = {
      3: [["यः", "yaḥ", "who"],
          ["मद्भक्तः", "madbhaktaḥ", "my devotee"],
          ["सः", "saḥ", "he"],
-         ["मे", "me", "to me"],
+         ["मे", "me", "to me", "मलाई", "मुझे"],
          ["प्रियः", "priyaḥ", "dear"]]},
 
 17: {"s": [],
@@ -257,7 +257,7 @@ GITA_CH12_WORDS = {
      3: [["भक्तिमान्", "bhaktimān", "devoted"],
          ["यः", "yaḥ", "who"],
          ["सः", "saḥ", "he"],
-         ["मे", "me", "to me"],
+         ["मे", "me", "to me", "मलाई", "मुझे"],
          ["प्रियः", "priyaḥ", "dear"]]},
 
 18: {"s": [],
@@ -285,7 +285,7 @@ GITA_CH12_WORDS = {
      2: [["अनिकेतः", "aniketaḥ", "homeless"],
          ["स्थिरमतिः", "sthiramatiḥ", "of steady mind"]],
      3: [["भक्तिमान्", "bhaktimān", "devoted"],
-         ["मे", "me", "to me"],
+         ["मे", "me", "to me", "मलाई", "मुझे"],
          ["प्रियः", "priyaḥ", "dear"],
          ["नरः", "naraḥ", "man"]]},
 
@@ -301,7 +301,7 @@ GITA_CH12_WORDS = {
         ["मत्परमाः", "matparamāḥ", "making me the supreme goal"]],
     3: [
     ["भक्ताः", "bhaktāḥ", "devotees"], ["ते", "te", "they", "तिनीहरू", "वे"],
-        ["अतीव", "atīva", "exceedingly"], ["मे", "me", "to me"],
+        ["अतीव", "atīva", "exceedingly"], ["मे", "me", "to me", "मलाई", "मुझे"],
         ["प्रियाः", "priyāḥ", "dear"]]
 },
 }
