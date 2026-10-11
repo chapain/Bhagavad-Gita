@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-11 (UTC) |
-| Updated by | Arena session on branch `arena/cbe968bc-bhagavad-gita` |
-| Base commit | `e1db2d8a` on `main` (PR #27 merged, batch 16 present) |
+| Updated by | Arena session on branch `arena/0ceb3eac-bhagavad-gita` |
+| Base commit | `a1803d7f` on `main` (PR #28 merged, batch 17 present) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -21,7 +21,8 @@ before you talk to the owner.
 ## 1. Where we are
 
 - **Batch 16 (partial chapter 12, verses 12.01–12.04):** PR #26 merged at `28a802a`; batch-15 content verified on `main`. Four verses reviewed, two `paryupāsate` NE/HI overrides at 12.01 and 12.03. This was the state before batch 17; evidence and exhaustive word ledger are in `/home/user/evidence/batch16/`.
-- **Batch 17 (Phase 2.1, 2026-10-11):** all 29 verses of chapter 5 and the remaining 16 verses of chapter 12 reviewed. **45/45 verse verdicts** recorded (26 confirmed, 18 with corrections, 12.19 flagged); 23 NE/HI-only word overrides and 568 unchanged word occurrences enumerated (587 pāda rows plus the speaker-word rows for both 5.01 and 5.02). Chapter 5 and chapter 12 are now complete. Overall verse-review ledger: **591/700**, with 109 verses remaining in chapters 1, 13 and 17. The phrase-level mapping in 12.19 `yena kenacit` remains unresolved; 5.09 `dhārayan` and 5.24 `tathā` are retained with explicit rationales. No owner holds were changed. Source commit `406c766` is pushed to the assigned branch; [PR #28](https://github.com/chapain/Bhagavad-Gita/pull/28) is open to `main` for Dhruba to review. Worksheets, occurrence ledger, assertions and browser evidence are in `/home/user/evidence/batch17/` (outside Git).
+- **Batch 17 (Phase 2.1, 2026-10-11):** PR #28 merged at `a1803d7` (carrying `406c766` and `9b50b43`), verified on `main` before batch 18. All 29 verses of chapter 5 and the remaining 16 verses of chapter 12 reviewed (**45/45 verse verdicts**: 26 confirmed, 18 with corrections, 12.19 flagged; 23 NE/HI-only word overrides and 568 unchanged word occurrences enumerated). Evidence in `/home/user/evidence/batch17/`.
+- **Batch 18 (Phase 2.1, 2026-10-11):** all 47 verses of chapter 1 (`1.01`–`1.47`) reviewed against Sanskrit, pāda splits, word entries and EN/NE/HI literals. **47/47 verse verdicts** recorded (20 confirmed, 27 corrected with **42 NE/HI-only five-field overrides** across 40 pādas; 8 pre-existing five-field entries verified and retained, bringing `source/padachheda_ch1.py` to 50 five-field entries and the corpus to **528**). All **601 unchanged word occurrences** (589 pāda words + 12 speaker words) are exhaustively enumerated in `/home/user/evidence/batch18/worksheet-ch1.md`. Both chapter-1 additive `tathā` carry-forwards (`1.26 P4#4` and `1.34 P4#3`) are verified in context and resolved to `पनि / भी` (leaving only `13.18`, `17.07` and `17.26`). Two out-of-scope observations are flagged for Dhruba without editing: `1.15` NE literal (`हेराकुली पराक्रमी भीमले महाशङ्ख पाञ्चजन्य… पौण्ड्र बजाए।` in `source/translations_ne.py`) and `अर्जुन उवाच` speaker-header Hindi gloss (`HI = 'हे अर्जुन'` in `source/build_gita.py`). All owner holds remain untouched. Overall verse-review ledger: **638/700**, with **62 verses** remaining in chapters 13 (35) and 17 (27). Source commit `671bfe9` is pushed to `arena/0ceb3eac-bhagavad-gita`; [PR #29](https://github.com/chapain/Bhagavad-Gita/pull/29) is open to `main` for Dhruba to review. Worksheets, occurrence ledger, assertions and browser evidence (12 full 390×844 sheets + 80 changed-pāda crops) are in `/home/user/evidence/batch18/` (outside Git).
 
 
 - **2026-10-09 — Phase 1 complete (steps 1.1–1.9).** Step 1.4 made
@@ -1201,6 +1202,57 @@ Appendix A output is byte-identical before and after (SHA-256 `87d5ad0f989e09dc8
 
 The ledger is now **591/700 verses**; 109 remain in chapters 1, 13 and 17. This session stops after batch 17; no Phase 2.2 or other §6 task was started.
 
+**FIXED (2.1 batch 18, 2026-10-11) — complete chapter 1 (`1.01`–`1.47`), verse by verse.** Verified PR #28 merged at `a1803d7` (carrying `406c766` and `9b50b43`) and verified all 23 batch-17 overrides on `main`. Reproduced Appendix A and passed the full §4 pre-edit build before touching source. All 47 verses of chapter 1 (631 pāda-word occurrences + 12 speaker-word occurrences = 643 word rows) were reviewed against Sanskrit, exact pāda splits, word entries and EN/NE/HI literals: **20 verses confirmed** without new edits, **27 verses corrected** with **42 NE/HI-only five-field overrides** across 40 pādas (`source/padachheda_ch1.py` now has 50 five-field entries; corpus total **528**). The exhaustive worksheet in `/home/user/evidence/batch18/worksheet-ch1.md` records a verdict and reason for every verse and enumerates all **601 unchanged word occurrences** (589 pāda words including the 8 pre-existing five-field entries + 12 speaker words).
+
+| Loc | Deva | IAST | EN | Old NE / Old HI | New NE / New HI | Reason |
+|---|---|---|---|---|---|---|
+| `1.01 P4#3` | सञ्जय | `sañjaya` | O Sañjaya | सञ्जय / संजय | **हे सञ्जय / हे संजय** | Lone vocative `'O …'` entry in all 18 chapters missing vocative particle `हे` (1.01 literals: `हे सञ्जय / हे संजय`). |
+| `1.02 P1#3` | पाण्डव | `pāṇḍava` | of the Pāṇḍavas | हे पाण्डव / हे पांडव | **पाण्डव / पांडव** | Compound stem `pāṇḍava-anīkam` ('army of the Pāṇḍavas') spoken by Sañjaya to Dhṛtarāṣṭra had vocative `हे पाण्डव / हे पांडव`. |
+| `1.03 P4#3` | धीमता | `dhīmatā` | wise, intelligent | बुद्धिमान्ले / बुद्धिमान् से | **बुद्धिमान् / बुद्धिमान्** | Adjective modifying `śiṣyeṇa` (`शिष्यद्वारा / शिष्य द्वारा`) repeated the instrumental postposition (`-ले / से`). |
+| `1.06 P4#1` | सर्व | `sarva` | all | हे सबै / हे सब | **सबै / सब** | Compound stem `sarva-eva` ('all indeed') had vocative `हे सबै / हे सब` leaked from `11.40 namo 'stu te sarva`. |
+| `1.07 P4#2` | अर्थम् | `artham` | for the sake of | त्यसका निम्ति / उसके लिए | **निम्ति / के लिए** | `saṁjñā-artham` ('for the sake of information') had demonstrative `त्यसका / उसके` leaked from `3.09 tadartham`. |
+| `1.07 P4#5` | ते | `te` | to you | तिम्रो / तुम्हारा | **तिमीलाई / तुझे** | Dative indirect object with `bravīmi` ('I tell to you') had possessive `तिम्रो / तुम्हारा`. |
+| `1.09 P2#2` | अर्थे | `arthe` | for the sake of | विषयमा / विषय में | **निम्ति / के लिए** | `mad-arthe` ('for my sake') had locative noun sense `विषयमा / विषय में` leaked from 2.27/3.34. |
+| `1.10 P2#2` | भीष्म | `bhīṣma` | by Bhīṣma | भीष्म / भीष्म | **भीष्मले / भीष्म द्वारा** | Instrumental agent in `bhīṣma-abhirakṣitam` ('protected by Bhīṣma'), matching `1.10 P4#2 bhīma` (`भीमले / भीम द्वारा`). |
+| `1.11 P1#1` | अयनेषु | `ayaneṣu` | in the approaches | गतिहरूमा / गतियों में | **दिशाहरूमा / मोर्चों पर** | Strategic approaches/fronts (`दिशाहरूमा / मोर्चों पर` in 1.11 literals), not 'in movements'. |
+| `1.11 P2#1` | यथा | `yathā` | according to | जसरी / जैसे | **अनुसार / अनुसार** | Compound adverb `yathā-bhāgam` ('according to their divisions', 1.11 literals `अनुसार / अनुसार`), not manner `जसरी / जैसे`. |
+| `1.11 P4#2` | सर्व | `sarva` | all | हे सबै / हे सब | **सबै / सब** | Compound stem `sarva-eva` ('all indeed') had vocative `हे सबै / हे सब` leaked from 11.40. |
+| `1.13 P1#1` | ततः | `tataḥ` | then | त्यसैले / इसलिए | **त्यसपछि / तब** | Narrative temporal `'then'` (`त्यसपछि / तब` in 1.13 literals), not inferential `'therefore'`. |
+| `1.13 P4#1` | सः | `saḥ` | that | ऊ / वह | **त्यो / वह** | Demonstrative adjective modifying inanimate `śabdaḥ` ('that sound', 1.13 NE literal `त्यो शब्द`), not animate `ऊ`. |
+| `1.14 P1#1` | ततः | `tataḥ` | then | त्यसैले / इसलिए | **त्यसपछि / तब** | Narrative temporal `'then'` (`त्यसपछि / तब` in 1.14 literals), not inferential `'therefore'`. |
+| `1.14 P2#1` | महति | `mahati` | in the great | महान्मा / महान् में | **महान् / महान्** | Locative adjective modifying `syandane` (`रथमा / रथ में`) repeated the locative postposition (`-मा / में`). |
+| `1.16 P2#1` | कुन्ती | `kuntī` | of Kuntī | कुन्तीका / कुन्ती की | **कुन्तीका / कुन्ती का** | Compound stem `kuntī-putraḥ` had feminine Hindi postposition `की` before masculine head noun `पुत्र`. |
+| `1.18 P2#1` | सर्वशः | `sarvaśaḥ` | all, one and all | सबै प्रकारले / सब प्रकार से | **सबैले / सब ने** | Distributive subject `'all, one and all'` with `dadhmuḥ` (1.18 literals `सबैले / सबने`), not `'in all ways'`. |
+| `1.19 P1#1` | सः | `saḥ` | that | ऊ / वह | **त्यो / वह** | Demonstrative adjective modifying inanimate `ghoṣaḥ` ('that uproar', 1.19 NE literal `त्यो भीषण गर्जनले`), not animate `ऊ`. |
+| `1.22 P1#1` | यावत् | `yāvat` | so that | जति / जितना | **ताकि / ताकि** | Purpose/temporal `'so that'` (`ताकि / ताकि` in 1.22 literals), not quantitative `'as much as'` from 2.46/18.55. |
+| `1.22 P2#2` | कामान् | `kāmān` | desiring | कामनाहरू / कामनाएँ | **चाहने / चाहने वाले** | Bahuvrīhi member `yuddha-kāmān` ('desiring battle'), not substantive noun `'desires'` from 2.55/2.70. |
+| `1.22 P3#1` | कैः | `kaiḥ` | with whom | केले / किससे | **कससँग / किससे** | Animate sociative `'with whom'` (with `saha`, 1.22 NE literal `कस-कससँग`), not inanimate `'by what'` from 14.21. |
+| `1.25 P1#3` | प्रमुखतः | `pramukhataḥ` | before (headed by) | अगुवाइमा / अग्रणी | **अगाडि / सामने** | Spatial `'before, in front of'` in `bhīṣma-droṇa-pramukhataḥ` (1.25 literals `अगाडि / सामने`), not `'in leadership / leader'`. |
+| `1.25 P2#4` | क्षिताम् | `kṣitām` | the rulers | शासकहरूलाई / शासकों को | **शासकहरूका / शासकों के** | Genitive plural `mahī-kṣitām` ('of the rulers of the earth', 1.25 literals `शासकहरूका / शासकों के`), not accusative. |
+| `1.25 P4#1` | समवेतान् | `samavetān` | assembled | जम्मा भएकाहरूलाई / एकत्र हुए को | **जम्मा भएका / एकत्र हुए** | Participial modifier before head noun `kurūn` (`कुरुहरूलाई / कुरुओं को`), dropping substantive case suffix. |
+| `1.26 P4#4` | तथा | `tathā` | also | त्यसरी / वैसे ही | **पनि / भी** | List-closing additive `'also, as well'` in `putrān pautrān sakhīṃs tathā` (1.26 literals `पनि / भी`); resolves carry-forward #1. |
+| `1.27 P4#1` | सर्वान् | `sarvān` | all | सबैलाई / सबको | **सबै / सब** | Adjective modifying `bandhūn` (`नातेदारहरूलाई / बन्धुओं को`), dropping substantive `-लाई / को`. |
+| `1.28 P4#2` | समुपस्थितम् | `samupasthitam` | standing before | आइपरेको / आ पड़ा | **उभिएका / खड़े** | Participial modifier `'standing before'` modifying `svajanam` (1.28 literals `उभिएका / खड़े`), not `'befallen'` from 2.02. |
+| `1.29 P1#1` | सीदन्ति | `sīdanti` | fail, sink | डुब्छन् / डूबते हैं | **थकित हुन्छन् / शिथिल होते हैं** | `'fail, give way'` in `sīdanti mama gātrāṇi` (1.29 literals `थकित हुन्छन् / शिथिल होते हैं`), not `'drown in water'`. |
+| `1.29 P4#4` | जायते | `jāyate` | arises | जन्मन्छ / जन्म लेता है | **उत्पन्न हुन्छ / उत्पन्न होता है** | `'arises'` in `romaharṣaś ca jāyate`, not biological birth from 2.20/14.15. |
+| `1.30 P2#4` | परिदह्यते | `paridahyate` | burns | बल्छ / जलता है | **बल्छ / जलती है** | Feminine Hindi verb `जलती है` agreeing with subject `tvak` (`त्वचा`, 1.30 HI literal `मेरी त्वचा जलती है`). |
+| `1.30 P4#1` | भ्रमति | `bhramati` | reels | भ्रमण गर्छ / भ्रमण करता है | **भड्किन्छ / घूम जाता है** | `'reels, spins'` in `bhramatīva ca me manaḥ` (1.30 literals `भड्किन्छ / घूम जाता है`), not false-friend `'tours/travels'`. |
+| `1.32 P3#2` | नः | `naḥ` | to us | हामी / हम | **हामीलाई / हमें** | Dative `'to us'` in `kiṃ no rājyena` (1.32 literals `हामीलाई / हमें`), not nominative `'we'` from `2.06 P2#5`. |
+| `1.32 P3#3` | राज्येन | `rājyena` | with the kingdom | राज्यसँग / राज्य से | **राज्यले / राज्य से** | Instrumental of utility `-ले` in Nepali (matching `1.32 P4#2 bhogaiḥ → भोगहरूले`), not comitative `-सँग`. |
+| `1.32 P4#3` | जीवितेन | `jīvitena` | with life | जीवनसँग / जीवन से | **जीवनले / जीवन से** | Instrumental of utility `-ले` in Nepali (matching `1.32 P4#2 bhogaiḥ → भोगहरूले`), not comitative `-सँग`. |
+| `1.33 P1#2` | अर्थे | `arthe` | for the sake of | विषयमा / विषय में | **निम्ति / के लिए** | `yeṣām arthe` ('for whose sake'), not locative noun `'in the matter/object'` from 2.27/3.34. |
+| `1.34 P4#3` | तथा | `tathā` | also | त्यसरी / वैसे ही | **पनि / भी** | List-closing additive `'also'` in `śyālāḥ sambandhinas tathā` (while `1.34 P2#1 tathā` `'likewise'` stays `त्यसरी / वैसे ही`); resolves carry-forward #2. |
+| `1.36 P1#3` | नः | `naḥ` | our | हामी / हम | **हामीलाई / हमें** | Experiencer dative in `naḥ kā prītiḥ syāt` (1.36 literals `हामीलाई / हमें`), not nominative `'we'` from `2.06 P2#5`. |
+| `1.41 P2#1` | प्रदुष्यन्ति | `praduṣyanti` | become corrupted | भ्रष्ट हुन्छन् / भ्रष्ट होते हैं | **भ्रष्ट हुन्छन् / भ्रष्ट होती हैं** | Feminine plural Hindi verb `भ्रष्ट होती हैं` agreeing with `kula-striyaḥ` (`स्त्रियाँ`, 1.41 HI literal `भ्रष्ट होती हैं`). |
+| `1.41 P4#1` | जायते | `jāyate` | arises | जन्मन्छ / जन्म लेता है | **उत्पन्न हुन्छ / उत्पन्न होता है** | `'arises'` in `jāyate varṇasaṅkaraḥ` (1.41 literals `उत्पन्न हुन्छ / उत्पन्न होता है`), not biological birth. |
+| `1.43 P1#2` | एतैः | `etaiḥ` | these | यिनीहरूबाट / इनसे | **यी / इन** | Oblique demonstrative adjective modifying `doṣaiḥ` (`दोषहरूले / दोषों से`; 1.43 literals `यी दोषहरूबाट / इन दोषों से`). |
+| `1.46 P3#1` | धार्तराष्ट्राः | `dhārtarāṣṭrāḥ` | the sons of Dhṛtarāṣṭra | धृतराष्ट्र का पुत्रहरूले / धृतराष्ट्र के पुत्र | **धृतराष्ट्रका पुत्रहरूले / धृतराष्ट्र के पुत्र** | Joined Nepali genitive postposition `धृतराष्ट्रका` (was detached `धृतराष्ट्र का`). |
+| `1.46 P4#2` | मे | `me` | for me | मेरो / मेरा | **मेरो लागि / मेरे लिए** | Dative `'for me'` in `tan me kṣemataraṃ bhavet` (1.46 literals `मेरा लागि / मेरे लिए`), not possessive `'my'`. |
+
+**Out-of-scope observations flagged for Dhruba (not edited):** (1) `1.15` Nepali literal in `source/translations_ne.py` reads `“कृष्णले पाञ्चजन्य बजाए, अर्जुनले देवदत्त बजाए, र हेराकुली पराक्रमी भीमले महाशङ्ख पाञ्चजन्य… पौण्ड्र बजाए।”` (false start `पाञ्चजन्य…` before `पौण्ड्र` and English calque `हेराकुली पराक्रमी` for `भीमकर्मा`); (2) in `source/build_gita.py`, `i18n_speaker_words` maps Nepali speaker headers via `NE_SPEAKER` (`अर्जुनले`) but falls back to `GLOSS_HI['arjuna'] = 'हे अर्जुन'` for Hindi, so all 21 `अर्जुन उवाच` speaker blocks carry `HI = 'हे अर्जुन'`. Both lie outside `source/padachheda_ch1.py` and are left untouched. All active owner holds (`6.13 dhārayan`, `6.29` EN literal, `8.10` verse text/split, `11.44 praṇidhāya` literal, `4.16 kavayaḥ`, `16.05/18.66 mā/śucaḥ`, `9.34 yuktvaivam`, `12.19 yena kenacit`) remain untouched.
+
+Appendix A output is byte-identical before and after (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`). Full §4 build passed all checks including all **162 browser checks**. Structural Playwright assertions passed **84/84** (42 overrides × NE/HI, asserting each new meaning appears after its own Devanagari row inside the expanded pāda). Browser evidence: **12 full 390×844 sheets** (6 verses × NE/HI) and **80 changed-pāda crops** (40 pādas × NE/HI) under `/home/user/evidence/batch18/`. The ledger is now **638/700 verses**; **62 remain** in chapters 13 (35) and 17 (27). This session stops after batch 18.
+
 ### 5.3 Interpretation and framing (owner decides)
 
 - **“तीन निष्ठा / तीन निष्ठाएँ”** clashes with 3.3 *loke ’smin dvividhā niṣṭhā*
@@ -1335,41 +1387,45 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batches 1–17; complete verse-by-verse
-reviews now cover chapters 2–12, 14–16 and 18; chapters 1, 13 and 17 remain)
+**Phase 2 — Meaning** · in progress (2.1 batches 1–18; complete verse-by-verse
+reviews now cover chapters 1–12, 14–16 and 18; chapters 13 and 17 remain)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batches 1–17 done** (`te` batch 1; `me`, `param`, `bhūtāni`,
+      **in progress — batches 1–18 done** (`te` batch 1; `me`, `param`, `bhūtāni`,
       `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
       `arjuna`, `samāḥ` batch 5; `me` = “to me” batch 6; ch4 batch 7 (24), ch14
       batch 8 (8), ch16 batch 9 (11), ch18 batch 10 (20), ch2 batch 11 (69),
       ch11+15 batch 12 (62 + 10), ch3+7 batch 13 (32 + 19), ch6+8 batch 14
-      (18 + 9), ch9+10 batch 15 (19 + 84), ch12.01–.04 batch 16 (2), and full
-      ch5 + ch12.05–.20 batch 17 (12 + 11)). **410 of 9,366 verse-word instances**
-      have per-verse overrides from the full chapter-review batches (**486
-      five-field entries corpus-wide**). Remaining chapters: 1, 13 and 17
-      (**109 verses**). Open carries: 4.16 `kavayaḥ`; additive `tathā` at 1.26,
-      1.34, 13.18, 17.07 and 17.26; `mā` / `śucaḥ` at 16.05 / 18.66 (approval
-      required); and 9.34 source/split mismatch (flagged, not edited). `matiḥ`
-      6.36 and additive `tathā` 7.06, 8.25, 9.32–33, 10.06/10.13/10.35 are
-      resolved; 5.24 and 12.18 `tathā` were checked as non-additive “likewise”.
+      (18 + 9), ch9+10 batch 15 (19 + 84), ch12.01–.04 batch 16 (2), full
+      ch5 + ch12.05–.20 batch 17 (12 + 11), and full ch1 batch 18 (42)). **452 of 9,366 verse-word instances**
+      have per-verse overrides from the full chapter-review batches (**528
+      five-field entries corpus-wide**). Remaining chapters: 13 and 17
+      (**62 verses**). Open carries: 4.16 `kavayaḥ`; additive `tathā` at
+      13.18, 17.07 and 17.26; `mā` / `śucaḥ` at 16.05 / 18.66 (approval
+      required); 9.34 source/split mismatch (flagged, not edited); 12.19
+      `yena kenacit` token mapping (flagged, not edited); `1.15` NE literal
+      (`translations_ne.py`) and `अर्जुन उवाच` speaker-header HI gloss
+      (`build_gita.py`) flagged for Dhruba. `matiḥ` 6.36 and additive `tathā`
+      1.26, 1.34, 7.06, 8.25, 9.32–33, 10.06/10.13/10.35 are resolved; 1.08,
+      1.34 P2#1, 5.24 and 12.18 `tathā` were checked as non-additive “likewise”.
       Owner holds: 6.13 `dhārayan` NE धानेर; 6.29 English literal; 8.10 text
       (fix only with approval in its own small commit); 11.44 `praṇidhāya` literal
       (remind Dhruba; do not change). Other carry-forward flags and full details:
-      §5.2 and `/home/user/evidence/batch17/fixes-reasons-holds.md`.
+      §5.2 and `/home/user/evidence/batch18/fixes-reasons-holds.md`.
 - [ ] 2.1x **Verse-by-verse verification of all 700 verses** (standing owner
-      requirement, started 2026-10-11). Reviewed so far: **591/700 verses** —
-      chapters 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 and 18 (ch2
-      72/72, ch3 43/43, ch4 42/42, ch5 29/29, ch6 47/47, ch7 30/30, ch8 28/28,
-      ch9 34/34, ch10 42/42, ch11 55/55, ch12 20/20, ch14 27/27, ch15 20/20,
-      ch16 24/24, ch18 78/78). Every reviewed verse has its word entries,
+      requirement, started 2026-10-11). Reviewed so far: **638/700 verses** —
+      chapters 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 and 18 (ch1
+      47/47, ch2 72/72, ch3 43/43, ch4 42/42, ch5 29/29, ch6 47/47, ch7 30/30,
+      ch8 28/28, ch9 34/34, ch10 42/42, ch11 55/55, ch12 20/20, ch14 27/27,
+      ch15 20/20, ch16 24/24, ch18 78/78). Every reviewed verse has its word entries,
       EN/NE/HI literals, verdict (confirmed / corrected / flagged) and reason.
       Per-verse ledgers: ch4/14/16 in PR #20, ch18 in PR #21, ch2 in PR #22,
       ch11+15 in PR #23, ch3+7 in PR #24, ch6+8 in `/home/user/evidence/batch14/`,
       ch9+10 in `/home/user/evidence/batch15/`, 12.01–.04 in
-      `/home/user/evidence/batch16/`, and ch5 + 12.05–.20 in
-      `/home/user/evidence/batch17/`. **109 verses remain in chapters 1, 13 and
-      17.** Nothing in the corpus may be called verified until all 700 are.
-      No Phase 2.2 or other §6 item was started in batch 17.
+      `/home/user/evidence/batch16/`, ch5 + 12.05–.20 in
+      `/home/user/evidence/batch17/`, and ch1 in
+      `/home/user/evidence/batch18/`. **62 verses remain in chapters 13 (35) and
+      17 (27).** Nothing in the corpus may be called verified until all 700 are.
+      No Phase 2.2 or other §6 item was started in batch 18.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -1538,6 +1594,8 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/0ceb3eac-bhagavad-gita` · Phase 2.1 batch 18 (complete chapter 1, `1.01`–`1.47`): verified PR #28 merged at `a1803d7` and all 23 batch-17 overrides on `main`; reviewed all 47 verses/188 pādas and 643 word occurrences (631 pāda + 12 speaker); **42 NE/HI-only five-field overrides** across 27 verses/40 pādas, 20 verses confirmed, and 601 unchanged occurrences exhaustively listed in `/home/user/evidence/batch18/worksheet-ch1.md`. Resolved additive `tathā` at `1.26 P4#4` and `1.34 P4#3` (`पनि / भी`); flagged `1.15` NE literal (`translations_ne.py`) and `अर्जुन उवाच` speaker HI gloss (`build_gita.py`) for Dhruba without editing; all owner holds preserved. Appendix A byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`); full §4 build green (162 browser checks); 84/84 structural rendered-string assertions; 12 full 390×844 sheets + 80 changed-pāda crops in `/home/user/evidence/batch18/`. Ledger: **638/700** (62 remain in chapters 13 and 17). Source commit `671bfe9` pushed to `arena/0ceb3eac-bhagavad-gita`; [PR #29](https://github.com/chapain/Bhagavad-Gita/pull/29) open to `main`; `/home/user/downloads/Bhagavad-Gita-700-titles.zip` refreshed and verified byte-identical via `diff -r` excluding `.git`. No second batch or Phase 2.2 work.
 
 - 2026-10-11 · `arena/cbe968bc-bhagavad-gita` · Phase 2.1 batch 17 (chapter 5 + 12.05–12.20): reviewed 45 verses/180 pādas and 591 word occurrences; 23 NE/HI-only corrections across 18 verses, 26 confirmed, 12.19 flagged, and 568 unchanged occurrences exhaustively listed. Appendix A byte-identical; full §4 build green (162 browser checks); 12 full 390×844 sheets + 42 changed-pāda crops with 14 boundary clamps; evidence in `/home/user/evidence/batch17/`. Ledger 591/700; 109 remain in chapters 1, 13 and 17. Owner holds preserved. Source commit `406c766` pushed to the assigned branch; [PR #28](https://github.com/chapain/Bhagavad-Gita/pull/28) open to `main` (PR number recorded in second commit `9b50b43`). The final `/home/user/downloads/Bhagavad-Gita-700-titles.zip` was refreshed from this worktree and passed byte-identical extraction comparison with `diff -r` excluding `.git`. No second batch or Phase 2.2 work.
 
