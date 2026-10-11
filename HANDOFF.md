@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-11 (UTC) |
-| Updated by | Arena session on branch `arena/9704c065-bhagavad-gita` |
-| Base commit | `e09f31e` on `main` (PR #25, Phase 2.1 batch 14, merged before batch 15) |
+| Updated by | Arena session on branch `arena/ce051313-bhagavad-gita` |
+| Base commit | `28a802a` on `main` (PR #26 merged, batch 15 present) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -19,6 +19,9 @@ before you talk to the owner.
 ---
 
 ## 1. Where we are
+
+- **Batch 16 (partial chapter 12, verses 12.01–12.04):** PR #26 merged at `28a802a`; batch-15 content verified on `main`. Four verses reviewed, two `paryupāsate` NE/HI overrides at 12.01 and 12.03. The remaining 16 verses of chapter 12 are NOT reviewed. Ledger 546/700; 154 remain. Evidence and exhaustive word ledger: `/home/user/evidence/batch16/`. Audit unchanged; full builds before and after green (162 browser checks), 6 full sheets and 4 changed-pāda crops.
+
 
 - **2026-10-09 — Phase 1 complete (steps 1.1–1.9).** Step 1.4 made
   `source/check_padas.py` a build-failing strict validator. It losslessly
@@ -1187,6 +1190,8 @@ indexed under `/home/user/evidence/batch15/`. This revision has no
 positioned as close as scroll range allows, with 54 boundary clamps recorded
 in the index (the direct crops remain the exact expanded pāda boxes).
 
+**Batch 16 carry:** 12.01 and 12.03 `paryupāsate` (EN “worship”) now use पूजा गर्छन् / पूजा करते हैं rather than अनुसरण गर्छन् / अनुसरण करते हैं. 12.02 and 12.04 confirmed. See `/home/user/evidence/batch16/chapter12-review-worksheet.md` for occurrence-by-occurrence decisions. No other chapter-12 verses were reviewed. Owner flags stay open in `holds.md` there.
+
 ### 5.3 Interpretation and framing (owner decides)
 
 - **“तीन निष्ठा / तीन निष्ठाएँ”** clashes with 3.3 *loke ’smin dvividhā niṣṭhā*
@@ -1324,7 +1329,7 @@ Missing:
 **Phase 2 — Meaning** · in progress (2.1 batches 1–15 done; chapters 2, 3,
 4, 6, 7, 8, 9, 10, 11, 14, 15, 16 and 18 have been read verse by verse)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batches 1–15 done** (`te` batch 1; `me`, `param`,
+      **in progress — batches 1–15 and partial-chapter batch 16 done** (`te` batch 1; `me`, `param`,
       `bhūtāni`, `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`,
       `sattvam` batch 4; `arjuna`, `samāḥ` batch 5; `me` = “to me” batch 6;
       ch4 batch 7 (24), ch14 batch 8 (8), ch16 batch 9 (11), ch18 batch 10
@@ -1343,14 +1348,14 @@ Missing:
       `/home/user/evidence/batch15/holds.json`.
 - [ ] 2.1x **Verse-by-verse verification of all 700 verses** (standing owner
       requirement, started 2026-10-11). Reviewed so far: **chs 2, 3, 4, 6, 7, 8,
-      9, 10, 11, 14, 15, 16, 18 = 542 verses** (ch2 72/72, ch3 43/43, ch4
+      9, 10, 11, 14, 15, 16, 18 plus 12.01–12.04 = 546 verses** (ch2 72/72, ch3 43/43, ch4
       42/42, ch6 47/47, ch7 30/30, ch8 28/28, ch9 34/34, ch10 42/42, ch11
       55/55, ch14 27/27, ch15 20/20, ch16 24/24, ch18 78/78). Every reviewed
       verse has its word list, en/ne/hi literals, verdict (confirmed / corrected /
       flagged) and reason. Per-verse ledgers: ch4/14/16 in PR #20, ch18 in PR
       #21, ch2 in PR #22, ch11+15 in PR #23, ch3+7 in PR #24, ch6+8 in
       `/home/user/evidence/batch14/`, and ch9+10 in
-      `/home/user/evidence/batch15/`. Remaining: **158 verses in 5 chapters**
+      `/home/user/evidence/batch15/`. Remaining: **154 verses in 5 chapters**
       (1, 5, 12, 13, 17). Nothing in the corpus may be called verified until all
       700 are.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
@@ -1521,6 +1526,9 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/ce051313-bhagavad-gita` · batch 16: PR #26 merged; four verses (12.01–12.04) reviewed, two NE/HI-only changes. Pre/post full build green and audit byte-identical; chapter-12 remaining verses left unreviewed. Evidence in `/home/user/evidence/batch16/`. Owner decisions held. PR #27 opened for Dhruba to merge; no second batch.
+
 
 - 2026-10-11 · `arena/9704c065-bhagavad-gita` · Phase 2.1 batch 15 (chs 9+10):
   verified PR #25 merged to `main` at `e09f31e`; reproduced Appendix A and the
