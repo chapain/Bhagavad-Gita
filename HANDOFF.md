@@ -217,7 +217,8 @@ before you talk to the owner.
   study, 19 Py tests, 802 doc assertions, 15 + 7 Node, 162 browser). Twelve
   390 × 844 ne/hi sheets for 18.02, 18.42, 18.69, 18.78 (ch18) plus 4.16 and
   16.20 (cross-chapter renders) captured and read back. Screenshots:
-  `/home/user/evidence/batch10/`.
+  `/home/user/evidence/batch10/`. GitHub: PR #21 from
+  `arena/207086dc-bhagavad-gita` — https://github.com/chapain/Bhagavad-Gita/pull/21.
 
 
 ## 2. Resume in five minutes
@@ -913,7 +914,8 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
   (2,800/0, 2,100 paraphrase, 6 SEO, 572 health, 9,658 study, 19 Py, 802 doc,
   15+7 Node, 162 browser); audit after identical. Twelve 390×844 ne/hi sheets
   (18.02/42/69/78 + 4.16 + 16.20) captured and read back. Churn: data/ch18.js +
-  sw.js cache id. Stop before the next batch.
+  sw.js cache id. PR #21: https://github.com/chapain/Bhagavad-Gita/pull/21.
+  Stop before the next batch.
 
 - 2026-10-11 · `arena/5afb9e8c-bhagavad-gita` · Phase 2.1 batches 7–9:
   verified PR #19 merged at `7de6723` on `main` (batch 6 content re-verified:
