@@ -343,8 +343,11 @@ before you talk to the owner.
   attains the Supreme”, which the verse does not say; **8.10’s verse text reads
   “सम्य क्स तं” / “samya ksa taṃ” where the sandhi should be सम्यक् स तं /
   samyak sa taṃ** — verse text is out of a word-gloss batch, so it is reported,
-  not fixed. Full-repo zip: `/home/user/downloads/Bhagavad-Gita-700-titles.zip`
-  (byte-identical `diff -r` round trip).
+  not fixed. Source-review commit `2076740` on
+  `arena/20d19a48-bhagavad-gita`; [PR #25](https://github.com/chapain/Bhagavad-Gita/pull/25)
+  is open from that branch to `main`. Full-repo zip:
+  `/home/user/downloads/Bhagavad-Gita-700-titles.zip` (byte-identical `diff -r`
+  round trip). No other batch or Phase 2 item was started.
 
 
 ## 2. Resume in five minutes
@@ -1465,8 +1468,9 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
   390 × 844 ne/hi sheets (46 full sheets + 48 changed-pāda crops). Source verifier
   and `git diff --check` passed; ledger now records **466/700 verses reviewed**.
   Full-repo zip `/home/user/downloads/Bhagavad-Gita-700-titles.zip` round-tripped
-  byte-identically with `diff -r`. Source commit pushed only to this branch; PR #25
-  open to `main`. Open flags reported: 8.10 verse text (सम्य क्स तं / samya ksa taṃ
+  byte-identically with `diff -r`. Source commit `2076740` pushed only to this
+  branch; [PR #25](https://github.com/chapain/Bhagavad-Gita/pull/25) open from
+  `arena/20d19a48-bhagavad-gita` to `main`. Open flags reported: 8.10 verse text (सम्य क्स तं / samya ksa taṃ
   → सम्यक् स तं / samyak sa taṃ), 6.13 NE धानेर, 6.29’s English literal, 4.16
   `kavayaḥ`, `mā` / `śucaḥ` 16.05 / 18.66, and the 11.44 *praṇidhāya* reminder.
 
