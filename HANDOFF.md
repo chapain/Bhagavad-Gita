@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-11 (UTC) |
-| Updated by | Arena session on branch `arena/39ceb621-bhagavad-gita` |
-| Base commit | `1b7b83c` on `main` (content-verified merge of PR #23, 2.1 batch 12) |
+| Updated by | Arena session on branch `arena/20d19a48-bhagavad-gita` |
+| Base commit | `05dc983` on `main` (content-verified merge of PR #24, 2.1 batch 13) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -314,6 +314,37 @@ before you talk to the owner.
   `a3e4b54`. No other batch or Phase 2 item was started. The 11.44
   *praṇidhāya* literal “शरीर थपथपाउँछु” remains Dhruba’s decision — remind
   him, do not fix it.
+
+- **2026-10-11 — Batch 14 done (chapters 6 + 8).** PR #24 was confirmed
+  **merged** on GitHub and re-verified by *content* on `main` (state MERGED,
+  10:59:37 UTC, merge commit `05dc983` = the tip of `origin/main`; both batch-13
+  commits `a3e4b54` and `918f4eb` are real ancestors, the 51 overrides are in
+  `source/padachheda_ch3.py` / `_ch7.py`, and the rendered `data/ch3.js` and
+  `data/ch7.js` carry the new NE/HI in both the `flow` and `padas` mirrors with
+  no non-`word[3]`/`word[4]` leaf touched). The clone was
+  shallow, so `git fetch --unshallow` was run before ancestry checks. Appendix A
+  was reproduced and the pre-edit full §4 build was green before any source
+  edit. **All 47 chapter-6 and 28 chapter-8 verses were read against their
+  English, Nepali and Hindi literals. 27 inline five-field overrides** (18 in
+  ch6, 9 in ch8; only word[3]/word[4]) across 23 verses; 52 verses confirmed
+  as-is. Full tables in §5.2; worksheets, changed-word tables, the exhaustive
+  unchanged-occurrence list (1,011 occurrences) and the open holds are in
+  `/home/user/evidence/batch14/chapter6-review-worksheet.md` and
+  `chapter8-review-worksheet.md`. Appendix A before/after **byte-identical**
+  (`te` 0 / `me` 2; 9,366 / 9,484; §3 674/4,532). Full §4 build green: 2,800/0
+  pāda, 2,100 paraphrase, 6 SEO, 572 site-health, 9,658 study, 19 Python tests,
+  802 document assertions, 15 + 7 Node tests and all **162 browser checks**;
+  **54 rendered-string assertions** passed and **94 390 × 844 ne/hi sheets**
+  (46 full sheets + 48 changed-pāda crops) were captured. The **6.36 `matiḥ`
+  carry-forward is resolved** (मत, matching 18.06/18.70/18.78); the additive
+  `tathā` at 8.25 is resolved too. **Owner flags carried or raised here:** 4.16
+  `kavayaḥ` still open; `mā`/`śucaḥ` at 16.05 and 18.66 still open; 6.13
+  `dhārayan` NE धानेर (non-standard form); 6.29’s *English literal* adds “— he
+  attains the Supreme”, which the verse does not say; **8.10’s verse text reads
+  “सम्य क्स तं” / “samya ksa taṃ” where the sandhi should be सम्यक् स तं /
+  samyak sa taṃ** — verse text is out of a word-gloss batch, so it is reported,
+  not fixed. Full-repo zip: `/home/user/downloads/Bhagavad-Gita-700-titles.zip`
+  (byte-identical `diff -r` round trip).
 
 
 ## 2. Resume in five minutes
@@ -1005,6 +1036,87 @@ Appendix A audit is byte-identical before/after: **9,366 verse words / 9,484 glo
 Full-repo checkpoint zip (outside Git): `/home/user/downloads/Bhagavad-Gita-700-titles.zip`; unzipped tree verified byte-identical with `diff -r` (tracked repository files; `.git` excluded).
 
 
+**FIXED (2.1 batch 14, 2026-10-11) — chapters 6 and 8, verse by verse.** All 47
+verses of chapter 6 and all 28 of chapter 8 were read word by word against
+their English, Nepali and Hindi literals. **27 inline five-field overrides**
+(18 in ch6, 9 in ch8; only `word[3]`/`word[4]`) across 23 verses; the other 52
+verses are confirmed with reasons. Every verdict, the pre-change meanings and
+the literal translations are in `/home/user/evidence/batch14/`:
+`chapter6-review-worksheet.md`, `chapter8-review-worksheet.md`,
+`fixes.json`, `reasons.json`, `holds.json`, `rendered-string-assertions.json`,
+`screenshots/`. The **exhaustive unchanged-occurrence list** (1,011
+occurrences; 625 in ch6, 386 in ch8, speaker lines included) is the appendix of
+each worksheet.
+
+Chapter 6 changed-word table (×N = same fix at N spots in the verse):
+
+| Verse | Form / English | Old NE / HI | New NE / HI | Why |
+|---|---|---|---|---|
+| 6.04 | `sarva` “all” | हे सबै / हे सब | सबै / सब | In *sarva-saṅkalpa-sannyāsī* it quantifies intentions; literals सबै सङ्कल्प / सब संकल्पों. Stray vocative, same defect class as 2.65/3.13/4.21/4.26 |
+| 6.06 | `varteta` “would abide” | बस्नुपर्छ / रहे | रहन्छ / रहता है | Optative read as an obligation; literals “आत्मा शत्रुझैं … रहन्छ” / “… रहता है” (present) |
+| 6.11 | `ātmanaḥ` “his own” | आत्माको / आत्मा का | आफ्नो / अपना | *sthiraṃ āsanam ātmanaḥ* = a seat for himself; literals “आफ्ना निम्ति” / “अपने लिए” |
+| 6.18 | `sarva` “all” | हे सबै / हे सब | सबै / सब | Quantifier in *sarvakāmebhyaḥ*; literals सबै कामनाका विषयहरूप्रति / सब कामनाओं के विषयों से |
+| 6.19 | `yoginaḥ` “of the yogi” | योगीहरू / योगी | योगीको / योगी का | Genitive singular in *yogino yatacittasya*; literals “योगीको यही उपमा” / “योगी का दृष्टान्त” |
+| 6.22 | `tataḥ` “than that” | त्यसैले / इसलिए | त्यसभन्दा / उससे | Ablative of comparison in *nādhikaṃ tataḥ*; literals “अरू कुनै लाभ श्रेष्ठ लाग्दैन” / “श्रेष्ठ नहीं लगता” |
+| 6.24 | `sarvān` “all” | सबैलाई / सबको | सबै / सब | Bare accusative object of *tyaktvā*; literals “सबै कामनाहरूलाई … त्यागेर” / “सब कामनाओं को … त्यागकर” |
+| 6.26 ×2 | `tataḥ` “from there” | त्यसैले / इसलिए | त्यसबाट / उससे | Correlative *yato yato … tato tato*; literals “त्यहीबाट फर्काएर” / “उसी से उसे लौटाकर” |
+| 6.28 | `aśnute` “attains” | अनुभव गर्दछ / भोगता है | प्राप्त गर्छ / प्राप्त करता है | Literals “अनन्त सुख … प्राप्त गर्छ” / “प्राप्त होता है”; same fix as 3.04 |
+| 6.34 | `pramāthi` “turbulent” | चञ्चल / चंचल | आवेगी / आवेगी | Had duplicated `cañcalam`’s gloss in the same pāda; literals “चञ्चल, आवेगी, …” / “चंचल, आवेगी, …” |
+| 6.36 | `matiḥ` “opinion” | बुद्धि / बुद्धि | मत / मत | **Carry-forward flag from batch 13 closed.** Literals “भन्ने मेरो धारणा छ” / “मेरा यह मत है”; corpus already uses मत at 18.06/70/78 |
+| 6.39 | `arhasi` “you should” | योग्य छौ / योग्य हो | पर्छ / चाहिए | Request, not “you are worthy”; literals “मेट्नुपर्छ” / “दूर करना चाहिए” (same as 3.20) |
+| 6.43 | `tataḥ` “from there” | त्यसैले / इसलिए | त्यहीँबाट / वहीं से | *tato bhūyaḥ* = “from there again”; literals “त्यहीँबाट … फेरि” / “वहीं से … फिर” |
+| 6.44 | `hriyate` “is carried” | लैजान्छ / ले जाया जाता है | तानिन्छ / ले जाया जाता है | Passive rendered as active “he leads”; NE literal “अघि बढ्छ” |
+| 6.44 | `avaśaḥ` “involuntarily” | असहाय / असहाय | अनिच्छाले / अनिच्छा से | Literals “अनिच्छाले पनि” / “अनिच्छा से भी”, not “helpless” |
+| 6.45 | `tataḥ` “then” | त्यसैले / इसलिए | त्यसपछि / तब | Sequential; literals “त्यसपछि” / “तब” (cf. 2.38) |
+| 6.47 | `me` “in my view” | मेरो / मेरा | मेरो दृष्टिमा / मेरी दृष्टि में | *sa me … mataḥ*; literals “मेरो दृष्टिमा … मान्छु” / “मेरी दृष्टि में … मानता हूँ” |
+
+Chapter 8 changed-word table:
+
+| Verse | Form / English | Old NE / HI | New NE / HI | Why |
+|---|---|---|---|---|
+| 8.06 | `eti` “goes” | आउँछ / आता है | जान्छ / जाता है | Both literals say the opposite direction (“उसी अवस्थामा ऊ जान्छ” / “उसी अवस्था को प्राप्त होता है”) |
+| 8.11 | `te` “to you” | तिम्रो / तुम्हारा | तिमीलाई / तुझे | Dative in *tad te padaṃ … pravakṣye*; literals “म तिमीलाई … भन्नेछु” / “मैं तुझे … कहूँगा” |
+| 8.14 | `yoginaḥ` “yogi” | योगीहरू / योगी | योगीको / योगी का | Genitive singular *nityayuktasya yoginaḥ*; literals “सधैं युक्त योगीका निम्ति” / “सदा-युक्त योगी के लिए” (same defect as 6.19) |
+| 8.20 | `paraḥ` “other” | परम / परम | पर / परे | *paras-tasmāt tu bhāvo ’nyaḥ* = “beyond that”; literals “यस अव्यक्तभन्दा पर अर्को” / “इस अव्यक्त से परे एक और” |
+| 8.20 | `tasmāt` “beyond that” | त्यसकारण / इसलिए | त्यसभन्दा / उससे | Ablative inside *paras-tasmāt*; literals mark it भन्दा / से |
+| 8.22 | `yasya` “in whom” | जसको / जिसका | जसमा / जिसमें | Locative of *yasyāntaḥsthāni bhūtāni*; literals “जसमा सबै प्राणी बस्छन्” / “जिसमें सब प्राणी रहते हैं” |
+| 8.24 | `tatra` “by that path” | त्यहाँ / वहाँ | त्यस मार्गबाट / उस मार्ग से | Refers to the path just named, not a place; literals “त्यस मार्गबाट” / “उस मार्ग से” |
+| 8.25 | `tathā` “also” | त्यसरी / वैसे ही | पनि / भी | List conjunction *dhūmo rātris tathā kṛṣṇaḥ*; manner “thus” was wrong (cf. 7.06, 11.34) |
+| 8.25 | `tatra` “by that path” | त्यहाँ / वहाँ | त्यस मार्गबाट / उस मार्ग से | Same defect and fix as 8.24 |
+
+**Deliberately left alone (52 of 75 verses confirmed as-is; every word read).**
+Keeps that prove the fixes: `sarva` quantifier elsewhere (6.24/6.30, 8.07/8.18/8.22/8.27/8.28),
+`tathā` manner “likewise” 6.07 (त्यसरी/वैसे ही, correct there), `tatra` locative 6.12/6.43 and
+8.18 (“there”, correct), `tataḥ` causal/sequential keeps, `me` possessive 6.30 (batch-2 settle),
+6.36/6.39/6.47 keeps as recorded, `tāta` 6.40 (a genuine vocative that keeps हे),
+`avaśaḥ` 8.19 असहाय (correct: the beings dissolve helplessly), `ātmanaḥ` 8.12 आत्माको
+(“his own breath”, matching its literals), `yoginaḥ` 8.23 योगीहरू (genuine plural there),
+`brahmaṇaḥ` 8.17 ब्रह्मको (genuine genitive, unlike the comparative ablatives fixed at
+11.37/18.69), `paraḥ` 8.22 परम (supreme Person, correct), voice-neutral infinitives
+(`chettum` 6.39, `avāptum` 6.36), Krishna register तिमी/तुम, and the technical terms
+अध्यात्म / अधिभूत / अधिदैव / अधियज्ञ / अधिदैवत (8.01–8.04, 8.14) kept as the literals keep them.
+
+**Open carries after this batch:** 4.16 `kavayaḥ` (कविहरू/कवि — should be ज्ञानीहरू/ज्ञानी
+like 18.02); `mā` → नगर and `śucaḥ` → शोक गर्छौ at 16.05 and 18.66 (wrong in every
+occurrence); the additive `tathā` now lives only in chapters 1 (1.26, 1.34), 9 (9.32,
+9.33), 10 (10.06, 10.13, 10.35), 13 (13.18) and 17 (17.07, 17.26) — 10 occurrences, for
+those chapters’ own batches. **8.10’s verse text** (“सम्य क्स तं” / “samya ksa taṃ”, should
+be सम्यक् स तं / samyak sa taṃ) is a text fix outside this batch’s scope — reported, not
+changed. The 11.44 *praṇidhāya* literal decision still belongs to Dhruba.
+
+Appendix A audit is byte-identical before/after: **9,366 verse words / 9,484 glosses;
+§3 674 forms / 4,532 instances; `te` 0 / `me` 2** — `/home/user/evidence/batch14/appendix-a-before.txt`
+and `appendix-a-after.txt` are equal to each other and to the batch-13 baseline.
+
+**Verification:** full §4 build green — strict pāda 2,800 / 0, all 2,100 paraphrase pairs,
+SEO 6, site-health 572, study 9,658, 19 Python tests, 802 document assertions, 15 + 7 Node
+tests and all **162 browser checks**. Playwright rendered-string assertions passed
+**54/54** (27 overrides × NE/HI, asserted structurally as “the word’s own Devanagari followed
+by the new meaning” inside the expanded pāda). **94 sheets** (46 full 390 × 844 ne/hi sheets +
+48 changed-pāda crops) are in `/home/user/evidence/batch14/screenshots/`, indexed by
+`rendered-string-assertions.json`. Full build log: `/home/user/evidence/batch14/full-build.log`.
+
+
 ### 5.3 Interpretation and framing (owner decides)
 
 - **“तीन निष्ठा / तीन निष्ठाएँ”** clashes with 3.3 *loke ’smin dvividhā niṣṭhā*
@@ -1139,31 +1251,36 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batches 1–13 done — chapters 2, 3,
-4, 7, 11, 14, 15, 16 and 18 read verse by verse)
+**Phase 2 — Meaning** · in progress (2.1 batches 1–14 done — chapters 2, 3,
+4, 6, 7, 8, 11, 14, 15, 16 and 18 read verse by verse)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batches 1–13 done** (`te` batch 1; `me`, `param`,
+      **in progress — batches 1–14 done** (`te` batch 1; `me`, `param`,
       `bhūtāni`, `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`,
       `sattvam` batch 4; `arjuna`, `samāḥ` batch 5; `me` = “to me” batch 6;
       ch4 batch 7 (24), ch14 batch 8 (8), ch16 batch 9 (11), ch18 batch 10
       (20), ch2 batch 11 (69), ch11+15 batch 12 (62 + 10), ch3+7 batch 13
-      (32 + 19)). **255 of 9,366 verse-word instances** now carry per-verse
-      Nepali/Hindi overrides from the chapter batches (**331 five-field entries
-      corpus-wide**). Remaining chapters: 1, 5, 6, 8, 9, 10, 12, 13 and 17
-      (309 verses). No next batch or Phase 2 item was started in this session;
-      next work awaits Dhruba’s direction. Open carry-forward flags: 4.16
-      `kavayaḥ`; `tathā` “also/and” in chs 1, 8–10, 13 and 17 (7.06 was fixed
-      in batch 13); `matiḥ` 6.36; `mā` / `śucaḥ` 16.05 / 18.66.
+      (32 + 19), ch6+8 batch 14 (18 + 9)). **282 of 9,366 verse-word
+      instances** now carry per-verse Nepali/Hindi overrides from the chapter
+      batches (**358 five-field entries corpus-wide**). Remaining chapters: 1,
+      5, 9, 10, 12, 13 and 17 (234 verses). Open carry-forward flags: 4.16
+      `kavayaḥ`; the additive `tathā` in chs 1 (1.26, 1.34), 9 (9.32, 9.33),
+      10 (10.06, 10.13, 10.35), 13 (13.18) and 17 (17.07, 17.26) — 8.25 was
+      fixed in batch 14 and 7.06 in batch 13; `mā` / `śucaḥ` 16.05 / 18.66.
+      `matiḥ` 6.36 was fixed in batch 14 (मत). 8.10’s verse text
+      (“सम्य क्स तं” / “samya ksa taṃ” → सम्यक् स तं / samyak sa taṃ) is an
+      open verse-text flag outside a word-gloss batch.
 - [ ] 2.1x **Verse-by-verse verification of all 700 verses** (standing owner
-      requirement, started 2026-10-11). Reviewed so far: **chs 2, 3, 4, 7, 11,
-      14, 15, 16, 18 = 391 verses** (ch2 72/72, ch3 43/43, ch4 42/42, ch7
-      30/30, ch11 55/55, ch14 27/27, ch15 20/20, ch16 24/24, ch18 78/78).
-      Every reviewed verse has its word list, en/ne/hi literals, verdict
-      (confirmed / corrected / flagged) and reason. Per-verse ledgers: ch4/14/16
-      in PR #20, ch18 in PR #21, ch2 in PR #22, ch11+15 in PR #23, and ch3+7
-      in [PR #24](https://github.com/chapain/Bhagavad-Gita/pull/24). Remaining:
-      **309 verses in 9 chapters**
-      (1, 5, 6, 8, 9, 10, 12, 13, 17). Nothing in the corpus may be called
+      requirement, started 2026-10-11). Reviewed so far: **chs 2, 3, 4, 6, 7, 8,
+      11, 14, 15, 16, 18 = 466 verses** (ch2 72/72, ch3 43/43, ch4 42/42,
+      ch6 47/47, ch7 30/30, ch8 28/28, ch11 55/55, ch14 27/27, ch15 20/20,
+      ch16 24/24, ch18 78/78). Every reviewed verse has its word list, en/ne/hi
+      literals, verdict (confirmed / corrected / flagged) and reason. Per-verse
+      ledgers: ch4/14/16 in PR #20, ch18 in PR #21, ch2 in PR #22, ch11+15 in
+      PR #23, ch3+7 in [PR #24](https://github.com/chapain/Bhagavad-Gita/pull/24),
+      and ch6+8 in batch 14’s
+      `/home/user/evidence/batch14/chapter6-review-worksheet.md` and
+      `chapter8-review-worksheet.md` (also PR #25). Remaining: **234 verses in 7
+      chapters** (1, 5, 9, 10, 12, 13, 17). Nothing in the corpus may be called
       verified until all 700 are.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
@@ -1333,6 +1450,25 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/20d19a48-bhagavad-gita` · Phase 2.1 batch 14 (chs 6+8),
+  PR #25: confirmed PR #24's merge by content at `05dc983` (the clone was shallow,
+  so `git fetch --unshallow` was needed); reproduced Appendix A and passed the
+  baseline §4 build green before any source edit. Reviewed all 47 + 28 verses
+  against their en/ne/hi literals; **27 NE/HI-only overrides** (18 ch6 + 9 ch8)
+  across 23 verses, the other 52 confirmed with reasons — worksheets, changed-word
+  tables and the exhaustive unchanged-occurrence list (1,011 occurrences) in §5.2.
+  Closed the 6.36 `matiḥ` carry-forward (मत) and fixed the additive `tathā` at 8.25;
+  all other carry-forward flags and owner holds untouched. Appendix A
+  byte-identical (9,366 / 9,484; §3 674 / 4,532; `te` 0 / `me` 2). Final §4 build
+  green: all 162 browser checks passed, with 54 rendered-string assertions and 94
+  390 × 844 ne/hi sheets (46 full sheets + 48 changed-pāda crops). Source verifier
+  and `git diff --check` passed; ledger now records **466/700 verses reviewed**.
+  Full-repo zip `/home/user/downloads/Bhagavad-Gita-700-titles.zip` round-tripped
+  byte-identically with `diff -r`. Source commit pushed only to this branch; PR #25
+  open to `main`. Open flags reported: 8.10 verse text (सम्य क्स तं / samya ksa taṃ
+  → सम्यक् स तं / samyak sa taṃ), 6.13 NE धानेर, 6.29’s English literal, 4.16
+  `kavayaḥ`, `mā` / `śucaḥ` 16.05 / 18.66, and the 11.44 *praṇidhāya* reminder.
 
 - 2026-10-11 · `arena/39ceb621-bhagavad-gita` · Phase 2.1 batch 13 (chs 3+7),
   [PR #24](https://github.com/chapain/Bhagavad-Gita/pull/24): confirmed PR #23's
