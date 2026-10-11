@@ -309,8 +309,11 @@ before you talk to the owner.
   102 rendered-string assertions passed; 16 Nepali/Hindi 390 × 844 screenshots
   show the changed pādas expanded. Full-repo zip:
   `/home/user/downloads/Bhagavad-Gita-700-titles.zip` (byte-identical round trip).
-  No other batch or Phase 2 item was started. The 11.44 *praṇidhāya* literal
-  “शरीर थपथपाउँछु” remains Dhruba’s decision — remind him, do not fix it.
+  [PR #24](https://github.com/chapain/Bhagavad-Gita/pull/24) is open from
+  `arena/39ceb621-bhagavad-gita` to `main`, containing source-review commit
+  `a3e4b54`. No other batch or Phase 2 item was started. The 11.44
+  *praṇidhāya* literal “शरीर थपथपाउँछु” remains Dhruba’s decision — remind
+  him, do not fix it.
 
 
 ## 2. Resume in five minutes
@@ -1158,7 +1161,8 @@ Missing:
       Every reviewed verse has its word list, en/ne/hi literals, verdict
       (confirmed / corrected / flagged) and reason. Per-verse ledgers: ch4/14/16
       in PR #20, ch18 in PR #21, ch2 in PR #22, ch11+15 in PR #23, and ch3+7
-      in this session-branch PR. Remaining: **309 verses in 9 chapters**
+      in [PR #24](https://github.com/chapain/Bhagavad-Gita/pull/24). Remaining:
+      **309 verses in 9 chapters**
       (1, 5, 6, 8, 9, 10, 12, 13, 17). Nothing in the corpus may be called
       verified until all 700 are.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
@@ -1329,6 +1333,22 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/39ceb621-bhagavad-gita` · Phase 2.1 batch 13 (chs 3+7),
+  [PR #24](https://github.com/chapain/Bhagavad-Gita/pull/24): confirmed PR #23's
+  merge by content at `1b7b83c`; reproduced Appendix A and passed the baseline
+  §4 build before source edits. Reviewed all 73 verses vs en/ne/hi literals;
+  51 NE/HI-only overrides (32+19), with worksheets, rationale, changed-word
+  tables and exhaustive unchanged-occurrence lists in §5.2. Resolved only the
+  ch7 7.06 `tathā` carry-forward; other carry-forward flags and owner holds
+  remain untouched. Appendix A identical (9,366 / 9,484; §3 674 / 4,532;
+  `te` 0 / `me` 2). Final §4 build green: all 162 browser checks passed,
+  with 102 rendered-string assertions and 16 390 × 844 screenshots. Source
+  verifier and
+  `git diff --check` passed; ledger records 391/700 verses reviewed. Full-repo
+  zip `/home/user/downloads/Bhagavad-Gita-700-titles.zip` round-tripped
+  byte-identically with `diff -r`. Source commit `a3e4b54` pushed only to this
+  branch; PR #24 open to `main`. No further batch or Phase 2 work started.
 
 - 2026-10-11 · `arena/bd59979f-bhagavad-gita` · Phase 2.1 batch 12 (chs 11+15):
   verified PR #22 merged at `5c82e69` on `main`; audit reproduced (`te` 0 /
