@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-11 (Asia/Katmandu) |
-| Updated by | Arena session on branch `arena/a84af58b-bhagavad-gita` |
-| Base commit | `5d8cdfe` on `main` (merge of PR #18, 2.1 batch 5) |
+| Updated by | Arena session on branch `arena/5afb9e8c-bhagavad-gita` |
+| Base commit | `7de6723` on `main` (merge of PR #19, 2.1 batch 6) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -149,6 +149,44 @@ before you talk to the owner.
   and 9.29 (chapters 12, 18 and 9) captured and read back; 12.14 and 18.65
   show मलाई/मुझे, 9.29 confirms मेरो/मेरा (possessive, left alone).
   Screenshots: `/home/user/evidence/batch6/`.
+
+- **2.1 batches 7–9 done — chapters 4, 14 and 16 read verse by verse
+  (2026-10-11).** One chapter per batch, judged on the flagged-instance counts
+  of the sweep (ch4 334 of 571 word entries, ch14 158 of 323, ch16 124 of 290).
+  Each of the 93 verses was read with its en/ne/hi literals and every word
+  checked for (a) English gloss vs the verse in context, (b) Nepali meaning vs
+  the Nepali literal, (c) Hindi meaning vs the Hindi literal. **43 five-field
+  overrides** were needed: 24 in `padachheda_ch4.py`, 8 in
+  `padachheda_ch14.py` and 11 in `padachheda_ch16.py`; only word[3]/word[4]
+  changed. Full table in §5.2. Clear contradictions fixed include person and
+  tense mismatches that the ambiguity scan alone cannot see (`viduḥ` “knew” vs
+  present जान्छन् in 4.02, `veda` “know” vs 1sg in 4.05, `paśyet` “sees” vs
+  past-habitual देख्थ्यो in 4.18, `san` “being” vs हुआ हुआ in 4.06, `janmani`
+  “in birth / after birth” sharing one “after birth” gloss in 16.20) and
+  shared-form clashes (`param` “earlier” receiving “supreme” in 4.04, `sevayā`
+  “by service” receiving “by practice” in 4.34, `guṇebhyaḥ` receiving “beyond
+  the guṇas” in 14.19). All the remaining flagged occurrences (572: 313 / 147 /
+  112) were read and are listed verse by verse in the PR. **Owner flags (left
+  as-is, out of scope of a word-gloss change):** 4.09 `eti` whose *English*
+  gloss “goes” contradicts the verse (*naiti māmeti* = “he comes to me”)
+  although its Nepali/Hindi आउँछ/आता है are right; 4.42 `ātmanaḥ` “of the Self”
+  vs आत्माको;
+  16.10 `mada` whose shared NE gloss carries a stray parenthetical,
+  “घमण्ड (ले)”; 16.13–14 `abhimāna` in the compound *abhimānāśrayaṁ* not split
+  as its own word. Note for later batches: `sarva`, `param`/`paraḥ`,
+  `paryupāsate`, `sevayā`, `tamaḥ`, `san`, `bhavataḥ`, `viduḥ`, `veda`, `me`
+  and `janmani` are shared forms whose remaining occurrences in other chapters
+  still need their own per-occurrence overrides.
+- **Verification (batches 7–9):** full Playwright build green: strict pāda
+  check 2,800/0, 2,100 paraphrase pairs, 6 SEO, 572 site-health, 9,658
+  study-structure, 19 Python tests, 802 document assertions, 15 + 7 Node tests
+  and all 162 browser checks. Appendix A run from both a pristine `7de6723`
+  worktree and the working tree: **byte-identical** (`te` 0 / `me` 2;
+  9,366 / 9,484; §3 674/4,532). Sixteen 390 × 844 ne/hi sheets for 4.02, 4.05,
+  4.06, 4.34, 14.19, 14.23, 16.06 and 16.20 (chapters 4, 14 and 16) captured
+  and read back with the changed word's pāda expanded; every sheet shows the
+  new meaning (the boxed toolbar labels are the known sandbox font artifact).
+  Screenshots: `/home/user/evidence/batch7/`.
 
 
 ## 2. Resume in five minutes
@@ -401,6 +439,72 @@ were verified and left alone. Generated churn: `data/ch9.js`, `data/ch12.js`,
 `tat`, `yat`, `bhīma`, `kutaḥ`, `sattvam`, `arjuna` and `samāḥ`. Next:
 the remaining forms in the 674-form pool; the owner picks each slice.
 
+**FIXED (2.1 batches 7–9, 2026-10-11) — chapters 4, 14 and 16, verse by
+verse.** One chapter per batch; all 93 verses were read with their en/ne/hi
+literals and every word entry checked against the verse in context. 43
+overrides were needed (24 / 8 / 11); 572 further flagged occurrences were read
+and left alone (313 / 147 / 112), each listed verse by verse in the PR.
+Only word[3] and word[4] changed in every case; the Devanagari, IAST and
+English glosses are untouched.
+
+| Verse | Form / English | Old NE / HI | New NE / HI | Why |
+|---|---|---|---|---|
+| 4.02 | `viduḥ` “knew” | जान्छन् / जानते हैं | जाने / जाना | literal जाने / जाना (past) |
+| 4.03 | `te` “to you” | तिम्रो / तुम्हारा | तिमीलाई / तुझे | “I have declared this ancient yoga **to you**” |
+| 4.04 | `aparam` “later” | अर्को / दूसरा | पछिको / पीछे का | *aparaṁ janma* = later birth |
+| 4.04 | `bhavataḥ` “your” | उत्पन्न हुन्छन् / उत्पन्न होते हैं | तिम्रो / तेरा | global gloss is 14.17’s *bhava* sense |
+| 4.04 | `param` “earlier” | परम / परम | पहिलेको / पहले का | *paraṁ janma* = earlier birth |
+| 4.05 | `veda` “know” | जान्दछ / जानता है | जान्दछु / जानता हूँ | *aham veda* = 1sg |
+| 4.06 | `san` ×2 “being” | भएको / हुआ हुआ | भएको / होते हुए | हुआ हुआ was ungrammatical |
+| 4.06 | `adhiṣṭhāya` “resorting to” | अधिकार गरेर / अधिष्ठित होकर | आश्रय गरेर / अधिष्ठित होकर | अधिकार = authority, wrong sense |
+| 4.06 | `ātma` “my own” | आत्मा / आत्मा | आफ्नै / अपनी | *ātma-māyayā* = my own māyā |
+| 4.08 | `yuge` ×2 “in age / after age” | युगपछि / युग-युग | युग-युगमा / युग-युग | *yuge yuge* = age after age |
+| 4.16 | `te` “to you” | तिम्रो / तुम्हारा | तिमीलाई / तुझे | “I shall tell **to you**” |
+| 4.18 | `paśyet` “sees” | देख्थ्यो / देखता | देख्छ / देखता | potential, not past-habitual |
+| 4.21 | `sarva` “all” | हे सबै / हे सब | सबै / सब | stray vocative particle |
+| 4.22 | `yadṛcchā` “by chance, unsought” | आफैं / अनायास | अनायास / अनायास | आफैं = “by itself” |
+| 4.25 | `paryupāsate` “worship, serve” | अनुसरण गर्छन् / अनुसरण करते हैं | पूजा गर्छन् / पूजा करते हैं | “worship with sacrifice” |
+| 4.34 | `sevayā` “by service” | अभ्यासद्वारा / अभ्यास से | सेवाद्वारा / सेवा से | अभ्यास = practice, wrong sense |
+| 4.34 | `te` “you” | तिम्रो / तुम्हारा | तिमीलाई / तुझे | “will teach **you**” |
+| 4.34 | `jñāninaḥ` “the wise” | ज्ञानीका / ज्ञानी के | ज्ञानीहरू / ज्ञानी | तत्त्वदर्शिनः plural, nominative |
+| 4.36 | `tamaḥ` “the worst” | तम / तम | सबैभन्दा / सबसे | *tamaḥ* here is the superlative suffix |
+| 4.40 | `paraḥ` “the next” | परम / परम | परलोक / परलोक | *para-loka* sense |
+| 4.42 | `enam` “this” | उसलाई / उसे | यसलाई / इसे | *enam* is near-deictic |
+| 14.03 | `tataḥ` “from that” | त्यसैले / इसलिए | त्यसबाट / उसी से | “born **from that**” |
+| 14.06 | `tatra` “of these” | त्यहाँ / वहाँ | तीमध्ये / उनमें | locative of the three guṇas |
+| 14.14 | `tu` “indeed” | तर / पर | नै / ही | emphatic, not adversative |
+| 14.16 | `rajasaḥ` “of rajas” | रजबाट / रज से | रजको / रज का | *rajasaḥ phalam* = fruit of rajas |
+| 14.17 | `tamasaḥ` “of tamas” | तमको / तम का | तमबाट / तम से | ablative: “knowledge arises **from** tamas” |
+| 14.19 | `guṇebhyaḥ` “than the guṇas” | गुणभन्दा पर / गुणों से परे | गुणहरूबाहेक / गुणों के अतिरिक्त | “no doer **other than** the guṇas” |
+| 14.19 | `param` “what is beyond” | परम / परम | परको / परे का | *guṇebhyaḥ param* |
+| 14.23 | `vartante` “act” | रहन्छन् / रहते हैं | क्रियाशील छन् / कर्म करते हैं | the guṇas act, the witness does not |
+| 16.03/16.04 | `sampadam` “the endowment” | सम्पत्तिमा / सम्पदा को | सम्पत्ति / सम्पदा को | accusative object of भवन्ति |
+| 16.06 | `me` “from me” | मेरो / मेरा | मबाट / मुझसे | *śṛṇu me* = “hear **from me**” |
+| 16.07 | `nivṛttim` “renunciation” | अकर्म / अकर्म | नगर्नुपर्ने / अकर्तव्य | विधि = what should not be done |
+| 16.10 | `pravartante` “they act” | सुरु हुन्छन् / आरम्भ होते हैं | कर्म गर्छन् / कर्म करते हैं | प्रवृत्ति = engaging in action |
+| 16.15 | `mayā` “me” | मद्वारा / मेरे द्वारा | मजस्तो / मेरे समान | *sadṛśaḥ mayā* = “like me” |
+| 16.17 | `yajante` “they perform sacrifices” | पूजा गर्छन् / पूजते हैं | यज्ञ गर्छन् / यज्ञ करते हैं | यज्ञ, not general worship |
+| 16.20 | `janmani` ×2 “in birth / after birth” | जन्मपछि / जन्म के बाद | जन्म-जन्म / जन्म-जन्म | *janmani janmani* = birth after birth |
+| 16.21 | `tathā` “and” | त्यसरी / वैसे ही | र / और | joining a list of three |
+| 16.23 | `vartate` “acts” | रहन्छ / रहता है | कर्म गर्छ / कर्म करता है | अशास्त्रविधि = acts by desire |
+
+**Deliberately left alone (572 flagged occurrences read in full; per-verse
+list in the PR):** the shared forms that stay correct in these three chapters
+are led by `na` (ch4 14), `api` (10), `karma` (10), `eva` (8), `jñāna` (8),
+`brahma` (7), `saḥ` (6), `mām` (6), `apare` (6), `karma`/`karmāṇi`,
+`juhvati`, `yajñāḥ`, `iti`, `hi`, `yaḥ`, `tathā`, `jñātvā`, `iha`, `agnau`,
+`yoga`, `jñānam`, and in ch14/ch16 `guṇa`, `prakṛti`, `kāma`, `krodha`,
+`lobha`, `buddhi`, `ātmā`, `śraddhā` and the whole demoniac catalogue
+(`dambha`, `darpa`, `krodha`, `pāruṣya`, `ajñāna`, `aśuci`, `narādhamāḥ` …),
+where the shared one-meaning-per-form gloss already follows the verse. Two
+structural faults found while reading are **not** word-gloss changes and are
+flagged for the owner rather than fixed: 4.09 `eti`’s English gloss “goes”
+against the verse’s own *naiti māmeti* (“he comes to me”) — its Nepali/Hindi
+are correct; 4.42 `ātmanaḥ`
+“of the Self” vs आत्माको; 16.10 `mada`’s shared NE gloss carries a stray
+parenthetical, “घमण्ड (ले)”; 16.13–14 `abhimāna` is inside the compound
+*abhimānāśrayaṁ* and is not split as its own word.
+
 ### 5.3 Interpretation and framing (owner decides)
 
 - **“तीन निष्ठा / तीन निष्ठाएँ”** clashes with 3.3 *loke ’smin dvividhā niṣṭhā*
@@ -535,13 +639,24 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batch 6 done)
+**Phase 2 — Meaning** · in progress (2.1 batches 7–9 done — ch4, ch14, ch16)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batch 6 of N** (`te` batch 1; `me`, `param`, `bhūtāni`,
-      `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
-      `arjuna`, `samāḥ` batch 5; `me` = "to me" cleanup batch 6; settled keeps
-      and rationale in §5.2). Next: remaining forms in the 674-form pool;
-      the owner picks each slice.
+      **in progress — batches 1–9 done (chapters 4, 14, 16 read verse by verse)** (`te` batch 1;
+      `me`, `param`, `bhūtāni`, `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`,
+      `kutaḥ`, `sattvam` batch 4; `arjuna`, `samāḥ` batch 5; `me` = "to me"
+      cleanup batch 6; **chapter 4 batch 7 (22 overrides), chapter 14 batch 8
+      (8), chapter 16 batch 9 (11)**; settled keeps and rationale in §5.2).
+      43 of 9,366 verse-word instances now carry per-verse Nepali/Hindi overrides.
+      Next: read the remaining 15 chapters verse by verse in the same way
+      (a chapter per batch); shared forms listed in §1 still need their
+      remaining per-occurrence overrides.
+- [ ] 2.1x **Verse-by-verse verification of all 700 verses** (standing owner
+      requirement, started 2026-10-11). Reviewed so far: **chs 4, 14, 16 =
+      93 verses** (ch4 42/42, ch14 27/27, ch16 24/24). Each verse is recorded
+      as reviewed with its word list, its en/ne/hi literals, the verdict
+      (confirmed / corrected / flagged) and the reason; the per-verse ledger
+      for these three chapters is in PR #20. Remaining: 607 verses in 15
+      chapters. Nothing in the corpus may be called verified until all 700 are.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -711,6 +826,24 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-11 · `arena/5afb9e8c-bhagavad-gita` · Phase 2.1 batches 7–9:
+  verified PR #19 merged at `7de6723` on `main` (batch 6 content re-verified:
+  9 five-field `me` = “to me” entries at 12.14–12.17/19/20 and 18.64/65/69, and
+  the 2 possessive keeps); unshallowed before ancestry checks; ran the
+  Appendix A audit. New standing task from the owner: **verify all 700 verses
+  one by one**, a chapter per batch. Read all 42 verses of chapter 4, then all
+  27 of chapter 14, then all 24 of chapter 16 against their en/ne/hi literals;
+  wrote 22 + 8 + 11 five-field overrides (43 total) and read and left the
+  remaining 572 flagged occurrences with reasons. Audit run from a pristine
+  `7de6723` worktree and from the working tree is byte-identical (`te` 0 /
+  `me` 2; 9,366 / 9,484; §3 674/4,532) — every fix is per-occurrence and
+  nothing global moved in these chapters. Full Playwright build green
+  (strict 2,800/0, 2,100 paraphrase pairs, 6 SEO, 572 site-health, 9,658
+  study-structure, 19 Python tests, 802 document assertions, 15 + 7 Node
+  tests, all 162 browser checks). Sixteen 390 × 844 ne/hi sheets across
+  chapters 4, 14 and 16 captured and read back with the changed pāda expanded.
+  Generated churn: `data/ch4, ch14, ch16` + `sw.js` cache id. PR #20:
+  https://github.com/chapain/Bhagavad-Gita/pull/20. Stop before the next batch.
 - 2026-10-11 · `arena/a84af58b-bhagavad-gita` · Phase 2.1 batch 6
   (`me` = "to me" cleanup): verified PR #18 merged at `5d8cdfe` on `main`;
   unshallowed before ancestry checks; verified batch 5 on `origin/main` (two
