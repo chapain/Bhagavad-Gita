@@ -128,6 +128,9 @@ before you talk to the owner.
   new meanings, the other two visually confirm settled batch-4 overrides.
   Screenshots: `/home/user/evidence/batch5/`.
 - **Full repository zip:** `/home/user/Bhagavad-Gita-phase2.1-batch5.zip`.
+- **GitHub (verified 2026-10-11):** PR #18 is open against `main`:
+  https://github.com/chapain/Bhagavad-Gita/pull/18. Implementation commit
+  `733393a` is on `arena/afa097ba-bhagavad-gita`.
 
 
 ## 2. Resume in five minutes
@@ -661,6 +664,25 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/afa097ba-bhagavad-gita` · Phase 2.1 batch 5
+  (`arjuna`, `samāḥ`): verified PR #17 merged; unshallowed before ancestry
+  checks and content-verified batch 4 on `origin/main` (six exact entries, all
+  13 deliberate keeps, 9,366 / 9,484 counts). Dhruba flagged 1.04 pāda 2 and
+  delegated editorial judgement after the four-word pāda was checked against
+  its Sanskrit split, English word glosses and en/ne/hi literals. Added two
+  five-field overrides: `arjuna` “and Arjuna” → र अर्जुन / और अर्जुन and
+  `samāḥ` “equal” → समान / समान. All 22 other `arjuna` vocatives and 6.41
+  `samāḥ` “years” were deliberately kept; both occurrences of each form were
+  checked. Lockstep generated-data diff: only word[3]/word[4] changed in the
+  mirrored flow+padas records; text, split, English and prose untouched. Audit
+  §3 before/after `te` 0 / `me` 10; 9,366 / 9,484 unchanged. Full Playwright
+  build green incl. 162 browser checks. Six 390 × 844 ne/hi screenshots for
+  1.04, 2.02 and 10.41 across chapters 1, 2 and 10 captured/read back; 1.04
+  shows new meanings, 2.02/10.41 visually confirm settled batch-4 overrides.
+  Implementation commit `733393a`; PR #18:
+  https://github.com/chapain/Bhagavad-Gita/pull/18. Full repository zip:
+  `/home/user/Bhagavad-Gita-phase2.1-batch5.zip`. Stop before the next batch.
 
 - 2026-10-10 · `arena/dc2baaac-bhagavad-gita` · Phase 2.1 batch 4: PR #16
   merged; unshallowed before ancestry checks; verified all 21 batch-3 five-field
