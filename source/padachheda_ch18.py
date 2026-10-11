@@ -588,7 +588,7 @@ GITA_CH18_WORDS = {
         ["देवेषु", "deveṣu", "among the gods"],
         ["वा", "vā", "or"],
         ["पुनः", "punaḥ", "again"]],
-    2: [["सत्त्वम्", "sattvam", "being"],
+    2: [["सत्त्वम्", "sattvam", "being", "जीव वा जड वस्तु", "जीव या जड़ वस्तु"],
         ["प्रकृतिजैः", "prakṛtijaiḥ", "born of prakṛti"],
         ["मुक्तम्", "muktam", "free"]],
     3: [["यत्", "yat", "which"],

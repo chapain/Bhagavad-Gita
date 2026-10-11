@@ -59,7 +59,7 @@ GITA_CH1_WORDS = {
         ["शूराः", "śūrāḥ", "heroes"],
         ["महा", "mahā", "great"],
         ["इष्वासाः", "iṣvāsāḥ", "archers"]],
-    1: [["भीम", "bhīma", "to Bhīma"],
+    1: [["भीम", "bhīma", "to Bhīma", "भीमसँग", "भीम से"],
         ["अर्जुन", "arjuna", "and Arjuna"],
         ["समाः", "samāḥ", "equal"],
         ["युधि", "yudhi", "in war"]],
@@ -160,7 +160,7 @@ GITA_CH1_WORDS = {
         ["इदम्", "idam", "this"],
         ["एतेषाम्", "eteṣām", "of these"]],
     3: [["बलम्", "balam", "strength"],
-        ["भीम", "bhīma", "by Bhīma"],
+        ["भीम", "bhīma", "by Bhīma", "भीमले", "भीम द्वारा"],
         ["अभिरक्षितम्", "abhirakṣitam", "protected"]]},
 
 11: {"s": [],

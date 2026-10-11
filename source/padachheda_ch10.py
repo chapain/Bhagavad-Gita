@@ -622,7 +622,7 @@ GITA_CH10_WORDS = {
     0: [["यत्", "yat", "whatever"],
         ["यत्", "yat", "whatever"],
         ["विभूतिमत्", "vibhūtimat", "glorious"],
-        ["सत्त्वम्", "sattvam", "being"]],
+        ["सत्त्वम्", "sattvam", "being", "प्राणी", "प्राणी"]],
     1: [["श्रीमत्", "śrīmat", "radiant"],
         ["ऊर्जितम्", "ūrjitam", "mighty"],
         ["एव", "eva", "indeed"],
