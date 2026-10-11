@@ -7,9 +7,9 @@ before you talk to the owner.
 
 | | |
 |---|---|
-| Last updated | 2026-10-10 (Asia/Katmandu) |
-| Updated by | Arena session on branch `arena/dc2baaac-bhagavad-gita` |
-| Base commit | `87136f4` on `main` (merge of PR #16, 2.1 batch 3) |
+| Last updated | 2026-10-11 (Asia/Katmandu) |
+| Updated by | Arena session on branch `arena/afa097ba-bhagavad-gita` |
+| Base commit | `4cd37cf` on `main` (merge of PR #17, 2.1 batch 4) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -112,6 +112,26 @@ before you talk to the owner.
   9,366 verse words / 9,484 glosses unchanged. Full build including 162 browser
   checks green; 12 mobile ne/hi sheets read back. Next: the remaining forms
   in the 674-form pool; owner picks the next slice.
+
+- **2.1 batch 5 done — `arjuna`, `samāḥ` (2026-10-11).** Dhruba flagged
+  1.04 pāda 2; editorial judgement was delegated after checking all four word
+  entries against the split, English word glosses and en/ne/hi literals. Added
+  two five-field overrides in `source/padachheda_ch1.py`: `arjuna` “and Arjuna”
+  → र अर्जुन / और अर्जुन and `samāḥ` “equal” → समान / समान. Its 22 other
+  `arjuna` vocatives and 6.41 `samāḥ` “years” remain correct as-is (§5.2).
+  Appendix A §3 before/after `te` 0 / `me` 10; 9,366 / 9,484 unchanged.
+- **Verification (batch 5):** full build green: strict pāda check 2,800/0,
+  2,100 paraphrase pairs, 6 SEO, 572 site-health, 9,658 study-structure,
+  19 Python tests, 802 document assertions, 15 + 7 Node tests and all 162
+  Playwright browser checks. Six 390 × 844 ne/hi screenshots of 1.04, 2.02 and
+  10.41 (chapters 1, 2 and 10) were captured and read back; 1.04 contains the
+  new meanings, the other two visually confirm settled batch-4 overrides.
+  Screenshots: `/home/user/evidence/batch5/`.
+- **Full repository zip:** `/home/user/Bhagavad-Gita-phase2.1-batch5.zip`.
+- **GitHub (verified 2026-10-11):** PR #18 is open against `main`:
+  https://github.com/chapain/Bhagavad-Gita/pull/18. Implementation commit
+  `733393a` is on `arena/afa097ba-bhagavad-gita`.
+
 
 ## 2. Resume in five minutes
 
@@ -295,10 +315,44 @@ non-living things” (https://www.bhagavad-gita.us/bhagavad-gita-18-40/);
 10.41 and 13.26 follow their existing ne/hi literals (“प्राणी”). Owner
 delegated the choices to editorial judgement after requesting research.
 
+**FIXED (2.1 batch 5, 2026-10-11) — `arjuna`, `samāḥ`.** Dhruba reported
+1.04 pāda 2. The word split and each word's English gloss were checked against
+the Sanskrit verse and all three verse literals. The English literal says
+“equals of Bhīma and Arjuna in war”; Nepali says “युद्धमा भीम र अर्जुनका समान”;
+Hindi says “युद्ध में भीम और अर्जुन के समान”. Two context-specific entries were
+added inline to `padachheda_ch1.py`; only word[3] and word[4] changed:
+
+| Verse | Form / English | Old NE / HI | New NE / HI |
+|---|---|---|---|
+| 1.04 | `arjuna` “and Arjuna” | हे अर्जुन / हे अर्जुन | र अर्जुन / और अर्जुन |
+| 1.04 | `samāḥ` “equal” | वर्षहरू / वर्ष | समान / समान |
+
+All four entries of the pāda were checked in order: `bhīma` “to Bhīma” keeps
+the batch-4 `भीमसँग / भीम से`; `arjuna` “and Arjuna” now follows the local
+coordination; `samāḥ` “equal” no longer receives the shared “years” gloss; and
+`yudhi` “in war” correctly remains युद्धमा / युद्ध में. Sanskrit word forms,
+English word glosses, verse text, pādas, literals and paraphrases are unchanged.
+
+**Deliberately left alone (23 occurrences of the two forms reviewed):**
+`samāḥ` 6.41 means “years” and correctly keeps `वर्षहरू / वर्ष`. `arjuna` at
+2.02, 2.45, 3.07, 4.05, 4.09, 4.37, 6.16, 6.32, 6.46, 7.16, 7.26, 8.16,
+8.27, 9.19, 10.32, 10.39, 10.42, 11.47, 11.54, 18.09, 18.34 and 18.61 is
+vocative “O Arjuna”; `हे अर्जुन` remains correct. 1.04 is the sole `arjuna`
+occurrence glossed “and Arjuna”.
+
+Appendix A §3 remains `te` = 0 verses / `me` = 10 verses before and after;
+9,366 verse words and 9,484 total glosses are unchanged. The full Playwright
+build passed all 162 browser checks. Six 390 × 844 Nepali/Hindi screenshots
+were read back for 1.04, 2.02 and 10.41 (chapters 1, 2 and 10); 1.04 shows
+both new meanings, while 2.02 and 10.41 show the settled batch-4 overrides as
+cross-chapter render checks. Small boxed toolbar labels are a sandbox font
+artifact, not a content issue. Generated churn: `data/ch1.js`, `sw.js` cache
+id, and `sitemap.xml` lastmod dates (2026-10-11).
+
 **Fix path (no code change needed):** write five-field entries inline in
 `padachheda_ch<N>.py`, e.g. `["ते", "te", "they", "तिनीहरू", "वे"]`. Batches
-1–4 cover `te`, `me`, `param`, `bhūtāni`, `yogam`, `tat`, `yat`, `bhīma`,
-`kutaḥ` and `sattvam`. Next: the remaining forms in the 674-form pool;
+1–5 cover `te`, `me`, `param`, `bhūtāni`, `yogam`, `tat`, `yat`, `bhīma`,
+`kutaḥ`, `sattvam`, `arjuna` and `samāḥ`. Next: the remaining forms in the 674-form pool;
 the owner picks each slice.
 
 ### 5.3 Interpretation and framing (owner decides)
@@ -435,12 +489,13 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batch 4 done)
+**Phase 2 — Meaning** · in progress (2.1 batch 5 done)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batch 4 of N** (`te` batch 1; `me`, `param`, `bhūtāni`,
+      **in progress — batch 5 of N** (`te` batch 1; `me`, `param`, `bhūtāni`,
       `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
-      settled keeps and rationale in §5.2). Next: remaining forms in the
-      674-form pool; owner picks the slice.
+      `arjuna`, `samāḥ` batch 5; settled keeps and rationale in §5.2). Next:
+      remaining forms in the 674-form pool; stop here until the owner selects a
+      later slice.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -609,6 +664,25 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/afa097ba-bhagavad-gita` · Phase 2.1 batch 5
+  (`arjuna`, `samāḥ`): verified PR #17 merged; unshallowed before ancestry
+  checks and content-verified batch 4 on `origin/main` (six exact entries, all
+  13 deliberate keeps, 9,366 / 9,484 counts). Dhruba flagged 1.04 pāda 2 and
+  delegated editorial judgement after the four-word pāda was checked against
+  its Sanskrit split, English word glosses and en/ne/hi literals. Added two
+  five-field overrides: `arjuna` “and Arjuna” → र अर्जुन / और अर्जुन and
+  `samāḥ` “equal” → समान / समान. All 22 other `arjuna` vocatives and 6.41
+  `samāḥ` “years” were deliberately kept; both occurrences of each form were
+  checked. Lockstep generated-data diff: only word[3]/word[4] changed in the
+  mirrored flow+padas records; text, split, English and prose untouched. Audit
+  §3 before/after `te` 0 / `me` 10; 9,366 / 9,484 unchanged. Full Playwright
+  build green incl. 162 browser checks. Six 390 × 844 ne/hi screenshots for
+  1.04, 2.02 and 10.41 across chapters 1, 2 and 10 captured/read back; 1.04
+  shows new meanings, 2.02/10.41 visually confirm settled batch-4 overrides.
+  Implementation commit `733393a`; PR #18:
+  https://github.com/chapain/Bhagavad-Gita/pull/18. Full repository zip:
+  `/home/user/Bhagavad-Gita-phase2.1-batch5.zip`. Stop before the next batch.
 
 - 2026-10-10 · `arena/dc2baaac-bhagavad-gita` · Phase 2.1 batch 4: PR #16
   merged; unshallowed before ancestry checks; verified all 21 batch-3 five-field
