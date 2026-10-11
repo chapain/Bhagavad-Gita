@@ -1527,7 +1527,7 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
 
 ## 8. Session log (newest first, one line each)
 
-- 2026-10-11 · `arena/ce051313-bhagavad-gita` · batch 16: PR #26 merged; four verses (12.01–12.04) reviewed, two NE/HI-only changes. Pre/post full build green and audit byte-identical; chapter-12 remaining verses left unreviewed. Evidence in `/home/user/evidence/batch16/`. Owner decisions held. PR number to be recorded after opening.
+- 2026-10-11 · `arena/ce051313-bhagavad-gita` · batch 16: PR #26 merged; four verses (12.01–12.04) reviewed, two NE/HI-only changes. Pre/post full build green and audit byte-identical; chapter-12 remaining verses left unreviewed. Evidence in `/home/user/evidence/batch16/`. Owner decisions held. PR #27 opened for Dhruba to merge; no second batch.
 
 
 - 2026-10-11 · `arena/9704c065-bhagavad-gita` · Phase 2.1 batch 15 (chs 9+10):
