@@ -7,9 +7,9 @@ before you talk to the owner.
 
 | | |
 |---|---|
-| Last updated | 2026-10-11 (Asia/Katmandu) |
-| Updated by | Arena session on branch `arena/bd59979f-bhagavad-gita` |
-| Base commit | `5c82e69` on `main` (merge of PR #22, 2.1 batch 11) |
+| Last updated | 2026-10-11 (UTC) |
+| Updated by | Arena session on branch `arena/39ceb621-bhagavad-gita` |
+| Base commit | `1b7b83c` on `main` (content-verified merge of PR #23, 2.1 batch 12) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -293,6 +293,24 @@ before you talk to the owner.
   site-health, 9,658 study, 19 Py, 802 doc, 15 + 7 Node, 162 browser). Eight
   390 × 844 ne/hi full sheets (11.34/37/39/49, 15.04/11/13/14) with 34
   rendered-string assertions. Screenshots: `/home/user/evidence/batch12/`.
+
+
+- **2026-10-11 — Batch 13 cleared and completed (chapters 3 + 7).** PR #23’s
+  merge into `main` at `1b7b83c` was checked by content before this batch; no
+  batches 1–12 were repeated. The Appendix A baseline was reproduced and the
+  pre-edit full §4 build was green before touching source. All 43 chapter-3
+  and 30 chapter-7 verses were checked word by word against the English,
+  Nepali and Hindi literals. **51 inline five-field overrides** (32 in ch3,
+  19 in ch7; only word[3]/word[4]); full verdict/reason worksheets and the
+  exhaustive unchanged-occurrence lists are in §5.2 / `/home/user/evidence/batch13/`.
+  Interpretive holds remain for Dhruba; the ch7 `tathā` “also/and” carry-forward
+  is resolved at 7.06. Appendix A before/after identical (`te` 0 / `me` 2;
+  9,366 / 9,484; §3 674/4,532). Full build passed all 162 browser checks;
+  102 rendered-string assertions passed; 16 Nepali/Hindi 390 × 844 screenshots
+  show the changed pādas expanded. Full-repo zip:
+  `/home/user/downloads/Bhagavad-Gita-700-titles.zip` (byte-identical round trip).
+  No other batch or Phase 2 item was started. The 11.44 *praṇidhāya* literal
+  “शरीर थपथपाउँछु” remains Dhruba’s decision — remind him, do not fix it.
 
 
 ## 2. Resume in five minutes
@@ -827,6 +845,163 @@ gloss; left for Dhruba. Carry-forward list now shorter: `mā`/`śucaḥ`
 1, 7–10, 13, 17 (the ch11 and ch15 shares are fixed here; `pravṛttiḥ`
 15.04 is fixed here).
 
+**FIXED (2.1 batch 13, 2026-10-11) — chapters 3 and 7 (43 + 30 = 73 verses).** Every English, Nepali and Hindi literal and every speaker/pāda word entry was read against its context. The full worksheets below record every verse’s word list, the pre-change NE/HI meanings, the three literal translations, verdict and reason: `/home/user/evidence/batch13/chapter3-review-worksheet.md` and `chapter7-review-worksheet.md`. **51 inline five-field overrides** in `padachheda_ch3.py` and `padachheda_ch7.py` (32 + 19), touching only `word[3]` / `word[4]`; 38 verses have corrections, 6 of those also carry an explicit owner hold, 32 are fully confirmed without an override, and 3 are hold-only. Verse text, IAST, English glosses, padas, titles and paraphrases were untouched.
+
+Chapter 3 changed-word table:
+
+| Verse / word position | Form / English gloss | Old NE / HI | New NE / HI | Translation evidence and reason |
+|---|---|---|---|---|
+| 3.04 P2 #3 | `aśnute` “attains” | अनुभव गर्दछ / भोगता है | प्राप्त गर्छ / प्राप्त करता है | NE literal says the man does not `पाउँदैन` freedom from action; HI says `प्राप्त नहीं होता`. These support “attains/obtains”, not the old experiential `अनुभव गर्दछ` / “enjoys” `भोगता है`. |
+| 3.08 P2 #4 | `akarmaṇaḥ` “than inaction” | अकर्मको / अकर्म का | अकर्मभन्दा / अकर्म से | The comparative is explicit: NE `कर्म अकर्मभन्दा श्रेष्ठ` and HI `कर्म अकर्म से श्रेष्ठ`; old genitive `अकर्मको / अकर्म का` did not mark “than”. |
+| 3.08 P4 #3 | `akarmaṇaḥ` “through inaction” | अकर्मको / अकर्म का | अकर्मले / अकर्म से | This second occurrence is the means in `even the body’s maintenance is not [possible] through inaction`: NE `अकर्मले ... निर्वाह ... हुँदैन`, HI `अकर्म से ... निर्वाह ... नहीं`. The old genitive was wrong; the two occurrences need distinct case-appropriate senses. |
+| 3.09 P2 #4 | `bandhanaḥ` “bound” | बाँध्ने / बाँधने वाला | बाँधिएको / बँधा हुआ | The local predicate describes the world as bound: NE `संसार कर्मले बाँधिएको छ`, HI `यह संसार ... कर्म से बँधा हुआ है`. Old `बाँध्ने / बाँधने वाला` made it an agent (“one who binds”), contradicting both. |
+| 3.11 P2 #1 | `te` “those” | तिम्रो / तुम्हारा | ती / वे | In `te devāḥ`, `te` is the plural demonstrative “those” referring to the gods. The literals name `देवताहरू / देवताओं`; old `तिम्रो / तुम्हारा` was possessive “your”, not a demonstrative. |
+| 3.12 P1 #1 | `iṣṭān` “desired” | इच्छितहरूलाई / इच्छितों को | चाहेका / वांछित | The word qualifies `bhogān` (“enjoyments”): NE says `चाहेका भोगहरू` and HI `वांछित भोग`. Old `इच्छितहरूलाई / इच्छितों को` substantivized the adjective and mismatched the object. |
+| 3.12 P3 #4 | `ebhyaḥ` “to them” | तीभन्दा पर / इनसे परे | तिनीहरूलाई / उन्हें | The clause concerns not returning what the gods gave: NE `बदलामा नदिने`, HI `बदले में न देने`. Here `ebhyaḥ` is “to them”; old `तीभन्दा पर / इनसे परे` (“beyond them”) reversed the relation. |
+| 3.13 P2 #2 | `sarva` “all” | हे सबै / हे सब | सबै / सब | In `sarva-kilbiṣaiḥ`, “all” modifies sins. The literal says `सबै पापबाट / सब पापों से`; old `हे सबै / हे सब` was a vocative, not the quantifier. |
+| 3.14 P4 #2 | `karma` “from action” | कर्म / कर्म | कर्मबाट / कर्म से | The source gloss is ablative “from action”; both literals give the source phrase `कर्मबाट / कर्म से उत्पन्न`. Old bare `कर्म` omitted that relation. |
+| 3.15 P1 #2 | `brahma` “from Brahman” | ब्रह्म / ब्रह्म | ब्रह्मबाट / ब्रह्म से | The first `brahma` is the source of action: NE `कर्म ब्रह्मबाट ... उत्पन्न`, HI `कर्म ब्रह्म से ... उत्पन्न`. Old bare `ब्रह्म` omitted “from”; the later nominative `brahma` is a different occurrence and stays as-is. |
+| 3.15 P3 #2 | `sarva` “all” | हे सबै / हे सब | सबै / सब | This is the first part of `sarvagataṃ brahma` (“all-pervading Brahman”), not a vocative. Both literals say `सर्वव्यापी ब्रह्म`; old `हे सबै / हे सब` addressed “all” and was incompatible with the compound. |
+| 3.18 P3 #3 | `asya` “of him” | यसको / इसका | उसको / उसका | The pronoun is third-person “his/of him”: NE `उसका निम्ति`, HI `उसके लिए`; old `यसको / इसका` was proximal “this”. |
+| 3.18 P3 #4 | `sarva` “all” | हे सबै / हे सब | सबै / सब | Here `sarva` quantifies beings in `sarvabhūteṣu`; the literals express the negative as “any being” (`कुनै प्राणीमाथि / किसी प्राणी पर`). Old `हे सबै / हे सब` was a vocative and could not fit the compound or the negative clause. |
+| 3.20 P4 #3 | `arhasi` “you should” | योग्य छौ / योग्य हो | पर्छ / चाहिए | The sentence says to act for lokasaṅgraha: NE `कर्म गर्नुपर्छ`, HI `कर्म करना चाहिए`. Old `योग्य छौ / योग्य हो` means “are worthy/fit”, not the obligation expressed by the two literals. |
+| 3.23 P1 #5 | `varteyam` “I should engage” | गर्नुपर्छ / लगूँ | लागूँ / लगूँ | The optative is inside a “if I did not engage in action” condition: NE `यदि म ... कर्म नगरें`, HI `यदि मैं ... कर्म न करूँ`. Old NE `गर्नुपर्छ` turned the conditional into “must do”; HI `लगूँ` already matched, and is retained. |
+| 3.24 P2 #2 | `kuryām` “I should perform” | गर्नुपर्छ / करूँ | गरूँ / करूँ | The first-person optative is conditional, not an instruction: NE `यदि मैले कर्म नगरें भने`, HI `यदि मैं कर्म न करूँ तो`. Old NE `गर्नुपर्छ` imposed obligation; `गरूँ / करूँ` preserves the first-person subjunctive/optative used by the literals. |
+| 3.26 P3 #2 | `sarva` “all” | हे सबै / हे सब | सबै / सब | The word modifies actions (`sarva-karmāṇi`); literals say `सबै कर्म / सब कर्म`. Old `हे सबै / हे सब` was a vocative. |
+| 3.28 P3 #3 | `vartante` “move, act” | रहन्छन् / रहते हैं | विचरण गर्छन् / विचरण करते हैं | In `guṇā guṇeṣu vartante`, the literals explicitly use “move/wander”: NE `विचरण गर्छन्`, HI `विचरण करने`. Old `रहन्छन् / रहते हैं` meant “remain”, not the verb used by the translations. |
+| 3.31 P4 #4 | `karmabhiḥ` “from actions” | कर्महरूले / कर्मों से | कर्मबाट / कर्मों से | The sentence says the followers are released even from karma-bondage: NE `कर्मबन्धनबाट ... मुक्त`, HI `कर्म-बन्धन से ... मुक्त`. Old NE `कर्महरूले` made the actions the agent (“by actions”); corrected NE marks “from”. HI `कर्मों से` already carries the source sense and stays unchanged. |
+| 3.32 P3 #1 | `sarva` “all” | हे सबै / हे सब | सबै / सब | In `sarva-jñāna`, “all” modifies knowledge; literals give `सबै ज्ञानबाट / सब ज्ञान से`. Old `हे सबै / हे सब` was a vocative. |
+| 3.33 P1 #1 | `sadṛśam` “according to, in conformity with” | बराबर / बराबर | अनुसार / अनुसार | The phrase says action is in conformity with one’s nature: NE `स्वभावअनुसार`, HI `स्वभाव के अनुसार`. Old `बराबर / बराबर` means “equal”, not “according to”. |
+| 3.33 P1 #3 | `svasyāḥ` “of one's own” | आफ्नैको / अपनी का | आफ्नै / अपने | The possessive modifies one’s own nature: NE `आफ्नै स्वभाव`, HI `अपने स्वभाव`. Old `आफ्नैको / अपनी का` was malformed in both languages and did not fit the following noun. |
+| 3.34 P4 #3 | `asya` “of him” | यसको / इसका | उसको / उसका | The obstacles are “his” impediments: NE says `उसका बाटो`, HI `उसके मार्ग`. Old `यसको / इसका` was the wrong proximal pronoun. |
+| 3.35 P3 #4 | `śreyaḥ` “is better” | कल्याण / कल्याण | राम्रो / अच्छा | The comparative is rendered directly as `राम्रो` and `अच्छा` in the literals (“own dharma ... is better”); old `कल्याण` means welfare/good, but did not mark the comparison. |
+| 3.36 P4 #3 | `niyojitaḥ` “driven, compelled” | प्रेरित / प्रेरित | बाध्य / बाध्य | Arjuna asks what compels action against one’s will: NE `बलले जबरजस्ती गरिएर`, HI `बल से बाध्य होकर`. Old `प्रेरित` repeated the preceding “driven/inspired” idea and missed this passive “compelled” force. |
+| 3.37 P4 #2 | `enam` “this” | उसलाई / उसे | यसलाई / इसे | The object is “this” desire/anger as enemy: NE `यसलाई नै ... शत्रु`, HI `इसे ही ... शत्रु`. Old `उसलाई / उसे` changed the near demonstrative to “that person”. |
+| 3.41 P3 #3 | `enam` “this” | उसलाई / उसे | यसलाई / इसे | The object is the present evil to be cast off; literals say `यस पापीलाई` and `इस पापी को`. Old `उसलाई / उसे` was anaphorically too remote; “this one” is explicit. |
+| 3.41 P4 #2 | `vijñāna` “and discrimination” | साक्षात्कार / साक्षात्कार | विवेक / विवेक | The full literal pairs knowledge with `विवेक` in both NE and HI. Old `साक्षात्कार` means realization/experience and is not the discrimination named by the source gloss or these translations. |
+| 3.42 P2 #2 | `param` “higher” | परम / परम | श्रेष्ठ / श्रेष्ठ | Here `param` is the comparative “higher/superior” in the senses hierarchy; both literals say `श्रेष्ठ`. Old `परम` suggested “supreme/absolute” rather than “higher than the senses”. |
+| 3.42 P4 #2 | `buddheḥ` “than the intellect” | बुद्धिको / बुद्धि की | बुद्धिभन्दा / बुद्धि से | The ablative is comparative (“than the intellect”): NE `बुद्धिभन्दा`, HI `बुद्धि से`. Old genitive `बुद्धिको / बुद्धि की` did not express the comparison. |
+| 3.43 P1 #2 | `buddheḥ` “than the intellect” | बुद्धिको / बुद्धि की | बुद्धिभन्दा / बुद्धि से | The same comparative ablative appears in `buddheḥ param`; literals say `बुद्धिभन्दा पर` and `बुद्धि से परे`. Old `बुद्धिको / बुद्धि की` was genitive, not “than”. |
+| 3.43 P1 #3 | `param` “beyond” | परम / परम | परे / परे | In `buddheḥ param`, this means “beyond”, not the adjective “supreme”: NE `बुद्धिभन्दा परको`, HI `बुद्धि से परे`. Old `परम` changed the relationship. |
+
+Chapter 7 changed-word table:
+
+| Verse / word position | Form / English gloss | Old NE / HI | New NE / HI | Translation evidence and reason |
+|---|---|---|---|---|
+| 7.02 P1 #2 | `te` “to you” | तिम्रो / तुम्हारा | तिमीलाई / तुझे | This `te` is the second-person dative “to you”: NE `म तिमीलाई ... बताउनेछु`, HI `मैं तुझे ... बताऊँगा`. Old `तिम्रो / तुम्हारा` was possessive. |
+| 7.05 P1 #3 | `itaḥ` “than this” | यहाँबाट / यहाँ से | यसभन्दा / इससे | The comparison is “higher than this [lower nature]”: NE `यसभन्दा परको`, HI `इससे परे`. Old `यहाँबाट / यहाँ से` meant “from here”; the referent is this nature, not a place. |
+| 7.06 P1 #1 | `etat` “these” | यो / यह | यी / इन | The demonstrative points to the two natures and therefore is plural in the literals: `यी दुई प्रकृतिहरू` / `इन दोनों प्रकृतियों`. Old singular `यो / यह` mismatched both number and referent. |
+| 7.06 P4 #3 | `tathā` “also” | त्यसरी / वैसे ही | पनि / भी | In `prabhavaḥ pralayaḥ tathā`, the word adds “also/and”: the literals have `उत्पत्ति र विनाश पनि` / `उत्पत्ति और विनाश भी`. Old `त्यसरी / वैसे ही` was manner (“thus”), not additive. |
+| 7.08 P4 #3 | `pauruṣam` “the manliness” | आफ्नो क्षमता / अपनी क्षमता | पौरुष / पौरुष | The literal translations use the technical noun `पौरुष` in men; old `आफ्नो क्षमता / अपनी क्षमता` means “one’s own ability” and did not match the source word “manliness/virility”. |
+| 7.12 P1 #4 | `sāttvikāḥ` “sāttvic” | सात्त्विकहरू / सात्त्विक | सात्त्विक / सात्त्विक | Here the adjective qualifies `bhāvāḥ` (“states”): NE literal lists `सात्त्विक ... अवस्थाहरू`, HI `सात्त्विक ... अवस्थाएँ`. Old NE `सात्त्विकहरू` made the adjective into “sattvic people”; HI `सात्त्विक` already agreed and is retained. |
+| 7.12 P2 #1 | `rājasāḥ` “rājasic” | राजसहरू / राजस | राजस / राजस | This is the adjective “rājasic” in the list of states: NE literal `राजस ... अवस्थाहरू`, HI `राजस ... अवस्थाएँ`. Old NE `राजसहरू` made it a plural noun; HI `राजस` already agreed. |
+| 7.12 P2 #2 | `tāmasāḥ` “tāmasic” | तामसहरू / तामस | तामस / तामस | This is the adjective “tāmasic” in the list of states: NE literal `तामस ... अवस्थाहरू`, HI `तामस ... अवस्थाएँ`. Old NE `तामसहरू` made it a plural noun; HI `तामस` already agreed. |
+| 7.13 P4 #3 | `param` “beyond” | परम / परम | परे / परे | This means beyond the three guṇas, not “supreme”: NE says `तिनभन्दा पर`, HI `उनसे परे`. Old `परम` was a different sense. |
+| 7.17 P3 #3 | `jñāninaḥ` “to the wise” | ज्ञानीका / ज्ञानी के | ज्ञानीका निम्ति / ज्ञानी के लिए | The clause is “I am dear to the wise”: NE `ज्ञानीका निम्ति`, HI `ज्ञानी के लिए`. Old `ज्ञानीका / ज्ञानी के` lacked the “for/to” relation in both word-level forms. |
+| 7.20 P3 #1 | `tam` “this” | उसलाई / उसे | यो / इस | The first of the repeated `tam` pair is proximal “this” in “this or that method”: NE `यो ... वा`, HI `इस ... या`. Old `उसलाई / उसे` was a personal object pronoun. |
+| 7.20 P3 #2 | `tam` “this” | उसलाई / उसे | त्यो / उस | The second of the pair is distal “that”: NE `त्यो`, HI `उस` in `यो वा त्यो विधि / इस या उस विधि`. Old `उसलाई / उसे` was again an object pronoun and did not preserve the contrast. |
+| 7.21 P4 #1 | `tām` “that” | त्यो / उसे | त्यो / उस | This feminine demonstrative modifies `śraddhām` (“faith”): NE `त्यो श्रद्धा`, HI `उस श्रद्धा`. Old Hindi `उसे` meant “to her/it” as an object pronoun, not “that” as a determiner; Nepali `त्यो` already matched. |
+| 7.22 P3 #3 | `tataḥ` “from it” | त्यसैले / इसलिए | त्यसबाट / उससे | The literal says the worshipper obtains desires “from it”: NE `त्यसबाट`, HI `उससे`. Old `त्यसैले / इसलिए` was causal “therefore”, not source/origin. |
+| 7.24 P2 #3 | `abuddhayaḥ` “the unintelligent” | अबुद्धिहरू / अबुद्धि | अबुद्धिहरू / अज्ञानी | The subject is people who do not understand: both literals say `अज्ञानी` (NE `अज्ञानीहरू`). The old Hindi `अबुद्धि` was an abstract noun (“lack of intellect”), not the plural people named by the source; NE `अबुद्धिहरू` is retained. |
+| 7.25 P1 #3 | `prakāśaḥ` “manifest” | प्रकाश / प्रकाश | प्रकट / प्रकट | The predicate is “manifest/revealed”: NE `प्रकट हुँदिनँ`, HI `प्रकट नहीं होता`. Old `प्रकाश` is the noun “light”, not the predicate in these literals. |
+| 7.25 P1 #4 | `sarvasya` “to all” | सबैको / सबका | सबैलाई / सबको | In `na prakāśaḥ sarvasya`, the sense is “not manifest to everyone”: NE `सबैलाई`, HI `सबको`. Old `सबैको / सबका` was possessive/genitive. |
+| 7.26 P1 #1 | `veda` “I know” | जान्दछ / जानता है | जान्दछु / जानता हूँ | The speaker is first person: NE `म ... जान्दछु`, HI `मैं ... जानता हूँ`. Old `जान्दछ / जानता है` was third-person singular. |
+| 7.27 P4 #1 | `sarge` “at birth” | सृष्टिमा / सृष्टि में | जन्ममा / जन्म में | The context is the birth into delusion caused by the pairs of desire/aversion; both literals say `जन्ममा / जन्म में`. Old `सृष्टिमा / सृष्टि में` meant “in creation”, not “at birth”. |
+
+**Interpretive holds / owner flags (not changed):** `te` 3.01 (NE `तिम्रो`, HI `तुम्हारा`; “by you” vs “in your view” is not a clear contradiction across the literal idioms); `tat` 3.02 (keep the NE/HI demonstrative `त्यो / वह` for *tad ekam* “that one thing”; the EN gloss “therefore” is left untouched); `anyatra` 3.09 (NE `बाहेक` is explicit “except”; HI `के अतिरिक्त` can be read more than one way, while the full literal says `छोड़कर`); `matvā` 3.28 (EN “having known” and the literals “knowing” vs current “thinking”; reserved for Dhruba); `aśanaḥ` in *mahāśanaḥ* 3.37 (“insatiable” vs “all-devouring”); `parām` 7.05 (technical `परा प्रकृति` vs “higher/supreme”); `teṣām` 7.17 (Sanskrit genitive “of them” vs literal “among them”). In 7.17 `mama` was confirmed in a prior batch and is **not reopened**. At 7.24, retain `param` + `bhāvam` as “higher nature” / technical `परा प्रकृति` pending Dhruba; at 7.30, leave doctrinal `adhibhūta`, `adhidaivam` and `adhiyajñam` as-is. Per the standing instruction, the 11.44 Nepali literal `शरीर थपथपाउँछु` for *praṇidhāya* is also still Dhruba’s decision; remind him, do not fix it.
+
+**Every occurrence examined and left alone** (speaker and pāda words, in worksheet order; `P# / #` identifies pāda / word position; `[flag]` identifies a deliberate hold; `mama` 7.17 was previously verified and not reopened):
+
+**Chapter 3:**
+- `3.01` — S#1 `arjunaḥ`; S#2 `uvāca`; P1#1 `jyāyasī`; P1#2 `cet`; P1#3 `karmaṇaḥ`; P1#4 `te` [flag — unchanged]; P2#1 `matā`; P2#2 `buddhiḥ`; P2#3 `janārdana`; P3#1 `tat`; P3#2 `kim`; P3#3 `karmaṇi`; P3#4 `ghore`; P3#5 `mām`; P4#1 `niyojayasi`; P4#2 `keśava`
+- `3.02` — P1#1 `vyāmiśreṇa`; P1#2 `iva`; P1#3 `vākyena`; P2#1 `buddhim`; P2#2 `mohayasi`; P2#3 `iva`; P2#4 `me`; P3#1 `tat` [flag — unchanged]; P3#2 `ekam`; P3#3 `vada`; P3#4 `niścitya`; P4#1 `yena`; P4#2 `śreyaḥ`; P4#3 `aham`; P4#4 `āpnuyām`
+- `3.03` — S#1 `śrībhagavān`; S#2 `uvāca`; P1#1 `loke`; P1#2 `asmin`; P1#3 `dvividhā`; P1#4 `niṣṭhā`; P2#1 `purā`; P2#2 `proktā`; P2#3 `mayā`; P2#4 `anagha`; P3#1 `jñānayogena`; P3#2 `sāṅkhyānām`; P4#1 `karmayogena`; P4#2 `yoginām`
+- `3.04` — P1#1 `na`; P1#2 `karmaṇām`; P1#3 `anārambhāt`; P2#1 `naiṣkarmyam`; P2#2 `puruṣaḥ`; P3#1 `na`; P3#2 `ca`; P3#3 `sannyasanāt`; P3#4 `eva`; P4#1 `siddhim`; P4#2 `samadhigacchati`
+- `3.05` — P1#1 `na`; P1#2 `hi`; P1#3 `kaścit`; P1#4 `kṣaṇam`; P1#5 `api`; P2#1 `jātu`; P2#2 `tiṣṭhati`; P2#3 `akarmakṛt`; P3#1 `kāryate`; P3#2 `hi`; P3#3 `avaśaḥ`; P3#4 `karma`; P4#1 `sarvaḥ`; P4#2 `prakṛti`; P4#3 `jaiḥ`; P4#4 `guṇaiḥ`
+- `3.06` — P1#1 `karma`; P1#2 `indriyāṇi`; P1#3 `saṁyamya`; P2#1 `yaḥ`; P2#2 `āste`; P2#3 `manasā`; P2#4 `smaran`; P3#1 `indriya`; P3#2 `arthān`; P3#3 `vimūḍha`; P3#4 `ātmā`; P4#1 `mithyācāraḥ`; P4#2 `saḥ`; P4#3 `ucyate`
+- `3.07` — P1#1 `yaḥ`; P1#2 `tu`; P1#3 `indriyāṇi`; P1#4 `manasā`; P2#1 `niyamya`; P2#2 `ārabhate`; P2#3 `arjuna`; P3#1 `karma`; P3#2 `indriyaiḥ`; P3#3 `karma`; P3#4 `yogam`; P4#1 `asaktaḥ`; P4#2 `saḥ`; P4#3 `viśiṣyate`
+- `3.08` — P1#1 `niyatam`; P1#2 `kuru`; P1#3 `karma`; P1#4 `tvam`; P2#1 `karma`; P2#2 `jyāyaḥ`; P2#3 `hi`; P3#1 `śarīrayātrā`; P3#2 `api`; P3#3 `ca`; P3#4 `te`; P4#1 `na`; P4#2 `prasidhyet`
+- `3.09` — P1#1 `yajña`; P1#2 `arthāt`; P1#3 `karmaṇaḥ`; P1#4 `anyatra` [flag — unchanged]; P2#1 `lokaḥ`; P2#2 `ayam`; P2#3 `karma`; P3#1 `tat`; P3#2 `artham`; P3#3 `karma`; P3#4 `kaunteya`; P4#1 `mukta`; P4#2 `saṅgaḥ`; P4#3 `samācara`
+- `3.10` — P1#1 `saha`; P1#2 `yajñāḥ`; P1#3 `prajāḥ`; P1#4 `sṛṣṭvā`; P2#1 `purā`; P2#2 `uvāca`; P2#3 `prajā`; P2#4 `patiḥ`; P3#1 `anena`; P3#2 `prasaviṣyadhvam`; P4#1 `eṣaḥ`; P4#2 `vaḥ`; P4#3 `astu`; P4#4 `iṣṭa`; P4#5 `kāmadhuk`
+- `3.11` — P1#1 `devān`; P1#2 `bhāvayata`; P1#3 `anena`; P2#2 `devāḥ`; P2#3 `bhāvayantu`; P2#4 `vaḥ`; P3#1 `parasparam`; P3#2 `bhāvayantaḥ`; P4#1 `śreyaḥ`; P4#2 `param`; P4#3 `avāpsyatha`
+- `3.12` — P1#2 `bhogān`; P1#3 `hi`; P1#4 `vaḥ`; P1#5 `devāḥ`; P2#1 `dāsyante`; P2#2 `yajña`; P2#3 `bhāvitāḥ`; P3#1 `taiḥ`; P3#2 `dattān`; P3#3 `apradāya`; P4#1 `yaḥ`; P4#2 `bhuṅkte`; P4#3 `stenaḥ`; P4#4 `eva`; P4#5 `saḥ`
+- `3.13` — P1#1 `yajña`; P1#2 `śiṣṭa`; P1#3 `aśinaḥ`; P1#4 `santaḥ`; P2#1 `mucyante`; P2#3 `kilbiṣaiḥ`; P3#1 `bhuñjate`; P3#2 `te`; P3#3 `tu`; P3#4 `agham`; P3#5 `pāpāḥ`; P4#1 `ye`; P4#2 `pacanti`; P4#3 `ātma`; P4#4 `kāraṇāt`
+- `3.14` — P1#1 `annāt`; P1#2 `bhavanti`; P1#3 `bhūtāni`; P2#1 `parjanyāt`; P2#2 `anna`; P2#3 `sambhavaḥ`; P3#1 `yajñāt`; P3#2 `bhavati`; P3#3 `parjanyaḥ`; P4#1 `yajñaḥ`; P4#3 `samudbhavaḥ`
+- `3.15` — P1#1 `karma`; P1#3 `udbhavam`; P1#4 `viddhi`; P2#1 `brahma`; P2#2 `akṣara`; P2#3 `samudbhavam`; P3#1 `tasmāt`; P3#3 `gatam`; P3#4 `brahma`; P4#1 `nityam`; P4#2 `yajñe`; P4#3 `pratiṣṭhitam`
+- `3.16` — P1#1 `evam`; P1#2 `pravartitam`; P1#3 `cakram`; P2#1 `na`; P2#2 `anuvartayati`; P2#3 `iha`; P2#4 `yaḥ`; P3#1 `agha`; P3#2 `āyuḥ`; P3#3 `indriya`; P3#4 `ārāmaḥ`; P4#1 `mogham`; P4#2 `pārtha`; P4#3 `saḥ`; P4#4 `jīvati`
+- `3.17` — P1#1 `yaḥ`; P1#2 `tu`; P1#3 `ātma`; P1#4 `ratiḥ`; P1#5 `eva`; P1#6 `syāt`; P2#1 `ātma`; P2#2 `tṛptaḥ`; P2#3 `ca`; P2#4 `mānavaḥ`; P3#1 `ātmani`; P3#2 `eva`; P3#3 `ca`; P3#4 `santuṣṭaḥ`; P4#1 `tasya`; P4#2 `kāryam`; P4#3 `na`; P4#4 `vidyate`
+- `3.18` — P1#1 `na`; P1#2 `eva`; P1#3 `tasya`; P1#4 `kṛtena`; P1#5 `arthaḥ`; P2#1 `na`; P2#2 `akṛtena`; P2#3 `iha`; P2#4 `kaścana`; P3#1 `na`; P3#2 `ca`; P3#5 `bhūteṣu`; P4#1 `kaścit`; P4#2 `artha`; P4#3 `vyapāśrayaḥ`
+- `3.19` — P1#1 `tasmāt`; P1#2 `asaktaḥ`; P1#3 `satatam`; P2#1 `kāryam`; P2#2 `karma`; P2#3 `samācara`; P3#1 `asaktaḥ`; P3#2 `hi`; P3#3 `ācaran`; P3#4 `karma`; P4#1 `param`; P4#2 `āpnoti`; P4#3 `pūruṣaḥ`
+- `3.20` — P1#1 `karmaṇā`; P1#2 `eva`; P1#3 `hi`; P1#4 `saṁsiddhim`; P2#1 `āsthitāḥ`; P2#2 `janakādayaḥ`; P3#1 `loka`; P3#2 `saṅgraham`; P3#3 `eva`; P3#4 `api`; P4#1 `sampaśyan`; P4#2 `kartum`
+- `3.21` — P1#1 `yat`; P1#2 `yat`; P1#3 `ācarati`; P1#4 `śreṣṭhaḥ`; P2#1 `tat`; P2#2 `tat`; P2#3 `eva`; P2#4 `itaraḥ`; P2#5 `janaḥ`; P3#1 `saḥ`; P3#2 `yat`; P3#3 `pramāṇam`; P3#4 `kurute`; P4#1 `lokaḥ`; P4#2 `tat`; P4#3 `anuvartate`
+- `3.22` — P1#1 `na`; P1#2 `me`; P1#3 `pārtha`; P1#4 `asti`; P1#5 `kartavyam`; P2#1 `triṣu`; P2#2 `lokeṣu`; P2#3 `kiñcana`; P3#1 `na`; P3#2 `anavāptam`; P3#3 `avāptavyam`; P4#1 `varte`; P4#2 `eva`; P4#3 `ca`; P4#4 `karmaṇi`
+- `3.23` — P1#1 `yadi`; P1#2 `hi`; P1#3 `aham`; P1#4 `na`; P2#1 `jātu`; P2#2 `karmaṇi`; P2#3 `atandritaḥ`; P3#1 `mama`; P3#2 `vartma`; P3#3 `anuvartante`; P4#1 `manuṣyāḥ`; P4#2 `pārtha`; P4#3 `sarvaśaḥ`
+- `3.24` — P1#1 `utsīdeyuḥ`; P1#2 `ime`; P1#3 `lokāḥ`; P2#1 `na`; P2#3 `karma`; P2#4 `cet`; P2#5 `aham`; P3#1 `saṅkarasya`; P3#2 `ca`; P3#3 `kartā`; P3#4 `syām`; P4#1 `upahanyām`; P4#2 `imāḥ`; P4#3 `prajāḥ`
+- `3.25` — P1#1 `saktāḥ`; P1#2 `karmaṇi`; P1#3 `avidvāṁsaḥ`; P2#1 `yathā`; P2#2 `kurvanti`; P2#3 `bhārata`; P3#1 `kuryāt`; P3#2 `vidvān`; P3#3 `tathā`; P3#4 `asaktaḥ`; P4#1 `cikīrṣuḥ`; P4#2 `loka`; P4#3 `saṅgraham`
+- `3.26` — P1#1 `na`; P1#2 `buddhi`; P1#3 `bhedam`; P1#4 `janayet`; P2#1 `ajñānām`; P2#2 `karma`; P2#3 `saṅginām`; P3#1 `joṣayet`; P3#3 `karmāṇi`; P4#1 `vidvān`; P4#2 `yuktaḥ`; P4#3 `samācaran`
+- `3.27` — P1#1 `prakṛteḥ`; P1#2 `kriyamāṇāni`; P2#1 `guṇaiḥ`; P2#2 `karmāṇi`; P2#3 `sarvaśaḥ`; P3#1 `ahaṅkāra`; P3#2 `vimūḍha`; P3#3 `ātmā`; P4#1 `kartā`; P4#2 `aham`; P4#3 `iti`; P4#4 `manyate`
+- `3.28` — P1#1 `tattvavit`; P1#2 `tu`; P1#3 `mahā`; P1#4 `bāho`; P2#1 `guṇa`; P2#2 `karma`; P2#3 `vibhāgayoḥ`; P3#1 `guṇāḥ`; P3#2 `guṇeṣu`; P4#1 `iti`; P4#2 `matvā` [flag — unchanged]; P4#3 `na`; P4#4 `sajjate`
+- `3.29` — P1#1 `prakṛteḥ`; P1#2 `guṇa`; P1#3 `sammūḍhāḥ`; P2#1 `sajjante`; P2#2 `guṇa`; P2#3 `karmasu`; P3#1 `tān`; P3#2 `akṛtsna`; P3#3 `vidaḥ`; P3#4 `mandān`; P4#1 `kṛtsnavit`; P4#2 `na`; P4#3 `vicālayet`
+- `3.30` — P1#1 `mayi`; P1#2 `sarvāṇi`; P1#3 `karmāṇi`; P2#1 `sannyasya`; P2#2 `adhyātma`; P2#3 `cetasā`; P3#1 `nirāśīḥ`; P3#2 `nirmamaḥ`; P3#3 `bhūtvā`; P4#1 `yudhyasva`; P4#2 `vigata`; P4#3 `jvaraḥ`
+- `3.31` — P1#1 `ye`; P1#2 `me`; P1#3 `matam`; P1#4 `idam`; P1#5 `nityam`; P2#1 `anutiṣṭhanti`; P2#2 `mānavāḥ`; P3#1 `śraddhāvantaḥ`; P3#2 `anasūyantaḥ`; P4#1 `mucyante`; P4#2 `te`; P4#3 `api`
+- `3.32` — P1#1 `ye`; P1#2 `tu`; P1#3 `etat`; P1#4 `abhyasūyantaḥ`; P2#1 `na`; P2#2 `anutiṣṭhanti`; P2#3 `me`; P2#4 `matam`; P3#2 `jñāna`; P3#3 `vimūḍhān`; P3#4 `tān`; P4#1 `viddhi`; P4#2 `naṣṭān`; P4#3 `acetasaḥ`
+- `3.33` — P1#2 `ceṣṭate`; P2#1 `prakṛteḥ`; P2#2 `jñānavān`; P2#3 `api`; P3#1 `prakṛtim`; P3#2 `yānti`; P3#3 `bhūtāni`; P4#1 `nigrahaḥ`; P4#2 `kim`; P4#3 `kariṣyati`
+- `3.34` — P1#1 `indriyasya`; P1#2 `indriyasya`; P1#3 `arthe`; P2#1 `rāga`; P2#2 `dveṣau`; P2#3 `vyavasthitau`; P3#1 `tayoḥ`; P3#2 `na`; P3#3 `vaśam`; P3#4 `āgacchet`; P4#1 `tau`; P4#2 `hi`; P4#4 `paripanthinau`
+- `3.35` — P1#1 `śreyān`; P1#2 `sva`; P1#3 `dharmaḥ`; P1#4 `viguṇaḥ`; P2#1 `para`; P2#2 `dharmāt`; P2#3 `svanuṣṭhitāt`; P3#1 `sva`; P3#2 `dharme`; P3#3 `nidhanam`; P4#1 `para`; P4#2 `dharmaḥ`; P4#3 `bhaya`; P4#4 `āvahaḥ`
+- `3.36` — S#1 `arjunaḥ`; S#2 `uvāca`; P1#1 `atha`; P1#2 `kena`; P1#3 `prayuktaḥ`; P1#4 `ayam`; P2#1 `pāpam`; P2#2 `carati`; P2#3 `pūruṣaḥ`; P3#1 `anicchan`; P3#2 `api`; P3#3 `vārṣṇeya`; P4#1 `balāt`; P4#2 `iva`
+- `3.37` — S#1 `śrībhagavān`; S#2 `uvāca`; P1#1 `kāmaḥ`; P1#2 `eṣaḥ`; P1#3 `krodhaḥ`; P1#4 `eṣaḥ`; P2#1 `rajaḥ`; P2#2 `guṇa`; P2#3 `samudbhavaḥ`; P3#1 `mahā`; P3#2 `aśanaḥ` [flag — unchanged]; P3#3 `mahā`; P3#4 `pāpmā`; P4#1 `viddhi`; P4#3 `iha`; P4#4 `vairiṇam`
+- `3.38` — P1#1 `dhūmena`; P1#2 `āvriyate`; P1#3 `vahniḥ`; P2#1 `yathā`; P2#2 `ādarśaḥ`; P2#3 `malena`; P2#4 `ca`; P3#1 `yathā`; P3#2 `ulbena`; P3#3 `āvṛtaḥ`; P3#4 `garbhaḥ`; P4#1 `tathā`; P4#2 `tena`; P4#3 `idam`; P4#4 `āvṛtam`
+- `3.39` — P1#1 `āvṛtam`; P1#2 `jñānam`; P1#3 `etena`; P2#1 `jñāninaḥ`; P2#2 `nitya`; P2#3 `vairiṇā`; P3#1 `kāma`; P3#2 `rūpeṇa`; P3#3 `kaunteya`; P4#1 `duḥ`; P4#2 `pūreṇa`; P4#3 `analena`; P4#4 `ca`
+- `3.40` — P1#1 `indriyāṇi`; P1#2 `manaḥ`; P1#3 `buddhiḥ`; P2#1 `asya`; P2#2 `adhiṣṭhānam`; P2#3 `ucyate`; P3#1 `etaiḥ`; P3#2 `vimohayati`; P3#3 `eṣaḥ`; P4#1 `jñānam`; P4#2 `āvṛtya`; P4#3 `dehinam`
+- `3.41` — P1#1 `tasmāt`; P1#2 `tvam`; P1#3 `indriyāṇi`; P1#4 `ādau`; P2#1 `niyamya`; P2#2 `bharata`; P2#3 `ṛṣabha`; P3#1 `pāpmānam`; P3#2 `prajahihi`; P4#1 `jñāna`; P4#3 `nāśanam`
+- `3.42` — P1#1 `indriyāṇi`; P1#2 `parāṇi`; P1#3 `āhuḥ`; P2#1 `indriyebhyaḥ`; P2#3 `manaḥ`; P3#1 `manasaḥ`; P3#2 `tu`; P3#3 `parā`; P3#4 `buddhiḥ`; P4#1 `yaḥ`; P4#3 `parataḥ`; P4#4 `tu`; P4#5 `saḥ`
+- `3.43` — P1#1 `evam`; P1#4 `buddhvā`; P2#1 `saṁstabhya`; P2#2 `ātmānam`; P2#3 `ātmanā`; P3#1 `jahi`; P3#2 `śatrum`; P3#3 `mahā`; P3#4 `bāho`; P4#1 `kāma`; P4#2 `rūpam`; P4#3 `dur`; P4#4 `āsadam`
+
+Chapter 3 audit list: 614 speaker/pāda word occurrences total; 582 explicitly listed as unchanged/held, in addition to the changed-word table above.
+
+**Chapter 7:**
+- `7.01` — S#1 `śrībhagavān`; S#2 `uvāca`; P1#1 `mayi`; P1#2 `āsakta`; P1#3 `manāḥ`; P1#4 `pārtha`; P2#1 `yogam`; P2#2 `yuñjan`; P2#3 `madāśrayaḥ`; P3#1 `asaṁśayam`; P3#2 `samagram`; P3#3 `mām`; P4#1 `yathā`; P4#2 `jñāsyasi`; P4#3 `tat`; P4#4 `śṛṇu`
+- `7.02` — P1#1 `jñānam`; P1#3 `aham`; P1#4 `savijñānam`; P2#1 `idam`; P2#2 `vakṣyāmi`; P2#3 `aśeṣataḥ`; P3#1 `yat`; P3#2 `jñātvā`; P3#3 `na`; P3#4 `iha`; P3#5 `bhūyaḥ`; P3#6 `anyat`; P4#1 `jñātavyam`; P4#2 `avaśiṣyate`
+- `7.03` — P1#1 `manuṣyāṇām`; P1#2 `sahasreṣu`; P2#1 `kaścit`; P2#2 `yatati`; P2#3 `siddhaye`; P3#1 `yatatām`; P3#2 `api`; P3#3 `siddhānām`; P4#1 `kaścit`; P4#2 `mām`; P4#3 `vetti`; P4#4 `tattvataḥ`
+- `7.04` — P1#1 `bhūmiḥ`; P1#2 `āpaḥ`; P1#3 `analaḥ`; P1#4 `vāyuḥ`; P2#1 `kham`; P2#2 `manaḥ`; P2#3 `buddhiḥ`; P2#4 `eva`; P2#5 `ca`; P3#1 `ahaṅkāraḥ`; P3#2 `iti`; P3#3 `iyam`; P3#4 `me`; P4#1 `bhinnā`; P4#2 `prakṛtiḥ`; P4#3 `aṣṭadhā`
+- `7.05` — P1#1 `aparā`; P1#2 `iyam`; P1#4 `tu`; P1#5 `anyām`; P2#1 `prakṛtim`; P2#2 `viddhi`; P2#3 `me`; P2#4 `parām` [flag — unchanged]; P3#1 `jīvabhūtām`; P3#2 `mahābāho`; P4#1 `yayā`; P4#2 `idam`; P4#3 `dhāryate`; P4#4 `jagat`
+- `7.06` — P1#2 `yonīni`; P1#3 `bhūtāni`; P2#1 `sarvāṇi`; P2#2 `iti`; P2#3 `upadhāraya`; P3#1 `aham`; P3#2 `kṛtsnasya`; P3#3 `jagataḥ`; P4#1 `prabhavaḥ`; P4#2 `pralayaḥ`
+- `7.07` — P1#1 `mattaḥ`; P1#2 `parataram`; P1#3 `na`; P1#4 `anyat`; P2#1 `kiñcit`; P2#2 `asti`; P2#3 `dhanañjaya`; P3#1 `mayi`; P3#2 `sarvam`; P3#3 `idam`; P3#4 `protam`; P4#1 `sūtre`; P4#2 `maṇigaṇāḥ`; P4#3 `iva`
+- `7.08` — P1#1 `rasaḥ`; P1#2 `aham`; P1#3 `apsu`; P1#4 `kaunteya`; P2#1 `prabhā`; P2#2 `asmi`; P2#3 `śaśisūryayoḥ`; P3#1 `praṇavaḥ`; P3#2 `sarvavedeṣu`; P4#1 `śabdaḥ`; P4#2 `khe`; P4#4 `nṛṣu`
+- `7.09` — P1#1 `puṇyaḥ`; P1#2 `gandhaḥ`; P1#3 `pṛthivyām`; P1#4 `ca`; P2#1 `tejaḥ`; P2#2 `ca`; P2#3 `asmi`; P2#4 `vibhāvasau`; P3#1 `jīvanam`; P3#2 `sarvabhūteṣu`; P4#1 `tapaḥ`; P4#2 `ca`; P4#3 `asmi`; P4#4 `tapasviṣu`
+- `7.10` — P1#1 `bījam`; P1#2 `mām`; P1#3 `sarvabhūtānām`; P2#1 `viddhi`; P2#2 `pārtha`; P2#3 `sanātanam`; P3#1 `buddhiḥ`; P3#2 `buddhimatām`; P3#3 `asmi`; P4#1 `tejaḥ`; P4#2 `tejasvinām`; P4#3 `aham`
+- `7.11` — P1#1 `balam`; P1#2 `balavatām`; P1#3 `ca`; P1#4 `aham`; P2#1 `kāmarāgavivarjitam`; P3#1 `dharmāviruddhaḥ`; P3#2 `bhūteṣu`; P4#1 `kāmaḥ`; P4#2 `asmi`; P4#3 `bharatarṣabha`
+- `7.12` — P1#1 `ye`; P1#2 `ca`; P1#3 `eva`; P1#5 `bhāvāḥ`; P2#3 `ca`; P2#4 `ye`; P3#1 `mattaḥ`; P3#2 `eva`; P3#3 `iti`; P3#4 `tān`; P3#5 `viddhi`; P4#1 `na`; P4#2 `tu`; P4#3 `aham`; P4#4 `teṣu`; P4#5 `te`; P4#6 `mayi`
+- `7.13` — P1#1 `tribhiḥ`; P1#2 `guṇamayaiḥ`; P1#3 `bhāvaiḥ`; P2#1 `ebhiḥ`; P2#2 `sarvam`; P2#3 `idam`; P2#4 `jagat`; P3#1 `mohitam`; P3#2 `na`; P3#3 `abhijānāti`; P4#1 `mām`; P4#2 `ebhyaḥ`; P4#4 `avyayam`
+- `7.14` — P1#1 `daivī`; P1#2 `hi`; P1#3 `eṣā`; P1#4 `guṇamayī`; P2#1 `mama`; P2#2 `māyā`; P2#3 `duratyayā`; P3#1 `mām`; P3#2 `eva`; P3#3 `ye`; P3#4 `prapadyante`; P4#1 `māyām`; P4#2 `etām`; P4#3 `taranti`; P4#4 `te`
+- `7.15` — P1#1 `na`; P1#2 `mām`; P1#3 `duṣkṛtinaḥ`; P1#4 `mūḍhāḥ`; P2#1 `prapadyante`; P2#2 `narādhamāḥ`; P3#1 `māyayā`; P3#2 `apahṛtajñānāḥ`; P4#1 `āsuram`; P4#2 `bhāvam`; P4#3 `āśritāḥ`
+- `7.16` — P1#1 `caturvidhāḥ`; P1#2 `bhajante`; P1#3 `mām`; P2#1 `janāḥ`; P2#2 `sukṛtinaḥ`; P2#3 `arjuna`; P3#1 `ārtaḥ`; P3#2 `jijñāsuḥ`; P3#3 `arthārthī`; P4#1 `jñānī`; P4#2 `ca`; P4#3 `bharatarṣabha`
+- `7.17` — P1#1 `teṣām` [flag — unchanged]; P1#2 `jñānī`; P1#3 `nityayuktaḥ`; P2#1 `ekabhaktiḥ`; P2#2 `viśiṣyate`; P3#1 `priyaḥ`; P3#2 `hi`; P3#4 `atyartham`; P4#1 `aham`; P4#2 `saḥ`; P4#3 `ca`; P4#4 `mama` [prior verified; not reopened]; P4#5 `priyaḥ`
+- `7.18` — P1#1 `udārāḥ`; P1#2 `sarve`; P1#3 `eva`; P1#4 `ete`; P2#1 `jñānī`; P2#2 `tu`; P2#3 `ātmā`; P2#4 `eva`; P2#5 `me`; P2#6 `matam`; P3#1 `āsthitaḥ`; P3#2 `saḥ`; P3#3 `hi`; P3#4 `yuktātmā`; P4#1 `mām`; P4#2 `eva`; P4#3 `anuttamām`; P4#4 `gatim`
+- `7.19` — P1#1 `bahūnām`; P1#2 `janmanām`; P1#3 `ante`; P2#1 `jñānavān`; P2#2 `mām`; P2#3 `prapadyate`; P3#1 `vāsudevaḥ`; P3#2 `sarvam`; P3#3 `iti`; P4#1 `saḥ`; P4#2 `mahātmā`; P4#3 `sudurlabhaḥ`
+- `7.20` — P1#1 `kāmaiḥ`; P1#2 `taiḥ`; P1#3 `taiḥ`; P1#4 `hṛtajñānāḥ`; P2#1 `prapadyante`; P2#2 `anyadevatāḥ`; P3#3 `niyamam`; P3#4 `āsthāya`; P4#1 `prakṛtyā`; P4#2 `niyatāḥ`; P4#3 `svayā`
+- `7.21` — P1#1 `yaḥ`; P1#2 `yaḥ`; P1#3 `yām`; P1#4 `yām`; P1#5 `tanum`; P1#6 `bhaktaḥ`; P2#1 `śraddhayā`; P2#2 `arcitum`; P2#3 `icchati`; P3#1 `tasya`; P3#2 `tasya`; P3#3 `acalām`; P3#4 `śraddhām`; P4#2 `eva`; P4#3 `vidadhāmi`; P4#4 `aham`
+- `7.22` — P1#1 `saḥ`; P1#2 `tayā`; P1#3 `śraddhayā`; P1#4 `yuktaḥ`; P2#1 `tasya`; P2#2 `ārādhanam`; P2#3 `īhate`; P3#1 `labhate`; P3#2 `ca`; P3#4 `kāmān`; P4#1 `mayā`; P4#2 `eva`; P4#3 `vihitān`; P4#4 `hi`; P4#5 `tān`
+- `7.23` — P1#1 `antavat`; P1#2 `tu`; P1#3 `phalam`; P1#4 `teṣām`; P2#1 `tat`; P2#2 `bhavati`; P2#3 `alpamedhasām`; P3#1 `devān`; P3#2 `devayajaḥ`; P3#3 `yānti`; P4#1 `madbhaktāḥ`; P4#2 `yānti`; P4#3 `mām`; P4#4 `api`
+- `7.24` — P1#1 `avyaktam`; P1#2 `vyaktim`; P1#3 `āpannam`; P2#1 `manyante`; P2#2 `mām`; P3#1 `param` [flag — unchanged]; P3#2 `bhāvam` [flag — unchanged]; P3#3 `ajānantaḥ`; P4#1 `mama`; P4#2 `avyayam`; P4#3 `anuttamam`
+- `7.25` — P1#1 `na`; P1#2 `aham`; P2#1 `yogamāyā`; P2#2 `samāvṛtaḥ`; P3#1 `mūḍhaḥ`; P3#2 `ayam`; P3#3 `na`; P3#4 `abhijānāti`; P4#1 `lokaḥ`; P4#2 `mām`; P4#3 `ajam`; P4#4 `avyayam`
+- `7.26` — P1#2 `aham`; P1#3 `samatītāni`; P2#1 `vartamānāni`; P2#2 `ca`; P2#3 `arjuna`; P3#1 `bhaviṣyāṇi`; P3#2 `ca`; P3#3 `bhūtāni`; P4#1 `mām`; P4#2 `tu`; P4#3 `veda`; P4#4 `na`; P4#5 `kaścana`
+- `7.27` — P1#1 `icchā`; P1#2 `dveṣa`; P1#3 `samutthena`; P2#1 `dvandvamohena`; P2#2 `bhārata`; P3#1 `sarvabhūtāni`; P3#2 `sammoham`; P4#2 `yānti`; P4#3 `parantapa`
+- `7.28` — P1#1 `yeṣām`; P1#2 `tu`; P1#3 `antagatam`; P1#4 `pāpam`; P2#1 `janānām`; P2#2 `puṇyakarmaṇām`; P3#1 `te`; P3#2 `dvandvamohanirmuktāḥ`; P4#1 `bhajante`; P4#2 `mām`; P4#3 `dṛḍhavratāḥ`
+- `7.29` — P1#1 `jarā`; P1#2 `maraṇa`; P1#3 `mokṣāya`; P2#1 `mām`; P2#2 `āśritya`; P2#3 `yatanti`; P2#4 `ye`; P3#1 `te`; P3#2 `brahma`; P3#3 `tat`; P3#4 `viduḥ`; P3#5 `kṛtsnam`; P4#1 `adhyātmam`; P4#2 `karma`; P4#3 `ca`; P4#4 `akhilam`
+- `7.30` — P1#1 `sa`; P1#2 `adhibhūta` [flag — unchanged]; P1#3 `adhidaivam` [flag — unchanged]; P1#4 `mām`; P2#1 `sa`; P2#2 `adhiyajñam` [flag — unchanged]; P2#3 `ca`; P2#4 `ye`; P2#5 `viduḥ`; P3#1 `prayāṇakāle`; P3#2 `api`; P3#3 `ca`; P3#4 `mām`; P4#1 `te`; P4#2 `viduḥ`; P4#3 `yuktacetasaḥ`
+
+Chapter 7 audit list: 418 speaker/pāda word occurrences total; 399 explicitly listed as unchanged/held, in addition to the changed-word table above.
+
+**Carry-forward resolved in this chapter batch:** 7.06 `tathā` “also/and” is now `पनि / भी`, matching `उत्पत्ति र विनाश पनि / उत्पत्ति और विनाश भी` (old “thus” manner words were `त्यसरी / वैसे ही`). Its remaining shares in chapters 1, 8–10, 13 and 17 must wait for those chapters’ own batches. Carry-forward flags still open elsewhere: 4.16 `kavayaḥ`, 6.36 `matiḥ`, 16.05 and 18.66 `mā` / `śucaḥ`. No other chapter’s occurrence was changed here.
+
+Appendix A audit is byte-identical before/after: **9,366 verse words / 9,484 glosses; §3 674 forms / 4,532 instances; `te` 0 / `me` 2**. The complete output is in `/home/user/evidence/batch13/appendix-a-after.txt`, equal to both `/home/user/evidence/appendix-a-pre-edit.txt` and `/home/user/evidence/appendix-a-baseline.txt`.
+
+**Verification:** full §4 build green — strict pāda 2,800 / 0, all 2,100 paraphrase pairs, SEO 6, site-health 572, study 9,658, 19 Python tests, 802 document assertions, 15 + 7 Node tests and all **162 browser checks**. Playwright rendered-string assertions passed **102/102** (51 overrides × NE/HI). **16 screenshots** (four verses per chapter, both languages, 390 × 844) show the changed pāda expanded; evidence and index: `/home/user/evidence/batch13/screenshots/`, `rendered-string-assertions.json`, `screenshot-index.json`. Full build log: `/home/user/evidence/batch13/full-build.log`.
+
+Full-repo checkpoint zip (outside Git): `/home/user/downloads/Bhagavad-Gita-700-titles.zip`; unzipped tree verified byte-identical with `diff -r` (tracked repository files; `.git` excluded).
+
+
 ### 5.3 Interpretation and framing (owner decides)
 
 - **“तीन निष्ठा / तीन निष्ठाएँ”** clashes with 3.3 *loke ’smin dvividhā niṣṭhā*
@@ -961,28 +1136,31 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batches 7–12 done — ch4, ch14, ch16, ch18, ch2, ch11+15)
+**Phase 2 — Meaning** · in progress (2.1 batches 1–13 done — chapters 2, 3,
+4, 7, 11, 14, 15, 16 and 18 read verse by verse)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batches 1–12 done (chapters 4, 14, 16, 18, 2, 11 and 15 read verse by verse)** (`te` batch 1;
-      `me`, `param`, `bhūtāni`, `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`,
-      `kutaḥ`, `sattvam` batch 4; `arjuna`, `samāḥ` batch 5; `me` = "to me"
-      cleanup batch 6; **chapter 4 batch 7 (24), chapter 14 batch 8 (8),
-      chapter 16 batch 9 (11), chapter 18 batch 10 (20), chapter 2 batch 11
-      (69), chapters 11+15 batch 12 (62 + 10)**; settled keeps and rationale in §5.2).
-      204 of 9,366 verse-word instances now carry per-verse Nepali/Hindi overrides
-      from the chapter batches (280 five-field entries corpus-wide).
-      Next: read the remaining 11 chapters verse by verse in the same way
-      (priority order 3, 6, 7, 9, 8, 13, 1, 10, 5, 17, 12); owner flags still
-      open: 4.16 `kavayaḥ`, `tathā` in chs 1/7–10/13/17, `matiḥ` 6.36,
-      `mā`/`śucaḥ` in 16.05/18.66 (the ch11 occurrences and `pravṛttiḥ` 15.04
-      were fixed in batch 12).
+      **in progress — batches 1–13 done** (`te` batch 1; `me`, `param`,
+      `bhūtāni`, `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`,
+      `sattvam` batch 4; `arjuna`, `samāḥ` batch 5; `me` = “to me” batch 6;
+      ch4 batch 7 (24), ch14 batch 8 (8), ch16 batch 9 (11), ch18 batch 10
+      (20), ch2 batch 11 (69), ch11+15 batch 12 (62 + 10), ch3+7 batch 13
+      (32 + 19)). **255 of 9,366 verse-word instances** now carry per-verse
+      Nepali/Hindi overrides from the chapter batches (**331 five-field entries
+      corpus-wide**). Remaining chapters: 1, 5, 6, 8, 9, 10, 12, 13 and 17
+      (309 verses). No next batch or Phase 2 item was started in this session;
+      next work awaits Dhruba’s direction. Open carry-forward flags: 4.16
+      `kavayaḥ`; `tathā` “also/and” in chs 1, 8–10, 13 and 17 (7.06 was fixed
+      in batch 13); `matiḥ` 6.36; `mā` / `śucaḥ` 16.05 / 18.66.
 - [ ] 2.1x **Verse-by-verse verification of all 700 verses** (standing owner
-      requirement, started 2026-10-11). Reviewed so far: **chs 2, 4, 11, 14, 15, 16, 18 =
-      318 verses** (ch2 72/72, ch4 42/42, ch11 55/55, ch14 27/27, ch15 20/20, ch16 24/24, ch18 78/78). Each verse is recorded
-      as reviewed with its word list, its en/ne/hi literals, the verdict
-      (confirmed / corrected / flagged) and the reason; the per-verse ledger
-      for chs 4/14/16 is in PR #20, for ch 18 in PR #21, for ch 2 in PR #22 and for chs 11+15 in this PR. Remaining: 382
-      verses in 11 chapters. Nothing in the corpus may be called verified until all 700 are.
+      requirement, started 2026-10-11). Reviewed so far: **chs 2, 3, 4, 7, 11,
+      14, 15, 16, 18 = 391 verses** (ch2 72/72, ch3 43/43, ch4 42/42, ch7
+      30/30, ch11 55/55, ch14 27/27, ch15 20/20, ch16 24/24, ch18 78/78).
+      Every reviewed verse has its word list, en/ne/hi literals, verdict
+      (confirmed / corrected / flagged) and reason. Per-verse ledgers: ch4/14/16
+      in PR #20, ch18 in PR #21, ch2 in PR #22, ch11+15 in PR #23, and ch3+7
+      in this session-branch PR. Remaining: **309 verses in 9 chapters**
+      (1, 5, 6, 8, 9, 10, 12, 13, 17). Nothing in the corpus may be called
+      verified until all 700 are.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
