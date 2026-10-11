@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-11 (UTC) |
-| Updated by | Arena session on branch `arena/0ceb3eac-bhagavad-gita` |
-| Base commit | `a1803d7f` on `main` (PR #28 merged, batch 17 present) |
+| Updated by | Arena session on branch `arena/d16ff228-bhagavad-gita` |
+| Base commit | `d52989645231e97d2cadd12311a917ae3df2ce9c` on `main` (PR #29 merged; batch 18 present) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -22,8 +22,10 @@ before you talk to the owner.
 
 - **Batch 16 (partial chapter 12, verses 12.01–12.04):** PR #26 merged at `28a802a`; batch-15 content verified on `main`. Four verses reviewed, two `paryupāsate` NE/HI overrides at 12.01 and 12.03. This was the state before batch 17; evidence and exhaustive word ledger are in `/home/user/evidence/batch16/`.
 - **Batch 17 (Phase 2.1, 2026-10-11):** PR #28 merged at `a1803d7` (carrying `406c766` and `9b50b43`), verified on `main` before batch 18. All 29 verses of chapter 5 and the remaining 16 verses of chapter 12 reviewed (**45/45 verse verdicts**: 26 confirmed, 18 with corrections, 12.19 flagged; 23 NE/HI-only word overrides and 568 unchanged word occurrences enumerated). Evidence in `/home/user/evidence/batch17/`.
-- **Batch 18 (Phase 2.1, 2026-10-11):** all 47 verses of chapter 1 (`1.01`–`1.47`) reviewed against Sanskrit, pāda splits, word entries and EN/NE/HI literals. **47/47 verse verdicts** recorded (20 confirmed, 27 corrected with **42 NE/HI-only five-field overrides** across 40 pādas; 8 pre-existing five-field entries verified and retained, bringing `source/padachheda_ch1.py` to 50 five-field entries and the corpus to **528**). All **601 unchanged word occurrences** (589 pāda words + 12 speaker words) are exhaustively enumerated in `/home/user/evidence/batch18/worksheet-ch1.md`. Both chapter-1 additive `tathā` carry-forwards (`1.26 P4#4` and `1.34 P4#3`) are verified in context and resolved to `पनि / भी` (leaving only `13.18`, `17.07` and `17.26`). Two out-of-scope observations are flagged for Dhruba without editing: `1.15` NE literal (`हेराकुली पराक्रमी भीमले महाशङ्ख पाञ्चजन्य… पौण्ड्र बजाए।` in `source/translations_ne.py`) and `अर्जुन उवाच` speaker-header Hindi gloss (`HI = 'हे अर्जुन'` in `source/build_gita.py`). All owner holds remain untouched. Overall verse-review ledger: **638/700**, with **62 verses** remaining in chapters 13 (35) and 17 (27). Source commit `671bfe9` is pushed to `arena/0ceb3eac-bhagavad-gita`; [PR #29](https://github.com/chapain/Bhagavad-Gita/pull/29) is open to `main` for Dhruba to review. Worksheets, occurrence ledger, assertions and browser evidence (12 full 390×844 sheets + 80 changed-pāda crops) are in `/home/user/evidence/batch18/` (outside Git).
+- **Batch 18 (Phase 2.1, 2026-10-11):** all 47 verses of chapter 1 (`1.01`–`1.47`) reviewed against Sanskrit, pāda splits, word entries and EN/NE/HI literals. **47/47 verse verdicts** recorded (20 confirmed, 27 corrected with **42 NE/HI-only five-field overrides** across 40 pādas; 8 pre-existing five-field entries verified and retained, bringing `source/padachheda_ch1.py` to 50 five-field entries and the corpus to **528**). All **601 unchanged word occurrences** (589 pāda words + 12 speaker words) are exhaustively enumerated in `/home/user/evidence/batch18/worksheet-ch1.md`. Both chapter-1 additive `tathā` carry-forwards (`1.26 P4#4` and `1.34 P4#3`) are verified in context and resolved to `पनि / भी` (leaving only `13.18`, `17.07` and `17.26`). Two out-of-scope observations are flagged for Dhruba without editing: `1.15` NE literal (`हेराकुली पराक्रमी भीमले महाशङ्ख पाञ्चजन्य… पौण्ड्र बजाए।` in `source/translations_ne.py`) and `अर्जुन उवाच` speaker-header Hindi gloss (`HI = 'हे अर्जुन'` in `source/build_gita.py`). All owner holds remain untouched. At that batch's close the review ledger was 638/700, with the then-queued 62 source verses in chapters 13 and 17. Source commit `671bfe9` was pushed; PR #29 was subsequently merged at `d529896` (verified via GitHub REST). Worksheets, occurrence ledger, assertions and browser evidence (12 full 390×844 sheets + 80 changed-pāda crops) remain in `/home/user/evidence/batch18/` (outside Git).
 
+
+- **Batch 19 (Phase 2.1, 2026-10-11; complete):** Dhruba confirmed scope after the range mismatch was raised. The source contains ch13 `13.01–13.34` (34 verses; no 13.35) and ch17 `17.01–17.28` (28 verses; include 17.28), 62 existing verses total. All 62 were reviewed; **35 confirmed, 26 corrected and 1 flagged** (13.24 has NE/HI corrections but an English word-gloss overlap remains outside scope). Added **42 NE/HI-only overrides** across 34 pādas (27 in ch13, 15 in ch17); 742 unchanged occurrences are exhaustively listed with full tuples. All 9 pre-existing five-field entries were verified and retained; corpus total is 570. Resolved additive `tathā` at 13.18, 17.07 and 17.26; retained comparative 13.29, 13.32 and 13.33. Verified 13.27 `avinaśyantam` short-a spelling and 17.06 `karśayantaḥ`; only the former received a scoped NE/HI override. Final §4 build passed, including 162 browser checks; 84/84 structural assertions; 12 full 390×844 sheets + 68 changed-pāda crops. Appendix A stayed byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`). Evidence/worksheets are under `/home/user/evidence/batch19/` (outside Git). 2.1 and 2.1x are now **700/700**; stop here—no Phase 2.2. Preserve all owner holds; source commit `27de331` is in [PR #30](https://github.com/chapain/Bhagavad-Gita/pull/30), open to `main` for Dhruba to review and merge; it has not been merged.
 
 - **2026-10-09 — Phase 1 complete (steps 1.1–1.9).** Step 1.4 made
   `source/check_padas.py` a build-failing strict validator. It losslessly
@@ -1251,7 +1253,17 @@ The ledger is now **591/700 verses**; 109 remain in chapters 1, 13 and 17. This 
 
 **Out-of-scope observations flagged for Dhruba (not edited):** (1) `1.15` Nepali literal in `source/translations_ne.py` reads `“कृष्णले पाञ्चजन्य बजाए, अर्जुनले देवदत्त बजाए, र हेराकुली पराक्रमी भीमले महाशङ्ख पाञ्चजन्य… पौण्ड्र बजाए।”` (false start `पाञ्चजन्य…` before `पौण्ड्र` and English calque `हेराकुली पराक्रमी` for `भीमकर्मा`); (2) in `source/build_gita.py`, `i18n_speaker_words` maps Nepali speaker headers via `NE_SPEAKER` (`अर्जुनले`) but falls back to `GLOSS_HI['arjuna'] = 'हे अर्जुन'` for Hindi, so all 21 `अर्जुन उवाच` speaker blocks carry `HI = 'हे अर्जुन'`. Both lie outside `source/padachheda_ch1.py` and are left untouched. All active owner holds (`6.13 dhārayan`, `6.29` EN literal, `8.10` verse text/split, `11.44 praṇidhāya` literal, `4.16 kavayaḥ`, `16.05/18.66 mā/śucaḥ`, `9.34 yuktvaivam`, `12.19 yena kenacit`) remain untouched.
 
-Appendix A output is byte-identical before and after (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`). Full §4 build passed all checks including all **162 browser checks**. Structural Playwright assertions passed **84/84** (42 overrides × NE/HI, asserting each new meaning appears after its own Devanagari row inside the expanded pāda). Browser evidence: **12 full 390×844 sheets** (6 verses × NE/HI) and **80 changed-pāda crops** (40 pādas × NE/HI) under `/home/user/evidence/batch18/`. The ledger is now **638/700 verses**; **62 remain** in chapters 13 (35) and 17 (27). This session stops after batch 18.
+Appendix A output is byte-identical before and after (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`). Full §4 build passed all checks including all **162 browser checks**. Structural Playwright assertions passed **84/84** (42 overrides × NE/HI, asserting each new meaning appears after its own Devanagari row inside the expanded pāda). Browser evidence: **12 full 390×844 sheets** (6 verses × NE/HI) and **80 changed-pāda crops** (40 pādas × NE/HI) under `/home/user/evidence/batch18/`. At the close of batch 18, the ledger stood at **638/700** with the then-queued 62 source verses. Batch 19 (described below) completes the actual source inventory at **700/700**; its verified range is ch13 13.01–13.34 and ch17 17.01–17.28.
+
+
+
+**FIXED (2.1 batch 19, 2026-10-11) — final source review of chapters 13 and 17.** Dhruba confirmed the actual repository scope before edits: ch13 has 34 verses (13.01–13.34; no 13.35) and ch17 has 28 (17.01–17.28; include 17.28), giving the requested total of 62 existing source verses. All 62 were read against Sanskrit, exact pāda/speaker splits, English word glosses and EN/NE/HI literals. Verdicts: **35 confirmed, 26 corrected, 1 flagged** (13.24; local meanings corrected, English word-gloss overlap preserved out of scope). **42 NE/HI-only overrides** were added (27 ch13, 15 ch17) across 34 unique pādas; 742 unchanged word/speaker occurrences are exhaustively listed with full five-field tuples in the chapter worksheets. The nine pre-existing ch13/ch17 five-field entries were verified and unchanged; final counts are ch13 33, ch17 18, corpus-wide 570. No English/Sanskrit/split/literal/paraphrase/speaker field or other source chapter was edited.
+
+The three additive `tathā` carry-forwards are resolved: 13.18 `र / और`, 17.07 `र / और`, 17.26 `पनि / भी`; 13.29 remains comparative “so/likewise”, and the `yathā … tathā` comparisons at 13.32–33 remain unchanged. 13.27 `avinaśyantam` keeps short-a IAST; 17.06 `karśayantaḥ` spelling/IAST was verified and left untouched. The English word gloss overlap on 13.24 (`sāṅkhyena` already includes “by the yoga of knowledge” while `yogena` says “by yoga”) is explicitly flagged for Dhruba because English fields are outside the authorized NE/HI scope.
+
+Appendix A before/after is byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`). Full build green: 2,800 pādas / 0 residual flags; 2,100 paraphrase pairs; 6 SEO; 572 site-health; 9,658 study checks; 19 Python tests; 802 document assertions; 15 progress-map and 7 search tests; 162 browser checks. Data lockstep audit proves only `data/ch13.js` and `data/ch17.js` changed among chapter JSON, limited to mirrored `flow`/`padas` word[3]/word[4] values (158 scalar leaves); `sw.js` cache ID was regenerated. Playwright asserts 84/84 rendered NE/HI entries and captures 12 full 390×844 sheets + all 68 changed-pāda crops (34 pādas × two languages); scroll limits and clearance above `.m-nav` are recorded. Full worksheets, tuple tables, grep uniqueness, build logs and captures are in `/home/user/evidence/batch19/` (outside Git).
+
+**Open owner holds preserved:** 6.13 `dhārayan` NE `धानेर`; 6.29 English literal’s added “— he attains the Supreme”; 8.10 text/split `सम्य क्स तं / samya ksa taṃ` vs `सम्यक् स तं / samyak sa taṃ` (approval only, separate small commit); 4.16 `kavayaḥ`; 16.05/18.66 `mā`/`śucaḥ` (approval only, separate consistency commit); 1.15 NE literal; and Hindi `अर्जुन उवाच` speaker-header gloss. Remind Dhruba 11.44 `praṇidhāya` NE literal `शरीर थपथपाउँछु` is his decision; do not change. Other flags remain untouched: 4.42 `ātmanaḥ`, 18.53 `nirmamaḥ`, 9.34 `yuktvaivam` mismatch and 12.19 `yena kenacit` token mapping. **Stop at 700/700; do not start Phase 2.2 or any other §6 task.**
 
 ### 5.3 Interpretation and framing (owner decides)
 
@@ -1387,45 +1399,40 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batches 1–18; complete verse-by-verse
-reviews now cover chapters 1–12, 14–16 and 18; chapters 13 and 17 remain)
-- [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batches 1–18 done** (`te` batch 1; `me`, `param`, `bhūtāni`,
+**Phase 2 — Meaning** · 2.1 / 2.1x **complete (2026-10-11)**; Phase 2.2 and later work not started.
+- [x] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
+      **complete, batches 1–19** (`te` batch 1; `me`, `param`, `bhūtāni`,
       `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
       `arjuna`, `samāḥ` batch 5; `me` = “to me” batch 6; ch4 batch 7 (24), ch14
       batch 8 (8), ch16 batch 9 (11), ch18 batch 10 (20), ch2 batch 11 (69),
       ch11+15 batch 12 (62 + 10), ch3+7 batch 13 (32 + 19), ch6+8 batch 14
       (18 + 9), ch9+10 batch 15 (19 + 84), ch12.01–.04 batch 16 (2), full
-      ch5 + ch12.05–.20 batch 17 (12 + 11), and full ch1 batch 18 (42)). **452 of 9,366 verse-word instances**
-      have per-verse overrides from the full chapter-review batches (**528
-      five-field entries corpus-wide**). Remaining chapters: 13 and 17
-      (**62 verses**). Open carries: 4.16 `kavayaḥ`; additive `tathā` at
-      13.18, 17.07 and 17.26; `mā` / `śucaḥ` at 16.05 / 18.66 (approval
-      required); 9.34 source/split mismatch (flagged, not edited); 12.19
-      `yena kenacit` token mapping (flagged, not edited); `1.15` NE literal
-      (`translations_ne.py`) and `अर्जुन उवाच` speaker-header HI gloss
-      (`build_gita.py`) flagged for Dhruba. `matiḥ` 6.36 and additive `tathā`
-      1.26, 1.34, 7.06, 8.25, 9.32–33, 10.06/10.13/10.35 are resolved; 1.08,
-      1.34 P2#1, 5.24 and 12.18 `tathā` were checked as non-additive “likewise”.
-      Owner holds: 6.13 `dhārayan` NE धानेर; 6.29 English literal; 8.10 text
-      (fix only with approval in its own small commit); 11.44 `praṇidhāya` literal
-      (remind Dhruba; do not change). Other carry-forward flags and full details:
-      §5.2 and `/home/user/evidence/batch18/fixes-reasons-holds.md`.
-- [ ] 2.1x **Verse-by-verse verification of all 700 verses** (standing owner
-      requirement, started 2026-10-11). Reviewed so far: **638/700 verses** —
-      chapters 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 and 18 (ch1
-      47/47, ch2 72/72, ch3 43/43, ch4 42/42, ch5 29/29, ch6 47/47, ch7 30/30,
-      ch8 28/28, ch9 34/34, ch10 42/42, ch11 55/55, ch12 20/20, ch14 27/27,
-      ch15 20/20, ch16 24/24, ch18 78/78). Every reviewed verse has its word entries,
-      EN/NE/HI literals, verdict (confirmed / corrected / flagged) and reason.
-      Per-verse ledgers: ch4/14/16 in PR #20, ch18 in PR #21, ch2 in PR #22,
-      ch11+15 in PR #23, ch3+7 in PR #24, ch6+8 in `/home/user/evidence/batch14/`,
-      ch9+10 in `/home/user/evidence/batch15/`, 12.01–.04 in
-      `/home/user/evidence/batch16/`, ch5 + 12.05–.20 in
-      `/home/user/evidence/batch17/`, and ch1 in
-      `/home/user/evidence/batch18/`. **62 verses remain in chapters 13 (35) and
-      17 (27).** Nothing in the corpus may be called verified until all 700 are.
-      No Phase 2.2 or other §6 item was started in batch 18.
+      ch5 + ch12.05–.20 batch 17 (12 + 11), full ch1 batch 18 (42), and ch13
+      + ch17 batch 19 (27 + 15)). **494 of 9,366 verse-word instances** have
+      per-verse overrides from the full chapter-review batches (**570
+      five-field entries corpus-wide**). Additive `tathā` at 13.18, 17.07 and
+      17.26 is resolved; 13.29, 13.32 and 13.33 are comparative and unchanged.
+      13.24’s English word-gloss overlap remains flagged (English field outside
+      scope). Prior flags `1.15` NE literal and `अर्जुन उवाच` speaker-header HI
+      gloss remain for Dhruba. Owner holds preserved: 6.13 `dhārayan` NE धानेर;
+      6.29 English literal; 8.10 text/split (approval, separate small commit);
+      4.16 `kavayaḥ`; 16.05/18.66 `mā`/`śucaḥ` (approval, separate consistency
+      commit); 11.44 `praṇidhāya` literal (remind Dhruba; do not change).
+      Other standing flags preserved: 4.42 `ātmanaḥ`, 18.53 `nirmamaḥ`, 9.34
+      `yuktvaivam` mismatch and 12.19 `yena kenacit` token mapping. Details:
+      §5.2 and `/home/user/evidence/batch19/fixes-reasons-holds.md`.
+- [x] 2.1x **Verse-by-verse verification of all 700 verses** — **700/700
+      verses reviewed across all 18 chapters** (source counts: ch1 47/47, ch2
+      72/72, ch3 43/43, ch4 42/42, ch5 29/29, ch6 47/47, ch7 30/30, ch8 28/28,
+      ch9 34/34, ch10 42/42, ch11 55/55, ch12 20/20, ch13 34/34, ch14 27/27,
+      ch15 20/20, ch16 24/24, ch17 28/28, ch18 78/78). Every verse has a
+      verdict/reason and every unchanged word/speaker occurrence is enumerated
+      in its ledger. The final two chapter worksheets and full correction table
+      are in `/home/user/evidence/batch19/`; prior ledgers are linked above and
+      under `/home/user/evidence/batch14/` through `batch18/`. **Range decision:**
+      the user confirmed reviewing all existing source verses, 13.01–13.34 and
+      17.01–17.28 (62 total); no 13.35 was fabricated or any 17.28 omitted.
+      **Hard stop reached:** do not start Phase 2.2 or any other §6 work.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -1594,6 +1601,8 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/d16ff228-bhagavad-gita` · Phase 2.1 batch 19 (chapters 13 and 17; 62 existing source verses, ch13 13.01–13.34 and ch17 17.01–17.28): range clarified with Dhruba before final source edits; 35 confirmed, 26 corrected, 1 flagged; 42 NE/HI-only overrides across 34 pādas, 742 unchanged occurrences exhaustively listed; all nine prior five-field entries retained. Resolved additive `tathā` 13.18 / 17.07 / 17.26, retained comparative 13.29 / 13.32 / 13.33, and flagged the out-of-scope English gloss overlap at 13.24. Full build green (162 browser checks); Appendix A byte-identical; 84/84 structural assertions; 12 full 390×844 sheets + 68 changed-pāda crops; evidence `/home/user/evidence/batch19/`. Source commit `27de33120f94e7800b90a7bc141598feeace40d8` pushed only to `arena/d16ff228-bhagavad-gita`; [PR #30](https://github.com/chapain/Bhagavad-Gita/pull/30) is open to `main` for Dhruba to review and merge; **not merged**. Ledger complete at 700/700; no Phase 2.2.
 
 - 2026-10-11 · `arena/0ceb3eac-bhagavad-gita` · Phase 2.1 batch 18 (complete chapter 1, `1.01`–`1.47`): verified PR #28 merged at `a1803d7` and all 23 batch-17 overrides on `main`; reviewed all 47 verses/188 pādas and 643 word occurrences (631 pāda + 12 speaker); **42 NE/HI-only five-field overrides** across 27 verses/40 pādas, 20 verses confirmed, and 601 unchanged occurrences exhaustively listed in `/home/user/evidence/batch18/worksheet-ch1.md`. Resolved additive `tathā` at `1.26 P4#4` and `1.34 P4#3` (`पनि / भी`); flagged `1.15` NE literal (`translations_ne.py`) and `अर्जुन उवाच` speaker HI gloss (`build_gita.py`) for Dhruba without editing; all owner holds preserved. Appendix A byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`); full §4 build green (162 browser checks); 84/84 structural rendered-string assertions; 12 full 390×844 sheets + 80 changed-pāda crops in `/home/user/evidence/batch18/`. Ledger: **638/700** (62 remain in chapters 13 and 17). Source commit `671bfe9` pushed to `arena/0ceb3eac-bhagavad-gita`; [PR #29](https://github.com/chapain/Bhagavad-Gita/pull/29) open to `main`; `/home/user/downloads/Bhagavad-Gita-700-titles.zip` refreshed and verified byte-identical via `diff -r` excluding `.git`. No second batch or Phase 2.2 work.
 
