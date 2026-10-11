@@ -365,7 +365,9 @@ before you talk to the owner.
   **542/700**; remaining **158 verses** in chapters 1, 5, 12, 13 and 17. No
   second batch or other Phase 2 work started. The open source/interpretation
   holds remain in `/home/user/evidence/batch15/holds.json` and §6; the additive
-  `tathā` carries in chapters 9 and 10 are resolved.
+  `tathā` carries in chapters 9 and 10 are resolved. Implementation commit
+  `f36602a` is pushed only to the assigned branch; [PR #26](https://github.com/chapain/Bhagavad-Gita/pull/26)
+  is open to `main` for Dhruba to review and merge.
 
 ## 2. Resume in five minutes
 
@@ -1534,8 +1536,12 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
   its 54 scroll-boundary clamps are recorded in the screenshot index. Ledger:
   542/700; 158 remain in chs 1, 5,
   12, 13, 17. Existing owner holds are preserved; only additive `tathā` at
-  9.32/33 and 10.06/13/35 resolved. Implementation commit/PR pending; refresh
-  the total-repo ZIP only after the PR-number recording commit. No second batch.
+  9.32/33 and 10.06/13/35 resolved. Source commit `f36602a` is pushed only to
+  the assigned branch; [PR #26](https://github.com/chapain/Bhagavad-Gita/pull/26)
+  is open to `main` for Dhruba to review and merge. After this PR-number
+  recording commit, `/home/user/downloads/Bhagavad-Gita-700-titles.zip` was
+  refreshed and its extraction passed byte-identical `diff -r` with `.git`
+  excluded. No second batch.
 
 - 2026-10-11 · `arena/20d19a48-bhagavad-gita` · Phase 2.1 batch 14 (chs 6+8),
   PR #25: confirmed PR #24's merge by content at `05dc983` (the clone was shallow,
