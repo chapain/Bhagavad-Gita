@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-11 (Asia/Katmandu) |
-| Updated by | Arena session on branch `arena/5afb9e8c-bhagavad-gita` |
-| Base commit | `7de6723` on `main` (merge of PR #19, 2.1 batch 6) |
+| Updated by | Arena session on branch `arena/e4875989-bhagavad-gita` |
+| Base commit | `c637597` on `main` (merge of PR #21, 2.1 batch 10) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -219,6 +219,43 @@ before you talk to the owner.
   16.20 (cross-chapter renders) captured and read back. Screenshots:
   `/home/user/evidence/batch10/`. GitHub: PR #21 from
   `arena/207086dc-bhagavad-gita` — https://github.com/chapain/Bhagavad-Gita/pull/21.
+
+- **2.1 batch 11 done — chapter 2 read verse by verse (2026-10-11).** The
+  remaining-chapter pool with the highest flag count (428 flagged instances,
+  72 verses, all read against en/ne/hi literals). **69 five-field overrides**
+  in `padachheda_ch2.py` (word[3]/word[4] only) across 41 verses; the other
+  31 verses confirmed with reasons. Clear contradictions fixed include wrong
+  case (11 `enam` “this” → यसलाई/इसे, where 2.23’s own literals say यसलाई/इसे;
+  `sarvān` ×2 dative/genitive → accusative सबै/सब; `tāni` “them” ती/वे →
+  तिनीहरूलाई/उन्हें; `duḥkhe`/`alābhau`/`ajayau`/`duṣkṛte` locative → bare),
+  wrong person/mood (`vijānītaḥ` imperative जान/जानो → जान्दछन्/जानते हैं;
+  `bhaviṣyāmaḥ` हुने थियौं → हुनेछौं; four `-syasi` futures’ passive प्राप्त
+  होगा → active प्राप्त करोगे), backwards readings (`nivartate` “departs”
+  फर्कन्छ/लौटता है → जान्छ/चला जाता है; `uparatam` शान्त → भागेको/भागा हुआ;
+  `niryogakṣemaḥ` लाभ-हानि → लाभ-स्वामित्व), and adverb/adjective and
+  sense clashes (`nityam` “eternal” सधैँ/सदा → नित्य/नित्य; `dhruvam` “certain”
+  नित्य → निश्चित; `śreyaḥ` “better” कल्याण → राम्रो/अच्छा at 2.05 and
+  उत्तम/बढ़कर at 2.31; `tataḥ` “than that” → त्योभन्दा/उससे; `sarva` “of all”
+  हे सबै → सबै/सब). Full 62-key table in §5.2; the per-verse ledger (41
+  corrected / 31 confirmed) is in this PR. Settled keeps include `tathā`
+  correlative (thus/so ×4 — ch2 has no and/also use), `param` 2.59,
+  `kutaḥ` 2.66, `padam` 2.51, `yogam` 2.53, `bhūtāni` “beings” (2.28/30/69),
+  `nityam` “always” (2.26/30), `sarvaśaḥ` “fully” 2.68, `bhūtvā` “having
+  become” 2.48, and `yujyasva` “devote yourself” 2.50 — each the contrast
+  that proves its fixed sibling. **Owner flags (not fixed, out of chapter
+  scope):** `mā` → नगर (“don’t do”) is wrong in *every* occurrence — 11.34,
+  11.49×2, 16.05, 18.66 (`mā śucaḥ`/`mā vyathiṣṭhāḥ`) — left for revisit
+  batches (ch16/18 passed review without catching it); `śucaḥ`’s indicative
+  शोक गर्छौ likewise; EN-gloss slips (`tu` “indeed” for adversative but,
+  2.57 `dveṣṭi` “reviles”, loose nominatives for locatives/genitives) are
+  preserved per the hard rules. Appendix A before/after identical (`te` 0 /
+  `me` 2; 9,366 / 9,484; §3 674/4,532); lockstep data diff 138 leaves (69
+  flow + 69 padas mirror), only words[3]/words[4]. Full Playwright build
+  green (2,800/0 pāda, 2,100 paraphrase, 6 SEO, 572 site-health, 9,658
+  study, 19 Py tests, 802 doc assertions, 15 + 7 Node, 162 browser). Twenty
+  390 × 844 ne/hi full sheets (2.03/06/12/19/23/33/38/47/59/72) captured,
+  113 rendered-string assertions across all 41 touched verses pass, six
+  crops read back. Screenshots: `/home/user/evidence/batch11/`.
 
 
 ## 2. Resume in five minutes
@@ -579,6 +616,83 @@ batch-10 screenshots); 18.53’s ne/hi *literals* render *nirmamaḥ* backwards
 `tathā` “also/and” (chs 1, 7–11, 13, 17), `matiḥ` 6.36 and `pravṛttiḥ` 15.04
 still need their per-occurrence overrides in their own chapter batches.
 
+**FIXED (2.1 batch 11, 2026-10-11) — chapter 2 verse by verse.** All 72
+verses read with en/ne/hi literals; 69 overrides (word[3]/word[4] only) in
+41 verses, 31 verses confirmed as-is. The fixes and why (×N = same fix at
+N spots in the verse):
+
+| Verse | Form / English | Old NE / HI | New NE / HI | Why |
+|---|---|---|---|---|
+| 2.03, 2.47×3 | `mā` “not” | नगर / मत | न / मत | नगर = “don’t do”; verbs are go/be |
+| 2.05 | `śreyaḥ` “better” | कल्याण / कल्याण | राम्रो / अच्छा | comparative, not noun “welfare” |
+| 2.06 | `naḥ` “for us” | हामी / हम | हामीलाई / हमें | dative, not nominative |
+| 2.06 | `dhārtarāṣṭrāḥ` | धृतराष्ट्र का पुत्रहरूले / … | धृतराष्ट्रका पुत्रहरू / … | Hindi का + stray ergative ले |
+| 2.12 | `bhaviṣyāmaḥ` “shall we exist” | हुने थियौं / होंगे | हुनेछौं / होंगे | हुने थियौं ungrammatical |
+| 2.12 | `ataḥ` “from now” | त्यसैले / इसलिए | अबदेखि / अब से | temporal, not “therefore” |
+| 2.15 | `yam` “whom” | जुन / जिसे | जसलाई / जिसे | person accusative, literal जसलाई |
+| 2.19×2, 2.21, 2.23×3, 2.25, 2.26, 2.29×3 | `enam` “this” | उसलाई / उसे | यसलाई / इसे | near-deictic; 2.23 literals say यसलाई/इसे |
+| 2.19 | `vijānītaḥ` “know” | जान / जानो | जान्दछन् / जानते हैं | imperative → 3rd-pl indicative |
+| 2.20, 2.35 | `bhūtvā` “having been” | भएर / बनकर | भएर / होकर | बनकर = “having become” (cf. 2.48 kept) |
+| 2.21 | `nityam` “eternal” | सधैँ / सदा | नित्य / नित्य | adjective, not adverb (cf. 2.26/30 kept) |
+| 2.26, 2.33 | `atha` “but” | अनि / फिर | तर / किन्तु | “and/then” ≠ but; literals तर/किन्तु |
+| 2.27 | `dhruvam` “certain” | नित्य / नित्य | निश्चित / निश्चित | certain ≠ eternal; literal निश्चित |
+| 2.28×2 | `avyakta` “unmanifest” | अव्यक्तलाई / अव्यक्त को | अव्यक्त / अव्यक्त | compound member, not dative |
+| 2.28 | `madhyāni` “in the middle” | मध्यका / मध्य के | बीचमा / मध्य में | locative, not genitive |
+| 2.31 | `śreyaḥ` “better” | कल्याण / कल्याण | उत्तम / बढ़कर | comparative; literal उत्तम/बढ़कर |
+| 2.33 | `tataḥ` “then” | त्यसैले / इसलिए | त्यसपछि / तो | if…then correlative; HI literal तो |
+| 2.33, 2.38, 2.53 `avāpsyasi` + 2.37 `prāpsyasi` | “you will …” | … / प्राप्त होगा | … / प्राप्त करोगे | passive “will be obtained” → active 2nd-ps |
+| 2.34 | `bhūtāni` “people” | प्राणीहरू / प्राणी | मानिसहरू / लोग | literals मानिसहरू/लोग |
+| 2.34 | `atiricyate` “is greater” | बढी हुन्छ / श्रेष्ठ होता है | बढी हुन्छ / अधिक होता है | श्रेष्ठ = “best”, wrong polarity |
+| 2.35 | `uparatam` “retreated” | शान्त / शान्त | भागेको / भागा हुआ | peaceful ≠ fled; literal भागेको |
+| 2.36 | `tataḥ` “than that” | त्यसैले / इसलिए | त्योभन्दा / उससे | ablative of comparison |
+| 2.38 | `duḥkhe` “pain” | दुःखमा / दुःख में | दुःख / दुःख | accusative dual, not locative |
+| 2.38 | `alābhau` “and loss” | अलाभमा / अलाभ में | हानि / हानि | locative + non-gain ≠ loss; literal हानि |
+| 2.38 | `ajayau` “and defeat” | पराजयमा / पराजय में | पराजय / पराजय | accusative dual, not locative |
+| 2.38 | `tataḥ` “then” | त्यसैले / इसलिए | त्यसपछि / तब | sequential; literals त्यसपछि/तब |
+| 2.38 | `yujyasva` “engage” | समर्पित होऊ / समर्पित हो | लाग / लग जा | engage in battle ≠ devote (cf. 2.50 kept) |
+| 2.39 | `te` “to you” | तिम्रो / तुम्हारा | तिमीलाई / तुझे | dative; literal तिमीलाई |
+| 2.39, 2.42 | `imām` “this” (f.acc) | यो / इस | यो / यह | direct object, not oblique |
+| 2.40 | `bhayāt` “fear” (from) | डरले / भय से | डरबाट / भय से | separation, not cause (cf. 2.35 kept) |
+| 2.42 | `yām` “which” (f.acc) | जुन / जिस | जुन / जिसे | accusative relative, not oblique |
+| 2.45 | `niryogakṣemaḥ` | लाभ-हानिभन्दा पर / … | लाभ-स्वामित्वभन्दा पर / … | kṣema = keeping, not loss (हानि) |
+| 2.49 | `anviccha` “seek” | खोज / चाह | खोज / खोज | चाह = “want”; HI literal खोज |
+| 2.49 | `phalahetavaḥ` “motive-seeking” | फलको खोजी गर्ने / फल के कारण | फलको खोजी गर्ने / फल चाहने वाले | persons, not “because of fruit” |
+| 2.50 | `duṣkṛte` “and bad deeds” | दुष्कर्ममा / दुष्कर्म में | दुष्कर्म / दुष्कर्म | accusative dual, not locative |
+| 2.54×2 | `kim` “how” | के / क्या | कसरी / कैसे | interrogative of manner; literals agree |
+| 2.55, 2.71 | `sarvān` “all” | सबैलाई / सबको | सबै / सब | accusative, not dative/genitive |
+| 2.58 | `sarvaśaḥ` “from all sides” | सबै प्रकारले / सब प्रकार से | चारैतिरबाट / चारों ओर से | spatial; literals agree (cf. 2.68 kept) |
+| 2.59 | `nivartate` “departs” | फर्कन्छ / लौटता है | जान्छ / चला जाता है | both said “returns” — backwards |
+| 2.60 / 2.67 | `haranti`/`harati` “carry away” | बोक्छन्/बोक्छ / … | लैजान्छन्/लैजान्छ / … | shoulder-carry ≠ seize away; literal हरेर लैजान्छ |
+| 2.61 | `tāni` “them” | ती / वे | तिनीहरूलाई / उन्हें | accusative, not nominative |
+| 2.64 | `ātmavaśyaiḥ` “self-controlled” | आत्मसंयमीहरूद्वारा / आत्म-संयमी | आत्मवश / आत्म-संयमी | qualifies senses, not “by people” |
+| 2.65 | `sarva` “of all” | हे सबै / हे सब | सबै / सब | stray vocative (same as 4.21) |
+| 2.70 | `yam` “whom” | जुन / जिसे | जसमा / जिसमें | destination “into whom”; literals agree |
+| 2.71 | `carati` “moves” | गर्छ / करता है | विचरण गर्छ / विचरता है | “does” ≠ moves; literals agree |
+| 2.72 | `sthitiḥ` “the state” | स्थिरता / स्थिरता | अवस्था / अवस्था | state ≠ steadiness; literals अवस्था |
+
+**Deliberately left alone in ch2 (every other word read):** the settled
+keeps above plus `te` possessive (2.07/34/47/52/53) and “they” 2.06,
+`tathā` thus/so, `tat`/`yat`/`kutaḥ`/`param`/`yogam`/`me` from batches
+1–4, `yadṛcchayā` “of its own accord” 2.32 (आफैं fits this sense, unlike
+4.22), `kaśmalam` मोह 2.02 (Skt मोह = swoon/faintness), `tu` तर/पर where
+the verse is adversative although EN says “indeed” (2.05/14/17/64),
+`arth`e/`vedeṣu`/`śarīre`/`muneḥ`/`duḥkhānām`/`asya` where NE/HI case is
+right although the EN gloss is loose, `manogatān` मनका 2.55 and `manāḥ`
+जसको मन 2.56 (match literals), `saṁharate` तान्छ 2.58, `gatim` गति 2.43,
+`antaḥ` अन्त्य 2.16, `cetasām` 2.44, `viṣayāḥ`/`bhava` 2.45, `arhasi`
+योग्य 2.25–31 (not-proper ≈ ought-not), and the 2.54 optatives (literals
+use present). EN-gloss slips are out of scope and preserved.
+
+**Owner flags from batch 11 (not fixed, out of chapter scope):** `mā` →
+नगर (“don’t do”) is wrong in *every* occurrence — 11.34 (*mā
+vyathiṣṭhāḥ*), 11.49×2, 16.05 and 18.66 (*mā śucaḥ*) — none pairs with a
+“do” verb; ch16/18 passed verse-by-verse review without catching it, so
+all five need revisit-batch overrides to न/मत. `śucaḥ`’s indicative शोक
+गर्छौ/शोक करता है (16.05/18.66, imperative “grieve!” under *mā*) belongs
+to the same revisit. EN-only slips preserved: `tu` “indeed” for
+adversative but (2.05/14/17/64), 2.57 `dveṣṭi` “reviles” (hates), and the
+loose nominative EN glosses listed above.
+
 ### 5.3 Interpretation and framing (owner decides)
 
 - **“तीन निष्ठा / तीन निष्ठाएँ”** clashes with 3.3 *loke ’smin dvividhā niṣṭhā*
@@ -713,26 +827,27 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · in progress (2.1 batches 7–9 done — ch4, ch14, ch16)
+**Phase 2 — Meaning** · in progress (2.1 batches 7–11 done — ch4, ch14, ch16, ch18, ch2)
 - [ ] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
-      **in progress — batches 1–10 done (chapters 4, 14, 16, 18 read verse by verse)** (`te` batch 1;
+      **in progress — batches 1–11 done (chapters 4, 14, 16, 18, 2 read verse by verse)** (`te` batch 1;
       `me`, `param`, `bhūtāni`, `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`,
       `kutaḥ`, `sattvam` batch 4; `arjuna`, `samāḥ` batch 5; `me` = "to me"
       cleanup batch 6; **chapter 4 batch 7 (24), chapter 14 batch 8 (8),
-      chapter 16 batch 9 (11), chapter 18 batch 10 (20)**; settled keeps and
-      rationale in §5.2).
-      63 of 9,366 verse-word instances now carry per-verse Nepali/Hindi overrides.
-      Next: read the remaining 14 chapters verse by verse in the same way
-      (a chapter per batch); shared forms listed in §1 and the batch-10 owner
-      flags (4.16 `kavayaḥ`, `tathā`, `matiḥ` 6.36, `pravṛttiḥ` 15.04) still need
-      their per-occurrence overrides.
+      chapter 16 batch 9 (11), chapter 18 batch 10 (20), chapter 2 batch 11
+      (69)**; settled keeps and rationale in §5.2).
+      132 of 9,366 verse-word instances now carry per-verse Nepali/Hindi overrides
+      from the chapter batches (208 five-field entries corpus-wide).
+      Next: read the remaining 13 chapters verse by verse in the same way
+      (a chapter per batch); shared forms listed in §1 and the owner flags
+      (4.16 `kavayaḥ`, `tathā`, `matiḥ` 6.36, `pravṛttiḥ` 15.04, `mā`/`śucaḥ`
+      in 11.34/11.49/16.05/18.66) still need their per-occurrence overrides.
 - [ ] 2.1x **Verse-by-verse verification of all 700 verses** (standing owner
-      requirement, started 2026-10-11). Reviewed so far: **chs 4, 14, 16, 18 =
-      171 verses** (ch4 42/42, ch14 27/27, ch16 24/24, ch18 78/78). Each verse is recorded
+      requirement, started 2026-10-11). Reviewed so far: **chs 2, 4, 14, 16, 18 =
+      243 verses** (ch2 72/72, ch4 42/42, ch14 27/27, ch16 24/24, ch18 78/78). Each verse is recorded
       as reviewed with its word list, its en/ne/hi literals, the verdict
       (confirmed / corrected / flagged) and the reason; the per-verse ledger
-      for chs 4/14/16 is in PR #20 and for ch 18 in this PR. Remaining: 529
-      verses in 14 chapters. Nothing in the corpus may be called verified until all 700 are.
+      for chs 4/14/16 is in PR #20, for ch 18 in PR #21 and for ch 2 in this PR. Remaining: 457
+      verses in 13 chapters. Nothing in the corpus may be called verified until all 700 are.
 - [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
@@ -901,6 +1016,29 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-11 · `arena/e4875989-bhagavad-gita` · Phase 2.1 batch 11 (ch 2):
+  verified PR #21 merged at `c637597` on `main`; unshallowed; batch-10
+  content re-verified (ch18 24 five-field, corpus 139, 9,366/9,484, audit
+  `te` 0 / `me` 2, §3 674/4,532) and baseline full build green. Read all 72
+  verses of ch 2 against en/ne/hi literals; 69 five-field overrides in 41
+  verses (mā×4, śreyaḥ-better×2, naḥ-for-us, dhārtarāṣṭrāḥ, bhaviṣyāmaḥ,
+  ataḥ-from-now, yam×2, enam×11, vijānītaḥ, bhūtvā-been×2, nityam-eternal,
+  atha×2, dhruvam, avyakta×2, madhyāni, tataḥ×3, -syasi×4, bhūtāni-people,
+  atiricyate, uparatam, duḥkhe/alābhau/ajayau, yujyasva-engage, te-to-you,
+  imām×2, bhayāt-from, yām, niryogakṣemaḥ, anviccha, phalahetavaḥ,
+  duṣkṛte, kim-how×2, sarvān×2, sarvaśaḥ-sides, nivartate, haranti/harati,
+  tāni, ātmavaśyaiḥ, sarva-of-all, carati, sthitiḥ); 31 verses confirmed
+  with keeps recorded (incl. §7.1-neutral `tathā`, batch-2/4 settled
+  `param`/`kutaḥ`/`padam`). Flagged for owner: `mā`→नगर wrong in all 5
+  other occurrences (11.34, 11.49×2, 16.05, 18.66) + `śucaḥ` indicative,
+  for revisit batches; EN-only slips preserved. Audit after identical;
+  lockstep 138 leaves (69+69 mirror), only words[3]/words[4]. Full
+  Playwright build green (2,800/0, 2,100 paraphrase, 6 SEO, 572 health,
+  9,658 study, 19 Py, 802 doc, 15+7 Node, 162 browser). Twenty 390×844
+  ne/hi full sheets + 113 render assertions + 6 crops read back.
+  Screenshots: `/home/user/evidence/batch11/`. Churn: source+data ch2 +
+  sw.js cache id. PR #22 (this PR). Stop before the next batch.
 
 - 2026-10-11 · `arena/207086dc-bhagavad-gita` · Phase 2.1 batch 10 (ch 18):
   verified PR #20 merged at `9a56dea` on `main`; unshallowed; audit reproduced
