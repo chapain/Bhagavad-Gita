@@ -1803,6 +1803,15 @@ function savedReaderSize(){
 const state = { chapter:null, theme:null, idx:0, lang:'en', view:'welcome', section:null, shared:null,
                 readerSize:savedReaderSize() };
 function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
+/* Phase 2.2: a verse description that is word-for-word the verse's own
+   literal, in the language on screen, is a copy, not a description —
+   show nothing rather than the repeat line. A distinct description is
+   always returned unchanged; nothing is invented, translated or
+   substituted, and callers emit no element at all for the empty string. */
+function partDesc(p){
+  const d = T(p.descs).trim();
+  return d && d === T(p.sutras[0].lits).trim() ? '' : d;
+}
 function L(k){ const u = UI[state.lang] || UI.en; return (u[k] !== undefined) ? u[k] : k; }
 function Lof(cur,tot){ const rev=['ne','hi'].includes(state.lang);
   const c = numL(cur), t = numL(tot);   // numL → Devanagari digits in ne/hi
@@ -3425,11 +3434,11 @@ function showThemes(ci){
            display-only cards in the chapter-list grammar — a tap target
            nested inside a tap target was an ambiguity too many. Word-by-word
            lives one level deeper, in the verse grid. */
-        const cards = t.parts.map(p=>
-          `<div class="card vcard">
+        const cards = t.parts.map(p=>{
+          const pd = partDesc(p);
+          return `<div class="card vcard">
             <span class="chip">${vn2(p.sutras[0].n)}</span>
-            <h3>${esc(T(p.titles))}</h3>
-            <p>${esc(T(p.descs))}</p></div>`).join('');
+            <h3>${esc(T(p.titles))}</h3>${pd?`<p>${esc(pd)}</p>`:''}</div>`;}).join('');
         return `<div class="theme" role="button" tabindex="0" onclick="showVerses(${ci},${ti})">
           <h3>${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></h3>
           <p class="tdesc">${esc(T(t.descs))}</p>
@@ -3556,11 +3565,12 @@ function showVerses(ci,ti){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showVerses(ci,ti)); return; }
   state.view='verses'; state.chapter=ci; state.theme=ti; persistView(); renderCrumbs();
   const ch = DATA[ci], t = ch.themes[ti];
-  const blocks = t.parts.map((p,pi)=>`
+  const blocks = t.parts.map((p,pi)=>{
+    const pd = partDesc(p);
+    return `
     <div class="part fade-in">
       <div class="part-head">
-        <span class="ptitle">${esc(T(p.titles))}</span>
-        <span class="pdesc">${esc(T(p.descs))}</span>
+        <span class="ptitle">${esc(T(p.titles))}</span>${pd?`<span class="pdesc">${esc(pd)}</span>`:''}
       </div>
       <div class="grid verses">
         ${p.sutras.map((s,si)=>`
@@ -3570,7 +3580,7 @@ function showVerses(ci,ti){
             <div class="vhint">${esc(T(s.paras).slice(0,80))}…</div>
           </div>`).join('')}
       </div>
-    </div>`).join('');
+    </div>`;}).join('');
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)} · ${L('opt_study_g')}`, `showThemes(${ci})`], [`${L('theme_sg')} ${numL(ti+1)} · ${T(t.titles)}`, null]])}
     <!-- Owner 2026-09-02: this was the ONLY view in the app with no heading —
@@ -4516,12 +4526,20 @@ for _ch in data:
                     f'<div class="vtr" lang="ne">{_h.escape(_s["lits"]["ne"])}</div>'
                     f'<div class="vtr" lang="hi">{_h.escape(_s["lits"]["hi"])}</div>'
                     f'</div>')
-        _rows = "".join(
-            f'<a class="vrow" href="#v{_h.escape(str(_p2["sutras"][0]["n"]))}">'
-            f'<div class="vt"><b>{_h.escape(_dnum(_p2["sutras"][0]["n"]))}</b>'
-            f'{_h.escape(_p2["titles"]["en"])}</div>'
-            f'<div class="vd">{_h.escape(_p2["descs"]["en"])}</div></a>'
-            for _p2 in _t["parts"])
+        _rows = []
+        for _p2 in _t["parts"]:
+            # Phase 2.2: a verse description that is word-for-word the
+            # verse's own English literal is a copy — the line is left
+            # out of the page rather than printed twice. Distinct
+            # descriptions keep the .vd line as before.
+            _vd = _p2["descs"]["en"].strip()
+            _row = (f'<a class="vrow" href="#v{_h.escape(str(_p2["sutras"][0]["n"]))}">'
+                    f'<div class="vt"><b>{_h.escape(_dnum(_p2["sutras"][0]["n"]))}</b>'
+                    f'{_h.escape(_p2["titles"]["en"])}</div>')
+            if _vd != _p2["sutras"][0]["lits"]["en"].strip():
+                _row += f'<div class="vd">{_h.escape(_p2["descs"]["en"])}</div>'
+            _rows.append(_row + "</a>")
+        _rows = "".join(_rows)
         _sections.append(
             f'  <section class="theme" id="theme-{_i}">\n'
             f'    <a class="th-link" href="../../index.html#theme={_n}.{_i - 1}">'
