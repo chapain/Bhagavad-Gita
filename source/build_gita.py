@@ -125,7 +125,10 @@ CH_SOURCES = [
 chapter_data = {}
 for cs in CH_SOURCES:
     j = json.load(open(os.path.join(BASE, cs["json"]), encoding="utf-8"))
-    chapter_data[cs["num"]] = {"verses": j["verses"], **cs}
+    # Phase 2.3: a chapter's traditional closing colophon lives in its own
+    # source/ch<N>.json, and travels with the chapter data so both the app and
+    # the generated chapter page can print it at the end of the chapter.
+    chapter_data[cs["num"]] = {"verses": j["verses"], "colophon": j.get("colophon"), **cs}
 
 # ---------------- build data ----------------
 # Nepali ergative for speaker subjects: "X said" is "X-ले भने", so speaker names
@@ -188,6 +191,8 @@ for (num, name, deva, count, blurb) in CHAPTERS:
           "names": {"en": name, "ne": CHAPTER_NAMES_NE.get(num, name), "hi": CHAPTER_NAMES_HI.get(num, name)},
           "subs": {"en": blurb, "ne": CHAPTER_SUBS_NE.get(num, blurb), "hi": CHAPTER_SUBS_HI.get(num, blurb)}}
     src = chapter_data.get(num)
+    if src and src.get("colophon"):
+        ch["colophon"] = src["colophon"]
     if src:
         verses = src["verses"]
         trans = src["trans"]
@@ -1212,6 +1217,15 @@ __FONTS__
   /* the paraphrase is the flowing read — set lighter and italic under the
      literal, so the eye gets "what it says" then "what it means" */
   .rd-par{ color:var(--ink-soft); font-size:.88rem; line-height:1.55; font-style:italic; margin-top:3px;}
+  /* Phase 2.3: the chapter colophon. The reader has finished the chapter; this
+     is the traditional line that closes it, so it is quieter than the verses —
+     a hairline rule, soft ink, no pill and no box of its own. */
+  .colophon{ margin:26px 0 6px; padding-top:14px; border-top:1px solid var(--line);
+             color:var(--ink-soft); font-family:"Noto Serif Devanagari",Georgia,serif;
+             font-size:.93rem; line-height:1.8; }
+  .colophon .col-iast{ display:block; margin-top:6px; color:var(--ink-soft);
+             font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic;
+             font-size:.85rem; line-height:1.6; }
   .back-foot .back-top{ margin:0;}
   .mini-crumb{ display:flex; gap:10px; margin:2px 0 16px; flex-wrap:wrap;}
   .mini-crumb .bc-btn{ background:var(--paper); border:1px solid var(--line); border-radius:12px; cursor:pointer;
@@ -1811,6 +1825,18 @@ function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
 function partDesc(p){
   const d = T(p.descs).trim();
   return d && d === T(p.sutras[0].lits).trim() ? '' : d;
+}
+/* Phase 2.3: the chapter's traditional colophon — the closing line that names
+   the chapter ("... iti <name>o nāma <ordinal>o 'dhyāyaḥ"). It is scripture,
+   not our prose, so it carries the Devanagari with its transliteration and
+   nothing else: no label, no gloss, no pill. It is deliberately set apart from
+   the verse and translation blocks, so it can never read as either. */
+function colophonHtml(ch){
+  const c = ch && ch.colophon;
+  if(!c || !c.deva) return '';
+  return `<div class="colophon fade-in" lang="sa">${esc(c.deva)}`
+       + (c.iast ? `<span class="col-iast" lang="sa-Latn">${esc(c.iast)}</span>` : '')
+       + `</div>`;
 }
 function L(k){ const u = UI[state.lang] || UI.en; return (u[k] !== undefined) ? u[k] : k; }
 function Lof(cur,tot){ const rev=['ne','hi'].includes(state.lang);
@@ -3497,7 +3523,7 @@ function showRead(ci, mode){
     ${chTitle(ch)}
     ${modeSwitch(ci)}
     <div class="view-sub fade-in">${esc(L('read_sub'))}</div>
-    <div class="reading ${state.readMode} fade-in">${body}</div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
+    <div class="reading ${state.readMode} fade-in">${body}${colophonHtml(ch)}</div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
 }
 
 function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
@@ -4359,6 +4385,13 @@ a.vrow:hover{ background:var(--paper); }
 }
 details{ margin:4px 0 0; }
 summary{ cursor:pointer; color:var(--saffron-text); font-weight:600; font-size:.88rem; }
+/* Phase 2.3: the chapter colophon closes the page's text. Same restraint as in
+   the app: a hairline rule, soft ink, the Devanagari with its transliteration. */
+.colophon{ margin:22px 0 10px; padding-top:14px; border-top:1px solid var(--line);
+           color:var(--ink-soft); font-family:"Noto Serif Devanagari",Georgia,serif;
+           font-size:.93rem; line-height:1.8; }
+.colophon .col-iast{ display:block; margin-top:6px; font-family:Georgia,"Noto Serif Devanagari",serif;
+           font-style:italic; font-size:.85rem; line-height:1.6; }
 """
 
 # cache version — bump automatically from the content hash of EVERY precached
@@ -4487,6 +4520,13 @@ for _ch in data:
     _en = _ch["names"]["en"]
     _url = f"{SITE_BASE}/chapter/{_n}/"
     _nverses = _ch["verses"]
+    # Phase 2.3: the closing colophon for this chapter (from source/ch<N>.json).
+    _col = _ch.get("colophon") or {}
+    _col_html = ""
+    if _col.get("deva"):
+        _col_html = (f'  <div class="colophon" lang="sa">{_h.escape(_col["deva"])}'
+                     f'<span class="col-iast" lang="sa-Latn">'
+                     f'{_h.escape(_col.get("iast", ""))}</span></div>')
     _desc = (f"Read Chapter {_n} of the Bhagavad Gita ({_en}) — all {_nverses} verses "
              f"in Sanskrit with translations in English, Nepali and Hindi.")
     # Purana-style chapter page: each theme is a narrative beat whose title
@@ -4600,6 +4640,7 @@ for _ch in data:
   <p><a class="cta" href="../../index.html#chapter={_n}&tab=study">Enter chapter {_n} →</a></p>
   <p class="np">{_nverses} verses · {len(_ch["themes"])} themes — tap a theme's title to study it in the app.</p>
 {_text}
+{_col_html}
   <p><a class="cta" href="../../index.html#chapter={_n}&tab=study">Enter chapter {_n} →</a></p>
 </main>
 <footer>

@@ -78,3 +78,10 @@ a.vrow:hover{ background:var(--paper); }
 }
 details{ margin:4px 0 0; }
 summary{ cursor:pointer; color:var(--saffron-text); font-weight:600; font-size:.88rem; }
+/* Phase 2.3: the chapter colophon closes the page's text. Same restraint as in
+   the app: a hairline rule, soft ink, the Devanagari with its transliteration. */
+.colophon{ margin:22px 0 10px; padding-top:14px; border-top:1px solid var(--line);
+           color:var(--ink-soft); font-family:"Noto Serif Devanagari",Georgia,serif;
+           font-size:.93rem; line-height:1.8; }
+.colophon .col-iast{ display:block; margin-top:6px; font-family:Georgia,"Noto Serif Devanagari",serif;
+           font-style:italic; font-size:.85rem; line-height:1.6; }
