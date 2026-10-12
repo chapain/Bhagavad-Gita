@@ -678,6 +678,38 @@ for n in range(1, 19):
 ok("/v/" in read("404.html"), "404.html must forward retired /v/ links")
 
 
+# ----------------------------------------- 2b. no repeated verse line (Phase 2.2)
+# A verse description that is word-for-word the verse's own English literal is
+# a copy, not a description, and the chapter page must not print it twice.
+# Each verse row therefore carries EITHER a .vd line with its exact distinct
+# description OR no .vd line at all — never the literal reprinted, never an
+# empty .vd, never a missing row.
+import html as _html
+for n in range(1, 19):
+    page = read("chapter", str(n), "index.html")
+    _d = read("data", "ch%d.js" % n)
+    _obj = _json.loads(_d[_d.index("=") + 1:].rstrip().rstrip(";"))
+    _want = {}
+    for _t in _obj["themes"]:
+        for _p in _t["parts"]:
+            _s = _p["sutras"][0]
+            _desc = _p["descs"]["en"].strip()
+            _want[_s["n"]] = None if _desc == _s["lits"]["en"].strip() else _p["descs"]["en"]
+    ok(len(re.findall(r'class="vrow"', page)) == len(_want),
+       f"chapter/{n}: every verse needs exactly one vrow")
+    _got = {}
+    for _vid, _inner in re.findall(r'<a class="vrow" href="#v([\d.]+)">(.*?)</a>', page):
+        _m = re.search(r'<div class="vd">(.*?)</div>$', _inner, flags=re.S)
+        if _m:
+            _got[_vid] = _html.unescape(_m.group(1))
+    _distinct = {v for v, d in _want.items() if d is not None}
+    ok(set(_got) == _distinct,
+       f"chapter/{n}: .vd rows must be exactly the distinct descriptions "
+       f"(stray {sorted(set(_got) - _distinct)[:3]}, missing {sorted(_distinct - set(_got))[:3]})")
+    _wrong = [v for v in _distinct if _got.get(v) != _want[v]]
+    ok(not _wrong, f"chapter/{n}: a kept .vd line changed text {_wrong[:3]}")
+
+
 # --------------------------------------------------- 3. numbering doctrine
 # PROJECT.md: humans read 1.1, never 1.01. URLs/ids keep the padded form.
 # The bug: 700 chapter-page verse links printed "2.01 ↗" and every theme range

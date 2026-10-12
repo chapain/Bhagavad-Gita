@@ -413,10 +413,62 @@ def run(pw, url, offline_capable=False):
     anat = pg.eval_on_selector(".th-flow .vcard",
         "x=>[(x.querySelector('.chip')||{}).textContent||'', !!x.querySelector('h3'), !!x.querySelector('p')]")
     ok(anat[0] and anat[1] and anat[2], f"verse card = number chip + title + description ({anat})")
+
+    # Phase 2.2: a verse description that is word-for-word the verse's own
+    # literal must not be printed twice. Judged per language: chapter 2,
+    # theme 1 — 2.1 is distinct in every language, 2.2 is a copy in Hindi
+    # only, 2.3 is a copy in all three. The card keeps its chip and title;
+    # only the repeated <p> disappears.
+    for lang, expect in (("en", [False, False, True]),
+                         ("ne", [False, False, True]),
+                         ("hi", [False, True, True])):
+        pg.evaluate(f"setLang('{lang}')")
+        pg.wait_for_timeout(600)
+        prof, shown = pg.evaluate("""() => {
+            const t = DATA[1].themes[0];
+            const cards = document.querySelectorAll('.th-flow .theme')[0]
+                .querySelectorAll('.vcard');
+            return [t.parts.map(p => p.descs[state.lang].trim()
+                                   === p.sutras[0].lits[state.lang].trim()),
+                    Array.from(cards).map(c => {
+                        const p = c.querySelector('p');
+                        return p ? p.textContent.trim() : '';
+                    })];
+        }""")
+        ok(prof == expect, f"p22 {lang}: data duplicate profile {prof} != {expect}")
+        ok([bool(s) for s in shown] == [not d for d in prof],
+           f"p22 {lang}: card description presence disagrees with the data ({shown})")
+        kept = [(s, pg.evaluate(f"DATA[1].themes[0].parts[{i}].descs['{lang}']"))
+                for i, s in enumerate(shown) if s]
+        ok(len(kept) == sum(1 for d in prof if not d)
+           and all(s == t for s, t in kept),
+           f"p22 {lang}: a kept description is not the data's own text ({shown})")
+        ok(pg.eval_on_selector(".th-flow .theme",
+             "t => Array.from(t.querySelectorAll('.vcard'))"
+             ".every(c => c.querySelector('.chip') && c.querySelector('h3'))"),
+           f"p22 {lang}: every card keeps its number chip and title")
+    pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(400)
     pg.locator(".th-flow .vcard").first.click()
     pg.wait_for_timeout(600)
     ok(pg.evaluate("state.view") == "verses" and not pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
        "pressing a verse card behaves like pressing its theme — the grid opens, no modal")
+    # the verse view's part heads obey the same rule: a distinct part keeps
+    # its .pdesc line, a copy shows the title with no repeated description
+    heads = pg.evaluate("""() => {
+        const t = DATA[1].themes[0];
+        return [t.parts.map(p => p.descs[state.lang].trim()
+                               === p.sutras[0].lits[state.lang].trim()),
+                Array.from(document.querySelectorAll('.part .part-head')).map(h => {
+                    const d = h.querySelector('.pdesc');
+                    return d ? d.textContent.trim() : '';
+                })];
+    }""")
+    ok(heads[0] == [False, False, True], f"p22 verses view: profile {heads[0]}")
+    ok([bool(s) for s in heads[1]] == [True, True, False],
+       f"p22 verses view: .pdesc presence disagrees with the data ({heads[1]})")
+    ok(heads[1][0] == pg.evaluate("DATA[1].themes[0].parts[0].descs['en']"),
+       "p22 verses view: a kept .pdesc is the data's own text")
     pg.evaluate("showThemes(1)")
     pg.wait_for_timeout(500)
     pg.evaluate("setLang('ne')")

@@ -7,9 +7,9 @@ before you talk to the owner.
 
 | | |
 |---|---|
-| Last updated | 2026-10-11 (UTC) |
-| Updated by | Arena session on branch `arena/d16ff228-bhagavad-gita` |
-| Base commit | `d52989645231e97d2cadd12311a917ae3df2ce9c` on `main` (PR #29 merged; batch 18 present) |
+| Last updated | 2026-10-12 (UTC) |
+| Updated by | Arena session on branch `arena/b6677bff-bhagavad-gita` |
+| Base commit | `651ca7b20828746d264ad2efc49dd36293e13234` on `main` (PR #30 merged; batch 19 present) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -25,7 +25,8 @@ before you talk to the owner.
 - **Batch 18 (Phase 2.1, 2026-10-11):** all 47 verses of chapter 1 (`1.01`–`1.47`) reviewed against Sanskrit, pāda splits, word entries and EN/NE/HI literals. **47/47 verse verdicts** recorded (20 confirmed, 27 corrected with **42 NE/HI-only five-field overrides** across 40 pādas; 8 pre-existing five-field entries verified and retained, bringing `source/padachheda_ch1.py` to 50 five-field entries and the corpus to **528**). All **601 unchanged word occurrences** (589 pāda words + 12 speaker words) are exhaustively enumerated in `/home/user/evidence/batch18/worksheet-ch1.md`. Both chapter-1 additive `tathā` carry-forwards (`1.26 P4#4` and `1.34 P4#3`) are verified in context and resolved to `पनि / भी` (leaving only `13.18`, `17.07` and `17.26`). Two out-of-scope observations are flagged for Dhruba without editing: `1.15` NE literal (`हेराकुली पराक्रमी भीमले महाशङ्ख पाञ्चजन्य… पौण्ड्र बजाए।` in `source/translations_ne.py`) and `अर्जुन उवाच` speaker-header Hindi gloss (`HI = 'हे अर्जुन'` in `source/build_gita.py`). All owner holds remain untouched. At that batch's close the review ledger was 638/700, with the then-queued 62 source verses in chapters 13 and 17. Source commit `671bfe9` was pushed; PR #29 was subsequently merged at `d529896` (verified via GitHub REST). Worksheets, occurrence ledger, assertions and browser evidence (12 full 390×844 sheets + 80 changed-pāda crops) remain in `/home/user/evidence/batch18/` (outside Git).
 
 
-- **Batch 19 (Phase 2.1, 2026-10-11; complete):** Dhruba confirmed scope after the range mismatch was raised. The source contains ch13 `13.01–13.34` (34 verses; no 13.35) and ch17 `17.01–17.28` (28 verses; include 17.28), 62 existing verses total. All 62 were reviewed; **35 confirmed, 26 corrected and 1 flagged** (13.24 has NE/HI corrections but an English word-gloss overlap remains outside scope). Added **42 NE/HI-only overrides** across 34 pādas (27 in ch13, 15 in ch17); 742 unchanged occurrences are exhaustively listed with full tuples. All 9 pre-existing five-field entries were verified and retained; corpus total is 570. Resolved additive `tathā` at 13.18, 17.07 and 17.26; retained comparative 13.29, 13.32 and 13.33. Verified 13.27 `avinaśyantam` short-a spelling and 17.06 `karśayantaḥ`; only the former received a scoped NE/HI override. Final §4 build passed, including 162 browser checks; 84/84 structural assertions; 12 full 390×844 sheets + 68 changed-pāda crops. Appendix A stayed byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`). Evidence/worksheets are under `/home/user/evidence/batch19/` (outside Git). 2.1 and 2.1x are now **700/700**; stop here—no Phase 2.2. Preserve all owner holds; source commit `27de331` is in [PR #30](https://github.com/chapain/Bhagavad-Gita/pull/30), open to `main` for Dhruba to review and merge; it has not been merged.
+- **Batch 19 (Phase 2.1, 2026-10-11; complete):** Dhruba confirmed scope after the range mismatch was raised. The source contains ch13 `13.01–13.34` (34 verses; no 13.35) and ch17 `17.01–17.28` (28 verses; include 17.28), 62 existing verses total. All 62 were reviewed; **35 confirmed, 26 corrected and 1 flagged** (13.24 has NE/HI corrections but an English word-gloss overlap remains outside scope). Added **42 NE/HI-only overrides** across 34 pādas (27 in ch13, 15 in ch17); 742 unchanged occurrences are exhaustively listed with full tuples. All 9 pre-existing five-field entries were verified and retained; corpus total is 570. Resolved additive `tathā` at 13.18, 17.07 and 17.26; retained comparative 13.29, 13.32 and 13.33. Verified 13.27 `avinaśyantam` short-a spelling and 17.06 `karśayantaḥ`; only the former received a scoped NE/HI override. Final §4 build passed, including 162 browser checks; 84/84 structural assertions; 12 full 390×844 sheets + 68 changed-pāda crops. Appendix A stayed byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`). Evidence/worksheets are under `/home/user/evidence/batch19/` (outside Git). 2.1 and 2.1x are now **700/700**; stop here—no Phase 2.2. Preserve all owner holds; source commit `27de331` is in [PR #30](https://github.com/chapain/Bhagavad-Gita/pull/30), **merged** into `main` at `651ca7b` on 2026-10-11 (15:38 UTC) — verified on GitHub 2026-10-12.
+- **Phase 2.2 complete (2026-10-12):** duplicate verse descriptions are now dropped at render time. Where a verse's description is word-for-word the verse's own literal **in the language on screen**, the app shows nothing rather than the copy — judged independently in EN/NE/HI; distinct descriptions are always shown. The baseline was re-verified from the current generated data: **EN 593, NE 566, HI 592** of 700 (zero empty; verse-ID lists in `/home/user/evidence/phase2.2/`). Implementation is display-only: a `partDesc()` helper in `source/build_gita.py` (study-guide cards and verse-view part heads) and the matching `.vd` rule on the generated chapter pages; the source text and the built `data/ch*.js` keep every description, so `check_study_structure.py` (9,658 checks) and the data-level document tests (802 assertions) run unchanged and green. New regression checks: 54 site-health chapter-page checks (`.vd` set == exactly the distinct descriptions, text unchanged, no stray/empty lines), 15 browser checks (per-language profiles incl. en→ne→hi switching; 2.1 distinct in all three kept, 2.2 suppressed in Hindi only, 2.3 suppressed in all three), and `tests/test_duplicate_descriptions.py` (3 tests locking the counts and the per-language behaviour). Full build green with **177 browser checks**. Evidence (before/after at 390 px, read back) in `/home/user/evidence/phase2.2/` (outside Git).
 
 - **2026-10-09 — Phase 1 complete (steps 1.1–1.9).** Step 1.4 made
   `source/check_padas.py` a build-failing strict validator. It losslessly
@@ -1296,7 +1297,11 @@ Appendix A before/after is byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11c
   masculine (`translations_hi.py:194`). (Fixed in step 1.7.)
 - **Duplicate descriptions:** 593 of 700 English verse descriptions are
   identical to the literal translation (Nepali 566, Hindi 592), so the Study
-  guide repeats itself.
+  guide repeats itself. **Resolved by Phase 2.2 (2026-10-12, re-verified the
+  same figures from current data):** the renderers now show nothing for a
+  description that is a verbatim copy of the verse's own literal in the
+  language on screen, judged per language; source text and data keep every
+  description. See §1 (Phase 2.2) and §6.
 - **No Śaṅkara explanation anywhere.** Suggestion: short notes on about 25 pivot
   verses, drawn from A. Mahadeva Sastry's 1897 English translation of the
   bhāṣya (public domain).
@@ -1399,7 +1404,7 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · 2.1 / 2.1x **complete (2026-10-11)**; Phase 2.2 and later work not started.
+**Phase 2 — Meaning** · 2.1 / 2.1x **complete (2026-10-11)**; **2.2 complete (2026-10-12)**; later work not started.
 - [x] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
       **complete, batches 1–19** (`te` batch 1; `me`, `param`, `bhūtāni`,
       `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
@@ -1433,7 +1438,17 @@ Missing:
       the user confirmed reviewing all existing source verses, 13.01–13.34 and
       17.01–17.28 (62 total); no 13.35 was fabricated or any 17.28 omitted.
       **Hard stop reached:** do not start Phase 2.2 or any other §6 work.
-- [ ] 2.2 Drop duplicate descriptions (show nothing rather than a copy).
+- [x] 2.2 Drop duplicate descriptions (show nothing rather than a copy) —
+      **complete (2026-10-12).** Render-time suppression per language:
+      `partDesc()` in `build_gita.py` (study-guide cards, verse-view part
+      heads) and the `.vd` rule on generated chapter pages. Baseline
+      re-verified: EN 593 / NE 566 / HI 592 of 700. Source text and built
+      data keep every description; distinct descriptions always shown,
+      nothing invented. +54 site-health, +15 browser, 3 new mutation tests
+      (duplicate and nonduplicate cases in all three languages, language
+      switching, a generated chapter page). Full build green, 177 browser
+      checks; 390 px before/after evidence read back in
+      `/home/user/evidence/phase2.2/`.
 - [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
 - [ ] 2.5 Śaṅkara notes on about 25 pivot verses.
@@ -1602,7 +1617,9 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
 
 ## 8. Session log (newest first, one line each)
 
-- 2026-10-11 · `arena/d16ff228-bhagavad-gita` · Phase 2.1 batch 19 (chapters 13 and 17; 62 existing source verses, ch13 13.01–13.34 and ch17 17.01–17.28): range clarified with Dhruba before final source edits; 35 confirmed, 26 corrected, 1 flagged; 42 NE/HI-only overrides across 34 pādas, 742 unchanged occurrences exhaustively listed; all nine prior five-field entries retained. Resolved additive `tathā` 13.18 / 17.07 / 17.26, retained comparative 13.29 / 13.32 / 13.33, and flagged the out-of-scope English gloss overlap at 13.24. Full build green (162 browser checks); Appendix A byte-identical; 84/84 structural assertions; 12 full 390×844 sheets + 68 changed-pāda crops; evidence `/home/user/evidence/batch19/`. Source commit `27de33120f94e7800b90a7bc141598feeace40d8` pushed only to `arena/d16ff228-bhagavad-gita`; [PR #30](https://github.com/chapain/Bhagavad-Gita/pull/30) is open to `main` for Dhruba to review and merge; **not merged**. Ledger complete at 700/700; no Phase 2.2.
+- 2026-10-12 · `arena/b6677bff-bhagavad-gita` · **Phase 2.2 complete — duplicate descriptions dropped (show nothing rather than a copy).** Baseline re-verified from current generated data: EN 593 / NE 566 / HI 592 of 700 descriptions identical to the literal, zero empty (verse-ID lists in `/home/user/evidence/phase2.2/`). Render-time suppression only — `partDesc()` in `build_gita.py` (study-guide cards + verse-view part heads) and the `.vd` rule on the generated chapter pages, judged per language; source text and `data/ch*.js` unchanged, so `check_study_structure.py` (9,658) and the 802 document assertions run as-is. New regression checks: 54 site-health chapter-page checks (`.vd` set == exactly the distinct descriptions, kept text unchanged, no stray/empty lines), 15 browser checks (en/ne/hi study-guide profiles incl. language switching — 2.1 distinct in all three kept, 2.2 suppressed in Hindi only, 2.3 suppressed in all three; verse-view `.pdesc`; generated chapter page covered by the site-health checks), and `tests/test_duplicate_descriptions.py` (3 tests locking counts + per-language behaviour + no emptied data). Full build green: pāda 2,800/0, 2,100 paraphrase, 6 SEO, 626 site-health, 9,658 study, 22 mutation, 802 document, 15+7 Node, **177 browser checks**. Generated churn: `index.html`, `chapter/1–18/index.html`, `sw.js` cache id, `sitemap.xml` lastmod only; `data/` untouched. 390 px before/after evidence read back (no blank artifacts; theme descriptions and all other content intact). Corrected the stale PR #30 status: **merged** into `main` at `651ca7b` (2026-10-11, 15:38 UTC). No Phase 2.3 or other §6 work started; no owner holds or protected readings touched.
+
+- 2026-10-11 · `arena/d16ff228-bhagavad-gita` · Phase 2.1 batch 19 (chapters 13 and 17; 62 existing source verses, ch13 13.01–13.34 and ch17 17.01–17.28): range clarified with Dhruba before final source edits; 35 confirmed, 26 corrected, 1 flagged; 42 NE/HI-only overrides across 34 pādas, 742 unchanged occurrences exhaustively listed; all nine prior five-field entries retained. Resolved additive `tathā` 13.18 / 17.07 / 17.26, retained comparative 13.29 / 13.32 / 13.33, and flagged the out-of-scope English gloss overlap at 13.24. Full build green (162 browser checks); Appendix A byte-identical; 84/84 structural assertions; 12 full 390×844 sheets + 68 changed-pāda crops; evidence `/home/user/evidence/batch19/`. Source commit `27de33120f94e7800b90a7bc141598feeace40d8` pushed only to `arena/d16ff228-bhagavad-gita`; [PR #30](https://github.com/chapain/Bhagavad-Gita/pull/30) was **merged** into `main` at `651ca7b` (2026-10-11, 15:38 UTC — status verified 2026-10-12; the "not merged" wording here is corrected). Ledger complete at 700/700; no Phase 2.2.
 
 - 2026-10-11 · `arena/0ceb3eac-bhagavad-gita` · Phase 2.1 batch 18 (complete chapter 1, `1.01`–`1.47`): verified PR #28 merged at `a1803d7` and all 23 batch-17 overrides on `main`; reviewed all 47 verses/188 pādas and 643 word occurrences (631 pāda + 12 speaker); **42 NE/HI-only five-field overrides** across 27 verses/40 pādas, 20 verses confirmed, and 601 unchanged occurrences exhaustively listed in `/home/user/evidence/batch18/worksheet-ch1.md`. Resolved additive `tathā` at `1.26 P4#4` and `1.34 P4#3` (`पनि / भी`); flagged `1.15` NE literal (`translations_ne.py`) and `अर्जुन उवाच` speaker HI gloss (`build_gita.py`) for Dhruba without editing; all owner holds preserved. Appendix A byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11cd7813e96638f951449c3a5b5e03355158a4e`); full §4 build green (162 browser checks); 84/84 structural rendered-string assertions; 12 full 390×844 sheets + 80 changed-pāda crops in `/home/user/evidence/batch18/`. Ledger: **638/700** (62 remain in chapters 13 and 17). Source commit `671bfe9` pushed to `arena/0ceb3eac-bhagavad-gita`; [PR #29](https://github.com/chapain/Bhagavad-Gita/pull/29) open to `main`; `/home/user/downloads/Bhagavad-Gita-700-titles.zip` refreshed and verified byte-identical via `diff -r` excluding `.git`. No second batch or Phase 2.2 work.
 
