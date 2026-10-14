@@ -228,8 +228,8 @@ ok(ch9Care.range === '9.20–9.25' && ch9Soma.titles.en === 'Soma drinkers seek 
    && reviewedPage(9).includes(ch9Care.titles.en),
    'chapter 9 pairs finite reward with sustained devotion, preserving the approved pearl');
 const ch10Part = reviewedPart(10,'10.16');
-ok(ch10Part.descs.ne.includes('केही नछुटाई बताउनुहोस्')
-   && ch10Part.descs.hi.includes('कुछ भी छोड़े बिना')
+ok(ch10Part.descs.ne.includes('नछोडी बताइदिन')
+   && ch10Part.descs.hi.includes('बिना कुछ छोड़े')
    && !ch10Part.descs.ne.includes('हे परम पुरुष, हे परम पुरुष')
    && !ch10Part.descs.hi.includes('हे परम पुरुष, हे परम पुरुष')
    && reviewedPage(10).includes('Tell me how to recognise and remember you'),
@@ -245,7 +245,7 @@ ok(ch11Warriors.range === '11.26–11.30' && ch11Warriors.descs.en.includes('War
 const ch12Close = reviewedPart(12,'12.20');
 ok(ch12Close.titles.en === 'They who follow this immortal dharma are dearest'
    && ch12Close.titles.ne.includes('अत्यन्त प्रिय') && ch12Close.titles.hi.includes('अत्यन्त प्रिय')
-   && ch12Close.descs.en.includes('with faith')
+   && ch12Close.descs.en.includes('faithfully')
    && reviewedTheme(12,'12.09').descs.en.includes('A graded path')
    && reviewedPage(12).includes(ch12Close.titles.en),
    'chapter 12 retains the graduated practice and faithful closing pearl ×3');
@@ -270,10 +270,10 @@ ok(ch15Persons.range === '15.16–15.20'
    && ch15Heart.descs.en.includes('forgetfulness') && reviewedPage(15).includes(ch15Persons.titles.en),
    'chapter 15 keeps all three persons distinct and includes forgetfulness in the heart teaching');
 const ch16Scripture = reviewedPart(16,'16.23'), ch16Destiny = reviewedPart(16,'16.20');
-ok(ch16Scripture.descs.ne.includes('शास्त्रको विधान त्यागेर')
+ok(ch16Scripture.descs.ne.includes('शास्त्रविधि छोडेर')
    && !ch16Scripture.descs.ne.includes('थाती राखेर')
-   && ch16Scripture.descs.hi.includes('शास्त्र-विधान को त्यागकर')
-   && ch16Destiny.titles.ne === 'अधम गति' && ch16Destiny.descs.ne.includes('नीच अवस्थामा')
+   && ch16Scripture.descs.hi.includes('शास्त्रविधि छोड़कर')
+   && ch16Destiny.titles.ne === 'अधम गति' && ch16Destiny.descs.ne.includes('अधम गतिमा')
    && reviewedPage(16).includes('Close hell’s gates and let scripture guide action'),
    'chapter 16 preserves the corrected scripture/destiny pearls while joining the practical exit');
 const ch18Teaching = reviewedTheme(18,'18.67'), ch18Listener = reviewedPart(18,'18.71');
@@ -394,11 +394,11 @@ ok(byRef['18.78'].d.startsWith('यत्र योगेश्वरः कृ�
 const ch15Path = reviewedPart(15,'15.04'), ch15Travellers = reviewedPart(15,'15.05');
 ok(!!ch15Path && !!ch15Travellers, 'ch.15 path and traveller pearls both exist');
 ok(ch15Path.titles.en === 'Seek the supreme goal'
-   && ch15Travellers.descs.en.includes('Free from pride and delusion'), 'ch.15 EN path/traveller distinction survives regrouping');
+   && ch15Travellers.descs.en.includes('Free of pride and delusion'), 'ch.15 EN path/traveller distinction survives regrouping');
 ok(ch15Path.titles.ne === 'परम लक्ष्य खोज'
-   && ch15Travellers.descs.ne.includes('अभिमान र मोहबाट मुक्त'), 'ch.15 NE keeps the sought goal distinct from the traveller');
+   && ch15Travellers.descs.ne.includes('मान-मोहरहित'), 'ch.15 NE keeps the sought goal distinct from the traveller');
 ok(ch15Path.titles.hi === 'परम लक्ष्य की खोज'
-   && ch15Travellers.descs.hi.includes('अभिमान और मोह से मुक्त'), 'ch.15 HI keeps the sought goal distinct from the traveller');
+   && ch15Travellers.descs.hi.includes('मान-मोह से रहित'), 'ch.15 HI keeps the sought goal distinct from the traveller');
 ok(!allThemes.some(t=>t.titles.en==='The Path Beyond' || t.titles.hi==='पार का मार्ग'),
    'stale ch.15 path titles cannot reappear');
 // the pill strips and top back-buttons became one breadcrumb: the full trail,
