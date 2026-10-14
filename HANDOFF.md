@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-12 (UTC) |
-| Updated by | Arena session on branch `arena/b6677bff-bhagavad-gita` |
-| Base commit | `651ca7b20828746d264ad2efc49dd36293e13234` on `main` (PR #30 merged; batch 19 present) |
+| Updated by | Arena session on branch `arena/0e00b5ff-bhagavad-gita` |
+| Base commit | `ad51c6159b7553f6e9658f0ab1312a9afb8af882` on `main` (PR #31, Phase 2.2, merged) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,6 +20,8 @@ before you talk to the owner.
 
 ## 1. Where we are
 
+- **Phase 2.3 complete (2026-10-12) — colophons for all 18 chapters.** Every chapter now ends with its traditional closing line naming the chapter (*… iti &lt;name&gt;o nāma &lt;ordinal&gt;o ’dhyāyaḥ*). Found first, before writing anything: **ch1 and ch2 already carried a colophon as dead data** — nothing in Python, JS or the tests read it and it was absent from `data/ch*.js`, so no reader had ever seen one — and both were defective, opening with **U+004F Latin capital O** + anusvāra instead of **U+0950 ॐ**, with disagreeing tails. The 18 are generated from the repo’s **own ch1/ch2 frame** + `CHAPTERS` names + ordinals, and the generator **reproduces ch1 and ch2 word-for-word**, which is the evidence it is the repo’s formula; cross-checked against the public-domain Sanskrit Gītā at sacred-texts (all 18 chapter titles carry exactly these names, incl. *ātmasaṃyamayoga* ch6, *kṣetrakṣetrajñavibhāgayoga* ch13). **Sastry’s bhāṣya does not print the colophons**, so the authority is the mūla tradition, not Sastry — recorded for Dhruba. Data patch: 16 appended and 2 replaced, each with the exact old text matched and `count == 1` asserted, prefix-unchanged assertions, and **all 700 verse records verified identical** before/after. Rendering: `colophonHtml()` closes the reading view as the last child of the chapter card, and the same block closes every generated `chapter/N/index.html`; Devanagari + transliteration only — no label, no gloss, no pill, so it cannot read as a literal or a paraphrase; the study guide is untouched so Phase 2.2’s surface and its test stay intact. New `tests/test_colophons.py` (7) + a browser group (+19), **mutation-proved** (`ॐ`→Latin-O, a wrong ordinal and a deleted page block each fail the suite). Full §4 build green: pāda 2,800/0 · paraphrase 2,100 · SEO 6 · site-health 626 · study 9,658 · mutation **29** · document 802 · Node 15+7 · **browser 196** (was 177). Diff audit: every added line in `index.html`/`chapter.css` traces to the source diff; two source lines rewritten, the rest additive. Evidence (390 px, read back) in `/home/user/evidence/phase2.3/` (outside Git). Commit `7cf9287`; PR **#32** open to `main`, **ready for review**, not merged.
+- **Phase 2.5 declined (2026-10-12).** Dhruba authorised §5.3’s Śaṅkara-notes suggestion at the start of the session, then declined it once the concrete proposal was in front of him: no commentary layer — *“it’s a gita study app. word meanings, literal translation, paraphrase should suffice.”* **Nothing was built:** the app, its source and every generated file are unchanged. Decision recorded in §7.3 (NOT ADOPTED), §5.3 and §6 (item 2.5 closed as declined — do not re-propose). The session’s source-verification log and the unshipped sample note for 2.47 are in `/home/user/evidence/phase2.5/` (outside Git).
 - **Batch 16 (partial chapter 12, verses 12.01–12.04):** PR #26 merged at `28a802a`; batch-15 content verified on `main`. Four verses reviewed, two `paryupāsate` NE/HI overrides at 12.01 and 12.03. This was the state before batch 17; evidence and exhaustive word ledger are in `/home/user/evidence/batch16/`.
 - **Batch 17 (Phase 2.1, 2026-10-11):** PR #28 merged at `a1803d7` (carrying `406c766` and `9b50b43`), verified on `main` before batch 18. All 29 verses of chapter 5 and the remaining 16 verses of chapter 12 reviewed (**45/45 verse verdicts**: 26 confirmed, 18 with corrections, 12.19 flagged; 23 NE/HI-only word overrides and 568 unchanged word occurrences enumerated). Evidence in `/home/user/evidence/batch17/`.
 - **Batch 18 (Phase 2.1, 2026-10-11):** all 47 verses of chapter 1 (`1.01`–`1.47`) reviewed against Sanskrit, pāda splits, word entries and EN/NE/HI literals. **47/47 verse verdicts** recorded (20 confirmed, 27 corrected with **42 NE/HI-only five-field overrides** across 40 pādas; 8 pre-existing five-field entries verified and retained, bringing `source/padachheda_ch1.py` to 50 five-field entries and the corpus to **528**). All **601 unchanged word occurrences** (589 pāda words + 12 speaker words) are exhaustively enumerated in `/home/user/evidence/batch18/worksheet-ch1.md`. Both chapter-1 additive `tathā` carry-forwards (`1.26 P4#4` and `1.34 P4#3`) are verified in context and resolved to `पनि / भी` (leaving only `13.18`, `17.07` and `17.26`). Two out-of-scope observations are flagged for Dhruba without editing: `1.15` NE literal (`हेराकुली पराक्रमी भीमले महाशङ्ख पाञ्चजन्य… पौण्ड्र बजाए।` in `source/translations_ne.py`) and `अर्जुन उवाच` speaker-header Hindi gloss (`HI = 'हे अर्जुन'` in `source/build_gita.py`). All owner holds remain untouched. At that batch's close the review ledger was 638/700, with the then-queued 62 source verses in chapters 13 and 17. Source commit `671bfe9` was pushed; PR #29 was subsequently merged at `d529896` (verified via GitHub REST). Worksheets, occurrence ledger, assertions and browser evidence (12 full 390×844 sheets + 80 changed-pāda crops) remain in `/home/user/evidence/batch18/` (outside Git).
@@ -1304,7 +1306,13 @@ Appendix A before/after is byte-identical (SHA-256 `87d5ad0f989e09dc8f94c15ea11c
   description. See §1 (Phase 2.2) and §6.
 - **No Śaṅkara explanation anywhere.** Suggestion: short notes on about 25 pivot
   verses, drawn from A. Mahadeva Sastry's 1897 English translation of the
-  bhāṣya (public domain).
+  bhāṣya (public domain). **Owner's answer 2026-10-12 — declined, see §7.3:**
+  the app stays word meanings + literal + paraphrase. Closed; do not re-propose.
+- **Chapter colophons (Phase 2.3, done 2026-10-12).** Every chapter ends with its
+  traditional closing line in the reading view and on the generated chapter
+  pages. One provenance note for the record: Sastry's bhāṣya prints no
+  colophons, so the text follows the mūla tradition and is generated from the
+  repo's own ch1/ch2 wording. See §1 and §6.
 
 ### 5.4 Search (Phase 1 step 1.5 complete)
 
@@ -1404,7 +1412,7 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · 2.1 / 2.1x **complete (2026-10-11)**; **2.2 complete (2026-10-12)**; later work not started.
+**Phase 2 — Meaning** · 2.1 / 2.1x **complete (2026-10-11)**; **2.2 complete (2026-10-12)**; **2.3 complete (2026-10-12)**; **2.5 declined (2026-10-12)**; 2.4 not started.
 - [x] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
       **complete, batches 1–19** (`te` batch 1; `me`, `param`, `bhūtāni`,
       `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
@@ -1449,9 +1457,20 @@ Missing:
       switching, a generated chapter page). Full build green, 177 browser
       checks; 390 px before/after evidence read back in
       `/home/user/evidence/phase2.2/`.
-- [ ] 2.3 Colophons for all 18 chapters, shown at the end of each chapter.
+- [x] 2.3 Colophons for all 18 chapters, shown at the end of each chapter —
+      **complete (2026-10-12, commit `7cf9287`, PR #32).** 16 added and 2
+      existing ones fixed (the pair in ch1/ch2 was dead data **and** carried a
+      Latin-O-for-ॐ defect). Text generated from the repo’s own ch1/ch2 frame;
+      the generator reproduces both word-for-word. Shown at the end of the
+      reading view and of every generated `chapter/N/index.html`; **not** on the
+      Study-guide cards, so Phase 2.2’s surface is untouched. `tests/test_colophons.py`
+      (7) + 19 browser checks; full build green, browser 196. Evidence in
+      `/home/user/evidence/phase2.3/`. Note for Dhruba: Sastry’s bhāṣya does not
+      print the colophons — the mūla tradition is the authority here.
 - [ ] 2.4 A “Start here” page and a “Gītā in 18 verses” path.
-- [ ] 2.5 Śaṅkara notes on about 25 pivot verses.
+- [ ] 2.5 Śaṅkara notes on about 25 pivot verses — **DECLINED by the owner
+      2026-10-12 (see §7.3); do not start.** The line stays only so a later
+      session reads the decision instead of re-proposing it.
 
 **Phase 3 — Simplify the UI**
 - [ ] 3.1 One chapter view: themes as headings, verses beneath.
@@ -1475,9 +1494,9 @@ Missing:
 
 ## 7. Decisions
 
-Phase 1 is selected (2026-10-08). §7.1 and §7.2 are decided; §7.3–§7.7 remain open.
-Numbering follows the old list, so “§7.1” and “§7.2” mean the same choices as
-before.
+Phase 1 is selected (2026-10-08). §7.1, §7.2 and §7.3 are decided; §7.4–§7.7
+remain open. Numbering follows the old list, so “§7.1”, “§7.2” and “§7.3” mean
+the same choices as before.
 
 ### 7.1 “तीन निष्ठा” → “तीन मार्ग” — **DECIDED (owner, 2026-10-09)** · **IMPLEMENTED** (step 1.8, 2026-10-09)
 
@@ -1606,9 +1625,31 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
   exist, so the generated churn was `data/ch15.js`, `data/ch18.js`,
   `chapter/15/`, `chapter/18/` and `sw.js`.
 
-### 7.3–7.7 Still waiting on the owner
+### 7.3 Śaṅkara notes on about 25 pivot verses — **DECIDED (owner, 2026-10-12): NOT ADOPTED**
 
-3. OK to add Śaṅkara notes (source: Mahadeva Sastry, 1897)?
+**Decision.** The app keeps exactly what it has — **word meanings, literal
+translation and paraphrase**. No Śaṅkara commentary notes are added. The owner
+authorised §5.3’s suggestion at the start of the session; after seeing the
+concrete proposal (a short English note on 25 verses, sourced from A. Mahadeva
+Sastry’s translation of the bhāṣya, shown under the paraphrase in the verse
+sheet, in English first) he declined it: *“it’s a gita study app. word meanings,
+literal translation, paraphrase should suffice.”*
+
+**Consequence.** Nothing is built and nothing changes: no new source file, no
+data, no rendering, no generated output. §6 item 2.5 is closed as **declined**;
+a future session must not re-propose it. §5.3’s “No Śaṅkara explanation
+anywhere” line is resolved *by design* — a deliberate scope choice, not an open
+gap.
+
+**Kept only as a record, should it ever be revisited.** The source verified at
+the time: Internet Archive item `bhagavadgitawith00maharich`, “The
+Bhagavad-Gita, with the commentary of Sri Sankaracharya”, A. Mahadeva Sastri
+(2nd ed. 1901; 1st ed. 1897), `NOT_IN_COPYRIGHT`, readable as its `_djvu.txt`.
+A sample note for 2.47 (drafted from the printed page, never shipped) and the
+whole session’s check log are in `/home/user/evidence/phase2.5/` (outside Git).
+
+### 7.4–7.7 Still waiting on the owner
+
 4. Where audio would come from (licence, who records it).
 5. OK to merge “Verses with translation” and “Study guide” into one view?
 6. OK to delete the dead files in §5.7?
@@ -1616,6 +1657,10 @@ caveat from step 1.8 (small UI labels may render as boxes — not an app bug).
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-12 · `arena/0e00b5ff-bhagavad-gita` · **Phase 2.3 complete — colophons for all 18 chapters** (commit `7cf9287`, PR **#32** open to `main`, **ready for review**, not merged). Scoped and approved text first: the repo already carried a colophon for **ch1/ch2 as dead data** (nothing in Python, JS or the tests read it; absent from `data/ch*.js`) and both were defective — **U+004F Latin O + anusvāra instead of U+0950 ॐ**, disagreeing tails. The 18 were generated from the repo's own ch1/ch2 frame + `CHAPTERS` names + ordinals and the generator **reproduces ch1 and ch2 word-for-word**; cross-checked against the public-domain Sanskrit Gītā at sacred-texts. **Sastry's bhāṣya does not print the colophons** — told to Dhruba; the mūla tradition is the authority. Patch: exact-old-text match with `count == 1` for the two replaced, prefix-unchanged + no-existing-colophon assertions for the 16 appended, and **all 700 verse records verified identical** before/after. Rendering: `colophonHtml()` closes the reading view (last child of the chapter card) and each generated `chapter/N/index.html`, between "Read the verses" and the closing CTA; Devanagari + transliteration only (no label/gloss/pill) so it cannot read as a literal or paraphrase; **Study guide untouched** so Phase 2.2's surface and `tests/test_duplicate_descriptions.py` stay intact. New `tests/test_colophons.py` (7) + browser group (+19), **mutation-proved** three ways. Full §4 build green: pāda 2,800/0 · paraphrase 2,100 · SEO 6 · site-health 626 · study 9,658 · mutation **29** · document 802 · Node 15+7 · **browser 196** (was 177). Diff audit: every added line in `index.html`/`chapter.css` traces to the source diff; two source lines rewritten, rest additive; generated churn = `data/ch*.js` (colophon key only), `chapter/1–18`, `chapter.css`, `index.html`, `sw.js`. 390 px evidence read back (reading view + generated page; study guide proven clean, incl. a magnified tail crop) in `/home/user/evidence/phase2.3/`. **Out of scope, found and reported, not touched:** a hash-only `#chapter=6` → `#chapter=6&tab=study` navigation is a no-op (`state.view` stays `read`) because the boot router only runs on load — **verified pre-existing on a clean HEAD worktree**. Corrections this session: the earlier claim that a PR description cannot be edited was wrong — the body **can** be updated (via REST; `gh pr edit` itself is broken here by the Projects-classic deprecation), and PR #32's title and body were updated accordingly. No verse text, word meaning, title, literal, paraphrase, description, theme or speaker text was changed; all owner holds and flagged readings preserved.
+
+- 2026-10-12 · `arena/0e00b5ff-bhagavad-gita` · **Phase 2.5 declined by the owner — nothing built.** Verified at session start: PR #31 (Phase 2.2, “Drop duplicate descriptions”) **merged** into `main` at `ad51c61`, which is this branch’s base; worktree clean; baseline `python3 build.py` green. Read §1–2, §4, §5.3, §6–§8 and `PROJECT.md` §8; confirmed the protected/flagged set (11.44, 8.10, 16.05, 4.16, 1.15, 18.53, 9.34, 12.19, 6.13, 6.29) and did **not** reopen the completed 700-verse review. The owner’s authorisation was first written into §7.3 as DECIDED (Sastry 1897/1901, public domain; English first; NE/HI only per batch) after the verse list (25 verses, all verified present in the data) and the display design were put to him — and he then **declined the feature**. The branch now records the decision once: §7.3 **NOT ADOPTED**, §6 item 2.5 closed as declined (do not re-propose), §5.3 and §1 updated. The superseded interim wording (“approved”) was dropped by rewriting this branch before merge — never merged, so no published history was altered — and the tree was verified byte-identical afterwards (git tree `94c12a7`). Source work was read-only: the Sastry text was verified usable (Internet Archive `bhagavadgitawith00maharich`, `_djvu.txt`, 114 fetch chunks; 2.47 read in full from the printed page) and one sample note drafted for 2.47 — never shipped, kept in `/home/user/evidence/phase2.5/` (outside Git). No source, data, CSS, JS or generated file changed; `python3 build.py` green after the edits (browser suite included), `git status` shows `HANDOFF.md` only. Full-repo zip refreshed from the final worktree and verified by extraction + `diff -r` excluding `.git`. No Phase 2.1x re-open, and no Phase 2.3, 2.4, 3 or other §6 work started.
 
 - 2026-10-12 · `arena/b6677bff-bhagavad-gita` · **Phase 2.2 complete — duplicate descriptions dropped (show nothing rather than a copy).** Baseline re-verified from current generated data: EN 593 / NE 566 / HI 592 of 700 descriptions identical to the literal, zero empty (verse-ID lists in `/home/user/evidence/phase2.2/`). Render-time suppression only — `partDesc()` in `build_gita.py` (study-guide cards + verse-view part heads) and the `.vd` rule on the generated chapter pages, judged per language; source text and `data/ch*.js` unchanged, so `check_study_structure.py` (9,658) and the 802 document assertions run as-is. New regression checks: 54 site-health chapter-page checks (`.vd` set == exactly the distinct descriptions, kept text unchanged, no stray/empty lines), 15 browser checks (en/ne/hi study-guide profiles incl. language switching — 2.1 distinct in all three kept, 2.2 suppressed in Hindi only, 2.3 suppressed in all three; verse-view `.pdesc`; generated chapter page covered by the site-health checks), and `tests/test_duplicate_descriptions.py` (3 tests locking counts + per-language behaviour + no emptied data). Full build green: pāda 2,800/0, 2,100 paraphrase, 6 SEO, 626 site-health, 9,658 study, 22 mutation, 802 document, 15+7 Node, **177 browser checks**. Generated churn: `index.html`, `chapter/1–18/index.html`, `sw.js` cache id, `sitemap.xml` lastmod only; `data/` untouched. 390 px before/after evidence read back (no blank artifacts; theme descriptions and all other content intact). Corrected the stale PR #30 status: **merged** into `main` at `651ca7b` (2026-10-11, 15:38 UTC). No Phase 2.3 or other §6 work started; no owner holds or protected readings touched.
 
