@@ -37,6 +37,13 @@
   try{ sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){}
   var dark = (saved === 'dark') || (saved === null && sysDark);
   if(dark) document.documentElement.setAttribute('data-theme','dark');
+  /* The reading language too: the shell ships lang="en" and the app reloads
+     itself when a new service worker claims the tab, so without this a नेपाली
+     reader is announced in English after every update. Same whitelist as
+     savedLang() — anything else keeps the shipped default. */
+  var lang = null;
+  try{ lang = localStorage.getItem('gitaLang'); }catch(e){}
+  if(lang === 'en' || lang === 'ne' || lang === 'hi') document.documentElement.lang = lang;
 })();
 </script>
 <meta name="mobile-web-app-capable" content="yes">
@@ -1349,7 +1356,23 @@ function savedReaderSize(){
   try{ size = Number(localStorage.getItem('gitaReaderSize')); }catch(e){}
   return READER_SIZES.includes(size) ? size : 100;
 }
-const state = { chapter:null, theme:null, idx:0, lang:'en', view:'welcome', section:null, shared:null,
+/* The reading language is a PREFERENCE, not session state, so it lives in
+   localStorage beside gitaTheme rather than in sessionStorage with the route.
+   Owner 2026-10-14: a reader on च.१८ अध्ययन in नेपाली was silently bounced back to
+   English. The cause was not the study guide — the app reloads itself when a new
+   service worker claims the tab (see controllerchange below), the reload kept the
+   route from sessionStorage, and state.lang was hardcoded to 'en' because
+   setLang() never wrote anything down. The same bug also reset the language on
+   every fresh visit and every home-screen launch.
+   Whitelist the three codes: a stale, hand-edited or truncated value must fall
+   back to 'en', never reach T()/L() and render half the interface blank. */
+const GITA_LANGS = ['en','ne','hi'];
+function savedLang(){
+  let l = null;
+  try{ l = localStorage.getItem('gitaLang'); }catch(e){}
+  return GITA_LANGS.includes(l) ? l : 'en';
+}
+const state = { chapter:null, theme:null, idx:0, lang:savedLang(), view:'welcome', section:null, shared:null,
                 readerSize:savedReaderSize() };
 function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
 /* Phase 2.2: a verse description that is word-for-word the verse's own
@@ -1402,12 +1425,25 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   const breadcrumb = $('#crumbs'); if(breadcrumb) breadcrumb.setAttribute('aria-label', L('breadcrumb'));
   { const pb = $('#playLbl'); if(pb) pb.textContent = L('play'); }
   searchX(); }
-function setLang(l){ state.lang = l; try{ document.documentElement.lang = l; }catch(e){}
+/* The parts of a language change that are pure chrome: <html lang>, the three
+   segmented buttons, and the static interface strings. Kept apart from setLang()
+   because boot needs exactly this — and none of the view re-rendering below — to
+   reflect a language restored from storage before the deep link paints. */
+function syncLang(l){
+  state.lang = l;
+  try{ document.documentElement.lang = l; }catch(e){}
   document.querySelectorAll('#langbar .seg .lang-btn').forEach(b=>{
     const selected = b.dataset.lang === l; b.classList.toggle('on', selected);
     b.setAttribute('aria-pressed', String(selected));
   });
   applyStatic();
+}
+function setLang(l){
+  if(!GITA_LANGS.includes(l)) return;   // ignore a stale bookmark or a bad call
+  syncLang(l);
+  /* Saved before the re-render below: if a view throws, the choice is still on
+     record and the next load comes back in the language the reader picked. */
+  try{ localStorage.setItem('gitaLang', l); }catch(e){}
   // Remember which verse the modal is showing: doSearch()/showFavorites()
   // below null out state.chapter/state.theme while re-rendering the
   // background view, which would otherwise leave the open modal stale.
@@ -3582,7 +3618,13 @@ if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
 }
 function gitaBoot(){
   assembleData();
-  applyStatic();
+  /* Sync the language chrome first. state.lang already came from savedLang() and
+     <html lang> from the pre-paint script, but the three buttons ship with
+     English hard-coded on / aria-pressed="true" — a reader restored into नेपाली
+     would otherwise see the wrong segment highlighted. syncLang() also calls
+     applyStatic(), so the interface strings land in the restored language
+     before the deep link below renders anything. */
+  syncLang(state.lang);
   paintTheme();
   try{
     var path = location.pathname || '/';

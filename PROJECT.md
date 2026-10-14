@@ -15,6 +15,65 @@ code alone cannot tell you.
 For a brand-new session: read §1–§10, then this box, then build.
 
 
+### 2026-10-14 — the reading language now survives the app's own reload
+
+* **Why.** Dhruba reported: *"sometimes, when i am in let's say, chapter 18,
+  study guide page, and in nepali language, suddenly it refreshes and goes into
+  english language mode."* The study guide was not at fault, and neither was
+  chapter 18 — it happens on any view, in any language other than English.
+* **Diagnosis.** The "sudden refresh" is the app reloading itself: when a new
+  service worker calls `skipWaiting()` + `clients.claim()`, the `controllerchange`
+  handler does `if (had) location.reload()` so the reader gets the new build.
+  That fires on **every deploy**, because `sw.js` carries a content-hash cache id.
+  The reload restored the **route** from `sessionStorage['gita.route']` — but
+  `state.lang` was hardcoded `'en'`, because `setLang()` updated `state` and the
+  DOM and never wrote the choice down anywhere. So the reader came back to the
+  right page in the wrong language, and half-translated at that: the chrome in
+  English with the chapter title still Devanagari, `The Three Ways›ज्ञानमार्ग ·
+  The Way of Jñāna›Chapter 18` where they had left `तीन मार्ग›ज्ञानमार्गअध्याय १८ · अध्ययन`.
+  The same gap also reset the language on every fresh visit and every
+  home-screen launch. `gitaTheme` and `gitaReaderSize` were both persisted; the
+  reading language was the **only** reader preference that was not.
+* **What changed** (`source/build_gita.py` only — no data, wording, map or CSS).
+  `GITA_LANGS = ['en','ne','hi']` and `savedLang()` read `localStorage['gitaLang']`
+  and feed the `state` initialiser, so the language is settled before the first
+  render rather than patched afterwards. `setLang()` writes the choice **before**
+  re-rendering, so a view that throws cannot lose it. The chrome-only half of
+  `setLang()` is extracted as `syncLang()` (`<html lang>`, the three segmented
+  buttons, `applyStatic()`) and called from `gitaBoot()`, because the buttons ship
+  with English hard-coded `on` / `aria-pressed="true"` and boot needs exactly that
+  sync and none of the view re-rendering. The pre-paint block sets `<html lang>`
+  too, on the same reasoning as the dark-theme flash it already prevented: a
+  screen reader must not be told "en" for the first frames. A stored value outside
+  the whitelist falls back to `'en'` rather than reaching `T()`/`L()`, which would
+  render half the interface blank.
+* **Method — reproduce first.** Booted the real built `index.html` over http in
+  jsdom, put a reader on च.१८ अध्ययन in नेपाली, then booted a **second** document at
+  the same URL seeded with the first one's `localStorage` + `sessionStorage` —
+  which is precisely what a browser does on reload. Before the fix: `state.lang`
+  came back `en`, the title reverted, and the study-guide text changed. After:
+  still नेपाली, still च.१८ अध्ययन, text **byte-identical**. Also verified हिन्दी on the
+  learn tab, a corrupt `'zz'` value (falls back to `en` with the whole interface
+  rendered), and denied storage — the WhatsApp/Facebook in-app-browser case, where
+  every access throws: the app still boots and still switches language in memory.
+* **Locks.** 9 new document assertions in `run_gita_app.js` (**802 → 811**; the
+  counts in README.md, PROJECT.md and build.py updated, as that suite requires) and
+  a `browser_checks.py` group **"language survives a reload"**, which drives the
+  real round trip and also checks the corrupt-value fallback. **Mutation-proved**
+  three ways: dropping the `setItem` fails 2 assertions, re-hardcoding `lang:'en'`
+  fails 2, dropping the pre-paint `<html lang>` fails 1. One existing assertion
+  was rewritten, not deleted — it pinned `gitaBoot(){ assembleData(); … applyStatic(); }`,
+  and boot now paints through `syncLang()`, which ends in the same `applyStatic()`.
+* **Build.** `python3 build.py` green: document **811/811**, site-health 626,
+  study structure 9,658, 30 unit tests, Node 15+7, SEO 6, pāda and paraphrase
+  checks unchanged, advisory 52 / blocking 0. The browser suite was **skipped** —
+  this sandbox has no Playwright, so the new group compiles and its exact page
+  expressions were validated in jsdom, but it has not yet run in a real browser.
+* **Note for Dhruba.** A reader who is in Nepali *today* has nothing stored yet,
+  so the first reload after this ships drops them to English one last time. From
+  the next tap on नेपाली it sticks permanently, across every future update.
+
+
 ### 2026-10-14 — second review of all 700 verse titles (EN/NE/HI)
 
 * **Why.** Dhruba found “फलमा नअड्कई” in the 18.6 Nepali title. It is not a word:
@@ -109,7 +168,7 @@ For a brand-new session: read §1–§10, then this box, then build.
   cites 18.65 for its four instructions. That is accurate, and the wording is a
   recorded decision guarded by a test, so it stays. A strict reading of "nothing
   outside the range" would drop it; that needs the owner's call.
-* **Build.** `python3 build.py` is green: 802 document assertions, 162 live
+* **Build.** `python3 build.py` is green: 811 document assertions, 162 live
   browser checks, study structure 9658, progress maps 15, advisory 51 (unchanged
   count), blocking 0. The browser suite ran for the first time in this sandbox.
   Playwright's own Chromium download is blocked here, so a Chromium from the npm
@@ -1406,7 +1465,7 @@ sitemap.xml, robots.txt   GENERATED — crawler files (see §10)
 chapter/ + chapter.css    GENERATED — 18 SEO landing pages (see §10)
 build.py              build + verify (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       802 assertions on the built document      (needs node)
+run_gita_app.js       811 assertions on the built document      (needs node)
 browser_checks.py     162 live-browser checks                 (needs playwright)
 edit.py               local browser-based content editor
 editor.html           its interface
@@ -1553,6 +1612,13 @@ field. Local-only (binds `127.0.0.1`); none of it ships in `index.html`.
 * **Fixing one instance of a bug class without enumerating the class.** The
   binary pāda-join flag was "fixed" for 16.1 while 92 other verses stayed broken.
   After fixing anything, scan all 700.
+* **Persisting the route but not the preferences.** The app restored *where* the
+  reader was from `sessionStorage['gita.route']`, while the reading language was
+  never written down anywhere — so its own service-worker reload dropped a नेपाली
+  reader back to English on the correct page (2026-10-14, §0). When something
+  survives a reload by design, enumerate everything the reader had chosen —
+  language, theme, reader size, progress — and check each one is actually stored.
+  Two of the three preferences were; nobody had ever listed them side by side.
 * **Assuming a sandhi rule is uniform.** Twice a plausible-looking Sanskrit
   correction was wrong: `naśnan` for `aśnan` (5.08) and the same in 5.09 — the
   `n` doubles and *both* belong to the previous pāda. Check the word list.

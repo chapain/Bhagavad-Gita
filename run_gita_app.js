@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 802;      // keep in step with the printed total
+const TOTAL_ASSERTIONS = 811;      // keep in step with the printed total
 const TOTAL_BROWSER_CHECKS = 162;   // browser_checks.py
 const path = require('path');
 
@@ -89,9 +89,12 @@ ok(UI && typeof UI === 'object', 'UI extracted');
   ok(/function loadAllChapters\(\)\{[^}]*for \(var n = 1; n <= 18; n\+\+\) ps\.push\(loadChapter\(n\)\);[^}]*Promise\.all\(ps\);/.test(html),
      'loader can fetch all 18 chapter files');
   ok(/let DATA = null;/.test(html), 'shell starts with DATA unloaded');
+  // gitaBoot paints the shell through syncLang(), which ends in applyStatic():
+  // boot has to apply the RESTORED language's strings, not the hardcoded ones.
   ok(/function assembleData\(\)\{[\s\S]*?buildIndex\(\); buildVerseText\(\);[\s\S]*?\}/.test(html)
-     && /function gitaBoot\(\)\{[\s\S]*?assembleData\(\);[\s\S]*?applyStatic\(\);/.test(html),
-     'gitaBoot assembles the available data and paints the shell');
+     && /function gitaBoot\(\)\{[\s\S]*?assembleData\(\);[\s\S]*?syncLang\(state\.lang\);/.test(html)
+     && /function syncLang\(l\)\{[\s\S]*?applyStatic\(\);/.test(html),
+     'gitaBoot assembles the available data and paints the shell in the restored language');
 }
 
 // ---------- i18n ----------
@@ -528,6 +531,31 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
   const darkBlock = (html.match(/html\[data-theme="dark"\]\{[\s\S]*?\}/) || [''])[0];
   ok(darkBlock.length > 100, 'dark block has content');
   ok(!/#000\b|#000000|#fff\b|#FFFFFF/i.test(darkBlock), 'dark mode avoids pure black and pure white');
+}
+// ---- language persistence -------------------------------------------------
+// Owner 2026-10-14: a reader on the chapter 18 study guide in नेपाली was bounced
+// back to English by the service-worker reload. The route came home from
+// sessionStorage; the language had never been written down at all, so state.lang
+// fell back to its hardcoded 'en'. These pin the whole mechanism.
+{
+  ok(/const GITA_LANGS = \['en','ne','hi'\];/.test(html), 'the language whitelist exists');
+  ok(/function savedLang\(\)\{[\s\S]*?localStorage\.getItem\('gitaLang'\);[\s\S]*?GITA_LANGS\.includes\(l\) \? l : 'en';/.test(html),
+     'savedLang() reads the language back and whitelists it, defaulting to en');
+  ok(/lang:savedLang\(\), view:'welcome'/.test(html),
+     'state.lang is initialised from savedLang(), not hardcoded');
+  ok(!/lang:'en', view:'welcome'/.test(html), 'no hardcoded lang:\'en\' survives in the state initialiser');
+  ok(/localStorage\.setItem\('gitaLang', l\)/.test(html), 'setLang() writes the reader\'s choice down');
+  // localStorage throws in some in-app browsers (WhatsApp); same guard as gitaTheme
+  const langCalls = (html.match(/localStorage\.(get|set)Item\('gitaLang'/g) || []).length;
+  const langGuarded = (html.match(/try\{[^}]*localStorage\.(get|set)Item\('gitaLang'/g) || []).length;
+  ok(langCalls === 3 && langGuarded === langCalls,
+     `every gitaLang storage call is inside try/catch (${langGuarded}/${langCalls})`);
+  ok(/if\(lang === 'en' \|\| lang === 'ne' \|\| lang === 'hi'\) document\.documentElement\.lang = lang;/.test(bodies[0]),
+     'the pre-paint script sets <html lang> before first paint');
+  ok(/function syncLang\(l\)\{[\s\S]*?documentElement\.lang = l;[\s\S]*?aria-pressed/.test(html),
+     'syncLang() marks <html lang> and the segmented buttons together');
+  ok(/function setLang\(l\)\{\s*if\(!GITA_LANGS\.includes\(l\)\) return;/.test(html),
+     'setLang() ignores an unknown language code');
 }
 // Everything on screen must be hand-editable from source/. These assertions pin the
 // mechanisms that make that true, so they cannot be removed by accident.
