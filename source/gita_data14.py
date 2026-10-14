@@ -26,7 +26,7 @@ CH14_THEMES = [
      "A prevailing guṇa shapes the next birth and the fruit of action. Knowledge, greed and delusion lead respectively upward, to the middle, or downward.",
      [("Death in sattva", "Dying when sattva prevails, one reaches the pure worlds of those who know the highest.", "14.14", "14.14"),
       ("Death in rajas and tamas", "Dying in rajas, one is born among those attached to action; dying in tamas, in the wombs of the deluded.", "14.15", "14.15"),
-      ("The fruits declared", "The fruit of good action is pure and sāttvic; of rajas, sorrow; of tamas, ignorance.", "14.16", "14.16"),
+      ("The fruits: purity, sorrow, ignorance", "The fruit of good action is pure and sāttvic; of rajas, sorrow; of tamas, ignorance.", "14.16", "14.16"),
       ("Knowledge, greed and delusion, each in turn", "From sattva comes knowledge, from rajas greed, and from tamas heedlessness, delusion and ignorance.", "14.17", "14.17"),
       ("The three destinies", "The sāttvic go up, the rājasic stay in the middle, and the tāmasic sink downward.", "14.18", "14.18")]),
     ("Seeing beyond the guṇas: Arjuna asks its marks",

@@ -25,7 +25,7 @@ CH5_THEMES = [
     ("Knowledge removes ignorance and sees equally",
      "Nature acts; ignorance conceals knowledge. Self-knowledge shines like the sun, and the wise see equally across differences of birth and form.",
      [("The Lord creates no doership", "The Lord creates neither doership, nor actions, nor the link between action and fruit; nature does it.", "5.14", "5.14"),
-      ("Nor does he take on sin", "The all-pervading One takes on no one’s sin or merit; ignorance veils knowledge, and beings are deluded.", "5.15", "5.15"),
+      ("He takes on neither sin nor merit", "The all-pervading One takes on no one’s sin or merit; ignorance veils knowledge, and beings are deluded.", "5.15", "5.15"),
       ("Knowledge reveals like the sun", "For those whose ignorance is destroyed by knowledge of the Self, it shines like the sun, revealing the Supreme.", "5.16", "5.16"),
       ("Mind, self and refuge all in that", "With intellect, self and refuge fixed on that, they go where there is no return, cleansed by knowledge.", "5.17", "5.17"),
       ("The sage sees the same in all", "The wise see the same in a learned brāhmaṇa, a cow, an elephant, a dog, and an outcaste.", "5.18", "5.18")]),

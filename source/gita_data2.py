@@ -21,7 +21,7 @@ CH2_THEMES = [
       ("Kṛṣṇa smiles and begins to speak", "Smiling, Kṛṣṇa begins to speak to the grieving Arjuna between the two armies.", "2.10", "2.10")]),
     ("The Self endures as the body changes",
      "The wise do not grieve for the living or dead. The embodied Self passes through life's stages, while sense-contacts bring fleeting pleasure and pain to be endured.",
-     [("You mourn for the unmournable", "His first teaching: Arjuna grieves for those not to be grieved for; the wise mourn neither the living nor the dead.", "2.11", "2.11"),
+     [("You grieve where no grief is due", "His first teaching: Arjuna grieves for those not to be grieved for; the wise mourn neither the living nor the dead.", "2.11", "2.11"),
       ("Neither we nor these kings cease to exist", "Neither Kṛṣṇa, Arjuna nor these kings ever did not exist, and none will cease to be.", "2.12", "2.12"),
       ("Childhood, youth, old age", "As the embodied one passes through childhood, youth and old age, so it passes to another body; the wise are not deluded.", "2.13", "2.13"),
       ("Cold and heat come and go", "Heat and cold, pleasure and pain come from sense-contact; they come and go, so they are to be endured.", "2.14", "2.14"),

@@ -36,7 +36,7 @@ CH9_THEMES = [
      "Heaven’s pleasures end when merit is spent. Kṛṣṇa supplies what devotees lack and protects what they have; worship shapes the destination, and his devotees come to him.",
      [("Soma drinkers seek heaven", "Vedic ritualists who drink soma and pray for heaven attain Indra’s world and its divine pleasures.", "9.20", "9.20"),
       ("Merit spent, they fall back to earth", "Having enjoyed heaven’s vast pleasures, they return when merit runs out; desire-driven ritual keeps them coming and going.", "9.21", "9.21"),
-      ("I carry the devoted", "To those who worship him alone, ever steady, he himself brings what they lack and keeps what they have.", "9.22", "9.22"),
+      ("I bear the welfare of my devotees", "To those who worship him alone, ever steady, he himself brings what they lack and keeps what they have.", "9.22", "9.22"),
       ("Even those who worship other gods", "Even devotees of other gods who worship in faith really worship him, though not by the proper path.", "9.23", "9.23"),
       ("I am the enjoyer of all sacrifices", "He alone is the enjoyer and lord of all sacrifices; not knowing him truly, they fall.", "9.24", "9.24"),
       ("Each reaches the god he worships", "Worshippers go to what they worship — gods, ancestors or spirits — but his worshippers come to him.", "9.25", "9.25")]),

@@ -10,10 +10,57 @@ code alone cannot tell you.
 
 ---
 
-## 0. Handoff snapshot (keep current; last touched 2026-10-08)
+## 0. Handoff snapshot (keep current; last touched 2026-10-14)
 
 For a brand-new session: read §1–§10, then this box, then build.
 
+
+### 2026-10-14 — second review of all 700 verse titles (EN/NE/HI)
+
+* **Why.** Dhruba found “फलमा नअड्कई” in the 18.6 Nepali title. It is not a word:
+  the verb is अड्किनु, so the negative absolutive is **नअड्किई** (vowel-final
+  stems take ‑ई, as नदिई; consonant-final stems take ‑ी, as नगरी). It came from
+  `27e43ba` (2026-09-03, “Add files via upload”). He then asked for every
+  verse title in all three languages to be checked.
+* **Standard.** As on 2026-10-08, a verse title must say exactly what its verse
+  says, here read against the verse’s own EN/NE/HI translation, and it must be
+  real, correctly spelled, grammatical language in a natural register. Where the
+  translation takes a deliberate reading (15.7 “as if”, 11.12 “would not
+  equal”), the title follows it.
+* **Method.** Mechanical leads first, then reading. hunspell dictionaries
+  through `spylls` (Nepali: npm `dictionary-ne`; Hindi: LibreOffice `hi_IN`;
+  English: US + GB); a corpus-frequency check (a word the dictionary rejects
+  and no other text in that language uses — exactly how नअड्कई looks); script
+  mixing; Hindi/Nepali function words in the wrong language; spacing and
+  punctuation. The Nepali dictionary rejects valid negatives (नगरी), so the न-
+  prefix is stripped before lookup, and it writes तपाईँ where we write तपाईं
+  (both standard). Then all 700 verses were read by hand. Tools and logs are in
+  `/home/user/evidence/titles_review/` (outside Git).
+* **Result.** 137 titles changed in 92 verses (EN 22, NE 63, HI 52): 23
+  meaning, 21 invalid word or spelling, 2 wrong language, 5 register, 29
+  grammar, 32 gist, 25 consistency. The other 1,963 titles are unchanged.
+* **Conventions the titles now follow** (keep them in new titles). Arjuna
+  speaks to Kṛṣṇa respectfully (NE ‑नुहोस्/तपाईं, HI ‑इए/आप), and so does
+  Duryodhana to his teacher Droṇa (1.3). Second-person verbs in Kṛṣṇa’s speech
+  take तिमी forms in Nepali, never तँ forms such as पालिन्छस् (3.11, Prajāpati’s
+  words to all beings as Kṛṣṇa quotes them). Hindi titles treat Arjuna as
+  singular (पूछता है). Nepali titles write सबै (not सब, सबलाई, सबतिर), झैँ,
+  joined ‑जस्तै and शङ्ख; Hindi titles write इन्द्रिय and हज़ार, as the
+  translations do. A Hindi simile opens with जैसे. Wording is taken from the
+  verse’s own literal wherever it fits.
+* **Kept on purpose.** 15.7 “As if an eternal portion” (Śaṅkara, §7.2 of
+  `HANDOFF.md`); 11.12 “Brighter than a thousand suns” (our literal says “would
+  not equal”); the Hindi तू/तुम mix in Kṛṣṇa’s imperatives (the accepted
+  Krishna register); Hindi anusvara variants (शांत/शान्त …), mixed as in the
+  translations; 12 English titles with a straight apostrophe; 16.4’s numeral
+  advisory (the verse does list six).
+* **Open for the owner, not changed (translation layer).** The 1.3 Nepali
+  literal has Duryodhana say हेर to his teacher (its paraphrase says
+  हेर्नुहोस्); some Nepali translations write पूजेर/पूज्न where the dictionary
+  has पुज्नु.
+* **Build.** Green; `audit_titles.py` 52 advisory / 0 blocking with the
+  identical list. Browser 191/196: the 5 p22 failures reproduce on untouched
+  `main` (a stale fixture since the 700 summaries) — open in `HANDOFF.md` §6.
 
 ### 2026-10-08 — audit of every verse and theme title and description
 

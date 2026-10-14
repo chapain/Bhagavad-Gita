@@ -33,7 +33,7 @@ CH3_THEMES = [
      [("For him there is nothing left to do", "But one who delights and is content in the Self alone has no duty left to do.", "3.17", "3.17"),
       ("Nothing to gain or lose", "For him there is no purpose in what is done or left undone, and he depends on no being for anything.", "3.18", "3.18"),
       ("Therefore act, unattached", "So Arjuna should keep doing his duty unattached, for that is how one reaches the Supreme.", "3.19", "3.19"),
-      ("Janaka attained by action", "Janaka and others reached perfection through action, and the world’s welfare too calls for action.", "3.20", "3.20"),
+      ("Janaka attained perfection by action", "Janaka and others reached perfection through action, and the world’s welfare too calls for action.", "3.20", "3.20"),
       ("As the great one does, so do others", "Whatever the best person does, others copy; the world follows the standard he sets.", "3.21", "3.21")]),
     ("Lead by acting, not by unsettling others",
      "Kṛṣṇa acts although he needs nothing, lest the world fall apart. The wise likewise support others through example without disturbing their understanding.",
