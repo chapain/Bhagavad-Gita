@@ -3319,6 +3319,7 @@ function viewHash(){
 function persistView(){
   const h = viewHash();
   try{ sessionStorage.setItem('gita.route', h || '#'); }catch(e){}
+  try{ sessionStorage.setItem('gita.readMode', state.readMode || ''); }catch(e){}
   const modal = document.getElementById('modalBg');
   if(modal && modal.classList.contains('open')) return;
   const cur = location.hash || '';
@@ -3730,6 +3731,7 @@ function copyVerseLink(){
 let MODAL_HIST = false, MODAL_POPPING = false, MODAL_RETURN_FOCUS = null;
 function pushModalHistory(){
   if(MODAL_HIST) return;
+  try{ sessionStorage.setItem('gita.preModalHash', viewHash()); }catch(e){}
   try{ history.pushState({gitaModal:true}, ''); MODAL_HIST = true; }catch(e){}
 }
 function popModalHistory(){
@@ -3737,6 +3739,7 @@ function popModalHistory(){
   MODAL_HIST = false;
   if(MODAL_POPPING) return;               // we got here *from* popstate — nothing to unwind
   try{ history.back(); }catch(e){}
+  persistView();
 }
 window.addEventListener('popstate', ()=>{
   if($('#modalBg').classList.contains('open')){
