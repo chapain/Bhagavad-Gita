@@ -178,6 +178,55 @@ def run(pw, url, offline_capable=False):
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(300)
 
+    # Owner 2026-10-14: "on chapter 18 study guide in Nepali it suddenly
+    # refreshes and goes into English." The refresh is real and intended — the
+    # app reloads itself when a new service worker claims the tab — but nothing
+    # ever wrote the language down, so state.lang fell back to its hardcoded
+    # 'en' while the route came home from sessionStorage: the right page in the
+    # wrong language, half the chrome still Devanagari. Lock the round trip.
+    group("language survives a reload")
+    if pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"):
+        pg.keyboard.press("Escape")
+        pg.wait_for_timeout(500)
+    pg.evaluate("loadChapter(18).then(()=>showThemes(17))")
+    pg.wait_for_function("state.view === 'themes' && state.chapter === 17", timeout=30000)
+    pg.evaluate("setLang('ne')")
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("localStorage.getItem('gitaLang')") == "ne",
+       "choosing नेपाली writes gitaLang to localStorage")
+    before = pg.eval_on_selector("#view", "e=>e.textContent")
+    ok("अध्याय १८" in before, "chapter 18 study guide is numbered in Devanagari")
+    pg.reload(wait_until="load")
+    pg.wait_for_function("DATA && state.view === 'themes'", timeout=30000)
+    pg.wait_for_timeout(600)
+    ok(pg.evaluate("state.lang") == "ne", "still नेपाली after the reload")
+    ok(pg.evaluate("state.chapter === 17 && state.view === 'themes'"),
+       "still on the chapter 18 study guide after the reload")
+    ok(pg.eval_on_selector("html", "e=>e.lang") == "ne",
+       "<html lang> is ne after the reload, so screen readers stay in Nepali")
+    ok(pg.eval_on_selector(".lang-btn[data-lang='ne']", "e=>e.classList.contains('on')") is True,
+       "नेपाली segment still shows as selected after the reload")
+    ok(pg.eval_on_selector(".lang-btn[data-lang='ne']", "e=>e.getAttribute('aria-pressed')") == "true",
+       "नेपाली segment still reports aria-pressed after the reload")
+    ok(pg.eval_on_selector(".lang-btn[data-lang='en']", "e=>e.classList.contains('on')") is False,
+       "English segment is not selected after the reload")
+    after = pg.eval_on_selector("#view", "e=>e.textContent")
+    ok("अध्याय १८" in after, "chapter 18 is still numbered in Devanagari after the reload")
+    ok(before == after,
+       "the study guide reads identically before and after the reload")
+    # A stale, truncated or hand-edited value must fall back to English rather
+    # than reach T()/L() and render half the interface blank.
+    pg.evaluate("localStorage.setItem('gitaLang', 'zz')")
+    pg.reload(wait_until="load")
+    pg.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    pg.wait_for_timeout(500)
+    ok(pg.evaluate("state.lang") == "en", "an unknown stored language falls back to en")
+    ok(pg.evaluate("document.getElementById('appTitle').textContent === UI.en.app_title"),
+       "a bad stored language still renders the whole English interface")
+    pg.evaluate("localStorage.removeItem('gitaLang')")
+    pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(300)
+
     group("search")
     # a previous group may have left the verse sheet open
     if pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"):

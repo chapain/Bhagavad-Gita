@@ -84,7 +84,7 @@ source/                 ← edit here
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
 
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         802 assertions on the built document
+run_gita_app.js         811 assertions on the built document
 browser_checks.py       162 live-browser checks (rendering, i18n, touch, offline)
 ```
 

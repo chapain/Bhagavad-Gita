@@ -17,7 +17,7 @@ It runs, in order:
     2e. source/audit_titles.py  every title/desc against its own verse
     2f. source/check_study_structure.py  approved story maps and verse titles
     2g. tests/  mutation/regression checks for the study structure
-    3. run_gita_app.js        802 assertions on the built document        (needs node)
+    3. run_gita_app.js        811 assertions on the built document        (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
     4. browser_checks.py      162 live-browser checks                 (needs playwright)
 
