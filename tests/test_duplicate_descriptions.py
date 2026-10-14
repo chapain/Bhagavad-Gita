@@ -9,11 +9,13 @@ regardless, and check_study_structure.py still requires all of them.
 
 So this test locks the DATA-level contract, not the rendering:
 
-  * the baseline count of duplicates per language (content state as of
-    2026-10-12); if a description is later rewritten, these numbers are
-    updated deliberately, like the other corpus counts;
+  * every verse now carries its own summary description (rewritten
+    2026-10-14 for all 18 chapters), so the baseline is ZERO copies in
+    every language — any new copy is a regression of the summary design;
+  * no two verses may share one summary within a language;
   * duplication is judged per language — a verse may be a copy in one
-    language and distinct in another;
+    language and distinct in another (checked on synthetic data, since the
+    real corpus no longer has any copy to point at);
   * no description or literal may be emptied to manufacture "distinctness"
     (suppression is a display decision, never a content deletion).
 """
@@ -38,17 +40,31 @@ def _parts():
     return out
 
 
+def _is_copy(desc, lit):
+    """The exact-copy rule partDesc() applies, per language."""
+    return desc.strip() == lit.strip()
+
+
 def _dup_ids(lang):
     return {v["n"] for v, p in _parts()
-            if p["descs"][lang].strip() == v["lits"][lang].strip()}
+            if _is_copy(p["descs"][lang], v["lits"][lang])}
 
 
 class TestDuplicateDescriptions(unittest.TestCase):
-    def test_baseline_counts_2026_10_12(self):
+    def test_baseline_counts_2026_10_14(self):
         self.assertEqual(len(_parts()), 700, "every part holds exactly one verse")
-        self.assertEqual(len(_dup_ids("en")), 593)
-        self.assertEqual(len(_dup_ids("ne")), 566)
-        self.assertEqual(len(_dup_ids("hi")), 592)
+        for lang in ("en", "ne", "hi"):
+            self.assertEqual(sorted(_dup_ids(lang)), [],
+                             f"{lang}: descriptions that merely repeat the translation")
+
+    def test_no_summary_is_shared_between_verses(self):
+        for lang in ("en", "ne", "hi"):
+            seen = {}
+            for v, p in _parts():
+                d = p["descs"][lang].strip()
+                if d in seen:
+                    self.fail(f"{lang}: {v['n']} repeats the summary of {seen[d]}")
+                seen[d] = v["n"]
 
     def test_data_keeps_every_description_and_literal(self):
         for v, p in _parts():
@@ -59,24 +75,16 @@ class TestDuplicateDescriptions(unittest.TestCase):
                                 f"{v['n']} {lang} literal emptied in data")
 
     def test_duplication_is_judged_per_language(self):
-        en, ne, hi = _dup_ids("en"), _dup_ids("ne"), _dup_ids("hi")
-        # a copy in all three languages
-        for v in ("2.03", "2.05"):
-            self.assertIn(v, en & ne & hi)
-        # distinct in all three languages
-        self.assertNotIn("2.01", en | ne | hi)
-        # a copy in English + Nepali, distinct in Hindi
-        self.assertIn("2.30", en & ne)
-        self.assertNotIn("2.30", hi)
-        # a copy in Hindi only
-        for v in ("2.02", "4.01"):
-            self.assertIn(v, hi - en - ne)
-        # a copy in English + Hindi, distinct in Nepali
-        self.assertIn("1.13", en & hi)
-        self.assertNotIn("1.13", ne)
-        # a copy in Nepali + Hindi, distinct in English
-        self.assertIn("18.78", ne & hi)
-        self.assertNotIn("18.78", en)
+        lit = {"en": "Arjuna sat down.", "ne": "अर्जुन बसे।", "hi": "अर्जुन बैठ गए।"}
+        # identical text (ignoring edge whitespace) is a copy…
+        for lang, text in lit.items():
+            self.assertTrue(_is_copy(text, text))
+            self.assertTrue(_is_copy("  " + text + "\n", text))
+        # …a summary is not…
+        self.assertFalse(_is_copy("He sinks down, the bow slipping from his hand.", lit["en"]))
+        # …and the comparison never crosses languages.
+        self.assertFalse(_is_copy(lit["en"], lit["ne"]))
+        self.assertFalse(_is_copy(lit["ne"], lit["hi"]))
 
 
 if __name__ == "__main__":
