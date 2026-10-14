@@ -849,6 +849,53 @@ def run(pw, url, offline_capable=False):
         c.set_offline(False)
         c.close()
 
+    group("chapter colophons (Phase 2.3)")
+    # Each chapter ends with its traditional colophon. It must be present at the
+    # end of the reading view, carry that chapter's own text, and never be
+    # styled or placed as a verse, a literal or a paraphrase.
+    for cn, tail in ((1, "प्रथमोऽध्यायः ॥ १ ॥"), (6, "आत्मसंयमयोगो नाम षष्ठोऽध्यायः ॥ ६ ॥"),
+                     (18, "अष्टादशोऽध्यायः ॥ १८ ॥")):
+        c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+        q = c.new_page()
+        q.goto(base_dl + f"#chapter={cn}", wait_until="load", timeout=90000)
+        q.wait_for_timeout(1400)
+        ok(q.locator(".reading .colophon").count() == 1,
+           f"chapter {cn} reading view prints exactly one colophon")
+        if q.locator(".reading .colophon").count() == 1:
+            txt = q.inner_text(".reading .colophon")
+            ok(tail in txt and txt.strip().startswith("ॐ"),
+               f"chapter {cn} colophon carries this chapter's text and opens with ॐ")
+            ok(q.locator(".reading .colophon .col-iast").count() == 1
+               and "oṃ tatsaditi" in q.inner_text(".reading .colophon .col-iast"),
+               f"chapter {cn} colophon shows its transliteration")
+            # it closes the chapter: after the last verse, before the back footer
+            ok(q.evaluate("(() => {const cs=[...document.querySelectorAll('.reading > *')];"
+                          "return cs.length && cs[cs.length-1].classList.contains('colophon');})()"),
+               f"chapter {cn} colophon is the last block of the reading view")
+            # and it is NOT a device of the verse/translation machinery
+            ok(q.locator(".rd-v .colophon, .m-line .colophon, .colophon .lb, .colophon .pdesc").count() == 0,
+               f"chapter {cn} colophon is not inside a verse or a translation block")
+        c.close()
+        # The study guide browses themes; the colophon belongs to the chapter's
+        # end. Load it in a fresh page: a hash-only navigation between the two
+        # views is a no-op in this app (pre-existing, unrelated to colophons).
+        c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+        q = c.new_page()
+        q.goto(base_dl + f"#chapter={cn}&tab=study", wait_until="load", timeout=90000)
+        q.wait_for_timeout(1400)
+        ok(q.locator(".th-flow .theme").count() > 0 and q.locator(".colophon").count() == 0,
+           f"chapter {cn} study guide shows no colophon (nothing leaked)")
+        c.close()
+    # the generated chapter page carries it too, once, as plain text for crawlers
+    q = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
+                      has_touch=True).new_page()
+    q.goto((url + "chapter/6/") if url.startswith("http")
+           else (ROOT / "chapter" / "6" / "index.html").as_uri(), wait_until="load", timeout=30000)
+    q.wait_for_timeout(300)
+    ok(q.locator(".colophon").count() == 1
+       and "आत्मसंयमयोगो नाम षष्ठोऽध्यायः" in q.inner_text(".colophon"),
+       "generated chapter page prints its colophon once")
+
     ok(not errs, f"no JS errors ({errs[:2]})")
     b.close()
 
