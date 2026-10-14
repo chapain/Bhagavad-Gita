@@ -39,7 +39,6 @@ from padachheda_ch16 import GITA_CH16_WORDS
 from padachheda_ch17 import GITA_CH17_WORDS
 from padachheda_ch18 import GITA_CH18_WORDS
 from i18n_ui import UI
-from learn_block import LEARN_JS, LEARN_CSS
 from i18n_chapters import CHAPTER_NAMES_NE, CHAPTER_NAMES_HI, CHAPTER_SUBS_NE, CHAPTER_SUBS_HI
 from gloss_ne import GLOSS_NE
 from gloss_hi import GLOSS_HI
