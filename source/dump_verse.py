@@ -66,7 +66,7 @@ def i18n_word(w, speaker_line=False):
     if speaker_line:
         honorific = d == "श्रीभगवान्"
         ne = NE_SPEAKER.get(d, w[3] if len(w) >= 5 else GLOSS_NE.get(i, en))
-        hi = w[4] if len(w) >= 5 else GLOSS_HI.get(i, en)
+        hi = w[4] if len(w) >= 5 else HI_SPEAKER_FALLBACK.get(d, GLOSS_HI.get(i, en))
         return d, i, en, ne, hi, honorific
     ne = w[3] if len(w) >= 5 else GLOSS_NE.get(i, en)
     hi = w[4] if len(w) >= 5 else GLOSS_HI.get(i, en)
@@ -122,8 +122,9 @@ def expand(arg):
     m = re.match(r"^(\d+)\.(\d+)-(?:\d+\.)?(\d+)$", arg)
     if m:
         c, a, b = int(m.group(1)), int(m.group(2)), int(m.group(3))
-        return [f"{c}.{n}" for n in range(a, b + 1)]
-    return [arg]
+        return [f"{c}.{n:02d}" for n in range(a, b + 1)]
+    c, v = arg.split(".")
+    return [f"{int(c)}.{int(v):02d}"]
 
 
 def main():

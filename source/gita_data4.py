@@ -115,7 +115,7 @@ CH4_TRANSLATIONS = {
 23: ("The actions of one free from attachment, liberated, whose mind is established in knowledge and who acts for sacrifice — they dissolve entirely.",
     "“One who is unattached and free, whose mind rests in wisdom and whose work is an offering — his karma melts away completely.”"),
 24: ("The ladle is Brahman, the oblation is Brahman, offered in the fire of Brahman by Brahman; Brahman alone is reached by him who is absorbed in the action of Brahman.",
-    "“When the offering, the fire, the giver and the giving are all seen as Brahman, the act itself becomes the path to Brahman.”"),
+    "“When the ladle, the oblation, the fire and the one who offers are all seen as Brahman, the act of sacrifice itself becomes the path to Brahman.”"),
 25: ("Some yogis worship the gods through sacrifice; others offer the sacrifice itself, by sacrifice, into the fire of Brahman.",
     "“Some offer material worship to the gods; others see the whole of life as an offering into the fire of the Absolute.”"),
 26: ("Some offer hearing and the other senses into the fires of restraint; others offer sound and the other sense-objects into the fires of the senses.",
@@ -150,6 +150,6 @@ CH4_TRANSLATIONS = {
     "“The ignorant and faithless, torn by doubt, are lost — the doubter enjoys nothing here or beyond.”"),
 41: ("Actions do not bind him who has renounced actions through yoga, whose doubt is destroyed by knowledge, who is self-possessed, O Dhanañjaya.",
     "“One who has surrendered his karma through yoga, whose doubts are cut by wisdom — nothing can bind him, Arjuna.”"),
-42: ("Therefore, cutting with the sword of knowledge this doubt born of ignorance that dwells in your heart, stand firm in yoga — arise, O Bhārata!",
-    "“So cut the doubt in your heart with the sword of wisdom, take your stand in yoga — and rise up, Arjuna!”"),
+42: ("Therefore, cut this doubt about the Self, born of ignorance and dwelling in your heart, with the sword of knowledge; stand firm in yoga — arise, O Bhārata!",
+    "“So cut the doubt about the Self in your heart with the sword of wisdom, take your stand in yoga — and rise up, Arjuna!”"),
 }
