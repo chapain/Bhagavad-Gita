@@ -720,7 +720,7 @@ GITA_CH1_WORDS = {
         ["रणे", "raṇe", "in battle"],
         ["हन्युः", "hanyuḥ", "would kill"]],
     3: [["तत्", "tat", "that"],
-        ["मे", "me", "for me", "मेरो लागि", "मेरे लिए"],
+        ["मे", "me", "for me", "मेरा लागि", "मेरे लिए"],
         ["क्षेमतरम्", "kṣemataram", "better"],
         ["भवेत्", "bhavet", "would be"]]},
 

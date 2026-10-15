@@ -753,7 +753,7 @@ GITA_CH2_WORDS = {
         ["अर्जुन", "arjuna", "O Arjuna"]],
     2: [["निर्द्वन्द्वः", "nirdvandvaḥ", "free from duality"],
         ["नित्यसत्त्वस्थः", "nityasattvasthaḥ", "ever established in sattva"]],
-    3: [["निर्योगक्षेमः", "niryogakṣemaḥ", "free from gain and keeping", "लाभ-स्वामित्वभन्दा पर", "लाभ-स्वामित्व से परे"],
+    3: [["निर्योगक्षेमः", "niryogakṣemaḥ", "free from gain and keeping", "प्राप्ति र रक्षाभन्दा पर", "प्राप्ति और रक्षा से परे"],
         ["आत्मवान्", "ātmavān", "self-possessed"]]},
 
 46: {"s": [],

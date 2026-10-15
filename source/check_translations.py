@@ -77,9 +77,12 @@ DUP_ALLOW = [
 # ---- 4. advisory: the आ-form Nepali writing guides prescribe ------------------
 # "लागि/निम्ति/निमित्त शब्दका अगाडि सधैँ आकार प्रयोग गर्ने… (मेरो लागि/जानकारीको
 # लागि नलेख्ने)" — sahityapost.com, नेपाली भाषा लेखनमा ध्यान दिनुपर्ने स-साना
-# कुराहरू. Both forms are in everyday use on ne.wikipedia (उसको लागि 8 /
+# कुराहरू. The possessive suffix is को for consonant-final stems and रो/नो/यो
+# elsewhere (मेरो, हाम्रो, आफ्नो), so all four श-class endings are watched.
+# Both forms are in everyday use on ne.wikipedia (उसको लागि 8 /
 # उसका लागि 7; जसको लागि 64 / जसका लागि 84), so this stays advice.
-AA_FORM = re.compile(r"([\u0900-\u097F]+)को\s+(लागि|निम्ति|निमित्त)")
+AA_FORM = re.compile(r"([\u0900-\u097F]+(?:को|रो|नो|यो))\s+(लागि|निम्ति|निमित्त)")
+AA_SUGGEST = {"को": "का", "रो": "रा", "नो": "ना", "यो": "या"}
 
 
 def load_pages():
@@ -192,10 +195,12 @@ def scan(rows):
         if lang != "ne":
             continue
         for m in AA_FORM.finditer(text):
-            stem = m.group(1)
+            word = m.group(1)
+            suffix = next(s for s in AA_SUGGEST if word.endswith(s))
+            suggestion = word[:-len(suffix)] + AA_SUGGEST[suffix]
             advisories.append(
                 f"{verse} {kind}: {m.group(0)!r} — Nepali writing guides prescribe "
-                f"the आ-form before {m.group(2)} ({stem}का {m.group(2)})")
+                f"the आ-form before {m.group(2)} ({suggestion} {m.group(2)})")
 
     return bad, advisories
 
