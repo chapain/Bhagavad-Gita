@@ -1485,6 +1485,7 @@ source/
   verify.py           norm1() and syll_iast() — used ONLY to check data
   check_padas.py      rebuilds each pāda from its words via sandhi
   check_paraphrase.py every paraphrase differs enough from its literal
+  check_translations.py banned readings, shape, duplicated words (built data)
   prove_data_only.py  proves the build renders rather than generates
 ```
 

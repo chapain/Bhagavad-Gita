@@ -12,11 +12,15 @@ It runs, in order:
     1. source/build_gita.py   regenerates index.html from source/
     2. source/check_padas.py  verifies every pāda reconstructs from its split words
     2b. source/check_paraphrase.py  every paraphrase differs enough from its literal
-    2c. source/check_seo.py   sitemap + robots proof (local; add --live to fetch the site)
-    2d. source/check_site_health.py  chapter pages, CSS vars, og tags, SW, a11y
-    2e. source/audit_titles.py  every title/desc against its own verse
-    2f. source/check_study_structure.py  approved story maps and verse titles
-    2g. tests/  mutation/regression checks for the study structure
+    2c. source/check_translations.py  the translation safety net: readings already
+        ruled out (जुताइएको …), shape (Latin in Devanagari, spacing, punctuation),
+        and words printed twice in a row; आ-form advice printed, never blocking
+    2d. source/check_seo.py   sitemap + robots proof (local; add --live to fetch the site)
+    2e. source/check_site_health.py  chapter pages, CSS vars, og tags, SW, a11y
+    2f. source/audit_titles.py  every title/desc against its own verse
+    2g. source/check_study_structure.py  approved story maps and verse titles
+    2h. tests/  mutation/regression checks for the study structure and the
+        translation checker (tests/test_translations.py proves it can fail)
     3. run_gita_app.js        783 assertions on the built document        (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
     4. browser_checks.py      166 live-browser checks                 (needs playwright)
@@ -85,6 +89,10 @@ def main():
     ok = True
     ok &= run([PY, "check_padas.py"], SRC, "pāda check", tail=1)
     ok &= run([PY, "check_paraphrase.py"], SRC, "paraphrase check", tail=5)
+
+    # The translations themselves: banned readings, shape, and words printed
+    # twice in a row. Runs on the built data/ch*.js, so it sees what ships.
+    ok &= run([PY, "check_translations.py"], SRC, "translation safety net", tail=3)
 
     # Sitemap/robots proof. Local-only by default so a build never needs the
     # network; run  SEO_LIVE=1 python3 build.py  to also fetch the published
