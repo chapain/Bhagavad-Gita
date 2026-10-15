@@ -5,7 +5,7 @@
 CH2_THEMES = [
     ("Kṛṣṇa challenges Arjuna to rise",
      "Seeing Arjuna overwhelmed by grief, Kṛṣṇa challenges his despair and urges him to cast off weakness and rise.",
-     [("Seeing Arjuna in tears", "Seeing Arjuna overcome with pity and tears, Kṛṣṇa speaks.", "2.01", "2.01"),
+     [("Seeing Arjuna in tears", "Sañjaya narrates: seeing Arjuna overcome with pity and tears, Madhusūdana speaks to him.", "2.01", "2.01"),
       ("Where has this weakness come from?", "He asks where this unworthy dejection has come from in an hour of peril.", "2.02", "2.02"),
       ("Cast off this faintness and arise", "He tells Arjuna to cast off this faintness of heart and rise.", "2.03", "2.03")]),
     ("Arjuna cannot strike his teachers",
@@ -116,7 +116,7 @@ CH2_THEMES = [
 ]
 
 CH2_TRANSLATIONS = {
-1: ("Sañjaya said: Seeing him thus overcome with pity, his eyes filled with tears and agitation, the sorrowing Arjuna — Madhusūdana spoke these words.",
+1: ("Sañjaya said: Seeing him thus overcome with pity, his eyes filled with tears and agitation — the sorrowing Arjuna — Madhusūdana spoke these words.",
     "Sañjaya narrates: “Seeing Arjuna drowning in pity, his eyes brimming with tears and agitation, Kṛṣṇa (Madhusūdana) addressed him as he grieved.”"),
 2: ("The Blessed Lord said: Whence has come upon you, in this hour of peril, this dejection — unworthy of an Āryan, closing the door of heaven, and bringing disgrace, O Arjuna?",
     "Kṛṣṇa said: “Where has this weakness come from, Arjuna — at this very moment of crisis? It is unworthy of you, it shuts heaven's door, and it will bring you dishonour.”"),

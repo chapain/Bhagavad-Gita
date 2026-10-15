@@ -38,7 +38,7 @@
      new home on its chapter page so nobody hits a dead end. */
   var m = p.match(/\/v\/(\d+)\.(\d+)\/?$/);
   if (m) {
-    a.href = 'https://chapain.github.io/Bhagavad-Gita/chapter/' + m[1] + '/#v' + m[1] + '.' + m[2];
+    a.href = 'https://chapain.github.io/Bhagavad-Gita/chapter/' + m[1] + '/#v' + m[1] + '.' + ('0' + m[2]).slice(-2);
     a.textContent = 'Read Bhagavad Gita ' + m[1] + '.' + parseInt(m[2], 10) + ' →';
     location.replace(a.href);
     return;

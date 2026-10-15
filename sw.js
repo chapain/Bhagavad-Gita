@@ -2,7 +2,7 @@
    Strategy: cache-first for the shell (the app is one static file and never
    changes between deploys), with a network revalidation for navigations so a
    new deploy is picked up on the next visit. */
-const CACHE = 'gita-a245a96eb301';
+const CACHE = 'gita-0e78af637323';
 /* chapter.css is precached even though the app itself never loads it: a reader
    who arrives on a /chapter/N/ landing page and later opens it offline would
    otherwise get an unstyled wall of text, while the manifest and README both
@@ -19,10 +19,13 @@ const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 './data/ch1.js', './data/ch2.js', './data/ch3.js', './data/ch4.js', './data/ch5.js', './data/ch6.js', './data/ch7.js', './data/ch8.js', './data/ch9.js', './data/ch10.js', './data/ch11.js', './data/ch12.js', './data/ch13.js', './data/ch14.js', './data/ch15.js', './data/ch16.js', './data/ch17.js', './data/ch18.js'];
 
 self.addEventListener('install', e => {
+  /* addAll() is atomic — if even one optional asset 404s nothing is cached,
+     while install still "succeeds" and the app silently loses its offline
+     promise. Add each URL on its own: one bad asset costs that asset, not
+     the whole cache, and install still never aborts. */
   e.waitUntil(caches.open(CACHE)
-    .then(c => c.addAll(ASSETS))
-    .then(() => self.skipWaiting())
-    .catch(() => self.skipWaiting()));   // a missing optional asset must not abort install
+    .then(c => Promise.all(ASSETS.map(u => c.add(u).catch(() => undefined))))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -50,7 +53,11 @@ self.addEventListener('fetch', e => {
             caches.open(CACHE).then(c => c.put('./index.html', copy));
           }
           return res; })
-        .catch(() => caches.match('./index.html').then(r => r || caches.match('./')))
+        .catch(() => caches.match('./index.html').then(r => r || caches.match('./'))
+          .then(r => r || new Response(
+            '<!doctype html><meta charset="utf-8"><title>Offline</title>' +
+            '<p>You are offline and this page is not cached yet. Reconnect and reload.</p>',
+            { status: 504, headers: { 'Content-Type': 'text/html; charset=utf-8' } })))
     );
     return;
   }
@@ -61,6 +68,6 @@ self.addEventListener('fetch', e => {
         caches.open(CACHE).then(c => c.put(req, copy));
       }
       return res;
-    }).catch(() => hit))
+    }).catch(() => hit || new Response('', { status: 504, statusText: 'Offline' })))
   );
 });

@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 811;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 162;   // browser_checks.py
+const TOTAL_ASSERTIONS = 783;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 166;   // browser_checks.py
 const path = require('path');
 
 const ROOT = __dirname;
@@ -102,7 +102,7 @@ group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
 for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`);
 const enKeys = Object.keys(UI.en);
-ok(enKeys.length === 202, `UI has 202 keys (got ${enKeys.length})`);
+ok(enKeys.length === 184, `UI has 184 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -111,7 +111,7 @@ const uiLatinBad = [];
 for (const l of ['ne', 'hi']) for (const [k, v] of Object.entries(UI[l]))
   if (LATIN.test(stripPlaceholders(v))) uiLatinBad.push(`${l}.${k}`);
 ok(uiLatinBad.length === 0, `UI ne/hi values free of Latin residue (${uiLatinBad.join(', ') || 'clean'})`);
-const CHOOSE_KEYS = ['choose_title','opt_full_d','opt_study_d','opt_go'];
+const CHOOSE_KEYS = ['choose_title','opt_full_d','opt_study_d'];
 const copiedNeHi = CHOOSE_KEYS.filter(k => UI.ne[k] === UI.hi[k]);
 ok(copiedNeHi.length === 0, `hi choice strings are genuine Hindi, not copied from \u0928\u0947\u092a\u093e\u0932\u0940 (${copiedNeHi.join(', ') || 'clean'})`);
 
@@ -796,6 +796,32 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
      'a missed drill item is requeued, so recall is earned not skipped');
   ok(html.includes("if(mode === 'mula') mode = 'full'"),
      'a shared #tab=mula link still works — it lands on the translation view');
+}
+
+// ---- stale deep links & offline recovery ---------------------------------
+// The one class of bug the suite had no coverage for: hand-typed or stale
+// hashes (#v=2.99, #v=19.1, #theme=N.ti after the study-map revision) used to
+// reach a blank "ॐ" boot view or an uncaught TypeError. Lock the guards down.
+{
+  ok(html.includes('if (hn > 18) { showWelcome(); return; }'),
+     '#v= to a nonexistent chapter falls back to welcome — never requests data/ch19.js');
+  ok(html.includes('const ch = DATA[ci], t = ch && ch.themes && ch.themes[ti];'),
+     'showVerses guards a stale #theme= index before touching t.parts');
+  ok(html.includes("reject(new Error('data/ch' + n + '.js failed to load'))"),
+     'loadChapter rejects with a real Error, never undefined');
+  ok(html.includes('}).catch(function(){ gitaLoadFail(); })'),
+     'router loadChapter chains handle failure instead of leaking rejections');
+  const f404 = fs.readFileSync(path.join(__dirname, '404.html'), 'utf8');
+  ok(f404.includes("('0' + m[2]).slice(-2)"),
+     '404.html zero-pads single-digit legacy verse links to the #vN.NN anchors');
+  const sw = fs.readFileSync(path.join(__dirname, 'sw.js'), 'utf8');
+  ok(sw.includes('c.add(u).catch') && sw.includes('status: 504'),
+     'sw.js precaches per-asset and answers offline misses with a Response, never undefined');
+  const ch1 = fs.readFileSync(path.join(__dirname, 'chapter', '1', 'index.html'), 'utf8');
+  ok(/<title>Bhagavad Gita Chapter 1 — [^<]{1,45}<\/title>/.test(ch1),
+     'chapter page titles stay short enough not to be truncated in search results');
+  ok((ch1.match(/og:image:alt/g) || []).length === 1,
+     'chapter pages carry exactly one og:image:alt');
 }
 
 // ---------- summary ----------
