@@ -865,6 +865,34 @@ def run(pw, url, offline_capable=False):
        "the shared verse is scrolled into the viewport, not left off-screen")
     c.close()
 
+    # Stale or hand-typed deep links must land somewhere sane — never a blank
+    # "boot note" view, never an uncaught error. The study maps were renumbered
+    # in 15 chapters, so #theme= links from before that revision are out in the
+    # world; #v=2.99 and #v=19.1 are one keystroke away for any reader.
+    for frag, expect_view, label in (
+            ("#v=2.99", "welcome", "an out-of-range #v= verse falls back to the welcome page"),
+            ("#v=19.1", "welcome", "a #v= link to a nonexistent chapter falls back without loading data/ch19.js"),
+            ("#theme=2.99", "themes", "a stale #theme= index lands on the chapter's theme list"),
+    ):
+        c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+        q = c.new_page()
+        bad = []
+        q.on("pageerror", lambda e: bad.append(str(e)))
+        q.goto(base + frag, wait_until="load", timeout=90000)
+        q.wait_for_timeout(1500)
+        ok(q.evaluate("state.view") == expect_view and not bad,
+           "%s (view=%s, errors=%s)" % (label, expect_view, bad[:1]))
+        c.close()
+    c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    q = c.new_page()
+    bad = []
+    q.on("pageerror", lambda e: bad.append(str(e)))
+    q.goto(base + "#chapter=2&tab=study", wait_until="load", timeout=90000)
+    q.wait_for_timeout(1500)
+    ok(q.evaluate("state.view") == "themes" and not bad,
+       "#chapter=2&tab=study opens the study view (regression lock)")
+    c.close()
+
     if offline_capable:
         group("offline (service worker)")
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,

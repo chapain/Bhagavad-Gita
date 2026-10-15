@@ -111,6 +111,9 @@ for page, label in [(idx, "index.html")] + \
     # the declared dimensions must describe the image actually referenced
     ok(meta_values(page, "property", "og:image:width") == ["1200"], f"{label}: og:image:width")
     ok(meta_values(page, "property", "og:image:height") == ["630"], f"{label}: og:image:height")
+    # the card is a picture; without alt text it reaches screen readers and
+    # link previews as an unnamed image (chapters carried none until 2026-10-15)
+    ok(len(meta_values(page, "property", "og:image:alt")) == 1, f"{label}: og:image:alt")
 
 # ------------------------------------------------ drill options must be fair
 # Three ways a multiple-choice question quietly stops testing anything:
@@ -784,7 +787,9 @@ ok(".sr-only{" in idx, "the live region needs its visually-hidden class")
 # below are legacy code; continue to catch any additional dead functions.
 defs = set(re.findall(r"function\s+([A-Za-z_$][\w$]*)\s*\(", idx_nofont))
 dead = sorted(d for d in defs if len(re.findall(r"\b" + re.escape(d) + r"\b", idx_nofont)) < 2)
-known_legacy_helpers = {"dayVerse", "lrSkip"}
+# dayVerse and lrSkip were the two exemptions here; both were deleted
+# 2026-10-15, so nothing is grandfathered any more.
+known_legacy_helpers = set()
 unexpected_dead = sorted(set(dead) - known_legacy_helpers)
 ok(not unexpected_dead, f"unexpected dead functions in index.html: {unexpected_dead}")
 
@@ -795,6 +800,28 @@ ok(not os.path.isdir(os.path.join(ROOT, "img", "v")), "img/v/ must stay retired"
 stale = [p for p in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True)
          if "/img/v/" in open(p, encoding="utf-8").read()]
 ok(not stale, f"pages still reference retired img/v/ cards: {stale[:3]}")
+
+
+# ------------------------------------- source-script citations must be real
+# chapter.css once promised a dedicated drift script in source/ (named
+# check_chapter_css.py) — it was never written; the CSS-var guard lives in
+# this file. A comment that names a guard which is not there is worse than no
+# comment: it makes the reader trust a check that never runs. Every
+# source/<name>.py cited from CODE must exist. Prose is exempt on purpose:
+# PROJECT.md and HANDOFF.md record deleted scripts as history.
+_cited = set()
+_code = [os.path.join(ROOT, "build.py"), os.path.join(ROOT, "run_gita_app.js"),
+         os.path.join(ROOT, "browser_checks.py"),
+         os.path.join(ROOT, "chapter.css"), os.path.join(ROOT, "sw.js")]
+for _pat in ("source/*.py", "tests/*.py", "tests/*.js", "tests/*.sh"):
+    _code += glob.glob(os.path.join(ROOT, _pat))
+for _p in _code:
+    if os.path.isfile(_p):
+        for _m in re.finditer(r"source/([A-Za-z0-9_]+\.py)", open(_p, encoding="utf-8", errors="replace").read()):
+            _cited.add(_m.group(1))
+_missing = sorted(n for n in _cited if not os.path.isfile(os.path.join(ROOT, "source", n)))
+ok(not _missing, f"code cites source scripts that do not exist: {_missing}")
+ok(bool(_cited), "the citation scan actually found citations to check (sanity)")
 
 
 print(f"site-health checks: {checks}")

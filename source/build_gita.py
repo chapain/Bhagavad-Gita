@@ -2447,7 +2447,7 @@ function thVerses(t){ const out=[]; t.parts.forEach(p=>p.sutras.forEach(s=>out.p
 
 /* ---------------- the path ---------------- */
 function showLearn(ci){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showLearn(ci)); return; }
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showLearn(ci)).catch(gitaLoadFail); return; }
   rememberOrigin();
   state.view='learn'; state.chapter=ci; persistView(); state.lrAt = null;
   state.section = state.section || Math.ceil(DATA[ci].num/6);
@@ -2519,7 +2519,6 @@ function lrRelang(ci){
   if(at && at.kind === 'story') return lrStory(ci, 0);
   showLearn(ci);
 }
-function lrSkip(ci){ const n=DATA[ci].num, p=lrGet(n); p.story=1; lrPut(n,p); showLearn(ci); }
 
 /* ---------------- stage 1: the story ----------------
    Small chapters get read -> whole chain. Larger ones earn the middle two
@@ -3331,12 +3330,6 @@ function daySpec(){
   }
   return {ch:1, id:'1.01'};
 }
-function dayVerse(){
-  if(!VERSES.length) return null;
-  const d = new Date();
-  const dayNum = d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate();
-  return VERSES[dayNum % VERSES.length];
-}
 function viewHash(){
   if(state.view==='play') return '#play';
   if(state.view==='favorites') return '#favorites';
@@ -3400,10 +3393,10 @@ function showWelcome(){
           <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras).slice(0,80)) + '…'}</div>
         </div>`;
   };
-  if(state.shared){ loadChapter(state.shared.ci+1).then(()=>paint(state.shared, true)); }
+  if(state.shared){ loadChapter(state.shared.ci+1).then(()=>paint(state.shared, true)).catch(gitaLoadFail); }
   else {
     const sp = daySpec();
-    loadChapter(sp.ch).then(()=>paint(verseLoc(sp.id), false));
+    loadChapter(sp.ch).then(()=>paint(verseLoc(sp.id), false)).catch(gitaLoadFail);
   }
 }
 function sectionCard(k, chip, title, desc){
@@ -3482,7 +3475,8 @@ function chTitle(ch){
   return `<div class="view-title fade-in" role="heading" aria-level="2">${head}</div>`;
 }
 function showThemes(ci){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showThemes(ci)); return; }
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showThemes(ci)).catch(gitaLoadFail); return; }
+  if(!DATA[ci]||!DATA[ci].themes){ showWelcome(); return; }
   state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; persistView(); renderCrumbs();
   const ch = DATA[ci];
   view.innerHTML = `
@@ -3515,7 +3509,8 @@ function showThemes(ci){
    chapter as flowing text: speaker, verse, translation, nothing else. Tapping a
    verse still opens the popup with its quarters and word meanings. */
 function showRead(ci, mode){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showRead(ci, mode)); return; }
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showRead(ci, mode)).catch(gitaLoadFail); return; }
+  if(!DATA[ci]||!DATA[ci].themes){ showWelcome(); return; }
   rememberOrigin();
   /* Owner 2026-09-01: "Verses only" (mūla) was retired. This is a LEARNING
      app — the root text with no meaning served the reciter, not the student,
@@ -3624,9 +3619,13 @@ function themeNav(ci, ti){
   </div>`;
 }
 function showVerses(ci,ti){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showVerses(ci,ti)); return; }
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showVerses(ci,ti)).catch(gitaLoadFail); return; }
+  const ch = DATA[ci], t = ch && ch.themes && ch.themes[ti];
+  /* A stale #theme= link (the maps were renumbered in 15 chapters) arrives
+     with a ti past the last theme. Fall to the chapter's theme list — never
+     crash on t.parts. */
+  if(!t){ if(ch && ch.themes){ showThemes(ci); } else { showWelcome(); } return; }
   state.view='verses'; state.chapter=ci; state.theme=ti; persistView(); renderCrumbs();
-  const ch = DATA[ci], t = ch.themes[ti];
   const blocks = t.parts.map((p,pi)=>{
     const pd = partDesc(p);
     return `
@@ -3673,7 +3672,7 @@ function setAppInert(inert){
     .forEach(el=>{ el.inert = inert; });
 }
 function openModal(ci,ti,si, mode, navIdx, invoker){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx, invoker)); return; }
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx, invoker)).catch(gitaLoadFail); return; }
   const bg = $('#modalBg');
   if(!bg.classList.contains('open')){
     const active = document.activeElement;
@@ -4101,19 +4100,26 @@ function gitaBoot(){
   (function(){
     var v = /^#v=([1-9][0-9]?\.[0-9]{1,2})$/.exec(location.hash || '');
     if (v) { var hp = v[1].split('.');
-      var loc = verseLoc(hp[0] + '.' + (hp[1].length === 1 ? '0' + hp[1] : hp[1]));
+      var vref = hp[0] + '.' + (hp[1].length === 1 ? '0' + hp[1] : hp[1]);
+      var loc = verseLoc(vref);
       /* Owner 2026-08-31: a shared verse lands as an INVITATION, not a popup —
          the verse is shown on the welcome page with "click to see the
          meanings"; the four-pāda sheet opens when the receiver clicks. */
       if (loc) { state.shared = loc; showWelcome(); return; }
-      loadChapter(parseInt(hp[0],10)).then(function(){
-        loc = verseLoc(hp[0] + '.' + (hp[1].length === 1 ? '0' + hp[1] : hp[1]));
-        if (loc) { state.shared = loc; showWelcome(); }
-      });
+      /* Out of range (#v=2.99) or a chapter that does not exist (#v=19.1):
+         fall back to the welcome page instead of a blank one — and never ask
+         for data/ch19.js: it is not there and its rejection used to escape. */
+      var hn = parseInt(hp[0], 10);
+      if (hn > 18) { showWelcome(); return; }
+      loadChapter(hn).then(function(){
+        loc = verseLoc(vref);
+        if (loc) { state.shared = loc; }
+        showWelcome();
+      }).catch(function(){ gitaLoadFail(); });
       return; }
     var tm = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(location.hash || '');
     if (tm) { const ci = parseInt(tm[1], 10) - 1, ti = parseInt(tm[2], 10);
-      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }); return; }
+      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return; }
     var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(location.hash || '');
     if(m){ const ci = parseInt(m[1], 10) - 1; const tb = m[3];
       loadChapter(ci+1).then(function(){
@@ -4121,7 +4127,7 @@ function gitaBoot(){
         else if(tb === 'learn'){ showLearn(ci); }
         else if(tb){ showRead(ci, tb); }
         else { showRead(ci, 'full'); }
-      }); return; }
+      }).catch(function(){ gitaLoadFail(); }); return; }
     var h = location.hash || '';
     if(h === '#play'){ showPlay(); return; }
     if(h === '#favorites'){ showFavorites(); return; }
@@ -4145,12 +4151,12 @@ function gitaBoot(){
         else if(tb==='learn') showLearn(ci);
         else if(tb) showRead(ci, tb);
         else showRead(ci,'full');
-      }); return;
+      }).catch(function(){ gitaLoadFail(); }); return;
     }
     var st = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(stay);
     if(st){
       const ci=parseInt(st[1],10)-1, ti=parseInt(st[2],10);
-      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }); return;
+      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return;
     }
     showWelcome();
   })();
@@ -4267,7 +4273,7 @@ _loader = (
     "    var s = document.createElement('script');\n"
     "    s.src = appBase() + 'data/ch' + n + '.js';\n"
     "    s.onload = function(){ assembleData(); resolve(); };\n"
-    "    s.onerror = function(){ gitaLoadFail(); reject(); };\n"
+    "    s.onerror = function(){ gitaLoadFail(); reject(new Error('data/ch' + n + '.js failed to load')); };\n"
     "    document.head.appendChild(s);\n"
     "  });\n"
     "  return _chWait[n];\n"
@@ -4355,7 +4361,8 @@ CHAPTER_CSS = _ch_font + """
    for var(--ink-soft): the variable resolved to nothing and every muted line
    (breadcrumb, IAST, verse description, theme range, paraphrase) fell back to
    full --ink, flattening the hierarchy on all 18 pages. Keep the two names
-   identical — source/check_chapter_css.py now fails the build if they drift. */
+   identical — source/check_site_health.py (CSS-var guard) now fails the build
+   if they drift. */
 :root{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --accent:#1A5648;
        --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-text:#875519; --card:#FFFFFF; --line:#E7D9C2; }
 @media (prefers-color-scheme:dark){
@@ -4500,10 +4507,13 @@ const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 %%DATAASSETS%%];
 
 self.addEventListener('install', e => {
+  /* addAll() is atomic — if even one optional asset 404s nothing is cached,
+     while install still "succeeds" and the app silently loses its offline
+     promise. Add each URL on its own: one bad asset costs that asset, not
+     the whole cache, and install still never aborts. */
   e.waitUntil(caches.open(CACHE)
-    .then(c => c.addAll(ASSETS))
-    .then(() => self.skipWaiting())
-    .catch(() => self.skipWaiting()));   // a missing optional asset must not abort install
+    .then(c => Promise.all(ASSETS.map(u => c.add(u).catch(() => undefined))))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -4531,7 +4541,11 @@ self.addEventListener('fetch', e => {
             caches.open(CACHE).then(c => c.put('./index.html', copy));
           }
           return res; })
-        .catch(() => caches.match('./index.html').then(r => r || caches.match('./')))
+        .catch(() => caches.match('./index.html').then(r => r || caches.match('./'))
+          .then(r => r || new Response(
+            '<!doctype html><meta charset="utf-8"><title>Offline</title>' +
+            '<p>You are offline and this page is not cached yet. Reconnect and reload.</p>',
+            { status: 504, headers: { 'Content-Type': 'text/html; charset=utf-8' } })))
     );
     return;
   }
@@ -4542,7 +4556,7 @@ self.addEventListener('fetch', e => {
         caches.open(CACHE).then(c => c.put(req, copy));
       }
       return res;
-    }).catch(() => hit))
+    }).catch(() => hit || new Response('', { status: 504, statusText: 'Offline' })))
   );
 });
 """.replace("%%VER%%", CACHE_VER) \
@@ -4651,7 +4665,7 @@ for _ch in data:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhagavad Gita Chapter {_n} — {_h.escape(_en)} | Sanskrit, English, Nepali, Hindi</title>
+<title>Bhagavad Gita Chapter {_n} — {_h.escape(_en)}</title>
 <meta name="description" content="{_h.escape(_desc)}">
 <meta name="author" content="Dhruba Chapain">
 <link rel="canonical" href="{_url}">
@@ -4663,10 +4677,12 @@ for _ch in data:
 <meta property="og:image" content="{SITE_BASE}/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bhagavad Gita Chapter {_n} — {_h.escape(_en)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bhagavad Gita Chapter {_n} — {_h.escape(_en)}">
 <meta name="twitter:description" content="{_h.escape(_desc)}">
 <meta name="twitter:image" content="{SITE_BASE}/og-card.png">
+<meta name="twitter:image:alt" content="Bhagavad Gita Chapter {_n} — {_h.escape(_en)}">
 <link rel="icon" href="../../favicon.ico" sizes="any">
 <link rel="stylesheet" href="../../chapter.css">
 <script type="application/ld+json">
@@ -4813,17 +4829,34 @@ if _HAVE_PIL:
     print("share art: img/share-art.jpg painted (the one face for every preview)")
 
 
-# sitemap.xml + robots.txt — the crawler-facing pair. Generated rather than
-# checked in, so lastmod always matches the build and the URLs follow
-# SITE_BASE. Honest note: on a GitHub *project* page Google only reads
-# github.io/robots.txt, so this robots.txt is advisory for Google (Search
-# Console is the real channel); other crawlers do read it. The sitemap is
-# what gets submitted in Search Console.
+# sitemap.xml + robots.txt — the crawler-facing pair. URLs follow SITE_BASE.
+# lastmod is the CONTENT-CHANGE date of each published page: today while the
+# page is being rewritten in this working tree, otherwise the date of the last
+# commit that touched it. Stamping every URL with the build date made the
+# field a weak signal (a no-op rebuild moved all 19 dates) — Google ignores
+# lastmod that is consistently inaccurate. Honest note: on a GitHub *project*
+# page Google only reads github.io/robots.txt, so this robots.txt is advisory
+# for Google (Search Console is the real channel); other crawlers do read it.
+# The sitemap is what gets submitted in Search Console.
 import datetime as _dt
-_today = _dt.date.today().isoformat()
-_urls = [f'  <url>\n    <loc>{SITE_BASE}/</loc>\n    <lastmod>{_today}</lastmod>\n    <priority>1.0</priority>\n  </url>']
+import subprocess as _sp
+
+def _lastmod(rel):
+    try:
+        _st = _sp.run(['git', 'status', '--porcelain', '--', rel],
+                      cwd=ROOT, capture_output=True, text=True, timeout=10)
+        if _st.stdout.strip():
+            return _dt.date.today().isoformat()
+        _lg = _sp.run(['git', 'log', '-1', '--format=%cs', '--', rel],
+                      cwd=ROOT, capture_output=True, text=True, timeout=10)
+        return _lg.stdout.strip() or _dt.date.today().isoformat()
+    except Exception:
+        return _dt.date.today().isoformat()
+
+_urls = [f'  <url>\n    <loc>{SITE_BASE}/</loc>\n    <lastmod>{_lastmod("index.html")}</lastmod>\n    <priority>1.0</priority>\n  </url>']
 for _ch in data:
-    _urls.append(f'  <url>\n    <loc>{SITE_BASE}/chapter/{_ch["num"]}/</loc>\n    <lastmod>{_today}</lastmod>\n    <priority>0.8</priority>\n  </url>')
+    _rel = f'chapter/{_ch["num"]}/index.html'
+    _urls.append(f'  <url>\n    <loc>{SITE_BASE}/chapter/{_ch["num"]}/</loc>\n    <lastmod>{_lastmod(_rel)}</lastmod>\n    <priority>0.8</priority>\n  </url>')
 SITEMAP = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
            + "\n".join(_urls) + '\n'
@@ -4884,7 +4917,7 @@ NOT_FOUND = f"""<!DOCTYPE html>
      new home on its chapter page so nobody hits a dead end. */
   var m = p.match(/\\/v\\/(\\d+)\\.(\\d+)\\/?$/);
   if (m) {{
-    a.href = '{SITE_BASE}/chapter/' + m[1] + '/#v' + m[1] + '.' + m[2];
+    a.href = '{SITE_BASE}/chapter/' + m[1] + '/#v' + m[1] + '.' + ('0' + m[2]).slice(-2);
     a.textContent = 'Read Bhagavad Gita ' + m[1] + '.' + parseInt(m[2], 10) + ' \u2192';
     location.replace(a.href);
     return;
@@ -4907,9 +4940,29 @@ if os.path.abspath(dst) != os.path.abspath(path):
 ICON_SRC = os.path.join(GITA_DIR, "icons")
 copied = 0
 if os.path.isdir(ICON_SRC):
-    for n in ("favicon.ico", "icon-192.png", "icon-512.png",
+    for n in ("icon-192.png", "icon-512.png",
               "icon-maskable-512.png", "apple-touch-icon.png", "og-card.png"):
         src = os.path.join(ICON_SRC, n)
         if os.path.exists(src):
             shutil.copyfile(src, os.path.join(SITE_DIR, n)); copied += 1
+
+# favicon.ico is GENERATED from icons/fav{16,32,48}.png — one ICO with three
+# PNG frames. The old checked-in file carried only a 16×16 frame, so taskbar
+# and bookmark views of the site were a blurry tiny glyph. PNG frames inside
+# an ICO are supported everywhere that matters (Vista+, every current browser).
+import struct as _struct
+_fav = []
+for _fn, _px in (("fav16.png", 16), ("fav32.png", 32), ("fav48.png", 48)):
+    with open(os.path.join(ICON_SRC, _fn), "rb") as _f:
+        _fav.append((_px, _f.read()))
+_blob = _struct.pack("<HHH", 0, 1, len(_fav))
+_off = 6 + 16 * len(_fav)
+for _px, _png in _fav:
+    _blob += _struct.pack("<BBBBHHII", _px, _px, 0, 0, 1, 32, len(_png), _off)
+    _off += len(_png)
+for _px, _png in _fav:
+    _blob += _png
+with open(os.path.join(SITE_DIR, "favicon.ico"), "wb") as _f:
+    _f.write(_blob)
+copied += 1
 print(f"site/: index.html + manifest + sw.js (cache {CACHE_VER}) + sitemap + robots + {copied} icons  ->  {SITE_DIR}")
