@@ -77,6 +77,7 @@ source/                 ← edit here
   verify.py               two helpers used to check your data
   check_padas.py          verifies word splits against the pādas
   check_paraphrase.py     paraphrases must not echo their literals
+  check_translations.py   banned readings, shape, words printed twice
   prove_data_only.py      proves the build renders data, never generates it
   check_seo.py            sitemap/robots proof (`--live` also fetches the site)
   check_site_health.py    chapter pages, CSS vars, og: tags, offline, a11y
@@ -267,6 +268,7 @@ What remains is small and only ever *checks* your data:
 | `verify.py` | flattens IAST accents and counts syllables, so the build can compare your pādas against `ch*.json` |
 | `check_padas.py` | rebuilds each pāda from its word split to catch a typo in `padachheda_ch*.py` |
 | `check_paraphrase.py` | fails if any flowing paraphrase overlaps its literal by 80% or more |
+| `check_translations.py` | runs over the built `data/ch*.js`: fails on readings already ruled out (`जुताइएको` …), on Latin letters or broken spacing in Nepali/Hindi, and on a word or phrase printed twice in a row; prints the prescribed आ-form (`…का लागि`) advice without blocking |
 | `prove_data_only.py` | edits each kind of data in turn and proves the change reaches the page |
 
 None of them can change what the app shows.
