@@ -641,7 +641,7 @@ GITA_CH10_WORDS = {
         ["एतेन", "etena", "this"]],
     1: [["किम्", "kim", "what"],
         ["ज्ञातेन", "jñātena", "known"],
-        ["तव", "tava", "for you", "तिम्रो लागि", "तुम्हारे लिए"],
+        ["तव", "tava", "for you", "तिम्रा लागि", "तुम्हारे लिए"],
         ["अर्जुन", "arjuna", "O Arjuna"]],
     2: [["विष्टभ्य", "viṣṭabhya", "having supported"],
         ["अहम्", "aham", "I"],

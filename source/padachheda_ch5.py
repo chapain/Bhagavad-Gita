@@ -181,7 +181,7 @@ GITA_CH5_WORDS = {
     1: [["शान्तिम्", "śāntim", "peace"],
         ["आप्नोति", "āpnoti", "attains"],
         ["नैष्ठिकीम्", "naiṣṭhikīm", "abiding, lasting"]],
-    2: [["अयुक्तः", "ayuktaḥ", "the one not established in yoga"],
+    2: [["अयुक्तः", "ayuktaḥ", "the one not established in yoga", "योगमा नस्थित", "योग में स्थित नहीं"],
         ["कामकारेण", "kāmakāreṇa", "by desire-driven impulse"]],
     3: [["फले", "phale", "to the fruit"],
         ["सक्तः", "saktaḥ", "attached"],

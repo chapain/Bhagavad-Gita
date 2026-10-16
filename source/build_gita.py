@@ -140,6 +140,17 @@ NE_SPEAKER = {
     "अर्जुनः": "अर्जुनले",
     "श्रीभगवान्": "श्रीभगवान्ले",
 }
+# Hindi speaker subjects in the nominative, never the vocative: the gloss for
+# "arjuna" is "हे अर्जुन" (as the word is used inside verses), but a speaker
+# header must read "अर्जुन बोले", not "हे अर्जुन बोले".
+HI_SPEAKER = {
+    "धृतराष्ट्र": "धृतराष्ट्र",
+    "सञ्जय": "संजय",
+    "सञ्जयः": "संजय",
+    "अर्जुन": "अर्जुन",
+    "अर्जुनः": "अर्जुन",
+    "श्रीभगवान्": "श्रीभगवान्",
+}
 def i18n_word(w):
     if len(w) >= 5: return w
     d, i, en = w[0], w[1], w[2]
@@ -180,7 +191,7 @@ def i18n_speaker_words(wl):
         ne = NE_SPEAKER.get(d, w[3] if len(w) >= 5 else GLOSS_NE.get(i, en))
         if honorific and d == "उवाच":
             ne = "भन्नुभयो"
-        hi = w[4] if len(w) >= 5 else GLOSS_HI.get(i, en)
+        hi = w[4] if len(w) >= 5 else HI_SPEAKER.get(d, GLOSS_HI.get(i, en))
         out.append([d, i, en, ne, hi])
     return out
 
