@@ -607,11 +607,11 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
         with open(_p, "rb") as _fh:
             ok(_fh.read(4) == b"wOF2", f"{_f} must be a real woff2")
     ok(f"./{_f}" in read("sw.js"), f"{_f} must be precached, or offline loses it")
-# Phase 3.3 (2026-10-16): raised from 250000 to 260000. The slim-header +
-# bottom-tab-bar restructure adds ~6KB of useful chrome (5 tab buttons +
-# their icons reused from the toolbar they replace); the cap should catch
-# accidental bloat, not freeze UI evolution.
-ok(len(idx) < 260000, f"the shell should stay lean; it is {len(idx)} characters")
+# Phase 3.3 (2026-10-16): raised from 250000 to 270000. The slim-header +
+# bottom-tab-bar + verse-sheet restructure adds ~14KB of useful UI (a
+# whole-verse hero block, collapsible word-by-word, ⋯ menu); the cap is
+# to catch accidental bloat, not freeze UI evolution.
+ok(len(idx) < 270000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64

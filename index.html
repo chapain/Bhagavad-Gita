@@ -890,6 +890,93 @@
   .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
                    height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
   .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft);}
+
+  /* Phase 3.2 (2026-10-16): verse-sheet header. Old top-of-sheet stacked
+     close + part-title + verse-title + Share/Fav + meter + text-size ate
+     ~half a screen of chrome before the śloka. Now one tight row with
+     close on the left, verse number+title in the middle, and a ⋯ overflow
+     button on the right that opens a menu containing Share, Save, meter,
+     text size and the hide-meanings toggle. */
+  .m-head{ display:flex; align-items:center; gap:10px; margin:0 0 6px; }
+  .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto; }
+  .m-head .m-title{ margin:0; padding:0; flex:1 1 0; min-width:0;
+    font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-size:1.05rem; color:var(--ink); font-weight:600; line-height:1.3;
+    display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .m-head .m-num-chit{ color:var(--saffron-text); font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .m-head .m-vtitle{ color:var(--teal); font-weight:600; font-size:1rem; }
+  .m-more{ flex:0 0 auto; width:38px; height:38px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink-soft); border-radius:50%;
+    font-size:1.3rem; font-weight:700; line-height:1; cursor:pointer; padding:0;
+    transition:.15s; }
+  .m-more:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+  .m-menu{ position:absolute; right:18px; top:52px; z-index:6;
+    background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 8px 24px rgba(var(--shadow),.18);
+    padding:8px; min-width:220px; display:flex; flex-direction:column; gap:4px; }
+  .m-menu[hidden]{ display:none !important; }
+  .m-menu button{ display:flex; align-items:center; gap:8px; width:100%;
+    text-align:left; padding:9px 12px; border:0; background:transparent;
+    border-radius:8px; color:var(--ink); font:600 .85rem/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;
+    cursor:pointer; }
+  .m-menu button:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
+  .m-menu button.saved{ color:var(--saffron-text); }
+  .m-menu-sep{ height:1px; background:var(--line); margin:4px 0; }
+  .m-menu .m-meter{ margin:4px 6px 8px; }
+  .m-menu .reader-size{ margin:4px 6px 8px; }
+  .m-menu .wb-btn{ justify-content:flex-start; gap:8px; }
+
+  .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--ink-soft); font-size:.78rem; font-weight:600;
+           margin:0 0 14px; line-height:1.4; letter-spacing:.01em; }
+
+  /* Whole verse — the hero block the reader lands on: Devanagari verse
+     (with IAST under each line) set as a continuous śloka, not four
+     quarter-boxes. Quarter boxes live below under "Word by word" so the
+     first thing the reader sees is the verse, not chrome or tools. */
+  .m-whole-verse{ background:var(--paper); border:1px solid var(--line);
+    border-radius:14px; padding:18px 20px; margin:0 0 10px;
+    font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
+    line-height:1.8; }
+  .m-whole-verse .gline{ font-size:calc(1.45rem * var(--reader-scale,1)); text-align:center; }
+  .m-whole-verse .giast{ font-style:italic; font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-size:calc(.92rem * var(--reader-scale,1)); color:var(--ink-soft); text-align:center; margin-top:2px; }
+  .m-whole-verse .spk{ font-family:"Noto Serif Devanagari",Georgia,serif;
+    color:var(--saffron-text); font-size:calc(1.05rem * var(--reader-scale,1));
+    font-style:italic; text-align:center; margin-bottom:10px; border-bottom:1px dashed var(--line); padding-bottom:8px; }
+  .m-whole-verse .spk .iast{ font-size:calc(.82rem * var(--reader-scale,1)); margin-left:10px; }
+  .m-whole-verse .gl-n{ color:var(--saffron-text); font-weight:700; }
+
+  /* Meaning blocks follow straight after the hero verse, no extra paper
+     card around them — the content should breathe. */
+  .m-line{ margin-top:18px; }
+  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
+               letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; margin-bottom:6px;}
+  .m-line .lt{ color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.6;}
+  .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
+  .m-line.lit .lt{ font-size:calc(1rem * var(--reader-scale,1)); }
+
+  /* Word-by-word section: collapsed by default so the sheet opens on the
+     verse + meaning; tap the summary to reveal the four pāda boxes
+     (which is where the reader digs into words, not the default view). */
+  .m-words-section{ margin-top:22px; border-top:1px solid var(--line); padding-top:8px; }
+  .m-words-section > summary{ list-style:none; cursor:pointer;
+    display:flex; align-items:center; gap:8px;
+    font:700 .82rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink-soft); padding:8px 0; user-select:none; }
+  .m-words-section > summary::-webkit-details-marker{ display:none; }
+  .m-words-section > summary::after{ content:"▾"; margin-left:auto; font-size:.9rem; color:var(--ink-soft); transition:transform .15s; }
+  .m-words-section[open] > summary::after{ transform:rotate(180deg); }
+  .m-words-body{ padding-bottom:4px; }
+  /* Inside Word-by-word reuse the existing .m-verse/pāda styles but with
+     tighter padding since it lives inside a collapsible. */
+  .m-words-body .m-verse{ background:transparent; border:0; padding:8px 0 0; margin:0; border-radius:0; }
+  .m-words-body .words-bar{ margin-bottom:8px; }
+  .m-words-body .wb-btn{ margin:0; }
+
+  /* Old selectors that no longer apply to the new layout but are harmless
+     if left in place — the dead ones below are overridden above. */
+  .m-num{ display:none; }
+  .m-readerbar{ display:none; }
   .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:.95rem; font-weight:600;
            margin:0 52px 8px 0; line-height:1.4;}
   .m-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
@@ -1197,10 +1284,20 @@
             padding-left:calc(14px + env(safe-area-inset-left,0px));
             padding-right:calc(14px + env(safe-area-inset-right,0px));
             overscroll-behavior:contain; }
-    .modal .m-close{ position:fixed; top:calc(10px + env(safe-area-inset-top,0px));
-                     right:calc(12px + env(safe-area-inset-right,0px)); float:none; margin:0; z-index:5;
-                     width:44px; height:44px; font-size:1.2rem; box-shadow:0 4px 14px rgba(0,0,0,.3); }
-    .m-part{ margin-right:52px; font-size:.88rem; }
+    /* Phase 3.2: slim m-head row (✕ / title / ⋯) sits at the top of the sheet
+       and stays visible as the user scrolls; close and more buttons live in
+       the flex row, not as free-floating FABs. */
+    .m-head{ position:sticky; top:0; z-index:5;
+             margin:-14px -14px 8px; padding:calc(8px + env(safe-area-inset-top,0px)) 10px 8px;
+             background:var(--cream); border-bottom:1px solid var(--line); }
+    .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto;
+                     width:40px; height:40px; font-size:1.1rem;
+                     box-shadow:none; border-radius:50%; }
+    .m-more{ width:40px; height:40px; font-size:1.4rem; border-radius:50%; }
+    .m-head .m-num-chit{ font-size:.9rem; }
+    .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
+                       overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+    .m-part{ margin-right:0; font-size:.82rem; margin-bottom:8px; }
     .m-num{ font-size:1.08rem; }
     .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
     .m-part{ font-size:.82rem; }
@@ -3379,6 +3476,7 @@ function openModal(ci,ti,si, mode, navIdx, invoker){
 function closeModal(){
   const bg = $('#modalBg');
   const wasOpen = bg.classList.contains('open');
+  closeVerseMenu(); closeSharePanel();
   bg.classList.remove('open'); document.body.style.overflow='';
   document.body.classList.remove('modal-open');
   if(wasOpen){
@@ -3411,10 +3509,12 @@ function shareUrl(){
   return root + '/chapter/' + n.split('.')[0] + '/#v' + n;
 }
 function openSharePanel(){
+  closeVerseMenu();
   $('#spLink').textContent = shareUrl();
   const p = $('#sharePanel');
   p.style.display = (p.style.display === 'flex') ? 'none' : 'flex';
 }
+function closeSharePanel(){ const p=$('#sharePanel'); if(p) p.style.display='none'; }
 function copyVerseLink(){
   const t = $('#spLink').textContent;
   function copied(){
@@ -3486,17 +3586,18 @@ function fillModal(){
     </div>`;
   }
   $('#modal').innerHTML = `
-    <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
-    <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
-    <div class="m-num"><h2 class="m-title" id="modalTitle" tabindex="-1">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span></h2>
-      <button class="fav-btn" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
-      <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" aria-pressed="${FAV.includes(s.n)}" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
-    <div class="share-panel" id="sharePanel">
-      <div class="sp-hint">${L('share_hint')}</div>
-      <div class="sp-link" id="spLink"></div>
-      <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
+    <div class="m-head">
+      <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
+      <h2 class="m-title" id="modalTitle" tabindex="-1">
+        <span class="m-num-chit">${esc(L('verse'))} ${fmtNL(s.n)}</span>
+        <span class="m-vtitle">${esc(T(part.titles))}</span>
+      </h2>
+      <button type="button" class="m-more" id="mMoreBtn" aria-label="More" aria-haspopup="true" aria-expanded="false" onclick="toggleVerseMenu()">⋯</button>
     </div>
-    <div class="m-readerbar">
+    <div class="m-menu" id="mVerseMenu" role="menu" hidden>
+      <button type="button" role="menuitem" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
+      <button type="button" role="menuitem" class="${FAV.includes(s.n)?' saved':''}" id="favBtn" aria-pressed="${FAV.includes(s.n)}" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star} ${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button>
+      <div class="m-menu-sep" role="separator"></div>
       <div class="m-meter">${esc(meterText(s))}</div>
       <div class="reader-size" role="group" aria-label="${esc(L('reader_size'))}">
         <span class="reader-size-label">${esc(L('reader_size'))}</span>
@@ -3505,22 +3606,33 @@ function fillModal(){
         <button type="button" id="readerSizeUp" onclick="stepReaderSize(1)" aria-label="${esc(L('reader_size_increase'))}" title="${esc(L('reader_size_increase'))}">A+</button>
         <button type="button" onclick="resetReaderSize()" aria-label="${esc(L('reader_size_reset'))}" title="${esc(L('reader_size_reset'))}">↺</button>
       </div>
+      <button type="button" role="menuitem" class="wb-btn" id="wbMasterBtn" onclick="toggleAllMeanings(this)" disabled aria-pressed="false">${ICONS.eyeOff}<span>${L('hide_meanings')}</span></button>
     </div>
+    <div class="share-panel" id="sharePanel">
+      <div class="sp-hint">${L('share_hint')}</div>
+      <div class="sp-link" id="spLink"></div>
+      <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
+    </div>
+    <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
-      <div class="m-verse">
-        <div class="words-bar">
-          <span class="wb-hint" id="wordsHint">${L('click_hint_pada')} ·</span>
-          <button class="wb-btn" onclick="toggleAllMeanings(this)" disabled aria-pressed="false">${ICONS.eyeOff}<span>${L('hide_meanings')}</span></button>
-        </div>
-        ${spkHtml(topS)}
-        <div class="pada-grid">
-          <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
-          ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
-          ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
-        </div>
+      <div class="m-whole-verse" lang="sa">
+        ${padaBlockDeva(s, true)}
       </div>
-      <div class="m-line"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
+      <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+      <details class="m-words-section" id="mWordsSection">
+        <summary><span class="m-wb-hint" id="wordsHint">${L('click_hint_pada')}</span></summary>
+        <div class="m-words-body">
+          <div class="m-verse">
+            ${spkHtml(topS)}
+            <div class="pada-grid">
+              <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
+              ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
+              ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
@@ -3567,6 +3679,23 @@ function applyReaderSize(){
   if(down) down.disabled = state.readerSize <= READER_SIZES[0];
   if(up) up.disabled = state.readerSize >= READER_SIZES[READER_SIZES.length-1];
 }
+/* Phase 3.2 — verse-sheet overflow menu (⋯). Share / Save / Text size /
+   Hide-meanings live here so they don't crowd the top of the sheet. */
+function toggleVerseMenu(){
+  const menu = $('#mVerseMenu'), btn = $('#mMoreBtn');
+  if(!menu || !btn) return;
+  if(menu.hasAttribute('hidden')){ menu.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+  else { menu.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+}
+function closeVerseMenu(){ const menu=$('#mVerseMenu'), btn=$('#mMoreBtn');
+  if(menu && !menu.hasAttribute('hidden')){ menu.setAttribute('hidden',''); if(btn) btn.setAttribute('aria-expanded','false'); }
+}
+document.addEventListener('click', function(e){
+  const menu = $('#mVerseMenu'), btn = $('#mMoreBtn');
+  if(!menu || menu.hasAttribute('hidden')) return;
+  if(menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+  closeVerseMenu();
+});
 // toggle pada-chheda (word split) open/closed on the clicked element's box/line
 function toggleWords(el){
   const id = el.getAttribute('aria-controls');

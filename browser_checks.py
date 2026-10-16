@@ -150,9 +150,14 @@ def run(pw, url, offline_capable=False):
     for lang in ("ne", "hi"):
         pg.evaluate(f"setLang('{lang}')")
         pg.wait_for_timeout(400)
-        ok("श्लोक २.४७" in pg.eval_on_selector(".m-num", "e=>e.textContent"), f"{lang}: verse ref")
+        # Phase 3.2: verse ref lives inside .m-title, meter inside the
+        # ⋯ overflow menu (open it to assert its localised text).
+        ok("श्लोक २.४७" in pg.eval_on_selector(".m-title", "e=>e.textContent"), f"{lang}: verse ref")
         ok("पाद १" in pg.eval_on_selector_all(".pb-num", "e=>e.map(x=>x.textContent).join()"), f"{lang}: पाद boxes")
-        ok("अक्षर" in pg.eval_on_selector(".m-meter", "e=>e.textContent"), f"{lang}: meter localised")
+        pg.evaluate("toggleVerseMenu()")
+        pg.wait_for_timeout(100)
+        ok("अक्षर" in pg.eval_on_selector(".m-menu .m-meter", "e=>e.textContent"), f"{lang}: meter localised")
+        pg.evaluate("closeVerseMenu()")
         stacks = pg.eval_on_selector_all("#appTitle, .seg .lang-btn, .m-title",
             "els => els.map(e => ({lang:e.lang, family:getComputedStyle(e).fontFamily}))")
         ok(len(stacks) == 5
@@ -329,14 +334,14 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(800)
     pg.locator(".mini").first.click()
     pg.wait_for_timeout(600)
-    v1 = pg.eval_on_selector(".m-num", "e=>e.textContent.trim().slice(0,12)")
+    v1 = pg.eval_on_selector(".m-num-chit", "e=>e.textContent.trim().slice(0,12)")
     pg.evaluate("""()=>{const bg=document.querySelector('#modalBg');
       const mk=(t,x,y)=>{const e=new TouchEvent(t,{bubbles:true,cancelable:true,
         touches:t==='touchend'?[]:[new Touch({identifier:1,target:bg,clientX:x,clientY:y})],
         changedTouches:[new Touch({identifier:1,target:bg,clientX:x,clientY:y})]});bg.dispatchEvent(e);};
       mk('touchstart',300,400);mk('touchmove',200,402);mk('touchend',80,404);}""")
     pg.wait_for_timeout(500)
-    ok(v1 != pg.eval_on_selector(".m-num", "e=>e.textContent.trim().slice(0,12)"), "swipe → next verse")
+    ok(v1 != pg.eval_on_selector(".m-num-chit", "e=>e.textContent.trim().slice(0,12)"), "swipe → next verse")
     pg.go_back()
     pg.wait_for_timeout(500)
     ok(not pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"), "back button closes the sheet")
@@ -611,10 +616,13 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(600)
     ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
        "tapping a verse in the reading view opens its quarters")
-    # the master hide/show-meanings switch sleeps until a quarter is opened —
-    # before that there is nothing on screen for it to hide
+    # the master hide/show-meanings switch sleeps until the Word-by-word
+    # section is opened — before that there is nothing on screen for it to hide
     ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
-       "the hide/show meanings switch is inactive before any quarter is opened")
+       "the hide/show meanings switch is inactive before words section opens")
+    # Phase 3.2: Word-by-word lives in a collapsed <details>; open it first.
+    pg.locator(".m-words-section > summary").first.click()
+    pg.wait_for_timeout(300)
     pg.locator(".pada-toggle").first.click()
     pg.wait_for_timeout(300)
     ok(not pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
@@ -726,7 +734,7 @@ def run(pw, url, offline_capable=False):
        "the sheet has a tail spacer so the last line clears the sticky bar")
     top_ok = pg.evaluate("""() => {
         const md = document.querySelector('.modal'); md.scrollTop = 0;
-        return document.querySelector('.m-num').getBoundingClientRect().top >= 0;
+        return document.querySelector('.m-head').getBoundingClientRect().top >= 0;
     }""")
     ok(top_ok, "at the top of the sheet the verse title is fully on screen")
     ok("env(safe-area-inset-top" in pg.content() or True, "safe-area inset applied")
@@ -872,7 +880,7 @@ def run(pw, url, offline_capable=False):
        "a shared #v= link lands as an invitation: verse shown, meaning one click away, no popup")
     q.locator(".w-day").click()
     q.wait_for_timeout(700)
-    ok(q.evaluate("!!document.querySelector('#modalBg.open')") and "2.19" in q.inner_text(".m-num"),
+    ok(q.evaluate("!!document.querySelector('#modalBg.open')") and "2.19" in q.inner_text(".m-num-chit"),
        "clicking the shared verse opens the four-quarter word-meaning sheet")
     c.close()
     # from a downloaded copy (file://), the share link must point at the live
@@ -954,7 +962,7 @@ def run(pw, url, offline_capable=False):
         q.wait_for_timeout(800)
         q.locator(".mini").first.click()
         q.wait_for_timeout(600)
-        ok("2.47" in q.eval_on_selector(".m-num", "e=>e.textContent"), "OFFLINE verse opens")
+        ok("2.47" in q.eval_on_selector(".m-num-chit", "e=>e.textContent"), "OFFLINE verse opens")
         c.set_offline(False)
         # navigating to a chapter landing page must NOT overwrite the shell cache
         q.goto(url + "chapter/1/", wait_until="load", timeout=30000)
