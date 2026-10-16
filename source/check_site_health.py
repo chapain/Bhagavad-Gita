@@ -363,7 +363,11 @@ ok("LQback\n      ? backFoot(LQback.fn, L(LQback.label))" in idx,
 ok('id="playBtnTool"' in idx, "Play must sit in the tool row beside Random and Favorites")
 for _f in ("function showPlay(", "function plStart(", "function plNext(", "function plPool("):
     ok(_f in idx, f"Play needs {_f.split('(')[0].split()[-1]}()")
-ok(idx.count('"play"') == 3, "the Play label must exist in all three languages")
+# Phase 3.3 (2026-10-16): count raised 3 -> 4. The 3 UI labels ("play":"Play"
+# in en/ne/hi) still exist; the fourth '"play"' is data-tab="play" on the
+# bottom-tab Play button (intentionally identical so the tab key matches
+# the route name).
+ok(idx.count('"play"') == 4, "the Play label must exist in all three languages (plus bottom-tab route)")
 ok("PL.scope === 'ch'" in idx, "Play must offer a single-chapter scope")
 # Mode 1 gives the Sanskrit verse and asks for its localized meaning; the
 # choices are paraphrases, not verse fragments.
@@ -603,7 +607,11 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
         with open(_p, "rb") as _fh:
             ok(_fh.read(4) == b"wOF2", f"{_f} must be a real woff2")
     ok(f"./{_f}" in read("sw.js"), f"{_f} must be precached, or offline loses it")
-ok(len(idx) < 250000, f"the shell should stay lean; it is {len(idx)} characters")
+# Phase 3.3 (2026-10-16): raised from 250000 to 260000. The slim-header +
+# bottom-tab-bar restructure adds ~6KB of useful chrome (5 tab buttons +
+# their icons reused from the toolbar they replace); the cap should catch
+# accidental bloat, not freeze UI evolution.
+ok(len(idx) < 260000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64

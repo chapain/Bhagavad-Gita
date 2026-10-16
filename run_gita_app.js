@@ -600,7 +600,11 @@ ok(/apple-mobile-web-app-capable/.test(html), 'iOS web-app meta present');
 ok(html.includes('@media (max-width:760px)'), 'phone breakpoint present');
 ok(html.includes('@media (hover:none)'), 'touch devices opt out of hover lifts');
 ok(html.includes('env(safe-area-inset-'), 'safe-area insets used (notch / home indicator)');
-ok(/\.toolbar\{[^}]*position:sticky/.test(html), 'toolbar sticky on phones');
+// Phase 3.3 (2026-10-16): on phones the header is the single sticky top
+// bar and the tool buttons live in a fixed bottom tab bar, so the desktop
+// .toolbar no longer needs to be sticky. Lock the new invariants instead.
+ok(/header\{[^}]*position:sticky[^}]*top:0/.test(html), 'slim header sticky at the top on phones');
+ok(/\.tabbar\{[^}]*position:fixed[^}]*bottom:0/.test(html), 'bottom tab bar fixed to the bottom on phones');
 ok(/\.m-verse \.pada-row\{ flex-direction:column/.test(html), 'pādas stack one per row on phones');
 ok(html.includes("addEventListener('popstate'"), 'Android back button / iOS back-swipe closes the modal');
 ok(html.includes("bg.addEventListener('touchstart'"), 'swipe navigation wired to the verse sheet');

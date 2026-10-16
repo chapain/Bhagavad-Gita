@@ -1581,32 +1581,85 @@ __FONTS__
     .pl-scope .lr-ghost.on:hover{ background:var(--saffron-soft); border-color:var(--saffron-soft); }
   }
 
+  /* ---- Phase 3.3 bottom tab bar (phones only) ---- */
+  .tabbar{ display:none; }
+  .m-search{ display:none; }
   @media (max-width:760px){
-    /* ---- header ---- */
-    header{ padding:12px 14px calc(10px + env(safe-area-inset-bottom,0px));
-            padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px));
-            padding-top:calc(12px + env(safe-area-inset-top,0px)); }
-    .header-inner{ align-items:flex-start; }
-    .header-inner .om{ font-size:1.5rem; line-height:1.2; padding-top:2px; }
-    .hdr-copy{ flex:1 1 0; min-width:0; }
-    .header-inner h1{ font-size:1.12rem; line-height:1.35; white-space:normal; }
+    /* ---- slim header: two tight rows.
+         Row 1 (flex row): ॐ + title (ellipsis) + dark-mode toggle.
+         Row 2 (full width): language segmented — three equal pills.
+         Total ~80px vs ~200px pre-3.3. Desktop keeps the old single-row
+         header with tagline (unchanged above 760px). */
+    header{ padding:6px 10px 8px;
+            padding-left:calc(10px + env(safe-area-inset-left,0px)); padding-right:calc(10px + env(safe-area-inset-right,0px));
+            padding-top:calc(6px + env(safe-area-inset-top,0px));
+            position:sticky; top:0; z-index:30;
+            box-shadow:0 1px 0 var(--line); }
+    .header-inner{ align-items:center; gap:8px; flex-wrap:wrap; }
+    .header-inner .om{ font-size:1.25rem; line-height:1; flex:0 0 auto; }
+    .hdr-copy{ flex:1 1 0; min-width:0; overflow:hidden; }
+    .header-inner h1{ font-size:.98rem; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0; }
     #appSub{ display:none !important; }
-    .header-inner .tag{ display:block; margin-top:4px; font-size:.78rem; }
-    .langbar{ width:100%; gap:8px; margin-left:0; }
-    .lang-btn{ flex:1; padding:9px 6px; font-size:.82rem; min-height:40px; }
+    .header-inner .tag{ display:none !important; }
+    .theme-btn{ flex:0 0 auto !important; min-width:34px !important; padding:6px 8px !important; min-height:34px; margin:0 !important; }
+    .langbar{ flex:1 0 100%; margin-left:0; margin-top:4px; }
+    .langbar .seg{ display:flex; width:100%; gap:2px; }
+    .seg .lang-btn{ flex:1 1 0; padding:6px 4px; font-size:.78rem; min-height:30px; }
     .mode-box{ padding:12px 14px; }
     .mode-seg .ms-btn{ padding:9px 14px; font-size:.82rem; min-height:40px; }
 
-    /* ---- toolbar: sticky so search / home stay reachable ---- */
-    .toolbar{ position:sticky; top:0; z-index:30; gap:8px; padding:9px 12px;
+    /* ---- desktop toolbar hidden on phones; bottom tab bar shown.
+           The search field stays in the sticky top bar (it's where
+           readers expect it) but the Home/Random/Play/Fav buttons
+           move to the bottom tab bar where thumbs can reach. */
+    .toolbar{ display:flex !important; position:sticky; top:0; z-index:29;
+              gap:0; padding:6px 12px;
               padding-left:calc(12px + env(safe-area-inset-left,0px)); padding-right:calc(12px + env(safe-area-inset-right,0px));
-              box-shadow:0 2px 10px rgba(var(--shadow),.07); }
-    .toolbar .searchwrap{ order:-1; width:100%; flex:1 0 100%; max-width:none; min-width:0; }
-    .toolbar input[type=search]{ min-height:42px; }
-    .toolbar .tool-btn{ flex:1; min-height:40px; padding:9px 8px; font-size:.82rem; white-space:nowrap; }
+              background:var(--toolbar); border-bottom:1px solid var(--line);
+              box-shadow:0 1px 6px rgba(var(--shadow),.05); }
+    .toolbar .tool-btn{ display:none !important; }
+    .toolbar .searchwrap{ flex:1 0 100%; max-width:none; min-width:0; }
+    .toolbar input[type=search]{ min-height:40px; font-size:16px; }
+    .toolbar .sw-field{ display:flex; align-items:center; gap:6px;
+      background:var(--field); border:1px solid var(--line); border-radius:999px; padding:0 10px; }
+    .toolbar .sw-field:focus-within{ border-color:var(--saffron); }
+    .toolbar .searchwrap input[type=search]{ flex:1; border:0; background:transparent; padding:9px 4px; font-size:16px; color:var(--ink); min-height:40px; }
+    /* on phones, syncTabs() does NOT move the searchwrap anymore (it
+       stays in the toolbar) — reset the m-search-inline class. */
+    .searchwrap.m-search-inline{ display:flex !important; margin:0; order:0; width:100%; flex:1; max-width:none; min-width:0; }
 
-    /* ---- content ---- */
-    .wrap{ padding:16px 14px 40px; padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px)); }
+    /* ---- bottom tab bar ---- */
+    .tabbar{
+      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:40;
+      box-sizing:border-box; width:100%; max-width:100vw;
+      padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px));
+      padding-left:calc(4px + env(safe-area-inset-left,0px)); padding-right:calc(4px + env(safe-area-inset-right,0px));
+      background:var(--paper); border-top:1px solid var(--line);
+      box-shadow:0 -2px 12px rgba(var(--shadow),.07);
+    }
+    .tab-btn{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+              border:0; background:transparent; color:var(--ink-soft); padding:6px 2px; min-height:52px;
+              border-radius:10px; font:600 .68rem/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;
+              cursor:pointer; transition:color .15s, background-color .15s; -webkit-tap-highlight-color:transparent;}
+    .tab-btn .ic{ width:22px; height:22px; stroke:currentColor; fill:currentColor;
+                  stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    /* The search loupe and shuffle icon are drawn with strokes only —
+       their circle/dot/paths must not fill. The dice pips on Play are
+       <circle fill="currentColor"> in the source SVG so they stay dots;
+       the outer rounded rect is filled via the rule below. */
+    .tab-btn[data-tab="search"] .ic circle,
+    .tab-btn[data-tab="search"] .ic path,
+    .tab-btn[data-tab="random"] .ic path{ fill:none; }
+    .tab-btn[aria-selected="true"]{ color:var(--saffron-text); }
+    .tab-btn:active{ background:var(--saffron-soft); }
+    .tab-btn .tab-lbl{ font-size:.66rem; letter-spacing:.01em; }
+
+    /* ---- content: bottom room for the tab bar ---- */
+    .wrap{ padding:16px 14px calc(72px + env(safe-area-inset-bottom,0px)); padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px)); }
+    /* When the modal is open, the bottom tab bar should not float over the
+       verse sheet (the sheet is full-screen on phones); inert it so it
+       cannot receive taps. */
+    body.modal-open .tabbar{ pointer-events:none; opacity:.4; }
     .view-title{ font-size:1.35rem; }
     .view-sub{ font-size:.92rem; margin-bottom:16px; }
     .crumbs{ font-size:.84rem; gap:6px; margin-bottom:14px; }
@@ -1683,14 +1736,18 @@ __FONTS__
   }
 
   @media (max-width:380px){
-    .header-inner h1{ font-size:.98rem; }
-    .lang-btn{ font-size:.76rem; padding:9px 4px; }
+    .header-inner h1{ font-size:.88rem; }
+    .header-inner{ gap:6px; }
+    .seg .lang-btn{ padding:5px 7px; font-size:.72rem; min-height:30px; }
+    .theme-btn{ min-width:30px !important; min-height:30px !important; padding:4px 6px !important; }
     .m-verse .pada-box .pb-deva{ font-size:calc(1.16rem * var(--reader-scale,1)); }
     .toolbar .tool-btn{ flex:1 1 0; min-width:0; min-height:44px; padding:6px 4px;
                          font-size:.72rem; line-height:1.15; white-space:normal;
                          display:flex; flex-direction:column; justify-content:center; gap:2px; }
     .toolbar .tool-btn .ic{ width:1em; height:1em; margin:0; }
     .toolbar .tool-btn span{ max-width:100%; overflow-wrap:anywhere; text-align:center; }
+    .tab-btn .tab-lbl{ font-size:.62rem; }
+    .tab-btn .ic{ width:20px; height:20px; }
   }
 
   /* landscape phones: keep the sheet scrollable, shrink vertical padding */
@@ -1750,30 +1807,59 @@ __FONTS__
       <div id="appSub" style="font-size:.82rem; color:var(--hdr-sub);">श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 pādas</div>
       <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     </div>
+    <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon">__ICON_MOON__</span></button>
     <div class="langbar" id="langbar">
       <div class="seg" role="group" aria-label="Interface language">
         <button class="lang-btn on" data-lang="en" lang="en" aria-pressed="true" onclick="setLang('en')">English</button>
         <button class="lang-btn" data-lang="ne" lang="ne" aria-pressed="false" onclick="setLang('ne')">नेपाली</button>
         <button class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false" onclick="setLang('hi')">हिन्दी</button>
       </div>
-      <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
     </div>
   </div>
 </header>
 
-<div class="toolbar">
-  <button class="tool-btn" onclick="goHome()" id="homeBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span id="homeLbl">Home</span></button>
-  <div class="searchwrap" role="search" aria-label="Search verses">
+<!-- Phase 3.3 (2026-10-16): on phones the four tool buttons (Home/Random/
+     Play/Fav) move to a bottom tab bar; the desktop toolbar keeps its
+     existing shape. The search field stays in the sticky top bar on all
+     widths so it is always reachable. -->
+<div class="toolbar" role="toolbar" aria-label="Tools">
+  <button class="tool-btn" onclick="goHome()" id="homeBtn">__ICON_HOME__<span id="homeLbl">Home</span></button>
+  <div class="searchwrap" role="search" aria-label="Search verses" id="searchWrap">
     <div class="sw-field">
-      <span class="sw-ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
+      <span class="sw-ic">__ICON_SEARCH__</span>
       <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
-      <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()">__ICON_CLEARX__</button>
     </div>
   </div>
-  <button class="tool-btn" onclick="randomVerse()" id="randomBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg><span id="randLbl">Random</span></button>
-  <button class="tool-btn" onclick="showPlay()" id="playBtnTool"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg><span id="playLbl">Play</span></button>
-  <button class="tool-btn" onclick="showFavorites()" id="favBtnTool"><svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span id="favLbl">Favorites</span></button>
+  <button class="tool-btn" onclick="randomVerse()" id="randomBtn">__ICON_SHUFFLE__<span id="randLbl">Random</span></button>
+  <button class="tool-btn" onclick="showPlay()" id="playBtnTool">__ICON_PLAY__<span id="playLbl">Play</span></button>
+  <button class="tool-btn" onclick="showFavorites()" id="favBtnTool">__ICON_STAR__<span id="favLbl">Favorites</span></button>
 </div>
+
+<!-- Mobile bottom tab bar: 5 thumb-reachable destinations. Desktop-only
+     (hidden via CSS on ≥761px); on phones it replaces the .toolbar row. -->
+<nav class="tabbar" id="tabbar" aria-label="Main navigation" role="tablist">
+  <button class="tab-btn" data-tab="home" role="tab" onclick="goHome()" aria-selected="true">
+    __ICON_HOME__
+    <span class="tab-lbl" id="tabHomeLbl">Home</span>
+  </button>
+  <button class="tab-btn" data-tab="search" role="tab" onclick="tabGoSearch()" aria-selected="false">
+    __ICON_SEARCH__
+    <span class="tab-lbl" id="tabSearchLbl">Search</span>
+  </button>
+  <button class="tab-btn" data-tab="random" role="tab" onclick="randomVerse()" aria-selected="false">
+    __ICON_SHUFFLE__
+    <span class="tab-lbl" id="tabRandLbl">Random</span>
+  </button>
+  <button class="tab-btn" data-tab="play" role="tab" onclick="showPlay()" aria-selected="false">
+    __ICON_PLAY__
+    <span class="tab-lbl" id="tabPlayLbl">Play</span>
+  </button>
+  <button class="tab-btn" data-tab="fav" role="tab" onclick="showFavorites()" aria-selected="false">
+    __ICON_STAR__
+    <span class="tab-lbl" id="tabFavLbl">Saved</span>
+  </button>
+</nav>
 
 <div class="wrap">
   <nav class="crumbs" id="crumbs" aria-label="Breadcrumb navigation"></nav>
@@ -1886,7 +1972,10 @@ const ICONS = {
   moon:'<svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
   sun:'<svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>',
   eye:'<svg class="ic" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>',
-  eyeOff:'<svg class="ic" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 5.1A11 11 0 0 1 12 5c6.5 0 10 7 10 7a17.7 17.7 0 0 1-3 3.9M6.6 6.6A16.8 16.8 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1"/></svg>'
+  eyeOff:'<svg class="ic" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 5.1A11 11 0 0 1 12 5c6.5 0 10 7 10 7a17.7 17.7 0 0 1-3 3.9M6.6 6.6A16.8 16.8 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1"/></svg>',
+  play:'<svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg>',
+  closeX:'<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+  clearX:'<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>'
 };
 function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub').textContent = L('app_sub');
   $('#tagVerses').textContent = L('tag_sub'); $('#appFooter').textContent = L('footer');
@@ -1899,7 +1988,45 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   const langGroup = document.querySelector('#langbar .seg'); if(langGroup) langGroup.setAttribute('aria-label', L('language'));
   const breadcrumb = $('#crumbs'); if(breadcrumb) breadcrumb.setAttribute('aria-label', L('breadcrumb'));
   { const pb = $('#playLbl'); if(pb) pb.textContent = L('play'); }
+  /* Phase 3.3 — bottom tab labels (mobile). */
+  const th = $('#tabHomeLbl'); if(th) th.textContent = L('home');
+  const ts = $('#tabSearchLbl'); if(ts) ts.textContent = L('search_ph').replace('…','').trim() || 'Search';
+  const tr = $('#tabRandLbl'); if(tr) tr.textContent = L('random');
+  const tp = $('#tabPlayLbl'); if(tp) tp.textContent = L('play');
+  const tf = $('#tabFavLbl'); if(tf) tf.textContent = L('favorites');
   searchX(); }
+/* Phase 3.3 — keep the bottom tab bar in sync with state.view. Reading
+   (read/themes/verses/learn) all map to Home because the tab bar is for
+   top-level destinations, not in-chapter sub-views. */
+function syncTabs(){
+  const bar = $('#tabbar'); if(!bar) return;
+  let tab = 'home';
+  switch(state.view){
+    case 'search': tab = 'search'; break;
+    case 'play': tab = 'play'; break;
+    case 'favorites': tab = 'fav'; break;
+    case 'welcome': case 'sections': case 'chapters': tab = 'home'; break;
+    default: /* read/themes/verses/learn = inside content -> Home */ tab = 'home';
+  }
+  /* Random is a transient action (it jumps straight to a verse), so it
+     never stays selected — you land back in reading. */
+  bar.querySelectorAll('.tab-btn').forEach(b=>{
+    b.setAttribute('aria-selected', String(b.dataset.tab === tab));
+  });
+}
+function tabGoSearch(){
+  /* On phones the search input stays in the sticky top toolbar; tapping
+     the Search tab just focuses it (the first tap on desktop/tablet
+     goes through the toolbar button path instead, which shows a search
+     results page from any field value). */
+  if(window.matchMedia('(max-width:760px)').matches){
+    try{ const si = $('#searchInput'); si.focus(); si.select(); }catch(e){}
+    doSearch();
+  } else {
+    doSearch();
+  }
+}
+
 /* The parts of a language change that are pure chrome: <html lang>, the three
    segmented buttons, and the static interface strings. Kept apart from setLang()
    because boot needs exactly this — and none of the view re-rendering below — to
@@ -2053,7 +2180,9 @@ function allChReady(){ for(var n=1;n<=18;n++) if(!GITA_CH[n]||!GITA_CH[n].themes
 
 // ---------- search ----------
 let searchTimer = null;
-function onSearchInput(v){ clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); searchX(); }
+function onSearchInput(v){
+  clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); searchX();
+}
 /* the in-field ✕ exists only while there is text to clear — the modern
    pattern; a standing "Clear" button was dead chrome on an empty field */
 function searchX(){ const f = document.querySelector('.sw-field');
@@ -2336,6 +2465,7 @@ function announceView(){
     else if(state.section) msg = L('sections_title');
   }catch(e){}
   if(msg) el.textContent = msg;
+  syncTabs();
 }
 /* Search and Favorites are "detours" off the browsing hierarchy. Rather than a
    breadcrumb trail, they show a single back button naming the page the reader came
@@ -3712,6 +3842,7 @@ function openModal(ci,ti,si, mode, navIdx, invoker){
   state.mode = mode;
   fillModal();
   bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
   setAppInert(true); document.body.style.overflow='hidden';
   const close = $('#modal .m-close'); if(close) close.focus({preventScroll:true});
   pushModalHistory();
@@ -3724,6 +3855,7 @@ function closeModal(){
   const bg = $('#modalBg');
   const wasOpen = bg.classList.contains('open');
   bg.classList.remove('open'); document.body.style.overflow='';
+  document.body.classList.remove('modal-open');
   if(wasOpen){
     setAppInert(false);
     const target = MODAL_RETURN_FOCUS && MODAL_RETURN_FOCUS.isConnected && !MODAL_RETURN_FOCUS.disabled
@@ -4299,7 +4431,23 @@ _loader = (
 )
 _tags = "<script>gitaBoot();</script>"
 
-shell = (HTML
+# Icon substitution — single source for each SVG so the shell stays lean
+# (same path reused by toolbar buttons, bottom tab bar, and dark-mode toggle).
+def _icon_svg(slug):
+    return {"home":'<svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>',
+            "search":'<svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>',
+            "shuffle":'<svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg>',
+            "play":'<svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg>',
+            "star":'<svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
+            "moon":'<svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+            "clearx":'<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>'}[slug]
+shell = HTML
+for _slug, _key in (("home","__ICON_HOME__"),("search","__ICON_SEARCH__"),
+                    ("shuffle","__ICON_SHUFFLE__"),("play","__ICON_PLAY__"),
+                    ("star","__ICON_STAR__"),("moon","__ICON_MOON__"),
+                    ("clearx","__ICON_CLEARX__")):
+    shell = shell.replace(_key, _icon_svg(_slug))
+shell = (shell
          .replace("__FONTS__", _font_css)
          .replace("__UI__", _ui_js)
          .replace("__LR_LEGACY_JSON__", _legacy_maps_js)
