@@ -24,7 +24,11 @@ class RulesCatchRealFaults(unittest.TestCase):
     def test_banned_reading_is_caught(self):
         for bad_text in ("त्यसपछि, सेता घोडाले जुताइएको विशाल रथमा उभिएर।",
                          "र सौमदत्तिका छोरा पनि।",
-                         "मृदङ्ग र सिंहनादहरू एकैसाथ बजे।"):
+                         "मृदङ्ग र सिंहनादहरू एकैसाथ बजे।",
+                         "नासिने र नासिने।",       # 15.16: lost negation
+                         "नकुभल्याउने।",             # 16.02: unclear slander gloss
+                         "लोभ, क्रोध र लालच।",       # 16.21: desire erased
+                         "अनन्य त्यागीका निम्ति।"):  # 18.12: non-renouncer reversed
             bad, _ = ct.scan([row(bad_text)])
             self.assertTrue(bad, f"checker missed: {bad_text}")
 
@@ -45,6 +49,9 @@ class RulesCatchRealFaults(unittest.TestCase):
                      "काम गर्न लगाउने तीन: थाहा, थाहा पाइने कुरा।",  # listing
                      "जसरी पिता छोरालाई, मित्रले मित्रलाई क्षमा गर्छ।",
                      "र अरू धेरै वीरहरू, मेरा निम्ति जीवन दिन तयार।",
+                     "नासिने र ननासिने।",         # corrected 15.16 must pass
+                     "कामना, क्रोध र लोभ।",        # corrected 16.21 must pass
+                     "त्याग नगर्नेहरूका निम्ति।",  # corrected 18.12 must pass
                      "So I deem."):                                # English terminal
             bad, _ = ct.scan([row(good, lang="ne" if not good[0].isascii() else "en")])
             self.assertEqual(bad, [], f"false positive on: {good}")

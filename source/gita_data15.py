@@ -65,7 +65,7 @@ CH15_TRANSLATIONS = {
 14: ("Becoming the fire of digestion in the bodies of living beings, joined with the in-breath and out-breath, I cook the four kinds of food.",
     "“I become the digestive fire in all living bodies; united with the breath, I digest the four kinds of food.”"),
 15: ("I am seated in the heart of all; from me come memory, knowledge and their removal; by all the Vedas I alone am to be known — I am the author of Vedānta and the knower of the Vedas.",
-    "“I dwell in every heart; from me come memory, wisdom, and also their loss. I am what all the Vedas teach — their author and their knower.”"),
+    "“I dwell in every heart; from me come memory, wisdom, and also their loss. I am what all the Vedas teach — the source of Vedānta and the knower of the Vedas.”"),
 16: ("There are two persons in this world: the perishable and the imperishable. The perishable is all beings; the unchanging is called the imperishable.",
     "“Two persons exist in the world: the perishable and the imperishable. All beings are the perishable; the unchanging Self is the imperishable.”"),
 17: ("But there is another, the supreme Person, called the supreme Self — the eternal Lord who, entering the three worlds, sustains them.",
