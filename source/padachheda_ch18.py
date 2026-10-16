@@ -548,7 +548,7 @@ GITA_CH18_WORDS = {
         ["सुखम्", "sukham", "happiness"],
         ["सात्त्विकम्", "sāttvikam", "sāttvic"],
         ["प्रोक्तम्", "proktam", "is declared"]],
-    3: [["आत्मबुद्धिप्रसादजम्", "ātmabuddhiprasādajam", "born of the clarity of the Self"]]},
+    3: [["आत्मबुद्धिप्रसादजम्", "ātmabuddhiprasādajam", "born of the clarity of the intellect concerning the Self"]]},
 
 38: {"s": [],
     0: [["विषयेन्द्रियसंयोगात्", "viṣayendriyasaṁyogāt", "from the contact of senses and objects"]],

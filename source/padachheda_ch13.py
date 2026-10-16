@@ -132,7 +132,7 @@ GITA_CH13_WORDS = {
     2: [["नित्यम्", "nityam", "constant"],
         ["च", "ca", "and"],
         ["समचित्तत्वम्", "samacittatvam", "even-mindedness"]],
-    3: [["इष्टानिष्टोपपत्तिषु", "iṣṭāniṣṭopapattiṣu", "in gain and loss"]]},
+    3: [["इष्टानिष्टोपपत्तिषु", "iṣṭāniṣṭopapattiṣu", "in the pleasant and unpleasant"]]},
 
 10: {"s": [],
     0: [["मयि", "mayi", "to me"],
@@ -348,7 +348,7 @@ GITA_CH13_WORDS = {
         ["आत्मानम्", "ātmānam", "the Self"],
         ["आत्मना", "ātmanā", "by the self"]],
     2: [["अन्ये", "anye", "others"],
-        ["साङ्ख्येन", "sāṅkhyena", "by the yoga of knowledge", "ज्ञान", "ज्ञान"],
+        ["साङ्ख्येन", "sāṅkhyena", "by knowledge", "ज्ञान", "ज्ञान"],
         ["योगेन", "yogena", "by yoga", "योगद्वारा", "योग से"]],
     3: [["कर्मयोगेन", "karmayogena", "by the yoga of action"],
         ["च", "ca", "and"],

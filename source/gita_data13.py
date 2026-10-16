@@ -68,7 +68,7 @@ CH13_TRANSLATIONS = {
     "“Humility, modesty, harmlessness, patience, honesty, serving one's teacher, purity, firmness, self-mastery,”"),
 8: ("— dispassion toward the objects of the senses, absence of ego, and the perception of the evil of suffering in birth, death, old age and disease,",
     "“— disinterest in sense-pleasures, no ego, and the clear seeing of the misery of birth, death, age, and sickness,”"),
-9: ("— non-attachment, non-clinging to son, wife and home, constant even-mindedness toward gain and loss,",
+9: ("— non-attachment, non-clinging to son, wife and home, constant even-mindedness toward the pleasant and unpleasant,",
     "“— detachment, no clinging to family and home, steady even-mindedness in success and failure,”"),
 10: ("— unwavering devotion to me through undivided yoga, delight in solitude, distaste for the company of men,",
     "“— unwavering devotion to me with single-pointed yoga, fondness for solitude, distaste for worldly crowds,”"),
