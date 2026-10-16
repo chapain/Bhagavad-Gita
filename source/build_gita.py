@@ -780,18 +780,20 @@ __FONTS__
      2026-08-30: "put the choose and the three options in a box, and make it
      instructive"). Same body as every card — paper, hairline, 16px radius —
      so the chrome reads as one quiet object set apart from the scripture. */
-  .mode-box{ background:var(--paper); border:1px solid var(--line); border-radius:16px;
-             padding:14px 18px; margin:0 0 18px; display:flex; flex-direction:column;
-             gap:10px; align-items:flex-start; box-shadow:0 1px 2px rgba(var(--shadow),.05);
-             transition:border-color .15s, background .15s, box-shadow .15s; }
-  .mode-box:hover{ border-color:var(--saffron); background:var(--teal-soft);
-                   box-shadow:0 3px 12px rgba(var(--shadow),.08); }
-  /* Owner 2026-09-01: this caption used to be --saffron-dark, the exact colour
-     of the pills underneath it, so a non-interactive question looked clickable
-     — and on white it measured 3.34:1, under the 4.5:1 AA floor. --ink-soft
-     reads as a quiet caption and passes AA in both themes (7.75:1 / 6.22:1),
-     leaving saffron to mean "you can press this". */
-  .mode-lbl{ font-size:.9rem; color:var(--ink-soft); font-weight:600; }
+  /* Phase 3.1: chapter-mode strip is a quiet tab row under the subtitle —
+     no card, no "How would you like…" question. Active tab gets a teal
+     underline; inactive tabs are soft grey, warm on hover. Reads like a
+     book, not a setup dialog. */
+  .mode-box{ margin:0 0 18px; display:flex; align-items:center; gap:0; }
+  .mode-seg{ display:flex; gap:0; align-items:flex-end; max-width:100%; border-bottom:1px solid var(--line); }
+  .mode-seg .ms-btn{ background:transparent; color:var(--ink-soft); border:0;
+                     padding:8px 14px 10px; font-size:.9rem; font-weight:600;
+                     border-bottom:2px solid transparent; margin-bottom:-1px;
+                     cursor:pointer; transition:color .15s, border-color .15s;
+                     border-radius:0; }
+  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ color:var(--teal); background:transparent; }
+  .mode-seg .ms-btn.on{ color:var(--teal); border-bottom-color:var(--teal); }
+  .mode-seg .ms-btn.on:hover{ color:var(--teal); background:transparent; }
 
   /* ---------- Play ---------- */
   /* The scope row is the same segmented-pill grammar as the chapter chooser:
@@ -1103,18 +1105,8 @@ __FONTS__
      grammar — soft pill = an option, gold pill = where you are, hover = the
      door warming to saffron-dark. The segments ARE crumbs now; the paper
      track retired because the pills carry their own round boundary. */
-  .mode-seg{ display:flex; gap:8px; flex-wrap:wrap; max-width:100%; }
-  /* Same metal as .wc-chip: paper doors, one soft-saffron “you are here”.
-     Solid gold fill was a second, louder crumb language on the same page. */
-  .mode-seg .ms-btn{ background:var(--paper); color:var(--ink-soft); border:1px solid var(--line);
-             border-radius:999px; padding:7px 16px; cursor:pointer; font-size:.86rem;
-             font-weight:700; font-family:inherit; line-height:1.4;
-             transition:background-color .15s, color .15s, border-color .15s; }
-  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-soft);
-             color:var(--saffron-text); border-color:var(--saffron-soft); }
-  .mode-seg .ms-btn.on{ background:var(--saffron-soft); color:var(--saffron-text);
-             border-color:var(--saffron-soft); box-shadow:none; }
-  .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
+  /* Legacy pill .mode-seg rules retired Phase 3.1 in favour of the
+     underlined-tab style declared near .mode-box above. */
   /* purana chapter view: clean hairline cards; saffron only for numbers */
   .th-flow .theme{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
                    padding:16px 18px; margin:0 0 14px; cursor:pointer;
@@ -1141,6 +1133,18 @@ __FONTS__
   .vcard{ cursor:default; }
   .vcard:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); }
   .vcard h3{ font-size:1rem; }   /* the theme title outranks its verses */
+  /* Phase 3.1: ONE chapter view — themes as non-tappable headings; verses
+     are the tap targets, listed directly under each theme. */
+  .ch-flow{ display:flex; flex-direction:column; gap:22px; margin-top:8px; }
+  .ch-theme-head{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal);
+                  font-size:1.1rem; font-weight:700; margin:0 0 6px;
+                  display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .ch-theme-head .ch-theme-name{ flex:0 1 auto; }
+  .ch-theme-desc{ margin:0 0 12px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
+  .mini .vtitle{ font-family:Georgia,"Noto Serif Devanagari",serif;
+                 color:var(--teal); font-size:.95rem; font-weight:600; margin:2px 0 4px;
+                 overflow:hidden; text-overflow:ellipsis;
+                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
   .chdeva{ color:var(--teal); font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem; }
   .card h3{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
@@ -1393,6 +1397,94 @@ __FONTS__
   .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
                    height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
   .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft);}
+
+  /* Phase 3.2 (2026-10-16): verse-sheet header. Old top-of-sheet stacked
+     close + part-title + verse-title + Share/Fav + meter + text-size ate
+     ~half a screen of chrome before the śloka. Now one tight row with
+     close on the left, verse number+title in the middle, and a ⋯ overflow
+     button on the right that opens a menu containing Share, Save, meter,
+     text size and the hide-meanings toggle. */
+  .m-head{ display:flex; align-items:center; gap:10px; margin:0 0 6px; }
+  .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto; }
+  .m-head .m-title{ margin:0; padding:0; flex:1 1 0; min-width:0;
+    font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-size:1.05rem; color:var(--ink); font-weight:600; line-height:1.3;
+    display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .m-head .m-num-chit{ color:var(--saffron-text); font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .m-head .m-vtitle{ color:var(--teal); font-weight:600; font-size:1rem; }
+  .m-more{ flex:0 0 auto; width:38px; height:38px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink-soft); border-radius:50%;
+    font-size:1.3rem; font-weight:700; line-height:1; cursor:pointer; padding:0;
+    transition:.15s; }
+  .m-more:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+  .m-menu{ position:absolute; right:18px; top:52px; z-index:6;
+    background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 8px 24px rgba(var(--shadow),.18);
+    padding:8px; min-width:220px; display:flex; flex-direction:column; gap:4px; }
+  .m-menu[hidden]{ display:none !important; }
+  .m-menu button{ display:flex; align-items:center; gap:8px; width:100%;
+    text-align:left; padding:9px 12px; border:0; background:transparent;
+    border-radius:8px; color:var(--ink); font:600 .85rem/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;
+    cursor:pointer; }
+  .m-menu button:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
+  .m-menu button.saved{ color:var(--saffron-text); }
+  .m-menu-sep{ height:1px; background:var(--line); margin:4px 0; }
+  .m-menu .m-meter{ margin:4px 6px 8px; }
+  .m-menu .reader-size{ margin:4px 6px 8px; }
+  .m-menu .wb-btn{ justify-content:flex-start; gap:8px; }
+
+  .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--ink-soft); font-size:.78rem; font-weight:600;
+           margin:0 0 14px; line-height:1.4; letter-spacing:.01em; }
+
+  /* Whole verse — the hero block the reader lands on: Devanagari verse
+     (with IAST under each line) set as a continuous śloka, not four
+     quarter-boxes. Quarter boxes live below under "Word by word" so the
+     first thing the reader sees is the verse, not chrome or tools. */
+  .m-whole-verse{ background:var(--paper); border:1px solid var(--line);
+    border-radius:14px; padding:18px 20px; margin:0 0 10px;
+    font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
+    line-height:1.8; }
+  .m-whole-verse .gline{ font-size:calc(1.45rem * var(--reader-scale,1)); text-align:center; }
+  .m-whole-verse .giast{ font-style:italic; font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-size:calc(.92rem * var(--reader-scale,1)); color:var(--ink-soft); text-align:center; margin-top:2px; }
+  .m-whole-verse .spk{ font-family:"Noto Serif Devanagari",Georgia,serif;
+    color:var(--saffron-text); font-size:calc(1.05rem * var(--reader-scale,1));
+    font-style:italic; text-align:center; margin-bottom:10px; border-bottom:1px dashed var(--line); padding-bottom:8px; }
+  .m-whole-verse .spk .iast{ font-size:calc(.82rem * var(--reader-scale,1)); margin-left:10px; }
+  .m-whole-verse .gl-n{ color:var(--saffron-text); font-weight:700; }
+
+  /* Meaning blocks follow straight after the hero verse, no extra paper
+     card around them — the content should breathe. */
+  .m-line{ margin-top:18px; }
+  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
+               letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; margin-bottom:6px;}
+  .m-line .lt{ color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.6;}
+  .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
+  .m-line.lit .lt{ font-size:calc(1rem * var(--reader-scale,1)); }
+
+  /* Word-by-word section: collapsed by default so the sheet opens on the
+     verse + meaning; tap the summary to reveal the four pāda boxes
+     (which is where the reader digs into words, not the default view). */
+  .m-words-section{ margin-top:22px; border-top:1px solid var(--line); padding-top:8px; }
+  .m-words-section > summary{ list-style:none; cursor:pointer;
+    display:flex; align-items:center; gap:8px;
+    font:700 .82rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink-soft); padding:8px 0; user-select:none; }
+  .m-words-section > summary::-webkit-details-marker{ display:none; }
+  .m-words-section > summary::after{ content:"▾"; margin-left:auto; font-size:.9rem; color:var(--ink-soft); transition:transform .15s; }
+  .m-words-section[open] > summary::after{ transform:rotate(180deg); }
+  .m-words-body{ padding-bottom:4px; }
+  .m-pada-hint{ margin:4px 2px 10px; color:var(--ink-soft); font-size:.8rem; font-style:italic; line-height:1.5; }
+  /* Inside Word-by-word reuse the existing .m-verse/pāda styles but with
+     tighter padding since it lives inside a collapsible. */
+  .m-words-body .m-verse{ background:transparent; border:0; padding:8px 0 0; margin:0; border-radius:0; }
+  .m-words-body .words-bar{ margin-bottom:8px; }
+  .m-words-body .wb-btn{ margin:0; }
+
+  /* Old selectors that no longer apply to the new layout but are harmless
+     if left in place — the dead ones below are overridden above. */
+  .m-num{ display:none; }
+  .m-readerbar{ display:none; }
   .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:.95rem; font-weight:600;
            margin:0 52px 8px 0; line-height:1.4;}
   .m-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
@@ -1540,9 +1632,7 @@ __FONTS__
     .tool-btn:hover{ background:var(--paper); border-color:var(--line); }
     .tool-btn.primary:hover{ background:var(--saffron); border-color:var(--saffron); }
     .tool-btn:active, .lang-btn:active, .m-nav button:active{ filter:brightness(.93); }
-    .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--paper); color:var(--ink-soft); border-color:var(--line); }
-    .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
-    .mode-seg .ms-btn:active{ background:var(--saffron-soft); }
+    /* (tab-strip ms-btn hover/active set above; old pill overrides removed) */
     button.wc-chip:hover{ background:transparent; color:inherit; border-color:transparent; }
     button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
     button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-text); }
@@ -1581,32 +1671,85 @@ __FONTS__
     .pl-scope .lr-ghost.on:hover{ background:var(--saffron-soft); border-color:var(--saffron-soft); }
   }
 
+  /* ---- Phase 3.3 bottom tab bar (phones only) ---- */
+  .tabbar{ display:none; }
+  .m-search{ display:none; }
   @media (max-width:760px){
-    /* ---- header ---- */
-    header{ padding:12px 14px calc(10px + env(safe-area-inset-bottom,0px));
-            padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px));
-            padding-top:calc(12px + env(safe-area-inset-top,0px)); }
-    .header-inner{ align-items:flex-start; }
-    .header-inner .om{ font-size:1.5rem; line-height:1.2; padding-top:2px; }
-    .hdr-copy{ flex:1 1 0; min-width:0; }
-    .header-inner h1{ font-size:1.12rem; line-height:1.35; white-space:normal; }
+    /* ---- slim header: two tight rows.
+         Row 1 (flex row): ॐ + title (ellipsis) + dark-mode toggle.
+         Row 2 (full width): language segmented — three equal pills.
+         Total ~80px vs ~200px pre-3.3. Desktop keeps the old single-row
+         header with tagline (unchanged above 760px). */
+    header{ padding:6px 10px 8px;
+            padding-left:calc(10px + env(safe-area-inset-left,0px)); padding-right:calc(10px + env(safe-area-inset-right,0px));
+            padding-top:calc(6px + env(safe-area-inset-top,0px));
+            position:sticky; top:0; z-index:30;
+            box-shadow:0 1px 0 var(--line); }
+    .header-inner{ align-items:center; gap:8px; flex-wrap:wrap; }
+    .header-inner .om{ font-size:1.25rem; line-height:1; flex:0 0 auto; }
+    .hdr-copy{ flex:1 1 0; min-width:0; overflow:hidden; }
+    .header-inner h1{ font-size:.98rem; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0; }
     #appSub{ display:none !important; }
-    .header-inner .tag{ display:block; margin-top:4px; font-size:.78rem; }
-    .langbar{ width:100%; gap:8px; margin-left:0; }
-    .lang-btn{ flex:1; padding:9px 6px; font-size:.82rem; min-height:40px; }
-    .mode-box{ padding:12px 14px; }
-    .mode-seg .ms-btn{ padding:9px 14px; font-size:.82rem; min-height:40px; }
+    .header-inner .tag{ display:none !important; }
+    .theme-btn{ flex:0 0 auto !important; min-width:34px !important; padding:6px 8px !important; min-height:34px; margin:0 !important; }
+    .langbar{ flex:1 0 100%; margin-left:0; margin-top:4px; }
+    .langbar .seg{ display:flex; width:100%; gap:2px; }
+    .seg .lang-btn{ flex:1 1 0; padding:6px 4px; font-size:.78rem; min-height:30px; }
+    .mode-box{ margin-bottom:14px; }
+    .mode-seg .ms-btn{ padding:7px 12px 8px; font-size:.85rem; min-height:36px; }
 
-    /* ---- toolbar: sticky so search / home stay reachable ---- */
-    .toolbar{ position:sticky; top:0; z-index:30; gap:8px; padding:9px 12px;
+    /* ---- desktop toolbar hidden on phones; bottom tab bar shown.
+           The search field stays in the sticky top bar (it's where
+           readers expect it) but the Home/Random/Play/Fav buttons
+           move to the bottom tab bar where thumbs can reach. */
+    .toolbar{ display:flex !important; position:sticky; top:0; z-index:29;
+              gap:0; padding:6px 12px;
               padding-left:calc(12px + env(safe-area-inset-left,0px)); padding-right:calc(12px + env(safe-area-inset-right,0px));
-              box-shadow:0 2px 10px rgba(var(--shadow),.07); }
-    .toolbar .searchwrap{ order:-1; width:100%; flex:1 0 100%; max-width:none; min-width:0; }
-    .toolbar input[type=search]{ min-height:42px; }
-    .toolbar .tool-btn{ flex:1; min-height:40px; padding:9px 8px; font-size:.82rem; white-space:nowrap; }
+              background:var(--toolbar); border-bottom:1px solid var(--line);
+              box-shadow:0 1px 6px rgba(var(--shadow),.05); }
+    .toolbar .tool-btn{ display:none !important; }
+    .toolbar .searchwrap{ flex:1 0 100%; max-width:none; min-width:0; }
+    .toolbar input[type=search]{ min-height:40px; font-size:16px; }
+    .toolbar .sw-field{ display:flex; align-items:center; gap:6px;
+      background:var(--field); border:1px solid var(--line); border-radius:999px; padding:0 10px; }
+    .toolbar .sw-field:focus-within{ border-color:var(--saffron); }
+    .toolbar .searchwrap input[type=search]{ flex:1; border:0; background:transparent; padding:9px 4px; font-size:16px; color:var(--ink); min-height:40px; }
+    /* on phones, syncTabs() does NOT move the searchwrap anymore (it
+       stays in the toolbar) — reset the m-search-inline class. */
+    .searchwrap.m-search-inline{ display:flex !important; margin:0; order:0; width:100%; flex:1; max-width:none; min-width:0; }
 
-    /* ---- content ---- */
-    .wrap{ padding:16px 14px 40px; padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px)); }
+    /* ---- bottom tab bar ---- */
+    .tabbar{
+      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:40;
+      box-sizing:border-box; width:100%; max-width:100vw;
+      padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px));
+      padding-left:calc(4px + env(safe-area-inset-left,0px)); padding-right:calc(4px + env(safe-area-inset-right,0px));
+      background:var(--paper); border-top:1px solid var(--line);
+      box-shadow:0 -2px 12px rgba(var(--shadow),.07);
+    }
+    .tab-btn{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+              border:0; background:transparent; color:var(--ink-soft); padding:6px 2px; min-height:52px;
+              border-radius:10px; font:600 .68rem/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;
+              cursor:pointer; transition:color .15s, background-color .15s; -webkit-tap-highlight-color:transparent;}
+    .tab-btn .ic{ width:22px; height:22px; stroke:currentColor; fill:currentColor;
+                  stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    /* The search loupe and shuffle icon are drawn with strokes only —
+       their circle/dot/paths must not fill. The dice pips on Play are
+       <circle fill="currentColor"> in the source SVG so they stay dots;
+       the outer rounded rect is filled via the rule below. */
+    .tab-btn[data-tab="search"] .ic circle,
+    .tab-btn[data-tab="search"] .ic path,
+    .tab-btn[data-tab="random"] .ic path{ fill:none; }
+    .tab-btn[aria-selected="true"]{ color:var(--saffron-text); }
+    .tab-btn:active{ background:var(--saffron-soft); }
+    .tab-btn .tab-lbl{ font-size:.66rem; letter-spacing:.01em; }
+
+    /* ---- content: bottom room for the tab bar ---- */
+    .wrap{ padding:16px 14px calc(72px + env(safe-area-inset-bottom,0px)); padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px)); }
+    /* When the modal is open, the bottom tab bar should not float over the
+       verse sheet (the sheet is full-screen on phones); inert it so it
+       cannot receive taps. */
+    body.modal-open .tabbar{ pointer-events:none; opacity:.4; }
     .view-title{ font-size:1.35rem; }
     .view-sub{ font-size:.92rem; margin-bottom:16px; }
     .crumbs{ font-size:.84rem; gap:6px; margin-bottom:14px; }
@@ -1647,10 +1790,20 @@ __FONTS__
             padding-left:calc(14px + env(safe-area-inset-left,0px));
             padding-right:calc(14px + env(safe-area-inset-right,0px));
             overscroll-behavior:contain; }
-    .modal .m-close{ position:fixed; top:calc(10px + env(safe-area-inset-top,0px));
-                     right:calc(12px + env(safe-area-inset-right,0px)); float:none; margin:0; z-index:5;
-                     width:44px; height:44px; font-size:1.2rem; box-shadow:0 4px 14px rgba(0,0,0,.3); }
-    .m-part{ margin-right:52px; font-size:.88rem; }
+    /* Phase 3.2: slim m-head row (✕ / title / ⋯) sits at the top of the sheet
+       and stays visible as the user scrolls; close and more buttons live in
+       the flex row, not as free-floating FABs. */
+    .m-head{ position:sticky; top:0; z-index:5;
+             margin:-14px -14px 8px; padding:calc(8px + env(safe-area-inset-top,0px)) 10px 8px;
+             background:var(--cream); border-bottom:1px solid var(--line); }
+    .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto;
+                     width:40px; height:40px; font-size:1.1rem;
+                     box-shadow:none; border-radius:50%; }
+    .m-more{ width:40px; height:40px; font-size:1.4rem; border-radius:50%; }
+    .m-head .m-num-chit{ font-size:.9rem; }
+    .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
+                       overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+    .m-part{ margin-right:0; font-size:.82rem; margin-bottom:8px; }
     .m-num{ font-size:1.08rem; }
     .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
     .m-part{ font-size:.82rem; }
@@ -1683,14 +1836,18 @@ __FONTS__
   }
 
   @media (max-width:380px){
-    .header-inner h1{ font-size:.98rem; }
-    .lang-btn{ font-size:.76rem; padding:9px 4px; }
+    .header-inner h1{ font-size:.88rem; }
+    .header-inner{ gap:6px; }
+    .seg .lang-btn{ padding:5px 7px; font-size:.72rem; min-height:30px; }
+    .theme-btn{ min-width:30px !important; min-height:30px !important; padding:4px 6px !important; }
     .m-verse .pada-box .pb-deva{ font-size:calc(1.16rem * var(--reader-scale,1)); }
     .toolbar .tool-btn{ flex:1 1 0; min-width:0; min-height:44px; padding:6px 4px;
                          font-size:.72rem; line-height:1.15; white-space:normal;
                          display:flex; flex-direction:column; justify-content:center; gap:2px; }
     .toolbar .tool-btn .ic{ width:1em; height:1em; margin:0; }
     .toolbar .tool-btn span{ max-width:100%; overflow-wrap:anywhere; text-align:center; }
+    .tab-btn .tab-lbl{ font-size:.62rem; }
+    .tab-btn .ic{ width:20px; height:20px; }
   }
 
   /* landscape phones: keep the sheet scrollable, shrink vertical padding */
@@ -1750,30 +1907,59 @@ __FONTS__
       <div id="appSub" style="font-size:.82rem; color:var(--hdr-sub);">श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 pādas</div>
       <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
     </div>
+    <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon">__ICON_MOON__</span></button>
     <div class="langbar" id="langbar">
       <div class="seg" role="group" aria-label="Interface language">
         <button class="lang-btn on" data-lang="en" lang="en" aria-pressed="true" onclick="setLang('en')">English</button>
         <button class="lang-btn" data-lang="ne" lang="ne" aria-pressed="false" onclick="setLang('ne')">नेपाली</button>
         <button class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false" onclick="setLang('hi')">हिन्दी</button>
       </div>
-      <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span></button>
     </div>
   </div>
 </header>
 
-<div class="toolbar">
-  <button class="tool-btn" onclick="goHome()" id="homeBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span id="homeLbl">Home</span></button>
-  <div class="searchwrap" role="search" aria-label="Search verses">
+<!-- Phase 3.3 (2026-10-16): on phones the four tool buttons (Home/Random/
+     Play/Fav) move to a bottom tab bar; the desktop toolbar keeps its
+     existing shape. The search field stays in the sticky top bar on all
+     widths so it is always reachable. -->
+<div class="toolbar" role="toolbar" aria-label="Tools">
+  <button class="tool-btn" onclick="goHome()" id="homeBtn">__ICON_HOME__<span id="homeLbl">Home</span></button>
+  <div class="searchwrap" role="search" aria-label="Search verses" id="searchWrap">
     <div class="sw-field">
-      <span class="sw-ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
+      <span class="sw-ic">__ICON_SEARCH__</span>
       <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
-      <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()">__ICON_CLEARX__</button>
     </div>
   </div>
-  <button class="tool-btn" onclick="randomVerse()" id="randomBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg><span id="randLbl">Random</span></button>
-  <button class="tool-btn" onclick="showPlay()" id="playBtnTool"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg><span id="playLbl">Play</span></button>
-  <button class="tool-btn" onclick="showFavorites()" id="favBtnTool"><svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span id="favLbl">Favorites</span></button>
+  <button class="tool-btn" onclick="randomVerse()" id="randomBtn">__ICON_SHUFFLE__<span id="randLbl">Random</span></button>
+  <button class="tool-btn" onclick="showPlay()" id="playBtnTool">__ICON_PLAY__<span id="playLbl">Play</span></button>
+  <button class="tool-btn" onclick="showFavorites()" id="favBtnTool">__ICON_STAR__<span id="favLbl">Favorites</span></button>
 </div>
+
+<!-- Mobile bottom tab bar: 5 thumb-reachable destinations. Desktop-only
+     (hidden via CSS on ≥761px); on phones it replaces the .toolbar row. -->
+<nav class="tabbar" id="tabbar" aria-label="Main navigation" role="tablist">
+  <button class="tab-btn" data-tab="home" role="tab" onclick="goHome()" aria-selected="true">
+    __ICON_HOME__
+    <span class="tab-lbl" id="tabHomeLbl">Home</span>
+  </button>
+  <button class="tab-btn" data-tab="search" role="tab" onclick="tabGoSearch()" aria-selected="false">
+    __ICON_SEARCH__
+    <span class="tab-lbl" id="tabSearchLbl">Search</span>
+  </button>
+  <button class="tab-btn" data-tab="random" role="tab" onclick="randomVerse()" aria-selected="false">
+    __ICON_SHUFFLE__
+    <span class="tab-lbl" id="tabRandLbl">Random</span>
+  </button>
+  <button class="tab-btn" data-tab="play" role="tab" onclick="showPlay()" aria-selected="false">
+    __ICON_PLAY__
+    <span class="tab-lbl" id="tabPlayLbl">Play</span>
+  </button>
+  <button class="tab-btn" data-tab="fav" role="tab" onclick="showFavorites()" aria-selected="false">
+    __ICON_STAR__
+    <span class="tab-lbl" id="tabFavLbl">Saved</span>
+  </button>
+</nav>
 
 <div class="wrap">
   <nav class="crumbs" id="crumbs" aria-label="Breadcrumb navigation"></nav>
@@ -1886,7 +2072,10 @@ const ICONS = {
   moon:'<svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
   sun:'<svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>',
   eye:'<svg class="ic" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>',
-  eyeOff:'<svg class="ic" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 5.1A11 11 0 0 1 12 5c6.5 0 10 7 10 7a17.7 17.7 0 0 1-3 3.9M6.6 6.6A16.8 16.8 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1"/></svg>'
+  eyeOff:'<svg class="ic" viewBox="0 0 24 24"><path d="m3 3 18 18"/><path d="M10.6 5.1A11 11 0 0 1 12 5c6.5 0 10 7 10 7a17.7 17.7 0 0 1-3 3.9M6.6 6.6A16.8 16.8 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 4.4-1"/></svg>',
+  play:'<svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg>',
+  closeX:'<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+  clearX:'<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>'
 };
 function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub').textContent = L('app_sub');
   $('#tagVerses').textContent = L('tag_sub'); $('#appFooter').textContent = L('footer');
@@ -1899,7 +2088,45 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   const langGroup = document.querySelector('#langbar .seg'); if(langGroup) langGroup.setAttribute('aria-label', L('language'));
   const breadcrumb = $('#crumbs'); if(breadcrumb) breadcrumb.setAttribute('aria-label', L('breadcrumb'));
   { const pb = $('#playLbl'); if(pb) pb.textContent = L('play'); }
+  /* Phase 3.3 — bottom tab labels (mobile). */
+  const th = $('#tabHomeLbl'); if(th) th.textContent = L('home');
+  const ts = $('#tabSearchLbl'); if(ts) ts.textContent = L('search_ph').replace('…','').trim() || 'Search';
+  const tr = $('#tabRandLbl'); if(tr) tr.textContent = L('random');
+  const tp = $('#tabPlayLbl'); if(tp) tp.textContent = L('play');
+  const tf = $('#tabFavLbl'); if(tf) tf.textContent = L('favorites');
   searchX(); }
+/* Phase 3.3 — keep the bottom tab bar in sync with state.view. Reading
+   (read/themes/verses/learn) all map to Home because the tab bar is for
+   top-level destinations, not in-chapter sub-views. */
+function syncTabs(){
+  const bar = $('#tabbar'); if(!bar) return;
+  let tab = 'home';
+  switch(state.view){
+    case 'search': tab = 'search'; break;
+    case 'play': tab = 'play'; break;
+    case 'favorites': tab = 'fav'; break;
+    case 'welcome': case 'sections': case 'chapters': tab = 'home'; break;
+    default: /* read/themes/verses/learn = inside content -> Home */ tab = 'home';
+  }
+  /* Random is a transient action (it jumps straight to a verse), so it
+     never stays selected — you land back in reading. */
+  bar.querySelectorAll('.tab-btn').forEach(b=>{
+    b.setAttribute('aria-selected', String(b.dataset.tab === tab));
+  });
+}
+function tabGoSearch(){
+  /* On phones the search input stays in the sticky top toolbar; tapping
+     the Search tab just focuses it (the first tap on desktop/tablet
+     goes through the toolbar button path instead, which shows a search
+     results page from any field value). */
+  if(window.matchMedia('(max-width:760px)').matches){
+    try{ const si = $('#searchInput'); si.focus(); si.select(); }catch(e){}
+    doSearch();
+  } else {
+    doSearch();
+  }
+}
+
 /* The parts of a language change that are pure chrome: <html lang>, the three
    segmented buttons, and the static interface strings. Kept apart from setLang()
    because boot needs exactly this — and none of the view re-rendering below — to
@@ -1928,7 +2155,10 @@ function setLang(l){
   else if(state.view === 'sections'){ showSections(); }
   else if(state.view === 'search'){ doSearch(); }
   else if(state.view === 'favorites'){ showFavorites(); }
-  else if(state.view === 'read'){ showRead(state.chapter, state.readMode); }
+  /* Phase 3.1: the continuous-reading 'read' view is retired in favour of
+     the merged chapter scroll. Old saved states (state.view === 'read')
+     land on showChapter so nothing breaks on reload. */
+  else if(state.view === 'read'){ showChapter(state.chapter); }
   /* The learn path renders its own views and holds drill state in module
      vars, so it must NOT fall through to the generic chapter/theme restore
      below: with state.theme set that lands on showVerses() and the reader's
@@ -2007,7 +2237,6 @@ function numL(n){ return (state.lang==='ne'||state.lang==='hi') ? devaDigits(n) 
    the search matcher compare against them. */
 function fmtNL(n){ return numL(fmtN(n)); }
 function fmtRangeL(r){ return numL(fmtRange(r)); }
-function vn2(n){ return fmtNL(n.split('.')[0] + '.' + parseInt(n.split('.')[1],10)); }
 function chaptersRange(a, b){ return L('range_chapters').replace('{a}', numL(a)).replace('{b}', numL(b)); }
 /* Meter badge, built at render time so it follows the language (and uses
    Devanagari digits in ne/hi). Falls back to the baked English string. */
@@ -2053,7 +2282,9 @@ function allChReady(){ for(var n=1;n<=18;n++) if(!GITA_CH[n]||!GITA_CH[n].themes
 
 // ---------- search ----------
 let searchTimer = null;
-function onSearchInput(v){ clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); searchX(); }
+function onSearchInput(v){
+  clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); searchX();
+}
 /* the in-field ✕ exists only while there is text to clear — the modern
    pattern; a standing "Clear" button was dead chrome on an empty field */
 function searchX(){ const f = document.querySelector('.sw-field');
@@ -2205,7 +2436,7 @@ function toggleFav(id){
    real trail. Only recorded when leaving an actual browsing view, so repeatedly
    tapping Favorites doesn't overwrite the origin with itself. */
 function rememberOrigin(){
-  if(['welcome','sections','chapters','themes','verses'].includes(state.view)){
+  if(['welcome','sections','chapters','themes','verses','read','chapter'].includes(state.view)){
     state.origin = { view: state.view, section: state.section,
                      chapter: state.chapter, theme: state.theme };
   }
@@ -2216,8 +2447,8 @@ function goToOrigin(){
   $('#searchInput').value = '';
   if(o.view === 'welcome') showWelcome();
   else if(o.view === 'sections') showSections();
-  else if(o.view === 'verses' && o.chapter != null && o.theme != null) showVerses(o.chapter, o.theme);
-  else if(o.view === 'themes' && o.chapter != null) showThemes(o.chapter);
+  else if(o.view === 'verses' && o.chapter != null && o.theme != null) showChapter(o.chapter, o.theme);
+  else if((o.view === 'themes' || o.view === 'chapter' || o.view === 'read') && o.chapter != null) showChapter(o.chapter);
   else if(o.section != null) showChapters(o.section);
   else showSections();
 }
@@ -2330,12 +2561,13 @@ function announceView(){
       msg = `${L('search_results')} · ${resultCountLabel(SRCH_HITS.length)}`;
     else if(state.view === 'favorites')
       msg = `${L('favorites')} · ${resultCountLabel(FAV_LIST.length)}`;
-    else if(state.view === 'verses' && ch && state.theme != null)
+    else if((state.view === 'verses' || state.view === 'chapter') && ch && state.theme != null)
       msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.themes[state.theme].titles)}`;
     else if(ch) msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`;
     else if(state.section) msg = L('sections_title');
   }catch(e){}
   if(msg) el.textContent = msg;
+  syncTabs();
 }
 /* Search and Favorites are "detours" off the browsing hierarchy. Rather than a
    breadcrumb trail, they show a single back button naming the page the reader came
@@ -3318,7 +3550,7 @@ function showChapters(section){
     <div class="grid chapters fade-in">
       ${list.map(ch=>{
         const ci = DATA.indexOf(ch);
-        return `<div class="card" role="button" tabindex="0" onclick="showRead(${ci},'full')">
+        return `<div class="card" role="button" tabindex="0" onclick="showChapter(${ci})">
           <span class="chip">${L('chapter')} ${numL(ch.num)}</span>
           <h3>${esc(T(ch.names))}</h3>
           <p>${esc(T(ch.subs))}</p>
@@ -3348,9 +3580,8 @@ function viewHash(){
   if(state.view==='sections') return '#ways';
   if(state.view==='chapters' && state.section) return '#way='+state.section;
   if(state.view==='learn' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=learn';
-  if(state.view==='themes' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=study';
-  if(state.view==='read' && state.chapter!=null)
-    return '#chapter='+(state.chapter+1)+'&tab='+(state.readMode||'full');
+  if((state.view==='themes' || state.view==='chapter' || state.view==='read') && state.chapter!=null)
+    return '#chapter='+(state.chapter+1)+'&tab=chapter';
   if(state.view==='verses' && state.chapter!=null && state.theme!=null)
     return '#theme='+(state.chapter+1)+'.'+state.theme;
   return '';
@@ -3464,17 +3695,19 @@ function wayName(k){ /* the trail carries the Sanskrit mārga name, as the
    where you are. The segment descriptions ride in title/aria, so the
    control stays quiet but never cryptic. */
 function modeSwitch(ci){
-  const m = state.view === 'themes' ? 'study'
-          : state.view === 'learn'  ? 'learn'
-          : (state.readMode || 'full');
+  /* Phase 3.1: compact tab strip. No framing card, no "How would you like…"
+     label — with only two modes (read / learn) a question is dead weight.
+     Quiet underlined tabs read like a book ("the text" / "memorize"), not a
+     setup wizard. */
+  const m = (state.view === 'chapter' || state.view === 'themes' || state.view === 'verses' || state.view === 'read')
+          ? 'chapter'
+          : state.view === 'learn' ? 'learn' : 'chapter';
   const btn = (mode, lab, fn, tip) =>
     `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
-    <div class="mode-lbl">${esc(L('choose_title'))}</div>
-    <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
-      ${btn('full',  esc(L('opt_full')),    `showRead(${ci},'full')`,  esc(L('opt_full_d')))}
-      ${btn('study', esc(L('opt_study_s')), `showThemes(${ci})`,       esc(L('opt_study_d')))}
-      ${btn('learn', esc(L('opt_learn_s')), `showLearn(${ci})`,        esc(L('opt_learn_d')))}
+    <div class="mode-seg" role="tablist" aria-label="${esc(L('choose_title'))}">
+      ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
+      ${btn('learn',   esc(L('opt_learn_s')), `showLearn(${ci})`,   esc(L('opt_learn_d')))}
     </div>
   </div>`;
 }
@@ -3485,34 +3718,60 @@ function chTitle(ch){
     : name;
   return `<div class="view-title fade-in" role="heading" aria-level="2">${head}</div>`;
 }
-function showThemes(ci){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showThemes(ci)).catch(gitaLoadFail); return; }
+/* Phase 3.1 (2026-10-16): ONE chapter view — themes as headings, verses as
+   tap targets. Reverses the 2026-08-30 owner decision ("theme stays a door")
+   per fresh mobile-UX direction: the extra tap into a theme added friction
+   on phones, and preview cards inside tappable theme cards were ambiguous.
+   Themes are now non-tappable section headings; every verse is a direct tap
+   target opening the Phase-3.2 verse sheet. "Verses with translation" and
+   "Study guide" are merged into this one scroll; Learn by heart stays
+   separate. showThemes/showVerses are kept as aliases for back-links and
+   saved-state routes; they land at the theme anchor. */
+function showChapter(ci, anchorTi){
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showChapter(ci,anchorTi)).catch(gitaLoadFail); return; }
   if(!DATA[ci]||!DATA[ci].themes){ showWelcome(); return; }
-  state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; persistView(); renderCrumbs();
+  state.view='chapter'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6);
+  state.theme = (anchorTi != null) ? anchorTi : null;
+  persistView(); renderCrumbs();
   const ch = DATA[ci];
+  const themeSec = (anchorTi != null) ? numL(anchorTi+1) : '';
+  let flatSi = 0;
+  const body = ch.themes.map((t,ti)=>{
+    const verseCards = t.parts.map(p=>{
+      const s = p.sutras[0];
+      const si = flatSi++;
+      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${si},'theme',null,this)">
+        <div class="vnum">${L('verse')} ${fmtNL(s.n)}</div>
+        <div class="vtitle">${esc(T(p.titles))}</div>
+        <div class="vhint">${esc(T(s.paras).slice(0,90))}${T(s.paras).length>90?'…':''}</div>
+      </div>`;
+    }).join('');
+    return `<section class="ch-theme" id="theme-${ti}" aria-label="${esc(T(t.titles))}">
+      <h3 class="ch-theme-head">
+        <span class="ch-theme-name">${esc(T(t.titles))}</span>
+        <span class="rng">${fmtRangeL(t.range)}</span>
+      </h3>
+      <p class="ch-theme-desc">${esc(T(t.descs))}</p>
+      <div class="grid verses">${verseCards}</div>
+    </section>`;
+  }).join('');
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)} · ${L('opt_study_g')}`, null]])}
+    ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)}${themeSec?' · '+L('theme_sg')+' '+themeSec:''}`, null]])}
     ${chTitle(ch)}
     ${modeSwitch(ci)}
-    <div class="view-sub fade-in">${esc(T(ch.subs))} — ${L('pick_theme')}</div>
-    <div class="th-flow fade-in">
-      ${ch.themes.map((t,ti)=>{
-        /* Owner 2026-08-30: the theme stays a door; its verses become
-           display-only cards in the chapter-list grammar — a tap target
-           nested inside a tap target was an ambiguity too many. Word-by-word
-           lives one level deeper, in the verse grid. */
-        const cards = t.parts.map(p=>{
-          const pd = partDesc(p);
-          return `<div class="card vcard">
-            <span class="chip">${vn2(p.sutras[0].n)}</span>
-            <h3>${esc(T(p.titles))}</h3>${pd?`<p>${esc(pd)}</p>`:''}</div>`;}).join('');
-        return `<div class="theme" role="button" tabindex="0" onclick="showVerses(${ci},${ti})">
-          <h3>${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></h3>
-          <p class="tdesc">${esc(T(t.descs))}</p>
-          <div class="vcards">${cards}</div>
-        </div>`; }).join('')}
-    </div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
+    <div class="view-sub fade-in">${esc(T(ch.subs))} — ${L('click_hint')}.</div>
+    <div class="ch-flow fade-in">${body}${colophonHtml(ch)}</div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
+  /* If an anchor theme was requested (deep link / back), scroll to it. */
+  if(anchorTi != null){
+    requestAnimationFrame(()=>{
+      const el = document.getElementById('theme-'+anchorTi);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
 }
+/* Aliases for older routes / back-links / stored view state. */
+function showThemes(ci){ showChapter(ci); }
+function showVerses(ci,ti){ showChapter(ci, ti); }
 
 /* ---------- continuous reading ----------
    The chapter -> theme -> part -> verse structure is right for study, but the
@@ -3712,6 +3971,7 @@ function openModal(ci,ti,si, mode, navIdx, invoker){
   state.mode = mode;
   fillModal();
   bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
   setAppInert(true); document.body.style.overflow='hidden';
   const close = $('#modal .m-close'); if(close) close.focus({preventScroll:true});
   pushModalHistory();
@@ -3723,7 +3983,9 @@ function openModal(ci,ti,si, mode, navIdx, invoker){
 function closeModal(){
   const bg = $('#modalBg');
   const wasOpen = bg.classList.contains('open');
+  closeVerseMenu(); closeSharePanel();
   bg.classList.remove('open'); document.body.style.overflow='';
+  document.body.classList.remove('modal-open');
   if(wasOpen){
     setAppInert(false);
     const target = MODAL_RETURN_FOCUS && MODAL_RETURN_FOCUS.isConnected && !MODAL_RETURN_FOCUS.disabled
@@ -3754,10 +4016,12 @@ function shareUrl(){
   return root + '/chapter/' + n.split('.')[0] + '/#v' + n;
 }
 function openSharePanel(){
+  closeVerseMenu();
   $('#spLink').textContent = shareUrl();
   const p = $('#sharePanel');
   p.style.display = (p.style.display === 'flex') ? 'none' : 'flex';
 }
+function closeSharePanel(){ const p=$('#sharePanel'); if(p) p.style.display='none'; }
 function copyVerseLink(){
   const t = $('#spLink').textContent;
   function copied(){
@@ -3829,17 +4093,18 @@ function fillModal(){
     </div>`;
   }
   $('#modal').innerHTML = `
-    <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
-    <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
-    <div class="m-num"><h2 class="m-title" id="modalTitle" tabindex="-1">${esc(L('verse'))} ${fmtNL(s.n)} · <span class="m-vtitle">${esc(T(part.titles))}</span></h2>
-      <button class="fav-btn" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
-      <button class="fav-btn${FAV.includes(s.n)?' saved':''}" id="favBtn" aria-pressed="${FAV.includes(s.n)}" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star}${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button></div>
-    <div class="share-panel" id="sharePanel">
-      <div class="sp-hint">${L('share_hint')}</div>
-      <div class="sp-link" id="spLink"></div>
-      <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
+    <div class="m-head">
+      <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
+      <h2 class="m-title" id="modalTitle" tabindex="-1">
+        <span class="m-num-chit">${esc(L('verse'))} ${fmtNL(s.n)}</span>
+        <span class="m-vtitle">${esc(T(part.titles))}</span>
+      </h2>
+      <button type="button" class="m-more" id="mMoreBtn" aria-label="More" aria-haspopup="true" aria-expanded="false" onclick="toggleVerseMenu()">⋯</button>
     </div>
-    <div class="m-readerbar">
+    <div class="m-menu" id="mVerseMenu" role="menu" hidden>
+      <button type="button" role="menuitem" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
+      <button type="button" role="menuitem" class="${FAV.includes(s.n)?' saved':''}" id="favBtn" aria-pressed="${FAV.includes(s.n)}" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star} ${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button>
+      <div class="m-menu-sep" role="separator"></div>
       <div class="m-meter">${esc(meterText(s))}</div>
       <div class="reader-size" role="group" aria-label="${esc(L('reader_size'))}">
         <span class="reader-size-label">${esc(L('reader_size'))}</span>
@@ -3848,22 +4113,34 @@ function fillModal(){
         <button type="button" id="readerSizeUp" onclick="stepReaderSize(1)" aria-label="${esc(L('reader_size_increase'))}" title="${esc(L('reader_size_increase'))}">A+</button>
         <button type="button" onclick="resetReaderSize()" aria-label="${esc(L('reader_size_reset'))}" title="${esc(L('reader_size_reset'))}">↺</button>
       </div>
+      <button type="button" role="menuitem" class="wb-btn" id="wbMasterBtn" onclick="toggleAllMeanings(this)" disabled aria-pressed="false">${ICONS.eyeOff}<span>${L('hide_meanings')}</span></button>
     </div>
+    <div class="share-panel" id="sharePanel">
+      <div class="sp-hint">${L('share_hint')}</div>
+      <div class="sp-link" id="spLink"></div>
+      <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
+    </div>
+    <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
-      <div class="m-verse">
-        <div class="words-bar">
-          <span class="wb-hint" id="wordsHint">${L('click_hint_pada')} ·</span>
-          <button class="wb-btn" onclick="toggleAllMeanings(this)" disabled aria-pressed="false">${ICONS.eyeOff}<span>${L('hide_meanings')}</span></button>
-        </div>
-        ${spkHtml(topS)}
-        <div class="pada-grid">
-          <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
-          ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
-          ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
-        </div>
+      <div class="m-whole-verse" lang="sa">
+        ${padaBlockDeva(s, true)}
       </div>
-      <div class="m-line"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
+      <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+      <details class="m-words-section" id="mWordsSection">
+        <summary><span class="m-wb-hint" id="wordsHint">${L('click_hint_pada')}</span></summary>
+        <div class="m-words-body">
+          <p class="m-pada-hint">${esc(L('click_pada_meanings'))}</p>
+          <div class="m-verse">
+            ${spkHtml(topS)}
+            <div class="pada-grid">
+              <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
+              ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
+              ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
@@ -3910,6 +4187,23 @@ function applyReaderSize(){
   if(down) down.disabled = state.readerSize <= READER_SIZES[0];
   if(up) up.disabled = state.readerSize >= READER_SIZES[READER_SIZES.length-1];
 }
+/* Phase 3.2 — verse-sheet overflow menu (⋯). Share / Save / Text size /
+   Hide-meanings live here so they don't crowd the top of the sheet. */
+function toggleVerseMenu(){
+  const menu = $('#mVerseMenu'), btn = $('#mMoreBtn');
+  if(!menu || !btn) return;
+  if(menu.hasAttribute('hidden')){ menu.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+  else { menu.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+}
+function closeVerseMenu(){ const menu=$('#mVerseMenu'), btn=$('#mMoreBtn');
+  if(menu && !menu.hasAttribute('hidden')){ menu.setAttribute('hidden',''); if(btn) btn.setAttribute('aria-expanded','false'); }
+}
+document.addEventListener('click', function(e){
+  const menu = $('#mVerseMenu'), btn = $('#mMoreBtn');
+  if(!menu || menu.hasAttribute('hidden')) return;
+  if(menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+  closeVerseMenu();
+});
 // toggle pada-chheda (word split) open/closed on the clicked element's box/line
 function toggleWords(el){
   const id = el.getAttribute('aria-controls');
@@ -4131,13 +4425,11 @@ function gitaBoot(){
     var tm = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(location.hash || '');
     if (tm) { const ci = parseInt(tm[1], 10) - 1, ti = parseInt(tm[2], 10);
       loadChapter(ci+1).then(function(){ showVerses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return; }
-    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(location.hash || '');
+    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/.exec(location.hash || '');
     if(m){ const ci = parseInt(m[1], 10) - 1; const tb = m[3];
       loadChapter(ci+1).then(function(){
-        if(tb === 'study'){ showThemes(ci); }
-        else if(tb === 'learn'){ showLearn(ci); }
-        else if(tb){ showRead(ci, tb); }
-        else { showRead(ci, 'full'); }
+        if(tb === 'learn'){ showLearn(ci); }
+        else { showChapter(ci); }  /* full/mula/study/chapter all merge into the one chapter view */
       }).catch(function(){ gitaLoadFail(); }); return; }
     var h = location.hash || '';
     if(h === '#play'){ showPlay(); return; }
@@ -4154,14 +4446,12 @@ function gitaBoot(){
     if(stay==='#ways'){ showSections(); return; }
     var sw = /^#way=([123])$/.exec(stay);
     if(sw){ showChapters(+sw[1]); return; }
-    var sm = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(stay);
+    var sm = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/.exec(stay);
     if(sm){
       const ci = parseInt(sm[1],10)-1, tb=sm[3];
       loadChapter(ci+1).then(function(){
-        if(tb==='study') showThemes(ci);
-        else if(tb==='learn') showLearn(ci);
-        else if(tb) showRead(ci, tb);
-        else showRead(ci,'full');
+        if(tb==='learn') showLearn(ci);
+        else showChapter(ci);
       }).catch(function(){ gitaLoadFail(); }); return;
     }
     var st = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(stay);
@@ -4299,7 +4589,23 @@ _loader = (
 )
 _tags = "<script>gitaBoot();</script>"
 
-shell = (HTML
+# Icon substitution — single source for each SVG so the shell stays lean
+# (same path reused by toolbar buttons, bottom tab bar, and dark-mode toggle).
+def _icon_svg(slug):
+    return {"home":'<svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>',
+            "search":'<svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>',
+            "shuffle":'<svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg>',
+            "play":'<svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg>',
+            "star":'<svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
+            "moon":'<svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+            "clearx":'<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>'}[slug]
+shell = HTML
+for _slug, _key in (("home","__ICON_HOME__"),("search","__ICON_SEARCH__"),
+                    ("shuffle","__ICON_SHUFFLE__"),("play","__ICON_PLAY__"),
+                    ("star","__ICON_STAR__"),("moon","__ICON_MOON__"),
+                    ("clearx","__ICON_CLEARX__")):
+    shell = shell.replace(_key, _icon_svg(_slug))
+shell = (shell
          .replace("__FONTS__", _font_css)
          .replace("__UI__", _ui_js)
          .replace("__LR_LEGACY_JSON__", _legacy_maps_js)
@@ -4538,6 +4844,14 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;   // never touch cross-origin requests
+
+  // The service worker script itself MUST come from the network every time, or
+  // the browser can never discover a new worker and the cache pins itself
+  // forever across deploys (typical "stuck SW" bug).
+  if (url.pathname.endsWith('/sw.js') || url.pathname.endsWith('\\sw.js')) {
+    e.respondWith(fetch(req).catch(() => caches.match(req)));
+    return;
+  }
 
   if (req.mode === 'navigate') {
     // network-first for the page itself, so updates land; fall back to cache offline.

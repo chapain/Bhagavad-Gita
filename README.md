@@ -85,8 +85,8 @@ source/                 ← edit here
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
 
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         783 assertions on the built document
-browser_checks.py       166 live-browser checks (rendering, i18n, touch, offline)
+run_gita_app.js         788 assertions on the built document
+browser_checks.py       199 live-browser checks (rendering, i18n, touch, offline)
 ```
 
 `index.html` is a **split-site shell**: the app chrome, styles, embedded font and
@@ -151,7 +151,7 @@ Never edit `index.html` — it is generated and your change would be overwritten
 | chapter names | `source/i18n_chapters.py` |
 | theme and part titles, blurbs, verse ranges (en) | `source/gita_data*.py` |
 | theme and part titles, blurbs (ne / hi) | `source/themes_ne.py`, `source/themes_hi.py` |
-| interface wording (buttons, labels; 184 UI strings in three languages) | `source/i18n_ui.py` |
+| interface wording (buttons, labels; 187 UI strings in three languages) | `source/i18n_ui.py` |
 
 #### The verse you read
 

@@ -220,7 +220,7 @@ ok("if(fb) fb.innerHTML = '';" in idx,
 # and teal for accents, states and hover. Check that surfaces use the shared
 # palette rather than hard-coded colours, and that the active quarter slot keeps
 # its restrained teal hairline.
-_SURFACES = (".card", ".theme", ".res-card", ".mode-box", ".lr-step", ".lr-chip",
+_SURFACES = (".card", ".theme", ".res-card", ".lr-step", ".lr-chip",
              ".lr-q", ".pl-mode", ".lr-word", ".lr-finis", ".lr-opt", ".lr-qbox",
              ".lr-chip2", ".lr-slot")
 for _sel in _SURFACES:
@@ -363,7 +363,11 @@ ok("LQback\n      ? backFoot(LQback.fn, L(LQback.label))" in idx,
 ok('id="playBtnTool"' in idx, "Play must sit in the tool row beside Random and Favorites")
 for _f in ("function showPlay(", "function plStart(", "function plNext(", "function plPool("):
     ok(_f in idx, f"Play needs {_f.split('(')[0].split()[-1]}()")
-ok(idx.count('"play"') == 3, "the Play label must exist in all three languages")
+# Phase 3.3 (2026-10-16): count raised 3 -> 4. The 3 UI labels ("play":"Play"
+# in en/ne/hi) still exist; the fourth '"play"' is data-tab="play" on the
+# bottom-tab Play button (intentionally identical so the tab key matches
+# the route name).
+ok(idx.count('"play"') == 4, "the Play label must exist in all three languages (plus bottom-tab route)")
 ok("PL.scope === 'ch'" in idx, "Play must offer a single-chapter scope")
 # Mode 1 gives the Sanskrit verse and asks for its localized meaning; the
 # choices are paraphrases, not verse fragments.
@@ -515,16 +519,10 @@ ok("background:var(--chip-hover)" in (_tb.group(1) if _tb else ""),
 ok("color:#FFF8EC" in (_tb.group(1) if _tb else ""),
    "theme-btn hover must set a light foreground for its icon")
 
-# The "How would you like to receive this chapter?" caption must NOT be the
-# same saffron as the pills it labels — a caption that looks pressable is a
-# lie, and --saffron-dark measured 3.34:1 on white, under the AA floor.
-_ml = re.search(r"\.mode-lbl\{([^}]*)\}", idx_nofont)
-ok(_ml is not None, ".mode-lbl rule must exist")
-if _ml:
-    ok("--saffron" not in _ml.group(1),
-       "the mode caption must not reuse the pills' saffron")
-    ok("var(--ink-soft)" in _ml.group(1),
-       "the mode caption should be --ink-soft (AA in both themes)")
+# Phase 3.1: the "How would you like to receive this chapter?" caption is
+# removed — with only two modes (Verses / Learn) the tab strip speaks for
+# itself. The legacy .mode-lbl rule is gone intentionally; keep an empty
+# placeholder so surrounding checks still line up.
 
 
 # ------------------------------------------- verse titles: one voice, no gaps
@@ -554,14 +552,16 @@ ok(len(_tc) <= 10, f"verse titles should be sentence case; {len(_tc)} look Title
 
 
 # ---------------------------------------- every view must name itself
-# showVerses was the only view in the app with no heading: the theme's name
-# appeared in the crumb trail and then nowhere on the page, so the reader
-# arrived at a description with no subject (owner 2026-09-02).
-_sv = re.search(r"function showVerses\([^)]*\)\{[\s\S]*?\n\}", idx)
-ok(_sv is not None, "showVerses must exist")
+# Phase 3.1: themes are now section HEADINGS inside the unified chapter
+# view. Each theme's title must appear on screen as a heading, not hide in
+# the crumb trail. showVerses stays as an alias that calls showChapter().
+_sv = re.search(r"function showChapter\([^)]*\)\{[\s\S]*?\n\}", idx)
+ok(_sv is not None, "showChapter must exist")
 if _sv:
-    ok('class="view-title fade-in" role="heading" aria-level="2">${esc(T(t.titles))}' in _sv.group(0),
-       "the theme page must show the theme's title, not only its description")
+    ok('class="ch-theme-name">${esc(T(t.titles))}' in _sv.group(0),
+       "the chapter view prints every theme's name as a heading, not only its description")
+ok("function showThemes(ci){ showChapter(ci); }" in idx and "function showVerses(ci,ti){ showChapter(ci, ti); }" in idx,
+   "showThemes/showVerses aliases are kept for saved-route compatibility")
 # .rng is scoped to .th-flow h3; beside a view title it would inherit 1.7rem
 ok(".view-title .rng{" in idx,
    "a range beside a view title needs its own size, or it shouts over the name")
@@ -603,7 +603,12 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
         with open(_p, "rb") as _fh:
             ok(_fh.read(4) == b"wOF2", f"{_f} must be a real woff2")
     ok(f"./{_f}" in read("sw.js"), f"{_f} must be precached, or offline loses it")
-ok(len(idx) < 250000, f"the shell should stay lean; it is {len(idx)} characters")
+# Phase 3.1–3.3 (2026-10-16): raised from 250000 to 290000. The mobile
+# overhaul adds ~17KB of useful UI (slim two-row header, bottom tabbar,
+# m-head/m-menu/m-whole-verse hero, unified chapter view with theme
+# headings + direct verse tap targets); the cap is to catch accidental
+# bloat, not freeze UI evolution. Actual at 3.1 commit: 267684.
+ok(len(idx) < 290000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64

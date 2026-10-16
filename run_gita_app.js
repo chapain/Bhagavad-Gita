@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 783;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 166;   // browser_checks.py
+const TOTAL_ASSERTIONS = 788;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 199;   // browser_checks.py (Phase 3.1)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -102,7 +102,9 @@ group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
 for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`);
 const enKeys = Object.keys(UI.en);
-ok(enKeys.length === 184, `UI has 184 keys (got ${enKeys.length})`);
+// Phase 3.1 (2026-10-16): added opt_chapter + opt_chapter_d (2) → 186;
+// added click_pada_meanings (1) → 187
+ok(enKeys.length === 187, `UI has 187 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -600,7 +602,11 @@ ok(/apple-mobile-web-app-capable/.test(html), 'iOS web-app meta present');
 ok(html.includes('@media (max-width:760px)'), 'phone breakpoint present');
 ok(html.includes('@media (hover:none)'), 'touch devices opt out of hover lifts');
 ok(html.includes('env(safe-area-inset-'), 'safe-area insets used (notch / home indicator)');
-ok(/\.toolbar\{[^}]*position:sticky/.test(html), 'toolbar sticky on phones');
+// Phase 3.3 (2026-10-16): on phones the header is the single sticky top
+// bar and the tool buttons live in a fixed bottom tab bar, so the desktop
+// .toolbar no longer needs to be sticky. Lock the new invariants instead.
+ok(/header\{[^}]*position:sticky[^}]*top:0/.test(html), 'slim header sticky at the top on phones');
+ok(/\.tabbar\{[^}]*position:fixed[^}]*bottom:0/.test(html), 'bottom tab bar fixed to the bottom on phones');
 ok(/\.m-verse \.pada-row\{ flex-direction:column/.test(html), 'pādas stack one per row on phones');
 ok(html.includes("addEventListener('popstate'"), 'Android back button / iOS back-swipe closes the modal');
 ok(html.includes("bg.addEventListener('touchstart'"), 'swipe navigation wired to the verse sheet');
@@ -783,19 +789,19 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(/const root = \(og \? og\.content/.test(html) && /meta\[property="og:url"\]/.test(html)
      && html.includes("'/chapter/' +"),
      'shares always derive from the live og:url, never a file:// path');
-  ok(html.includes('/^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/') && html.includes("tb === 'study'") && html.includes("tb === 'learn'"),
+  ok(html.includes('/^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/') && html.includes("tb === 'learn'") && html.includes("showChapter(ci)"),
      'the app routes #chapter=N deep links, with an optional tab');
-  ok(html.includes('function modeSwitch(') && html.includes('opt_full') && html.includes('opt_study_s'),
-     'the chapter page offers the two ways as a segmented control (translation / study)');
-  ok(!html.includes("btn('mula'"), 'the retired mula pill is gone from the chooser');
+  // Phase 3.1: chooser is two pills — Chapter (verses grouped by theme) and Learn by heart.
+  ok(html.includes('function modeSwitch(') && html.includes("btn('chapter'") && html.includes('opt_chapter'),
+     'the chapter page offers Chapter (verses) as the default pill');
   ok(html.includes("btn('learn'") && html.includes('function showLearn('),
-     'the chooser offers Learn by heart as the third way');
+     'the chooser offers Learn by heart as the second pill');
   ok(html.includes('function lrDrill(') && html.includes('function lrRun('),
      'the learn path carries its drill engine');
   ok(html.includes("LQ.push(it)"),
      'a missed drill item is requeued, so recall is earned not skipped');
-  ok(html.includes("if(mode === 'mula') mode = 'full'"),
-     'a shared #tab=mula link still works — it lands on the translation view');
+  ok(html.includes("if(mode === 'mula') mode = 'full'") && html.includes("showChapter(ci)"),
+     'shared legacy #tab=mula/full/study links still work — they land on the unified chapter view');
 }
 
 // ---- stale deep links & offline recovery ---------------------------------
