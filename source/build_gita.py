@@ -1474,6 +1474,7 @@ __FONTS__
   .m-words-section > summary::after{ content:"▾"; margin-left:auto; font-size:.9rem; color:var(--ink-soft); transition:transform .15s; }
   .m-words-section[open] > summary::after{ transform:rotate(180deg); }
   .m-words-body{ padding-bottom:4px; }
+  .m-pada-hint{ margin:4px 2px 10px; color:var(--ink-soft); font-size:.8rem; font-style:italic; line-height:1.5; }
   /* Inside Word-by-word reuse the existing .m-verse/pāda styles but with
      tighter padding since it lives inside a collapsible. */
   .m-words-body .m-verse{ background:transparent; border:0; padding:8px 0 0; margin:0; border-radius:0; }
@@ -4129,6 +4130,7 @@ function fillModal(){
       <details class="m-words-section" id="mWordsSection">
         <summary><span class="m-wb-hint" id="wordsHint">${L('click_hint_pada')}</span></summary>
         <div class="m-words-body">
+          <p class="m-pada-hint">${esc(L('click_pada_meanings'))}</p>
           <div class="m-verse">
             ${spkHtml(topS)}
             <div class="pada-grid">

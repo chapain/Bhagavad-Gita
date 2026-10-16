@@ -362,9 +362,9 @@ def run(pw, url, offline_capable=False):
     pg.locator(".card").first.click()
     pg.wait_for_timeout(700)
     # Phase 3.1: chapter opens into the unified 'chapter' view (themes as
-    # headings, verses as tap targets). Mode switch now has 2 pills: Verses + Learn by heart.
+    # headings, verses as tap targets). Mode switch now has 2 pills: Thematic study + Learn by heart.
     ok(pg.evaluate("state.view") == "chapter" and pg.locator(".mode-seg .ms-btn").count() == 2,
-       "a chapter opens straight into its verse list; Verses + Learn pills ride along")
+       "a chapter opens straight into its verse list; Study + Learn tabs ride along")
     for js, label in [("showChapters(2)", "inside a way"), ("showChapter(8)", "a chapter")]:
         pg.evaluate(js)
         pg.wait_for_timeout(500)
@@ -418,7 +418,7 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(600)
     ok(pg.locator(".mode-seg .ms-btn").count() == 2
        and pg.locator(".mode-seg .ms-btn.on").count() == 1,
-       "the chapter page carries Verses + Learn as one tab strip, exactly one active")
+       "the chapter page carries Thematic study + Learn as one tab strip, exactly one active")
     ok(pg.locator(".mode-box .mode-seg").count() == 1
        and pg.locator(".mode-lbl").count() == 0,
        "the control is a label-less tab strip (no 'how would you like' card)")
@@ -452,14 +452,14 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(250)
     # Phase 3.1: two pills — Verses (unified chapter view) + Learn by heart.
     lbls = pg.eval_on_selector_all(".mode-seg .ms-btn", "e=>e.map(x=>x.textContent.trim())")
-    ok(lbls == ["Verses", "Learn by heart"],
-       f"the segments are Verses + Learn in the current language ({lbls})")
+    ok(lbls == ["Thematic study", "Learn by heart"],
+       f"the segments are Thematic study + Learn in the current language ({lbls})")
     cr = pg.eval_on_selector_all(".way-crumb > *", "e=>e.map(x=>x.textContent.trim())")
     ok(cr[-1].startswith("Chapter 2"), f"retired study/full/mula routes all land on the unified chapter view ({cr})")
     # In the unified view, themes are non-tappable headings and verses ARE tap targets.
     ok(pg.evaluate("state.view") == "chapter" and pg.locator(".ch-theme-head").count() > 0
-       and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == "Verses",
-       "chapter opens with the Verses pill raised and themes as headings")
+       and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == "Thematic study",
+       "chapter opens with the Study tab raised and themes as headings")
     vc = pg.locator(".ch-theme .mini")
     ok(vc.count() > 0 and vc.first.get_attribute("onclick"),
        f"every verse of the chapter is a tap target opening its sheet ({vc.count()})")
@@ -660,12 +660,12 @@ def run(pw, url, offline_capable=False):
        f"the verse number closes the second line between daṇḍas ({shape['tail'][-18:]})")
 
     # The retired mula/full/study routes remain compatible — they all land on
-    # the unified chapter view (Verses pill raised), beside Learn by heart.
+    # the unified chapter view (Study tab raised), beside Learn by heart.
     pg.evaluate("showChapter(0)")
     pg.wait_for_timeout(500)
     opts = pg.eval_on_selector_all(".mode-seg .ms-btn", "e=>e.map(x=>x.textContent.trim())")
     ok(len(opts) == 2 and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == opts[0],
-       f"the chapter page offers Verses + Learn, Verses selected ({opts})")
+       f"the chapter page offers Study + Learn, Study selected ({opts})")
     pg.wait_for_timeout(200)
     ok(pg.evaluate("state.view") == "chapter" and pg.locator(".ch-theme .mini").count() == 47,
        "the unified chapter view lists all 47 verses of chapter 1")
@@ -811,7 +811,7 @@ def run(pw, url, offline_capable=False):
     q.wait_for_timeout(1200)
     ok(q.inner_text(".way-crumb .wc-cur").strip().startswith("Chapter 2")
        and q.locator(".ch-theme-head").count() > 0
-       and q.locator(".mode-seg .ms-btn.on").inner_text().strip() == "Verses",
+       and q.locator(".mode-seg .ms-btn.on").inner_text().strip() == "Thematic study",
        "#chapter=2&tab=study lands on the unified chapter view (SEO CTA kept compatible)")
     c.close()
 

@@ -21,7 +21,7 @@ It runs, in order:
     2g. source/check_study_structure.py  approved story maps and verse titles
     2h. tests/  mutation/regression checks for the study structure and the
         translation checker (tests/test_translations.py proves it can fail)
-    3. run_gita_app.js        787 assertions on the built document        (needs node)
+    3. run_gita_app.js        788 assertions on the built document        (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
     4. browser_checks.py      199 live-browser checks                 (needs playwright)
 

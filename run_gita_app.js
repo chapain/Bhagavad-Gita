@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 787;      // keep in step with the printed total
+const TOTAL_ASSERTIONS = 788;      // keep in step with the printed total
 const TOTAL_BROWSER_CHECKS = 199;   // browser_checks.py (Phase 3.1)
 const path = require('path');
 
@@ -102,8 +102,9 @@ group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
 for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`);
 const enKeys = Object.keys(UI.en);
-// Phase 3.1 (2026-10-16): added opt_chapter + opt_chapter_d (2) → 186 total
-ok(enKeys.length === 186, `UI has 186 keys (got ${enKeys.length})`);
+// Phase 3.1 (2026-10-16): added opt_chapter + opt_chapter_d (2) → 186;
+// added click_pada_meanings (1) → 187
+ok(enKeys.length === 187, `UI has 187 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
