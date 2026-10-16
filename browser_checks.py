@@ -464,13 +464,33 @@ def run(pw, url, offline_capable=False):
     ok(anat[0] and anat[1] and anat[2], f"verse card = number chip + title + description ({anat})")
 
     # Phase 2.2: a verse description that is word-for-word the verse's own
-    # literal must not be printed twice. Judged per language: chapter 2,
-    # theme 1 — 2.1 is distinct in every language, 2.2 is a copy in Hindi
-    # only, 2.3 is a copy in all three. The card keeps its chip and title;
-    # only the repeated <p> disappears.
+    # literal must not be printed twice. The 2026-10-14 whole-book summaries
+    # rewrote every description to be its own summary, so real verses now
+    # have ZERO copies in any language (verified by
+    # tests/test_duplicate_descriptions.py). To keep exercising the actual
+    # suppress-a-copy / show-a-summary behaviour deterministically, inject
+    # synthetic descs onto DATA[1].themes[0].parts[0..2] matching the
+    # original fixture's duplicate profile per language, render, then
+    # restore. The profile: 2.1 distinct in all langs, 2.2 a copy in Hindi
+    # only, 2.3 a copy in all three. The card keeps its chip and title; only
+    # the repeated <p> disappears.
+    pg.evaluate("""() => {
+        window.__p22Saved = DATA[1].themes[0].parts.slice(0, 3).map(
+            p => ({en: p.descs.en, ne: p.descs.ne, hi: p.descs.hi}));
+    }""")
     for lang, expect in (("en", [False, False, True]),
                          ("ne", [False, False, True]),
                          ("hi", [False, True, True])):
+        js_dup = repr([bool(x) for x in expect]).replace("True", "true").replace("False", "false")
+        pg.evaluate(f"""() => {{
+            const parts = DATA[1].themes[0].parts;
+            const dup = {js_dup};
+            for (let i = 0; i < 3; i++) {{
+                parts[i].descs['{lang}'] = dup[i]
+                    ? parts[i].sutras[0].lits['{lang}']
+                    : window.__p22Saved[i]['{lang}'];
+            }}
+        }}""")
         pg.evaluate(f"setLang('{lang}')")
         pg.wait_for_timeout(600)
         prof, shown = pg.evaluate("""() => {
@@ -496,6 +516,16 @@ def run(pw, url, offline_capable=False):
              "t => Array.from(t.querySelectorAll('.vcard'))"
              ".every(c => c.querySelector('.chip') && c.querySelector('h3'))"),
            f"p22 {lang}: every card keeps its number chip and title")
+    # Re-render with the synthetic en profile (2.3 still a copy) for the
+    # verse-view .pdesc checks below; originals are restored after.
+    pg.evaluate("""() => {
+        const parts = DATA[1].themes[0].parts;
+        const dup = [false, false, true];
+        for (let i = 0; i < 3; i++) {
+            parts[i].descs.en = dup[i] ? parts[i].sutras[0].lits.en
+                                        : window.__p22Saved[i].en;
+        }
+    }""")
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(400)
     pg.locator(".th-flow .vcard").first.click()
@@ -518,6 +548,17 @@ def run(pw, url, offline_capable=False):
        f"p22 verses view: .pdesc presence disagrees with the data ({heads[1]})")
     ok(heads[1][0] == pg.evaluate("DATA[1].themes[0].parts[0].descs['en']"),
        "p22 verses view: a kept .pdesc is the data's own text")
+    # Restore the real 2026-10-14 summaries and re-render before
+    # continuing — synthetic data must not leak to later checks.
+    pg.evaluate("""() => {
+        const parts = DATA[1].themes[0].parts;
+        window.__p22Saved.forEach((s, i) => {
+            parts[i].descs.en = s.en;
+            parts[i].descs.ne = s.ne;
+            parts[i].descs.hi = s.hi;
+        });
+        delete window.__p22Saved;
+    }""")
     pg.evaluate("showThemes(1)")
     pg.wait_for_timeout(500)
     pg.evaluate("setLang('ne')")
