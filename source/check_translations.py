@@ -53,6 +53,19 @@ BANNED = [
      "गोमुखाः is a horn-trumpet, not a lion's roar; the word gloss says "
      "गोमुखहरू and that roar belongs to 1.12 (सिंहनादं विनद्य)",
      "1.13 Nepali literal, fixed 2026-10-15"),
+    ("नासिने र नासिने",
+     "क्षर and अक्षर are perishable and imperishable, not two perishables",
+     "15.16 Nepali paraphrase, fixed 2026-10-16 batch 3"),
+    ("नकुभल्याउने",
+     "unclear rendering of अपैशुनम्; use an explicit absence of slander",
+     "16.02 Nepali paraphrase, fixed 2026-10-16 batch 3"),
+    ("लोभ, क्रोध र लालच",
+     "कामः क्रोधः लोभः distinguishes desire, anger and greed; two words for "
+     "greed erase कामः",
+     "16.21 Nepali paraphrase, fixed 2026-10-16 batch 3"),
+    ("अनन्य त्यागी",
+     "अत्यागिनाम् means non-renouncers, not single-minded renouncers",
+     "18.12 Nepali literal, fixed 2026-10-16 batch 3"),
 ]
 
 # ---- 3. reviewed exceptions to the duplication rule --------------------------

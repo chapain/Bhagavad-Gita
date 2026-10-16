@@ -47,7 +47,7 @@ CH14_THEMES = [
 ]
 
 CH14_TRANSLATIONS = {
-1: ("The Blessed Lord said: I will again declare the supreme knowledge, the best of all knowledges — knowing which all the sages have gone to the highest perfection.",
+1: ("The Blessed Lord said: I will again declare the supreme knowledge, the best of all knowledges — knowing which all the sages have gone from here to the highest perfection.",
     "Kṛṣṇa said: “I will now tell you the highest knowledge, the best of all — knowing which, the sages reached the supreme perfection.”"),
 2: ("Taking refuge in this knowledge, they attain unity with my being; they are not born at creation, nor are they troubled at dissolution.",
     "“Resting on this knowledge, they become one with me; they are not born at the dawn of creation, nor disturbed at its end.”"),
@@ -65,9 +65,9 @@ CH14_TRANSLATIONS = {
     "“Tamas is born of ignorance, deluding all beings; it binds through carelessness, laziness, and sleep.”"),
 9: ("Sattva attaches to happiness, rajas to action, O Bhārata; tamas, covering knowledge, attaches to heedlessness.",
     "“Sattva ties you to joy, rajas to action, and tamas — veiling wisdom — to carelessness.”"),
-10: ("Sattva arises by overpowering rajas and tamas; so rajas arises by overpowering sattva and tamas; and so tamas, overpowering both.",
+10: ("O Bhārata, sattva arises by overpowering rajas and tamas; so rajas arises by overpowering sattva and tamas; and so tamas, overpowering both.",
     "“Sattva rises by dominating rajas and tamas; rajas rises by dominating sattva and tamas; and tamas likewise rises over both.”"),
-11: ("When illumination shines through all the gates of this body, then know that sattva has grown.",
+11: ("When the light of knowledge shines through all the gates of this body, then know that sattva has grown.",
     "“When light streams through every gate of the body, know that sattva prevails.”"),
 12: ("Greed, activity, the undertaking of works, restlessness and longing arise when rajas has grown, O bull of the Bhāratas.",
     "“Greed, busy-ness, starting projects, restlessness, and craving appear when rajas prevails.”"),
@@ -94,7 +94,7 @@ CH14_TRANSLATIONS = {
 23: ("— seated as one indifferent, unshaken by the guṇas, thinking 'the guṇas act' and abiding unmoved —",
     "“— seated like an unconcerned onlooker, unshaken by the qualities, thinking ‘the qualities act,’ and standing firm —”"),
 24: ("— equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in praise and blame —",
-    "“— equal in joy and sorrow, content in himself, seeing mud, stone, and gold alike, unmoved by praise or blame —”"),
+    "“— equal in joy and sorrow, content in himself, seeing mud, stone, and gold alike, steady through likes and dislikes, unmoved by praise or blame —”"),
 25: ("— equal in honour and dishonour, equal to friend and foe, renouncing all undertakings — he is said to have transcended the guṇas.",
     "“— equal in honour and disgrace, friend and foe, giving up all selfish undertakings — such a one is beyond the qualities.”"),
 26: ("He who serves me with the unwavering yoga of devotion — transcending these guṇas, he becomes fit for Brahman.",
