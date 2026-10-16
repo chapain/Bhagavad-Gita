@@ -72,8 +72,8 @@ CH12_TRANSLATIONS = {
     "“One who neither delights nor despairs, neither mourns nor craves, letting go of good and evil — such a devotee is dear to me.”"),
 18: ("Equal to friend and foe, to honour and dishonour, to cold and heat, pleasure and pain, free from attachment —",
     "“Equal toward friend and enemy, praise and blame, cold and heat, joy and sorrow, free from clinging —”"),
-19: ("— silent, content with anything, homeless, of steady mind, full of devotion — that man is dear to me.",
-    "“— silent, satisfied with whatever comes, unattached to place, steady-minded, devoted — such a person is dear to me.”"),
+19: ("— equal in blame and praise, silent, content with anything, homeless, of steady mind, full of devotion — that man is dear to me.",
+    "“— the same in blame and praise, silent, satisfied with whatever comes, unattached to place, steady-minded, devoted — such a person is dear to me.”"),
 20: ("But those who follow this immortal dharma, as declared, with faith, making me the supreme goal — those devotees are exceedingly dear to me.",
     "“But those who follow this deathless dharma with faith, holding me as the highest goal — such devotees are most dear to me of all.”"),
 }

@@ -57,7 +57,7 @@ CH9_THEMES = [
 
 CH9_TRANSLATIONS = {
 1: ("The Blessed Lord said: To you, who do not find fault, I will declare this profoundest secret — knowledge together with its realization; knowing which, you shall be freed from evil.",
-    "Kṛṣṇa said: “Because you are sincere, Arjuna, I will teach you the deepest secret — wisdom with its direct realization. Knowing it, you will be free of all evil.”"),
+    "Kṛṣṇa said: “Because you do not find fault, Arjuna, I will teach you the deepest secret — wisdom with its direct realization. Knowing it, you will be free of all evil.”"),
 2: ("This is the royal knowledge, the royal secret, the supreme purifier, directly perceived, righteous, very easy to practise, and imperishable.",
     "“This is the king of knowledge and of secrets — the purest, seen directly, in accord with dharma, easy to follow, and eternal.”"),
 3: ("The men without faith in this dharma, O scorcher of foes, not reaching me, return to the path of death and rebirth.",
