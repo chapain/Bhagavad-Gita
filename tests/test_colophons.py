@@ -14,7 +14,7 @@ What this test pins, so a later edit cannot quietly break it:
   * the frame is word-for-word identical in all 18 — only the name and the
     ordinal vary — so the text stays one formula, not eighteen improvisations;
   * each colophon names its own chapter: the yoga name matches that chapter's
-    shipped name in `gita_data.CHAPTERS`, and the ordinal + number match the
+    Devanagari name in `source/ch<N>.json`, and the ordinal + number match the
     chapter number;
   * the generated chapter page prints that chapter's colophon, once;
   * adding the colophon did not disturb the verses: 700 of them, all with a
@@ -23,14 +23,10 @@ What this test pins, so a later edit cannot quietly break it:
 """
 import json
 import re
-import sys
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "source"))
-
-from gita_data import CHAPTERS  # noqa: E402
 
 # The two characters this test exists for.
 OM = "\u0950"          # ॐ DEVANAGARI OM
@@ -95,10 +91,10 @@ class TestColophonData(unittest.TestCase):
             self.assertIn("o’dhyāyaḥ", t, f"ch{n}: iast tail missing")
 
     def test_each_colophon_names_its_own_chapter(self):
-        names = {c[0]: c[2] for c in CHAPTERS}
         for n in range(1, 19):
-            c = _load(n)["colophon"]
-            deva_name = names[n]
+            chapter = _load(n)
+            c = chapter["colophon"]
+            deva_name = chapter["deva"]
             # ch6 is listed as "आत्मसंयमयोग / ध्यानयोग"; the colophon uses the
             # first (the standard colophon reading) — that is the point of the check.
             self.assertTrue(deva_name.split(" / ")[0] in c["deva"],
@@ -115,7 +111,7 @@ class TestColophonData(unittest.TestCase):
         for n in range(1, 19):
             d = _load(n)
             self.assertEqual(set(d) - {"colophon"},
-                             {"num", "name", "deva", "sub", "verses", "themes", "names", "subs"},
+                             {"num", "deva", "verses", "themes", "names", "subs"},
                              f"ch{n}: an unexpected top-level key appeared")
             for theme in d["themes"]:
                 for part in theme["parts"]:

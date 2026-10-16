@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-16 (UTC) |
-| Updated by | Arena session on branch `arena/8b829219-bhagavad-gita` |
-| Base commit | `2b86affd0da5c3b72b39ab25de4ef5a33e560fa8` on `main` (PR #41 merged) |
+| Updated by | Arena session on branch `arena/260a62af-bhagavad-gita` |
+| Base commit | `367b66c74cf0bd152fd0c3c718be61d164731b40` on `main` (PR #44 merged before this session) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,13 +20,47 @@ before you talk to the owner.
 
 ## 1. Where we are
 
-- **Phase 3 — mobile UX refresh (current session, `arena/8e8e7f33-bhagavad-gita`, 2026-10-16).** Three-step mobile overhaul to make the app feel native on phones (≤760 px); desktop/tablet unchanged.
-  - **Phase 3.3 (slim header + bottom tab bar) COMMITTED `f58f283`:** Two-row header (~80 px total vs ~360 px before) — row 1: ॐ + ellipsized title + theme/dark-mode toggle; row 2: three equal-width language pills (English/नेपाली/हिन्दी). Sticky search field directly beneath. Fixed bottom tabbar with Home / Search / Random / Play / Favorites (thumb-reachable, safe-area aware, ~72 px). Chrome on chapter page cut from ~360 px to ~130 px so the first verse is visible without scrolling.
-  - **Phase 3.2 (verse-sheet reorder) COMMITTED locally (not yet pushed):** Slim m-head row with ✕ close, "Verse N · title" (ellipsized), ⋯ more button. ⋯ popover holds Share, Save-to-favorites, meter, reader-size (A−/A+/↺), and hide-meanings toggle (all formerly in the top readerbar). Theme line below (small, grey). Hero block `.m-whole-verse` shows the full Devanāgarī śloka with IAST under each line, larger/centered (print-edition style), followed directly by "Literal" (teal pill) and "In other words" (saffron pill) meaning blocks. Word-by-word pāda boxes are collapsed by default inside a native `<details>` element (`.m-words-section`); the reader opts into word analysis. Browser checks 212/212, doc assertions 784/0, site-health 648 green. Evidence: `/home/user/evidence/phase3.2/`.
-  - **Phase 3.1 (one chapter view) COMMITTED locally (not yet pushed):** Themes are now non-tappable section HEADINGS (`.ch-theme-head`), verses beneath as direct tap targets (`.mini` rows) opening the Phase-3.2 verse sheet. Mode switch reduced from three pills to two: **Verses** (merged "Verses with translation" + "Study guide" scroll) and **Learn by heart** (kept separate). Legacy routes `#chapter=N&tab=mula|full|study`, `showThemes()`, `showVerses()`, and `state.view === 'read'` kept as aliases that land on the unified chapter view; deep links and back-buttons remain compatible. `showRead()` retained (still used for shape assertions and share pages). This **reverses two owner decisions flagged in PROJECT.md**: (a) the 2026-08-30 "theme stays a door, verses are display-only cards" rule (recorded at §7.x and §8); (b) the 2026-09-01 three-way chooser (full / study / learn) reduced to two. Flagged in source comment at `function showChapter` and PROJECT.md §7/§8.
-  - **All three phases complete, full build GREEN:** 199/199 browser checks, 787/0 doc assertions, 649/649 site health, SEO 6, study 9658, 36 Python tests, 15+7 progress/search. Evidence: `/home/user/evidence/phase3.1/` (5 shots).
-  - **Next step:** push to `arena/8e8e7f33-bhagavad-gita` ONLY after user approval/preview. Never merge PRs.
-  - Strict constraints observed: only template/CSS/JS in `source/build_gita.py`; no data/translation/wording changes; code renders data; owner hold byte-identical; DOM count changes in `run_gita_app.js` made deliberately with `s.count(old)==1`; full `python3 build.py` after each step.
+- **Phase 4.1–4.4 complete (2026-10-16; branch `arena/260a62af-bhagavad-gita`).**
+  Phase 4.1 moved the shell templates to `source/app.html`, `source/app.css`
+  and `source/app.js`; Phase 4.2 audited owner-authorized dead-file candidates
+  (they were already absent); Phase 4.3 made each `source/ch<N>.json` the sole
+  compact canonical record for one chapter; Phase 4.4 added strict chapter-data
+  validation and browser behavior coverage in place of runtime source-snippet
+  checks. The 18 JSON records contain 700 verses; their exact schema and
+  derived display behavior are described below and in `PROJECT.md` §0.
+  `source/prove_data_only.py` passes its eight edit/restore proofs.
+  - The app and generated chapter pages show collapsed theme disclosures with
+    formatted ranges before titles; verse deep links open their enclosing
+    disclosures. No chapter text, owner-held bytes or i18n keys changed; the
+    interface remains at 187 keys × 3 languages.
+  - `source/schema.py` validates exact keys, JSON types, three-language maps,
+    canonical padded IDs/ranges, range coverage, one verse per part, four pādas,
+    optional speaker rows, and nonempty five-string word entries before the
+    builder indexes chapter data. Thirteen focused schema tests are included.
+  - `check_site_health.py` now checks static publication/output contracts;
+    Learn/Play interactions and corrupt favorites behavior are verified in the
+    browser. The new suite adds exactly **20 Learn/Play + 6 malformed/mixed
+    favorites checks**, for **233 total browser checks**.
+  - **Full `python3 build.py` passed** with the temporary Arena Playwright /
+    Chromium environment in §4: 2,800 pādas / 0 residuals; 2,100 paraphrase
+    pairs; translation safety net 0 failures / 4 reviewed advisories; SEO 6;
+    site health 503; study structure 9,658; Python 49; document 786; progress
+    15; search 7; browser 233. Generated chapter data is 3,336,550 bytes raw
+    (636,787 gzip). Content-derived cache id: `b15c9d30818e`. Pillow is absent;
+    optional share-art repaint was skipped and the existing image untouched.
+  - The Phase 4.1–4.4 changes are committed locally on this branch, **not
+    pushed**; no PR was opened or merged. The checkout began with only the
+    grafted base commit, so earlier phase commit references in older notes are
+    historical and are not present in this checkout's Git history.
+  - **Next:** no Phase 4 work remains. The owner's earlier conditional request
+    to open a PR once Phase 4 is complete is now actionable: push only to
+    `arena/260a62af-bhagavad-gita` and open a PR from this branch. Never merge.
+  - Standing constraints: preserve owner-held content byte-identically unless
+    explicitly asked; use `source/app.html`, `source/app.css` and `source/app.js`
+    for UI code; keep every key in the three `source/i18n_ui.py` dictionaries
+    (baseline 187 keys); update assertion/count prose when counts change. Cache
+    ID is content-derived; serve `/sw.js` with `Cache-Control: no-store` when
+    testing updates.
 
 - **Translation-audit follow-ups: all six deferred cases resolved (2026-10-16, `arena/2468aa99-bhagavad-gita`).** Start-of-session verification (not trusted blindly, per the handoff note below): clean shallow checkout, `git status --short` empty, `HEAD` == `f411df7a6e3085c36bc24e16c551c1dbd09c4305`; `gh pr view 42` confirmed **MERGED** with `mergeCommit.oid` equal to that same `HEAD` — batch 3's 188 renderings are already on `main` and were **not** repeated. Owner reconfirmed the 34-verse chapter 13 (700 verses total) is the edition of record; the `gita/gita` dataset's 35-verse chapter 13 was used only as a cross-reference, matched by Sanskrit text (local 13.09 = external "13.10", local 13.24 = external "13.25"), never by number. Researched all six cases against **Śaṅkara's own Sanskrit bhāṣya** (`gh api` on `gita/gita`'s `commentary.json`, `authorName == "Sri Shankaracharya"`) plus up to 7 independent published translators per verse (Gambirananda, Sivananda, Adidevananda, Ramsukhdas, Sankaranarayan, Tejomayananda, Purohit Swami) and, for 18.44, independent Nepali-language web evidence (Nepali Wikibooks, Nepali agricultural journalism) rather than Hindi usage. **Confirmed errors patched (coordinated row + sentence edits, 39 leaf changes across ch13/14/18, nothing else touched):** 13.09 `iṣṭāniṣṭopapattiṣu` row+literals "gain and loss"/"लाभ-हानि" → "the pleasant and unpleasant"/"इष्ट-अनिष्ट" (Śaṅkara's हृष्यति/कुप्यति is a reaction to events, not a profit ledger; "harmful" was considered and rejected as overreaching); 13.24 `sāṅkhyena` EN row "by the yoga of knowledge" → "by knowledge" (removes the duplicate "yoga" already in the adjacent `yogena` row; NE/HI were already de-duplicated to "ज्ञान" by an earlier session, only EN lagged); 14.20 `dehasamudbhavān` — row, all three literals, the EN/NE/HI descriptions and the NE/HI paraphrases had the compound's direction backwards ("born of the body," body→guṇas); Śaṅkara glosses it explicitly as देहोत्पत्तिबीजभूतान् ("the seed-cause of the body's origination," guṇas→body), matching Gambirananda/Sivananda/Ramsukhdas — all six registers of this one compound were aligned so none disagree; 18.37 `ātmabuddhiprasādajam` row (all three languages) was missing बुद्धि/intellect, which batch 3 had already restored in the literal — the row was aligned to match; 18.44 NE row+literal "गोरु पालन" (ox-rearing — wrong species/gender) → "गाईपालन" (cow-rearing), per Śaṅkara's गाः-रक्षण gloss and this corpus's own गाई/गाईहरू convention (5.18, 10.28), backed by independent Nepali sources; 18.53 `nirmamaḥ` — the NE/HI *literal sentences* had the negation backwards ("does not give up saying 'mine'"), confirmed against Śaṅkara's निर्गतममभावः and fixed to match the already-correct EN literal and the already-correct global word-row gloss; the authorised kāma/parigraha paraphrase check found NE "लालच"/HI "लोभ" (both "greed") mislabeling kāma ("desire," per Śaṅkara and this corpus's own 3.37/16.18 convention) and corrected them to NE "कामना"/HI "चाहत," with a style-only (non-meaning) rewrite of the HI paraphrase's ending needed solely to keep it under the build's 80% literal/paraphrase overlap gate (it had risen to 81%; now 63.6%, overall hi max unchanged at 79.8%). **Legitimate variants verified and retained, not changed:** 13.09 paraphrase "success/failure"; 13.24's fused literal clause and `ātmanā` → "through their own mind" (already correct, batch 3's restoration verified intact); 18.37 paraphrase "Self-knowledge" (a defensible compression); 18.44 NE description "गोपालन" and paraphrase "गोठालो" (already correct, different register); 18.53 EN paraphrase "lust" (matches the established 16.18 paraphrase convention — not an error) and the `parigraham` row/paraphrase ("ममता"/"लोभ"/"मोह" — a defensible loose rendering, left alone under this authorisation). **No unresolved questions** — all six were evidence-resolved. Full build **ALL GREEN**, matching the prior baseline exactly: 2,800/0 pādas · 2,100 paraphrases (max 79.4/79.8/79.8%) · 0 translation failures/4 reviewed advisories · SEO 6 · site-health 647 · titles 51 advisory/0 blocking · study 9,658 · 36 Python tests · 783 document assertions · Node 15+7. Browser suite unavailable (Playwright/Chromium absent, confirmed by `pip show playwright` and `python3 -c "import playwright"` both failing) — no pixel-level claim made. Rebuild proven **byte-identical**: `data/ch13.js`, `ch14.js`, `ch18.js` and `chapter/{13,14,18}/index.html` hashed identically across two consecutive `python3 build.py` runs; only `sw.js`'s cache id differs (expected, unrelated to source). Full research ledger (Śaṅkara quotations, translator quotations, URLs), the four-list report and the exact before/after table are in `/home/user/evidence/translation-followups/` (outside Git). One commit on this session's own branch, pushed only to `arena/2468aa99-bhagavad-gita`; one PR opened to `main`; not merged by this session.
 
@@ -406,9 +440,9 @@ before you talk to the owner.
 4. Agree the next item with the owner, then work in small batches he can
    spot-check. For every change, show evidence: the verse, the word list and a
    390 px screenshot.
-5. Before ending, update this file (§1, §6, §8), commit and push to your session
-   branch, and open or refresh a pull request to `main`. New sessions start from
-   `main`, so this file reaches them only after it is merged.
+5. Before ending, update this file (§1, §6, §8) and `PROJECT.md`. Commit a
+   coherent step locally; push only with the owner's explicit approval, and
+   never merge a pull request without the owner's instruction.
 
 ## 3. Map — what to edit
 
@@ -426,12 +460,12 @@ Edit `source/`, rebuild, and commit the source and the generated files together.
 | Nepali / Hindi literal + paraphrase | `source/translations_ne.py`, `source/translations_hi.py` |
 | Nepali / Hindi theme and verse titles | `source/themes_ne.py`, `source/themes_hi.py` |
 | UI strings (en/ne/hi) | `source/i18n_ui.py`, `source/i18n_chapters.py` |
-| All app HTML/CSS/JS | inside `source/build_gita.py` (one Python string, about lines 493–4072) |
+| App HTML/CSS/JS templates | `source/app.html`, `source/app.css`, `source/app.js`; assembled by `source/build_gita.py` into one shell |
 
 Gotchas:
-- `source/learn_block.py` is **not used**. It is imported at `build_gita.py:42`
-  but never applied; the real Learn/Play code lives inside `build_gita.py`, and
-  the two copies have drifted apart. Editing `learn_block.py` changes nothing.
+- The old Learn-block duplication has been retired. `source/learn_block.py` is
+  not present in this tree; Learn/Play runtime code lives in `source/app.js`.
+  Do not restore the stale copy.
 - **Per-word override already exists.** `i18n_word()` (`build_gita.py:141`)
   keeps any word entry written with five fields, `[deva, iast, en, ne, hi]`,
   instead of looking up the dictionaries. Use it for context-correct meanings.
@@ -441,29 +475,27 @@ Gotchas:
 ## 4. Build and test
 
 ```bash
-python3 build.py          # build + all checks (~7 s without the browser step)
+python3 build.py          # build + all checks
 python3 build.py --fast   # build only
 ```
 
-The browser step (162 checks) runs only when `playwright` is importable.
-`playwright install chromium` is blocked in the Arena sandbox; this works instead.
-Nothing below is committed, so redo it for each new sandbox:
+The browser step has **233 live-browser checks** and runs only when Playwright
+is importable. In this Arena sandbox, this session used temporary dependencies
+(outside Git):
 
 ```bash
-python3 -m venv /home/user/.venv && /home/user/.venv/bin/pip install -q playwright pillow
-mkdir -p /home/user/.cache/tools && cd /home/user/.cache/tools && npm i -s @sparticuz/chromium@153
-echo "import c from '@sparticuz/chromium'; console.log(await c.executablePath());" > getexe.mjs
-node getexe.mjs           # unpacks the browser to /tmp/chromium
-node -e "const z=require('zlib'),f=require('fs');f.writeFileSync('/tmp/al2023.tar',z.brotliDecompressSync(f.readFileSync('node_modules/@sparticuz/chromium/bin/al2023.tar.br')))"
-mkdir -p /tmp/al2023x && tar -xf /tmp/al2023.tar -C /tmp/al2023x
-cd /home/user/Bhagavad-Gita
-export LD_LIBRARY_PATH=/tmp/al2023x/lib:/tmp GITA_CHROMIUM_EXECUTABLE=/tmp/chromium \
-       GITA_CHROMIUM_ARGS="--no-sandbox --use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader --disable-dev-shm-usage"
-/home/user/.venv/bin/python build.py      # now includes the browser checks
+PYTHONPATH=/tmp/gita-python \
+LD_LIBRARY_PATH=/tmp/al2023/lib \
+GITA_CHROMIUM_EXECUTABLE=/tmp/chromium \
+GITA_CHROMIUM_ARGS='--no-sandbox --disable-dev-shm-usage --disable-gpu' \
+python3 build.py
 ```
 
-Do not add `--single-process` or `--no-zygote`: they crash on a second browser
-context. To preview the app, serve the repo root with
+`@sparticuz/chromium` and Playwright were installed under `/tmp`; the extracted
+Chromium binary and runtime libraries were also temporary. Do not add
+`--single-process` or `--no-zygote`: they crash on a second browser context.
+The build still runs its other checks if Playwright is missing, but reports the
+browser step as skipped. To preview the app, serve the repo root with
 `python3 -m http.server 8000 --bind 0.0.0.0`.
 
 ## 5. Findings (verified 2026-10-08)
@@ -1387,31 +1419,38 @@ Missing:
 
 ### 5.7 Code and docs
 
-- `build_gita.py` is 4,772 lines, with about 3,580 lines of HTML/CSS/JS in one
-  Python string, 151 global JS functions and inline `onclick` handlers.
-- About 180 checks assert exact source text, e.g.
-  `"if(shownForms[x[0]]) return;" in idx` in `check_site_health.py` and many
-  `html.includes(...)` calls in `run_gita_app.js`. They break on any refactor,
-  yet missed the content errors. Replace them gradually with behaviour tests
-  and strict data validators.
-- **Dead or stale files:**
-  - `source/learn_block.py`: about 100 lines have drifted from the real copy.
-  - `source/dataio.py`: nothing imports it.
-  - `shoot_choose.py`: screenshots a page that has been retired.
-  - `UPLOAD.md`: stale (“222 themes”).
-  - `README.md` documented `edit.py` and `editor.html`, which do not exist
-    (section removed in step 1.6). `UPLOAD.md` and `PROJECT.md` still mention
-    the editor.
-- **Wrong counts (fixed in step 1.6):** `LICENSE.md` said 9,480 word glosses, 182 themes
-  and 558 parts. The verified figures are 9,484 (9,366 verse words + 118 speaker
-  words), 169 and 700.
-- **Data:**
-  - One verse's content is spread over about ten source files.
-  - `data/ch*.js` is 5.3 MB raw (663 KB gzip), and all of it is fetched
-    shortly after first paint.
-  - 43 % is redundant (`padas` duplicates `flow`, `lines` repeats `d`/`t`,
-    `meter` repeats `mt`, and descriptions duplicate the literals). Without it
-    the data is 3.0 MB.
+- Phase 4.1 keeps the app document, styles and runtime in `source/app.html`,
+  `source/app.css` and `source/app.js`; `source/build_gita.py` assembles them
+  inline into the single offline-friendly shell.
+- **Phase 4.2 audit complete:** all approved dead-file candidates were already
+  absent; current editor references were removed, with dated historical notes
+  retained as history.
+- **Phase 4.3 data consolidation complete:** every chapter's content is now in
+  `source/ch1.json` … `source/ch18.json`. The compact schema is chapter
+  `num,deva,verses,names,subs,themes,colophon`; theme/part `range,titles,descs`
+  plus nested content; verse `n,d,t,flow,lits,paras`; flow items carry the
+  speaker/pāda text and five-field word rows. Display lines derive from `d`/`t`
+  (speaker markers remain in order); meter derives from `flow` syllable counts.
+  Duplicate `name`/`sub`, English `title`/`desc`, and derived `lines`/`padas`/
+  `speakers`/`meter`/`mt` fields are gone. The 61 old parallel source modules
+  were removed. Chapter JSON shrank 41.8% (9,450,810 → 5,501,557 bytes); all 18
+  compact sources recursively equal the prior built records after only the
+  approved field removals, proving retained content and owner holds unchanged.
+- Current generated chapter payloads are 3,336,550 bytes raw (636,787 gzip).
+  The app and static chapter pages start with collapsed theme disclosures;
+  each formatted range precedes its title, and verse deep links open all
+  enclosing disclosures. `run_gita_app.js` has 786 assertions; the browser
+  suite has 233; site health has 503. Cache id: `b15c9d30818e`.
+  `source/prove_data_only.py` passes all eight edit-and-restore proofs; owner
+  holds and i18n keys are unchanged.
+- **Phase 4.4 complete:** `source/schema.py` validates the complete chapter
+  data shape before builder indexing, with 13 mutation-test methods. Learn/Play
+  runtime-source snippets were removed from static site-health/document checks;
+  browser checks now cover 20 Learn/Play behaviors and 6 malformed/mixed
+  favorites cases. Full browser-enabled build passed: 2,800 pādas/0 residuals;
+  2,100 paraphrases; SEO 6; site health 503; study structure 9,658; Python 49;
+  document 786; progress 15; search 7; browser 233. No Phase 4 work remains.
+  See §1/§8 for the local-commit status and test environment.
 
 ## 6. Plan — status board (tick as you go)
 
@@ -1515,25 +1554,45 @@ Missing:
       three ways; a jsdom round-trip against the built `index.html` proves the
       ch18 study guide is byte-identical across the reload. Details in §1 and
       `PROJECT.md` §0 / §7. PR **#37**.
-- [ ] **Open — pre-existing on `main` since the 700 summaries (PR #35):** browser
-      group **p22** fails 5 assertions. It hard-codes that some 2.1–2.3
-      descriptions are verbatim copies of their literal (`[False, False, True]`),
-      which stopped being true when every description became a summary. Re-point
-      it at synthetic data (as `tests/test_duplicate_descriptions.py` does) in its
-      own commit. Reproduced on an untouched export of `459feac`.
+- [x] **p22 browser regression fixed** in the Phase 3 stack: assertions now use
+      synthetic description data instead of assuming live descriptions duplicate
+      literals. The current full browser suite passes 207/207.
 
-**Phase 3 — Simplify the UI**
-- [ ] 3.1 One chapter view: themes as headings, verses beneath.
-- [ ] 3.2 Verse sheet: the whole verse first, then the meaning, interlinear
+**Phase 3 — Simplify the UI (complete)**
+- [x] 3.1 One chapter view with a collapsible theme outline; verse titles and
+      descriptions appear inside the expanded theme.
+- [x] 3.2 Verse sheet: the whole verse first, then the meaning, interlinear
       words, and the controls in a “⋯” menu.
-- [ ] 3.3 Slim header and a bottom tab bar.
+- [x] 3.3 Slim header and a bottom tab bar.
+- [x] Responsive polish: distinct phone, tablet and desktop reader-sheet widths;
+      theme/range context clears the sticky phone header.
+- [x] Owner-requested follow-up (2026-10-16): the app and generated chapter
+      pages show each verse range before its theme title; collapsed disclosures
+      reveal theme descriptions/verse titles. Static verse deep links open both
+      the theme and full-text disclosures.
 
 **Phase 4 — Simplify the code**
-- [ ] 4.1 Split `build_gita.py` into `app.html`, `app.css` and `app.js` templates.
-- [ ] 4.2 Delete the dead files in §5.7 (with the owner's OK).
-- [ ] 4.3 One data file per chapter holding everything about each verse; drop
-      the redundant fields.
-- [ ] 4.4 Behaviour tests instead of source-string checks.
+- [x] 4.1 Split `build_gita.py`'s app template into `source/app.html`,
+      `source/app.css` and `source/app.js` (2026-10-16). The builder assembles
+      the same inline shell; all 43 generated artifacts were byte-identical to
+      the pre-refactor baseline and the full browser-enabled build passed.
+- [x] 4.2 Owner-authorized dead-file audit (2026-10-16). The §5.7 candidates
+      `source/learn_block.py`, `source/dataio.py`, `shoot_choose.py` and
+      `UPLOAD.md` were already absent from the tracked and working trees; no
+      deletion was necessary. Removed stale current editor references from
+      PROJECT.md's layout and instructions; historical notes are labeled.
+- [x] 4.3 One compact canonical JSON file per chapter (2026-10-16): all 18
+      files contain the complete chapter data; removed duplicate name/sub and
+      title/desc fields and derived verse lines/padas/speakers/meter/mt. Runtime
+      derives reader segments from d/t and meter from flow. Removed 61 parallel
+      source modules; full build green, owner holds and all retained data
+      verified unchanged. Details in §1 and §5.7.
+- [x] 4.4 Strict chapter-data schema validation plus browser behavior tests
+      instead of brittle runtime-source checks (2026-10-16). `schema.py` checks
+      exact keys/types, IDs/ranges, verse/flow/word shape; 13 focused mutation
+      tests pass. Added 20 Learn/Play + 6 malformed-favorites checks; full build
+      green at 233 browser, 786 document, 503 site-health and 49 Python tests.
+      Owner holds, chapter content and all 187 × 3 i18n keys are unchanged.
 
 **Phase 5 — Grow**
 - [ ] 5.1 Audio: one recitation per verse, loaded only when needed, with pāda timings.
@@ -1707,6 +1766,13 @@ whole session’s check log are in `/home/user/evidence/phase2.5/` (outside Git)
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
+
+- 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Phase 4.4 complete: strict chapter schema and Learn/Play behavior tests.** Added `source/schema.py` before builder indexing and 13 focused mutation-test methods; replaced runtime app-source substring assertions with rendered browser checks. Added exactly 20 Learn/Play + 6 malformed/mixed-favorites checks (233 total). `python3 build.py` ALL GREEN: 2,800 pādas/0 residuals; 2,100 paraphrase pairs; SEO 6; site-health 503; study 9,658; Python 49; document 786; progress 15; search 7; browser 233. Cache `b15c9d30818e`. Phase 4.1–4.4 changes are in one local commit on this fixed branch, not pushed; no PR is open yet. The owner's conditional request to open a PR when Phase 4 is complete is now actionable; push this branch and open it, but never merge. Checkout's earlier history was only the grafted base, so prior phase commit references are not in this history. No content, owner holds or i18n keys changed; Pillow absent, share art untouched. Temporary browser environment from §4; no project dependencies added.
+- 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Collapsible chapter-theme outline implemented.** App and generated landing pages start with closed theme disclosures, show ranges before titles, and reveal descriptions/verse titles on expansion; static verse anchors open both enclosing disclosures. Browser behavior tests and a generated-markup assertion added; brittle heading source-string check removed. Full build green at the time: 207 browser, 791 document, 643 site-health, SEO 6, study 9,658, Python 36, progress 15, search 7. Cache `5d24cc4b3ed3`; no source content, owner holds or i18n keys changed. No push or merge.
+- 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Phase 4.3 chapter-data consolidation and compact schema complete (committed locally, not pushed).** Migrated all 18 chapter records to `source/ch<N>.json`; removed 61 parallel Python data modules plus duplicate `name`/`sub`, English `title`/`desc`, and derived `lines`/`padas`/`speakers`/`meter`/`mt` fields. Runtime derives display segments from `d`/`t` and meter from `flow`. Source JSON shrank 41.8%; recursive comparison against the previous 18 published payloads verifies retained content and owner holds are unchanged. Eight `prove_data_only.py` edit/restore proofs pass. Full `/home/user/.venv/bin/python build.py` green: 199 browser, 790 document, 644 health, SEO 6, study 9,658, Python 36, progress 15, search 7. Cache id `96451d90c1c3`; temporary `@sparticuz/chromium`/`LD_LIBRARY_PATH` workaround used, no project dependency added; Pillow absent, existing share art untouched. Phase 4.4 is next. No push or merge.
+- 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Phase 4.2 dead-file audit, owner-authorized.** Dhruba's “ok, let's finish phase 4” authorized the previously gated audit. Verified `source/learn_block.py`, `source/dataio.py`, `shoot_choose.py` and `UPLOAD.md` are all absent from both Git and the working tree; `edit.py` and `editor.html` are absent too, so there was nothing to delete. Removed the stale editor from PROJECT.md's current layout and instructions; retained older mentions only as clearly historical notes. No app/data/generated output changed. Full browser-enabled build green: 789 document assertions, 199 browser checks, 644 site-health checks, study 9,658, 36 Python tests, progress 15, search 7, SEO 6; cache id unchanged. No push or merge.
+- 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Phase 4.1 app-template extraction (committed locally; not pushed).** Moved the app's HTML/CSS/main-JS template from `source/build_gita.py` into `source/app.html`, `source/app.css` and `source/app.js`; build-time placeholders and the single inline shell stay intact. The first rebuild exposed one extra CSS blank line; fixed the template join and reran the full suite. Verified 43 generated artifacts byte-identical to the pre-extraction baseline; `sw.js` cache id remains `gita-2480b1d4e10b`. No UI, data, i18n, DOM or feature changes. Full build green: 2,800 pādas/0 residuals; 2,100 paraphrase pairs; 0 translation failures/4 reviewed advisories; SEO 6; site-health 644; study 9,658; Python 36; document 789; progress 15; search 7; browser 199. Pillow absent; optional share-art repaint skipped and existing image left untouched. Phase 4.2 is now complete; no push or merge.
+- 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Responsive reader-sheet polish.** Used the earlier desktop screenshot as a hierarchy reference; kept the verse topic in the primary line and the theme/range as supporting context. Added space below the phone sheet's sticky divider; tuned tablet (761–1024 px) to a 960 px cap and desktop (≥1025 px) to 1160 px with a 76ch translation measure and more generous quarter cards. Strengthened the existing browser assertion to cover phone/tablet/desktop without changing the 199-check total. Full build green: 2,800 pādas, 2,100 paraphrases, 6 SEO, 644 site-health, 9,658 study, 36 Python, 789 document, Node 15+7, 199 browser. Synced the stale 788 document-assertion count to the runner's actual 789. Evidence at `/home/user/evidence/desktop-tablet-polish/`. Base commit is PR #44's merge; PR #44 had already merged before this session, verified with `gh`; no merge or push performed here.
 
 - 2026-10-16 · `arena/2468aa99-bhagavad-gita` · **All six deferred translation follow-ups resolved (13.09, 13.24, 14.20, 18.37, 18.44, 18.53).** Verified start-of-session state independently rather than trusting the prior handoff: clean shallow checkout, `HEAD` = `f411df7a6e3085c36bc24e16c551c1dbd09c4305`, and `gh pr view 42` confirmed **PR #42 MERGED** (`mergeCommit.oid` equal to that same `HEAD`) — batch 3's 188 renderings are already on `main`, not repeated. Owner reconfirmed the 34-verse/700-verse chapter-13 edition is the one of record. Researched each case against Śaṅkara's own Sanskrit bhāṣya (`gita/gita` `commentary.json`) plus up to 7 published translators, joined on verse_id with the local corpus matched by Sanskrit text, not number (local 13.09/13.24 = external "13.10"/"13.25"). Patched: 13.09 row+literals to "pleasant/unpleasant" (desirable, not "harmful"); 13.24 `sāṅkhyena`'s EN row de-duplicated to "by knowledge"; 14.20 `dehasamudbhavān`'s direction reversed corpus-wide (row, literals, descriptions, ne/hi paraphrases) per Śaṅkara's देहोत्पत्तिबीजभूतान्; 18.37 row aligned to the already-fixed buddhi literal; 18.44 NE "गोरु पालन" → "गाईपालन" per Nepali evidence (not Hindi); 18.53's reversed ne/hi literal negation fixed and the kāma/parigraha paraphrase wording corrected (कामना/चाहत, not greed-words), with one style-only hi paraphrase rewrite required to clear the 80% overlap gate. Four-list report, research ledger with quotations/URLs and the exact before/after table in `/home/user/evidence/translation-followups/` (outside Git). Full build green, matching the prior baseline exactly (2,800/0 pādas; 2,100 paraphrases; 0/4 translation advisories; SEO 6; site-health 647; titles 51/0; study 9,658; Python 36; document 783; Node 15+7); browser suite unavailable (Playwright/Chromium absent, confirmed, no pixel claim made). Rebuild proven byte-identical (two consecutive `python3 build.py` runs hash-identical on every touched file except `sw.js`'s cache id). Recursive diff of the three touched chapters' built data: 39 leaf changes, all inside `lits`/`paras`/`desc(s)`/word rows for exactly the six flagged verses — no Sanskrit, speaker, title or structural change anywhere. Committed on this session's own branch and pushed only to `arena/2468aa99-bhagavad-gita`; PR opened to `main`, not merged by this session.
 

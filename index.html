@@ -7,13 +7,8 @@
       bash rebuild.sh          (runs source/build_gita.py, then both test suites)
 
   Edit the data, not this file:
-      source/gita_data*.py     verse text, themes and parts (English)
-      source/themes_ne.py      Nepali theme/part titles
-      source/themes_hi.py      Hindi theme/part titles
-      source/gloss_ne.py       Nepali word-meanings
-      source/gloss_hi.py       Hindi word-meanings
-      source/padachheda_ch*.py per-pada word splits
-      source/i18n_ui.py        interface strings (en/ne/hi)
+      source/ch<N>.json        the complete content record for one chapter
+      source/i18n_ui.py        shared interface strings (en/ne/hi)
 
   Created by Dhruba Chapain, Pokhara, Nepal.  All rights reserved.
   AI tools were used in making this app, under the author's direction; the
@@ -630,14 +625,22 @@
   .vcard{ cursor:default; }
   .vcard:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); }
   .vcard h3{ font-size:1rem; }   /* the theme title outranks its verses */
-  /* Phase 3.1: ONE chapter view — themes as non-tappable headings; verses
-     are the tap targets, listed directly under each theme. */
-  .ch-flow{ display:flex; flex-direction:column; gap:22px; margin-top:8px; }
-  .ch-theme-head{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal);
-                  font-size:1.1rem; font-weight:700; margin:0 0 6px;
-                  display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  /* Chapter themes begin as a readable outline; opening a native disclosure
+     reveals the description and verse cards without leaving the chapter. */
+  .ch-flow{ display:flex; flex-direction:column; gap:12px; margin-top:8px; }
+  .ch-theme{ border:1px solid var(--line); border-radius:12px; background:var(--paper); }
+  .ch-theme-head{ cursor:pointer; padding:12px 14px;
+                  font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal);
+                  font-size:1.05rem; font-weight:700; line-height:1.45; }
+  .ch-theme-head::marker{ color:var(--saffron-text); }
+  .ch-theme-head .rng{ color:var(--saffron-text); font-size:.82rem; font-weight:700;
+                       white-space:nowrap; margin-right:8px; }
   .ch-theme-head .ch-theme-name{ flex:0 1 auto; }
-  .ch-theme-desc{ margin:0 0 12px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
+  .ch-theme[open] > .ch-theme-head{ border-bottom:1px solid var(--line); }
+  .ch-theme-body{ padding:0 14px 14px; }
+  .ch-theme-desc{ margin:12px 0; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
+  @media (hover:hover){ .ch-theme-head:hover{ background:var(--teal-soft); } }
+  .ch-theme-head:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
   .mini .vtitle{ font-family:Georgia,"Noto Serif Devanagari",serif;
                  color:var(--teal); font-size:.95rem; font-weight:600; margin:2px 0 4px;
                  overflow:hidden; text-overflow:ellipsis;
@@ -1078,6 +1081,30 @@
   .fade-in{ animation:fadein .28s ease;} @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
   @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:calc(1.12rem * var(--reader-scale,1));} }
 
+  /* Desktop and tablet reader: use available width for the quarter grid,
+     while keeping prose to a comfortable reading measure. Phones keep the
+     edge-to-edge sheet below. */
+  @media (min-width:761px) and (max-width:1024px){
+    .modal{ max-width:960px; padding:22px 24px 26px; }
+    .m-head{ gap:12px; margin-bottom:12px; }
+    .m-head .m-title{ font-size:1.08rem; }
+    .m-head .m-vtitle{ font-size:.98rem; }
+    .m-part{ margin-bottom:16px; font-size:.82rem; line-height:1.5; }
+    .m-whole-verse{ padding:18px 22px; }
+    .m-verse .pada-box{ padding:12px 14px; }
+    .m-line .lt{ max-width:76ch; }
+  }
+  @media (min-width:1025px){
+    .modal{ max-width:1160px; padding:28px 36px 32px; }
+    .m-head{ gap:14px; margin-bottom:14px; }
+    .m-head .m-title{ font-size:1.22rem; line-height:1.35; }
+    .m-head .m-vtitle{ font-size:1.05rem; }
+    .m-part{ margin-bottom:18px; font-size:.86rem; line-height:1.5; }
+    .m-whole-verse{ padding:24px 30px; }
+    .m-verse .pada-box{ padding:14px 18px; }
+    .m-line .lt{ max-width:76ch; line-height:1.65; }
+  }
+
   /* ==================== MOBILE / TOUCH (Android · iOS) ==================== */
   html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   body{ -webkit-tap-highlight-color:rgba(232,145,44,.18); overscroll-behavior-y:none; }
@@ -1290,8 +1317,10 @@
     /* Phase 3.2: slim m-head row (✕ / title / ⋯) sits at the top of the sheet
        and stays visible as the user scrolls; close and more buttons live in
        the flex row, not as free-floating FABs. */
+    /* Keep the theme/range as secondary context, visibly below the sticky
+       verse title row instead of visually touching its divider. */
     .m-head{ position:sticky; top:0; z-index:5;
-             margin:-14px -14px 8px; padding:calc(8px + env(safe-area-inset-top,0px)) 10px 8px;
+             margin:-14px -14px 14px; padding:calc(8px + env(safe-area-inset-top,0px)) 10px 10px;
              background:var(--cream); border-bottom:1px solid var(--line); }
     .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto;
                      width:40px; height:40px; font-size:1.1rem;
@@ -1300,10 +1329,10 @@
     .m-head .m-num-chit{ font-size:.9rem; }
     .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
                        overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
-    .m-part{ margin-right:0; font-size:.82rem; margin-bottom:8px; }
+    .m-part{ margin:0 0 12px; padding:8px 2px 0; color:var(--ink-soft);
+             font-size:.78rem; line-height:1.5; }
     .m-num{ font-size:1.08rem; }
     .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
-    .m-part{ font-size:.82rem; }
     .reader-size button{ min-width:40px; min-height:40px; }
     .m-verse{ padding:12px 12px; }
     .words-bar .wb-btn{ min-height:34px; padding:6px 14px; }
@@ -1763,12 +1792,31 @@ function numL(n){ return (state.lang==='ne'||state.lang==='hi') ? devaDigits(n) 
 function fmtNL(n){ return numL(fmtN(n)); }
 function fmtRangeL(r){ return numL(fmtRange(r)); }
 function chaptersRange(a, b){ return L('range_chapters').replace('{a}', numL(a)).replace('{b}', numL(b)); }
-/* Meter badge, built at render time so it follows the language (and uses
-   Devanagari digits in ne/hi). Falls back to the baked English string. */
+/* Display lines are derived from the canonical verse text. Splitting on the
+   danda preserves its order (including the mid-verse speakers in 1.21/1.28);
+   IAST `uvāca` marks the speaker segment. */
+function verseLines(s){
+  if(!s || typeof s.d !== 'string' || typeof s.t !== 'string') return [];
+  const ds = s.d.split('।').map(x=>x.trim()).filter(Boolean);
+  const ts = s.t.split('।').map(x=>x.trim()).filter(Boolean);
+  if(ds.length !== ts.length) return [];
+  return ds.map((d,i)=>({k:ts[i].endsWith('uvāca')?'s':'l', d, t:ts[i]}));
+}
+/* Compute the metre only when it is displayed. The canonical data needs just
+   each pāda's syllable count in `flow`; the UI formats this shape in the
+   reader's language and uses Devanagari digits in ne/hi. */
+function meterShape(s){
+  const pads = (s && Array.isArray(s.flow) ? s.flow : []).filter(x=>x.k==='p');
+  const total = pads.reduce((sum,x)=>sum + (Number(x.n)||0), 0), n = pads.length;
+  if(total === 32) return {name:'anustubh', irr:0, total:32, n:4, per:8};
+  if(total === 44) return {name:'trishtubh', irr:0, total:44, n:4, per:11};
+  if(total === 22 && n === 2) return {name:'trishtubh', irr:0, total:22, n:2, per:11};
+  if(total === 33 && n === 4) return {name:'anustubh', irr:1, total:33, n:4, per:0};
+  return {name:'', irr:0, total, n, per:0};
+}
 function meterText(s){
-  const m = s && s.mt;
-  if(!m) return s ? s.meter : '';
-  const bits = [];
+  if(!s) return '';
+  const m = meterShape(s), bits = [];
   if(m.name){
     let nm = L(m.name === 'anustubh' ? 'meter_anustubh' : 'meter_trishtubh');
     if(m.irr) nm += ' (' + L('meter_irregular') + ')';
@@ -2775,7 +2823,8 @@ function plPool(){
    A welcome consequence: full verses are unique book-wide (verified across all
    700), whereas four PAIRS share a first pāda — 3.35/18.47, 6.15/6.28,
    9.34/18.65, 16.07/18.30 — so the identical-option guard that case needed is
-   no longer required. It stays as an assertion in the health checks. */
+   no longer required. Browser behavior checks assert that each rendered set
+   contains four distinct complete verses. */
 function hemiSplit(s){
   return String(s||'').split(/[।|]/).map(x => x.replace(/[॥\|\s]+$/g,'').trim()).filter(Boolean);
 }
@@ -3243,15 +3292,10 @@ function chTitle(ch){
     : name;
   return `<div class="view-title fade-in" role="heading" aria-level="2">${head}</div>`;
 }
-/* Phase 3.1 (2026-10-16): ONE chapter view — themes as headings, verses as
-   tap targets. Reverses the 2026-08-30 owner decision ("theme stays a door")
-   per fresh mobile-UX direction: the extra tap into a theme added friction
-   on phones, and preview cards inside tappable theme cards were ambiguous.
-   Themes are now non-tappable section headings; every verse is a direct tap
-   target opening the Phase-3.2 verse sheet. "Verses with translation" and
-   "Study guide" are merged into this one scroll; Learn by heart stays
-   separate. showThemes/showVerses are kept as aliases for back-links and
-   saved-state routes; they land at the theme anchor. */
+/* One chapter view: keep the theme map visible first, with each theme's range
+   ahead of its title. Opening a theme reveals its description and verse cards;
+   a verse card opens the Phase-3.2 sheet. showThemes/showVerses stay as aliases
+   for back-links and saved routes; a theme anchor opens that theme. */
 function showChapter(ci, anchorTi){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showChapter(ci,anchorTi)).catch(gitaLoadFail); return; }
   if(!DATA[ci]||!DATA[ci].themes){ showWelcome(); return; }
@@ -3271,14 +3315,16 @@ function showChapter(ci, anchorTi){
         <div class="vhint">${esc(T(s.paras).slice(0,90))}${T(s.paras).length>90?'…':''}</div>
       </div>`;
     }).join('');
-    return `<section class="ch-theme" id="theme-${ti}" aria-label="${esc(T(t.titles))}">
-      <h3 class="ch-theme-head">
-        <span class="ch-theme-name">${esc(T(t.titles))}</span>
+    return `<details class="ch-theme" id="theme-${ti}"${anchorTi===ti?' open':''}>
+      <summary class="ch-theme-head">
         <span class="rng">${fmtRangeL(t.range)}</span>
-      </h3>
-      <p class="ch-theme-desc">${esc(T(t.descs))}</p>
-      <div class="grid verses">${verseCards}</div>
-    </section>`;
+        <span class="ch-theme-name" role="heading" aria-level="3">${esc(T(t.titles))}</span>
+      </summary>
+      <div class="ch-theme-body">
+        <p class="ch-theme-desc">${esc(T(t.descs))}</p>
+        <div class="grid verses">${verseCards}</div>
+      </div>
+    </details>`;
   }).join('');
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)}${themeSec?' · '+L('theme_sg')+' '+themeSec:''}`, null]])}
@@ -3290,7 +3336,7 @@ function showChapter(ci, anchorTi){
   if(anchorTi != null){
     requestAnimationFrame(()=>{
       const el = document.getElementById('theme-'+anchorTi);
-      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      if(el){ el.open = true; el.scrollIntoView({behavior:'smooth', block:'start'}); }
     });
   }
 }
@@ -3321,12 +3367,12 @@ function showRead(ci, mode){
     all.push({sv, ti, idx: flatIndex(t,p,si)}))));
   let lastSpeaker = '';
   const body = all.map(({sv,ti,idx})=>{
-    /* Render sv.lines in the order the source gives them, so a speaker that sits
+    /* Derive display segments from d/t in source order, so a speaker that sits
        BETWEEN the two lines stays there (1.21, 1.28) instead of being hoisted to
        the top. Show the speaker only when the voice changes — losing track of who
        is talking changes the meaning of a dialogue. */
     let li = 0, inner = '';
-    for(const x of sv.lines){
+    for(const x of verseLines(sv)){
       if(x.k === 's'){
         const name = x.d.replace(/।\s*$/, '');
         if(name !== lastSpeaker){ lastSpeaker = name; inner += `<div class="rd-spk">${name}${x.t?` <span class="rd-iast" lang="sa-Latn">${esc(x.t)}</span>`:''}</div>`; }
@@ -3364,19 +3410,15 @@ function pDandaLatn(i, total){
   if(total === 2) return (i===0) ? ' |' : ' ||';
   return (i%4===1)?' |':((i%4===3)?' ||':'');
 }
-/* The running verse is rendered verbatim from the source JSON.
-   v.lines is the list of `।`-separated segments as they appear in
-   source/ch*.json: two verse lines, plus a speaker where the source has one
-   (in 1.21 and 1.28 the speaker falls between the two lines, and it renders
-   in place because we never reorder). Nothing is re-joined or re-derived, so
-   the display cannot drift from the source. To correct a verse, edit the JSON.
-   The pāda split is still shown in the modal's 2x2 boxes; that data is
-   separate and untouched. */
+/* The running verse is derived from the canonical d/t strings by verseLines().
+   Its `।`-separated segments stay in source order: two verse lines, plus a
+   speaker where the text has one (including the mid-verse positions in 1.21
+   and 1.28). The modal's 2x2 boxes use the separate `flow` pāda records. */
 function padaBlockDeva(s, withNum){
   /* withNum puts the verse number inside the closing daṇḍas of the final line
      — ॥ १.२५ ॥ — the way a printed edition sets it, instead of on a line of
      its own below. Same construction as the reading view's rd-n. */
-  const ls = (s.lines || []), last = ls.reduce((a,it,i)=> it.k === 's' ? a : i, -1);
+  const ls = verseLines(s), last = ls.reduce((a,it,i)=> it.k === 's' ? a : i, -1);
   let html = '', li = 0;
   for(let i = 0; i < ls.length; i++){
     const it = ls[i];

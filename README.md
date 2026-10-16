@@ -20,8 +20,10 @@ app and works with no internet connection.
 
 ## What it does
 
-- **Browse** chapters → themes → parts → verses, or start from the three ways
-  (कर्मयोग 1–6 · भक्तियोग 7–12 · ज्ञानयोग 13–18).
+- **Browse** chapters → themes → verses, or start from the three ways
+  (कर्मयोग 1–6 · भक्तियोग 7–12 · ज्ञानयोग 13–18). Each chapter opens with a
+  collapsible theme outline, with the verse range before the title; expand a
+  theme to reveal its description and verse titles.
 - **Every verse in its four quarters (pādas)** — Devanagari, IAST transliteration,
   a literal translation and a flowing paraphrase.
 - **Tap any quarter** for pada-cheda: each word on its own line with its meaning
@@ -58,42 +60,38 @@ noto-deva-regular.woff2 Devanagari face for the chapter pages — a real file,
                         base64, which made chapter.css 60 KB)
 chapter/N/              full-text landing page per chapter (crawler-facing)
                         Verse links are /chapter/N/#vN.NN — the page opens
-                        the folded block and highlights that verse.
+                        the theme and verse disclosures, then highlights that verse.
 
 source/                 ← edit here
-  build_gita.py           the builder: writes index.html
-  gita_data*.py           verse text, themes and parts (English)
-  themes_ne.py            Nepali theme/part titles + descriptions
-  themes_hi.py            Hindi theme/part titles + descriptions
-  translations_ne.py      Nepali literal + paraphrase for all 700 verses
-  translations_hi.py      Hindi literal + paraphrase for all 700 verses
-  gloss_ne.py             Nepali word-meanings
-  gloss_hi.py             Hindi word-meanings
-  padachheda_ch*.py       per-pāda word splits, chapter by chapter
-  padas_ch*.py            the four pādas of every verse
-  i18n_ui.py              interface strings (en/ne/hi)
-  ch*.json                Devanagari + IAST verse text
-  i18n_chapters.py        chapter names and blurbs (ne/hi)
-  verify.py               two helpers used to check your data
+  build_gita.py           builds the app and validates canonical chapter data
+  schema.py               strict chapter JSON keys, types, IDs, ranges and flow shape
+  app.html / app.css / app.js  shell templates; CSS and JS stay inline
+  ch1.json … ch18.json    one compact canonical content file per chapter
+  i18n_ui.py              interface strings (en/ne/hi; 187 keys each)
+  study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
+  verify.py               shared text/transliteration helpers
   check_padas.py          verifies word splits against the pādas
   check_paraphrase.py     paraphrases must not echo their literals
   check_translations.py   banned readings, shape, words printed twice
-  prove_data_only.py      proves the build renders data, never generates it
+  prove_data_only.py      proves source edits reach the built artifacts
   check_seo.py            sitemap/robots proof (`--live` also fetches the site)
   check_site_health.py    chapter pages, CSS vars, og: tags, offline, a11y
   check_study_structure.py approved story maps, trilingual pearls, theme sizes
-  study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
 
+tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         788 assertions on the built document
-browser_checks.py       199 live-browser checks (rendering, i18n, touch, offline)
+run_gita_app.js         786 assertions on the built document
+browser_checks.py       233 live-browser checks (Learn/Play, storage, i18n, touch, offline)
 ```
 
-`index.html` is a **split-site shell**: the app chrome, styles, embedded font and
-interface in one small document (~72 KB gzipped), with the verses in 18
-`data/ch<N>.js` files it loads in parallel and the service worker precaches. First
-paint arrives almost immediately; after the first visit everything is cached, so the
-app runs offline and installs to the home screen. Share it by link.
+`index.html` remains a **single-shell split site**. Its document, stylesheet and
+client runtime are maintained as `source/app.html`, `source/app.css` and
+`source/app.js`; `source/build_gita.py` fills their build-time placeholders and
+inlines the CSS and JavaScript, so the browser makes no extra shell-asset
+requests. The shell is about 72 KB gzipped and loads the verses from 18
+`data/ch<N>.js` files in parallel; the service worker precaches them. After the
+first visit everything is cached, so the app runs offline and installs to the
+home screen. Share it by link.
 
 ---
 
@@ -136,72 +134,74 @@ python3 build.py --serve    build, verify, then serve at http://localhost:8000
 
 ### Fixing content
 
-**Every part of the app is meant to be corrected by hand.** Edit the file in
-`source/`, run `python3 build.py`, and the app shows exactly what you wrote.
-Never edit `index.html` — it is generated and your change would be overwritten.
+**All chapter content now lives in one canonical JSON file per chapter.** Edit
+`source/ch<N>.json`, run `python3 build.py`, and the app and chapter pages are
+rebuilt from that data. Never edit `index.html` or `data/ch<N>.js` by hand;
+both are generated.
 
 | what you want to fix | file |
 |---|---|
-| the Devanagari or IAST of a verse | `source/ch*.json` |
-| where a verse divides into pādas | `source/padas_ch*.py` |
-| the word-by-word split and its English meanings | `source/padachheda_ch*.py` |
-| a word's meaning in Nepali / Hindi | `source/gloss_ne.py`, `source/gloss_hi.py` |
-| a verse translation (en) | `source/gita_data*.py` |
-| a verse translation (ne / hi) | `source/translations_ne.py`, `source/translations_hi.py` |
-| chapter names | `source/i18n_chapters.py` |
-| theme and part titles, blurbs, verse ranges (en) | `source/gita_data*.py` |
-| theme and part titles, blurbs (ne / hi) | `source/themes_ne.py`, `source/themes_hi.py` |
-| interface wording (buttons, labels; 187 UI strings in three languages) | `source/i18n_ui.py` |
+| chapter names and summaries; themes/parts, titles and descriptions; verse text, translations, word glosses, pāda flow and colophon | `source/ch<N>.json` |
+| interface wording (buttons and labels; 187 UI strings in each of three languages) | `source/i18n_ui.py` |
+| shell structure, styling and client behavior | `source/app.html`, `source/app.css`, `source/app.js` |
+| approved story maps and safe legacy-progress migration | `source/study_map_contract.json` |
+
+The canonical schema deliberately has one copy of each value. Chapter names and
+themes/parts use localized maps; English is not copied into separate `name`,
+`sub`, `title` or `desc` fields. Each verse stores only `n`, `d`, `t`, `flow`,
+`lits` and `paras`: display lines, speaker order and meter are derived from
+those fields at runtime.
 
 #### The verse you read
 
-Printed **verbatim** from `source/ch*.json`. The text is stored as segments
-separated by `।` — two verse lines, plus a speaker where there is one — and the
-app carries those segments through untouched, in order. Nothing is re-joined or
-re-derived, so the display cannot drift from the file. Fix a verse by editing
-that one line of JSON.
+Each verse's `d` and `t` fields are its canonical Devanagari and IAST strings.
+The app splits both on the danda `।`, pairs the segments in order and displays
+them without joining, re-sandhi or other text reconstruction. An IAST segment
+ending in `uvāca` is rendered as a speaker; it stays exactly where it occurs,
+including the mid-verse position in 1.21 and 1.28. Every verse must yield two
+non-speaker lines, and the build rejects mismatched Devanagari/IAST segments.
+To correct a verse, edit its `d` and `t` strings in its chapter JSON.
 
 #### The pāda split
 
-The four quarter-boxes in the verse popup. This is **plain data** in
-`source/padas_ch*.py` — one entry per verse, read straight through:
+The popup's four quarter-boxes and word-by-word glosses come from that same
+verse's ordered `flow` array. A pāda item has its Devanagari, IAST, syllable
+count, and five-field word rows (`deva`, `iast`, English, Nepali, Hindi):
 
-```python
-"16.03": [
-    ("p", "तेजः क्षमा धृतिः शौचम्", "tejaḥ kṣamā dhṛtiḥ śaucam", 8),
-    ("p", "अद्रोहो नातिमानिता",      "adroho nātimānitā",        8),
-    ("p", "भवन्ति सम्पदं दैवीम्",     "bhavanti sampadaṃ daivīm", 8),
-    ("p", "अभिजातस्य भारत",         "abhijātasya bhārata",      8),
-],
+```json
+"flow": [
+  {
+    "k": "p",
+    "d": "तेजः क्षमा धृतिः शौचम्",
+    "t": "tejaḥ kṣamā dhṛtiḥ śaucam",
+    "n": 8,
+    "words": [["तेजः", "tejaḥ", "vigour", "तेज", "तेज"], ["क्षमा", "kṣamā", "forgiveness", "क्षमा", "क्षमा"]]
+  }
+]
 ```
 
-`("p", devanagari, iast, syllables)` is a pāda; `("s", devanagari, iast)` is a
-speaker line. They render in the order written, which is why the speaker in 1.21
-and 1.28 correctly appears between the two halves.
-
-To move a boundary, move the word in both the Devanagari and the IAST and adjust
-the two syllable counts. The build then checks that the pādas still spell the
-verse in `ch*.json` and that every count is right, and stops with a clear message
-if not — so the two files cannot drift apart.
+Speaker items use `"k": "s"` and omit the syllable count. Both kinds appear in
+`flow` in display order; the speaker's glosses live there too. To move a pāda
+boundary, move the text in both scripts, adjust its `n`, and move the affected
+word rows. The build checks that the pādas reconstruct the verse IAST, each
+syllable count matches, and the word rows remain complete. The meter badge is
+computed from these pāda counts; it is not a second stored value.
 
 #### The build checks that your edit took effect
 
-Every build runs a **manual-edit audit** and stops if a source file says
-something the app would not show:
+Every build validates that:
 
-* a verse with no Nepali or Hindi translation, which would silently show English
-* an `ne`/`hi` theme file whose structure does not mirror the English one
-* a verse that no part's range covers, making it unreachable in the app
-* pādas in `padas_ch*.py` that no longer spell the verse in `ch*.json`
-* a pāda whose syllable count does not match its text
+* the chapter/theme/part/verse records match the compact schema, with no
+  duplicate labels or cached display fields;
+* all translations and descriptions are present in English, Nepali and Hindi;
+* every verse belongs to exactly one part and all 700 verse references resolve;
+* the verse strings split into matching display segments and speakers;
+* pāda text, word glosses and syllable counts agree.
 
-```
-pāda overrides applied: 1 ✓
-manual-edit audit: NONE ✓
-```
-
-`build.py` also clears `__pycache__` before every build, so an edit can never be
-masked by a stale compiled copy of a source file.
+`source/prove_data_only.py` also performs eight edit-and-restore proofs: a change
+to chapter JSON must appear in the published data, and restoring the source
+must restore the original build hash. `build.py` clears `__pycache__` before
+every build so stale Python bytecode cannot hide an edit.
 
 #### Dark mode
 
@@ -209,7 +209,7 @@ The app follows the phone's own light/dark setting. A ☾ / ☀ button in the
 language bar overrides it, and that choice is remembered.
 
 It is presentation only — no data file is involved. The colours live in two
-blocks at the top of the CSS in `source/build_gita.py`: `:root` for light and
+blocks at the top of `source/app.css`: `:root` for light and
 `html[data-theme="dark"]` for dark. Both define the same token names, so every
 rule just uses `var(--x)` and nothing else changes.
 
@@ -226,52 +226,38 @@ All verse text passes WCAG AA in both themes (measured: 10.1:1 Devanagari,
 
 #### Proving the app only renders data
 
-If you want to satisfy yourself that nothing is being generated any more:
+To verify that canonical edits reach the published artifacts, run:
 
 ```
-cd source
-python3 prove_data_only.py
+python3 source/prove_data_only.py
 ```
 
-It runs two opposite experiments and restores everything afterwards:
+It performs eight temporary edit-and-restore experiments: a verse string, a pāda,
+a word gloss, English and Nepali translations, a Hindi theme title, a chapter
+name, and an interface string. Each edit must appear in the built output and
+change its content hash; after restoration, the final hash must match the
+baseline byte-for-byte.
 
-1. **Breaks the generator** — replaces the four functions that used to produce
-   displayed text with ones returning the word `SABOTAGED`, then rebuilds. If the
-   app still generated anything, `index.html` would change. It does not: the file
-   comes out byte-identical and the word never appears.
-2. **Changes the data** — edits one pāda in `padas_ch16.py` and rebuilds. The new
-   text appears in `index.html`, so the data file wins and is not overwritten.
+#### Content is data; code only builds and validates it
 
-```
-  PASS  generator broken -> output unchanged
-  PASS  data changed -> output changes
-  CONCLUSION: the app renders the data files; it does not generate them.
-```
+The chapter JSON contains the complete Sanskrit, translations, theme/part text,
+word rows and colophon. The app derives only display conveniences from that
+source: danda-separated reader segments and the meter badge from pāda syllable
+counts. It does not generate verse text, translations or glosses. The old ITRANS
+converter, freeze/override tools and their raw `.itx` source texts are gone.
 
-The quickest informal version of the same check: note the hash printed by
-`build.py`, edit any data file, rebuild, and confirm the hash moved and your
-words are on the page.
-
-#### No code generates content
-
-The app's content is complete, so the build does not derive anything — it reads
-the data files and renders them. The old ITRANS converter and metre-splitter
-(`gita_conv.py`), the freeze tool (`freeze_padas.py`), the override workaround
-(`pada_overrides.py`) and the unused `sandhi.py` have all been **deleted**, along
-with the raw `.itx` source texts they were built from. The test suite asserts
-they stay gone and that the builder never calls a conversion function.
-
-What remains is small and only ever *checks* your data:
+The remaining helpers are small and check data rather than rewrite its meaning:
 
 | file | what it does |
 |---|---|
-| `verify.py` | flattens IAST accents and counts syllables, so the build can compare your pādas against `ch*.json` |
-| `check_padas.py` | rebuilds each pāda from its word split to catch a typo in `padachheda_ch*.py` |
+| `verify.py` | normalizes IAST and counts syllables for validation |
+| `check_padas.py` | rebuilds each pāda from the word rows nested in `flow` |
 | `check_paraphrase.py` | fails if any flowing paraphrase overlaps its literal by 80% or more |
-| `check_translations.py` | runs over the built `data/ch*.js`: fails on readings already ruled out (`जुताइएको` …), on Latin letters or broken spacing in Nepali/Hindi, and on a word or phrase printed twice in a row; prints the prescribed आ-form (`…का लागि`) advice without blocking |
-| `prove_data_only.py` | edits each kind of data in turn and proves the change reaches the page |
+| `check_translations.py` | checks built data for banned readings, Latin/spacing issues and repeated words; reports reviewed आ-form advice without blocking |
+| `prove_data_only.py` | edits representative source fields and proves they reach the generated artifacts |
 
-None of them can change what the app shows.
+The builder enforces the compact schema and fails if a redundant or derived
+field reappears in canonical chapter data.
 
 ---
 

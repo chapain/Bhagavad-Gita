@@ -114,7 +114,8 @@ class StudyStructureTests(unittest.TestCase):
         def lines(ch, ref):
             verse = next(v for t in self.built[ch]['themes'] for p in t['parts']
                          for v in p['sutras'] if v['n'] == ref)
-            return [''.join(row['t'].split()) for row in verse['lines'] if row['k'] == 'l']
+            return [''.join(row.split()) for row in verse['t'].split('।')
+                    if row.strip() and not row.strip().endswith('uvāca')]
         a, b = lines(9, '9.34'), lines(18, '18.65')
         self.assertEqual(a[0], b[0])
         self.assertNotEqual(a[1], b[1])

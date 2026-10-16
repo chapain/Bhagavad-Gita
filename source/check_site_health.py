@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 """check_site_health.py — the faults found in the 2026-09-01 audit, locked shut.
 
-Every check here corresponds to a real defect that shipped and that NO existing
-suite caught, because the other suites read the app document (run_gita_app.js)
-or the data (check_padas / check_paraphrase / check_seo). Nothing read the
-generated CHAPTER pages, the CSS, or the <head> block. Since 2026-09-01 this
-file also owns the share-link contract that verify_share_pages.py used to
-cover, now that verse links are chapter anchors rather than 700 v/ pages.
+This is the static publication audit: generated chapter pages, CSS, metadata,
+offline assets, and other output contracts. App interactions (including
+Learn/Play, favorites storage, routing and accessibility announcements) belong
+to browser_checks.py; chapter-data shape and types are enforced by source/schema.py.
 
 Run:  python3 source/check_site_health.py      (from anywhere)
 Exit code 1 on any failure, so build.py / rebuild.sh can gate on it.
@@ -115,104 +113,9 @@ for page, label in [(idx, "index.html")] + \
     # link previews as an unnamed image (chapters carried none until 2026-10-15)
     ok(len(meta_values(page, "property", "og:image:alt")) == 1, f"{label}: og:image:alt")
 
-# ------------------------------------------------ drill options must be fair
-# Three ways a multiple-choice question quietly stops testing anything:
-#   - two options render identically (looks like a bug, and is one)
-#   - a distractor is already visible in the split, so it is eliminable at a
-#     glance and the question is easier than it looks
-#   - a distractor means the same as the answer, so two options are both right
-# Measured before the fix: 0.7% duplicate, 2.4% leaked. Now 0 of 5000.
-# Assert the guard STATEMENTS, not just that the identifiers appear somewhere —
-# a substring check passed even after the guards were deleted, because the
-# variable names still occurred in the surrounding lines.
-ok("if(shownForms[x[0]]) return;" in idx,
-   "a distractor already shown in the split must be rejected")
-ok("if(seenOpt[x[0]]) return;" in idx,
-   "two distractors must never be the same word")
-ok("if(x[2] === c.w[2]) return;" in idx,
-   "a distractor must not share the answer's meaning")
-ok(idx.count("seenOpt[x[0]] = 1") == 1,
-   "each accepted distractor must be recorded, or duplicates slip back in")
-
-# Switching language mid-drill used to fall through setLang's generic restore:
-# with state.theme set that lands on showVerses() and the drill vanishes.
-# Switching language mid-drill used to fall through setLang's generic restore:
-# with state.theme set that lands on showVerses() and the drill vanishes — the
-# owner hit exactly this. It must re-enter the learn path, and lrRelang returns
-# to the SAME theme rather than the chapter's path home.
-ok("else if(state.view === 'learn'){ lrRelang(state.chapter); }" in idx,
-   "setLang must re-enter the learn path, not drop the reader into showVerses")
-ok("function lrRelang(" in idx, "the learn path needs a language-switch re-entry point")
-ok("state.lrAt = {kind:'theme'" in idx, "the drilled theme must be recorded for re-entry")
-ok("state.lrAt = {kind:'story'" in idx, "the story step must be recorded for re-entry")
-
-
-# --------------------------------------------- learn drills must be answerable
-# The cloze used to blank the word out of the RECITED line. Sanskrit sandhi
-# means the dictionary form usually is not there literally (पश्य + एताम् ->
-# पश्यैतां), so .replace() missed 52% of words and failed SILENTLY: the line
-# rendered whole, the question asked what was missing when nothing was, and
-# every option was equally arbitrary. It must blank a word from the AUTHORED
-# word-split instead, which is data and always correct.
-ok("lr-split" in idx, "the cloze must render the authored word-split")
-ok("c.q.d.replace(c.w[0]" not in idx,
-   "the cloze must never blank by string-replacing the sandhi'd line")
-ok("lr-cue" in idx, "the recited line must still be shown as the cue")
-# (superseded 2026-09-01 by the three explicit checks above, which cover form,
-#  meaning AND on-screen visibility — the single combined filter missed the
-#  duplicate-option and answer-leak cases entirely.)
-# options are shown as the first pada, so two verses sharing one (6.15/6.28)
-# would render identical choices with one marked wrong
-ok("_full(o)!==mine" in idx,
-   "which-verse distractors must be whole verses, distinct from the answer")
-ok("const _full = v => slokaDeva(v);" in idx, "the theme drill must offer full Sanskrit verses")
-
-
-# ------------------------------------------------------- sheet navigation
-# Prev/Next died silently once every "part" became a single verse: partBounds()
-# returned {start:n, end:n}, so in thematic study BOTH buttons were disabled on
-# every verse in the app. And the reading modes opened the sheet with mode
-# 'read', which navSutra() never handled — it hit `else return`, so the buttons
-# did nothing at all. Neither failure threw; nothing caught them. Hence these.
-ok("function themeBounds(" in idx, "the theme range must be computed from the THEME")
-ok("partBounds" not in idx,
-   "partBounds is gone — parts are one verse each, so it disabled every button")
-ok("state.mode === 'read'" in idx, "navSutra must handle the reading modes")
-ok("state.cStart" in idx and "state.cEnd" in idx,
-   "read mode needs chapter bounds to clamp Prev/Next")
-ok("state.mode==='read'" in idx, "the sheet needs a nav row for read mode")
-# read mode is chapter-scoped; book mode (search/favourites) stays all 700
-ok("Lof(state.gpos-state.cStart+1, state.cEnd-state.cStart+1)" in idx,
-   "the read counter must read 'verse N of <chapter length>'")
-ok("Lof(state.gpos+1, VERSES.length)" in idx,
-   "search/favourites must still range over all 700")
-
-# "part" is dead vocabulary: themes are granular now and hold verses directly.
-_ui = read("source", "i18n_ui.py")
-ok("Themes and parts" not in _ui, "no user-facing copy may still say 'parts'")
-ok("भागहरूमा" not in _ui and "भागों में" not in _ui,
-   "the Nepali/Hindi copy must not say 'parts' either")
-
-
-# --------------------------------------------- the cloze must not leak its answer
-# The recited pāda was printed under the word-split as a cue. Measured against
-# the real data it gave the answer away in 6,069 of 6,394 questions — either
-# literally (मामकाः inside मामकाः पाण्डवाश्चैव) or all but one letter (कुर्वत
-# inside किमकुर्वत). Suppressing it "when the word is literally present" fixed
-# only half. The cue is gone: the surrounding words of the split are the
-# context, which is the recall actually being tested.
-# (lr-cue survives in free practice, where the IAST is shown AFTER the reader
-#  has finished — a reward, not a hint. What must not exist is a cue inside the
-#  cloze question itself.)
-ok("${c.q.d}</div>`" not in idx,
-   "the cloze must not print the recited line as a cue")
-ok("c.q.d.indexOf(c.w[0]) < 0" not in idx,
-   "the half-measure cue guard must be gone, not merely narrowed")
-
-# An ordering correction must clear the moment the reader gets it right, or it
-# reads as though the new, correct answer were also wrong.
-ok("if(fb) fb.innerHTML = '';" in idx,
-   "a correct ordering tap must clear any standing correction")
+# Interactive learning/play invariants are exercised against the rendered app
+# in browser_checks.py. This script focuses on generated artifacts and static
+# publication integrity rather than matching implementation source snippets.
 
 
 # -------------------------- surfaces use the shared palette consistently
@@ -240,17 +143,7 @@ ok(all(int(w) <= 2 for w in _edges),
    f"the brand edge must stay a hairline; found widths {sorted(set(_edges))}")
 
 
-# ------------------------------------------ a retry must not be a free guess
-# Options were shuffled once at build time, so a requeued question returned
-# with the four verses in the SAME positions — and the reader already knew
-# which one was wrong. In Play, where the question comes back immediately,
-# that made the retry a 1-in-3 guess (owner 2026-09-02).
-ok("if(it.kind === 'pick' && it._seen) it.opts = lrShuffle(it.opts);" in idx,
-   "a re-shown question must re-shuffle its options")
-# Shuffling the ARRAY is what keeps lrPick honest: it reads it.opts[i].ok, and
-# .ok travels with the option object, so the answer cannot desync.
-ok("const it = LQ[LQi], o = it.opts[i];" in idx,
-   "lrPick must resolve the answer through the option object, not a stored index")
+# Drill retries and option correctness are exercised in browser_checks.py.
 
 
 # ------------------------------------- the verdict is shown, not narrated
@@ -278,9 +171,6 @@ ok("color:var(--on-danger)" in idx,
    "the cross needs per-theme ink: white is only 3.14:1 on the dark theme's red")
 ok("--danger-soft" in idx and "--on-danger" in idx,
    "both danger tokens must be defined in the palette")
-ok("L('learn_retry')" in idx and idx.count('"learn_retry"') == 3,
-   "the retry button must say what it does, in all three languages")
-ok("learn_continue" not in idx, "the vague 'Continue' string is retired")
 
 
 # --------------------------------------- the question screen must not be bland
@@ -302,11 +192,6 @@ ok("border-color:var(--danger)" in idx,
 _os = re.search(r"\.lr-opt \.os\{[^}]*\}", idx_nofont, re.S)
 ok(_os is not None and "var(--saffron-text)" in _os.group(0),
    "the verse number under an option is a number — saffron like the rest")
-# Play's endless game has no progress to show
-ok("const single = LQ.length === 1 && LQback;" in idx,
-   "a one-item queue must not render a 0%-forever progress bar")
-
-
 # ------------------------------------------- hover must not stick on touch
 # A :hover state persists after a tap on a phone, so the last thing touched
 # keeps looking selected. The app already answers this with @media (hover:none)
@@ -348,118 +233,11 @@ ok(_pls is not None and "color:var(--teal)" in _pls.group(0)
    ".pl-sel must match .tool-btn geometry and colour")
 
 
-# ---------------------------------------------------------------- Play
-# lrRun is shared by the learn path and Play. Its footer must follow the
-# caller: Play passed ci=0 and so offered "back to chapter", which dropped the
-# reader into chapter 1 from a game spanning the whole Gītā (owner 2026-09-01).
-ok("var LQback = null;" in idx, "the drill footer needs a caller-supplied target")
-ok("{fn:'showPlay()', label:'play_title'}" in idx,
-   "Play must send the drill footer back to the Play menu")
-ok("LQback\n      ? backFoot(LQback.fn, L(LQback.label))" in idx,
-   "lrPaint must honour the caller's back target when one is given")
-# A front door onto the drill engine, reachable from the tool row at any time.
-# Unscored and unsaved by design: Learn by heart is the path with progress and
-# gating, Play is the shuffle you drop into (owner 2026-09-01).
-ok('id="playBtnTool"' in idx, "Play must sit in the tool row beside Random and Favorites")
-for _f in ("function showPlay(", "function plStart(", "function plNext(", "function plPool("):
-    ok(_f in idx, f"Play needs {_f.split('(')[0].split()[-1]}()")
-# Phase 3.3 (2026-10-16): count raised 3 -> 4. The 3 UI labels ("play":"Play"
-# in en/ne/hi) still exist; the fourth '"play"' is data-tab="play" on the
-# bottom-tab Play button (intentionally identical so the tab key matches
-# the route name).
-ok(idx.count('"play"') == 4, "the Play label must exist in all three languages (plus bottom-tab route)")
-ok("PL.scope === 'ch'" in idx, "Play must offer a single-chapter scope")
-# Mode 1 gives the Sanskrit verse and asks for its localized meaning; the
-# choices are paraphrases, not verse fragments.
-ok("const sense = o => T(o.paras);" in idx
-   and "opts: four.map(o=>({label:sense(o), ok:o===s}))" in idx,
-   "Play mode 1 offers localized meanings as its choices")
-ok("plP0" not in idx, "Play must not offer first pādas as options")
-ok("const plFull = v => slokaDeva(v);" in idx and "label:plFull(o)" in idx,
-   "Play mode 2 offers the complete Sanskrit verse")
-# Mode 2: near misses from the same chapter. Random numbers from elsewhere are
-# given away by chapter recognition alone and test nothing.
-ok("const same = pool.filter(o=>o.n.split('.')[0]===ch && o.n!==s.n && o.n!==nxt.n);" in idx
-   and "const distract = same.length >= 3 ? same : rest;" in idx,
-   "Play mode 2 prefers same-chapter distractors, with a safe fallback")
-ok("pool.length < 4" in idx, "Play must refuse a pool too small to build options")
-# Play holds its question in the queue; a language switch must return to its menu.
-# A language switch must REBUILD the question in the new language, not quit the
-# game — only the prompt, the note and the numerals were language-bound, and
-# all three are derivable from the verse (owner 2026-09-02).
-ok("else if(state.view === 'play'){ if(PL.q && PL.mode) plNext(PL.q); else showPlay(); }" in idx,
-   "setLang must rebuild the open Play question, not drop the reader to the menu")
-ok("function plNext(keep)" in idx, "plNext must accept a question to rebuild")
-# All THREE modes must record it — a bare substring passed with mode 1 gutted,
-# because modes 2 and 3 still matched.
-ok(idx.count("PL.q = {n:s.n, ord:") == 3,
-   "each Play mode must record its verse and option order for rebuilding")
+# Learn drills, free practice and all three Play modes are tested through user-visible
+# browser interactions in browser_checks.py.
 
 
-# ------------------------------------ free practice must actually shuffle
-# The pādas were rendered straight from FP.order — their natural sequence — so
-# there was nothing to put in order and the whole mode was a no-op (owner
-# 2026-09-01). A display order is now dealt ONCE per verse and held in state:
-# shuffling inside the paint would move the chips on every tap, and the answer
-# check must keep using the TRUE index, not the displayed position.
-ok("FP.deal = deal;" in idx, "free practice must deal a shuffled display order")
-ok("(FP.deal||FP.order.map((_,i)=>i)).map(ix=>" in idx,
-   "free-practice chips must render from the dealt order")
-ok("deal.some((ix,k)=>ix!==k)" in idx,
-   "the deal must reject the identity permutation, which looks like the bug")
-_paint = re.search(r"function lrFreePaint\(\)\{[\s\S]*?\n\}", idx)
-ok(_paint is not None and "lrShuffle" not in _paint.group(0),
-   "lrFreePaint must not reshuffle — the chips would move on every tap")
-
-
-# ------------------------------- every verse drilled; free practice at the end
-# The quarter drill ran on one random verse per theme, leaving 478 of the 700
-# never practised that way. It now runs on every verse (owner 2026-09-01).
-ok("vs.forEach(qv=>{" in idx, "the quarter drill must cover every verse of the theme")
-ok("const qv = vs[Math.floor(Math.random()*vs.length)];" not in idx,
-   "the quarter drill must not sample a single verse per theme")
-# Free practice: unlimited, unscored, outside the queue engine.
-for _f in ("function lrFree(", "function lrFreePick(", "function lrFreePaint(", "function lrFreeTap("):
-    ok(_f in idx, f"free practice needs {_f.split('(')[0].split()[-1]}()")
-ok("learn_shuffle" in idx and idx.count('"learn_shuffle"') == 3,
-   "the shuffle button must exist in all three languages")
-ok("guard++ < 12" in idx, "shuffle must not hand back the same verse twice running")
-# and the completion screen must offer the chapter, not the path
-ok("onclick=\"showRead(${ci},'full')\">${esc(L('back_chapter_one'))}" in idx,
-   "the theme completion screen must offer 'back to chapter'")
-ok(idx.count("L('learn_back_path')") == 0,
-   "'back to the path' is retired — every exit goes to the chapter")
-
-
-# ------------------------------------------- ordering drills must test recall
-# The verse-order chips used to read "1.1 · King Dhṛtarāṣṭra asks…". Printing
-# the number turns recall into sorting integers, which tests nothing — the
-# owner caught it at ch1.t1 (2026-09-01). The paraphrase alone is the cue, and
-# it is unique across all 700 verses at that length.
-ok("label: T(s.paras).slice(0, 64)" in idx,
-   "verse-order chips must be the paraphrase alone")
-ok("fmtNL(s.n)+' \u00b7 '+T(s.paras)" not in idx,
-   "verse-order chips must not print the verse number")
-# Reordering the four pādas of a śloka: every verse has exactly four, all
-# distinct, so the drill is always fair.
-ok("learn_qorder" in idx, "the quarter-order drill must exist")
-ok(idx.count('"learn_qorder"') == 3, "learn_qorder must exist in all three languages")
-ok(re.search(r"chips: qq\.map\(\(q,i\)=>\(\{id:i,[^}]*deva:1\}\)\)", idx) is not None,
-   "quarter chips must carry the Devanagari flag")
-ok(".lr-chip2.dv{" in idx, "Devanagari chips need the Sanskrit face")
-ok(".lr-slot.dv{" in idx, "a placed Devanagari chip must keep the Sanskrit face")
-
-
-# ------------------------------------ the learn path must feel like the app
-# Owner 2026-09-01: the drill's footer said "back to path" and led to the learn
-# home — a half-step nobody asked for. Every footer inside the learn path now
-# returns to the CHAPTER, which is what a chapter card opens. Exactly one
-# "back to the path" survives, on the completion screen, where it is right.
-ok(idx.count("L('back_chapter_one')") >= 3,
-   "learn views must return to the chapter, not the path home")
-ok(idx.count('"back_chapter_one"') == 3,
-   "back_chapter_one must exist in all three languages")
-
+# Learn exits and chapter-return navigation are exercised in browser_checks.py.
 # The drill's chrome must match the app's, or it reads as a bolted-on quiz.
 _cta = re.search(r"\.lr-cta\{[^}]*\}", idx_nofont, re.S)
 ok(_cta is not None, ".lr-cta must exist")
@@ -489,17 +267,15 @@ for _sel, _want in ((r"\.th-flow h3 \.rng", "--ink-soft"),
     ok(_m is not None, f"index.html must style {_sel}")
     if _m:
         ok(f"color:var({_want})" in _m.group(0), f"{_sel} must use the current range tone")
-for _sel in (r"ol\.themes \.rng", r"h2\.th \.rng"):
+for _sel, _tone in ((r"ol\.themes \.rng", "--ink-soft"),
+                    (r"h2\.th \.rng", "--saffron-text")):
     _m = re.search(_sel + r"\{[^}]*\}", css, re.S)
     ok(_m is not None, f"chapter.css must style {_sel}")
     if _m:
-        ok("var(--ink-soft)" in _m.group(0), f"{_sel} must use the chapter-page range tone")
+        ok(f"var({_tone})" in _m.group(0), f"{_sel} must use the chapter-page range tone")
 
-# The welcome view renders its current translated footer. Keep the optional WIP
-# copy available in all three locales without assuming that it is shown here.
-ok('<div class="w-foot">${esc(L(\'welcome_foot\'))}</div>' in idx,
-   "the welcome screen must render its localized footer")
-ok(idx.count('"wip"') == 3, "the wip string must exist in en, ne and hi")
+# Welcome-screen content is covered by rendered browser checks; UI key parity
+# is validated from the structured dictionaries/document tests.
 
 
 # ------------------------------------------------------ chrome consistency
@@ -551,38 +327,8 @@ _tc = [n for n, t in _vt
 ok(len(_tc) <= 10, f"verse titles should be sentence case; {len(_tc)} look Title Cased: {_tc[:5]}")
 
 
-# ---------------------------------------- every view must name itself
-# Phase 3.1: themes are now section HEADINGS inside the unified chapter
-# view. Each theme's title must appear on screen as a heading, not hide in
-# the crumb trail. showVerses stays as an alias that calls showChapter().
-_sv = re.search(r"function showChapter\([^)]*\)\{[\s\S]*?\n\}", idx)
-ok(_sv is not None, "showChapter must exist")
-if _sv:
-    ok('class="ch-theme-name">${esc(T(t.titles))}' in _sv.group(0),
-       "the chapter view prints every theme's name as a heading, not only its description")
-ok("function showThemes(ci){ showChapter(ci); }" in idx and "function showVerses(ci,ti){ showChapter(ci, ti); }" in idx,
-   "showThemes/showVerses aliases are kept for saved-route compatibility")
-# .rng is scoped to .th-flow h3; beside a view title it would inherit 1.7rem
-ok(".view-title .rng{" in idx,
-   "a range beside a view title needs its own size, or it shouts over the name")
-
-
-# ------------------------------------------ [hidden] must actually hide
-# The word grid carried the hidden attribute but opened on arrival: [hidden] is
-# only display:none at the UA default, and .lr-words sets display:grid, which
-# silently wins. Any element rendered with [hidden] whose class also sets a
-# display needs an explicit [hidden] guard (owner 2026-09-02).
-ok(".lr-words[hidden]{ display:none; }" in idx,
-   "a collapsed word grid needs an explicit [hidden] rule to beat display:grid")
-_hidden_classes = set()
-for _m in re.finditer(r'class="([a-z0-9 _-]+)"[^>]*\shidden', idx):
-    _hidden_classes.update(_m.group(1).split())
-for _c in sorted(_hidden_classes):
-    _has_display = any("display:" in _r for _r in
-        re.findall(r"(?<![\w.-])\." + re.escape(_c) + r"\{[^}]*\}", idx_nofont, re.S))
-    if _has_display:
-        ok(f".{_c}[hidden]" in idx,
-           f".{_c} is rendered hidden but sets display — it needs a [hidden] guard")
+# View routing, theme disclosures, range-first headings and verse deep links
+# are exercised against the app and generated chapter pages in browser_checks.py.
 
 
 # --------------------------------- the shell must not inline fonts either
@@ -651,37 +397,27 @@ for n in range(1, 19):
     ok(not skips, f"chapter/{n}: heading level skipped {skips[:1]}")
 
 
-# --------------------------------------- corrupt localStorage must not brick
-# JSON.parse succeeding does not mean the shape is right: a stored 'null', '5'
-# or '{}' parses fine and then throws on .includes(), which runs on every verse
-# modal — one bad write would make every verse unopenable with no way back.
-ok("Array.isArray(a)" in idx, "favLoad must verify it got an array")
-ok("typeof o !== 'object'" in idx, "favNoteLoad must verify it got an object")
+# Corrupt favorites and notes are tested through localStorage and the rendered
+# favorites/verse views in browser_checks.py.
 
 
 # ------------------------------------------- v/ retired, shares go to chapters
 # The 700 per-verse pages were retired 2026-09-01 (GitHub's web uploader caps
 # at 100 files). Verse links now target /chapter/N/#vN.NN.
 ok(not os.path.isdir(os.path.join(ROOT, "v")), "v/ must stay retired")
-ok("root + '/chapter/'" in idx,
-   "the app's share button must build /chapter/N/#vN.NN links")
-ok("/v/' +" not in idx, "the app must not build /v/ share links any more")
 # every verse must be reachable at its advertised anchor, or shares 404 silently
 import json as _json
 for n in range(1, 19):
     page = read("chapter", str(n), "index.html")
     ids = set(re.findall(r'<div class="v" id="(v\d+\.\d+)">', page))
-    # ch<N>.json keys the verses by bare number ("1", "2", ...); the page
-    # anchors use the padded chapter.verse form (v2.01), same as every URL.
+    # The canonical chapter JSON carries verse IDs with each verse record;
+    # chapter anchors use the same padded form, prefixed with `v`.
     with open(os.path.join(ROOT, "source", f"ch{n}.json"), encoding="utf-8") as f:
-        want = {f"v{n}.{int(k):02d}" for k in _json.load(f)["verses"]}
+        source_chapter = _json.load(f)
+    want = {f"v{verse['n']}" for theme in source_chapter["themes"]
+            for part in theme["parts"] for verse in part["sutras"]}
     ok(ids == want, f"chapter/{n}: anchor set != verses in ch{n}.json "
                     f"(missing {sorted(want - ids)[:3]})")
-    # a verse anchor inside a folded <details> is unreachable without this
-    ok("d.open = true" in page, f"chapter/{n}: must open the folded block on a deep link")
-    ok("document.getElementById(decodeURIComponent(h.slice(1)))" in page,
-       f"chapter/{n}: dotted verse IDs must be looked up as IDs, not CSS selectors")
-    ok('id="det-' in page, f"chapter/{n}: <details> blocks need stable ids")
 # old links must still land somewhere useful
 ok("/v/" in read("404.html"), "404.html must forward retired /v/ links")
 
@@ -782,9 +518,6 @@ for n in (1, 2, 18):
 h1_count = len(re.findall(r"<h1[\s>]", idx))
 ok(h1_count == 1,
    f"index.html must have exactly one <h1>, found {h1_count}")
-ok('aria-live="polite"' in idx, "index.html must expose a polite live region")
-ok("announceView()" in idx, "view changes must be announced to assistive tech")
-ok(".sr-only{" in idx, "the live region needs its visually-hidden class")
 
 
 # ------------------------------------------------------------ 9. no dead code

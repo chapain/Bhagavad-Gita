@@ -5,7 +5,6 @@ Six verses is an editorial guideline, not a mechanical chopping rule. Longer
 passages need an explicit reason below; a new exception must be reviewed.
 This checker only reads source and built data, and never repairs either.
 """
-import ast
 import json
 from pathlib import Path
 
@@ -18,25 +17,36 @@ LONG_THEME_EXCEPTIONS = {rng: (entry['verses'], entry['reason'])
 REVIEWED_TOTAL = sum(len(ranges) for ranges in APPROVED_MAPS.values())
 
 
-def literal_assignment(path, name):
-    for node in ast.parse(Path(path).read_text(encoding='utf-8')).body:
-        if isinstance(node, ast.Assign) and any(
-                isinstance(target, ast.Name) and target.id == name for target in node.targets):
-            return ast.literal_eval(node.value)
-    raise ValueError(f'{path}: missing {name}')
-
-
 def load_book(root=ROOT):
+    """Load the one-per-chapter source JSON and expose a review-friendly view.
+
+    The audit's tuple representation is intentionally local to this checker;
+    the repository stores each theme/part once, with all three language fields
+    together in source/ch<N>.json.
+    """
     root = Path(root)
-    metadata = literal_assignment(root / 'source/gita_data.py', 'CHAPTERS')
-    english, localized, built = {}, {}, {}
+    metadata, english, localized, built = [], {}, {"ne": {}, "hi": {}}, {}
     for ch in range(1, 19):
-        suffix = '' if ch == 1 else str(ch)
-        english[ch] = literal_assignment(root / 'source' / f'gita_data{suffix}.py', f'CH{ch}_THEMES')
-        raw = (root / 'data' / f'ch{ch}.js').read_text(encoding='utf-8')
-        built[ch] = json.loads(raw[raw.index('=') + 1:].rstrip().rstrip(';'))
-    for lang in ('ne', 'hi'):
-        localized[lang] = literal_assignment(root / 'source' / f'themes_{lang}.py', f'THEMES_{lang.upper()}')
+        source = json.loads((root / "source" / f"ch{ch}.json").read_text(encoding="utf-8"))
+        raw = (root / "data" / f"ch{ch}.js").read_text(encoding="utf-8")
+        built[ch] = json.loads(raw[raw.index("=") + 1:].rstrip().rstrip(";"))
+        metadata.append((ch, source["names"]["en"], source["deva"],
+                         source["verses"], source["subs"]["en"]))
+        english[ch] = []
+        localized["ne"][ch] = []
+        localized["hi"][ch] = []
+        for theme in source["themes"]:
+            rows = {lang: [] for lang in ("en", "ne", "hi")}
+            for part in theme["parts"]:
+                bounds = part["range"].split("–")
+                if len(bounds) != 2:
+                    raise ValueError(f"ch{ch}: malformed part range {part['range']!r}")
+                for lang in rows:
+                    rows[lang].append((part["titles"][lang], part["descs"][lang],
+                                       bounds[0], bounds[1]))
+            for lang, dest in (("en", english[ch]), ("ne", localized["ne"][ch]),
+                               ("hi", localized["hi"][ch])):
+                dest.append((theme["titles"][lang], theme["descs"][lang], rows[lang]))
     return metadata, english, localized, built
 
 

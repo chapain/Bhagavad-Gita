@@ -66,25 +66,6 @@ WORD_SPELLING_CONVENTIONS = {
     ("9.16", "क्रतुः", "kratur"),
 }
 
-from padachheda_ch1 import GITA_CH1_WORDS as W1
-from padachheda_ch2 import GITA_CH2_WORDS as W2
-from padachheda_ch3 import GITA_CH3_WORDS as W3
-from padachheda_ch4 import GITA_CH4_WORDS as W4
-from padachheda_ch5 import GITA_CH5_WORDS as W5
-from padachheda_ch6 import GITA_CH6_WORDS as W6
-from padachheda_ch7 import GITA_CH7_WORDS as W7
-from padachheda_ch8 import GITA_CH8_WORDS as W8
-from padachheda_ch9 import GITA_CH9_WORDS as W9
-from padachheda_ch10 import GITA_CH10_WORDS as W10
-from padachheda_ch11 import GITA_CH11_WORDS as W11
-from padachheda_ch12 import GITA_CH12_WORDS as W12
-from padachheda_ch13 import GITA_CH13_WORDS as W13
-from padachheda_ch14 import GITA_CH14_WORDS as W14
-from padachheda_ch15 import GITA_CH15_WORDS as W15
-from padachheda_ch16 import GITA_CH16_WORDS as W16
-from padachheda_ch17 import GITA_CH17_WORDS as W17
-from padachheda_ch18 import GITA_CH18_WORDS as W18
-
 VOW1 = "aāiīuūṛṝḷḹeo"
 DIGR = ("ai", "au")
 VOICED = "yrlvmnghbdjḍ"
@@ -258,87 +239,87 @@ def reconstruct(words):
         if not states: break
     return states
 
-PADAS = {}
-for _n in range(1, 19):
-    _m = __import__(f"padas_ch{_n}")
-    PADAS.update(getattr(_m, f"GITA_CH{_n}_PADAS"))
-
-CHS = [("1", W1, "ch1.json"), ("2", W2, "ch2.json"), ("3", W3, "ch3.json"),
-       ("4", W4, "ch4.json"), ("5", W5, "ch5.json"), ("6", W6, "ch6.json"),
-       ("7", W7, "ch7.json"), ("8", W8, "ch8.json"), ("9", W9, "ch9.json"), ("10", W10, "ch10.json"), ("11", W11, "ch11.json"), ("12", W12, "ch12.json"), ("13", W13, "ch13.json"), ("14", W14, "ch14.json"), ("15", W15, "ch15.json"), ("16", W16, "ch16.json"), ("17", W17, "ch17.json"), ("18", W18, "ch18.json")]
+BASE = os.path.dirname(os.path.abspath(__file__))
 
 flags = []
 word_flags = []
 strict_line_flags = []
 checked = 0
 words_checked = 0
-for ch, W, jf in CHS:
-    d = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), jf)))
-    for vno, vd in sorted(W.items()):
-        rows = PADAS[f"{ch}.{int(vno):02d}"]
-        ptxt = [r[2].strip() for r in rows if r[0] == "p"]
-        for p in (0, 1, 2, 3):
-            if p >= len(ptxt): continue
-            wl = vd.get(p, [])
-            if not wl: continue
-            verse = f"{ch}.{int(vno):02d}"
-            for word in wl:
-                words_checked += 1
-                convention = (verse, word[0], word[1]) in WORD_SPELLING_CONVENTIONS
-                if strict_key(deva_to_iast(word[0])) != strict_key(word[1]) and not convention:
-                    word_flags.append((verse, word[0], word[1], deva_to_iast(word[0])))
-            checked += 1
-            # Full reconstruction permits Sanskrit sandhi but retains the
-            # established broad matcher. A second, strict pass below catches
-            # precisely the diacritic disagreements that matcher can hide.
-            T = norm1(ptxt[p].replace(" ", ""))
-            line_strict = strict_key(ptxt[p])
-            line_flat = norm1(line_strict)
-            for word in wl:
-                core = strict_key(word[1])[1:-2]  # exclude sandhi zones
-                if (len(core) >= 4 and core not in line_strict and
-                        norm1(core) in line_flat):
-                    strict_line_flags.append((verse, p + 1, ptxt[p], word[1]))
-            cands = reconstruct([w[1] for w in wl])
-            cands |= {c[:-1] for c in cands if c.endswith("ḥ")}
-            cands |= {c[:-1] + "r" for c in cands if c.endswith("ḥ")}
-            cands |= {c[:-1] + "s" for c in cands if c.endswith("ḥ")}
-            cands |= {c[:-2] + "o" for c in cands if c.endswith("aḥ")}
-            cands |= {c[:-1] + "n" for c in cands if c.endswith("t")}
-            cands |= {c[:-1] + "d" for c in cands if c.endswith("t")}
-            cands |= {c[:-1] for c in cands if c.endswith("t")}
-            cands |= {c[:-1] for c in cands if c.endswith("m")}
-            cands |= {c[:-1] for c in cands if c.endswith("n")}
-            # gemination: a short vowel + final n doubles before a vowel, and when the
-            # pāda ends there the second n stays with this pāda (5.08 jighrann | aśnan)
-            cands |= {c + "n" for c in cands if c.endswith("n")}
-            # A pāda may END on the first half of a consonant that sandhi doubles or
-            # assimilates across the break (2.57 ...snehas | tattat..., 4.33 ...yajñāj |
-            # jñāna..., 11.30 ...samantāl | lokān...). Allow the trailing joint letter.
-            cands |= {c[:-1] + x for c in cands if c.endswith("ḥ") for x in ("s","r","ś","ṣ","l","o")}
-            cands |= {c + x for c in cands for x in ("j","l","s","d","m","g","ṃs","’")}
-            # final k/t voice to g/d before a vowel (5.04 samyak -> samyag)
-            cands |= {c[:-1] + "g" for c in cands if c.endswith("k")}
-            cands |= {c[:-1] + "d" for c in cands if c.endswith("t")}
-            # a pāda may open after an elided initial a- marked by the avagraha
-            # (8.20 ...bhāvo’nyo’ | vyakto’vyaktāt...)
-            cands |= {c[1:] for c in cands if c[:1] == "a"}
-            cands |= {c[:-1] for c in cands if c.endswith("k")}
-            cands |= {c[:-1] + "ṃś" for c in cands if c.endswith("n")}
-            cands |= {c[:-1] + "ṃ" for c in cands if c.endswith("n")}
-            cands |= {c[:-1] for c in cands if c.endswith("ṃ")}
-            cands |= {c[:-1] + "y" for c in cands if c.endswith("i")}
-            cands |= {c[:-1] for c in cands if c.endswith("e")}
-            cands |= {c[:-1] + "a" for c in cands if c.endswith("e")}
-            if len(wl) > 1:
-                cands |= {c + wl[-1][1].replace(" ", "") for c in reconstruct([w[1] for w in wl[:-1]])}  # last word appended literally
-            cands |= {"".join(w[1].replace(" ", "") for w in wl)}   # literal un-sandhi'd join
-            ok = (any(norm1(c) == T for c in cands)
-                  or (T[:1] in "sśṣrnjmgdl" and any(norm1(c) == T[1:] for c in cands))
-                  or (len(T) > 1 and T[0] == T[1] and any(norm1(c) == T[2:] for c in cands))
-                  or (T[:1] == "'" and any(norm1(c) == "a" + T[1:] for c in cands)))
-            if not ok:
-                flags.append((ch, vno, p, [w[1] for w in wl], ptxt[p]))
+for ch in range(1, 19):
+    path = os.path.join(BASE, f"ch{ch}.json")
+    with open(path, encoding="utf-8") as f:
+        chapter = json.load(f)
+    for theme in chapter["themes"]:
+        for part in theme["parts"]:
+            for v in part["sutras"]:
+                pads = [item for item in v["flow"] if item["k"] == "p"]
+                for p, pada in enumerate(pads):
+                    wl = pada.get("words", [])
+                    if not wl:
+                        continue
+                    verse = v["n"]
+                    ptext = pada["t"].strip()
+                    for word in wl:
+                        words_checked += 1
+                        convention = (verse, word[0], word[1]) in WORD_SPELLING_CONVENTIONS
+                        if strict_key(deva_to_iast(word[0])) != strict_key(word[1]) and not convention:
+                            word_flags.append((verse, word[0], word[1], deva_to_iast(word[0])))
+                    checked += 1
+                    # Full reconstruction permits Sanskrit sandhi but retains the
+                    # established broad matcher. A second, strict pass below catches
+                    # precisely the diacritic disagreements that matcher can hide.
+                    T = norm1(ptext.replace(" ", ""))
+                    line_strict = strict_key(ptext)
+                    line_flat = norm1(line_strict)
+                    for word in wl:
+                        core = strict_key(word[1])[1:-2]  # exclude sandhi zones
+                        if (len(core) >= 4 and core not in line_strict and
+                                norm1(core) in line_flat):
+                            strict_line_flags.append((verse, p + 1, ptext, word[1]))
+                    cands = reconstruct([w[1] for w in wl])
+                    cands |= {c[:-1] for c in cands if c.endswith("ḥ")}
+                    cands |= {c[:-1] + "r" for c in cands if c.endswith("ḥ")}
+                    cands |= {c[:-1] + "s" for c in cands if c.endswith("ḥ")}
+                    cands |= {c[:-2] + "o" for c in cands if c.endswith("aḥ")}
+                    cands |= {c[:-1] + "n" for c in cands if c.endswith("t")}
+                    cands |= {c[:-1] + "d" for c in cands if c.endswith("t")}
+                    cands |= {c[:-1] for c in cands if c.endswith("t")}
+                    cands |= {c[:-1] for c in cands if c.endswith("m")}
+                    cands |= {c[:-1] for c in cands if c.endswith("n")}
+                    # gemination: a short vowel + final n doubles before a vowel,
+                    # and when the pāda ends there the second n stays with it.
+                    cands |= {c + "n" for c in cands if c.endswith("n")}
+                    # A pāda may END on the first half of a consonant that sandhi
+                    # doubles or assimilates across the break.
+                    cands |= {c[:-1] + x for c in cands if c.endswith("ḥ")
+                              for x in ("s", "r", "ś", "ṣ", "l", "o")}
+                    cands |= {c + x for c in cands
+                              for x in ("j", "l", "s", "d", "m", "g", "ṃs", "’")}
+                    # final k/t voice to g/d before a vowel
+                    cands |= {c[:-1] + "g" for c in cands if c.endswith("k")}
+                    cands |= {c[:-1] + "d" for c in cands if c.endswith("t")}
+                    # a pāda may open after an elided initial a- marked by avagraha
+                    cands |= {c[1:] for c in cands if c[:1] == "a"}
+                    cands |= {c[:-1] for c in cands if c.endswith("k")}
+                    cands |= {c[:-1] + "ṃś" for c in cands if c.endswith("n")}
+                    cands |= {c[:-1] + "ṃ" for c in cands if c.endswith("n")}
+                    cands |= {c[:-1] for c in cands if c.endswith("ṃ")}
+                    cands |= {c[:-1] + "y" for c in cands if c.endswith("i")}
+                    cands |= {c[:-1] for c in cands if c.endswith("e")}
+                    cands |= {c[:-1] + "a" for c in cands if c.endswith("e")}
+                    if len(wl) > 1:
+                        cands |= {c + wl[-1][1].replace(" ", "")
+                                  for c in reconstruct([w[1] for w in wl[:-1]])}
+                    cands |= {"".join(w[1].replace(" ", "") for w in wl)}
+                    ok = (any(norm1(c) == T for c in cands)
+                          or (T[:1] in "sśṣrnjmgdl" and any(norm1(c) == T[1:] for c in cands))
+                          or (len(T) > 1 and T[0] == T[1]
+                              and any(norm1(c) == T[2:] for c in cands))
+                          or (T[:1] == "'" and any(norm1(c) == "a" + T[1:] for c in cands)))
+                    if not ok:
+                        flags.append((ch, int(verse.split(".")[1]), p,
+                                      [w[1] for w in wl], ptext))
 print("words checked:", words_checked, "| spelling flags:", len(word_flags))
 for f in word_flags:
     print("word spelling:", f)

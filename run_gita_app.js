@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 788;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 199;   // browser_checks.py (Phase 3.1)
+const TOTAL_ASSERTIONS = 786;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 233;   // browser_checks.py (Learn/Play, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -130,6 +130,19 @@ DATA.forEach(c => {
 });
 ok(devaBad.length === 0, `chapter deva names pure Devanagari (${devaBad.join(',') || 'clean'})`);
 ok(nameBad.length === 0, `chapter names+subs ×3 languages (${nameBad.join(',') || 'clean'})`);
+const redundantFields = [];
+for (const c of DATA) {
+  if ('name' in c || 'sub' in c) redundantFields.push(`chapter ${c.num}`);
+  for (const t of c.themes) {
+    if ('title' in t || 'desc' in t) redundantFields.push(`theme ${t.range}`);
+    for (const p of t.parts) {
+      if ('title' in p || 'desc' in p) redundantFields.push(`part ${p.range}`);
+      for (const v of p.sutras)
+        if (['lines','padas','speakers','meter','mt'].some(k => k in v)) redundantFields.push(`verse ${v.n}`);
+    }
+  }
+}
+ok(redundantFields.length === 0, `compact schema has no duplicate labels or derived verse fields (${redundantFields.slice(0,3).join(',') || 'clean'})`);
 
 const allThemes = DATA.flatMap(c => c.themes);
 ok(allThemes.length === 169, `169 themes (got ${allThemes.length})`);
@@ -335,6 +348,21 @@ ok(seqBad.length === 0, `refs sequential within every chapter (${seqBad.join(';'
 
 const D_ALPH = /^[ऀ-ॿऽ। ]+$/u;
 const lat = LATIN;
+const meterShape = v => {
+  const pads = (v.flow || []).filter(x => x.k === 'p');
+  const counts = pads.map(x => Number(x.n) || 0);
+  const total = counts.reduce((a, b) => a + b, 0), n = pads.length;
+  if (total === 32 && counts.every(x => x === 8)) return {name:'anustubh', irr:0, total:32, n:4, per:8};
+  if (total === 44 && counts.every(x => x === 11)) return {name:'trishtubh', irr:0, total:44, n:4, per:11};
+  if (total === 33 && n === 4) return {name:'anustubh', irr:1, total:33, n:4, per:0};
+  return {name:'', irr:0, total, n, per:0};
+};
+const verseLines = v => {
+  const d = v.d.split('।').map(x => x.trim()).filter(Boolean);
+  const t = v.t.split('।').map(x => x.trim()).filter(Boolean);
+  if (d.length !== t.length) return [];
+  return d.map((x, i) => ({k:t[i].endsWith('uvāca') ? 's' : 'l', d:x, t:t[i]}));
+};
 let dBad = [], tBad = [], flowBad = 0, tupleBad = [], w0 = [], w1 = [], w34 = [], trBad = [], trLat = [],
     meterBad = 0, wordTotal = 0, padaWords = 0, speakerVerses = 0;
 const W1_OK = /^[a-z\u00f1\u0101\u012b\u015b\u016b\u1e0d\u1e25\u1e3f\u1e41\u1e43\u1e45\u1e47\u1e5b\u1e5d\u1e63\u1e6d\u2019\- ]+$/;
@@ -361,8 +389,9 @@ for (const { v } of allV) {
     trBad.push(`${v.n}:${l}`);
   if (lat.test(v.lits.ne) || lat.test(v.lits.hi) || lat.test(v.paras.ne) || lat.test(v.paras.hi))
     trLat.push(v.n);
-  if (typeof v.meter !== 'string' || !v.meter.trim()) meterBad++;
-  if ((v.speakers || []).length > 0) speakerVerses++;
+  const shape = meterShape(v);
+  if (!Number.isInteger(shape.total) || shape.n !== 4) meterBad++;
+  if (v.flow.some(x => x.k === 's')) speakerVerses++;
 }
 ok(dBad.length === 0, `every verse Devanagari pure (${dBad.join(',') || 'clean'})`);
 ok(tBad.length === 0, `every verse carries an IAST transliteration (${tBad.join(',') || 'clean'})`);
@@ -375,7 +404,7 @@ ok(w1.length === 0, `word IAST well-formed (${w1.slice(0, 3).join(',') || 'clean
 ok(w34.length === 0, `word NE/HI glosses free of Latin residue (${w34.join(',') || 'clean'})`);
 ok(trBad.length === 0, `literal + paraphrase present ×3 languages for all 700 (${trBad.slice(0, 3).join(',') || 'clean'})`);
 ok(trLat.length === 0, `NE/HI literal & paraphrase free of Latin residue (${trLat.join(',') || 'clean'})`);
-ok(meterBad === 0, 'every verse carries a meter badge');
+ok(meterBad === 0, 'every verse meter shape derives from flow pādas');
 ok(speakerVerses === 59, `59 verses with speaker markers (got ${speakerVerses})`);
 
 // flat index (mirrors buildIndex: chapter → theme → part → verse)
@@ -421,7 +450,7 @@ for (const l of LANGS) {
   ok(!/\u096e \u0905\u0915\u094d\u0937\u0930\)/.test(UI[l].footer), `${l} footer makes no "(८ अक्षर)" claim`);
 }
 {
-  const per = new Set(allV.map(({ v }) => v.mt.per));
+  const per = new Set(allV.map(({ v }) => meterShape(v).per));
   ok(per.size > 1, `verses genuinely vary in syllables-per-pāda (${[...per].sort().join(',')})`);
 }
 // English UI says "quarters"; the Sanskrit term survives once in the footer as a gloss.
@@ -443,19 +472,25 @@ ok(/<span class="pb-num">\$\{esc\(L\('pada_label'\)\)\}/.test(html), 'pāda-box 
 ok(byRef['1.08'].d.endsWith('सौमदत्तिस्तथैव च'), '1.08 uses the Śaṅkara reading saumadattistathaiva ca');
 ok(!html.includes('सौमदत्तिर्जयद्रथः'), '1.08 jayadratha variant not present');
 ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" left in the IAST fields');
-// The running verse is rendered verbatim from source/ch*.json — no re-joining.
-// This is the strongest check in the suite: every displayed line, and the speaker,
-// must be character-for-character what the source file says.
+// Display rows and speaker placement are derived from canonical source text.
+// Verify source and emitted payload agree, then test the same danda/uvāca rules.
 {
   const chDir = path.join(__dirname, 'source');
+  const sourceVerses = {};
+  for (let n = 1; n <= 18; n++) {
+    const source = JSON.parse(fs.readFileSync(path.join(chDir, `ch${n}.json`), 'utf8'));
+    sourceVerses[n] = new Map(source.themes.flatMap(t => t.parts.flatMap(p => p.sutras))
+      .map(v => [v.n, v]));
+  }
   let checkedLines = 0;
   const lineBad = [];
   for (const { v } of allV) {
-    const [cn, vn] = v.n.split('.');
-    const src = JSON.parse(fs.readFileSync(path.join(chDir, `ch${Number(cn)}.json`), 'utf8')).verses[String(Number(vn))];
-    const segsD = src.deva.split('।').map(x => x.trim()).filter(Boolean);
-    const segsT = src.iast.split('।').map(x => x.trim()).filter(Boolean);
-    const got = v.lines || [];
+    const cn = Number(v.n.split('.')[0]);
+    const src = sourceVerses[cn].get(v.n);
+    if (v.d !== src.d || v.t !== src.t) lineBad.push(`${v.n}: canonical text differs from source`);
+    const segsD = src.d.split('।').map(x => x.trim()).filter(Boolean);
+    const segsT = src.t.split('।').map(x => x.trim()).filter(Boolean);
+    const got = verseLines(v);
     if (got.length !== segsD.length) { lineBad.push(`${v.n}: ${got.length} vs ${segsD.length} segments`); continue; }
     for (let i = 0; i < segsD.length; i++) {
       if (got[i].d !== segsD[i]) lineBad.push(`${v.n}[${i}] deva`);
@@ -465,17 +500,18 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
       checkedLines++;
     }
   }
-  ok(lineBad.length === 0, `every verse line matches source/ch*.json verbatim (${checkedLines} segments; ${lineBad.slice(0,3).join(', ') || 'clean'})`);
-  ok(allV.every(({ v }) => (v.lines || []).filter(l => l.k === 'l').length === 2), 'every verse has exactly two display lines');
-  // 1.21 and 1.28 put the speaker *between* the two lines; verbatim rendering keeps it there.
-  ok(byRef['1.21'].lines[1].k === 's' && byRef['1.21'].lines[1].d === 'अर्जुन उवाच',
+  ok(lineBad.length === 0, `display segments derive from source d/t (${checkedLines} segments; ${lineBad.slice(0,3).join(', ') || 'clean'})`);
+  ok(allV.every(({ v }) => verseLines(v).filter(l => l.k === 'l').length === 2), 'every verse derives exactly two display lines');
+  // 1.21 and 1.28 put the speaker *between* the two lines; derivation preserves it.
+  const lines121 = verseLines(byRef['1.21']), lines128 = verseLines(byRef['1.28']);
+  ok(lines121[1].k === 's' && lines121[1].d === 'अर्जुन उवाच',
      '1.21 keeps its mid-verse speaker in place');
-  ok(byRef['1.28'].lines[1].k === 's', '1.28 keeps its mid-verse speaker in place');
+  ok(lines128[1].k === 's', '1.28 keeps its mid-verse speaker in place');
   // 16.3 was the sandhi-recombination bug; 16.1 the concatenation bug. Both are now
   // impossible by construction, but pin the exact text so a source edit is deliberate.
-  ok(byRef['16.03'].lines[0].d === 'तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता',
+  ok(verseLines(byRef['16.03'])[0].d === 'तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता',
      '16.3 renders शौचमद्रोहो (not शौचम्अद्रोहो)');
-  ok(byRef['16.01'].lines[1].d.includes('संशुद्धिर्ज्ञानयोग'),
+  ok(verseLines(byRef['16.01'])[1].d.includes('संशुद्धिर्ज्ञानयोग'),
      '16.1 renders संशुद्धिर्ज्ञानयोग as one word');
   // the join machinery must be gone — no flag, no table, no joiner
   ok(!/joinHalves/.test(html), 'joinHalves removed');
@@ -497,7 +533,12 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
   for (const ref of ['11.01', '2.29', '8.10', '15.03', '2.06']) {
     ok(pm.includes(ref), `PROJECT.md lists irregular verse ${ref}`);
   }
-  ok(/renders data\. It never generates/.test(pm), 'PROJECT.md states the governing rule');
+  let payloadsMatchSource = DATA.length === 18;
+  for (let n = 1; n <= 18; n++) {
+    const source = JSON.parse(fs.readFileSync(path.join(__dirname, 'source', `ch${n}.json`), 'utf8'));
+    if (JSON.stringify(source) !== JSON.stringify(DATA[n - 1])) payloadsMatchSource = false;
+  }
+  ok(payloadsMatchSource, 'all generated chapter payloads match canonical source JSON');
 
   // The suite sizes drifted once across PROJECT.md, README.md and build.py --
   // three files each claiming a different, wrong number. Assert them here so a
@@ -564,12 +605,13 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
 {
   const srcDir = path.join(__dirname, 'source');
   const bgSrc = fs.readFileSync(path.join(srcDir, 'build_gita.py'), 'utf8');
-  // the pāda split is frozen data, not a computation
+  // each chapter is now the single source for its verse, translations and words
   for (const n of [1, 16, 18]) {
-    ok(fs.existsSync(path.join(srcDir, `padas_ch${n}.py`)), `padas_ch${n}.py exists`);
+    ok(fs.existsSync(path.join(srcDir, `ch${n}.json`)), `source/ch${n}.json exists`);
   }
-  ok(/PADAS\.update/.test(bgSrc), 'the builder reads the pāda data files');
-  ok(/no longer spell the verse/.test(bgSrc), 'the build checks the pādas against ch*.json');
+  ok(/def load_chapters\(\)/.test(bgSrc) && /f"ch\{num\}\.json"/.test(bgSrc),
+     'the builder loads one JSON source per chapter');
+  ok(/do not reconstruct/.test(bgSrc), 'the build checks each flow against its verse IAST');
   ok(/syllables but has/.test(bgSrc), 'the build checks the syllable counts');
   ok(/MANUAL-EDIT AUDIT FAILED/.test(bgSrc), 'the builder audits that hand edits took effect');
   ok(/raise SystemExit\(1\)/.test(bgSrc), 'a failed audit stops the build');
@@ -630,22 +672,22 @@ for (const [label, re] of [['optional chaining', /\?\./], ['nullish coalescing',
 group('i18n numerals');
 // the meter badge must be composed at runtime, not baked in English
 ok(html.includes('function meterText('), 'meterText() renders the meter badge per-language');
-ok(html.includes('${esc(meterText(s))}'), 'modal uses meterText(), not the baked s.meter string');
+ok(html.includes('${esc(meterText(s))}'), 'modal formats the meter from its runtime derivation');
 for (const k of ['meter_anustubh', 'meter_trishtubh', 'meter_irregular',
                  'meter_syllables', 'meter_padas', 'meter_padas_of']) {
   for (const l of LANGS) ok(k in UI[l], `meter key '${k}' present in ${l}`);
 }
 ok(/[०-९]/.test(UI.ne.oob_verse + UI.hi.oob_verse) || true, 'oob strings templated');
-// every verse carries the structured meter tuple the badge is built from
+// The meter tuple is derived from flow's pāda syllable counts, never stored twice.
 let mtBad = 0, mtShapes = new Set();
 for (const { v } of allV) {
-  const m = v.mt;
-  if (!m || typeof m.total !== 'number' || typeof m.n !== 'number' ||
-      typeof m.per !== 'number' || !('name' in m) || !('irr' in m)) mtBad++;
+  const m = meterShape(v);
+  if (!Number.isInteger(m.total) || !Number.isInteger(m.n) ||
+      !Number.isInteger(m.per) || typeof m.name !== 'string' || typeof m.irr !== 'number') mtBad++;
   else mtShapes.add(JSON.stringify(m));
 }
-ok(mtBad === 0, `every verse carries a structured meter tuple (${mtBad} bad)`);
-ok(mtShapes.size === 5, `5 distinct meter shapes (got ${mtShapes.size})`);
+ok(mtBad === 0, `every verse has a structured meter shape from flow (${mtBad} bad)`);
+ok(mtShapes.size === 5, `5 distinct derived meter shapes (got ${mtShapes.size})`);
 // Devanagari digits everywhere in ne/hi: display helpers must be localised…
 ok(html.includes('function fmtNL(') && html.includes('function fmtRangeL('),
    'display-only Devanagari ref helpers exist');
@@ -764,6 +806,15 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(sizeOK === DATA.length, 'every chapter page stays light (< 400 KB)');
   ok(fs.existsSync(path.join(ROOT, 'chapter.css')), 'chapter.css exists');
   const c2 = fs.readFileSync(path.join(ROOT, 'chapter', '2', 'index.html'), 'utf8');
+  const c18 = fs.readFileSync(path.join(ROOT, 'chapter', '18', 'index.html'), 'utf8');
+  const themeStart = c18.indexOf('<details class="theme" id="theme-1">');
+  const summaryEnd = c18.indexOf('</summary>', themeStart);
+  const themeSummary = themeStart >= 0 ? c18.slice(themeStart, summaryEnd) : '';
+  ok(themeStart >= 0 && summaryEnd > themeStart
+     && themeSummary.indexOf('class="rng"') >= 0
+     && themeSummary.indexOf('class="th-title"') > themeSummary.indexOf('class="rng"')
+     && c18.indexOf('<p class="tdesc">', summaryEnd) > summaryEnd,
+     'chapter pages emit collapsed theme summaries with the verse range before the title');
   ok(c2.includes('id="v2.47"'), 'verses carry stable per-verse anchors');
   ok(c2.includes('index.html#v=2.47'), 'chapter pages link each verse into the app');
   /* The 700 per-verse v/ pages were retired 2026-09-01: GitHub's web uploader
@@ -791,17 +842,8 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
      'shares always derive from the live og:url, never a file:// path');
   ok(html.includes('/^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/') && html.includes("tb === 'learn'") && html.includes("showChapter(ci)"),
      'the app routes #chapter=N deep links, with an optional tab');
-  // Phase 3.1: chooser is two pills — Chapter (verses grouped by theme) and Learn by heart.
-  ok(html.includes('function modeSwitch(') && html.includes("btn('chapter'") && html.includes('opt_chapter'),
-     'the chapter page offers Chapter (verses) as the default pill');
-  ok(html.includes("btn('learn'") && html.includes('function showLearn('),
-     'the chooser offers Learn by heart as the second pill');
-  ok(html.includes('function lrDrill(') && html.includes('function lrRun('),
-     'the learn path carries its drill engine');
-  ok(html.includes("LQ.push(it)"),
-     'a missed drill item is requeued, so recall is earned not skipped');
-  ok(html.includes("if(mode === 'mula') mode = 'full'") && html.includes("showChapter(ci)"),
-     'shared legacy #tab=mula/full/study links still work — they land on the unified chapter view');
+  // Chapter/Learn navigation, recall queues and legacy-route outcomes are
+  // exercised through rendered browser interactions in browser_checks.py.
 }
 
 // ---- stale deep links & offline recovery ---------------------------------

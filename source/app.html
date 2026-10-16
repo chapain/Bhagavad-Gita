@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--
+  Bhagavad Gita — an Interactive Study
+  GENERATED FILE — do not edit by hand.
+
+  This file is built from the sources in  source/  by:
+      bash rebuild.sh          (runs source/build_gita.py, then both test suites)
+
+  Edit the data, not this file:
+      source/ch<N>.json        the complete content record for one chapter
+      source/i18n_ui.py        shared interface strings (en/ne/hi)
+
+  Created by Dhruba Chapain, Pokhara, Nepal.  All rights reserved.
+  AI tools were used in making this app, under the author's direction; the
+  content was reviewed, corrected and approved by him.  See LICENSE.md.
+  https://github.com/chapain/Bhagavad-Gita
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1A5648" id="themeColor">
+<script>
+/* Runs before the page paints, so a dark-mode user never sees a white flash.
+   Order of preference: a choice they made here, else the phone's own setting.
+   localStorage is wrapped because some in-app browsers (WhatsApp, Facebook)
+   throw on access — the app must still work there, just without remembering. */
+(function(){
+  var saved = null;
+  try{ saved = localStorage.getItem('gitaTheme'); }catch(e){}
+  var sysDark = false;
+  try{ sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){}
+  var dark = (saved === 'dark') || (saved === null && sysDark);
+  if(dark) document.documentElement.setAttribute('data-theme','dark');
+  /* The reading language too: the shell ships lang="en" and the app reloads
+     itself when a new service worker claims the tab, so without this a नेपाली
+     reader is announced in English after every update. Same whitelist as
+     savedLang() — anything else keeps the shipped default. */
+  var lang = null;
+  try{ lang = localStorage.getItem('gitaLang'); }catch(e){}
+  if(lang === 'en' || lang === 'ne' || lang === 'hi') document.documentElement.lang = lang;
+})();
+</script>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gita">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Dhruba Chapain">
+<meta name="description" content="Bhagavad Gita — interactive trilingual study edition (English · नेपाली · हिन्दी), 18 chapters, 700 verses, offline.">
+
+<!-- Link preview (WhatsApp, Messenger, Facebook, Telegram, X…).
+     Absolute URLs are required: chat apps fetch these from their own servers.
+     Harmless when the file is opened locally — the tags are simply ignored. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bhagavad Gita — an Interactive Study">
+<meta property="og:title" content="Bhagavad Gita — an Interactive Study · 700 verses, trilingual">
+<meta property="og:description" content="All 18 chapters in English · नेपाली · हिन्दी, with word-by-word meanings for every verse. Works offline.">
+<meta property="og:url" content="__BASE__/">
+<!-- EXACTLY ONE og:image and ONE twitter:card. Both were once declared twice
+     with conflicting values (icon-512.png + summary, then og-card.png +
+     summary_large_image). Crawlers take the FIRST og:image, so the homepage
+     previewed with the square app icon while the 1200×630 width/height tags
+     described the second image — the mismatch made some crawlers drop the
+     card entirely. og-card.png is the site's one face; the square icon is for
+     the manifest, never for a link preview. -->
+<meta property="og:image" content="__BASE__/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ॐ श्रीमद्भगवद्गीता — Bhagavad Gita, 700 verses">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ne_NP">
+<meta property="og:locale:alternate" content="hi_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bhagavad Gita — an Interactive Study · 700 verses, trilingual">
+<meta name="twitter:description" content="All 18 chapters in English · नेपाली · हिन्दी, with word-by-word meanings. Works offline.">
+<meta name="twitter:image" content="__BASE__/og-card.png">
+
+<!-- Search engines. The canonical URL tells Google this is the one address of
+     the app; the JSON-LD describes what it is in a form no crawler can get
+     wrong by mis-rendering the page. Absolute URLs via __BASE__, like og:url.
+     The GSC placeholder is replaced with the Search Console verification meta
+     tag when source/gsc_token.txt exists; otherwise it is removed. -->
+<!--GSC-->
+<link rel="canonical" href="__BASE__/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Bhagavad Gita — an Interactive Study",
+  "alternateName": "श्रीमद्भगवद्गीता",
+  "url": "__BASE__/",
+  "description": "Read and study all 18 chapters and 700 verses of the Bhagavad Gita in English, Nepali and Hindi, with word-by-word meanings, the four pādas of every verse, themes, search and favourites. Works offline.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any web browser",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": ["en", "ne", "hi"],
+  "isAccessibleForFree": true,
+  "author": {
+    "@type": "Person",
+    "name": "Dhruba Chapain",
+    "address": {"@type": "PostalAddress", "addressLocality": "Pokhara", "addressCountry": "NP"}
+  },
+  "sameAs": "https://github.com/chapain/Bhagavad-Gita"
+}
+</script>
+
+<!-- Icons: relative paths, so they resolve on any host or sub-path. -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Bhagavad Gita — English, Nepali, Hindi · 700 Verses</title>
+<style>
+__APP_CSS__
+</style>
+</head>
+<body>
+
+<div class="atm" aria-hidden="true">
+  <div class="atm-wisp"></div>
+  <div class="atm-wisp b"></div>
+  <div class="atm-wisp c"></div>
+  <svg class="atm-feather" viewBox="0 0 80 200" fill="none">
+    <path d="M40 198 C40 140 40 96 40 64" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    <ellipse cx="40" cy="46" rx="22" ry="38" stroke="currentColor" stroke-width="1.1"/>
+    <ellipse cx="40" cy="40" rx="12" ry="20" stroke="currentColor" stroke-width="1"/>
+    <circle cx="40" cy="36" r="5.5" fill="currentColor" opacity=".35"/>
+    <circle cx="40" cy="36" r="2.2" fill="#E8912C" opacity=".45"/>
+    <path d="M40 84 C28 70 22 52 24 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
+    <path d="M40 84 C52 70 58 52 56 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
+  </svg>
+  <svg class="atm-feather l" viewBox="0 0 80 200" fill="none">
+    <path d="M40 198 C40 140 40 96 40 64" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    <ellipse cx="40" cy="46" rx="22" ry="38" stroke="currentColor" stroke-width="1.1"/>
+    <ellipse cx="40" cy="40" rx="12" ry="20" stroke="currentColor" stroke-width="1"/>
+    <circle cx="40" cy="36" r="5.5" fill="currentColor" opacity=".35"/>
+    <circle cx="40" cy="36" r="2.2" fill="#E8912C" opacity=".4"/>
+    <path d="M40 84 C28 70 22 52 24 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
+    <path d="M40 84 C52 70 58 52 56 38" stroke="currentColor" stroke-width=".7" opacity=".7"/>
+  </svg>
+</div>
+
+<header>
+  <div class="header-inner">
+    <span class="om">ॐ</span>
+    <div class="hdr-copy">
+      <h1 id="appTitle">Bhagavad Gita — an Interactive Study</h1>
+      <div id="appSub" style="font-size:.82rem; color:var(--hdr-sub);">श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 pādas</div>
+      <div class="tag"><span id="tagVerses">18 chapters · 700 verses · study edition</span></div>
+    </div>
+    <button class="lang-btn theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon">__ICON_MOON__</span></button>
+    <div class="langbar" id="langbar">
+      <div class="seg" role="group" aria-label="Interface language">
+        <button class="lang-btn on" data-lang="en" lang="en" aria-pressed="true" onclick="setLang('en')">English</button>
+        <button class="lang-btn" data-lang="ne" lang="ne" aria-pressed="false" onclick="setLang('ne')">नेपाली</button>
+        <button class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false" onclick="setLang('hi')">हिन्दी</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Phase 3.3 (2026-10-16): on phones the four tool buttons (Home/Random/
+     Play/Fav) move to a bottom tab bar; the desktop toolbar keeps its
+     existing shape. The search field stays in the sticky top bar on all
+     widths so it is always reachable. -->
+<div class="toolbar" role="toolbar" aria-label="Tools">
+  <button class="tool-btn" onclick="goHome()" id="homeBtn">__ICON_HOME__<span id="homeLbl">Home</span></button>
+  <div class="searchwrap" role="search" aria-label="Search verses" id="searchWrap">
+    <div class="sw-field">
+      <span class="sw-ic">__ICON_SEARCH__</span>
+      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
+      <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()">__ICON_CLEARX__</button>
+    </div>
+  </div>
+  <button class="tool-btn" onclick="randomVerse()" id="randomBtn">__ICON_SHUFFLE__<span id="randLbl">Random</span></button>
+  <button class="tool-btn" onclick="showPlay()" id="playBtnTool">__ICON_PLAY__<span id="playLbl">Play</span></button>
+  <button class="tool-btn" onclick="showFavorites()" id="favBtnTool">__ICON_STAR__<span id="favLbl">Favorites</span></button>
+</div>
+
+<!-- Mobile bottom tab bar: 5 thumb-reachable destinations. Desktop-only
+     (hidden via CSS on ≥761px); on phones it replaces the .toolbar row. -->
+<nav class="tabbar" id="tabbar" aria-label="Main navigation" role="tablist">
+  <button class="tab-btn" data-tab="home" role="tab" onclick="goHome()" aria-selected="true">
+    __ICON_HOME__
+    <span class="tab-lbl" id="tabHomeLbl">Home</span>
+  </button>
+  <button class="tab-btn" data-tab="search" role="tab" onclick="tabGoSearch()" aria-selected="false">
+    __ICON_SEARCH__
+    <span class="tab-lbl" id="tabSearchLbl">Search</span>
+  </button>
+  <button class="tab-btn" data-tab="random" role="tab" onclick="randomVerse()" aria-selected="false">
+    __ICON_SHUFFLE__
+    <span class="tab-lbl" id="tabRandLbl">Random</span>
+  </button>
+  <button class="tab-btn" data-tab="play" role="tab" onclick="showPlay()" aria-selected="false">
+    __ICON_PLAY__
+    <span class="tab-lbl" id="tabPlayLbl">Play</span>
+  </button>
+  <button class="tab-btn" data-tab="fav" role="tab" onclick="showFavorites()" aria-selected="false">
+    __ICON_STAR__
+    <span class="tab-lbl" id="tabFavLbl">Saved</span>
+  </button>
+</nav>
+
+<div class="wrap">
+  <nav class="crumbs" id="crumbs" aria-label="Breadcrumb navigation"></nav>
+  <!-- Announces each view change to screen readers. The app never reloads, so
+       without this a reader who taps "Chapter 2" hears silence: the heading
+       changed but focus did not move. Polite, so it never interrupts. -->
+  <p id="srStatus" role="status" aria-live="polite" class="sr-only"></p>
+  <main id="view" tabindex="-1"><div id="bootNote" style="padding:46px 20px;text-align:center;color:var(--ink-soft);font-size:.95rem;">ॐ</div></main>
+
+  <!-- Shown only when JavaScript is disabled — e.g. the in-app file viewers of
+       WhatsApp / Gmail / some file managers, which render HTML without running
+       scripts. Without this the page would look blank between header & footer. -->
+  <noscript>
+    <div class="ns-box">
+      <div class="ns-om">ॐ</div>
+      <h2>Please open this file in a browser</h2>
+      <p>This is a complete offline app, so it needs JavaScript to display the
+         700 verses. The app viewer you are using right now does not run it.</p>
+      <p class="ns-how"><b>How to open it:</b> tap the <b>⋮</b> / <b>share</b> icon
+         and choose <b>“Open in browser”</b> — or save the file, then open it from
+         your Files app with Chrome or Safari.</p>
+      <hr>
+      <p lang="ne"><b>नेपाली:</b> कृपया यो फाइल <b>ब्राउजरमा</b> खोल्नुहोस्।
+         माथिको <b>⋮</b> मा थिचेर <b>“Open in browser”</b> रोज्नुहोस्, वा फाइल सेभ गरेर
+         Chrome अथवा Safari बाट खोल्नुहोस्। यो एप चल्न JavaScript चाहिन्छ।</p>
+      <p lang="hi"><b>हिन्दी:</b> कृपया इस फ़ाइल को <b>ब्राउज़र में</b> खोलें।
+         ऊपर <b>⋮</b> दबाकर <b>“Open in browser”</b> चुनें, या फ़ाइल सेव करके
+         Chrome या Safari से खोलें। इस ऐप को चलने के लिए JavaScript आवश्यक है।</p>
+    </div>
+  </noscript>
+</div>
+
+<footer>
+  <div id="appFooter">ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.</div>
+  <!-- Credit lives in its own element: applyStatic() replaces #appFooter's
+       textContent on every language switch and would otherwise wipe it. -->
+  <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
+</footer>
+
+<div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></div>
+</div>
+
+<script>
+__APP_JS__</script>
+__DATASCRIPTS__
+</body>
+</html>
