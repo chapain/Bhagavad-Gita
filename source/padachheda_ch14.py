@@ -282,7 +282,7 @@ GITA_CH14_WORDS = {
          ["अतीत्य", "atītya", "having transcended"],
          ["त्रीन्", "trīn", "the three"]],
      1: [["देही", "dehī", "the embodied one"],
-         ["देहसमुद्भवान्", "dehasamudbhavān", "born of the body"]],
+         ["देहसमुद्भवान्", "dehasamudbhavān", "giving rise to the body"]],
      2: [["जन्ममृत्युजरादुःखैः", "janmamṛtyujarāduḥkhaiḥ", "from birth, death, old age and sorrow"]],
      3: [["विमुक्तः", "vimuktaḥ", "freed"],
          ["अमृतम्", "amṛtam", "immortality"],
