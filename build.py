@@ -9,7 +9,8 @@ launched directly: just press Run on this file, or:
     python3 build.py --serve    build, verify, then serve locally at :8000
 
 It runs, in order:
-    1. source/build_gita.py   regenerates index.html from source/
+    1. source/build_gita.py   combines the app templates with one compact
+                               source/ch<N>.json per chapter and writes the site
     2. source/check_padas.py  verifies every pāda reconstructs from its split words
     2b. source/check_paraphrase.py  every paraphrase differs enough from its literal
     2c. source/check_translations.py  the translation safety net: readings already
@@ -19,11 +20,11 @@ It runs, in order:
     2e. source/check_site_health.py  chapter pages, CSS vars, og tags, SW, a11y
     2f. source/audit_titles.py  every title/desc against its own verse
     2g. source/check_study_structure.py  approved story maps and verse titles
-    2h. tests/  mutation/regression checks for the study structure and the
-        translation checker (tests/test_translations.py proves it can fail)
-    3. run_gita_app.js        788 assertions on the built document        (needs node)
+    2h. tests/  mutation/regression checks for canonical chapter schema, study
+        structure and translations (including checker failure proofs)
+    3. run_gita_app.js        786 assertions on the compact built document (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
-    4. browser_checks.py      199 live-browser checks                 (needs playwright)
+    4. browser_checks.py      233 live-browser checks (Learn/Play, favorites storage and disclosures) (needs playwright)
 
 Node-dependent checks (steps 3 and 3b) and the browser check (step 4) are
 skipped with warnings if Node / Playwright are missing — the build itself still
@@ -114,7 +115,7 @@ def main():
     # The approved longer passages are explicit, not an accidental loophole.
     ok &= run([PY, "check_study_structure.py"], SRC, "study maps / verse titles", tail=2)
     ok &= run([PY, "-m", "unittest", "discover", "-s", "tests"], ROOT,
-              "study-map mutation tests", tail=4)
+              "Python mutation/regression tests", tail=4)
 
     node = shutil.which("node")
     if node:

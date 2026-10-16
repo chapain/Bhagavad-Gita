@@ -4,8 +4,8 @@
 Nothing here generates anything the app displays. These functions exist only so
 the build can tell you when a data file contradicts itself:
 
-  norm1()      flattens IAST accents, so the pādas in padas_ch*.py can be
-               compared against the verse in ch*.json
+  norm1()      flattens IAST accents, so each chapter JSON's pāda flow can be
+               compared against its verse text
   syll_iast()  counts syllables, so the number you wrote next to a pāda can be
                checked against the pāda's actual text
 

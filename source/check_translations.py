@@ -121,9 +121,11 @@ def pairs(pages):
                     for lang in LANGS:
                         yield v["n"], lang, "lit", v["lits"][lang]
                         yield v["n"], lang, "para", v["paras"][lang]
-                        # word arrays are [deva, iast, en, ne, hi]
-                        for blk in (*v["flow"], *v.get("speakers", []), *v["padas"]):
-                            for w in blk["words"]:
+                        # flow is canonical; speakers and pādas are its typed
+                        # segments, not parallel copies of the same word arrays.
+                        # Word arrays are [deva, iast, en, ne, hi].
+                        for blk in v["flow"]:
+                            for w in blk.get("words", []):
                                 yield v["n"], "ne", "gloss", w[3]
                                 yield v["n"], "hi", "gloss", w[4]
 

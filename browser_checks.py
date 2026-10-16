@@ -131,6 +131,8 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(400)
     ok(pg.evaluate("state.view === 'chapter' && state.chapter === 0"),
        "theme anchor lands inside the unified chapter view")
+    ok(pg.evaluate("document.querySelector('#theme-0').open"),
+       "a theme deep link opens its collapsed theme section")
 
     group("english wording")
     pg.evaluate("setLang('en')")
@@ -456,10 +458,24 @@ def run(pw, url, offline_capable=False):
        f"the segments are Thematic study + Learn in the current language ({lbls})")
     cr = pg.eval_on_selector_all(".way-crumb > *", "e=>e.map(x=>x.textContent.trim())")
     ok(cr[-1].startswith("Chapter 2"), f"retired study/full/mula routes all land on the unified chapter view ({cr})")
-    # In the unified view, themes are non-tappable headings and verses ARE tap targets.
+    # In the unified view, the theme map stays visible first; opening a
+    # summary reveals that theme's description and tappable verse cards.
     ok(pg.evaluate("state.view") == "chapter" and pg.locator(".ch-theme-head").count() > 0
        and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == "Thematic study",
-       "chapter opens with the Study tab raised and themes as headings")
+       "chapter opens with the Study tab raised and the theme list")
+    ok(pg.locator(".ch-theme:not([open])").count() == pg.locator(".ch-theme").count()
+       and not pg.locator(".ch-theme .mini").first.is_visible(),
+       "chapter initially shows collapsed theme titles, not verse titles/descriptions")
+    order = pg.eval_on_selector(".ch-theme-head",
+        "e => e.textContent.indexOf(e.querySelector('.rng').textContent)"
+        " < e.textContent.indexOf(e.querySelector('.ch-theme-name').textContent)")
+    ok(order, "the verse range appears before its theme title")
+    pg.locator(".ch-theme").first.locator("summary").click()
+    pg.wait_for_timeout(250)
+    ok(pg.locator(".ch-theme[open]").count() == 1
+       and pg.locator(".ch-theme[open] .ch-theme-desc").is_visible()
+       and pg.locator(".ch-theme[open] .mini").first.is_visible(),
+       "opening one theme reveals its description and verse cards only")
     vc = pg.locator(".ch-theme .mini")
     ok(vc.count() > 0 and vc.first.get_attribute("onclick"),
        f"every verse of the chapter is a tap target opening its sheet ({vc.count()})")
@@ -524,7 +540,9 @@ def run(pw, url, offline_capable=False):
     }""")
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(400)
-    # Phase 3.1: verse rows open the modal directly (no intermediate grid view).
+    # Verse rows stay hidden until their theme is expanded; then they open the
+    # modal directly (no intermediate grid view).
+    pg.locator(".ch-theme").first.locator("summary").click()
     pg.locator(".ch-theme .mini").first.click()
     pg.wait_for_timeout(600)
     ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
@@ -603,6 +621,7 @@ def run(pw, url, offline_capable=False):
     n_themes = pg.locator(".ch-theme-head").count()
     ok(n_mini == 72, f"chapter view lists every verse of chapter 2 ({n_mini})")
     ok(n_themes >= 5, f"chapter view groups verses into themes ({n_themes})")
+    pg.locator(".ch-theme").first.locator("summary").click()
     pg.locator(".ch-theme .mini").first.click()
     pg.wait_for_timeout(600)
     ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
@@ -713,11 +732,32 @@ def run(pw, url, offline_capable=False):
     ok(hidden == 0, f"scrolled to the end, nothing hides behind the nav bar ({hidden} covered)")
     ok(pg.evaluate("document.querySelector('.m-tail') !== null"),
        "the sheet has a tail spacer so the last line clears the sticky bar")
-    top_ok = pg.evaluate("""() => {
+    phone_ok = pg.evaluate("""() => {
         const md = document.querySelector('.modal'); md.scrollTop = 0;
-        return document.querySelector('.m-head').getBoundingClientRect().top >= 0;
+        const head = document.querySelector('.m-head').getBoundingClientRect();
+        const part = document.querySelector('.m-part');
+        const text = document.createRange(); text.selectNodeContents(part);
+        return head.top >= 0 && text.getBoundingClientRect().top >= head.bottom + 6;
     }""")
-    ok(top_ok, "at the top of the sheet the verse title is fully on screen")
+    # Reuse the open sheet at tablet and desktop widths: it should grow with
+    # the viewport without overflowing, and the context line stays separate.
+    responsive_ok = True
+    for width, height, max_width in ((820, 900, 960), (1440, 1000, 1160)):
+        pg.set_viewport_size({"width": width, "height": height})
+        responsive_ok = responsive_ok and pg.evaluate("""maxWidth => {
+            const md = document.querySelector('.modal'); md.scrollTop = 0;
+            const r = md.getBoundingClientRect();
+            const head = document.querySelector('.m-head').getBoundingClientRect();
+            const part = document.querySelector('.m-part');
+            const text = document.createRange(); text.selectNodeContents(part);
+            return r.width <= maxWidth + 1 && r.width <= innerWidth - 32 &&
+                   r.left >= 15 && r.right <= innerWidth - 15 &&
+                   md.scrollWidth <= md.clientWidth + 1 &&
+                   text.getBoundingClientRect().top >= head.bottom + 6;
+        }""", max_width)
+    pg.set_viewport_size({"width": 390, "height": 844})
+    ok(phone_ok and responsive_ok,
+       "verse/theme hierarchy is clear and the sheet fits phone, tablet and desktop")
     ok("env(safe-area-inset-top" in pg.content() or True, "safe-area inset applied")
     ctx.close()
 
@@ -751,6 +791,324 @@ def run(pw, url, offline_capable=False):
     }""")
 
     mctx.close()
+
+    group("Learn and Play behavior")
+    lctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
+                         has_touch=True, service_workers="block")
+    lp = lctx.new_page()
+    learn_play_errors = []
+    lp.on("pageerror", lambda error: learn_play_errors.append(str(error)))
+    lp.goto(url, wait_until="load", timeout=90000)
+    lp.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    lp.evaluate("loadAllChapters()")
+    lp.evaluate("setLang('en'); showChapter(0)")
+    lp.locator(".mode-seg .ms-btn").nth(1).click()
+    lp.wait_for_selector(".lr-chip")
+    ok(lp.evaluate("state.view === 'learn' && document.querySelectorAll('.lr-step').length === 3"
+                   " && document.querySelectorAll('.lr-chip').length === DATA[0].themes.length"),
+       "Learn opens with its three stages and one chip for each chapter theme")
+
+    lp.locator(".lr-step").first.locator(".lr-cta").click()
+    lp.wait_for_selector(".lr-thread li")
+    story_rows = lp.locator(".lr-thread li").count()
+    ok(story_rows == lp.locator(".lr-thread .rg").count() and story_rows > 0,
+       "the story-reading stage renders each theme with its range")
+    lp.evaluate("setLang('ne')")
+    ok(lp.evaluate("state.view === 'learn' && state.lrAt.kind === 'story'"
+                   " && document.documentElement.lang === 'ne'"
+                   " && document.querySelectorAll('.lr-thread li').length > 0"),
+       "switching language during the story stage re-enters Learn instead of losing the stage")
+    lp.evaluate("lrTheme(0,0,0)")
+    lp.wait_for_selector(".lr-lad")
+    lp.evaluate("setLang('hi')")
+    ok(lp.evaluate("state.view === 'learn' && state.lrAt.kind === 'theme' && state.lrAt.ti === 0"
+                   " && document.documentElement.lang === 'hi'"
+                   " && document.querySelectorAll('.lr-lad').length === 4"),
+       "switching language during a theme keeps the same Learn theme")
+    lp.evaluate("setLang('en')")
+
+    ok(lp.evaluate("LV.level === 'full' && LV.vs[LV.k].n === '1.01'"
+                   " && document.querySelectorAll('.lr-qh').length === 4"),
+       "a Learn verse opens with four quarter disclosures and the full-word level")
+    lp.locator(".lr-lad").nth(3).click()
+    gap_count = lp.locator(".lr-gap").count()
+    ok(lp.evaluate("LV.level === 'blind'") and gap_count > 0,
+       "the blind ladder level hides authored words behind tappable gaps")
+    lp.locator(".lr-gap").first.click()
+    ok(lp.locator(".lr-gap").count() < gap_count and lp.locator(".lr-tokw").count() > 0,
+       "tapping a blank reveals its word without unblinding the other words")
+    lp.locator(".lr-qh .chev").first.click()
+    opened_words = lp.locator(".lr-words").first
+    opened_ok = (opened_words.get_attribute("hidden") is None
+                 and lp.locator(".lr-qh").first.get_attribute("aria-expanded") == "true"
+                 and opened_words.evaluate("e => getComputedStyle(e).display") != "none")
+    lp.locator(".lr-qh .chev").first.click()
+    closed_words = lp.locator(".lr-words").first
+    closed_ok = (closed_words.get_attribute("hidden") is not None
+                 and lp.locator(".lr-qh").first.get_attribute("aria-expanded") == "false"
+                 and closed_words.evaluate("e => getComputedStyle(e).display") == "none")
+    ok(opened_ok and closed_ok,
+       "word meanings open and close accessibly, and the hidden panel is actually invisible")
+
+    learn_nav = lp.locator(".lr-nav").last.locator("button")
+    learn_nav.nth(1).click()
+    held_state = lp.evaluate("JSON.parse(localStorage.getItem('gitaLearn') || '{}')")
+    held_ok = held_state.get("1", {}).get("held", {}).get("1.01") == 1
+    lp.locator(".lr-nav").last.locator("button").nth(1).click()
+    unheld_state = lp.evaluate("JSON.parse(localStorage.getItem('gitaLearn') || '{}')")
+    unheld_ok = "1.01" not in unheld_state.get("1", {}).get("held", {})
+    lp.locator(".lr-nav").last.locator("button").nth(2).click()
+    next_ok = lp.evaluate("LV.k === 1 && LV.vs[LV.k].n === '1.02'")
+    lp.locator(".lr-nav").last.locator("button").first.click()
+    previous_ok = lp.evaluate("LV.k === 0 && LV.vs[LV.k].n === '1.01'")
+    ok(held_ok and unheld_ok and next_ok and previous_ok,
+       "Learn saves/removes a held verse and its previous/next controls stay within the theme")
+
+    lp.evaluate("lrStory(0,1)")
+    lp.wait_for_selector(".lr-chip2")
+    order = lp.evaluate("({kind:LQ[LQi].kind, ids:LQ[LQi].chips.map(c=>c.id), answer:LQ[LQi].answer})")
+    wrong_id = next((ix for ix in order["ids"] if ix != order["answer"][0]), None)
+    lp.locator(f'.lr-chip2[onclick="lrChip(this,{wrong_id})"]').click()
+    correction_shown = lp.locator(".lr-fb .bad").count() == 1
+    right_id = order["answer"][0]
+    lp.locator(f'.lr-chip2[onclick="lrChip(this,{right_id})"]').click()
+    ok(order["kind"] == "order" and correction_shown
+       and lp.locator(".lr-fb .bad").count() == 0
+       and lp.locator(".lr-slots .lr-slot").count() == 1,
+       "a story-order mistake gives a correction, then clears it as soon as the right theme is chosen")
+
+    lp.evaluate("lrFree(0,0)")
+    lp.wait_for_selector("#fpChips .lr-chip2")
+    free_state = lp.evaluate("({verse:FP.v.n, deal:FP.deal.slice(), count:FP.order.length})")
+    free_wrong = next(ix for ix in free_state["deal"] if ix != 0)
+    lp.locator(f'#fpChips .lr-chip2[onclick="lrFreeTap({free_wrong})"]').click()
+    free_correction = lp.locator("#fpFb .bad").count() == 1
+    lp.locator('#fpChips .lr-chip2[onclick="lrFreeTap(0)"]').click()
+    free_right = (lp.locator("#fpFb .bad").count() == 0
+                  and lp.locator("#fpSlots .lr-slot").count() == 1)
+    lp.locator(".lr-nav button").first.click()
+    free_shuffle = lp.evaluate("previous => FP.v.n !== previous", free_state["verse"])
+    ok(free_state["count"] == 4
+       and sorted(free_state["deal"]) == [0,1,2,3]
+       and free_state["deal"] != [0,1,2,3]
+       and free_correction and free_right and free_shuffle,
+       "free practice shuffles four quarters, corrects a wrong tap, and deals a different verse")
+
+    lp.evaluate("showWelcome()")
+    lp.locator('.tab-btn[data-tab="play"]').click()
+    lp.wait_for_selector(".pl-mode")
+    ok(lp.evaluate("state.view === 'play' && document.querySelectorAll('.pl-mode').length === 3"),
+       "the mobile Play tab opens the three-mode menu")
+    lp.locator(".pl-scope .lr-ghost").nth(1).click()
+    scope_ready = lp.locator(".pl-sel option").count() == 18
+    lp.locator(".pl-sel").select_option("1")
+    ok(scope_ready and lp.evaluate("PL.scope === 'ch' && PL.ch === 1"),
+       "Play can scope all modes to a selected chapter")
+
+    lp.locator(".pl-mode").nth(0).click()
+    lp.wait_for_selector(".lr-opt")
+    mode_one = lp.evaluate("""() => {
+      const q=LQ[LQi];
+      const matches=q.opts.map((o,i)=>{
+        const loc=verseLoc(PL.q.ord[i]), v=loc&&verseAt(loc);
+        return !!v && v.n.split('.')[0]===PL.q.n.split('.')[0]
+          && o.label===T(v.paras) && o.ok===(v.n===PL.q.n);
+      });
+      return {ref:PL.q.n, order:PL.q.ord.slice(),
+        opts:q.opts.map(o=>({label:o.label,ok:o.ok})), matches,
+        ask:document.querySelector('.lr-ask .lr-qsub.dv')?.textContent || ''};
+    }""")
+    mode_one_ok = (mode_one["ref"].startswith("2.")
+                   and len(mode_one["opts"]) == 4
+                   and len({o["label"] for o in mode_one["opts"]}) == 4
+                   and sum(o["ok"] for o in mode_one["opts"]) == 1
+                   and all(mode_one["matches"])
+                   and bool(mode_one["ask"]))
+    lp.evaluate("setLang('ne')")
+    relang_one_ok = lp.evaluate("""expected => state.view === 'play'
+      && document.documentElement.lang === 'ne' && PL.q.n === expected.ref
+      && JSON.stringify(PL.q.ord) === JSON.stringify(expected.order)
+      && document.querySelectorAll('.lr-opt').length === 4""",
+      {"ref": mode_one["ref"], "order": mode_one["order"]})
+    lp.evaluate("setLang('en')")
+    ok(mode_one_ok and relang_one_ok,
+       "Play mode 1 asks for a localized meaning and language changes keep the same verse/options")
+
+    before_retry = lp.evaluate("LQ[LQi].opts.map(o=>({label:o.label,ok:o.ok}))")
+    wrong_option = lp.evaluate("LQ[LQi].opts.findIndex(o=>!o.ok)")
+    lp.locator(".lr-opt").nth(wrong_option).click()
+    wrong_mark = lp.locator(".lr-opt.wrong").count() == 1
+    retry_label = lp.locator(".lr-fb .lr-cta").count() == 1
+    lp.evaluate("window.__realRandom = Math.random; Math.random = () => 0")
+    lp.locator(".lr-fb .lr-cta").click()
+    after_retry = lp.evaluate("LQ[LQi].opts.map(o=>({label:o.label,ok:o.ok}))")
+    lp.evaluate("Math.random = window.__realRandom; delete window.__realRandom")
+    before_answer = next(i for i,o in enumerate(before_retry) if o["ok"])
+    after_answer = next(i for i,o in enumerate(after_retry) if o["ok"])
+
+    # Open the completed-theme recall control and inspect actual rendered
+    # question choices, not the implementation strings that build them.
+    lp.evaluate("lrTheme(0,0,0);lrTheme(0,0,LV.vs.length)")
+    lp.locator('button[onclick^="lrDrill("]').click()
+    lp.wait_for_function("LQ.some(it=>it.kind==='pick' && it.ask.includes('lr-split'))")
+    learn_drill = lp.evaluate("""() => {
+      const verses=thVerses(DATA[0].themes[0]);
+      const chapterVerses=DATA[0].themes.flatMap(t=>thVerses(t));
+      const rows=chapterVerses.flatMap(v=>v.flow.flatMap(f=>f.words||[]));
+      const glosses=o=>[...new Set(rows.filter(w=>w[0]===o.label&&w[1]===o.iast).map(w=>w[2]))];
+      const clozeIx=LQ.findIndex(it=>it.kind==='pick'&&it.ask.includes('lr-split')
+        && it.opts.length===4&&it.opts.every(o=>glosses(o).length===1)
+        && new Set(it.opts.map(o=>glosses(o)[0])).size===4);
+      const verseIx=LQ.findIndex(it=>it.kind==='pick'&&it.opts.length===4&&it.opts.every(o=>o.sub));
+      const order=LQ.find(it=>it.kind==='order'&&it.chips.length===verses.length);
+      const expected=verses.map(v=>v.flow.filter(f=>f.k==='p').map((q,i)=>q.d+pDanda(i,4)));
+      const actual=LQ.filter(it=>it.kind==='order'&&it.chips.length===4).map(it=>it.chips.map(c=>c.label));
+      let wordOK=false, verseOK=false;
+      if(clozeIx>=0){
+        LQi=clozeIx; lrPaint();
+        const it=LQ[LQi], labels=it.opts.map(o=>o.label);
+        const shown=[...document.querySelectorAll('.lr-split .lr-tok')].map(e=>e.textContent.trim());
+        wordOK=labels.length===4&&new Set(labels).size===4&&it.opts.filter(o=>o.ok).length===1
+          &&labels.every(label=>!shown.includes(label))
+          &&document.querySelectorAll('.lr-split .lr-blank').length===1
+          &&!document.querySelector('.lr-ask .lr-cue');
+      }
+      if(verseIx>=0){
+        LQi=verseIx; lrPaint();
+        const it=LQ[LQi], byId=new Map(chapterVerses.map(v=>[fmtNL(v.n),v]));
+        const labels=[...document.querySelectorAll('.lr-opt .ol')].map(e=>e.textContent.trim());
+        verseOK=it.opts.length===4&&new Set(labels).size===4&&it.opts.filter(o=>o.ok).length===1
+          &&it.opts.every((o,i)=>{const v=byId.get(o.sub);return !!v&&labels[i]===slokaDeva(v)&&o.iast===slokaIast(v)});
+      }
+      const orderOK=!!order&&order.chips.every((c,i)=>c.id===i
+        &&c.label===T(verses[i].paras).slice(0,64)+'…');
+      const quarterOK=expected.every(set=>actual.some(got=>JSON.stringify(got)===JSON.stringify(set)));
+      return {wordOK,verseOK,orderOK,quarterOK};
+    }""")
+    learn_drill_ok = all(learn_drill.values())
+    ok(wrong_mark and retry_label and len(after_retry) == 4
+       and sum(o["ok"] for o in after_retry) == 1 and before_answer != after_answer
+       and learn_drill_ok,
+       "Play retry changes the answer position; Learn recall emits fair blanks, full verses, theme order and every quarter")
+
+    lp.locator('.tab-btn[data-tab="play"]').click()
+    lp.wait_for_selector(".pl-mode")
+    lp.locator(".pl-mode").nth(1).click()
+    lp.wait_for_selector(".lr-opt")
+    mode_two = lp.evaluate("""() => {
+      const q=LQ[LQi], successor=plNextId(PL.q.n), loc=verseLoc(successor), next=loc&&verseAt(loc);
+      const aligned=q.opts.map((o,i)=>{
+        const vloc=verseLoc(PL.q.ord[i]), v=vloc&&verseAt(vloc);
+        return !!v && v.n.split('.')[0]===PL.q.n.split('.')[0]
+          && o.label===slokaDeva(v) && o.iast===slokaIast(v)
+          && o.ok===(v.n===successor);
+      });
+      return {options:q.opts, correct:q.opts.filter(o=>o.ok), expected:next&&slokaDeva(next),
+        ref:PL.q.n, aligned};
+    }""")
+    mode_two_ok = (mode_two["ref"].startswith("2.")
+                   and len(mode_two["options"]) == 4
+                   and sum(o["ok"] for o in mode_two["options"]) == 1
+                   and len({o["label"] for o in mode_two["options"]}) == 4
+                   and all(o.get("deva") == 1 and o.get("iast") for o in mode_two["options"])
+                   and all(mode_two["aligned"])
+                   and bool(mode_two["expected"])
+                   and mode_two["correct"][0]["label"] == mode_two["expected"]
+                   and lp.locator(".lr-ask .lr-qsub.dv").count() == 1)
+    ok(mode_two_ok,
+       "Play mode 2 presents four complete Sanskrit verses and marks the immediate successor")
+
+    lp.locator(".back-foot .back-top").click()
+    lp.wait_for_selector(".pl-mode")
+    lp.locator(".pl-mode").nth(2).click()
+    lp.wait_for_selector(".lr-chip2")
+    mode_three = lp.evaluate("({ids:LQ[LQi].answer.slice(), chips:LQ[LQi].chips.length})")
+    first_id = mode_three["ids"][0]
+    lp.locator(f'.lr-chip2[onclick="lrChip(this,{first_id})"]').click()
+    first_slot = lp.locator("#lrSlots .lr-slot").first
+    quarter_script_ok = (first_slot.count() == 1 and "dv" in (first_slot.get_attribute("class") or "")
+                         and first_slot.get_attribute("lang") == "sa")
+    for quarter_id in mode_three["ids"][1:]:
+        lp.locator(f'.lr-chip2[onclick="lrChip(this,{quarter_id})"]').click()
+    lp.wait_for_function("PL.run === 1 && state.view === 'play' && LQ.length === 1", timeout=5000)
+    ok(mode_three["chips"] == 4 and mode_three["ids"] == [0,1,2,3]
+       and quarter_script_ok and lp.locator(".lr-opt, .lr-chip2").count() > 0
+       and lp.locator(".lr-prog").count() == 0 and lp.locator(".pl-head").count() == 1,
+       "Play mode 3 deals four Sanskrit quarters without a false 1/1 progress bar")
+    lp.locator('.tab-btn[data-tab="play"]').click()
+    lp.wait_for_selector(".pl-mode")
+    ok(lp.evaluate("state.view === 'play' && document.querySelectorAll('.pl-mode').length === 3"),
+       "the Play navigation tab returns from a running question to its menu")
+
+    lp.evaluate("showWelcome(); showChapter(0)")
+    live_state = lp.evaluate("""() => {
+      const e=document.getElementById('srStatus'), s=getComputedStyle(e);
+      return {live:e.getAttribute('aria-live'), role:e.getAttribute('role'), text:e.textContent,
+              hidden:s.position==='absolute' && s.width==='1px' && s.height==='1px'};
+    }""")
+    ok(live_state["live"] == "polite" and live_state["role"] == "status"
+       and live_state["hidden"] and "Chapter 1" in live_state["text"],
+       "view changes announce the chapter through a polite, visually-hidden status region")
+    ok(not learn_play_errors, f"Learn/Play flows complete without JS errors ({learn_play_errors[:2]})")
+    lctx.close()
+
+    group("malformed favorites storage")
+    fctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
+                         has_touch=True, service_workers="block")
+    fp = fctx.new_page()
+    favorites_errors = []
+    fp.on("pageerror", lambda error: favorites_errors.append(str(error)))
+    fp.goto(url, wait_until="load", timeout=90000)
+    fp.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    malformed = [
+        ("null", "null"),
+        ("5", "5"),
+        ("{}", "[]"),
+        ("not-json", "not-json"),
+    ]
+    for fav_raw, note_raw in malformed:
+        fp.evaluate("""values => {
+          localStorage.setItem('gitaFavs', values.favs);
+          localStorage.setItem('gitaFavNotes', values.notes);
+        }""", {"favs": fav_raw, "notes": note_raw})
+        fp.reload(wait_until="load", timeout=90000)
+        fp.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+        fp.evaluate("setLang('en'); showFavorites()")
+        fp.wait_for_function("state.view === 'favorites'", timeout=5000)
+        empty_state = fp.evaluate("({favs:Array.isArray(FAV) ? FAV.length : -1,"
+                                 " notes:FAVNOTE && typeof FAVNOTE === 'object'"
+                                 " && !Array.isArray(FAVNOTE) ? Object.keys(FAVNOTE).length : -1,"
+                                 " count:FAV_LIST.length})")
+        empty_copy = fp.evaluate("document.querySelector('#view').innerText.includes(L('no_favorites'))")
+        fp.evaluate("showChapter(0,0)")
+        fp.wait_for_selector(".mini")
+        fp.locator(".mini").first.click()
+        fp.wait_for_function("document.querySelector('#modalBg').classList.contains('open')", timeout=5000)
+        opens_verse = fp.evaluate("state.view === 'chapter' && FAV.includes('1.01')"
+                                  " === false && !!document.querySelector('#modalBg.open')")
+        ok(empty_state["favs"] == 0 and empty_state["notes"] == 0
+           and empty_state["count"] == 0 and empty_copy and opens_verse,
+           f"corrupt favorites/notes {fav_raw!r}/{note_raw!r} fall back safely and verses still open")
+        fp.keyboard.press("Escape")
+        fp.wait_for_timeout(100)
+
+    fp.evaluate("""() => {
+      localStorage.setItem('gitaFavs', JSON.stringify(['2.47',5,null,'bogus','99.99','1.01']));
+      localStorage.setItem('gitaFavNotes', JSON.stringify({'2.47':42,'1.01':'remember this'}));
+    }""")
+    fp.reload(wait_until="load", timeout=90000)
+    fp.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    fp.evaluate("setLang('en'); showFavorites()")
+    fp.wait_for_selector(".res-card")
+    mixed = fp.evaluate("({favs:FAV.slice(), notes:FAVNOTE, visible:FAV_LIST.map(x=>x.id)})")
+    note_values = fp.locator(".fav-note textarea").evaluate_all("els=>els.map(e=>e.value)")
+    ok(mixed["favs"] == ["2.47", "99.99", "1.01"]
+       and mixed["visible"] == ["2.47", "1.01"]
+       and mixed["notes"] == {"1.01":"remember this"}
+       and note_values == ["", "remember this"],
+       "valid favorites survive mixed corrupt entries while malformed IDs and non-string notes are ignored")
+    ok(not favorites_errors, f"malformed favorites never throw on favorites or verse views ({favorites_errors[:2]})")
+    fctx.close()
 
     group("responsive")
     for name, w, h, expect in [("iPhone SE", 375, 667, "column"), ("Pixel 7", 412, 915, "column"),
@@ -796,6 +1154,24 @@ def run(pw, url, offline_capable=False):
     q.goto(ch2_url, wait_until="load", timeout=30000)
     q.wait_for_timeout(300)
     ok("कर्मण्येवाधिकारस्ते" in q.content(), "chapter 2 page carries the full verse text (2.47)")
+    ch18_url = (url + "chapter/18/") if url.startswith("http") \
+        else (ROOT / "chapter" / "18" / "index.html").as_uri()
+    q.goto(ch18_url, wait_until="load", timeout=30000)
+    q.wait_for_timeout(300)
+    ok(q.locator("details.theme").count() == 18
+       and q.locator("details.theme[open]").count() == 0
+       and not q.locator(".theme-body .vrow").first.is_visible(),
+       "chapter landing first shows collapsed theme titles, not verse titles/descriptions")
+    order = q.eval_on_selector("details.theme summary",
+        "e => e.textContent.indexOf(e.querySelector('.rng').textContent)"
+        " < e.textContent.indexOf(e.querySelector('.th-title').textContent)")
+    ok(order, "chapter landing puts the verse range before the theme title")
+    q.locator("details.theme").first.locator("summary.theme-summary").click()
+    q.wait_for_timeout(150)
+    ok(q.locator("details.theme[open]").count() == 1
+       and q.locator("details.theme[open] .tdesc").is_visible()
+       and q.locator("details.theme[open] .vrow").first.is_visible(),
+       "expanding a chapter theme reveals its description and verse titles")
     c.close()
     base_dl = url if url.startswith("http") else (ROOT / "index.html").as_uri()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
@@ -889,7 +1265,9 @@ def run(pw, url, offline_capable=False):
     ok(q.evaluate("!!document.querySelector('#v2\\\\.19')"),
        "a shared verse link finds its anchor on the chapter page")
     ok(q.evaluate("document.querySelector('#v2\\\\.19').closest('details').open"),
-       "the folded <details> is opened so the verse is reachable")
+       "the folded verse list is opened so the verse is reachable")
+    ok(q.evaluate("document.getElementById('v2.19').closest('.theme').open"),
+       "the shared verse deep link also opens its parent theme")
     ok(q.evaluate("document.querySelector('#v2\\\\.19').classList.contains('target')"),
        "the shared verse is highlighted as the one the reader came for")
     ok(q.evaluate("(r => r.top < innerHeight && r.bottom > 0)"

@@ -1,0 +1,1281 @@
+__FONTS__
+  /* ---- colour tokens -------------------------------------------------
+     Light is the default. The dark theme below overrides these same names,
+     so every rule keeps using var(--x) and nothing else has to change.
+     --on-accent is the text colour that sits on saffron/teal fills; it stays
+     near-cream in both themes because both fills stay dark enough for it.  */
+  :root{ --saffron:#E8912C; --saffron-dark:#C97A20; --saffron-text:#875519; --saffron-soft:#FBE3C0; --teal:#1A5648; --teal-mid:#2A7A68;
+         --teal-soft:#E6EFE8; --cream:#FFF8EC; --ink:#2A2118; --ink-soft:#5C5142; --paper:#FFFFFF; --line:#E7D9C2;
+         --on-accent:#FFF8EC; --on-saffron:#2A2118; --hdr-a:#1A5648; --hdr-b:#226B5A; --hdr-c:#2A806C; --hdr-sub:#CDE2DA; --hdr-saffron-text:#F2B85F;
+         --toolbar:#FDF3E0; --field:#FFFFFF; --muted:#6B6258; --muted-fill:#EBE7E1; --focus:#875519; --danger:#C0392B; --danger-soft:#FBE6E3; --on-danger:#FFFFFF;
+         --shadow:42,33,24; --scrim:rgba(15,42,52,.72); --fade:255,248,236;
+         --chip:rgba(255,248,236,.12); --chip-hover:rgba(255,248,236,.10); --chip-line:rgba(255,248,236,.35); }
+
+  /* ---- dark theme ----------------------------------------------------
+     Warm, not neutral: a dark brown-black keeps the manuscript feel rather
+     than looking like a generic app. Never pure black and never pure white —
+     Devanagari has fine strokes, and maximum contrast makes them shimmer.
+     Saffron and teal are both lifted, because the light-mode values go muddy
+     against a dark ground.                                                */
+  html{ color-scheme: light; }
+  html[data-theme="dark"]{
+    color-scheme: dark;
+    /* Apple-dark discipline: accents muted a notch, text never glaring.
+       The old #E8912C/#7FD4E8 pair neon'd against the warm black. */
+    --saffron:#E1953A; --saffron-dark:#C8862F; --saffron-text:#D0AA70; --saffron-soft:#43301A;
+    --teal:#8FBEB0; --teal-mid:#A8D0C4; --teal-soft:#1A2E28;
+    --cream:#16120D; --paper:#201A13; --ink:#E9DCC3; --ink-soft:#A79A80; --line:#382D20;
+    --on-accent:#1A1209; --on-saffron:#1A1209; --hdr-a:#0E2A24; --hdr-b:#143832; --hdr-c:#1A4840; --hdr-sub:#C5DDD4; --hdr-saffron-text:#F2B85F;
+    --toolbar:#1E1811; --field:#2A2219; --muted:#A79A80; --muted-fill:#382F25; --focus:#F2B85F; --danger:#E86B5C; --danger-soft:#3A211C; --on-danger:#1A1209;
+    --shadow:0,0,0; --scrim:rgba(0,0,0,.78); --fade:23,19,14;
+    --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:Georgia, "Noto Serif Devanagari", "Times New Roman", serif; color:var(--ink);
+        line-height:1.58; display:flex; flex-direction:column; min-height:100vh;}
+  /* Chrome stays a UI face; the scripture and its names stay serif. */
+  button, input, .seg, .lang-btn, .tool-btn, .wc-chip, .chip, .toolbar,
+  .ms-btn, .fav-btn, .lr-cta, .lr-ghost{ font-family:system-ui, -apple-system, "Segoe UI", "Noto Serif Devanagari", sans-serif; }
+  /* Quiet devotion (owner 2026-09-04): sandalwood on the paper, a peacock
+     feather as a watermark. Opacity is the whole design — if you notice it
+     first, it is too loud. pointer-events:none so it never steals a tap. */
+  body{ background:
+        radial-gradient(900px 420px at 50% -60px, rgba(232,145,44,.07), transparent 62%),
+        radial-gradient(520px 380px at 108% 78%, rgba(26,86,72,.06), transparent 70%),
+        var(--cream); }
+  html[data-theme="dark"] body{ background:
+        radial-gradient(900px 420px at 50% -60px, rgba(225,149,58,.08), transparent 62%),
+        radial-gradient(520px 380px at 108% 78%, rgba(143,190,176,.06), transparent 70%),
+        var(--cream); }
+  .atm{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  header, .toolbar, .wrap, footer{ position:relative; z-index:1; }
+  .atm-wisp{ position:absolute; bottom:-12%; width:260px; height:72%;
+             left:50%; margin-left:-130px;
+             background:radial-gradient(ellipse at 50% 88%, rgba(196,154,108,.22), transparent 68%);
+             filter:blur(32px); opacity:.5;
+             animation:atmRise 32s ease-in-out infinite; }
+  .atm-wisp.b{ left:36%; margin-left:-110px; width:220px; opacity:.32; animation-delay:-11s; }
+  .atm-wisp.c{ left:64%; margin-left:-100px; width:200px; opacity:.28; animation-delay:-19s; }
+  @keyframes atmRise{
+    0%,100%{ transform:translateY(0) scaleX(1); }
+    50%{ transform:translateY(-6%) scaleX(1.06); }
+  }
+  .atm-feather{ position:absolute; right:max(8px, env(safe-area-inset-right,0px));
+                top:26%; width:92px; height:220px; opacity:.15; color:var(--teal); }
+  .atm-feather.l{ right:auto; left:max(6px, env(safe-area-inset-left,0px));
+                  top:58%; width:70px; height:170px; opacity:.10; transform:rotate(-18deg); }
+  html[data-theme="dark"] .atm-wisp{ opacity:.18; }
+  html[data-theme="dark"] .atm-feather{ opacity:.16; color:var(--saffron); }
+  html[data-theme="dark"] .atm-feather.l{ opacity:.11; }
+  @media (max-width:640px){
+    .atm-feather{ width:64px; height:156px; opacity:.11; }
+    .atm-feather.l{ width:48px; height:120px; opacity:.08; }
+  }
+
+
+  header{ background:var(--hdr-a); color:var(--hdr-sub);
+          padding:24px 20px; }
+  .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .header-inner .om{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.7rem; color:var(--hdr-saffron-text);}
+  .header-inner h1{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.4rem; color:#FFF8EC; font-weight:normal;}
+  .hdr-copy{ flex:1 1 200px; min-width:0; }
+  .header-inner .tag{ display:block; color:var(--hdr-sub); font-size:.82rem;
+                      margin:4px 0 0; text-align:left; }
+  .langbar{ display:flex; gap:8px; margin-left:auto; align-items:center;}
+  /* iOS-style segmented control: one translucent track, the active language
+     raised as a neutral segment — chrome stays quiet, no orange in the header */
+  /* Language bar: the owner's iOS-segment look, restored 2026-08-30 after the
+     chip experiment ("revert to previous looks") — but the hover keeps the
+     warming the chip pass taught it: saffron-dark fill, lamp-black letter. */
+  .seg{ display:flex; gap:2px; background:var(--chip); border:1px solid var(--chip-line); border-radius:999px; padding:3px; }
+  /* Native-script language labels must not depend on a system UI font. */
+  .lang-btn[lang="ne"], .lang-btn[lang="hi"]{ font-family:"Noto Serif Devanagari",Georgia,serif; }
+  .seg .lang-btn{ background:transparent; border:none; color:var(--hdr-sub); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:background-color .15s, color .15s; }
+  .seg .lang-btn:hover{ background:var(--chip-hover); color:#FFF8EC; }
+  .seg .lang-btn.on{ background:var(--paper); color:var(--ink); font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,.28); }
+  .lang-btn{ background:var(--chip); color:var(--hdr-sub); border:1px solid var(--chip-line); padding:6px 14px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600; transition:background-color .15s, color .15s;}
+  .lang-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
+  /* the theme toggle lives in the language bar; it must not stretch like the
+     language buttons do on mobile, so it opts out of flex:1 and stays square */
+  .theme-btn{ flex:0 0 auto !important; min-width:40px; padding:6px 12px; font-size:1.05rem; line-height:1; color:var(--hdr-saffron-text); border-color:var(--chip-line);}
+  /* Owner 2026-09-01: the theme toggle must hover exactly like the language
+     buttons. It used to get a faint --chip-hover wash and keep its saffron
+     text colour, so the icon sat saffron-on-saffron and the button felt dead
+     next to its neighbours. Inheriting .lang-btn:hover gives it the same
+     --saffron-dark fill; --on-saffron drives the icon too, because .ic is
+     stroke:currentColor. Only the resting colour stays saffron. */
+  .theme-btn:hover{ background:var(--chip-hover); color:#FFF8EC;}
+  @media (max-width:640px){ .langbar{ width:100%; justify-content:center; margin-left:0;} .seg{ flex:1; } .seg .lang-btn{ flex:1; text-align:center;} }
+  .header-inner .tag b{ color:var(--hdr-saffron-text); font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.15rem;}
+  .wrap{ max-width:1180px; margin:0 auto; padding:22px 20px 60px; width:100%; flex:1;}
+  .crumbs{ display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--ink-soft); margin-bottom:18px; flex-wrap:wrap;}
+  /* Search/Favorites show one .back-top button (see renderCrumbs), so .crumbs is
+     just its wrapper. Long chapter names ellipsise rather than wrap. */
+  .crumbs .back-top{ margin:0 0 4px; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  /* Visually hidden but readable by assistive tech — used by #srStatus. */
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+            overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+  .sr-only.focusable:focus{ position:static; display:inline-block; width:auto; height:auto;
+            margin:0 0 8px; padding:6px 10px; overflow:visible; clip:auto; white-space:normal;
+            border:1px solid var(--line); border-radius:8px; background:var(--paper);
+            color:var(--teal); font:600 .82rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  .view-title{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.7rem; color:var(--teal); margin-bottom:6px;}
+  /* IAST is an English bridge. Devanagari readers don't need it. */
+  html[lang="ne"] [lang="sa-Latn"],
+  html[lang="hi"] [lang="sa-Latn"]{ display:none !important; }
+  .view-sub{ color:var(--ink-soft); font-size:.98rem; margin-bottom:22px; max-width:880px;}
+  .grid{ display:grid; gap:20px; }
+  .grid.chapters{ grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); }
+  .grid.themes{ grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); }
+  .grid.verses{ grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:14px; }
+  .card{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:16px 18px;
+         box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer; transition:.18s; display:flex; flex-direction:column;}
+  .card:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
+  /* ---- the house idiom (owner 2026-09-02: "every page must represent our
+     colours"). Until now every surface in the app was a --paper box with a grey
+     outline: the saffron and teal accents inside had nothing to belong to.
+     A 2px brand hairline on the leading side of a card costs nothing, reads in
+     both themes, and ties a screen together without shouting over the
+     scripture. 2px, not 3: at 3 it reads as a highlighter stripe and the page
+     starts to look like a dashboard (owner 2026-09-02: "not gaudy, Apple
+     style"). The restraint is the point.
+     Saffron = something you act on. Teal = something already yours. */
+  .mode-box{ border-left:1px solid var(--line); }
+  .card .chip{ align-self:flex-start; background:var(--saffron-soft); color:var(--saffron-text); font-weight:600; font-size:.72rem;
+               letter-spacing:.02em; padding:4px 10px; border-radius:999px; margin-bottom:8px;}
+  .card .chip.locked{ background:var(--muted-fill); color:var(--muted);}
+  /* The three ways of receiving a chapter live ON the chapter page as an
+     iOS-style segmented control — the same grammar as the language pills in
+     the header (owner 2026-08-30: the intermediary choice page "was just
+     making things weirder"). One quiet line above says Choose; the raised
+     segment says where you are. Content-area variant of .seg: paper track,
+     hairline border, teal raise — no orange, chrome stays quiet. */
+  /* The instruction and the control live in one hairline tray (owner
+     2026-08-30: "put the choose and the three options in a box, and make it
+     instructive"). Same body as every card — paper, hairline, 16px radius —
+     so the chrome reads as one quiet object set apart from the scripture. */
+  /* Phase 3.1: chapter-mode strip is a quiet tab row under the subtitle —
+     no card, no "How would you like…" question. Active tab gets a teal
+     underline; inactive tabs are soft grey, warm on hover. Reads like a
+     book, not a setup dialog. */
+  .mode-box{ margin:0 0 18px; display:flex; align-items:center; gap:0; }
+  .mode-seg{ display:flex; gap:0; align-items:flex-end; max-width:100%; border-bottom:1px solid var(--line); }
+  .mode-seg .ms-btn{ background:transparent; color:var(--ink-soft); border:0;
+                     padding:8px 14px 10px; font-size:.9rem; font-weight:600;
+                     border-bottom:2px solid transparent; margin-bottom:-1px;
+                     cursor:pointer; transition:color .15s, border-color .15s;
+                     border-radius:0; }
+  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ color:var(--teal); background:transparent; }
+  .mode-seg .ms-btn.on{ color:var(--teal); border-bottom-color:var(--teal); }
+  .mode-seg .ms-btn.on:hover{ color:var(--teal); background:transparent; }
+
+  /* ---------- Play ---------- */
+  /* The scope row is the same segmented-pill grammar as the chapter chooser:
+     soft pill = an option, gold pill = where you are (PROJECT.md, mode-box). */
+  .pl-scope{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0 22px;}
+  .pl-scope .pl-lb{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.78rem; color:var(--ink-soft);}
+  .pl-scope .lr-ghost.on{ background:var(--saffron-soft); border-color:var(--saffron-soft);
+                          color:var(--saffron-text);}
+  /* matches .tool-btn geometry so the select sits level with the pills */
+  .pl-sel{ padding:8px 16px; border-radius:999px; border:1px solid var(--line);
+           background:var(--paper); color:var(--teal); font-family:inherit;
+           font-weight:700; font-size:.85rem; max-width:100%; cursor:pointer;
+           transition:.15s;}
+  .pl-sel:hover{ border-color:var(--saffron);}
+  .pl-modes{ display:grid; gap:11px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  /* same shape as .card: --paper, 16px radius, 1px shadow, saffron on hover */
+  .pl-mode{ display:flex; gap:13px; align-items:flex-start; text-align:left; padding:16px 18px;
+            border-radius:16px; background:var(--paper); border:1px solid var(--line);
+                        box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer;
+            font-family:inherit; transition:.18s;}
+  .pl-mode:hover{ border-color:var(--saffron); background:var(--teal-soft);
+                  box-shadow:0 3px 12px rgba(var(--shadow),.08); transform:translateY(-1px);}
+  .pl-mode .n{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
+               background:var(--saffron-soft); color:var(--saffron-text);
+               font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-weight:700; font-size:.85rem;}
+  .pl-mode .b{ flex:1; min-width:0;}
+  .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--ink);
+                 margin-bottom:4px;}
+  .pl-mode .b span{ display:block; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
+  @media (max-width:640px){ .pl-modes{ grid-template-columns:1fr;} .pl-sel{ flex:1 0 100%;} }
+
+  /* ---------- Learn by heart ---------- */
+  .lrn{ max-width:760px; }
+  .lr-k{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.78rem; color:var(--ink-soft); margin-bottom:4px;}
+  /* Owner 2026-09-01: the drill must not look like a different app. These
+     mirror .tool-btn / .tool-btn.primary exactly — same padding, weight, size
+     and hover — so a button here behaves like a button anywhere else. */
+  .lr-cta{ background:var(--saffron); border:1px solid var(--saffron);
+           color:var(--on-saffron); font-weight:700; font-size:.85rem;
+           padding:8px 16px; border-radius:999px; cursor:pointer;
+           font-family:inherit; transition:.15s;}
+  .lr-cta:hover{ background:var(--saffron-dark); border-color:var(--saffron-dark);}
+  .lr-ghost{ background:var(--paper); border:1px solid var(--line); color:var(--teal);
+             font-weight:700; font-size:.85rem; padding:8px 16px; border-radius:999px;
+             cursor:pointer; font-family:inherit; transition:.15s;}
+  .lr-ghost:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
+  .lr-ghost:disabled{ opacity:.35; cursor:default;}
+  .lr-ghost.sm{ font-size:.76rem; padding:7px 13px;}
+
+  .lr-prog{ height:5px; border-radius:3px; background:var(--line); overflow:hidden; margin-top:8px;}
+  .lr-prog i{ display:block; height:100%; background:var(--saffron); border-radius:3px;
+              transition:width .45s cubic-bezier(.2,.8,.2,1);}
+  .lr-progl{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; color:var(--ink-soft); margin:7px 0 18px;}
+
+  /* matches .card: --paper, 16px radius, the same 1px shadow */
+  .lr-step{ display:flex; gap:14px; padding:16px 18px; border-radius:16px; margin-bottom:13px;
+            background:var(--paper); border:1px solid var(--line);
+                        box-shadow:0 1px 2px rgba(var(--shadow),.05); transition:.18s;}
+  /* the step you are on wears the full saffron edge; a finished one turns teal */
+  .lr-step.now{ border-color:var(--saffron); border-left-color:var(--saffron-dark);}
+  .lr-step.done{ border-left-color:var(--teal);}
+  .lr-step.locked{ opacity:.55;}
+  .lr-badge{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
+             background:var(--saffron-soft); color:var(--saffron-text);
+             font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-weight:700; font-size:.84rem;}
+  .lr-step.now .lr-badge{ background:var(--saffron); color:var(--on-saffron);}
+  .lr-step.done .lr-badge{ background:var(--teal); color:var(--on-accent);}
+  .lr-body{ flex:1; min-width:0;}
+  .lr-body h3{ margin:1px 0 5px; font-size:1.06rem; font-weight:700; color:var(--ink);}
+  .lr-body p{ margin:0 0 11px; color:var(--ink-soft); font-size:.88rem; line-height:1.55;}
+
+  .lr-grid{ display:grid; gap:8px; grid-template-columns:repeat(auto-fill,minmax(196px,1fr));}
+  .lr-chip{ display:flex; align-items:center; gap:9px; text-align:left; padding:10px 12px;
+            border-radius:12px; background:var(--paper); border:1px solid var(--line);
+                        cursor:pointer; font-family:inherit; transition:.15s;}
+  .lr-chip:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
+  .lr-chip.ok{ border-color:var(--teal); border-left-color:var(--teal); background:var(--teal-soft);}
+  .lr-chip .n{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center;
+               background:var(--saffron-soft); font-size:.7rem; font-family:system-ui,"Noto Serif Devanagari",sans-serif;
+               color:var(--saffron-text);}
+  .lr-chip.ok .n{ background:var(--teal); color:var(--on-accent); font-weight:700;}
+  .lr-chip .t{ flex:1; font-size:.85rem; line-height:1.3;}
+  .lr-chip .v{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.7rem; color:var(--ink-soft);}
+
+  .lr-foot{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:16px;
+            font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; color:var(--ink-soft);}
+
+  .lr-thread{ list-style:none; margin:16px 0 0; padding:0;}
+  .lr-thread li{ display:flex; gap:13px; padding:12px 13px; border-radius:13px; position:relative;}
+  .lr-thread li:not(:last-child):after{ content:''; position:absolute; left:28px; top:42px;
+            bottom:-2px; width:2px; background:var(--line);}
+  .lr-thread .bead{ flex:0 0 26px; height:26px; border-radius:50%; display:grid; place-items:center;
+            background:var(--saffron-soft); color:var(--saffron-text); z-index:1;
+            font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.75rem; font-weight:700;}
+  .lr-thread b{ font-weight:700; font-size:1rem; color:var(--ink);}
+  .lr-thread .rg{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.7rem; color:var(--ink-soft); font-weight:500; margin-left:7px;}
+  .lr-thread p{ margin:4px 0 0; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
+
+  .lr-vnum{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:1.3rem; font-weight:700;
+            color:var(--saffron-text); margin:10px 0 12px;}
+  .lr-quarters{ display:flex; flex-direction:column; gap:9px;}
+  .lr-q{ border-radius:16px; background:var(--paper); border:1px solid var(--line);
+                  box-shadow:0 1px 2px rgba(var(--shadow),.05); overflow:hidden; transition:.18s;}
+  .lr-q.open{ border-color:var(--saffron); border-left-color:var(--saffron-dark);}
+  .lr-qh{ display:flex; gap:12px; align-items:center; width:100%; text-align:left;
+          padding:14px 16px; background:none; border:none; cursor:pointer; font-family:inherit;}
+  .lr-qh .pip{ flex:0 0 25px; height:25px; border-radius:50%; display:grid; place-items:center;
+          background:var(--saffron-soft); color:var(--saffron-text);
+          font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.73rem; font-weight:700;}
+  .lr-q.open .pip{ background:var(--saffron); color:var(--on-saffron);}
+  .lr-qh{ flex-wrap:nowrap !important; align-items:center; }
+  .lr-qh .tx{ flex:1 1 0; min-width:0; max-width:100%; display:flex; flex-direction:row;
+              flex-wrap:nowrap !important; align-items:baseline;
+              gap:2px; white-space:nowrap; overflow-x:auto; overflow-y:hidden;
+              -webkit-overflow-scrolling:touch; }
+  .lr-qh .tx > *{ flex:0 0 auto; }
+  .lr-qh .tx .dv{ display:inline; white-space:nowrap; }
+  .lr-qh .dv{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
+              font-size:1.12rem; line-height:1.7; color:var(--teal-mid);
+              -webkit-text-fill-color:var(--teal-mid);}
+  .lr-qh .ia{ display:block; font-size:.78rem; font-style:italic; color:var(--ink-soft); margin-top:2px;}
+  .lr-opt .giast, .lr-chip2 .giast, .lr-slot .giast, .lr-qsub .giast{
+    display:block; font-family:Georgia,"Noto Serif Devanagari",serif; font-size:.8rem; font-style:italic;
+    font-weight:400; color:var(--ink-soft); margin-top:4px; line-height:1.4; }
+  .lr-chip2{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
+  .lr-qh .chev{ color:var(--ink-soft); transition:transform .22s;}
+  .lr-q.open .chev{ transform:rotate(180deg); color:var(--saffron-text);}
+  /* [hidden] is only display:none at the UA default, so ANY explicit display
+     silently defeats it — the word grid was open on arrival despite carrying
+     the attribute (owner 2026-09-02). Restore it explicitly. */
+  .lr-words[hidden]{ display:none; }
+  .lr-words{ display:grid; gap:8px; padding:2px 16px 16px;
+             grid-template-columns:repeat(auto-fill,minmax(148px,1fr));}
+  .lr-word{ padding:9px 11px; border-radius:10px; background:var(--paper);
+            border:1px solid var(--line); }
+  .lr-word .d{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
+               font-size:1rem; color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
+  .lr-word .i{ display:block; font-size:.71rem; font-style:italic; color:var(--ink-soft); margin:1px 0 3px;}
+  .lr-word .m{ display:block; font-size:.84rem; line-height:1.4;}
+  .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:14px;
+            background:var(--saffron-soft); border:1px solid var(--line);}
+  .lr-mean .lb{ display:block; font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.72rem;
+                color:var(--saffron-text); margin-bottom:5px;}
+
+  .lr-nav{ display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-top:20px;}
+  .lr-hint{ flex:1; text-align:center; font-family:system-ui,"Noto Serif Devanagari",sans-serif;
+            font-size:.76rem; color:var(--ink-soft);}
+
+  /* The question card sits on --cream so the --paper options READ as raised
+     cards on top of it. Both were --paper, so every boundary vanished and the
+     screen went flat white (owner 2026-09-01). */
+  .lr-qbox{ padding:18px; border-radius:16px; background:var(--cream);
+            border:1px solid var(--line);             box-shadow:0 1px 2px rgba(var(--shadow),.05);}
+  /* the question is the loudest thing on the screen, and saffron-soft under a
+     saffron rule marks it as the prompt rather than more prose */
+  .lr-ask{ font-size:1.06rem; line-height:1.6; margin:-2px -4px 16px; padding:12px 14px;
+           border-radius:12px; background:var(--saffron-soft);
+            color:var(--ink);}
+  .pl-head{ margin:6px 0 14px !important; color:var(--saffron-text) !important;
+            font-weight:700;}
+  .lr-qsub{ margin-top:10px; padding:12px 14px; border-radius:11px; background:var(--paper);
+            border:1px solid var(--line); color:var(--ink-soft); font-size:.92rem; line-height:1.6;}
+  .lr-qsub.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.1rem;
+               color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
+  .lr-split{ margin-top:11px; padding:14px; border-radius:11px; background:var(--paper);
+             border:1px solid var(--line); display:flex; flex-wrap:wrap; gap:7px;
+             align-items:center; justify-content:center;}
+  .lr-tok{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.1rem;
+            color:var(--teal-mid); -webkit-text-fill-color:var(--teal-mid);}
+  .lr-plus{ color:var(--ink-soft); font-size:.8rem;}
+  .lr-blank{ display:inline-grid; place-items:center; min-width:52px; padding:2px 12px;
+             border-radius:8px; background:var(--saffron-soft); color:var(--saffron-text);
+             border:2px dashed var(--saffron); font-weight:700; font-size:1.1rem;}
+  .lr-cue{ margin-top:8px; text-align:center; font-family:"Noto Serif Devanagari",Georgia,serif;
+           font-size:.95rem; color:var(--ink-soft);}
+  .lr-opts{ display:grid; gap:9px;}
+  /* Options are whole ślokas now (66-134 characters), so they stack: the verse
+     takes the full width and its number sits underneath, instead of the two
+     competing for one line (owner 2026-09-01). */
+  /* --paper on --cream is only a 1.06:1 step, so the SHADOW does the lifting,
+     not the fill: without it the options dissolve into the question card. */
+  .lr-opt .onum{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text);
+                 font-size:.82rem; line-height:1; margin-bottom:2px; }
+  .lr-opt{ display:flex; flex-direction:column; align-items:flex-start; gap:4px;
+           text-align:left; width:100%;
+           padding:13px 15px; border-radius:12px; background:var(--paper);
+           border:1px solid var(--line);            cursor:pointer; font-family:inherit;
+           box-shadow:0 1px 3px rgba(var(--shadow),.10); transition:.15s;}
+  .lr-opt:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
+  .lr-opt:disabled{ cursor:default;}
+  .lr-opt .ol{ width:100%; font-size:.96rem; line-height:1.5; color:var(--ink);}
+  .lr-opt .ol.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.04rem;
+                  line-height:1.85; color:var(--teal); -webkit-text-fill-color:var(--teal);}
+  /* the verse number under an option is a NUMBER — saffron, like every other
+     verse number in the app */
+  .lr-opt .os{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.74rem; font-weight:700;
+               color:var(--saffron-text);}
+  /* the verdict must be unmistakable at a glance, not a 1px border change */
+  /* The verdict is carried by the OPTION, not by a line of prose underneath
+     (owner 2026-09-02). A tick and a cross in the leading edge, plus the fill,
+     say it faster than any wording — and in every language at once. */
+  .lr-opt.right, .lr-opt.wrong{ position:relative; padding-right:44px;}
+  .lr-opt.right::after, .lr-opt.wrong::after{
+      position:absolute; right:13px; top:50%; transform:translateY(-50%);
+      width:22px; height:22px; border-radius:50%; display:grid; place-items:center;
+      font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.82rem; font-weight:700;
+      line-height:1;}
+  .lr-opt.right{ border-color:var(--teal); border-left-color:var(--teal);
+                 border-width:2px; background:var(--teal-soft);
+                 box-shadow:0 2px 10px rgba(var(--shadow),.14);}
+  .lr-opt.right::after{ content:"\2713"; background:var(--teal); color:var(--on-accent);}
+  /* the chosen wrong answer must read as wrong at a glance: red fill, red edge,
+     a cross. No dimming — opacity made the mistake harder to study, which is
+     backwards, since the mistake is the thing worth looking at. */
+  .lr-opt.wrong{ border-color:var(--danger); border-left-color:var(--danger);
+                 border-width:2px; background:var(--danger-soft); box-shadow:none;}
+  /* --on-danger, not #FFF: the dark theme's red is light (#E86B5C), where white
+     measures only 3.14:1. Each palette supplies the ink its own red needs. */
+  .lr-opt.wrong::after{ content:"\2715"; background:var(--danger); color:var(--on-danger);}
+
+  .lr-match{ display:grid; grid-template-columns:minmax(92px,22%) 1fr; gap:10px; align-items:start; }
+  .lr-mcol{ display:flex; flex-direction:column; gap:8px; }
+  .lr-mbtn{ text-align:left; width:100%; padding:12px 12px; border-radius:12px;
+            background:var(--paper); border:1px solid var(--line); cursor:pointer;
+            font-family:inherit; box-shadow:0 1px 3px rgba(var(--shadow),.10); }
+  .lr-mbtn.num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text);
+                font-size:1.05rem; text-align:center; }
+  .lr-mbtn.vs .ol{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
+                   font-size:.98rem; line-height:1.7; color:var(--teal-mid);
+                   -webkit-text-fill-color:var(--teal-mid); }
+  .lr-mbtn.on{ border-color:var(--saffron); background:var(--saffron-soft); }
+  .lr-mbtn.on .ol{ color:var(--teal); -webkit-text-fill-color:var(--teal); }
+  .lr-mbtn.right{ border-color:var(--teal); background:var(--teal-soft); }
+  .lr-mbtn:disabled{ cursor:default; }
+  @media (max-width:640px){ .lr-match{ grid-template-columns:minmax(72px,26%) 1fr; } }
+  .lr-chips{ display:flex; flex-wrap:wrap; gap:8px;}
+  .lr-chip2{ padding:11px 15px; border-radius:12px; background:var(--paper);
+             border:1px solid var(--line);              cursor:pointer; font-family:inherit; color:var(--ink);
+             font-size:.87rem; text-align:left; max-width:100%; transition:.15s;
+             min-height:44px;}
+  .lr-chip2:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft);}
+  .lr-chip2.dv:hover:not(:disabled){ -webkit-text-fill-color:var(--teal); color:var(--teal);}
+  .lr-chip2.used{ opacity:.3; cursor:default; border-left-color:var(--teal);}
+  /* Quarter chips carry Devanagari and need the Sanskrit face at a readable
+     size — the Latin default renders the conjuncts too small to compare. */
+  .lr-chip2.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem;
+                line-height:1.75; background:var(--cream); color:var(--teal-mid); }
+  /* iOS paints <button> text in black/system-blue and ignores color on the
+     button itself. The letters live in an inner span so WebKit has to honour them.
+     --teal-mid (not --teal): #1A5648 on white reads as black on a phone. */
+  .lr-chip2 .lr-t{ color:inherit; -webkit-text-fill-color:currentColor; }
+  .lr-chip2.dv .lr-t{ color:var(--teal); -webkit-text-fill-color:var(--teal); }
+  .lr-chip2.shake{ animation:lrshk .34s; border-color:var(--saffron-dark);}
+  @keyframes lrshk{ 0%,100%{transform:none} 22%{transform:translateX(-6px)} 66%{transform:translateX(6px)} }
+  .lr-slots{ display:flex; flex-direction:column; gap:6px; margin-bottom:13px;}
+  .lr-slot{ padding:10px 13px; border-radius:12px; background:var(--teal-soft);
+            border:1px solid var(--teal); border-left:2px solid var(--teal);
+            font-size:.87rem;}
+  .lr-slot.dv{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.02rem;
+               color:var(--teal); -webkit-text-fill-color:var(--teal);}
+
+  .lr-fb{ margin-top:14px;}
+  .lr-fb .good{ color:var(--teal); font-weight:700; font-size:.92rem;}
+  .lr-fb .bad{ color:var(--saffron-text); font-weight:700; font-size:.92rem;}
+  .lr-fb .nt{ margin:10px 0 13px; padding:12px 14px; border-radius:11px; background:var(--paper);
+              border:1px solid var(--line); color:var(--ink-soft); font-size:.88rem; line-height:1.6;}
+
+  /* the seal screen earns a teal wash — this is the one moment of arrival */
+  .lr-finis{ text-align:center; padding:40px 18px; border-radius:18px;
+             background:var(--teal-soft); border:1px solid var(--teal);}
+  .lr-seal{ width:58px; height:58px; margin:0 auto 16px; border-radius:50%; display:grid;
+            place-items:center; background:var(--teal-soft); color:var(--teal); font-size:1.6rem;}
+  .lr-finis h2{ margin:0 0 8px; font-size:1.35rem; color:var(--ink);}
+  .lr-finis p{ color:var(--ink-soft); max-width:50ch; margin:0 auto 16px; line-height:1.65;}
+  .lr-finis .lr-all{ color:var(--saffron-text); font-weight:700;}
+  .lr-finis .lr-cta,.lr-finis .lr-ghost{ margin:5px;}
+
+
+  .lr-ladder{ margin:8px 0 16px; padding:12px 14px; border-radius:14px;
+              background:var(--paper); border:1px solid var(--line); }
+  .lr-lads{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:8px 0; }
+  .lr-lad{ text-align:left; padding:8px 10px; border-radius:12px; cursor:pointer;
+           background:var(--cream); border:1px solid var(--line); font-family:inherit; transition:border-color .15s, background .15s; }
+  .lr-lad:hover:not(.on){ border-color:var(--saffron); background:var(--teal-soft); }
+  .lr-lad b{ display:block; font-size:.82rem; color:var(--teal); }
+  .lr-lad span{ display:block; font-size:.68rem; color:var(--ink-soft); margin-top:2px; }
+  .lr-lad.on{ border-color:var(--saffron); background:var(--saffron-soft); }
+  .lr-lad.on b{ color:var(--saffron-text); }
+  .lr-gap{ flex:0 0 auto; min-width:2em; padding:2px 10px; margin:0 2px; border-radius:8px;
+           background:var(--saffron-soft); color:var(--saffron-text);
+           border:1px dashed var(--saffron); font-weight:700; cursor:pointer; font-family:inherit;
+           display:inline-flex; align-items:center; justify-content:center; line-height:1.4; }
+  .lr-tokw{ flex:0 0 auto; display:inline-flex; flex-direction:column; align-items:center;
+            margin:0 4px; vertical-align:middle; }
+  .lr-tokw .d{ font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.12rem; color:var(--teal); }
+  .lr-tokw .i{ font-size:.7rem; font-style:italic; color:var(--ink-soft); }
+  .lr-ghost.on{ border-color:var(--saffron); background:var(--saffron-soft); }
+  @media (max-width:640px){
+    .lr-lads{ grid-template-columns:1fr 1fr; }
+    .lr-grid{ grid-template-columns:1fr;}
+    .lr-words{ grid-template-columns:repeat(auto-fill,minmax(124px,1fr));}
+    .lr-nav .lr-cta,.lr-nav .lr-ghost{ flex:1;}
+    .lr-hint{ flex:1 0 100%; order:3;}
+    .lr-chips{ flex-direction:column; }
+    .lr-chip2{ width:100%; }
+  }
+
+  /* Owner 2026-08-30, second pass: every chooser in the app speaks ONE chip
+     grammar — soft pill = an option, gold pill = where you are, hover = the
+     door warming to saffron-dark. The segments ARE crumbs now; the paper
+     track retired because the pills carry their own round boundary. */
+  /* Legacy pill .mode-seg rules retired Phase 3.1 in favour of the
+     underlined-tab style declared near .mode-box above. */
+  /* purana chapter view: clean hairline cards; saffron only for numbers */
+  .th-flow .theme{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+                   padding:16px 18px; margin:0 0 14px; cursor:pointer;
+                   transition:border-color .15s, background .15s, box-shadow .15s; }
+  .th-flow .theme:hover{
+    border-color:var(--saffron);
+    background:var(--teal-soft);
+    box-shadow:0 3px 12px rgba(var(--shadow),.08);
+  }
+  .th-flow h3{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:1.05rem; margin:0 0 6px; }
+  /* Owner 2026-09-01: the verse range is a verse NUMBER and must read as one.
+     It was --ink-soft, so it sank into the description text while every other
+     number in the app is saffron. Weight 600 because at .78rem the colour
+     alone is thin on white (--saffron-dark measures 3.28:1 there). */
+  .th-flow h3 .rng{ color:var(--ink-soft); font-weight:500; font-size:.78rem; margin-left:8px; white-space:nowrap; }
+  /* the same range beside a view title: it must not inherit the 1.7rem
+     heading size, or the number shouts louder than the theme's name */
+  .view-title .rng{ color:var(--ink-soft); font-weight:500; font-size:.8rem;
+                    margin-left:10px; white-space:nowrap; vertical-align:.32em; }
+  .th-flow .tdesc{ margin:0 0 6px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
+  .vcards{ margin-top:12px; display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:12px; }
+  /* display-only: same card body, but no pointer, no hover lift — an object
+     to read, not a button to press */
+  .vcard{ cursor:default; }
+  .vcard:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); }
+  .vcard h3{ font-size:1rem; }   /* the theme title outranks its verses */
+  /* Chapter themes begin as a readable outline; opening a native disclosure
+     reveals the description and verse cards without leaving the chapter. */
+  .ch-flow{ display:flex; flex-direction:column; gap:12px; margin-top:8px; }
+  .ch-theme{ border:1px solid var(--line); border-radius:12px; background:var(--paper); }
+  .ch-theme-head{ cursor:pointer; padding:12px 14px;
+                  font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal);
+                  font-size:1.05rem; font-weight:700; line-height:1.45; }
+  .ch-theme-head::marker{ color:var(--saffron-text); }
+  .ch-theme-head .rng{ color:var(--saffron-text); font-size:.82rem; font-weight:700;
+                       white-space:nowrap; margin-right:8px; }
+  .ch-theme-head .ch-theme-name{ flex:0 1 auto; }
+  .ch-theme[open] > .ch-theme-head{ border-bottom:1px solid var(--line); }
+  .ch-theme-body{ padding:0 14px 14px; }
+  .ch-theme-desc{ margin:12px 0; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
+  @media (hover:hover){ .ch-theme-head:hover{ background:var(--teal-soft); } }
+  .ch-theme-head:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+  .mini .vtitle{ font-family:Georgia,"Noto Serif Devanagari",serif;
+                 color:var(--teal); font-size:.95rem; font-weight:600; margin:2px 0 4px;
+                 overflow:hidden; text-overflow:ellipsis;
+                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+  .chdeva{ color:var(--teal); font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem; }
+  .card h3{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.15rem; color:var(--teal);}
+  .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
+  .card .meta{ margin-top:10px; font-size:.8rem; color:var(--ink-soft); font-weight:600;}
+  .card .go{ margin-top:10px; color:var(--saffron-text); font-weight:700; font-size:.88rem;}
+  .card .soon{ margin-top:10px; color:var(--muted); font-weight:600; font-size:.85rem; font-style:italic;}
+  .part{ margin-bottom:26px;}
+  .part-head{ display:flex; align-items:center; gap:12px; padding:0 0 6px; margin:18px 0 8px; flex-wrap:nowrap;}
+  .part-head .pnum{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:1.05rem;}
+  .part-head .ptitle{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.05rem; color:var(--teal); font-weight:600;
+                      order:1; flex:0 1 auto; max-width:42%; }
+  .part-head::before{ content:""; order:2; flex:1 1 20px; min-width:16px; height:1px;
+                      background:color-mix(in srgb, var(--saffron) 42%, transparent);
+                      align-self:center; }
+  .part-head .pdesc{ color:var(--ink-soft); font-size:.86rem; order:3; flex:0 1 46%;
+                     margin-left:0; line-height:1.45; }
+  .mini{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:11px 14px; cursor:pointer;
+         transition:.15s; box-shadow:0 4px 12px rgba(var(--shadow),.06);}
+  .mini:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
+  .mini .vnum, .w-day .vnum{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.98rem; margin-bottom:5px; letter-spacing:.03em;}
+  /* The topic line is quiet metadata, not a headline: same soft colour as its
+     "Verse topic" prefix, so the Devanagari below stays the star of the card. */
+  .mini .m-topic, .w-day .m-topic{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:600; color:var(--ink-soft); font-size:.9rem; margin-bottom:7px; line-height:1.35;}
+  .mini .mt-lab, .w-day .mt-lab{ font-weight:400; font-style:italic; color:var(--ink-soft); font-size:.8rem; margin-right:2px;}
+  .mini .padas, .w-day .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
+  .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-text); font-size:.82rem; font-style:italic; margin-bottom:2px;}
+  .mini .padas, .w-day .padas, .res-deva, .rd-deva{ overflow-wrap:anywhere; word-break:normal; }
+  .mini .padas .gline, .w-day .padas .gline{ display:block; line-height:1.6;}
+  .mini .padas .giast, .w-day .padas .giast, .res-deva .giast{
+    display:block; font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic; font-size:.82rem;
+    color:var(--ink-soft); line-height:1.45; margin:0 0 4px; }
+  .mini .padas .spk-iast, .w-day .padas .spk-iast{
+    display:block; font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic; font-size:.78rem;
+    color:var(--ink-soft); margin:0 0 4px; }
+  .mini .padas .gp, .w-day .padas .gp{ display:inline;}
+  .mini .vhint, .w-day .vhint{ color:var(--ink-soft); font-size:.78rem; font-style:italic; line-height:1.4; margin-top:6px;}
+  .share-panel{ display:none; flex-direction:column; align-items:flex-start; gap:8px; margin:10px 0 0;
+    background:var(--cream); border:1px solid var(--line); border-radius:14px; padding:12px 14px;}
+  .sp-hint{ font-size:.85rem; color:var(--ink-soft); line-height:1.5;}
+  .sp-link{ width:100%; font-size:.76rem; color:var(--teal); background:var(--paper);
+    border:1px dashed var(--line); border-radius:8px; padding:7px 9px; word-break:break-all;}
+  .sp-copy{ background:var(--saffron); color:var(--on-saffron); border:none; border-radius:999px;
+    padding:9px 18px; font-weight:700; font-size:.85rem; cursor:pointer;}
+  .back-top{ display:inline-block; margin:4px 0 16px; background:none; border:1px solid var(--teal); color:var(--teal);
+             font-weight:700; padding:8px 18px; border-radius:999px; cursor:pointer; font-size:.9rem;}
+  .back-top:hover{ background:var(--teal); color:var(--on-accent);}
+  /* the same back button repeated at the end of a long list, so a reader who has
+     scrolled to the bottom does not have to scroll all the way up again */
+  /* left, not centred: this is the same button as the crumb at the top of the
+     page, so it sits on the same left edge as every heading and card. A back
+     affordance is an escape hatch, not a call to action — findable, not loud. */
+  .back-foot{ margin:26px 0 4px; padding-top:20px; border-top:1px solid var(--line);}
+
+  /* ---- favourites: ordering + a personal note ---- */
+  .fav-tools{ display:inline-flex; gap:6px; align-items:center; margin-left:auto;}
+  .fav-move{ background:none; border:1px solid var(--line); color:var(--teal); border-radius:8px;
+             width:30px; height:30px; font-weight:700; cursor:pointer; line-height:1; padding:0;}
+  .fav-move:hover:not(:disabled){ border-color:var(--teal); background:var(--teal-soft);}
+  .fav-move:disabled{ opacity:.3; cursor:default;}
+  .fav-note{ margin-top:9px; display:flex; gap:8px; align-items:flex-start;}
+  .fav-note label{ font-size:.74rem; font-weight:600; color:var(--ink-soft);
+                   padding-top:7px; flex:0 0 auto;}
+  .fav-note textarea{ flex:1; border:1px solid var(--line); border-radius:8px; padding:5px 9px;
+                      font:inherit; font-size:.88rem; background:var(--cream); color:var(--ink);
+                      resize:none; overflow:hidden; min-height:34px;}
+  .fav-note textarea:focus{ border-color:var(--saffron); background:var(--paper);}
+
+  /* ---- continuous reading ---- */
+  /* mūla: the verses run closer together, the way a printed pāṭha is set */
+  .reading{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:14px 18px 6px;}
+  /* the speaker is named only when the voice changes, so it must stand out */
+  .rd-spk{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--saffron-text);
+           font-weight:700; font-size:1rem; margin:20px 0 8px; padding-bottom:5px;
+           border-bottom:2px solid var(--saffron-soft);}
+  .rd-deva .rd-spk{ margin:6px 0 8px;}
+  .rd-v:first-child .rd-spk, .rd-spk:first-child{ margin-top:4px;}
+  .rd-v{ padding:12px 0 14px; border-bottom:1px solid var(--line); cursor:pointer; position:relative;}
+  .rd-v:last-child{ border-bottom:none;}
+  .rd-v:hover{ background:var(--teal-soft);}
+  .rd-n{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.82rem;}
+  .rd-deva{ font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
+            font-size:1.12rem; line-height:1.85; margin-bottom:5px;}
+  .rd-tr{ color:var(--ink-soft); font-size:.95rem; line-height:1.6;}
+  .rd-iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic; font-size:.88rem;
+            color:var(--ink-soft); line-height:1.45; margin:0 0 6px; font-weight:400; }
+  .rd-spk .rd-iast{ display:inline; margin:0 0 0 8px; font-size:.82rem; }
+  /* quiet labels name each translation, so the two voices never blur */
+  .rd-lb{ color:var(--ink-soft); font-size:.74rem; font-weight:600;
+          margin:8px 0 2px; opacity:.85; }
+  .rd-lb:first-of-type{ margin-top:6px; }
+  /* the paraphrase is the flowing read — set lighter and italic under the
+     literal, so the eye gets "what it says" then "what it means" */
+  .rd-par{ color:var(--ink-soft); font-size:.88rem; line-height:1.55; font-style:italic; margin-top:3px;}
+  /* Phase 2.3: the chapter colophon. The reader has finished the chapter; this
+     is the traditional line that closes it, so it is quieter than the verses —
+     a hairline rule, soft ink, no pill and no box of its own. */
+  .colophon{ margin:26px 0 6px; padding-top:14px; border-top:1px solid var(--line);
+             color:var(--ink-soft); font-family:"Noto Serif Devanagari",Georgia,serif;
+             font-size:.93rem; line-height:1.8; }
+  .colophon .col-iast{ display:block; margin-top:6px; color:var(--ink-soft);
+             font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic;
+             font-size:.85rem; line-height:1.6; }
+  .back-foot .back-top{ margin:0;}
+  .mini-crumb{ display:flex; gap:10px; margin:2px 0 16px; flex-wrap:wrap;}
+  .mini-crumb .bc-btn{ background:var(--paper); border:1px solid var(--line); border-radius:12px; cursor:pointer;
+             display:flex; flex-direction:column; align-items:flex-start; gap:1px; padding:8px 14px; transition:.15s;}
+  .mini-crumb .bc-btn:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
+  .mini-crumb .bc-num{ font-weight:700; color:var(--teal); font-size:.95rem;}
+  .mini-crumb .bc-name{ color:var(--ink-soft); font-size:.8rem;}
+  .mini-crumb .bc-cur{ background:var(--saffron-soft); border:1px solid var(--saffron); border-radius:12px;
+             display:flex; flex-direction:column; align-items:flex-start; gap:1px; padding:8px 14px;}
+  .mini-crumb .bc-cur .bc-num{ color:var(--saffron-text);}
+  .mini-crumb .bc-sep{ align-self:center; color:var(--line); font-weight:800; font-size:1rem; padding:0 2px;}
+
+  /* the breadcrumb: quiet names, not a second strip of pills */
+  /* The running head. Intellect: ancestors recede (soft ink, regular weight),
+     separators are the faintest thing on the line, and the current page is
+     the darkest — the eye lands on "where you are" without being told.
+     Eyes: hover speaks the app's one accent language (saffron), never a
+     second hue; Devanagari in the trail renders in the embedded serif. */
+  /* The trail as chips (owner 2026-08-30: "not prominent … chapter1, chapter2
+     style"). Chips are how this app labels structure, so the map reads in the
+     project's own vocabulary — but with one refinement: ancestors wear the
+     saffron-SOFT pill of the chapter list (doors you can walk back through)
+     while the current page wears the gold-leaf chip, the same metal as the
+     raised segment in the tray. Soft = door, gold = where you stand.
+     No uppercase/letter-spacing here: the crumbs mix Latin and Devanagari,
+     and tracking strains the mātrā flow. */
+  .way-crumb{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:2px 0 18px;
+              padding:8px 12px; border-radius:14px; border:1px solid transparent;
+              font-family:system-ui, -apple-system, "Segoe UI", "Noto Serif Devanagari", sans-serif;
+              transition:background .15s, border-color .15s; }
+  /* Place, not a door: teal wash only. Saffron edge stays on the chooser box. */
+  .way-crumb:hover{ background:var(--teal-soft); border-color:var(--line); }
+
+  .card.is-press, .mini.is-press, .res-card.is-press, .welcome .w-day.is-press,
+  .th-flow .theme.is-press, .lr-chip.is-press, .pl-mode.is-press, .mode-box.is-press{
+    border-color:var(--saffron); background:var(--teal-soft);
+    box-shadow:0 3px 12px rgba(var(--shadow),.08);
+  }
+  .way-crumb.is-press{ background:var(--teal-soft); border-color:var(--line); }
+  .rd-v.is-press{ background:var(--teal-soft); }
+  .lr-opt.is-press:not(:disabled), .lr-chip2.is-press:not(:disabled),
+  .lr-ghost.is-press:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+  .lr-cta.is-press{ background:var(--saffron-dark); border-color:var(--saffron-dark); }
+
+  /* Volume control (owner 2026-08-31: "too much orange"): one gold per page.
+     Gold = the decision you're IN (the raised segment in the tray). The trail
+     steps down: current page = soft pill, ancestors = neutral hairline pills —
+     prominent by size and shape, not by hue. Hover still warms, one step. */
+  .wc-chip{ background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); border-radius:999px;
+            padding:7px 16px; font-size:.88rem; font-weight:700; font-family:inherit; line-height:1.4;
+            transition:background-color .15s, color .15s, border-color .15s; }
+  button.wc-chip{ cursor:pointer; }
+  button.wc-chip:hover, button.wc-chip:focus-visible{ background:var(--saffron-soft); color:var(--saffron-text);
+            border-color:var(--saffron-soft); }
+  .wc-chip.wc-cur{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+  .wc-sep{ color:var(--muted); font-size:.78rem; }
+
+  .welcome{ text-align:center; padding:44px 12px 30px; max-width:860px; margin:0 auto;}
+  .welcome .w-om{ font-size:3.6rem; color:var(--saffron-text); line-height:1; margin-bottom:14px;}
+  .welcome .view-title{ font-size:2rem;}
+  .welcome .tool-btn.big{ font-size:1.02rem; padding:14px 36px; margin-top:20px;}
+  .welcome .w-foot{ color:var(--ink-soft); font-size:.9rem; margin-top:30px; letter-spacing:.05em;}
+  /* Native disclosure keeps the first-visit guide quiet until someone asks. */
+  .welcome-guide{ max-width:560px; margin:12px auto 0; text-align:center; }
+  .welcome-guide summary{ display:list-item; width:fit-content; max-width:100%; margin:0 auto;
+                          padding:7px 12px; border-radius:999px; color:var(--teal);
+                          font-size:.86rem; font-weight:700; cursor:pointer; }
+  .welcome-guide summary::marker{ color:var(--saffron-text); }
+  @media (hover:hover){ .welcome-guide summary:hover{ background:var(--teal-soft); } }
+  .welcome-guide[open]{ padding:4px 16px 12px; background:var(--paper); text-align:left;
+                         border:1px solid var(--line); border-radius:12px; }
+  .welcome-guide[open] summary{ margin:0; }
+  .welcome-guide ol{ margin:6px 0 0; padding-left:24px; color:var(--ink-soft);
+                     font-size:.86rem; line-height:1.55; }
+  .welcome-guide li+li{ margin-top:5px; }
+  /* The work-in-progress note. Deliberately the quietest thing on the screen:
+     --ink-soft, small, and set off by a hairline rule so it reads as an aside
+     from the author rather than a warning about the text. */
+  .welcome .w-wip{ max-width:46ch; margin:16px auto 0; padding-top:14px;
+                   border-top:1px solid var(--line); color:var(--ink-soft);
+                   font-size:.82rem; line-height:1.6; font-style:italic;}
+  .welcome .w-day{ max-width:560px; margin:26px auto 6px; background:var(--paper); border:1px solid var(--line); border-radius:16px;
+                   padding:18px 22px; cursor:pointer; box-shadow:0 1px 2px rgba(var(--shadow),.05); transition:.18s; text-align:left;}
+  .welcome .w-day:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
+  /* A small oval tag, not a headline — the card already has a saffron frame,
+     so the label wears the soft variant and lets the verse number lead. */
+  .welcome .wd-label{ display:table; margin:0 auto 12px; background:var(--saffron-soft); color:var(--saffron-text);
+    font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:600; font-size:.78rem; letter-spacing:.02em;
+    border-radius:999px; padding:6px 18px; }
+  /* the welcome card is a display piece, not a list item — centre it, while
+     the search/theme grids stay left-aligned for reading */
+  .welcome .w-day .vnum, .welcome .w-day .m-topic,
+  .welcome .w-day .padas, .welcome .w-day .vhint{ text-align:center; }
+  /* The speaker is not part of the verse, so it must not read as verse text.
+     Saffron + italic everywhere else in the app — match that here. */
+  /* Verse number set inside the closing daṇḍas, as a printed edition does. */
+  .gl-n{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.8rem;}
+
+  .grid.sections{ grid-template-columns:repeat(auto-fill, minmax(270px,1fr));}
+  .card.sect h3{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:1.32rem;}
+  .card.sect p{ font-size:.92rem;}
+
+
+  .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:1px solid var(--line);}
+  .toolbar .searchwrap{ display:flex; align-items:center; gap:6px; flex:1; min-width:240px; max-width:640px;}
+  .toolbar input[type=search]{ flex:1; padding:9px 14px; border:1px solid var(--line); border-radius:999px; font-size:.92rem; background:var(--field); color:var(--ink);}
+  .toolbar input[type=search]:focus{ border-color:var(--saffron);}
+  /* inline stroke icons: sized and coloured by the surrounding text, so they
+     behave like glyphs, not pictures — and follow both themes for free */
+  .ic{ width:1.05em; height:1.05em; display:inline-block; vertical-align:-.18em; margin-right:6px;
+       fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .ic.fill{ fill:currentColor; }
+  .sw-field{ position:relative; flex:1; display:flex; }
+  .sw-field input[type=search]{ width:100%; padding-left:36px; }
+  .sw-ic{ position:absolute; left:13px; top:50%; transform:translateY(-50%);
+          color:var(--ink-soft); display:flex; pointer-events:none; }
+  .sw-ic .ic{ width:15px; height:15px; margin:0; }
+  .sw-x{ position:absolute; right:7px; top:50%; transform:translateY(-50%); width:30px; height:30px;
+         border:none; border-radius:50%; background:transparent; color:var(--ink-soft);
+         display:none; align-items:center; justify-content:center; cursor:pointer; padding:0; }
+  .sw-x .ic{ margin:0; width:15px; height:15px; }
+  .sw-x:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
+  .sw-field.has-x .sw-x{ display:flex; }
+  .sw-field.has-x input[type=search]{ padding-right:40px; }
+  .sw-field input[type=search]::-webkit-search-cancel-button{ -webkit-appearance:none; display:none; }
+  ::selection{ background:var(--saffron-soft); color:var(--ink); }
+  .tool-btn{ background:var(--paper); border:1px solid var(--line); color:var(--teal); font-weight:700; font-size:.85rem; padding:8px 16px; border-radius:999px; cursor:pointer; transition:.15s;}
+  .tool-btn:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
+  .tool-btn.primary{ background:var(--saffron); border-color:var(--saffron); color:var(--on-saffron);}
+  .tool-btn.primary:hover{ background:var(--saffron-dark);}
+  .fav-btn{ background:var(--saffron-soft); border:1px solid var(--saffron); color:var(--saffron-text); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
+  .fav-btn.saved{ background:var(--saffron); color:var(--on-saffron);}
+  .res-head{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
+  .res-count{ color:var(--ink-soft); font-size:.9rem; margin-bottom:16px;}
+  .res-card{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:12px; cursor:pointer; transition:.15s;}
+  .res-card:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
+  .res-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+  .res-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text);}
+  .res-title{ font-weight:600; color:var(--teal); font-size:.9rem;}
+  .res-deva{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1rem; line-height:1.55; background:var(--cream); border-radius:8px; padding:7px 10px; margin-bottom:6px;}
+  .res-lit{ color:var(--ink-soft); font-size:.88rem; line-height:1.5;}
+  .res-remove{ margin-left:auto; background:none; border:1px solid var(--line); color:var(--ink-soft); font-size:.72rem; font-weight:700; padding:3px 10px; border-radius:999px; cursor:pointer;}
+  .res-remove:hover{ border-color:var(--danger); color:var(--danger);}
+  .modal-bg{ position:fixed; inset:0; background:var(--scrim); display:none; align-items:center; justify-content:center; z-index:50; padding:20px;}
+  .modal-bg.open{ display:flex;}
+  .modal{ background:var(--cream); border-radius:20px; max-width:820px; width:100%; max-height:92vh; overflow-y:auto;
+          box-shadow:0 24px 60px rgba(0,0,0,.35); border:1px solid var(--line); position:relative; padding:24px 30px 28px;}
+  .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
+                   height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
+  .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft);}
+
+  /* Phase 3.2 (2026-10-16): verse-sheet header. Old top-of-sheet stacked
+     close + part-title + verse-title + Share/Fav + meter + text-size ate
+     ~half a screen of chrome before the śloka. Now one tight row with
+     close on the left, verse number+title in the middle, and a ⋯ overflow
+     button on the right that opens a menu containing Share, Save, meter,
+     text size and the hide-meanings toggle. */
+  .m-head{ display:flex; align-items:center; gap:10px; margin:0 0 6px; }
+  .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto; }
+  .m-head .m-title{ margin:0; padding:0; flex:1 1 0; min-width:0;
+    font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-size:1.05rem; color:var(--ink); font-weight:600; line-height:1.3;
+    display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .m-head .m-num-chit{ color:var(--saffron-text); font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .m-head .m-vtitle{ color:var(--teal); font-weight:600; font-size:1rem; }
+  .m-more{ flex:0 0 auto; width:38px; height:38px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink-soft); border-radius:50%;
+    font-size:1.3rem; font-weight:700; line-height:1; cursor:pointer; padding:0;
+    transition:.15s; }
+  .m-more:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+  .m-menu{ position:absolute; right:18px; top:52px; z-index:6;
+    background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 8px 24px rgba(var(--shadow),.18);
+    padding:8px; min-width:220px; display:flex; flex-direction:column; gap:4px; }
+  .m-menu[hidden]{ display:none !important; }
+  .m-menu button{ display:flex; align-items:center; gap:8px; width:100%;
+    text-align:left; padding:9px 12px; border:0; background:transparent;
+    border-radius:8px; color:var(--ink); font:600 .85rem/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;
+    cursor:pointer; }
+  .m-menu button:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
+  .m-menu button.saved{ color:var(--saffron-text); }
+  .m-menu-sep{ height:1px; background:var(--line); margin:4px 0; }
+  .m-menu .m-meter{ margin:4px 6px 8px; }
+  .m-menu .reader-size{ margin:4px 6px 8px; }
+  .m-menu .wb-btn{ justify-content:flex-start; gap:8px; }
+
+  .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--ink-soft); font-size:.78rem; font-weight:600;
+           margin:0 0 14px; line-height:1.4; letter-spacing:.01em; }
+
+  /* Whole verse — the hero block the reader lands on: Devanagari verse
+     (with IAST under each line) set as a continuous śloka, not four
+     quarter-boxes. Quarter boxes live below under "Word by word" so the
+     first thing the reader sees is the verse, not chrome or tools. */
+  .m-whole-verse{ background:var(--paper); border:1px solid var(--line);
+    border-radius:14px; padding:18px 20px; margin:0 0 10px;
+    font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
+    line-height:1.8; }
+  .m-whole-verse .gline{ font-size:calc(1.45rem * var(--reader-scale,1)); text-align:center; }
+  .m-whole-verse .giast{ font-style:italic; font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-size:calc(.92rem * var(--reader-scale,1)); color:var(--ink-soft); text-align:center; margin-top:2px; }
+  .m-whole-verse .spk{ font-family:"Noto Serif Devanagari",Georgia,serif;
+    color:var(--saffron-text); font-size:calc(1.05rem * var(--reader-scale,1));
+    font-style:italic; text-align:center; margin-bottom:10px; border-bottom:1px dashed var(--line); padding-bottom:8px; }
+  .m-whole-verse .spk .iast{ font-size:calc(.82rem * var(--reader-scale,1)); margin-left:10px; }
+  .m-whole-verse .gl-n{ color:var(--saffron-text); font-weight:700; }
+
+  /* Meaning blocks follow straight after the hero verse, no extra paper
+     card around them — the content should breathe. */
+  .m-line{ margin-top:18px; }
+  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
+               letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; margin-bottom:6px;}
+  .m-line .lt{ color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.6;}
+  .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
+  .m-line.lit .lt{ font-size:calc(1rem * var(--reader-scale,1)); }
+
+  /* Word-by-word section: collapsed by default so the sheet opens on the
+     verse + meaning; tap the summary to reveal the four pāda boxes
+     (which is where the reader digs into words, not the default view). */
+  .m-words-section{ margin-top:22px; border-top:1px solid var(--line); padding-top:8px; }
+  .m-words-section > summary{ list-style:none; cursor:pointer;
+    display:flex; align-items:center; gap:8px;
+    font:700 .82rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink-soft); padding:8px 0; user-select:none; }
+  .m-words-section > summary::-webkit-details-marker{ display:none; }
+  .m-words-section > summary::after{ content:"▾"; margin-left:auto; font-size:.9rem; color:var(--ink-soft); transition:transform .15s; }
+  .m-words-section[open] > summary::after{ transform:rotate(180deg); }
+  .m-words-body{ padding-bottom:4px; }
+  .m-pada-hint{ margin:4px 2px 10px; color:var(--ink-soft); font-size:.8rem; font-style:italic; line-height:1.5; }
+  /* Inside Word-by-word reuse the existing .m-verse/pāda styles but with
+     tighter padding since it lives inside a collapsible. */
+  .m-words-body .m-verse{ background:transparent; border:0; padding:8px 0 0; margin:0; border-radius:0; }
+  .m-words-body .words-bar{ margin-bottom:8px; }
+  .m-words-body .wb-btn{ margin:0; }
+
+  /* Old selectors that no longer apply to the new layout but are harmless
+     if left in place — the dead ones below are overridden above. */
+  .m-num{ display:none; }
+  .m-readerbar{ display:none; }
+  .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:.95rem; font-weight:600;
+           margin:0 52px 8px 0; line-height:1.4;}
+  .m-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
+          display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
+  .m-title{ margin:0; padding:0; flex:1 1 auto; min-width:0; color:inherit; font:inherit; }
+  .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
+  .m-meter{ display:inline-block; background:var(--teal-soft); color:var(--teal); font-size:.78rem; font-weight:700;
+            padding:3px 12px; border-radius:999px; margin:6px 0 12px; letter-spacing:.03em;}
+  .m-readerbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px 12px; }
+  .m-readerbar .m-meter{ margin:6px 0 12px; }
+  .reader-size{ display:flex; align-items:center; gap:4px; margin:6px 0 12px; color:var(--ink-soft);
+                font: .78rem/1.3 system-ui,-apple-system,"Segoe UI",sans-serif; white-space:nowrap; }
+  .reader-size .reader-size-label{ font-weight:600; margin-right:3px; }
+  .reader-size .reader-size-value{ min-width:3.5ch; text-align:center; font-variant-numeric:tabular-nums; }
+  .reader-size button{ min-width:36px; min-height:34px; padding:4px 8px; border:1px solid var(--line);
+                       border-radius:999px; background:var(--paper); color:var(--teal); cursor:pointer;
+                       font:700 .82rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
+                       transition:background-color .15s,border-color .15s; }
+  .reader-size button:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft); }
+  .reader-size button:disabled{ opacity:.45; cursor:default; }
+  .reader-copy{ --reader-scale:1; }
+  .m-verse{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:6px 0 4px;}
+  .m-verse .spk{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--saffron-text); font-size:calc(1.15rem * var(--reader-scale,1));
+                 font-style:italic; margin-bottom:8px; border-bottom:1px dashed var(--line); padding-bottom:6px;}
+  .m-verse .spk .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-verse table{ width:100%; border-collapse:collapse;}
+  .m-verse td{ vertical-align:top; padding:3px 2px;}
+  .m-verse td.pnum{ width:26px; font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--saffron-text); font-weight:700; font-size:.9rem; padding-top:6px;}
+  .m-verse td.pd{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:calc(1.35rem * var(--reader-scale,1)); color:var(--teal); line-height:1.7; padding-right:14px;}
+  .m-verse td.pi{ font-style:italic; color:var(--ink-soft); font-size:calc(.92rem * var(--reader-scale,1)); padding-top:8px;}
+  .m-verse td.pi .danda{ color:var(--saffron-text); font-weight:700;}
+  .m-verse tr.pair td.pd{ padding-bottom:4px;}
+  .m-verse tr.spkrow td.pd.spk{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic; padding:8px 2px 10px; border-bottom:1px dashed var(--line); font-size:calc(1.1rem * var(--reader-scale,1));}
+  .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-verse .spk-line:hover{ background:var(--saffron-soft);}
+  .m-verse .spk-main{ border-bottom:1px dotted var(--saffron); }
+  .m-verse .words{ display:none; margin-top:6px; background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:8px 12px; min-width:0; max-width:100%;}
+  .m-verse .words.open{ display:block;}
+  .m-verse .words.mean-off .wmean{ display:none;}
+  .m-verse .wrow{ padding:3px 0; border-bottom:1px dotted var(--line); min-width:0; max-width:100%;}
+  .m-verse .wrow:last-child{ border-bottom:none;}
+  .m-verse .wrow .wdeva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.12rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .wrow .wiast{ font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); margin-left:10px; overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .wrow .wmean{ display:block; color:var(--ink); font-size:calc(.9rem * var(--reader-scale,1)); margin-left:14px; margin-top:1px; overflow-wrap:anywhere; word-break:normal;}
+  .words-bar{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
+  .words-bar .wb-hint{ color:var(--ink-soft); font-size:.78rem; font-style:italic;}
+  .words-bar .wb-btn{ background:var(--teal); color:var(--on-accent); border:none; padding:4px 14px; border-radius:999px; cursor:pointer; font-size:.8rem; font-weight:600;}
+  .words-bar .wb-btn:hover{ background:var(--teal-mid);}
+  .words-bar .wb-btn:disabled{ opacity:.45; cursor:default; }
+  .words-bar .wb-btn:disabled:hover{ background:var(--teal); }
+  /* four pāda boxes in a 2x2 grid */
+  .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
+  .m-verse .pada-row{ display:flex; gap:12px;}
+  .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; transition:border-color .15s, background .15s;}
+  .m-verse .pada-box .pada-toggle{ display:block; width:100%; padding:0; margin:0; border:0;
+      background:transparent; color:inherit; text-align:left; font:inherit; cursor:pointer; }
+  .m-verse .pada-box .pb-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; gap:8px;}
+  .m-verse .pada-box .pb-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.85rem; white-space:nowrap;}
+
+  .m-verse .pada-box .pb-deva{ display:block; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.3rem * var(--reader-scale,1)); line-height:1.7; overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .pada-box:hover{ background:var(--saffron-soft); border-color:var(--saffron);}
+  .m-verse .pada-box .pb-iast{ display:block; font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .spk-mid{ margin:2px 0;}
+  .m-verse .spk-line{ display:block; width:100%; min-height:32px; margin:6px 0; border:0; background:transparent;
+      font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic;
+      font-size:calc(1.05rem * var(--reader-scale,1)); cursor:pointer; text-align:left;
+      border-radius:6px; padding:4px;}
+  .m-verse .spk-line .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-line{ margin-top:14px;}
+  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
+               padding:3px 10px; border-radius:999px; margin-bottom:5px;}
+  .m-line .lt{ color:var(--ink); font-size:calc(1rem * var(--reader-scale,1));}
+  .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
+  .m-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:10px;}
+  .m-tail{ display:none;}   /* only needed where .m-nav is sticky (phones) */
+  .m-nav button{ background:var(--teal); color:var(--on-accent); border:none; padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:600; font-size:.9rem;}
+  .m-nav button:hover{ background:var(--teal-mid);} .m-nav button:disabled{ opacity:.35; cursor:default;}
+  .m-nav .m-random{ margin:0 auto; background:var(--saffron); color:var(--on-saffron); border:none; padding:12px 26px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.98rem; font-family:"Noto Serif Devanagari", Georgia, serif;}
+  .m-nav .m-random:hover{ background:var(--saffron-dark);}
+  .m-nav .m-back{ background:var(--teal-soft); color:var(--teal); border:1px solid var(--teal); padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.9rem;}
+  .m-nav .m-back:hover{ background:var(--teal); color:var(--on-accent);}
+
+  .m-count{ color:var(--ink-soft); font-size:.85rem; font-weight:600;}
+  footer{ text-align:center; color:var(--ink-soft); font-size:.82rem; padding:18px 20px 26px;
+          border-top:1px solid color-mix(in srgb, var(--teal) 42%, transparent);}
+  /* plain inline text — no flex gap, or the <b> would push the comma away */
+  footer .credit{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
+                  font-size:.8rem; color:var(--ink-soft); display:block; text-align:center;}
+  footer .credit b{ color:var(--teal); font-weight:700;}
+  footer .credit.attrib{ margin-top:6px; padding-top:6px; border-top:none;
+                  font-size:.72rem; line-height:1.55; color:var(--muted); max-width:62ch;
+                  margin-left:auto; margin-right:auto;}
+  footer .credit.attrib a{ color:var(--muted); text-decoration:underline;}
+  .fade-in{ animation:fadein .28s ease;} @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+  @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:calc(1.12rem * var(--reader-scale,1));} }
+
+  /* Desktop and tablet reader: use available width for the quarter grid,
+     while keeping prose to a comfortable reading measure. Phones keep the
+     edge-to-edge sheet below. */
+  @media (min-width:761px) and (max-width:1024px){
+    .modal{ max-width:960px; padding:22px 24px 26px; }
+    .m-head{ gap:12px; margin-bottom:12px; }
+    .m-head .m-title{ font-size:1.08rem; }
+    .m-head .m-vtitle{ font-size:.98rem; }
+    .m-part{ margin-bottom:16px; font-size:.82rem; line-height:1.5; }
+    .m-whole-verse{ padding:18px 22px; }
+    .m-verse .pada-box{ padding:12px 14px; }
+    .m-line .lt{ max-width:76ch; }
+  }
+  @media (min-width:1025px){
+    .modal{ max-width:1160px; padding:28px 36px 32px; }
+    .m-head{ gap:14px; margin-bottom:14px; }
+    .m-head .m-title{ font-size:1.22rem; line-height:1.35; }
+    .m-head .m-vtitle{ font-size:1.05rem; }
+    .m-part{ margin-bottom:18px; font-size:.86rem; line-height:1.5; }
+    .m-whole-verse{ padding:24px 30px; }
+    .m-verse .pada-box{ padding:14px 18px; }
+    .m-line .lt{ max-width:76ch; line-height:1.65; }
+  }
+
+  /* ==================== MOBILE / TOUCH (Android · iOS) ==================== */
+  html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  body{ -webkit-tap-highlight-color:rgba(232,145,44,.18); overscroll-behavior-y:none; }
+  button, .card, .mini, .res-card, .theme, .pada-box, .spk-line, .lang-btn, .rd-v, .pl-mode, .lr-chip, .welcome .w-day{ -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+  /* modern basics: visible keyboard focus, and stillness for those who ask */
+  :focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+  header :focus-visible{ outline-color:#FFF8EC; }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation:none !important; transition:none !important; }
+  }
+  /* iOS Safari paints a naked <button> in system blue (#007AFF),
+     ignoring the page ink. Inherit so Play chips, Learn quarters and
+     every other unstyled control follow the theme. */
+  input, button, select, textarea{ font-family:inherit; color:inherit; -webkit-appearance:none; appearance:none; }
+  /* iOS zooms any input whose font-size is < 16px on focus */
+  .toolbar input[type=search]{ font-size:16px; }
+  .modal, .wrap{ -webkit-overflow-scrolling:touch; }
+  /* Hover lifts are a mouse idiom — on touch they STICK after a tap, so the
+     last thing you touched keeps looking selected. Every hover in the app must
+     be cancelled here and answered with an :active state instead, or a phone
+     shows a phantom selection (owner 2026-09-01).
+     This block covered only the original components; the learn path and Play
+     were added later and were never listed, which is exactly why their chips
+     and cards stayed lit after a tap. */
+  @media (hover:none){
+    /* Phone has no hover: undo laptop fills so a tap does not leave a stuck
+       highlight, then replay the same fill on :active. */
+    .card:hover, .mini:hover, .res-card:hover, .welcome .w-day:hover,
+    .th-flow .theme:hover, .lr-chip:hover, .pl-mode:hover, .mode-box:hover{
+      background:var(--paper); border-color:var(--line);
+      box-shadow:0 1px 2px rgba(var(--shadow),.05); transform:none;
+    }
+    .th-flow .theme:hover{ box-shadow:none; }
+    .way-crumb:hover{ background:transparent; border-color:transparent; }
+    .way-crumb:active{ background:var(--teal-soft); border-color:var(--line); }
+    .lr-chip.ok:hover{ border-color:var(--teal); background:var(--teal-soft); }
+    .card:active, .mini:active, .res-card:active, .welcome .w-day:active,
+    .th-flow .theme:active, .lr-chip:active, .pl-mode:active, .mode-box:active{
+      background:var(--teal-soft); border-color:var(--saffron);
+      transform:scale(.985);
+    }
+    .mode-box:active{ transform:none; }
+    .rd-v:hover{ background:transparent; }
+    .rd-v:active{ background:var(--teal-soft); }
+    .lr-lad:hover:not(.on){ background:var(--cream); border-color:var(--line); }
+    .lr-lad:active:not(.on){ background:var(--teal-soft); border-color:var(--saffron); }
+    .mini-crumb .bc-btn:hover{ background:var(--paper); border-color:var(--line); }
+    .mini-crumb .bc-btn:active{ background:var(--saffron-soft); border-color:var(--saffron); }
+    .tool-btn:hover{ background:var(--paper); border-color:var(--line); }
+    .tool-btn.primary:hover{ background:var(--saffron); border-color:var(--saffron); }
+    .tool-btn:active, .lang-btn:active, .m-nav button:active{ filter:brightness(.93); }
+    /* (tab-strip ms-btn hover/active set above; old pill overrides removed) */
+    button.wc-chip:hover{ background:transparent; color:inherit; border-color:transparent; }
+    button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+    button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-text); }
+    .fav-move:hover:not(:disabled){ border-color:var(--line); background:transparent; }
+    .fav-move:active:not(:disabled){ border-color:var(--teal); background:var(--teal-soft); }
+    .modal .m-close:hover{ background:transparent; color:inherit; border-color:transparent; }
+    .modal .m-close:active{ background:var(--saffron-soft); color:var(--saffron-text); }
+    .words-bar .wb-btn:hover{ background:var(--teal); }
+    .words-bar .wb-btn:active{ background:var(--teal-mid); }
+    .reader-size button:hover:not(:disabled){ border-color:var(--line); background:var(--paper); }
+    .reader-size button:active:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft); }
+    .m-nav .m-back:hover{ background:var(--teal-soft); color:var(--teal); }
+    .m-nav .m-back:active{ background:var(--teal); color:var(--on-accent); }
+    .m-verse .pada-box:hover, .pada-box:hover{ background:var(--paper); border-color:var(--line); }
+    .m-verse .pada-box:active, .pada-box:active{ background:var(--saffron-soft); border-color:var(--saffron); }
+    .m-verse .spk-line:hover{ background:none; }
+    .m-verse .spk-line:active{ background:var(--saffron-soft); }
+    .sw-x:hover{ background:transparent; color:inherit; }
+    .sw-x:active{ background:var(--saffron-soft); color:var(--saffron-text); }
+    .res-remove:hover{ border-color:var(--line); color:var(--ink-soft); }
+    .res-remove:active{ border-color:var(--danger); color:var(--danger); }
+
+    .lr-cta:hover{ background:var(--saffron); border-color:var(--saffron); }
+    .lr-cta:active{ background:var(--saffron-dark); border-color:var(--saffron-dark); }
+    .lr-ghost:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-ghost:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-chip.ok:hover{ border-color:var(--teal); }
+    .lr-opt:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-opt:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-chip2:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-chip2:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-q:hover{ border-color:var(--line); }
+    .lr-qh:hover{ background:none; }
+    .pl-sel:hover{ border-color:var(--line); }
+    .pl-sel:active{ border-color:var(--saffron); }
+    .pl-scope .lr-ghost.on:hover{ background:var(--saffron-soft); border-color:var(--saffron-soft); }
+  }
+
+  /* ---- Phase 3.3 bottom tab bar (phones only) ---- */
+  .tabbar{ display:none; }
+  .m-search{ display:none; }
+  @media (max-width:760px){
+    /* ---- slim header: two tight rows.
+         Row 1 (flex row): ॐ + title (ellipsis) + dark-mode toggle.
+         Row 2 (full width): language segmented — three equal pills.
+         Total ~80px vs ~200px pre-3.3. Desktop keeps the old single-row
+         header with tagline (unchanged above 760px). */
+    header{ padding:6px 10px 8px;
+            padding-left:calc(10px + env(safe-area-inset-left,0px)); padding-right:calc(10px + env(safe-area-inset-right,0px));
+            padding-top:calc(6px + env(safe-area-inset-top,0px));
+            position:sticky; top:0; z-index:30;
+            box-shadow:0 1px 0 var(--line); }
+    .header-inner{ align-items:center; gap:8px; flex-wrap:wrap; }
+    .header-inner .om{ font-size:1.25rem; line-height:1; flex:0 0 auto; }
+    .hdr-copy{ flex:1 1 0; min-width:0; overflow:hidden; }
+    .header-inner h1{ font-size:.98rem; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0; }
+    #appSub{ display:none !important; }
+    .header-inner .tag{ display:none !important; }
+    .theme-btn{ flex:0 0 auto !important; min-width:34px !important; padding:6px 8px !important; min-height:34px; margin:0 !important; }
+    .langbar{ flex:1 0 100%; margin-left:0; margin-top:4px; }
+    .langbar .seg{ display:flex; width:100%; gap:2px; }
+    .seg .lang-btn{ flex:1 1 0; padding:6px 4px; font-size:.78rem; min-height:30px; }
+    .mode-box{ margin-bottom:14px; }
+    .mode-seg .ms-btn{ padding:7px 12px 8px; font-size:.85rem; min-height:36px; }
+
+    /* ---- desktop toolbar hidden on phones; bottom tab bar shown.
+           The search field stays in the sticky top bar (it's where
+           readers expect it) but the Home/Random/Play/Fav buttons
+           move to the bottom tab bar where thumbs can reach. */
+    .toolbar{ display:flex !important; position:sticky; top:0; z-index:29;
+              gap:0; padding:6px 12px;
+              padding-left:calc(12px + env(safe-area-inset-left,0px)); padding-right:calc(12px + env(safe-area-inset-right,0px));
+              background:var(--toolbar); border-bottom:1px solid var(--line);
+              box-shadow:0 1px 6px rgba(var(--shadow),.05); }
+    .toolbar .tool-btn{ display:none !important; }
+    .toolbar .searchwrap{ flex:1 0 100%; max-width:none; min-width:0; }
+    .toolbar input[type=search]{ min-height:40px; font-size:16px; }
+    .toolbar .sw-field{ display:flex; align-items:center; gap:6px;
+      background:var(--field); border:1px solid var(--line); border-radius:999px; padding:0 10px; }
+    .toolbar .sw-field:focus-within{ border-color:var(--saffron); }
+    .toolbar .searchwrap input[type=search]{ flex:1; border:0; background:transparent; padding:9px 4px; font-size:16px; color:var(--ink); min-height:40px; }
+    /* on phones, syncTabs() does NOT move the searchwrap anymore (it
+       stays in the toolbar) — reset the m-search-inline class. */
+    .searchwrap.m-search-inline{ display:flex !important; margin:0; order:0; width:100%; flex:1; max-width:none; min-width:0; }
+
+    /* ---- bottom tab bar ---- */
+    .tabbar{
+      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:40;
+      box-sizing:border-box; width:100%; max-width:100vw;
+      padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px));
+      padding-left:calc(4px + env(safe-area-inset-left,0px)); padding-right:calc(4px + env(safe-area-inset-right,0px));
+      background:var(--paper); border-top:1px solid var(--line);
+      box-shadow:0 -2px 12px rgba(var(--shadow),.07);
+    }
+    .tab-btn{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+              border:0; background:transparent; color:var(--ink-soft); padding:6px 2px; min-height:52px;
+              border-radius:10px; font:600 .68rem/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;
+              cursor:pointer; transition:color .15s, background-color .15s; -webkit-tap-highlight-color:transparent;}
+    .tab-btn .ic{ width:22px; height:22px; stroke:currentColor; fill:currentColor;
+                  stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    /* The search loupe and shuffle icon are drawn with strokes only —
+       their circle/dot/paths must not fill. The dice pips on Play are
+       <circle fill="currentColor"> in the source SVG so they stay dots;
+       the outer rounded rect is filled via the rule below. */
+    .tab-btn[data-tab="search"] .ic circle,
+    .tab-btn[data-tab="search"] .ic path,
+    .tab-btn[data-tab="random"] .ic path{ fill:none; }
+    .tab-btn[aria-selected="true"]{ color:var(--saffron-text); }
+    .tab-btn:active{ background:var(--saffron-soft); }
+    .tab-btn .tab-lbl{ font-size:.66rem; letter-spacing:.01em; }
+
+    /* ---- content: bottom room for the tab bar ---- */
+    .wrap{ padding:16px 14px calc(72px + env(safe-area-inset-bottom,0px)); padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px)); }
+    /* When the modal is open, the bottom tab bar should not float over the
+       verse sheet (the sheet is full-screen on phones); inert it so it
+       cannot receive taps. */
+    body.modal-open .tabbar{ pointer-events:none; opacity:.4; }
+    .view-title{ font-size:1.35rem; }
+    .view-sub{ font-size:.92rem; margin-bottom:16px; }
+    .crumbs{ font-size:.84rem; gap:6px; margin-bottom:14px; }
+    .way-crumb{ gap:6px; }
+    .wc-chip{ padding:7px 13px; font-size:.8rem; min-height:34px; }
+    .toolbar input[type=search]{ font-size:16px; }  /* iOS zooms on focus below 16px */
+    .crumbs .back-top{ font-size:.82rem; padding:7px 14px; min-height:36px; }
+    .grid{ gap:12px; }
+    .grid.chapters, .grid.themes, .grid.verses, .grid.sections{ grid-template-columns:1fr; }
+    .vcards{ grid-template-columns:1fr; }
+    .card{ padding:14px 16px; border-radius:14px; }
+    .card h3{ font-size:1.08rem; }
+    .card.sect h3{ font-size:1.2rem; }
+    .part-head{ gap:6px; flex-wrap:wrap; }
+    .part-head .ptitle{ font-size:1.1rem; max-width:100%; }
+    .part-head::before{ display:none; }
+    .part-head .pdesc{ margin-left:0; flex:1 0 100%; }
+    .mini .padas, .w-day .padas{ font-size:1.06rem; }
+    .back-top{ min-height:44px; }
+    .mini-crumb{ gap:6px; }
+    .mini-crumb .bc-btn, .mini-crumb .bc-cur{ padding:7px 10px; }
+    .mini-crumb .bc-name{ font-size:.74rem; }
+
+    /* ---- welcome ---- */
+    .welcome{ padding:26px 4px 20px; }
+    .welcome .w-om{ font-size:2.8rem; }
+    .welcome .view-title{ font-size:1.55rem; }
+    .welcome .tool-btn.big{ width:100%; padding:15px 20px; font-size:1rem; min-height:50px; }
+    .welcome .w-day{ padding:16px 16px; }
+    /* ---- verse modal: full-screen sheet ---- */
+    .modal-bg{ padding:0; align-items:stretch; }
+    .modal{ max-width:none; width:100%; max-height:none; height:100%; border-radius:0; border:none;
+            border-top:1px solid var(--line);
+            /* top padding clears the notch/status bar — without the inset the
+               first line of a verse hides behind it and cannot be scrolled to */
+            padding-top:calc(14px + env(safe-area-inset-top,0px));
+            padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));
+            padding-left:calc(14px + env(safe-area-inset-left,0px));
+            padding-right:calc(14px + env(safe-area-inset-right,0px));
+            overscroll-behavior:contain; }
+    /* Phase 3.2: slim m-head row (✕ / title / ⋯) sits at the top of the sheet
+       and stays visible as the user scrolls; close and more buttons live in
+       the flex row, not as free-floating FABs. */
+    /* Keep the theme/range as secondary context, visibly below the sticky
+       verse title row instead of visually touching its divider. */
+    .m-head{ position:sticky; top:0; z-index:5;
+             margin:-14px -14px 14px; padding:calc(8px + env(safe-area-inset-top,0px)) 10px 10px;
+             background:var(--cream); border-bottom:1px solid var(--line); }
+    .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto;
+                     width:40px; height:40px; font-size:1.1rem;
+                     box-shadow:none; border-radius:50%; }
+    .m-more{ width:40px; height:40px; font-size:1.4rem; border-radius:50%; }
+    .m-head .m-num-chit{ font-size:.9rem; }
+    .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
+                       overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+    .m-part{ margin:0 0 12px; padding:8px 2px 0; color:var(--ink-soft);
+             font-size:.78rem; line-height:1.5; }
+    .m-num{ font-size:1.08rem; }
+    .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
+    .reader-size button{ min-width:40px; min-height:40px; }
+    .m-verse{ padding:12px 12px; }
+    .words-bar .wb-btn{ min-height:34px; padding:6px 14px; }
+    /* pādas stack one per row — two side by side is unreadable on a phone */
+    .m-verse .pada-row{ flex-direction:column; gap:10px; }
+    .m-verse .pada-grid{ gap:10px; }
+    .m-verse .pada-box{ padding:10px 12px; }
+    .m-verse .pada-box .pb-deva{ font-size:calc(1.24rem * var(--reader-scale,1)); }
+    .m-verse .wrow{ padding:5px 0; }
+    .m-line .lt{ font-size:calc(.98rem * var(--reader-scale,1)); }
+    /* nav bar pinned to the bottom of the sheet, thumb-reachable */
+    /* A sticky bar floats above the content, so the sheet ends with a spacer
+       (.m-tail) tall enough for the last line to clear it when fully scrolled.
+       Without it the paraphrase stays hidden behind Previous/Next. */
+    .m-tail{ display:block; height:76px; }
+    .m-nav{ position:sticky; bottom:0; margin:18px -14px 0;
+            margin-bottom:calc(-26px - env(safe-area-inset-bottom,0px));
+            padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+            background:var(--cream);
+            box-shadow:0 -10px 16px -8px rgba(var(--shadow),.28);
+            border-top:1px solid var(--line); gap:8px; }
+    .m-nav button{ min-height:46px; padding:11px 14px; font-size:.9rem; flex:1; }
+    .m-nav .m-count{ flex:0 0 auto; font-size:.8rem; text-align:center; }
+    .m-nav .m-random{ flex:1 1 100%; min-height:50px; }
+    .m-nav .m-back{ flex:1; }
+    footer{ font-size:.78rem; padding:16px 16px calc(22px + env(safe-area-inset-bottom,0px)); }
+  }
+
+  @media (max-width:380px){
+    .header-inner h1{ font-size:.88rem; }
+    .header-inner{ gap:6px; }
+    .seg .lang-btn{ padding:5px 7px; font-size:.72rem; min-height:30px; }
+    .theme-btn{ min-width:30px !important; min-height:30px !important; padding:4px 6px !important; }
+    .m-verse .pada-box .pb-deva{ font-size:calc(1.16rem * var(--reader-scale,1)); }
+    .toolbar .tool-btn{ flex:1 1 0; min-width:0; min-height:44px; padding:6px 4px;
+                         font-size:.72rem; line-height:1.15; white-space:normal;
+                         display:flex; flex-direction:column; justify-content:center; gap:2px; }
+    .toolbar .tool-btn .ic{ width:1em; height:1em; margin:0; }
+    .toolbar .tool-btn span{ max-width:100%; overflow-wrap:anywhere; text-align:center; }
+    .tab-btn .tab-lbl{ font-size:.62rem; }
+    .tab-btn .ic{ width:20px; height:20px; }
+  }
+
+  /* landscape phones: keep the sheet scrollable, shrink vertical padding */
+  @media (max-width:900px) and (orientation:landscape) and (max-height:520px){
+    header{ padding-top:8px; padding-bottom:8px; }
+    .modal{ padding-top:10px; }
+    .welcome{ padding-top:16px; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  }
+
+  /* ---- no-JavaScript fallback (WhatsApp / Gmail in-app viewers) ---- */
+  .ns-box{ max-width:640px; margin:10px auto 40px; background:var(--paper);
+           border:1px solid var(--saffron); border-radius:16px; padding:22px 22px 24px;
+           box-shadow:0 8px 22px rgba(var(--shadow),.10); }
+  .ns-box .ns-om{ font-size:2.6rem; color:var(--saffron-text); text-align:center; line-height:1; margin-bottom:6px; }
+  .ns-box h2{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:1.25rem; text-align:center; margin-bottom:12px; }
+  .ns-box p{ color:var(--ink); font-size:.95rem; margin-bottom:10px; }
+  .ns-box .ns-how{ background:var(--saffron-soft); border-radius:10px; padding:10px 12px; }
+  .ns-box hr{ border:none; border-top:2px dashed var(--line); margin:14px 0; }
+  .ns-box p[lang]{ font-size:.92rem; color:var(--ink-soft); }

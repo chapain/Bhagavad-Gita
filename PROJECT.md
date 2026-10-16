@@ -10,9 +10,70 @@ code alone cannot tell you.
 
 ---
 
-## 0. Handoff snapshot (keep current; last touched 2026-10-14)
+## 0. Handoff snapshot (keep current; last touched 2026-10-16)
 
 For a brand-new session: read §1–§10, then this box, then build.
+
+
+### 2026-10-16 — Phase 4.4 validators and behavior tests; collapsible theme outline
+
+* Chapter views and generated chapter landing pages begin with a compact list
+  of theme titles, each preceded by its human-readable verse range. Expanding a
+  theme reveals its description and verse titles; full Sanskrit verses remain
+  behind their existing disclosure. Verse deep links open every enclosing
+  disclosure, and app theme links open the target theme.
+* `source/schema.py` now validates all 18 canonical chapter records before the
+  builder indexes them: exact keys, JSON types, language maps, padded verse IDs
+  and ranges, one verse per part, four pādas, optional speaker shape, and
+  five-string word rows. Thirteen mutation tests cover accepted data and common
+  malformed shapes.
+* Replaced Learn/Play runtime-source substring checks in both
+  `check_site_health.py` and `run_gita_app.js` with rendered browser behavior
+  coverage. Tests exercise Learn stage/language
+  re-entry, ladder blanks, accessible word disclosures, held-verse navigation,
+  ordering feedback, and free practice; all three Play modes, chapter scope,
+  relanguage/retry behavior; malformed favorites and notes; and the polite live
+  status region. Exactly 20 new Learn/Play checks and 6 malformed/mixed-favorites
+  checks were added. Static health checks remain for CSS, generated pages,
+  metadata, offline assets and publication integrity.
+* No chapter content, owner holds or i18n keys changed (187 keys × 3). Full
+  browser-enabled build: **233 browser checks**, **786 document assertions**,
+  **503 site-health checks**, SEO 6, study structure 9,658, **49 Python tests**,
+  progress 15 and search 7. The content-derived service-worker cache id remains
+  `b15c9d30818e`; full details are in HANDOFF.md.
+
+
+### 2026-10-16 — Phase 4.1–4.3 template and chapter-data consolidation
+
+* **4.1 templates.** The app shell is maintained in `source/app.html`,
+  `source/app.css` and `source/app.js`; the builder keeps CSS and runtime JS
+  inline in the single shell. The extraction reproduced all 43 generated
+  artifacts byte-for-byte and kept the original cache id at that stage.
+* **4.2 dead-file audit.** The owner-authorized candidates were already absent
+  from both tracked and working trees; no deletion was needed. Current editor
+  references were removed; historical notes remain historical.
+* **4.3 canonical data.** All 18 `source/ch<N>.json` files now contain complete
+  compact chapter records (700 verses). The schema keeps one copy of chapter,
+  theme and part labels and stores each verse only as `n,d,t,flow,lits,paras`.
+  Display lines/speaker placement derive from `d`/`t`; meter derives from the
+  syllable counts in `flow`. Removed redundant `name`/`sub`, English `title`/
+  `desc`, and `lines`/`padas`/`speakers`/`meter`/`mt`. The 61 old per-chapter or
+  parallel content modules are removed. Chapter JSON fell from 9,450,810 to
+  5,501,557 bytes (41.8%); generated `data/` is 3,336,550 bytes raw / 636,787
+  gzip. Recursive comparison proves all 18 compact sources equal the previous
+  published records after only those approved field removals; owner holds and
+  all retained content are unchanged.
+* **Verification.** `source/prove_data_only.py` passes all eight edit/restore
+  proofs. Full `/home/user/.venv/bin/python build.py` is green: 199 browser
+  checks, 790 document assertions, 644 site-health checks, SEO 6, study
+  structure 9,658, 36 Python tests, progress 15 and search 7. Pillow is absent,
+  so the optional share-art repaint was skipped and the existing image was left
+  untouched. The compact payloads and runtime change the content-derived cache
+  id to `96451d90c1c3` as expected.
+* **Scope/status.** Phase 4.1–4.4 are complete: the schema is strict, runtime
+  behavior is covered in the browser, and the full build is green. The current
+  branch is `arena/260a62af-bhagavad-gita`; see HANDOFF §1/§6/§8 for its exact
+  local Git/PR status. Do not merge a PR without owner instruction.
 
 
 ### 2026-10-14 — the reading language now survives the app's own reload
@@ -168,7 +229,7 @@ For a brand-new session: read §1–§10, then this box, then build.
   cites 18.65 for its four instructions. That is accurate, and the wording is a
   recorded decision guarded by a test, so it stays. A strict reading of "nothing
   outside the range" would drop it; that needs the owner's call.
-* **Build.** `python3 build.py` is green: 788 document assertions, 199 live-
+* **Build.** `python3 build.py` is green: 789 document assertions, 199 live-
   browser checks, study structure 9658, progress maps 15, advisory 51 (unchanged
   count), blocking 0. The browser suite ran for the first time in this sandbox.
   Playwright's own Chromium download is blocked here, so a Chromium from the npm
@@ -1035,8 +1096,8 @@ into equal-size chunks or turn every change of wording into another theme.
   recur across chapters), and anchors on **4-space indentation** so a theme is
   never confused with a part that shares its title — several do
   ("Behold These Kurus", "The Lord's Rebuke", "Bhīṣma's Lion-roar"). Titles
-  only; descriptions, ranges and translations untouched. All editable
-  afterwards in editor.html -> "Themes & parts".
+  only; descriptions, ranges and translations untouched. The dated note's
+  `editor.html` workflow was later retired; current editing is by source file (§6).
 
 * **Learn-by-heart audit #2 (2026-09-01) — three more defects, all silent.**
   Asked to re-examine the whole feature. The story drill and the verse-ordering
@@ -1078,8 +1139,8 @@ into equal-size chunks or turn every change of wording into another theme.
   agree on theme count, and replaces a title only when the old value matches
   exactly once inside that chapter's block, so a stale patch cannot overwrite
   the wrong theme. Titles only; descriptions, ranges and translations untouched.
-  All of it is editable afterwards in `editor.html` -> "Themes & parts", which
-  validates and rolls back a bad save.
+  The old note described the proposed `editor.html` workflow; that editor was
+  later retired. Current editing is by source file (§6).
 
 * **Cloze drill rewritten — it was wrong for half the Gītā (owner found it,
   2026-09-01).** The owner was drilled on 1.3 pāda 1 and reported: nothing was
@@ -1409,101 +1470,104 @@ open the split site from a downloaded folder.
 
 *Decision history:* until 2026-08-24 the deliverable was one standalone
 `index.html`. The owner first lifted the one-file condition, then dropped
-file-sharing entirely, so the split site is now the sole artefact. Everything
-is generated; nothing is edited by hand.
+file-sharing entirely, so the split site is now the sole artefact. Published
+artifacts are generated from source; never edit the outputs by hand.
 
 Owner: Dhruba Chapain. Licence: none — all rights reserved.
 
 **Content:** 18 chapters · 169 themes · 700 parts · 700 verses, each with
 Devanagari, IAST, a four-pāda division, word-by-word meanings, a literal
-translation and a paraphrase, in **English, Nepali and Hindi**.
+translation and a paraphrase, in **English, Nepali and Hindi**. All chapter
+content is canonical in `source/ch1.json` … `source/ch18.json`, one compact file
+per chapter; display lines and meter labels are derived from those fields.
 
 **Features:** trilingual switching, global search, favourites (orderable, each
 with a private note), random verse, verse popup with 2×2 pāda boxes and
 pada-chheda toggles, continuous chapter reading, keyboard navigation, welcome
 screen, the three ways (niṣṭhā), dark mode.
 
-**The Devanagari font is embedded** as a base64 woff2 data URI, built at compile
-time by `_font_face()` in `build_gita.py` from `source/fonts/*.woff2`. Do not
-remove it: the CSS asks for "Noto Serif Devanagari", and on any device that does
-not ship it (older Android, most Windows) the conjuncts — क्ष, द्ध, ङ्ग — break
-apart or show as boxes. The author's own phone has the font, so he would never
-see the failure. Subset to the Devanagari block: ~42 KB regular + ~46 KB bold,
-about 2% of the file. SIL Open Font License 1.1, see `source/fonts/OFL-*.txt`.
+**The Devanagari font ships as real WOFF2 files** (regular and bold), published
+beside the app and chapter stylesheet and copied from `source/fonts/` during the
+build. Do not remove them: on devices without "Noto Serif Devanagari" (older
+Android, most Windows), conjuncts — क्ष, द्ध, ङ्ग — break apart or show as boxes.
+The subset fonts are about 42 KB regular + 46 KB bold. SIL Open Font License 1.1;
+see `source/fonts/OFL-*.txt`.
 
 ---
 
 ## 2. The one rule that governs everything
 
-> **The code renders data. It never generates or repairs it.**
+> **The chapter JSON is canonical; code builds it and derives presentation-only values.**
 
-The app's content is finished, so nothing is derived at build time. Every
-displayed string is read from a data file in `source/` and printed as-is. If
-something is wrong on screen, the fix is always a data edit, never a code change.
+The build compiles each chapter source into the generated chapter payload and
+pages. The browser derives the reader's display segments from the verse's
+`d`/`t` strings and the meter badge from the `flow` pāda counts. Those are
+presentation conveniences, not alternate content: Sanskrit, translations,
+glosses, story text, and the pāda segmentation are authored data, never
+synthesized or silently repaired by code.
 
-This was a deliberate migration, and it is *proven*, not assumed:
+This is mutation-proven, not assumed:
 
-* `source/prove_data_only.py` edits each kind of content in turn and confirms the
-  change reaches `index.html`.
+* `source/prove_data_only.py` performs eight temporary edits across chapter JSON
+  and UI wording, checks each marker reaches the generated artifact, restores
+  the bytes and verifies the baseline artifact hash.
 * The old ITRANS→Devanagari converter and metre-splitter (`gita_conv.py`), the
   freeze tool (`freeze_padas.py`), the override workaround (`pada_overrides.py`)
-  and an unused `sandhi.py` were all **deleted**.
-  `run_gita_app.js` asserts they stay deleted and that the builder never calls
-  `iast_to_deva`, `to_deva`, `split_half_padas`, `snap_pair` or `parse_verse`.
+  and the unused `sandhi.py` were deleted. `run_gita_app.js` keeps those retired
+  generator paths out of the build.
 
-**Do not reintroduce derivation.** Two separate multi-verse bugs came from it.
+Do not reintroduce content generation or parallel stored copies of derived
+values. Keep the single canonical field and validate it; any presentation rule
+must preserve the text exactly and have behavior tests.
 
 ---
 
 ## 3. Layout
 
 ```
-index.html            the app SHELL — GENERATED, never edit by hand
-data/ch*.js           18 per-chapter data files — GENERATED (loaded by the shell)
+index.html            generated app shell — never edit by hand
+data/ch<N>.js         18 compact generated chapter payloads, loaded on demand
 sw.js, manifest, icons/
-sitemap.xml, robots.txt   GENERATED — crawler files (see §10)
-chapter/ + chapter.css    GENERATED — 18 SEO landing pages (see §10)
-build.py              build + verify (cross-platform, IDE-friendly)
+sitemap.xml, robots.txt   generated shell/offline and crawler files
+chapter/ + chapter.css    generated chapter landing pages
+build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       788 assertions on the built document      (needs node)
-browser_checks.py     199 live-browser checks                 (needs playwright)
-edit.py               local browser-based content editor
-editor.html           its interface
+run_gita_app.js       786 assertions on the built document and data (needs node)
+browser_checks.py     233 live-browser checks (needs Playwright)
 source/
-  ch*.json            verse Devanagari + IAST            <- the running verse
-  padas_ch*.py        the four pādas of every verse      <- the popup boxes
-  padachheda_ch*.py   word-by-word split + English gloss
-  check_seo.py        sitemap/robots proof (local, or --live)
-  gloss_ne/hi.py      Nepali/Hindi word meanings, keyed by IAST
-  gita_data*.py       English themes, parts, translations
-  themes_ne/hi.py     Nepali/Hindi themes and parts
-  translations_ne/hi.py
-  i18n_chapters.py    chapter names/blurbs (ne, hi)
-  i18n_ui.py          187 UI strings × 3 languages
-  build_gita.py       the builder + the manual-edit audit
-  dataio.py           safe read/write of every data file (used by edit.py)
-  verify.py           norm1() and syll_iast() — used ONLY to check data
-  check_padas.py      rebuilds each pāda from its words via sandhi
-  check_paraphrase.py every paraphrase differs enough from its literal
-  check_translations.py banned readings, shape, duplicated words (built data)
-  prove_data_only.py  proves the build renders rather than generates
+  ch1.json … ch18.json one compact canonical content file per chapter
+  app.html             app document template (build-time placeholders)
+  app.css              stylesheet template, inlined into index.html
+  app.js               client runtime template, inlined into index.html
+  i18n_ui.py           187 UI strings × 3 languages
+  study_map_contract.json all 18 reviewed maps + legacy-progress migration
+  build_gita.py        assembles templates + chapter data; enforces source schema
+  verify.py            IAST normalization and syllable helpers used for checks
+  check_padas.py       reconstructs each pāda from nested flow word rows
+  check_paraphrase.py  ensures every paraphrase differs from its literal
+  check_translations.py safety checks on published translation fields
+  check_study_structure.py approved story maps, verse titles and ranges
+  prove_data_only.py   8 edit/restore proofs from source through build
 ```
 
-**Build:** `python3 build.py` (or `--fast` to skip tests, `--serve` for :8000).
-It clears `__pycache__` first — a stale cache once made an edit appear to do
-nothing.
+**Build:** `python3 build.py` (`--fast` skips tests; `--serve` starts a local
+server). It clears `__pycache__` first, so a stale compiled file cannot mask an
+edit. Browser checks run when Playwright and a compatible Chromium are installed.
 
 ---
 
 ## 4. Editorial decisions — settled, do not relitigate
 
-**4.1 The running verse is printed verbatim from `ch*.json`.**
-The text is stored as `।`-separated segments: two verse lines, plus a speaker
-where there is one. They render in order — which is why 1.21 and 1.28 correctly
-show `अर्जुन उवाच` *between* the two lines. Nothing is re-joined.
+**4.1 The running verse is derived from canonical `d`/`t` in `source/ch<N>.json`.**
+The browser splits both strings on `।`, pairs the segments in order and marks a
+speaker when the IAST segment ends in `uvāca`. Each verse yields two non-speaker
+lines; 1.21 and 1.28 correctly keep `अर्जुन उवाच` *between* them. No text is
+re-joined or re-sandhied.
 
 **4.2 Pāda boxes show the verse as printed; word lists show the pre-sandhi form.**
-So 4.33 pāda 1 ends `…yajñāj` (as the verse reads) while its word list says
+The four pādas, syllable counts, five-field word rows and any speaker rows live
+in that verse's single ordered `flow` array. So 4.33 pāda 1 ends `…yajñāj` (as
+the verse reads) while its word list says
 `yajñāt` (the real word). Asked to "restore the originals" in the pāda text, we
 decided **no**, because 8.20 disproves any uniform rule: `anyaḥ` + `avyaktaḥ` →
 `anyo’vyakto` merges two vowels, so restoring both sides gives 8+9 = 17
@@ -1513,7 +1577,9 @@ breaks the tenth is worse than none.
 **4.3 Metre.** Every anuṣṭubh (32 syllables) divides 8/8/8/8; every triṣṭubh (44)
 divides 11/11/11/11. Five verses are genuinely irregular and are correct as they
 stand: **11.01** (33), **2.29 / 8.10 / 15.03** (45), **2.06** (46). In each, the
-extra syllable sits on a pāda that is a complete phrase.
+extra syllable sits on a pāda that is a complete phrase. The UI derives its
+meter badge from the syllable counts in `flow`; neither a separate `mt` tuple nor
+a meter label is stored in verse data.
 
 **4.4 An avagraha belongs at the START of the pāda whose word lost the vowel.**
 8.20 reads `…bhāvo’nyo` | `’vyakto…`, never `…bhāvo’nyo’` | `vyakto…`.
@@ -1554,53 +1620,56 @@ IAST (Bhīṣma, Sāttvic, Puruṣottama) — the established style.
 
 ## 5. The build's manual-edit audit
 
-`build_gita.py` stops the build if a source file says something the app would not
-show. Each check was added after a real bug and each was verified by planting the
-error it is meant to catch:
+`source/build_gita.py` stops the build if a source file says something the app
+would not show, or if the compact source contract is violated. The audit now
+runs directly on the chapter JSON; there are no parallel English-only theme,
+translation, gloss or pāda modules.
 
-| # | catches |
+| check | catches |
 |---|---|
-| 1  | pādas that no longer spell the verse in `ch*.json`; wrong syllable counts |
-| 1b | a pāda starting with a consonant stranded from the previous pāda |
-| 1c | stray leading/trailing/double spaces in pāda text |
-| 1d | anuṣṭubh not 8/8/8/8, triṣṭubh not 11/11/11/11 |
-| 1e | an avagraha dangling at the end of a pāda |
-| 1f | `-aḥ` before a voiced consonant (should be `-o`) |
-| 2  | a verse with no Nepali or Hindi translation (would silently show English) |
-| 3  | `ne`/`hi` theme files not mirroring the English structure |
-| 4  | a verse no part's range covers, making it unreachable |
-| 5  | a part/theme title that is a raw verbatim opening of its verse (not a
-     headline) or carries a drafting slash — added 2026-08-26 after the
-     700-verse title audit; short genuine terms that share a first word
-     (ज्ञानयज्ञ, ब्रह्मभूत, 4.13's translated first-person titles) pass by design |
+| compact schema | extra/duplicate chapter, theme, part, verse or flow fields; in particular `name`/`sub`, English `title`/`desc`, and cached `lines`/`padas`/`speakers`/`meter`/`mt` |
+| display segments | mismatched `d`/`t` danda segments or a verse that does not yield exactly two non-speaker lines |
+| flow reconstruction | pādas that no longer spell the verse IAST (speaker rows excluded), missing/incorrect syllable counts, or incomplete word rows |
+| pāda typography | a consonant stranded across a boundary, stray edge/double spaces, incorrect anuṣṭubh/triṣṭubh counts, or an avagraha at the wrong edge |
+| transliteration | an unapplied `-aḥ` before a voiced consonant |
+| language maps | empty or English-fallback en/ne/hi names, summaries, titles, descriptions, literals or paraphrases |
+| verse coverage | any verse missing from all parts or duplicated across parts; every one-verse part must still contain exactly one verse |
+| editorial titles | drafting slashes or a raw Sanskrit opening used as a part headline |
 
-`check_padas.py` separately rebuilds each pāda from its word list via external
-sandhi: **2800 pādas, 0 residual flags**.
+`check_padas.py` separately rebuilds each pāda from its nested word rows via
+sandhi: **2,800 pādas, 0 residual flags**. The approved study-map audit remains
+separate and pins the 169 themes, 700 verse titles, and ranges in all languages.
 
 `check_paraphrase.py` measures how much each flowing paraphrase overlaps its
-own literal, and fails at **80%**. A paraphrase that just swaps a word or two
-leaves the second column saying nothing new. Current medians: en 59%, ne 63%,
-hi 63%; the highest single pair is 80%.
+own literal and fails at **80%**. Current medians are en 59.0%, ne 62.4%, hi
+63.1%; the highest pair is 79.8%.
 
 **Green means consistent, not correct.** These checks cannot tell that `naśnan`
 is not a Sanskrit word. Only reading catches that.
 
 ---
 
-## 6. The editor
+## 6. Editing source data
 
-`python3 edit.py` → `http://127.0.0.1:8765`. Six tabs covering every editable
-field. Local-only (binds `127.0.0.1`); none of it ships in `index.html`.
+There is no browser-based content editor in this repository. The canonical
+sources are `source/ch1.json` through `source/ch18.json`, one compact chapter
+record per file. The top-level keys are `num`, `deva`, `verses`, `names`,
+`subs`, `themes` and `colophon`. A theme holds `range`, trilingual `titles` and
+`descs`, and `parts`; a part holds the same maps plus its `sutras`; a verse holds
+only `n`, `d`, `t`, `flow`, `lits` and `paras`.
 
-**Design rules, learned from breaking things:**
+Each `flow` is ordered. A pāda item stores `k: "p"`, `d`, `t`, its syllable
+count `n`, and five-field word rows; a speaker item stores `k: "s"`, `d`, `t`
+and its word rows. The browser derives the reader lines from `d`/`t` and the
+meter badge from the pāda counts. They are not stored twice. The build enforces
+the exact schema so deleted redundant fields cannot silently return.
 
-* Never regex-patch a data file. Import the module, edit the dict, re-emit the
-  whole file, re-import and compare. `dataio.py` does this for all 15 writers.
-* A rejected save is **rolled back** — the file is restored byte-for-byte.
-* The verse text and its pādas must change **together** (`verse_all`), because
-  editing one alone always fails validation. There is also a per-verse
-  find/replace that updates the verse and every quarter at once.
-* Backups go to `source/.backup/`.
+Edit the source JSON, run `python3 build.py`, and review the result. Do not hand
+edit `index.html`, `data/ch<N>.js`, service-worker files or generated chapter
+pages. `source/prove_data_only.py` runs eight edit-and-restore experiments for
+verse text, a pāda, glosses, translations, a theme title, a chapter name and UI
+wording; each must reach the output, and the restored build must match its
+baseline hash.
 
 ---
 
