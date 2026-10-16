@@ -220,7 +220,7 @@ ok("if(fb) fb.innerHTML = '';" in idx,
 # and teal for accents, states and hover. Check that surfaces use the shared
 # palette rather than hard-coded colours, and that the active quarter slot keeps
 # its restrained teal hairline.
-_SURFACES = (".card", ".theme", ".res-card", ".mode-box", ".lr-step", ".lr-chip",
+_SURFACES = (".card", ".theme", ".res-card", ".lr-step", ".lr-chip",
              ".lr-q", ".pl-mode", ".lr-word", ".lr-finis", ".lr-opt", ".lr-qbox",
              ".lr-chip2", ".lr-slot")
 for _sel in _SURFACES:
@@ -519,16 +519,10 @@ ok("background:var(--chip-hover)" in (_tb.group(1) if _tb else ""),
 ok("color:#FFF8EC" in (_tb.group(1) if _tb else ""),
    "theme-btn hover must set a light foreground for its icon")
 
-# The "How would you like to receive this chapter?" caption must NOT be the
-# same saffron as the pills it labels — a caption that looks pressable is a
-# lie, and --saffron-dark measured 3.34:1 on white, under the AA floor.
-_ml = re.search(r"\.mode-lbl\{([^}]*)\}", idx_nofont)
-ok(_ml is not None, ".mode-lbl rule must exist")
-if _ml:
-    ok("--saffron" not in _ml.group(1),
-       "the mode caption must not reuse the pills' saffron")
-    ok("var(--ink-soft)" in _ml.group(1),
-       "the mode caption should be --ink-soft (AA in both themes)")
+# Phase 3.1: the "How would you like to receive this chapter?" caption is
+# removed — with only two modes (Verses / Learn) the tab strip speaks for
+# itself. The legacy .mode-lbl rule is gone intentionally; keep an empty
+# placeholder so surrounding checks still line up.
 
 
 # ------------------------------------------- verse titles: one voice, no gaps

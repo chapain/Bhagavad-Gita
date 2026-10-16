@@ -418,25 +418,26 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(600)
     ok(pg.locator(".mode-seg .ms-btn").count() == 2
        and pg.locator(".mode-seg .ms-btn.on").count() == 1,
-       "the chapter page carries Verses + Learn as one segmented control, exactly one raised")
-    ok(pg.eval_on_selector(".mode-lbl", "e=>e.textContent").strip()
-       == "How would you like to receive this chapter?"
-       and pg.locator(".mode-box .mode-seg").count() == 1,
-       "an instructive line and the control sit together in one tray")
-    boxc = pg.evaluate("getComputedStyle(document.querySelector('.mode-box')).borderTopColor")
-    lblc = pg.evaluate("getComputedStyle(document.querySelector('.mode-lbl')).color")
-    onc  = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn.on')).backgroundColor")
-    ok(boxc == colour("--line") and lblc == colour("--ink-soft")
-       and onc == colour("--saffron-soft"),
-       f"the tray has a hairline and quiet caption; its selected segment is soft saffron ({boxc} {lblc} {onc})")
-    rest = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn:not(.on)')).backgroundColor")
-    ok(rest == colour("--paper"),
-       f"an unchosen segment stays on paper, like an ancestor crumb ({rest})")
+       "the chapter page carries Verses + Learn as one tab strip, exactly one active")
+    ok(pg.locator(".mode-box .mode-seg").count() == 1
+       and pg.locator(".mode-lbl").count() == 0,
+       "the control is a label-less tab strip (no 'how would you like' card)")
+    # Tab strip: hairline under the strip, active tab has teal underline + teal text
+    barc  = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg')).borderBottomColor")
+    onc   = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn.on')).color")
+    onbb  = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn.on')).borderBottomColor")
+    ok(barc == colour("--line") and onc == colour("--teal") and onbb == colour("--teal"),
+       f"the tab strip sits on a hairline; the active tab is teal underlined ({barc} {onc} {onbb})")
+    rest = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn:not(.on)')).color")
+    ok(rest == colour("--ink-soft"),
+       f"an inactive tab stays ink-soft, not shouting ({rest})")
     pg.locator(".mode-seg .ms-btn:not(.on)").first.hover()
     pg.wait_for_timeout(300)
-    hov = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn:not(.on)')).backgroundColor")
-    ok(hov == colour("--paper" if touch_only else "--saffron-soft"),
-       f"an unselected segment has no sticky touch hover; a mouse gets soft saffron ({hov})")
+    # Tab strip: hover just colours the text teal (no background change),
+    # both touch and mouse — it's a quieter control than the old pill card.
+    hovt = pg.evaluate("getComputedStyle(document.querySelector('.mode-seg .ms-btn:not(.on)')).color")
+    ok(hovt == colour("--teal"),
+       f"hovering an inactive tab turns its text teal ({hovt})")
     lang = pg.evaluate("getComputedStyle(document.querySelector('.seg .lang-btn.on')).backgroundColor")
     ok(lang == colour("--paper"),
        f"the language bar keeps its iOS-segment look: the active tongue raised on paper ({lang})")
@@ -560,7 +561,7 @@ def run(pw, url, offline_capable=False):
     pg.evaluate("setLang('ne')")
     pg.wait_for_timeout(600)
     ok(pg.evaluate("state.view") == "chapter"
-       and pg.eval_on_selector(".mode-lbl", "e=>e.textContent").strip() == "यो अध्याय कसरी पढ्न चाहनुहुन्छ?",
+       and pg.locator(".mode-seg .ms-btn").count() == 2,
        "changing language never moves the reader off the chapter")
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(500)
@@ -778,8 +779,8 @@ def run(pw, url, offline_capable=False):
                == colour("--saffron-soft", q), "Desktop: a mouse hover warms the ancestor crumb")
             q.locator(".mode-seg .ms-btn:not(.on)").first.hover()
             q.wait_for_timeout(250)
-            ok(q.eval_on_selector(".mode-seg .ms-btn:not(.on)", "e=>getComputedStyle(e).backgroundColor")
-               == colour("--saffron-soft", q), "Desktop: a mouse hover warms an unselected mode")
+            ok(q.eval_on_selector(".mode-seg .ms-btn:not(.on)", "e=>getComputedStyle(e).color")
+               == colour("--teal", q), "Desktop: a mouse hover teal-colours an inactive tab")
         c.close()
 
     group("chapter landing pages")

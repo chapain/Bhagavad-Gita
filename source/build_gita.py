@@ -780,18 +780,20 @@ __FONTS__
      2026-08-30: "put the choose and the three options in a box, and make it
      instructive"). Same body as every card — paper, hairline, 16px radius —
      so the chrome reads as one quiet object set apart from the scripture. */
-  .mode-box{ background:var(--paper); border:1px solid var(--line); border-radius:16px;
-             padding:14px 18px; margin:0 0 18px; display:flex; flex-direction:column;
-             gap:10px; align-items:flex-start; box-shadow:0 1px 2px rgba(var(--shadow),.05);
-             transition:border-color .15s, background .15s, box-shadow .15s; }
-  .mode-box:hover{ border-color:var(--saffron); background:var(--teal-soft);
-                   box-shadow:0 3px 12px rgba(var(--shadow),.08); }
-  /* Owner 2026-09-01: this caption used to be --saffron-dark, the exact colour
-     of the pills underneath it, so a non-interactive question looked clickable
-     — and on white it measured 3.34:1, under the 4.5:1 AA floor. --ink-soft
-     reads as a quiet caption and passes AA in both themes (7.75:1 / 6.22:1),
-     leaving saffron to mean "you can press this". */
-  .mode-lbl{ font-size:.9rem; color:var(--ink-soft); font-weight:600; }
+  /* Phase 3.1: chapter-mode strip is a quiet tab row under the subtitle —
+     no card, no "How would you like…" question. Active tab gets a teal
+     underline; inactive tabs are soft grey, warm on hover. Reads like a
+     book, not a setup dialog. */
+  .mode-box{ margin:0 0 18px; display:flex; align-items:center; gap:0; }
+  .mode-seg{ display:flex; gap:0; align-items:flex-end; max-width:100%; border-bottom:1px solid var(--line); }
+  .mode-seg .ms-btn{ background:transparent; color:var(--ink-soft); border:0;
+                     padding:8px 14px 10px; font-size:.9rem; font-weight:600;
+                     border-bottom:2px solid transparent; margin-bottom:-1px;
+                     cursor:pointer; transition:color .15s, border-color .15s;
+                     border-radius:0; }
+  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ color:var(--teal); background:transparent; }
+  .mode-seg .ms-btn.on{ color:var(--teal); border-bottom-color:var(--teal); }
+  .mode-seg .ms-btn.on:hover{ color:var(--teal); background:transparent; }
 
   /* ---------- Play ---------- */
   /* The scope row is the same segmented-pill grammar as the chapter chooser:
@@ -1103,18 +1105,8 @@ __FONTS__
      grammar — soft pill = an option, gold pill = where you are, hover = the
      door warming to saffron-dark. The segments ARE crumbs now; the paper
      track retired because the pills carry their own round boundary. */
-  .mode-seg{ display:flex; gap:8px; flex-wrap:wrap; max-width:100%; }
-  /* Same metal as .wc-chip: paper doors, one soft-saffron “you are here”.
-     Solid gold fill was a second, louder crumb language on the same page. */
-  .mode-seg .ms-btn{ background:var(--paper); color:var(--ink-soft); border:1px solid var(--line);
-             border-radius:999px; padding:7px 16px; cursor:pointer; font-size:.86rem;
-             font-weight:700; font-family:inherit; line-height:1.4;
-             transition:background-color .15s, color .15s, border-color .15s; }
-  .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--saffron-soft);
-             color:var(--saffron-text); border-color:var(--saffron-soft); }
-  .mode-seg .ms-btn.on{ background:var(--saffron-soft); color:var(--saffron-text);
-             border-color:var(--saffron-soft); box-shadow:none; }
-  .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
+  /* Legacy pill .mode-seg rules retired Phase 3.1 in favour of the
+     underlined-tab style declared near .mode-box above. */
   /* purana chapter view: clean hairline cards; saffron only for numbers */
   .th-flow .theme{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
                    padding:16px 18px; margin:0 0 14px; cursor:pointer;
@@ -1639,9 +1631,7 @@ __FONTS__
     .tool-btn:hover{ background:var(--paper); border-color:var(--line); }
     .tool-btn.primary:hover{ background:var(--saffron); border-color:var(--saffron); }
     .tool-btn:active, .lang-btn:active, .m-nav button:active{ filter:brightness(.93); }
-    .mode-seg .ms-btn:hover, .mode-seg .ms-btn:focus-visible{ background:var(--paper); color:var(--ink-soft); border-color:var(--line); }
-    .mode-seg .ms-btn.on:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
-    .mode-seg .ms-btn:active{ background:var(--saffron-soft); }
+    /* (tab-strip ms-btn hover/active set above; old pill overrides removed) */
     button.wc-chip:hover{ background:transparent; color:inherit; border-color:transparent; }
     button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
     button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-text); }
@@ -1704,8 +1694,8 @@ __FONTS__
     .langbar{ flex:1 0 100%; margin-left:0; margin-top:4px; }
     .langbar .seg{ display:flex; width:100%; gap:2px; }
     .seg .lang-btn{ flex:1 1 0; padding:6px 4px; font-size:.78rem; min-height:30px; }
-    .mode-box{ padding:12px 14px; }
-    .mode-seg .ms-btn{ padding:9px 14px; font-size:.82rem; min-height:40px; }
+    .mode-box{ margin-bottom:14px; }
+    .mode-seg .ms-btn{ padding:7px 12px 8px; font-size:.85rem; min-height:36px; }
 
     /* ---- desktop toolbar hidden on phones; bottom tab bar shown.
            The search field stays in the sticky top bar (it's where
@@ -3704,14 +3694,17 @@ function wayName(k){ /* the trail carries the Sanskrit mārga name, as the
    where you are. The segment descriptions ride in title/aria, so the
    control stays quiet but never cryptic. */
 function modeSwitch(ci){
+  /* Phase 3.1: compact tab strip. No framing card, no "How would you like…"
+     label — with only two modes (read / learn) a question is dead weight.
+     Quiet underlined tabs read like a book ("the text" / "memorize"), not a
+     setup wizard. */
   const m = (state.view === 'chapter' || state.view === 'themes' || state.view === 'verses' || state.view === 'read')
           ? 'chapter'
           : state.view === 'learn' ? 'learn' : 'chapter';
   const btn = (mode, lab, fn, tip) =>
     `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
-    <div class="mode-lbl">${esc(L('choose_title'))}</div>
-    <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
+    <div class="mode-seg" role="tablist" aria-label="${esc(L('choose_title'))}">
       ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
       ${btn('learn',   esc(L('opt_learn_s')), `showLearn(${ci})`,   esc(L('opt_learn_d')))}
     </div>
@@ -4849,6 +4842,14 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;   // never touch cross-origin requests
+
+  // The service worker script itself MUST come from the network every time, or
+  // the browser can never discover a new worker and the cache pins itself
+  // forever across deploys (typical "stuck SW" bug).
+  if (url.pathname.endsWith('/sw.js') || url.pathname.endsWith('\\sw.js')) {
+    e.respondWith(fetch(req).catch(() => caches.match(req)));
+    return;
+  }
 
   if (req.mode === 'navigate') {
     // network-first for the page itself, so updates land; fall back to cache offline.

@@ -2,7 +2,7 @@
    Strategy: cache-first for the shell (the app is one static file and never
    changes between deploys), with a network revalidation for navigations so a
    new deploy is picked up on the next visit. */
-const CACHE = 'gita-3aa5d6252faf';
+const CACHE = 'gita-7dce2fea286a';
 /* chapter.css is precached even though the app itself never loads it: a reader
    who arrives on a /chapter/N/ landing page and later opens it offline would
    otherwise get an unstyled wall of text, while the manifest and README both
@@ -39,6 +39,14 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;   // never touch cross-origin requests
+
+  // The service worker script itself MUST come from the network every time, or
+  // the browser can never discover a new worker and the cache pins itself
+  // forever across deploys (typical "stuck SW" bug).
+  if (url.pathname.endsWith('/sw.js') || url.pathname.endsWith('\sw.js')) {
+    e.respondWith(fetch(req).catch(() => caches.match(req)));
+    return;
+  }
 
   if (req.mode === 'navigate') {
     // network-first for the page itself, so updates land; fall back to cache offline.
