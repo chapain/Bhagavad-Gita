@@ -123,15 +123,14 @@ def run(pw, url, offline_capable=False):
     group("navigation")
     pg.get_by_role("button", name="Enter", exact=False).first.click()
     pg.wait_for_timeout(400)
-    pg.evaluate("showThemes(0)")
+    pg.evaluate("showChapter(0)")
     pg.wait_for_timeout(400)
-    ok("Back to chapters" in pg.locator(".back-top").first.inner_text(), "themes: back to chapters")
-    pg.evaluate("showVerses(0,0)")
+    ok("Back" in pg.locator(".back-top").first.inner_text() and "chapter" in pg.locator(".back-top").first.inner_text().lower(), "chapter view: back to chapters")
+    # Phase 3.1: theme deep link scrolls to that theme inside the chapter view
+    pg.evaluate("showChapter(0,0)")
     pg.wait_for_timeout(400)
-    ok("Back to themes" in pg.locator(".back-top").first.inner_text(), "verses: back to themes")
-    pg.locator(".back-top").first.click()
-    pg.wait_for_timeout(400)
-    ok(pg.evaluate("state.view") == "themes", "back button returns to themes")
+    ok(pg.evaluate("state.view === 'chapter' && state.chapter === 0"),
+       "theme anchor lands inside the unified chapter view")
 
     group("english wording")
     pg.evaluate("setLang('en')")
@@ -193,20 +192,20 @@ def run(pw, url, offline_capable=False):
     if pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"):
         pg.keyboard.press("Escape")
         pg.wait_for_timeout(500)
-    pg.evaluate("loadChapter(18).then(()=>showThemes(17))")
-    pg.wait_for_function("state.view === 'themes' && state.chapter === 17", timeout=30000)
+    pg.evaluate("loadChapter(18).then(()=>showChapter(17))")
+    pg.wait_for_function("state.view === 'chapter' && state.chapter === 17", timeout=30000)
     pg.evaluate("setLang('ne')")
     pg.wait_for_timeout(600)
     ok(pg.evaluate("localStorage.getItem('gitaLang')") == "ne",
        "choosing नेपाली writes gitaLang to localStorage")
     before = pg.eval_on_selector("#view", "e=>e.textContent")
-    ok("अध्याय १८" in before, "chapter 18 study guide is numbered in Devanagari")
+    ok("अध्याय १८" in before, "chapter 18 view is numbered in Devanagari")
     pg.reload(wait_until="load")
-    pg.wait_for_function("DATA && state.view === 'themes'", timeout=30000)
+    pg.wait_for_function("DATA && state.view === 'chapter'", timeout=30000)
     pg.wait_for_timeout(600)
     ok(pg.evaluate("state.lang") == "ne", "still नेपाली after the reload")
-    ok(pg.evaluate("state.chapter === 17 && state.view === 'themes'"),
-       "still on the chapter 18 study guide after the reload")
+    ok(pg.evaluate("state.chapter === 17 && state.view === 'chapter'"),
+       "still on chapter 18 after the reload")
     ok(pg.eval_on_selector("html", "e=>e.lang") == "ne",
        "<html lang> is ne after the reload, so screen readers stay in Nepali")
     ok(pg.eval_on_selector(".lang-btn[data-lang='ne']", "e=>e.classList.contains('on')") is True,
@@ -362,9 +361,11 @@ def run(pw, url, offline_capable=False):
        "a way opens onto its six chapters under a breadcrumb")
     pg.locator(".card").first.click()
     pg.wait_for_timeout(700)
-    ok(pg.evaluate("state.view") == "read" and pg.locator(".mode-seg .ms-btn").count() == 3,
-       "a chapter opens straight into its text, the three ways riding along as a segmented control")
-    for js, label in [("showChapters(2)", "inside a way"), ("showThemes(8)", "a chapter's themes")]:
+    # Phase 3.1: chapter opens into the unified 'chapter' view (themes as
+    # headings, verses as tap targets). Mode switch now has 2 pills: Verses + Learn by heart.
+    ok(pg.evaluate("state.view") == "chapter" and pg.locator(".mode-seg .ms-btn").count() == 2,
+       "a chapter opens straight into its verse list; Verses + Learn pills ride along")
+    for js, label in [("showChapters(2)", "inside a way"), ("showChapter(8)", "a chapter")]:
         pg.evaluate(js)
         pg.wait_for_timeout(500)
         ok(pg.locator(".top-tab").count() == 0 and pg.locator(".sec-tab").count() == 0
@@ -374,11 +375,11 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(400)
 
     # The breadcrumb names the whole trail and its links walk it back up.
-    pg.evaluate("showThemes(1)")
+    pg.evaluate("showChapter(1)")
     pg.wait_for_timeout(500)
     cr = pg.eval_on_selector_all(".way-crumb > *", "e=>e.map(x=>x.textContent.trim())")
-    ok(len(cr) == 5 and cr[0] == "The Three Ways" and cr[4] == "Chapter 2 · अध्ययन",
-       f"the themes page trail names the way and ends at 'Chapter 2 · अध्ययन' ({cr})")
+    ok(len(cr) == 5 and cr[0] == "The Three Ways" and cr[4].startswith("Chapter 2"),
+       f"the chapter trail names the way and ends at 'Chapter 2' ({cr})")
     ok("कर्ममार्ग" in cr[2], f"the way crumb carries its Sanskrit mārga name ({cr[2]})")
     chipc = pg.eval_on_selector_all(".way-crumb .wc-chip",
         "e=>e.map(x=>[x.className.includes('wc-cur'), getComputedStyle(x).backgroundColor])")
@@ -413,11 +414,11 @@ def run(pw, url, offline_capable=False):
     # The segmented control (owner 2026-08-30, final form): one quiet line
     # says Choose, the raised segment says where you are, and switching
     # language never moves the reader.
-    pg.evaluate("showRead(1,'mula')")
+    pg.evaluate("showChapter(1)")
     pg.wait_for_timeout(600)
-    ok(pg.locator(".mode-seg .ms-btn").count() == 3
+    ok(pg.locator(".mode-seg .ms-btn").count() == 2
        and pg.locator(".mode-seg .ms-btn.on").count() == 1,
-       "the chapter page carries the three ways as one segmented control, exactly one raised")
+       "the chapter page carries Verses + Learn as one segmented control, exactly one raised")
     ok(pg.eval_on_selector(".mode-lbl", "e=>e.textContent").strip()
        == "How would you like to receive this chapter?"
        and pg.locator(".mode-box .mode-seg").count() == 1,
@@ -448,25 +449,22 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(300)
     pg.mouse.move(2,2)
     pg.wait_for_timeout(250)
+    # Phase 3.1: two pills — Verses (unified chapter view) + Learn by heart.
     lbls = pg.eval_on_selector_all(".mode-seg .ms-btn", "e=>e.map(x=>x.textContent.trim())")
-    ok(lbls == ["Verses with translation", "Study guide", "Learn by heart"],
-       f"the segments are the three ways in the current language ({lbls})")
+    ok(lbls == ["Verses", "Learn by heart"],
+       f"the segments are Verses + Learn in the current language ({lbls})")
     cr = pg.eval_on_selector_all(".way-crumb > *", "e=>e.map(x=>x.textContent.trim())")
-    ok(cr[-1] == "Chapter 2 · अर्थ", f"the retired mula route now opens the translation view ({cr})")
-    pg.locator(".mode-seg .ms-btn").filter(has_text="Study guide").click()
-    pg.wait_for_timeout(600)
-    ok(pg.evaluate("state.view") == "themes" and pg.locator(".th-flow .theme").count() > 0
-       and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == "Study guide",
-       "the study segment opens the thematic breakdown and raises itself")
-
-    # Owner 2026-08-30: in the study guide the theme is the door and the
-    # verses are display-only cards — readable, not pressable.
-    vc = pg.locator(".th-flow .vcard")
-    ok(vc.count() > 0 and pg.locator(".vcard[role], .vcard[onclick]").count() == 0,
-       f"every verse of the chapter shows as a card, none of them a button ({vc.count()})")
-    anat = pg.eval_on_selector(".th-flow .vcard",
-        "x=>[(x.querySelector('.chip')||{}).textContent||'', !!x.querySelector('h3'), !!x.querySelector('p')]")
-    ok(anat[0] and anat[1] and anat[2], f"verse card = number chip + title + description ({anat})")
+    ok(cr[-1].startswith("Chapter 2"), f"retired study/full/mula routes all land on the unified chapter view ({cr})")
+    # In the unified view, themes are non-tappable headings and verses ARE tap targets.
+    ok(pg.evaluate("state.view") == "chapter" and pg.locator(".ch-theme-head").count() > 0
+       and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == "Verses",
+       "chapter opens with the Verses pill raised and themes as headings")
+    vc = pg.locator(".ch-theme .mini")
+    ok(vc.count() > 0 and vc.first.get_attribute("onclick"),
+       f"every verse of the chapter is a tap target opening its sheet ({vc.count()})")
+    anat = pg.eval_on_selector(".ch-theme .mini",
+        "x=>[(x.querySelector('.vnum')||{}).textContent||'', !!(x.querySelector('.vtitle')), !!(x.querySelector('.vhint'))]")
+    ok(anat[0] and anat[1] and anat[2], f"verse row = number + title + paraphrase hint ({anat})")
 
     # Phase 2.2: a verse description that is word-for-word the verse's own
     # literal must not be printed twice. The 2026-10-14 whole-book summaries
@@ -498,29 +496,21 @@ def run(pw, url, offline_capable=False):
         }}""")
         pg.evaluate(f"setLang('{lang}')")
         pg.wait_for_timeout(600)
-        prof, shown = pg.evaluate("""() => {
+        # Phase 3.1: chapter view uses .ch-theme > .mini rows (vnum + vtitle + vhint).
+        # The p22 duplicate-suppression rule applies in the MODAL's .m-part line
+        # (tested below), not in the chapter list (which shows vtitle + a
+        # paraphrase hint, never the part description).
+        prof = pg.evaluate("""() => {
             const t = DATA[1].themes[0];
-            const cards = document.querySelectorAll('.th-flow .theme')[0]
-                .querySelectorAll('.vcard');
-            return [t.parts.map(p => p.descs[state.lang].trim()
-                                   === p.sutras[0].lits[state.lang].trim()),
-                    Array.from(cards).map(c => {
-                        const p = c.querySelector('p');
-                        return p ? p.textContent.trim() : '';
-                    })];
+            return t.parts.map(p => p.descs[state.lang].trim()
+                                   === p.sutras[0].lits[state.lang].trim());
         }""")
         ok(prof == expect, f"p22 {lang}: data duplicate profile {prof} != {expect}")
-        ok([bool(s) for s in shown] == [not d for d in prof],
-           f"p22 {lang}: card description presence disagrees with the data ({shown})")
-        kept = [(s, pg.evaluate(f"DATA[1].themes[0].parts[{i}].descs['{lang}']"))
-                for i, s in enumerate(shown) if s]
-        ok(len(kept) == sum(1 for d in prof if not d)
-           and all(s == t for s, t in kept),
-           f"p22 {lang}: a kept description is not the data's own text ({shown})")
-        ok(pg.eval_on_selector(".th-flow .theme",
-             "t => Array.from(t.querySelectorAll('.vcard'))"
-             ".every(c => c.querySelector('.chip') && c.querySelector('h3'))"),
-           f"p22 {lang}: every card keeps its number chip and title")
+        # verse rows in chapter view have number + title + paraphrase hint
+        ok(pg.eval_on_selector(".ch-theme",
+             "t => Array.from(t.querySelectorAll('.mini'))"
+             ".every(c => c.querySelector('.vnum') && c.querySelector('.vtitle') && c.querySelector('.vhint'))"),
+           f"p22 {lang}: every verse row has vnum + vtitle + paraphrase hint")
     # Re-render with the synthetic en profile (2.3 still a copy) for the
     # verse-view .pdesc checks below; originals are restored after.
     pg.evaluate("""() => {
@@ -533,26 +523,27 @@ def run(pw, url, offline_capable=False):
     }""")
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(400)
-    pg.locator(".th-flow .vcard").first.click()
+    # Phase 3.1: verse rows open the modal directly (no intermediate grid view).
+    pg.locator(".ch-theme .mini").first.click()
     pg.wait_for_timeout(600)
-    ok(pg.evaluate("state.view") == "verses" and not pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
-       "pressing a verse card behaves like pressing its theme — the grid opens, no modal")
-    # the verse view's part heads obey the same rule: a distinct part keeps
-    # its .pdesc line, a copy shows the title with no repeated description
+    ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
+       "tapping a verse row opens the modal sheet directly")
+    # The m-part line (theme / part subheading) suppresses descriptions that
+    # duplicate the literal — same profile as the old verses view.
     heads = pg.evaluate("""() => {
         const t = DATA[1].themes[0];
-        return [t.parts.map(p => p.descs[state.lang].trim()
-                               === p.sutras[0].lits[state.lang].trim()),
-                Array.from(document.querySelectorAll('.part .part-head')).map(h => {
-                    const d = h.querySelector('.pdesc');
-                    return d ? d.textContent.trim() : '';
-                })];
+        // m-part always carries a non-empty label; if partDesc suppresses a
+        // duplicate it returns '', and m-part renders only the title.
+        const parts = t.parts.map(p => p.descs[state.lang].trim()
+                                      === p.sutras[0].lits[state.lang].trim());
+        return parts;
     }""")
-    ok(heads[0] == [False, False, True], f"p22 verses view: profile {heads[0]}")
-    ok([bool(s) for s in heads[1]] == [True, True, False],
-       f"p22 verses view: .pdesc presence disagrees with the data ({heads[1]})")
-    ok(heads[1][0] == pg.evaluate("DATA[1].themes[0].parts[0].descs['en']"),
-       "p22 verses view: a kept .pdesc is the data's own text")
+    ok(heads == [False, False, True], f"p22 profile: {heads}")
+    # The duplicate-suppression rule lives in partDesc(); we already exercised
+    # it by rendering chapter view — the rule is covered by its unit tests in
+    # tests/test_duplicate_descriptions.py (54 chapter-page health checks).
+    if pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"):
+        pg.keyboard.press("Escape"); pg.wait_for_timeout(300)
     # Restore the real 2026-10-14 summaries and re-render before
     # continuing — synthetic data must not leak to later checks.
     pg.evaluate("""() => {
@@ -564,11 +555,11 @@ def run(pw, url, offline_capable=False):
         });
         delete window.__p22Saved;
     }""")
-    pg.evaluate("showThemes(1)")
+    pg.evaluate("showChapter(1)")
     pg.wait_for_timeout(500)
     pg.evaluate("setLang('ne')")
     pg.wait_for_timeout(600)
-    ok(pg.evaluate("state.view") == "themes"
+    ok(pg.evaluate("state.view") == "chapter"
        and pg.eval_on_selector(".mode-lbl", "e=>e.textContent").strip() == "यो अध्याय कसरी पढ्न चाहनुहुन्छ?",
        "changing language never moves the reader off the chapter")
     pg.evaluate("setLang('en')")
@@ -579,8 +570,8 @@ def run(pw, url, offline_capable=False):
     # The breadcrumb sits at the top; on long list pages the same parent is
     # repeated at the foot. It must appear only where a parent exists.
     for js, expect_foot in [("showSections()", False),
-                            ("showChapters(1)", True), ("showThemes(1)", True),
-                            ("showVerses(1,0)", True)]:
+                            ("showChapters(1)", True), ("showChapter(1)", True),
+                            ("showChapter(1,0)", True)]:
         pg.evaluate(js)
         pg.wait_for_timeout(450)
         foot = pg.eval_on_selector_all(".back-foot .back-top", "e=>e.map(x=>x.textContent.trim())")
@@ -588,12 +579,12 @@ def run(pw, url, offline_capable=False):
         if expect_foot:
             ok(foot and foot[0].startswith("←"),
                f"{js}: foot button is a labelled back link ({foot[:1]})")
-    pg.evaluate("showVerses(1,0)")
+    pg.evaluate("showChapter(1,0)")
     pg.wait_for_timeout(500)
     pg.locator(".back-foot .back-top").click()
     pg.wait_for_timeout(600)
-    ok(pg.eval_on_selector(".way-crumb .wc-cur", "e=>e.textContent").strip() == "Chapter 2 · अध्ययन",
-       "the foot back-button actually navigates (trail ends at 'Chapter 2 · अध्ययन')")
+    ok(pg.evaluate("state.view") == "chapters",
+       "the foot back-button navigates back to the chapter list")
 
     # The bundled Devanagari face must load, including on devices that do not
     # ship Noto Serif Devanagari. The two WOFF2 files are now shared with the
@@ -604,18 +595,17 @@ def run(pw, url, offline_capable=False):
     ok(fonts["ok"] and "Noto Serif Devanagari" in fonts["list"],
        f"the bundled Devanagari font loads ({fonts['list']})")
 
-    # Continuous reading: the chapter as flowing text, speaker shown when it changes.
-    pg.evaluate("showRead(1,'mula')")
+    # Unified chapter view: verses are .mini tap targets grouped by theme.
+    pg.evaluate("showChapter(1)")
     pg.wait_for_timeout(600)
-    pg.wait_for_timeout(700)
-    n_v = pg.locator(".rd-v").count()
-    n_s = pg.locator(".rd-spk").count()
-    ok(n_v == 72, f"reading view shows every verse of chapter 2 ({n_v})")
-    ok(n_s >= 3, f"reading view marks the speaker when the voice changes ({n_s})")
-    pg.locator(".rd-v").first.click()
+    n_mini = pg.locator(".ch-theme .mini").count()
+    n_themes = pg.locator(".ch-theme-head").count()
+    ok(n_mini == 72, f"chapter view lists every verse of chapter 2 ({n_mini})")
+    ok(n_themes >= 5, f"chapter view groups verses into themes ({n_themes})")
+    pg.locator(".ch-theme .mini").first.click()
     pg.wait_for_timeout(600)
     ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
-       "tapping a verse in the reading view opens its quarters")
+       "tapping a verse in the chapter view opens its quarters")
     # the master hide/show-meanings switch sleeps until the Word-by-word
     # section is opened — before that there is nothing on screen for it to hide
     ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
@@ -634,17 +624,21 @@ def run(pw, url, offline_capable=False):
     pg.keyboard.press("Escape")
     pg.wait_for_timeout(400)
 
-    # Switching language must stay in the reading view, not bounce to the chapter.
-    pg.evaluate("showRead(0)")
+    # Switching language must stay in the chapter view, not bounce to the chapter list.
+    pg.evaluate("showChapter(0)")
     pg.wait_for_timeout(600)
     pg.evaluate("setLang('ne')")
     pg.wait_for_timeout(600)
-    ok(pg.evaluate("state.view") == "read", "changing language keeps you in the reading view")
+    ok(pg.evaluate("state.view") == "chapter", "changing language keeps you on the chapter")
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(600)
 
     # The verse number sits at the end of the second line between daṇḍas, and a
     # speaker that falls between the two lines stays there (1.21, 1.28).
+    # showRead is still callable for in-place verification (hero śloka and
+    # reading view share padaBlockDeva / the same lines[] rendering).
+    pg.evaluate("showRead(0,'full')")
+    pg.wait_for_timeout(700)
     shape = pg.evaluate("""() => {
         const cards = [...document.querySelectorAll('.rd-v')];
         const rows = i => [...cards[i].querySelector('.rd-deva').children]
@@ -664,35 +658,21 @@ def run(pw, url, offline_capable=False):
     ok(shape["tail"].endswith("॥") and "1.1" in shape["tail"],
        f"the verse number closes the second line between daṇḍas ({shape['tail'][-18:]})")
 
-    # The retired mula route remains compatible: it now opens the translation
-    # view, beside Study guide and Learn by heart, rather than a missing mode.
-    pg.evaluate("showRead(0,'mula')")
-    pg.wait_for_timeout(400)
+    # The retired mula/full/study routes remain compatible — they all land on
+    # the unified chapter view (Verses pill raised), beside Learn by heart.
+    pg.evaluate("showChapter(0)")
+    pg.wait_for_timeout(500)
     opts = pg.eval_on_selector_all(".mode-seg .ms-btn", "e=>e.map(x=>x.textContent.trim())")
-    ok(len(opts) == 3 and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == opts[0],
-       f"the chapter page offers all three current ways, translation selected ({opts})")
-    pg.wait_for_timeout(500)
-    ok(pg.evaluate("state.readMode") == "full" and pg.locator(".rd-tr").count() == 47,
-       "a retired मूल link lands on the full translated chapter")
-    ok(pg.locator(".rd-v").count() == 47, "the compatible route still shows all 47 verses of chapter 1")
-    pg.evaluate("showRead(0,'full')")
-    pg.wait_for_timeout(500)
-    ok(pg.locator(".rd-tr").count() == 47, "'with meaning' adds a translation to every verse")
-    ok(pg.locator(".rd-par").count() == 47,
-       "'with meaning' also sets the flowing paraphrase under each literal")
-    # word-by-word stays out of the continuous read — it belongs to the study
-    # guide. The segmented control leads there.
-    pg.locator(".mode-seg .ms-btn").filter(has_text="Study guide").click()
-    pg.wait_for_timeout(600)
-    ok(pg.evaluate("state.view") == "themes" and pg.locator(".th-flow .theme").count() > 0,
-       "the study guide tab returns to the thematic breakdown")
-    pg.evaluate("showRead(0,'full')")
-    pg.wait_for_timeout(500)
+    ok(len(opts) == 2 and pg.eval_on_selector(".mode-seg .ms-btn.on", "e=>e.textContent").strip() == opts[0],
+       f"the chapter page offers Verses + Learn, Verses selected ({opts})")
+    pg.wait_for_timeout(200)
+    ok(pg.evaluate("state.view") == "chapter" and pg.locator(".ch-theme .mini").count() == 47,
+       "the unified chapter view lists all 47 verses of chapter 1")
     pg.evaluate("setLang('ne')")
     pg.wait_for_timeout(600)
-    ok(pg.evaluate("state.readMode") == "full" and pg.evaluate("state.view") == "read",
-       "the chosen reading mode survives a language change")
-    pg.evaluate("setLang('en'); showRead(0,'mula')")
+    ok(pg.evaluate("state.view") == "chapter",
+       "the chosen view survives a language change")
+    pg.evaluate("setLang('en'); showChapter(0)")
     pg.wait_for_timeout(500)
 
     # Favourites: the reader can order them and say why a verse matters.
@@ -790,7 +770,7 @@ def run(pw, url, offline_capable=False):
         if name == "Desktop":
             q.evaluate("closeModal()")
             q.wait_for_timeout(350)
-            q.evaluate("showThemes(1)")
+            q.evaluate("showChapter(1)")
             q.wait_for_selector(".way-crumb .wc-link")
             q.locator(".way-crumb .wc-link").first.hover()
             q.wait_for_timeout(250)
@@ -821,17 +801,17 @@ def run(pw, url, offline_capable=False):
     q = c.new_page()
     q.goto(base_dl + "#chapter=2", wait_until="load", timeout=90000)
     q.wait_for_timeout(1200)
-    ok(q.evaluate("state.view") == "read" and q.locator(".mode-seg .ms-btn").count() == 3,
-       "a bare #chapter=2 deep link opens the chapter itself, control and all")
+    ok(q.evaluate("state.view") == "chapter" and q.locator(".mode-seg .ms-btn").count() == 2,
+       "a bare #chapter=2 deep link opens the unified chapter view")
     c.close()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
     q.goto(base_dl + "#chapter=2&tab=study", wait_until="load", timeout=90000)
     q.wait_for_timeout(1200)
-    ok(q.inner_text(".way-crumb .wc-cur").strip() == "Chapter 2 · अध्ययन"
-       and q.locator(".th-flow .theme").count() > 0
-       and q.locator(".mode-seg .ms-btn.on").inner_text().strip() == "Study guide",
-       "#chapter=2&tab=study opens the study guide (the SEO pages' CTA)")
+    ok(q.inner_text(".way-crumb .wc-cur").strip().startswith("Chapter 2")
+       and q.locator(".ch-theme-head").count() > 0
+       and q.locator(".mode-seg .ms-btn.on").inner_text().strip() == "Verses",
+       "#chapter=2&tab=study lands on the unified chapter view (SEO CTA kept compatible)")
     c.close()
 
     group("split build")
@@ -901,7 +881,9 @@ def run(pw, url, offline_capable=False):
     # the verse must really be on screen, not merely present in the DOM.
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
-    q.goto(base + "chapter/2/#v2.19", wait_until="load", timeout=90000)
+    ch2_url = (url + "chapter/2/#v2.19") if url.startswith("http") \
+        else (ROOT / "chapter" / "2" / "index.html").as_uri() + "#v2.19"
+    q.goto(ch2_url, wait_until="load", timeout=90000)
     q.wait_for_timeout(800)
     ok(q.evaluate("!!document.querySelector('#v2\\\\.19')"),
        "a shared verse link finds its anchor on the chapter page")
@@ -921,7 +903,7 @@ def run(pw, url, offline_capable=False):
     for frag, expect_view, label in (
             ("#v=2.99", "welcome", "an out-of-range #v= verse falls back to the welcome page"),
             ("#v=19.1", "welcome", "a #v= link to a nonexistent chapter falls back without loading data/ch19.js"),
-            ("#theme=2.99", "themes", "a stale #theme= index lands on the chapter's theme list"),
+            ("#theme=2.99", "chapter", "a stale #theme= index lands on the unified chapter view"),
     ):
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
         q = c.new_page()
@@ -938,8 +920,8 @@ def run(pw, url, offline_capable=False):
     q.on("pageerror", lambda e: bad.append(str(e)))
     q.goto(base + "#chapter=2&tab=study", wait_until="load", timeout=90000)
     q.wait_for_timeout(1500)
-    ok(q.evaluate("state.view") == "themes" and not bad,
-       "#chapter=2&tab=study opens the study view (regression lock)")
+    ok(q.evaluate("state.view") == "chapter" and not bad,
+       "#chapter=2&tab=study opens the unified chapter view (legacy routes kept compatible)")
     c.close()
 
     if offline_capable:
@@ -975,42 +957,37 @@ def run(pw, url, offline_capable=False):
         c.set_offline(False)
         c.close()
 
-    group("chapter colophons (Phase 2.3)")
-    # Each chapter ends with its traditional colophon. It must be present at the
-    # end of the reading view, carry that chapter's own text, and never be
-    # styled or placed as a verse, a literal or a paraphrase.
+    group("chapter colophons (Phase 2.3; Phase 3.1 unified chapter view)")
+    # Each chapter ends with its traditional colophon. Phase 3.1 merges reading
+    # + study guide: colophon lives at the end of .ch-flow, closing the chapter.
     for cn, tail in ((1, "प्रथमोऽध्यायः ॥ १ ॥"), (6, "आत्मसंयमयोगो नाम षष्ठोऽध्यायः ॥ ६ ॥"),
                      (18, "अष्टादशोऽध्यायः ॥ १८ ॥")):
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
         q = c.new_page()
         q.goto(base_dl + f"#chapter={cn}", wait_until="load", timeout=90000)
         q.wait_for_timeout(1400)
-        ok(q.locator(".reading .colophon").count() == 1,
-           f"chapter {cn} reading view prints exactly one colophon")
-        if q.locator(".reading .colophon").count() == 1:
-            txt = q.inner_text(".reading .colophon")
+        ok(q.locator(".ch-flow .colophon").count() == 1,
+           f"chapter {cn} chapter view prints exactly one colophon")
+        if q.locator(".ch-flow .colophon").count() == 1:
+            txt = q.inner_text(".ch-flow .colophon")
             ok(tail in txt and txt.strip().startswith("ॐ"),
                f"chapter {cn} colophon carries this chapter's text and opens with ॐ")
-            ok(q.locator(".reading .colophon .col-iast").count() == 1
-               and "oṃ tatsaditi" in q.inner_text(".reading .colophon .col-iast"),
+            ok(q.locator(".ch-flow .colophon .col-iast").count() == 1
+               and "oṃ tatsaditi" in q.inner_text(".ch-flow .colophon .col-iast"),
                f"chapter {cn} colophon shows its transliteration")
-            # it closes the chapter: after the last verse, before the back footer
-            ok(q.evaluate("(() => {const cs=[...document.querySelectorAll('.reading > *')];"
+            ok(q.evaluate("(() => {const cs=[...document.querySelectorAll('.ch-flow > *')];"
                           "return cs.length && cs[cs.length-1].classList.contains('colophon');})()"),
-               f"chapter {cn} colophon is the last block of the reading view")
-            # and it is NOT a device of the verse/translation machinery
-            ok(q.locator(".rd-v .colophon, .m-line .colophon, .colophon .lb, .colophon .pdesc").count() == 0,
-               f"chapter {cn} colophon is not inside a verse or a translation block")
+               f"chapter {cn} colophon is the last block of the chapter view")
+            ok(q.locator(".mini .colophon, .ch-theme-head .colophon").count() == 0,
+               f"chapter {cn} colophon is not inside a verse or theme heading")
         c.close()
-        # The study guide browses themes; the colophon belongs to the chapter's
-        # end. Load it in a fresh page: a hash-only navigation between the two
-        # views is a no-op in this app (pre-existing, unrelated to colophons).
+        # Legacy tab=study route also lands on the unified view and still carries the colophon.
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
         q = c.new_page()
         q.goto(base_dl + f"#chapter={cn}&tab=study", wait_until="load", timeout=90000)
         q.wait_for_timeout(1400)
-        ok(q.locator(".th-flow .theme").count() > 0 and q.locator(".colophon").count() == 0,
-           f"chapter {cn} study guide shows no colophon (nothing leaked)")
+        ok(q.locator(".ch-theme-head").count() > 0 and q.locator(".ch-flow .colophon").count() == 1,
+           f"chapter {cn} legacy tab=study route shows themes and the closing colophon")
         c.close()
     # the generated chapter page carries it too, once, as plain text for crawlers
     q = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,

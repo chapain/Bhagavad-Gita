@@ -1141,6 +1141,18 @@ __FONTS__
   .vcard{ cursor:default; }
   .vcard:hover{ border-color:var(--line); box-shadow:0 1px 2px rgba(var(--shadow),.05); }
   .vcard h3{ font-size:1rem; }   /* the theme title outranks its verses */
+  /* Phase 3.1: ONE chapter view — themes as non-tappable headings; verses
+     are the tap targets, listed directly under each theme. */
+  .ch-flow{ display:flex; flex-direction:column; gap:22px; margin-top:8px; }
+  .ch-theme-head{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal);
+                  font-size:1.1rem; font-weight:700; margin:0 0 6px;
+                  display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .ch-theme-head .ch-theme-name{ flex:0 1 auto; }
+  .ch-theme-desc{ margin:0 0 12px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
+  .mini .vtitle{ font-family:Georgia,"Noto Serif Devanagari",serif;
+                 color:var(--teal); font-size:.95rem; font-weight:600; margin:2px 0 4px;
+                 overflow:hidden; text-overflow:ellipsis;
+                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
   .chdeva{ color:var(--teal); font-family:"Noto Serif Devanagari",Georgia,serif; font-size:1.05rem; }
   .card h3{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.15rem; color:var(--teal);}
   .card p{ color:var(--ink-soft); font-size:.86rem; flex:1;}
@@ -2152,7 +2164,10 @@ function setLang(l){
   else if(state.view === 'sections'){ showSections(); }
   else if(state.view === 'search'){ doSearch(); }
   else if(state.view === 'favorites'){ showFavorites(); }
-  else if(state.view === 'read'){ showRead(state.chapter, state.readMode); }
+  /* Phase 3.1: the continuous-reading 'read' view is retired in favour of
+     the merged chapter scroll. Old saved states (state.view === 'read')
+     land on showChapter so nothing breaks on reload. */
+  else if(state.view === 'read'){ showChapter(state.chapter); }
   /* The learn path renders its own views and holds drill state in module
      vars, so it must NOT fall through to the generic chapter/theme restore
      below: with state.theme set that lands on showVerses() and the reader's
@@ -2231,7 +2246,6 @@ function numL(n){ return (state.lang==='ne'||state.lang==='hi') ? devaDigits(n) 
    the search matcher compare against them. */
 function fmtNL(n){ return numL(fmtN(n)); }
 function fmtRangeL(r){ return numL(fmtRange(r)); }
-function vn2(n){ return fmtNL(n.split('.')[0] + '.' + parseInt(n.split('.')[1],10)); }
 function chaptersRange(a, b){ return L('range_chapters').replace('{a}', numL(a)).replace('{b}', numL(b)); }
 /* Meter badge, built at render time so it follows the language (and uses
    Devanagari digits in ne/hi). Falls back to the baked English string. */
@@ -2431,7 +2445,7 @@ function toggleFav(id){
    real trail. Only recorded when leaving an actual browsing view, so repeatedly
    tapping Favorites doesn't overwrite the origin with itself. */
 function rememberOrigin(){
-  if(['welcome','sections','chapters','themes','verses'].includes(state.view)){
+  if(['welcome','sections','chapters','themes','verses','read','chapter'].includes(state.view)){
     state.origin = { view: state.view, section: state.section,
                      chapter: state.chapter, theme: state.theme };
   }
@@ -2442,8 +2456,8 @@ function goToOrigin(){
   $('#searchInput').value = '';
   if(o.view === 'welcome') showWelcome();
   else if(o.view === 'sections') showSections();
-  else if(o.view === 'verses' && o.chapter != null && o.theme != null) showVerses(o.chapter, o.theme);
-  else if(o.view === 'themes' && o.chapter != null) showThemes(o.chapter);
+  else if(o.view === 'verses' && o.chapter != null && o.theme != null) showChapter(o.chapter, o.theme);
+  else if((o.view === 'themes' || o.view === 'chapter' || o.view === 'read') && o.chapter != null) showChapter(o.chapter);
   else if(o.section != null) showChapters(o.section);
   else showSections();
 }
@@ -2556,7 +2570,7 @@ function announceView(){
       msg = `${L('search_results')} · ${resultCountLabel(SRCH_HITS.length)}`;
     else if(state.view === 'favorites')
       msg = `${L('favorites')} · ${resultCountLabel(FAV_LIST.length)}`;
-    else if(state.view === 'verses' && ch && state.theme != null)
+    else if((state.view === 'verses' || state.view === 'chapter') && ch && state.theme != null)
       msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.themes[state.theme].titles)}`;
     else if(ch) msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`;
     else if(state.section) msg = L('sections_title');
@@ -3545,7 +3559,7 @@ function showChapters(section){
     <div class="grid chapters fade-in">
       ${list.map(ch=>{
         const ci = DATA.indexOf(ch);
-        return `<div class="card" role="button" tabindex="0" onclick="showRead(${ci},'full')">
+        return `<div class="card" role="button" tabindex="0" onclick="showChapter(${ci})">
           <span class="chip">${L('chapter')} ${numL(ch.num)}</span>
           <h3>${esc(T(ch.names))}</h3>
           <p>${esc(T(ch.subs))}</p>
@@ -3575,9 +3589,8 @@ function viewHash(){
   if(state.view==='sections') return '#ways';
   if(state.view==='chapters' && state.section) return '#way='+state.section;
   if(state.view==='learn' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=learn';
-  if(state.view==='themes' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=study';
-  if(state.view==='read' && state.chapter!=null)
-    return '#chapter='+(state.chapter+1)+'&tab='+(state.readMode||'full');
+  if((state.view==='themes' || state.view==='chapter' || state.view==='read') && state.chapter!=null)
+    return '#chapter='+(state.chapter+1)+'&tab=chapter';
   if(state.view==='verses' && state.chapter!=null && state.theme!=null)
     return '#theme='+(state.chapter+1)+'.'+state.theme;
   return '';
@@ -3691,17 +3704,16 @@ function wayName(k){ /* the trail carries the Sanskrit mārga name, as the
    where you are. The segment descriptions ride in title/aria, so the
    control stays quiet but never cryptic. */
 function modeSwitch(ci){
-  const m = state.view === 'themes' ? 'study'
-          : state.view === 'learn'  ? 'learn'
-          : (state.readMode || 'full');
+  const m = (state.view === 'chapter' || state.view === 'themes' || state.view === 'verses' || state.view === 'read')
+          ? 'chapter'
+          : state.view === 'learn' ? 'learn' : 'chapter';
   const btn = (mode, lab, fn, tip) =>
     `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
     <div class="mode-lbl">${esc(L('choose_title'))}</div>
     <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
-      ${btn('full',  esc(L('opt_full')),    `showRead(${ci},'full')`,  esc(L('opt_full_d')))}
-      ${btn('study', esc(L('opt_study_s')), `showThemes(${ci})`,       esc(L('opt_study_d')))}
-      ${btn('learn', esc(L('opt_learn_s')), `showLearn(${ci})`,        esc(L('opt_learn_d')))}
+      ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
+      ${btn('learn',   esc(L('opt_learn_s')), `showLearn(${ci})`,   esc(L('opt_learn_d')))}
     </div>
   </div>`;
 }
@@ -3712,34 +3724,60 @@ function chTitle(ch){
     : name;
   return `<div class="view-title fade-in" role="heading" aria-level="2">${head}</div>`;
 }
-function showThemes(ci){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showThemes(ci)).catch(gitaLoadFail); return; }
+/* Phase 3.1 (2026-10-16): ONE chapter view — themes as headings, verses as
+   tap targets. Reverses the 2026-08-30 owner decision ("theme stays a door")
+   per fresh mobile-UX direction: the extra tap into a theme added friction
+   on phones, and preview cards inside tappable theme cards were ambiguous.
+   Themes are now non-tappable section headings; every verse is a direct tap
+   target opening the Phase-3.2 verse sheet. "Verses with translation" and
+   "Study guide" are merged into this one scroll; Learn by heart stays
+   separate. showThemes/showVerses are kept as aliases for back-links and
+   saved-state routes; they land at the theme anchor. */
+function showChapter(ci, anchorTi){
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showChapter(ci,anchorTi)).catch(gitaLoadFail); return; }
   if(!DATA[ci]||!DATA[ci].themes){ showWelcome(); return; }
-  state.view='themes'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; persistView(); renderCrumbs();
+  state.view='chapter'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6);
+  state.theme = (anchorTi != null) ? anchorTi : null;
+  persistView(); renderCrumbs();
   const ch = DATA[ci];
+  const themeSec = (anchorTi != null) ? numL(anchorTi+1) : '';
+  let flatSi = 0;
+  const body = ch.themes.map((t,ti)=>{
+    const verseCards = t.parts.map(p=>{
+      const s = p.sutras[0];
+      const si = flatSi++;
+      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${si},'theme',null,this)">
+        <div class="vnum">${L('verse')} ${fmtNL(s.n)}</div>
+        <div class="vtitle">${esc(T(p.titles))}</div>
+        <div class="vhint">${esc(T(s.paras).slice(0,90))}${T(s.paras).length>90?'…':''}</div>
+      </div>`;
+    }).join('');
+    return `<section class="ch-theme" id="theme-${ti}" aria-label="${esc(T(t.titles))}">
+      <h3 class="ch-theme-head">
+        <span class="ch-theme-name">${esc(T(t.titles))}</span>
+        <span class="rng">${fmtRangeL(t.range)}</span>
+      </h3>
+      <p class="ch-theme-desc">${esc(T(t.descs))}</p>
+      <div class="grid verses">${verseCards}</div>
+    </section>`;
+  }).join('');
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)} · ${L('opt_study_g')}`, null]])}
+    ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)}${themeSec?' · '+L('theme_sg')+' '+themeSec:''}`, null]])}
     ${chTitle(ch)}
     ${modeSwitch(ci)}
-    <div class="view-sub fade-in">${esc(T(ch.subs))} — ${L('pick_theme')}</div>
-    <div class="th-flow fade-in">
-      ${ch.themes.map((t,ti)=>{
-        /* Owner 2026-08-30: the theme stays a door; its verses become
-           display-only cards in the chapter-list grammar — a tap target
-           nested inside a tap target was an ambiguity too many. Word-by-word
-           lives one level deeper, in the verse grid. */
-        const cards = t.parts.map(p=>{
-          const pd = partDesc(p);
-          return `<div class="card vcard">
-            <span class="chip">${vn2(p.sutras[0].n)}</span>
-            <h3>${esc(T(p.titles))}</h3>${pd?`<p>${esc(pd)}</p>`:''}</div>`;}).join('');
-        return `<div class="theme" role="button" tabindex="0" onclick="showVerses(${ci},${ti})">
-          <h3>${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></h3>
-          <p class="tdesc">${esc(T(t.descs))}</p>
-          <div class="vcards">${cards}</div>
-        </div>`; }).join('')}
-    </div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
+    <div class="view-sub fade-in">${esc(T(ch.subs))} — ${L('click_hint')}.</div>
+    <div class="ch-flow fade-in">${body}${colophonHtml(ch)}</div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
+  /* If an anchor theme was requested (deep link / back), scroll to it. */
+  if(anchorTi != null){
+    requestAnimationFrame(()=>{
+      const el = document.getElementById('theme-'+anchorTi);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
 }
+/* Aliases for older routes / back-links / stored view state. */
+function showThemes(ci){ showChapter(ci); }
+function showVerses(ci,ti){ showChapter(ci, ti); }
 
 /* ---------- continuous reading ----------
    The chapter -> theme -> part -> verse structure is right for study, but the
@@ -4392,13 +4430,11 @@ function gitaBoot(){
     var tm = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(location.hash || '');
     if (tm) { const ci = parseInt(tm[1], 10) - 1, ti = parseInt(tm[2], 10);
       loadChapter(ci+1).then(function(){ showVerses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return; }
-    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(location.hash || '');
+    var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/.exec(location.hash || '');
     if(m){ const ci = parseInt(m[1], 10) - 1; const tb = m[3];
       loadChapter(ci+1).then(function(){
-        if(tb === 'study'){ showThemes(ci); }
-        else if(tb === 'learn'){ showLearn(ci); }
-        else if(tb){ showRead(ci, tb); }
-        else { showRead(ci, 'full'); }
+        if(tb === 'learn'){ showLearn(ci); }
+        else { showChapter(ci); }  /* full/mula/study/chapter all merge into the one chapter view */
       }).catch(function(){ gitaLoadFail(); }); return; }
     var h = location.hash || '';
     if(h === '#play'){ showPlay(); return; }
@@ -4415,14 +4451,12 @@ function gitaBoot(){
     if(stay==='#ways'){ showSections(); return; }
     var sw = /^#way=([123])$/.exec(stay);
     if(sw){ showChapters(+sw[1]); return; }
-    var sm = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|learn))?$/.exec(stay);
+    var sm = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/.exec(stay);
     if(sm){
       const ci = parseInt(sm[1],10)-1, tb=sm[3];
       loadChapter(ci+1).then(function(){
-        if(tb==='study') showThemes(ci);
-        else if(tb==='learn') showLearn(ci);
-        else if(tb) showRead(ci, tb);
-        else showRead(ci,'full');
+        if(tb==='learn') showLearn(ci);
+        else showChapter(ci);
       }).catch(function(){ gitaLoadFail(); }); return;
     }
     var st = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(stay);
