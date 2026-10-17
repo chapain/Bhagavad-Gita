@@ -7,9 +7,9 @@ before you talk to the owner.
 
 | | |
 |---|---|
-| Last updated | 2026-10-16 (UTC) |
-| Updated by | Arena session on branch `arena/260a62af-bhagavad-gita` |
-| Base commit | `367b66c74cf0bd152fd0c3c718be61d164731b40` on `main` (PR #44 merged before this session) |
+| Last updated | 2026-10-17 (UTC) |
+| Updated by | Arena session on branch `arena/6062134a-bhagavad-gita` |
+| Base commit | `155d0775272f86eec13c3f3cf0666605f9c38611` on `main` (PR #46 merged 2026-10-17) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,6 +20,8 @@ before you talk to the owner.
 
 ## 1. Where we are
 
+- **Start-of-session verification (2026-10-17, `arena/6062134a-bhagavad-gita`):** PR #46 is **MERGED**, not merely closed; `mergeCommit.oid`, `origin/main` and this checkout’s `HEAD` all equal `155d0775272f86eec13c3f3cf0666605f9c38611`. The worktree was clean before and after the build. The #46 work is already on `main` and was not repeated. A browser-enabled `python3 build.py` is **ALL GREEN**: 2,800/0 pādas, 2,100 paraphrases, 0 translation failures/4 reviewed advisories, SEO 6, site health 503, study 9,658, Python 49, document 776, browser 247; cache `302930416ac2`. Pillow is absent, so only the optional share-art repaint was skipped. No source or generated files changed.
+- **Next owner decision:** recommend Phase 2.4 (“Start here” / “Gītā in 18 verses”) as the next unfinished roadmap item; Phase 5.4 export/import is a sound alternative for the localStorage data-loss risk, followed by 5.2/5.3. Phase 5.1 remains blocked on §7.4.4; Phase 2.5 remains declined. No task has started. On the reported pāda hint, the current helper is nested in the collapsed word-by-word section and then appears as small muted text. Recommendation only (not implemented): promote the existing disclosure to a clear, tap-sized action directly under the hero verse (“show the four pādas and word meanings”), then keep a short “tap a pāda” instruction above the revealed cards.
 - **The Learn-by-heart path now shares the chapter view's design language
   (2026-10-17, `arena/404f7e7e-bhagavad-gita`).** Owner: *"the learn by heart
   page has a slightly different look than the rest of the app."* Measured, not
@@ -1536,7 +1538,7 @@ Missing:
       wording (decided 2026-10-09, spec in §7.2; en/ne/hi paraphrases plus the
       15.7 theme/verse copy; literals untouched).
 
-**Phase 2 — Meaning** · 2.1 / 2.1x **complete (2026-10-11)**; **2.2 complete (2026-10-12)**; **2.3 complete (2026-10-12)**; **2.5 declined (2026-10-12)**; 2.4 not started.
+**Phase 2 — Meaning** · 2.1 / 2.1x **complete (2026-10-11)**; **2.2 complete (2026-10-12)**; **2.3 complete (2026-10-12)**; **2.5 declined (2026-10-12)**; 2.4 not started (owner choice pending, 2026-10-17).
 - [x] 2.1 Context-correct Nepali/Hindi meanings via five-field entries (§5.2) —
       **complete, batches 1–19** (`te` batch 1; `me`, `param`, `bhūtāni`,
       `yogam` batch 2; `tat`, `yat` batch 3; `bhīma`, `kutaḥ`, `sattvam` batch 4;
@@ -1843,6 +1845,7 @@ whole session’s check log are in `/home/user/evidence/phase2.5/` (outside Git)
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-17 · `arena/6062134a-bhagavad-gita` · Verified PR #46 **MERGED** at `155d0775272f86eec13c3f3cf0666605f9c38611`, equal to `origin/main` and this checkout’s `HEAD`; clean worktree. Full browser-enabled build passed (247 browser checks; cache `302930416ac2`), with no source/generated-file changes. Recommended Phase 2.4; asked Dhruba to choose the next roadmap task and whether to implement the pāda-hint discoverability polish. No implementation, push or merge.
 - 2026-10-17 · `arena/404f7e7e-bhagavad-gita` · **Retired the two views Phase 3.1 merged away; re-pointed their links.** Owner reported both: the verse sheet's last-verse "← विषयमा फर्कनुहोस्" opened the old per-theme page, and the Learn story's "← अध्यायमा फर्कनुहोस्" opened the old "Verses with translation" page. Cause: `showVerses()` was declared twice — once as the Phase 3.1 alias, once as the old body — and hoisting made the old body win; `showRead()` was still reachable. Deleted both implementations, `themeNav()`, the `'read'` modal mode and the theme arrow/swipe walk; moved the stale-`#theme=` guard into `showChapter()`; kept `#theme=N.T` opening that theme's disclosure (the 18 chapter pages publish those links) and writing the theme back into the address. `partDesc()` and the retired views' CSS went with them. The document check that had pinned the bad body was replaced by a definition-count/absence assertion (786 → 776 assertions); browser suite 233 → 241 with a new group covering both reported links, the `#theme=` reload and the surviving view set. Four dead i18n strings removed (187 → 183 keys, all three dictionaries). Full browser-enabled build ALL GREEN (2,800/0 pādas; 2,100 paraphrases; SEO 6; site health 503; study 9,658; Python 49; document 776; browser 241; cache `4b4bec79d749`). No chapter content, owner holds or verse text changed; `data/` and `chapter/` untouched. Local commit `ae36688`; no push, no merge.
 - 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Phase 4.4 complete: strict chapter schema and Learn/Play behavior tests.** Added `source/schema.py` before builder indexing and 13 focused mutation-test methods; replaced runtime app-source substring assertions with rendered browser checks. Added exactly 20 Learn/Play + 6 malformed/mixed-favorites checks (233 total). `python3 build.py` ALL GREEN: 2,800 pādas/0 residuals; 2,100 paraphrase pairs; SEO 6; site-health 503; study 9,658; Python 49; document 786; progress 15; search 7; browser 233. Cache `b15c9d30818e`. Phase 4.1–4.4 changes are in local commit `fa2dc09`, pushed only to this fixed branch; PR [#45](https://github.com/chapain/Bhagavad-Gita/pull/45) is open, not merged (owner requested a PR once Phase 4 was complete). Checkout's earlier history was only the grafted base, so prior phase commit references are not in this history. No content, owner holds or i18n keys changed; Pillow absent, share art untouched. Temporary browser environment from §4; no project dependencies added.
 - 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Collapsible chapter-theme outline implemented.** App and generated landing pages start with closed theme disclosures, show ranges before titles, and reveal descriptions/verse titles on expansion; static verse anchors open both enclosing disclosures. Browser behavior tests and a generated-markup assertion added; brittle heading source-string check removed. Full build green at the time: 207 browser, 791 document, 643 site-health, SEO 6, study 9,658, Python 36, progress 15, search 7. Cache `5d24cc4b3ed3`; no source content, owner holds or i18n keys changed. No push or merge.
