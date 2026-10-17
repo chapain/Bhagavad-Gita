@@ -11,24 +11,317 @@ function savedReaderSize(){
   try{ size = Number(localStorage.getItem('gitaReaderSize')); }catch(e){}
   return READER_SIZES.includes(size) ? size : 100;
 }
-/* The reading language is a PREFERENCE, not session state, so it lives in
-   localStorage beside gitaTheme rather than in sessionStorage with the route.
-   Owner 2026-10-14: a reader on च.१८ अध्ययन in नेपाली was silently bounced back to
-   English. The cause was not the study guide — the app reloads itself when a new
-   service worker claims the tab (see controllerchange below), the reload kept the
-   route from sessionStorage, and state.lang was hardcoded to 'en' because
-   setLang() never wrote anything down. The same bug also reset the language on
-   every fresh visit and every home-screen launch.
-   Whitelist the three codes: a stale, hand-edited or truncated value must fall
-   back to 'en', never reach T()/L() and render half the interface blank. */
+/* The site-wide language preference lives in localStorage. Keep a per-tab copy
+   in sessionStorage as well: an update reload should restore this tab exactly,
+   even if another tab has since chosen a different language. The history-entry
+   snapshot is a further fallback. Owner 2026-10-14 reported नेपाली switching to
+   English on a service-worker reload; language is now checked at first paint
+   and again before the route renders. Whitelist all three codes so stale storage
+   falls back to English rather than rendering a partial interface. */
 const GITA_LANGS = ['en','ne','hi'];
 function savedLang(){
   let l = null;
-  try{ l = localStorage.getItem('gitaLang'); }catch(e){}
+  try{ l = sessionStorage.getItem('gitaLang'); }catch(e){}
+  if(!GITA_LANGS.includes(l)){
+    try{
+      const snap = history.state && history.state.gitaSession;
+      if(snap && snap.path === location.pathname + location.search
+         && snap.hash === (location.hash || '')) l = snap.lang;
+    }catch(e){}
+  }
+  if(!GITA_LANGS.includes(l)){
+    try{ l = localStorage.getItem('gitaLang'); }catch(e){}
+  }
   return GITA_LANGS.includes(l) ? l : 'en';
 }
+const GITA_SESSION_KEY = 'gita.session.v1';
+let GITA_RESTORING = false, GITA_PENDING_RESTORE = null, GITA_SESSION_TIMER = null,
+    GITA_SESSION_MIRROR = false;
 const state = { chapter:null, theme:null, idx:0, lang:savedLang(), view:'welcome', section:null, shared:null,
                 readerSize:savedReaderSize() };
+function sessionPathKey(){ return (location.pathname || '/') + (location.search || ''); }
+function sessionNodePath(root, node){
+  const path = []; let cur = node;
+  while(cur && cur !== root){
+    const parent = cur.parentElement;
+    if(!parent) return null;
+    path.unshift(Array.prototype.indexOf.call(parent.children, cur));
+    cur = parent;
+  }
+  return cur === root ? path : null;
+}
+function sessionOpenDetails(root){
+  if(!root) return [];
+  const out = [];
+  root.querySelectorAll('details[open]').forEach(el=>{
+    const path = sessionNodePath(root, el);
+    if(path) out.push(path);
+  });
+  return out;
+}
+function restoreSessionDetails(root, paths){
+  if(!root || !Array.isArray(paths)) return;
+  paths.forEach(path=>{
+    if(!Array.isArray(path) || path.length > 32) return;
+    let el = root;
+    for(const n of path){
+      if(!Number.isInteger(n) || n < 0 || !el.children[n]) return;
+      el = el.children[n];
+    }
+    if(el && el.tagName === 'DETAILS') el.open = true;
+  });
+}
+function sessionOrigin(o){
+  if(!o || typeof o !== 'object') return null;
+  const views = ['welcome','sections','chapters','chapter'];
+  if(!views.includes(o.view)) return null;
+  return {view:o.view,
+    section:Number.isInteger(o.section) ? o.section : null,
+    chapter:Number.isInteger(o.chapter) ? o.chapter : null,
+    theme:Number.isInteger(o.theme) ? o.theme : null};
+}
+function validSessionSnapshot(s, pathKey, hash){
+  if(!s || typeof s !== 'object' || s.version !== 1
+     || s.path !== pathKey || s.hash !== hash || typeof s.route !== 'string'
+     || !['welcome','sections','chapters','chapter','learn','search','favorites','play'].includes(s.view)
+     || !GITA_LANGS.includes(s.lang)) return false;
+  if(s.modal){
+    const hs = history.state;
+    if(!hs || hs.gitaModal !== true || !/^\d{1,2}\.\d{1,2}$/.test(s.modal.id)
+       || hash !== '#v=' + s.modal.id) return false;
+  }
+  return true;
+}
+function readSessionSnapshot(){
+  const pathKey = sessionPathKey(), hash = location.hash || '', candidates = [];
+  try{
+    const hs = history.state && history.state.gitaSession;
+    if(validSessionSnapshot(hs, pathKey, hash)) candidates.push(hs);
+  }catch(e){}
+  try{
+    const stored = JSON.parse(sessionStorage.getItem(GITA_SESSION_KEY) || 'null');
+    if(validSessionSnapshot(stored, pathKey, hash)) candidates.push(stored);
+  }catch(e){}
+  candidates.sort((a,b)=>(Number(b.updated)||0)-(Number(a.updated)||0));
+  const chosen = candidates[0];
+  if(!chosen) return null;
+  try{
+    const lang = sessionStorage.getItem('gitaLang');
+    if(GITA_LANGS.includes(lang) && lang !== chosen.lang) return {...chosen, lang};
+  }catch(e){}
+  return chosen;
+}
+function captureQuizSession(){
+  const root = document.getElementById('view'), kind = state.view === 'play' ? 'play'
+    : state.lrAt && state.lrAt.kind;
+  if(!root || !root.querySelector('.lr-qbox') || !Array.isArray(LQ) || !LQ.length
+     || !['story','drill','play'].includes(kind)) return null;
+  const queue = LQ.map(it=>it && it.qid);
+  if(queue.some(id=>typeof id !== 'string' || !id)) return null;
+  const index = Number.isInteger(LQi) ? Math.max(0, Math.min(LQi, LQ.length)) : 0;
+  const quiz = {seed:kind === 'play' ? null : (Number.isInteger(state.lrAt.seed) ? state.lrAt.seed : null),
+    queue, index, misses:Number.isInteger(LQmiss) ? Math.max(0,LQmiss) : 0, ui:null};
+  if(index >= LQ.length) return quiz;
+  const item = LQ[index], ui = {kind:item.kind};
+  if(item.kind === 'pick' && Array.isArray(item.opts)){
+    ui.optionOrder = item.opts.map(o=>o && o.oid).filter(x=>typeof x === 'string');
+    const wrong = root.querySelector('.lr-opt.wrong');
+    if(wrong && wrong.dataset.lrOpt) ui.wrong = wrong.dataset.lrOpt;
+  }else if(item.kind === 'order' && Array.isArray(item.chips)){
+    ui.chipOrder = Array.from(root.querySelectorAll('.lr-chips .lr-chip2'))
+      .map(el=>Number(el.dataset.lrChip)).filter(Number.isInteger);
+    ui.picked = Array.isArray(LQpick) ? LQpick.filter(Number.isInteger) : [];
+    ui.bad = !!root.querySelector('.lr-fb .bad');
+  }else if(item.kind === 'match' && LQpick && typeof LQpick === 'object'){
+    ui.match = {left:Number.isInteger(LQpick.left) ? LQpick.left : null,
+      right:Number.isInteger(LQpick.right) ? LQpick.right : null,
+      done:Object.keys(LQpick.done || {}).filter(k=>/^\d{1,2}\.\d{1,2}$/.test(k))};
+  }
+  quiz.ui = ui;
+  return quiz;
+}
+function captureSessionSnapshot(){
+  const bg = document.getElementById('modalBg'), modalOpen = !!(bg && bg.classList.contains('open'));
+  let modal = null;
+  if(modalOpen && state.chapter != null && state.theme != null && DATA && DATA[state.chapter]){
+    try{
+      const s = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s;
+      modal = {id:s.n, mode:state.mode || 'theme', navIdx:Number.isInteger(state.navIdx) ? state.navIdx : 0,
+        openDetails:sessionOpenDetails(document.getElementById('modal')),
+        openWords:Array.from(document.querySelectorAll('#modal .words.open')).map(el=>el.id).filter(Boolean),
+        meaningsHidden:!!document.querySelector('#modal .words.mean-off'),
+        menuOpen:!!(document.getElementById('mVerseMenu') && !document.getElementById('mVerseMenu').hasAttribute('hidden')),
+        shareOpen:!!(document.getElementById('sharePanel')
+          && getComputedStyle(document.getElementById('sharePanel')).display === 'flex'),
+        scrollTop:document.getElementById('modal') ? document.getElementById('modal').scrollTop : 0};
+    }catch(e){}
+  }
+  const origin = sessionOrigin(state.origin);
+  let shared = null;
+  try{ shared = state.shared && state.shared.id ? state.shared.id : null; }catch(e){}
+  const snap = {version:1, updated:Date.now(), path:sessionPathKey(), hash:location.hash || '',
+    route:viewHash() || '', view:state.view, lang:state.lang,
+    section:Number.isInteger(state.section) ? state.section : null,
+    chapter:Number.isInteger(state.chapter) ? state.chapter : null,
+    theme:Number.isInteger(state.theme) ? state.theme : null,
+    idx:Number.isInteger(state.idx) ? state.idx : 0,
+    origin, shared,
+    query:(document.getElementById('searchInput') && document.getElementById('searchInput').value) || '',
+    openDetails:sessionOpenDetails(document.getElementById('view')),
+    scrollY:Math.max(0, window.scrollY || window.pageYOffset || 0),
+    modal, readerSize:state.readerSize};
+  if(state.view === 'learn'){
+    snap.learn = {at:state.lrAt || null,
+      test:typeof lrTest === 'number' ? lrTest : 0,
+      open:typeof lrOpen === 'object' && lrOpen ? lrOpen : {},
+      level:typeof LV === 'object' && LV ? LV.level : 'full',
+      shown:typeof LV === 'object' && LV ? LV.shown : {}};
+    const quiz = captureQuizSession();
+    if(quiz) snap.learn.quiz = quiz;
+    if(state.lrAt && state.lrAt.kind === 'free' && FP && FP.v)
+      snap.learn.free = {ci:FP.ci, ti:FP.ti, verse:FP.v.n,
+        deal:Array.isArray(FP.deal) ? FP.deal.slice() : [],
+        picked:Array.isArray(FP.picked) ? FP.picked.slice() : []};
+  }
+  if(state.view === 'play' && typeof PL === 'object' && PL){
+    snap.play = {scope:PL.scope, ch:PL.ch, mode:PL.mode, run:PL.run,
+      q:PL.q || null, active:!!PL.active};
+    const quiz = captureQuizSession();
+    if(quiz) snap.play.quiz = quiz;
+  }
+  return snap;
+}
+function saveSessionSnapshot(mirrorHistory){
+  if(GITA_RESTORING || !state || !state.view) return;
+  const snap = captureSessionSnapshot();
+  try{ sessionStorage.setItem(GITA_SESSION_KEY, JSON.stringify(snap)); }catch(e){}
+  if(mirrorHistory === false) return;
+  try{
+    const old = history.state && typeof history.state === 'object' ? history.state : {};
+    const next = {...old, gitaSession:snap};
+    if(snap.modal) next.gitaModal = true;
+    else if(next.gitaModal) delete next.gitaModal;
+    history.replaceState(next, '', location.href);
+  }catch(e){}
+}
+function scheduleSessionSave(mirrorHistory){
+  if(GITA_RESTORING) return;
+  GITA_SESSION_MIRROR = GITA_SESSION_MIRROR || mirrorHistory !== false;
+  clearTimeout(GITA_SESSION_TIMER);
+  GITA_SESSION_TIMER = setTimeout(function(){
+    const mirror = GITA_SESSION_MIRROR;
+    GITA_SESSION_MIRROR = false;
+    saveSessionSnapshot(mirror);
+  }, 100);
+}
+let GITA_RESTORE_OBSERVER = null, GITA_RESTORE_FINISHING = false;
+function restoreLearnSession(snap){
+  if(!snap || snap.view !== 'learn' || !snap.learn || !snap.learn.at) return;
+  const ci = Number.isInteger(snap.chapter) ? snap.chapter : null;
+  if(ci == null) return;
+  const at = snap.learn.at;
+  if(at.kind === 'story'){
+    lrTest = snap.learn.test ? 1 : 0;
+    lrOpen = snap.learn.open && typeof snap.learn.open === 'object' ? snap.learn.open : {};
+    lrStory(ci, Number.isInteger(at.step) ? at.step : 0,
+      Number.isInteger(at.seed) ? at.seed : null);
+  }else if(at.kind === 'storyDone'){
+    lrStoryDone(ci);
+  }else if(at.kind === 'theme' && Number.isInteger(at.ti)){
+    if(typeof LV === 'object' && LV){
+      LV.level = ['full','first','half','blind'].includes(snap.learn.level) ? snap.learn.level : 'full';
+      LV.shown = snap.learn.shown && typeof snap.learn.shown === 'object' ? snap.learn.shown : {};
+    }
+    lrTheme(ci, at.ti, Number.isInteger(at.k) ? at.k : 0);
+  }else if(at.kind === 'drill' && Number.isInteger(at.ti)
+           && DATA[ci] && DATA[ci].themes[at.ti]){
+    lrDrill(ci, at.ti, thVerses(DATA[ci].themes[at.ti]),
+      Number.isInteger(snap.learn.quiz && snap.learn.quiz.seed) ? snap.learn.quiz.seed
+        : (Number.isInteger(at.seed) ? at.seed : null));
+  }else if(at.kind === 'free' && snap.learn.free){
+    const f = snap.learn.free, loc = verseLoc(f.verse);
+    if(loc && loc.ci === ci){
+      FP.ci = ci; FP.ti = Number.isInteger(f.ti) ? f.ti : -1;
+      FP.v = verseAt(loc); FP.order = (FP.v.flow||[]).filter(x=>x.k==='p');
+      const valid = a => Array.isArray(a) && a.length === FP.order.length
+        && a.every(Number.isInteger) && new Set(a).size === a.length
+        && a.every(i=>i >= 0 && i < FP.order.length);
+      FP.deal = valid(f.deal) ? f.deal.slice() : FP.order.map((_,i)=>i);
+      FP.picked = Array.isArray(f.picked) ? f.picked.filter(i=>Number.isInteger(i)
+        && i >= 0 && i < FP.order.length).slice(0,FP.order.length) : [];
+      state.view='learn'; state.chapter=ci; state.theme=FP.ti < 0 ? null : FP.ti;
+      state.lrAt = {kind:'free', ti:FP.ti}; lrFreePaint();
+    }
+  }else showLearn(ci);
+}
+async function finishSessionRestore(){
+  if(!GITA_PENDING_RESTORE || GITA_RESTORE_FINISHING) return;
+  const snap = GITA_PENDING_RESTORE;
+  const root = document.getElementById('view');
+  if(!root || !root.children.length || root.querySelector('#bootNote')) return;
+  GITA_RESTORE_FINISHING = true;
+  try{
+    if(snap.view === 'welcome' && snap.shared){
+      let shared = verseLoc(snap.shared);
+      if(!shared){
+        const n = parseInt(String(snap.shared).split('.')[0],10);
+        if(n >= 1 && n <= 18) await loadChapter(n);
+        shared = verseLoc(snap.shared);
+      }
+      if(shared){ state.shared = shared; showWelcome(); }
+    }
+    if(snap.origin) state.origin = sessionOrigin(snap.origin);
+    if(snap.view === 'learn'){
+      restoreLearnSession(snap);
+      if(snap.learn && snap.learn.quiz) restoreQuizSession(snap.learn.quiz);
+    }
+    if(snap.view === 'play' && snap.play && snap.play.active && snap.play.q){
+      PL.scope = snap.play.scope === 'ch' ? 'ch' : 'all';
+      PL.ch = Number.isInteger(snap.play.ch) ? snap.play.ch : 0;
+      PL.mode = Number.isInteger(snap.play.mode) ? snap.play.mode : 0;
+      PL.run = Number.isInteger(snap.play.run) ? snap.play.run : 0;
+      PL.q = snap.play.q; PL.active = true;
+      plNext(snap.play.q);
+      if(snap.play.quiz) restoreQuizSession(snap.play.quiz);
+    }
+    restoreSessionDetails(document.getElementById('view'), snap.openDetails);
+    if(snap.modal){
+      let loc = verseLoc(snap.modal.id);
+      if(!loc){
+        const ch = parseInt(String(snap.modal.id).split('.')[0],10);
+        if(ch >= 1 && ch <= 18) await loadChapter(ch);
+        loc = verseLoc(snap.modal.id);
+      }
+      if(loc){
+        await loadChapter(loc.ci + 1);
+        window.scrollTo({top:Math.max(0, Number(snap.scrollY)||0), behavior:'auto'});
+        openModal(loc.ci, loc.ti, loc.si, snap.modal.mode,
+          Number.isInteger(snap.modal.navIdx) && snap.modal.navIdx >= 0 ? snap.modal.navIdx : 0,
+          null, true);
+        restoreModalSession(snap.modal);
+      }
+    }
+  }catch(e){}
+  state.keepScroll = false;
+  GITA_RESTORING = false;
+  GITA_PENDING_RESTORE = null;
+  GITA_RESTORE_FINISHING = false;
+  if(GITA_RESTORE_OBSERVER){ GITA_RESTORE_OBSERVER.disconnect(); GITA_RESTORE_OBSERVER = null; }
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    if(snap.modal){
+      const m = document.getElementById('modal');
+      if(m && Number.isFinite(snap.modal.scrollTop)) m.scrollTop = Math.max(0, snap.modal.scrollTop);
+    }else window.scrollTo({top:Math.max(0, Number(snap.scrollY)||0), behavior:'auto'});
+    saveSessionSnapshot();
+  }));
+}
+function watchSessionRestore(snap){
+  GITA_PENDING_RESTORE = snap;
+  const root = document.getElementById('view');
+  if(!root) return;
+  GITA_RESTORE_OBSERVER = new MutationObserver(()=>finishSessionRestore());
+  GITA_RESTORE_OBSERVER.observe(root, {childList:true});
+}
 function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
 /* Phase 2.3: the chapter's traditional colophon — the closing line that names
    the chapter ("... iti <name>o nāma <ordinal>o 'dhyāyaḥ"). It is scripture,
@@ -128,8 +421,10 @@ function syncLang(l){
 function setLang(l){
   if(!GITA_LANGS.includes(l)) return;   // ignore a stale bookmark or a bad call
   syncLang(l);
-  /* Saved before the re-render below: if a view throws, the choice is still on
-     record and the next load comes back in the language the reader picked. */
+  /* Keep a per-tab copy as well as the site-wide default. A service-worker
+     refresh in this tab must not pick up a different language chosen in
+     another tab. The page's history snapshot is a third, same-entry fallback. */
+  try{ sessionStorage.setItem('gitaLang', l); }catch(e){}
   try{ localStorage.setItem('gitaLang', l); }catch(e){}
   // Remember which verse the modal is showing: doSearch()/showFavorites()
   // below null out state.chapter/state.theme while re-rendering the
@@ -152,7 +447,7 @@ function setLang(l){
      quitting the game: PL.q holds the verse and the option order, and only the
      prompt, the note and the numerals were language-bound. If no question is
      open, fall back to the menu. */
-  else if(state.view === 'play'){ if(PL.q && PL.mode) plNext(PL.q); else showPlay(); }
+  else if(state.view === 'play'){ if(PL.active && PL.q && PL.mode) plNext(PL.q); else showPlay(); }
   else {
     const ch = state.chapter, th = state.theme;
     if(ch == null){ if(state.section) showChapters(state.section); else showSections(); }
@@ -162,6 +457,7 @@ function setLang(l){
     state.chapter = mCh; state.theme = mTh; state.idx = mIdx;
     fillModal();
   }
+  saveSessionSnapshot();
 }
 const $ = s => document.querySelector(s);
 const crumbs = $('#crumbs'), view = $('#view');
@@ -679,8 +975,20 @@ function lrReset(n){
 }
 function fmt(s, o){ return String(s).replace(/\{(\w+)\}/g, (m,k)=> k in o ? o[k] : m); }
 
+let LR_RANDOM_STATE = null;
+function lrRandom(){
+  if(LR_RANDOM_STATE == null) return Math.random();
+  LR_RANDOM_STATE = (Math.imul(LR_RANDOM_STATE,1664525) + 1013904223) >>> 0;
+  return LR_RANDOM_STATE / 4294967296;
+}
+function lrNewSeed(){ return (Date.now() ^ Math.floor(Math.random()*4294967296)) >>> 0 || 1; }
+function lrWithSeed(seed, fn){
+  const prev = LR_RANDOM_STATE;
+  LR_RANDOM_STATE = (Number(seed) >>> 0) || 1;
+  try{ return fn(); }finally{ LR_RANDOM_STATE = prev; }
+}
 const lrShuffle = a => { a = a.slice();
-  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(lrRandom()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
   return a; };
 const lrSample = (arr,n) => lrShuffle(arr).slice(0,n);
 /* every verse of a theme, flattened — parts are one verse each now, but the
@@ -778,39 +1086,45 @@ function lrRelang(ci){
    steps; drilling four stages over six themes is ceremony, not teaching. */
 function lrPlan(ch){ return ch.themes.length >= 10 ? [0,1,2,3] : [0,3]; }
 
-function lrStory(ci, step){
+function lrStory(ci, step, seed){
   state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
-  state.lrAt = {kind:'story', step:step};
   const ch = DATA[ci], th = ch.themes, plan = lrPlan(ch);
   const k = plan.indexOf(step), n = plan.length;
-  if(step === 0) return lrStoryRead(ci, ch, th, k+1, n);
-
-  let items;
-  if(step === 1){
-    const groups = [];
-    for(let i=0;i<th.length;i+=4) groups.push(th.slice(i,i+4).map((t,j)=>({t,i:i+j})));
-    items = groups.filter(g=>g.length>1).map(g=>({kind:'order',
-      ask: esc(fmt(L('learn_order_few'),{n:numL(g.length)})),
-      chips: g.map(x=>({id:x.i, label:T(x.t.titles)})),
-      answer: g.map(x=>x.i)}));
-  } else if(step === 2){
-    items = th.slice(0,-1).map((t,i)=>{
-      const right = th[i+1];
-      const wrong = lrSample(th.filter((_,j)=>j!==i+1&&j!==i), 3);
-      return {kind:'pick',
-        ask: esc(fmt(L('learn_after'),{t:T(t.titles)})),
-        opts: lrShuffle([right,...wrong]).map(x=>({label:T(x.titles), ok:x===right})),
-        note: esc(T(right.descs))};
-    });
-  } else {
-    items = [{kind:'order',
-      ask: esc(fmt(L('learn_order_all'),{n:numL(th.length)})),
-      chips: th.map((t,i)=>({id:i, label:T(t.titles)})),
-      answer: th.map((_,i)=>i)}];
+  if(step === 0){
+    state.lrAt = {kind:'story', step:step};
+    return lrStoryRead(ci, ch, th, k+1, n);
   }
-  const nxt = plan[k+1];
-  lrRun(ci, items, fmt(L('learn_step'),{a:numL(k+1),b:numL(n)}),
-    nxt === undefined ? ()=>lrStoryDone(ci) : ()=>lrStory(ci, nxt));
+  const quizSeed = Number.isInteger(seed) ? seed : lrNewSeed();
+  state.lrAt = {kind:'story', step:step, seed:quizSeed};
+  return lrWithSeed(quizSeed, ()=>{
+    let items;
+    if(step === 1){
+      const groups = [];
+      for(let i=0;i<th.length;i+=4) groups.push(th.slice(i,i+4).map((t,j)=>({t,i:i+j})));
+      items = groups.filter(g=>g.length>1).map((g,gi)=>({kind:'order', qid:'story:1:'+gi,
+        ask: esc(fmt(L('learn_order_few'),{n:numL(g.length)})),
+        chips: g.map(x=>({id:x.i, label:T(x.t.titles)})),
+        answer: g.map(x=>x.i)}));
+    } else if(step === 2){
+      items = th.slice(0,-1).map((t,i)=>{
+        const right = th[i+1];
+        const wrong = lrSample(th.filter((_,j)=>j!==i+1&&j!==i), 3);
+        return {kind:'pick', qid:'story:2:'+i,
+          ask: esc(fmt(L('learn_after'),{t:T(t.titles)})),
+          opts: lrShuffle([right,...wrong]).map(x=>
+            ({oid:'theme:'+th.indexOf(x), label:T(x.titles), ok:x===right})),
+          note: esc(T(right.descs))};
+      });
+    } else {
+      items = [{kind:'order', qid:'story:3:all',
+        ask: esc(fmt(L('learn_order_all'),{n:numL(th.length)})),
+        chips: th.map((t,i)=>({id:i, label:T(t.titles)})),
+        answer: th.map((_,i)=>i)}];
+    }
+    const nxt = plan[k+1];
+    lrRun(ci, items, fmt(L('learn_step'),{a:numL(k+1),b:numL(n)}),
+      nxt === undefined ? ()=>lrStoryDone(ci) : ()=>lrStory(ci, nxt));
+  });
 }
 
 var lrTest = 0, lrOpen = {};
@@ -842,6 +1156,7 @@ function lrStoryRead(ci, ch, th, k, n){
   scrollViewTop();
 }
 function lrStoryDone(ci){
+  state.view='learn'; state.chapter=ci; state.lrAt = {kind:'storyDone'};
   const ch = DATA[ci], p = lrGet(ch.num); p.story = 1; lrPut(ch.num, p);
   view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
       <div class="lr-seal">✓</div>
@@ -855,12 +1170,10 @@ function lrStoryDone(ci){
 /* ---------------- stage 2: the verses of one theme ---------------- */
 function lrTheme(ci, ti, k){
   state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
-  /* Remember the sub-view. A language switch cannot re-render a half-answered
-     question — its options were built from the old language's strings — but it
-     CAN put the reader back at the top of the same theme rather than at the
-     chapter's path home, which is a far shorter walk back. */
-  state.lrAt = {kind:'theme', ti:ti};
+  /* Remember the sub-view so a reload returns to this verse/theme, not the
+     chapter's learning-path landing page. */
   const ch = DATA[ci], t = ch.themes[ti], vs = thVerses(t);
+  state.lrAt = {kind:'theme', ti:ti, k:k, stage:k < vs.length ? 'meet' : 'land'};
   if(k < vs.length) return lrMeet(ci, ti, k, vs);
   lrThemeLand(ci, ti, vs);
 }
@@ -876,6 +1189,7 @@ function lrHideAt(level, wi){
 }
 function lrThemeLand(ci, ti, vs){
   const ch = DATA[ci], t = ch.themes[ti];
+  state.lrAt = {kind:'theme', ti:ti, k:vs.length, stage:'land'};
   const p = lrGet(ch.num); p.themes[ti] = 1; lrPut(ch.num, p);
   const nxt = ch.themes.findIndex((_,i)=>!lrGet(ch.num).themes[i]);
   view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
@@ -892,6 +1206,7 @@ function lrThemeLand(ci, ti, vs){
 }
 function lrMeet(ci, ti, k, vs){
   const ch = DATA[ci], t = ch.themes[ti], s = vs[k], last = k === vs.length-1;
+  state.lrAt = {kind:'theme', ti:ti, k:k, stage:'meet'};
   LV.ci=ci; LV.ti=ti; LV.k=k; LV.vs=vs;
   const held = lrHeldOn(ch.num, s.n);
   const qs = (s.flow||[]).filter(f=>f.k==='p');
@@ -986,7 +1301,11 @@ function lrMeaty(w){
   if(core.length < 4) return false;
   return !/^(and|but|indeed|also|too|not|even|alone|thus|so)$/i.test(core);
 }
-function lrDrill(ci, ti, vs){
+function lrDrill(ci, ti, vs, seed){
+  state.view='learn'; state.chapter=ci; state.theme=ti;
+  const quizSeed = Number.isInteger(seed) ? seed : lrNewSeed();
+  state.lrAt = {kind:'drill', ti:ti, seed:quizSeed}; persistView();
+  return lrWithSeed(quizSeed, ()=>{
   const ch = DATA[ci], t = ch.themes[ti];
   const pool = [], others = [];
   ch.themes.forEach(x=>thVerses(x).forEach(s=>{
@@ -1008,10 +1327,10 @@ function lrDrill(ci, ti, vs){
     const _full = v => slokaDeva(v);
     const mine = _full(s);
     const wrong = lrSample(others.filter(o=>o.n!==s.n && _full(o)!==mine), 3);
-    items.push({kind:'pick',
+    items.push({kind:'pick', qid:'drill:meaning:'+s.n,
       ask: esc(L('learn_which')) + `<div class="lr-qsub">${esc(T(s.paras))}</div>`,
       opts: lrShuffle([s].concat(wrong)).map(o=>
-        ({label: _full(o), iast:slokaIast(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
+        ({oid:'verse:'+o.n, label: _full(o), iast:slokaIast(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`});
 
     /* Cloze on the AUTHORED WORD-SPLIT, never by blanking the recited line.
@@ -1031,7 +1350,7 @@ function lrDrill(ci, ti, vs){
       ws.forEach(function(w,wi){ if(lrMeaty(w)) cands.push({q:q,qi:qi,w:w,wi:wi,ws:ws}); });
     });
     if(cands.length){
-      const c = cands[Math.floor(Math.random()*cands.length)];
+      const c = cands[Math.floor(lrRandom()*cands.length)];
       const split = c.ws.map(function(w,i){ return i===c.wi
         ? '<span class="lr-blank">?</span>'
         : '<span class="lr-tok">'+w[0]+'</span>'; }).join('<span class="lr-plus">+</span>');
@@ -1053,7 +1372,7 @@ function lrDrill(ci, ti, vs){
         if(seenOpt[x[0]]) return;            // duplicate option
         seenOpt[x[0]] = 1; dw.push(x);
       });
-      items.push({kind:'pick',
+      items.push({kind:'pick', qid:'drill:cloze:'+s.n+':'+c.qi+':'+c.wi,
         ask: esc(fmt(L('learn_missing'),{q:numL(c.qi+1), v:fmtNL(s.n)}))
              /* NO recited-line cue. It was added to help where sandhi
                 transforms a word, but measured against the real data it gives
@@ -1066,7 +1385,7 @@ function lrDrill(ci, ti, vs){
                 tested (owner caught both leaks, 2026-09-01). */
              + `<div class="lr-split" lang="sa">${split}</div>`,
         opts: lrShuffle([c.w].concat(dw)).map(function(o){
-                return {label:o[0], iast:o[1], deva:1, ok:o===c.w}; }),
+                return {oid:'word:'+o[0], label:o[0], iast:o[1], deva:1, ok:o===c.w}; }),
         note: `<b lang="sa">${esc(c.w[0])}</b>${state.lang==='en' ? ` (${esc(c.w[1])})` : ''} — ${esc(c.w[2])}`});
     }
   });
@@ -1074,7 +1393,7 @@ function lrDrill(ci, ti, vs){
      printing "1.1 / 1.2 / 1.3" turns recall into sorting integers, which tests
      nothing (owner spotted this at ch1.t1, 2026-09-01). The paraphrase alone is
      the cue — verified unique across all 700 verses at this length. */
-  if(vs.length > 1) items.push({kind:'order',
+  if(vs.length > 1) items.push({kind:'order', qid:'drill:verse-order:'+ti,
     ask: esc(fmt(L('learn_vorder'),{t:T(t.titles)})),
     chips: vs.map((s,i)=>({id:i, label: T(s.paras).slice(0, 64) + '…'})),
     answer: vs.map((_,i)=>i)});
@@ -1086,7 +1405,7 @@ function lrDrill(ci, ti, vs){
      478 of the 700 never practised this way (owner 2026-09-01). */
   vs.forEach(qv=>{
     const qq = (qv.flow||[]).filter(f=>f.k==='p');
-    if(qq.length > 2) items.push({kind:'order',
+    if(qq.length > 2) items.push({kind:'order', qid:'drill:pada-order:'+qv.n,
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(qv.n)})),
       chips: qq.map((q,i)=>({id:i, label:q.d + pDanda(i, qq.length), iast:(q.t||'') + pDandaLatn(i, qq.length), deva:1})),
       answer: qq.map((_,i)=>i)});
@@ -1106,6 +1425,7 @@ function lrDrill(ci, ti, vs){
       </div></div>`;
     scrollViewTop();
   });
+  });
 }
 
 /* ---------------- free practice ----------------
@@ -1116,13 +1436,13 @@ function lrDrill(ci, ti, vs){
 var FP = {ci:0, ti:0, v:null, order:[], deal:[], picked:[]};
 function lrFree(ci, ti){
   state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
-  state.lrAt = {kind:'theme', ti:ti};
+  state.lrAt = {kind:'free', ti:ti};
   FP.ci = ci; FP.ti = ti;
   lrFreePick();
 }
 function lrFreeCh(ci){
   state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
-  state.lrAt = {kind:'story'};
+  state.lrAt = {kind:'free', ti:-1};
   FP.ci = ci; FP.ti = -1;
   lrFreePick();
 }
@@ -1213,10 +1533,11 @@ function lrFreeTap(i){
    heart is the path with gating and progress; Play is the shuffle you drop
    into. If Play started tracking progress the two would blur (owner 2026-09-01).
    Everything here reuses lrRun/lrPaint/lrPick/lrChip. */
-var PL = {scope:'all', ch:0, mode:0, run:0, q:null};
+var PL = {scope:'all', ch:0, mode:0, run:0, q:null, active:false};
 
 function showPlay(){
   if(!allChReady()){ loadAllChapters().then(showPlay); return; }
+  PL.active = false;
   rememberOrigin();
   state.view='play'; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
   view.innerHTML = `
@@ -1287,7 +1608,7 @@ function plNextId(n){
   return p[0] + '.' + String(+p[1] + 1).padStart(2,'0');
 }
 function plStart(mode){
-  PL.mode = mode; PL.run = 0; PL.q = null;
+  PL.mode = mode; PL.run = 0; PL.q = null; PL.active = true;
   plNext();
 }
 /* One question at a time, drawn fresh — an endless game, not a finite queue. */
@@ -1315,7 +1636,7 @@ function plNext(keep){
     PL.q = {n:s.n, ord:four.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(L('play_q1')) + saAsk(s),
-      opts: four.map(o=>({label:sense(o), ok:o===s})),
+      opts: four.map(o=>({oid:'verse:'+o.n, label:sense(o), ok:o===s})),
       note: `${esc(fmtNL(s.n))} — ${esc(T(s.lits))}`};
 
   }else if(PL.mode === 2){
@@ -1338,7 +1659,7 @@ function plNext(keep){
     PL.q = {n:s.n, ord:four2.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(L('play_q2')) + saAsk(s),
-      opts: four2.map(o=>({label:plFull(o), iast:slokaIast(o), deva:1, ok:o===nxt})),
+      opts: four2.map(o=>({oid:'verse:'+o.n, label:plFull(o), iast:slokaIast(o), deva:1, ok:o===nxt})),
       note: esc(T(nxt.lits))};
 
   }else{
@@ -1349,6 +1670,7 @@ function plNext(keep){
       chips: qq.map((q,i)=>({id:i, label:q.d + pDanda(i, qq.length), iast:(q.t||'') + pDandaLatn(i, qq.length), deva:1})),
       answer: qq.map((_,i)=>i)};
   }
+  item.qid = 'play:'+PL.mode+':'+s.n;
   /* A one-item run: when it finishes, deal another. That is the endless game. */
   lrRun(0, [item], L('play_title') + (PL.run ? ' · ' + fmt(L('play_round'),{n:numL(PL.run)}) : ''),
         ()=>{ PL.run++; plNext(); },
@@ -1367,9 +1689,10 @@ var LQback = null;
 function lrRun(ci, items, label, done, back){
   LQci=ci; LQback=back||null; LQ=items.slice(); LQi=0; LQmiss=0; LQlab=label; LQdone=done; lrPaint();
 }
-function lrPaint(){
-  if(LQi >= LQ.length) return LQdone();
-  const it = LQ[LQi]; LQpick = [];
+function lrPaint(resumeUi){
+  if(LQi >= LQ.length) return typeof LQdone === 'function' ? LQdone() : showLearn(LQci);
+  const it = LQ[LQi];
+  if(!resumeUi) LQpick = [];
   /* A one-item queue (Play) has no progress to show: the bar would sit at 0%
      forever and the counter would read "1 / 1". Show the run's streak instead,
      which is the only number that means anything in an endless game
@@ -1381,26 +1704,22 @@ function lrPaint(){
     : `<div class="lr-prog"><i style="width:${pct}%"></i></div>
        <div class="lr-progl">${esc(LQlab)} · ${numL(LQi+1)} / ${numL(LQ.length)}${
          LQmiss?' · '+esc(fmt(L('learn_revisit'),{n:numL(LQmiss)})):''}</div>`;
-  /* Re-shuffle the options every time the question is painted. They were
-     shuffled once at build time, so a requeued question came back with the
-     four verses in the SAME positions — and the reader already knew which one
-     was wrong, making the retry a 1-in-3 guess rather than recall. Shuffling
-     the ARRAY (not just the render) keeps lrPick's index honest, since it
-     looks the answer up by position (owner 2026-09-02). */
-  if(it.kind === 'pick' && it._seen) it.opts = lrShuffle(it.opts);
+  /* Re-shuffle options on every fresh paint. Restore paints use the validated
+     option/chip order from this tab's snapshot instead. */
+  if(it.kind === 'pick' && it._seen && !resumeUi) it.opts = lrShuffle(it.opts);
   it._seen = 1;
   let body;
   if(it.kind === 'pick'){
     body = `<div class="lr-ask">${it.ask}</div>
        <div class="lr-opts">${it.opts.map((o,i)=>`
-         <button class="lr-opt" onclick="lrPick(${i})">
+         <button class="lr-opt" data-lr-opt="${esc(o.oid||'')}" onclick="lrPick(${i})">
            <span class="onum">${numL(i+1)}</span>
            <span class="ol${o.deva?' dv':''}"${o.deva?' lang="sa"':''}>${o.deva?o.label:esc(o.label)}</span>
            ${o.iast?`<span class="giast" lang="sa-Latn">${esc(o.iast)}</span>`:''}
            ${o.sub?`<span class="os">${esc(o.sub)}</span>`:''}
          </button>`).join('')}</div>`;
   }else if(it.kind === 'match'){
-    LQpick = {left:null, done:{}};
+    if(!resumeUi) LQpick = {left:null, right:null, done:{}};
     body = `<div class="lr-ask">${it.ask}</div>
       <div class="lr-match">
         <div class="lr-mcol nums">${it.left.map((o,i)=>`
@@ -1412,17 +1731,118 @@ function lrPaint(){
           </button>`).join('')}</div>
       </div>`;
   }else{
+    let chips = lrShuffle(it.chips);
+    if(resumeUi && Array.isArray(resumeUi.chipOrder)){
+      const byId = new Map(it.chips.map(c=>[c.id,c]));
+      const ordered = resumeUi.chipOrder.map(id=>byId.get(id)).filter(Boolean);
+      if(ordered.length === it.chips.length) chips = ordered;
+    }
     body = `<div class="lr-ask">${it.ask}</div>
        <div class="lr-slots" id="lrSlots"></div>
-       <div class="lr-chips">${lrShuffle(it.chips).map(c=>`
-         <button class="lr-chip2${c.deva?' dv':''}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})"><span class="lr-t">${esc(c.label)}</span>${c.iast?`<span class="giast" lang="sa-Latn">${esc(c.iast)}</span>`:''}</button>`).join('')}</div>`;
+       <div class="lr-chips">${chips.map(c=>`
+         <button class="lr-chip2${c.deva?' dv':''}" data-lr-chip="${c.id}"${c.deva?' lang="sa"':''} onclick="lrChip(this,${c.id})"><span class="lr-t">${esc(c.label)}</span>${c.iast?`<span class="giast" lang="sa-Latn">${esc(c.iast)}</span>`:''}</button>`).join('')}</div>`;
   }
   view.innerHTML = `<div class="lrn fade-in">${head}
     <div class="lr-qbox">${body}<div class="lr-fb" id="lrFb"></div></div>
     </div>` + (LQback
       ? backFoot(LQback.fn, L(LQback.label))
       : backFoot(`showChapter(${LQci})`, L('back_chapter_one')));
+  if(resumeUi) restoreQuizUi(it, resumeUi);
   scrollViewTop();
+}
+function restoreQuizUi(it, ui){
+  const root = document.getElementById('view');
+  if(!root || !ui) return;
+  if(it.kind === 'pick' && ui.wrong && Array.isArray(it.opts)){
+    const wrong = it.opts.findIndex(o=>o.oid === ui.wrong);
+    if(wrong >= 0){
+      const buttons = root.querySelectorAll('.lr-opt');
+      buttons.forEach((b,i)=>{
+        b.disabled = true;
+        if(it.opts[i].ok) b.classList.add('right');
+        else if(i === wrong) b.classList.add('wrong');
+      });
+      const fb = root.querySelector('#lrFb');
+      if(fb) fb.innerHTML = (it.note?`<div class="nt">${it.note}</div>`:'')
+        + `<button class="lr-cta" onclick="LQi++;lrPaint()">${esc(L('learn_retry'))}</button>`;
+    }
+  }else if(it.kind === 'order' && Array.isArray(LQpick)){
+    const slots = root.querySelector('#lrSlots');
+    LQpick.forEach((id,k)=>{
+      const chip = it.chips.find(c=>c.id === id);
+      if(!chip || !slots) return;
+      const button = root.querySelector(`[data-lr-chip="${id}"]`);
+      if(button){ button.disabled = true; button.classList.add('used'); }
+      const slot = document.createElement('span');
+      slot.className = 'lr-slot' + (chip.deva ? ' dv' : '');
+      if(chip.deva) slot.lang = 'sa';
+      slot.textContent = numL(k+1) + '. ' + chip.label;
+      if(chip.iast){
+        const iast = document.createElement('span');
+        iast.className = 'giast'; iast.lang = 'sa-Latn'; iast.textContent = chip.iast;
+        slot.appendChild(iast);
+      }
+      slots.appendChild(slot);
+    });
+    if(ui.bad){
+      const fb = root.querySelector('#lrFb'), want = it.answer[LQpick.length];
+      const next = it.chips.find(c=>c.id === want);
+      if(fb) fb.innerHTML = `<div class="bad">${esc(L('learn_nextis'))} <b>${esc(next?next.label:'')}</b></div>`;
+    }
+  }else if(it.kind === 'match' && ui.match){
+    const left = root.querySelectorAll('.lr-mbtn.num'), right = root.querySelectorAll('.lr-mbtn.vs');
+    const done = new Set(Array.isArray(ui.match.done) ? ui.match.done : []);
+    root.querySelectorAll('.lr-mbtn').forEach(b=>{
+      if(done.has(b.dataset.n)){ b.disabled = true; b.classList.add('right'); }
+    });
+    if(Number.isInteger(ui.match.left) && left[ui.match.left]) left[ui.match.left].classList.add('on');
+    if(Number.isInteger(ui.match.right) && right[ui.match.right]) right[ui.match.right].classList.add('on');
+  }
+}
+function restoreQuizSession(saved){
+  if(!saved || !Array.isArray(saved.queue) || !saved.queue.length || saved.queue.length > 500
+     || !Array.isArray(LQ) || !LQ.length) return false;
+  const base = new Map();
+  LQ.forEach(it=>{ if(it && typeof it.qid === 'string') base.set(it.qid,it); });
+  if(!base.size || saved.queue.some(id=>typeof id !== 'string' || !base.has(id))) return false;
+  const counts = new Map();
+  LQ.forEach(it=>counts.set(it.qid,(counts.get(it.qid)||0)+1));
+  saved.queue.forEach(id=>counts.set(id,(counts.get(id)||0)-1));
+  const diffs = Array.from(counts.values());
+  const extra = diffs.reduce((n,x)=>n + Math.max(0,-x),0);
+  if(diffs.some(n=>n>0) || saved.queue.length !== LQ.length + extra
+     || !Number.isInteger(saved.misses) || saved.misses < extra) return false;
+  const queue = saved.queue.map(id=>base.get(id));
+  if(queue.length !== saved.queue.length) return false;
+  LQ = queue;
+  LQi = Number.isInteger(saved.index) ? Math.max(0,Math.min(saved.index,LQ.length)) : 0;
+  LQmiss = Number.isInteger(saved.misses) ? Math.max(0,Math.min(saved.misses,1000)) : 0;
+  if(LQi >= LQ.length){ LQpick = []; lrPaint(); return true; }
+  const it = LQ[LQi], ui = saved.ui && saved.ui.kind === it.kind ? saved.ui : null;
+  if(it.kind === 'pick'){
+    if(ui && Array.isArray(ui.optionOrder)){
+      const remaining = it.opts.slice(), ordered = [];
+      ui.optionOrder.forEach(id=>{
+        const k = remaining.findIndex(o=>typeof o.oid === 'string' && o.oid === id);
+        if(k >= 0) ordered.push(remaining.splice(k,1)[0]);
+      });
+      it.opts = ordered.concat(remaining);
+    }
+    LQpick = [];
+  }else if(it.kind === 'order'){
+    const valid = new Set(it.answer);
+    LQpick = ui && Array.isArray(ui.picked)
+      ? ui.picked.filter((id,k,a)=>Number.isInteger(id)&&valid.has(id)&&a.indexOf(id)===k).slice(0,it.answer.length) : [];
+  }else if(it.kind === 'match'){
+    const m = ui && ui.match || {};
+    LQpick = {left:Number.isInteger(m.left)&&m.left>=0&&m.left<it.left.length ? m.left : null,
+      right:Number.isInteger(m.right)&&m.right>=0&&m.right<it.right.length ? m.right : null, done:{}};
+    (Array.isArray(m.done)?m.done:[]).forEach(id=>{
+      if(it.left.some(o=>o.n===id)&&it.right.some(o=>o.n===id)) LQpick.done[id]=1;
+    });
+  }else LQpick = [];
+  lrPaint(ui);
+  return true;
 }
 function lrPick(i){
   const it = LQ[LQi], o = it.opts[i];
@@ -1601,11 +2021,12 @@ function persistView(){
   const h = viewHash();
   try{ sessionStorage.setItem('gita.route', h || '#'); }catch(e){}
   const modal = document.getElementById('modalBg');
-  if(modal && modal.classList.contains('open')) return;
+  if(modal && modal.classList.contains('open')){ scheduleSessionSave(); return; }
   const cur = location.hash || '';
-  if(cur === h) return;
-  if(!h && !cur) return;
-  try{ history.replaceState(history.state, '', h || (location.pathname + location.search)); }catch(e){}
+  if(cur !== h && (h || cur)){
+    try{ history.replaceState(history.state, '', h || (location.pathname + location.search)); }catch(e){}
+  }
+  scheduleSessionSave();
 }
 function goHome(){
   if($('#modalBg').classList.contains('open')) closeModal();
@@ -1775,7 +2196,10 @@ function showChapter(ci, anchorTi){
   if(at != null){
     requestAnimationFrame(()=>{
       const el = document.getElementById('theme-'+at);
-      if(el){ el.open = true; el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      if(el){
+        el.open = true;
+        if(!GITA_RESTORING) el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
     });
   }
 }
@@ -1839,8 +2263,15 @@ function setAppInert(inert){
   document.querySelectorAll('body > header, body > .toolbar, body > .wrap, body > footer')
     .forEach(el=>{ el.inert = inert; });
 }
-function openModal(ci,ti,si, mode, navIdx, invoker){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx, invoker)).catch(gitaLoadFail); return; }
+function updateModalAddress(){
+  try{
+    const s = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s;
+    const old = history.state && typeof history.state === 'object' ? history.state : {};
+    history.replaceState({...old, gitaModal:true}, '', '#v=' + s.n);
+  }catch(e){}
+}
+function openModal(ci,ti,si, mode, navIdx, invoker, restoring){
+  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>openModal(ci,ti,si, mode, navIdx, invoker, restoring)).catch(gitaLoadFail); return; }
   const bg = $('#modalBg');
   if(!bg.classList.contains('open')){
     const active = document.activeElement;
@@ -1861,11 +2292,13 @@ function openModal(ci,ti,si, mode, navIdx, invoker){
   document.body.classList.add('modal-open');
   setAppInert(true); document.body.style.overflow='hidden';
   const close = $('#modal .m-close'); if(close) close.focus({preventScroll:true});
-  pushModalHistory();
+  if(restoring) MODAL_HIST = true;
+  else pushModalHistory();
   /* every verse has an address: the sheet writes #v=2.47 so the open verse
-     can be shared and restored; the history entry keeps the old URL, so back
-     restores it for free */
-  try{ history.replaceState({gitaModal:true}, '', '#v=' + sutraAt(DATA[ci].themes[ti], si).s.n); }catch(e){}
+     can be shared. The session snapshot marks this as an in-app modal; on a
+     reload it is restored as a sheet, while a copied #v= link stays an invite. */
+  updateModalAddress();
+  saveSessionSnapshot();
 }
 function closeModal(){
   const bg = $('#modalBg');
@@ -1972,7 +2405,7 @@ function fillModal(){
   function boxHtml(pad, idx, total){
     const id = `words-pada-${idx}`;
     return `<div class="pada-box">
-      <button type="button" class="pada-toggle" aria-expanded="false" aria-controls="${id}" aria-describedby="wordsHint" onclick="toggleWords(this)">
+      <button type="button" class="pada-toggle" aria-expanded="false" aria-controls="${id}" aria-describedby="padaHint" onclick="toggleWords(this)">
         <span class="pb-top"><span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span></span>
         <span class="pb-deva" lang="sa">${pad.d}${pDanda(idx,total)}</span>
         <span class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</span>
@@ -2012,12 +2445,10 @@ function fillModal(){
       <div class="m-whole-verse" lang="sa">
         ${padaBlockDeva(s, true)}
       </div>
-      <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
-      <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
       <details class="m-words-section" id="mWordsSection">
         <summary><span class="m-wb-hint" id="wordsHint">${L('click_hint_pada')}</span></summary>
         <div class="m-words-body">
-          <p class="m-pada-hint">${esc(L('click_pada_meanings'))}</p>
+          <p class="m-pada-hint" id="padaHint">${esc(L('click_pada_meanings'))}</p>
           <div class="m-verse">
             ${spkHtml(topS)}
             <div class="pada-grid">
@@ -2028,6 +2459,8 @@ function fillModal(){
           </div>
         </div>
       </details>
+      <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
+      <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
     </div>
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
@@ -2121,6 +2554,27 @@ function toggleAllMeanings(btn){
     w.classList.toggle('mean-off', hide);
   });
 }
+function restoreModalSession(modalSnap){
+  if(!modalSnap) return;
+  const modal = document.getElementById('modal');
+  restoreSessionDetails(modal, modalSnap.openDetails);
+  (Array.isArray(modalSnap.openWords) ? modalSnap.openWords : []).forEach(id=>{
+    const words = document.getElementById(id);
+    if(!words || !modal.contains(words)) return;
+    words.classList.add('open');
+    modal.querySelectorAll('[aria-controls]').forEach(btn=>{
+      if(btn.getAttribute('aria-controls') === id) btn.setAttribute('aria-expanded','true');
+    });
+  });
+  refreshWordsBtn();
+  if(modalSnap.meaningsHidden){
+    const master = modal.querySelector('.wb-btn');
+    if(master && !master.disabled) toggleAllMeanings(master);
+  }
+  if(modalSnap.shareOpen) openSharePanel();
+  else if(modalSnap.menuOpen) toggleVerseMenu();
+  if(Number.isFinite(modalSnap.scrollTop)) modal.scrollTop = Math.max(0, modalSnap.scrollTop);
+}
 function navSutra(d){
   if(state.mode === 'theme'){
     const n = state.idx + d;
@@ -2149,6 +2603,8 @@ function navSutra(d){
   state.gpos = VERSES.findIndex(e => e.ci===state.chapter && e.ti===state.theme && e.si===state.idx);
   if(state.gpos < 0) state.gpos = 0;
   fillModal();
+  updateModalAddress();
+  saveSessionSnapshot();
   const title = $('#modalTitle'); if(title) title.focus({preventScroll:true});
   const m = $('#modal'); if(m) m.scrollTo({top:0, behavior:'smooth'});
 }
@@ -2190,6 +2646,26 @@ document.addEventListener('keydown', e=>{
   }
 });
 
+
+/* Keep a lightweight, per-tab checkpoint current. In addition to explicit
+   route changes this catches disclosure toggles, search text, modal controls,
+   and scroll position before either a manual reload or the SW update reload. */
+let GITA_SCROLL_TIMER = null;
+const checkpointSoon = () => scheduleSessionSave();
+document.addEventListener('click', checkpointSoon, true);
+document.addEventListener('input', checkpointSoon, true);
+document.addEventListener('change', checkpointSoon, true);
+document.addEventListener('toggle', checkpointSoon, true);
+function checkpointScroll(){
+  clearTimeout(GITA_SCROLL_TIMER);
+  GITA_SCROLL_TIMER = setTimeout(()=>scheduleSessionSave(false), 180);
+}
+window.addEventListener('scroll', checkpointScroll, {passive:true});
+document.addEventListener('scroll', checkpointScroll, true);
+window.addEventListener('pagehide', ()=>saveSessionSnapshot());
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState === 'hidden') saveSessionSnapshot();
+});
 
 /* Learn-by-heart: swipe between verses of the open theme (same as Previous/Next). */
 (function(){
@@ -2253,7 +2729,7 @@ if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
        not bounce the reader. */
     var had = !!navigator.serviceWorker.controller;
     navigator.serviceWorker.addEventListener('controllerchange', function(){
-      if (had) location.reload();
+      if (had){ saveSessionSnapshot(); location.reload(); }
     });
   });
 }
@@ -2273,9 +2749,35 @@ function gitaBoot(){
       history.replaceState(history.state, '', path + '/' + (location.search||'') + (location.hash||''));
     }
   }catch(e){}
+  const restore = readSessionSnapshot();
+  if(restore){
+    GITA_RESTORING = true; state.keepScroll = true;
+    syncLang(restore.lang);
+    try{ sessionStorage.setItem('gitaLang', restore.lang); }catch(e){}
+    try{ sessionStorage.setItem('gita.route', restore.route || '#'); }catch(e){}
+    const searchInput = document.getElementById('searchInput');
+    if(searchInput) searchInput.value = restore.query || '';
+    if(restore.play){
+      PL.scope = restore.play.scope === 'ch' ? 'ch' : 'all';
+      PL.ch = Number.isInteger(restore.play.ch) ? restore.play.ch : 0;
+      PL.mode = Number.isInteger(restore.play.mode) ? restore.play.mode : 0;
+      PL.run = Number.isInteger(restore.play.run) ? restore.play.run : 0;
+      PL.q = restore.play.q || null; PL.active = !!restore.play.active;
+    }
+    if(restore.modal){
+      const old = history.state && typeof history.state === 'object' ? history.state : {};
+      const route = restore.route || '';
+      try{
+        history.replaceState({...old, gitaModal:false}, '',
+          location.pathname + (location.search || '') + route);
+      }catch(e){}
+    }
+    watchSessionRestore(restore);
+  }
   /* Deep links: the chapter landing pages (and shared messages) can open a
      specific verse — index.html#v=2.47 — or a whole chapter (#chapter=7). */
   (function(){
+
     var v = /^#v=([1-9][0-9]?\.[0-9]{1,2})$/.exec(location.hash || '');
     if (v) { var hp = v[1].split('.');
       var vref = hp[0] + '.' + (hp[1].length === 1 ? '0' + hp[1] : hp[1]);

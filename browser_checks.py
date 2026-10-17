@@ -236,12 +236,9 @@ def run(pw, url, offline_capable=False):
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(300)
 
-    # Owner 2026-10-14: "on chapter 18 study guide in Nepali it suddenly
-    # refreshes and goes into English." The refresh is real and intended — the
-    # app reloads itself when a new service worker claims the tab — but nothing
-    # ever wrote the language down, so state.lang fell back to its hardcoded
-    # 'en' while the route came home from sessionStorage: the right page in the
-    # wrong language, half the chrome still Devanagari. Lock the round trip.
+    # The service worker intentionally reloads an already-open tab after an
+    # update. Lock the selected language and the current reading context across
+    # both that reload and an ordinary browser refresh.
     group("language survives a reload")
     if pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"):
         pg.keyboard.press("Escape")
@@ -252,6 +249,8 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(600)
     ok(pg.evaluate("localStorage.getItem('gitaLang')") == "ne",
        "choosing नेपाली writes gitaLang to localStorage")
+    ok(pg.evaluate("sessionStorage.getItem('gitaLang')") == "ne",
+       "the current tab keeps its own language across reloads")
     before = pg.eval_on_selector("#view", "e=>e.textContent")
     ok("अध्याय १८" in before, "chapter 18 view is numbered in Devanagari")
     pg.reload(wait_until="load")
@@ -272,16 +271,79 @@ def run(pw, url, offline_capable=False):
     ok("अध्याय १८" in after, "chapter 18 is still numbered in Devanagari after the reload")
     ok(before == after,
        "the study guide reads identically before and after the reload")
-    # A stale, truncated or hand-edited value must fall back to English rather
-    # than reach T()/L() and render half the interface blank.
-    pg.evaluate("localStorage.setItem('gitaLang', 'zz')")
+
+    other_tab = ctx.new_page()
+    other_tab.goto(url, wait_until="load", timeout=90000)
+    other_tab.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    other_tab.evaluate("setLang('hi')")
     pg.reload(wait_until="load")
-    pg.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
-    pg.wait_for_timeout(500)
-    ok(pg.evaluate("state.lang") == "en", "an unknown stored language falls back to en")
-    ok(pg.evaluate("document.getElementById('appTitle').textContent === UI.en.app_title"),
+    pg.wait_for_function("state.view === 'chapter' && state.chapter === 17", timeout=30000)
+    ok(pg.evaluate("state.lang === 'ne' && sessionStorage.getItem('gitaLang') === 'ne'"),
+       "a language change in another tab does not change this tab on refresh")
+    other_tab.close()
+
+    pg.evaluate("openModal(17,0,0,'theme',null,null)")
+    pg.wait_for_selector("#modalBg.open")
+    pg.locator("#mWordsSection > summary").click()
+    pg.locator(".pada-toggle").first.click()
+    pg.evaluate("document.querySelector('#modal').scrollTop = 120")
+    pg.wait_for_timeout(250)
+    modal_before = pg.evaluate("""() => ({lang:state.lang, view:state.view, chapter:state.chapter,
+      verse:document.querySelector('.m-num-chit')?.textContent.trim(),
+      route:location.hash, open:document.querySelector('#modalBg').classList.contains('open'),
+      details:document.querySelector('#mWordsSection').open,
+      words:document.querySelector('.words.open')?.id,
+      scroll:document.querySelector('#modal').scrollTop})""")
+    pg.reload(wait_until="load")
+    pg.wait_for_function("document.querySelector('#modalBg').classList.contains('open')", timeout=30000)
+    pg.wait_for_timeout(200)
+    modal_after = pg.evaluate("""() => ({lang:state.lang, view:state.view, chapter:state.chapter,
+      verse:document.querySelector('.m-num-chit')?.textContent.trim(),
+      route:location.hash, open:document.querySelector('#modalBg').classList.contains('open'),
+      details:document.querySelector('#mWordsSection').open,
+      words:document.querySelector('.words.open')?.id,
+      scroll:document.querySelector('#modal').scrollTop})""")
+    ok(modal_before['lang'] == modal_after['lang'] == 'ne'
+       and modal_after['view'] == 'chapter' and modal_after['chapter'] == 17
+       and modal_after['open'] and modal_after['verse'] == modal_before['verse']
+       and modal_after['route'] == modal_before['route'],
+       f"manual refresh restores the same Nepali chapter and open verse sheet ({modal_after})")
+    ok(modal_after['details'] and modal_after['words'] == modal_before['words']
+       and modal_after['scroll'] == modal_before['scroll'],
+       "refresh restores expanded word meanings and the verse-sheet scroll position")
+    pg.keyboard.press("Escape")
+    pg.wait_for_function("!document.querySelector('#modalBg').classList.contains('open')", timeout=5000)
+    ok(pg.evaluate("state.view === 'chapter' && state.chapter === 17 && !location.hash.startsWith('#v=')"),
+       "closing a restored verse returns to the chapter instead of the welcome page")
+
+    pg.evaluate("showWelcome()")
+    pg.wait_for_selector(".w-day")
+    pg.locator(".w-day").click()
+    pg.wait_for_selector("#modalBg.open")
+    home_verse = pg.eval_on_selector(".m-num-chit", "e=>e.textContent.trim()")
+    pg.reload(wait_until="load")
+    pg.wait_for_function("state.view==='welcome' && document.querySelector('#modalBg').classList.contains('open')",
+                         timeout=30000)
+    restored_home_verse = pg.eval_on_selector(".m-num-chit", "e=>e.textContent.trim()")
+    pg.keyboard.press("Escape")
+    pg.wait_for_function("!document.querySelector('#modalBg').classList.contains('open')", timeout=5000)
+    ok(pg.evaluate("state.view === 'welcome'") and home_verse == restored_home_verse,
+       "refresh restores a verse sheet opened from Welcome, even when its chapter was lazy-loaded")
+
+    # Corrupt values in a new tab have no valid history snapshot to rescue them:
+    # they must still fall back to English and paint a complete interface.
+    bad_ctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    bad_ctx.add_init_script("""() => {
+      try{ localStorage.setItem('gitaLang','zz'); }catch(e){}
+      try{ sessionStorage.setItem('gitaLang','zz'); }catch(e){}
+    }""")
+    bad_pg = bad_ctx.new_page()
+    bad_pg.goto(url, wait_until="load", timeout=90000)
+    bad_pg.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    ok(bad_pg.evaluate("state.lang") == "en", "an unknown stored language falls back to en")
+    ok(bad_pg.evaluate("document.getElementById('appTitle').textContent === UI.en.app_title"),
        "a bad stored language still renders the whole English interface")
-    pg.evaluate("localStorage.removeItem('gitaLang')")
+    bad_ctx.close()
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(300)
 
@@ -308,6 +370,11 @@ def run(pw, url, offline_capable=False):
                       "return sutraAt(DATA[loc.ci].themes[loc.ti],loc.si).part.titles.en;})()")
     ok(exp in head and head.strip().startswith("Verse topic:"),
        "search card shows 'Verse topic: <part title>' on one line")
+    pg.reload(wait_until="load")
+    pg.wait_for_function("state.view === 'search' && document.querySelectorAll('.mini').length === 1",
+                         timeout=30000)
+    ok(pg.evaluate("document.querySelector('#searchInput').value === '2.47'"),
+       "refresh restores the search query and its results")
     pg.locator(".mini").first.click()
     pg.wait_for_timeout(400)
     ok(pg.evaluate("!!document.querySelector('.m-part')"),
@@ -679,13 +746,74 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(600)
     ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
        "tapping a verse in the chapter view opens its quarters")
-    # the master hide/show-meanings switch sleeps until the Word-by-word
+
+    group("pāda-meaning discovery")
+    hint_layout = pg.evaluate("""() => {
+      const verse = document.querySelector('#modal .m-whole-verse');
+      const section = document.querySelector('#modal .m-words-section');
+      const literal = document.querySelector('#modal .m-line.lit');
+      const summary = section && section.querySelector(':scope > summary');
+      if (!verse || !section || !literal || !summary) return null;
+      const rect = summary.getBoundingClientRect();
+      const css = getComputedStyle(summary);
+      return {
+        direct: verse.nextElementSibling === section,
+        beforeLiteral: !!(section.compareDocumentPosition(literal)
+          & Node.DOCUMENT_POSITION_FOLLOWING),
+        height: rect.height,
+        fontSize: parseFloat(css.fontSize),
+        fontFamily: css.fontFamily,
+        background: css.backgroundColor,
+        cursor: css.cursor
+      };
+    }""")
+    ok(bool(hint_layout and hint_layout["direct"] and hint_layout["beforeLiteral"]),
+       "the word-by-word action sits immediately below the whole verse")
+    ok(bool(hint_layout and hint_layout["height"] >= 48
+            and hint_layout["fontSize"] >= 14
+            and "Noto Serif Devanagari" in hint_layout["fontFamily"]
+            and hint_layout["background"] not in ("transparent", "rgba(0, 0, 0, 0)")
+            and hint_layout["cursor"] == "pointer"),
+       f"the word-by-word action is a visible, tap-sized control ({hint_layout})")
+
+    hint_copy = {}
+    for code in ("en", "ne", "hi"):
+        pg.evaluate(f"setLang('{code}')")
+        hint_copy[code] = pg.evaluate("""() => ({
+          action: document.querySelector('#modal .m-words-section > summary')?.textContent.trim(),
+          instruction: document.querySelector('#modal .m-pada-hint')?.textContent.trim()
+        })""")
+    pg.evaluate("setLang('en')")
+    expected_hint_copy = {
+        "en": {"action": "Open the four quarters for word meanings",
+               "instruction": "Tap any quarter to reveal its word-by-word meanings"},
+        "ne": {"action": "शब्दार्थका लागि चारै पाद खोल्नुहोस्",
+               "instruction": "शब्दार्थ हेर्न कुनै पादमा ट्याप गर्नुहोस्"},
+        "hi": {"action": "शब्दार्थ के लिए चारों पाद खोलें",
+               "instruction": "शब्दार्थ देखने के लिए किसी पाद पर टैप करें"},
+    }
+    ok(hint_copy == expected_hint_copy,
+       f"the action and pāda instruction are clear in all three languages ({hint_copy})")
+
+    # The master hide/show-meanings switch sleeps until the Word-by-word
     # section is opened — before that there is nothing on screen for it to hide
     ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
        "the hide/show meanings switch is inactive before words section opens")
     # Phase 3.2: Word-by-word lives in a collapsed <details>; open it first.
     pg.locator(".m-words-section > summary").first.click()
     pg.wait_for_timeout(300)
+    instruction_visible = pg.evaluate("""() => {
+      const section = document.querySelector('#modal .m-words-section');
+      const hint = document.querySelector('#modal .m-pada-hint');
+      const grid = document.querySelector('#modal .pada-grid');
+      const firstPada = document.querySelector('#modal .pada-toggle');
+      return !!(section?.open && hint && grid && firstPada
+        && hint.getBoundingClientRect().height > 0
+        && (hint.compareDocumentPosition(grid) & Node.DOCUMENT_POSITION_FOLLOWING)
+        && firstPada.getAttribute('aria-describedby') === 'padaHint');
+    }""")
+    ok(instruction_visible,
+       "opening the section reveals the tap instruction above padas and associates it with each quarter")
     pg.locator(".pada-toggle").first.click()
     pg.wait_for_timeout(300)
     ok(not pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
@@ -1001,12 +1129,58 @@ def run(pw, url, offline_capable=False):
     wrong_id = next((ix for ix in order["ids"] if ix != order["answer"][0]), None)
     lp.locator(f'.lr-chip2[onclick="lrChip(this,{wrong_id})"]').click()
     correction_shown = lp.locator(".lr-fb .bad").count() == 1
+    correction_before = lp.evaluate("""() => ({misses:LQmiss, queue:LQ.map(x=>x.qid),
+      feedback:document.querySelector('.lr-fb .bad')?.textContent.trim(),
+      chips:[...document.querySelectorAll('.lr-chips .lr-chip2')].map(x=>x.dataset.lrChip)})""")
+    lp.reload(wait_until="load")
+    lp.wait_for_selector(".lr-fb .bad")
+    correction_after = lp.evaluate("""() => ({misses:LQmiss, queue:LQ.map(x=>x.qid),
+      feedback:document.querySelector('.lr-fb .bad')?.textContent.trim(),
+      chips:[...document.querySelectorAll('.lr-chips .lr-chip2')].map(x=>x.dataset.lrChip)})""")
+    ok(correction_after == correction_before,
+       "refresh preserves a Learn order correction and the next required pāda")
     right_id = order["answer"][0]
     lp.locator(f'.lr-chip2[onclick="lrChip(this,{right_id})"]').click()
     ok(order["kind"] == "order" and correction_shown
        and lp.locator(".lr-fb .bad").count() == 0
        and lp.locator(".lr-slots .lr-slot").count() == 1,
        "a story-order mistake gives a correction, then clears it as soon as the right theme is chosen")
+    order_before = lp.evaluate("""() => ({lang:state.lang, at:state.lrAt, queue:LQ.map(x=>x.qid),
+      index:LQi, pick:LQpick.slice(), slots:[...document.querySelectorAll('#lrSlots .lr-slot')]
+        .map(x=>x.textContent), chips:[...document.querySelectorAll('.lr-chips .lr-chip2')]
+        .map(x=>x.dataset.lrChip)})""")
+    lp.reload(wait_until="load")
+    lp.wait_for_function("state.view==='learn' && LQpick.length===1 && document.querySelector('.lr-chip2')",
+                         timeout=30000)
+    order_after = lp.evaluate("""() => ({lang:state.lang, at:state.lrAt, queue:LQ.map(x=>x.qid),
+      index:LQi, pick:LQpick.slice(), slots:[...document.querySelectorAll('#lrSlots .lr-slot')]
+        .map(x=>x.textContent), chips:[...document.querySelectorAll('.lr-chips .lr-chip2')]
+        .map(x=>x.dataset.lrChip)})""")
+    ok(order_after['lang'] == order_before['lang']
+       and order_after['at']['step'] == order_before['at']['step']
+       and order_after['queue'] == order_before['queue']
+       and order_after['index'] == order_before['index']
+       and order_after['pick'] == order_before['pick']
+       and order_after['slots'] == order_before['slots']
+       and order_after['chips'] == order_before['chips'],
+       "refresh restores the Learn story quiz queue, chip order and partial answer")
+
+    lp.evaluate("lrStory(0,2)")
+    lp.wait_for_selector(".lr-opt")
+    lp.evaluate("(()=>{const i=LQ[LQi].opts.findIndex(o=>!o.ok);document.querySelectorAll('.lr-opt')[i].click()})()")
+    lp.wait_for_selector(".lr-opt.wrong")
+    wrong_before = lp.evaluate("""() => ({queue:LQ.map(x=>x.qid), index:LQi, misses:LQmiss,
+      verse:state.lrAt.step, options:[...document.querySelectorAll('.lr-opt')].map(x=>
+        ({id:x.dataset.lrOpt,wrong:x.classList.contains('wrong'),right:x.classList.contains('right')})),
+      retry:!!document.querySelector('.lr-fb .lr-cta')})""")
+    lp.reload(wait_until="load")
+    lp.wait_for_function("state.view==='learn' && document.querySelector('.lr-opt.wrong')", timeout=30000)
+    wrong_after = lp.evaluate("""() => ({queue:LQ.map(x=>x.qid), index:LQi, misses:LQmiss,
+      verse:state.lrAt.step, options:[...document.querySelectorAll('.lr-opt')].map(x=>
+        ({id:x.dataset.lrOpt,wrong:x.classList.contains('wrong'),right:x.classList.contains('right')})),
+      retry:!!document.querySelector('.lr-fb .lr-cta')})""")
+    ok(wrong_after == wrong_before,
+       "refresh preserves a missed Learn question, its requeued position and correction")
 
     lp.evaluate("lrFree(0,0)")
     lp.wait_for_selector("#fpChips .lr-chip2")
@@ -1017,13 +1191,19 @@ def run(pw, url, offline_capable=False):
     lp.locator('#fpChips .lr-chip2[onclick="lrFreeTap(0)"]').click()
     free_right = (lp.locator("#fpFb .bad").count() == 0
                   and lp.locator("#fpSlots .lr-slot").count() == 1)
+    free_before = lp.evaluate("({verse:FP.v.n, deal:FP.deal.slice(), picked:FP.picked.slice()})")
+    lp.reload(wait_until="load")
+    lp.wait_for_function("state.view==='learn' && document.querySelector('#fpChips') && FP.picked.length===1",
+                         timeout=30000)
+    free_after = lp.evaluate("({verse:FP.v.n, deal:FP.deal.slice(), picked:FP.picked.slice()})")
+    free_resume = free_after == free_before
     lp.locator(".lr-nav button").first.click()
     free_shuffle = lp.evaluate("previous => FP.v.n !== previous", free_state["verse"])
     ok(free_state["count"] == 4
        and sorted(free_state["deal"]) == [0,1,2,3]
        and free_state["deal"] != [0,1,2,3]
-       and free_correction and free_right and free_shuffle,
-       "free practice shuffles four quarters, corrects a wrong tap, and deals a different verse")
+       and free_correction and free_right and free_resume and free_shuffle,
+       "free practice shuffles, corrects, survives refresh with its partial order, and deals again")
 
     lp.evaluate("showWelcome()")
     lp.locator('.tab-btn[data-tab="play"]').click()
@@ -1070,6 +1250,19 @@ def run(pw, url, offline_capable=False):
     lp.locator(".lr-opt").nth(wrong_option).click()
     wrong_mark = lp.locator(".lr-opt.wrong").count() == 1
     retry_label = lp.locator(".lr-fb .lr-cta").count() == 1
+    play_before = lp.evaluate("""() => ({lang:state.lang, active:PL.active, q:PL.q,
+      queue:LQ.map(x=>x.qid), index:LQi, misses:LQmiss,
+      options:[...document.querySelectorAll('.lr-opt')].map(x=>
+        ({id:x.dataset.lrOpt,wrong:x.classList.contains('wrong'),right:x.classList.contains('right')}))})""")
+    lp.reload(wait_until="load")
+    lp.wait_for_function("state.view==='play' && PL.active && document.querySelector('.lr-opt.wrong')",
+                         timeout=30000)
+    play_after = lp.evaluate("""() => ({lang:state.lang, active:PL.active, q:PL.q,
+      queue:LQ.map(x=>x.qid), index:LQi, misses:LQmiss,
+      options:[...document.querySelectorAll('.lr-opt')].map(x=>
+        ({id:x.dataset.lrOpt,wrong:x.classList.contains('wrong'),right:x.classList.contains('right')}))})""")
+    ok(play_after == play_before,
+       "refresh restores the active Play question, choices and wrong-answer feedback")
     lp.evaluate("window.__realRandom = Math.random; Math.random = () => 0")
     lp.locator(".lr-fb .lr-cta").click()
     after_retry = lp.evaluate("LQ[LQi].opts.map(o=>({label:o.label,ok:o.ok}))")
@@ -1467,6 +1660,24 @@ def run(pw, url, offline_capable=False):
         ok(q.evaluate("!!document.querySelector('#appTitle')") and "Chapter 1" not in q.inner_text("h1"),
            "OFFLINE root still serves the app after a chapter-page visit (shell cache not poisoned)")
         c.set_offline(False)
+        q.goto(url, wait_until="load", timeout=90000)
+        q.wait_for_function("navigator.serviceWorker && navigator.serviceWorker.controller", timeout=20000)
+        q.reload(wait_until="load")  # let the app install its existing-controller reload listener
+        q.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+        controlled = q.evaluate("!!navigator.serviceWorker.controller")
+        ok(controlled, "the automatic-refresh check runs in a controlled tab")
+        q.evaluate("setLang('hi'); showChapter(17,0); openModal(17,0,0,'theme',null,null)")
+        q.wait_for_selector("#modalBg.open")
+        with q.expect_navigation(wait_until="load", timeout=15000):
+            q.evaluate("navigator.serviceWorker.dispatchEvent(new Event('controllerchange'))")
+        q.wait_for_function("DATA && state.lang === 'hi' && state.chapter === 17"
+                            " && document.querySelector('#modalBg').classList.contains('open')",
+                            timeout=30000)
+        auto_state = q.evaluate("""() => ({lang:state.lang, view:state.view, chapter:state.chapter,
+          verse:document.querySelector('.m-num-chit')?.textContent || ''})""")
+        ok(auto_state['lang'] == 'hi' and auto_state['view'] == 'chapter'
+           and auto_state['chapter'] == 17 and '१८.१' in auto_state['verse'],
+           f"service-worker automatic refresh preserves language, chapter and open verse ({auto_state})")
         c.close()
 
     group("chapter colophons (Phase 2.3; Phase 3.1 unified chapter view)")

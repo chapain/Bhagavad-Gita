@@ -26,8 +26,8 @@ app and works with no internet connection.
   theme to reveal its description and verse titles.
 - **Every verse in its four quarters (pādas)** — Devanagari, IAST transliteration,
   a literal translation and a flowing paraphrase.
-- **Tap any quarter** for pada-cheda: each word on its own line with its meaning
-  in the language you're reading.
+- **Study word by word** — open the four-quarter control directly below a verse,
+  then tap any quarter to reveal its words and meanings in the language you're reading.
 - **Switch language live** (English / नेपाली / हिन्दी) — titles, translations, word
   meanings and interface all follow, with Devanagari numerals in ne/hi.
 - **Search** all 700 verses by number (`2.47` or `२.४७`), Sanskrit, or translation.
@@ -81,7 +81,7 @@ source/                 ← edit here
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
 run_gita_app.js         776 assertions on the built document
-browser_checks.py       247 live-browser checks (Learn/Play, storage, i18n, touch, offline)
+browser_checks.py       264 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
 ```
 
 `index.html` remains a **single-shell split site**. Its document, stylesheet and

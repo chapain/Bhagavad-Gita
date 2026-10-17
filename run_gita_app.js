@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const TOTAL_ASSERTIONS = 776;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 247;   // browser_checks.py (Learn/Play, storage, disclosures)
+const TOTAL_BROWSER_CHECKS = 264;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -583,12 +583,14 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
 // fell back to its hardcoded 'en'. These pin the whole mechanism.
 {
   ok(/const GITA_LANGS = \['en','ne','hi'\];/.test(html), 'the language whitelist exists');
-  ok(/function savedLang\(\)\{[\s\S]*?localStorage\.getItem\('gitaLang'\);[\s\S]*?GITA_LANGS\.includes\(l\) \? l : 'en';/.test(html),
-     'savedLang() reads the language back and whitelists it, defaulting to en');
+  ok(/function savedLang\(\)\{[\s\S]*?sessionStorage\.getItem\('gitaLang'\);[\s\S]*?localStorage\.getItem\('gitaLang'\);[\s\S]*?return GITA_LANGS\.includes\(l\) \? l : 'en';/.test(html),
+     'savedLang() prefers the tab language, then history/site storage, and whitelists it');
   ok(/lang:savedLang\(\), view:'welcome'/.test(html),
      'state.lang is initialised from savedLang(), not hardcoded');
   ok(!/lang:'en', view:'welcome'/.test(html), 'no hardcoded lang:\'en\' survives in the state initialiser');
-  ok(/localStorage\.setItem\('gitaLang', l\)/.test(html), 'setLang() writes the reader\'s choice down');
+  ok(/sessionStorage\.setItem\('gitaLang', l\)/.test(html)
+     && /localStorage\.setItem\('gitaLang', l\)/.test(html),
+     'setLang() saves the tab choice and updates the site-wide default');
   // localStorage throws in some in-app browsers (WhatsApp); same guard as gitaTheme
   const langCalls = (html.match(/localStorage\.(get|set)Item\('gitaLang'/g) || []).length;
   const langGuarded = (html.match(/try\{[^}]*localStorage\.(get|set)Item\('gitaLang'/g) || []).length;

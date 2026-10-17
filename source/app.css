@@ -826,19 +826,25 @@ __FONTS__
   .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
   .m-line.lit .lt{ font-size:calc(1rem * var(--reader-scale,1)); }
 
-  /* Word-by-word section: collapsed by default so the sheet opens on the
-     verse + meaning; tap the summary to reveal the four pāda boxes
-     (which is where the reader digs into words, not the default view). */
-  .m-words-section{ margin-top:22px; border-top:1px solid var(--line); padding-top:8px; }
+  /* The word-by-word disclosure sits directly below the hero verse, so the
+     route to the pāda boxes is visible before the reader reaches translations.
+     Keep it collapsed; the raised, 48px summary is the action, not a tiny note. */
+  .m-words-section{ margin-top:10px; border:0; padding:0; }
   .m-words-section > summary{ list-style:none; cursor:pointer;
-    display:flex; align-items:center; gap:8px;
-    font:700 .82rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
-    color:var(--ink-soft); padding:8px 0; user-select:none; }
+    display:flex; align-items:center; gap:10px;
+    min-height:48px; padding:12px 14px; border:1px solid var(--teal);
+    border-radius:12px; background:var(--teal-soft); color:var(--ink);
+    font:650 .94rem/1.4 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
+    user-select:none; }
   .m-words-section > summary::-webkit-details-marker{ display:none; }
-  .m-words-section > summary::after{ content:"▾"; margin-left:auto; font-size:.9rem; color:var(--ink-soft); transition:transform .15s; }
+  .m-words-section > summary::after{ content:"▾"; flex:0 0 auto; margin-left:auto;
+    font-size:1rem; color:var(--teal); transition:transform .15s; }
+  .m-words-section > summary:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
+  .m-words-section > summary:hover{ border-color:var(--teal-mid); }
   .m-words-section[open] > summary::after{ transform:rotate(180deg); }
   .m-words-body{ padding-bottom:4px; }
-  .m-pada-hint{ margin:4px 2px 10px; color:var(--ink-soft); font-size:.8rem; font-style:italic; line-height:1.5; }
+  .m-pada-hint{ margin:12px 2px 10px; color:var(--ink); font-size:.92rem;
+    font-style:normal; font-weight:600; line-height:1.5; }
   /* Inside Word-by-word reuse the existing .m-verse/pāda styles but with
      tighter padding since it lives inside a collapsible. */
   .m-words-body .m-verse{ background:transparent; border:0; padding:8px 0 0; margin:0; border-radius:0; }

@@ -15,6 +15,47 @@ code alone cannot tell you.
 For a brand-new session: read §1–§10, then this box, then build.
 
 
+### 2026-10-17 — preserve the reader's state across refresh
+
+* Manual and service-worker-triggered reloads now checkpoint a versioned,
+  same-path/same-entry per-tab snapshot. Language is restored from
+  `sessionStorage` before the site-wide `localStorage` preference, so a language
+  change in another tab cannot flip this tab. The snapshot restores the current
+  route/view, search query, open theme details, scroll positions, and an in-app
+  verse sheet including expanded word meanings; Learn's active quiz seed/queue,
+  correction or partial answer, free-practice ordering, and the active Play
+  question are included too.
+* An in-app `#v=` sheet is marked in history and reopens as a sheet; a clean
+  externally shared `#v=` link remains the existing invitation on Welcome.
+  Regression checks cover manual/automatic reload, a lazily-loaded Welcome
+  verse, tab-local language, search, quiz queues and partial answers, and shared
+  deep links. Browser suite: **251 → 264 checks**. No i18n keys, verse data,
+  source readings or owner-held bytes changed. Full browser-enabled build ALL
+  GREEN: document 776, browser 264, site health 503, 49 Python tests, study
+  9,658; cache `7bc47d10fd89`. Pillow was unavailable, so only optional share-art
+  repaint was skipped; no push.
+
+
+### 2026-10-17 — make the path to pāda word meanings hard to miss
+
+* Dhruba noted that the instruction to tap a pāda was small and buried at
+  the bottom of the verse sheet. The existing collapsed word-by-word
+  disclosure now sits immediately below the whole-verse display, before
+  the literal and paraphrase, and its summary is a clear, keyboard-focusable
+  48px-minimum action with a soft teal face. Copy now names the goal
+  (“Open the four quarters for word meanings”); after opening, the larger,
+  non-italic instruction says to tap a quarter. Both strings are localized
+  in English, Nepali and Hindi; quarter buttons’ `aria-describedby` now
+  points to the actual tap instruction. The main verse itself remains
+  static; the disclosure is the control that reveals the four boxes. Its
+  system-font stack now falls back to the bundled Devanagari face, so Nepali
+  and Hindi render as letters rather than missing-glyph boxes. No new i18n
+  keys or verse data/text changed. Four browser checks lock the location,
+  size/face/font fallback, all-language copy and expanded guidance: **247 →
+  251**. Full browser-enabled build ALL GREEN (cache `a1be3426f031`); evidence
+  in `/home/user/evidence/pada-discovery/`.
+
+
 ### 2026-10-17 — the learn path joins the app's design language
 
 * Owner: *"the learn by heart page has a slightly different look than the rest
@@ -1576,7 +1617,7 @@ chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
 run_gita_app.js       776 assertions on the built document and data (needs node)
-browser_checks.py     247 live-browser checks (needs Playwright)
+browser_checks.py     264 live-browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)
