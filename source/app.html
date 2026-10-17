@@ -21,10 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1A5648" id="themeColor">
 <script>
-/* Runs before the page paints, so a dark-mode user never sees a white flash.
-   Order of preference: a choice they made here, else the phone's own setting.
-   localStorage is wrapped because some in-app browsers (WhatsApp, Facebook)
-   throw on access — the app must still work there, just without remembering. */
+/* Apply the saved theme and language before first paint; storage may throw. */
 (function(){
   var saved = null;
   try{ saved = localStorage.getItem('gitaTheme'); }catch(e){}
@@ -32,12 +29,19 @@
   try{ sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){}
   var dark = (saved === 'dark') || (saved === null && sysDark);
   if(dark) document.documentElement.setAttribute('data-theme','dark');
-  /* The reading language too: the shell ships lang="en" and the app reloads
-     itself when a new service worker claims the tab, so without this a नेपाली
-     reader is announced in English after every update. Same whitelist as
-     savedLang() — anything else keeps the shipped default. */
-  var lang = null;
-  try{ lang = localStorage.getItem('gitaLang'); }catch(e){}
+  /* Per-tab choice wins; localStorage is the new-tab default. */
+  var lang = null, snap = null;
+  try{ lang = sessionStorage.getItem('gitaLang'); }catch(e){}
+  if(lang !== 'en' && lang !== 'ne' && lang !== 'hi'){
+    try{
+      snap = history.state && history.state.gitaSession;
+      if(snap && snap.path === location.pathname + location.search
+         && snap.hash === (location.hash || '')) lang = snap.lang;
+    }catch(e){}
+  }
+  if(lang !== 'en' && lang !== 'ne' && lang !== 'hi'){
+    try{ lang = localStorage.getItem('gitaLang'); }catch(e){}
+  }
   if(lang === 'en' || lang === 'ne' || lang === 'hi') document.documentElement.lang = lang;
 })();
 </script>

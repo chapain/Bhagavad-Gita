@@ -20,6 +20,21 @@ before you talk to the owner.
 
 ## 1. Where we are
 
+- **Reader state now survives manual and automatic refresh (2026-10-17, owner request).**
+  A validated per-tab snapshot restores language, route/view, search, scroll, open
+  theme details and verse sheets (including expanded word meanings); it also
+  restores Learn quiz queue/partial-answer state, free-practice ordering and the
+  active Play question. The service-worker `controllerchange` path checkpoints
+  before its reload; `plStart()` now marks a Play run active. In-app `#v=` sheets
+  reopen as sheets, while an external shared `#v=` remains the existing
+  invitation. Added 13 browser assertions (251 → 264), covering cross-tab
+  language isolation, manual/SW refresh, lazy Welcome modal, search, Learn/Play
+  state and deep-link regressions. Full browser-enabled build ALL GREEN: 2,800/0
+  pādas, 2,100 paraphrases, 0 translation failures/4 reviewed advisories, SEO 6,
+  site health 503, study 9,658, Python 49, document 776, progress 15, search 7,
+  browser 264; cache `7bc47d10fd89`. Pillow is unavailable, so optional share-art
+  repaint was skipped. No i18n keys, verse data/text or owner-held bytes changed.
+  No push.
 - **Pāda-word-meaning discovery improved (2026-10-17, owner request).** The
   small instruction at the bottom of the verse sheet was easy to miss. The
   existing word-by-word disclosure now sits immediately below the hero
@@ -555,7 +570,7 @@ python3 build.py          # build + all checks
 python3 build.py --fast   # build only
 ```
 
-The browser step has **251 live-browser checks** and runs only when Playwright
+The browser step has **264 live-browser checks** and runs only when Playwright
 is importable. In this Arena sandbox, this session used temporary dependencies
 (outside Git):
 
@@ -1633,6 +1648,7 @@ Missing:
       three ways; a jsdom round-trip against the built `index.html` proves the
       ch18 study guide is byte-identical across the reload. Details in §1 and
       `PROJECT.md` §0 / §7. PR **#37**.
+- [x] Owner request 2026-10-17 (outside the numbered plan): **preserve reader state across refresh.** Per-tab language and a validated session snapshot now restore route, search, details/scroll, verse sheets, Learn quiz queue/partial answer and free practice, plus active Play state; automatic SW reload checkpoints first. Internal `#v=` restoration is distinguished from external invitations. `plStart()` marks Play active. 13 browser checks added (251 → 264); no i18n/data/verse or owner-hold changes. Full browser build result in §1.
 - [x] Owner request 2026-10-17 (outside the numbered plan): **improve pāda-word-meaning discovery.** The four-pāda disclosure moved directly under the hero verse and became a visible 48px-minimum teal-tinted action; the follow-up “tap a pāda” line is larger and is now the accessible description for quarter buttons. EN/NE/HI copy updated with existing keys; four browser checks added (247 → 251). No data, verse text, owner hold or i18n key count changed. Full build green.
 - [x] Owner request 2026-10-17 (outside the numbered plan): **retire the two
       views Phase 3.1 merged away and re-point their links.** The sheet's
@@ -1857,6 +1873,7 @@ whole session’s check log are in `/home/user/evidence/phase2.5/` (outside Git)
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-17 · `arena/6062134a-bhagavad-gita` · **Refresh persistence completed.** Added same-entry per-tab state snapshots and session-first language restoration; internal verse-sheet hashes reopen as modals while external `#v=` links remain invitations. Restores view/search/details/scroll, modal disclosures, active Learn quiz queues and partial answers, free practice, and Play; the service-worker reload checkpoints first and `plStart()` marks runs active. Added 13 browser checks (251 → 264). Full browser-enabled build ALL GREEN (2,800/0 pādas; 2,100 paraphrases; 0 translation failures/4 reviewed advisories; SEO 6; health 503; study 9,658; Python 49; document 776; progress 15; search 7; browser 264; cache `7bc47d10fd89`). Pillow absent; optional share-art repaint skipped. No content, i18n, protected readings or owner holds changed; no push.
 - 2026-10-17 · `arena/6062134a-bhagavad-gita` · **Pāda meaning is easier to discover.** Moved the existing collapsed disclosure to directly under the whole verse, restyled its summary as a 48px-minimum teal-tinted, keyboard-focusable action, clarified the CTA and tap instruction in en/ne/hi, and connected quarter buttons to that instruction via `aria-describedby`. Added four browser checks (247 → 251). Added a Devanagari font fallback after the chrome sans stack so NE/HI copy does not render as missing glyphs; the browser group locks it. No new i18n keys or verse-content changes. Full browser-enabled build ALL GREEN (cache `a1be3426f031`); screenshots at `/home/user/evidence/pada-discovery/`. No push or merge.
 - 2026-10-17 · `arena/6062134a-bhagavad-gita` · Verified PR #46 **MERGED** at `155d0775272f86eec13c3f3cf0666605f9c38611`, equal to `origin/main` and this checkout’s `HEAD`; clean worktree. Full browser-enabled build passed (247 browser checks; cache `302930416ac2`), with no source/generated-file changes. Recommended Phase 2.4; asked Dhruba to choose the next roadmap task and whether to implement the pāda-hint discoverability polish. No implementation, push or merge.
 - 2026-10-17 · `arena/404f7e7e-bhagavad-gita` · **Retired the two views Phase 3.1 merged away; re-pointed their links.** Owner reported both: the verse sheet's last-verse "← विषयमा फर्कनुहोस्" opened the old per-theme page, and the Learn story's "← अध्यायमा फर्कनुहोस्" opened the old "Verses with translation" page. Cause: `showVerses()` was declared twice — once as the Phase 3.1 alias, once as the old body — and hoisting made the old body win; `showRead()` was still reachable. Deleted both implementations, `themeNav()`, the `'read'` modal mode and the theme arrow/swipe walk; moved the stale-`#theme=` guard into `showChapter()`; kept `#theme=N.T` opening that theme's disclosure (the 18 chapter pages publish those links) and writing the theme back into the address. `partDesc()` and the retired views' CSS went with them. The document check that had pinned the bad body was replaced by a definition-count/absence assertion (786 → 776 assertions); browser suite 233 → 241 with a new group covering both reported links, the `#theme=` reload and the surviving view set. Four dead i18n strings removed (187 → 183 keys, all three dictionaries). Full browser-enabled build ALL GREEN (2,800/0 pādas; 2,100 paraphrases; SEO 6; site health 503; study 9,658; Python 49; document 776; browser 241; cache `4b4bec79d749`). No chapter content, owner holds or verse text changed; `data/` and `chapter/` untouched. Local commit `ae36688`; no push, no merge.
