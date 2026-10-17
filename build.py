@@ -22,9 +22,9 @@ It runs, in order:
     2g. source/check_study_structure.py  approved story maps and verse titles
     2h. tests/  mutation/regression checks for canonical chapter schema, study
         structure and translations (including checker failure proofs)
-    3. run_gita_app.js        786 assertions on the compact built document (needs node)
+    3. run_gita_app.js        776 assertions on the compact built document (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
-    4. browser_checks.py      233 live-browser checks (Learn/Play, favorites storage and disclosures) (needs playwright)
+    4. browser_checks.py      247 live-browser checks (Learn/Play, favorites storage and disclosures) (needs playwright)
 
 Node-dependent checks (steps 3 and 3b) and the browser check (step 4) are
 skipped with warnings if Node / Playwright are missing — the build itself still

@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 786;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 233;   // browser_checks.py (Learn/Play, storage, disclosures)
+const TOTAL_ASSERTIONS = 776;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 247;   // browser_checks.py (Learn/Play, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -104,7 +104,9 @@ for (const l of LANGS) ok(UI[l] && typeof UI[l] === 'object', `UI.${l} present`)
 const enKeys = Object.keys(UI.en);
 // Phase 3.1 (2026-10-16): added opt_chapter + opt_chapter_d (2) → 186;
 // added click_pada_meanings (1) → 187
-ok(enKeys.length === 187, `UI has 187 keys (got ${enKeys.length})`);
+// 2026-10-17: removed read_sub, opt_full_g, opt_study_g, back_themes (4) → 183,
+// together with the per-theme and continuous-reading views that used them.
+ok(enKeys.length === 183, `UI has 183 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -441,7 +443,6 @@ ok(/function wayCrumbs\(/.test(html) && /wc-link/.test(html) && /wc-cur/.test(ht
    'drill-down views navigate by breadcrumb (links + current)');
 ok((html.match(/wayCrumbs\(\[\[L\('sections_title'\)/g) || []).length >= 4,
    'all four drill-down views root their breadcrumb at The Three Ways');
-for (const l of LANGS) ok('back_themes' in UI[l], `UI key 'back_themes' present in ${l}`);
 // Only 644/700 verses are 4×8 (anuṣṭubh); 51 are triṣṭubh (4×11) and 5 irregular.
 // No blanket "8 syllables each" claim may reappear in the UI copy or the footer.
 ok(!/8 syllables each/.test(html), 'no false "8 syllables each" claim in the document');
@@ -853,8 +854,12 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
 {
   ok(html.includes('if (hn > 18) { showWelcome(); return; }'),
      '#v= to a nonexistent chapter falls back to welcome — never requests data/ch19.js');
-  ok(html.includes('const ch = DATA[ci], t = ch && ch.themes && ch.themes[ti];'),
-     'showVerses guards a stale #theme= index before touching t.parts');
+  ok((html.split('function showVerses(').length - 1) === 1
+     && html.includes('function showVerses(ci,ti){ showChapter(ci, ti); }'),
+     'showVerses is defined once, as the alias into the unified chapter view');
+  ok(!html.includes('function showRead(') && !html.includes("state.view='verses'")
+     && !html.includes("state.view='read'"),
+     'the retired per-theme and continuous-reading views are gone from the shell');
   ok(html.includes("reject(new Error('data/ch' + n + '.js failed to load'))"),
      'loadChapter rejects with a real Error, never undefined');
   ok(html.includes('}).catch(function(){ gitaLoadFail(); })'),

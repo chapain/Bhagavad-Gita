@@ -134,6 +134,58 @@ def run(pw, url, offline_capable=False):
     ok(pg.evaluate("document.querySelector('#theme-0').open"),
        "a theme deep link opens its collapsed theme section")
 
+    group("retired views stay retired")
+    # Owner report 2026-10-17: two links still walked into the views the Phase
+    # 3.1 merge had retired — the verse sheet's "back to theme" opened the old
+    # per-theme page, and the Learn path's "back to chapter" opened the old
+    # continuous-reading page. Both must land on the one chapter view, with the
+    # theme's disclosure open where a theme was asked for.
+    pg.evaluate("showChapter(0)")
+    pg.wait_for_timeout(400)
+    last = pg.evaluate("""() => {
+        const ch = DATA[0], ti = ch.themes.length - 1;
+        let si = 0; for (const p of ch.themes[ti].parts) si += p.sutras.length;
+        openModal(0, ti, si - 1, 'theme');
+        return {ti: ti};
+    }""")
+    pg.wait_for_timeout(500)
+    ok(pg.locator(".m-nav .m-back").count() == 1,
+       "the chapter's last verse still offers its way back to the theme")
+    pg.locator(".m-nav .m-back").click()
+    pg.wait_for_timeout(900)
+    ok(pg.evaluate("state.view") == "chapter" and pg.locator(".ch-theme[open]").count() == 1
+       and pg.evaluate("state.theme") == last["ti"],
+       f"back to theme opens the chapter view with that theme expanded "
+       f"(view={pg.evaluate('state.view')}, open={pg.locator('.ch-theme[open]').count()})")
+    # A theme inside the chapter is the chapter's address, so the generated
+    # chapter pages' "Study this theme in the app →" links survive a reload.
+    pg.evaluate("showChapter(0, 2)")
+    pg.wait_for_timeout(400)
+    ok(pg.evaluate("location.hash") == "#theme=1.2",
+       f"an open theme is written into the address ({pg.evaluate('location.hash')})")
+    pg.reload(wait_until="load")
+    pg.wait_for_timeout(1600)
+    ok(pg.evaluate("state.view") == "chapter" and pg.evaluate("state.theme") == 2
+       and pg.locator(".ch-theme[open]").count() == 1,
+       "a #theme= deep link reopens that theme after a reload")
+    # The Learn path's "back to chapter" (the story screen's foot link).
+    pg.evaluate("showLearn(0)")
+    pg.wait_for_timeout(600)
+    pg.evaluate("lrStory(0, 0)")
+    pg.wait_for_timeout(700)
+    ok(pg.locator(".back-foot .back-top").count() == 1,
+       "the story screen carries its back link")
+    pg.locator(".back-foot .back-top").first.click()
+    pg.wait_for_timeout(800)
+    ok(pg.evaluate("state.view") == "chapter" and pg.locator(".ch-theme-head").count() > 0
+       and pg.locator(".mode-seg .ms-btn.on").inner_text().strip() == "Thematic study",
+       "back to chapter lands on the unified chapter view, not the retired reading page")
+    ok(pg.evaluate("!document.querySelector('.rd-v') && !document.querySelector('.reading')"),
+       "the retired reading/theme markup is rendered nowhere")
+    ok(pg.evaluate("['welcome','sections','chapters','chapter','learn','play',"
+                   "'search','favorites'].includes(state.view)"),
+       f"state.view is one of the surviving views ({pg.evaluate('state.view')})")
+
     group("english wording")
     pg.evaluate("setLang('en')")
     pg.fill("#searchInput", "2.47")
@@ -551,16 +603,17 @@ def run(pw, url, offline_capable=False):
     # duplicate the literal — same profile as the old verses view.
     heads = pg.evaluate("""() => {
         const t = DATA[1].themes[0];
-        // m-part always carries a non-empty label; if partDesc suppresses a
-        // duplicate it returns '', and m-part renders only the title.
+        // m-part always carries a non-empty label; part descriptions are not
+        // rendered in the sheet at all any more (Phase 3.1 retired the
+        // per-theme page that showed them).
         const parts = t.parts.map(p => p.descs[state.lang].trim()
                                       === p.sutras[0].lits[state.lang].trim());
         return parts;
     }""")
     ok(heads == [False, False, True], f"p22 profile: {heads}")
-    # The duplicate-suppression rule lives in partDesc(); we already exercised
-    # it by rendering chapter view — the rule is covered by its unit tests in
-    # tests/test_duplicate_descriptions.py (54 chapter-page health checks).
+    # The duplicate-suppression rule now lives where descriptions are actually
+    # rendered: the build-time .vd rule on the generated chapter pages, covered
+    # by the site-health checks and tests/test_duplicate_descriptions.py.
     if pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"):
         pg.keyboard.press("Escape"); pg.wait_for_timeout(300)
     # Restore the real 2026-10-14 summaries and re-render before
@@ -654,29 +707,36 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(600)
 
     # The verse number sits at the end of the second line between daṇḍas, and a
-    # speaker that falls between the two lines stays there (1.21, 1.28).
-    # showRead is still callable for in-place verification (hero śloka and
-    # reading view share padaBlockDeva / the same lines[] rendering).
-    pg.evaluate("showRead(0,'full')")
-    pg.wait_for_timeout(700)
-    shape = pg.evaluate("""() => {
-        const cards = [...document.querySelectorAll('.rd-v')];
-        const rows = i => [...cards[i].querySelector('.rd-deva').children]
-                           .filter(e => !e.classList.contains('rd-iast'))
-                           .map(e => e.className.trim());
-        const deva = [...cards[0].querySelectorAll('.rd-deva .gline')];
-        return {first: rows(0), v21: rows(20), v28: rows(27),
-                iast: cards[0].querySelectorAll('.rd-deva > .rd-iast').length,
-                tail: deva[deva.length-1].textContent.trim()};
-    }""")
-    ok(shape["first"] == ["rd-spk", "gline", "gline"] and shape["iast"] == 2,
-       f"1.1 keeps its speaker and two Sanskrit lines, each with IAST ({shape['first']})")
-    ok(shape["v21"] == ["gline", "rd-spk", "gline"],
-       f"1.21 keeps its speaker between the two lines ({shape['v21']})")
-    ok(shape["v28"] == ["gline", "rd-spk", "gline"],
-       f"1.28 keeps its speaker between the two lines ({shape['v28']})")
+    # speaker that falls between the two lines stays there (1.21, 1.28). Phase
+    # 3.1 retired the continuous-reading page that used to be the fixture for
+    # this; the sheet's whole-verse block renders the same verseLines() /
+    # padaBlockDeva() construction, so the same three verses prove it on a
+    # surface that still exists.
+    def sheet_shape(ref):
+        pg.evaluate("""ref => { const l = verseLoc(ref); closeModal();
+                                  openModal(l.ci, l.ti, l.si, 'theme'); }""", ref)
+        pg.wait_for_timeout(500)
+        return pg.evaluate("""() => {
+            const box = document.querySelector('#modal .m-whole-verse');
+            const rows = [...box.children]
+                .filter(e => !e.classList.contains('giast') && !e.classList.contains('spk-iast'))
+                .map(e => e.className.trim());
+            const lines = [...box.querySelectorAll('.gline')];
+            return {rows: rows, iast: box.querySelectorAll('.giast').length,
+                    tail: lines[lines.length-1].textContent.trim()};
+        }""")
+
+    shape = sheet_shape("1.01")
+    ok(shape["rows"] == ["spk", "gline", "gline"] and shape["iast"] == 2,
+       f"1.1 keeps its speaker and two Sanskrit lines, each with IAST ({shape['rows']})")
     ok(shape["tail"].endswith("॥") and "1.1" in shape["tail"],
        f"the verse number closes the second line between daṇḍas ({shape['tail'][-18:]})")
+    for ref, num in (("1.21", "1.21"), ("1.28", "1.28")):
+        shape = sheet_shape(ref)
+        ok(shape["rows"] == ["gline", "spk", "gline"],
+           f"{num} keeps its speaker between the two lines ({shape['rows']})")
+    pg.keyboard.press("Escape")
+    pg.wait_for_timeout(400)
 
     # The retired mula/full/study routes remain compatible — they all land on
     # the unified chapter view (Study tab raised), beside Learn by heart.
@@ -791,6 +851,77 @@ def run(pw, url, offline_capable=False):
     }""")
 
     mctx.close()
+
+    group("learn path design")
+    # Owner report 2026-10-17: the learn path looked like a different app from
+    # the chapter view. These lock the four causes, measured rather than
+    # eyeballed, so the two grammars cannot drift apart again.
+    c = b.new_context(viewport={"width": 1440, "height": 900}, service_workers="block")
+    q = c.new_page()
+    q.goto(url, wait_until="load", timeout=90000)
+    q.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    q.wait_for_timeout(400)
+    q.evaluate("if (typeof setTheme === 'function') setTheme(false, false)")
+    q.evaluate("localStorage.removeItem('gitaLearn'); showLearn(1)")
+    q.wait_for_selector(".lr-step", timeout=15000)
+    q.wait_for_timeout(250)
+    # 1. exactly one stage is current; finished stages are marked done
+    def step_states():
+        return q.evaluate(
+            "[...document.querySelectorAll('.lr-step')].map(e => e.className"
+            ".replace('lr-step','').trim())")
+    ok(step_states() == ["now", "", ""],
+       f"a fresh chapter has exactly one current stage ({step_states()})")
+    q.evaluate("lrStoryDone(1); showLearn(1)")
+    q.wait_for_timeout(500)
+    ok(step_states() == ["done", "now", ""],
+       f"finishing the story moves the current stage on ({step_states()})")
+    q.evaluate("localStorage.removeItem('gitaLearn'); showLearn(1)")
+    q.wait_for_timeout(400)
+    # 2. one card grammar: the learn cards match the chapter's cards. Each is
+    # measured in its own view — only one of the two is on screen at a time.
+    def geom(sel):
+        return q.evaluate("""sel => { const e = document.querySelector(sel);
+            if (!e) return null; const s = getComputedStyle(e);
+            return {r: s.borderTopLeftRadius, l: s.borderLeftWidth,
+                    f: s.fontFamily, w: s.fontWeight}; }""", sel)
+    q.evaluate("showLearn(1)"); q.wait_for_selector(".lr-step", timeout=15000)
+    q.wait_for_timeout(250)
+    learn_card = geom(".lr-step")
+    cta_face = geom(".lr-cta")
+    q.evaluate("showChapter(1)"); q.wait_for_selector(".ch-theme", timeout=15000)
+    q.wait_for_timeout(250)
+    chapter_card = geom(".ch-theme")
+    chapter_title = geom(".view-title")
+    q.evaluate("showLearn(1)"); q.wait_for_selector(".view-title", timeout=15000)
+    q.wait_for_timeout(250)
+    # The learn screens share the chapter's chapter-title element (chTitle()
+    # renders it outside .lrn), so measure that, not a descendant of .lrn.
+    learn_title = geom(".view-title")
+    ok(learn_card and chapter_card and learn_card["r"] == chapter_card["r"] == "12px",
+       "learn cards share the chapter card radius (%s / %s)"
+       % (learn_card and learn_card["r"], chapter_card and chapter_card["r"]))
+    # 3. one heading voice: the learn title is not UA-bolded
+    ok(learn_title and chapter_title and learn_title["w"] == chapter_title["w"],
+       "chapter and learn headings carry the same weight (%s / %s)"
+       % (learn_title and learn_title["w"], chapter_title and chapter_title["w"]))
+    # 4. actions stay on the UI face (the app's own chrome/content split)
+    ok(cta_face and ("system-ui" in cta_face["f"] or "-apple-system" in cta_face["f"]),
+       "action buttons use the interface face, not the book's serif (%s)"
+       % (cta_face and cta_face["f"][:28]))
+    q.evaluate("showLearn(1)"); q.wait_for_timeout(400)
+    # 5. the completion seal must actually be visible on its own card
+    q.evaluate("lrStoryDone(1)"); q.wait_for_selector(".lr-seal", timeout=15000)
+    q.wait_for_timeout(250)
+    seal = q.evaluate("""() => {
+        const s = getComputedStyle(document.querySelector('.lr-seal'));
+        const f = getComputedStyle(document.querySelector('.lr-finis'));
+        return {seal: s.backgroundColor, card: f.backgroundColor};
+    }""")
+    ok(seal["seal"] != seal["card"],
+       f"the completion seal is not the card's own fill ({seal['seal']} on {seal['card']})")
+    q.evaluate("localStorage.removeItem('gitaLearn')")
+    c.close()
 
     group("Learn and Play behavior")
     lctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
@@ -1118,9 +1249,11 @@ def run(pw, url, offline_capable=False):
         q = c.new_page()
         q.goto(url, wait_until="load", timeout=90000)
         q.wait_for_timeout(1200)
-        q.evaluate("showVerses(0,0)")
+        q.evaluate("showChapter(0)")
         q.wait_for_timeout(300)
-        q.locator(".mini").first.click()
+        q.locator(".ch-theme").first.locator("summary").click()
+        q.wait_for_timeout(200)
+        q.locator(".ch-theme .mini").first.click()
         q.wait_for_timeout(500)
         ok(q.eval_on_selector(".pada-row", "e=>getComputedStyle(e).flexDirection") == expect,
            f"{name}: quarters {expect}")
