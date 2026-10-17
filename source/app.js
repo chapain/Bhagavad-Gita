@@ -1972,7 +1972,7 @@ function fillModal(){
   function boxHtml(pad, idx, total){
     const id = `words-pada-${idx}`;
     return `<div class="pada-box">
-      <button type="button" class="pada-toggle" aria-expanded="false" aria-controls="${id}" aria-describedby="wordsHint" onclick="toggleWords(this)">
+      <button type="button" class="pada-toggle" aria-expanded="false" aria-controls="${id}" aria-describedby="padaHint" onclick="toggleWords(this)">
         <span class="pb-top"><span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span></span>
         <span class="pb-deva" lang="sa">${pad.d}${pDanda(idx,total)}</span>
         <span class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</span>
@@ -2012,12 +2012,10 @@ function fillModal(){
       <div class="m-whole-verse" lang="sa">
         ${padaBlockDeva(s, true)}
       </div>
-      <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
-      <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
       <details class="m-words-section" id="mWordsSection">
         <summary><span class="m-wb-hint" id="wordsHint">${L('click_hint_pada')}</span></summary>
         <div class="m-words-body">
-          <p class="m-pada-hint">${esc(L('click_pada_meanings'))}</p>
+          <p class="m-pada-hint" id="padaHint">${esc(L('click_pada_meanings'))}</p>
           <div class="m-verse">
             ${spkHtml(topS)}
             <div class="pada-grid">
@@ -2028,6 +2026,8 @@ function fillModal(){
           </div>
         </div>
       </details>
+      <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
+      <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
     </div>
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">

@@ -15,6 +15,26 @@ code alone cannot tell you.
 For a brand-new session: read §1–§10, then this box, then build.
 
 
+### 2026-10-17 — make the path to pāda word meanings hard to miss
+
+* Dhruba noted that the instruction to tap a pāda was small and buried at
+  the bottom of the verse sheet. The existing collapsed word-by-word
+  disclosure now sits immediately below the whole-verse display, before
+  the literal and paraphrase, and its summary is a clear, keyboard-focusable
+  48px-minimum action with a soft teal face. Copy now names the goal
+  (“Open the four quarters for word meanings”); after opening, the larger,
+  non-italic instruction says to tap a quarter. Both strings are localized
+  in English, Nepali and Hindi; quarter buttons’ `aria-describedby` now
+  points to the actual tap instruction. The main verse itself remains
+  static; the disclosure is the control that reveals the four boxes. Its
+  system-font stack now falls back to the bundled Devanagari face, so Nepali
+  and Hindi render as letters rather than missing-glyph boxes. No new i18n
+  keys or verse data/text changed. Four browser checks lock the location,
+  size/face/font fallback, all-language copy and expanded guidance: **247 →
+  251**. Full browser-enabled build ALL GREEN (cache `a1be3426f031`); evidence
+  in `/home/user/evidence/pada-discovery/`.
+
+
 ### 2026-10-17 — the learn path joins the app's design language
 
 * Owner: *"the learn by heart page has a slightly different look than the rest
@@ -1576,7 +1596,7 @@ chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
 run_gita_app.js       776 assertions on the built document and data (needs node)
-browser_checks.py     247 live-browser checks (needs Playwright)
+browser_checks.py     251 live-browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)

@@ -20,8 +20,19 @@ before you talk to the owner.
 
 ## 1. Where we are
 
+- **Pāda-word-meaning discovery improved (2026-10-17, owner request).** The
+  small instruction at the bottom of the verse sheet was easy to miss. The
+  existing word-by-word disclosure now sits immediately below the hero
+  verse, before the translations, with a keyboard-focusable, teal-tinted
+  summary at least 48px high. The EN/NE/HI action copy explains why to open
+  it; once open, a larger tap instruction sits above the pāda boxes, and
+  each quarter button is described by that instruction. The action font stack
+  includes the bundled Devanagari face, preventing missing-glyph boxes in NE/HI.
+  Four browser checks added (247 → 251). No new UI keys, verse text, data or
+  owner-held bytes changed. Full browser-enabled build green (cache
+  `a1be3426f031`); evidence at `/home/user/evidence/pada-discovery/`.
 - **Start-of-session verification (2026-10-17, `arena/6062134a-bhagavad-gita`):** PR #46 is **MERGED**, not merely closed; `mergeCommit.oid`, `origin/main` and this checkout’s `HEAD` all equal `155d0775272f86eec13c3f3cf0666605f9c38611`. The worktree was clean before and after the build. The #46 work is already on `main` and was not repeated. A browser-enabled `python3 build.py` is **ALL GREEN**: 2,800/0 pādas, 2,100 paraphrases, 0 translation failures/4 reviewed advisories, SEO 6, site health 503, study 9,658, Python 49, document 776, browser 247; cache `302930416ac2`. Pillow is absent, so only the optional share-art repaint was skipped. No source or generated files changed.
-- **Next owner decision:** recommend Phase 2.4 (“Start here” / “Gītā in 18 verses”) as the next unfinished roadmap item; Phase 5.4 export/import is a sound alternative for the localStorage data-loss risk, followed by 5.2/5.3. Phase 5.1 remains blocked on §7.4.4; Phase 2.5 remains declined. No task has started. On the reported pāda hint, the current helper is nested in the collapsed word-by-word section and then appears as small muted text. Recommendation only (not implemented): promote the existing disclosure to a clear, tap-sized action directly under the hero verse (“show the four pādas and word meanings”), then keep a short “tap a pāda” instruction above the revealed cards.
+- **Next owner decision:** recommend Phase 2.4 (“Start here” / “Gītā in 18 verses”) as the next unfinished roadmap item; Phase 5.4 export/import is a sound alternative for the localStorage data-loss risk, followed by 5.2/5.3. The pāda-hint discoverability polish is complete (see above); no numbered roadmap task has started. Phase 5.1 remains blocked on §7.4.4; Phase 2.5 remains declined.
 - **The Learn-by-heart path now shares the chapter view's design language
   (2026-10-17, `arena/404f7e7e-bhagavad-gita`).** Owner: *"the learn by heart
   page has a slightly different look than the rest of the app."* Measured, not
@@ -544,7 +555,7 @@ python3 build.py          # build + all checks
 python3 build.py --fast   # build only
 ```
 
-The browser step has **241 live-browser checks** and runs only when Playwright
+The browser step has **251 live-browser checks** and runs only when Playwright
 is importable. In this Arena sandbox, this session used temporary dependencies
 (outside Git):
 
@@ -1622,6 +1633,7 @@ Missing:
       three ways; a jsdom round-trip against the built `index.html` proves the
       ch18 study guide is byte-identical across the reload. Details in §1 and
       `PROJECT.md` §0 / §7. PR **#37**.
+- [x] Owner request 2026-10-17 (outside the numbered plan): **improve pāda-word-meaning discovery.** The four-pāda disclosure moved directly under the hero verse and became a visible 48px-minimum teal-tinted action; the follow-up “tap a pāda” line is larger and is now the accessible description for quarter buttons. EN/NE/HI copy updated with existing keys; four browser checks added (247 → 251). No data, verse text, owner hold or i18n key count changed. Full build green.
 - [x] Owner request 2026-10-17 (outside the numbered plan): **retire the two
       views Phase 3.1 merged away and re-point their links.** The sheet's
       "back to theme" and the Learn path's "back to chapter" now land on the
@@ -1845,6 +1857,7 @@ whole session’s check log are in `/home/user/evidence/phase2.5/` (outside Git)
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-17 · `arena/6062134a-bhagavad-gita` · **Pāda meaning is easier to discover.** Moved the existing collapsed disclosure to directly under the whole verse, restyled its summary as a 48px-minimum teal-tinted, keyboard-focusable action, clarified the CTA and tap instruction in en/ne/hi, and connected quarter buttons to that instruction via `aria-describedby`. Added four browser checks (247 → 251). Added a Devanagari font fallback after the chrome sans stack so NE/HI copy does not render as missing glyphs; the browser group locks it. No new i18n keys or verse-content changes. Full browser-enabled build ALL GREEN (cache `a1be3426f031`); screenshots at `/home/user/evidence/pada-discovery/`. No push or merge.
 - 2026-10-17 · `arena/6062134a-bhagavad-gita` · Verified PR #46 **MERGED** at `155d0775272f86eec13c3f3cf0666605f9c38611`, equal to `origin/main` and this checkout’s `HEAD`; clean worktree. Full browser-enabled build passed (247 browser checks; cache `302930416ac2`), with no source/generated-file changes. Recommended Phase 2.4; asked Dhruba to choose the next roadmap task and whether to implement the pāda-hint discoverability polish. No implementation, push or merge.
 - 2026-10-17 · `arena/404f7e7e-bhagavad-gita` · **Retired the two views Phase 3.1 merged away; re-pointed their links.** Owner reported both: the verse sheet's last-verse "← विषयमा फर्कनुहोस्" opened the old per-theme page, and the Learn story's "← अध्यायमा फर्कनुहोस्" opened the old "Verses with translation" page. Cause: `showVerses()` was declared twice — once as the Phase 3.1 alias, once as the old body — and hoisting made the old body win; `showRead()` was still reachable. Deleted both implementations, `themeNav()`, the `'read'` modal mode and the theme arrow/swipe walk; moved the stale-`#theme=` guard into `showChapter()`; kept `#theme=N.T` opening that theme's disclosure (the 18 chapter pages publish those links) and writing the theme back into the address. `partDesc()` and the retired views' CSS went with them. The document check that had pinned the bad body was replaced by a definition-count/absence assertion (786 → 776 assertions); browser suite 233 → 241 with a new group covering both reported links, the `#theme=` reload and the surviving view set. Four dead i18n strings removed (187 → 183 keys, all three dictionaries). Full browser-enabled build ALL GREEN (2,800/0 pādas; 2,100 paraphrases; SEO 6; site health 503; study 9,658; Python 49; document 776; browser 241; cache `4b4bec79d749`). No chapter content, owner holds or verse text changed; `data/` and `chapter/` untouched. Local commit `ae36688`; no push, no merge.
 - 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Phase 4.4 complete: strict chapter schema and Learn/Play behavior tests.** Added `source/schema.py` before builder indexing and 13 focused mutation-test methods; replaced runtime app-source substring assertions with rendered browser checks. Added exactly 20 Learn/Play + 6 malformed/mixed-favorites checks (233 total). `python3 build.py` ALL GREEN: 2,800 pādas/0 residuals; 2,100 paraphrase pairs; SEO 6; site-health 503; study 9,658; Python 49; document 786; progress 15; search 7; browser 233. Cache `b15c9d30818e`. Phase 4.1–4.4 changes are in local commit `fa2dc09`, pushed only to this fixed branch; PR [#45](https://github.com/chapain/Bhagavad-Gita/pull/45) is open, not merged (owner requested a PR once Phase 4 was complete). Checkout's earlier history was only the grafted base, so prior phase commit references are not in this history. No content, owner holds or i18n keys changed; Pillow absent, share art untouched. Temporary browser environment from §4; no project dependencies added.

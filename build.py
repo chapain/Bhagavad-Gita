@@ -24,7 +24,7 @@ It runs, in order:
         structure and translations (including checker failure proofs)
     3. run_gita_app.js        776 assertions on the compact built document (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
-    4. browser_checks.py      247 live-browser checks (Learn/Play, favorites storage and disclosures) (needs playwright)
+    4. browser_checks.py      251 live-browser checks (Learn/Play, favorites storage and disclosures) (needs playwright)
 
 Node-dependent checks (steps 3 and 3b) and the browser check (step 4) are
 skipped with warnings if Node / Playwright are missing — the build itself still

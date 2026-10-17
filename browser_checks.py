@@ -679,13 +679,74 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_timeout(600)
     ok(pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"),
        "tapping a verse in the chapter view opens its quarters")
-    # the master hide/show-meanings switch sleeps until the Word-by-word
+
+    group("pāda-meaning discovery")
+    hint_layout = pg.evaluate("""() => {
+      const verse = document.querySelector('#modal .m-whole-verse');
+      const section = document.querySelector('#modal .m-words-section');
+      const literal = document.querySelector('#modal .m-line.lit');
+      const summary = section && section.querySelector(':scope > summary');
+      if (!verse || !section || !literal || !summary) return null;
+      const rect = summary.getBoundingClientRect();
+      const css = getComputedStyle(summary);
+      return {
+        direct: verse.nextElementSibling === section,
+        beforeLiteral: !!(section.compareDocumentPosition(literal)
+          & Node.DOCUMENT_POSITION_FOLLOWING),
+        height: rect.height,
+        fontSize: parseFloat(css.fontSize),
+        fontFamily: css.fontFamily,
+        background: css.backgroundColor,
+        cursor: css.cursor
+      };
+    }""")
+    ok(bool(hint_layout and hint_layout["direct"] and hint_layout["beforeLiteral"]),
+       "the word-by-word action sits immediately below the whole verse")
+    ok(bool(hint_layout and hint_layout["height"] >= 48
+            and hint_layout["fontSize"] >= 14
+            and "Noto Serif Devanagari" in hint_layout["fontFamily"]
+            and hint_layout["background"] not in ("transparent", "rgba(0, 0, 0, 0)")
+            and hint_layout["cursor"] == "pointer"),
+       f"the word-by-word action is a visible, tap-sized control ({hint_layout})")
+
+    hint_copy = {}
+    for code in ("en", "ne", "hi"):
+        pg.evaluate(f"setLang('{code}')")
+        hint_copy[code] = pg.evaluate("""() => ({
+          action: document.querySelector('#modal .m-words-section > summary')?.textContent.trim(),
+          instruction: document.querySelector('#modal .m-pada-hint')?.textContent.trim()
+        })""")
+    pg.evaluate("setLang('en')")
+    expected_hint_copy = {
+        "en": {"action": "Open the four quarters for word meanings",
+               "instruction": "Tap any quarter to reveal its word-by-word meanings"},
+        "ne": {"action": "शब्दार्थका लागि चारै पाद खोल्नुहोस्",
+               "instruction": "शब्दार्थ हेर्न कुनै पादमा ट्याप गर्नुहोस्"},
+        "hi": {"action": "शब्दार्थ के लिए चारों पाद खोलें",
+               "instruction": "शब्दार्थ देखने के लिए किसी पाद पर टैप करें"},
+    }
+    ok(hint_copy == expected_hint_copy,
+       f"the action and pāda instruction are clear in all three languages ({hint_copy})")
+
+    # The master hide/show-meanings switch sleeps until the Word-by-word
     # section is opened — before that there is nothing on screen for it to hide
     ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
        "the hide/show meanings switch is inactive before words section opens")
     # Phase 3.2: Word-by-word lives in a collapsed <details>; open it first.
     pg.locator(".m-words-section > summary").first.click()
     pg.wait_for_timeout(300)
+    instruction_visible = pg.evaluate("""() => {
+      const section = document.querySelector('#modal .m-words-section');
+      const hint = document.querySelector('#modal .m-pada-hint');
+      const grid = document.querySelector('#modal .pada-grid');
+      const firstPada = document.querySelector('#modal .pada-toggle');
+      return !!(section?.open && hint && grid && firstPada
+        && hint.getBoundingClientRect().height > 0
+        && (hint.compareDocumentPosition(grid) & Node.DOCUMENT_POSITION_FOLLOWING)
+        && firstPada.getAttribute('aria-describedby') === 'padaHint');
+    }""")
+    ok(instruction_visible,
+       "opening the section reveals the tap instruction above padas and associates it with each quarter")
     pg.locator(".pada-toggle").first.click()
     pg.wait_for_timeout(300)
     ok(not pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
