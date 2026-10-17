@@ -10,9 +10,52 @@ code alone cannot tell you.
 
 ---
 
-## 0. Handoff snapshot (keep current; last touched 2026-10-16)
+## 0. Handoff snapshot (keep current; last touched 2026-10-17)
 
 For a brand-new session: read §1–§10, then this box, then build.
+
+
+### 2026-10-17 — the learn path joins the app's design language
+
+* Owner: *"the learn by heart page has a slightly different look than the rest
+  of the app."* Four measured causes, all fixed: every stage card rendered as
+  `.now` at once (the accent said nothing) — now exactly one is current, with
+  finished stages marked `done`; learn cards used a second grammar (16px,
+  shadow, coloured edge) against the chapter's 12px hairline — now one card
+  scale, with the house 2px brand edge reserved for state; `.view-title` is a
+  `<div>` on the chapter but an `<h2>` in Learn, so the UA bolded only the
+  latter — weight set explicitly; and `.lrn` clamped the column to 760px,
+  leaving 420px empty on a laptop — the shell column is used now, with a 72ch
+  prose measure inside it. The action buttons also carried `font-family:
+  inherit`, which overrode the chrome-sans rule and set them in the book's
+  serif. The completion seal was `--teal-soft` on a `--teal-soft` card, i.e.
+  invisible; it is a filled teal disc. New `--saffron-line` token gives the
+  resting brand edge ≥3:1 contrast in both themes. Browser checks 241 → 247.
+
+
+### 2026-10-17 — the retired views are deleted; their links re-point
+
+* Phase 3.1 replaced the per-theme page and the continuous-reading page with
+  one chapter view, but left both implementations in the shell. Because
+  function declarations hoist, the later `showVerses()` body shadowed the
+  alias added for back-links, so two links still walked into the retired
+  views: the verse sheet's "back to theme" and the Learn path's "back to
+  chapter". Both now land on the unified chapter view.
+* `showVerses(ci,ti)` is defined once, as `showChapter(ci,ti)`; the per-theme
+  body, `themeNav()`, `showRead()`, the `'read'` modal mode, the theme
+  arrow/swipe walk and `partDesc()` are deleted, with the CSS only they used.
+* `#theme=N.T` still opens that theme's disclosure — it is the address all 18
+  generated chapter pages publish — and an open theme is written back into the
+  address, so those links survive a reload. An out-of-range index falls back
+  to the plain chapter view instead of a theme nothing matches.
+* `run_gita_app.js` had pinned the retired body by exact source string; it now
+  asserts a single definition plus the absence of the retired views
+  (**786 → 776 assertions**). The two browser fixtures that used the deleted
+  views moved to the chapter view and the verse sheet, and a new group locks
+  both reported links, the `#theme=` reload and the surviving view set
+  (**233 → 241 browser checks**). Four dead strings left every dictionary
+  (**187 → 183 keys** × 3). Full browser-enabled build ALL GREEN; cache id
+  `4b4bec79d749`. No chapter content, owner hold or verse text changed.
 
 
 ### 2026-10-16 — Phase 4.4 validators and behavior tests; collapsible theme outline
@@ -1532,14 +1575,14 @@ sitemap.xml, robots.txt   generated shell/offline and crawler files
 chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       786 assertions on the built document and data (needs node)
-browser_checks.py     233 live-browser checks (needs Playwright)
+run_gita_app.js       776 assertions on the built document and data (needs node)
+browser_checks.py     247 live-browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)
   app.css              stylesheet template, inlined into index.html
   app.js               client runtime template, inlined into index.html
-  i18n_ui.py           187 UI strings × 3 languages
+  i18n_ui.py           183 UI strings × 3 languages
   study_map_contract.json all 18 reviewed maps + legacy-progress migration
   build_gita.py        assembles templates + chapter data; enforces source schema
   verify.py            IAST normalization and syllable helpers used for checks

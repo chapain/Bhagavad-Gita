@@ -30,15 +30,6 @@ function savedLang(){
 const state = { chapter:null, theme:null, idx:0, lang:savedLang(), view:'welcome', section:null, shared:null,
                 readerSize:savedReaderSize() };
 function T(o){ return o ? (o[state.lang] || o.en || o) : ''; }
-/* Phase 2.2: a verse description that is word-for-word the verse's own
-   literal, in the language on screen, is a copy, not a description —
-   show nothing rather than the repeat line. A distinct description is
-   always returned unchanged; nothing is invented, translated or
-   substituted, and callers emit no element at all for the empty string. */
-function partDesc(p){
-  const d = T(p.descs).trim();
-  return d && d === T(p.sutras[0].lits).trim() ? '' : d;
-}
 /* Phase 2.3: the chapter's traditional colophon — the closing line that names
    the chapter ("... iti <name>o nāma <ordinal>o 'dhyāyaḥ"). It is scripture,
    not our prose, so it carries the Devanagari with its transliteration and
@@ -149,14 +140,10 @@ function setLang(l){
   else if(state.view === 'sections'){ showSections(); }
   else if(state.view === 'search'){ doSearch(); }
   else if(state.view === 'favorites'){ showFavorites(); }
-  /* Phase 3.1: the continuous-reading 'read' view is retired in favour of
-     the merged chapter scroll. Old saved states (state.view === 'read')
-     land on showChapter so nothing breaks on reload. */
-  else if(state.view === 'read'){ showChapter(state.chapter); }
   /* The learn path renders its own views and holds drill state in module
      vars, so it must NOT fall through to the generic chapter/theme restore
-     below: with state.theme set that lands on showVerses() and the reader's
-     drill simply disappears mid-question. Re-enter at the path's home — the
+     below: with state.theme set that lands on the chapter view and the
+     reader's drill simply disappears mid-question. Re-enter at the path's home — the
      only place that can safely rebuild in the new language, since a
      half-answered question's options were built from the old strings.
      Progress is already saved. */
@@ -169,8 +156,7 @@ function setLang(l){
   else {
     const ch = state.chapter, th = state.theme;
     if(ch == null){ if(state.section) showChapters(state.section); else showSections(); }
-    else if(th == null) showThemes(ch);
-    else { showVerses(ch, th); }
+    else { showChapter(ch, th == null ? undefined : th); }
   }
   if(modalOpen && mCh != null && mTh != null){
     state.chapter = mCh; state.theme = mTh; state.idx = mIdx;
@@ -449,7 +435,7 @@ function toggleFav(id){
    real trail. Only recorded when leaving an actual browsing view, so repeatedly
    tapping Favorites doesn't overwrite the origin with itself. */
 function rememberOrigin(){
-  if(['welcome','sections','chapters','themes','verses','read','chapter'].includes(state.view)){
+  if(['welcome','sections','chapters','chapter'].includes(state.view)){
     state.origin = { view: state.view, section: state.section,
                      chapter: state.chapter, theme: state.theme };
   }
@@ -460,8 +446,8 @@ function goToOrigin(){
   $('#searchInput').value = '';
   if(o.view === 'welcome') showWelcome();
   else if(o.view === 'sections') showSections();
-  else if(o.view === 'verses' && o.chapter != null && o.theme != null) showChapter(o.chapter, o.theme);
-  else if((o.view === 'themes' || o.view === 'chapter' || o.view === 'read') && o.chapter != null) showChapter(o.chapter);
+  else if(o.view === 'chapter' && o.chapter != null)
+    showChapter(o.chapter, o.theme == null ? undefined : o.theme);
   else if(o.section != null) showChapters(o.section);
   else showSections();
 }
@@ -574,7 +560,7 @@ function announceView(){
       msg = `${L('search_results')} · ${resultCountLabel(SRCH_HITS.length)}`;
     else if(state.view === 'favorites')
       msg = `${L('favorites')} · ${resultCountLabel(FAV_LIST.length)}`;
-    else if((state.view === 'verses' || state.view === 'chapter') && ch && state.theme != null)
+    else if(state.view === 'chapter' && ch && state.theme != null)
       msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.themes[state.theme].titles)}`;
     else if(ch) msg = `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`;
     else if(state.section) msg = L('sections_title');
@@ -712,6 +698,17 @@ function showLearn(ci){
   const total = ch.themes.length, done = Object.keys(p.themes).length;
   const nv = chVerseN(ch), nh = Object.keys(p.held||{}).length;
   const pct = Math.round((p.story + done + nh) / (1 + total + nv) * 100);
+  /* Which stage the reader is on. Every step used to render as `.now`, so all
+     three wore the saffron edge at once and the accent meant nothing; the CSS
+     has always defined `.done` and a quiet resting state. Exactly one card is
+     current: the first stage that is not finished. A finished stage is
+     `done`; a stage further along is simply quiet (and stays clickable — this
+     path has never gated the reader). */
+  const s1done = !!p.story, s2done = total > 0 && done === total,
+        s3done = nv > 0 && nh === nv;
+  const firstOpen = !s1done ? 1 : (!s2done ? 2 : (!s3done ? 3 : 0));
+  const stepCls = (k, isDone) =>
+    'lr-step' + (isDone ? ' done' : (firstOpen === k ? ' now' : ''));
 
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'),'showSections()'],
@@ -725,8 +722,8 @@ function showLearn(ci){
       <div class="lr-progl">${esc(fmt(L('learn_walked'),{p:numL(pct)}))}
         · ${esc(fmt(L('learn_held_n'),{a:numL(nh),b:numL(nv)}))}</div>
 
-      <div class="lr-step ${p.story?'done':'now'}">
-        <div class="lr-badge">${p.story?'✓':numL(1)}</div>
+      <div class="${stepCls(1, s1done)}">
+        <div class="lr-badge">${s1done?'✓':numL(1)}</div>
         <div class="lr-body">
           <h3>${esc(L('learn_s1'))}</h3>
           <p>${esc(fmt(L('learn_s1_d'),{n:numL(total)}))}</p>
@@ -735,8 +732,8 @@ function showLearn(ci){
         </div>
       </div>
 
-      <div class="lr-step ${done===total?'done':'now'}">
-        <div class="lr-badge">${done===total?'✓':numL(2)}</div>
+      <div class="${stepCls(2, s2done)}">
+        <div class="lr-badge">${s2done?'✓':numL(2)}</div>
         <div class="lr-body">
           <h3>${esc(L('learn_s2'))}</h3>
           <p>${esc(fmt(L('learn_s2_d'),{a:numL(done),b:numL(total)}))}</p>
@@ -749,8 +746,8 @@ function showLearn(ci){
         </div>
       </div>
 
-      <div class="lr-step now">
-        <div class="lr-badge">${numL(3)}</div>
+      <div class="${stepCls(3, s3done)}">
+        <div class="lr-badge">${s3done?'✓':numL(3)}</div>
         <div class="lr-body">
           <h3>${esc(L('learn_s3'))}</h3>
           <p>${esc(L('learn_s3_d'))}</p>
@@ -841,7 +838,7 @@ function lrStoryRead(ci, ch, th, k, n){
       <div class="lr-nav">
         <button class="lr-cta" onclick="lrStory(${ci},${lrPlan(ch)[1]})">${esc(L('learn_read_go'))}</button>
       </div>
-    </div>` + backFoot(`showRead(${ci},'full')`, L('back_chapter_one'));
+    </div>` + backFoot(`showChapter(${ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 function lrStoryDone(ci){
@@ -958,7 +955,7 @@ function lrMeet(ci, ti, k, vs){
         <button class="lr-cta" onclick="LV.shown={};lrTheme(${ci},${ti},${k+1})">
           ${esc(last?L('learn_read_go'):L('learn_next_verse'))}</button>
       </div>
-    </div>` + backFoot(`showRead(${ci},'full')`, L('back_chapter_one'));
+    </div>` + backFoot(`showChapter(${ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 
@@ -1105,7 +1102,7 @@ function lrDrill(ci, ti, vs){
         ${nxt>=0 ? `<button class="lr-cta" onclick="lrTheme(${ci},${nxt},0)">${esc(L('learn_next_theme'))}</button>`
                  : `<p class="lr-all">${esc(fmt(L('learn_all_done'),{n:numL(ch.num)}))}</p>`}
         <button class="lr-ghost" onclick="lrFree(${ci},${ti})">${esc(L('learn_free_go'))}</button>
-        <button class="lr-ghost" onclick="showRead(${ci},'full')">${esc(L('back_chapter_one'))}</button>
+        <button class="lr-ghost" onclick="showChapter(${ci})">${esc(L('back_chapter_one'))}</button>
       </div></div>`;
     scrollViewTop();
   });
@@ -1187,9 +1184,9 @@ function lrFreePaint(){
       <div class="lr-nav">
         <button class="lr-cta" onclick="lrFreePick()">${esc(L('learn_shuffle'))}</button>
         <span class="lr-hint">${esc(fmtNL(v.n))}</span>
-        <button class="lr-ghost" onclick="showRead(${FP.ci},'full')">${esc(L('learn_done_free'))}</button>
+        <button class="lr-ghost" onclick="showChapter(${FP.ci})">${esc(L('learn_done_free'))}</button>
       </div>
-    </div>` + backFoot(`showRead(${FP.ci},'full')`, L('back_chapter_one'));
+    </div>` + backFoot(`showChapter(${FP.ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 function lrFreeTap(i){
@@ -1424,7 +1421,7 @@ function lrPaint(){
     <div class="lr-qbox">${body}<div class="lr-fb" id="lrFb"></div></div>
     </div>` + (LQback
       ? backFoot(LQback.fn, L(LQback.label))
-      : backFoot(`showRead(${LQci},'full')`, L('back_chapter_one')));
+      : backFoot(`showChapter(${LQci})`, L('back_chapter_one')));
   scrollViewTop();
 }
 function lrPick(i){
@@ -1524,17 +1521,17 @@ function renderCrumbs(){
   let label, action;
   if(o.view === 'welcome'){
     label = L('home_plain');            action = ()=>clear(showWelcome);
-  } else if(o.chapter != null && o.theme != null && o.view === 'verses'){
+  } else if(o.chapter != null && o.theme != null){
     // Name each level as what it is — "Theme 1 · The Royal Secret", not just the
     // title, which can echo the chapter name (ch.9's theme 1 is "राजगुह्य", the
     // chapter "राजविद्या राजगुह्य योग"). Matches the verse modal's own wording.
     const ch = DATA[o.chapter];
     label = `${L('theme_sg')} ${numL(o.theme+1)} · ${T(ch.themes[o.theme].titles)}`;
-    action = ()=>clear(()=>showVerses(o.chapter, o.theme));
+    action = ()=>clear(()=>showChapter(o.chapter, o.theme));
   } else if(o.chapter != null){
     const ch = DATA[o.chapter];
     label = `${L('chapter')} ${numL(ch.num)} · ${T(ch.names)}`;
-    action = ()=>clear(()=>showThemes(o.chapter));
+    action = ()=>clear(()=>showChapter(o.chapter));
   } else if(o.section != null){
     label = L('tab_'+['','karma','bhakti','jnana'][o.section]);
     action = ()=>clear(()=>showChapters(o.section));
@@ -1594,16 +1591,15 @@ function viewHash(){
   if(state.view==='sections') return '#ways';
   if(state.view==='chapters' && state.section) return '#way='+state.section;
   if(state.view==='learn' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=learn';
-  if((state.view==='themes' || state.view==='chapter' || state.view==='read') && state.chapter!=null)
-    return '#chapter='+(state.chapter+1)+'&tab=chapter';
-  if(state.view==='verses' && state.chapter!=null && state.theme!=null)
+  if(state.view==='chapter' && state.chapter!=null && state.theme!=null)
     return '#theme='+(state.chapter+1)+'.'+state.theme;
+  if(state.view==='chapter' && state.chapter!=null)
+    return '#chapter='+(state.chapter+1)+'&tab=chapter';
   return '';
 }
 function persistView(){
   const h = viewHash();
   try{ sessionStorage.setItem('gita.route', h || '#'); }catch(e){}
-  try{ sessionStorage.setItem('gita.readMode', state.readMode || ''); }catch(e){}
   const modal = document.getElementById('modalBg');
   if(modal && modal.classList.contains('open')) return;
   const cur = location.hash || '';
@@ -1713,9 +1709,7 @@ function modeSwitch(ci){
      label — with only two modes (read / learn) a question is dead weight.
      Quiet underlined tabs read like a book ("the text" / "memorize"), not a
      setup wizard. */
-  const m = (state.view === 'chapter' || state.view === 'themes' || state.view === 'verses' || state.view === 'read')
-          ? 'chapter'
-          : state.view === 'learn' ? 'learn' : 'chapter';
+  const m = state.view === 'learn' ? 'learn' : 'chapter';
   const btn = (mode, lab, fn, tip) =>
     `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
@@ -1734,16 +1728,21 @@ function chTitle(ch){
 }
 /* One chapter view: keep the theme map visible first, with each theme's range
    ahead of its title. Opening a theme reveals its description and verse cards;
-   a verse card opens the Phase-3.2 sheet. showThemes/showVerses stay as aliases
-   for back-links and saved routes; a theme anchor opens that theme. */
+   a verse card opens the Phase-3.2 sheet. showVerses stays as the alias for
+   back-links and saved routes; a theme anchor opens that theme. */
 function showChapter(ci, anchorTi){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showChapter(ci,anchorTi)).catch(gitaLoadFail); return; }
   if(!DATA[ci]||!DATA[ci].themes){ showWelcome(); return; }
-  state.view='chapter'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6);
-  state.theme = (anchorTi != null) ? anchorTi : null;
-  persistView(); renderCrumbs();
   const ch = DATA[ci];
-  const themeSec = (anchorTi != null) ? numL(anchorTi+1) : '';
+  /* A stale #theme= link (the study maps were renumbered in 15 chapters) can
+     name a theme this chapter no longer has. Open the chapter without an
+     anchor rather than one nothing matches; the guards downstream (the live
+     label, the crumb, the scroll) then all see a theme that exists. */
+  const at = (anchorTi != null && ch.themes[anchorTi] != null) ? anchorTi : null;
+  state.view='chapter'; state.chapter=ci; state.section = state.section || Math.ceil(ch.num/6);
+  state.theme = at;
+  persistView(); renderCrumbs();
+  const themeSec = (at != null) ? numL(at+1) : '';
   let flatSi = 0;
   const body = ch.themes.map((t,ti)=>{
     const verseCards = t.parts.map(p=>{
@@ -1755,7 +1754,7 @@ function showChapter(ci, anchorTi){
         <div class="vhint">${esc(T(s.paras).slice(0,90))}${T(s.paras).length>90?'…':''}</div>
       </div>`;
     }).join('');
-    return `<details class="ch-theme" id="theme-${ti}"${anchorTi===ti?' open':''}>
+    return `<details class="ch-theme" id="theme-${ti}"${at===ti?' open':''}>
       <summary class="ch-theme-head">
         <span class="rng">${fmtRangeL(t.range)}</span>
         <span class="ch-theme-name" role="heading" aria-level="3">${esc(T(t.titles))}</span>
@@ -1773,70 +1772,18 @@ function showChapter(ci, anchorTi){
     <div class="view-sub fade-in">${esc(T(ch.subs))} — ${L('click_hint')}.</div>
     <div class="ch-flow fade-in">${body}${colophonHtml(ch)}</div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
   /* If an anchor theme was requested (deep link / back), scroll to it. */
-  if(anchorTi != null){
+  if(at != null){
     requestAnimationFrame(()=>{
-      const el = document.getElementById('theme-'+anchorTi);
+      const el = document.getElementById('theme-'+at);
       if(el){ el.open = true; el.scrollIntoView({behavior:'smooth', block:'start'}); }
     });
   }
 }
-/* Aliases for older routes / back-links / stored view state. */
-function showThemes(ci){ showChapter(ci); }
+/* Alias for the older routes / back-links / stored view state. Phase 3.1 merged
+   the per-theme page and the continuous-reading page into this one chapter
+   view; a #theme=N.T link (published by the generated chapter pages) and the
+   verse sheet's "back to theme" both land here with that theme opened. */
 function showVerses(ci,ti){ showChapter(ci, ti); }
-
-/* ---------- continuous reading ----------
-   The chapter -> theme -> part -> verse structure is right for study, but the
-   Gita is also something you sit and read straight through. This shows one
-   chapter as flowing text: speaker, verse, translation, nothing else. Tapping a
-   verse still opens the popup with its quarters and word meanings. */
-function showRead(ci, mode){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showRead(ci, mode)).catch(gitaLoadFail); return; }
-  if(!DATA[ci]||!DATA[ci].themes){ showWelcome(); return; }
-  rememberOrigin();
-  /* Owner 2026-09-01: "Verses only" (mūla) was retired. This is a LEARNING
-     app — the root text with no meaning served the reciter, not the student,
-     and it cost a third of the chooser for a mode that taught nothing. 'mula'
-     is still accepted as an alias so links already shared keep working; it
-     simply lands on 'full'. */
-  if(mode === 'mula') mode = 'full';
-  state.readMode = mode || state.readMode || 'full';
-  state.view='read'; state.chapter=ci; state.section = state.section || Math.ceil(DATA[ci].num/6); state.theme=null; persistView(); renderCrumbs();
-  const ch = DATA[ci];
-  const all = [];
-  ch.themes.forEach((t,ti)=>t.parts.forEach(p=>p.sutras.forEach((sv,si)=>
-    all.push({sv, ti, idx: flatIndex(t,p,si)}))));
-  let lastSpeaker = '';
-  const body = all.map(({sv,ti,idx})=>{
-    /* Derive display segments from d/t in source order, so a speaker that sits
-       BETWEEN the two lines stays there (1.21, 1.28) instead of being hoisted to
-       the top. Show the speaker only when the voice changes — losing track of who
-       is talking changes the meaning of a dialogue. */
-    let li = 0, inner = '';
-    for(const x of verseLines(sv)){
-      if(x.k === 's'){
-        const name = x.d.replace(/।\s*$/, '');
-        if(name !== lastSpeaker){ lastSpeaker = name; inner += `<div class="rd-spk">${name}${x.t?` <span class="rd-iast" lang="sa-Latn">${esc(x.t)}</span>`:''}</div>`; }
-      } else {
-        // the verse number belongs at the end of the second line, between the
-        // daṇḍas, as printed editions set it
-        const tail = li ? `॥ <span class="rd-n">${esc(fmtNL(sv.n))}</span> ॥` : '।';
-        inner += `<div class="gline">${x.d}${tail}</div>`;
-        if(x.t) inner += `<div class="rd-iast" lang="sa-Latn">${esc(x.t)}</div>`;
-        li++;
-      }
-    }
-    return `<div class="rd-v" role="button" tabindex="0" onclick="openModal(${ci},${ti},${idx},'read',null,this)">
-      <div class="rd-deva" lang="sa">${inner}</div>
-      ${state.readMode === 'full' ? `<div class="rd-lb">${esc(L('literal'))}:</div><div class="rd-tr">${esc(T(sv.lits))}</div><div class="rd-lb">${esc(L('in_other_words'))}:</div><div class="rd-par">${esc(T(sv.paras))}</div>` : ''}
-    </div>`;
-  }).join('');
-  view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)} · ${L('opt_full_g')}`, null]])}
-    ${chTitle(ch)}
-    ${modeSwitch(ci)}
-    <div class="view-sub fade-in">${esc(L('read_sub'))}</div>
-    <div class="reading ${state.readMode} fade-in">${body}${colophonHtml(ch)}</div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
-}
 
 function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
 function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {s:p.sutras[i], part:p}; i-=p.sutras.length; } return {s:t.parts[t.parts.length-1].sutras[0], part:t.parts[t.parts.length-1]}; }
@@ -1878,62 +1825,6 @@ function padaBlockDeva(s, withNum){
 }
 
 
-function themeGo(d){
-  if(state.view !== 'verses') return;
-  if($('#modalBg') && $('#modalBg').classList.contains('open')) return;
-  const ci = state.chapter, ti = state.theme;
-  if(ci == null || ti == null || !DATA[ci] || !DATA[ci].themes) return;
-  const t2 = ti + d;
-  if(t2 < 0 || t2 >= DATA[ci].themes.length) return;
-  showVerses(ci, t2);
-}
-function themeNav(ci, ti){
-  const n = DATA[ci].themes.length;
-  return `<div class="lr-nav th-turn">
-    <button class="lr-ghost" ${ti>0?'':'disabled'} onclick="showVerses(${ci},${ti-1})">${esc(L('prev_theme'))}</button>
-    <span class="lr-hint">${esc(L('theme_sg'))} ${numL(ti+1)} / ${numL(n)}</span>
-    <button class="lr-ghost" ${ti<n-1?'':'disabled'} onclick="showVerses(${ci},${ti+1})">${esc(L('next_theme'))}</button>
-  </div>`;
-}
-function showVerses(ci,ti){
-  if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showVerses(ci,ti)).catch(gitaLoadFail); return; }
-  const ch = DATA[ci], t = ch && ch.themes && ch.themes[ti];
-  /* A stale #theme= link (the maps were renumbered in 15 chapters) arrives
-     with a ti past the last theme. Fall to the chapter's theme list — never
-     crash on t.parts. */
-  if(!t){ if(ch && ch.themes){ showThemes(ci); } else { showWelcome(); } return; }
-  state.view='verses'; state.chapter=ci; state.theme=ti; persistView(); renderCrumbs();
-  const blocks = t.parts.map((p,pi)=>{
-    const pd = partDesc(p);
-    return `
-    <div class="part fade-in">
-      <div class="part-head">
-        <span class="ptitle">${esc(T(p.titles))}</span>${pd?`<span class="pdesc">${esc(pd)}</span>`:''}
-      </div>
-      <div class="grid verses">
-        ${p.sutras.map((s,si)=>`
-          <div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${flatIndex(t,p,si)},'theme',null,this)">
-            <div class="vnum">${L('verse')} ${fmtNL(s.n)}</div>
-            <div class="padas" lang="sa">${padaBlockDeva(s)}</div>
-            <div class="vhint">${esc(T(s.paras).slice(0,80))}…</div>
-          </div>`).join('')}
-      </div>
-    </div>`;}).join('');
-  view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`], [`${L('chapter')} ${numL(ch.num)} · ${L('opt_study_g')}`, `showThemes(${ci})`], [`${L('theme_sg')} ${numL(ti+1)} · ${T(t.titles)}`, null]])}
-    <!-- Owner 2026-09-02: this was the ONLY view in the app with no heading —
-         the theme's name appeared in the crumb trail and then nowhere on the
-         page itself, so the reader arrived at a description with no subject.
-         Same shape as the learn path's theme screen: title, then range, then
-         the description. -->
-    <div class="view-title fade-in" role="heading" aria-level="2">${esc(T(t.titles))} <span class="rng">${fmtRangeL(t.range)}</span></div>
-    <div class="view-sub fade-in">${esc(T(t.descs))}</div>
-    <div class="view-sub fade-in">${numL(vCount(t))} ${vCount(t)===1?L('verse'):L('verses')}. ${L('click_hint')}.</div>
-    ${themeNav(ci, ti)}
-    ${blocks}
-    ${themeNav(ci, ti)}` + backFoot(`showThemes(${ci})`, L('back_themes'));
-}
-
 let SRCH_HITS = [], FAV_LIST = [];
 /* The verse range a reader walks in thematic study: the WHOLE theme.
    Until 2026-09-01 this returned the enclosing part's bounds, which was right
@@ -1962,17 +1853,6 @@ function openModal(ci,ti,si, mode, navIdx, invoker){
   if(mode === 'theme'){
     const b = themeBounds(DATA[ci].themes[ti]);
     state.pStart = b.start; state.pEnd = b.end;
-  } else if(mode === 'read'){
-    /* Tapped from "Verses only" / "Verses with translation". The reader is in
-       a CHAPTER, so Prev/Next walk that chapter and stop at its edges — the
-       counter then means something ("verse 12 of 20") and nobody is silently
-       relocated into the next chapter. Search and favourites still range over
-       all 700, because those lists are not chapter-scoped.
-       Until 2026-09-01 'read' reached navSutra()'s `else return` and both
-       buttons simply did nothing. */
-    state.cStart = VERSES.findIndex(e => e.ci === ci);
-    state.cEnd = state.cStart;
-    while(state.cEnd + 1 < VERSES.length && VERSES[state.cEnd + 1].ci === ci) state.cEnd++;
   } else if(mode === 'search'){ mode = 'book'; }
   else if(mode === 'fav'){ state.navList = FAV_LIST; state.navIdx = navIdx || 0; }
   state.mode = mode;
@@ -2159,10 +2039,6 @@ function fillModal(){
              ${state.idx===state.pEnd && state.theme===DATA[state.chapter].themes.length-1
                ? `<button class="m-back" onclick="backToTheme()">${esc(L('back_to_theme'))}</button>`
                : `<button onclick="navSutra(1)">${state.idx===state.pEnd?L('next_theme'):L('next')}</button>`}`
-          : state.mode==='read'
-          ? `<button onclick="navSutra(-1)" ${state.gpos>state.cStart?'':'disabled'}>${L('previous')}</button>
-             <span class="m-count">${Lof(state.gpos-state.cStart+1, state.cEnd-state.cStart+1)}</span>
-             <button onclick="navSutra(1)" ${state.gpos<state.cEnd?'':'disabled'}>${L('next')}</button>`
           : state.mode==='book'
           ? `<button onclick="navSutra(-1)" ${state.gpos>0?'':'disabled'}>${L('previous')}</button>
              <span class="m-count">${Lof(state.gpos+1, VERSES.length)}</span>
@@ -2259,12 +2135,6 @@ function navSutra(d){
       const b = themeBounds(DATA[state.chapter].themes[state.theme]);
       state.pStart = b.start; state.pEnd = b.end; state.idx = b.end;
     } else return;
-  } else if(state.mode === 'read'){
-    const n = (state.gpos || 0) + d;
-    if(n < state.cStart || n > state.cEnd) return;
-    state.gpos = n;
-    const loc = VERSES[n];
-    state.chapter = loc.ci; state.theme = loc.ti; state.idx = loc.si;
   } else if(state.mode === 'book'){
     state.gpos = Math.max(0, Math.min(VERSES.length-1, (state.gpos || 0) + d));
     const loc = VERSES[state.gpos];
@@ -2317,9 +2187,6 @@ document.addEventListener('keydown', e=>{
   if(state.view === 'learn' && LV && LV.vs){
     if(e.key==='ArrowLeft'){ e.preventDefault(); lrMeetGo(-1); }
     if(e.key==='ArrowRight'){ e.preventDefault(); lrMeetGo(1); }
-  } else if(state.view === 'verses'){
-    if(e.key==='ArrowLeft'){ e.preventDefault(); themeGo(-1); }
-    if(e.key==='ArrowRight'){ e.preventDefault(); themeGo(1); }
   }
 });
 
@@ -2348,7 +2215,6 @@ document.addEventListener('keydown', e=>{
     x0 = null;
     if(dt > 800 || Math.abs(dx) < 60) return;
     if(state.view === 'learn') lrMeetGo(dx < 0 ? 1 : -1);
-    else if(state.view === 'verses') themeGo(dx < 0 ? 1 : -1);
   }, {passive:true});
 })();
 
@@ -2474,7 +2340,7 @@ function gitaBoot(){
 
 (function(){
   if (!window.matchMedia || !matchMedia('(hover: none)').matches) return;
-  var SEL = '.card,.theme,.mini,.res-card,.w-day,.lr-chip,.pl-mode,.mode-box,.way-crumb,.rd-v,.lr-opt,.lr-chip2,.lr-ghost,.lr-cta,.pl-sel,.ms-btn,.wc-link,.pada-box,.tool-btn';
+  var SEL = '.card,.theme,.mini,.res-card,.w-day,.lr-chip,.pl-mode,.mode-box,.way-crumb,.lr-opt,.lr-chip2,.lr-ghost,.lr-cta,.pl-sel,.ms-btn,.wc-link,.pada-box,.tool-btn';
   var cur = null;
   function hit(el){
     while (el && el.nodeType === 1){

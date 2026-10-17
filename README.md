@@ -67,7 +67,7 @@ source/                 ← edit here
   schema.py               strict chapter JSON keys, types, IDs, ranges and flow shape
   app.html / app.css / app.js  shell templates; CSS and JS stay inline
   ch1.json … ch18.json    one compact canonical content file per chapter
-  i18n_ui.py              interface strings (en/ne/hi; 187 keys each)
+  i18n_ui.py              interface strings (en/ne/hi; 183 keys each)
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
   verify.py               shared text/transliteration helpers
   check_padas.py          verifies word splits against the pādas
@@ -80,8 +80,8 @@ source/                 ← edit here
 
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         786 assertions on the built document
-browser_checks.py       233 live-browser checks (Learn/Play, storage, i18n, touch, offline)
+run_gita_app.js         776 assertions on the built document
+browser_checks.py       247 live-browser checks (Learn/Play, storage, i18n, touch, offline)
 ```
 
 `index.html` remains a **single-shell split site**. Its document, stylesheet and
@@ -142,7 +142,7 @@ both are generated.
 | what you want to fix | file |
 |---|---|
 | chapter names and summaries; themes/parts, titles and descriptions; verse text, translations, word glosses, pāda flow and colophon | `source/ch<N>.json` |
-| interface wording (buttons and labels; 187 UI strings in each of three languages) | `source/i18n_ui.py` |
+| interface wording (buttons and labels; 183 UI strings in each of three languages) | `source/i18n_ui.py` |
 | shell structure, styling and client behavior | `source/app.html`, `source/app.css`, `source/app.js` |
 | approved story maps and safe legacy-progress migration | `source/study_map_contract.json` |
 

@@ -3,7 +3,7 @@
 
 A verse's part description that is word-for-word the verse's own literal,
 in the same language, is a copy. The renderers must show nothing for it
-(partDesc() in source/build_gita.py and the .vd rule on the generated
+(the build-time .vd rule on the generated
 chapter pages) — the source text and the built data keep every description
 regardless, and check_study_structure.py still requires all of them.
 

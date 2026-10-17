@@ -20,6 +20,67 @@ before you talk to the owner.
 
 ## 1. Where we are
 
+- **The Learn-by-heart path now shares the chapter view's design language
+  (2026-10-17, `arena/404f7e7e-bhagavad-gita`).** Owner: *"the learn by heart
+  page has a slightly different look than the rest of the app."* Measured, not
+  eyeballed — four causes, all fixed in `source/app.css` except the first:
+  (1) **every stage card rendered as `.now`** (`showLearn` hard-coded it), so
+  all three wore the saffron edge at once and the accent meant nothing; now
+  exactly one stage is current, finished ones are `done`, later ones quiet,
+  computed from story/themes/held state. (2) **A second card grammar** —
+  learn cards were 16px radius + shadow + a coloured leading edge against the
+  chapter's 12px hairline `--line`; they now match, and the leading edge is
+  the house 2px idiom reserved for `now`/`done`/open. (3) **The heading
+  flipped to bold** — `.view-title` is a `<div>` on the chapter and an `<h2>`
+  in Learn, so the UA bolded one and not the other; weight is now set
+  explicitly to 400 (and scaled down to 1.5rem inside `.lrn`). (4) **The
+  column was clamped to 760px**, leaving 420px empty on the right of a laptop;
+  `.lrn` now uses the shell column and only the prose keeps a 72ch measure.
+  Also: `.lr-cta`/`.lr-ghost` set `font-family:inherit`, silently overriding
+  the stylesheet's own chrome-sans rule, so the action buttons were serif —
+  fixed; 14 `system-ui` labels/counters/verse numbers in the teaching content
+  went back to the book's serif; radii unified to 10/12/14px; hover states
+  quieted to the `.ch-theme` behaviour; new `--saffron-line` token (#B87F3A
+  light / #8C6431 dark) carries the resting brand edge at ≥3:1 on paper and
+  cream. **One real bug found:** the completion seal was `--teal-soft` on a
+  `--teal-soft` card — 1.0:1, invisible; it is a filled teal disc now. New
+  "learn path design" browser group (6 checks) locks the step state machine,
+  card radius, heading weight, action face and seal contrast: browser
+  **241 → 247**. No text, data, DOM structure or i18n keys changed.
+  Full build **ALL GREEN**: 2,800/0 pādas · 2,100 paraphrases · 0 failures/4
+  advisories · SEO 6 · site health 503 · study 9,658 · Python 49 · document
+  776 · **browser 247**. Before/after at 390px and 1440px in both themes:
+  `/home/user/evidence/learn-polish/`. Not pushed, not merged.
+- **The two views Phase 3.1 merged away are now actually gone (2026-10-17,
+  `arena/404f7e7e-bhagavad-gita`), and their two reported links land on the
+  unified chapter view.** Owner report: the verse sheet's last-verse link
+  "← विषयमा फर्कनुहोस्" opened the old **per-theme page**, and the Learn path's
+  "← अध्यायमा फर्कनुहोस्" opened the old **"Verses with translation"** page.
+  **Root cause:** Phase 3.1 added `showVerses()` as an alias into
+  `showChapter()` but left both retired implementations in place; function
+  declarations hoist, so the *later* body shadowed the alias and `showRead()`
+  was fully reachable. **Fix:** `showVerses()` is defined once, as the alias;
+  the per-theme body, `themeNav()`, `showRead()`, the `'read'` modal mode and
+  the theme-to-theme arrow/swipe walk are deleted, and the stale-`#theme=`
+  guard moved into `showChapter()`. A `#theme=N.T` link still opens that
+  theme's disclosure (all 18 generated chapter pages publish these as "Study
+  this theme in the app →"), an out-of-range index falls back to the plain
+  chapter view, and an open theme is written back into the address so those
+  links survive a reload. Also dropped with the views: `partDesc()` (no
+  renderer showed a part description any more) and their CSS. **The test that
+  pinned the bug:** `run_gita_app.js` asserted the retired body's exact source
+  string — replaced by "defined once, as the alias" plus an absence check;
+  **786 → 776 document assertions**. `browser_checks.py` fixtures moved off
+  the deleted views (**233 → 241**), with a new "retired views stay retired"
+  group locking both reported links, the `#theme=` reload and the surviving
+  `state.view` set. Four retired strings (`read_sub`, `opt_full_g`,
+  `opt_study_g`, `back_themes`) removed from all three dictionaries:
+  **187 → 183 keys**. No chapter content, owner-held bytes or verse text
+  changed. Full browser-enabled build **ALL GREEN**: 2,800/0 pādas · 2,100
+  paraphrases · 0 failures/4 reviewed advisories · SEO 6 · site health 503 ·
+  study 9,658 · Python 49 · document 776 · progress 15 · search 7 · **browser
+  241** · cache `4b4bec79d749`. Evidence at `/home/user/evidence/nav-retire/`.
+  Committed locally only; not pushed, not merged.
 - **Phase 4.1–4.4 complete (2026-10-16; branch `arena/260a62af-bhagavad-gita`).**
   Phase 4.1 moved the shell templates to `source/app.html`, `source/app.css`
   and `source/app.js`; Phase 4.2 audited owner-authorized dead-file candidates
@@ -49,15 +110,18 @@ before you talk to the owner.
     (636,787 gzip). Content-derived cache id: `b15c9d30818e`. Pillow is absent;
     optional share-art repaint was skipped and the existing image untouched.
   - Phase 4.1–4.4 is committed as `fa2dc09` and pushed only to
-    `arena/260a62af-bhagavad-gita`; **PR #45 is open, not merged**. The checkout
-    began with only the grafted base commit, so earlier phase commit references
-    in older notes are historical and are not present in this checkout's Git history.
-  - **Next:** no Phase 4 work remains. PR #45 is the requested review path;
-    do not merge it without owner instruction.
+    `arena/260a62af-bhagavad-gita`; **PR #45 is MERGED** (verified 2026-10-17):
+    `state=MERGED`, `mergeCommit.oid = e4619f4fccd097a4d47eb1d5647a036021cf6e1f`,
+    which is `main` and this session's base. The checkout began with only the
+    grafted base commit, so earlier phase commit references in older notes are
+    historical and are not present in this checkout's Git history.
+  - **Next:** no Phase 4 work remains and PR #45 needs no action. The next
+    roadmap item is 2.4 ("Start here" / "Gītā in 18 verses"); Phase 5 (Grow)
+    is unstarted and 5.1 is gated on the audio decision in §7.4.4.
   - Standing constraints: preserve owner-held content byte-identically unless
     explicitly asked; use `source/app.html`, `source/app.css` and `source/app.js`
     for UI code; keep every key in the three `source/i18n_ui.py` dictionaries
-    (baseline 187 keys); update assertion/count prose when counts change. Cache
+    (baseline 183 keys); update assertion/count prose when counts change. Cache
     ID is content-derived; serve `/sw.js` with `Cache-Control: no-store` when
     testing updates.
 
@@ -478,7 +542,7 @@ python3 build.py          # build + all checks
 python3 build.py --fast   # build only
 ```
 
-The browser step has **233 live-browser checks** and runs only when Playwright
+The browser step has **241 live-browser checks** and runs only when Playwright
 is importable. In this Arena sandbox, this session used temporary dependencies
 (outside Git):
 
@@ -1438,8 +1502,11 @@ Missing:
 - Current generated chapter payloads are 3,336,550 bytes raw (636,787 gzip).
   The app and static chapter pages start with collapsed theme disclosures;
   each formatted range precedes its title, and verse deep links open all
-  enclosing disclosures. `run_gita_app.js` has 786 assertions; the browser
-  suite has 233; site health has 503. Cache id: `b15c9d30818e`.
+  enclosing disclosures. `run_gita_app.js` has 776 assertions; the browser
+  suite has 241; site health has 503. Cache id: `4b4bec79d749`. Phase 3.1's
+  two retired views (per-theme page, continuous-reading page) are deleted as
+  of 2026-10-17; `showVerses(ci,ti)` is the single remaining alias into
+  `showChapter(ci, anchorTi)`.
   `source/prove_data_only.py` passes all eight edit-and-restore proofs; owner
   holds and i18n keys are unchanged.
 - **Phase 4.4 complete:** `source/schema.py` validates the complete chapter
@@ -1553,6 +1620,14 @@ Missing:
       three ways; a jsdom round-trip against the built `index.html` proves the
       ch18 study guide is byte-identical across the reload. Details in §1 and
       `PROJECT.md` §0 / §7. PR **#37**.
+- [x] Owner request 2026-10-17 (outside the numbered plan): **retire the two
+      views Phase 3.1 merged away and re-point their links.** The sheet's
+      "back to theme" and the Learn path's "back to chapter" now land on the
+      unified chapter view (theme disclosure open where a theme was asked for);
+      `showRead`/the per-theme page, their CSS, the `'read'` modal mode and the
+      theme arrow/swipe walk are gone; four dead i18n strings removed
+      (187 → 183). Document 786 → 776, browser 233 → 241. Full build green;
+      commit `ae36688` on `arena/404f7e7e-bhagavad-gita`, not pushed.
 - [x] **p22 browser regression fixed** in the Phase 3 stack: assertions now use
       synthetic description data instead of assuming live descriptions duplicate
       literals. The current full browser suite passes 207/207.
@@ -1759,13 +1834,16 @@ whole session’s check log are in `/home/user/evidence/phase2.5/` (outside Git)
 ### 7.4–7.7 Still waiting on the owner
 
 4. Where audio would come from (licence, who records it).
-5. OK to merge “Verses with translation” and “Study guide” into one view?
+5. ~~OK to merge “Verses with translation” and “Study guide” into one view?~~
+   **Answered by the work:** Phase 3.1 merged them into one chapter view, and
+   on 2026-10-17 the retired leftovers were deleted and their links re-pointed.
 6. OK to delete the dead files in §5.7?
 7. `PROJECT.md` §8 asks every session to deliver the full repo zip. With GitHub
    as the checkpoint, is that still wanted?
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-17 · `arena/404f7e7e-bhagavad-gita` · **Retired the two views Phase 3.1 merged away; re-pointed their links.** Owner reported both: the verse sheet's last-verse "← विषयमा फर्कनुहोस्" opened the old per-theme page, and the Learn story's "← अध्यायमा फर्कनुहोस्" opened the old "Verses with translation" page. Cause: `showVerses()` was declared twice — once as the Phase 3.1 alias, once as the old body — and hoisting made the old body win; `showRead()` was still reachable. Deleted both implementations, `themeNav()`, the `'read'` modal mode and the theme arrow/swipe walk; moved the stale-`#theme=` guard into `showChapter()`; kept `#theme=N.T` opening that theme's disclosure (the 18 chapter pages publish those links) and writing the theme back into the address. `partDesc()` and the retired views' CSS went with them. The document check that had pinned the bad body was replaced by a definition-count/absence assertion (786 → 776 assertions); browser suite 233 → 241 with a new group covering both reported links, the `#theme=` reload and the surviving view set. Four dead i18n strings removed (187 → 183 keys, all three dictionaries). Full browser-enabled build ALL GREEN (2,800/0 pādas; 2,100 paraphrases; SEO 6; site health 503; study 9,658; Python 49; document 776; browser 241; cache `4b4bec79d749`). No chapter content, owner holds or verse text changed; `data/` and `chapter/` untouched. Local commit `ae36688`; no push, no merge.
 - 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Phase 4.4 complete: strict chapter schema and Learn/Play behavior tests.** Added `source/schema.py` before builder indexing and 13 focused mutation-test methods; replaced runtime app-source substring assertions with rendered browser checks. Added exactly 20 Learn/Play + 6 malformed/mixed-favorites checks (233 total). `python3 build.py` ALL GREEN: 2,800 pādas/0 residuals; 2,100 paraphrase pairs; SEO 6; site-health 503; study 9,658; Python 49; document 786; progress 15; search 7; browser 233. Cache `b15c9d30818e`. Phase 4.1–4.4 changes are in local commit `fa2dc09`, pushed only to this fixed branch; PR [#45](https://github.com/chapain/Bhagavad-Gita/pull/45) is open, not merged (owner requested a PR once Phase 4 was complete). Checkout's earlier history was only the grafted base, so prior phase commit references are not in this history. No content, owner holds or i18n keys changed; Pillow absent, share art untouched. Temporary browser environment from §4; no project dependencies added.
 - 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Collapsible chapter-theme outline implemented.** App and generated landing pages start with closed theme disclosures, show ranges before titles, and reveal descriptions/verse titles on expansion; static verse anchors open both enclosing disclosures. Browser behavior tests and a generated-markup assertion added; brittle heading source-string check removed. Full build green at the time: 207 browser, 791 document, 643 site-health, SEO 6, study 9,658, Python 36, progress 15, search 7. Cache `5d24cc4b3ed3`; no source content, owner holds or i18n keys changed. No push or merge.
 - 2026-10-16 · `arena/260a62af-bhagavad-gita` · **Phase 4.3 chapter-data consolidation and compact schema complete (committed locally, not pushed).** Migrated all 18 chapter records to `source/ch<N>.json`; removed 61 parallel Python data modules plus duplicate `name`/`sub`, English `title`/`desc`, and derived `lines`/`padas`/`speakers`/`meter`/`mt` fields. Runtime derives display segments from `d`/`t` and meter from `flow`. Source JSON shrank 41.8%; recursive comparison against the previous 18 published payloads verifies retained content and owner holds are unchanged. Eight `prove_data_only.py` edit/restore proofs pass. Full `/home/user/.venv/bin/python build.py` green: 199 browser, 790 document, 644 health, SEO 6, study 9,658, Python 36, progress 15, search 7. Cache id `96451d90c1c3`; temporary `@sparticuz/chromium`/`LD_LIBRARY_PATH` workaround used, no project dependency added; Pillow absent, existing share art untouched. Phase 4.4 is next. No push or merge.
