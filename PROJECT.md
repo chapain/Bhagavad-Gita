@@ -15,6 +15,76 @@ code alone cannot tell you.
 For a brand-new session: read §1–§10, then this box, then build.
 
 
+### 2026-10-18 — book-wide theme-title audit: 169 read, 6 fixed, 2 checks added (owner: "fix all")
+
+* **Method (owner asked).** Title fidelity is measured against the *literal
+  translation* — the Sanskrit verse is ground truth. The paraphrase is the
+  house interpretation layer and may legitimately go beyond the verse; a title
+  that matches the paraphrase's emphasis but not the literal is still a drift.
+  All 169 themes were read (title EN/NE/HI + desc + every verse's literal,
+  paraphrase and speaker) before any fix.
+* **The six fixes** (all in `source/chN.json` + one `STUDY_MAPS.md` line each;
+  NE/HI re-verified per verse, changed only where they drifted too):
+  * **11.21–11.25** — "Wonder becomes terror; Arjuna seeks refuge" → "Wonder
+    becomes terror; no bearing, no peace" (विस्मय भयमा बदलिन्छ; न दिशा, न
+    शान्ति / विस्मय भय बनता है; न दिशा, न शांति). The only real
+    misattribution found: 11.25 is *diśo na jāne na labhe ca śarma* — "I
+    know no direction, nor can I find peace" — and 11.21–25 ask for grace,
+    not refuge (refuge (*śaraṇa*) belongs to 11.32, correctly titled there).
+  * **2.51–2.53** — "Wisdom steadies the mind" → "A steady intellect attains
+    yoga". 2.53: a steady intellect (*buddhimān*) who crosses delusion and
+    rests in the Self *attains* yoga — the old title reversed the relation and
+    substituted "wisdom" for *buddhi*.
+  * **2.01–2.03** — "Kṛṣṇa challenges Arjuna to rise" → "Kṛṣṇa rebukes
+    Arjuna's dejection". 2.02 is a rebuke of *śāntaḥ* ("what is this
+    unworthiness?"), not a challenge; NE/HI titles already said ललकार, so the
+    three *descriptions* were aligned (EN "challenges his despair" → "rebukes
+    his despair"; NE/HI चुनौती→ललकार).
+  * **1.38–1.44** — "Arjuna fears the collapse of family dharma" → "The ruin
+    that follows a family's destruction" (कुल नष्ट भएपछि आउने विनाश / कुल के
+    नष्ट होने पर आने वाला विनाश). The verses catalogue the ruin that *follows*
+    destruction (adharma, varṇa-saṅkara, lost ancestors' offerings) — "Arjuna
+    fears" was interpretation imported from 1.35–1.37, which sit in the
+    previous theme.
+  * **7.01–7.03** — "Hear how to know me fully" → "Hear how to know me fully:
+    one in a thousand" (मलाई पूर्ण रूपमा कसरी जान्ने: हजारौं मध्ये एक / मुझे
+    पूर्ण रूप से कैसे जानें: हज़ारों में एक). The theme title had degenerated
+    into 7.01's part title and dropped 7.03's central image (*saḥ śaśvato
+    'sāvabho* — "one in a thousand strives, one who strives perchance
+    attains").
+  * **4.11–4.14** — "The Lord responds, yet action does not bind him" → "The
+    Lord gives the fruits, yet action does not bind him". 4.11–14: Kṛṣṇa
+    *gives* the fruits (*phalam dadmi*) of the four kinds of worship; NE/HI
+    already said so and were kept.
+* **Kept under delegated judgment.** 2.04–2.06 "Arjuna cannot strike his
+  teachers" — 2.05 names Droṇa and Bhīṣma as *guru*, and the theme's point is
+  his refusal, not the naming; the title stays. 2.19–2.21 "The Self neither
+  kills nor is killed" is identical to part 2.19's title on purpose (2.21
+  restates the doctrine), now documented in the check's allowlist.
+* **Two report-only title advisories** added to `source/check_study_structure.py`
+  (never fail the build): (1) a theme EN title identical to one of its own
+  part titles (allowlist: 2.19–2.21); (2) a theme EN title that names a person
+  (Arjuna/Kṛṣṇa/Sañjaya/Duryodhana/Bhīṣma/Dhṛtarāṣṭra/Droṇa/Karṇa, with alias
+  maps — e.g. "Blessed Lord"/madhusūdana for Kṛṣṇa, pārtha for Arjuna) who
+  appears in neither the theme's EN text nor the verse opening its speech (a
+  mid-speech continuation walks back to the nearest speaker item, so
+  "Duryodhana sizes up both armies" 1.04–09 correctly reads the 1.02
+  *duryodhana uvāca* that opens the speech). Both advisories read **zero**
+  book-wide after the fixes; four new mutation tests
+  (`tests/test_study_structure.py`) prove each fires and that the clean book
+  and the allowlisted 2.19–2.21 stay silent (Python 49 → 53). `build.py`
+  tails that step 2 → 4 lines. A third candidate advisory (number-words in
+  titles) was considered and skipped: it has 5 permanent false positives
+  ("three kinds of X" patterns in ch17–18 where the verses enumerate without
+  writing the numeral).
+* Churn: 5 source JSONs, 6 `STUDY_MAPS.md` lines, `data/ch1,2,4,7,11.js`,
+  `chapter/{1,2,4,7,11}/`, `sw.js` cache id, sitemap lastmods. Full build ALL
+  GREEN: 2,800/0 pādas; 2,100 paraphrases; 0 translation failures/4 reviewed
+  advisories; SEO 6; site health 503; study 9,658 (0 title advisories); Python
+  53; document 776; progress 15; search 7. Browser layer skipped — no
+  Playwright in this sandbox (last full browser-green 2026-10-17). No verse
+  text, part title, i18n key or owner-held byte changed. Not pushed.
+
 ### 2026-10-18 — theme title 18.01–18.06 names both terms (owner decision)
 
 * Owner: the theme title "Renunciation is not abandonment of purifying

@@ -15,10 +15,16 @@ class StudyStructureTests(unittest.TestCase):
         cls.valid_book = load_book()
 
     def setUp(self):
-        self.metadata, self.english, self.localized, self.built = copy.deepcopy(self.valid_book)
+        (self.metadata, self.english, self.localized, self.built,
+         self.evidence) = copy.deepcopy(self.valid_book)
 
     def errors(self):
-        return audit(self.metadata, self.english, self.localized, self.built)[0]
+        return audit(self.metadata, self.english, self.localized,
+                     self.built, self.evidence)[0]
+
+    def advisories(self):
+        return audit(self.metadata, self.english, self.localized,
+                     self.built, self.evidence)[2]
 
     def assert_rejected(self, message):
         self.assertTrue(any(message in error for error in self.errors()), self.errors())
@@ -105,6 +111,27 @@ class StudyStructureTests(unittest.TestCase):
         literal = 'Ours, guarded by Bhīṣma; theirs, guarded by Bhīma'.lower()
         for name in ('Bhīṣma', 'Bhīma'):
             self.assertNotEqual(possessive_side(wrong, name), possessive_side(literal, name))
+
+    def test_valid_book_has_no_title_advisories(self):
+        self.assertEqual(self.advisories(), [])
+
+    def test_theme_title_lifting_a_part_title_is_advised(self):
+        theme = self.english[2][0]          # 2.01–2.03
+        self.english[2][0] = (theme[2][0][0], theme[1], theme[2])
+        joined = ' '.join(self.advisories())
+        self.assertIn('theme title lifts part title', joined, joined)
+        self.assertNotIn('2.19–2.21', joined)   # the kept one stays silent
+
+    def test_title_naming_an_absent_person_is_advised(self):
+        theme = self.english[11][4]         # 11.21–11.25
+        self.english[11][4] = ('Droṇa watches the blazing mouths', theme[1], theme[2])
+        joined = ' '.join(self.advisories())
+        self.assertIn('11.21–11.25: title names Droṇa', joined, joined)
+
+    def test_title_naming_the_opening_speaker_of_the_speech_is_not_advised(self):
+        theme = self.english[1][1]          # 1.04–1.09, mid-Duryodhana speech
+        self.assertEqual(theme[0], 'Duryodhana sizes up both armies')
+        self.assertNotIn('1.04–1.09', ' '.join(self.advisories()))
 
     def test_four_instructions_recur_not_the_entire_verse(self):
         self.assertIn('same four instructions', self.english[9][-1][1])
