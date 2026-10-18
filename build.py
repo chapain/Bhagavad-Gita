@@ -23,10 +23,12 @@ It runs, in order:
     2h. tests/  mutation/regression checks for canonical chapter schema, study
         structure and translations (including checker failure proofs)
     3. run_gita_app.js        776 assertions on the compact built document (needs node)
+    3a. tests/test_progress_maps.js  saved-learning map migration (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
+    3c. tests/test_theme_card_navigation.js  all 700 chapter cards open their own verses (needs node)
     4. browser_checks.py      264 live-browser checks (Learn/Play, refresh, storage and disclosures) (needs playwright)
 
-Node-dependent checks (steps 3 and 3b) and the browser check (step 4) are
+Node-dependent checks (steps 3–3c) and the browser check (step 4) are
 skipped with warnings if Node / Playwright are missing — the build itself still
 completes.
 """
@@ -124,6 +126,8 @@ def main():
                   "saved-learning map migration", tail=3)
         ok &= run([node, "tests/test_search.js"], ROOT,
                   "search normalization regressions", tail=3)
+        ok &= run([node, "tests/test_theme_card_navigation.js"], ROOT,
+                  "theme card navigation (700 verses)", tail=3)
     else:
         print("\n--- document tests ---\n(skipped — node not installed)")
 

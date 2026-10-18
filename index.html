@@ -3710,11 +3710,12 @@ function showChapter(ci, anchorTi){
   state.theme = at;
   persistView(); renderCrumbs();
   const themeSec = (at != null) ? numL(at+1) : '';
-  let flatSi = 0;
   const body = ch.themes.map((t,ti)=>{
+    // openModal/sutraAt index within this theme, not across the chapter.
+    let themeSi = 0;
     const verseCards = t.parts.map(p=>{
       const s = p.sutras[0];
-      const si = flatSi++;
+      const si = themeSi++;
       /* The paraphrase is printed whole, not cut at 90 characters (the cut
          lived here until 2026-10-18): a reader working through the theme map
          stays in the chapter and wants the complete thought under each
