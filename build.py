@@ -113,7 +113,7 @@ def main():
 
     # Story turns must stay trilingual, contiguous, and small enough to learn.
     # The approved longer passages are explicit, not an accidental loophole.
-    ok &= run([PY, "check_study_structure.py"], SRC, "study maps / verse titles", tail=2)
+    ok &= run([PY, "check_study_structure.py"], SRC, "study maps / verse titles", tail=4)
     ok &= run([PY, "-m", "unittest", "discover", "-s", "tests"], ROOT,
               "Python mutation/regression tests", tail=4)
 

@@ -50,14 +50,14 @@ The previously reviewed pilot map and teaching copy are retained.
 6. **1.20–1.25 · Arjuna asks to see the armies** — Kṛṣṇa answers by placing the chariot before the assembled Kurus and inviting Arjuna to look.
 7. **1.26–1.30 · Arjuna sees his kin—and falters** — Compassion turns physical: Arjuna’s limbs fail, his mouth dries, and his mind reels.
 8. **1.31–1.37 · No victory is worth killing his kin** — Ill omens lead him to reject victory and kingdom; he argues that killing kin brings sin, not joy—not even dominion over the three worlds is worth it.
-9. **1.38–1.44 · Arjuna fears the collapse of family dharma** — He links family destruction to adharma and varṇa-saṅkara, the loss of family and social duties, and ancestors deprived of their offerings.
+9. **1.38–1.44 · The ruin that follows a family's destruction** — He links family destruction to adharma and varṇa-saṅkara, the loss of family and social duties, and ancestors deprived of their offerings.
 10. **1.45–1.47 · He would rather die—and lays down his bow** — He calls the choice a great sin and would rather be killed unarmed; his final words give way to grief.
 
 ## Chapter 2 — 19 turns
 
 The previously reviewed pilot map and teaching copy are retained.
 
-1. **2.1–2.3 · Kṛṣṇa challenges Arjuna to rise** — Seeing Arjuna overwhelmed by grief, Kṛṣṇa challenges his despair and urges him to cast off weakness and rise.
+1. **2.1–2.3 · Kṛṣṇa rebukes Arjuna's dejection** — Seeing Arjuna overwhelmed by grief, Kṛṣṇa rebukes his despair and urges him to cast off weakness and rise.
 2. **2.4–2.6 · Arjuna cannot strike his teachers** — Arjuna cannot bring himself to raise his bow against revered teachers; he would rather beg and cannot see whether victory or defeat is better.
 3. **2.7–2.10 · Arjuna surrenders; Kṛṣṇa begins to teach** — Arjuna admits his confusion about duty and asks for guidance as Kṛṣṇa's disciple. No kingdom can ease his grief; when he falls silent, Kṛṣṇa begins to speak.
 4. **2.11–2.15 · The Self endures as the body changes** — The wise do not grieve for the living or dead. The embodied Self passes through life's stages, while sense-contacts bring fleeting pleasure and pain to be endured.
@@ -70,7 +70,7 @@ The previously reviewed pilot map and teaching copy are retained.
 11. **2.39–2.41 · Yoga's wisdom is one-pointed** — The teaching turns from Sāṅkhya to yoga: no sincere effort is lost, and the resolute intellect holds to one aim rather than branching without end.
 12. **2.42–2.46 · Beyond the Veda's promised rewards** — Those drawn to ritual rewards mistake them for the whole of the Veda. Rise beyond the three guṇas; to one who knows, the Vedas are like a well when water is everywhere.
 13. **2.47–2.50 · Act without clinging to the fruits** — Act without making results your motive, and do not cling to inaction. Evenness in success and failure is yoga; yoga is skill in action.
-14. **2.51–2.53 · Wisdom steadies the mind** — The wise let go of action's fruits and the bonds of birth. When the intellect crosses delusion and rests unmoved in samādhi, yoga is attained.
+14. **2.51–2.53 · A steady intellect attains yoga** — The wise let go of action's fruits and the bonds of birth. When the intellect crosses delusion and rests unmoved in samādhi, yoga is attained.
 15. **2.54–2.58 · Arjuna asks how the steady sage lives** — Arjuna asks how the steady sage speaks, sits and moves. Kṛṣṇa begins the answer: content in the Self, untroubled by sorrow or joy, with the senses drawn in like a tortoise's limbs.
 16. **2.59–2.61 · The taste remains until the Supreme is seen** — Objects may fall away while their taste remains; only seeing the Supreme removes that lingering relish. Until then, even the striving sage must restrain the turbulent senses.
 17. **2.62–2.63 · How desire leads to ruin** — Dwelling on sense objects breeds attachment, desire and anger; anger clouds memory and judgment, and the person is lost.
@@ -98,7 +98,7 @@ Keep the birth question and reply together, then divine manifestation; follow ac
 
 1. **4.1–4.5 · Ancient yoga and the memory of past births** — The ancient yoga passed through Vivasvān and the royal sages, then was lost. Arjuna asks how Kṛṣṇa could have taught it at the beginning, since Vivasvān was born earlier; Kṛṣṇa recalls their many past births.
 2. **4.6–4.10 · Why the unborn Lord takes birth** — The unborn Lord appears through his own māyā to restore dharma. Knowing his divine birth and action, and taking refuge in him, leads beyond rebirth.
-3. **4.11–4.14 · The Lord responds, yet action does not bind him** — People approach Kṛṣṇa through differing aims and worship. He establishes the fourfold order, yet remains the imperishable non-doer, untainted by action.
+3. **4.11–4.14 · The Lord gives the fruits, yet action does not bind him** — People approach Kṛṣṇa through differing aims and worship. He establishes the fourfold order, yet remains the imperishable non-doer, untainted by action.
 4. **4.15–4.18 · Discern action within inaction** — Act as the ancient seekers did, but understand action, forbidden action and inaction. The wise discern inaction in action, and action in inaction.
 5. **4.19–4.23 · Unattached action leaves no bondage** — Free of selfish intention and attachment to results, the wise remain content and even-minded. Their action, offered as sacrifice, dissolves without bondage.
 6. **4.24–4.28 · Sacrifice takes many forms** — From the vision of Brahman in every offering, sacrifice widens to restraint, sense activity, wealth, austerity, yoga and study.
@@ -138,7 +138,7 @@ Distinguish preparation from meditative experience, and peaceful practice from e
 
 Retain the already coherent opening turns. Split the final seven-verse passage at the real contrast: delusion in 24–27, freedom and knowledge at death in 28–30.
 
-1. **7.1–7.3 · Hear how to know me fully** — With mind and refuge in Kṛṣṇa, hear knowledge together with realization. Few strive for perfection; rarer still is knowing him in truth.
+1. **7.1–7.3 · Hear how to know me fully: one in a thousand** — With mind and refuge in Kṛṣṇa, hear knowledge together with realization. Few strive for perfection; rarer still is knowing him in truth.
 2. **7.4–7.7 · Two natures, one thread through everything** — The lower nature has eight aspects; the higher sustains life. Both give rise to beings, and everything rests on Kṛṣṇa like pearls on one thread.
 3. **7.8–7.11 · Recognise me in the world’s living essence** — Taste, light, fragrance, life, wisdom and strength reveal Kṛṣṇa’s presence. Even desire, when not opposed to dharma, belongs to this account.
 4. **7.12–7.15 · Cross the guṇas’ delusion through refuge** — The guṇas arise from Kṛṣṇa yet conceal him from the deluded. His māyā is hard to cross; refuge in him opens the way beyond it.
@@ -196,7 +196,7 @@ Preserve changes of speaker and emotional turns: request, vision, awe, fear, des
 2. **11.5–11.8 · The gift of the divine eye** — Kṛṣṇa invites Arjuna to behold countless forms and the whole world in one body. Ordinary sight is insufficient: he grants the divine eye.
 3. **11.9–11.14 · Sañjaya narrates the overwhelming vision** — Sañjaya describes faces, weapons and radiance like a thousand suns. Arjuna sees the universe gathered into one and bows in wonder.
 4. **11.15–11.20 · Arjuna beholds an endless, blazing universe** — Arjuna sees gods and beings within the immeasurable form, without beginning or end. Sun-and-moon eyes and fiery mouths fill the worlds with awe.
-5. **11.21–11.25 · Wonder becomes terror; Arjuna seeks refuge** — Heavenly hosts gaze, enter and praise; the worlds and Arjuna tremble. The blazing mouths leave him without direction or peace, pleading for grace.
+5. **11.21–11.25 · Wonder becomes terror; no bearing, no peace** — Heavenly hosts gaze, enter and praise; the worlds and Arjuna tremble. The blazing mouths leave him without direction or peace, pleading for grace.
 6. **11.26–11.30 · Warriors rush into the devouring mouths** — Warriors from both sides enter the terrible mouths, crushed between teeth. Rivers and moths portray their rush as the form devours the worlds.
 7. **11.31–11.34 · Time’s decree and Arjuna’s task** — Arjuna asks who this terrible form is. Kṛṣṇa answers: Time, destroyer of worlds. The warriors are already slain; Arjuna must rise as his instrument.
 8. **11.35–11.40 · Trembling gives way to a hymn of praise** — Arjuna bows with a faltering voice, then praises the primal Lord, greater than Brahmā, knower and known, embracing every direction.
@@ -278,7 +278,7 @@ The previously reviewed pilot map and teaching copy are retained.
 
 Gather the opening definition and retained duties; complete the five-causes discussion before the knowledge classification. Pair action with doer, separate preparation for Brahman from mature devotion, and keep reflection before the final secret.
 
-1. **18.1–18.6 · Renunciation is not abandonment of purifying duties** — Arjuna asks about sannyāsa and tyāga. Kṛṣṇa distinguishes desired action from its fruits: sacrifice, giving and austerity must continue, without attachment.
+1. **18.1–18.6 · Sannyāsa and tyāga: not abandonment of purifying duties** — Arjuna asks about sannyāsa and tyāga. Kṛṣṇa distinguishes desired action from its fruits: sacrifice, giving and austerity must continue, without attachment.
 2. **18.7–18.12 · Three kinds of relinquishment and their fruits** — Deluded abandonment is tāmasic, fear-driven abandonment rājasic; duty without attachment is sāttvic. True relinquishment gives up the fruit, not all bodily action.
 3. **18.13–18.17 · Five causes, not the Self alone, produce action** — Body, agent, instruments, effort and destiny accomplish action. Mistaking the Self alone for the doer is ignorance; freedom from ego removes bondage.
 4. **18.18–18.22 · How the guṇas shape knowledge** — After naming the impulse and basis of action, Kṛṣṇa classifies knowledge: seeing the one, seeing separate beings, or clinging to a fragment as the whole.
