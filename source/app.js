@@ -2235,9 +2235,11 @@ function pDandaLatn(i, total){
 function padaBlockDeva(s, withNum){
   /* withNum puts the verse number inside the closing daṇḍas of the final line
      — ॥ १.२५ ॥ — the way a printed edition sets it, instead of on a line of
-     its own below. Same construction as the reading view's rd-n. */
+     its own below. The modal groups the verse lines so their first words share
+     a left edge; its number sits just beyond the final line, not in the
+     centering measure. */
   const ls = verseLines(s), last = ls.reduce((a,it,i)=> it.k === 's' ? a : i, -1);
-  let html = '', li = 0;
+  let html = withNum ? '<div class="m-vlines">' : '', li = 0;
   for(let i = 0; i < ls.length; i++){
     const it = ls[i];
     if(it.k === 's'){
@@ -2245,13 +2247,20 @@ function padaBlockDeva(s, withNum){
       if(it.t) html += `<span class="spk-iast" lang="sa-Latn">${esc(it.t)}</span>`;
       continue;
     }
-    const tail = li
-      ? (withNum && i === last ? `॥ <span class="gl-n">${esc(fmtNL(s.n))}</span> ॥` : '॥')
-      : '।';
-    html += `<div class="gline">${it.d}${tail}</div>`;
+    const marker = li ? '॥' : '।';
+    if(withNum){
+      const hasNumber = i === last;
+      const number = hasNumber
+        ? `<span class="gl-tail"> <span class="gl-n">${esc(fmtNL(s.n))}</span> ॥</span>`
+        : '';
+      html += `<div class="gline"><span class="gline-main${hasNumber?' has-number':''}">${it.d}${marker}${number}</span></div>`;
+    } else {
+      html += `<div class="gline">${it.d}${marker}</div>`;
+    }
     if(it.t) html += `<div class="giast" lang="sa-Latn">${esc(it.t)}</div>`;
     li++;
   }
+  if(withNum) html += '</div>';
   return html;
 }
 

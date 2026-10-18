@@ -15,6 +15,18 @@ code alone cannot tell you.
 For a brand-new session: read §1–§10, then this box, then build.
 
 
+### 2026-10-18 — verse-sheet Sanskrit lines align and the number is full-size (owner report)
+
+* The verse sheet now centers the Sanskrit block as a whole while aligning
+  both Devanagari line openings. The number at the end of the second line sits
+  outside the desktop centering measure and scales to the verse text, so it
+  moves right without shifting the verse. On narrow sheets, the final line
+  reserves room for a right-aligned number while the text wraps. The existing
+  browser regression now checks both wide and narrow layouts; the suite remains
+  at 264 checks. Full build ALL GREEN, including all 264 browser checks; a
+  desktop capture and 390px capture of 4.19 were visually checked. No verse
+  text, data, i18n keys or study map changed. Committed and pushed to `arena/defbe426-bhagavad-gita`; no PR opened.
+
 ### 2026-10-18 — book-wide theme-title audit: 169 read, 6 fixed, 2 checks added (owner: "fix all")
 
 * **Method (owner asked).** Title fidelity is measured against the *literal

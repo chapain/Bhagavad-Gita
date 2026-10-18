@@ -8,8 +8,8 @@ before you talk to the owner.
 | | |
 |---|---|
 | Last updated | 2026-10-18 |
-| Updated by | Arena session on branch `arena/4c434d4a-bhagavad-gita` |
-| Base commit | `fa6381bcdd83e36a1d87cb1a17a164f086e5afea` on `main` (PR #47 merged) |
+| Updated by | Arena session on branch `arena/defbe426-bhagavad-gita` |
+| Base commit | `68f686e3df6bac896c40fca061ccba8514c98fa1` on `main` |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,6 +20,7 @@ before you talk to the owner.
 
 ## 1. Where we are
 
+- **Verse-sheet Sanskrit lines align, and the verse number is full-size (2026-10-18, owner report).** The two Devanagari lines now share a left edge inside a centered block; the final number sits to the right of the second line without pulling its opening words left, and scales with the verse text. On narrow sheets, the text wraps while the number stays right-aligned on the final row. The existing browser regression now covers wide and narrow layouts (suite remains 264 checks). Full `python3 build.py` passed, including all 264 browser checks; desktop and 390px screenshots of 4.19 were visually checked. No verse/data/i18n changes. Committed on and pushed to `arena/defbe426-bhagavad-gita`; no PR opened.
 - **Book-wide theme-title audit: 169/169 read, 6 fixed (2026-10-18, owner request "fix all").**
   Every theme title was checked against its verses — standard: the literal
   translation is the measure (Sanskrit is ground truth); the paraphrase is the
@@ -1728,6 +1729,13 @@ Missing:
       title; title names an absent person) added to the build check, both
       green book-wide, four mutation tests prove they fire (Python 49 → 53).
       Details in §1 and PROJECT.md §0.
+- [x] Owner request 2026-10-18 (outside the numbered plan): **align the Sanskrit
+      verse lines and enlarge/right-position the number.** The modal keeps the
+      verse block centered but aligns both line openings; on wide screens the
+      number sits after the second line outside its centering measure, at the
+      same size as the verse. Narrow sheets reserve room for the number at the
+      end of the wrapped line. Existing browser checks cover both widths; suite
+      stays at 264, all green. No verse text, data or i18n changed.
 
 **Phase 3 — Simplify the UI (complete)**
 - [x] 3.1 One chapter view with a collapsible theme outline; verse titles and
@@ -1940,6 +1948,7 @@ whole session’s check log are in `/home/user/evidence/phase2.5/` (outside Git)
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-18 · `arena/defbe426-bhagavad-gita` · **Verse-sheet line alignment/number sizing fixed from the owner's screenshot.** The two Sanskrit lines now share a left edge in a centered block; the final verse number sits after the second line, moves right without affecting that alignment, and scales with the verse text. Narrow layout wraps the final text around a right-aligned number. Updated existing browser assertions without changing the total (264). Full build ALL GREEN: 2,800 pādas/0 residuals; 2,100 paraphrases; 0 translation failures/4 advisories; SEO 6; health 503; study 9,658; Python 53; document 776; progress 15; search 7; browser 264. Desktop + 390px screenshots visually checked on 4.19; Pillow warning only skipped optional share-art repaint. No verse/data/i18n changes; committed and pushed to `arena/defbe426-bhagavad-gita`, no PR opened.
 - 2026-10-18 · `arena/4c434d4a-bhagavad-gita` · **Book-wide theme-title audit: 169/169 read, 6 fixed (owner: "fix all, use your best intelligence").** Standard: literal as the measure, Sanskrit as ground truth; paraphrase is the interpretation layer. Fixed — 11.21–25 "…Arjuna seeks refuge" → "Wonder becomes terror; no bearing, no peace" (11.25 *diśo na jāne na labhe ca śarma*; the book's only real misattribution); 2.51–53 "Wisdom steadies the mind" → "A steady intellect attains yoga" (relation reversed); 2.01–03 "Kṛṣṇa challenges Arjuna to rise" → "Kṛṣṇa rebukes Arjuna's dejection" (NE/HI descs aligned चुनौती→ललकार); 1.38–44 "Arjuna fears the collapse of family dharma" → "The ruin that follows a family's destruction"; 7.01–03 → "Hear how to know me fully: one in a thousand" (was a copy of 7.01's part title, dropped 7.03's rarity); 4.11–14 "The Lord responds…" → "The Lord gives the fruits, yet action does not bind him". Kept under delegation: 2.04–06, 2.19–21 (deliberate, allowlisted). New: two report-only title advisories in `check_study_structure.py` (lifted part title; person named in title but absent from theme + speech-opening verse), both zero book-wide, 4 mutation tests (Python 49 → 53), build tail 2→4. Churn: 5 source JSONs, STUDY_MAPS.md 6 lines, data/ch1,2,4,7,11.js, chapter/{1,2,4,7,11}/, sw.js, sitemap. Full build ALL GREEN (pādas 2,800/0; paraphrases 2,100; translations 0/4; SEO 6; health 503; study 9,658; Python 53; document 776; progress 15; search 7); browser skipped (no Playwright). No verse text, part title, i18n key or owner hold changed. Pushed to `arena/4c434d4a-bhagavad-gita`; [PR #48](https://github.com/chapain/Bhagavad-Gita/pull/48) opened to `main` (not merged).
 - 2026-10-18 · `arena/4c434d4a-bhagavad-gita` · **Theme title 18.01–18.06 renamed (owner decision).** "Renunciation is not abandonment of purifying duties" → "Sannyāsa and tyāga: not abandonment of purifying duties" in en/ne/hi — the theme opens on the 18.1 two-term question and its 18.5–18.6 verdict is a statement about tyāga (*na tyājyam*; *saṅgaṁ tyaktvā phalāni ca*), but the old title covered both Sanskrit words with one ambiguous English "Renunciation" (also used by the 18.49–18.53 theme). Verdict clause kept verbatim; colon style matches ch18's existing titles. Source: three title values in `source/ch18.json` + `STUDY_MAPS.md` line; churn `data/ch18.js`, `chapter/18/`, `sw.js` `7bc47d10fd89`→`ba7948dc4afd`, ch18 sitemap lastmod. Full build ALL GREEN (pādas 2,800/0; paraphrases 2,100; translations 0/4; SEO 6; health 503; study 9,658; Python 49; document 776; progress 15; search 7); browser layer skipped (no Playwright in sandbox). No verse text, part title, i18n key or owner hold changed. Pushed to `arena/4c434d4a-bhagavad-gita`; [PR #48](https://github.com/chapain/Bhagavad-Gita/pull/48) opened to `main` (not merged).
 - 2026-10-17 · `arena/6062134a-bhagavad-gita` · **Refresh persistence completed.** Added same-entry per-tab state snapshots and session-first language restoration; internal verse-sheet hashes reopen as modals while external `#v=` links remain invitations. Restores view/search/details/scroll, modal disclosures, active Learn quiz queues and partial answers, free practice, and Play; the service-worker reload checkpoints first and `plStart()` marks runs active. Added 13 browser checks (251 → 264). Full browser-enabled build ALL GREEN (2,800/0 pādas; 2,100 paraphrases; 0 translation failures/4 reviewed advisories; SEO 6; health 503; study 9,658; Python 49; document 776; progress 15; search 7; browser 264; cache `7bc47d10fd89`). Pillow absent; optional share-art repaint skipped. No content, i18n, protected readings or owner holds changed; no push.

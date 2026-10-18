@@ -807,15 +807,21 @@ __FONTS__
   .m-whole-verse{ background:var(--paper); border:1px solid var(--line);
     border-radius:14px; padding:18px 20px; margin:0 0 10px;
     font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
-    line-height:1.8; }
-  .m-whole-verse .gline{ font-size:calc(1.45rem * var(--reader-scale,1)); text-align:center; }
+    line-height:1.8; text-align:center; }
+  /* Center the verse as a single block, but set both Sanskrit lines flush to
+     its shared left edge. The final number is out of flow so it can sit after
+     the second line without pulling that line's opening words left. */
+  .m-whole-verse .m-vlines{ display:inline-block; max-width:100%; text-align:left; vertical-align:top; }
+  .m-whole-verse .gline{ font-size:calc(1.45rem * var(--reader-scale,1)); text-align:left; }
+  .m-whole-verse .gline-main{ position:relative; display:inline-block; max-width:100%; }
+  .m-whole-verse .gl-tail{ position:absolute; top:0; left:calc(100% + .24em); white-space:nowrap; }
   .m-whole-verse .giast{ font-style:italic; font-family:Georgia,"Noto Serif Devanagari",serif;
     font-size:calc(.92rem * var(--reader-scale,1)); color:var(--ink-soft); text-align:center; margin-top:2px; }
   .m-whole-verse .spk{ font-family:"Noto Serif Devanagari",Georgia,serif;
     color:var(--saffron-text); font-size:calc(1.05rem * var(--reader-scale,1));
     font-style:italic; text-align:center; margin-bottom:10px; border-bottom:1px dashed var(--line); padding-bottom:8px; }
   .m-whole-verse .spk .iast{ font-size:calc(.82rem * var(--reader-scale,1)); margin-left:10px; }
-  .m-whole-verse .gl-n{ color:var(--saffron-text); font-weight:700; }
+  .m-whole-verse .gl-n{ color:var(--saffron-text); font-size:1em; font-weight:700; }
 
   /* Meaning blocks follow straight after the hero verse, no extra paper
      card around them — the content should breathe. */
@@ -1193,6 +1199,12 @@ __FONTS__
     .m-head .m-num-chit{ font-size:.9rem; }
     .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
                        overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+    /* Leave room at the end of the final line for its number. This keeps the
+       number right-aligned with the wrapped text instead of dropping it onto
+       an orphaned line. */
+    .m-whole-verse .gline-main{ display:inline; }
+    .m-whole-verse .gline-main.has-number{ display:block; width:100%; box-sizing:border-box; padding-right:4.6em; }
+    .m-whole-verse .gl-tail{ top:auto; left:auto; right:0; bottom:0; white-space:nowrap; }
     .m-part{ margin:0 0 12px; padding:8px 2px 0; color:var(--ink-soft);
              font-size:.78rem; line-height:1.5; }
     .m-num{ font-size:1.08rem; }
