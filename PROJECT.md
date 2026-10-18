@@ -14,6 +14,37 @@ code alone cannot tell you.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
+### 2026-10-18 — fresh 700-verse title audit + welcome-page refresh
+
+* The owner asked to re-review all 700 **individual verse titles** in EN/NE/HI
+  against the Sanskrit and each verse’s literal translations. All 700 were read
+  chapter by chapter. 39 verse records changed (EN 35, NE 36, HI 33; 104
+  localized values); no theme title changed, so the separate 169-theme audit
+  remains distinct. Among the material corrections, 18.06 now names the required
+  actions, nonattachment and relinquishing their fruits; 2.47 retains both the
+  fruit-seeking warning and the instruction not to cling to inaction. English
+  titles were shortened to the existing 54-character card ceiling.
+* The Welcome view now uses a responsive two-column editorial layout: a clear
+  entry action and existing trilingual guide beside the featured verse, with a
+  hand-drawn SVG chariot wheel as a quiet watermark. The card remains centered
+  as a verse-display piece, gains a localized “Open verse” cue and keyboard
+  focus treatment, and stacks cleanly on phones. One live-browser assertion was
+  added (264 → 265); the browser suite could not run in this sandbox because
+  Playwright is absent. All remaining `build.py` checks pass. No new i18n keys,
+  curated “Gītā in 18 verses” path, verse text or theme title was introduced.
+  The work is pushed to `arena/defbe426-bhagavad-gita`; PR #53 is open to `main`, not merged.
+
+### 2026-10-18 — verse-sheet Sanskrit lines align and the number is full-size (owner report)
+
+* The verse sheet now centers the Sanskrit block as a whole while aligning
+  both Devanagari line openings. The number at the end of the second line sits
+  outside the desktop centering measure and scales to the verse text, so it
+  moves right without shifting the verse. On narrow sheets, the final line
+  reserves room for a right-aligned number while the text wraps. The existing
+  browser regression now checks both wide and narrow layouts; the suite remains
+  at 264 checks. Full build ALL GREEN, including all 264 browser checks; a
+  desktop capture and 390px capture of 4.19 were visually checked. No verse
+  text, data, i18n keys or study map changed. Committed and pushed to `arena/defbe426-bhagavad-gita`; no PR opened.
 
 ### 2026-10-18 — book-wide theme-title audit: 169 read, 6 fixed, 2 checks added (owner: "fix all")
 
@@ -1710,7 +1741,7 @@ chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
 run_gita_app.js       776 assertions on the built document and data (needs node)
-browser_checks.py     264 live-browser checks (needs Playwright)
+browser_checks.py     265 live-browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)

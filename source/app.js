@@ -2038,32 +2038,55 @@ function showWelcome(){
   state.view='welcome'; state.chapter=null; state.theme=null; state.section=null; persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="welcome fade-in">
-      <div class="w-om">ॐ</div>
-      <h2 class="view-title">${esc(L('welcome_title'))}</h2>
-      <p class="view-sub">${esc(L('welcome_sub'))}</p>
-      <div id="wDay"></div>
-      <button class="tool-btn primary big" onclick="showSections()">${esc(L('welcome_enter'))}</button>
-      <details class="welcome-guide">
-        <summary>${esc(L('guide_explore'))}</summary>
-        <ol>
-          <li>${esc(L('guide_way'))}</li>
-          <li>${esc(L('guide_chapter'))}</li>
-          <li>${esc(L('guide_verse'))}</li>
-        </ol>
-      </details>
-      <div class="w-foot">${esc(L('welcome_foot'))}</div>
+      <section class="welcome-hero" aria-labelledby="welcomeTitle">
+        <div class="welcome-copy">
+          <div class="w-mark" aria-hidden="true">
+            <span class="w-om">ॐ</span><span class="w-mark-line"></span>
+          </div>
+          <h2 class="view-title" id="welcomeTitle">${esc(L('welcome_title'))}</h2>
+          <p class="view-sub">${esc(L('welcome_sub'))}</p>
+          <div class="w-actions">
+            <button class="tool-btn primary big" onclick="showSections()">
+              <span>${esc(L('welcome_enter'))}</span><span class="w-arrow" aria-hidden="true">→</span>
+            </button>
+            <details class="welcome-guide">
+              <summary>${esc(L('guide_explore'))}</summary>
+              <ol>
+                <li>${esc(L('guide_way'))}</li>
+                <li>${esc(L('guide_chapter'))}</li>
+                <li>${esc(L('guide_verse'))}</li>
+              </ol>
+            </details>
+          </div>
+          <div class="w-foot">${esc(L('welcome_foot'))}</div>
+        </div>
+        <section class="welcome-stage" aria-label="${esc(L(state.shared ? 'shared_label' : 'verse_of_day'))}">
+          <svg class="welcome-wheel" viewBox="0 0 320 320" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="160" cy="160" r="132" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="160" cy="160" r="111" stroke="currentColor" stroke-width=".8"/>
+            <circle cx="160" cy="160" r="39" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="160" cy="160" r="13" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M160 28v264M28 160h264M66.7 66.7l186.6 186.6M253.3 66.7 66.7 253.3" stroke="currentColor" stroke-width="1"/>
+            <path d="m160 21 4 7-4 7-4-7 4-7Zm0 264 4 7-4 7-4-7 4-7ZM21 160l7-4 7 4-7 4-7-4Zm264 0 7-4 7 4-7 4-7-4Z" fill="currentColor" opacity=".45"/>
+          </svg>
+          <div id="wDay" class="welcome-day-slot" aria-live="polite"></div>
+        </section>
+      </section>
     </div>`;
   const paint = (dv, shared)=>{
     if(!dv || state.view!=='welcome' || !DATA || !DATA[dv.ci]) return;
     const c = DATA[dv.ci], v = verseAt(dv);
     const part = sutraAt(c.themes[dv.ti], dv.si).part;
     const el = document.getElementById('wDay'); if(!el) return;
-    el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0" onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
+    el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0"
+          aria-label="${esc(L('verse'))} ${esc(fmtNL(v.n))}: ${esc(T(part.titles))}. ${esc(L('open_verse'))}"
+          onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
           <div class="wd-label">${esc(shared ? L('shared_label') : L('verse_of_day'))}</div>
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
           <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
           <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras))}</div>
+          <div class="wd-open"><span>${esc(L('open_verse'))}</span><span aria-hidden="true">→</span></div>
         </div>`;
   };
   if(state.shared){ loadChapter(state.shared.ci+1).then(()=>paint(state.shared, true)).catch(gitaLoadFail); }
@@ -2235,9 +2258,11 @@ function pDandaLatn(i, total){
 function padaBlockDeva(s, withNum){
   /* withNum puts the verse number inside the closing daṇḍas of the final line
      — ॥ १.२५ ॥ — the way a printed edition sets it, instead of on a line of
-     its own below. Same construction as the reading view's rd-n. */
+     its own below. The modal groups the verse lines so their first words share
+     a left edge; its number sits just beyond the final line, not in the
+     centering measure. */
   const ls = verseLines(s), last = ls.reduce((a,it,i)=> it.k === 's' ? a : i, -1);
-  let html = '', li = 0;
+  let html = withNum ? '<div class="m-vlines">' : '', li = 0;
   for(let i = 0; i < ls.length; i++){
     const it = ls[i];
     if(it.k === 's'){
@@ -2245,13 +2270,20 @@ function padaBlockDeva(s, withNum){
       if(it.t) html += `<span class="spk-iast" lang="sa-Latn">${esc(it.t)}</span>`;
       continue;
     }
-    const tail = li
-      ? (withNum && i === last ? `॥ <span class="gl-n">${esc(fmtNL(s.n))}</span> ॥` : '॥')
-      : '।';
-    html += `<div class="gline">${it.d}${tail}</div>`;
+    const marker = li ? '॥' : '।';
+    if(withNum){
+      const hasNumber = i === last;
+      const number = hasNumber
+        ? `<span class="gl-tail"> <span class="gl-n">${esc(fmtNL(s.n))}</span> ॥</span>`
+        : '';
+      html += `<div class="gline"><span class="gline-main${hasNumber?' has-number':''}">${it.d}${marker}${number}</span></div>`;
+    } else {
+      html += `<div class="gline">${it.d}${marker}</div>`;
+    }
     if(it.t) html += `<div class="giast" lang="sa-Latn">${esc(it.t)}</div>`;
     li++;
   }
+  if(withNum) html += '</div>';
   return html;
 }
 

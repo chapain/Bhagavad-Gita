@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const TOTAL_ASSERTIONS = 776;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 264;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
+const TOTAL_BROWSER_CHECKS = 265;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -219,7 +219,7 @@ ok(ch5Verse.titles.en === 'Equanimity conquers the world of birth and death'
 const ch6Meditation = reviewedTheme(6,'6.10'), ch6Resolve = reviewedPart(6,'6.23');
 const ch6FormerLife = reviewedPart(6,'6.43'), ch6Renunciation = reviewedPart(6,'6.01');
 ok(ch6Meditation.titles.en === 'Meditation: solitude, posture and focus'
-   && ch6Renunciation.titles.en === 'Renunciation is more than abandoning rites'
+   && ch6Renunciation.titles.en === 'He who acts without fruit-seeking: renouncer and yogi'
    && ch6Resolve.titles.en === 'Practise with resolve and an undiscouraged mind'
    && ch6Resolve.descs.ne.includes('निराश नभई') && ch6Resolve.descs.hi.includes('निराश हुए बिना')
    && ch6FormerLife.titles.en === 'He regains spiritual insight from a past life'

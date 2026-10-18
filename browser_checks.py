@@ -117,6 +117,13 @@ def run(pw, url, offline_capable=False):
     ok(not pg.evaluate(
         "() => { const e = document.querySelector('.w-day');"
         " return e.scrollWidth > e.clientWidth; }"), "card does not overflow")
+    mobile_tracks = pg.eval_on_selector(".welcome-hero", "e=>getComputedStyle(e).gridTemplateColumns.split(' ').length")
+    pg.set_viewport_size({"width": 1440, "height": 900})
+    pg.wait_for_timeout(60)
+    desktop_tracks = pg.eval_on_selector(".welcome-hero", "e=>getComputedStyle(e).gridTemplateColumns.split(' ').length")
+    pg.set_viewport_size({"width": 390, "height": 844})
+    ok(mobile_tracks == 1 and desktop_tracks == 2,
+       "welcome hero stacks on phones and pairs intro with verse on desktop")
     pg.reload(wait_until="load")
     pg.wait_for_timeout(400)
 
@@ -834,35 +841,59 @@ def run(pw, url, offline_capable=False):
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(600)
 
-    # The verse number sits at the end of the second line between daṇḍas, and a
-    # speaker that falls between the two lines stays there (1.21, 1.28). Phase
-    # 3.1 retired the continuous-reading page that used to be the fixture for
-    # this; the sheet's whole-verse block renders the same verseLines() /
-    # padaBlockDeva() construction, so the same three verses prove it on a
-    # surface that still exists.
+    # The verse number sits at the end of the second line between daṇḍas, both
+    # Sanskrit lines share a left edge, and the number is as prominent as the
+    # verse. Speakers that fall between the two lines stay in place (1.21,
+    # 1.28). Phase 3.1 retired the continuous-reading page that used to be the
+    # fixture; the sheet renders the same verseLines()/padaBlockDeva() output.
     def sheet_shape(ref):
         pg.evaluate("""ref => { const l = verseLoc(ref); closeModal();
                                   openModal(l.ci, l.ti, l.si, 'theme'); }""", ref)
         pg.wait_for_timeout(500)
         return pg.evaluate("""() => {
             const box = document.querySelector('#modal .m-whole-verse');
-            const rows = [...box.children]
+            const content = box.querySelector('.m-vlines') || box;
+            const rows = [...content.children]
                 .filter(e => !e.classList.contains('giast') && !e.classList.contains('spk-iast'))
                 .map(e => e.className.trim());
             const lines = [...box.querySelectorAll('.gline')];
+            const mains = lines.map(e => e.querySelector('.gline-main') || e);
+            const number = box.querySelector('.gl-n');
+            const tail = number && number.parentElement;
+            const lastMain = mains[mains.length - 1];
+            const nRect = number && number.getBoundingClientRect();
+            const textRect = lastMain.getBoundingClientRect();
             return {rows: rows, iast: box.querySelectorAll('.giast').length,
-                    tail: lines[lines.length-1].textContent.trim()};
+                    tailText: lines[lines.length-1].textContent.trim(),
+                    starts: mains.map(e => e.getBoundingClientRect().left),
+                    lineFont: parseFloat(getComputedStyle(lines[lines.length-1]).fontSize),
+                    numberFont: number && parseFloat(getComputedStyle(number).fontSize),
+                    numberPosition: tail && getComputedStyle(tail).position,
+                    numberGap: nRect && nRect.left - textRect.right,
+                    overflows: box.scrollWidth > box.clientWidth};
         }""")
 
+    # Wide viewport: the number is out of the centering measure, visibly to
+    # the right of the Sanskrit text; the shared wrapper aligns the two starts.
+    pg.set_viewport_size({"width": 1440, "height": 900})
     shape = sheet_shape("1.01")
-    ok(shape["rows"] == ["spk", "gline", "gline"] and shape["iast"] == 2,
-       f"1.1 keeps its speaker and two Sanskrit lines, each with IAST ({shape['rows']})")
-    ok(shape["tail"].endswith("॥") and "1.1" in shape["tail"],
-       f"the verse number closes the second line between daṇḍas ({shape['tail'][-18:]})")
+    ok(shape["rows"] == ["spk", "gline", "gline"] and shape["iast"] == 2
+       and max(shape["starts"]) - min(shape["starts"]) <= 1
+       and shape["numberFont"] >= shape["lineFont"] * .95
+       and shape["numberPosition"] == "absolute" and shape["numberGap"] > 0,
+       f"1.1 preserves its speaker and aligns both lines with a full-size number ({shape})")
     for ref, num in (("1.21", "1.21"), ("1.28", "1.28")):
         shape = sheet_shape(ref)
         ok(shape["rows"] == ["gline", "spk", "gline"],
            f"{num} keeps its speaker between the two lines ({shape['rows']})")
+
+    # Narrow sheet: reserve room at the end of the last text line and anchor
+    # the number there so wrapping never clips it; line openings still align.
+    pg.set_viewport_size({"width": 390, "height": 844})
+    shape = sheet_shape("4.19")
+    ok(shape["tailText"].endswith("॥") and "4.19" in shape["tailText"]
+       and max(shape["starts"]) - min(shape["starts"]) <= 1 and not shape["overflows"],
+       f"4.19 keeps its number between daṇḍas and wraps cleanly on mobile ({shape})")
     pg.keyboard.press("Escape")
     pg.wait_for_timeout(400)
 

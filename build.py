@@ -26,7 +26,7 @@ It runs, in order:
     3a. tests/test_progress_maps.js  saved-learning map migration (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
     3c. tests/test_theme_card_navigation.js  all 700 chapter cards open their own verses (needs node)
-    4. browser_checks.py      264 live-browser checks (Learn/Play, refresh, storage and disclosures) (needs playwright)
+    4. browser_checks.py      265 live-browser checks (Learn/Play, refresh, storage and disclosures) (needs playwright)
 
 Node-dependent checks (steps 3–3c) and the browser check (step 4) are
 skipped with warnings if Node / Playwright are missing — the build itself still

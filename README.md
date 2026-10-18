@@ -32,6 +32,7 @@ app and works with no internet connection.
   meanings and interface all follow, with Devanagari numerals in ne/hi.
 - **Search** all 700 verses by number (`2.47` or `२.४७`), Sanskrit, or translation.
 - **Favourites**, **random verse**, **verse of the day**.
+- A welcoming study front door pairs a clear path into the chapters with a featured verse, in a responsive, trilingual layout.
 - **Mobile-first**: swipe between verses, hardware back button closes the verse sheet,
   safe-area insets, works offline after the first visit.
 
@@ -81,7 +82,7 @@ source/                 ← edit here
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
 run_gita_app.js         776 assertions on the built document
-browser_checks.py       264 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
+browser_checks.py       265 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
 ```
 
 `index.html` remains a **single-shell split site**. Its document, stylesheet and

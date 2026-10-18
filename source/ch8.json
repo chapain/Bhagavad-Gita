@@ -29,9 +29,9 @@
         {
           "range": "8.01–8.01",
           "titles": {
-            "en": "What is Brahman, adhyātma, action?",
-            "ne": "ब्रह्म, अध्यात्म, कर्म के हो?",
-            "hi": "ब्रह्म, अध्यात्म, कर्म क्या है?"
+            "en": "Brahman, adhyātma, action, adhibhūta, adhidaiva?",
+            "ne": "ब्रह्म, अध्यात्म, कर्म, अधिभूत र अधिदैव के हुन्?",
+            "hi": "ब्रह्म, अध्यात्म, कर्म, अधिभूत और अधिदैव क्या हैं?"
           },
           "descs": {
             "en": "Arjuna asks: what are Brahman, adhyātma and karma, and what are adhibhūta and adhidaiva?",
@@ -219,9 +219,9 @@
         {
           "range": "8.02–8.02",
           "titles": {
-            "en": "Who is the adhiyajña, and how known at death?",
-            "ne": "अधियज्ञ को हो, मृत्युमा कसरी चिनिन्छ?",
-            "hi": "अधियज्ञ कौन है, मृत्यु में कैसे जाना जाए?"
+            "en": "Who is adhiyajña? How is Kṛṣṇa known at death?",
+            "ne": "शरीरमा अधियज्ञ को हो, मृत्युमा तपाईंलाई कसरी चिन्ने?",
+            "hi": "देह में अधियज्ञ कौन है, मृत्यु के समय आपको कैसे जानें?"
           },
           "descs": {
             "en": "He also asks who the adhiyajña is and how the self-controlled know Kṛṣṇa at the hour of death.",
@@ -2941,9 +2941,9 @@
         {
           "range": "8.19–8.19",
           "titles": {
-            "en": "Helplessly reborn again and again",
-            "ne": "बारम्बार अवश जन्मन्छन्",
-            "hi": "बार-बार अवश जन्मते हैं"
+            "en": "At Brahmā's dawn, beings rise; at night, they dissolve",
+            "ne": "ब्रह्माको दिनमा प्राणी उत्पन्न, रातमा विलीन",
+            "hi": "ब्रह्मा के दिन प्राणी उत्पन्न, रात में विलीन"
           },
           "descs": {
             "en": "The same multitude of beings arises again and again and dissolves helplessly at nightfall.",
@@ -4423,9 +4423,9 @@
         {
           "range": "8.28–8.28",
           "titles": {
-            "en": "Beyond the fruit of Vedas, sacrifice and gifts",
-            "ne": "वेद, यज्ञ, दानको फलभन्दा पर",
-            "hi": "वेद, यज्ञ, दान के फल से परे"
+            "en": "Beyond fruits of Vedas, sacrifice, austerity and gifts",
+            "ne": "वेद, यज्ञ, तप र दानको फलभन्दा पर",
+            "hi": "वेद, यज्ञ, तप और दान के फल से परे"
           },
           "descs": {
             "en": "The yogi who knows this goes beyond all the merit promised for Vedas, sacrifice, austerity and giving, and reaches the supreme original state.",

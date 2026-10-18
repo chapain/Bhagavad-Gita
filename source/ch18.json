@@ -29,9 +29,9 @@
         {
           "range": "18.01–18.01",
           "titles": {
-            "en": "Arjuna asks: what is renunciation?",
-            "ne": "अर्जुन सोध्छन्: संन्यास के हो?",
-            "hi": "अर्जुन पूछता है: संन्यास क्या है?"
+            "en": "Arjuna asks how sannyāsa differs from tyāga",
+            "ne": "संन्यास र त्यागको अर्थ र भेदबारे अर्जुनको प्रश्न",
+            "hi": "संन्यास और त्याग के अर्थ तथा भेद पर अर्जुन का प्रश्न"
           },
           "descs": {
             "en": "Arjuna opens the chapter by asking for the true meaning of sannyāsa and tyāga, and how the two differ.",
@@ -184,9 +184,9 @@
         {
           "range": "18.02–18.02",
           "titles": {
-            "en": "Giving up desire, and giving up fruit",
-            "ne": "कामनाको त्याग, फलको त्याग",
-            "hi": "कामना का त्याग, फल का त्याग"
+            "en": "Sannyāsa drops desire-led acts; tyāga drops all fruits",
+            "ne": "संन्यास: कामनापूर्ण कर्मको त्याग; त्याग: सबै कर्मफलको त्याग",
+            "hi": "संन्यास: कामना-पूर्ण कर्मों का त्याग; त्याग: सभी कर्म-फलों का त्याग"
           },
           "descs": {
             "en": "Kṛṣṇa’s first answer: sannyāsa is setting aside desire-driven acts; tyāga is giving up the fruit of every act.",
@@ -790,9 +790,9 @@
         {
           "range": "18.06–18.06",
           "titles": {
-            "en": "Without clinging to fruit",
-            "ne": "फलमा नअड्किई",
-            "hi": "फल में न अटककर"
+            "en": "Perform these acts unattached; renounce their fruits",
+            "ne": "यी कर्म पनि आसक्ति र फल त्यागेर गर्नुपर्छ",
+            "hi": "ये कर्म भी आसक्ति और फल त्यागकर करने चाहिए"
           },
           "descs": {
             "en": "Even these duties are to be done without attachment and without claiming their fruit — this is Kṛṣṇa’s settled view.",
@@ -2899,9 +2899,9 @@
         {
           "range": "18.19–18.19",
           "titles": {
-            "en": "The threefold knowledge",
-            "ne": "त्रिविध ज्ञान",
-            "hi": "त्रिविध ज्ञान"
+            "en": "Knowledge, action, agent: threefold by the guṇas",
+            "ne": "गुणभेदअनुसार ज्ञान, कर्म र कर्ता तीन प्रकारका छन्",
+            "hi": "गुणों के अनुसार ज्ञान, कर्म और कर्ता तीन प्रकार के हैं"
           },
           "descs": {
             "en": "Knowledge, action and agent each divide into three by the guṇas, and Kṛṣṇa takes them in turn.",
@@ -4381,9 +4381,9 @@
         {
           "range": "18.29–18.29",
           "titles": {
-            "en": "The threefold intellect",
-            "ne": "त्रिविध बुद्धि",
-            "hi": "त्रिविध बुद्धि"
+            "en": "Three kinds of intellect and fortitude",
+            "ne": "बुद्धि र धृतिका त्रिविध भेद",
+            "hi": "बुद्धि और धृति के तीन प्रकार"
           },
           "descs": {
             "en": "Next the guṇas divide the intellect and resolve; Kṛṣṇa promises to explain each fully.",
@@ -5658,9 +5658,9 @@
         {
           "range": "18.37–18.37",
           "titles": {
-            "en": "Nectar at last",
-            "ne": "अन्तमा अमृत",
-            "hi": "अन्त में अमृत"
+            "en": "Poison at first, nectar at the end",
+            "ne": "पहिले विष, अन्तमा अमृत",
+            "hi": "पहले विष, अंत में अमृत"
           },
           "descs": {
             "en": "Sāttvic happiness is bitter as poison at first and sweet as nectar in the end, born of a mind clear and at rest in the Self.",
@@ -7027,9 +7027,9 @@
         {
           "range": "18.46–18.46",
           "titles": {
-            "en": "Worshipping the source through duty",
-            "ne": "स्रोतको पूजा",
-            "hi": "स्रोत की पूजा"
+            "en": "Worship the source through one's own work",
+            "ne": "आफ्नो कर्मद्वारा स्रोतको पूजा",
+            "hi": "अपने कर्म द्वारा स्रोत की पूजा"
           },
           "descs": {
             "en": "The way: worship, through one’s own duty, the Source of all beings who pervades everything.",
@@ -8050,7 +8050,7 @@
         {
           "range": "18.53–18.53",
           "titles": {
-            "en": "Freed from ego and force",
+            "en": "Freed from ego, power and possessiveness",
             "ne": "अहंकार, बल र ममताबाट मुक्त",
             "hi": "अहंकार, बल और ममता से मुक्त"
           },
@@ -10239,9 +10239,9 @@
         {
           "range": "18.67–18.67",
           "titles": {
-            "en": "Not for the unworthy",
-            "ne": "अयोग्यलाई होइन",
-            "hi": "अयोग्य को नहीं"
+            "en": "Who should not receive this teaching",
+            "ne": "यो उपदेश कसलाई दिनु हुँदैन",
+            "hi": "यह उपदेश किसे नहीं देना चाहिए"
           },
           "descs": {
             "en": "This teaching is not for one without austerity or devotion, who will not listen, or who speaks against Kṛṣṇa.",
