@@ -278,7 +278,7 @@ The previously reviewed pilot map and teaching copy are retained.
 
 Gather the opening definition and retained duties; complete the five-causes discussion before the knowledge classification. Pair action with doer, separate preparation for Brahman from mature devotion, and keep reflection before the final secret.
 
-1. **18.1–18.6 · Renunciation is not abandonment of purifying duties** — Arjuna asks about sannyāsa and tyāga. Kṛṣṇa distinguishes desired action from its fruits: sacrifice, giving and austerity must continue, without attachment.
+1. **18.1–18.6 · Sannyāsa and tyāga: not abandonment of purifying duties** — Arjuna asks about sannyāsa and tyāga. Kṛṣṇa distinguishes desired action from its fruits: sacrifice, giving and austerity must continue, without attachment.
 2. **18.7–18.12 · Three kinds of relinquishment and their fruits** — Deluded abandonment is tāmasic, fear-driven abandonment rājasic; duty without attachment is sāttvic. True relinquishment gives up the fruit, not all bodily action.
 3. **18.13–18.17 · Five causes, not the Self alone, produce action** — Body, agent, instruments, effort and destiny accomplish action. Mistaking the Self alone for the doer is ignorance; freedom from ego removes bondage.
 4. **18.18–18.22 · How the guṇas shape knowledge** — After naming the impulse and basis of action, Kṛṣṇa classifies knowledge: seeing the one, seeing separate beings, or clinging to a fragment as the whole.

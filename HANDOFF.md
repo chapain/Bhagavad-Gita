@@ -7,9 +7,9 @@ before you talk to the owner.
 
 | | |
 |---|---|
-| Last updated | 2026-10-17 (UTC) |
-| Updated by | Arena session on branch `arena/6062134a-bhagavad-gita` |
-| Base commit | `155d0775272f86eec13c3f3cf0666605f9c38611` on `main` (PR #46 merged 2026-10-17) |
+| Last updated | 2026-10-18 |
+| Updated by | Arena session on branch `arena/4c434d4a-bhagavad-gita` |
+| Base commit | `fa6381bcdd83e36a1d87cb1a17a164f086e5afea` on `main` (PR #47 merged) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
@@ -20,6 +20,26 @@ before you talk to the owner.
 
 ## 1. Where we are
 
+- **Theme title 18.01–18.06 now names both terms (2026-10-18, owner decision).**
+  "Renunciation is not abandonment of purifying duties" → **"Sannyāsa and
+  tyāga: not abandonment of purifying duties"** (ne: संन्यास र त्याग: शुद्धिकारक
+  कर्तव्य छोड्नु होइन; hi: संन्यास और त्याग: शुद्धिकारक कर्तव्य छोड़ना नहीं है).
+  Owner: the old title compressed sannyāsa and tyāga into one ambiguous
+  English "Renunciation" — the ambiguity 18.1–18.2 spends two verses
+  dissolving — and the verdict (18.5 *na tyājyam*; 18.6 *saṅgaṁ tyaktvā
+  phalāni ca*) is a statement about tyāga. The two-term opening uses the
+  colon style ch18 already uses ("Three kinds of resolve: …", "The final
+  promise: …") and keeps the verdict clause verbatim; it also stops
+  "Renunciation" double-dutying with the 18.49–18.53 theme. Source change:
+  the three title values in `source/ch18.json` + the `STUDY_MAPS.md` line;
+  rebuild churn was `data/ch18.js`, `chapter/18/`, `sw.js` cache
+  `7bc47d10fd89` → `ba7948dc4afd` and the ch18 `sitemap.xml` lastmod. The
+  title is not locked in `study_map_contract.json` (ranges only). Full
+  build ALL GREEN: 2,800/0 pādas; 2,100 paraphrases; 0 translation
+  failures/4 advisories; SEO 6; site health 503; study 9,658; Python 49;
+  document 776; progress 15; search 7. Browser layer skipped — Playwright
+  unavailable in this sandbox (last full browser-green 2026-10-17). No verse
+  text, part title, i18n key or owner-held byte changed. Not pushed.
 - **Reader state now survives manual and automatic refresh (2026-10-17, owner request).**
   A validated per-tab snapshot restores language, route/view, search, scroll, open
   theme details and verse sheets (including expanded word meanings); it also
@@ -1873,6 +1893,7 @@ whole session’s check log are in `/home/user/evidence/phase2.5/` (outside Git)
 
 ## 8. Session log (newest first, one line each)
 
+- 2026-10-18 · `arena/4c434d4a-bhagavad-gita` · **Theme title 18.01–18.06 renamed (owner decision).** "Renunciation is not abandonment of purifying duties" → "Sannyāsa and tyāga: not abandonment of purifying duties" in en/ne/hi — the theme opens on the 18.1 two-term question and its 18.5–18.6 verdict is a statement about tyāga (*na tyājyam*; *saṅgaṁ tyaktvā phalāni ca*), but the old title covered both Sanskrit words with one ambiguous English "Renunciation" (also used by the 18.49–18.53 theme). Verdict clause kept verbatim; colon style matches ch18's existing titles. Source: three title values in `source/ch18.json` + `STUDY_MAPS.md` line; churn `data/ch18.js`, `chapter/18/`, `sw.js` `7bc47d10fd89`→`ba7948dc4afd`, ch18 sitemap lastmod. Full build ALL GREEN (pādas 2,800/0; paraphrases 2,100; translations 0/4; SEO 6; health 503; study 9,658; Python 49; document 776; progress 15; search 7); browser layer skipped (no Playwright in sandbox). No verse text, part title, i18n key or owner hold changed. Not pushed.
 - 2026-10-17 · `arena/6062134a-bhagavad-gita` · **Refresh persistence completed.** Added same-entry per-tab state snapshots and session-first language restoration; internal verse-sheet hashes reopen as modals while external `#v=` links remain invitations. Restores view/search/details/scroll, modal disclosures, active Learn quiz queues and partial answers, free practice, and Play; the service-worker reload checkpoints first and `plStart()` marks runs active. Added 13 browser checks (251 → 264). Full browser-enabled build ALL GREEN (2,800/0 pādas; 2,100 paraphrases; 0 translation failures/4 reviewed advisories; SEO 6; health 503; study 9,658; Python 49; document 776; progress 15; search 7; browser 264; cache `7bc47d10fd89`). Pillow absent; optional share-art repaint skipped. No content, i18n, protected readings or owner holds changed; no push.
 - 2026-10-17 · `arena/6062134a-bhagavad-gita` · **Pāda meaning is easier to discover.** Moved the existing collapsed disclosure to directly under the whole verse, restyled its summary as a 48px-minimum teal-tinted, keyboard-focusable action, clarified the CTA and tap instruction in en/ne/hi, and connected quarter buttons to that instruction via `aria-describedby`. Added four browser checks (247 → 251). Added a Devanagari font fallback after the chrome sans stack so NE/HI copy does not render as missing glyphs; the browser group locks it. No new i18n keys or verse-content changes. Full browser-enabled build ALL GREEN (cache `a1be3426f031`); screenshots at `/home/user/evidence/pada-discovery/`. No push or merge.
 - 2026-10-17 · `arena/6062134a-bhagavad-gita` · Verified PR #46 **MERGED** at `155d0775272f86eec13c3f3cf0666605f9c38611`, equal to `origin/main` and this checkout’s `HEAD`; clean worktree. Full browser-enabled build passed (247 browser checks; cache `302930416ac2`), with no source/generated-file changes. Recommended Phase 2.4; asked Dhruba to choose the next roadmap task and whether to implement the pāda-hint discoverability polish. No implementation, push or merge.

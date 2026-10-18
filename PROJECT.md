@@ -10,9 +10,32 @@ code alone cannot tell you.
 
 ---
 
-## 0. Handoff snapshot (keep current; last touched 2026-10-17)
+## 0. Handoff snapshot (keep current; last touched 2026-10-18)
 
 For a brand-new session: read §1–§10, then this box, then build.
+
+
+### 2026-10-18 — theme title 18.01–18.06 names both terms (owner decision)
+
+* Owner: the theme title "Renunciation is not abandonment of purifying
+  duties" compressed sannyāsa and tyāga into one ambiguous English word —
+  the very distinction 18.1–18.2 spends two verses drawing (18.1 asks
+  *saṃnyāsasya… tyāgasya ca… pṛthak*; 18.2 defines the two) — and the
+  verdict (18.5 *na tyājyam*; 18.6 *saṅgaṁ tyaktvā phalāni ca*; 18.4's
+  *niścaya* is declared *tyāge*) is a statement about tyāga. New title in
+  all three languages: **Sannyāsa and tyāga: not abandonment of purifying
+  duties** / संन्यास र त्याग: शुद्धिकारक कर्तव्य छोड्नु होइन / संन्यास और
+  त्याग: शुद्धिकारक कर्तव्य छोड़ना नहीं है. The two-term opening uses the
+  colon style ch18 already uses ("Three kinds of resolve: …", "The final
+  promise: …"); the verdict clause is verbatim; the part title at 18.4,
+  "Tyāga is of three kinds", keeps the hierarchy (theme names both terms,
+  the verse takes tyāga alone). Scope: three title values in
+  `source/ch18.json`, one `STUDY_MAPS.md` line; rebuild churn
+  `data/ch18.js`, `chapter/18/`, `sw.js` cache id and the ch18 sitemap
+  lastmod. Not locked in `study_map_contract.json` (it locks verse ranges,
+  not titles). No verse text, part title, i18n key or owner-held byte
+  changed; full build ALL GREEN (browser layer skipped — no Playwright in
+  that sandbox; last full browser-green 2026-10-17).
 
 
 ### 2026-10-17 — preserve the reader's state across refresh
