@@ -83,7 +83,7 @@ For a brand-new session: read §1–§10, then this box, then build.
   advisories; SEO 6; site health 503; study 9,658 (0 title advisories); Python
   53; document 776; progress 15; search 7. Browser layer skipped — no
   Playwright in this sandbox (last full browser-green 2026-10-17). No verse
-  text, part title, i18n key or owner-held byte changed. Not pushed.
+  text, part title, i18n key or owner-held byte changed. Pushed to `arena/4c434d4a-bhagavad-gita`; [PR #48](https://github.com/chapain/Bhagavad-Gita/pull/48) opened to `main` (not merged).
 
 ### 2026-10-18 — theme title 18.01–18.06 names both terms (owner decision)
 
