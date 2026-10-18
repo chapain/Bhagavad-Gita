@@ -29,9 +29,9 @@
         {
           "range": "1.01–1.01",
           "titles": {
-            "en": "Dhṛtarāṣṭra asks what happened",
-            "ne": "धृतराष्ट्र सोध्छन्: के भयो?",
-            "hi": "धृतराष्ट्र पूछते हैं: क्या हुआ?"
+            "en": "Dhṛtarāṣṭra asks what they did",
+            "ne": "धृतराष्ट्र सोध्छन्: उनीहरूले के गरे?",
+            "hi": "धृतराष्ट्र पूछते हैं: उन्होंने क्या किया?"
           },
           "descs": {
             "en": "The blind king Dhṛtarāṣṭra asks Sañjaya what his sons and the Pāṇḍavas did on the field of Kurukṣetra.",
@@ -206,8 +206,8 @@
           "range": "1.02–1.02",
           "titles": {
             "en": "Duryodhana approaches Droṇa",
-            "ne": "दुर्योधन द्रोणकहाँ",
-            "hi": "दुर्योधन द्रोण के पास"
+            "ne": "दुर्योधन द्रोणाचार्यकहाँ पुग्छन्",
+            "hi": "दुर्योधन द्रोणाचार्य के पास जाता है"
           },
           "descs": {
             "en": "Duryodhana sees the Pāṇḍava army drawn up for battle and goes to his teacher Droṇa.",
@@ -1178,9 +1178,9 @@
         {
           "range": "1.08–1.08",
           "titles": {
-            "en": "Bhīṣma, Karṇa, Kṛpa, Aśvatthāmā",
-            "ne": "भीष्म, कर्ण, कृप, अश्वत्थामा",
-            "hi": "भीष्म, कर्ण, कृप, अश्वत्थामा"
+            "en": "Bhīṣma, Karṇa, Kṛpa, Aśvatthāmā and others",
+            "ne": "भीष्म, कर्ण, कृप, अश्वत्थामा र अरूहरू",
+            "hi": "भीष्म, कर्ण, कृप, अश्वत्थामा और अन्य"
           },
           "descs": {
             "en": "He names Droṇa himself, Bhīṣma, Karṇa, Kṛpa, Aśvatthāmā and others.",
@@ -2484,7 +2484,7 @@
         {
           "range": "1.16–1.16",
           "titles": {
-            "en": "Yudhiṣṭhira, Nakula and Sahadeva answer",
+            "en": "Yudhiṣṭhira, Nakula and Sahadeva sound their conches",
             "ne": "युधिष्ठिर, नकुल र सहदेवले पनि शङ्ख बजाउँछन्",
             "hi": "युधिष्ठिर, नकुल और सहदेव भी शंख बजाते हैं"
           },
@@ -2774,7 +2774,7 @@
           "range": "1.18–1.18",
           "titles": {
             "en": "Drupada, Draupadī’s sons, and Abhimanyu sound theirs",
-            "ne": "द्रुपद, द्रौपदीका छोरा र अभिमन्युले पनि शङ्ख बजाउँछन्",
+            "ne": "द्रुपद, द्रौपदीका छोराहरू र अभिमन्युले पनि शङ्ख बजाउँछन्",
             "hi": "द्रुपद, द्रौपदी के पुत्र और अभिमन्यु भी शंख बजाते हैं"
           },
           "descs": {
@@ -2928,9 +2928,9 @@
         {
           "range": "1.19–1.19",
           "titles": {
-            "en": "The blast pierces Kaurava hearts",
-            "ne": "त्यो ध्वनिले कौरवहरूको हृदय चिर्छ",
-            "hi": "पांडवों का नाद कौरवों के हृदय चीरता है"
+            "en": "The uproar shatters Kaurava hearts",
+            "ne": "त्यो कोलाहलले कौरवहरूको हृदय चिरिदिन्छ",
+            "hi": "वह कोलाहल कौरवों के हृदय चीरता है"
           },
           "descs": {
             "en": "The uproar shakes the hearts of Dhṛtarāṣṭra’s sons and fills heaven and earth.",
@@ -4572,7 +4572,7 @@
           "range": "1.29–1.29",
           "titles": {
             "en": "My limbs fail",
-            "ne": "मेरा अङ्ग गल्छन्",
+            "ne": "मेरा अङ्गहरू शिथिल हुन्छन्",
             "hi": "मेरे अंग शिथिल हैं"
           },
           "descs": {
@@ -7377,9 +7377,9 @@
         {
           "range": "1.46–1.46",
           "titles": {
-            "en": "Better that they kill me unarmed",
-            "ne": "निःशस्त्र मलाई मारून्, त्यो नै बेस",
-            "hi": "निःशस्त्र मुझे मार दें, वही बेहतर"
+            "en": "Better to be killed unarmed and unresisting",
+            "ne": "निःशस्त्र र प्रतिकार नगरी मारिनु नै बेस",
+            "hi": "निहत्थे और बिना प्रतिरोध के मारा जाना बेहतर"
           },
           "descs": {
             "en": "He would rather be killed, unarmed and unresisting, by the Kauravas.",
@@ -7546,9 +7546,9 @@
         {
           "range": "1.47–1.47",
           "titles": {
-            "en": "Arjuna sits down, casting aside his bow",
-            "ne": "धनुष त्यागेर अर्जुन रथमा बस्छन्",
-            "hi": "धनुष त्यागकर अर्जुन रथ में बैठ जाता है"
+            "en": "Arjuna sits down, setting aside his bow and arrows",
+            "ne": "धनुष-बाण त्यागेर अर्जुन रथमा बस्छन्",
+            "hi": "धनुष-बाण त्यागकर अर्जुन रथ में बैठता है"
           },
           "descs": {
             "en": "Having spoken, he sits down in the chariot, drops his bow and arrows, overwhelmed with grief — the stage is set for the teaching.",

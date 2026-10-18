@@ -117,6 +117,13 @@ def run(pw, url, offline_capable=False):
     ok(not pg.evaluate(
         "() => { const e = document.querySelector('.w-day');"
         " return e.scrollWidth > e.clientWidth; }"), "card does not overflow")
+    mobile_tracks = pg.eval_on_selector(".welcome-hero", "e=>getComputedStyle(e).gridTemplateColumns.split(' ').length")
+    pg.set_viewport_size({"width": 1440, "height": 900})
+    pg.wait_for_timeout(60)
+    desktop_tracks = pg.eval_on_selector(".welcome-hero", "e=>getComputedStyle(e).gridTemplateColumns.split(' ').length")
+    pg.set_viewport_size({"width": 390, "height": 844})
+    ok(mobile_tracks == 1 and desktop_tracks == 2,
+       "welcome hero stacks on phones and pairs intro with verse on desktop")
     pg.reload(wait_until="load")
     pg.wait_for_timeout(400)
 
