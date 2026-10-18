@@ -648,7 +648,7 @@ function doSearch(){
         <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
         <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
-        <div class="vhint">${esc(T(v.paras).slice(0,80))}…</div>
+        <div class="vhint">${esc(T(v.paras))}</div>
       </div>`;}).join('')}</div>`;
   announceView();
 }
@@ -2063,7 +2063,7 @@ function showWelcome(){
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
           <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
-          <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras).slice(0,80)) + '…'}</div>
+          <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras))}</div>
         </div>`;
   };
   if(state.shared){ loadChapter(state.shared.ci+1).then(()=>paint(state.shared, true)).catch(gitaLoadFail); }
@@ -2169,10 +2169,16 @@ function showChapter(ci, anchorTi){
     const verseCards = t.parts.map(p=>{
       const s = p.sutras[0];
       const si = flatSi++;
+      /* The paraphrase is printed whole, not cut at 90 characters (the cut
+         lived here until 2026-10-18): a reader working through the theme map
+         stays in the chapter and wants the complete thought under each
+         title — the longest paraphrase in the corpus is ~190 characters,
+         four or five card lines. Clicking a card still opens the sheet for
+         the Sanskrit and the word-by-word reading. */
       return `<div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${si},'theme',null,this)">
         <div class="vnum">${L('verse')} ${fmtNL(s.n)}</div>
         <div class="vtitle">${esc(T(p.titles))}</div>
-        <div class="vhint">${esc(T(s.paras).slice(0,90))}${T(s.paras).length>90?'…':''}</div>
+        <div class="vhint">${esc(T(s.paras))}</div>
       </div>`;
     }).join('');
     return `<details class="ch-theme" id="theme-${ti}"${at===ti?' open':''}>
