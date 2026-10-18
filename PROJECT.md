@@ -32,6 +32,7 @@ For a brand-new session: read §1–§10, then this box, then build.
   added (264 → 265); the browser suite could not run in this sandbox because
   Playwright is absent. All remaining `build.py` checks pass. No new i18n keys,
   curated “Gītā in 18 verses” path, verse text or theme title was introduced.
+  The work is pushed to `arena/defbe426-bhagavad-gita`; PR #53 is open to `main`, not merged.
 
 ### 2026-10-18 — verse-sheet Sanskrit lines align and the number is full-size (owner report)
 
