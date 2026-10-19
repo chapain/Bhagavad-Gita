@@ -870,15 +870,20 @@
 
   .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:1px solid var(--line);}
   .toolbar .searchwrap{ display:flex; align-items:center; gap:6px; flex:1; min-width:240px; max-width:640px;}
-  .toolbar input[type=search]{ flex:1; padding:9px 14px; border:1px solid var(--line); border-radius:999px; font-size:.92rem; background:var(--field); color:var(--ink);}
-  .toolbar input[type=search]:focus{ border-color:var(--saffron);}
+  .toolbar input[type=search]{ font-size:.92rem; color:var(--ink);}
   /* inline stroke icons: sized and coloured by the surrounding text, so they
      behave like glyphs, not pictures — and follow both themes for free */
   .ic{ width:1.05em; height:1.05em; display:inline-block; vertical-align:-.18em; margin-right:6px;
        fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
   .ic.fill{ fill:currentColor; }
-  .sw-field{ position:relative; flex:1; display:flex; }
-  .sw-field input[type=search]{ width:100%; padding-left:36px; }
+  /* one ring: the wrapper owns the shape and the focus halo, the input is
+     chromeless (owner 2026-10-19 — the loupe sat over the text on phones) */
+  .sw-field{ position:relative; flex:1; display:flex; align-items:center; background:var(--field);
+             border:1px solid var(--line); border-radius:999px; transition:.15s; }
+  .sw-field:focus-within{ border-color:var(--saffron); box-shadow:0 0 0 3px var(--saffron-soft); }
+  .sw-field input[type=search]{ flex:1; min-width:0; padding:9px 14px 9px 36px; border:0; background:transparent; }
+  .sw-field input[type=search]:focus-visible{ outline:none; }
+  .sw-field input[type=search]::placeholder{ color:var(--muted); }
   .sw-ic{ position:absolute; left:13px; top:50%; transform:translateY(-50%);
           color:var(--ink-soft); display:flex; pointer-events:none; }
   .sw-ic .ic{ width:15px; height:15px; margin:0; }
@@ -1258,10 +1263,7 @@
     .toolbar .tool-btn{ display:none !important; }
     .toolbar .searchwrap{ flex:1 0 100%; max-width:none; min-width:0; }
     .toolbar input[type=search]{ min-height:40px; font-size:16px; }
-    .toolbar .sw-field{ display:flex; align-items:center; gap:6px;
-      background:var(--field); border:1px solid var(--line); border-radius:999px; padding:0 10px; }
-    .toolbar .sw-field:focus-within{ border-color:var(--saffron); }
-    .toolbar .searchwrap input[type=search]{ flex:1; border:0; background:transparent; padding:9px 4px; font-size:16px; color:var(--ink); min-height:40px; }
+    .toolbar .sw-field input[type=search]{ min-height:40px; }  /* shape + ring: .sw-field */
     /* on phones, syncTabs() does NOT move the searchwrap anymore (it
        stays in the toolbar) — reset the m-search-inline class. */
     .searchwrap.m-search-inline{ display:flex !important; margin:0; order:0; width:100%; flex:1; max-width:none; min-width:0; }
@@ -1303,7 +1305,6 @@
     .crumbs{ font-size:.84rem; gap:6px; margin-bottom:14px; }
     .way-crumb{ gap:6px; }
     .wc-chip{ padding:7px 13px; font-size:.8rem; min-height:34px; }
-    .toolbar input[type=search]{ font-size:16px; }  /* iOS zooms on focus below 16px */
     .crumbs .back-top{ font-size:.82rem; padding:7px 14px; min-height:36px; }
     .grid{ gap:12px; }
     .grid.chapters, .grid.themes, .grid.verses, .grid.sections{ grid-template-columns:1fr; }
