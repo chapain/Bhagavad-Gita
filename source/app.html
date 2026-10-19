@@ -244,6 +244,7 @@ __APP_CSS__
   <!-- Credit lives in its own element: applyStatic() replaces #appFooter's
        textContent on every language switch and would otherwise wipe it. -->
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
+  <div class="credit"><button class="foot-link" onclick="App.data.show()" id="footDataLink">Your data · Export / Import</button></div>
 </footer>
 
 <div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)App.reader.close()">

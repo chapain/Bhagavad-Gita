@@ -1,0 +1,24 @@
+/* ---- footer data link ---- */
+.foot-link{ background:none; border:none; color:var(--teal); font:inherit; font-size:.8rem;
+            cursor:pointer; text-decoration:underline; text-decoration-style:dotted; padding:0; }
+.foot-link:hover{ color:var(--saffron-text); }
+
+/* ---- data export / import (Phase 5.4) ---- */
+.data-wrap{ max-width:680px; margin:0 auto; }
+.data-card{ background:var(--paper); border:1px solid var(--line); border-radius:16px;
+            padding:18px 20px; margin:14px 0; box-shadow:0 1px 0 rgba(var(--shadow),.04); }
+.data-card h3{ margin:0 0 6px; font-size:1.05rem; color:var(--teal); }
+.data-card p{ margin:0 0 10px; color:var(--ink-soft); font-size:.92rem; line-height:1.55; }
+.data-stats{ display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 14px; }
+.data-stat{ background:var(--cream); border:1px solid var(--line); border-radius:999px;
+            padding:6px 14px; font-size:.85rem; color:var(--ink-soft); }
+.data-stat b{ color:var(--ink); font-weight:700; }
+.data-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+.data-actions .lr-cta, .data-actions .lr-ghost{ font-size:.9rem; }
+.data-foot{ margin-top:18px; padding-top:12px; border-top:1px solid var(--line);
+            color:var(--ink-soft); font-size:.85rem; line-height:1.5; }
+.data-foot a{ color:var(--teal); text-decoration:none; border-bottom:1px dotted var(--teal); }
+.data-msg{ margin-top:12px; padding:10px 14px; border-radius:10px; font-size:.9rem; }
+.data-msg.ok{ background:var(--teal-soft); color:var(--ink); border:1px solid var(--teal); }
+.data-msg.bad{ background:var(--danger-soft); color:var(--ink); border:1px solid var(--danger); }
+.data-import{ display:none; }

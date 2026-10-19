@@ -26,8 +26,12 @@ jobs:
       - name: Build site (fast)
         run: python3 build.py --fast
 
-      - name: Verify app (776 assertions)
-        run: node run_gita_app.js
+      - name: Verify app (827 assertions) + backup
+        run: |
+          node run_gita_app.js
+          node tests/test_data_backup.js
+          node tests/test_progress_maps.js
+          node tests/test_search.js
 
       - name: Check translations and site health
         run: |
@@ -35,3 +39,4 @@ jobs:
           python3 source/check_site_health.py
           python3 source/check_padas.py
           python3 source/check_paraphrase.py
+          python3 -m unittest discover -s tests -v

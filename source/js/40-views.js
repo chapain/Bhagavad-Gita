@@ -75,6 +75,7 @@ function viewHash(){
   if(state.view==='play') return '#play';
   if(state.view==='favorites') return '#favorites';
   if(state.view==='search') return '#search';
+  if(state.view==='data') return '#data';
   if(state.view==='sections') return '#ways';
   if(state.view==='chapters' && state.section) return '#way='+state.section;
   if(state.view==='learn' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=learn';

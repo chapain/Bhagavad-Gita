@@ -316,12 +316,12 @@ def _read_templates(folder, names):
 HTML = _read_template("app.html")
 APP_CSS_FILES = (
     "00-foundation.css", "10-play.css", "20-learn.css",
-    "30-favorites.css", "40-welcome.css", "50-reader-shell.css",
+    "30-favorites.css", "32-data.css", "40-welcome.css", "50-reader-shell.css",
     "60-responsive.css",
 )
 APP_JS_FILES = (
     "00-core.js", "10-library.js", "20-learn.js", "25-learn-session.js",
-    "30-play.js", "35-drills.js", "40-views.js", "50-reader.js",
+    "30-play.js", "35-drills.js", "40-views.js", "45-data.js", "50-reader.js",
     "60-runtime.js",
 )
 APP_CSS = _read_templates("css", APP_CSS_FILES)

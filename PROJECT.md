@@ -216,7 +216,7 @@ For a brand-new session: read §1–§10, then this box, then build.
   to the plain chapter view instead of a theme nothing matches.
 * `run_gita_app.js` had pinned the retired body by exact source string; it now
   asserts a single definition plus the absence of the retired views
-  (**786 → 783 assertions**). The two browser fixtures that used the deleted
+  (**786 → 827 assertions**). The two browser fixtures that used the deleted
   views moved to the chapter view and the verse sheet, and a new group locks
   both reported links, the `#theme=` reload and the surviving view set
   (**233 → 241 browser checks**). Four dead strings left every dictionary
@@ -1741,14 +1741,14 @@ sitemap.xml, robots.txt   generated shell/offline and crawler files
 chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       783 assertions on the built document and data (needs node)
+run_gita_app.js       827 assertions on the built document and data (needs node)
 browser_checks.py     270 live-browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)
   css/*.css            ordered feature styles, concatenated into index.html
   js/*.js              ordered feature runtime, concatenated into index.html
-  i18n_ui.py           183 UI strings × 3 languages
+  i18n_ui.py           202 UI strings × 3 languages
   study_map_contract.json all 18 reviewed maps + legacy-progress migration
   build_gita.py        assembles templates + chapter data; enforces source schema
   verify.py            IAST normalization and syllable helpers used for checks

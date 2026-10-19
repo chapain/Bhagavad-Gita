@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 783;      // keep in step with the printed total
+const TOTAL_ASSERTIONS = 827;      // keep in step with the printed total
 const TOTAL_BROWSER_CHECKS = 270;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
@@ -106,7 +106,7 @@ const enKeys = Object.keys(UI.en);
 // added click_pada_meanings (1) → 187
 // 2026-10-17: removed read_sub, opt_full_g, opt_study_g, back_themes (4) → 183,
 // together with the per-theme and continuous-reading views that used them.
-ok(enKeys.length === 183, `UI has 183 keys (got ${enKeys.length})`);
+ok(enKeys.length === 202, `UI has 202 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -790,6 +790,20 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   const rb = fs.readFileSync(path.join(S, 'robots.txt'), 'utf8');
   ok(!/Disallow/i.test(rb), 'robots.txt disallows nothing');
   ok(/Sitemap: https?:\/\/\S+\/sitemap\.xml/.test(rb), 'robots.txt points at the sitemap');
+
+  // ---- Phase 5.4: data export / import (localStorage backup) ----
+  ok(/App\.data = Object\.freeze/.test(html) && /function dataExport\(\)/.test(html) && /function dataValidateImport/.test(html),
+     'data export/import module exists with versioned schema');
+  ok(/function showData\(\)/.test(html) && /id="footDataLink"/.test(html) && /#data/.test(html),
+     'data view reachable from footer and #data route');
+  ok(/data_title/.test(html) && /data_export/.test(html) && /data_import/.test(html),
+     'data view uses i18n keys (en/ne/hi)');
+  ok(/gita-backup-/.test(html) && /application\/json/.test(html) && /exportedAt/.test(html),
+     'export creates versioned JSON with timestamp');
+  ok(/gitaFavs/.test(html) && /gitaFavNotes/.test(html) && /gitaLearn/.test(html),
+     'export includes favs, notes and Learn progress');
+  ok(/dataClearAll/.test(html) && /data_clear_q/.test(html),
+     'clear-all-data guarded by confirmation');
 }
 
 // ---------- chapter landing pages (generated SEO satellites) ----------

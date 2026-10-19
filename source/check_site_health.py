@@ -355,7 +355,10 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
 # headings + direct verse tap targets); the cap is to catch accidental
 # bloat, not freeze UI evolution. Phase 2's explicit feature interfaces and
 # session ownership bring the maintained baseline to about 293500 characters.
-ok(len(idx) < 295000, f"the shell should stay lean; it is {len(idx)} characters")
+# Phase 5.4 (2026-10-19): data export/import adds ~17KB (backup UI + versioned
+# JSON schema + merge logic); raise to 320000 to keep headroom for this
+# user-data safety net.
+ok(len(idx) < 320000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64
