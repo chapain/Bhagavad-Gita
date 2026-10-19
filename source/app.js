@@ -2281,7 +2281,10 @@ function padaBlockDeva(s, withNum){
 }
 /* Two lines, never three: shrink --verse-fit until each line's text fits
    the card's inner width (not the line's clientWidth: 0 inline on phones,
-   shrink-to-fit on desktop). Numbered line reserves its tail; +1px tol. */
+   shrink-to-fit on desktop). The numbered line reserves the number's real
+   reach past the text - its gap plus its width - measured, so the same
+   formula fits the desktop tail (out of flow after the daṇḍa) and the phone
+   one (in flow, so the centred block carries it). +1px tolerance. */
 function fitWholeVerse(){
   const v = $('#modal .m-whole-verse');
   if(!v || !v.clientWidth) return;
@@ -2290,12 +2293,11 @@ function fitWholeVerse(){
   /* inner width: clientWidth less padding and the card's 1px borders */
   const inner = v.clientWidth - pf(cs.paddingLeft) - pf(cs.paddingRight) - 2;
   const over = () => ms.some(el => { if(!el.firstChild) return false;
-    r.selectNode(el.firstChild); let avail = inner;
-    if(el.classList.contains('has-number')){
-      const pad = pf(getComputedStyle(el).paddingRight), tail = el.querySelector('.gl-tail');
-      avail -= pad || (tail ? tail.getBoundingClientRect().width + pf(getComputedStyle(el).fontSize) * .24 : 0);
-    }
-    return r.getBoundingClientRect().width > avail + 1; });
+    r.selectNode(el.firstChild);
+    const tr = r.getBoundingClientRect(), tail = el.querySelector('.gl-tail');
+    /* how far the number reaches past the text: the gap plus its width */
+    const num = tail ? tail.getBoundingClientRect().right - tr.right : 0;
+    return tr.width > inner - num + 1; });
   let f = 1;
   while(true){ v.style.setProperty('--verse-fit', f.toFixed(2));
     if(f <= 0.3 || !over()) break; f -= 0.02; }

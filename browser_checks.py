@@ -846,8 +846,15 @@ def run(pw, url, offline_capable=False):
     # verse. Speakers that fall between the two lines stay in place (1.21,
     # 1.28). Phase 3.1 retired the continuous-reading page that used to be the
     # fixture; the sheet renders the same verseLines()/padaBlockDeva() output.
-    def sheet_shape(ref):
-        pg.evaluate("""ref => { const l = verseLoc(ref); closeModal();
+    def sheet_shape(ref, size=None):
+        if size:
+            pg.evaluate("s => setReaderSize(s)", size)
+            pg.wait_for_timeout(300)
+        # closeModal() animates: opening in the same tick cancels the new
+        # sheet, and every measured rect comes back 0. Let it finish first.
+        pg.evaluate("closeModal()")
+        pg.wait_for_timeout(500)
+        pg.evaluate("""ref => { const l = verseLoc(ref);
                                   openModal(l.ci, l.ti, l.si, 'theme'); }""", ref)
         pg.wait_for_timeout(500)
         return pg.evaluate("""() => {
@@ -862,7 +869,11 @@ def run(pw, url, offline_capable=False):
             const tail = number && number.parentElement;
             const lastMain = mains[mains.length - 1];
             const nRect = number && number.getBoundingClientRect();
-            const textRect = lastMain.getBoundingClientRect();
+            /* the text itself, not the line box: on phones the number rides
+               inside it, so its right edge is the closing danda, not the tail */
+            const rng = document.createRange();
+            rng.selectNode(lastMain.firstChild || lastMain);
+            const textRect = rng.getBoundingClientRect();
             const boxRect = box.getBoundingClientRect();
             return {rows: rows, iast: box.querySelectorAll('.giast').length,
                     tailText: lines[lines.length-1].textContent.trim(),
@@ -874,6 +885,8 @@ def run(pw, url, offline_capable=False):
                     numberFont: number && parseFloat(getComputedStyle(number).fontSize),
                     numberPosition: tail && getComputedStyle(tail).position,
                     numberGap: nRect && nRect.left - textRect.right,
+                    numberGapEm: nRect && (nRect.left - textRect.right)
+                        / parseFloat(getComputedStyle(lines[lines.length-1]).fontSize),
                     numberInside: !nRect || (nRect.left >= boxRect.left - 1
                         && nRect.right <= boxRect.right + 1),
                     overflows: box.scrollWidth > box.clientWidth};
@@ -897,29 +910,55 @@ def run(pw, url, offline_capable=False):
     # screenshot 2026-10-19, beside a correct full-size 5.16).
     shape = sheet_shape("5.17")
     ok(len(shape["mainHeights"]) == 2
-       and all(h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
+       and all(0 < h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
        and shape["verseFit"] >= 0.9 and shape["lineFont"] >= 15
        and max(shape["starts"]) - min(shape["starts"]) <= 1
-       and shape["numberInside"] and not shape["overflows"],
+       and shape["numberInside"] and not shape["overflows"]
+       and 0 < shape["numberGapEm"] < 1,
        f"5.17 stays two readable lines at desktop size ({shape})")
 
-    # Narrow sheet: reserve room at the end of the last text line and anchor
-    # the number there so wrapping never clips it; line openings still align.
+    # Narrow sheet: the number rides at the end of the last line, a small gap
+    # after the closing daṇḍa — it is never right-anchored to the card's edge
+    # (owner screenshot 2026-10-19: 1.6's number sat far right of its text).
+    # Line openings still align and the number stays inside the card.
     pg.set_viewport_size({"width": 390, "height": 844})
     shape = sheet_shape("4.19")
     ok(shape["tailText"].endswith("॥") and "4.19" in shape["tailText"]
-       and max(shape["starts"]) - min(shape["starts"]) <= 1 and not shape["overflows"],
+       and max(shape["starts"]) - min(shape["starts"]) <= 1 and not shape["overflows"]
+       and min(shape["starts"]) > 0 and 0 < shape["numberGapEm"] < 1,
        f"4.19 keeps its number between daṇḍas and wraps cleanly on mobile ({shape})")
+    shape = sheet_shape("1.06")
+    ok(len(shape["mainHeights"]) == 2
+       and all(0 < h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
+       and shape["verseFit"] > 0.3 and shape["lineFont"] >= 15
+       and shape["numberFont"] >= shape["lineFont"] * .95
+       and max(shape["starts"]) - min(shape["starts"]) <= 1
+       and shape["numberInside"] and not shape["overflows"]
+       and 0 < shape["numberGapEm"] < 1,
+       f"1.6's number sits just after the second line's text on mobile ({shape})")
     # The verse is two lines, never three: at phone width 1.1's second line
     # used to wrap mid-line (owner screenshot 2026-10-19). fitWholeVerse()
     # shrinks the hero text until each line's height is a single line-height.
     shape = sheet_shape("1.01")
     ok(len(shape["mainHeights"]) == 2
-       and all(h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
+       and all(0 < h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
        and shape["verseFit"] > 0.3 and shape["lineFont"] >= 15
        and max(shape["starts"]) - min(shape["starts"]) <= 1
-       and shape["numberInside"] and not shape["overflows"],
+       and shape["numberInside"] and not shape["overflows"]
+       and 0 < shape["numberGapEm"] < 1,
        f"1.1 keeps both Sanskrit lines on one readable line each on mobile ({shape})")
+    # Reader text at 140%: the fit shrinks the verse, but the number still
+    # follows the closing daṇḍa and nothing leaves the card.
+    for ref, label in (("1.06", "1.6"), ("1.01", "1.1")):
+        shape = sheet_shape(ref, 140)
+        ok(len(shape["mainHeights"]) == 2
+           and all(0 < h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
+           and max(shape["starts"]) - min(shape["starts"]) <= 1
+           and shape["numberInside"] and not shape["overflows"]
+           and 0 < shape["numberGapEm"] < 1,
+           f"{label} at 140% reader size keeps two lines and its number beside the text ({shape})")
+    pg.evaluate("setReaderSize(100)")
+    pg.wait_for_timeout(300)
     pg.keyboard.press("Escape")
     pg.wait_for_timeout(400)
 

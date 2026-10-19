@@ -1241,11 +1241,9 @@ __FONTS__
     .m-head .m-num-chit{ font-size:.9rem; }
     .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
                        overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
-    /* Reserve room at the final line's end so its number stays right-aligned
-       on that line instead of dropping onto a line of its own. */
-    .m-whole-verse .gline-main{ display:inline; }
-    .m-whole-verse .gline-main.has-number{ display:block; width:100%; box-sizing:border-box; padding-right:4.6em; }
-    .m-whole-verse .gl-tail{ top:auto; left:auto; right:0; bottom:0; white-space:nowrap; }
+    /* Phones keep the number on the line, in flow, so the centred block
+       includes it: it follows the closing daṇḍa, never the card's edge. */
+    .m-whole-verse .gl-tail{ position:static; }
     .m-part{ margin:0 0 12px; padding:8px 2px 0; color:var(--ink-soft);
              font-size:.78rem; line-height:1.5; }
     .m-num{ font-size:1.08rem; }
