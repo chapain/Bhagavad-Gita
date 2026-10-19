@@ -863,13 +863,19 @@ def run(pw, url, offline_capable=False):
             const lastMain = mains[mains.length - 1];
             const nRect = number && number.getBoundingClientRect();
             const textRect = lastMain.getBoundingClientRect();
+            const boxRect = box.getBoundingClientRect();
             return {rows: rows, iast: box.querySelectorAll('.giast').length,
                     tailText: lines[lines.length-1].textContent.trim(),
                     starts: mains.map(e => e.getBoundingClientRect().left),
+                    mainHeights: mains.map(e => e.getBoundingClientRect().height),
+                    lineHeight: parseFloat(getComputedStyle(lines[lines.length-1]).lineHeight),
+                    verseFit: parseFloat(box.style.getPropertyValue('--verse-fit') || '1'),
                     lineFont: parseFloat(getComputedStyle(lines[lines.length-1]).fontSize),
                     numberFont: number && parseFloat(getComputedStyle(number).fontSize),
                     numberPosition: tail && getComputedStyle(tail).position,
                     numberGap: nRect && nRect.left - textRect.right,
+                    numberInside: !nRect || (nRect.left >= boxRect.left - 1
+                        && nRect.right <= boxRect.right + 1),
                     overflows: box.scrollWidth > box.clientWidth};
         }""")
 
@@ -886,6 +892,16 @@ def run(pw, url, offline_capable=False):
         shape = sheet_shape(ref)
         ok(shape["rows"] == ["gline", "spk", "gline"],
            f"{num} keeps its speaker between the two lines ({shape['rows']})")
+    # 5.17 is a long triṣṭubh that needs little or no shrinking at desktop
+    # width; it must not bottom out at the --verse-fit floor (owner
+    # screenshot 2026-10-19, beside a correct full-size 5.16).
+    shape = sheet_shape("5.17")
+    ok(len(shape["mainHeights"]) == 2
+       and all(h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
+       and shape["verseFit"] >= 0.9 and shape["lineFont"] >= 15
+       and max(shape["starts"]) - min(shape["starts"]) <= 1
+       and shape["numberInside"] and not shape["overflows"],
+       f"5.17 stays two readable lines at desktop size ({shape})")
 
     # Narrow sheet: reserve room at the end of the last text line and anchor
     # the number there so wrapping never clips it; line openings still align.
@@ -900,8 +916,10 @@ def run(pw, url, offline_capable=False):
     shape = sheet_shape("1.01")
     ok(len(shape["mainHeights"]) == 2
        and all(h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
-       and not shape["overflows"],
-       f"1.1 keeps both Sanskrit lines on one line each on mobile ({shape})")
+       and shape["verseFit"] > 0.3 and shape["lineFont"] >= 15
+       and max(shape["starts"]) - min(shape["starts"]) <= 1
+       and shape["numberInside"] and not shape["overflows"],
+       f"1.1 keeps both Sanskrit lines on one readable line each on mobile ({shape})")
     pg.keyboard.press("Escape")
     pg.wait_for_timeout(400)
 

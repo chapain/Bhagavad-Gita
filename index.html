@@ -3850,16 +3850,9 @@ function pDandaLatn(i, total){
   if(total === 2) return (i===0) ? ' |' : ' ||';
   return (i%4===1)?' |':((i%4===3)?' ||':'');
 }
-/* The running verse is derived from the canonical d/t strings by verseLines().
-   Its `।`-separated segments stay in source order: two verse lines, plus a
-   speaker where the text has one (including the mid-verse positions in 1.21
-   and 1.28). The modal's 2x2 boxes use the separate `flow` pāda records. */
+/* verseLines(): two lines in source order, plus any speaker. */
 function padaBlockDeva(s, withNum){
-  /* withNum puts the verse number inside the closing daṇḍas of the final line
-     — ॥ १.२५ ॥ — the way a printed edition sets it, instead of on a line of
-     its own below. The modal groups the verse lines so their first words share
-     a left edge; its number sits just beyond the final line, not in the
-     centering measure. */
+  /* withNum: number inside the final line's closing daṇḍas — ॥ १.२५ ॥ */
   const ls = verseLines(s), last = ls.reduce((a,it,i)=> it.k === 's' ? a : i, -1);
   let html = withNum ? '<div class="m-vlines">' : '', li = 0;
   for(let i = 0; i < ls.length; i++){
@@ -3885,15 +3878,23 @@ function padaBlockDeva(s, withNum){
   if(withNum) html += '</div>';
   return html;
 }
-/* Two lines, never three: shrink --verse-fit to fit. */
+/* Two lines, never three: shrink --verse-fit until each line's text fits
+   the card's inner width (not the line's clientWidth: 0 inline on phones,
+   shrink-to-fit on desktop). Numbered line reserves its tail; +1px tol. */
 function fitWholeVerse(){
   const v = $('#modal .m-whole-verse');
   if(!v || !v.clientWidth) return;
-  const ms = [...v.querySelectorAll('.gline-main')], r = document.createRange();
-  /* text only, less number reserve */
-  const over = () => ms.some(el => { r.selectNode(el.firstChild);
-    return r.getBoundingClientRect().width >
-      el.clientWidth - parseFloat(getComputedStyle(el).paddingRight); });
+  const pf = parseFloat, ms = [...v.querySelectorAll('.gline-main')],
+    r = document.createRange(), cs = getComputedStyle(v);
+  /* inner width: clientWidth less padding and the card's 1px borders */
+  const inner = v.clientWidth - pf(cs.paddingLeft) - pf(cs.paddingRight) - 2;
+  const over = () => ms.some(el => { if(!el.firstChild) return false;
+    r.selectNode(el.firstChild); let avail = inner;
+    if(el.classList.contains('has-number')){
+      const pad = pf(getComputedStyle(el).paddingRight), tail = el.querySelector('.gl-tail');
+      avail -= pad || (tail ? tail.getBoundingClientRect().width + pf(getComputedStyle(el).fontSize) * .24 : 0);
+    }
+    return r.getBoundingClientRect().width > avail + 1; });
   let f = 1;
   while(true){ v.style.setProperty('--verse-fit', f.toFixed(2));
     if(f <= 0.3 || !over()) break; f -= 0.02; }
