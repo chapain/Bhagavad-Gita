@@ -1,0 +1,356 @@
+  .toolbar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 20px; background:var(--toolbar); border-bottom:1px solid var(--line);}
+  .toolbar .searchwrap{ display:flex; align-items:center; gap:6px; flex:1; min-width:240px; max-width:640px;}
+  .toolbar input[type=search]{ font-size:.92rem; color:var(--ink);}
+  /* inline stroke icons: sized and coloured by the surrounding text, so they
+     behave like glyphs, not pictures — and follow both themes for free */
+  .ic{ width:1.05em; height:1.05em; display:inline-block; vertical-align:-.18em; margin-right:6px;
+       fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .ic.fill{ fill:currentColor; }
+  /* one ring: the wrapper owns the shape and the focus halo, the input is
+     chromeless (owner 2026-10-19 — the loupe sat over the text on phones) */
+  .sw-field{ position:relative; flex:1; display:flex; align-items:center; background:var(--field);
+             border:1px solid var(--line); border-radius:999px; transition:.15s; }
+  .sw-field:focus-within{ border-color:var(--saffron); box-shadow:0 0 0 3px var(--saffron-soft); }
+  .sw-field input[type=search]{ flex:1; min-width:0; padding:9px 14px 9px 36px; border:0; background:transparent; }
+  .sw-field input[type=search]:focus-visible{ outline:none; }
+  .sw-field input[type=search]::placeholder{ color:var(--muted); }
+  .sw-ic{ position:absolute; left:13px; top:50%; transform:translateY(-50%);
+          color:var(--ink-soft); display:flex; pointer-events:none; }
+  .sw-ic .ic{ width:15px; height:15px; margin:0; }
+  .sw-x{ position:absolute; right:7px; top:50%; transform:translateY(-50%); width:30px; height:30px;
+         border:none; border-radius:50%; background:transparent; color:var(--ink-soft);
+         display:none; align-items:center; justify-content:center; cursor:pointer; padding:0; }
+  .sw-x .ic{ margin:0; width:15px; height:15px; }
+  .sw-x:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
+  .sw-field.has-x .sw-x{ display:flex; }
+  .sw-field.has-x input[type=search]{ padding-right:40px; }
+  .sw-field input[type=search]::-webkit-search-cancel-button{ -webkit-appearance:none; display:none; }
+  ::selection{ background:var(--saffron-soft); color:var(--ink); }
+  .tool-btn{ background:var(--paper); border:1px solid var(--line); color:var(--teal); font-weight:700; font-size:.85rem; padding:8px 16px; border-radius:999px; cursor:pointer; transition:.15s;}
+  .tool-btn:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
+  .tool-btn.primary{ background:var(--saffron); border-color:var(--saffron); color:var(--on-saffron);}
+  .tool-btn.primary:hover{ background:var(--saffron-dark);}
+  .fav-btn{ background:var(--saffron-soft); border:1px solid var(--saffron); color:var(--saffron-text); font-weight:700; font-size:.8rem; padding:4px 12px; border-radius:999px; cursor:pointer; margin-left:10px;}
+  .fav-btn.saved{ background:var(--saffron); color:var(--on-saffron);}
+  .res-head{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.25rem; color:var(--teal); margin-bottom:4px;}
+  .res-count{ color:var(--ink-soft); font-size:.9rem; margin-bottom:16px;}
+  .res-card{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:12px; cursor:pointer; transition:.15s;}
+  .res-card:hover{ border-color:var(--saffron); background:var(--teal-soft); box-shadow:0 3px 12px rgba(var(--shadow),.08);}
+  .res-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+  .res-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text);}
+  .res-title{ font-weight:600; color:var(--teal); font-size:.9rem;}
+  .res-deva{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1rem; line-height:1.55; background:var(--cream); border-radius:8px; padding:7px 10px; margin-bottom:6px;}
+  .res-lit{ color:var(--ink-soft); font-size:.88rem; line-height:1.5;}
+  .res-remove{ margin-left:auto; background:none; border:1px solid var(--line); color:var(--ink-soft); font-size:.72rem; font-weight:700; padding:3px 10px; border-radius:999px; cursor:pointer;}
+  .res-remove:hover{ border-color:var(--danger); color:var(--danger);}
+  .modal-bg{ position:fixed; inset:0; background:var(--scrim); display:none; align-items:center; justify-content:center; z-index:50; padding:20px;}
+  .modal-bg.open{ display:flex;}
+  .modal{ background:var(--cream); border-radius:20px; max-width:820px; width:100%; max-height:92vh; overflow-y:auto;
+          box-shadow:0 24px 60px rgba(0,0,0,.35); border:1px solid var(--line); position:relative; padding:24px 30px 28px;}
+  .modal .m-close{ position:sticky; top:0; float:right; background:var(--paper); color:var(--ink-soft); border:1px solid var(--line); width:38px;
+                   height:38px; border-radius:50%; font-size:1.1rem; cursor:pointer; font-weight:600; margin:-8px -12px 0 0;}
+  .modal .m-close:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft);}
+
+  /* Phase 3.2 (2026-10-16): verse-sheet header. Old top-of-sheet stacked
+     close + part-title + verse-title + Share/Fav + meter + text-size ate
+     ~half a screen of chrome before the śloka. Now one tight row with
+     close on the left, verse number+title in the middle, and a ⋯ overflow
+     button on the right that opens a menu containing Share, Save, meter,
+     text size and the hide-meanings toggle. */
+  .m-head{ display:flex; align-items:center; gap:10px; margin:0 0 6px; }
+  .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto; }
+  .m-head .m-title{ margin:0; padding:0; flex:1 1 0; min-width:0;
+    font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-size:1.05rem; color:var(--ink); font-weight:600; line-height:1.3;
+    display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .m-head .m-num-chit{ color:var(--saffron-text); font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .m-head .m-vtitle{ color:var(--teal); font-weight:600; font-size:1rem; }
+  .m-more{ flex:0 0 auto; width:38px; height:38px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink-soft); border-radius:50%;
+    font-size:1.3rem; font-weight:700; line-height:1; cursor:pointer; padding:0;
+    transition:.15s; }
+  .m-more:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+  .m-menu{ position:absolute; right:18px; top:52px; z-index:6;
+    background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 8px 24px rgba(var(--shadow),.18);
+    padding:8px; min-width:220px; display:flex; flex-direction:column; gap:4px; }
+  .m-menu[hidden]{ display:none !important; }
+  .m-menu button{ display:flex; align-items:center; gap:8px; width:100%;
+    text-align:left; padding:9px 12px; border:0; background:transparent;
+    border-radius:8px; color:var(--ink); font:600 .85rem/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;
+    cursor:pointer; }
+  .m-menu button:hover{ background:var(--saffron-soft); color:var(--saffron-text); }
+  .m-menu button.saved{ color:var(--saffron-text); }
+  .m-menu-sep{ height:1px; background:var(--line); margin:4px 0; }
+  .m-menu .m-meter{ margin:4px 6px 8px; }
+  .m-menu .reader-size{ margin:4px 6px 8px; }
+  .m-menu .wb-btn{ justify-content:flex-start; gap:8px; }
+
+  .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--ink-soft); font-size:.78rem; font-weight:600;
+           margin:0 0 14px; line-height:1.4; letter-spacing:.01em; }
+
+  .m-whole-verse{ --verse-fit:1; background:var(--paper); border:1px solid var(--line);
+    border-radius:14px; padding:18px 20px; margin:0 0 10px;
+    font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
+    line-height:1.8; text-align:center; }
+  /* Both lines flush left; the number rides out of flow. */
+  .m-whole-verse .m-vlines{ display:inline-block; max-width:100%; text-align:left; vertical-align:top; }
+  .m-whole-verse .gline{ font-size:calc(1.45rem * var(--reader-scale,1) * var(--verse-fit,1)); text-align:left; }
+  .m-whole-verse .gline-main{ position:relative; display:inline-block; max-width:100%; white-space:nowrap; }
+  .m-whole-verse .gl-tail{ position:absolute; top:0; left:calc(100% + .24em); white-space:nowrap; }
+  .m-whole-verse .giast{ font-style:italic; font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-size:calc(.92rem * var(--reader-scale,1)); color:var(--ink-soft); text-align:center; margin-top:2px; }
+  .m-whole-verse .spk{ font-family:"Noto Serif Devanagari",Georgia,serif;
+    color:var(--saffron-text); font-size:calc(1.05rem * var(--reader-scale,1));
+    font-style:italic; text-align:center; margin-bottom:10px; border-bottom:1px dashed var(--line); padding-bottom:8px; }
+  .m-whole-verse .spk .iast{ font-size:calc(.82rem * var(--reader-scale,1)); margin-left:10px; }
+  .m-whole-verse .gl-n{ color:var(--saffron-text); font-size:1em; font-weight:700; }
+
+  /* Meaning blocks follow straight after the hero verse, no extra paper
+     card around them — the content should breathe. */
+  .m-line{ margin-top:18px; }
+  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
+               letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; margin-bottom:6px;}
+  .m-line .lt{ color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.6;}
+  .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
+  .m-line.lit .lt{ font-size:calc(1rem * var(--reader-scale,1)); }
+
+  /* The word-by-word disclosure sits directly below the hero verse, so the
+     route to the pāda boxes is visible before the reader reaches translations.
+     Keep it collapsed; the raised, 48px summary is the action, not a tiny note. */
+  .m-words-section{ margin-top:10px; border:0; padding:0; }
+  .m-words-section > summary{ list-style:none; cursor:pointer;
+    display:flex; align-items:center; gap:10px;
+    min-height:48px; padding:12px 14px; border:1px solid var(--teal);
+    border-radius:12px; background:var(--teal-soft); color:var(--ink);
+    font:650 .94rem/1.4 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
+    user-select:none; }
+  .m-words-section > summary::-webkit-details-marker{ display:none; }
+  .m-words-section > summary::after{ content:"▾"; flex:0 0 auto; margin-left:auto;
+    font-size:1rem; color:var(--teal); transition:transform .15s; }
+  .m-words-section > summary:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
+  .m-words-section > summary:hover{ border-color:var(--teal-mid); }
+  .m-words-section[open] > summary::after{ transform:rotate(180deg); }
+  .m-words-body{ padding-bottom:4px; }
+  .m-pada-hint{ margin:12px 2px 10px; color:var(--ink); font-size:.92rem;
+    font-style:normal; font-weight:600; line-height:1.5; }
+  /* Inside Word-by-word reuse the existing .m-verse/pāda styles but with
+     tighter padding since it lives inside a collapsible. */
+  .m-words-body .m-verse{ background:transparent; border:0; padding:8px 0 0; margin:0; border-radius:0; }
+  .m-words-body .words-bar{ margin-bottom:8px; }
+  .m-words-body .wb-btn{ margin:0; }
+
+  /* Old selectors that no longer apply to the new layout but are harmless
+     if left in place — the dead ones below are overridden above. */
+  .m-num{ display:none; }
+  .m-readerbar{ display:none; }
+  .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:.95rem; font-weight:600;
+           margin:0 52px 8px 0; line-height:1.4;}
+  .m-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
+          display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
+  .m-title{ margin:0; padding:0; flex:1 1 auto; min-width:0; color:inherit; font:inherit; }
+  .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
+  .m-meter{ display:inline-block; background:var(--teal-soft); color:var(--teal); font-size:.78rem; font-weight:700;
+            padding:3px 12px; border-radius:999px; margin:6px 0 12px; letter-spacing:.03em;}
+  .m-readerbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px 12px; }
+  .m-readerbar .m-meter{ margin:6px 0 12px; }
+  .reader-size{ display:flex; align-items:center; gap:4px; margin:6px 0 12px; color:var(--ink-soft);
+                font: .78rem/1.3 system-ui,-apple-system,"Segoe UI",sans-serif; white-space:nowrap; }
+  .reader-size .reader-size-label{ font-weight:600; margin-right:3px; }
+  .reader-size .reader-size-value{ min-width:3.5ch; text-align:center; font-variant-numeric:tabular-nums; }
+  .reader-size button{ min-width:36px; min-height:34px; padding:4px 8px; border:1px solid var(--line);
+                       border-radius:999px; background:var(--paper); color:var(--teal); cursor:pointer;
+                       font:700 .82rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;
+                       transition:background-color .15s,border-color .15s; }
+  .reader-size button:hover:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft); }
+  .reader-size button:disabled{ opacity:.45; cursor:default; }
+  .reader-copy{ --reader-scale:1; }
+  .m-verse{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:6px 0 4px;}
+  .m-verse .spk{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--saffron-text); font-size:calc(1.15rem * var(--reader-scale,1));
+                 font-style:italic; margin-bottom:8px; border-bottom:1px dashed var(--line); padding-bottom:6px;}
+  .m-verse .spk .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-verse table{ width:100%; border-collapse:collapse;}
+  .m-verse td{ vertical-align:top; padding:3px 2px;}
+  .m-verse td.pnum{ width:26px; font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--saffron-text); font-weight:700; font-size:.9rem; padding-top:6px;}
+  .m-verse td.pd{ font-family:"Noto Serif Devanagari", Georgia, serif; font-size:calc(1.35rem * var(--reader-scale,1)); color:var(--teal); line-height:1.7; padding-right:14px;}
+  .m-verse td.pi{ font-style:italic; color:var(--ink-soft); font-size:calc(.92rem * var(--reader-scale,1)); padding-top:8px;}
+  .m-verse td.pi .danda{ color:var(--saffron-text); font-weight:700;}
+  .m-verse tr.pair td.pd{ padding-bottom:4px;}
+  .m-verse tr.spkrow td.pd.spk{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic; padding:8px 2px 10px; border-bottom:1px dashed var(--line); font-size:calc(1.1rem * var(--reader-scale,1));}
+  .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-verse .spk-line:hover{ background:var(--saffron-soft);}
+  .m-verse .spk-main{ border-bottom:1px dotted var(--saffron); }
+  .m-verse .words{ display:none; margin-top:6px; background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:8px 12px; min-width:0; max-width:100%;}
+  .m-verse .words.open{ display:block;}
+  .m-verse .words.mean-off .wmean{ display:none;}
+  .m-verse .wrow{ padding:3px 0; border-bottom:1px dotted var(--line); min-width:0; max-width:100%;}
+  .m-verse .wrow:last-child{ border-bottom:none;}
+  .m-verse .wrow .wdeva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.12rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .wrow .wiast{ font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); margin-left:10px; overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .wrow .wmean{ display:block; color:var(--ink); font-size:calc(.9rem * var(--reader-scale,1)); margin-left:14px; margin-top:1px; overflow-wrap:anywhere; word-break:normal;}
+  .words-bar{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
+  .words-bar .wb-hint{ color:var(--ink-soft); font-size:.78rem; font-style:italic;}
+  .words-bar .wb-btn{ background:var(--teal); color:var(--on-accent); border:none; padding:4px 14px; border-radius:999px; cursor:pointer; font-size:.8rem; font-weight:600;}
+  .words-bar .wb-btn:hover{ background:var(--teal-mid);}
+  .words-bar .wb-btn:disabled{ opacity:.45; cursor:default; }
+  .words-bar .wb-btn:disabled:hover{ background:var(--teal); }
+  /* four pāda boxes in a 2x2 grid */
+  .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
+  .m-verse .pada-row{ display:flex; gap:12px;}
+  .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; transition:border-color .15s, background .15s;}
+  .m-verse .pada-box .pada-toggle{ display:block; width:100%; padding:0; margin:0; border:0;
+      background:transparent; color:inherit; text-align:left; font:inherit; cursor:pointer; }
+  .m-verse .pada-box .pb-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; gap:8px;}
+  .m-verse .pada-box .pb-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.85rem; white-space:nowrap;}
+
+  .m-verse .pada-box .pb-deva{ display:block; font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.3rem * var(--reader-scale,1)); line-height:1.7; overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .pada-box:hover{ background:var(--saffron-soft); border-color:var(--saffron);}
+  .m-verse .pada-box .pb-iast{ display:block; font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
+  .m-verse .spk-mid{ margin:2px 0;}
+  .m-verse .spk-line{ display:block; width:100%; min-height:32px; margin:6px 0; border:0; background:transparent;
+      font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic;
+      font-size:calc(1.05rem * var(--reader-scale,1)); cursor:pointer; text-align:left;
+      border-radius:6px; padding:4px;}
+  .m-verse .spk-line .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  .m-line{ margin-top:14px;}
+  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
+               padding:3px 10px; border-radius:999px; margin-bottom:5px;}
+  .m-line .lt{ color:var(--ink); font-size:calc(1rem * var(--reader-scale,1));}
+  .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
+  .m-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:10px;}
+  .m-tail{ display:none;}   /* only needed where .m-nav is sticky (phones) */
+  .m-nav button{ background:var(--teal); color:var(--on-accent); border:none; padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:600; font-size:.9rem;}
+  .m-nav button:hover{ background:var(--teal-mid);} .m-nav button:disabled{ opacity:.35; cursor:default;}
+  .m-nav .m-random{ margin:0 auto; background:var(--saffron); color:var(--on-saffron); border:none; padding:12px 26px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.98rem; font-family:"Noto Serif Devanagari", Georgia, serif;}
+  .m-nav .m-random:hover{ background:var(--saffron-dark);}
+  .m-nav .m-back{ background:var(--teal-soft); color:var(--teal); border:1px solid var(--teal); padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.9rem;}
+  .m-nav .m-back:hover{ background:var(--teal); color:var(--on-accent);}
+
+  .m-count{ color:var(--ink-soft); font-size:.85rem; font-weight:600;}
+  footer{ text-align:center; color:var(--ink-soft); font-size:.82rem; padding:18px 20px 26px;
+          border-top:1px solid color-mix(in srgb, var(--teal) 42%, transparent);}
+  /* plain inline text — no flex gap, or the <b> would push the comma away */
+  footer .credit{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
+                  font-size:.8rem; color:var(--ink-soft); display:block; text-align:center;}
+  footer .credit b{ color:var(--teal); font-weight:700;}
+  footer .credit.attrib{ margin-top:6px; padding-top:6px; border-top:none;
+                  font-size:.72rem; line-height:1.55; color:var(--muted); max-width:62ch;
+                  margin-left:auto; margin-right:auto;}
+  footer .credit.attrib a{ color:var(--muted); text-decoration:underline;}
+  .fade-in{ animation:fadein .28s ease;} @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+  @media (max-width:640px){ .modal{ padding:16px 16px 20px;} .m-verse td.pd{ font-size:calc(1.12rem * var(--reader-scale,1));} }
+
+  /* Desktop and tablet reader: use available width for the quarter grid,
+     while keeping prose to a comfortable reading measure. Phones keep the
+     edge-to-edge sheet below. */
+  @media (min-width:761px) and (max-width:1024px){
+    .modal{ max-width:960px; padding:22px 24px 26px; }
+    .m-head{ gap:12px; margin-bottom:12px; }
+    .m-head .m-title{ font-size:1.08rem; }
+    .m-head .m-vtitle{ font-size:.98rem; }
+    .m-part{ margin-bottom:16px; font-size:.82rem; line-height:1.5; }
+    .m-whole-verse{ padding:18px 22px; }
+    .m-verse .pada-box{ padding:12px 14px; }
+    .m-line .lt{ max-width:76ch; }
+  }
+  @media (min-width:1025px){
+    .modal{ max-width:1160px; padding:28px 36px 32px; }
+    .m-head{ gap:14px; margin-bottom:14px; }
+    .m-head .m-title{ font-size:1.22rem; line-height:1.35; }
+    .m-head .m-vtitle{ font-size:1.05rem; }
+    .m-part{ margin-bottom:18px; font-size:.86rem; line-height:1.5; }
+    .m-whole-verse{ padding:24px 30px; }
+    .m-verse .pada-box{ padding:14px 18px; }
+    .m-line .lt{ max-width:76ch; line-height:1.65; }
+  }
+
+  /* ==================== MOBILE / TOUCH (Android · iOS) ==================== */
+  html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  body{ -webkit-tap-highlight-color:rgba(232,145,44,.18); overscroll-behavior-y:none; }
+  button, .card, .mini, .res-card, .theme, .pada-box, .spk-line, .lang-btn, .pl-mode, .lr-chip, .welcome .w-day{ -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+  /* modern basics: visible keyboard focus, and stillness for those who ask */
+  :focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
+  header :focus-visible{ outline-color:#FFF8EC; }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation:none !important; transition:none !important; }
+  }
+  /* iOS Safari paints a naked <button> in system blue (#007AFF),
+     ignoring the page ink. Inherit so Play chips, Learn quarters and
+     every other unstyled control follow the theme. */
+  input, button, select, textarea{ font-family:inherit; color:inherit; -webkit-appearance:none; appearance:none; }
+  /* iOS zooms any input whose font-size is < 16px on focus */
+  .toolbar input[type=search]{ font-size:16px; }
+  .modal, .wrap{ -webkit-overflow-scrolling:touch; }
+  /* Hover lifts are a mouse idiom — on touch they STICK after a tap, so the
+     last thing you touched keeps looking selected. Every hover in the app must
+     be cancelled here and answered with an :active state instead, or a phone
+     shows a phantom selection (owner 2026-09-01).
+     This block covered only the original components; the learn path and Play
+     were added later and were never listed, which is exactly why their chips
+     and cards stayed lit after a tap. */
+  @media (hover:none){
+    /* Phone has no hover: undo laptop fills so a tap does not leave a stuck
+       highlight, then replay the same fill on :active. */
+    .card:hover, .mini:hover, .res-card:hover,
+    .th-flow .theme:hover, .lr-chip:hover, .pl-mode:hover, .mode-box:hover{
+      background:var(--paper); border-color:var(--line);
+      box-shadow:0 1px 2px rgba(var(--shadow),.05); transform:none;
+    }
+    .welcome .w-day:hover{ background:var(--paper); border-color:var(--line);
+      box-shadow:0 14px 34px rgba(var(--shadow),.1); transform:none; }
+    .th-flow .theme:hover{ box-shadow:none; }
+    .way-crumb:hover{ background:transparent; border-color:transparent; }
+    .way-crumb:active{ background:var(--teal-soft); border-color:var(--line); }
+    .lr-chip.ok:hover{ border-color:var(--teal); background:var(--teal-soft); }
+    .card:active, .mini:active, .res-card:active, .welcome .w-day:active,
+    .th-flow .theme:active, .lr-chip:active, .pl-mode:active, .mode-box:active{
+      background:var(--teal-soft); border-color:var(--saffron);
+      transform:scale(.985);
+    }
+    .mode-box:active{ transform:none; }
+    .lr-lad:hover:not(.on){ background:var(--cream); border-color:var(--line); }
+    .lr-lad:active:not(.on){ background:var(--teal-soft); border-color:var(--saffron); }
+    .mini-crumb .bc-btn:hover{ background:var(--paper); border-color:var(--line); }
+    .mini-crumb .bc-btn:active{ background:var(--saffron-soft); border-color:var(--saffron); }
+    .tool-btn:hover{ background:var(--paper); border-color:var(--line); }
+    .tool-btn.primary:hover{ background:var(--saffron); border-color:var(--saffron); }
+    .tool-btn:active, .lang-btn:active, .m-nav button:active{ filter:brightness(.93); }
+    /* (tab-strip ms-btn hover/active set above; old pill overrides removed) */
+    button.wc-chip:hover{ background:transparent; color:inherit; border-color:transparent; }
+    button.wc-chip.wc-cur:hover{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
+    button.wc-chip:active{ background:var(--saffron-soft); color:var(--saffron-text); }
+    .fav-move:hover:not(:disabled){ border-color:var(--line); background:transparent; }
+    .fav-move:active:not(:disabled){ border-color:var(--teal); background:var(--teal-soft); }
+    .modal .m-close:hover{ background:transparent; color:inherit; border-color:transparent; }
+    .modal .m-close:active{ background:var(--saffron-soft); color:var(--saffron-text); }
+    .words-bar .wb-btn:hover{ background:var(--teal); }
+    .words-bar .wb-btn:active{ background:var(--teal-mid); }
+    .reader-size button:hover:not(:disabled){ border-color:var(--line); background:var(--paper); }
+    .reader-size button:active:not(:disabled){ border-color:var(--saffron); background:var(--saffron-soft); }
+    .m-nav .m-back:hover{ background:var(--teal-soft); color:var(--teal); }
+    .m-nav .m-back:active{ background:var(--teal); color:var(--on-accent); }
+    .m-verse .pada-box:hover, .pada-box:hover{ background:var(--paper); border-color:var(--line); }
+    .m-verse .pada-box:active, .pada-box:active{ background:var(--saffron-soft); border-color:var(--saffron); }
+    .m-verse .spk-line:hover{ background:none; }
+    .m-verse .spk-line:active{ background:var(--saffron-soft); }
+    .sw-x:hover{ background:transparent; color:inherit; }
+    .sw-x:active{ background:var(--saffron-soft); color:var(--saffron-text); }
+    .res-remove:hover{ border-color:var(--line); color:var(--ink-soft); }
+    .res-remove:active{ border-color:var(--danger); color:var(--danger); }
+
+    .lr-cta:hover{ background:var(--saffron); border-color:var(--saffron); }
+    .lr-cta:active{ background:var(--saffron-dark); border-color:var(--saffron-dark); }
+    .lr-ghost:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-ghost:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-chip.ok:hover{ border-color:var(--teal); }
+    .lr-opt:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-opt:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-chip2:hover:not(:disabled){ background:var(--paper); border-color:var(--line); }
+    .lr-chip2:active:not(:disabled){ background:var(--saffron-soft); border-color:var(--saffron); }
+    .lr-q:hover{ border-color:var(--line); }
+    .lr-qh:hover{ background:none; }
+    .pl-sel:hover{ border-color:var(--line); }
+    .pl-sel:active{ border-color:var(--saffron); }
+    .pl-scope .lr-ghost.on:hover{ background:var(--saffron-soft); border-color:var(--saffron-soft); }
+  }
+

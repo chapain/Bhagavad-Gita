@@ -1746,8 +1746,8 @@ browser_checks.py     270 live-browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)
-  app.css              stylesheet template, inlined into index.html
-  app.js               client runtime template, inlined into index.html
+  css/*.css            ordered feature styles, concatenated into index.html
+  js/*.js              ordered feature runtime, concatenated into index.html
   i18n_ui.py           183 UI strings × 3 languages
   study_map_contract.json all 18 reviewed maps + legacy-progress migration
   build_gita.py        assembles templates + chapter data; enforces source schema

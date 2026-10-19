@@ -303,16 +303,28 @@ if problems:
 print("manual-edit audit: NONE ✓")
 
 # ---------------- app templates (HTML / CSS / JS) ----------------
-# Keep document structure, styles and client behavior separate from the
-# data-building logic. The templates are assembled into one shell at build
-# time, so they are not extra network requests and remain offline-friendly.
+# Feature-sized source files are concatenated in this explicit order, then
+# inlined into the same single shell as before. They are authoring boundaries,
+# not browser modules: no bundler, extra request or runtime loader is involved.
 def _read_template(name):
     with open(os.path.join(BASE, name), encoding="utf-8") as _f:
         return _f.read()
 
+def _read_templates(folder, names):
+    return "".join(_read_template(os.path.join(folder, name)) for name in names)
+
 HTML = _read_template("app.html")
-APP_CSS = _read_template("app.css")
-APP_JS = _read_template("app.js")
+APP_CSS_FILES = (
+    "00-foundation.css", "10-play.css", "20-learn.css",
+    "30-favorites.css", "40-welcome.css", "50-reader-shell.css",
+    "60-responsive.css",
+)
+APP_JS_FILES = (
+    "00-core.js", "10-library.js", "20-learn.js", "30-play.js",
+    "35-drills.js", "40-views.js", "50-reader.js", "60-runtime.js",
+)
+APP_CSS = _read_templates("css", APP_CSS_FILES)
+APP_JS = _read_templates("js", APP_JS_FILES)
 
 # ---------------- embedded Devanagari font ----------------
 # The app asked for "Noto Serif Devanagari" but shipped no font, so on any device
@@ -417,9 +429,9 @@ def _icon_svg(slug):
             "star":'<svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
             "moon":'<svg class="ic" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
             "clearx":'<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>'}[slug]
-# Fill the CSS/JS templates before inserting them into the HTML shell. app.html
-# owns the newline before </style>; remove app.css's file-ending newline so it
-# doesn't become an extra blank line in the generated document.
+# Fill the concatenated CSS/JS templates before inserting them into the HTML
+# shell. app.html owns the newline before </style>; remove the final CSS
+# module's EOF newline so it does not add a blank line to the document.
 _app_css = APP_CSS[:-1] if APP_CSS.endswith("\n") else APP_CSS
 _app_css = _app_css.replace("__FONTS__", _font_css)
 _app_js = (APP_JS

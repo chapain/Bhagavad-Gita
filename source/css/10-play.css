@@ -1,0 +1,30 @@
+  /* ---------- Play ---------- */
+  /* The scope row is the same segmented-pill grammar as the chapter chooser:
+     soft pill = an option, gold pill = where you are (PROJECT.md, mode-box). */
+  .pl-scope{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0 22px;}
+  .pl-scope .pl-lb{ font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-size:.78rem; color:var(--ink-soft);}
+  .pl-scope .lr-ghost.on{ background:var(--saffron-soft); border-color:var(--saffron-soft);
+                          color:var(--saffron-text);}
+  /* matches .tool-btn geometry so the select sits level with the pills */
+  .pl-sel{ padding:8px 16px; border-radius:999px; border:1px solid var(--line);
+           background:var(--paper); color:var(--teal); font-family:inherit;
+           font-weight:700; font-size:.85rem; max-width:100%; cursor:pointer;
+           transition:.15s;}
+  .pl-sel:hover{ border-color:var(--saffron);}
+  .pl-modes{ display:grid; gap:11px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  /* same shape as .card: --paper, 16px radius, 1px shadow, saffron on hover */
+  .pl-mode{ display:flex; gap:13px; align-items:flex-start; text-align:left; padding:16px 18px;
+            border-radius:16px; background:var(--paper); border:1px solid var(--line);
+                        box-shadow:0 1px 2px rgba(var(--shadow),.05); cursor:pointer;
+            font-family:inherit; transition:.18s;}
+  .pl-mode:hover{ border-color:var(--saffron); background:var(--teal-soft);
+                  box-shadow:0 3px 12px rgba(var(--shadow),.08); transform:translateY(-1px);}
+  .pl-mode .n{ flex:0 0 30px; height:30px; border-radius:50%; display:grid; place-items:center;
+               background:var(--saffron-soft); color:var(--saffron-text);
+               font-family:system-ui,"Noto Serif Devanagari",sans-serif; font-weight:700; font-size:.85rem;}
+  .pl-mode .b{ flex:1; min-width:0;}
+  .pl-mode .b b{ display:block; font-size:1.06rem; font-weight:700; color:var(--ink);
+                 margin-bottom:4px;}
+  .pl-mode .b span{ display:block; color:var(--ink-soft); font-size:.86rem; line-height:1.5;}
+  @media (max-width:640px){ .pl-modes{ grid-template-columns:1fr;} .pl-sel{ flex:1 0 100%;} }
+

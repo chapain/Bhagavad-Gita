@@ -36,7 +36,9 @@ render the affected verse.
 ## Edit here
 
 - All chapter/verse content: `source/ch<N>.json`
-- Shell, design and behavior: `source/app.html`, `source/app.css`, `source/app.js`
+- Shell document: `source/app.html`
+- Ordered feature styles and behavior: `source/css/*.css`, `source/js/*.js`
+  (the exact concatenation order is declared in `source/build_gita.py`)
 - Trilingual interface wording: `source/i18n_ui.py`
 - Reviewed maps/progress migration: `source/study_map_contract.json`
 - Build, schema and checks: `source/build_gita.py`, `source/schema.py`,
