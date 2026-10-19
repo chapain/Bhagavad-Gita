@@ -71,7 +71,15 @@ Browser checks need Playwright — skipped in sandbox, report when skipped.
 - [ ] **Phase 2.4 "Start here / Gītā in 18 verses":** declined by owner as childish — not planned
 - [ ] **Phase 5.1 audio:** licence/recording decision, parked until 5.4 done (now done, still parked per owner)
 
-Next suggested: keep HANDOFF lean, then lazy-load data module if shell grows.
+Next suggested: keep HANDOFF lean (<100KB), watch shell if >350k lazy-load data module.
+
+### Next session — fresh eyes (owner approved 2026-10-19)
+After a break, look with fresh eyes at UX/content nuances invisible when deep in code:
+- **Content:** verse titles (54-char limit), paraphrase clarity vs Śaṅkara, study maps contract
+- **UX:** first-time flow (welcome → Three Ways → chapter → verse), Learn path stages, mobile 390px, bottom tab bar, search loupe
+- **Perf:** chapter pages 1.4MB total, data/ 3.3MB lazy-loaded, og-card 119KB, shell 310k — trim if needed, no bundler
+
+If work is done, don't append — archive. This file stays lean.
 
 ## 7. Decisions (active)
 
