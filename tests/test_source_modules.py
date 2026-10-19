@@ -56,7 +56,7 @@ class SourceModuleContractTests(unittest.TestCase):
 
     def test_feature_interfaces_are_explicit(self):
         js = self.check_family("js", "APP_JS_FILES", ".js", 700)
-        for feature in ("library", "learn", "play", "drills", "views", "reader"):
+        for feature in ("session", "library", "learn", "play", "drills", "views", "reader"):
             self.assertIn(f"App.{feature} = Object.freeze({{", js)
 
     def test_mutable_feature_state_has_one_owner(self):
@@ -78,6 +78,18 @@ class SourceModuleContractTests(unittest.TestCase):
                     if filename not in allowed:
                         self.assertIsNone(re.search(rf"\b{re.escape(name)}\b", text),
                                           f"{name} leaked from {owner} into {filename}")
+
+    def test_shared_session_state_mutates_only_in_core(self):
+        import re
+        direct_write = re.compile(
+            r"\bstate\s*(?:\.\s*[A-Za-z_$][\w$]*|\[[^]\n]+\])\s*"
+            r"(?:=(?!=)|\+=|-=|\*=|/=|%=|\+\+|--)")
+        for path in (SOURCE / "js").glob("*.js"):
+            if path.name == "00-core.js":
+                continue
+            match = direct_write.search(path.read_text(encoding="utf-8"))
+            self.assertIsNone(match,
+                              f"{path.name} must mutate shared state through App.session.update")
 
     def test_retired_monoliths_stay_retired(self):
         self.assertFalse((SOURCE / "app.js").exists())

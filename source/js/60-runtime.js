@@ -102,7 +102,7 @@ function gitaBoot(){
   }catch(e){}
   const restore = readSessionSnapshot();
   if(restore){
-    GITA_RESTORING = true; state.keepScroll = true;
+    GITA_RESTORING = true; App.session.update({keepScroll:true});
     syncLang(restore.lang);
     try{ sessionStorage.setItem('gitaLang', restore.lang); }catch(e){}
     try{ sessionStorage.setItem('gita.route', restore.route || '#'); }catch(e){}
@@ -130,7 +130,7 @@ function gitaBoot(){
       /* Owner 2026-08-31: a shared verse lands as an INVITATION, not a popup —
          the verse is shown on the welcome page with "click to see the
          meanings"; the four-pāda sheet opens when the receiver clicks. */
-      if (loc) { state.shared = loc; App.views.welcome(); return; }
+      if (loc) { App.session.update({shared:loc}); App.views.welcome(); return; }
       /* Out of range (#v=2.99) or a chapter that does not exist (#v=19.1):
          fall back to the welcome page instead of a blank one — and never ask
          for data/ch19.js: it is not there and its rejection used to escape. */
@@ -138,7 +138,7 @@ function gitaBoot(){
       if (hn > 18) { App.views.welcome(); return; }
       loadChapter(hn).then(function(){
         loc = App.library.location(vref);
-        if (loc) { state.shared = loc; }
+        if (loc) App.session.update({shared:loc});
         App.views.welcome();
       }).catch(function(){ gitaLoadFail(); });
       return; }

@@ -11,7 +11,7 @@ function showPlay(){
   if(!App.library.ready()){ loadAllChapters().then(showPlay); return; }
   PL.active = false;
   App.library.rememberOrigin();
-  state.view='play'; state.chapter=null; state.theme=null; App.views.persist(); App.views.renderCrumbs();
+  App.session.update({view:'play', chapter:null, theme:null}); App.views.persist(); App.views.renderCrumbs();
   view.innerHTML = `
     <div class="lrn fade-in">
       <h2 class="view-title">${esc(L('play_title'))}</h2>
@@ -21,7 +21,7 @@ function showPlay(){
         <span class="pl-lb">${esc(L('play_scope'))}</span>
         <button class="lr-ghost${PL.scope==='all'?' on':''}" onclick="plScope('all')">${esc(L('play_all'))}</button>
         <button class="lr-ghost${PL.scope==='ch'?' on':''}" onclick="plScope('ch')">${esc(L('play_ch'))}</button>
-        ${PL.scope==='ch' ? `<select class="pl-sel" onchange="PL.ch=+this.value;showPlay()">
+        ${PL.scope==='ch' ? `<select class="pl-sel" onchange="App.play.chooseChapter(+this.value)">
             ${DATA.map((c,i)=>`<option value="${i}"${i===PL.ch?' selected':''}>${esc(L('chapter'))} ${numL(c.num)} · ${esc(T(c.names))}</option>`).join('')}
           </select>` : ''}
       </div>
@@ -37,6 +37,7 @@ function showPlay(){
   scrollViewTop();
 }
 function plScope(s){ PL.scope = s; showPlay(); }
+function plChooseChapter(ci){ PL.ch = ci; showPlay(); }
 
 /* The pool Play draws from: the whole book, or one chapter. */
 function plPool(){
@@ -177,6 +178,7 @@ function relanguagePlay(){
 }
 App.play = Object.freeze({
   show: showPlay,
+  chooseChapter: plChooseChapter,
   next: plNext,
   snapshot: playSessionSnapshot,
   hydrate: hydratePlaySession,

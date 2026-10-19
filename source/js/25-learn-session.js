@@ -48,8 +48,8 @@ function restoreLearnSession(snap){
       FP.deal = valid(f.deal) ? f.deal.slice() : FP.order.map((_,i)=>i);
       FP.picked = Array.isArray(f.picked) ? f.picked.filter(i=>Number.isInteger(i)
         && i >= 0 && i < FP.order.length).slice(0,FP.order.length) : [];
-      state.view='learn'; state.chapter=ci; state.theme=FP.ti < 0 ? null : FP.ti;
-      state.lrAt = {kind:'free', ti:FP.ti}; lrFreePaint();
+      App.session.update({view:'learn', chapter:ci, theme:FP.ti < 0 ? null : FP.ti,
+        lrAt:{kind:'free', ti:FP.ti}}); lrFreePaint();
     }
   }else showLearn(ci);
   if(snap.learn.quiz) App.drills.restore(snap.learn.quiz);

@@ -43,6 +43,16 @@ const state = { chapter:null, theme:null, idx:0, lang:savedLang(), view:'welcome
    one namespace makes dependencies visible without introducing a framework or
    changing the single-script build. */
 const App = Object.create(null);
+const SESSION_FIELDS = new Set(['chapter','theme','idx','lang','view','section','shared',
+  'readerSize','origin','lrAt','keepScroll','mode','gpos','pStart','pEnd','navList','navIdx']);
+function updateSessionState(patch){
+  if(!patch || typeof patch !== 'object' || Array.isArray(patch)) return;
+  for(const key of Object.keys(patch)){
+    if(!SESSION_FIELDS.has(key)) throw new Error('Unknown session field: ' + key);
+    state[key] = patch[key];
+  }
+}
+App.session = Object.freeze({update:updateSessionState});
 function sessionPathKey(){ return (location.pathname || '/') + (location.search || ''); }
 function sessionNodePath(root, node){
   const path = []; let cur = node;

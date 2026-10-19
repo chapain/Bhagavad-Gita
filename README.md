@@ -94,7 +94,9 @@ are concatenated by `source/build_gita.py`, which fills their build-time
 placeholders and inlines the result. The browser therefore makes no extra
 shell-asset requests. Cross-feature calls use frozen interfaces on one `App`
 namespace; mutable Library, Learn, Play and Drills state stays with its owning
-feature. The shell is about 83 KB gzipped and loads the verses from 18
+feature. Shared route, reader and session transitions go through the validated
+`App.session.update({...})` gateway, and architecture tests reject direct
+writes outside Core. The shell is about 83 KB gzipped and loads the verses from 18
 `data/ch<N>.js` files in parallel; the service worker precaches them. After the
 first visit everything is cached, so the app runs offline and installs to the
 home screen. Share it by link.

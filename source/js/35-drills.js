@@ -10,6 +10,7 @@ var LQback = null;
 function lrRun(ci, items, label, done, back){
   LQci=ci; LQback=back||null; LQ=items.slice(); LQi=0; LQmiss=0; LQlab=label; LQdone=done; lrPaint();
 }
+function lrRetry(){ LQi++; lrPaint(); }
 function lrPaint(resumeUi){
   if(LQi >= LQ.length) return typeof LQdone === 'function' ? LQdone() : App.learn.show(LQci);
   const it = LQ[LQi];
@@ -85,7 +86,7 @@ function restoreQuizUi(it, ui){
       });
       const fb = root.querySelector('#lrFb');
       if(fb) fb.innerHTML = (it.note?`<div class="nt">${it.note}</div>`:'')
-        + `<button class="lr-cta" onclick="LQi++;lrPaint()">${esc(L('learn_retry'))}</button>`;
+        + `<button class="lr-cta" onclick="App.drills.retry()">${esc(L('learn_retry'))}</button>`;
     }
   }else if(it.kind === 'order' && Array.isArray(LQpick)){
     const slots = root.querySelector('#lrSlots');
@@ -185,7 +186,7 @@ function lrPick(i){
        true; in a multi-question drill the missed item is requeued and comes
        back later, which is the same promise. (owner 2026-09-02) */
     fb.innerHTML = (it.note?`<div class="nt">${it.note}</div>`:'')
-      + `<button class="lr-cta" onclick="LQi++;lrPaint()">${esc(L('learn_retry'))}</button>`;
+      + `<button class="lr-cta" onclick="App.drills.retry()">${esc(L('learn_retry'))}</button>`;
   }
 }
 function lrMpick(side, i){
@@ -286,6 +287,7 @@ function captureQuizSession(){
 App.drills = Object.freeze({
   run: lrRun,
   paint: lrPaint,
+  retry: lrRetry,
   restore: restoreQuizSession,
   capture: captureQuizSession
 });

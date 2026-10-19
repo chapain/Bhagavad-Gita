@@ -45,7 +45,10 @@ const ctx = vm.createContext({
   esc: text => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;'),
   wayCrumbs: () => '', wayName: () => '', chTitle: () => '',
   modeSwitch: () => '', colophonHtml: () => '', backFoot: () => '',
-  App: {reader: {open: openVerse}},
+  App: {
+    session: {update(patch) { Object.assign(ctx.state, patch); }},
+    reader: {open: openVerse},
+  },
   openModal: openVerse,
 });
 vm.runInContext(code, ctx);

@@ -129,7 +129,7 @@ function doSearch(){
   if(!q){ clearSearch(); return; }
   SRCH_HITS = [];
   rememberOrigin();
-  state.view = 'search'; state.chapter = null; state.theme = null; App.views.persist(); App.views.renderCrumbs();
+  App.session.update({view:'search', chapter:null, theme:null}); App.views.persist(); App.views.renderCrumbs();
   const nq = prepareSearchQuery(q);
   /* Accept whatever separator the reader's keyboard gives. On a Devanagari
      layout the danda । sits where the full stop is, so १।१ is the natural way to
@@ -271,8 +271,8 @@ function toggleFav(id){
    tapping Favorites doesn't overwrite the origin with itself. */
 function rememberOrigin(){
   if(['welcome','sections','chapters','chapter'].includes(state.view)){
-    state.origin = { view: state.view, section: state.section,
-                     chapter: state.chapter, theme: state.theme };
+    App.session.update({origin:{view:state.view, section:state.section,
+      chapter:state.chapter, theme:state.theme}});
   }
 }
 function goToOrigin(){
@@ -289,7 +289,7 @@ function goToOrigin(){
 function showFavorites(){
   if(!allChReady()){ loadAllChapters().then(showFavorites); return; }
   rememberOrigin();
-  state.view = 'favorites'; state.chapter = null; state.theme = null; App.views.persist(); App.views.renderCrumbs();
+  App.session.update({view:'favorites', chapter:null, theme:null}); App.views.persist(); App.views.renderCrumbs();
   const saved = FAV.map(verseLoc).filter(Boolean);
   FAV_LIST = saved;
   if(saved.length === 0){

@@ -39,9 +39,12 @@ render the affected verse.
 - Shell document: `source/app.html`
 - Ordered feature styles and behavior: `source/css/*.css`, `source/js/*.js`
   (the exact concatenation order is declared in `source/build_gita.py`)
-- Cross-feature behavior: use the frozen `App.library`, `App.learn`, `App.play`,
-  `App.drills`, `App.views` and `App.reader` interfaces. Do not reach into
-  another feature's mutable arrays or working state.
+- Cross-feature behavior: use the frozen `App.session`, `App.library`,
+  `App.learn`, `App.play`, `App.drills`, `App.views` and `App.reader`
+  interfaces. Shared route/reader/session fields may be read from `state`, but
+  only Core may write them; features transition them through
+  `App.session.update({...})`. Do not reach into another feature's mutable
+  arrays or working state.
 - Trilingual interface wording: `source/i18n_ui.py`
 - Reviewed maps/progress migration: `source/study_map_contract.json`
 - Build, schema and checks: `source/build_gita.py`, `source/schema.py`,

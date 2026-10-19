@@ -41,7 +41,7 @@ function showChapters(section){
   if(_need.length){ Promise.all(_need.map(loadChapter)).then(()=>showChapters(section)).catch(function(){}); return; }
   /* The Three Ways is the door; there is no flat all-18 list. Every chapter
      list lives inside its way, so the niṣṭhā framing is never skipped. */
-  state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
+  App.session.update({view:'chapters', section:section, chapter:null, theme:null}); persistView(); renderCrumbs();
   const list = DATA.filter(ch => ch && ch.num >= (section-1)*6+1 && ch.num <= section*6);
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(section), null]])}
@@ -98,11 +98,11 @@ function persistView(){
 function goHome(){
   if($('#modalBg').classList.contains('open')) App.reader.close();
   $('#searchInput').value = '';
-  state.origin = null;
+  App.session.update({origin:null});
   showWelcome();
 }
 function showWelcome(){
-  state.view='welcome'; state.chapter=null; state.theme=null; state.section=null; persistView(); renderCrumbs();
+  App.session.update({view:'welcome', chapter:null, theme:null, section:null}); persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="welcome fade-in">
       <section class="welcome-hero" aria-labelledby="welcomeTitle">
@@ -170,7 +170,7 @@ function sectionCard(k, chip, title, desc){
   </div>`;
 }
 function showSections(){
-  state.view='sections'; state.chapter=null; state.theme=null; state.section=null; state.shared=null; persistView(); renderCrumbs();
+  App.session.update({view:'sections', chapter:null, theme:null, section:null, shared:null}); persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="view-title fade-in" role="heading" aria-level="2">${esc(L('sections_title'))}</div>
     <div class="view-sub fade-in">${esc(L('sections_sub'))}</div>
@@ -250,8 +250,8 @@ function showChapter(ci, anchorTi){
      anchor rather than one nothing matches; the guards downstream (the live
      label, the crumb, the scroll) then all see a theme that exists. */
   const at = (anchorTi != null && ch.themes[anchorTi] != null) ? anchorTi : null;
-  state.view='chapter'; state.chapter=ci; state.section = state.section || Math.ceil(ch.num/6);
-  state.theme = at;
+  App.session.update({view:'chapter', chapter:ci,
+    section:state.section || Math.ceil(ch.num/6), theme:at});
   persistView(); renderCrumbs();
   const themeSec = (at != null) ? numL(at+1) : '';
   const body = ch.themes.map((t,ti)=>{

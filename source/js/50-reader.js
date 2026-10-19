@@ -89,15 +89,16 @@ function openModal(ci,ti,si, mode, navIdx, invoker, restoring){
     MODAL_RETURN_FOCUS = invoker || (active && active !== document.body ? active : null);
   }
   mode = mode || 'theme';
-  state.chapter=ci; state.theme=ti; state.idx=si; state.mode=mode;
-  state.gpos = App.library.indexOf(ci,ti,si);
-  if(state.gpos < 0) state.gpos = 0;
+  const next = {chapter:ci, theme:ti, idx:si, mode:mode,
+    gpos:Math.max(0, App.library.indexOf(ci,ti,si))};
   if(mode === 'theme'){
     const b = themeBounds(DATA[ci].themes[ti]);
-    state.pStart = b.start; state.pEnd = b.end;
-  } else if(mode === 'search'){ mode = 'book'; }
-  else if(mode === 'fav'){ state.navList = App.library.favoriteLocations(); state.navIdx = navIdx || 0; }
-  state.mode = mode;
+    next.pStart = b.start; next.pEnd = b.end;
+  } else if(mode === 'search'){ next.mode = 'book'; }
+  else if(mode === 'fav'){
+    next.navList = App.library.favoriteLocations(); next.navIdx = navIdx || 0;
+  }
+  App.session.update(next);
   fillModal();
   bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
   document.body.classList.add('modal-open');
@@ -194,7 +195,7 @@ function fillModal(){
   let partIdx = 0; { let acc = 0;
     for(let pi=0; pi<t.parts.length; pi++){ const len = t.parts[pi].sutras.length;
       if(state.idx >= acc && state.idx < acc+len){ partIdx = pi; break; } acc += len; } }
-  if(state.gpos == null) state.gpos = Math.max(0, App.library.indexOf(state.chapter,state.theme,state.idx));
+  if(state.gpos == null) App.session.update({gpos:Math.max(0, App.library.indexOf(state.chapter,state.theme,state.idx))});
   // split flow: top speakers, mid speakers (between pāda 2 and 3), and the 4 pādas
   let topS = [], midS = [], pads = [];
   for(const it of s.flow){
@@ -298,7 +299,7 @@ function fillModal(){
 }
 function setReaderSize(size){
   if(!READER_SIZES.includes(size)) return;
-  state.readerSize = size;
+  App.session.update({readerSize:size});
   try{ localStorage.setItem('gitaReaderSize', String(size)); }catch(e){}
   applyReaderSize();
 }
@@ -391,32 +392,33 @@ function restoreModalSession(modalSnap){
   if(Number.isFinite(modalSnap.scrollTop)) modal.scrollTop = Math.max(0, modalSnap.scrollTop);
 }
 function navSutra(d){
+  let chapter=state.chapter, theme=state.theme, idx=state.idx,
+      gpos=state.gpos, navIdx=state.navIdx, pStart=state.pStart, pEnd=state.pEnd;
   if(state.mode === 'theme'){
-    const n = state.idx + d;
-    if(n >= state.pStart && n <= state.pEnd){
-      state.idx = n;
-    } else if(d > 0 && state.theme + 1 < DATA[state.chapter].themes.length){
-      state.theme += 1;
-      const b = themeBounds(DATA[state.chapter].themes[state.theme]);
-      state.pStart = b.start; state.pEnd = b.end; state.idx = b.start;
-    } else if(d < 0 && state.theme > 0){
-      state.theme -= 1;
-      const b = themeBounds(DATA[state.chapter].themes[state.theme]);
-      state.pStart = b.start; state.pEnd = b.end; state.idx = b.end;
+    const n = idx + d;
+    if(n >= pStart && n <= pEnd) idx = n;
+    else if(d > 0 && theme + 1 < DATA[chapter].themes.length){
+      theme += 1;
+      const b = themeBounds(DATA[chapter].themes[theme]);
+      pStart = b.start; pEnd = b.end; idx = b.start;
+    } else if(d < 0 && theme > 0){
+      theme -= 1;
+      const b = themeBounds(DATA[chapter].themes[theme]);
+      pStart = b.start; pEnd = b.end; idx = b.end;
     } else return;
   } else if(state.mode === 'book'){
-    state.gpos = Math.max(0, Math.min(App.library.count()-1, (state.gpos || 0) + d));
-    const loc = App.library.locationAt(state.gpos);
-    state.chapter = loc.ci; state.theme = loc.ti; state.idx = loc.si;
+    gpos = Math.max(0, Math.min(App.library.count()-1, (gpos || 0) + d));
+    const loc = App.library.locationAt(gpos);
+    chapter = loc.ci; theme = loc.ti; idx = loc.si;
   } else if((state.mode === 'fav') && state.navList){
-    const k = (state.navIdx || 0) + d;
+    const k = (navIdx || 0) + d;
     if(k < 0 || k >= state.navList.length) return;
-    state.navIdx = k;
+    navIdx = k;
     const loc = state.navList[k];
-    state.chapter = loc.ci; state.theme = loc.ti; state.idx = loc.si;
+    chapter = loc.ci; theme = loc.ti; idx = loc.si;
   } else return;
-  state.gpos = App.library.indexOf(state.chapter,state.theme,state.idx);
-  if(state.gpos < 0) state.gpos = 0;
+  gpos = Math.max(0, App.library.indexOf(chapter,theme,idx));
+  App.session.update({chapter, theme, idx, gpos, navIdx, pStart, pEnd});
   fillModal();
   updateModalAddress();
   saveSessionSnapshot();

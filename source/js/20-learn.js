@@ -109,9 +109,8 @@ function thVerses(t){ const out=[]; t.parts.forEach(p=>p.sutras.forEach(s=>out.p
 function showLearn(ci){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showLearn(ci)).catch(gitaLoadFail); return; }
   App.library.rememberOrigin();
-  state.view='learn'; state.chapter=ci; App.views.persist(); state.lrAt = null;
-  state.section = state.section || Math.ceil(DATA[ci].num/6);
-  state.theme=null; App.views.renderCrumbs();
+  App.session.update({view:'learn', chapter:ci, lrAt:null,
+    section:state.section || Math.ceil(DATA[ci].num/6), theme:null}); App.views.persist(); App.views.renderCrumbs();
   const ch = DATA[ci], p = lrGet(ch.num);
   const total = ch.themes.length, done = Object.keys(p.themes).length;
   const nv = chVerseN(ch), nh = Object.keys(p.held||{}).length;
@@ -197,15 +196,15 @@ function lrRelang(ci){
 function lrPlan(ch){ return ch.themes.length >= 10 ? [0,1,2,3] : [0,3]; }
 
 function lrStory(ci, step, seed){
-  state.view='learn'; state.chapter=ci; App.views.persist(); state.theme=null;
+  App.session.update({view:'learn', chapter:ci, theme:null}); App.views.persist();
   const ch = DATA[ci], th = ch.themes, plan = lrPlan(ch);
   const k = plan.indexOf(step), n = plan.length;
   if(step === 0){
-    state.lrAt = {kind:'story', step:step};
+    App.session.update({lrAt:{kind:'story', step:step}});
     return lrStoryRead(ci, ch, th, k+1, n);
   }
   const quizSeed = Number.isInteger(seed) ? seed : lrNewSeed();
-  state.lrAt = {kind:'story', step:step, seed:quizSeed};
+  App.session.update({lrAt:{kind:'story', step:step, seed:quizSeed}});
   return lrWithSeed(quizSeed, ()=>{
     let items;
     if(step === 1){
@@ -266,7 +265,7 @@ function lrStoryRead(ci, ch, th, k, n){
   scrollViewTop();
 }
 function lrStoryDone(ci){
-  state.view='learn'; state.chapter=ci; state.lrAt = {kind:'storyDone'};
+  App.session.update({view:'learn', chapter:ci, lrAt:{kind:'storyDone'}});
   const ch = DATA[ci], p = lrGet(ch.num); p.story = 1; lrPut(ch.num, p);
   view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
       <div class="lr-seal">✓</div>
@@ -279,17 +278,21 @@ function lrStoryDone(ci){
 
 /* ---------------- stage 2: the verses of one theme ---------------- */
 function lrTheme(ci, ti, k){
-  state.view='learn'; state.chapter=ci; App.views.persist(); state.theme=ti;
+  App.session.update({view:'learn', chapter:ci, theme:ti}); App.views.persist();
   /* Remember the sub-view so a reload returns to this verse/theme, not the
      chapter's learning-path landing page. */
   const ch = DATA[ci], t = ch.themes[ti], vs = thVerses(t);
-  state.lrAt = {kind:'theme', ti:ti, k:k, stage:k < vs.length ? 'meet' : 'land'};
+  App.session.update({lrAt:{kind:'theme', ti:ti, k:k, stage:k < vs.length ? 'meet' : 'land'}});
   if(k < vs.length) return lrMeet(ci, ti, k, vs);
   lrThemeLand(ci, ti, vs);
 }
 var LV = {level:'full', shown:{}};
 function lrSetLevel(lv){ LV.level = lv; LV.shown = {}; lrMeet(LV.ci, LV.ti, LV.k, LV.vs); }
 function lrPeek(id){ LV.shown[id] = 1; lrMeet(LV.ci, LV.ti, LV.k, LV.vs); }
+function lrThemeMove(ci, ti, k){ LV.shown = {}; lrTheme(ci, ti, k); }
+function lrToggleCurrentHeld(ch, verse, held){
+  lrHold(ch, verse, held); lrMeet(LV.ci, LV.ti, LV.k, LV.vs);
+}
 function lrHideAt(level, wi){
   if(level==='full') return false;
   if(level==='first') return wi !== 0;
@@ -299,7 +302,7 @@ function lrHideAt(level, wi){
 }
 function lrThemeLand(ci, ti, vs){
   const ch = DATA[ci], t = ch.themes[ti];
-  state.lrAt = {kind:'theme', ti:ti, k:vs.length, stage:'land'};
+  App.session.update({lrAt:{kind:'theme', ti:ti, k:vs.length, stage:'land'}});
   const p = lrGet(ch.num); p.themes[ti] = 1; lrPut(ch.num, p);
   const nxt = ch.themes.findIndex((_,i)=>!lrGet(ch.num).themes[i]);
   view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
@@ -316,7 +319,7 @@ function lrThemeLand(ci, ti, vs){
 }
 function lrMeet(ci, ti, k, vs){
   const ch = DATA[ci], t = ch.themes[ti], s = vs[k], last = k === vs.length-1;
-  state.lrAt = {kind:'theme', ti:ti, k:k, stage:'meet'};
+  App.session.update({lrAt:{kind:'theme', ti:ti, k:k, stage:'meet'}});
   LV.ci=ci; LV.ti=ti; LV.k=k; LV.vs=vs;
   const held = lrHeldOn(ch.num, s.n);
   const qs = (s.flow||[]).filter(f=>f.k==='p');
@@ -375,9 +378,9 @@ function lrMeet(ci, ti, k, vs){
       <div class="lr-mean"><span class="lb">${esc(L('in_other_words'))}</span>
         <div>${esc(T(s.paras))}</div></div>
       <div class="lr-nav">
-        <button class="lr-ghost" onclick="LV.shown={};lrTheme(${ci},${ti},${k-1})" ${k?'':'disabled'}>${esc(L('previous'))}</button>
-        <button class="lr-ghost" onclick="lrHold(${ch.num},'${s.n}',${held?0:1});lrMeet(${ci},${ti},${k},LV.vs)">${esc(held?L('learn_unhold'):L('learn_mark_held'))}</button>
-        <button class="lr-cta" onclick="LV.shown={};lrTheme(${ci},${ti},${k+1})">
+        <button class="lr-ghost" onclick="App.learn.themeMove(${ci},${ti},${k-1})" ${k?'':'disabled'}>${esc(L('previous'))}</button>
+        <button class="lr-ghost" onclick="App.learn.toggleHeld(${ch.num},'${s.n}',${held?0:1})">${esc(held?L('learn_unhold'):L('learn_mark_held'))}</button>
+        <button class="lr-cta" onclick="App.learn.themeMove(${ci},${ti},${k+1})">
           ${esc(last?L('learn_read_go'):L('learn_next_verse'))}</button>
       </div>
     </div>` + backFoot(`App.views.chapter(${ci})`, L('back_chapter_one'));
@@ -412,9 +415,9 @@ function lrMeaty(w){
   return !/^(and|but|indeed|also|too|not|even|alone|thus|so)$/i.test(core);
 }
 function lrDrill(ci, ti, vs, seed){
-  state.view='learn'; state.chapter=ci; state.theme=ti;
+  App.session.update({view:'learn', chapter:ci, theme:ti});
   const quizSeed = Number.isInteger(seed) ? seed : lrNewSeed();
-  state.lrAt = {kind:'drill', ti:ti, seed:quizSeed}; App.views.persist();
+  App.session.update({lrAt:{kind:'drill', ti:ti, seed:quizSeed}}); App.views.persist();
   return lrWithSeed(quizSeed, ()=>{
   const ch = DATA[ci], t = ch.themes[ti];
   const pool = [], others = [];
@@ -545,14 +548,14 @@ function lrDrill(ci, ti, vs, seed){
    is required, and leaving costs nothing. Practice, not examination. */
 var FP = {ci:0, ti:0, v:null, order:[], deal:[], picked:[]};
 function lrFree(ci, ti){
-  state.view='learn'; state.chapter=ci; App.views.persist(); state.theme=ti;
-  state.lrAt = {kind:'free', ti:ti};
+  App.session.update({view:'learn', chapter:ci, theme:ti}); App.views.persist();
+  App.session.update({lrAt:{kind:'free', ti:ti}});
   FP.ci = ci; FP.ti = ti;
   lrFreePick();
 }
 function lrFreeCh(ci){
-  state.view='learn'; state.chapter=ci; App.views.persist(); state.theme=null;
-  state.lrAt = {kind:'free', ti:-1};
+  App.session.update({view:'learn', chapter:ci, theme:null}); App.views.persist();
+  App.session.update({lrAt:{kind:'free', ti:-1}});
   FP.ci = ci; FP.ti = -1;
   lrFreePick();
 }
@@ -645,6 +648,8 @@ App.learn = Object.freeze({
   story: lrStory,
   storyDone: lrStoryDone,
   theme: lrTheme,
+  themeMove: lrThemeMove,
+  toggleHeld: lrToggleCurrentHeld,
   drill: lrDrill,
   freePaint: lrFreePaint,
   snapshot: learnSessionSnapshot,
