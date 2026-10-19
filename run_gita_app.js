@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 827;      // keep in step with the printed total
+const TOTAL_ASSERTIONS = 832;      // keep in step with the printed total
 const TOTAL_BROWSER_CHECKS = 270;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
@@ -197,6 +197,53 @@ const reviewedPart = (ch, ref) => DATA[ch-1].themes.flatMap(t=>t.parts)
 const reviewedTheme = (ch, ref) => DATA[ch-1].themes
   .find(t=>t.parts.some(p=>p.sutras.some(v=>v.n===ref)));
 const reviewedPage = ch => fs.readFileSync(path.join(ROOT,'chapter',String(ch),'index.html'),'utf8');
+// Editorial fidelity follow-ups: keep titles and summaries pinned to the literal
+// claim of each verse, and preserve 13.26 in its parent theme's description.
+const ch1Varna = reviewedPart(1,'1.41');
+ok(ch1Varna.titles.en === 'Adharma leads to varṇa mixing'
+   && ch1Varna.titles.ne === 'अधर्मबाट वर्णसङ्कर उत्पन्न हुन्छ'
+   && ch1Varna.titles.hi === 'अधर्म से वर्णसंकर उत्पन्न होता है'
+   && ch1Varna.descs.en.includes('varṇa mixing arises from them')
+   && ch1Varna.descs.ne.includes('भ्रष्ट स्त्रीहरूबाट वर्णसङ्कर')
+   && ch1Varna.descs.hi.includes('भ्रष्ट स्त्रियों से वर्णसंकर')
+   && reviewedPage(1).includes(ch1Varna.titles.en),
+   '1.41 labels the stated varṇa consequence without importing fear ×3');
+const ch2Intellect = reviewedPart(2,'2.53');
+ok(ch2Intellect.titles.en === 'The intellect stands firm in samādhi'
+   && ch2Intellect.titles.ne === 'बुद्धि समाधिमा अडिन्छ'
+   && ch2Intellect.titles.hi === 'बुद्धि समाधि में ठहरती है'
+   && ch2Intellect.descs.en.includes('intellect')
+   && reviewedPage(2).includes(ch2Intellect.titles.en),
+   '2.53 identifies buddhi as intellect in all three titles');
+const ch3Hypocrite = reviewedPart(3,'3.06');
+ok(ch3Hypocrite.titles.en === 'Organs of action restrained, mind on sense-objects'
+   && ch3Hypocrite.titles.ne === 'कर्मेन्द्रियहरू रोकेर, मनमा विषयको चिन्तन'
+   && ch3Hypocrite.titles.hi === 'कर्मेन्द्रियाँ रोककर, मन में विषयों का चिंतन'
+   && ch3Hypocrite.descs.en.includes('restrains the organs of action')
+   && ch3Hypocrite.descs.ne.includes('कर्मेन्द्रियहरूलाई रोकेर')
+   && ch3Hypocrite.descs.hi.includes('कर्मेन्द्रियों को रोककर')
+   && reviewedPage(3).includes(ch3Hypocrite.titles.en),
+   '3.06 describes restraint and recollection without adding craving ×3');
+const ch13Union = reviewedPart(13,'13.26'), ch13Paths = reviewedTheme(13,'13.26');
+const studyMaps = fs.readFileSync(path.join(ROOT,'STUDY_MAPS.md'),'utf8');
+ok(ch13Union.titles.en === 'All beings arise from union of field and its knower'
+   && ch13Union.titles.ne === 'सबै प्राणी क्षेत्र र क्षेत्रज्ञको संयोगबाट उत्पन्न हुन्छन्'
+   && ch13Union.titles.hi === 'सभी प्राणी क्षेत्र और क्षेत्रज्ञ के संयोग से उत्पन्न होते हैं'
+   && ch13Paths.descs.en.includes('union of the field and its knower')
+   && ch13Paths.descs.ne.includes('क्षेत्र र क्षेत्रज्ञको संयोगबाट उत्पन्न हुन्छन्')
+   && ch13Paths.descs.hi.includes('क्षेत्र और क्षेत्रज्ञ के संयोग से उत्पन्न होते हैं')
+   && studyMaps.includes('All beings arise from the union of the field and its knower')
+   && reviewedPage(13).includes(ch13Union.titles.en),
+   '13.26 and its theme name the field-knower union ×3');
+const ch18SattvicRenouncer = reviewedPart(18,'18.10');
+ok(ch18SattvicRenouncer.titles.en === 'Unpleasant acts not hated, pleasant ones not clung to'
+   && ch18SattvicRenouncer.titles.ne === 'अप्रिय कर्मप्रति द्वेष छैन, प्रिय कर्ममा आसक्ति छैन'
+   && ch18SattvicRenouncer.titles.hi === 'अप्रिय कर्म से द्वेष नहीं, प्रिय कर्म में आसक्ति नहीं'
+   && ch18SattvicRenouncer.descs.en.includes('neither hates unpleasant action nor clings to pleasant action')
+   && ch18SattvicRenouncer.descs.ne.includes('अप्रिय कर्मप्रति द्वेष')
+   && ch18SattvicRenouncer.descs.hi.includes('अप्रिय कर्म से द्वेष')
+   && reviewedPage(18).includes(ch18SattvicRenouncer.titles.en),
+   '18.10 preserves the unpleasant/pleasant action contrast ×3');
 const ch3Enemy = reviewedTheme(3,'3.36');
 ok(ch3Enemy.titles.en === 'Desire and anger conceal wisdom'
    && ch3Enemy.descs.ne.includes('सर्वभक्षी शत्रु') && ch3Enemy.descs.hi.includes('सर्वभक्षी शत्रु')

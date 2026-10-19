@@ -22,7 +22,7 @@ It runs, in order:
     2g. source/check_study_structure.py  approved story maps and verse titles
     2h. tests/  mutation/regression checks for canonical chapter schema, study
         structure and translations (including checker failure proofs)
-    3. run_gita_app.js        827 assertions on the compact built document (needs node)
+    3. run_gita_app.js        832 assertions on the compact built document (needs node)
     3a. tests/test_progress_maps.js  saved-learning map migration (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
     3c. tests/test_theme_card_navigation.js  all 700 chapter cards open their own verses (needs node)

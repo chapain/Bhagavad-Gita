@@ -1741,7 +1741,7 @@ sitemap.xml, robots.txt   generated shell/offline and crawler files
 chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       827 assertions on the built document and data (needs node)
+run_gita_app.js       832 assertions on the built document and data (needs node)
 browser_checks.py     270 live-browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
