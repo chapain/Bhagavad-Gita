@@ -460,7 +460,11 @@ shell = shell.replace("__BASE__", SITE_BASE)
 # of the google-site-verification meta tag into source/gsc_token.txt and
 # rebuild. No file (or an empty one) → no tag is emitted.
 _gsc_path = os.path.join(BASE, "gsc_token.txt")
-_gsc = open(_gsc_path, encoding="utf-8").read().strip().strip('"') if os.path.exists(_gsc_path) else ""
+if os.path.exists(_gsc_path):
+    with open(_gsc_path, encoding="utf-8") as _fh:
+        _gsc = _fh.read().strip().strip('"')
+else:
+    _gsc = ""
 if _gsc:
     _gsc_tag = f'<meta name="google-site-verification" content="{_gsc}">\n'
 else:
@@ -618,7 +622,8 @@ _font_bytes = b""
 for _fn in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
     _fp = os.path.join(BASE, "fonts", _fn)
     if os.path.exists(_fp):
-        _font_bytes += open(_fp, "rb").read()
+        with open(_fp, "rb") as _fh:
+            _font_bytes += _fh.read()
 CACHE_VER = hashlib.sha256(
     (out + "".join(data_js) + CHAPTER_CSS).encode("utf-8") + _font_bytes).hexdigest()[:12]
 
@@ -637,9 +642,9 @@ manifest = {
     "categories": ["books", "education", "lifestyle"],
     "author": "Dhruba Chapain, Pokhara, Nepal",
     "icons": [
-        {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-        {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
-        {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+        {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+        {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+        {"src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
     ],
 }
 with open(os.path.join(SITE_DIR, "manifest.webmanifest"), "w", encoding="utf-8") as f:
@@ -660,8 +665,8 @@ const CACHE = 'gita-%%VER%%';
    it is fetched once and shared by all 18 pages — but that also means it is a
    network request, which offline would fail without this line. */
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
-                './icon-192.png', './icon-512.png', './icon-maskable-512.png',
-                './apple-touch-icon.png', './favicon.ico', './chapter.css',
+                './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
+                './icons/apple-touch-icon.png', './favicon.ico', './chapter.css',
                 './noto-deva-regular.woff2', './noto-deva-bold.woff2',
                 %%DATAASSETS%%];
 
@@ -843,14 +848,14 @@ for _ch in data:
 <meta property="og:description" content="{_h.escape(_desc)}">
 <meta property="og:url" content="{_url}">
 <meta property="og:site_name" content="Bhagavad Gita — an Interactive Study">
-<meta property="og:image" content="{SITE_BASE}/og-card.png">
+<meta property="og:image" content="{SITE_BASE}/icons/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Bhagavad Gita Chapter {_n} — {_h.escape(_en)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bhagavad Gita Chapter {_n} — {_h.escape(_en)}">
 <meta name="twitter:description" content="{_h.escape(_desc)}">
-<meta name="twitter:image" content="{SITE_BASE}/og-card.png">
+<meta name="twitter:image" content="{SITE_BASE}/icons/og-card.png">
 <meta name="twitter:image:alt" content="Bhagavad Gita Chapter {_n} — {_h.escape(_en)}">
 <link rel="icon" href="../../favicon.ico" sizes="any">
 <link rel="stylesheet" href="../../chapter.css">
@@ -999,28 +1004,27 @@ if _HAVE_PIL:
 
 
 # sitemap.xml + robots.txt — the crawler-facing pair. URLs follow SITE_BASE.
-# lastmod is the CONTENT-CHANGE date of each published page: today while the
-# page is being rewritten in this working tree, otherwise the date of the last
-# commit that touched it. Stamping every URL with the build date made the
-# field a weak signal (a no-op rebuild moved all 19 dates) — Google ignores
-# lastmod that is consistently inaccurate. Honest note: on a GitHub *project*
-# page Google only reads github.io/robots.txt, so this robots.txt is advisory
-# for Google (Search Console is the real channel); other crawlers do read it.
-# The sitemap is what gets submitted in Search Console.
+# lastmod is the CONTENT-CHANGE date of each published page: the date of the
+# last commit that touched it, falling back to today only for untracked files.
+# The previous implementation returned today when the working tree was dirty,
+# which made sitemap.xml churn every day you built without committing — even
+# when the content hash was identical — and triggered unnecessary diffs.
+# Stable lastmod means sitemap only changes after a real commit.
+# Honest note: on a GitHub *project* page Google only reads github.io/robots.txt,
+# so this robots.txt is advisory for Google (Search Console is the real channel);
+# other crawlers do read it. The sitemap is what gets submitted in Search Console.
 import datetime as _dt
 import subprocess as _sp
 
 def _lastmod(rel):
     try:
-        _st = _sp.run(['git', 'status', '--porcelain', '--', rel],
-                      cwd=ROOT, capture_output=True, text=True, timeout=10)
-        if _st.stdout.strip():
-            return _dt.date.today().isoformat()
         _lg = _sp.run(['git', 'log', '-1', '--format=%cs', '--', rel],
                       cwd=ROOT, capture_output=True, text=True, timeout=10)
-        return _lg.stdout.strip() or _dt.date.today().isoformat()
+        if _lg.returncode == 0 and _lg.stdout.strip():
+            return _lg.stdout.strip().splitlines()[0].strip()
     except Exception:
-        return _dt.date.today().isoformat()
+        pass
+    return _dt.date.today().isoformat()
 
 _urls = [f'  <url>\n    <loc>{SITE_BASE}/</loc>\n    <lastmod>{_lastmod("index.html")}</lastmod>\n    <priority>1.0</priority>\n  </url>']
 for _ch in data:
@@ -1102,18 +1106,14 @@ with open(os.path.join(SITE_DIR, "404.html"), "w", encoding="utf-8") as f:
     f.write(NOT_FOUND)
 print("404.html: written (recovers #v= / #chapter= from dead links)")
 
-# index.html + icons
+# index.html + icons — icons/ is canonical, no root duplicates.
+# The PWA icons and og-card live in icons/ (single source of truth).
+# Only favicon.ico is generated at the site root (browsers expect /favicon.ico).
 dst = os.path.join(SITE_DIR, "index.html")
 if os.path.abspath(dst) != os.path.abspath(path):
     shutil.copyfile(path, dst)
 ICON_SRC = os.path.join(GITA_DIR, "icons")
 copied = 0
-if os.path.isdir(ICON_SRC):
-    for n in ("icon-192.png", "icon-512.png",
-              "icon-maskable-512.png", "apple-touch-icon.png", "og-card.png"):
-        src = os.path.join(ICON_SRC, n)
-        if os.path.exists(src):
-            shutil.copyfile(src, os.path.join(SITE_DIR, n)); copied += 1
 
 # favicon.ico is GENERATED from icons/fav{16,32,48}.png — one ICO with three
 # PNG frames. The old checked-in file carried only a 16×16 frame, so taskbar
@@ -1134,4 +1134,4 @@ for _px, _png in _fav:
 with open(os.path.join(SITE_DIR, "favicon.ico"), "wb") as _f:
     _f.write(_blob)
 copied += 1
-print(f"site/: index.html + manifest + sw.js (cache {CACHE_VER}) + sitemap + robots + {copied} icons  ->  {SITE_DIR}")
+print(f"site/: index.html + manifest + sw.js (cache {CACHE_VER}) + sitemap + robots + favicon.ico (icons/ canonical)  ->  {SITE_DIR}")

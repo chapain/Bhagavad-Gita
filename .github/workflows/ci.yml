@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build site (fast)
+        run: python3 build.py --fast
+
+      - name: Verify app (776 assertions)
+        run: node run_gita_app.js
+
+      - name: Check translations and site health
+        run: |
+          python3 source/check_translations.py
+          python3 source/check_site_health.py
+          python3 source/check_padas.py
+          python3 source/check_paraphrase.py

@@ -68,7 +68,7 @@
      described the second image — the mismatch made some crawlers drop the
      card entirely. og-card.png is the site's one face; the square icon is for
      the manifest, never for a link preview. -->
-<meta property="og:image" content="__BASE__/og-card.png">
+<meta property="og:image" content="__BASE__/icons/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ॐ श्रीमद्भगवद्गीता — Bhagavad Gita, 700 verses">
@@ -78,7 +78,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bhagavad Gita — an Interactive Study · 700 verses, trilingual">
 <meta name="twitter:description" content="All 18 chapters in English · नेपाली · हिन्दी, with word-by-word meanings. Works offline.">
-<meta name="twitter:image" content="__BASE__/og-card.png">
+<meta name="twitter:image" content="__BASE__/icons/og-card.png">
 
 <!-- Search engines. The canonical URL tells Google this is the one address of
      the app; the JSON-LD describes what it is in a form no crawler can get
@@ -109,10 +109,11 @@
 }
 </script>
 
-<!-- Icons: relative paths, so they resolve on any host or sub-path. -->
+<!-- Icons: relative paths, so they resolve on any host or sub-path.
+     Canonical set lives in icons/ — single source of truth, no root duplicates. -->
 <link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <title>Bhagavad Gita — English, Nepali, Hindi · 700 Verses</title>
 <style>

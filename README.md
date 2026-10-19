@@ -54,7 +54,7 @@ app and works with no internet connection.
 index.html              the built app — GENERATED, do not edit
 manifest.webmanifest    PWA manifest (Add to Home Screen)
 sw.js                   service worker (offline cache)
-icons + og-card.png     app icons and link-preview card
+icons/                  canonical app icons and link-preview card (og-card.png)
 404.html                not-found page; recovers #v= / #chapter= deep links
 chapter.css             shared stylesheet for the 18 chapter pages (4 KB)
 noto-deva-regular.woff2 Devanagari face for the chapter pages — a real file,
@@ -84,7 +84,7 @@ source/                 ← edit here
 
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         776 assertions on the built document
+run_gita_app.js         783 assertions on the built document
 browser_checks.py       270 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
 ```
 

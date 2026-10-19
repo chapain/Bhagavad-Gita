@@ -104,7 +104,8 @@ def load_pages():
         p = os.path.join(DATA_DIR, f"ch{n}.js")
         if not os.path.exists(p):
             sys.exit(f"data/ch{n}.js not found — run build_gita.py first")
-        src = open(p, encoding="utf-8").read()
+        with open(p, encoding="utf-8") as fh:
+            src = fh.read()
         m = re.match(r"^GITA_CH\[(\d+)\] = (\{.*\});\n$", src, re.S)
         if not m or int(m.group(1)) != n:
             sys.exit(f"data/ch{n}.js is malformed")
