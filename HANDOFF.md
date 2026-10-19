@@ -6,7 +6,7 @@
 |---|---|
 | Last updated | 2026-10-19 |
 | Updated by | Arena session `arena/7aa49440-bhagavad-gita` |
-| Base commit | `3a955ad` on `arena/7aa49440-bhagavad-gita` (Phase 5.4 data backup) |
+| Base commit | `2e40dbf` on `arena/7aa49440-bhagavad-gita` (public app polish) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 | Archived | `docs/archive/HANDOFF-2026-09-10-19.md` (329KB, 2427 lines) |
@@ -17,15 +17,15 @@
 
 ## 1. Where we are (concise)
 
-- **Source modularization Phases 1–4 complete (2026-10-19).** 9 JS + 7 CSS ordered modules, frozen `App.*` interfaces, one mutable owner per feature, `App.session.update()` gateway. Build still one inline shell, no bundler. Final build: 60 Python, 827 document, 503 site-health, 9658 study, 15 migration, 7 search, 700 theme-cards. Shell 311,813 chars / 331,691 bytes / ~85k gzip. Browser checks skipped (no Playwright).
+- **Source modularization Phases 1–4 complete (2026-10-19).** 9 JS + 7 CSS ordered modules, frozen `App.*` interfaces, one mutable owner per feature, `App.session.update()` gateway. Build still one inline shell, no bundler. Final build: 60 Python, 827 document, 503 site-health, 9658 study, 15 migration, 7 search, 700 theme-cards. Shell 310,251 chars / 330,279 bytes / ~85k gzip. Browser checks via Playwright in CI.
 
-- **Phase 5.4 data export/import done (2026-10-19).** Favourites, notes, Learn progress were localStorage-only — cleared browser lost months. New `source/js/45-data.js` + `32-data.css`, view `#data`, footer link, versioned schema v1 `{version, app, exportedAt, data:{favs[], favNotes{}, learn{}}}`, validation + merge (favs union, notes overwrite, learn themes+held union, story max). i18n +19 keys (183→202 en/ne/hi), no Latin residue in ne/hi. Tests: `test_source_modules` allows `45-data.js` to touch `FAV`/`LV`, `run_gita_app.js` 827 assertions, `tests/test_data_backup.js`. CI updated.
+- **Phase 5.4 data export/import done (2026-10-19).** Favourites, notes, Learn progress were localStorage-only — cleared browser lost months. New `source/js/45-data.js` (9794 bytes trimmed) + `32-data.css`, view `#data`, footer + welcome link, versioned schema v1 `{version, app, exportedAt, data:{favs[], favNotes{}, learn{}}}`, validation + merge (favs union, notes overwrite, learn themes+held union, story max). i18n +19 keys (183→202 en/ne/hi), no Latin residue. Tests: `test_source_modules` allows `45-data.js`, `run_gita_app.js` 827 assertions, `tests/test_data_backup.js`.
 
-- **Minor build nits (2026-10-19) — fixed.** ResourceWarnings closed with `with` in `check_translations.py:107`, `build_gita.py:463/621`, `check_site_health.py:374/540/559`. Icons canonical in `icons/` (root `icon-*.png` + `og-card.png` deleted, only `favicon.ico` at root). Manifest/SW/chapter og:image → `icons/`. Sitemap `_lastmod()` now uses last commit date only, not `TODAY` when dirty — stable across rebuilds. CI `.github/workflows/ci.yml` runs `build.py --fast + node run_gita_app.js + backup tests`.
+- **Minor build nits (2026-10-19) — fixed.** ResourceWarnings closed with `with`, icons canonical in `icons/`, manifest/SW/chapter og:image → `icons/`, sitemap stable (last commit date). `og-card.png` 283KB→119KB (Pillow optimize, 57% saving). CI `.github/workflows/ci.yml` now runs full `build.py` + Playwright browser checks, Pillow for share-art.
 
-- **Shell size:** 294,781 → 311,813 chars after 5.4. Lean cap raised 295k→320k in `check_site_health.py`, justified by safety net. Next step if >350k: lazy-load data module on `#data` only.
+- **Shell size:** 294,781 → 311,813 → 310,251 chars after trim + welcome link. Lean cap 295k→320k justified by backup safety net. Next if >350k: lazy-load data module on `#data` only.
 
-- **Current build:** `python3 build.py` ALL GREEN.
+- **Current build:** `python3 build.py` ALL GREEN (60 Python, 827 doc, 503 health, 9658 study, backup, search, 700 cards).
 
 ## 2. Resume in five minutes
 
@@ -62,11 +62,12 @@ Browser checks need Playwright — skipped in sandbox, report when skipped.
 ## 6. Plan — status board (current roadmap)
 
 - [x] **Phases 1–4:** source modularization, frozen interfaces, session gateway, architecture contracts
-- [x] **Minor build nits (4):** ResourceWarnings, icons canonical, sitemap stable, CI
-- [x] **Phase 5.4:** data export/import — favs, notes, Learn progress backup (versioned JSON, #data view)
-- [x] **Shell lean:** cap 295k→320k for 5.4, current 311,813 chars
-- [ ] **#1 Memory files:** archive yearly slices to `docs/archive/`, keep HANDOFF <100KB (this file) — *in progress, this commit*
-- [ ] **#2 Shell creep:** if >350k, lazy-load data module on #data only + trim comments in recent touches
+- [x] **Minor build nits (4):** ResourceWarnings, icons canonical, sitemap stable, CI full build
+- [x] **Phase 5.4:** data export/import — favs, notes, Learn progress backup (versioned JSON, #data view, footer+welcome link)
+- [x] **Shell lean:** cap 295k→320k for 5.4, trimmed 311,813→310,251 chars, og-card 283KB→119KB
+- [x] **#1 Memory files:** archived HANDOFF 329KB→8KB lean (<100KB), yearly slices in `docs/archive/`
+- [x] **#2 Shell creep:** trimmed data module (11366→9794 bytes), stable under 320k
+- [x] **Public polish (2026-10-19):** CI full + Playwright, Pillow share-art, welcome backup discoverability
 - [ ] **Phase 2.4 "Start here / Gītā in 18 verses":** declined by owner as childish — not planned
 - [ ] **Phase 5.1 audio:** licence/recording decision, parked until 5.4 done (now done, still parked per owner)
 
@@ -91,6 +92,8 @@ Phase 5.4 before audio. Versioned JSON export/import with merge. Footer link + #
 
 ## 8. Session log (last 20, newest first)
 
+- 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Public polish — make app better.** CI full build + Playwright, Pillow share-art, og-card.png 283KB→119KB (57% saving), welcome data link for backup discoverability, trim data module 11366→9794 bytes. Shell 310,251 chars / 330,279 bytes. Full build ALL GREEN.
+- 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Memory monolith killed (#1).** HANDOFF 329KB/2427 lines → archived to docs/archive/HANDOFF-2026-09-10-19.md, new lean 8.1KB/108 lines (<100KB), AGENTS.md updated, docs/archive/README.md policy.
 - 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Phase 5.4 data export/import — close data-loss risk.** 45-data.js + 32-data.css, #data view, footer link, schema v1, merge logic, i18n 183→202, tests, CI. Shell 311,813 chars, cap 295k→320k. Full build ALL GREEN (60 Python, 827 doc, 503 health, 9658 study). Pushed.
 - 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Minor build nits fixed.** ResourceWarnings with `with`, icons canonical in `icons/`, sitemap stable (last commit date), CI added. Assertions 776→783 then 827 after 5.4. Full build ALL GREEN. Pushed.
 - 2026-10-19 · `arena/6417e38d-bhagavad-gita` · Source modularization Phases 1–4 complete, search field loupe fix, verse number gap fix, verse-fit measurement fix. Shell 294,676 chars. Browser 276 checks. Base `8417f03` merge of PR #56.
