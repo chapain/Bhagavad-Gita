@@ -223,7 +223,7 @@ Replace fourteen fragments with six teaching turns: field, preparation for knowl
 2. **13.7–13.11 · The dispositions that make knowledge possible** — Humility, non-violence, restraint, detachment, devotion and sustained Self-knowledge prepare understanding. These dispositions are themselves declared knowledge.
 3. **13.12–13.18 · Brahman: the knowable light in every heart** — Beginningless Brahman pervades all, beyond senses and divisions, sustaining every being. It is the light of lights in every heart; knowing this leads to Kṛṣṇa’s being.
 4. **13.19–13.23 · Nature, the experiencer and release from birth** — Prakṛti acts and puruṣa experiences; attachment to the guṇas brings birth. Know the supreme witness in the body and the truth of nature to pass beyond rebirth.
-5. **13.24–13.28 · Different paths, one Lord in all beings** — Meditation, knowledge, action and faithful hearing lead to vision. Seeing the imperishable Lord equally in every being, one does not harm the Self and reaches the goal.
+5. **13.24–13.28 · Different paths, one Lord in all beings** — Meditation, knowledge, action and faithful hearing lead to vision. All beings arise from the union of the field and its knower; seeing the imperishable Lord equally in every being, one does not harm the Self and reaches the goal.
 6. **13.29–13.34 · The Self does not act and remains unstained** — Nature acts; the Self remains untouched like space and illumines the field like the sun. Seeing the one within the many and distinguishing field from knower brings freedom.
 
 ## Chapter 14 — 7 turns

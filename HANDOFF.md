@@ -17,15 +17,15 @@
 
 ## 1. Where we are (concise)
 
-- **Source modularization Phases 1–4 complete (2026-10-19).** 9 JS + 7 CSS ordered modules, frozen `App.*` interfaces, one mutable owner per feature, `App.session.update()` gateway. Build still one inline shell, no bundler. Final build: 60 Python, 827 document, 503 site-health, 9658 study, 15 migration, 7 search, 700 theme-cards. Shell 310,251 chars / 330,279 bytes / ~85k gzip. Browser checks via Playwright in CI.
+- **Source modularization Phases 1–4 complete (2026-10-19).** 9 JS + 7 CSS ordered modules, frozen `App.*` interfaces, one mutable owner per feature, `App.session.update()` gateway. Build still one inline shell, no bundler. Final build: 60 Python, 832 document, 503 site-health, 9658 study, 15 migration, 7 search, 700 theme-cards. Shell 310,251 chars / 330,279 bytes / ~85k gzip. Browser checks via Playwright in CI.
 
-- **Phase 5.4 data export/import done (2026-10-19).** Favourites, notes, Learn progress were localStorage-only — cleared browser lost months. New `source/js/45-data.js` (9794 bytes trimmed) + `32-data.css`, view `#data`, footer + welcome link, versioned schema v1 `{version, app, exportedAt, data:{favs[], favNotes{}, learn{}}}`, validation + merge (favs union, notes overwrite, learn themes+held union, story max). i18n +19 keys (183→202 en/ne/hi), no Latin residue. Tests: `test_source_modules` allows `45-data.js`, `run_gita_app.js` 827 assertions, `tests/test_data_backup.js`.
+- **Phase 5.4 data export/import done (2026-10-19).** Favourites, notes, Learn progress were localStorage-only — cleared browser lost months. New `source/js/45-data.js` (9794 bytes trimmed) + `32-data.css`, view `#data`, footer + welcome link, versioned schema v1 `{version, app, exportedAt, data:{favs[], favNotes{}, learn{}}}`, validation + merge (favs union, notes overwrite, learn themes+held union, story max). i18n +19 keys (183→202 en/ne/hi), no Latin residue. Tests: `test_source_modules` allows `45-data.js`, `run_gita_app.js` 832 assertions, `tests/test_data_backup.js`.
 
 - **Minor build nits (2026-10-19) — fixed.** ResourceWarnings closed with `with`, icons canonical in `icons/`, manifest/SW/chapter og:image → `icons/`, sitemap stable (last commit date). `og-card.png` 283KB→119KB (Pillow optimize, 57% saving). CI `.github/workflows/ci.yml` now runs full `build.py` + Playwright browser checks, Pillow for share-art.
 
 - **Shell size:** 294,781 → 311,813 → 310,251 chars after trim + welcome link. Lean cap 295k→320k justified by backup safety net. Next if >350k: lazy-load data module on `#data` only.
 
-- **Current build:** `python3 build.py` ALL GREEN (60 Python, 827 doc, 503 health, 9658 study, backup, search, 700 cards).
+- **Current build:** `python3 build.py` ALL GREEN (60 Python, 832 doc, 503 health, 9658 study, backup, search, 700 cards).
 
 ## 2. Resume in five minutes
 
@@ -51,9 +51,9 @@ Everything browser loads is **generated** by `source/build_gita.py`. Never hand-
 ## 4. Build and test
 
 ```bash
-python3 build.py          # build + all checks (60 Python, 827 doc, 503 health, 9658 study, 15 migration, 7 search, 700 cards, backup)
+python3 build.py          # build + all checks (60 Python, 832 doc, 503 health, 9658 study, 15 migration, 7 search, 700 cards, backup)
 python3 build.py --fast   # build only
-node run_gita_app.js      # 827 assertions
+node run_gita_app.js      # 832 assertions
 node tests/test_data_backup.js
 ```
 
