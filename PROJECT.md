@@ -1,12 +1,13 @@
-# PROJECT.md — everything needed to pick this up cold
+# PROJECT.md — detailed decisions and history
 
-> **Start with [`HANDOFF.md`](HANDOFF.md)**: the short, current status page
-> (latest review, the plan, open decisions). Then come back here for the history.
+> **Start with [`AGENTS.md`](AGENTS.md), not this file.** It is the concise
+> current operating guide. Search this document for the feature, verse or
+> decision involved when you need rationale and historical evidence.
 
-If you are an assistant resuming this project with nothing but the repository,
-read this file first. `README.md` explains how to *use* the project; this file
-explains *why it is the way it is*, and records decisions and mistakes that the
-code alone cannot tell you.
+`README.md` explains how to use the project. This file explains why the app is
+the way it is and records settled decisions and mistakes that code alone cannot
+show. It is intentionally comprehensive and should not be read front-to-back at
+the start of every session.
 
 ---
 

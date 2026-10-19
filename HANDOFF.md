@@ -1,9 +1,9 @@
-# HANDOFF.md — start here
+# HANDOFF.md — status archive and roadmap
 
-**New AI session (Arena or any other): read this file first.** It is the short,
-*current* status: where the work stands, what was found, what to do next.
-`PROJECT.md` is the long history — read its **§8 “Working with the owner”**
-before you talk to the owner.
+**New AI session: read [`AGENTS.md`](AGENTS.md) first.** It is the concise,
+current operating guide. This file preserves detailed status, roadmap decisions
+and session evidence; search it for the feature or verse involved rather than
+reading it front-to-back. `PROJECT.md` holds the broader decision history.
 
 | | |
 |---|---|
@@ -13,8 +13,11 @@ before you talk to the owner.
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 
-> **Rule for every session:** before you stop, update §1, tick boxes in §6 and
-> add one line to §8. Keep this file short; long history belongs in PROJECT.md.
+> **Maintenance rule:** update §1 or §6 only when current status or the roadmap
+> actually changes. Add detailed session evidence only when it will help a
+> future contributor; do not duplicate routine build reports in multiple files.
+> Durable operating rules belong in `AGENTS.md`, and rationale belongs in
+> `PROJECT.md`.
 
 ---
 

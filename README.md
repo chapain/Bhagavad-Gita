@@ -1,10 +1,11 @@
 # Bhagavad Gita — Interactive Study
 
-> **Resuming this project after a break — or handing it to someone else?**
-> Read **[PROJECT.md](PROJECT.md)** first. It records the one rule that governs
-> the codebase, the editorial decisions already settled (and why), every build
-> check and the bug that caused it, and the mistakes not to repeat. The test
-> suite verifies that its facts stay accurate.
+> **Resuming this project or handing it to someone else?**
+> Read **[AGENTS.md](AGENTS.md)** first. It is the concise current operating
+> guide: product principles, source-of-truth files, generated outputs, active
+> design contracts and the build routine. Search **[HANDOFF.md](HANDOFF.md)**
+> and **[PROJECT.md](PROJECT.md)** only when the task needs their detailed
+> status or decision history.
 
 
 **Live app → https://chapain.github.io/Bhagavad-Gita/**
