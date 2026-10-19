@@ -2286,6 +2286,21 @@ function padaBlockDeva(s, withNum){
   if(withNum) html += '</div>';
   return html;
 }
+/* Two lines, never three: shrink --verse-fit to fit. */
+function fitWholeVerse(){
+  const v = $('#modal .m-whole-verse');
+  if(!v || !v.clientWidth) return;
+  const ms = [...v.querySelectorAll('.gline-main')], r = document.createRange();
+  /* text only, less number reserve */
+  const over = () => ms.some(el => { r.selectNode(el.firstChild);
+    return r.getBoundingClientRect().width >
+      el.clientWidth - parseFloat(getComputedStyle(el).paddingRight); });
+  let f = 1;
+  while(true){ v.style.setProperty('--verse-fit', f.toFixed(2));
+    if(f <= 0.3 || !over()) break; f -= 0.02; }
+}
+addEventListener('resize', fitWholeVerse);
+if(document.fonts) document.fonts.ready.then(fitWholeVerse);
 
 
 let SRCH_HITS = [], FAV_LIST = [];
@@ -2330,6 +2345,7 @@ function openModal(ci,ti,si, mode, navIdx, invoker, restoring){
   bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
   document.body.classList.add('modal-open');
   setAppInert(true); document.body.style.overflow='hidden';
+  fitWholeVerse();
   const close = $('#modal .m-close'); if(close) close.focus({preventScroll:true});
   if(restoring) MODAL_HIST = true;
   else pushModalHistory();
@@ -2520,6 +2536,7 @@ function fillModal(){
              <button onclick="navSutra(1)" ${(state.navIdx||0) < (state.navList?state.navList.length-1:0)?'':'disabled'}>${L('next')}</button>`}
     </div>`;
   applyReaderSize();
+  fitWholeVerse();
 }
 function setReaderSize(size){
   if(!READER_SIZES.includes(size)) return;
@@ -2541,6 +2558,7 @@ function applyReaderSize(){
   const up = document.getElementById('readerSizeUp');
   if(down) down.disabled = state.readerSize <= READER_SIZES[0];
   if(up) up.disabled = state.readerSize >= READER_SIZES[READER_SIZES.length-1];
+  fitWholeVerse();
 }
 /* Phase 3.2 — verse-sheet overflow menu (⋯). Share / Save / Text size /
    Hide-meanings live here so they don't crowd the top of the sheet. */
