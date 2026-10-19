@@ -169,23 +169,23 @@ __APP_CSS__
      existing shape. The search field stays in the sticky top bar on all
      widths so it is always reachable. -->
 <div class="toolbar" role="toolbar" aria-label="Tools">
-  <button class="tool-btn" onclick="goHome()" id="homeBtn">__ICON_HOME__<span id="homeLbl">Home</span></button>
+  <button class="tool-btn" onclick="App.views.home()" id="homeBtn">__ICON_HOME__<span id="homeLbl">Home</span></button>
   <div class="searchwrap" role="search" aria-label="Search verses" id="searchWrap">
     <div class="sw-field">
       <span class="sw-ic">__ICON_SEARCH__</span>
-      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
-      <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()">__ICON_CLEARX__</button>
+      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="App.library.onSearchInput(this.value)" onkeydown="if(event.key==='Enter')App.library.search()">
+      <button type="button" class="sw-x" id="clearBtn" onclick="App.library.clearSearch()">__ICON_CLEARX__</button>
     </div>
   </div>
-  <button class="tool-btn" onclick="randomVerse()" id="randomBtn">__ICON_SHUFFLE__<span id="randLbl">Random</span></button>
-  <button class="tool-btn" onclick="showPlay()" id="playBtnTool">__ICON_PLAY__<span id="playLbl">Play</span></button>
-  <button class="tool-btn" onclick="showFavorites()" id="favBtnTool">__ICON_STAR__<span id="favLbl">Favorites</span></button>
+  <button class="tool-btn" onclick="App.library.randomVerse()" id="randomBtn">__ICON_SHUFFLE__<span id="randLbl">Random</span></button>
+  <button class="tool-btn" onclick="App.play.show()" id="playBtnTool">__ICON_PLAY__<span id="playLbl">Play</span></button>
+  <button class="tool-btn" onclick="App.library.showFavorites()" id="favBtnTool">__ICON_STAR__<span id="favLbl">Favorites</span></button>
 </div>
 
 <!-- Mobile bottom tab bar: 5 thumb-reachable destinations. Desktop-only
      (hidden via CSS on ≥761px); on phones it replaces the .toolbar row. -->
 <nav class="tabbar" id="tabbar" aria-label="Main navigation" role="tablist">
-  <button class="tab-btn" data-tab="home" role="tab" onclick="goHome()" aria-selected="true">
+  <button class="tab-btn" data-tab="home" role="tab" onclick="App.views.home()" aria-selected="true">
     __ICON_HOME__
     <span class="tab-lbl" id="tabHomeLbl">Home</span>
   </button>
@@ -193,15 +193,15 @@ __APP_CSS__
     __ICON_SEARCH__
     <span class="tab-lbl" id="tabSearchLbl">Search</span>
   </button>
-  <button class="tab-btn" data-tab="random" role="tab" onclick="randomVerse()" aria-selected="false">
+  <button class="tab-btn" data-tab="random" role="tab" onclick="App.library.randomVerse()" aria-selected="false">
     __ICON_SHUFFLE__
     <span class="tab-lbl" id="tabRandLbl">Random</span>
   </button>
-  <button class="tab-btn" data-tab="play" role="tab" onclick="showPlay()" aria-selected="false">
+  <button class="tab-btn" data-tab="play" role="tab" onclick="App.play.show()" aria-selected="false">
     __ICON_PLAY__
     <span class="tab-lbl" id="tabPlayLbl">Play</span>
   </button>
-  <button class="tab-btn" data-tab="fav" role="tab" onclick="showFavorites()" aria-selected="false">
+  <button class="tab-btn" data-tab="fav" role="tab" onclick="App.library.showFavorites()" aria-selected="false">
     __ICON_STAR__
     <span class="tab-lbl" id="tabFavLbl">Saved</span>
   </button>
@@ -245,7 +245,7 @@ __APP_CSS__
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
 </footer>
 
-<div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)closeModal()">
+<div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)App.reader.close()">
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></div>
 </div>
 

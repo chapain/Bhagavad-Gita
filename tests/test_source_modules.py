@@ -1,0 +1,128 @@
+"""Contracts for the feature-sized app source files.
+
+The browser still receives one inline style and one inline script. These tests
+protect the authoring boundary: every module must be explicitly ordered by the
+builder, and an unlisted file must not silently disappear from the build.
+"""
+from __future__ import annotations
+
+import ast
+from pathlib import Path
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / "source"
+BUILDER = SOURCE / "build_gita.py"
+
+
+def builder_tuple(name: str) -> tuple[str, ...]:
+    tree = ast.parse(BUILDER.read_text(encoding="utf-8"))
+    for node in tree.body:
+        if isinstance(node, ast.Assign):
+            if any(isinstance(target, ast.Name) and target.id == name for target in node.targets):
+                value = ast.literal_eval(node.value)
+                if not isinstance(value, tuple):
+                    raise AssertionError(f"{name} must be an explicit tuple")
+                return value
+    raise AssertionError(f"{name} is not declared in source/build_gita.py")
+
+
+class SourceModuleContractTests(unittest.TestCase):
+    def check_family(self, folder: str, manifest: str, suffix: str, max_lines: int) -> str:
+        names = builder_tuple(manifest)
+        self.assertTrue(names)
+        self.assertEqual(list(names), sorted(names), f"{manifest} must remain visibly ordered")
+        actual = sorted(path.name for path in (SOURCE / folder).glob(f"*{suffix}"))
+        self.assertEqual(list(names), actual, "every source module must be listed exactly once")
+        chunks = []
+        for name in names:
+            text = (SOURCE / folder / name).read_text(encoding="utf-8")
+            self.assertTrue(text, name)
+            self.assertLessEqual(len(text.splitlines()), max_lines, f"{name} is becoming a new monolith")
+            chunks.append(text)
+        return "".join(chunks)
+
+    def test_javascript_manifest_covers_feature_sources(self):
+        js = self.check_family("js", "APP_JS_FILES", ".js", 700)
+        self.assertEqual(js.count("__UI__"), 1)
+        self.assertEqual(js.count("__LR_LEGACY_JSON__"), 1)
+        self.assertEqual(js.count("__DATALOADER__"), 1)
+        self.assertNotIn("\nimport ", js)
+        self.assertNotIn("\nexport ", js)
+
+    def test_css_manifest_covers_feature_sources(self):
+        css = self.check_family("css", "APP_CSS_FILES", ".css", 450)
+        self.assertEqual(css.count("__FONTS__"), 1)
+
+    def test_feature_interfaces_are_explicit_and_owned(self):
+        files = {path.name: path.read_text(encoding="utf-8")
+                 for path in (SOURCE / "js").glob("*.js")}
+        owners = {
+            "session": "00-core.js",
+            "library": "10-library.js",
+            "learn": "20-learn.js",
+            "play": "30-play.js",
+            "drills": "35-drills.js",
+            "views": "40-views.js",
+            "reader": "50-reader.js",
+        }
+        for feature, owner in owners.items():
+            publication = f"App.{feature} = Object.freeze({{"
+            found = [name for name, text in files.items() if publication in text]
+            self.assertEqual(found, [owner], f"App.{feature} must be frozen by {owner} exactly once")
+
+    def test_inline_ui_handlers_do_not_mutate_owned_state(self):
+        import re
+        handler = re.compile(r"\bon(?:click|change|input|keydown)=\\?\"([^\"]*)")
+        direct_write = re.compile(
+            r"\b(?:state|LV|PL|LQ|LQi|LQmiss|LQpick)\s*"
+            r"(?:\.[A-Za-z_$][\w$]*|\[[^]]+\])?\s*"
+            r"(?:=(?!=)|\+=|-=|\*=|/=|%=|\+\+|--)")
+        checked = 0
+        for path in (SOURCE / "js").glob("*.js"):
+            text = path.read_text(encoding="utf-8")
+            for body in handler.findall(text):
+                checked += 1
+                self.assertIsNone(direct_write.search(body),
+                                  f"{path.name} UI handler must call its owner's operation: {body}")
+        self.assertGreater(checked, 25, "handler scan must not pass vacuously")
+
+    def test_mutable_feature_state_has_one_owner(self):
+        files = {path.name: path.read_text(encoding="utf-8")
+                 for path in (SOURCE / "js").glob("*.js")}
+        owners = {
+            "10-library.js": ("VERSES", "FAV", "FAV_LIST", "SRCH_HITS"),
+            "20-learn.js": ("LV", "FP", "lrTest", "lrOpen"),
+            "30-play.js": ("PL",),
+            "35-drills.js": ("LQ", "LQi", "LQmiss", "LQpick"),
+        }
+        import re
+        for owner, names in owners.items():
+            allowed = {owner}
+            if owner == "20-learn.js":
+                allowed.add("25-learn-session.js")
+            for name in names:
+                for filename, text in files.items():
+                    if filename not in allowed:
+                        self.assertIsNone(re.search(rf"\b{re.escape(name)}\b", text),
+                                          f"{name} leaked from {owner} into {filename}")
+
+    def test_shared_session_state_mutates_only_in_core(self):
+        import re
+        direct_write = re.compile(
+            r"\bstate\s*(?:\.\s*[A-Za-z_$][\w$]*|\[[^]\n]+\])\s*"
+            r"(?:=(?!=)|\+=|-=|\*=|/=|%=|\+\+|--)")
+        for path in (SOURCE / "js").glob("*.js"):
+            if path.name == "00-core.js":
+                continue
+            match = direct_write.search(path.read_text(encoding="utf-8"))
+            self.assertIsNone(match,
+                              f"{path.name} must mutate shared state through App.session.update")
+
+    def test_retired_monoliths_stay_retired(self):
+        self.assertFalse((SOURCE / "app.js").exists())
+        self.assertFalse((SOURCE / "app.css").exists())
+
+
+if __name__ == "__main__":
+    unittest.main()

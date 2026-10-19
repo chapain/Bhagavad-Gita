@@ -1,10 +1,11 @@
 # Bhagavad Gita — Interactive Study
 
-> **Resuming this project after a break — or handing it to someone else?**
-> Read **[PROJECT.md](PROJECT.md)** first. It records the one rule that governs
-> the codebase, the editorial decisions already settled (and why), every build
-> check and the bug that caused it, and the mistakes not to repeat. The test
-> suite verifies that its facts stay accurate.
+> **Resuming this project or handing it to someone else?**
+> Read **[AGENTS.md](AGENTS.md)** first. It is the concise current operating
+> guide: product principles, source-of-truth files, generated outputs, active
+> design contracts and the build routine. Search **[HANDOFF.md](HANDOFF.md)**
+> and **[PROJECT.md](PROJECT.md)** only when the task needs their detailed
+> status or decision history.
 
 
 **Live app → https://chapain.github.io/Bhagavad-Gita/**
@@ -66,7 +67,9 @@ chapter/N/              full-text landing page per chapter (crawler-facing)
 source/                 ← edit here
   build_gita.py           builds the app and validates canonical chapter data
   schema.py               strict chapter JSON keys, types, IDs, ranges and flow shape
-  app.html / app.css / app.js  shell templates; CSS and JS stay inline
+  app.html                 shell document template
+  css/*.css                ordered feature styles; concatenated and inlined
+  js/*.js                  ordered feature runtime; concatenated and inlined
   ch1.json … ch18.json    one compact canonical content file per chapter
   i18n_ui.py              interface strings (en/ne/hi; 183 keys each)
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
@@ -85,14 +88,36 @@ run_gita_app.js         776 assertions on the built document
 browser_checks.py       270 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
 ```
 
-`index.html` remains a **single-shell split site**. Its document, stylesheet and
-client runtime are maintained as `source/app.html`, `source/app.css` and
-`source/app.js`; `source/build_gita.py` fills their build-time placeholders and
-inlines the CSS and JavaScript, so the browser makes no extra shell-asset
-requests. The shell is about 72 KB gzipped and loads the verses from 18
+`index.html` remains a **single-shell split site**. Its document is maintained
+in `source/app.html`; ordered feature sources in `source/css/` and `source/js/`
+are concatenated by `source/build_gita.py`, which fills their build-time
+placeholders and inlines the result. The browser therefore makes no extra
+shell-asset requests. Cross-feature calls use frozen interfaces on one `App`
+namespace; mutable Library, Learn, Play and Drills state stays with its owning
+feature. Shared route, reader and session transitions go through the validated
+`App.session.update({...})` gateway, and architecture tests reject direct
+writes outside Core. The shell is about 83 KB gzipped and loads the verses from 18
 `data/ch<N>.js` files in parallel; the service worker precaches them. After the
 first visit everything is cached, so the app runs offline and installs to the
 home screen. Share it by link.
+
+The JavaScript source order is also the dependency map:
+
+| Source | Responsibility / mutable owner |
+|---|---|
+| `00-core.js` | shell primitives, validated shared session transitions and snapshots |
+| `10-library.js` | chapter loading, verse index, search and favourites |
+| `20-learn.js` + `25-learn-session.js` | Learn path, practice state and Learn restoration |
+| `30-play.js` | Play setup and active-game state |
+| `35-drills.js` | quiz queue, answers and drill restoration |
+| `40-views.js` | route-level rendering and persistence |
+| `50-reader.js` | verse sheet, reader navigation and sizing |
+| `60-runtime.js` | event wiring, boot, restoration and deep links |
+
+`tests/test_source_modules.py` protects this boundary: manifests must cover every
+source, interfaces have one frozen publisher, mutable feature state has one
+owner, inline controls cannot mutate owner internals, and shared `state` writes
+are confined to Core.
 
 ---
 
@@ -144,7 +169,7 @@ both are generated.
 |---|---|
 | chapter names and summaries; themes/parts, titles and descriptions; verse text, translations, word glosses, pāda flow and colophon | `source/ch<N>.json` |
 | interface wording (buttons and labels; 183 UI strings in each of three languages) | `source/i18n_ui.py` |
-| shell structure, styling and client behavior | `source/app.html`, `source/app.css`, `source/app.js` |
+| shell structure, styling and client behavior | `source/app.html`, `source/css/*.css`, `source/js/*.js` |
 | approved story maps and safe legacy-progress migration | `source/study_map_contract.json` |
 
 The canonical schema deliberately has one copy of each value. Chapter names and
@@ -210,7 +235,7 @@ The app follows the phone's own light/dark setting. A ☾ / ☀ button in the
 language bar overrides it, and that choice is remembered.
 
 It is presentation only — no data file is involved. The colours live in two
-blocks at the top of `source/app.css`: `:root` for light and
+blocks at the top of `source/css/00-foundation.css`: `:root` for light and
 `html[data-theme="dark"]` for dark. Both define the same token names, so every
 rule just uses `var(--x)` and nothing else changes.
 

@@ -1487,23 +1487,23 @@
      existing shape. The search field stays in the sticky top bar on all
      widths so it is always reachable. -->
 <div class="toolbar" role="toolbar" aria-label="Tools">
-  <button class="tool-btn" onclick="goHome()" id="homeBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span id="homeLbl">Home</span></button>
+  <button class="tool-btn" onclick="App.views.home()" id="homeBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span id="homeLbl">Home</span></button>
   <div class="searchwrap" role="search" aria-label="Search verses" id="searchWrap">
     <div class="sw-field">
       <span class="sw-ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
-      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')doSearch()">
-      <button type="button" class="sw-x" id="clearBtn" onclick="clearSearch()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="App.library.onSearchInput(this.value)" onkeydown="if(event.key==='Enter')App.library.search()">
+      <button type="button" class="sw-x" id="clearBtn" onclick="App.library.clearSearch()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
   </div>
-  <button class="tool-btn" onclick="randomVerse()" id="randomBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg><span id="randLbl">Random</span></button>
-  <button class="tool-btn" onclick="showPlay()" id="playBtnTool"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg><span id="playLbl">Play</span></button>
-  <button class="tool-btn" onclick="showFavorites()" id="favBtnTool"><svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span id="favLbl">Favorites</span></button>
+  <button class="tool-btn" onclick="App.library.randomVerse()" id="randomBtn"><svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg><span id="randLbl">Random</span></button>
+  <button class="tool-btn" onclick="App.play.show()" id="playBtnTool"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg><span id="playLbl">Play</span></button>
+  <button class="tool-btn" onclick="App.library.showFavorites()" id="favBtnTool"><svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span id="favLbl">Favorites</span></button>
 </div>
 
 <!-- Mobile bottom tab bar: 5 thumb-reachable destinations. Desktop-only
      (hidden via CSS on ≥761px); on phones it replaces the .toolbar row. -->
 <nav class="tabbar" id="tabbar" aria-label="Main navigation" role="tablist">
-  <button class="tab-btn" data-tab="home" role="tab" onclick="goHome()" aria-selected="true">
+  <button class="tab-btn" data-tab="home" role="tab" onclick="App.views.home()" aria-selected="true">
     <svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
     <span class="tab-lbl" id="tabHomeLbl">Home</span>
   </button>
@@ -1511,15 +1511,15 @@
     <svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
     <span class="tab-lbl" id="tabSearchLbl">Search</span>
   </button>
-  <button class="tab-btn" data-tab="random" role="tab" onclick="randomVerse()" aria-selected="false">
+  <button class="tab-btn" data-tab="random" role="tab" onclick="App.library.randomVerse()" aria-selected="false">
     <svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg>
     <span class="tab-lbl" id="tabRandLbl">Random</span>
   </button>
-  <button class="tab-btn" data-tab="play" role="tab" onclick="showPlay()" aria-selected="false">
+  <button class="tab-btn" data-tab="play" role="tab" onclick="App.play.show()" aria-selected="false">
     <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg>
     <span class="tab-lbl" id="tabPlayLbl">Play</span>
   </button>
-  <button class="tab-btn" data-tab="fav" role="tab" onclick="showFavorites()" aria-selected="false">
+  <button class="tab-btn" data-tab="fav" role="tab" onclick="App.library.showFavorites()" aria-selected="false">
     <svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>
     <span class="tab-lbl" id="tabFavLbl">Saved</span>
   </button>
@@ -1563,7 +1563,7 @@
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
 </footer>
 
-<div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)closeModal()">
+<div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)App.reader.close()">
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></div>
 </div>
 
@@ -1637,6 +1637,20 @@ let GITA_RESTORING = false, GITA_PENDING_RESTORE = null, GITA_SESSION_TIMER = nu
     GITA_SESSION_MIRROR = false;
 const state = { chapter:null, theme:null, idx:0, lang:savedLang(), view:'welcome', section:null, shared:null,
                 readerSize:savedReaderSize() };
+/* Feature files publish their supported cross-feature operations here. Keeping
+   one namespace makes dependencies visible without introducing a framework or
+   changing the single-script build. */
+const App = Object.create(null);
+const SESSION_FIELDS = new Set(['chapter','theme','idx','lang','view','section','shared',
+  'readerSize','origin','lrAt','keepScroll','mode','gpos','pStart','pEnd','navList','navIdx']);
+function updateSessionState(patch){
+  if(!patch || typeof patch !== 'object' || Array.isArray(patch)) return;
+  for(const key of Object.keys(patch)){
+    if(!SESSION_FIELDS.has(key)) throw new Error('Unknown session field: ' + key);
+    state[key] = patch[key];
+  }
+}
+App.session = Object.freeze({update:updateSessionState});
 function sessionPathKey(){ return (location.pathname || '/') + (location.search || ''); }
 function sessionNodePath(root, node){
   const path = []; let cur = node;
@@ -1709,41 +1723,12 @@ function readSessionSnapshot(){
   }catch(e){}
   return chosen;
 }
-function captureQuizSession(){
-  const root = document.getElementById('view'), kind = state.view === 'play' ? 'play'
-    : state.lrAt && state.lrAt.kind;
-  if(!root || !root.querySelector('.lr-qbox') || !Array.isArray(LQ) || !LQ.length
-     || !['story','drill','play'].includes(kind)) return null;
-  const queue = LQ.map(it=>it && it.qid);
-  if(queue.some(id=>typeof id !== 'string' || !id)) return null;
-  const index = Number.isInteger(LQi) ? Math.max(0, Math.min(LQi, LQ.length)) : 0;
-  const quiz = {seed:kind === 'play' ? null : (Number.isInteger(state.lrAt.seed) ? state.lrAt.seed : null),
-    queue, index, misses:Number.isInteger(LQmiss) ? Math.max(0,LQmiss) : 0, ui:null};
-  if(index >= LQ.length) return quiz;
-  const item = LQ[index], ui = {kind:item.kind};
-  if(item.kind === 'pick' && Array.isArray(item.opts)){
-    ui.optionOrder = item.opts.map(o=>o && o.oid).filter(x=>typeof x === 'string');
-    const wrong = root.querySelector('.lr-opt.wrong');
-    if(wrong && wrong.dataset.lrOpt) ui.wrong = wrong.dataset.lrOpt;
-  }else if(item.kind === 'order' && Array.isArray(item.chips)){
-    ui.chipOrder = Array.from(root.querySelectorAll('.lr-chips .lr-chip2'))
-      .map(el=>Number(el.dataset.lrChip)).filter(Number.isInteger);
-    ui.picked = Array.isArray(LQpick) ? LQpick.filter(Number.isInteger) : [];
-    ui.bad = !!root.querySelector('.lr-fb .bad');
-  }else if(item.kind === 'match' && LQpick && typeof LQpick === 'object'){
-    ui.match = {left:Number.isInteger(LQpick.left) ? LQpick.left : null,
-      right:Number.isInteger(LQpick.right) ? LQpick.right : null,
-      done:Object.keys(LQpick.done || {}).filter(k=>/^\d{1,2}\.\d{1,2}$/.test(k))};
-  }
-  quiz.ui = ui;
-  return quiz;
-}
 function captureSessionSnapshot(){
   const bg = document.getElementById('modalBg'), modalOpen = !!(bg && bg.classList.contains('open'));
   let modal = null;
   if(modalOpen && state.chapter != null && state.theme != null && DATA && DATA[state.chapter]){
     try{
-      const s = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s;
+      const s = App.library.entryAt(DATA[state.chapter].themes[state.theme], state.idx).s;
       modal = {id:s.n, mode:state.mode || 'theme', navIdx:Number.isInteger(state.navIdx) ? state.navIdx : 0,
         openDetails:sessionOpenDetails(document.getElementById('modal')),
         openWords:Array.from(document.querySelectorAll('#modal .words.open')).map(el=>el.id).filter(Boolean),
@@ -1758,7 +1743,7 @@ function captureSessionSnapshot(){
   let shared = null;
   try{ shared = state.shared && state.shared.id ? state.shared.id : null; }catch(e){}
   const snap = {version:1, updated:Date.now(), path:sessionPathKey(), hash:location.hash || '',
-    route:viewHash() || '', view:state.view, lang:state.lang,
+    route:App.views.hash() || '', view:state.view, lang:state.lang,
     section:Number.isInteger(state.section) ? state.section : null,
     chapter:Number.isInteger(state.chapter) ? state.chapter : null,
     theme:Number.isInteger(state.theme) ? state.theme : null,
@@ -1768,25 +1753,8 @@ function captureSessionSnapshot(){
     openDetails:sessionOpenDetails(document.getElementById('view')),
     scrollY:Math.max(0, window.scrollY || window.pageYOffset || 0),
     modal, readerSize:state.readerSize};
-  if(state.view === 'learn'){
-    snap.learn = {at:state.lrAt || null,
-      test:typeof lrTest === 'number' ? lrTest : 0,
-      open:typeof lrOpen === 'object' && lrOpen ? lrOpen : {},
-      level:typeof LV === 'object' && LV ? LV.level : 'full',
-      shown:typeof LV === 'object' && LV ? LV.shown : {}};
-    const quiz = captureQuizSession();
-    if(quiz) snap.learn.quiz = quiz;
-    if(state.lrAt && state.lrAt.kind === 'free' && FP && FP.v)
-      snap.learn.free = {ci:FP.ci, ti:FP.ti, verse:FP.v.n,
-        deal:Array.isArray(FP.deal) ? FP.deal.slice() : [],
-        picked:Array.isArray(FP.picked) ? FP.picked.slice() : []};
-  }
-  if(state.view === 'play' && typeof PL === 'object' && PL){
-    snap.play = {scope:PL.scope, ch:PL.ch, mode:PL.mode, run:PL.run,
-      q:PL.q || null, active:!!PL.active};
-    const quiz = captureQuizSession();
-    if(quiz) snap.play.quiz = quiz;
-  }
+  if(state.view === 'learn') snap.learn = App.learn.snapshot();
+  if(state.view === 'play') snap.play = App.play.snapshot();
   return snap;
 }
 function saveSessionSnapshot(mirrorHistory){
@@ -1813,45 +1781,6 @@ function scheduleSessionSave(mirrorHistory){
   }, 100);
 }
 let GITA_RESTORE_OBSERVER = null, GITA_RESTORE_FINISHING = false;
-function restoreLearnSession(snap){
-  if(!snap || snap.view !== 'learn' || !snap.learn || !snap.learn.at) return;
-  const ci = Number.isInteger(snap.chapter) ? snap.chapter : null;
-  if(ci == null) return;
-  const at = snap.learn.at;
-  if(at.kind === 'story'){
-    lrTest = snap.learn.test ? 1 : 0;
-    lrOpen = snap.learn.open && typeof snap.learn.open === 'object' ? snap.learn.open : {};
-    lrStory(ci, Number.isInteger(at.step) ? at.step : 0,
-      Number.isInteger(at.seed) ? at.seed : null);
-  }else if(at.kind === 'storyDone'){
-    lrStoryDone(ci);
-  }else if(at.kind === 'theme' && Number.isInteger(at.ti)){
-    if(typeof LV === 'object' && LV){
-      LV.level = ['full','first','half','blind'].includes(snap.learn.level) ? snap.learn.level : 'full';
-      LV.shown = snap.learn.shown && typeof snap.learn.shown === 'object' ? snap.learn.shown : {};
-    }
-    lrTheme(ci, at.ti, Number.isInteger(at.k) ? at.k : 0);
-  }else if(at.kind === 'drill' && Number.isInteger(at.ti)
-           && DATA[ci] && DATA[ci].themes[at.ti]){
-    lrDrill(ci, at.ti, thVerses(DATA[ci].themes[at.ti]),
-      Number.isInteger(snap.learn.quiz && snap.learn.quiz.seed) ? snap.learn.quiz.seed
-        : (Number.isInteger(at.seed) ? at.seed : null));
-  }else if(at.kind === 'free' && snap.learn.free){
-    const f = snap.learn.free, loc = verseLoc(f.verse);
-    if(loc && loc.ci === ci){
-      FP.ci = ci; FP.ti = Number.isInteger(f.ti) ? f.ti : -1;
-      FP.v = verseAt(loc); FP.order = (FP.v.flow||[]).filter(x=>x.k==='p');
-      const valid = a => Array.isArray(a) && a.length === FP.order.length
-        && a.every(Number.isInteger) && new Set(a).size === a.length
-        && a.every(i=>i >= 0 && i < FP.order.length);
-      FP.deal = valid(f.deal) ? f.deal.slice() : FP.order.map((_,i)=>i);
-      FP.picked = Array.isArray(f.picked) ? f.picked.filter(i=>Number.isInteger(i)
-        && i >= 0 && i < FP.order.length).slice(0,FP.order.length) : [];
-      state.view='learn'; state.chapter=ci; state.theme=FP.ti < 0 ? null : FP.ti;
-      state.lrAt = {kind:'free', ti:FP.ti}; lrFreePaint();
-    }
-  }else showLearn(ci);
-}
 async function finishSessionRestore(){
   if(!GITA_PENDING_RESTORE || GITA_RESTORE_FINISHING) return;
   const snap = GITA_PENDING_RESTORE;
@@ -1860,43 +1789,32 @@ async function finishSessionRestore(){
   GITA_RESTORE_FINISHING = true;
   try{
     if(snap.view === 'welcome' && snap.shared){
-      let shared = verseLoc(snap.shared);
+      let shared = App.library.location(snap.shared);
       if(!shared){
         const n = parseInt(String(snap.shared).split('.')[0],10);
         if(n >= 1 && n <= 18) await loadChapter(n);
-        shared = verseLoc(snap.shared);
+        shared = App.library.location(snap.shared);
       }
-      if(shared){ state.shared = shared; showWelcome(); }
+      if(shared){ state.shared = shared; App.views.welcome(); }
     }
     if(snap.origin) state.origin = sessionOrigin(snap.origin);
-    if(snap.view === 'learn'){
-      restoreLearnSession(snap);
-      if(snap.learn && snap.learn.quiz) restoreQuizSession(snap.learn.quiz);
-    }
-    if(snap.view === 'play' && snap.play && snap.play.active && snap.play.q){
-      PL.scope = snap.play.scope === 'ch' ? 'ch' : 'all';
-      PL.ch = Number.isInteger(snap.play.ch) ? snap.play.ch : 0;
-      PL.mode = Number.isInteger(snap.play.mode) ? snap.play.mode : 0;
-      PL.run = Number.isInteger(snap.play.run) ? snap.play.run : 0;
-      PL.q = snap.play.q; PL.active = true;
-      plNext(snap.play.q);
-      if(snap.play.quiz) restoreQuizSession(snap.play.quiz);
-    }
+    if(snap.view === 'learn') App.learn.restore(snap);
+    if(snap.view === 'play') App.play.restore(snap.play);
     restoreSessionDetails(document.getElementById('view'), snap.openDetails);
     if(snap.modal){
-      let loc = verseLoc(snap.modal.id);
+      let loc = App.library.location(snap.modal.id);
       if(!loc){
         const ch = parseInt(String(snap.modal.id).split('.')[0],10);
         if(ch >= 1 && ch <= 18) await loadChapter(ch);
-        loc = verseLoc(snap.modal.id);
+        loc = App.library.location(snap.modal.id);
       }
       if(loc){
         await loadChapter(loc.ci + 1);
         window.scrollTo({top:Math.max(0, Number(snap.scrollY)||0), behavior:'auto'});
-        openModal(loc.ci, loc.ti, loc.si, snap.modal.mode,
+        App.reader.open(loc.ci, loc.ti, loc.si, snap.modal.mode,
           Number.isInteger(snap.modal.navIdx) && snap.modal.navIdx >= 0 ? snap.modal.navIdx : 0,
           null, true);
-        restoreModalSession(snap.modal);
+        App.reader.restore(snap.modal);
       }
     }
   }catch(e){}
@@ -1970,7 +1888,7 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   const tr = $('#tabRandLbl'); if(tr) tr.textContent = L('random');
   const tp = $('#tabPlayLbl'); if(tp) tp.textContent = L('play');
   const tf = $('#tabFavLbl'); if(tf) tf.textContent = L('favorites');
-  searchX(); }
+  App.library.syncSearchControl(); }
 /* Phase 3.3 — keep the bottom tab bar in sync with state.view. Reading
    (read/themes/verses/learn) all map to Home because the tab bar is for
    top-level destinations, not in-chapter sub-views. */
@@ -1997,9 +1915,9 @@ function tabGoSearch(){
      results page from any field value). */
   if(window.matchMedia('(max-width:760px)').matches){
     try{ const si = $('#searchInput'); si.focus(); si.select(); }catch(e){}
-    doSearch();
+    App.library.search();
   } else {
-    doSearch();
+    App.library.search();
   }
 }
 
@@ -2024,15 +1942,15 @@ function setLang(l){
      another tab. The page's history snapshot is a third, same-entry fallback. */
   try{ sessionStorage.setItem('gitaLang', l); }catch(e){}
   try{ localStorage.setItem('gitaLang', l); }catch(e){}
-  // Remember which verse the modal is showing: doSearch()/showFavorites()
+  // Remember which verse the modal is showing: App.library.search()/App.library.showFavorites()
   // below null out state.chapter/state.theme while re-rendering the
   // background view, which would otherwise leave the open modal stale.
   const modalOpen = $('#modalBg').classList.contains('open');
   const mCh = state.chapter, mTh = state.theme, mIdx = state.idx;
-  if(state.view === 'welcome'){ showWelcome(); }
-  else if(state.view === 'sections'){ showSections(); }
-  else if(state.view === 'search'){ doSearch(); }
-  else if(state.view === 'favorites'){ showFavorites(); }
+  if(state.view === 'welcome'){ App.views.welcome(); }
+  else if(state.view === 'sections'){ App.views.sections(); }
+  else if(state.view === 'search'){ App.library.search(); }
+  else if(state.view === 'favorites'){ App.library.showFavorites(); }
   /* The learn path renders its own views and holds drill state in module
      vars, so it must NOT fall through to the generic chapter/theme restore
      below: with state.theme set that lands on the chapter view and the
@@ -2040,20 +1958,20 @@ function setLang(l){
      only place that can safely rebuild in the new language, since a
      half-answered question's options were built from the old strings.
      Progress is already saved. */
-  else if(state.view === 'learn'){ lrRelang(state.chapter); }
+  else if(state.view === 'learn'){ App.learn.relanguage(state.chapter); }
   /* Play rebuilds the question it is showing, in the new language, rather than
-     quitting the game: PL.q holds the verse and the option order, and only the
+     quitting the game: the Play feature holds the verse and option order, and only the
      prompt, the note and the numerals were language-bound. If no question is
      open, fall back to the menu. */
-  else if(state.view === 'play'){ if(PL.active && PL.q && PL.mode) plNext(PL.q); else showPlay(); }
+  else if(state.view === 'play'){ App.play.relanguage(); }
   else {
     const ch = state.chapter, th = state.theme;
-    if(ch == null){ if(state.section) showChapters(state.section); else showSections(); }
-    else { showChapter(ch, th == null ? undefined : th); }
+    if(ch == null){ if(state.section) App.views.chapters(state.section); else App.views.sections(); }
+    else { App.views.chapter(ch, th == null ? undefined : th); }
   }
   if(modalOpen && mCh != null && mTh != null){
     state.chapter = mCh; state.theme = mTh; state.idx = mIdx;
-    fillModal();
+    App.reader.refresh();
   }
   saveSessionSnapshot();
 }
@@ -2062,6 +1980,9 @@ const crumbs = $('#crumbs'), view = $('#view');
 
 // ---------- global verse index (search / favorites / random) ----------
 const VERSES = [];
+let SRCH_HITS = [], FAV_LIST = [];
+function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
+function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {s:p.sutras[i], part:p}; i-=p.sutras.length; } return {s:t.parts[t.parts.length-1].sutras[0], part:t.parts[t.parts.length-1]}; }
 function buildIndex(){
   VERSES.length = 0;
   (DATA||[]).forEach((ch, ci)=>{ if(!ch||!ch.themes) return;
@@ -2188,7 +2109,7 @@ function doSearch(){
   if(!q){ clearSearch(); return; }
   SRCH_HITS = [];
   rememberOrigin();
-  state.view = 'search'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
+  App.session.update({view:'search', chapter:null, theme:null}); App.views.persist(); App.views.renderCrumbs();
   const nq = prepareSearchQuery(q);
   /* Accept whatever separator the reader's keyboard gives. On a Devanagari
      layout the danda । sits where the full stop is, so १।१ is the natural way to
@@ -2242,10 +2163,10 @@ function doSearch(){
       const ch = DATA[loc.ci], v = verseAt(loc);
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
       const pi = th.parts.indexOf(part);
-      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
+      return `<div class="mini" role="button" tabindex="0" onclick="App.reader.open(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
         <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
-        <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
+        <div class="padas" lang="sa">${App.reader.padaBlock(v)}</div>
         <div class="vhint">${esc(T(v.paras))}</div>
       </div>`;}).join('')}</div>`;
   announceView();
@@ -2325,30 +2246,30 @@ function toggleFav(id){
 }
 /* Search and Favorites are "detours": they replace the main view but the reader
    should still be able to get back to whatever they were reading. Before either
-   takes over, remember the browsing position so renderCrumbs() can offer it as a
+   takes over, remember the browsing position so App.views.renderCrumbs() can offer it as a
    real trail. Only recorded when leaving an actual browsing view, so repeatedly
    tapping Favorites doesn't overwrite the origin with itself. */
 function rememberOrigin(){
   if(['welcome','sections','chapters','chapter'].includes(state.view)){
-    state.origin = { view: state.view, section: state.section,
-                     chapter: state.chapter, theme: state.theme };
+    App.session.update({origin:{view:state.view, section:state.section,
+      chapter:state.chapter, theme:state.theme}});
   }
 }
 function goToOrigin(){
   const o = state.origin;
-  if(!o){ showSections(); return; }
+  if(!o){ App.views.sections(); return; }
   $('#searchInput').value = '';
-  if(o.view === 'welcome') showWelcome();
-  else if(o.view === 'sections') showSections();
+  if(o.view === 'welcome') App.views.welcome();
+  else if(o.view === 'sections') App.views.sections();
   else if(o.view === 'chapter' && o.chapter != null)
-    showChapter(o.chapter, o.theme == null ? undefined : o.theme);
-  else if(o.section != null) showChapters(o.section);
-  else showSections();
+    App.views.chapter(o.chapter, o.theme == null ? undefined : o.theme);
+  else if(o.section != null) App.views.chapters(o.section);
+  else App.views.sections();
 }
 function showFavorites(){
   if(!allChReady()){ loadAllChapters().then(showFavorites); return; }
   rememberOrigin();
-  state.view = 'favorites'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
+  App.session.update({view:'favorites', chapter:null, theme:null}); App.views.persist(); App.views.renderCrumbs();
   const saved = FAV.map(verseLoc).filter(Boolean);
   FAV_LIST = saved;
   if(saved.length === 0){
@@ -2362,16 +2283,16 @@ function showFavorites(){
     ${saved.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const note = FAVNOTE[v.n] || '';
-      return `<div class="res-card" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i},this.querySelector('.res-open'))">
+      return `<div class="res-card" onclick="App.reader.open(${loc.ci},${loc.ti},${loc.si},'fav',${i},this.querySelector('.res-open'))">
         <button type="button" class="sr-only focusable res-open" aria-label="${esc(L('open_verse'))} ${esc(fmtNL(v.n))}"
-          onclick="event.stopPropagation();openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i},this)"></button>
+          onclick="event.stopPropagation();App.reader.open(${loc.ci},${loc.ti},${loc.si},'fav',${i},this)"></button>
         <div class="res-top"><span class="res-num">${esc(fmtNL(v.n))}</span><span class="res-title">${esc(T(ch.names))}</span>
         <span class="fav-tools" onclick="event.stopPropagation()">
           <button class="fav-move" onclick="moveFav(${i},-1)" ${i===0?'disabled':''} aria-label="${esc(L('fav_move_up'))}" title="${esc(L('fav_move_up'))}">${L('fav_up')}</button>
           <button class="fav-move" onclick="moveFav(${i},1)" ${i===saved.length-1?'disabled':''} aria-label="${esc(L('fav_move_down'))}" title="${esc(L('fav_move_down'))}">${L('fav_down')}</button>
           <button class="res-remove" onclick="removeFav('${esc(v.n)}')">${esc(L('remove_fav'))}</button>
         </span></div>
-        <div class="res-deva" lang="sa">${padaBlockDeva(v)}</div>
+        <div class="res-deva" lang="sa">${App.reader.padaBlock(v)}</div>
         <div class="res-lit">${esc(T(v.lits))}</div>
         <div class="fav-note" onclick="event.stopPropagation()">
           <label for="fav-note-${esc(v.n)}">${esc(L('fav_note'))}</label>
@@ -2410,7 +2331,7 @@ function setFavNote(id, text){
 function randomVerse(){
   if(!allChReady()){ loadAllChapters().then(randomVerse); return; }
   const v = VERSES[Math.floor(Math.random()*VERSES.length)];
-  openModal(v.ci, v.ti, v.si, 'random');
+  App.reader.open(v.ci, v.ti, v.si, 'random');
 }
 
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -2486,6 +2407,31 @@ function _drangeJS(r){
   return r.replace(/(\d+)\.0*(\d+)/g, function(m,a,b){ return a+'.'+parseInt(b,10); });
 }
 
+
+/* Public Library boundary. Mutable indexes and saved-list navigation stay in
+   this file; Reader and routing consume snapshots and lookup operations rather
+   than reaching into those arrays directly. */
+App.library = Object.freeze({
+  location: verseLoc,
+  verse: verseAt,
+  entryAt: sutraAt,
+  assemble: assembleData,
+  onSearchInput,
+  syncSearchControl: searchX,
+  paintTheme,
+  rememberOrigin,
+  search: doSearch,
+  clearSearch,
+  randomVerse,
+  showFavorites,
+  toggleFavorite: toggleFav,
+  indexOf(ci, ti, si){ return VERSES.findIndex(e=>e.ci===ci && e.ti===ti && e.si===si); },
+  locationAt(index){ return VERSES[index] || null; },
+  count(){ return VERSES.length; },
+  ready: allChReady,
+  isFavorite(id){ return FAV.includes(id); },
+  favoriteLocations(){ return FAV_LIST.slice(); }
+});
 /* ==================== Learn by heart ==================== */
 /* ---------------- progress ----------------
    One key for all 18 chapters. Hardened like the favourites: a parse that
@@ -2596,10 +2542,9 @@ function thVerses(t){ const out=[]; t.parts.forEach(p=>p.sutras.forEach(s=>out.p
 /* ---------------- the path ---------------- */
 function showLearn(ci){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showLearn(ci)).catch(gitaLoadFail); return; }
-  rememberOrigin();
-  state.view='learn'; state.chapter=ci; persistView(); state.lrAt = null;
-  state.section = state.section || Math.ceil(DATA[ci].num/6);
-  state.theme=null; renderCrumbs();
+  App.library.rememberOrigin();
+  App.session.update({view:'learn', chapter:ci, lrAt:null,
+    section:state.section || Math.ceil(DATA[ci].num/6), theme:null}); App.views.persist(); App.views.renderCrumbs();
   const ch = DATA[ci], p = lrGet(ch.num);
   const total = ch.themes.length, done = Object.keys(p.themes).length;
   const nv = chVerseN(ch), nh = Object.keys(p.held||{}).length;
@@ -2617,11 +2562,11 @@ function showLearn(ci){
     'lr-step' + (isDone ? ' done' : (firstOpen === k ? ' now' : ''));
 
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'),'showSections()'],
-      [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`],
+    ${App.views.breadcrumbs([[L('sections_title'),'App.views.sections()'],
+      [App.views.wayName(Math.ceil(ch.num/6)), `App.views.chapters(${Math.ceil(ch.num/6)})`],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, null]])}
-    ${chTitle(ch)}
-    ${modeSwitch(ci)}
+    ${App.views.chapterTitle(ch)}
+    ${App.views.modeSwitch(ci)}
     <div class="lrn fade-in">
       <div class="view-sub">${esc(fmt(L('learn_sub'),{}))}</div>
       <div class="lr-prog"><i style="width:${pct}%"></i></div>
@@ -2665,7 +2610,7 @@ function showLearn(ci){
         <span>${esc(L('learn_local'))}</span>
         ${(p.story||done||nh)?`<button class="lr-ghost sm" onclick="lrReset(${ch.num})">${esc(L('learn_restart'))}</button>`:''}
       </div>
-    </div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
+    </div>` + backFoot(`App.views.chapters(${state.section||0})`, L('back_chapters'));
   scrollViewTop();
 }
 /* Re-enter the learn path in the new language, as near as possible to where
@@ -2685,15 +2630,15 @@ function lrRelang(ci){
 function lrPlan(ch){ return ch.themes.length >= 10 ? [0,1,2,3] : [0,3]; }
 
 function lrStory(ci, step, seed){
-  state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
+  App.session.update({view:'learn', chapter:ci, theme:null}); App.views.persist();
   const ch = DATA[ci], th = ch.themes, plan = lrPlan(ch);
   const k = plan.indexOf(step), n = plan.length;
   if(step === 0){
-    state.lrAt = {kind:'story', step:step};
+    App.session.update({lrAt:{kind:'story', step:step}});
     return lrStoryRead(ci, ch, th, k+1, n);
   }
   const quizSeed = Number.isInteger(seed) ? seed : lrNewSeed();
-  state.lrAt = {kind:'story', step:step, seed:quizSeed};
+  App.session.update({lrAt:{kind:'story', step:step, seed:quizSeed}});
   return lrWithSeed(quizSeed, ()=>{
     let items;
     if(step === 1){
@@ -2720,7 +2665,7 @@ function lrStory(ci, step, seed){
         answer: th.map((_,i)=>i)}];
     }
     const nxt = plan[k+1];
-    lrRun(ci, items, fmt(L('learn_step'),{a:numL(k+1),b:numL(n)}),
+    App.drills.run(ci, items, fmt(L('learn_step'),{a:numL(k+1),b:numL(n)}),
       nxt === undefined ? ()=>lrStoryDone(ci) : ()=>lrStory(ci, nxt));
   });
 }
@@ -2728,7 +2673,7 @@ function lrStory(ci, step, seed){
 var lrTest = 0, lrOpen = {};
 function lrStoryRead(ci, ch, th, k, n){
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'),'showSections()'],
+    ${App.views.breadcrumbs([[L('sections_title'),'App.views.sections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${ci})`],
       [L('learn_s1'), null]])}
     <div class="lrn fade-in">
@@ -2750,11 +2695,11 @@ function lrStoryRead(ci, ch, th, k, n){
       <div class="lr-nav">
         <button class="lr-cta" onclick="lrStory(${ci},${lrPlan(ch)[1]})">${esc(L('learn_read_go'))}</button>
       </div>
-    </div>` + backFoot(`showChapter(${ci})`, L('back_chapter_one'));
+    </div>` + backFoot(`App.views.chapter(${ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 function lrStoryDone(ci){
-  state.view='learn'; state.chapter=ci; state.lrAt = {kind:'storyDone'};
+  App.session.update({view:'learn', chapter:ci, lrAt:{kind:'storyDone'}});
   const ch = DATA[ci], p = lrGet(ch.num); p.story = 1; lrPut(ch.num, p);
   view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
       <div class="lr-seal">✓</div>
@@ -2767,17 +2712,21 @@ function lrStoryDone(ci){
 
 /* ---------------- stage 2: the verses of one theme ---------------- */
 function lrTheme(ci, ti, k){
-  state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
+  App.session.update({view:'learn', chapter:ci, theme:ti}); App.views.persist();
   /* Remember the sub-view so a reload returns to this verse/theme, not the
      chapter's learning-path landing page. */
   const ch = DATA[ci], t = ch.themes[ti], vs = thVerses(t);
-  state.lrAt = {kind:'theme', ti:ti, k:k, stage:k < vs.length ? 'meet' : 'land'};
+  App.session.update({lrAt:{kind:'theme', ti:ti, k:k, stage:k < vs.length ? 'meet' : 'land'}});
   if(k < vs.length) return lrMeet(ci, ti, k, vs);
   lrThemeLand(ci, ti, vs);
 }
 var LV = {level:'full', shown:{}};
 function lrSetLevel(lv){ LV.level = lv; LV.shown = {}; lrMeet(LV.ci, LV.ti, LV.k, LV.vs); }
 function lrPeek(id){ LV.shown[id] = 1; lrMeet(LV.ci, LV.ti, LV.k, LV.vs); }
+function lrThemeMove(ci, ti, k){ LV.shown = {}; lrTheme(ci, ti, k); }
+function lrToggleCurrentHeld(ch, verse, held){
+  lrHold(ch, verse, held); lrMeet(LV.ci, LV.ti, LV.k, LV.vs);
+}
 function lrHideAt(level, wi){
   if(level==='full') return false;
   if(level==='first') return wi !== 0;
@@ -2787,7 +2736,7 @@ function lrHideAt(level, wi){
 }
 function lrThemeLand(ci, ti, vs){
   const ch = DATA[ci], t = ch.themes[ti];
-  state.lrAt = {kind:'theme', ti:ti, k:vs.length, stage:'land'};
+  App.session.update({lrAt:{kind:'theme', ti:ti, k:vs.length, stage:'land'}});
   const p = lrGet(ch.num); p.themes[ti] = 1; lrPut(ch.num, p);
   const nxt = ch.themes.findIndex((_,i)=>!lrGet(ch.num).themes[i]);
   view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
@@ -2804,7 +2753,7 @@ function lrThemeLand(ci, ti, vs){
 }
 function lrMeet(ci, ti, k, vs){
   const ch = DATA[ci], t = ch.themes[ti], s = vs[k], last = k === vs.length-1;
-  state.lrAt = {kind:'theme', ti:ti, k:k, stage:'meet'};
+  App.session.update({lrAt:{kind:'theme', ti:ti, k:k, stage:'meet'}});
   LV.ci=ci; LV.ti=ti; LV.k=k; LV.vs=vs;
   const held = lrHeldOn(ch.num, s.n);
   const qs = (s.flow||[]).filter(f=>f.k==='p');
@@ -2815,7 +2764,7 @@ function lrMeet(ci, ti, k, vs){
     ['blind','learn_lad_blind','learn_lad_blind_s']
   ];
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'),'showSections()'],
+    ${App.views.breadcrumbs([[L('sections_title'),'App.views.sections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${ci})`],
       [T(t.titles), null]])}
     <div class="lrn fade-in">
@@ -2863,12 +2812,12 @@ function lrMeet(ci, ti, k, vs){
       <div class="lr-mean"><span class="lb">${esc(L('in_other_words'))}</span>
         <div>${esc(T(s.paras))}</div></div>
       <div class="lr-nav">
-        <button class="lr-ghost" onclick="LV.shown={};lrTheme(${ci},${ti},${k-1})" ${k?'':'disabled'}>${esc(L('previous'))}</button>
-        <button class="lr-ghost" onclick="lrHold(${ch.num},'${s.n}',${held?0:1});lrMeet(${ci},${ti},${k},LV.vs)">${esc(held?L('learn_unhold'):L('learn_mark_held'))}</button>
-        <button class="lr-cta" onclick="LV.shown={};lrTheme(${ci},${ti},${k+1})">
+        <button class="lr-ghost" onclick="App.learn.themeMove(${ci},${ti},${k-1})" ${k?'':'disabled'}>${esc(L('previous'))}</button>
+        <button class="lr-ghost" onclick="App.learn.toggleHeld(${ch.num},'${s.n}',${held?0:1})">${esc(held?L('learn_unhold'):L('learn_mark_held'))}</button>
+        <button class="lr-cta" onclick="App.learn.themeMove(${ci},${ti},${k+1})">
           ${esc(last?L('learn_read_go'):L('learn_next_verse'))}</button>
       </div>
-    </div>` + backFoot(`showChapter(${ci})`, L('back_chapter_one'));
+    </div>` + backFoot(`App.views.chapter(${ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 
@@ -2900,9 +2849,9 @@ function lrMeaty(w){
   return !/^(and|but|indeed|also|too|not|even|alone|thus|so)$/i.test(core);
 }
 function lrDrill(ci, ti, vs, seed){
-  state.view='learn'; state.chapter=ci; state.theme=ti;
+  App.session.update({view:'learn', chapter:ci, theme:ti});
   const quizSeed = Number.isInteger(seed) ? seed : lrNewSeed();
-  state.lrAt = {kind:'drill', ti:ti, seed:quizSeed}; persistView();
+  App.session.update({lrAt:{kind:'drill', ti:ti, seed:quizSeed}}); App.views.persist();
   return lrWithSeed(quizSeed, ()=>{
   const ch = DATA[ci], t = ch.themes[ti];
   const pool = [], others = [];
@@ -2918,7 +2867,7 @@ function lrDrill(ci, ti, vs, seed){
        pada is identical to the answer would render two indistinguishable
        choices with one marked wrong. 6.15 and 6.28 open with the same line
        (युञ्जन्नेवं सदात्मानं) — rare, but it must never happen. */
-    /* Options are WHOLE VERSES, not opening lines — a first pāda is not a
+    /* Options are WHOLE ŚLOKAS, not opening lines — a first pāda is not a
        verse, and picking between four fragments is a shallower task than
        picking between four ślokas (owner 2026-09-01). Full verses are also
        unique book-wide, where four pairs share a first pāda. */
@@ -3009,7 +2958,7 @@ function lrDrill(ci, ti, vs, seed){
       answer: qq.map((_,i)=>i)});
   });
 
-  lrRun(ci, lrShuffle(items), T(t.titles), ()=>{
+  App.drills.run(ci, lrShuffle(items), T(t.titles), ()=>{
     const p = lrGet(ch.num); p.themes[ti] = 1; lrPut(ch.num, p);
     const nxt = ch.themes.findIndex((_,i)=>!lrGet(ch.num).themes[i]);
     view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
@@ -3019,7 +2968,7 @@ function lrDrill(ci, ti, vs, seed){
         ${nxt>=0 ? `<button class="lr-cta" onclick="lrTheme(${ci},${nxt},0)">${esc(L('learn_next_theme'))}</button>`
                  : `<p class="lr-all">${esc(fmt(L('learn_all_done'),{n:numL(ch.num)}))}</p>`}
         <button class="lr-ghost" onclick="lrFree(${ci},${ti})">${esc(L('learn_free_go'))}</button>
-        <button class="lr-ghost" onclick="showChapter(${ci})">${esc(L('back_chapter_one'))}</button>
+        <button class="lr-ghost" onclick="App.views.chapter(${ci})">${esc(L('back_chapter_one'))}</button>
       </div></div>`;
     scrollViewTop();
   });
@@ -3033,14 +2982,14 @@ function lrDrill(ci, ti, vs, seed){
    is required, and leaving costs nothing. Practice, not examination. */
 var FP = {ci:0, ti:0, v:null, order:[], deal:[], picked:[]};
 function lrFree(ci, ti){
-  state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
-  state.lrAt = {kind:'free', ti:ti};
+  App.session.update({view:'learn', chapter:ci, theme:ti}); App.views.persist();
+  App.session.update({lrAt:{kind:'free', ti:ti}});
   FP.ci = ci; FP.ti = ti;
   lrFreePick();
 }
 function lrFreeCh(ci){
-  state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
-  state.lrAt = {kind:'free', ti:-1};
+  App.session.update({view:'learn', chapter:ci, theme:null}); App.views.persist();
+  App.session.update({lrAt:{kind:'free', ti:-1}});
   FP.ci = ci; FP.ti = -1;
   lrFreePick();
 }
@@ -3079,7 +3028,7 @@ function lrFreePaint(){
   const tlab = t ? T(t.titles) : T(ch.names);
   const done = FP.picked.length === FP.order.length;
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'),'showSections()'],
+    ${App.views.breadcrumbs([[L('sections_title'),'App.views.sections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${FP.ci})`],
       [tlab, null]])}
     <div class="lrn fade-in">
@@ -3102,9 +3051,9 @@ function lrFreePaint(){
       <div class="lr-nav">
         <button class="lr-cta" onclick="lrFreePick()">${esc(L('learn_shuffle'))}</button>
         <span class="lr-hint">${esc(fmtNL(v.n))}</span>
-        <button class="lr-ghost" onclick="showChapter(${FP.ci})">${esc(L('learn_done_free'))}</button>
+        <button class="lr-ghost" onclick="App.views.chapter(${FP.ci})">${esc(L('learn_done_free'))}</button>
       </div>
-    </div>` + backFoot(`showChapter(${FP.ci})`, L('back_chapter_one'));
+    </div>` + backFoot(`App.views.chapter(${FP.ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 function lrFreeTap(i){
@@ -3124,6 +3073,83 @@ function lrFreeTap(i){
   }
 }
 
+
+/* Learn public boundary. Session details are implemented in the adjacent
+   feature file but exposed here as one supported interface. */
+App.learn = Object.freeze({
+  show: showLearn,
+  relanguage: lrRelang,
+  story: lrStory,
+  storyDone: lrStoryDone,
+  theme: lrTheme,
+  themeMove: lrThemeMove,
+  toggleHeld: lrToggleCurrentHeld,
+  drill: lrDrill,
+  freePaint: lrFreePaint,
+  snapshot: learnSessionSnapshot,
+  restore: restoreLearnSession,
+  canNavigate(){ return !!(LV && LV.vs); },
+  navigate: lrMeetGo,
+  themeVerses: thVerses,
+  shuffle: lrShuffle,
+  sample: lrSample
+});
+/* Learn session boundary: Core stores the returned plain object and never
+   reaches into the memorization feature's mutable working state. */
+function learnSessionSnapshot(){
+  const snap = {at:state.lrAt || null,
+    test:typeof lrTest === 'number' ? lrTest : 0,
+    open:typeof lrOpen === 'object' && lrOpen ? lrOpen : {},
+    level:typeof LV === 'object' && LV ? LV.level : 'full',
+    shown:typeof LV === 'object' && LV ? LV.shown : {}};
+  const quiz = App.drills.capture();
+  if(quiz) snap.quiz = quiz;
+  if(state.lrAt && state.lrAt.kind === 'free' && FP && FP.v)
+    snap.free = {ci:FP.ci, ti:FP.ti, verse:FP.v.n,
+      deal:Array.isArray(FP.deal) ? FP.deal.slice() : [],
+      picked:Array.isArray(FP.picked) ? FP.picked.slice() : []};
+  return snap;
+}
+function restoreLearnSession(snap){
+  if(!snap || snap.view !== 'learn' || !snap.learn || !snap.learn.at) return;
+  const ci = Number.isInteger(snap.chapter) ? snap.chapter : null;
+  if(ci == null) return;
+  const at = snap.learn.at;
+  if(at.kind === 'story'){
+    lrTest = snap.learn.test ? 1 : 0;
+    lrOpen = snap.learn.open && typeof snap.learn.open === 'object' ? snap.learn.open : {};
+    lrStory(ci, Number.isInteger(at.step) ? at.step : 0,
+      Number.isInteger(at.seed) ? at.seed : null);
+  }else if(at.kind === 'storyDone'){
+    lrStoryDone(ci);
+  }else if(at.kind === 'theme' && Number.isInteger(at.ti)){
+    if(typeof LV === 'object' && LV){
+      LV.level = ['full','first','half','blind'].includes(snap.learn.level) ? snap.learn.level : 'full';
+      LV.shown = snap.learn.shown && typeof snap.learn.shown === 'object' ? snap.learn.shown : {};
+    }
+    lrTheme(ci, at.ti, Number.isInteger(at.k) ? at.k : 0);
+  }else if(at.kind === 'drill' && Number.isInteger(at.ti)
+           && DATA[ci] && DATA[ci].themes[at.ti]){
+    lrDrill(ci, at.ti, thVerses(DATA[ci].themes[at.ti]),
+      Number.isInteger(snap.learn.quiz && snap.learn.quiz.seed) ? snap.learn.quiz.seed
+        : (Number.isInteger(at.seed) ? at.seed : null));
+  }else if(at.kind === 'free' && snap.learn.free){
+    const f = snap.learn.free, loc = App.library.location(f.verse);
+    if(loc && loc.ci === ci){
+      FP.ci = ci; FP.ti = Number.isInteger(f.ti) ? f.ti : -1;
+      FP.v = App.library.verse(loc); FP.order = (FP.v.flow||[]).filter(x=>x.k==='p');
+      const valid = a => Array.isArray(a) && a.length === FP.order.length
+        && a.every(Number.isInteger) && new Set(a).size === a.length
+        && a.every(i=>i >= 0 && i < FP.order.length);
+      FP.deal = valid(f.deal) ? f.deal.slice() : FP.order.map((_,i)=>i);
+      FP.picked = Array.isArray(f.picked) ? f.picked.filter(i=>Number.isInteger(i)
+        && i >= 0 && i < FP.order.length).slice(0,FP.order.length) : [];
+      App.session.update({view:'learn', chapter:ci, theme:FP.ti < 0 ? null : FP.ti,
+        lrAt:{kind:'free', ti:FP.ti}}); lrFreePaint();
+    }
+  }else showLearn(ci);
+  if(snap.learn.quiz) App.drills.restore(snap.learn.quiz);
+}
 /* ---------------- Play ----------------
    A front door onto the drill engine that needs no path, no progress and no
    commitment: open it from the tool row at any time, pick a scope and a mode,
@@ -3134,10 +3160,10 @@ function lrFreeTap(i){
 var PL = {scope:'all', ch:0, mode:0, run:0, q:null, active:false};
 
 function showPlay(){
-  if(!allChReady()){ loadAllChapters().then(showPlay); return; }
+  if(!App.library.ready()){ loadAllChapters().then(showPlay); return; }
   PL.active = false;
-  rememberOrigin();
-  state.view='play'; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
+  App.library.rememberOrigin();
+  App.session.update({view:'play', chapter:null, theme:null}); App.views.persist(); App.views.renderCrumbs();
   view.innerHTML = `
     <div class="lrn fade-in">
       <h2 class="view-title">${esc(L('play_title'))}</h2>
@@ -3147,7 +3173,7 @@ function showPlay(){
         <span class="pl-lb">${esc(L('play_scope'))}</span>
         <button class="lr-ghost${PL.scope==='all'?' on':''}" onclick="plScope('all')">${esc(L('play_all'))}</button>
         <button class="lr-ghost${PL.scope==='ch'?' on':''}" onclick="plScope('ch')">${esc(L('play_ch'))}</button>
-        ${PL.scope==='ch' ? `<select class="pl-sel" onchange="PL.ch=+this.value;showPlay()">
+        ${PL.scope==='ch' ? `<select class="pl-sel" onchange="App.play.chooseChapter(+this.value)">
             ${DATA.map((c,i)=>`<option value="${i}"${i===PL.ch?' selected':''}>${esc(L('chapter'))} ${numL(c.num)} · ${esc(T(c.names))}</option>`).join('')}
           </select>` : ''}
       </div>
@@ -3159,17 +3185,18 @@ function showPlay(){
             <span class="b"><b>${esc(L(tk))}</b><span>${esc(L(d))}</span></span>
           </button>`).join('')}
       </div>
-    </div>` + backFoot('showWelcome()', L('home_plain'));
+    </div>` + backFoot('App.views.welcome()', L('home_plain'));
   scrollViewTop();
 }
 function plScope(s){ PL.scope = s; showPlay(); }
+function plChooseChapter(ci){ PL.ch = ci; showPlay(); }
 
 /* The pool Play draws from: the whole book, or one chapter. */
 function plPool(){
   const out = [];
   DATA.forEach((c,ci)=>{
     if(PL.scope === 'ch' && ci !== PL.ch) return;
-    c.themes.forEach(t=>thVerses(t).forEach(s=>out.push(s)));
+    c.themes.forEach(t=>App.learn.themeVerses(t).forEach(s=>out.push(s)));
   });
   return out;
 }
@@ -3230,7 +3257,7 @@ function plNext(keep){
     const distract = same.length >= 3 ? same : rest;
     const ordered = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean) : null;
     const four = (ordered && ordered.length===4) ? ordered
-               : lrShuffle([s].concat(lrSample(distract, 3)));
+               : App.learn.shuffle([s].concat(App.learn.sample(distract, 3)));
     PL.q = {n:s.n, ord:four.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(L('play_q1')) + saAsk(s),
@@ -3253,7 +3280,7 @@ function plNext(keep){
     const distract = same.length >= 3 ? same : rest;
     const ordered2 = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean) : null;
     const four2 = (ordered2 && ordered2.length===4) ? ordered2
-                : lrShuffle([nxt].concat(lrSample(distract, 3)));
+                : App.learn.shuffle([nxt].concat(App.learn.sample(distract, 3)));
     PL.q = {n:s.n, ord:four2.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(L('play_q2')) + saAsk(s),
@@ -3270,11 +3297,48 @@ function plNext(keep){
   }
   item.qid = 'play:'+PL.mode+':'+s.n;
   /* A one-item run: when it finishes, deal another. That is the endless game. */
-  lrRun(0, [item], L('play_title') + (PL.run ? ' · ' + fmt(L('play_round'),{n:numL(PL.run)}) : ''),
+  App.drills.run(0, [item], L('play_title') + (PL.run ? ' · ' + fmt(L('play_round'),{n:numL(PL.run)}) : ''),
         ()=>{ PL.run++; plNext(); },
-        {fn:'showPlay()', label:'play_title'});
+        {fn:'App.play.show()', label:'play_title'});
 }
 
+
+function playSessionSnapshot(){
+  const snap = {scope:PL.scope, ch:PL.ch, mode:PL.mode, run:PL.run,
+    q:PL.q || null, active:!!PL.active};
+  const quiz = App.drills.capture();
+  if(quiz) snap.quiz = quiz;
+  return snap;
+}
+function hydratePlaySession(saved){
+  if(!saved) return;
+  PL.scope = saved.scope === 'ch' ? 'ch' : 'all';
+  PL.ch = Number.isInteger(saved.ch) ? saved.ch : 0;
+  PL.mode = Number.isInteger(saved.mode) ? saved.mode : 0;
+  PL.run = Number.isInteger(saved.run) ? saved.run : 0;
+  PL.q = saved.q || null; PL.active = !!saved.active;
+}
+function restorePlaySession(saved){
+  hydratePlaySession(saved);
+  if(!saved || !saved.active || !saved.q) return;
+  plNext(saved.q);
+  if(saved.quiz) App.drills.restore(saved.quiz);
+}
+function relanguagePlay(){
+  if(PL.active && PL.q && PL.mode) plNext(PL.q);
+  else showPlay();
+}
+App.play = Object.freeze({
+  show: showPlay,
+  chooseChapter: plChooseChapter,
+  next: plNext,
+  snapshot: playSessionSnapshot,
+  hydrate: hydratePlaySession,
+  restore: restorePlaySession,
+  relanguage: relanguagePlay,
+  slokaDeva,
+  slokaIast
+});
 /* ---------------- the drill engine ----------------
    One queue. A miss is not a failure: it goes to the back and comes round
    again, and the run ends only when the queue is genuinely empty. */
@@ -3287,8 +3351,9 @@ var LQback = null;
 function lrRun(ci, items, label, done, back){
   LQci=ci; LQback=back||null; LQ=items.slice(); LQi=0; LQmiss=0; LQlab=label; LQdone=done; lrPaint();
 }
+function lrRetry(){ LQi++; lrPaint(); }
 function lrPaint(resumeUi){
-  if(LQi >= LQ.length) return typeof LQdone === 'function' ? LQdone() : showLearn(LQci);
+  if(LQi >= LQ.length) return typeof LQdone === 'function' ? LQdone() : App.learn.show(LQci);
   const it = LQ[LQi];
   if(!resumeUi) LQpick = [];
   /* A one-item queue (Play) has no progress to show: the bar would sit at 0%
@@ -3304,7 +3369,7 @@ function lrPaint(resumeUi){
          LQmiss?' · '+esc(fmt(L('learn_revisit'),{n:numL(LQmiss)})):''}</div>`;
   /* Re-shuffle options on every fresh paint. Restore paints use the validated
      option/chip order from this tab's snapshot instead. */
-  if(it.kind === 'pick' && it._seen && !resumeUi) it.opts = lrShuffle(it.opts);
+  if(it.kind === 'pick' && it._seen && !resumeUi) it.opts = App.learn.shuffle(it.opts);
   it._seen = 1;
   let body;
   if(it.kind === 'pick'){
@@ -3329,7 +3394,7 @@ function lrPaint(resumeUi){
           </button>`).join('')}</div>
       </div>`;
   }else{
-    let chips = lrShuffle(it.chips);
+    let chips = App.learn.shuffle(it.chips);
     if(resumeUi && Array.isArray(resumeUi.chipOrder)){
       const byId = new Map(it.chips.map(c=>[c.id,c]));
       const ordered = resumeUi.chipOrder.map(id=>byId.get(id)).filter(Boolean);
@@ -3344,7 +3409,7 @@ function lrPaint(resumeUi){
     <div class="lr-qbox">${body}<div class="lr-fb" id="lrFb"></div></div>
     </div>` + (LQback
       ? backFoot(LQback.fn, L(LQback.label))
-      : backFoot(`showChapter(${LQci})`, L('back_chapter_one')));
+      : backFoot(`App.views.chapter(${LQci})`, L('back_chapter_one')));
   if(resumeUi) restoreQuizUi(it, resumeUi);
   scrollViewTop();
 }
@@ -3362,7 +3427,7 @@ function restoreQuizUi(it, ui){
       });
       const fb = root.querySelector('#lrFb');
       if(fb) fb.innerHTML = (it.note?`<div class="nt">${it.note}</div>`:'')
-        + `<button class="lr-cta" onclick="LQi++;lrPaint()">${esc(L('learn_retry'))}</button>`;
+        + `<button class="lr-cta" onclick="App.drills.retry()">${esc(L('learn_retry'))}</button>`;
     }
   }else if(it.kind === 'order' && Array.isArray(LQpick)){
     const slots = root.querySelector('#lrSlots');
@@ -3462,7 +3527,7 @@ function lrPick(i){
        true; in a multi-question drill the missed item is requeued and comes
        back later, which is the same promise. (owner 2026-09-02) */
     fb.innerHTML = (it.note?`<div class="nt">${it.note}</div>`:'')
-      + `<button class="lr-cta" onclick="LQi++;lrPaint()">${esc(L('learn_retry'))}</button>`;
+      + `<button class="lr-cta" onclick="App.drills.retry()">${esc(L('learn_retry'))}</button>`;
   }
 }
 function lrMpick(side, i){
@@ -3529,6 +3594,44 @@ function lrChip(el, id){
   }
 }
 
+
+function captureQuizSession(){
+  const root = document.getElementById('view'), kind = state.view === 'play' ? 'play'
+    : state.lrAt && state.lrAt.kind;
+  if(!root || !root.querySelector('.lr-qbox') || !Array.isArray(LQ) || !LQ.length
+     || !['story','drill','play'].includes(kind)) return null;
+  const queue = LQ.map(it=>it && it.qid);
+  if(queue.some(id=>typeof id !== 'string' || !id)) return null;
+  const index = Number.isInteger(LQi) ? Math.max(0, Math.min(LQi, LQ.length)) : 0;
+  const quiz = {seed:kind === 'play' ? null : (Number.isInteger(state.lrAt.seed) ? state.lrAt.seed : null),
+    queue, index, misses:Number.isInteger(LQmiss) ? Math.max(0,LQmiss) : 0, ui:null};
+  if(index >= LQ.length) return quiz;
+  const item = LQ[index], ui = {kind:item.kind};
+  if(item.kind === 'pick' && Array.isArray(item.opts)){
+    ui.optionOrder = item.opts.map(o=>o && o.oid).filter(x=>typeof x === 'string');
+    const wrong = root.querySelector('.lr-opt.wrong');
+    if(wrong && wrong.dataset.lrOpt) ui.wrong = wrong.dataset.lrOpt;
+  }else if(item.kind === 'order' && Array.isArray(item.chips)){
+    ui.chipOrder = Array.from(root.querySelectorAll('.lr-chips .lr-chip2'))
+      .map(el=>Number(el.dataset.lrChip)).filter(Number.isInteger);
+    ui.picked = Array.isArray(LQpick) ? LQpick.filter(Number.isInteger) : [];
+    ui.bad = !!root.querySelector('.lr-fb .bad');
+  }else if(item.kind === 'match' && LQpick && typeof LQpick === 'object'){
+    ui.match = {left:Number.isInteger(LQpick.left) ? LQpick.left : null,
+      right:Number.isInteger(LQpick.right) ? LQpick.right : null,
+      done:Object.keys(LQpick.done || {}).filter(k=>/^\d{1,2}\.\d{1,2}$/.test(k))};
+  }
+  quiz.ui = ui;
+  return quiz;
+}
+
+App.drills = Object.freeze({
+  run: lrRun,
+  paint: lrPaint,
+  retry: lrRetry,
+  restore: restoreQuizSession,
+  capture: captureQuizSession
+});
 function renderCrumbs(){
   scrollViewTop();
   crumbs.innerHTML='';
@@ -3572,7 +3675,7 @@ function showChapters(section){
   if(_need.length){ Promise.all(_need.map(loadChapter)).then(()=>showChapters(section)).catch(function(){}); return; }
   /* The Three Ways is the door; there is no flat all-18 list. Every chapter
      list lives inside its way, so the niṣṭhā framing is never skipped. */
-  state.view='chapters'; state.section=section; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
+  App.session.update({view:'chapters', section:section, chapter:null, theme:null}); persistView(); renderCrumbs();
   const list = DATA.filter(ch => ch && ch.num >= (section-1)*6+1 && ch.num <= section*6);
   view.innerHTML = `
     ${wayCrumbs([[L('sections_title'), 'showSections()'], [wayName(section), null]])}
@@ -3627,13 +3730,13 @@ function persistView(){
   scheduleSessionSave();
 }
 function goHome(){
-  if($('#modalBg').classList.contains('open')) closeModal();
+  if($('#modalBg').classList.contains('open')) App.reader.close();
   $('#searchInput').value = '';
-  state.origin = null;
+  App.session.update({origin:null});
   showWelcome();
 }
 function showWelcome(){
-  state.view='welcome'; state.chapter=null; state.theme=null; state.section=null; persistView(); renderCrumbs();
+  App.session.update({view:'welcome', chapter:null, theme:null, section:null}); persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="welcome fade-in">
       <section class="welcome-hero" aria-labelledby="welcomeTitle">
@@ -3673,16 +3776,16 @@ function showWelcome(){
     </div>`;
   const paint = (dv, shared)=>{
     if(!dv || state.view!=='welcome' || !DATA || !DATA[dv.ci]) return;
-    const c = DATA[dv.ci], v = verseAt(dv);
-    const part = sutraAt(c.themes[dv.ti], dv.si).part;
+    const c = DATA[dv.ci], v = App.library.verse(dv);
+    const part = App.library.entryAt(c.themes[dv.ti], dv.si).part;
     const el = document.getElementById('wDay'); if(!el) return;
     el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0"
           aria-label="${esc(L('verse'))} ${esc(fmtNL(v.n))}: ${esc(T(part.titles))}. ${esc(L('open_verse'))}"
-          onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
+          onclick="App.reader.open(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
           <div class="wd-label">${esc(shared ? L('shared_label') : L('verse_of_day'))}</div>
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
-          <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
+          <div class="padas" lang="sa">${App.reader.padaBlock(v)}</div>
           <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras))}</div>
           <div class="wd-open"><span>${esc(L('open_verse'))}</span><span aria-hidden="true">→</span></div>
         </div>`;
@@ -3690,7 +3793,7 @@ function showWelcome(){
   if(state.shared){ loadChapter(state.shared.ci+1).then(()=>paint(state.shared, true)).catch(gitaLoadFail); }
   else {
     const sp = daySpec();
-    loadChapter(sp.ch).then(()=>paint(verseLoc(sp.id), false)).catch(gitaLoadFail);
+    loadChapter(sp.ch).then(()=>paint(App.library.location(sp.id), false)).catch(gitaLoadFail);
   }
 }
 function sectionCard(k, chip, title, desc){
@@ -3701,7 +3804,7 @@ function sectionCard(k, chip, title, desc){
   </div>`;
 }
 function showSections(){
-  state.view='sections'; state.chapter=null; state.theme=null; state.section=null; state.shared=null; persistView(); renderCrumbs();
+  App.session.update({view:'sections', chapter:null, theme:null, section:null, shared:null}); persistView(); renderCrumbs();
   view.innerHTML = `
     <div class="view-title fade-in" role="heading" aria-level="2">${esc(L('sections_title'))}</div>
     <div class="view-sub fade-in">${esc(L('sections_sub'))}</div>
@@ -3757,7 +3860,7 @@ function modeSwitch(ci){
   return `<div class="mode-box fade-in">
     <div class="mode-seg" role="tablist" aria-label="${esc(L('choose_title'))}">
       ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
-      ${btn('learn',   esc(L('opt_learn_s')), `showLearn(${ci})`,   esc(L('opt_learn_d')))}
+      ${btn('learn',   esc(L('opt_learn_s')), `App.learn.show(${ci})`,   esc(L('opt_learn_d')))}
     </div>
   </div>`;
 }
@@ -3781,8 +3884,8 @@ function showChapter(ci, anchorTi){
      anchor rather than one nothing matches; the guards downstream (the live
      label, the crumb, the scroll) then all see a theme that exists. */
   const at = (anchorTi != null && ch.themes[anchorTi] != null) ? anchorTi : null;
-  state.view='chapter'; state.chapter=ci; state.section = state.section || Math.ceil(ch.num/6);
-  state.theme = at;
+  App.session.update({view:'chapter', chapter:ci,
+    section:state.section || Math.ceil(ch.num/6), theme:at});
   persistView(); renderCrumbs();
   const themeSec = (at != null) ? numL(at+1) : '';
   const body = ch.themes.map((t,ti)=>{
@@ -3797,7 +3900,7 @@ function showChapter(ci, anchorTi){
          title — the longest paraphrase in the corpus is ~190 characters,
          four or five card lines. Clicking a card still opens the sheet for
          the Sanskrit and the word-by-word reading. */
-      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${si},'theme',null,this)">
+      return `<div class="mini" role="button" tabindex="0" onclick="App.reader.open(${ci},${ti},${si},'theme',null,this)">
         <div class="vnum">${L('verse')} ${fmtNL(s.n)}</div>
         <div class="vtitle">${esc(T(p.titles))}</div>
         <div class="vhint">${esc(T(s.paras))}</div>
@@ -3837,9 +3940,23 @@ function showChapter(ci, anchorTi){
    verse sheet's "back to theme" both land here with that theme opened. */
 function showVerses(ci,ti){ showChapter(ci, ti); }
 
-function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
-function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {s:p.sutras[i], part:p}; i-=p.sutras.length; } return {s:t.parts[t.parts.length-1].sutras[0], part:t.parts[t.parts.length-1]}; }
 
+/* Views owns route-level rendering and address persistence. */
+App.views = Object.freeze({
+  renderCrumbs,
+  persist: persistView,
+  hash: viewHash,
+  home: goHome,
+  welcome: showWelcome,
+  sections: showSections,
+  chapters: showChapters,
+  chapter: showChapter,
+  verses: showVerses,
+  breadcrumbs: wayCrumbs,
+  wayName,
+  chapterTitle: chTitle,
+  modeSwitch
+});
 // pāda display: Devanagari block with pādas on separate lines (speakers inline)
 function pDanda(i, total){
   if(total === 2) return (i===0) ? ' ।' : ' ॥';
@@ -3903,8 +4020,6 @@ function fitWholeVerse(){
 addEventListener('resize', fitWholeVerse);
 if(document.fonts) document.fonts.ready.then(fitWholeVerse);
 
-
-let SRCH_HITS = [], FAV_LIST = [];
 /* The verse range a reader walks in thematic study: the WHOLE theme.
    Until 2026-09-01 this returned the enclosing part's bounds, which was right
    when a part grouped several verses. Parts are now one verse each (700 parts
@@ -3920,7 +4035,7 @@ function setAppInert(inert){
 }
 function updateModalAddress(){
   try{
-    const s = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s;
+    const s = App.library.entryAt(DATA[state.chapter].themes[state.theme], state.idx).s;
     const old = history.state && typeof history.state === 'object' ? history.state : {};
     history.replaceState({...old, gitaModal:true}, '', '#v=' + s.n);
   }catch(e){}
@@ -3933,15 +4048,16 @@ function openModal(ci,ti,si, mode, navIdx, invoker, restoring){
     MODAL_RETURN_FOCUS = invoker || (active && active !== document.body ? active : null);
   }
   mode = mode || 'theme';
-  state.chapter=ci; state.theme=ti; state.idx=si; state.mode=mode;
-  state.gpos = VERSES.findIndex(e => e.ci===ci && e.ti===ti && e.si===si);
-  if(state.gpos < 0) state.gpos = 0;
+  const next = {chapter:ci, theme:ti, idx:si, mode:mode,
+    gpos:Math.max(0, App.library.indexOf(ci,ti,si))};
   if(mode === 'theme'){
     const b = themeBounds(DATA[ci].themes[ti]);
-    state.pStart = b.start; state.pEnd = b.end;
-  } else if(mode === 'search'){ mode = 'book'; }
-  else if(mode === 'fav'){ state.navList = FAV_LIST; state.navIdx = navIdx || 0; }
-  state.mode = mode;
+    next.pStart = b.start; next.pEnd = b.end;
+  } else if(mode === 'search'){ next.mode = 'book'; }
+  else if(mode === 'fav'){
+    next.navList = App.library.favoriteLocations(); next.navIdx = navIdx || 0;
+  }
+  App.session.update(next);
   fillModal();
   bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
   document.body.classList.add('modal-open');
@@ -3971,7 +4087,7 @@ function closeModal(){
     bg.setAttribute('aria-hidden','true');
     popModalHistory();
   }
-  persistView();
+  App.views.persist();
 }
 /* ---------- share a verse: native share sheet where available, else copy ---------- */
 function shareUrl(){
@@ -3988,7 +4104,7 @@ function shareUrl(){
      four scripts and is already indexed; its inline script opens the folded
      <details> and highlights the verse, so the link still lands on the verse.
      Trade-off: the link PREVIEW is the chapter's, not the verse's. */
-  const n = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s.n;
+  const n = App.library.entryAt(DATA[state.chapter].themes[state.theme], state.idx).s.n;
   return root + '/chapter/' + n.split('.')[0] + '/#v' + n;
 }
 function openSharePanel(){
@@ -4016,7 +4132,7 @@ function copyVerseLink(){
 let MODAL_HIST = false, MODAL_POPPING = false, MODAL_RETURN_FOCUS = null;
 function pushModalHistory(){
   if(MODAL_HIST) return;
-  try{ sessionStorage.setItem('gita.preModalHash', viewHash()); }catch(e){}
+  try{ sessionStorage.setItem('gita.preModalHash', App.views.hash()); }catch(e){}
   try{ history.pushState({gitaModal:true}, ''); MODAL_HIST = true; }catch(e){}
 }
 function popModalHistory(){
@@ -4024,7 +4140,7 @@ function popModalHistory(){
   MODAL_HIST = false;
   if(MODAL_POPPING) return;               // we got here *from* popstate — nothing to unwind
   try{ history.back(); }catch(e){}
-  persistView();
+  App.views.persist();
 }
 window.addEventListener('popstate', ()=>{
   if($('#modalBg').classList.contains('open')){
@@ -4034,11 +4150,11 @@ window.addEventListener('popstate', ()=>{
 
 function fillModal(){
   const ch = DATA[state.chapter], t = ch.themes[state.theme];
-  const {s, part} = sutraAt(t, state.idx);
+  const {s, part} = App.library.entryAt(t, state.idx);
   let partIdx = 0; { let acc = 0;
     for(let pi=0; pi<t.parts.length; pi++){ const len = t.parts[pi].sutras.length;
       if(state.idx >= acc && state.idx < acc+len){ partIdx = pi; break; } acc += len; } }
-  if(state.gpos == null) state.gpos = Math.max(0, VERSES.findIndex(e => e.ci===state.chapter && e.ti===state.theme && e.si===state.idx));
+  if(state.gpos == null) App.session.update({gpos:Math.max(0, App.library.indexOf(state.chapter,state.theme,state.idx))});
   // split flow: top speakers, mid speakers (between pāda 2 and 3), and the 4 pādas
   let topS = [], midS = [], pads = [];
   for(const it of s.flow){
@@ -4068,6 +4184,7 @@ function fillModal(){
       </button>${wordsHtml(pad,id)}
     </div>`;
   }
+  const isSaved = App.library.isFavorite(s.n);
   $('#modal').innerHTML = `
     <div class="m-head">
       <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
@@ -4079,7 +4196,7 @@ function fillModal(){
     </div>
     <div class="m-menu" id="mVerseMenu" role="menu" hidden>
       <button type="button" role="menuitem" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
-      <button type="button" role="menuitem" class="${FAV.includes(s.n)?' saved':''}" id="favBtn" aria-pressed="${FAV.includes(s.n)}" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star} ${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button>
+      <button type="button" role="menuitem" class="${isSaved?' saved':''}" id="favBtn" aria-pressed="${isSaved}" onclick="App.library.toggleFavorite('${s.n}')">${isSaved?ICONS.starF:ICONS.star} ${esc(isSaved?L('saved_verse'):L('save_verse'))}</button>
       <div class="m-menu-sep" role="separator"></div>
       <div class="m-meter">${esc(meterText(s))}</div>
       <div class="reader-size" role="group" aria-label="${esc(L('reader_size'))}">
@@ -4121,7 +4238,7 @@ function fillModal(){
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
       ${state.mode==='random'
-        ? `<button class="m-random" onclick="randomVerse()">${ICONS.shuffle}<span>${esc(L('next_random'))}</span></button>`
+        ? `<button class="m-random" onclick="App.library.randomVerse()">${ICONS.shuffle}<span>${esc(L('next_random'))}</span></button>`
         : state.mode==='theme'
           ? `<button onclick="navSutra(-1)" ${(state.idx>state.pStart||state.theme>0)?'':'disabled'}>${(state.idx===state.pStart && state.theme>0)?L('prev_theme'):L('previous')}</button>
              <span class="m-count">${Lof(state.idx-state.pStart+1, state.pEnd-state.pStart+1)}</span>
@@ -4130,8 +4247,8 @@ function fillModal(){
                : `<button onclick="navSutra(1)">${state.idx===state.pEnd?L('next_theme'):L('next')}</button>`}`
           : state.mode==='book'
           ? `<button onclick="navSutra(-1)" ${state.gpos>0?'':'disabled'}>${L('previous')}</button>
-             <span class="m-count">${Lof(state.gpos+1, VERSES.length)}</span>
-             <button onclick="navSutra(1)" ${state.gpos<VERSES.length-1?'':'disabled'}>${L('next')}</button>`
+             <span class="m-count">${Lof(state.gpos+1, App.library.count())}</span>
+             <button onclick="navSutra(1)" ${state.gpos<App.library.count()-1?'':'disabled'}>${L('next')}</button>`
           : `<button onclick="navSutra(-1)" ${(state.navIdx||0)>0?'':'disabled'}>${L('previous')}</button>
              <span class="m-count">${Lof((state.navIdx||0)+1, state.navList?state.navList.length:1)}</span>
              <button onclick="navSutra(1)" ${(state.navIdx||0) < (state.navList?state.navList.length-1:0)?'':'disabled'}>${L('next')}</button>`}
@@ -4141,7 +4258,7 @@ function fillModal(){
 }
 function setReaderSize(size){
   if(!READER_SIZES.includes(size)) return;
-  state.readerSize = size;
+  App.session.update({readerSize:size});
   try{ localStorage.setItem('gitaReaderSize', String(size)); }catch(e){}
   applyReaderSize();
 }
@@ -4234,39 +4351,40 @@ function restoreModalSession(modalSnap){
   if(Number.isFinite(modalSnap.scrollTop)) modal.scrollTop = Math.max(0, modalSnap.scrollTop);
 }
 function navSutra(d){
+  let chapter=state.chapter, theme=state.theme, idx=state.idx,
+      gpos=state.gpos, navIdx=state.navIdx, pStart=state.pStart, pEnd=state.pEnd;
   if(state.mode === 'theme'){
-    const n = state.idx + d;
-    if(n >= state.pStart && n <= state.pEnd){
-      state.idx = n;
-    } else if(d > 0 && state.theme + 1 < DATA[state.chapter].themes.length){
-      state.theme += 1;
-      const b = themeBounds(DATA[state.chapter].themes[state.theme]);
-      state.pStart = b.start; state.pEnd = b.end; state.idx = b.start;
-    } else if(d < 0 && state.theme > 0){
-      state.theme -= 1;
-      const b = themeBounds(DATA[state.chapter].themes[state.theme]);
-      state.pStart = b.start; state.pEnd = b.end; state.idx = b.end;
+    const n = idx + d;
+    if(n >= pStart && n <= pEnd) idx = n;
+    else if(d > 0 && theme + 1 < DATA[chapter].themes.length){
+      theme += 1;
+      const b = themeBounds(DATA[chapter].themes[theme]);
+      pStart = b.start; pEnd = b.end; idx = b.start;
+    } else if(d < 0 && theme > 0){
+      theme -= 1;
+      const b = themeBounds(DATA[chapter].themes[theme]);
+      pStart = b.start; pEnd = b.end; idx = b.end;
     } else return;
   } else if(state.mode === 'book'){
-    state.gpos = Math.max(0, Math.min(VERSES.length-1, (state.gpos || 0) + d));
-    const loc = VERSES[state.gpos];
-    state.chapter = loc.ci; state.theme = loc.ti; state.idx = loc.si;
+    gpos = Math.max(0, Math.min(App.library.count()-1, (gpos || 0) + d));
+    const loc = App.library.locationAt(gpos);
+    chapter = loc.ci; theme = loc.ti; idx = loc.si;
   } else if((state.mode === 'fav') && state.navList){
-    const k = (state.navIdx || 0) + d;
+    const k = (navIdx || 0) + d;
     if(k < 0 || k >= state.navList.length) return;
-    state.navIdx = k;
+    navIdx = k;
     const loc = state.navList[k];
-    state.chapter = loc.ci; state.theme = loc.ti; state.idx = loc.si;
+    chapter = loc.ci; theme = loc.ti; idx = loc.si;
   } else return;
-  state.gpos = VERSES.findIndex(e => e.ci===state.chapter && e.ti===state.theme && e.si===state.idx);
-  if(state.gpos < 0) state.gpos = 0;
+  gpos = Math.max(0, App.library.indexOf(chapter,theme,idx));
+  App.session.update({chapter, theme, idx, gpos, navIdx, pStart, pEnd});
   fillModal();
   updateModalAddress();
   saveSessionSnapshot();
   const title = $('#modalTitle'); if(title) title.focus({preventScroll:true});
   const m = $('#modal'); if(m) m.scrollTo({top:0, behavior:'smooth'});
 }
-function backToTheme(){ closeModal(); showVerses(state.chapter, state.theme); }
+function backToTheme(){ closeModal(); App.views.verses(state.chapter, state.theme); }
 document.addEventListener('keydown', e=>{
   /* Keyboard parity (audit 2026-08-30): the tappable divs carry role="button"
      tabindex="0"; Enter/Space must do what the tap does. */
@@ -4298,13 +4416,23 @@ document.addEventListener('keydown', e=>{
     return;
   }
   if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-  if(state.view === 'learn' && LV && LV.vs){
-    if(e.key==='ArrowLeft'){ e.preventDefault(); lrMeetGo(-1); }
-    if(e.key==='ArrowRight'){ e.preventDefault(); lrMeetGo(1); }
+  if(state.view === 'learn' && App.learn.canNavigate()){
+    if(e.key==='ArrowLeft'){ e.preventDefault(); App.learn.navigate(-1); }
+    if(e.key==='ArrowRight'){ e.preventDefault(); App.learn.navigate(1); }
   }
 });
 
 
+
+/* Reader owns the verse sheet and scripture presentation helpers used by cards. */
+App.reader = Object.freeze({
+  open: openModal,
+  close: closeModal,
+  restore: restoreModalSession,
+  refresh: fillModal,
+  navigate: navSutra,
+  padaBlock: padaBlockDeva
+});
 /* Keep a lightweight, per-tab checkpoint current. In addition to explicit
    route changes this catches disclosure toggles, search text, modal controls,
    and scroll position before either a manual reload or the SW update reload. */
@@ -4348,7 +4476,7 @@ document.addEventListener('visibilitychange', ()=>{
     const dt = Date.now() - t0;
     x0 = null;
     if(dt > 800 || Math.abs(dx) < 60) return;
-    if(state.view === 'learn') lrMeetGo(dx < 0 ? 1 : -1);
+    if(state.view === 'learn') App.learn.navigate(dx < 0 ? 1 : -1);
   }, {passive:true});
 })();
 
@@ -4372,7 +4500,7 @@ document.addEventListener('visibilitychange', ()=>{
     x0 = null;
     if(dt > 800 || Math.abs(dx) < 60) return;
     if(state.mode === 'random') return;
-    navSutra(dx < 0 ? 1 : -1);              // swipe left → next, swipe right → previous
+    App.reader.navigate(dx < 0 ? 1 : -1);              // swipe left → next, swipe right → previous
   }, {passive:true});
 })();
 /* Offline support when served over http(s): the service worker caches the app so
@@ -4392,7 +4520,7 @@ if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
   });
 }
 function gitaBoot(){
-  assembleData();
+  App.library.assemble();
   /* Sync the language chrome first. state.lang already came from savedLang() and
      <html lang> from the pre-paint script, but the three buttons ship with
      English hard-coded on / aria-pressed="true" — a reader restored into नेपाली
@@ -4400,7 +4528,7 @@ function gitaBoot(){
      applyStatic(), so the interface strings land in the restored language
      before the deep link below renders anything. */
   syncLang(state.lang);
-  paintTheme();
+  App.library.paintTheme();
   try{
     var path = location.pathname || '/';
     if (path.charAt(path.length-1) !== '/' && !/index.html$/i.test(path)){
@@ -4409,19 +4537,13 @@ function gitaBoot(){
   }catch(e){}
   const restore = readSessionSnapshot();
   if(restore){
-    GITA_RESTORING = true; state.keepScroll = true;
+    GITA_RESTORING = true; App.session.update({keepScroll:true});
     syncLang(restore.lang);
     try{ sessionStorage.setItem('gitaLang', restore.lang); }catch(e){}
     try{ sessionStorage.setItem('gita.route', restore.route || '#'); }catch(e){}
     const searchInput = document.getElementById('searchInput');
     if(searchInput) searchInput.value = restore.query || '';
-    if(restore.play){
-      PL.scope = restore.play.scope === 'ch' ? 'ch' : 'all';
-      PL.ch = Number.isInteger(restore.play.ch) ? restore.play.ch : 0;
-      PL.mode = Number.isInteger(restore.play.mode) ? restore.play.mode : 0;
-      PL.run = Number.isInteger(restore.play.run) ? restore.play.run : 0;
-      PL.q = restore.play.q || null; PL.active = !!restore.play.active;
-    }
+    if(restore.play) App.play.hydrate(restore.play);
     if(restore.modal){
       const old = history.state && typeof history.state === 'object' ? history.state : {};
       const route = restore.route || '';
@@ -4439,60 +4561,60 @@ function gitaBoot(){
     var v = /^#v=([1-9][0-9]?\.[0-9]{1,2})$/.exec(location.hash || '');
     if (v) { var hp = v[1].split('.');
       var vref = hp[0] + '.' + (hp[1].length === 1 ? '0' + hp[1] : hp[1]);
-      var loc = verseLoc(vref);
+      var loc = App.library.location(vref);
       /* Owner 2026-08-31: a shared verse lands as an INVITATION, not a popup —
          the verse is shown on the welcome page with "click to see the
          meanings"; the four-pāda sheet opens when the receiver clicks. */
-      if (loc) { state.shared = loc; showWelcome(); return; }
+      if (loc) { App.session.update({shared:loc}); App.views.welcome(); return; }
       /* Out of range (#v=2.99) or a chapter that does not exist (#v=19.1):
          fall back to the welcome page instead of a blank one — and never ask
          for data/ch19.js: it is not there and its rejection used to escape. */
       var hn = parseInt(hp[0], 10);
-      if (hn > 18) { showWelcome(); return; }
+      if (hn > 18) { App.views.welcome(); return; }
       loadChapter(hn).then(function(){
-        loc = verseLoc(vref);
-        if (loc) { state.shared = loc; }
-        showWelcome();
+        loc = App.library.location(vref);
+        if (loc) App.session.update({shared:loc});
+        App.views.welcome();
       }).catch(function(){ gitaLoadFail(); });
       return; }
     var tm = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(location.hash || '');
     if (tm) { const ci = parseInt(tm[1], 10) - 1, ti = parseInt(tm[2], 10);
-      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return; }
+      loadChapter(ci+1).then(function(){ App.views.verses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return; }
     var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/.exec(location.hash || '');
     if(m){ const ci = parseInt(m[1], 10) - 1; const tb = m[3];
       loadChapter(ci+1).then(function(){
-        if(tb === 'learn'){ showLearn(ci); }
-        else { showChapter(ci); }  /* full/mula/study/chapter all merge into the one chapter view */
+        if(tb === 'learn'){ App.learn.show(ci); }
+        else { App.views.chapter(ci); }  /* full/mula/study/chapter all merge into the one chapter view */
       }).catch(function(){ gitaLoadFail(); }); return; }
     var h = location.hash || '';
-    if(h === '#play'){ showPlay(); return; }
-    if(h === '#favorites'){ showFavorites(); return; }
-    if(h === '#search'){ doSearch(); return; }
-    if(h === '#ways'){ showSections(); return; }
+    if(h === '#play'){ App.play.show(); return; }
+    if(h === '#favorites'){ App.library.showFavorites(); return; }
+    if(h === '#search'){ App.library.search(); return; }
+    if(h === '#ways'){ App.views.sections(); return; }
     var wy = /^#way=([123])$/.exec(h);
-    if(wy){ showChapters(+wy[1]); return; }
+    if(wy){ App.views.chapters(+wy[1]); return; }
     var stay = '';
     try{ stay = sessionStorage.getItem('gita.route')||''; }catch(e){}
-    if(stay==='#play'){ showPlay(); return; }
-    if(stay==='#favorites'){ showFavorites(); return; }
-    if(stay==='#search'){ doSearch(); return; }
-    if(stay==='#ways'){ showSections(); return; }
+    if(stay==='#play'){ App.play.show(); return; }
+    if(stay==='#favorites'){ App.library.showFavorites(); return; }
+    if(stay==='#search'){ App.library.search(); return; }
+    if(stay==='#ways'){ App.views.sections(); return; }
     var sw = /^#way=([123])$/.exec(stay);
-    if(sw){ showChapters(+sw[1]); return; }
+    if(sw){ App.views.chapters(+sw[1]); return; }
     var sm = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/.exec(stay);
     if(sm){
       const ci = parseInt(sm[1],10)-1, tb=sm[3];
       loadChapter(ci+1).then(function(){
-        if(tb==='learn') showLearn(ci);
-        else showChapter(ci);
+        if(tb==='learn') App.learn.show(ci);
+        else App.views.chapter(ci);
       }).catch(function(){ gitaLoadFail(); }); return;
     }
     var st = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(stay);
     if(st){
       const ci=parseInt(st[1],10)-1, ti=parseInt(st[2],10);
-      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return;
+      loadChapter(ci+1).then(function(){ App.views.verses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return;
     }
-    showWelcome();
+    App.views.welcome();
   })();
   var _idle = window.requestIdleCallback || function(fn){ setTimeout(fn, 1200); };
   _idle(function(){ loadAllChapters(); });

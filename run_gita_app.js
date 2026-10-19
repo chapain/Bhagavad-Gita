@@ -92,7 +92,7 @@ ok(UI && typeof UI === 'object', 'UI extracted');
   // gitaBoot paints the shell through syncLang(), which ends in applyStatic():
   // boot has to apply the RESTORED language's strings, not the hardcoded ones.
   ok(/function assembleData\(\)\{[\s\S]*?buildIndex\(\); buildVerseText\(\);[\s\S]*?\}/.test(html)
-     && /function gitaBoot\(\)\{[\s\S]*?assembleData\(\);[\s\S]*?syncLang\(state\.lang\);/.test(html)
+     && /function gitaBoot\(\)\{[\s\S]*?App\.library\.assemble\(\);[\s\S]*?syncLang\(state\.lang\);/.test(html)
      && /function syncLang\(l\)\{[\s\S]*?applyStatic\(\);/.test(html),
      'gitaBoot assembles the available data and paints the shell in the restored language');
 }
@@ -441,7 +441,7 @@ ok(!allThemes.some(t=>t.titles.en==='The Path Beyond' || t.titles.hi==='पा�
 // ancestors as links, current page last — on every drill-down view
 ok(/function wayCrumbs\(/.test(html) && /wc-link/.test(html) && /wc-cur/.test(html),
    'drill-down views navigate by breadcrumb (links + current)');
-ok((html.match(/wayCrumbs\(\[\[L\('sections_title'\)/g) || []).length >= 4,
+ok((html.match(/App\.views\.breadcrumbs\(\[\[L\('sections_title'\)/g) || []).length >= 4,
    'all four drill-down views root their breadcrumb at The Three Ways');
 // Only 644/700 verses are 4×8 (anuṣṭubh); 51 are triṣṭubh (4×11) and 5 irregular.
 // No blanket "8 syllables each" claim may reappear in the UI copy or the footer.
@@ -843,7 +843,7 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(/const root = \(og \? og\.content/.test(html) && /meta\[property="og:url"\]/.test(html)
      && html.includes("'/chapter/' +"),
      'shares always derive from the live og:url, never a file:// path');
-  ok(html.includes('/^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/') && html.includes("tb === 'learn'") && html.includes("showChapter(ci)"),
+  ok(html.includes('/^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/') && html.includes("tb === 'learn'") && html.includes("App.views.chapter(ci)"),
      'the app routes #chapter=N deep links, with an optional tab');
   // Chapter/Learn navigation, recall queues and legacy-route outcomes are
   // exercised through rendered browser interactions in browser_checks.py.
@@ -854,7 +854,7 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
 // hashes (#v=2.99, #v=19.1, #theme=N.ti after the study-map revision) used to
 // reach a blank "ॐ" boot view or an uncaught TypeError. Lock the guards down.
 {
-  ok(html.includes('if (hn > 18) { showWelcome(); return; }'),
+  ok(html.includes('if (hn > 18) { App.views.welcome(); return; }'),
      '#v= to a nonexistent chapter falls back to welcome — never requests data/ch19.js');
   ok((html.split('function showVerses(').length - 1) === 1
      && html.includes('function showVerses(ci,ti){ showChapter(ci, ti); }'),

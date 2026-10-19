@@ -1,0 +1,211 @@
+  /* ---- Phase 3.3 bottom tab bar (phones only) ---- */
+  .tabbar{ display:none; }
+  .m-search{ display:none; }
+  @media (max-width:760px){
+    /* ---- slim header: two tight rows.
+         Row 1 (flex row): ॐ + title (ellipsis) + dark-mode toggle.
+         Row 2 (full width): language segmented — three equal pills.
+         Total ~80px vs ~200px pre-3.3. Desktop keeps the old single-row
+         header with tagline (unchanged above 760px). */
+    header{ padding:6px 10px 8px;
+            padding-left:calc(10px + env(safe-area-inset-left,0px)); padding-right:calc(10px + env(safe-area-inset-right,0px));
+            padding-top:calc(6px + env(safe-area-inset-top,0px));
+            position:sticky; top:0; z-index:30;
+            box-shadow:0 1px 0 var(--line); }
+    .header-inner{ align-items:center; gap:8px; flex-wrap:wrap; }
+    .header-inner .om{ font-size:1.25rem; line-height:1; flex:0 0 auto; }
+    .hdr-copy{ flex:1 1 0; min-width:0; overflow:hidden; }
+    .header-inner h1{ font-size:.98rem; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0; }
+    #appSub{ display:none !important; }
+    .header-inner .tag{ display:none !important; }
+    .theme-btn{ flex:0 0 auto !important; min-width:34px !important; padding:6px 8px !important; min-height:34px; margin:0 !important; }
+    .langbar{ flex:1 0 100%; margin-left:0; margin-top:4px; }
+    .langbar .seg{ display:flex; width:100%; gap:2px; }
+    .seg .lang-btn{ flex:1 1 0; padding:6px 4px; font-size:.78rem; min-height:30px; }
+    .mode-box{ margin-bottom:14px; }
+    .mode-seg .ms-btn{ padding:7px 12px 8px; font-size:.85rem; min-height:36px; }
+
+    /* ---- desktop toolbar hidden on phones; bottom tab bar shown.
+           The search field stays in the sticky top bar (it's where
+           readers expect it) but the Home/Random/Play/Fav buttons
+           move to the bottom tab bar where thumbs can reach. */
+    .toolbar{ display:flex !important; position:sticky; top:0; z-index:29;
+              gap:0; padding:6px 12px;
+              padding-left:calc(12px + env(safe-area-inset-left,0px)); padding-right:calc(12px + env(safe-area-inset-right,0px));
+              background:var(--toolbar); border-bottom:1px solid var(--line);
+              box-shadow:0 1px 6px rgba(var(--shadow),.05); }
+    .toolbar .tool-btn{ display:none !important; }
+    .toolbar .searchwrap{ flex:1 0 100%; max-width:none; min-width:0; }
+    .toolbar input[type=search]{ min-height:40px; font-size:16px; }
+    .toolbar .sw-field input[type=search]{ min-height:40px; }  /* shape + ring: .sw-field */
+    /* on phones, syncTabs() does NOT move the searchwrap anymore (it
+       stays in the toolbar) — reset the m-search-inline class. */
+    .searchwrap.m-search-inline{ display:flex !important; margin:0; order:0; width:100%; flex:1; max-width:none; min-width:0; }
+
+    /* ---- bottom tab bar ---- */
+    .tabbar{
+      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:40;
+      box-sizing:border-box; width:100%; max-width:100vw;
+      padding:4px 4px calc(4px + env(safe-area-inset-bottom,0px));
+      padding-left:calc(4px + env(safe-area-inset-left,0px)); padding-right:calc(4px + env(safe-area-inset-right,0px));
+      background:var(--paper); border-top:1px solid var(--line);
+      box-shadow:0 -2px 12px rgba(var(--shadow),.07);
+    }
+    .tab-btn{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+              border:0; background:transparent; color:var(--ink-soft); padding:6px 2px; min-height:52px;
+              border-radius:10px; font:600 .68rem/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;
+              cursor:pointer; transition:color .15s, background-color .15s; -webkit-tap-highlight-color:transparent;}
+    .tab-btn .ic{ width:22px; height:22px; stroke:currentColor; fill:currentColor;
+                  stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    /* The search loupe and shuffle icon are drawn with strokes only —
+       their circle/dot/paths must not fill. The dice pips on Play are
+       <circle fill="currentColor"> in the source SVG so they stay dots;
+       the outer rounded rect is filled via the rule below. */
+    .tab-btn[data-tab="search"] .ic circle,
+    .tab-btn[data-tab="search"] .ic path,
+    .tab-btn[data-tab="random"] .ic path{ fill:none; }
+    .tab-btn[aria-selected="true"]{ color:var(--saffron-text); }
+    .tab-btn:active{ background:var(--saffron-soft); }
+    .tab-btn .tab-lbl{ font-size:.66rem; letter-spacing:.01em; }
+
+    /* ---- content: bottom room for the tab bar ---- */
+    .wrap{ padding:16px 14px calc(72px + env(safe-area-inset-bottom,0px)); padding-left:calc(14px + env(safe-area-inset-left,0px)); padding-right:calc(14px + env(safe-area-inset-right,0px)); }
+    /* When the modal is open, the bottom tab bar should not float over the
+       verse sheet (the sheet is full-screen on phones); inert it so it
+       cannot receive taps. */
+    body.modal-open .tabbar{ pointer-events:none; opacity:.4; }
+    .view-title{ font-size:1.35rem; }
+    .view-sub{ font-size:.92rem; margin-bottom:16px; }
+    .crumbs{ font-size:.84rem; gap:6px; margin-bottom:14px; }
+    .way-crumb{ gap:6px; }
+    .wc-chip{ padding:7px 13px; font-size:.8rem; min-height:34px; }
+    .crumbs .back-top{ font-size:.82rem; padding:7px 14px; min-height:36px; }
+    .grid{ gap:12px; }
+    .grid.chapters, .grid.themes, .grid.verses, .grid.sections{ grid-template-columns:1fr; }
+    .vcards{ grid-template-columns:1fr; }
+    .card{ padding:14px 16px; border-radius:14px; }
+    .card h3{ font-size:1.08rem; }
+    .card.sect h3{ font-size:1.2rem; }
+    .mini .padas, .w-day .padas{ font-size:1.06rem; }
+    .back-top{ min-height:44px; }
+    .mini-crumb{ gap:6px; }
+    .mini-crumb .bc-btn, .mini-crumb .bc-cur{ padding:7px 10px; }
+    .mini-crumb .bc-name{ font-size:.74rem; }
+
+    /* ---- welcome: stack the editorial hero, keep the verse as the lead ---- */
+    .welcome{ padding:18px 0 24px; }
+    .welcome-hero{ grid-template-columns:1fr; gap:22px; }
+    .welcome-copy{ padding:4px 2px 0; }
+    .w-mark{ margin-bottom:18px; }
+    .welcome .w-om{ flex-basis:46px; width:46px; height:46px; font-size:1.45rem; }
+    .w-mark-line{ width:42px; }
+    .welcome .view-title{ max-width:15ch; font-size:clamp(2.05rem,8.5vw,2.75rem); line-height:1.08; }
+    html[lang="ne"] .welcome .view-title, html[lang="hi"] .welcome .view-title{
+      max-width:17ch; font-size:clamp(1.85rem,7.5vw,2.5rem); line-height:1.28; }
+    .welcome .view-sub{ margin-top:12px; margin-bottom:0; font-size:.97rem; line-height:1.65; }
+    .w-actions{ align-items:stretch; gap:8px; margin-top:19px; }
+    .welcome .tool-btn.big{ width:100%; padding:14px 18px; font-size:.98rem; min-height:50px; }
+    .welcome-guide{ width:100%; }
+    .welcome-guide summary{ margin:0 auto; }
+    .welcome .w-foot{ margin-top:19px; padding-top:12px; font-size:.77rem; }
+    .welcome-stage{ min-height:0; padding:14px; border-radius:22px; }
+    .welcome-wheel{ width:min(96%,350px); right:-20%; opacity:.12; }
+    .welcome .w-day{ padding:17px 16px 13px; border-radius:16px; }
+    .welcome .w-day .padas{ font-size:1.06rem; line-height:1.8; }
+    /* ---- verse modal: full-screen sheet ---- */
+    .modal-bg{ padding:0; align-items:stretch; }
+    .modal{ max-width:none; width:100%; max-height:none; height:100%; border-radius:0; border:none;
+            border-top:1px solid var(--line);
+            /* top padding clears the notch/status bar — without the inset the
+               first line of a verse hides behind it and cannot be scrolled to */
+            padding-top:calc(14px + env(safe-area-inset-top,0px));
+            padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));
+            padding-left:calc(14px + env(safe-area-inset-left,0px));
+            padding-right:calc(14px + env(safe-area-inset-right,0px));
+            overscroll-behavior:contain; }
+    /* Phase 3.2: slim m-head row (✕ / title / ⋯) sits at the top of the sheet
+       and stays visible as the user scrolls; close and more buttons live in
+       the flex row, not as free-floating FABs. */
+    /* Keep the theme/range as secondary context, visibly below the sticky
+       verse title row instead of visually touching its divider. */
+    .m-head{ position:sticky; top:0; z-index:5;
+             margin:-14px -14px 14px; padding:calc(8px + env(safe-area-inset-top,0px)) 10px 10px;
+             background:var(--cream); border-bottom:1px solid var(--line); }
+    .modal .m-close{ position:static; float:none; margin:0; flex:0 0 auto;
+                     width:40px; height:40px; font-size:1.1rem;
+                     box-shadow:none; border-radius:50%; }
+    .m-more{ width:40px; height:40px; font-size:1.4rem; border-radius:50%; }
+    .m-head .m-num-chit{ font-size:.9rem; }
+    .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
+                       overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+    /* Phones keep the number on the line, in flow, so the centred block
+       includes it: it follows the closing daṇḍa, never the card's edge. */
+    .m-whole-verse .gl-tail{ position:static; }
+    .m-part{ margin:0 0 12px; padding:8px 2px 0; color:var(--ink-soft);
+             font-size:.78rem; line-height:1.5; }
+    .m-num{ font-size:1.08rem; }
+    .fav-btn{ margin-left:0; margin-top:8px; display:inline-block; padding:7px 14px; min-height:36px; }
+    .reader-size button{ min-width:40px; min-height:40px; }
+    .m-verse{ padding:12px 12px; }
+    .words-bar .wb-btn{ min-height:34px; padding:6px 14px; }
+    /* pādas stack one per row — two side by side is unreadable on a phone */
+    .m-verse .pada-row{ flex-direction:column; gap:10px; }
+    .m-verse .pada-grid{ gap:10px; }
+    .m-verse .pada-box{ padding:10px 12px; }
+    .m-verse .pada-box .pb-deva{ font-size:calc(1.24rem * var(--reader-scale,1)); }
+    .m-verse .wrow{ padding:5px 0; }
+    .m-line .lt{ font-size:calc(.98rem * var(--reader-scale,1)); }
+    /* nav bar pinned to the bottom of the sheet, thumb-reachable */
+    /* A sticky bar floats above the content, so the sheet ends with a spacer
+       (.m-tail) tall enough for the last line to clear it when fully scrolled.
+       Without it the paraphrase stays hidden behind Previous/Next. */
+    .m-tail{ display:block; height:76px; }
+    .m-nav{ position:sticky; bottom:0; margin:18px -14px 0;
+            margin-bottom:calc(-26px - env(safe-area-inset-bottom,0px));
+            padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+            background:var(--cream);
+            box-shadow:0 -10px 16px -8px rgba(var(--shadow),.28);
+            border-top:1px solid var(--line); gap:8px; }
+    .m-nav button{ min-height:46px; padding:11px 14px; font-size:.9rem; flex:1; }
+    .m-nav .m-count{ flex:0 0 auto; font-size:.8rem; text-align:center; }
+    .m-nav .m-random{ flex:1 1 100%; min-height:50px; }
+    .m-nav .m-back{ flex:1; }
+    footer{ font-size:.78rem; padding:16px 16px calc(22px + env(safe-area-inset-bottom,0px)); }
+  }
+
+  @media (max-width:380px){
+    .header-inner h1{ font-size:.88rem; }
+    .header-inner{ gap:6px; }
+    .seg .lang-btn{ padding:5px 7px; font-size:.72rem; min-height:30px; }
+    .theme-btn{ min-width:30px !important; min-height:30px !important; padding:4px 6px !important; }
+    .m-verse .pada-box .pb-deva{ font-size:calc(1.16rem * var(--reader-scale,1)); }
+    .toolbar .tool-btn{ flex:1 1 0; min-width:0; min-height:44px; padding:6px 4px;
+                         font-size:.72rem; line-height:1.15; white-space:normal;
+                         display:flex; flex-direction:column; justify-content:center; gap:2px; }
+    .toolbar .tool-btn .ic{ width:1em; height:1em; margin:0; }
+    .toolbar .tool-btn span{ max-width:100%; overflow-wrap:anywhere; text-align:center; }
+    .tab-btn .tab-lbl{ font-size:.62rem; }
+    .tab-btn .ic{ width:20px; height:20px; }
+  }
+
+  /* landscape phones: keep the sheet scrollable, shrink vertical padding */
+  @media (max-width:900px) and (orientation:landscape) and (max-height:520px){
+    header{ padding-top:8px; padding-bottom:8px; }
+    .modal{ padding-top:10px; }
+    .welcome{ padding-top:16px; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  }
+
+  /* ---- no-JavaScript fallback (WhatsApp / Gmail in-app viewers) ---- */
+  .ns-box{ max-width:640px; margin:10px auto 40px; background:var(--paper);
+           border:1px solid var(--saffron); border-radius:16px; padding:22px 22px 24px;
+           box-shadow:0 8px 22px rgba(var(--shadow),.10); }
+  .ns-box .ns-om{ font-size:2.6rem; color:var(--saffron-text); text-align:center; line-height:1; margin-bottom:6px; }
+  .ns-box h2{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:1.25rem; text-align:center; margin-bottom:12px; }
+  .ns-box p{ color:var(--ink); font-size:.95rem; margin-bottom:10px; }
+  .ns-box .ns-how{ background:var(--saffron-soft); border-radius:10px; padding:10px 12px; }
+  .ns-box hr{ border:none; border-top:2px dashed var(--line); margin:14px 0; }
+  .ns-box p[lang]{ font-size:.92rem; color:var(--ink-soft); }
