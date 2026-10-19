@@ -274,6 +274,7 @@ const ICONS = {
   clearX:'<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>'
 };
 function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub').textContent = L('app_sub');
+  const sl = $('#skipLink'); if(sl) sl.textContent = L('skip_to_content');
   $('#tagVerses').textContent = L('tag_sub'); $('#appFooter').textContent = L('footer');
   const footData = $('#footDataLink'); if(footData) footData.textContent = L('data_title') + ' · ' + L('data_export') + ' / ' + L('data_import');
   $('#clearBtn').setAttribute('aria-label', L('clear'));

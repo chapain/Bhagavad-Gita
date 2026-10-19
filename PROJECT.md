@@ -1748,7 +1748,7 @@ source/
   app.html             app document template (build-time placeholders)
   css/*.css            ordered feature styles, concatenated into index.html
   js/*.js              ordered feature runtime, concatenated into index.html
-  i18n_ui.py           202 UI strings × 3 languages
+  i18n_ui.py           217 UI strings × 3 languages
   study_map_contract.json all 18 reviewed maps + legacy-progress migration
   build_gita.py        assembles templates + chapter data; enforces source schema
   verify.py            IAST normalization and syllable helpers used for checks

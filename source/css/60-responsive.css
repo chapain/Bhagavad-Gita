@@ -209,3 +209,18 @@
   .ns-box .ns-how{ background:var(--saffron-soft); border-radius:10px; padding:10px 12px; }
   .ns-box hr{ border:none; border-top:2px dashed var(--line); margin:14px 0; }
   .ns-box p[lang]{ font-size:.92rem; color:var(--ink-soft); }
+
+  /* ---- Phase D: recently viewed row + print stylesheet ---- */
+  .m-recent{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-top:16px;
+             padding-top:12px; border-top:1px dashed var(--line); }
+  .m-rec-lbl{ color:var(--ink-soft); font-size:.8rem; font-weight:600; }
+  @media print{
+    .atm, header, .toolbar, .tabbar, .crumbs, .mode-box, .back-foot,
+    .m-close, .m-more, .m-menu, .share-panel, .m-nav, .m-recent,
+    footer .foot-link{ display:none !important; }
+    body, .modal{ background:#FFFFFF !important; color:#000000 !important; }
+    .modal-bg.open{ position:static !important; background:transparent !important; padding:0 !important; }
+    .modal{ max-width:100% !important; max-height:none !important; overflow:visible !important;
+            box-shadow:none !important; border:0 !important; padding:0 !important; }
+    .ch-verse, .mini, .m-whole-verse, .pada-box{ break-inside:avoid; }
+  }

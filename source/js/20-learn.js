@@ -26,6 +26,18 @@ function lrAll(){
       if(Array.isArray(c.map) && c.map.length <= 78
          && c.map.every(r=>typeof r==='string' && /^\d{1,2}\.\d{2}–\d{1,2}\.\d{2}$/.test(r)))
         out[k].map = c.map.slice();
+      if(c.srs && typeof c.srs === 'object' && !Array.isArray(c.srs)){
+        const sr = {};
+        for(const v in c.srs){
+          const e = c.srs[v];
+          if(/^\d{1,2}\.\d{2}$/.test(v) && e && typeof e === 'object'
+             && Number.isInteger(e.box) && e.box >= 1 && e.box <= 5
+             && typeof e.due === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(e.due))
+            sr[v] = {box:e.box, due:e.due, reps:Number.isInteger(e.reps)&&e.reps>=0?e.reps:1,
+                     lapses:Number.isInteger(e.lapses)&&e.lapses>=0?e.lapses:0};
+        }
+        if(Object.keys(sr).length) out[k].srs = sr;
+      }
     }
     return out;
   }catch(e){ return {}; }
@@ -69,7 +81,8 @@ function lrGloss(w){
 function lrHeldOn(n, vn){ const p = lrGet(n); return !!(p.held||{})[vn]; }
 function lrHold(n, vn, on){
   const p = lrGet(n); p.held = p.held || {};
-  if(on) p.held[vn] = 1; else delete p.held[vn];
+  if(on){ p.held[vn] = 1; if(typeof srsSeedHeld === 'function') srsSeedHeld(p, vn); }
+  else { delete p.held[vn]; if(typeof srsUnseedHeld === 'function') srsUnseedHeld(p, vn); }
   lrPut(n, p);
 }
 function chVerseN(ch){ let n=0; ch.themes.forEach(t=> n += vCount(t)); return n; }
@@ -138,6 +151,7 @@ function showLearn(ci){
       <div class="lr-prog"><i style="width:${pct}%"></i></div>
       <div class="lr-progl">${esc(fmt(L('learn_walked'),{p:numL(pct)}))}
         · ${esc(fmt(L('learn_held_n'),{a:numL(nh),b:numL(nv)}))}</div>
+      ${srsBarHtml(ci)}
 
       <div class="${stepCls(1, s1done)}">
         <div class="lr-badge">${s1done?'✓':numL(1)}</div>
@@ -415,11 +429,11 @@ function lrMeaty(w){
   return !/^(and|but|indeed|also|too|not|even|alone|thus|so)$/i.test(core);
 }
 function lrDrill(ci, ti, vs, seed){
-  App.session.update({view:'learn', chapter:ci, theme:ti});
+  App.session.update({view:'learn', chapter:ci, theme:ti < 0 ? null : ti});
   const quizSeed = Number.isInteger(seed) ? seed : lrNewSeed();
   App.session.update({lrAt:{kind:'drill', ti:ti, seed:quizSeed}}); App.views.persist();
   return lrWithSeed(quizSeed, ()=>{
-  const ch = DATA[ci], t = ch.themes[ti];
+  const ch = DATA[ci], t = ti >= 0 ? ch.themes[ti] : null;
   const pool = [], others = [];
   ch.themes.forEach(x=>thVerses(x).forEach(s=>{
     others.push(s);
@@ -440,7 +454,7 @@ function lrDrill(ci, ti, vs, seed){
     const _full = v => slokaDeva(v);
     const mine = _full(s);
     const wrong = lrSample(others.filter(o=>o.n!==s.n && _full(o)!==mine), 3);
-    items.push({kind:'pick', qid:'drill:meaning:'+s.n,
+    items.push({kind:'pick', vn:s.n, qid:'drill:meaning:'+s.n,
       ask: esc(L('learn_which')) + `<div class="lr-qsub">${esc(T(s.paras))}</div>`,
       opts: lrShuffle([s].concat(wrong)).map(o=>
         ({oid:'verse:'+o.n, label: _full(o), iast:slokaIast(o), sub: fmtNL(o.n), deva:1, ok:o===s})),
@@ -485,7 +499,7 @@ function lrDrill(ci, ti, vs, seed){
         if(seenOpt[x[0]]) return;            // duplicate option
         seenOpt[x[0]] = 1; dw.push(x);
       });
-      items.push({kind:'pick', qid:'drill:cloze:'+s.n+':'+c.qi+':'+c.wi,
+      items.push({kind:'pick', vn:s.n, qid:'drill:cloze:'+s.n+':'+c.qi+':'+c.wi,
         ask: esc(fmt(L('learn_missing'),{q:numL(c.qi+1), v:fmtNL(s.n)}))
              /* NO recited-line cue. It was added to help where sandhi
                 transforms a word, but measured against the real data it gives
@@ -506,7 +520,7 @@ function lrDrill(ci, ti, vs, seed){
      printing "1.1 / 1.2 / 1.3" turns recall into sorting integers, which tests
      nothing (owner spotted this at ch1.t1, 2026-09-01). The paraphrase alone is
      the cue — verified unique across all 700 verses at this length. */
-  if(vs.length > 1) items.push({kind:'order', qid:'drill:verse-order:'+ti,
+  if(t && vs.length > 1) items.push({kind:'order', qid:'drill:verse-order:'+ti,
     ask: esc(fmt(L('learn_vorder'),{t:T(t.titles)})),
     chips: vs.map((s,i)=>({id:i, label: T(s.paras).slice(0, 64) + '…'})),
     answer: vs.map((_,i)=>i)});
@@ -518,13 +532,14 @@ function lrDrill(ci, ti, vs, seed){
      478 of the 700 never practised this way (owner 2026-09-01). */
   vs.forEach(qv=>{
     const qq = (qv.flow||[]).filter(f=>f.k==='p');
-    if(qq.length > 2) items.push({kind:'order', qid:'drill:pada-order:'+qv.n,
+    if(qq.length > 2) items.push({kind:'order', vn:qv.n, qid:'drill:pada-order:'+qv.n,
       ask: esc(fmt(L('learn_qorder'),{v:fmtNL(qv.n)})),
       chips: qq.map((q,i)=>({id:i, label:q.d + pDanda(i, qq.length), iast:(q.t||'') + pDandaLatn(i, qq.length), deva:1})),
       answer: qq.map((_,i)=>i)});
   });
 
-  App.drills.run(ci, lrShuffle(items), T(t.titles), ()=>{
+  App.drills.run(ci, lrShuffle(items), t ? T(t.titles) : L('srs_review_btn'), ()=>{
+    if(!t) return srsFinishReview(ci);
     const p = lrGet(ch.num); p.themes[ti] = 1; lrPut(ch.num, p);
     const nxt = ch.themes.findIndex((_,i)=>!lrGet(ch.num).themes[i]);
     view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
@@ -651,6 +666,12 @@ App.learn = Object.freeze({
   themeMove: lrThemeMove,
   toggleHeld: lrToggleCurrentHeld,
   drill: lrDrill,
+  review: lrReview,
+  openDue: lrOpenDue,
+  srsRecord: srsRecord,
+  dueChapter: srsDueChapter,
+  dueAll: srsDueAll,
+  streak: srsStreakCount,
   freePaint: lrFreePaint,
   snapshot: learnSessionSnapshot,
   restore: restoreLearnSession,

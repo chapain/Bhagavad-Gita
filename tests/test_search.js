@@ -138,4 +138,35 @@ test('search and favorites render counts through the grammar helper', () => {
                'loose spelling folds are confined to the IAST verse field');
 });
 
+test('search v2 highlights substring matches safely and offers chips', () => {
+  const hlStart = html.indexOf('function recentLoad(');
+  const hlEnd = html.indexOf('\nfunction doSearch(){', hlStart);
+  assert(hlStart >= 0 && hlEnd > hlStart, 'hlSearchText and chip helpers must be emitted');
+  const store = {};
+  const ctx = vm.createContext({
+    localStorage: {
+      getItem: k => store[k] || null,
+      setItem: (k, v) => { store[k] = v; },
+    },
+    esc: s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'),
+    digitNorm: s => String(s).replace(/[०-९]/g, d => '0123456789'['०१२३४५६७८९'.indexOf(d)]),
+    numL: s => String(s),
+    L: k => ({ search_recent: 'Recent' }[k] || k),
+    $: () => null,
+  });
+  vm.runInContext(html.slice(hlStart, hlEnd), ctx);
+  assert.equal(ctx.hlSearchText('The Yoga of Action', 'yoga'),
+               'The <mark class="srch-hl">Yoga</mark> of Action');
+  assert.equal(ctx.hlSearchText('Verse 2.47 <script>', '2.47'),
+               'Verse 2.47 &lt;script&gt;', 'numeric queries are not wrapped in <mark>');
+  ctx.recentSave('karma');
+  ctx.recentSave('bhakti');
+  const zeroChips = ctx.srchChipsHtml('nonexistent', 0);
+  assert(zeroChips.includes('data-q="2.47"') && zeroChips.includes('data-q="bhakti"'),
+         'zero-result chips include starter refs and recent queries');
+  const hitChips = ctx.srchChipsHtml('karma', 5);
+  assert(hitChips.includes('data-q="bhakti"') && !hitChips.includes('data-q="karma"'),
+         'hit chips show other recent queries without repeating current query');
+});
+
 console.log(`\nsearch regressions: ${passed} tests passed`);

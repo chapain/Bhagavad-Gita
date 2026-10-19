@@ -175,9 +175,11 @@ function lrPick(i){
   });
   const fb = document.getElementById('lrFb');
   if(o.ok){
+    if(it.vn && !LQback && !it._missed) App.learn.srsRecord(LQci+1, it.vn, true);
     fb.innerHTML = `<div class="good">${esc(L('learn_yes'))}</div>`;
     LQi++; setTimeout(lrPaint, 620);
   }else{
+    if(it.vn && !LQback && !it._missed){ it._missed = 1; App.learn.srsRecord(LQci+1, it.vn, false); }
     LQmiss++; LQ.push(it);
     /* The tick and cross on the options already say right and wrong, so the
        feedback line drops the verdict and keeps only what the reader cannot
@@ -242,10 +244,12 @@ function lrChip(el, id){
     document.getElementById('lrSlots').insertAdjacentHTML('beforeend',
       `<span class="lr-slot${dv}"${dv?' lang="sa"':''}>${numL(LQpick.length)}. ${esc(chp?chp.label:el.textContent.trim())}${iast}</span>`);
     if(LQpick.length === it.answer.length){
+      if(it.vn && !LQback && !it._missed) App.learn.srsRecord(LQci+1, it.vn, true);
       fb.innerHTML = `<div class="good">${esc(L('learn_thread_ok'))}</div>`;
       LQi++; setTimeout(lrPaint, 700);
     }
   }else{
+    if(it.vn && !LQback && !it._missed){ it._missed = 1; App.learn.srsRecord(LQci+1, it.vn, false); }
     LQmiss++;
     el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'), 380);
     const r = it.chips.find(c=>c.id===want);

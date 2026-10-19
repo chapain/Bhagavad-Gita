@@ -155,19 +155,57 @@ function openSharePanel(){
   p.style.display = (p.style.display === 'flex') ? 'none' : 'flex';
 }
 function closeSharePanel(){ const p=$('#sharePanel'); if(p) p.style.display='none'; }
-function copyVerseLink(){
-  const t = $('#spLink').textContent;
+function copyTextToClipboard(t, msgKey){
   function copied(){
-    /* Job done — collapse the panel right away and flash the confirmation on
-       the Share button itself, so the reader is straight back on the verse. */
     const p = $('#sharePanel'); if(p) p.style.display = 'none';
     const sh = $('#shareBtn');
-    if(sh){ sh.textContent = L('link_copied');
+    if(sh){ sh.textContent = L(msgKey || 'link_copied');
       setTimeout(function(){ sh.textContent = L('share'); }, 1600); }
   }
   try { navigator.clipboard.writeText(t).then(copied, copied); }
   catch(e){ const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta);
     ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); copied(); }
+}
+function copyVerseLink(){
+  copyTextToClipboard($('#spLink').textContent, 'link_copied');
+}
+function verseShareText(){
+  const ch = DATA[state.chapter], t = ch.themes[state.theme];
+  const {s, part} = App.library.entryAt(t, state.idx);
+  const lines = [L('verse') + ' ' + fmtNL(s.n) + ' — ' + T(part.titles), s.d];
+  if(state.lang === 'en' && s.t) lines.push(s.t);
+  lines.push(T(s.lits), T(s.paras), shareUrl());
+  return lines.filter(Boolean).join('\n\n');
+}
+function copyVerseText(){
+  copyTextToClipboard(verseShareText(), 'verse_copied');
+}
+function recentVersesLoad(){
+  try{
+    const a = JSON.parse(sessionStorage.getItem('gitaRecentVerses') || '[]');
+    return Array.isArray(a) ? a.filter(x => typeof x === 'string' && /^\d{1,2}\.\d{2}$/.test(x)).slice(0, 6) : [];
+  }catch(e){ return []; }
+}
+function recentVersesRecord(id){
+  if(!/^\d{1,2}\.\d{2}$/.test(id)) return;
+  const next = [id, ...recentVersesLoad().filter(x => x !== id)].slice(0, 6);
+  try{ sessionStorage.setItem('gitaRecentVerses', JSON.stringify(next)); }catch(e){}
+}
+function recentVersesHtml(curId){
+  const list = recentVersesLoad().filter(x => x !== curId).slice(0, 5);
+  if(!list.length) return '';
+  return `<div class="m-recent"><span class="m-rec-lbl">${esc(L('recent_verses'))}:</span>${list.map(id =>
+    `<button type="button" class="srch-chip" onclick="App.reader.openId('${esc(id)}')">${esc(fmtNL(id))}</button>`
+  ).join('')}</div>`;
+}
+function openVerseById(id){
+  let loc = App.library.location(id);
+  if(!loc){
+    const n = parseInt(String(id).split('.')[0], 10);
+    if(n >= 1 && n <= 18) loadChapter(n).then(()=>openVerseById(id)).catch(gitaLoadFail);
+    return;
+  }
+  openModal(loc.ci, loc.ti, loc.si, state.mode || 'theme');
 }
 /* ---------- mobile: Android hardware / iOS swipe "back" closes the verse sheet ---------- */
 let MODAL_HIST = false, MODAL_POPPING = false, MODAL_RETURN_FOCUS = null;
@@ -217,14 +255,16 @@ function fillModal(){
   }
   function boxHtml(pad, idx, total){
     const id = `words-pada-${idx}`;
+    const peek = (pad.words||[]).map(w => w[0] + ' — ' + (w[2+LI] || w[2])).join(' · ');
     return `<div class="pada-box">
-      <button type="button" class="pada-toggle" aria-expanded="false" aria-controls="${id}" aria-describedby="padaHint" onclick="toggleWords(this)">
+      <button type="button" class="pada-toggle" title="${esc(peek)}" aria-expanded="false" aria-controls="${id}" aria-describedby="padaHint" onclick="toggleWords(this)">
         <span class="pb-top"><span class="pb-num">${esc(L('pada_label'))} ${numL(idx+1)}</span></span>
         <span class="pb-deva" lang="sa">${pad.d}${pDanda(idx,total)}</span>
         <span class="pb-iast" lang="sa-Latn">${esc(pad.t)}${pDandaLatn(idx,total)}</span>
       </button>${wordsHtml(pad,id)}
     </div>`;
   }
+  recentVersesRecord(s.n);
   const isSaved = App.library.isFavorite(s.n);
   $('#modal').innerHTML = `
     <div class="m-head">
@@ -253,6 +293,7 @@ function fillModal(){
       <div class="sp-hint">${L('share_hint')}</div>
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
+      <button class="sp-copy sp-copy-txt" id="shCpTxt" onclick="copyVerseText()">${esc(L('copy_verse_text'))}</button>
     </div>
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
@@ -275,6 +316,7 @@ function fillModal(){
       </details>
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+      ${recentVersesHtml(s.n)}
     </div>
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
@@ -468,9 +510,11 @@ document.addEventListener('keydown', e=>{
 /* Reader owns the verse sheet and scripture presentation helpers used by cards. */
 App.reader = Object.freeze({
   open: openModal,
+  openId: openVerseById,
   close: closeModal,
   restore: restoreModalSession,
   refresh: fillModal,
   navigate: navSutra,
+  shareText: verseShareText,
   padaBlock: padaBlockDeva
 });

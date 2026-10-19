@@ -106,7 +106,7 @@ const enKeys = Object.keys(UI.en);
 // added click_pada_meanings (1) → 187
 // 2026-10-17: removed read_sub, opt_full_g, opt_study_g, back_themes (4) → 183,
 // together with the per-theme and continuous-reading views that used them.
-ok(enKeys.length === 202, `UI has 202 keys (got ${enKeys.length})`);
+ok(enKeys.length === 217, `UI has 217 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -729,6 +729,13 @@ ok(/<link rel="canonical" href="https?:\/\/[^"]+\/">/.test(html), 'canonical lin
   ok(ld && ld.url === canon, 'JSON-LD url matches the canonical URL');
   ok(ld && Array.isArray(ld.inLanguage) && ld.inLanguage.length === 3,
      'JSON-LD lists all three languages');
+  ok(ld && ld.about && ld.about['@type'] === 'Book', 'JSON-LD includes companion Book object');
+  ok(/"@type":\s*"FAQPage"/.test(html), 'JSON-LD includes FAQPage schema');
+  ok(/function verseShareText\(/.test(html) && /function copyVerseText\(/.test(html) && /id="shCpTxt"/.test(html),
+     'Phase D1: copy verse as formatted text is wired');
+  ok(/function recentVersesHtml\(/.test(html) && /gitaRecentVerses/.test(html),
+     'Phase D4: recently viewed verses row is wired in sessionStorage');
+  ok(/@media print\{/.test(html), 'Phase D3: print stylesheet is included');
 }
 // author credit — must survive language switches, so it lives outside #appFooter
 ok(/<meta name="author" content="Dhruba Chapain">/.test(html), 'author meta tag');
