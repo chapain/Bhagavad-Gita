@@ -359,6 +359,42 @@ def run(pw, url, offline_capable=False):
     if pg.eval_on_selector("#modalBg", "e=>e.classList.contains('open')"):
         pg.keyboard.press("Escape")
         pg.wait_for_timeout(500)
+    # Geometry of the field itself (owner 2026-10-19: on a phone the loupe sat
+    # on top of the placeholder, the clear × on top of the typed text, and focus
+    # drew two rings). A specificity leak in the phone block
+    # (`.toolbar .searchwrap input[type=search]{padding:9px 4px}`, 0,3,1) beat
+    # the 36px loupe clearance (0,2,1). The input now carries no chrome at all:
+    # the wrapper owns the shape and the single focus ring.
+    def field_geometry(width):
+        pg.set_viewport_size({"width": width, "height": 844})
+        pg.click("#searchInput")
+        pg.fill("#searchInput", "")
+        pg.type("#searchInput", "1.1", delay=10)
+        pg.wait_for_timeout(300)
+        return pg.evaluate("""() => {
+          const inp = document.querySelector('#searchInput'),
+                ic = document.querySelector('.sw-ic'), x = document.querySelector('#clearBtn'),
+                f = document.querySelector('.sw-field');
+          const r = e => e.getBoundingClientRect(), cs = e => getComputedStyle(e);
+          return { icRight: r(ic).right, inLeft: r(inp).left,
+                   padL: parseFloat(cs(inp).paddingLeft),
+                   textRight: r(inp).right - parseFloat(cs(inp).paddingRight),
+                   xLeft: r(x).left, xShown: r(x).width > 0,
+                   inOutline: cs(inp).outlineStyle, fShadow: cs(f).boxShadow,
+                   fFocus: f.matches(':focus-within') };
+        }""")
+    for width in (390, 1280):
+        g = field_geometry(width)
+        ok(g["inLeft"] + g["padL"] > g["icRight"],
+           f"{width}px: the loupe ends before the text begins "
+           f"(icon to {g['icRight']-g['inLeft']:.0f}px, text inset {g['padL']:.0f}px)")
+        ok(g["xShown"] and g["textRight"] <= g["xLeft"],
+           f"{width}px: typed text stops before the clear button")
+        ok(g["inOutline"] == "none" and g["fFocus"] and g["fShadow"] != "none",
+           f"{width}px: focus draws one ring on the field, none on the input")
+    pg.set_viewport_size({"width": 390, "height": 844})
+    pg.fill("#searchInput", "")
+
     # On a Devanagari keyboard the danda । sits where the full stop is, so १।१ is
     # the natural way to type 1.1. Accept every separator a reader might produce.
     for q, label in [("१.१", "devanagari digits"), ("१।१", "danda separator"),
