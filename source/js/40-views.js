@@ -117,6 +117,7 @@ function showWelcome(){
             <button class="tool-btn primary big" onclick="showSections()">
               <span>${esc(L('welcome_enter'))}</span><span class="w-arrow" aria-hidden="true">→</span>
             </button>
+            ${typeof srsWelcomeHtml === 'function' ? srsWelcomeHtml() : ''}
             <details class="welcome-guide">
               <summary>${esc(L('guide_explore'))}</summary>
               <ol>

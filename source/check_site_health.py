@@ -349,6 +349,10 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
         with open(_p, "rb") as _fh:
             ok(_fh.read(4) == b"wOF2", f"{_f} must be a real woff2")
     ok(f"./{_f}" in read("sw.js"), f"{_f} must be precached, or offline loses it")
+    ok(f'rel="preload" href="{_f}" as="font" type="font/woff2" crossorigin' in idx,
+       f"{_f} must be preloaded in index.html <head>")
+ok('<a href="#view" class="skip-link" id="skipLink">' in idx and ".skip-link{" in idx_nofont,
+   "index.html must include a styled skip-to-content link targeting #view")
 # Phase 3.1–3.3 (2026-10-16): raised from 250000 to 290000. The mobile
 # overhaul adds ~17KB of useful UI (slim two-row header, bottom tabbar,
 # m-head/m-menu/m-whole-verse hero, unified chapter view with theme
@@ -356,9 +360,11 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
 # bloat, not freeze UI evolution. Phase 2's explicit feature interfaces and
 # session ownership bring the maintained baseline to about 293500 characters.
 # Phase 5.4 (2026-10-19): data export/import adds ~17KB (backup UI + versioned
-# JSON schema + merge logic); raise to 320000 to keep headroom for this
-# user-data safety net.
-ok(len(idx) < 320000, f"the shell should stay lean; it is {len(idx)} characters")
+# JSON schema + merge logic); Phases A–E (2026-10-19): skip-link, font preloads,
+# search v2 highlights/chips, spaced-repetition Learn (SRS + due inbox + streak),
+# reader delight (copy verse text, print stylesheet, recent verses), and
+# Book/FAQPage JSON-LD bring the maintained shell cap to 350000 characters.
+ok(len(idx) < 350000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64

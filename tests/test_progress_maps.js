@@ -90,4 +90,37 @@ test('bad local-storage JSON cannot crash the reading path',()=>{
 test('storage denial still returns a safe usable chapter state',()=>{
   const p=fixture({},DATA,true).get(3);assert.equal(p.story,0);assert.deepEqual(p.themes,{});assert.deepEqual(p.held,{});
 });
+test('spaced-repetition (SRS) records survive chapter map migration',()=>{
+  const srs={'3.06':{box:3,due:'2026-10-26',reps:3,lapses:0}};
+  const f=fixture({3:{story:1,themes:{2:1},held:{'3.06':1},srs}});
+  const p=f.get(3);
+  assert.deepEqual(p.srs,srs);
+});
+test('SRS schedule promotes on right answer, demotes to box 1 on miss, orders due queue, and tracks streak',()=>{
+  const srsStart=html.indexOf('const SRS_DAYS = [0, 1, 3, 7, 21, 60];');
+  const srsEnd=html.indexOf('function srsBarHtml(',srsStart);
+  assert(srsStart>=0 && srsEnd>srsStart,'SRS engine must be emitted');
+  const f=fixture();
+  vm.runInContext('function lrPut(n,o){const a=lrAll();a[n]=o;localStorage.setItem("gitaLearn",JSON.stringify(a));}\n'+html.slice(srsStart,srsEnd),f.ctx);
+  // 1. New -> Box 1 (+1d) -> Box 2 (+3d) -> Box 3 (+7d)
+  let r1=vm.runInContext('srsRecord(2,"2.47",true,"2026-10-19")',f.ctx);
+  assert.equal(r1.box,1);assert.equal(r1.due,'2026-10-20');assert.equal(r1.reps,1);assert.equal(r1.lapses,0);
+  let r2=vm.runInContext('srsRecord(2,"2.47",true,"2026-10-20")',f.ctx);
+  assert.equal(r2.box,2);assert.equal(r2.due,'2026-10-23');assert.equal(r2.reps,2);
+  let r3=vm.runInContext('srsRecord(2,"2.47",true,"2026-10-23")',f.ctx);
+  assert.equal(r3.box,3);assert.equal(r3.due,'2026-10-30');assert.equal(r3.reps,3);
+  // 2. Miss demotes to Box 1 (+1d) and increments lapses
+  let miss=vm.runInContext('srsRecord(2,"2.47",false,"2026-10-30")',f.ctx);
+  assert.equal(miss.box,1);assert.equal(miss.due,'2026-10-31');assert.equal(miss.lapses,1);
+  // 3. Due ordering: earliest due first, future due excluded
+  vm.runInContext('srsRecord(2,"2.11",true,"2026-10-15")',f.ctx); // due 2026-10-16
+  vm.runInContext('srsRecord(2,"2.12",true,"2026-10-18")',f.ctx); // due 2026-10-19
+  const due=JSON.parse(vm.runInContext('JSON.stringify(srsDueChapter(2,"2026-10-19"))',f.ctx));
+  assert.deepEqual(due,['2.11','2.12'],'only due verses returned in ascending due order');
+  const allDue=JSON.parse(vm.runInContext('JSON.stringify(srsDueAll("2026-10-19"))',f.ctx));
+  assert.equal(allDue.total,2);assert.equal(allDue.firstCi,1);
+  // 4. Streak counts consecutive days
+  vm.runInContext('srsTouchStreak("2026-10-17");srsTouchStreak("2026-10-18");srsTouchStreak("2026-10-19");',f.ctx);
+  assert.equal(vm.runInContext('srsStreakCount("2026-10-19")',f.ctx),3);
+});
 console.log(`\nprogress maps: ${count} tests passed — retained verse ranges migrate; held verses, notes and favourites survive`);

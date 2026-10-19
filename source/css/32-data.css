@@ -13,6 +13,9 @@
 .data-stat{ background:var(--cream); border:1px solid var(--line); border-radius:999px;
             padding:6px 14px; font-size:.85rem; color:var(--ink-soft); }
 .data-stat b{ color:var(--ink); font-weight:700; }
+.data-badge{ display:inline-block; margin:0 0 10px; padding:4px 12px; border-radius:999px;
+             font-size:.8rem; font-weight:600; background:var(--saffron-soft); color:var(--saffron-text); }
+.data-badge.ok{ background:var(--teal-soft); color:var(--teal); }
 .data-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
 .data-actions .lr-cta, .data-actions .lr-ghost{ font-size:.9rem; }
 .data-foot{ margin-top:18px; padding-top:12px; border-top:1px solid var(--line);

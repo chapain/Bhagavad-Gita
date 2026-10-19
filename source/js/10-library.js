@@ -123,6 +123,49 @@ function onSearchInput(v){
    pattern; a standing "Clear" button was dead chrome on an empty field */
 function searchX(){ const f = document.querySelector('.sw-field');
   if(f) f.classList.toggle('has-x', ($('#searchInput').value || '').length > 0); }
+function recentLoad(){
+  try{
+    const a = JSON.parse(localStorage.getItem('gitaRecent') || '[]');
+    return Array.isArray(a) ? a.filter(x => typeof x === 'string' && x.trim().length >= 2 && x.length <= 40).slice(0, 6) : [];
+  }catch(e){ return []; }
+}
+function recentSave(q){
+  q = String(q || '').trim();
+  if(q.length < 2 || q.length > 40) return;
+  const next = [q, ...recentLoad().filter(x => x.toLowerCase() !== q.toLowerCase())].slice(0, 6);
+  try{ localStorage.setItem('gitaRecent', JSON.stringify(next)); }catch(e){}
+}
+function hlSearchText(text, q){
+  const s = String(text || ''), needle = String(q || '').trim();
+  if(needle.length < 2 || /^\d/.test(digitNorm(needle))) return esc(s);
+  const re = new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+  let out = '', last = 0, m;
+  while((m = re.exec(s)) !== null){
+    out += esc(s.slice(last, m.index)) + '<mark class="srch-hl">' + esc(m[0]) + '</mark>';
+    last = m.index + m[0].length;
+    if(!m[0].length) break;
+  }
+  return out + esc(s.slice(last));
+}
+function srchChipsHtml(q, hitCount){
+  const cur = String(q || '').trim().toLowerCase();
+  const rec = recentLoad().filter(x => x.toLowerCase() !== cur);
+  const items = hitCount === 0
+    ? [...new Set([...rec, numL('2.47'), numL('4.7'), numL('18.66'), 'धर्मक्षेत्रे'])].slice(0, 6)
+    : rec.slice(0, 5);
+  if(!items.length) return '';
+  const lbl = hitCount > 0 ? `<span class="srch-chips-lbl">${esc(L('search_recent'))}:</span>` : '';
+  return `<div class="srch-chips fade-in">${lbl}${items.map(x =>
+    `<button type="button" class="srch-chip" data-q="${esc(x)}" onclick="App.library.pickSearch(this.dataset.q)">${esc(x)}</button>`
+  ).join('')}</div>`;
+}
+function pickSearch(q){
+  const inp = $('#searchInput');
+  if(!inp) return;
+  inp.value = String(q || '');
+  searchX();
+  doSearch();
+}
 function doSearch(){
   if(!allChReady()){ loadAllChapters().then(doSearch); return; }
   const q = ($('#searchInput').value || '').trim();
@@ -172,22 +215,26 @@ function doSearch(){
   if(hits.length === 0){
     view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
       <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
-      <div class="view-sub fade-in">${esc(L('no_results'))}</div>`;
+      <div class="view-sub fade-in">${esc(L('no_results'))}</div>
+      <div class="srch-empty-hint fade-in">${esc(L('search_try'))}</div>
+      ${srchChipsHtml(q, 0)}`;
     announceView();
     return;
   }
+  recentSave(q);
   SRCH_HITS = hits;
   view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
     <div class="res-count fade-in">${esc(resultCountLabel(hits.length))}</div>
+    ${srchChipsHtml(q, hits.length)}
     <div class="grid verses fade-in">${hits.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
       const pi = th.parts.indexOf(part);
       return `<div class="mini" role="button" tabindex="0" onclick="App.reader.open(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
         <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
-        <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
+        <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${hlSearchText(T(part.titles), q)}</div>
         <div class="padas" lang="sa">${App.reader.padaBlock(v)}</div>
-        <div class="vhint">${esc(T(v.paras))}</div>
+        <div class="vhint">${hlSearchText(T(v.paras), q)}</div>
       </div>`;}).join('')}</div>`;
   announceView();
 }
@@ -441,6 +488,7 @@ App.library = Object.freeze({
   paintTheme,
   rememberOrigin,
   search: doSearch,
+  pickSearch,
   clearSearch,
   randomVerse,
   showFavorites,

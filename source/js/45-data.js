@@ -1,17 +1,40 @@
 /* Data backup (Phase 5.4) — versioned JSON export/import for favs, notes, Learn */
 const DATA_SCHEMA_VERSION = 1;
+function dataLastBackup(){
+  try{
+    const s=localStorage.getItem('gitaBackupAt')||'';
+    return /^\d{4}-\d{2}-\d{2}$/.test(s)?s:'';
+  }catch(e){ return ''; }
+}
+function dataMarkBackup(iso){
+  const d=String(iso||new Date().toISOString()).slice(0,10);
+  if(/^\d{4}-\d{2}-\d{2}$/.test(d)){
+    try{ localStorage.setItem('gitaBackupAt',d); }catch(e){}
+  }
+}
+function dataBackupBadgeHtml(hasData){
+  const last=dataLastBackup();
+  if(last) return `<div id="dataBackupBadge" class="data-badge ok">✓ ${esc(L('data_backed_up').replace('{d}',numL(last)))}</div>`;
+  if(hasData) return `<div id="dataBackupBadge" class="data-badge">${esc(L('data_never_backed'))}</div>`;
+  return `<div id="dataBackupBadge" class="data-badge" hidden></div>`;
+}
 function dataCurrentSnapshot(){
-  let favs=[],notes={},learn={};
+  let favs=[],notes={},learn={},streak=[];
   try{ favs=JSON.parse(localStorage.getItem('gitaFavs')||'[]'); }catch(e){ favs=[]; }
   try{ notes=JSON.parse(localStorage.getItem('gitaFavNotes')||'{}'); }catch(e){ notes={}; }
   try{ learn=JSON.parse(localStorage.getItem('gitaLearn')||'{}'); }catch(e){ learn={}; }
+  try{ streak=JSON.parse(localStorage.getItem('gitaStreak')||'[]'); }catch(e){ streak=[]; }
   if(!Array.isArray(favs)) favs=[];
   if(!notes||typeof notes!=='object'||Array.isArray(notes)) notes={};
   if(!learn||typeof learn!=='object'||Array.isArray(learn)) learn={};
+  if(!Array.isArray(streak)) streak=[];
   favs=favs.filter(function(x){ return typeof x==='string'&&/^\d{1,2}\.\d{1,2}$/.test(x); });
+  streak=streak.filter(function(x){ return typeof x==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x); });
   const clean={};
   for(const k in notes) if(typeof notes[k]==='string'&&/^\d{1,2}\.\d{1,2}$/.test(k)) clean[k]=notes[k];
-  return {favs:favs,favNotes:clean,learn:learn};
+  const out={favs:favs,favNotes:clean,learn:learn};
+  if(streak.length) out.streak=streak;
+  return out;
 }
 function dataStats(snap){
   const favs=snap.favs||[],notes=snap.favNotes||{},learn=snap.learn||{};
@@ -36,6 +59,9 @@ function dataExport(){
   document.body.appendChild(a);
   a.click();
   setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); },500);
+  dataMarkBackup(payload.exportedAt);
+  const b=document.getElementById('dataBackupBadge');
+  if(b) b.outerHTML=dataBackupBadgeHtml(true);
   dataShowMessage(L('data_exported'),true);
 }
 function dataValidateImport(obj){
@@ -65,8 +91,10 @@ function dataValidateImport(obj){
       if(!c||typeof c!=='object') return "bad learn entry "+ch;
       if(c.themes&&typeof c.themes!=='object') return "bad themes "+ch;
       if(c.held&&typeof c.held!=='object') return "bad held "+ch;
+      if(c.srs&&(typeof c.srs!=='object'||Array.isArray(c.srs))) return "bad srs "+ch;
     }
   }
+  if(d.streak&&!Array.isArray(d.streak)) return "streak not array";
   return null;
 }
 function dataMergeImport(imported){
@@ -109,15 +137,38 @@ function dataMergeImport(imported){
     for(const v in impHeld) if(impHeld[v]===1) out.held[v]=1;
     if(Array.isArray(cur.map)) out.map=cur.map.slice();
     else if(Array.isArray(im.map)) out.map=im.map.slice();
+    const curSrs=(cur.srs&&typeof cur.srs==='object')?cur.srs:{};
+    const impSrs=(im.srs&&typeof im.srs==='object')?im.srs:{};
+    const mergedSrs={};
+    for(const v in curSrs) if(curSrs[v]&&typeof curSrs[v]==='object') mergedSrs[v]=Object.assign({},curSrs[v]);
+    for(const v in impSrs){
+      const e=impSrs[v];
+      if(!e||typeof e!=='object') continue;
+      if(!mergedSrs[v]||(e.box||0)>(mergedSrs[v].box||0)
+         ||((e.box||0)===(mergedSrs[v].box||0)&&String(e.due||'')<String(mergedSrs[v].due||''))){
+        mergedSrs[v]=Object.assign({},e);
+      }
+    }
+    if(Object.keys(mergedSrs).length) out.srs=mergedSrs;
     mergedLearn[ch]=out;
   }
   try{
     localStorage.setItem('gitaFavs',JSON.stringify(mergedFavs));
     localStorage.setItem('gitaFavNotes',JSON.stringify(mergedNotes));
     localStorage.setItem('gitaLearn',JSON.stringify(mergedLearn));
+    if(Array.isArray(imp.streak)){
+      let curSt=[];
+      try{ curSt=JSON.parse(localStorage.getItem('gitaStreak')||'[]'); }catch(e){ curSt=[]; }
+      const stSet={};
+      (Array.isArray(curSt)?curSt:[]).concat(imp.streak).forEach(function(d){
+        if(typeof d==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(d)) stSet[d]=1;
+      });
+      localStorage.setItem('gitaStreak',JSON.stringify(Object.keys(stSet).sort().slice(-365)));
+    }
   }catch(e){ return {ok:false,error:"storage full"}; }
   try{ FAV=mergedFavs.slice(); }catch(e){}
   try{ FAVNOTE=Object.assign({},mergedNotes); }catch(e){}
+  dataMarkBackup(imported&&imported.exportedAt);
   const stats=dataStats({favs:mergedFavs,favNotes:mergedNotes,learn:mergedLearn});
   return {ok:true,stats:stats,imported:{favs:impFavs.length,notes:Object.keys(impNotes).length,chapters:Object.keys(impLearn).length}};
 }
@@ -131,7 +182,7 @@ function dataHandleImportFile(file){
       if(err){ dataShowMessage(L('data_import_failed')+" ("+err+")",false); return; }
       const res=dataMergeImport(obj);
       if(!res.ok){ dataShowMessage(L('data_import_failed')+" — "+res.error,false); return; }
-      const msg=L('data_imported').replace('{n}',String(res.imported.favs)).replace('{m}',String(res.imported.notes)).replace('{k}',String(res.imported.chapters));
+      const msg=L('data_imported').replace('{n}',numL(res.imported.favs)).replace('{m}',numL(res.imported.notes)).replace('{k}',numL(res.imported.chapters));
       dataShowMessage(msg,true);
       setTimeout(function(){ showData(); },800);
     }catch(e){ dataShowMessage(L('data_import_failed'),false); }
@@ -144,6 +195,8 @@ function dataClearAll(){
     localStorage.removeItem('gitaFavs');
     localStorage.removeItem('gitaFavNotes');
     localStorage.removeItem('gitaLearn');
+    localStorage.removeItem('gitaStreak');
+    localStorage.removeItem('gitaBackupAt');
   }catch(e){}
   try{ FAV=[]; FAVNOTE={}; }catch(e){}
   dataShowMessage(L('data_cleared'),true);
@@ -169,10 +222,11 @@ function showData(){
       <div class="data-card">
         <h3>${esc(L('data_current'))}</h3>
         <div class="data-stats">
-          <span class="data-stat"><b>${st.favs}</b> ${esc(L('favorites'))}</span>
-          <span class="data-stat"><b>${st.notes}</b> ${esc(L('data_notes'))}</span>
-          <span class="data-stat"><b>${st.chapters}</b> ${esc(L('data_chapters'))} · <b>${st.held}</b> ${esc(L('data_held'))}</span>
+          <span class="data-stat"><b>${numL(st.favs)}</b> ${esc(L('favorites'))}</span>
+          <span class="data-stat"><b>${numL(st.notes)}</b> ${esc(L('data_notes'))}</span>
+          <span class="data-stat"><b>${numL(st.chapters)}</b> ${esc(L('data_chapters'))} · <b>${numL(st.held)}</b> ${esc(L('data_held'))}</span>
         </div>
+        ${dataBackupBadgeHtml(hasData)}
         <p>${esc(L('data_local_note'))}</p>
       </div>
       <div class="data-card">
@@ -207,5 +261,6 @@ App.data = Object.freeze({
   stats:dataStats,
   validate:dataValidateImport,
   merge:dataMergeImport,
+  lastBackup:dataLastBackup,
   version:DATA_SCHEMA_VERSION
 });

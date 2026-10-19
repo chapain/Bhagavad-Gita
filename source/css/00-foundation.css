@@ -32,6 +32,12 @@ __FONTS__
     --shadow:0,0,0; --scrim:rgba(0,0,0,.78); --fade:23,19,14;
     --chip:rgba(242,231,213,.10); --chip-hover:rgba(242,231,213,.20); --chip-line:rgba(242,231,213,.28);
   }
+  /* Skip link: keyboard users jump past header/toolbar to the main view. */
+  .skip-link{ position:absolute; top:6px; left:6px; z-index:100; padding:8px 14px;
+              background:var(--teal); color:var(--on-accent); border-radius:8px;
+              font:600 .85rem/1 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",sans-serif;
+              text-decoration:none; transform:translateY(-140%); transition:transform .15s; }
+  .skip-link:focus, .skip-link:focus-visible{ transform:translateY(0); }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ font-family:Georgia, "Noto Serif Devanagari", "Times New Roman", serif; color:var(--ink);
         line-height:1.58; display:flex; flex-direction:column; min-height:100vh;}

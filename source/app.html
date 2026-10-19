@@ -19,6 +19,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="preload" href="noto-deva-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="noto-deva-bold.woff2" as="font" type="font/woff2" crossorigin>
 <meta name="theme-color" content="#1A5648" id="themeColor">
 <script>
 /* Apply the saved theme and language before first paint; storage may throw. */
@@ -105,7 +107,38 @@
     "name": "Dhruba Chapain",
     "address": {"@type": "PostalAddress", "addressLocality": "Pokhara", "addressCountry": "NP"}
   },
+  "about": {
+    "@type": "Book",
+    "name": "Bhagavad Gita",
+    "alternateName": "श्रीमद्भगवद्गीता",
+    "inLanguage": ["sa", "en", "ne", "hi"],
+    "numberOfPages": 18
+  },
   "sameAs": "https://github.com/chapain/Bhagavad-Gita"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many chapters and verses are in this Bhagavad Gita study edition?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All 18 chapters and 700 verses of the Bhagavad Gita are included in Sanskrit (Devanagari and IAST) with word-by-word meanings, literal translations, and flowing paraphrases in English, Nepali (नेपाली), and Hindi (हिन्दी)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the Bhagavad Gita study app work offline and is it free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It is completely free, requires no account or login, and works offline in your browser once opened."
+      }
+    }
+  ]
 }
 </script>
 
@@ -121,6 +154,7 @@ __APP_CSS__
 </style>
 </head>
 <body>
+<a href="#view" class="skip-link" id="skipLink">Skip to content</a>
 
 <div class="atm" aria-hidden="true">
   <div class="atm-wisp"></div>

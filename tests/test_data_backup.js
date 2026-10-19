@@ -19,6 +19,8 @@ function mustContain(re, label){
 
 mustContain(/DATA_SCHEMA_VERSION = 1/, 'schema version is 1');
 mustContain(/function dataCurrentSnapshot/, 'snapshot exists');
+mustContain(/function dataLastBackup/, 'backup timestamp reader exists');
+mustContain(/function dataBackupBadgeHtml/, 'backup status badge helper exists');
 mustContain(/function dataValidateImport/, 'validator exists');
 mustContain(/function dataMergeImport/, 'merge exists');
 mustContain(/function dataExport/, 'export exists');
@@ -95,5 +97,60 @@ const cur={favs:["1.01"]};
 const merged=dataMergeImportSim(cur, good);
 if(merged.length!==2 || !merged.includes("2.47")){ console.error('FAIL: merge'); process.exit(1); }
 console.log('PASS: merge unions favs');
+
+// Execute actual emitted dataMergeImport for SRS (max box + earliest due tie-break) and streak
+const vm = require('vm');
+const dataStart = html.indexOf('const DATA_SCHEMA_VERSION = 1;');
+const dataEnd = html.indexOf('function dataHandleImportFile(', dataStart);
+const store = {
+  gitaLearn: JSON.stringify({
+    "2": {
+      story: 1, themes: {"0": 1}, held: {"2.47": 1},
+      srs: {
+        "2.47": {box: 2, due: "2026-10-25", reps: 2, lapses: 0},
+        "2.11": {box: 3, due: "2026-10-30", reps: 3, lapses: 0}
+      }
+    }
+  }),
+  gitaStreak: JSON.stringify(["2026-10-18"])
+};
+const ctx = vm.createContext({
+  localStorage: {
+    getItem: k => store[k] || null,
+    setItem: (k, v) => { store[k] = v; }
+  },
+  FAV: [], FAVNOTE: {},
+  esc: s => String(s), numL: s => String(s), L: k => k
+});
+vm.runInContext(html.slice(dataStart, dataEnd), ctx);
+const impPayload = {
+  version: 1,
+  exportedAt: "2026-10-19T12:00:00Z",
+  data: {
+    favs: ["2.47"],
+    learn: {
+      "2": {
+        story: 0, themes: {}, held: {"2.47": 1},
+        srs: {
+          "2.47": {box: 2, due: "2026-10-22", reps: 2, lapses: 0}, // tie on box 2 -> earliest due wins
+          "2.11": {box: 1, due: "2026-10-20", reps: 1, lapses: 1}  // lower box 1 -> box 3 wins
+        }
+      }
+    },
+    streak: ["2026-10-19"]
+  }
+};
+ctx.dataMergeImport(impPayload);
+const mergedLearn = JSON.parse(store.gitaLearn);
+if(mergedLearn["2"].srs["2.47"].due !== "2026-10-22" || mergedLearn["2"].srs["2.11"].box !== 3){
+  console.error('FAIL: SRS merge max(box) + earliest due tie-break', mergedLearn["2"].srs);
+  process.exit(1);
+}
+const mergedStreak = JSON.parse(store.gitaStreak);
+if(mergedStreak.length !== 2 || !mergedStreak.includes("2026-10-18") || !mergedStreak.includes("2026-10-19")){
+  console.error('FAIL: streak union', mergedStreak);
+  process.exit(1);
+}
+console.log('PASS: SRS merge (max box + earliest due tie-break) and streak union');
 
 console.log('test_data_backup.js: ALL GREEN');
