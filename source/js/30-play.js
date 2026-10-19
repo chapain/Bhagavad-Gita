@@ -8,10 +8,10 @@
 var PL = {scope:'all', ch:0, mode:0, run:0, q:null, active:false};
 
 function showPlay(){
-  if(!allChReady()){ loadAllChapters().then(showPlay); return; }
+  if(!App.library.ready()){ loadAllChapters().then(showPlay); return; }
   PL.active = false;
-  rememberOrigin();
-  state.view='play'; state.chapter=null; state.theme=null; persistView(); renderCrumbs();
+  App.library.rememberOrigin();
+  state.view='play'; state.chapter=null; state.theme=null; App.views.persist(); App.views.renderCrumbs();
   view.innerHTML = `
     <div class="lrn fade-in">
       <h2 class="view-title">${esc(L('play_title'))}</h2>
@@ -33,7 +33,7 @@ function showPlay(){
             <span class="b"><b>${esc(L(tk))}</b><span>${esc(L(d))}</span></span>
           </button>`).join('')}
       </div>
-    </div>` + backFoot('showWelcome()', L('home_plain'));
+    </div>` + backFoot('App.views.welcome()', L('home_plain'));
   scrollViewTop();
 }
 function plScope(s){ PL.scope = s; showPlay(); }
@@ -43,7 +43,7 @@ function plPool(){
   const out = [];
   DATA.forEach((c,ci)=>{
     if(PL.scope === 'ch' && ci !== PL.ch) return;
-    c.themes.forEach(t=>thVerses(t).forEach(s=>out.push(s)));
+    c.themes.forEach(t=>App.learn.themeVerses(t).forEach(s=>out.push(s)));
   });
   return out;
 }
@@ -104,7 +104,7 @@ function plNext(keep){
     const distract = same.length >= 3 ? same : rest;
     const ordered = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean) : null;
     const four = (ordered && ordered.length===4) ? ordered
-               : lrShuffle([s].concat(lrSample(distract, 3)));
+               : App.learn.shuffle([s].concat(App.learn.sample(distract, 3)));
     PL.q = {n:s.n, ord:four.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(L('play_q1')) + saAsk(s),
@@ -127,7 +127,7 @@ function plNext(keep){
     const distract = same.length >= 3 ? same : rest;
     const ordered2 = keep ? keep.ord.map(n=>pool.find(v=>v.n===n)).filter(Boolean) : null;
     const four2 = (ordered2 && ordered2.length===4) ? ordered2
-                : lrShuffle([nxt].concat(lrSample(distract, 3)));
+                : App.learn.shuffle([nxt].concat(App.learn.sample(distract, 3)));
     PL.q = {n:s.n, ord:four2.map(o=>o.n)};
     item = {kind:'pick',
       ask: esc(L('play_q2')) + saAsk(s),
@@ -144,8 +144,44 @@ function plNext(keep){
   }
   item.qid = 'play:'+PL.mode+':'+s.n;
   /* A one-item run: when it finishes, deal another. That is the endless game. */
-  lrRun(0, [item], L('play_title') + (PL.run ? ' · ' + fmt(L('play_round'),{n:numL(PL.run)}) : ''),
+  App.drills.run(0, [item], L('play_title') + (PL.run ? ' · ' + fmt(L('play_round'),{n:numL(PL.run)}) : ''),
         ()=>{ PL.run++; plNext(); },
-        {fn:'showPlay()', label:'play_title'});
+        {fn:'App.play.show()', label:'play_title'});
 }
 
+
+function playSessionSnapshot(){
+  const snap = {scope:PL.scope, ch:PL.ch, mode:PL.mode, run:PL.run,
+    q:PL.q || null, active:!!PL.active};
+  const quiz = App.drills.capture();
+  if(quiz) snap.quiz = quiz;
+  return snap;
+}
+function hydratePlaySession(saved){
+  if(!saved) return;
+  PL.scope = saved.scope === 'ch' ? 'ch' : 'all';
+  PL.ch = Number.isInteger(saved.ch) ? saved.ch : 0;
+  PL.mode = Number.isInteger(saved.mode) ? saved.mode : 0;
+  PL.run = Number.isInteger(saved.run) ? saved.run : 0;
+  PL.q = saved.q || null; PL.active = !!saved.active;
+}
+function restorePlaySession(saved){
+  hydratePlaySession(saved);
+  if(!saved || !saved.active || !saved.q) return;
+  plNext(saved.q);
+  if(saved.quiz) App.drills.restore(saved.quiz);
+}
+function relanguagePlay(){
+  if(PL.active && PL.q && PL.mode) plNext(PL.q);
+  else showPlay();
+}
+App.play = Object.freeze({
+  show: showPlay,
+  next: plNext,
+  snapshot: playSessionSnapshot,
+  hydrate: hydratePlaySession,
+  restore: restorePlaySession,
+  relanguage: relanguagePlay,
+  slokaDeva,
+  slokaIast
+});

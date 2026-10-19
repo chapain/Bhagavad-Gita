@@ -353,8 +353,9 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
 # overhaul adds ~17KB of useful UI (slim two-row header, bottom tabbar,
 # m-head/m-menu/m-whole-verse hero, unified chapter view with theme
 # headings + direct verse tap targets); the cap is to catch accidental
-# bloat, not freeze UI evolution. Actual at 3.1 commit: 267684.
-ok(len(idx) < 290000, f"the shell should stay lean; it is {len(idx)} characters")
+# bloat, not freeze UI evolution. Phase 2's explicit feature interfaces and
+# session ownership bring the maintained baseline to about 293500 characters.
+ok(len(idx) < 295000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64

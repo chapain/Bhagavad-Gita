@@ -96,7 +96,7 @@ function persistView(){
   scheduleSessionSave();
 }
 function goHome(){
-  if($('#modalBg').classList.contains('open')) closeModal();
+  if($('#modalBg').classList.contains('open')) App.reader.close();
   $('#searchInput').value = '';
   state.origin = null;
   showWelcome();
@@ -142,16 +142,16 @@ function showWelcome(){
     </div>`;
   const paint = (dv, shared)=>{
     if(!dv || state.view!=='welcome' || !DATA || !DATA[dv.ci]) return;
-    const c = DATA[dv.ci], v = verseAt(dv);
-    const part = sutraAt(c.themes[dv.ti], dv.si).part;
+    const c = DATA[dv.ci], v = App.library.verse(dv);
+    const part = App.library.entryAt(c.themes[dv.ti], dv.si).part;
     const el = document.getElementById('wDay'); if(!el) return;
     el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0"
           aria-label="${esc(L('verse'))} ${esc(fmtNL(v.n))}: ${esc(T(part.titles))}. ${esc(L('open_verse'))}"
-          onclick="openModal(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
+          onclick="App.reader.open(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
           <div class="wd-label">${esc(shared ? L('shared_label') : L('verse_of_day'))}</div>
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
           <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
-          <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
+          <div class="padas" lang="sa">${App.reader.padaBlock(v)}</div>
           <div class="vhint">${shared ? esc(L('shared_hint')) : esc(T(v.paras))}</div>
           <div class="wd-open"><span>${esc(L('open_verse'))}</span><span aria-hidden="true">→</span></div>
         </div>`;
@@ -159,7 +159,7 @@ function showWelcome(){
   if(state.shared){ loadChapter(state.shared.ci+1).then(()=>paint(state.shared, true)).catch(gitaLoadFail); }
   else {
     const sp = daySpec();
-    loadChapter(sp.ch).then(()=>paint(verseLoc(sp.id), false)).catch(gitaLoadFail);
+    loadChapter(sp.ch).then(()=>paint(App.library.location(sp.id), false)).catch(gitaLoadFail);
   }
 }
 function sectionCard(k, chip, title, desc){
@@ -226,7 +226,7 @@ function modeSwitch(ci){
   return `<div class="mode-box fade-in">
     <div class="mode-seg" role="tablist" aria-label="${esc(L('choose_title'))}">
       ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
-      ${btn('learn',   esc(L('opt_learn_s')), `showLearn(${ci})`,   esc(L('opt_learn_d')))}
+      ${btn('learn',   esc(L('opt_learn_s')), `App.learn.show(${ci})`,   esc(L('opt_learn_d')))}
     </div>
   </div>`;
 }
@@ -266,7 +266,7 @@ function showChapter(ci, anchorTi){
          title — the longest paraphrase in the corpus is ~190 characters,
          four or five card lines. Clicking a card still opens the sheet for
          the Sanskrit and the word-by-word reading. */
-      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${ci},${ti},${si},'theme',null,this)">
+      return `<div class="mini" role="button" tabindex="0" onclick="App.reader.open(${ci},${ti},${si},'theme',null,this)">
         <div class="vnum">${L('verse')} ${fmtNL(s.n)}</div>
         <div class="vtitle">${esc(T(p.titles))}</div>
         <div class="vhint">${esc(T(s.paras))}</div>
@@ -306,3 +306,20 @@ function showChapter(ci, anchorTi){
    verse sheet's "back to theme" both land here with that theme opened. */
 function showVerses(ci,ti){ showChapter(ci, ti); }
 
+
+/* Views owns route-level rendering and address persistence. */
+App.views = Object.freeze({
+  renderCrumbs,
+  persist: persistView,
+  hash: viewHash,
+  home: goHome,
+  welcome: showWelcome,
+  sections: showSections,
+  chapters: showChapters,
+  chapter: showChapter,
+  verses: showVerses,
+  breadcrumbs: wayCrumbs,
+  wayName,
+  chapterTitle: chTitle,
+  modeSwitch
+});

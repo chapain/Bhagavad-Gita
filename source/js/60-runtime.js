@@ -41,7 +41,7 @@ document.addEventListener('visibilitychange', ()=>{
     const dt = Date.now() - t0;
     x0 = null;
     if(dt > 800 || Math.abs(dx) < 60) return;
-    if(state.view === 'learn') lrMeetGo(dx < 0 ? 1 : -1);
+    if(state.view === 'learn') App.learn.navigate(dx < 0 ? 1 : -1);
   }, {passive:true});
 })();
 
@@ -65,7 +65,7 @@ document.addEventListener('visibilitychange', ()=>{
     x0 = null;
     if(dt > 800 || Math.abs(dx) < 60) return;
     if(state.mode === 'random') return;
-    navSutra(dx < 0 ? 1 : -1);              // swipe left → next, swipe right → previous
+    App.reader.navigate(dx < 0 ? 1 : -1);              // swipe left → next, swipe right → previous
   }, {passive:true});
 })();
 /* Offline support when served over http(s): the service worker caches the app so
@@ -85,7 +85,7 @@ if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
   });
 }
 function gitaBoot(){
-  assembleData();
+  App.library.assemble();
   /* Sync the language chrome first. state.lang already came from savedLang() and
      <html lang> from the pre-paint script, but the three buttons ship with
      English hard-coded on / aria-pressed="true" — a reader restored into नेपाली
@@ -93,7 +93,7 @@ function gitaBoot(){
      applyStatic(), so the interface strings land in the restored language
      before the deep link below renders anything. */
   syncLang(state.lang);
-  paintTheme();
+  App.library.paintTheme();
   try{
     var path = location.pathname || '/';
     if (path.charAt(path.length-1) !== '/' && !/index.html$/i.test(path)){
@@ -108,13 +108,7 @@ function gitaBoot(){
     try{ sessionStorage.setItem('gita.route', restore.route || '#'); }catch(e){}
     const searchInput = document.getElementById('searchInput');
     if(searchInput) searchInput.value = restore.query || '';
-    if(restore.play){
-      PL.scope = restore.play.scope === 'ch' ? 'ch' : 'all';
-      PL.ch = Number.isInteger(restore.play.ch) ? restore.play.ch : 0;
-      PL.mode = Number.isInteger(restore.play.mode) ? restore.play.mode : 0;
-      PL.run = Number.isInteger(restore.play.run) ? restore.play.run : 0;
-      PL.q = restore.play.q || null; PL.active = !!restore.play.active;
-    }
+    if(restore.play) App.play.hydrate(restore.play);
     if(restore.modal){
       const old = history.state && typeof history.state === 'object' ? history.state : {};
       const route = restore.route || '';
@@ -132,60 +126,60 @@ function gitaBoot(){
     var v = /^#v=([1-9][0-9]?\.[0-9]{1,2})$/.exec(location.hash || '');
     if (v) { var hp = v[1].split('.');
       var vref = hp[0] + '.' + (hp[1].length === 1 ? '0' + hp[1] : hp[1]);
-      var loc = verseLoc(vref);
+      var loc = App.library.location(vref);
       /* Owner 2026-08-31: a shared verse lands as an INVITATION, not a popup —
          the verse is shown on the welcome page with "click to see the
          meanings"; the four-pāda sheet opens when the receiver clicks. */
-      if (loc) { state.shared = loc; showWelcome(); return; }
+      if (loc) { state.shared = loc; App.views.welcome(); return; }
       /* Out of range (#v=2.99) or a chapter that does not exist (#v=19.1):
          fall back to the welcome page instead of a blank one — and never ask
          for data/ch19.js: it is not there and its rejection used to escape. */
       var hn = parseInt(hp[0], 10);
-      if (hn > 18) { showWelcome(); return; }
+      if (hn > 18) { App.views.welcome(); return; }
       loadChapter(hn).then(function(){
-        loc = verseLoc(vref);
+        loc = App.library.location(vref);
         if (loc) { state.shared = loc; }
-        showWelcome();
+        App.views.welcome();
       }).catch(function(){ gitaLoadFail(); });
       return; }
     var tm = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(location.hash || '');
     if (tm) { const ci = parseInt(tm[1], 10) - 1, ti = parseInt(tm[2], 10);
-      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return; }
+      loadChapter(ci+1).then(function(){ App.views.verses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return; }
     var m = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/.exec(location.hash || '');
     if(m){ const ci = parseInt(m[1], 10) - 1; const tb = m[3];
       loadChapter(ci+1).then(function(){
-        if(tb === 'learn'){ showLearn(ci); }
-        else { showChapter(ci); }  /* full/mula/study/chapter all merge into the one chapter view */
+        if(tb === 'learn'){ App.learn.show(ci); }
+        else { App.views.chapter(ci); }  /* full/mula/study/chapter all merge into the one chapter view */
       }).catch(function(){ gitaLoadFail(); }); return; }
     var h = location.hash || '';
-    if(h === '#play'){ showPlay(); return; }
-    if(h === '#favorites'){ showFavorites(); return; }
-    if(h === '#search'){ doSearch(); return; }
-    if(h === '#ways'){ showSections(); return; }
+    if(h === '#play'){ App.play.show(); return; }
+    if(h === '#favorites'){ App.library.showFavorites(); return; }
+    if(h === '#search'){ App.library.search(); return; }
+    if(h === '#ways'){ App.views.sections(); return; }
     var wy = /^#way=([123])$/.exec(h);
-    if(wy){ showChapters(+wy[1]); return; }
+    if(wy){ App.views.chapters(+wy[1]); return; }
     var stay = '';
     try{ stay = sessionStorage.getItem('gita.route')||''; }catch(e){}
-    if(stay==='#play'){ showPlay(); return; }
-    if(stay==='#favorites'){ showFavorites(); return; }
-    if(stay==='#search'){ doSearch(); return; }
-    if(stay==='#ways'){ showSections(); return; }
+    if(stay==='#play'){ App.play.show(); return; }
+    if(stay==='#favorites'){ App.library.showFavorites(); return; }
+    if(stay==='#search'){ App.library.search(); return; }
+    if(stay==='#ways'){ App.views.sections(); return; }
     var sw = /^#way=([123])$/.exec(stay);
-    if(sw){ showChapters(+sw[1]); return; }
+    if(sw){ App.views.chapters(+sw[1]); return; }
     var sm = /^#chapter=([1-9]|1[0-8])(&tab=(mula|full|study|chapter|learn))?$/.exec(stay);
     if(sm){
       const ci = parseInt(sm[1],10)-1, tb=sm[3];
       loadChapter(ci+1).then(function(){
-        if(tb==='learn') showLearn(ci);
-        else showChapter(ci);
+        if(tb==='learn') App.learn.show(ci);
+        else App.views.chapter(ci);
       }).catch(function(){ gitaLoadFail(); }); return;
     }
     var st = /^#theme=([1-9]|1[0-8])\.([0-9]+)$/.exec(stay);
     if(st){
       const ci=parseInt(st[1],10)-1, ti=parseInt(st[2],10);
-      loadChapter(ci+1).then(function(){ showVerses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return;
+      loadChapter(ci+1).then(function(){ App.views.verses(ci, ti); }).catch(function(){ gitaLoadFail(); }); return;
     }
-    showWelcome();
+    App.views.welcome();
   })();
   var _idle = window.requestIdleCallback || function(fn){ setTimeout(fn, 1200); };
   _idle(function(){ loadAllChapters(); });

@@ -9,10 +9,13 @@ const vm = require('node:vm');
 
 const ROOT = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+const lookupStart = html.indexOf('function sutraAt(');
+const lookupEnd = html.indexOf('\n', lookupStart) + 1;
 const start = html.indexOf('function showChapter(ci, anchorTi){');
 const end = html.indexOf('// pāda display:', start);
-assert(start >= 0 && end > start, 'built showChapter() and sutraAt() must be present');
-const code = html.slice(start, end);
+assert(lookupStart >= 0 && lookupEnd > lookupStart && start >= 0 && end > start,
+  'built showChapter() and sutraAt() must be present');
+const code = html.slice(lookupStart, lookupEnd) + html.slice(start, end);
 assert(code.includes('function sutraAt('), 'test must use the built verse lookup');
 
 const DATA = Array.from({length: 18}, (_, ci) => {
@@ -23,24 +26,27 @@ const DATA = Array.from({length: 18}, (_, ci) => {
 });
 const view = {innerHTML: ''};
 let opened = [];
+function openVerse(ci, ti, si, mode, navIdx, invoker) {
+  // Resolve the card's arguments with the actual emitted lookup. The full
+  // modal's DOM machinery is deliberately outside this focused test.
+  opened.push({ci, ti, si, mode, navIdx, invoker,
+    verse: ctx.sutraAt(DATA[ci].themes[ti], si).s.n});
+}
 const ctx = vm.createContext({
   DATA,
   GITA_CH: Object.fromEntries(DATA.map(ch => [ch.num, ch])),
   state: {lang: 'en', section: null},
   view,
-  persistView() {}, renderCrumbs() {},
+  persistView() {}, renderCrumbs() {}, viewHash: () => '',
+  goHome() {}, showWelcome() {}, showSections() {}, showChapters() {},
   L: key => key === 'verse' ? 'Verse' : key,
   T: text => text.en,
   numL: String, fmtNL: String, fmtRangeL: String,
   esc: text => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;'),
   wayCrumbs: () => '', wayName: () => '', chTitle: () => '',
   modeSwitch: () => '', colophonHtml: () => '', backFoot: () => '',
-  openModal(ci, ti, si, mode, navIdx, invoker) {
-    // Resolve the card's arguments with the actual emitted lookup. The full
-    // modal's DOM machinery is deliberately outside this focused test.
-    opened.push({ci, ti, si, mode, navIdx, invoker,
-      verse: ctx.sutraAt(DATA[ci].themes[ti], si).s.n});
-  },
+  App: {reader: {open: openVerse}},
+  openModal: openVerse,
 });
 vm.runInContext(code, ctx);
 

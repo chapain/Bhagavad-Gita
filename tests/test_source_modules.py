@@ -54,6 +54,31 @@ class SourceModuleContractTests(unittest.TestCase):
         css = self.check_family("css", "APP_CSS_FILES", ".css", 450)
         self.assertEqual(css.count("__FONTS__"), 1)
 
+    def test_feature_interfaces_are_explicit(self):
+        js = self.check_family("js", "APP_JS_FILES", ".js", 700)
+        for feature in ("library", "learn", "play", "drills", "views", "reader"):
+            self.assertIn(f"App.{feature} = Object.freeze({{", js)
+
+    def test_mutable_feature_state_has_one_owner(self):
+        files = {path.name: path.read_text(encoding="utf-8")
+                 for path in (SOURCE / "js").glob("*.js")}
+        owners = {
+            "10-library.js": ("VERSES", "FAV", "FAV_LIST", "SRCH_HITS"),
+            "20-learn.js": ("LV", "FP", "lrTest", "lrOpen"),
+            "30-play.js": ("PL",),
+            "35-drills.js": ("LQ", "LQi", "LQmiss", "LQpick"),
+        }
+        import re
+        for owner, names in owners.items():
+            allowed = {owner}
+            if owner == "20-learn.js":
+                allowed.add("25-learn-session.js")
+            for name in names:
+                for filename, text in files.items():
+                    if filename not in allowed:
+                        self.assertIsNone(re.search(rf"\b{re.escape(name)}\b", text),
+                                          f"{name} leaked from {owner} into {filename}")
+
     def test_retired_monoliths_stay_retired(self):
         self.assertFalse((SOURCE / "app.js").exists())
         self.assertFalse((SOURCE / "app.css").exists())

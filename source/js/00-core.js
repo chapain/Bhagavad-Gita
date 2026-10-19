@@ -39,6 +39,10 @@ let GITA_RESTORING = false, GITA_PENDING_RESTORE = null, GITA_SESSION_TIMER = nu
     GITA_SESSION_MIRROR = false;
 const state = { chapter:null, theme:null, idx:0, lang:savedLang(), view:'welcome', section:null, shared:null,
                 readerSize:savedReaderSize() };
+/* Feature files publish their supported cross-feature operations here. Keeping
+   one namespace makes dependencies visible without introducing a framework or
+   changing the single-script build. */
+const App = Object.create(null);
 function sessionPathKey(){ return (location.pathname || '/') + (location.search || ''); }
 function sessionNodePath(root, node){
   const path = []; let cur = node;
@@ -111,41 +115,12 @@ function readSessionSnapshot(){
   }catch(e){}
   return chosen;
 }
-function captureQuizSession(){
-  const root = document.getElementById('view'), kind = state.view === 'play' ? 'play'
-    : state.lrAt && state.lrAt.kind;
-  if(!root || !root.querySelector('.lr-qbox') || !Array.isArray(LQ) || !LQ.length
-     || !['story','drill','play'].includes(kind)) return null;
-  const queue = LQ.map(it=>it && it.qid);
-  if(queue.some(id=>typeof id !== 'string' || !id)) return null;
-  const index = Number.isInteger(LQi) ? Math.max(0, Math.min(LQi, LQ.length)) : 0;
-  const quiz = {seed:kind === 'play' ? null : (Number.isInteger(state.lrAt.seed) ? state.lrAt.seed : null),
-    queue, index, misses:Number.isInteger(LQmiss) ? Math.max(0,LQmiss) : 0, ui:null};
-  if(index >= LQ.length) return quiz;
-  const item = LQ[index], ui = {kind:item.kind};
-  if(item.kind === 'pick' && Array.isArray(item.opts)){
-    ui.optionOrder = item.opts.map(o=>o && o.oid).filter(x=>typeof x === 'string');
-    const wrong = root.querySelector('.lr-opt.wrong');
-    if(wrong && wrong.dataset.lrOpt) ui.wrong = wrong.dataset.lrOpt;
-  }else if(item.kind === 'order' && Array.isArray(item.chips)){
-    ui.chipOrder = Array.from(root.querySelectorAll('.lr-chips .lr-chip2'))
-      .map(el=>Number(el.dataset.lrChip)).filter(Number.isInteger);
-    ui.picked = Array.isArray(LQpick) ? LQpick.filter(Number.isInteger) : [];
-    ui.bad = !!root.querySelector('.lr-fb .bad');
-  }else if(item.kind === 'match' && LQpick && typeof LQpick === 'object'){
-    ui.match = {left:Number.isInteger(LQpick.left) ? LQpick.left : null,
-      right:Number.isInteger(LQpick.right) ? LQpick.right : null,
-      done:Object.keys(LQpick.done || {}).filter(k=>/^\d{1,2}\.\d{1,2}$/.test(k))};
-  }
-  quiz.ui = ui;
-  return quiz;
-}
 function captureSessionSnapshot(){
   const bg = document.getElementById('modalBg'), modalOpen = !!(bg && bg.classList.contains('open'));
   let modal = null;
   if(modalOpen && state.chapter != null && state.theme != null && DATA && DATA[state.chapter]){
     try{
-      const s = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s;
+      const s = App.library.entryAt(DATA[state.chapter].themes[state.theme], state.idx).s;
       modal = {id:s.n, mode:state.mode || 'theme', navIdx:Number.isInteger(state.navIdx) ? state.navIdx : 0,
         openDetails:sessionOpenDetails(document.getElementById('modal')),
         openWords:Array.from(document.querySelectorAll('#modal .words.open')).map(el=>el.id).filter(Boolean),
@@ -160,7 +135,7 @@ function captureSessionSnapshot(){
   let shared = null;
   try{ shared = state.shared && state.shared.id ? state.shared.id : null; }catch(e){}
   const snap = {version:1, updated:Date.now(), path:sessionPathKey(), hash:location.hash || '',
-    route:viewHash() || '', view:state.view, lang:state.lang,
+    route:App.views.hash() || '', view:state.view, lang:state.lang,
     section:Number.isInteger(state.section) ? state.section : null,
     chapter:Number.isInteger(state.chapter) ? state.chapter : null,
     theme:Number.isInteger(state.theme) ? state.theme : null,
@@ -170,25 +145,8 @@ function captureSessionSnapshot(){
     openDetails:sessionOpenDetails(document.getElementById('view')),
     scrollY:Math.max(0, window.scrollY || window.pageYOffset || 0),
     modal, readerSize:state.readerSize};
-  if(state.view === 'learn'){
-    snap.learn = {at:state.lrAt || null,
-      test:typeof lrTest === 'number' ? lrTest : 0,
-      open:typeof lrOpen === 'object' && lrOpen ? lrOpen : {},
-      level:typeof LV === 'object' && LV ? LV.level : 'full',
-      shown:typeof LV === 'object' && LV ? LV.shown : {}};
-    const quiz = captureQuizSession();
-    if(quiz) snap.learn.quiz = quiz;
-    if(state.lrAt && state.lrAt.kind === 'free' && FP && FP.v)
-      snap.learn.free = {ci:FP.ci, ti:FP.ti, verse:FP.v.n,
-        deal:Array.isArray(FP.deal) ? FP.deal.slice() : [],
-        picked:Array.isArray(FP.picked) ? FP.picked.slice() : []};
-  }
-  if(state.view === 'play' && typeof PL === 'object' && PL){
-    snap.play = {scope:PL.scope, ch:PL.ch, mode:PL.mode, run:PL.run,
-      q:PL.q || null, active:!!PL.active};
-    const quiz = captureQuizSession();
-    if(quiz) snap.play.quiz = quiz;
-  }
+  if(state.view === 'learn') snap.learn = App.learn.snapshot();
+  if(state.view === 'play') snap.play = App.play.snapshot();
   return snap;
 }
 function saveSessionSnapshot(mirrorHistory){
@@ -215,45 +173,6 @@ function scheduleSessionSave(mirrorHistory){
   }, 100);
 }
 let GITA_RESTORE_OBSERVER = null, GITA_RESTORE_FINISHING = false;
-function restoreLearnSession(snap){
-  if(!snap || snap.view !== 'learn' || !snap.learn || !snap.learn.at) return;
-  const ci = Number.isInteger(snap.chapter) ? snap.chapter : null;
-  if(ci == null) return;
-  const at = snap.learn.at;
-  if(at.kind === 'story'){
-    lrTest = snap.learn.test ? 1 : 0;
-    lrOpen = snap.learn.open && typeof snap.learn.open === 'object' ? snap.learn.open : {};
-    lrStory(ci, Number.isInteger(at.step) ? at.step : 0,
-      Number.isInteger(at.seed) ? at.seed : null);
-  }else if(at.kind === 'storyDone'){
-    lrStoryDone(ci);
-  }else if(at.kind === 'theme' && Number.isInteger(at.ti)){
-    if(typeof LV === 'object' && LV){
-      LV.level = ['full','first','half','blind'].includes(snap.learn.level) ? snap.learn.level : 'full';
-      LV.shown = snap.learn.shown && typeof snap.learn.shown === 'object' ? snap.learn.shown : {};
-    }
-    lrTheme(ci, at.ti, Number.isInteger(at.k) ? at.k : 0);
-  }else if(at.kind === 'drill' && Number.isInteger(at.ti)
-           && DATA[ci] && DATA[ci].themes[at.ti]){
-    lrDrill(ci, at.ti, thVerses(DATA[ci].themes[at.ti]),
-      Number.isInteger(snap.learn.quiz && snap.learn.quiz.seed) ? snap.learn.quiz.seed
-        : (Number.isInteger(at.seed) ? at.seed : null));
-  }else if(at.kind === 'free' && snap.learn.free){
-    const f = snap.learn.free, loc = verseLoc(f.verse);
-    if(loc && loc.ci === ci){
-      FP.ci = ci; FP.ti = Number.isInteger(f.ti) ? f.ti : -1;
-      FP.v = verseAt(loc); FP.order = (FP.v.flow||[]).filter(x=>x.k==='p');
-      const valid = a => Array.isArray(a) && a.length === FP.order.length
-        && a.every(Number.isInteger) && new Set(a).size === a.length
-        && a.every(i=>i >= 0 && i < FP.order.length);
-      FP.deal = valid(f.deal) ? f.deal.slice() : FP.order.map((_,i)=>i);
-      FP.picked = Array.isArray(f.picked) ? f.picked.filter(i=>Number.isInteger(i)
-        && i >= 0 && i < FP.order.length).slice(0,FP.order.length) : [];
-      state.view='learn'; state.chapter=ci; state.theme=FP.ti < 0 ? null : FP.ti;
-      state.lrAt = {kind:'free', ti:FP.ti}; lrFreePaint();
-    }
-  }else showLearn(ci);
-}
 async function finishSessionRestore(){
   if(!GITA_PENDING_RESTORE || GITA_RESTORE_FINISHING) return;
   const snap = GITA_PENDING_RESTORE;
@@ -262,43 +181,32 @@ async function finishSessionRestore(){
   GITA_RESTORE_FINISHING = true;
   try{
     if(snap.view === 'welcome' && snap.shared){
-      let shared = verseLoc(snap.shared);
+      let shared = App.library.location(snap.shared);
       if(!shared){
         const n = parseInt(String(snap.shared).split('.')[0],10);
         if(n >= 1 && n <= 18) await loadChapter(n);
-        shared = verseLoc(snap.shared);
+        shared = App.library.location(snap.shared);
       }
-      if(shared){ state.shared = shared; showWelcome(); }
+      if(shared){ state.shared = shared; App.views.welcome(); }
     }
     if(snap.origin) state.origin = sessionOrigin(snap.origin);
-    if(snap.view === 'learn'){
-      restoreLearnSession(snap);
-      if(snap.learn && snap.learn.quiz) restoreQuizSession(snap.learn.quiz);
-    }
-    if(snap.view === 'play' && snap.play && snap.play.active && snap.play.q){
-      PL.scope = snap.play.scope === 'ch' ? 'ch' : 'all';
-      PL.ch = Number.isInteger(snap.play.ch) ? snap.play.ch : 0;
-      PL.mode = Number.isInteger(snap.play.mode) ? snap.play.mode : 0;
-      PL.run = Number.isInteger(snap.play.run) ? snap.play.run : 0;
-      PL.q = snap.play.q; PL.active = true;
-      plNext(snap.play.q);
-      if(snap.play.quiz) restoreQuizSession(snap.play.quiz);
-    }
+    if(snap.view === 'learn') App.learn.restore(snap);
+    if(snap.view === 'play') App.play.restore(snap.play);
     restoreSessionDetails(document.getElementById('view'), snap.openDetails);
     if(snap.modal){
-      let loc = verseLoc(snap.modal.id);
+      let loc = App.library.location(snap.modal.id);
       if(!loc){
         const ch = parseInt(String(snap.modal.id).split('.')[0],10);
         if(ch >= 1 && ch <= 18) await loadChapter(ch);
-        loc = verseLoc(snap.modal.id);
+        loc = App.library.location(snap.modal.id);
       }
       if(loc){
         await loadChapter(loc.ci + 1);
         window.scrollTo({top:Math.max(0, Number(snap.scrollY)||0), behavior:'auto'});
-        openModal(loc.ci, loc.ti, loc.si, snap.modal.mode,
+        App.reader.open(loc.ci, loc.ti, loc.si, snap.modal.mode,
           Number.isInteger(snap.modal.navIdx) && snap.modal.navIdx >= 0 ? snap.modal.navIdx : 0,
           null, true);
-        restoreModalSession(snap.modal);
+        App.reader.restore(snap.modal);
       }
     }
   }catch(e){}
@@ -372,7 +280,7 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   const tr = $('#tabRandLbl'); if(tr) tr.textContent = L('random');
   const tp = $('#tabPlayLbl'); if(tp) tp.textContent = L('play');
   const tf = $('#tabFavLbl'); if(tf) tf.textContent = L('favorites');
-  searchX(); }
+  App.library.syncSearchControl(); }
 /* Phase 3.3 — keep the bottom tab bar in sync with state.view. Reading
    (read/themes/verses/learn) all map to Home because the tab bar is for
    top-level destinations, not in-chapter sub-views. */
@@ -399,9 +307,9 @@ function tabGoSearch(){
      results page from any field value). */
   if(window.matchMedia('(max-width:760px)').matches){
     try{ const si = $('#searchInput'); si.focus(); si.select(); }catch(e){}
-    doSearch();
+    App.library.search();
   } else {
-    doSearch();
+    App.library.search();
   }
 }
 
@@ -426,15 +334,15 @@ function setLang(l){
      another tab. The page's history snapshot is a third, same-entry fallback. */
   try{ sessionStorage.setItem('gitaLang', l); }catch(e){}
   try{ localStorage.setItem('gitaLang', l); }catch(e){}
-  // Remember which verse the modal is showing: doSearch()/showFavorites()
+  // Remember which verse the modal is showing: App.library.search()/App.library.showFavorites()
   // below null out state.chapter/state.theme while re-rendering the
   // background view, which would otherwise leave the open modal stale.
   const modalOpen = $('#modalBg').classList.contains('open');
   const mCh = state.chapter, mTh = state.theme, mIdx = state.idx;
-  if(state.view === 'welcome'){ showWelcome(); }
-  else if(state.view === 'sections'){ showSections(); }
-  else if(state.view === 'search'){ doSearch(); }
-  else if(state.view === 'favorites'){ showFavorites(); }
+  if(state.view === 'welcome'){ App.views.welcome(); }
+  else if(state.view === 'sections'){ App.views.sections(); }
+  else if(state.view === 'search'){ App.library.search(); }
+  else if(state.view === 'favorites'){ App.library.showFavorites(); }
   /* The learn path renders its own views and holds drill state in module
      vars, so it must NOT fall through to the generic chapter/theme restore
      below: with state.theme set that lands on the chapter view and the
@@ -442,20 +350,20 @@ function setLang(l){
      only place that can safely rebuild in the new language, since a
      half-answered question's options were built from the old strings.
      Progress is already saved. */
-  else if(state.view === 'learn'){ lrRelang(state.chapter); }
+  else if(state.view === 'learn'){ App.learn.relanguage(state.chapter); }
   /* Play rebuilds the question it is showing, in the new language, rather than
-     quitting the game: PL.q holds the verse and the option order, and only the
+     quitting the game: the Play feature holds the verse and option order, and only the
      prompt, the note and the numerals were language-bound. If no question is
      open, fall back to the menu. */
-  else if(state.view === 'play'){ if(PL.active && PL.q && PL.mode) plNext(PL.q); else showPlay(); }
+  else if(state.view === 'play'){ App.play.relanguage(); }
   else {
     const ch = state.chapter, th = state.theme;
-    if(ch == null){ if(state.section) showChapters(state.section); else showSections(); }
-    else { showChapter(ch, th == null ? undefined : th); }
+    if(ch == null){ if(state.section) App.views.chapters(state.section); else App.views.sections(); }
+    else { App.views.chapter(ch, th == null ? undefined : th); }
   }
   if(modalOpen && mCh != null && mTh != null){
     state.chapter = mCh; state.theme = mTh; state.idx = mIdx;
-    fillModal();
+    App.reader.refresh();
   }
   saveSessionSnapshot();
 }

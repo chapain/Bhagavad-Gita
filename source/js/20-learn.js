@@ -108,10 +108,10 @@ function thVerses(t){ const out=[]; t.parts.forEach(p=>p.sutras.forEach(s=>out.p
 /* ---------------- the path ---------------- */
 function showLearn(ci){
   if(!GITA_CH[ci+1]||!GITA_CH[ci+1].themes){ loadChapter(ci+1).then(()=>showLearn(ci)).catch(gitaLoadFail); return; }
-  rememberOrigin();
-  state.view='learn'; state.chapter=ci; persistView(); state.lrAt = null;
+  App.library.rememberOrigin();
+  state.view='learn'; state.chapter=ci; App.views.persist(); state.lrAt = null;
   state.section = state.section || Math.ceil(DATA[ci].num/6);
-  state.theme=null; renderCrumbs();
+  state.theme=null; App.views.renderCrumbs();
   const ch = DATA[ci], p = lrGet(ch.num);
   const total = ch.themes.length, done = Object.keys(p.themes).length;
   const nv = chVerseN(ch), nh = Object.keys(p.held||{}).length;
@@ -129,11 +129,11 @@ function showLearn(ci){
     'lr-step' + (isDone ? ' done' : (firstOpen === k ? ' now' : ''));
 
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'),'showSections()'],
-      [wayName(Math.ceil(ch.num/6)), `showChapters(${Math.ceil(ch.num/6)})`],
+    ${App.views.breadcrumbs([[L('sections_title'),'App.views.sections()'],
+      [App.views.wayName(Math.ceil(ch.num/6)), `App.views.chapters(${Math.ceil(ch.num/6)})`],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, null]])}
-    ${chTitle(ch)}
-    ${modeSwitch(ci)}
+    ${App.views.chapterTitle(ch)}
+    ${App.views.modeSwitch(ci)}
     <div class="lrn fade-in">
       <div class="view-sub">${esc(fmt(L('learn_sub'),{}))}</div>
       <div class="lr-prog"><i style="width:${pct}%"></i></div>
@@ -177,7 +177,7 @@ function showLearn(ci){
         <span>${esc(L('learn_local'))}</span>
         ${(p.story||done||nh)?`<button class="lr-ghost sm" onclick="lrReset(${ch.num})">${esc(L('learn_restart'))}</button>`:''}
       </div>
-    </div>` + backFoot(`showChapters(${state.section||0})`, L('back_chapters'));
+    </div>` + backFoot(`App.views.chapters(${state.section||0})`, L('back_chapters'));
   scrollViewTop();
 }
 /* Re-enter the learn path in the new language, as near as possible to where
@@ -197,7 +197,7 @@ function lrRelang(ci){
 function lrPlan(ch){ return ch.themes.length >= 10 ? [0,1,2,3] : [0,3]; }
 
 function lrStory(ci, step, seed){
-  state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
+  state.view='learn'; state.chapter=ci; App.views.persist(); state.theme=null;
   const ch = DATA[ci], th = ch.themes, plan = lrPlan(ch);
   const k = plan.indexOf(step), n = plan.length;
   if(step === 0){
@@ -232,7 +232,7 @@ function lrStory(ci, step, seed){
         answer: th.map((_,i)=>i)}];
     }
     const nxt = plan[k+1];
-    lrRun(ci, items, fmt(L('learn_step'),{a:numL(k+1),b:numL(n)}),
+    App.drills.run(ci, items, fmt(L('learn_step'),{a:numL(k+1),b:numL(n)}),
       nxt === undefined ? ()=>lrStoryDone(ci) : ()=>lrStory(ci, nxt));
   });
 }
@@ -240,7 +240,7 @@ function lrStory(ci, step, seed){
 var lrTest = 0, lrOpen = {};
 function lrStoryRead(ci, ch, th, k, n){
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'),'showSections()'],
+    ${App.views.breadcrumbs([[L('sections_title'),'App.views.sections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${ci})`],
       [L('learn_s1'), null]])}
     <div class="lrn fade-in">
@@ -262,7 +262,7 @@ function lrStoryRead(ci, ch, th, k, n){
       <div class="lr-nav">
         <button class="lr-cta" onclick="lrStory(${ci},${lrPlan(ch)[1]})">${esc(L('learn_read_go'))}</button>
       </div>
-    </div>` + backFoot(`showChapter(${ci})`, L('back_chapter_one'));
+    </div>` + backFoot(`App.views.chapter(${ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 function lrStoryDone(ci){
@@ -279,7 +279,7 @@ function lrStoryDone(ci){
 
 /* ---------------- stage 2: the verses of one theme ---------------- */
 function lrTheme(ci, ti, k){
-  state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
+  state.view='learn'; state.chapter=ci; App.views.persist(); state.theme=ti;
   /* Remember the sub-view so a reload returns to this verse/theme, not the
      chapter's learning-path landing page. */
   const ch = DATA[ci], t = ch.themes[ti], vs = thVerses(t);
@@ -327,7 +327,7 @@ function lrMeet(ci, ti, k, vs){
     ['blind','learn_lad_blind','learn_lad_blind_s']
   ];
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'),'showSections()'],
+    ${App.views.breadcrumbs([[L('sections_title'),'App.views.sections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${ci})`],
       [T(t.titles), null]])}
     <div class="lrn fade-in">
@@ -380,7 +380,7 @@ function lrMeet(ci, ti, k, vs){
         <button class="lr-cta" onclick="LV.shown={};lrTheme(${ci},${ti},${k+1})">
           ${esc(last?L('learn_read_go'):L('learn_next_verse'))}</button>
       </div>
-    </div>` + backFoot(`showChapter(${ci})`, L('back_chapter_one'));
+    </div>` + backFoot(`App.views.chapter(${ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 
@@ -414,7 +414,7 @@ function lrMeaty(w){
 function lrDrill(ci, ti, vs, seed){
   state.view='learn'; state.chapter=ci; state.theme=ti;
   const quizSeed = Number.isInteger(seed) ? seed : lrNewSeed();
-  state.lrAt = {kind:'drill', ti:ti, seed:quizSeed}; persistView();
+  state.lrAt = {kind:'drill', ti:ti, seed:quizSeed}; App.views.persist();
   return lrWithSeed(quizSeed, ()=>{
   const ch = DATA[ci], t = ch.themes[ti];
   const pool = [], others = [];
@@ -430,7 +430,7 @@ function lrDrill(ci, ti, vs, seed){
        pada is identical to the answer would render two indistinguishable
        choices with one marked wrong. 6.15 and 6.28 open with the same line
        (युञ्जन्नेवं सदात्मानं) — rare, but it must never happen. */
-    /* Options are WHOLE VERSES, not opening lines — a first pāda is not a
+    /* Options are WHOLE ŚLOKAS, not opening lines — a first pāda is not a
        verse, and picking between four fragments is a shallower task than
        picking between four ślokas (owner 2026-09-01). Full verses are also
        unique book-wide, where four pairs share a first pāda. */
@@ -521,7 +521,7 @@ function lrDrill(ci, ti, vs, seed){
       answer: qq.map((_,i)=>i)});
   });
 
-  lrRun(ci, lrShuffle(items), T(t.titles), ()=>{
+  App.drills.run(ci, lrShuffle(items), T(t.titles), ()=>{
     const p = lrGet(ch.num); p.themes[ti] = 1; lrPut(ch.num, p);
     const nxt = ch.themes.findIndex((_,i)=>!lrGet(ch.num).themes[i]);
     view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
@@ -531,7 +531,7 @@ function lrDrill(ci, ti, vs, seed){
         ${nxt>=0 ? `<button class="lr-cta" onclick="lrTheme(${ci},${nxt},0)">${esc(L('learn_next_theme'))}</button>`
                  : `<p class="lr-all">${esc(fmt(L('learn_all_done'),{n:numL(ch.num)}))}</p>`}
         <button class="lr-ghost" onclick="lrFree(${ci},${ti})">${esc(L('learn_free_go'))}</button>
-        <button class="lr-ghost" onclick="showChapter(${ci})">${esc(L('back_chapter_one'))}</button>
+        <button class="lr-ghost" onclick="App.views.chapter(${ci})">${esc(L('back_chapter_one'))}</button>
       </div></div>`;
     scrollViewTop();
   });
@@ -545,13 +545,13 @@ function lrDrill(ci, ti, vs, seed){
    is required, and leaving costs nothing. Practice, not examination. */
 var FP = {ci:0, ti:0, v:null, order:[], deal:[], picked:[]};
 function lrFree(ci, ti){
-  state.view='learn'; state.chapter=ci; persistView(); state.theme=ti;
+  state.view='learn'; state.chapter=ci; App.views.persist(); state.theme=ti;
   state.lrAt = {kind:'free', ti:ti};
   FP.ci = ci; FP.ti = ti;
   lrFreePick();
 }
 function lrFreeCh(ci){
-  state.view='learn'; state.chapter=ci; persistView(); state.theme=null;
+  state.view='learn'; state.chapter=ci; App.views.persist(); state.theme=null;
   state.lrAt = {kind:'free', ti:-1};
   FP.ci = ci; FP.ti = -1;
   lrFreePick();
@@ -591,7 +591,7 @@ function lrFreePaint(){
   const tlab = t ? T(t.titles) : T(ch.names);
   const done = FP.picked.length === FP.order.length;
   view.innerHTML = `
-    ${wayCrumbs([[L('sections_title'),'showSections()'],
+    ${App.views.breadcrumbs([[L('sections_title'),'App.views.sections()'],
       [`${L('chapter')} ${numL(ch.num)} · ${L('opt_learn_g')}`, `showLearn(${FP.ci})`],
       [tlab, null]])}
     <div class="lrn fade-in">
@@ -614,9 +614,9 @@ function lrFreePaint(){
       <div class="lr-nav">
         <button class="lr-cta" onclick="lrFreePick()">${esc(L('learn_shuffle'))}</button>
         <span class="lr-hint">${esc(fmtNL(v.n))}</span>
-        <button class="lr-ghost" onclick="showChapter(${FP.ci})">${esc(L('learn_done_free'))}</button>
+        <button class="lr-ghost" onclick="App.views.chapter(${FP.ci})">${esc(L('learn_done_free'))}</button>
       </div>
-    </div>` + backFoot(`showChapter(${FP.ci})`, L('back_chapter_one'));
+    </div>` + backFoot(`App.views.chapter(${FP.ci})`, L('back_chapter_one'));
   scrollViewTop();
 }
 function lrFreeTap(i){
@@ -636,3 +636,22 @@ function lrFreeTap(i){
   }
 }
 
+
+/* Learn public boundary. Session details are implemented in the adjacent
+   feature file but exposed here as one supported interface. */
+App.learn = Object.freeze({
+  show: showLearn,
+  relanguage: lrRelang,
+  story: lrStory,
+  storyDone: lrStoryDone,
+  theme: lrTheme,
+  drill: lrDrill,
+  freePaint: lrFreePaint,
+  snapshot: learnSessionSnapshot,
+  restore: restoreLearnSession,
+  canNavigate(){ return !!(LV && LV.vs); },
+  navigate: lrMeetGo,
+  themeVerses: thVerses,
+  shuffle: lrShuffle,
+  sample: lrSample
+});

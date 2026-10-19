@@ -11,7 +11,7 @@ function lrRun(ci, items, label, done, back){
   LQci=ci; LQback=back||null; LQ=items.slice(); LQi=0; LQmiss=0; LQlab=label; LQdone=done; lrPaint();
 }
 function lrPaint(resumeUi){
-  if(LQi >= LQ.length) return typeof LQdone === 'function' ? LQdone() : showLearn(LQci);
+  if(LQi >= LQ.length) return typeof LQdone === 'function' ? LQdone() : App.learn.show(LQci);
   const it = LQ[LQi];
   if(!resumeUi) LQpick = [];
   /* A one-item queue (Play) has no progress to show: the bar would sit at 0%
@@ -27,7 +27,7 @@ function lrPaint(resumeUi){
          LQmiss?' · '+esc(fmt(L('learn_revisit'),{n:numL(LQmiss)})):''}</div>`;
   /* Re-shuffle options on every fresh paint. Restore paints use the validated
      option/chip order from this tab's snapshot instead. */
-  if(it.kind === 'pick' && it._seen && !resumeUi) it.opts = lrShuffle(it.opts);
+  if(it.kind === 'pick' && it._seen && !resumeUi) it.opts = App.learn.shuffle(it.opts);
   it._seen = 1;
   let body;
   if(it.kind === 'pick'){
@@ -52,7 +52,7 @@ function lrPaint(resumeUi){
           </button>`).join('')}</div>
       </div>`;
   }else{
-    let chips = lrShuffle(it.chips);
+    let chips = App.learn.shuffle(it.chips);
     if(resumeUi && Array.isArray(resumeUi.chipOrder)){
       const byId = new Map(it.chips.map(c=>[c.id,c]));
       const ordered = resumeUi.chipOrder.map(id=>byId.get(id)).filter(Boolean);
@@ -67,7 +67,7 @@ function lrPaint(resumeUi){
     <div class="lr-qbox">${body}<div class="lr-fb" id="lrFb"></div></div>
     </div>` + (LQback
       ? backFoot(LQback.fn, L(LQback.label))
-      : backFoot(`showChapter(${LQci})`, L('back_chapter_one')));
+      : backFoot(`App.views.chapter(${LQci})`, L('back_chapter_one')));
   if(resumeUi) restoreQuizUi(it, resumeUi);
   scrollViewTop();
 }
@@ -252,3 +252,40 @@ function lrChip(el, id){
   }
 }
 
+
+function captureQuizSession(){
+  const root = document.getElementById('view'), kind = state.view === 'play' ? 'play'
+    : state.lrAt && state.lrAt.kind;
+  if(!root || !root.querySelector('.lr-qbox') || !Array.isArray(LQ) || !LQ.length
+     || !['story','drill','play'].includes(kind)) return null;
+  const queue = LQ.map(it=>it && it.qid);
+  if(queue.some(id=>typeof id !== 'string' || !id)) return null;
+  const index = Number.isInteger(LQi) ? Math.max(0, Math.min(LQi, LQ.length)) : 0;
+  const quiz = {seed:kind === 'play' ? null : (Number.isInteger(state.lrAt.seed) ? state.lrAt.seed : null),
+    queue, index, misses:Number.isInteger(LQmiss) ? Math.max(0,LQmiss) : 0, ui:null};
+  if(index >= LQ.length) return quiz;
+  const item = LQ[index], ui = {kind:item.kind};
+  if(item.kind === 'pick' && Array.isArray(item.opts)){
+    ui.optionOrder = item.opts.map(o=>o && o.oid).filter(x=>typeof x === 'string');
+    const wrong = root.querySelector('.lr-opt.wrong');
+    if(wrong && wrong.dataset.lrOpt) ui.wrong = wrong.dataset.lrOpt;
+  }else if(item.kind === 'order' && Array.isArray(item.chips)){
+    ui.chipOrder = Array.from(root.querySelectorAll('.lr-chips .lr-chip2'))
+      .map(el=>Number(el.dataset.lrChip)).filter(Number.isInteger);
+    ui.picked = Array.isArray(LQpick) ? LQpick.filter(Number.isInteger) : [];
+    ui.bad = !!root.querySelector('.lr-fb .bad');
+  }else if(item.kind === 'match' && LQpick && typeof LQpick === 'object'){
+    ui.match = {left:Number.isInteger(LQpick.left) ? LQpick.left : null,
+      right:Number.isInteger(LQpick.right) ? LQpick.right : null,
+      done:Object.keys(LQpick.done || {}).filter(k=>/^\d{1,2}\.\d{1,2}$/.test(k))};
+  }
+  quiz.ui = ui;
+  return quiz;
+}
+
+App.drills = Object.freeze({
+  run: lrRun,
+  paint: lrPaint,
+  restore: restoreQuizSession,
+  capture: captureQuizSession
+});

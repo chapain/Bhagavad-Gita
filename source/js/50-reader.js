@@ -1,6 +1,3 @@
-function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
-function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {s:p.sutras[i], part:p}; i-=p.sutras.length; } return {s:t.parts[t.parts.length-1].sutras[0], part:t.parts[t.parts.length-1]}; }
-
 // pāda display: Devanagari block with pādas on separate lines (speakers inline)
 function pDanda(i, total){
   if(total === 2) return (i===0) ? ' ।' : ' ॥';
@@ -64,8 +61,6 @@ function fitWholeVerse(){
 addEventListener('resize', fitWholeVerse);
 if(document.fonts) document.fonts.ready.then(fitWholeVerse);
 
-
-let SRCH_HITS = [], FAV_LIST = [];
 /* The verse range a reader walks in thematic study: the WHOLE theme.
    Until 2026-09-01 this returned the enclosing part's bounds, which was right
    when a part grouped several verses. Parts are now one verse each (700 parts
@@ -81,7 +76,7 @@ function setAppInert(inert){
 }
 function updateModalAddress(){
   try{
-    const s = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s;
+    const s = App.library.entryAt(DATA[state.chapter].themes[state.theme], state.idx).s;
     const old = history.state && typeof history.state === 'object' ? history.state : {};
     history.replaceState({...old, gitaModal:true}, '', '#v=' + s.n);
   }catch(e){}
@@ -95,13 +90,13 @@ function openModal(ci,ti,si, mode, navIdx, invoker, restoring){
   }
   mode = mode || 'theme';
   state.chapter=ci; state.theme=ti; state.idx=si; state.mode=mode;
-  state.gpos = VERSES.findIndex(e => e.ci===ci && e.ti===ti && e.si===si);
+  state.gpos = App.library.indexOf(ci,ti,si);
   if(state.gpos < 0) state.gpos = 0;
   if(mode === 'theme'){
     const b = themeBounds(DATA[ci].themes[ti]);
     state.pStart = b.start; state.pEnd = b.end;
   } else if(mode === 'search'){ mode = 'book'; }
-  else if(mode === 'fav'){ state.navList = FAV_LIST; state.navIdx = navIdx || 0; }
+  else if(mode === 'fav'){ state.navList = App.library.favoriteLocations(); state.navIdx = navIdx || 0; }
   state.mode = mode;
   fillModal();
   bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
@@ -132,7 +127,7 @@ function closeModal(){
     bg.setAttribute('aria-hidden','true');
     popModalHistory();
   }
-  persistView();
+  App.views.persist();
 }
 /* ---------- share a verse: native share sheet where available, else copy ---------- */
 function shareUrl(){
@@ -149,7 +144,7 @@ function shareUrl(){
      four scripts and is already indexed; its inline script opens the folded
      <details> and highlights the verse, so the link still lands on the verse.
      Trade-off: the link PREVIEW is the chapter's, not the verse's. */
-  const n = sutraAt(DATA[state.chapter].themes[state.theme], state.idx).s.n;
+  const n = App.library.entryAt(DATA[state.chapter].themes[state.theme], state.idx).s.n;
   return root + '/chapter/' + n.split('.')[0] + '/#v' + n;
 }
 function openSharePanel(){
@@ -177,7 +172,7 @@ function copyVerseLink(){
 let MODAL_HIST = false, MODAL_POPPING = false, MODAL_RETURN_FOCUS = null;
 function pushModalHistory(){
   if(MODAL_HIST) return;
-  try{ sessionStorage.setItem('gita.preModalHash', viewHash()); }catch(e){}
+  try{ sessionStorage.setItem('gita.preModalHash', App.views.hash()); }catch(e){}
   try{ history.pushState({gitaModal:true}, ''); MODAL_HIST = true; }catch(e){}
 }
 function popModalHistory(){
@@ -185,7 +180,7 @@ function popModalHistory(){
   MODAL_HIST = false;
   if(MODAL_POPPING) return;               // we got here *from* popstate — nothing to unwind
   try{ history.back(); }catch(e){}
-  persistView();
+  App.views.persist();
 }
 window.addEventListener('popstate', ()=>{
   if($('#modalBg').classList.contains('open')){
@@ -195,11 +190,11 @@ window.addEventListener('popstate', ()=>{
 
 function fillModal(){
   const ch = DATA[state.chapter], t = ch.themes[state.theme];
-  const {s, part} = sutraAt(t, state.idx);
+  const {s, part} = App.library.entryAt(t, state.idx);
   let partIdx = 0; { let acc = 0;
     for(let pi=0; pi<t.parts.length; pi++){ const len = t.parts[pi].sutras.length;
       if(state.idx >= acc && state.idx < acc+len){ partIdx = pi; break; } acc += len; } }
-  if(state.gpos == null) state.gpos = Math.max(0, VERSES.findIndex(e => e.ci===state.chapter && e.ti===state.theme && e.si===state.idx));
+  if(state.gpos == null) state.gpos = Math.max(0, App.library.indexOf(state.chapter,state.theme,state.idx));
   // split flow: top speakers, mid speakers (between pāda 2 and 3), and the 4 pādas
   let topS = [], midS = [], pads = [];
   for(const it of s.flow){
@@ -229,6 +224,7 @@ function fillModal(){
       </button>${wordsHtml(pad,id)}
     </div>`;
   }
+  const isSaved = App.library.isFavorite(s.n);
   $('#modal').innerHTML = `
     <div class="m-head">
       <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
@@ -240,7 +236,7 @@ function fillModal(){
     </div>
     <div class="m-menu" id="mVerseMenu" role="menu" hidden>
       <button type="button" role="menuitem" id="shareBtn" onclick="openSharePanel()">${L('share')}</button>
-      <button type="button" role="menuitem" class="${FAV.includes(s.n)?' saved':''}" id="favBtn" aria-pressed="${FAV.includes(s.n)}" onclick="toggleFav('${s.n}')">${FAV.includes(s.n)?ICONS.starF:ICONS.star} ${esc(FAV.includes(s.n)?L('saved_verse'):L('save_verse'))}</button>
+      <button type="button" role="menuitem" class="${isSaved?' saved':''}" id="favBtn" aria-pressed="${isSaved}" onclick="App.library.toggleFavorite('${s.n}')">${isSaved?ICONS.starF:ICONS.star} ${esc(isSaved?L('saved_verse'):L('save_verse'))}</button>
       <div class="m-menu-sep" role="separator"></div>
       <div class="m-meter">${esc(meterText(s))}</div>
       <div class="reader-size" role="group" aria-label="${esc(L('reader_size'))}">
@@ -282,7 +278,7 @@ function fillModal(){
     <div class="m-tail" aria-hidden="true"></div>
     <div class="m-nav">
       ${state.mode==='random'
-        ? `<button class="m-random" onclick="randomVerse()">${ICONS.shuffle}<span>${esc(L('next_random'))}</span></button>`
+        ? `<button class="m-random" onclick="App.library.randomVerse()">${ICONS.shuffle}<span>${esc(L('next_random'))}</span></button>`
         : state.mode==='theme'
           ? `<button onclick="navSutra(-1)" ${(state.idx>state.pStart||state.theme>0)?'':'disabled'}>${(state.idx===state.pStart && state.theme>0)?L('prev_theme'):L('previous')}</button>
              <span class="m-count">${Lof(state.idx-state.pStart+1, state.pEnd-state.pStart+1)}</span>
@@ -291,8 +287,8 @@ function fillModal(){
                : `<button onclick="navSutra(1)">${state.idx===state.pEnd?L('next_theme'):L('next')}</button>`}`
           : state.mode==='book'
           ? `<button onclick="navSutra(-1)" ${state.gpos>0?'':'disabled'}>${L('previous')}</button>
-             <span class="m-count">${Lof(state.gpos+1, VERSES.length)}</span>
-             <button onclick="navSutra(1)" ${state.gpos<VERSES.length-1?'':'disabled'}>${L('next')}</button>`
+             <span class="m-count">${Lof(state.gpos+1, App.library.count())}</span>
+             <button onclick="navSutra(1)" ${state.gpos<App.library.count()-1?'':'disabled'}>${L('next')}</button>`
           : `<button onclick="navSutra(-1)" ${(state.navIdx||0)>0?'':'disabled'}>${L('previous')}</button>
              <span class="m-count">${Lof((state.navIdx||0)+1, state.navList?state.navList.length:1)}</span>
              <button onclick="navSutra(1)" ${(state.navIdx||0) < (state.navList?state.navList.length-1:0)?'':'disabled'}>${L('next')}</button>`}
@@ -409,8 +405,8 @@ function navSutra(d){
       state.pStart = b.start; state.pEnd = b.end; state.idx = b.end;
     } else return;
   } else if(state.mode === 'book'){
-    state.gpos = Math.max(0, Math.min(VERSES.length-1, (state.gpos || 0) + d));
-    const loc = VERSES[state.gpos];
+    state.gpos = Math.max(0, Math.min(App.library.count()-1, (state.gpos || 0) + d));
+    const loc = App.library.locationAt(state.gpos);
     state.chapter = loc.ci; state.theme = loc.ti; state.idx = loc.si;
   } else if((state.mode === 'fav') && state.navList){
     const k = (state.navIdx || 0) + d;
@@ -419,7 +415,7 @@ function navSutra(d){
     const loc = state.navList[k];
     state.chapter = loc.ci; state.theme = loc.ti; state.idx = loc.si;
   } else return;
-  state.gpos = VERSES.findIndex(e => e.ci===state.chapter && e.ti===state.theme && e.si===state.idx);
+  state.gpos = App.library.indexOf(state.chapter,state.theme,state.idx);
   if(state.gpos < 0) state.gpos = 0;
   fillModal();
   updateModalAddress();
@@ -427,7 +423,7 @@ function navSutra(d){
   const title = $('#modalTitle'); if(title) title.focus({preventScroll:true});
   const m = $('#modal'); if(m) m.scrollTo({top:0, behavior:'smooth'});
 }
-function backToTheme(){ closeModal(); showVerses(state.chapter, state.theme); }
+function backToTheme(){ closeModal(); App.views.verses(state.chapter, state.theme); }
 document.addEventListener('keydown', e=>{
   /* Keyboard parity (audit 2026-08-30): the tappable divs carry role="button"
      tabindex="0"; Enter/Space must do what the tap does. */
@@ -459,10 +455,20 @@ document.addEventListener('keydown', e=>{
     return;
   }
   if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-  if(state.view === 'learn' && LV && LV.vs){
-    if(e.key==='ArrowLeft'){ e.preventDefault(); lrMeetGo(-1); }
-    if(e.key==='ArrowRight'){ e.preventDefault(); lrMeetGo(1); }
+  if(state.view === 'learn' && App.learn.canNavigate()){
+    if(e.key==='ArrowLeft'){ e.preventDefault(); App.learn.navigate(-1); }
+    if(e.key==='ArrowRight'){ e.preventDefault(); App.learn.navigate(1); }
   }
 });
 
 
+
+/* Reader owns the verse sheet and scripture presentation helpers used by cards. */
+App.reader = Object.freeze({
+  open: openModal,
+  close: closeModal,
+  restore: restoreModalSession,
+  refresh: fillModal,
+  navigate: navSutra,
+  padaBlock: padaBlockDeva
+});

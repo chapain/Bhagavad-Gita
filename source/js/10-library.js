@@ -1,5 +1,8 @@
 // ---------- global verse index (search / favorites / random) ----------
 const VERSES = [];
+let SRCH_HITS = [], FAV_LIST = [];
+function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
+function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {s:p.sutras[i], part:p}; i-=p.sutras.length; } return {s:t.parts[t.parts.length-1].sutras[0], part:t.parts[t.parts.length-1]}; }
 function buildIndex(){
   VERSES.length = 0;
   (DATA||[]).forEach((ch, ci)=>{ if(!ch||!ch.themes) return;
@@ -126,7 +129,7 @@ function doSearch(){
   if(!q){ clearSearch(); return; }
   SRCH_HITS = [];
   rememberOrigin();
-  state.view = 'search'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
+  state.view = 'search'; state.chapter = null; state.theme = null; App.views.persist(); App.views.renderCrumbs();
   const nq = prepareSearchQuery(q);
   /* Accept whatever separator the reader's keyboard gives. On a Devanagari
      layout the danda । sits where the full stop is, so १।१ is the natural way to
@@ -180,10 +183,10 @@ function doSearch(){
       const ch = DATA[loc.ci], v = verseAt(loc);
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
       const pi = th.parts.indexOf(part);
-      return `<div class="mini" role="button" tabindex="0" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
+      return `<div class="mini" role="button" tabindex="0" onclick="App.reader.open(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
         <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${esc(T(part.titles))}</div>
-        <div class="padas" lang="sa">${padaBlockDeva(v)}</div>
+        <div class="padas" lang="sa">${App.reader.padaBlock(v)}</div>
         <div class="vhint">${esc(T(v.paras))}</div>
       </div>`;}).join('')}</div>`;
   announceView();
@@ -263,7 +266,7 @@ function toggleFav(id){
 }
 /* Search and Favorites are "detours": they replace the main view but the reader
    should still be able to get back to whatever they were reading. Before either
-   takes over, remember the browsing position so renderCrumbs() can offer it as a
+   takes over, remember the browsing position so App.views.renderCrumbs() can offer it as a
    real trail. Only recorded when leaving an actual browsing view, so repeatedly
    tapping Favorites doesn't overwrite the origin with itself. */
 function rememberOrigin(){
@@ -274,19 +277,19 @@ function rememberOrigin(){
 }
 function goToOrigin(){
   const o = state.origin;
-  if(!o){ showSections(); return; }
+  if(!o){ App.views.sections(); return; }
   $('#searchInput').value = '';
-  if(o.view === 'welcome') showWelcome();
-  else if(o.view === 'sections') showSections();
+  if(o.view === 'welcome') App.views.welcome();
+  else if(o.view === 'sections') App.views.sections();
   else if(o.view === 'chapter' && o.chapter != null)
-    showChapter(o.chapter, o.theme == null ? undefined : o.theme);
-  else if(o.section != null) showChapters(o.section);
-  else showSections();
+    App.views.chapter(o.chapter, o.theme == null ? undefined : o.theme);
+  else if(o.section != null) App.views.chapters(o.section);
+  else App.views.sections();
 }
 function showFavorites(){
   if(!allChReady()){ loadAllChapters().then(showFavorites); return; }
   rememberOrigin();
-  state.view = 'favorites'; state.chapter = null; state.theme = null; persistView(); renderCrumbs();
+  state.view = 'favorites'; state.chapter = null; state.theme = null; App.views.persist(); App.views.renderCrumbs();
   const saved = FAV.map(verseLoc).filter(Boolean);
   FAV_LIST = saved;
   if(saved.length === 0){
@@ -300,16 +303,16 @@ function showFavorites(){
     ${saved.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const note = FAVNOTE[v.n] || '';
-      return `<div class="res-card" onclick="openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i},this.querySelector('.res-open'))">
+      return `<div class="res-card" onclick="App.reader.open(${loc.ci},${loc.ti},${loc.si},'fav',${i},this.querySelector('.res-open'))">
         <button type="button" class="sr-only focusable res-open" aria-label="${esc(L('open_verse'))} ${esc(fmtNL(v.n))}"
-          onclick="event.stopPropagation();openModal(${loc.ci},${loc.ti},${loc.si},'fav',${i},this)"></button>
+          onclick="event.stopPropagation();App.reader.open(${loc.ci},${loc.ti},${loc.si},'fav',${i},this)"></button>
         <div class="res-top"><span class="res-num">${esc(fmtNL(v.n))}</span><span class="res-title">${esc(T(ch.names))}</span>
         <span class="fav-tools" onclick="event.stopPropagation()">
           <button class="fav-move" onclick="moveFav(${i},-1)" ${i===0?'disabled':''} aria-label="${esc(L('fav_move_up'))}" title="${esc(L('fav_move_up'))}">${L('fav_up')}</button>
           <button class="fav-move" onclick="moveFav(${i},1)" ${i===saved.length-1?'disabled':''} aria-label="${esc(L('fav_move_down'))}" title="${esc(L('fav_move_down'))}">${L('fav_down')}</button>
           <button class="res-remove" onclick="removeFav('${esc(v.n)}')">${esc(L('remove_fav'))}</button>
         </span></div>
-        <div class="res-deva" lang="sa">${padaBlockDeva(v)}</div>
+        <div class="res-deva" lang="sa">${App.reader.padaBlock(v)}</div>
         <div class="res-lit">${esc(T(v.lits))}</div>
         <div class="fav-note" onclick="event.stopPropagation()">
           <label for="fav-note-${esc(v.n)}">${esc(L('fav_note'))}</label>
@@ -348,7 +351,7 @@ function setFavNote(id, text){
 function randomVerse(){
   if(!allChReady()){ loadAllChapters().then(randomVerse); return; }
   const v = VERSES[Math.floor(Math.random()*VERSES.length)];
-  openModal(v.ci, v.ti, v.si, 'random');
+  App.reader.open(v.ci, v.ti, v.si, 'random');
 }
 
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -424,3 +427,28 @@ function _drangeJS(r){
   return r.replace(/(\d+)\.0*(\d+)/g, function(m,a,b){ return a+'.'+parseInt(b,10); });
 }
 
+
+/* Public Library boundary. Mutable indexes and saved-list navigation stay in
+   this file; Reader and routing consume snapshots and lookup operations rather
+   than reaching into those arrays directly. */
+App.library = Object.freeze({
+  location: verseLoc,
+  verse: verseAt,
+  entryAt: sutraAt,
+  assemble: assembleData,
+  onSearchInput,
+  syncSearchControl: searchX,
+  paintTheme,
+  rememberOrigin,
+  search: doSearch,
+  clearSearch,
+  randomVerse,
+  showFavorites,
+  toggleFavorite: toggleFav,
+  indexOf(ci, ti, si){ return VERSES.findIndex(e=>e.ci===ci && e.ti===ti && e.si===si); },
+  locationAt(index){ return VERSES[index] || null; },
+  count(){ return VERSES.length; },
+  ready: allChReady,
+  isFavorite(id){ return FAV.includes(id); },
+  favoriteLocations(){ return FAV_LIST.slice(); }
+});

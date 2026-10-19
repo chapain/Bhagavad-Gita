@@ -320,8 +320,9 @@ APP_CSS_FILES = (
     "60-responsive.css",
 )
 APP_JS_FILES = (
-    "00-core.js", "10-library.js", "20-learn.js", "30-play.js",
-    "35-drills.js", "40-views.js", "50-reader.js", "60-runtime.js",
+    "00-core.js", "10-library.js", "20-learn.js", "25-learn-session.js",
+    "30-play.js", "35-drills.js", "40-views.js", "50-reader.js",
+    "60-runtime.js",
 )
 APP_CSS = _read_templates("css", APP_CSS_FILES)
 APP_JS = _read_templates("js", APP_JS_FILES)
