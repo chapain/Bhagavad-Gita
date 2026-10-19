@@ -954,20 +954,14 @@
   .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--ink-soft); font-size:.78rem; font-weight:600;
            margin:0 0 14px; line-height:1.4; letter-spacing:.01em; }
 
-  /* Whole verse — the hero block the reader lands on: Devanagari verse
-     (with IAST under each line) set as a continuous śloka, not four
-     quarter-boxes. Quarter boxes live below under "Word by word" so the
-     first thing the reader sees is the verse, not chrome or tools. */
-  .m-whole-verse{ background:var(--paper); border:1px solid var(--line);
+  .m-whole-verse{ --verse-fit:1; background:var(--paper); border:1px solid var(--line);
     border-radius:14px; padding:18px 20px; margin:0 0 10px;
     font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
     line-height:1.8; text-align:center; }
-  /* Center the verse as a single block, but set both Sanskrit lines flush to
-     its shared left edge. The final number is out of flow so it can sit after
-     the second line without pulling that line's opening words left. */
+  /* Both lines flush left; the number rides out of flow. */
   .m-whole-verse .m-vlines{ display:inline-block; max-width:100%; text-align:left; vertical-align:top; }
-  .m-whole-verse .gline{ font-size:calc(1.45rem * var(--reader-scale,1)); text-align:left; }
-  .m-whole-verse .gline-main{ position:relative; display:inline-block; max-width:100%; }
+  .m-whole-verse .gline{ font-size:calc(1.45rem * var(--reader-scale,1) * var(--verse-fit,1)); text-align:left; }
+  .m-whole-verse .gline-main{ position:relative; display:inline-block; max-width:100%; white-space:nowrap; }
   .m-whole-verse .gl-tail{ position:absolute; top:0; left:calc(100% + .24em); white-space:nowrap; }
   .m-whole-verse .giast{ font-style:italic; font-family:Georgia,"Noto Serif Devanagari",serif;
     font-size:calc(.92rem * var(--reader-scale,1)); color:var(--ink-soft); text-align:center; margin-top:2px; }
@@ -1369,9 +1363,8 @@
     .m-head .m-num-chit{ font-size:.9rem; }
     .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
                        overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
-    /* Leave room at the end of the final line for its number. This keeps the
-       number right-aligned with the wrapped text instead of dropping it onto
-       an orphaned line. */
+    /* Reserve room at the final line's end so its number stays right-aligned
+       on that line instead of dropping onto a line of its own. */
     .m-whole-verse .gline-main{ display:inline; }
     .m-whole-verse .gline-main.has-number{ display:block; width:100%; box-sizing:border-box; padding-right:4.6em; }
     .m-whole-verse .gl-tail{ top:auto; left:auto; right:0; bottom:0; white-space:nowrap; }
@@ -3892,6 +3885,21 @@ function padaBlockDeva(s, withNum){
   if(withNum) html += '</div>';
   return html;
 }
+/* Two lines, never three: shrink --verse-fit to fit. */
+function fitWholeVerse(){
+  const v = $('#modal .m-whole-verse');
+  if(!v || !v.clientWidth) return;
+  const ms = [...v.querySelectorAll('.gline-main')], r = document.createRange();
+  /* text only, less number reserve */
+  const over = () => ms.some(el => { r.selectNode(el.firstChild);
+    return r.getBoundingClientRect().width >
+      el.clientWidth - parseFloat(getComputedStyle(el).paddingRight); });
+  let f = 1;
+  while(true){ v.style.setProperty('--verse-fit', f.toFixed(2));
+    if(f <= 0.3 || !over()) break; f -= 0.02; }
+}
+addEventListener('resize', fitWholeVerse);
+if(document.fonts) document.fonts.ready.then(fitWholeVerse);
 
 
 let SRCH_HITS = [], FAV_LIST = [];
@@ -3936,6 +3944,7 @@ function openModal(ci,ti,si, mode, navIdx, invoker, restoring){
   bg.classList.add('open'); bg.setAttribute('aria-hidden','false');
   document.body.classList.add('modal-open');
   setAppInert(true); document.body.style.overflow='hidden';
+  fitWholeVerse();
   const close = $('#modal .m-close'); if(close) close.focus({preventScroll:true});
   if(restoring) MODAL_HIST = true;
   else pushModalHistory();
@@ -4126,6 +4135,7 @@ function fillModal(){
              <button onclick="navSutra(1)" ${(state.navIdx||0) < (state.navList?state.navList.length-1:0)?'':'disabled'}>${L('next')}</button>`}
     </div>`;
   applyReaderSize();
+  fitWholeVerse();
 }
 function setReaderSize(size){
   if(!READER_SIZES.includes(size)) return;
@@ -4147,6 +4157,7 @@ function applyReaderSize(){
   const up = document.getElementById('readerSizeUp');
   if(down) down.disabled = state.readerSize <= READER_SIZES[0];
   if(up) up.disabled = state.readerSize >= READER_SIZES[READER_SIZES.length-1];
+  fitWholeVerse();
 }
 /* Phase 3.2 — verse-sheet overflow menu (⋯). Share / Save / Text size /
    Hide-meanings live here so they don't crowd the top of the sheet. */

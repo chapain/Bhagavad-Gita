@@ -894,6 +894,14 @@ def run(pw, url, offline_capable=False):
     ok(shape["tailText"].endswith("॥") and "4.19" in shape["tailText"]
        and max(shape["starts"]) - min(shape["starts"]) <= 1 and not shape["overflows"],
        f"4.19 keeps its number between daṇḍas and wraps cleanly on mobile ({shape})")
+    # The verse is two lines, never three: at phone width 1.1's second line
+    # used to wrap mid-line (owner screenshot 2026-10-19). fitWholeVerse()
+    # shrinks the hero text until each line's height is a single line-height.
+    shape = sheet_shape("1.01")
+    ok(len(shape["mainHeights"]) == 2
+       and all(h < shape["lineHeight"] * 1.35 for h in shape["mainHeights"])
+       and not shape["overflows"],
+       f"1.1 keeps both Sanskrit lines on one line each on mobile ({shape})")
     pg.keyboard.press("Escape")
     pg.wait_for_timeout(400)
 
