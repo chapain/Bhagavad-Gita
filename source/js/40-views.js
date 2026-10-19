@@ -75,6 +75,7 @@ function viewHash(){
   if(state.view==='play') return '#play';
   if(state.view==='favorites') return '#favorites';
   if(state.view==='search') return '#search';
+  if(state.view==='data') return '#data';
   if(state.view==='sections') return '#ways';
   if(state.view==='chapters' && state.section) return '#way='+state.section;
   if(state.view==='learn' && state.chapter!=null) return '#chapter='+(state.chapter+1)+'&tab=learn';
@@ -125,7 +126,7 @@ function showWelcome(){
               </ol>
             </details>
           </div>
-          <div class="w-foot">${esc(L('welcome_foot'))}</div>
+          <div class="w-foot">${esc(L('welcome_foot'))} · <button class="foot-link" onclick="App.data.show()" aria-label="${esc(L('data_title'))}">${esc(L('data_title'))}</button></div>
         </div>
         <section class="welcome-stage" aria-label="${esc(L(state.shared ? 'shared_label' : 'verse_of_day'))}">
           <svg class="welcome-wheel" viewBox="0 0 320 320" fill="none" aria-hidden="true" focusable="false">

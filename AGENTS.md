@@ -99,12 +99,14 @@ desktop and 390 px, light/dark, and every affected language.
 ## Using project memory
 
 - `README.md`: user-facing features, build and publishing.
-- `HANDOFF.md`: status archive, roadmap and unresolved decisions.
-- `PROJECT.md`: rationale, editorial decisions, mistakes and history.
+- `HANDOFF.md`: *lean* current status (last 3 months) + roadmap only — <100KB. Older detailed evidence lives in `docs/archive/HANDOFF-*.md` yearly slices.
+- `PROJECT.md`: rationale, editorial decisions, mistakes and history — keep <200KB, archive yearly if needed.
 - `STUDY_MAPS.md`: approved thematic map.
 
 At session start: check Git state/recent commits, run the full build, then read
 only archive sections relevant to the task. Update this file only when a
 **durable rule or architecture contract** changes. Update `HANDOFF.md` only
-when status/roadmap evidence will help a future session; do not duplicate
+when status/roadmap actually changes; don't append detailed per-fix logs —
+archive them to `docs/archive/` instead. If work is done, don't append —
+archive.
 routine build reports across files.

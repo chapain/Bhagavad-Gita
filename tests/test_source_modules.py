@@ -64,6 +64,7 @@ class SourceModuleContractTests(unittest.TestCase):
             "play": "30-play.js",
             "drills": "35-drills.js",
             "views": "40-views.js",
+            "data": "45-data.js",
             "reader": "50-reader.js",
         }
         for feature, owner in owners.items():
@@ -91,7 +92,7 @@ class SourceModuleContractTests(unittest.TestCase):
         files = {path.name: path.read_text(encoding="utf-8")
                  for path in (SOURCE / "js").glob("*.js")}
         owners = {
-            "10-library.js": ("VERSES", "FAV", "FAV_LIST", "SRCH_HITS"),
+            "10-library.js": ("VERSES", "FAV", "FAVNOTE", "FAV_LIST", "SRCH_HITS"),
             "20-learn.js": ("LV", "FP", "lrTest", "lrOpen"),
             "30-play.js": ("PL",),
             "35-drills.js": ("LQ", "LQi", "LQmiss", "LQpick"),
@@ -99,8 +100,11 @@ class SourceModuleContractTests(unittest.TestCase):
         import re
         for owner, names in owners.items():
             allowed = {owner}
+            if owner == "10-library.js":
+                allowed.add("45-data.js")
             if owner == "20-learn.js":
                 allowed.add("25-learn-session.js")
+                allowed.add("45-data.js")
             for name in names:
                 for filename, text in files.items():
                     if filename not in allowed:

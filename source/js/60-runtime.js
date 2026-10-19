@@ -155,6 +155,7 @@ function gitaBoot(){
     if(h === '#play'){ App.play.show(); return; }
     if(h === '#favorites'){ App.library.showFavorites(); return; }
     if(h === '#search'){ App.library.search(); return; }
+    if(h === '#data'){ App.data.show(); return; }
     if(h === '#ways'){ App.views.sections(); return; }
     var wy = /^#way=([123])$/.exec(h);
     if(wy){ App.views.chapters(+wy[1]); return; }
@@ -163,6 +164,7 @@ function gitaBoot(){
     if(stay==='#play'){ App.play.show(); return; }
     if(stay==='#favorites'){ App.library.showFavorites(); return; }
     if(stay==='#search'){ App.library.search(); return; }
+    if(stay==='#data'){ App.data.show(); return; }
     if(stay==='#ways'){ App.views.sections(); return; }
     var sw = /^#way=([123])$/.exec(stay);
     if(sw){ App.views.chapters(+sw[1]); return; }

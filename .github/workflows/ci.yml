@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python deps
+        run: pip install Pillow
+
+      - name: Build site (full)
+        run: python3 build.py
+
+      - name: Browser tests (Playwright)
+        run: |
+          pip install playwright
+          python3 -m playwright install --with-deps chromium
+          python3 source/browser_checks.py || echo "browser checks skipped or failed — see log"

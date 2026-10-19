@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 776;      // keep in step with the printed total
+const TOTAL_ASSERTIONS = 827;      // keep in step with the printed total
 const TOTAL_BROWSER_CHECKS = 270;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
@@ -106,7 +106,7 @@ const enKeys = Object.keys(UI.en);
 // added click_pada_meanings (1) → 187
 // 2026-10-17: removed read_sub, opt_full_g, opt_study_g, back_themes (4) → 183,
 // together with the per-theme and continuous-reading views that used them.
-ok(enKeys.length === 183, `UI has 183 keys (got ${enKeys.length})`);
+ok(enKeys.length === 202, `UI has 202 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -706,7 +706,7 @@ group('web app');
 for (const [re, label] of [
   [/<meta property="og:title"/, 'og:title'],
   [/<meta property="og:description"/, 'og:description'],
-  [/<meta property="og:image" content="https?:\/\/[^"]+og-card\.png"/, 'og:image (absolute URL)'],
+  [/<meta property="og:image" content="https?:\/\/[^"]+icons\/og-card\.png"/, 'og:image (absolute URL, icons/ canonical)'],
   [/<meta property="og:image:width" content="1200"/, 'og:image:width'],
   [/<meta property="og:url" content="https?:\/\//, 'og:url (absolute)'],
   [/<meta name="twitter:card" content="summary_large_image"/, 'twitter card'],
@@ -754,10 +754,17 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   const S = ROOT;
   ok(fs.existsSync(S), 'site/ bundle generated');
   for (const f of ['index.html', 'manifest.webmanifest', 'sw.js', 'favicon.ico',
-                   'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
-                   'apple-touch-icon.png', 'og-card.png',
                    'sitemap.xml', 'robots.txt']) {
     ok(fs.existsSync(path.join(S, f)), `site/${f} exists`);
+  }
+  for (const f of ['icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png',
+                   'icons/apple-touch-icon.png', 'icons/og-card.png']) {
+    ok(fs.existsSync(path.join(S, f)), `site/${f} exists (icons/ canonical)`);
+  }
+  // root duplicates must be gone — single source of truth is icons/
+  for (const f of ['icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
+                   'apple-touch-icon.png', 'og-card.png']) {
+    ok(!fs.existsSync(path.join(S, f)), `site/${f} must not exist at root (icons/ canonical)`);
   }
   const idx = fs.readFileSync(path.join(S, 'index.html'), 'utf8');
   ok(idx === html, 'site/index.html is identical to the built app');
@@ -766,10 +773,13 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(mf.start_url === './' && mf.scope === './', 'manifest: relative start_url/scope');
   ok(mf.icons.some(i => i.purpose === 'maskable'), 'manifest: has a maskable icon');
   ok(mf.icons.some(i => i.sizes === '512x512'), 'manifest: has a 512px icon');
+  ok(mf.icons.every(i => i.src.startsWith('icons/')), 'manifest icons live in icons/ (canonical)');
   ok(mf.theme_color === '#1A5648', 'manifest: theme colour matches the header');
   const sw = fs.readFileSync(path.join(S, 'sw.js'), 'utf8');
   ok(/const CACHE = 'gita-[0-9a-f]{12}'/.test(sw), 'sw.js cache name is content-versioned');
   ok(sw.includes("'./index.html'"), 'sw.js precaches index.html');
+  ok(sw.includes("'./icons/icon-192.png'") && sw.includes("'./icons/apple-touch-icon.png'"),
+     'sw.js precaches icons from icons/ (canonical)');
   ok(sw.includes("'./data/ch18.js'"), 'sw.js precaches the chapter data files');
   ok(/req\.mode === 'navigate'/.test(sw), 'sw.js network-first for navigations');
   ok(/url\.origin !== location\.origin/.test(sw), 'sw.js ignores cross-origin requests');
@@ -780,6 +790,20 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   const rb = fs.readFileSync(path.join(S, 'robots.txt'), 'utf8');
   ok(!/Disallow/i.test(rb), 'robots.txt disallows nothing');
   ok(/Sitemap: https?:\/\/\S+\/sitemap\.xml/.test(rb), 'robots.txt points at the sitemap');
+
+  // ---- Phase 5.4: data export / import (localStorage backup) ----
+  ok(/App\.data = Object\.freeze/.test(html) && /function dataExport\(\)/.test(html) && /function dataValidateImport/.test(html),
+     'data export/import module exists with versioned schema');
+  ok(/function showData\(\)/.test(html) && /id="footDataLink"/.test(html) && /#data/.test(html),
+     'data view reachable from footer and #data route');
+  ok(/data_title/.test(html) && /data_export/.test(html) && /data_import/.test(html),
+     'data view uses i18n keys (en/ne/hi)');
+  ok(/gita-backup-/.test(html) && /application\/json/.test(html) && /exportedAt/.test(html),
+     'export creates versioned JSON with timestamp');
+  ok(/gitaFavs/.test(html) && /gitaFavNotes/.test(html) && /gitaLearn/.test(html),
+     'export includes favs, notes and Learn progress');
+  ok(/dataClearAll/.test(html) && /data_clear_q/.test(html),
+     'clear-all-data guarded by confirmation');
 }
 
 // ---------- chapter landing pages (generated SEO satellites) ----------

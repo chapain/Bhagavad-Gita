@@ -97,7 +97,7 @@ function sessionOrigin(o){
 function validSessionSnapshot(s, pathKey, hash){
   if(!s || typeof s !== 'object' || s.version !== 1
      || s.path !== pathKey || s.hash !== hash || typeof s.route !== 'string'
-     || !['welcome','sections','chapters','chapter','learn','search','favorites','play'].includes(s.view)
+     || !['welcome','sections','chapters','chapter','learn','search','favorites','play','data'].includes(s.view)
      || !GITA_LANGS.includes(s.lang)) return false;
   if(s.modal){
     const hs = history.state;
@@ -275,6 +275,7 @@ const ICONS = {
 };
 function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub').textContent = L('app_sub');
   $('#tagVerses').textContent = L('tag_sub'); $('#appFooter').textContent = L('footer');
+  const footData = $('#footDataLink'); if(footData) footData.textContent = L('data_title') + ' · ' + L('data_export') + ' / ' + L('data_import');
   $('#clearBtn').setAttribute('aria-label', L('clear'));
   $('#randLbl').textContent = L('random'); $('#favLbl').textContent = L('favorites');
   $('#homeLbl').textContent = L('home');

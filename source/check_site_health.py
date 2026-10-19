@@ -104,7 +104,7 @@ for page, label in [(idx, "index.html")] + \
     cards = meta_values(page, "name", "twitter:card")
     ok(len(imgs) == 1, f"{label}: expected exactly 1 og:image, found {len(imgs)}")
     ok(len(cards) == 1, f"{label}: expected exactly 1 twitter:card, found {len(cards)}")
-    ok(imgs == [f"{SITE_BASE}/og-card.png"], f"{label}: og:image must be og-card.png, got {imgs}")
+    ok(imgs == [f"{SITE_BASE}/icons/og-card.png"], f"{label}: og:image must be icons/og-card.png, got {imgs}")
     ok(cards == ["summary_large_image"], f"{label}: twitter:card must be summary_large_image")
     # the declared dimensions must describe the image actually referenced
     ok(meta_values(page, "property", "og:image:width") == ["1200"], f"{label}: og:image:width")
@@ -355,7 +355,10 @@ for _f in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
 # headings + direct verse tap targets); the cap is to catch accidental
 # bloat, not freeze UI evolution. Phase 2's explicit feature interfaces and
 # session ownership bring the maintained baseline to about 293500 characters.
-ok(len(idx) < 295000, f"the shell should stay lean; it is {len(idx)} characters")
+# Phase 5.4 (2026-10-19): data export/import adds ~17KB (backup UI + versioned
+# JSON schema + merge logic); raise to 320000 to keep headroom for this
+# user-data safety net.
+ok(len(idx) < 320000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64
@@ -371,8 +374,9 @@ if os.path.exists(os.path.join(ROOT, FONT)):
     ok(head == b"wOF2", f"{FONT} must be a real woff2 (magic bytes)")
     src = os.path.join(ROOT, "source", "fonts", FONT)
     if os.path.exists(src):
-        ok(open(src, "rb").read() == open(os.path.join(ROOT, FONT), "rb").read(),
-           f"published {FONT} must match source/fonts/")
+        with open(src, "rb") as _a, open(os.path.join(ROOT, FONT), "rb") as _b:
+            _match = _a.read() == _b.read()
+        ok(_match, f"published {FONT} must match source/fonts/")
 ok("base64" not in css, "chapter.css must not inline a font as base64 again")
 ok(f'url("{FONT}")' in css, "chapter.css must reference the font by relative URL")
 # CSS resolves url() against the STYLESHEET, which sits at the site root — so a
@@ -536,8 +540,13 @@ ok(not unexpected_dead, f"unexpected dead functions in index.html: {unexpected_d
 # ----------------------------------------------- retired per-verse card cards
 # The 2026-09-01 decision: no img/v/ ever again.
 ok(not os.path.isdir(os.path.join(ROOT, "img", "v")), "img/v/ must stay retired")
-stale = [p for p in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True)
-         if "/img/v/" in open(p, encoding="utf-8").read()]
+def _has_img_v(p):
+    try:
+        with open(p, encoding="utf-8") as _fh:
+            return "/img/v/" in _fh.read()
+    except OSError:
+        return False
+stale = [p for p in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True) if _has_img_v(p)]
 ok(not stale, f"pages still reference retired img/v/ cards: {stale[:3]}")
 
 
@@ -556,7 +565,12 @@ for _pat in ("source/*.py", "tests/*.py", "tests/*.js", "tests/*.sh"):
     _code += glob.glob(os.path.join(ROOT, _pat))
 for _p in _code:
     if os.path.isfile(_p):
-        for _m in re.finditer(r"source/([A-Za-z0-9_]+\.py)", open(_p, encoding="utf-8", errors="replace").read()):
+        try:
+            with open(_p, encoding="utf-8", errors="replace") as _fh:
+                _txt = _fh.read()
+        except OSError:
+            continue
+        for _m in re.finditer(r"source/([A-Za-z0-9_]+\.py)", _txt):
             _cited.add(_m.group(1))
 _missing = sorted(n for n in _cited if not os.path.isfile(os.path.join(ROOT, "source", n)))
 ok(not _missing, f"code cites source scripts that do not exist: {_missing}")
