@@ -101,6 +101,24 @@ writes outside Core. The shell is about 83 KB gzipped and loads the verses from 
 first visit everything is cached, so the app runs offline and installs to the
 home screen. Share it by link.
 
+The JavaScript source order is also the dependency map:
+
+| Source | Responsibility / mutable owner |
+|---|---|
+| `00-core.js` | shell primitives, validated shared session transitions and snapshots |
+| `10-library.js` | chapter loading, verse index, search and favourites |
+| `20-learn.js` + `25-learn-session.js` | Learn path, practice state and Learn restoration |
+| `30-play.js` | Play setup and active-game state |
+| `35-drills.js` | quiz queue, answers and drill restoration |
+| `40-views.js` | route-level rendering and persistence |
+| `50-reader.js` | verse sheet, reader navigation and sizing |
+| `60-runtime.js` | event wiring, boot, restoration and deep links |
+
+`tests/test_source_modules.py` protects this boundary: manifests must cover every
+source, interfaces have one frozen publisher, mutable feature state has one
+owner, inline controls cannot mutate owner internals, and shared `state` writes
+are confined to Core.
+
 ---
 
 ## The study-guide map

@@ -49,6 +49,8 @@ render the affected verse.
 - Reviewed maps/progress migration: `source/study_map_contract.json`
 - Build, schema and checks: `source/build_gita.py`, `source/schema.py`,
   `source/check_*.py`
+- Architecture contracts: `tests/test_source_modules.py`. Update this test with
+  an intentional boundary change; do not weaken it merely to admit a shortcut.
 
 ## Never hand-edit generated output
 

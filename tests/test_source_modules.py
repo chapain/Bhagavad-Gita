@@ -54,10 +54,38 @@ class SourceModuleContractTests(unittest.TestCase):
         css = self.check_family("css", "APP_CSS_FILES", ".css", 450)
         self.assertEqual(css.count("__FONTS__"), 1)
 
-    def test_feature_interfaces_are_explicit(self):
-        js = self.check_family("js", "APP_JS_FILES", ".js", 700)
-        for feature in ("session", "library", "learn", "play", "drills", "views", "reader"):
-            self.assertIn(f"App.{feature} = Object.freeze({{", js)
+    def test_feature_interfaces_are_explicit_and_owned(self):
+        files = {path.name: path.read_text(encoding="utf-8")
+                 for path in (SOURCE / "js").glob("*.js")}
+        owners = {
+            "session": "00-core.js",
+            "library": "10-library.js",
+            "learn": "20-learn.js",
+            "play": "30-play.js",
+            "drills": "35-drills.js",
+            "views": "40-views.js",
+            "reader": "50-reader.js",
+        }
+        for feature, owner in owners.items():
+            publication = f"App.{feature} = Object.freeze({{"
+            found = [name for name, text in files.items() if publication in text]
+            self.assertEqual(found, [owner], f"App.{feature} must be frozen by {owner} exactly once")
+
+    def test_inline_ui_handlers_do_not_mutate_owned_state(self):
+        import re
+        handler = re.compile(r"\bon(?:click|change|input|keydown)=\\?\"([^\"]*)")
+        direct_write = re.compile(
+            r"\b(?:state|LV|PL|LQ|LQi|LQmiss|LQpick)\s*"
+            r"(?:\.[A-Za-z_$][\w$]*|\[[^]]+\])?\s*"
+            r"(?:=(?!=)|\+=|-=|\*=|/=|%=|\+\+|--)")
+        checked = 0
+        for path in (SOURCE / "js").glob("*.js"):
+            text = path.read_text(encoding="utf-8")
+            for body in handler.findall(text):
+                checked += 1
+                self.assertIsNone(direct_write.search(body),
+                                  f"{path.name} UI handler must call its owner's operation: {body}")
+        self.assertGreater(checked, 25, "handler scan must not pass vacuously")
 
     def test_mutable_feature_state_has_one_owner(self):
         files = {path.name: path.read_text(encoding="utf-8")
