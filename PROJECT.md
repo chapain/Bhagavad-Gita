@@ -1741,7 +1741,7 @@ chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
 run_gita_app.js       776 assertions on the built document and data (needs node)
-browser_checks.py     265 live-browser checks (needs Playwright)
+browser_checks.py     270 live-browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)

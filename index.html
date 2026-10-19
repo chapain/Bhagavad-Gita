@@ -1363,11 +1363,9 @@
     .m-head .m-num-chit{ font-size:.9rem; }
     .m-head .m-vtitle{ display:block; font-size:.82rem; line-height:1.2;
                        overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
-    /* Reserve room at the final line's end so its number stays right-aligned
-       on that line instead of dropping onto a line of its own. */
-    .m-whole-verse .gline-main{ display:inline; }
-    .m-whole-verse .gline-main.has-number{ display:block; width:100%; box-sizing:border-box; padding-right:4.6em; }
-    .m-whole-verse .gl-tail{ top:auto; left:auto; right:0; bottom:0; white-space:nowrap; }
+    /* Phones keep the number on the line, in flow, so the centred block
+       includes it: it follows the closing daṇḍa, never the card's edge. */
+    .m-whole-verse .gl-tail{ position:static; }
     .m-part{ margin:0 0 12px; padding:8px 2px 0; color:var(--ink-soft);
              font-size:.78rem; line-height:1.5; }
     .m-num{ font-size:1.08rem; }
@@ -3880,7 +3878,10 @@ function padaBlockDeva(s, withNum){
 }
 /* Two lines, never three: shrink --verse-fit until each line's text fits
    the card's inner width (not the line's clientWidth: 0 inline on phones,
-   shrink-to-fit on desktop). Numbered line reserves its tail; +1px tol. */
+   shrink-to-fit on desktop). The numbered line reserves the number's real
+   reach past the text - its gap plus its width - measured, so the same
+   formula fits the desktop tail (out of flow after the daṇḍa) and the phone
+   one (in flow, so the centred block carries it). +1px tolerance. */
 function fitWholeVerse(){
   const v = $('#modal .m-whole-verse');
   if(!v || !v.clientWidth) return;
@@ -3889,12 +3890,11 @@ function fitWholeVerse(){
   /* inner width: clientWidth less padding and the card's 1px borders */
   const inner = v.clientWidth - pf(cs.paddingLeft) - pf(cs.paddingRight) - 2;
   const over = () => ms.some(el => { if(!el.firstChild) return false;
-    r.selectNode(el.firstChild); let avail = inner;
-    if(el.classList.contains('has-number')){
-      const pad = pf(getComputedStyle(el).paddingRight), tail = el.querySelector('.gl-tail');
-      avail -= pad || (tail ? tail.getBoundingClientRect().width + pf(getComputedStyle(el).fontSize) * .24 : 0);
-    }
-    return r.getBoundingClientRect().width > avail + 1; });
+    r.selectNode(el.firstChild);
+    const tr = r.getBoundingClientRect(), tail = el.querySelector('.gl-tail');
+    /* how far the number reaches past the text: the gap plus its width */
+    const num = tail ? tail.getBoundingClientRect().right - tr.right : 0;
+    return tr.width > inner - num + 1; });
   let f = 1;
   while(true){ v.style.setProperty('--verse-fit', f.toFixed(2));
     if(f <= 0.3 || !over()) break; f -= 0.02; }
