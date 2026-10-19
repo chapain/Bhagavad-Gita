@@ -3787,7 +3787,7 @@ function showWelcome(){
               </ol>
             </details>
           </div>
-          <div class="w-foot">${esc(L('welcome_foot'))}</div>
+          <div class="w-foot">${esc(L('welcome_foot'))} · <button class="foot-link" onclick="App.data.show()" aria-label="${esc(L('data_title'))}">${esc(L('data_title'))}</button></div>
         </div>
         <section class="welcome-stage" aria-label="${esc(L(state.shared ? 'shared_label' : 'verse_of_day'))}">
           <svg class="welcome-wheel" viewBox="0 0 320 320" fill="none" aria-hidden="true" focusable="false">
