@@ -1041,11 +1041,16 @@
   .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--ink-soft); font-size:.78rem; font-weight:600;
            margin:0 0 14px; line-height:1.4; letter-spacing:.01em; }
 
-  .m-whole-verse{ --verse-fit:1; background:var(--paper); border:1px solid var(--line);
-    border-radius:14px; padding:18px 20px; margin:0 0 10px;
+  .m-whole-verse{ --verse-fit:1; position:relative; background:var(--paper); border:1px solid var(--line);
+    border-radius:14px; padding:36px 20px 18px; margin:0 0 10px;
     font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
     line-height:1.8; text-align:center; cursor:pointer;
     transition:border-color .15s, background .15s, box-shadow .15s; }
+  .verse-expand-hint{ position:absolute; top:9px; right:12px; padding:2px 9px;
+    border-radius:999px; background:var(--teal-soft); color:var(--teal);
+    font:600 .72rem/1.5 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
+    white-space:nowrap; opacity:.82; }
+  .m-whole-verse:hover .verse-expand-hint{ opacity:1; }
   .m-whole-verse:hover{ border-color:var(--teal-mid); background:var(--teal-soft); }
   .m-whole-verse:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
   /* Both lines flush left; the number rides out of flow. */
@@ -1070,27 +1075,19 @@
   .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
   .m-line.lit .lt{ font-size:calc(1rem * var(--reader-scale,1)); }
 
-  /* Option 1 - the hero verse converts in place into the four quarters.
-     The tap-sized action under the box opens the quarters and doubles as the
-     way back; the pada instruction only appears once the grid is showing. */
+  /* Option 1 keeps the verse and its expanded pāda grid in one card. */
   .m-verse-box-container{ margin:0 0 2px; }
-  .m-verse-action{ display:flex; align-items:center; gap:10px; width:100%;
-    min-height:48px; padding:12px 14px; border:1px solid var(--teal);
-    border-radius:12px; background:var(--teal-soft); color:var(--ink);
-    font:650 .94rem/1.4 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
-    text-align:left; cursor:pointer; user-select:none; transition:border-color .15s; }
-  .m-verse-action::after{ content:"▾"; flex:0 0 auto; margin-left:auto;
-    font-size:1rem; color:var(--teal); transition:transform .15s; }
-  .m-verse-action:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
-  .m-verse-action:hover{ border-color:var(--teal-mid); }
-  .m-verse-box-container.expanded-mode .m-verse-action::after{ transform:rotate(180deg); }
   .m-verse-box-container.expanded-mode #verseContent.m-verse{
-    margin-top:10px; cursor:pointer; transition:border-color .15s, background .15s; }
+    position:relative; margin:0 0 10px; padding:46px 18px 16px; cursor:pointer;
+    transition:border-color .15s, background .15s; }
   .m-verse-box-container.expanded-mode #verseContent.m-verse:hover{
     border-color:var(--teal-mid); background:var(--teal-soft); }
-  .m-pada-hint{ display:none; margin:12px 2px 10px; color:var(--ink); font-size:.92rem;
-    font-style:normal; font-weight:600; line-height:1.5; }
-  .m-verse-box-container.expanded-mode .m-pada-hint{ display:block; }
+  .m-verse-back{ position:absolute; z-index:1; top:8px; right:10px; display:grid;
+    place-items:center; width:34px; height:32px; padding:0; border:1px solid var(--line);
+    border-radius:999px; background:var(--cream); color:var(--teal);
+    font:700 1.1rem/1 system-ui,sans-serif; cursor:pointer; }
+  .m-verse-back:hover{ border-color:var(--teal-mid); background:var(--teal-soft); }
+  .m-verse-back:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; }
 
   /* Old selectors that no longer apply to the new layout but are harmless
      if left in place — the dead ones below are overridden above. */
@@ -4808,8 +4805,12 @@ function fillModal(){
 
   /* Option 1: the whole verse and the four-quarter grid are both prepared up
      front, then swapped into the same box by toggleVerseExpansion(). */
-  const wholeVerseHtml = padaBlockDeva(s, true);
-  const padaGridHtml = `${spkHtml(topS)}
+  const wholeVerseHtml = `${padaBlockDeva(s, true)}
+      <span class="verse-expand-hint" aria-hidden="true">▾ ${numL(4)} ${esc(L('pada_label'))}</span>`;
+  const padaGridHtml = `<span class="sr-only" id="wordsHint">${esc(L('click_pada_meanings'))}</span>
+      <span class="sr-only" id="padaHint">${esc(L('click_pada_meanings'))}</span>
+      <button type="button" class="m-verse-back" aria-label="${esc(L('back_to_x').replace('{x}', L('verse')))}" title="${esc(L('back_to_x').replace('{x}', L('verse')))}" onclick="event.stopPropagation();App.reader.toggleVerseExpansion(event)">↩</button>
+      ${spkHtml(topS)}
       <div class="pada-grid">
         <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
         ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
@@ -4848,19 +4849,12 @@ function fillModal(){
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
       <div id="verseContainer" class="m-verse-box-container">
-        <span class="sr-only" id="wordsHint">${esc(L('click_pada_meanings'))}</span>
         <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
              aria-label="${esc(L('click_hint_pada'))}" aria-expanded="false"
              onclick="App.reader.toggleVerseExpansion(event)"
-             onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('.pada-toggle,.spk-line,.words')){event.preventDefault();App.reader.toggleVerseExpansion(event)}">
+             onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}
         </div>
-        <button type="button" class="m-verse-action" id="verseAction"
-                aria-expanded="false" aria-controls="verseContent"
-                onclick="App.reader.toggleVerseExpansion(event)">
-          <span id="verseActionLabel">${esc(L('click_hint_pada'))}</span>
-        </button>
-        <p class="m-pada-hint" id="padaHint">${esc(L('click_pada_meanings'))}</p>
       </div>
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
@@ -4888,28 +4882,23 @@ function fillModal(){
   setVerseView(false);
 }
 
-/* Option 1 - one verse box, two shapes. A click on the box itself (or the
-   action below it) converts the whole verse into the four quarters and back.
-   Clicks on a quarter or a speaker line belong to that control, not to the
-   box, so opening a word split must not collapse the view. */
+/* Option 1 - one verse box, two shapes. The card itself converts in place;
+   pāda and speaker controls own their clicks so revealing word meanings never
+   collapses the expanded verse. */
 function setVerseView(expanded){
   if(!verseViewState) return;
   const container = document.getElementById('verseContainer');
   const content = document.getElementById('verseContent');
-  const action = document.getElementById('verseAction');
-  const label = document.getElementById('verseActionLabel');
-  if(!container || !content || !action || !label) return;
+  if(!container || !content) return;
   const on = !!expanded;
   verseViewState.isExpanded = on;
   content.innerHTML = on ? verseViewState.expanded : verseViewState.whole;
   content.classList.toggle('m-whole-verse', !on);
   content.classList.toggle('m-verse', on);
   container.classList.toggle('expanded-mode', on);
-  action.setAttribute('aria-expanded', String(on));
-  label.textContent = on ? L('back_to_x').replace('{x}', L('verse')) : L('click_hint_pada');
   if(on){
-    /* The grid has its own real buttons; the surrounding box must not also
-       claim to be one, or keyboard users meet nested interactive controls. */
+    /* The expanded card contains real buttons, so it must not also claim to
+       be a button or create nested interactive controls. */
     content.removeAttribute('role');
     content.removeAttribute('tabindex');
     content.removeAttribute('aria-label');
@@ -4928,7 +4917,7 @@ function toggleVerseExpansion(ev){
   const t = ev && ev.target;
   if(ev && verseViewState && verseViewState.isExpanded && content
      && content.contains(t) && t && t.closest
-     && t.closest('.pada-toggle,.spk-line,.words,.m-pada-hint')) return;
+     && t.closest('.pada-toggle,.spk-line,.words')) return;
   setVerseView(!(verseViewState && verseViewState.isExpanded));
 }
 function setReaderSize(size){

@@ -274,8 +274,12 @@ function fillModal(){
 
   /* Option 1: the whole verse and the four-quarter grid are both prepared up
      front, then swapped into the same box by toggleVerseExpansion(). */
-  const wholeVerseHtml = padaBlockDeva(s, true);
-  const padaGridHtml = `${spkHtml(topS)}
+  const wholeVerseHtml = `${padaBlockDeva(s, true)}
+      <span class="verse-expand-hint" aria-hidden="true">▾ ${numL(4)} ${esc(L('pada_label'))}</span>`;
+  const padaGridHtml = `<span class="sr-only" id="wordsHint">${esc(L('click_pada_meanings'))}</span>
+      <span class="sr-only" id="padaHint">${esc(L('click_pada_meanings'))}</span>
+      <button type="button" class="m-verse-back" aria-label="${esc(L('back_to_x').replace('{x}', L('verse')))}" title="${esc(L('back_to_x').replace('{x}', L('verse')))}" onclick="event.stopPropagation();App.reader.toggleVerseExpansion(event)">↩</button>
+      ${spkHtml(topS)}
       <div class="pada-grid">
         <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
         ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
@@ -314,19 +318,12 @@ function fillModal(){
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
       <div id="verseContainer" class="m-verse-box-container">
-        <span class="sr-only" id="wordsHint">${esc(L('click_pada_meanings'))}</span>
         <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
              aria-label="${esc(L('click_hint_pada'))}" aria-expanded="false"
              onclick="App.reader.toggleVerseExpansion(event)"
-             onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('.pada-toggle,.spk-line,.words')){event.preventDefault();App.reader.toggleVerseExpansion(event)}">
+             onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}
         </div>
-        <button type="button" class="m-verse-action" id="verseAction"
-                aria-expanded="false" aria-controls="verseContent"
-                onclick="App.reader.toggleVerseExpansion(event)">
-          <span id="verseActionLabel">${esc(L('click_hint_pada'))}</span>
-        </button>
-        <p class="m-pada-hint" id="padaHint">${esc(L('click_pada_meanings'))}</p>
       </div>
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
@@ -354,28 +351,23 @@ function fillModal(){
   setVerseView(false);
 }
 
-/* Option 1 - one verse box, two shapes. A click on the box itself (or the
-   action below it) converts the whole verse into the four quarters and back.
-   Clicks on a quarter or a speaker line belong to that control, not to the
-   box, so opening a word split must not collapse the view. */
+/* Option 1 - one verse box, two shapes. The card itself converts in place;
+   pāda and speaker controls own their clicks so revealing word meanings never
+   collapses the expanded verse. */
 function setVerseView(expanded){
   if(!verseViewState) return;
   const container = document.getElementById('verseContainer');
   const content = document.getElementById('verseContent');
-  const action = document.getElementById('verseAction');
-  const label = document.getElementById('verseActionLabel');
-  if(!container || !content || !action || !label) return;
+  if(!container || !content) return;
   const on = !!expanded;
   verseViewState.isExpanded = on;
   content.innerHTML = on ? verseViewState.expanded : verseViewState.whole;
   content.classList.toggle('m-whole-verse', !on);
   content.classList.toggle('m-verse', on);
   container.classList.toggle('expanded-mode', on);
-  action.setAttribute('aria-expanded', String(on));
-  label.textContent = on ? L('back_to_x').replace('{x}', L('verse')) : L('click_hint_pada');
   if(on){
-    /* The grid has its own real buttons; the surrounding box must not also
-       claim to be one, or keyboard users meet nested interactive controls. */
+    /* The expanded card contains real buttons, so it must not also claim to
+       be a button or create nested interactive controls. */
     content.removeAttribute('role');
     content.removeAttribute('tabindex');
     content.removeAttribute('aria-label');
@@ -394,7 +386,7 @@ function toggleVerseExpansion(ev){
   const t = ev && ev.target;
   if(ev && verseViewState && verseViewState.isExpanded && content
      && content.contains(t) && t && t.closest
-     && t.closest('.pada-toggle,.spk-line,.words,.m-pada-hint')) return;
+     && t.closest('.pada-toggle,.spk-line,.words')) return;
   setVerseView(!(verseViewState && verseViewState.isExpanded));
 }
 function setReaderSize(size){
