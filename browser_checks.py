@@ -828,31 +828,54 @@ def run(pw, url, offline_capable=False):
             and structure["noHintCard"]),
        f"the single verse card is followed directly by literal and paraphrase, with no action/disclosure card ({structure})")
 
+    # The whole-verse shape explains itself: a short localized instruction sits
+    # INSIDE the clickable card (not a terse "▾ ४ पाद" corner tag, not a sibling
+    # bar), it is what the card is labelled with, and it never spills out of the
+    # card. Both hints are transient, so they are read per language here.
     control = pg.evaluate("""() => {
-      const el = document.querySelector('#modal #verseContent');
-      const copy = {};
+      const copy = {}, hints = {}, inside = {}, fits = {};
       for (const code of ['en','ne','hi']) {
         setLang(code);
-        copy[code] = document.querySelector('#modal #verseContent')?.getAttribute('aria-label');
+        const verse = document.querySelector('#modal #verseContent');
+        copy[code] = verse?.getAttribute('aria-label');
+        const hint = verse?.querySelector('.verse-expand-hint');
+        hints[code] = hint ? hint.textContent.replace(/\s+/g, ' ').trim() : null;
+        const container = document.querySelector('#modal #verseContainer');
+        inside[code] = !!(hint && verse.contains(hint)
+          && hint.getClientRects().length > 0
+          && getComputedStyle(hint).position !== 'fixed'
+          && container && container.contains(hint));
+        if (hint) {
+          const hb = hint.getBoundingClientRect(), vb = verse.getBoundingClientRect();
+          fits[code] = hb.width > 0 && hb.left >= vb.left - 1 && hb.right <= vb.right + 1
+            && hb.top >= vb.top - 1 && hb.bottom <= vb.bottom + 1;
+        }
       }
       const verse = document.querySelector('#modal #verseContent');
       const result = {
         role: verse?.getAttribute('role'), tabindex: verse?.getAttribute('tabindex'),
         expanded: verse?.getAttribute('aria-expanded'), label: copy,
+        hint: hints, inside: inside, fits: fits,
+        hintIsLabel: ['en','ne','hi'].every(c => copy[c] && hints[c] === copy[c]),
+        /* the old terse corner tag "▾ ४ पाद" must be gone from the card */
+        noTerseTag: !['en','ne','hi'].some(c => /▾|^\s*[\u0966-\u096f\d]+\s/.test(hints[c] || '')),
         cursor: verse && getComputedStyle(verse).cursor
       };
       setLang('ne');
       return result;
     }""")
     expected_labels = {
-      "en": "Open the four quarters for word meanings",
-      "ne": "शब्दार्थका लागि चारै पाद खोल्नुहोस्",
-      "hi": "शब्दार्थ के लिए चारों पाद खोलें",
+      "en": "Tap this verse to reveal all four pādas",
+      "ne": "चारै पाद हेर्न यो श्लोकमा ट्याप गर्नुहोस्",
+      "hi": "चारों पाद देखने के लिए इस श्लोक पर टैप करें",
     }
     ok(bool(control and control["role"] == "button" and control["tabindex"] == "0"
             and control["expanded"] == "false" and control["cursor"] == "pointer"
-            and control["label"] == expected_labels),
-       f"the verse card itself is the localized keyboard and pointer control ({control})")
+            and control["label"] == expected_labels
+            and control["hint"] == expected_labels and control["hintIsLabel"]
+            and all(control["inside"].values()) and all(control["fits"].values())
+            and control["noTerseTag"]),
+       f"the verse card itself is the localized keyboard and pointer control, and its clear 'tap the verse' instruction is inside the card in place of the terse corner tag ({control})")
 
     # The master switch sleeps until a pāda is open; the four pādas are rendered
     # inside the exact same #verseContent node and carry valid hidden hints.
@@ -860,7 +883,44 @@ def run(pw, url, offline_capable=False):
        "the hide/show meanings switch is inactive before the quarters open")
     pg.locator("#modal #verseContent").click()
     pg.wait_for_timeout(300)
-    converted = pg.evaluate("""() => {
+    converted = pg.evaluate(r"""() => {
+      const clean = el => (el?.textContent || '').replace(/\s+/g, ' ').trim();
+      /* A language change rebuilds the sheet in its whole-verse shape, so each
+         language is re-expanded before its in-card instruction is read. */
+      const expand = () => {
+        const c = document.querySelector('#modal #verseContent');
+        if (c && c.classList.contains('m-whole-verse')) c.click();
+        return document.querySelector('#modal #verseContent');
+      };
+      /* The expanded card explains its own boxes: a short localized
+         instruction sits inside the same card, immediately above the grid,
+         as plain text — no sibling bar, card or disclosure — while the
+         in-card ↩ stays beside it. */
+      const hints = {}, hintOk = {};
+      for (const code of ['en','ne','hi']) {
+        setLang(code);
+        const c = expand();
+        const hint = c?.querySelector('.pada-meanings-hint');
+        const g = c?.querySelector('.pada-grid');
+        const copy = document.querySelector('#modal .reader-copy');
+        hints[code] = hint ? clean(hint) : null;
+        hintOk[code] = !!(hint && c.contains(hint) && hint.getClientRects().length
+          && hint.parentElement === c && g && g.parentElement === c
+          && hint.nextElementSibling === g
+          && (hint.compareDocumentPosition(g) & Node.DOCUMENT_POSITION_FOLLOWING)
+          && copy && ![...copy.children].some(el => el !== c && el.contains(hint))
+          && !hint.closest('details, summary, .m-verse-action, .m-words-section')
+          && !hint.querySelector('button, a, [role], [tabindex]'));
+      }
+      setLang('ne');
+      expand();
+      window.__padaHints = hints;
+      const want = {
+        en: 'Tap a p\u0101da to see its word-by-word meanings',
+        ne: '\u0936\u092c\u094d\u0926\u093e\u0930\u094d\u0925 \u0939\u0947\u0930\u094d\u0928 \u0915\u0941\u0928\u0948 \u092a\u093e\u0926\u092e\u093e \u091f\u094d\u092f\u093e\u092a \u0917\u0930\u094d\u0928\u0941\u0939\u094b\u0938\u094d',
+        hi: '\u0936\u092c\u094d\u0926\u093e\u0930\u094d\u0925 \u0926\u0947\u0916\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0915\u093f\u0938\u0940 \u092a\u093e\u0926 \u092a\u0930 \u091f\u0948\u092a \u0915\u0930\u0947\u0902',
+      };
+      const hintsMatch = ['en','ne','hi'].every(c => hints[c] === want[c]);
       const content = document.querySelector('#modal #verseContent');
       const container = document.querySelector('#modal #verseContainer');
       const grid = content?.querySelector('.pada-grid');
@@ -871,9 +931,21 @@ def run(pw, url, offline_capable=False):
           && getComputedStyle(el).position === 'absolute');
       };
       const toggles = [...(content?.querySelectorAll('.pada-toggle') || [])];
+      /* Description ids must resolve exactly once: no duplicates, no danglers. */
+      const ids = [...document.querySelectorAll('#modal [id]')].map(el => el.id);
+      const uniqueIds = new Set(ids).size === ids.length;
+      const described = [...document.querySelectorAll('#modal [aria-describedby]')];
+      const validRefs = described.length > 0 && described.every(el =>
+        el.getAttribute('aria-describedby').split(/\s+/).filter(Boolean)
+          .every(id => ids.filter(x => x === id).length === 1
+            && document.getElementById(id)));
       return !!(content && content.classList.contains('m-verse')
         && !content.classList.contains('m-whole-verse')
         && container?.classList.contains('expanded-mode')
+        && content.querySelector('.pada-meanings-hint')
+        && content.querySelector('.m-verse-back')
+        && hintsMatch && hintOk.en && hintOk.ne && hintOk.hi
+        && uniqueIds && validRefs
         && grid && grid.parentElement === content && boxes?.length === 4
         && [...boxes].every(box => box.parentElement === grid || box.parentElement?.classList.contains('pada-row'))
         && !content.hasAttribute('role') && !content.hasAttribute('tabindex')
@@ -883,7 +955,8 @@ def run(pw, url, offline_capable=False):
         && [...content.querySelectorAll('.spk-line')].every(btn => btn.getAttribute('aria-describedby') === 'wordsHint'));
     }""")
     ok(converted,
-       "clicking converts the same card into its four descendant pādas, removes button semantics, and keeps both hidden descriptions valid")
+       "clicking converts the same card into its four descendant pādas, shows a localized 'tap a pāda' instruction inside it above the grid with no sibling bar, keeps ↩, and keeps both hidden descriptions unique and valid "
+       f"({pg.evaluate('window.__padaHints')})")
 
     pg.locator("#modal .pada-toggle").first.click()
     pg.wait_for_timeout(300)
