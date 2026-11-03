@@ -133,6 +133,8 @@ function captureSessionSnapshot(){
       const s = App.library.entryAt(DATA[state.chapter].themes[state.theme], state.idx).s;
       modal = {id:s.n, mode:state.mode || 'theme', navIdx:Number.isInteger(state.navIdx) ? state.navIdx : 0,
         openDetails:sessionOpenDetails(document.getElementById('modal')),
+        verseExpanded:!!(document.getElementById('verseContainer')
+          && document.getElementById('verseContainer').classList.contains('expanded-mode')),
         openWords:Array.from(document.querySelectorAll('#modal .words.open')).map(el=>el.id).filter(Boolean),
         meaningsHidden:!!document.querySelector('#modal .words.mean-off'),
         menuOpen:!!(document.getElementById('mVerseMenu') && !document.getElementById('mVerseMenu').hasAttribute('hidden')),

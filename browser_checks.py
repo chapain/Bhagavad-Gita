@@ -291,14 +291,14 @@ def run(pw, url, offline_capable=False):
 
     pg.evaluate("openModal(17,0,0,'theme',null,null)")
     pg.wait_for_selector("#modalBg.open")
-    pg.locator("#mWordsSection > summary").click()
+    pg.locator("#modal #verseContent").click()
     pg.locator(".pada-toggle").first.click()
     pg.evaluate("document.querySelector('#modal').scrollTop = 120")
     pg.wait_for_timeout(250)
     modal_before = pg.evaluate("""() => ({lang:state.lang, view:state.view, chapter:state.chapter,
       verse:document.querySelector('.m-num-chit')?.textContent.trim(),
       route:location.hash, open:document.querySelector('#modalBg').classList.contains('open'),
-      details:document.querySelector('#mWordsSection').open,
+      expanded:document.querySelector('#modal .m-verse-box-container').classList.contains('expanded-mode'),
       words:document.querySelector('.words.open')?.id,
       scroll:document.querySelector('#modal').scrollTop})""")
     pg.reload(wait_until="load")
@@ -307,7 +307,7 @@ def run(pw, url, offline_capable=False):
     modal_after = pg.evaluate("""() => ({lang:state.lang, view:state.view, chapter:state.chapter,
       verse:document.querySelector('.m-num-chit')?.textContent.trim(),
       route:location.hash, open:document.querySelector('#modalBg').classList.contains('open'),
-      details:document.querySelector('#mWordsSection').open,
+      expanded:document.querySelector('#modal .m-verse-box-container').classList.contains('expanded-mode'),
       words:document.querySelector('.words.open')?.id,
       scroll:document.querySelector('#modal').scrollTop})""")
     ok(modal_before['lang'] == modal_after['lang'] == 'ne'
@@ -315,7 +315,7 @@ def run(pw, url, offline_capable=False):
        and modal_after['open'] and modal_after['verse'] == modal_before['verse']
        and modal_after['route'] == modal_before['route'],
        f"manual refresh restores the same Nepali chapter and open verse sheet ({modal_after})")
-    ok(modal_after['details'] and modal_after['words'] == modal_before['words']
+    ok(modal_after['expanded'] and modal_after['words'] == modal_before['words']
        and modal_after['scroll'] == modal_before['scroll'],
        "refresh restores expanded word meanings and the verse-sheet scroll position")
     pg.keyboard.press("Escape")
@@ -791,40 +791,43 @@ def run(pw, url, offline_capable=False):
        "tapping a verse in the chapter view opens its quarters")
 
     group("pāda-meaning discovery")
-    hint_layout = pg.evaluate("""() => {
+    action_layout = pg.evaluate("""() => {
       const verse = document.querySelector('#modal .m-whole-verse');
-      const section = document.querySelector('#modal .m-words-section');
+      const action = document.querySelector('#modal .m-verse-action');
       const literal = document.querySelector('#modal .m-line.lit');
-      const summary = section && section.querySelector(':scope > summary');
-      if (!verse || !section || !literal || !summary) return null;
-      const rect = summary.getBoundingClientRect();
-      const css = getComputedStyle(summary);
+      if (!verse || !action || !literal) return null;
+      const rect = action.getBoundingClientRect();
+      const css = getComputedStyle(action);
       return {
-        direct: verse.nextElementSibling === section,
-        beforeLiteral: !!(section.compareDocumentPosition(literal)
+        direct: verse.nextElementSibling === action,
+        beforeLiteral: !!(action.compareDocumentPosition(literal)
           & Node.DOCUMENT_POSITION_FOLLOWING),
         height: rect.height,
         fontSize: parseFloat(css.fontSize),
         fontFamily: css.fontFamily,
         background: css.backgroundColor,
-        cursor: css.cursor
+        cursor: css.cursor,
+        role: verse.getAttribute('role'),
+        tabindex: verse.getAttribute('tabindex')
       };
     }""")
-    ok(bool(hint_layout and hint_layout["direct"] and hint_layout["beforeLiteral"]),
-       "the word-by-word action sits immediately below the whole verse")
-    ok(bool(hint_layout and hint_layout["height"] >= 48
-            and hint_layout["fontSize"] >= 14
-            and "Noto Serif Devanagari" in hint_layout["fontFamily"]
-            and hint_layout["background"] not in ("transparent", "rgba(0, 0, 0, 0)")
-            and hint_layout["cursor"] == "pointer"),
-       f"the word-by-word action is a visible, tap-sized control ({hint_layout})")
+    ok(bool(action_layout and action_layout["direct"] and action_layout["beforeLiteral"]),
+       "the quarter action sits immediately below the whole verse")
+    ok(bool(action_layout and action_layout["height"] >= 48
+            and action_layout["fontSize"] >= 14
+            and "Noto Serif Devanagari" in action_layout["fontFamily"]
+            and action_layout["background"] not in ("transparent", "rgba(0, 0, 0, 0)")
+            and action_layout["cursor"] == "pointer"
+            and action_layout["role"] == "button"
+            and action_layout["tabindex"] == "0"),
+       f"the quarter action is a visible, tap-sized control and the verse box is keyboard-operable ({action_layout})")
 
     hint_copy = {}
     for code in ("en", "ne", "hi"):
         pg.evaluate(f"setLang('{code}')")
         hint_copy[code] = pg.evaluate("""() => ({
-          action: document.querySelector('#modal .m-words-section > summary')?.textContent.trim(),
-          instruction: document.querySelector('#modal .m-pada-hint')?.textContent.trim()
+          action: document.querySelector('#modal #verseActionLabel')?.textContent.trim(),
+          instruction: document.querySelector('#modal #padaHint')?.textContent.trim()
         })""")
     pg.evaluate("setLang('en')")
     expected_hint_copy = {
@@ -838,33 +841,47 @@ def run(pw, url, offline_capable=False):
     ok(hint_copy == expected_hint_copy,
        f"the action and pāda instruction are clear in all three languages ({hint_copy})")
 
-    # The master hide/show-meanings switch sleeps until the Word-by-word
-    # section is opened — before that there is nothing on screen for it to hide
+    # The master hide/show-meanings switch sleeps until a quarter is open —
+    # before that there is no meaning on screen for it to hide.
     ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
-       "the hide/show meanings switch is inactive before words section opens")
-    # Phase 3.2: Word-by-word lives in a collapsed <details>; open it first.
-    pg.locator(".m-words-section > summary").first.click()
+       "the hide/show meanings switch is inactive before the quarters open")
+
+    # Option 1: clicking the verse box converts it in place, no <details>.
+    pg.locator("#modal #verseContent").click()
     pg.wait_for_timeout(300)
-    instruction_visible = pg.evaluate("""() => {
-      const section = document.querySelector('#modal .m-words-section');
-      const hint = document.querySelector('#modal .m-pada-hint');
+    converted = pg.evaluate("""() => {
+      const content = document.querySelector('#modal #verseContent');
+      const container = document.querySelector('#modal .m-verse-box-container');
+      const hint = document.querySelector('#modal #padaHint');
       const grid = document.querySelector('#modal .pada-grid');
+      const boxes = document.querySelectorAll('#modal .pada-box');
       const firstPada = document.querySelector('#modal .pada-toggle');
-      return !!(section?.open && hint && grid && firstPada
-        && hint.getBoundingClientRect().height > 0
-        && (hint.compareDocumentPosition(grid) & Node.DOCUMENT_POSITION_FOLLOWING)
-        && firstPada.getAttribute('aria-describedby') === 'padaHint');
+      return !!(content && content.classList.contains('m-verse')
+        && !content.classList.contains('m-whole-verse')
+        && container && container.classList.contains('expanded-mode')
+        && hint && hint.getBoundingClientRect().height > 0
+        && grid && boxes.length === 4
+        && firstPada && firstPada.getAttribute('aria-describedby') === 'padaHint'
+        && (hint.compareDocumentPosition(grid) & Node.DOCUMENT_POSITION_FOLLOWING));
     }""")
-    ok(instruction_visible,
-       "opening the section reveals the tap instruction above padas and associates it with each quarter")
-    pg.locator(".pada-toggle").first.click()
+    ok(converted,
+       "clicking the verse box converts it into the four-quarter grid with the tap instruction above it")
+
+    pg.locator("#modal .pada-toggle").first.click()
     pg.wait_for_timeout(300)
-    ok(not pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
-       "opening a quarter wakes the switch")
-    pg.locator(".pada-toggle").first.click()
+    ok(not pg.evaluate("document.querySelector('#modal .wb-btn').disabled")
+       and pg.evaluate("document.querySelector('#modal #verseContent').classList.contains('m-verse')"),
+       "opening a quarter wakes the switch without collapsing the converted verse")
+
+    pg.locator("#modal .pada-toggle").first.click()
     pg.wait_for_timeout(300)
-    ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
-       "closing the last open quarter puts the switch back to sleep")
+    ok(pg.evaluate("""() => {
+      const asleep = document.querySelector('#modal .wb-btn').disabled;
+      document.querySelector('#modal #verseAction').click();
+      const c = document.querySelector('#modal #verseContent');
+      return asleep && c.classList.contains('m-whole-verse') && !c.classList.contains('m-verse');
+    }"""),
+       "closing the last quarter puts the switch back to sleep and the action returns to the whole verse")
     pg.keyboard.press("Escape")
     pg.wait_for_timeout(400)
 

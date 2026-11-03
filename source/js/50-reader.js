@@ -227,6 +227,11 @@ window.addEventListener('popstate', ()=>{
   }
 });
 
+/* Option 1 - one verse box, two shapes. The two HTML strings are rebuilt for
+   every verse. Keep this mutable state out of App.reader: that namespace is
+   frozen, so assigning App.reader.currentVerseState would silently fail. */
+let verseViewState = null;
+
 function fillModal(){
   const ch = DATA[state.chapter], t = ch.themes[state.theme];
   const {s, part} = App.library.entryAt(t, state.idx);
@@ -266,27 +271,17 @@ function fillModal(){
   }
   recentVersesRecord(s.n);
   const isSaved = App.library.isFavorite(s.n);
-  
-  // --- Conversion Logic Preparation ---
+
+  /* Option 1: the whole verse and the four-quarter grid are both prepared up
+     front, then swapped into the same box by toggleVerseExpansion(). */
   const wholeVerseHtml = padaBlockDeva(s, true);
-  const padaGridHtml = `
-    <div class="m-verse">
-      ${spkHtml(topS)}
+  const padaGridHtml = `${spkHtml(topS)}
       <div class="pada-grid">
         <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
         ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
         ${pads.length===4 ? `<div class="pada-row">${boxHtml(pads[2],2,4)}${boxHtml(pads[3],3,4)}</div>` : ''}
-      </div>
-    </div>
-  `;
-
-  // Store current state for the toggle function
-  App.reader.currentVerseState = {
-    whole: wholeVerseHtml,
-    expanded: padaGridHtml,
-    isExpanded: false
-  };
-
+      </div>`;
+  verseViewState = { whole: wholeVerseHtml, expanded: padaGridHtml, isExpanded:false };
   $('#modal').innerHTML = `
     <div class="m-head">
       <button type="button" class="m-close" aria-label="${esc(L('close_verse'))}" title="${esc(L('close_verse'))}" onclick="closeModal()">✕</button>
@@ -303,7 +298,7 @@ function fillModal(){
       <div class="m-meter">${esc(meterText(s))}</div>
       <div class="reader-size" role="group" aria-label="${esc(L('reader_size'))}">
         <span class="reader-size-label">${esc(L('reader_size'))}</span>
-        <button type="button" id="readerSizeDown" onclick="stepReaderSize(-1)" aria-label="${esc(L('reader_size_decrease'))}" title="${esc(L('reader_size_decrease'))}">A¯</button>
+        <button type="button" id="readerSizeDown" onclick="stepReaderSize(-1)" aria-label="${esc(L('reader_size_decrease'))}" title="${esc(L('reader_size_decrease'))}">A−</button>
         <span class="reader-size-value" id="readerSizeValue" aria-live="polite" aria-atomic="true">${numL(state.readerSize)}%</span>
         <button type="button" id="readerSizeUp" onclick="stepReaderSize(1)" aria-label="${esc(L('reader_size_increase'))}" title="${esc(L('reader_size_increase'))}">A+</button>
         <button type="button" onclick="resetReaderSize()" aria-label="${esc(L('reader_size_reset'))}" title="${esc(L('reader_size_reset'))}">↺</button>
@@ -318,11 +313,20 @@ function fillModal(){
     </div>
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
-      <!-- The verse box container -->
       <div id="verseContainer" class="m-verse-box-container">
-        <div id="verseContent" class="m-whole-verse" lang="sa" onclick="App.reader.toggleVerseExpansion()">
+        <span class="sr-only" id="wordsHint">${esc(L('click_pada_meanings'))}</span>
+        <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
+             aria-label="${esc(L('click_hint_pada'))}" aria-expanded="false"
+             onclick="App.reader.toggleVerseExpansion(event)"
+             onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('.pada-toggle,.spk-line,.words')){event.preventDefault();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}
         </div>
+        <button type="button" class="m-verse-action" id="verseAction"
+                aria-expanded="false" aria-controls="verseContent"
+                onclick="App.reader.toggleVerseExpansion(event)">
+          <span id="verseActionLabel">${esc(L('click_hint_pada'))}</span>
+        </button>
+        <p class="m-pada-hint" id="padaHint">${esc(L('click_pada_meanings'))}</p>
       </div>
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
@@ -347,40 +351,74 @@ function fillModal(){
              <button onclick="navSutra(1)" ${(state.navIdx||0) < (state.navList?state.navList.length-1:0)?'':'disabled'}>${L('next')}</button>`}
     </div>`;
   applyReaderSize();
-  fitWholeVerse();
+  setVerseView(false);
 }
 
-// --- NEW FUNCTION: Toggle Verse Expansion ---
-App.reader.toggleVerseExpansion = function(){
-  const stateObj = App.reader.currentVerseState;
-  if(!stateObj) return;
+/* Option 1 - one verse box, two shapes. A click on the box itself (or the
+   action below it) converts the whole verse into the four quarters and back.
+   Clicks on a quarter or a speaker line belong to that control, not to the
+   box, so opening a word split must not collapse the view. */
+function setVerseView(expanded){
+  if(!verseViewState) return;
   const container = document.getElementById('verseContainer');
   const content = document.getElementById('verseContent');
-  if(!container || !content) return;
-  
-  if(!stateObj.isExpanded){
-    // Convert to 4 pada structure
-    content.innerHTML = stateObj.expanded;
-    content.classList.remove('m-whole-verse');
-    content.classList.add('m-verse');
-    container.classList.add('expanded-mode');
-    stateObj.isExpanded = true;
-    
-    // Trigger refreshWordsBtn in case some padas are already open (unlikely on first click)
+  const action = document.getElementById('verseAction');
+  const label = document.getElementById('verseActionLabel');
+  if(!container || !content || !action || !label) return;
+  const on = !!expanded;
+  verseViewState.isExpanded = on;
+  content.innerHTML = on ? verseViewState.expanded : verseViewState.whole;
+  content.classList.toggle('m-whole-verse', !on);
+  content.classList.toggle('m-verse', on);
+  container.classList.toggle('expanded-mode', on);
+  action.setAttribute('aria-expanded', String(on));
+  label.textContent = on ? L('back_to_x').replace('{x}', L('verse')) : L('click_hint_pada');
+  if(on){
+    /* The grid has its own real buttons; the surrounding box must not also
+       claim to be one, or keyboard users meet nested interactive controls. */
+    content.removeAttribute('role');
+    content.removeAttribute('tabindex');
+    content.removeAttribute('aria-label');
+    content.removeAttribute('aria-expanded');
     refreshWordsBtn();
   } else {
-    // Convert back to whole verse
-    content.innerHTML = stateObj.whole;
-    content.classList.remove('m-verse');
-    content.classList.add('m-whole-verse');
-    container.classList.remove('expanded-mode');
-    stateObj.isExpanded = false;
-    
-    // Re-apply fit for the whole verse
+    content.setAttribute('role', 'button');
+    content.setAttribute('tabindex', '0');
+    content.setAttribute('aria-label', L('click_hint_pada'));
+    content.setAttribute('aria-expanded', 'false');
     fitWholeVerse();
   }
-};
-
+}
+function toggleVerseExpansion(ev){
+  const content = document.getElementById('verseContent');
+  const t = ev && ev.target;
+  if(ev && verseViewState && verseViewState.isExpanded && content
+     && content.contains(t) && t && t.closest
+     && t.closest('.pada-toggle,.spk-line,.words,.m-pada-hint')) return;
+  setVerseView(!(verseViewState && verseViewState.isExpanded));
+}
+function setReaderSize(size){
+  if(!READER_SIZES.includes(size)) return;
+  App.session.update({readerSize:size});
+  try{ localStorage.setItem('gitaReaderSize', String(size)); }catch(e){}
+  applyReaderSize();
+}
+function stepReaderSize(delta){
+  const i = READER_SIZES.indexOf(state.readerSize);
+  setReaderSize(READER_SIZES[Math.max(0, Math.min(READER_SIZES.length-1, i+delta))]);
+}
+function resetReaderSize(){ setReaderSize(100); }
+function applyReaderSize(){
+  const reader = document.querySelector('#modal .reader-copy');
+  if(reader) reader.style.setProperty('--reader-scale', String(state.readerSize / 100));
+  const value = document.getElementById('readerSizeValue');
+  if(value) value.textContent = numL(state.readerSize) + '%';
+  const down = document.getElementById('readerSizeDown');
+  const up = document.getElementById('readerSizeUp');
+  if(down) down.disabled = state.readerSize <= READER_SIZES[0];
+  if(up) up.disabled = state.readerSize >= READER_SIZES[READER_SIZES.length-1];
+  fitWholeVerse();
+}
 /* Phase 3.2 — verse-sheet overflow menu (⋯). Share / Save / Text size /
    Hide-meanings live here so they don't crowd the top of the sheet. */
 function toggleVerseMenu(){
@@ -435,6 +473,9 @@ function toggleAllMeanings(btn){
 function restoreModalSession(modalSnap){
   if(!modalSnap) return;
   const modal = document.getElementById('modal');
+  /* Option 1: the quarters live in the converted verse box now, so rebuild
+     that shape before the saved word-split ids can be re-applied. */
+  if(modalSnap.verseExpanded) setVerseView(true);
   restoreSessionDetails(modal, modalSnap.openDetails);
   (Array.isArray(modalSnap.openWords) ? modalSnap.openWords : []).forEach(id=>{
     const words = document.getElementById(id);
@@ -536,5 +577,6 @@ App.reader = Object.freeze({
   refresh: fillModal,
   navigate: navSutra,
   shareText: verseShareText,
-  padaBlock: padaBlockDeva
+  padaBlock: padaBlockDeva,
+  toggleVerseExpansion: toggleVerseExpansion
 });
