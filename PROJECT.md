@@ -15,6 +15,37 @@ the start of every session.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
+### 2026-11-03 — the verse card explains its own two states
+
+* Dhruba: the whole-verse hint “▾ ४ पाद” was too terse, and the expanded card
+  said nothing about what a pāda does. Both instructions are now real
+  sentences, localized in English, Nepali and Hindi, drawn from the two
+  existing UI keys (`click_hint_pada`, `click_pada_meanings` — still **217
+  keys** × 3, no new strings): EN “Tap this verse to reveal all four pādas” /
+  “Tap a pāda to see its word-by-word meanings”, NE “चारै पाद हेर्न यो
+  श्लोकमा ट्याप गर्नुहोस्” / “शब्दार्थ हेर्न कुनै पादमा ट्याप गर्नुहोस्”, HI
+  “चारों पाद देखने के लिए इस श्लोक पर टैप करें” / “शब्दार्थ देखने के लिए
+  किसी पाद पर टैप करें”.
+* Both live INSIDE `#verseContent`, the single node that converts between the
+  two shapes. The whole-verse hint dropped its absolute corner position and
+  the “▾” glyph: it is now a quiet right-aligned capsule in the card's flow
+  (so a wrapped Nepali/Hindi sentence can never overlap the Sanskrit lines),
+  and it is the card's accessible name. The expanded card gained one plain
+  line, `.pada-meanings-hint`, directly above the pāda grid; it carries no
+  button, link, role or disclosure and the in-card ↩ stays. No sibling bar,
+  hint card or action control returned.
+* `aria-describedby` unchanged and still unique: pāda toggles point at
+  `#padaHint`, speaker rows at `#wordsHint`; the new hint needs no id.
+  Keyboard conversion (Enter/Space), pāda word toggles, master hide/show,
+  session restoration of the expanded shape, reader sizing, navigation and
+  share/save are untouched; browser checks re-expand after each `setLang()`.
+* The two new assertions were folded into the existing card-control check and
+  the same-node conversion check, so the suite stays at **270 browser
+  checks**; the harness (Playwright) is not installable in this sandbox, so
+  the same structure and interaction assertions were run under jsdom (60/60)
+  plus the full `python3 build.py` (832 document assertions, ALL GREEN).
+  `index.html`, `sw.js` and `sitemap.xml` regenerated.
+
 ### 2026-10-18 — fresh 700-verse title audit + welcome-page refresh
 
 * The owner asked to re-review all 700 **individual verse titles** in EN/NE/HI

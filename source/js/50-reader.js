@@ -274,12 +274,18 @@ function fillModal(){
 
   /* Option 1: the whole verse and the four-quarter grid are both prepared up
      front, then swapped into the same box by toggleVerseExpansion(). */
+  /* Both shapes carry their own short instruction, drawn from the two
+     existing UI keys: the whole verse says how to open the four pādas, the
+     expanded card says how to open a pāda's word meanings. Both hints sit
+     inside #verseContent — never in a sibling bar or a second card — and the
+     expanded one is a plain line above the grid, so it adds no disclosure. */
   const wholeVerseHtml = `${padaBlockDeva(s, true)}
-      <span class="verse-expand-hint" aria-hidden="true">▾ ${numL(4)} ${esc(L('pada_label'))}</span>`;
+      <span class="verse-expand-hint" aria-hidden="true">${esc(L('click_hint_pada'))}</span>`;
   const padaGridHtml = `<span class="sr-only" id="wordsHint">${esc(L('click_pada_meanings'))}</span>
       <span class="sr-only" id="padaHint">${esc(L('click_pada_meanings'))}</span>
       <button type="button" class="m-verse-back" aria-label="${esc(L('back_to_x').replace('{x}', L('verse')))}" title="${esc(L('back_to_x').replace('{x}', L('verse')))}" onclick="event.stopPropagation();App.reader.toggleVerseExpansion(event)">↩</button>
       ${spkHtml(topS)}
+      <p class="pada-meanings-hint">${esc(L('click_pada_meanings'))}</p>
       <div class="pada-grid">
         <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
         ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}
