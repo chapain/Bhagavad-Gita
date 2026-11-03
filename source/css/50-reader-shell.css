@@ -96,11 +96,16 @@
   .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--ink-soft); font-size:.78rem; font-weight:600;
            margin:0 0 14px; line-height:1.4; letter-spacing:.01em; }
 
-  .m-whole-verse{ --verse-fit:1; background:var(--paper); border:1px solid var(--line);
-    border-radius:14px; padding:18px 20px; margin:0 0 10px;
+  .m-whole-verse{ --verse-fit:1; position:relative; background:var(--paper); border:1px solid var(--line);
+    border-radius:14px; padding:36px 20px 18px; margin:0 0 10px;
     font-family:"Noto Serif Devanagari",Georgia,serif; color:var(--teal);
     line-height:1.8; text-align:center; cursor:pointer;
     transition:border-color .15s, background .15s, box-shadow .15s; }
+  .verse-expand-hint{ position:absolute; top:9px; right:12px; padding:2px 9px;
+    border-radius:999px; background:var(--teal-soft); color:var(--teal);
+    font:600 .72rem/1.5 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
+    white-space:nowrap; opacity:.82; }
+  .m-whole-verse:hover .verse-expand-hint{ opacity:1; }
   .m-whole-verse:hover{ border-color:var(--teal-mid); background:var(--teal-soft); }
   .m-whole-verse:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
   /* Both lines flush left; the number rides out of flow. */
@@ -125,27 +130,19 @@
   .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
   .m-line.lit .lt{ font-size:calc(1rem * var(--reader-scale,1)); }
 
-  /* Option 1 - the hero verse converts in place into the four quarters.
-     The tap-sized action under the box opens the quarters and doubles as the
-     way back; the pada instruction only appears once the grid is showing. */
+  /* Option 1 keeps the verse and its expanded pāda grid in one card. */
   .m-verse-box-container{ margin:0 0 2px; }
-  .m-verse-action{ display:flex; align-items:center; gap:10px; width:100%;
-    min-height:48px; padding:12px 14px; border:1px solid var(--teal);
-    border-radius:12px; background:var(--teal-soft); color:var(--ink);
-    font:650 .94rem/1.4 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
-    text-align:left; cursor:pointer; user-select:none; transition:border-color .15s; }
-  .m-verse-action::after{ content:"▾"; flex:0 0 auto; margin-left:auto;
-    font-size:1rem; color:var(--teal); transition:transform .15s; }
-  .m-verse-action:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
-  .m-verse-action:hover{ border-color:var(--teal-mid); }
-  .m-verse-box-container.expanded-mode .m-verse-action::after{ transform:rotate(180deg); }
   .m-verse-box-container.expanded-mode #verseContent.m-verse{
-    margin-top:10px; cursor:pointer; transition:border-color .15s, background .15s; }
+    position:relative; margin:0 0 10px; padding:46px 18px 16px; cursor:pointer;
+    transition:border-color .15s, background .15s; }
   .m-verse-box-container.expanded-mode #verseContent.m-verse:hover{
     border-color:var(--teal-mid); background:var(--teal-soft); }
-  .m-pada-hint{ display:none; margin:12px 2px 10px; color:var(--ink); font-size:.92rem;
-    font-style:normal; font-weight:600; line-height:1.5; }
-  .m-verse-box-container.expanded-mode .m-pada-hint{ display:block; }
+  .m-verse-back{ position:absolute; z-index:1; top:8px; right:10px; display:grid;
+    place-items:center; width:34px; height:32px; padding:0; border:1px solid var(--line);
+    border-radius:999px; background:var(--cream); color:var(--teal);
+    font:700 1.1rem/1 system-ui,sans-serif; cursor:pointer; }
+  .m-verse-back:hover{ border-color:var(--teal-mid); background:var(--teal-soft); }
+  .m-verse-back:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; }
 
   /* Old selectors that no longer apply to the new layout but are harmless
      if left in place — the dead ones below are overridden above. */

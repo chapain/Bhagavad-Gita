@@ -791,97 +791,153 @@ def run(pw, url, offline_capable=False):
        "tapping a verse in the chapter view opens its quarters")
 
     group("pāda-meaning discovery")
-    action_layout = pg.evaluate("""() => {
-      const verse = document.querySelector('#modal .m-whole-verse');
-      const action = document.querySelector('#modal .m-verse-action');
-      const literal = document.querySelector('#modal .m-line.lit');
-      if (!verse || !action || !literal) return null;
-      const rect = action.getBoundingClientRect();
-      const css = getComputedStyle(action);
+    # Exercise the exact screenshot case: Nepali verse 1.1, with the verse card
+    # directly followed by its literal translation and no duplicate action bar.
+    pg.evaluate("closeModal()")
+    pg.wait_for_timeout(500)
+    pg.evaluate("setLang('ne')")
+    pg.wait_for_timeout(500)
+    pg.evaluate("openModal(0,0,0,'theme')")
+    pg.wait_for_timeout(500)
+
+    structure = pg.evaluate("""() => {
+      const copy = document.querySelector('#modal .reader-copy');
+      const container = document.querySelector('#modal #verseContainer');
+      const content = document.querySelector('#modal #verseContent');
+      const kids = copy ? [...copy.children] : [];
+      const visible = el => !!(el && el.getClientRects().length
+        && getComputedStyle(el).visibility !== 'hidden'
+        && getComputedStyle(el).display !== 'none');
+      const forbidden = copy && [...copy.querySelectorAll(
+        '.m-verse-action,.m-words-section,details,summary,.m-pada-hint')].some(visible);
       return {
-        direct: verse.nextElementSibling === action,
-        beforeLiteral: !!(action.compareDocumentPosition(literal)
-          & Node.DOCUMENT_POSITION_FOLLOWING),
-        height: rect.height,
-        fontSize: parseFloat(css.fontSize),
-        fontFamily: css.fontFamily,
-        background: css.backgroundColor,
-        cursor: css.cursor,
-        role: verse.getAttribute('role'),
-        tabindex: verse.getAttribute('tabindex')
+        order: !!(kids[0] === container && kids[1]?.matches('.m-line.lit')
+          && kids[2]?.matches('.m-line.para')),
+        soleVisibleChild: !!(container && content && [...container.children].filter(visible).length === 1
+          && [...container.children].filter(visible)[0] === content),
+        directLiteral: !!(container && container.nextElementSibling?.matches('.m-line.lit')),
+        forbidden: !!forbidden,
+        noAction: !document.querySelector('#modal .m-verse-action'),
+        noMeaningDisclosure: !document.querySelector('#modal .m-words-section, #modal details, #modal summary'),
+        noHintCard: !document.querySelector('#modal .m-pada-hint')
       };
     }""")
-    ok(bool(action_layout and action_layout["direct"] and action_layout["beforeLiteral"]),
-       "the quarter action sits immediately below the whole verse")
-    ok(bool(action_layout and action_layout["height"] >= 48
-            and action_layout["fontSize"] >= 14
-            and "Noto Serif Devanagari" in action_layout["fontFamily"]
-            and action_layout["background"] not in ("transparent", "rgba(0, 0, 0, 0)")
-            and action_layout["cursor"] == "pointer"
-            and action_layout["role"] == "button"
-            and action_layout["tabindex"] == "0"),
-       f"the quarter action is a visible, tap-sized control and the verse box is keyboard-operable ({action_layout})")
+    ok(bool(structure and structure["order"] and structure["soleVisibleChild"]
+            and structure["directLiteral"] and not structure["forbidden"]
+            and structure["noAction"] and structure["noMeaningDisclosure"]
+            and structure["noHintCard"]),
+       f"the single verse card is followed directly by literal and paraphrase, with no action/disclosure card ({structure})")
 
-    hint_copy = {}
-    for code in ("en", "ne", "hi"):
-        pg.evaluate(f"setLang('{code}')")
-        hint_copy[code] = pg.evaluate("""() => ({
-          action: document.querySelector('#modal #verseActionLabel')?.textContent.trim(),
-          instruction: document.querySelector('#modal #padaHint')?.textContent.trim()
-        })""")
-    pg.evaluate("setLang('en')")
-    expected_hint_copy = {
-        "en": {"action": "Open the four quarters for word meanings",
-               "instruction": "Tap any quarter to reveal its word-by-word meanings"},
-        "ne": {"action": "शब्दार्थका लागि चारै पाद खोल्नुहोस्",
-               "instruction": "शब्दार्थ हेर्न कुनै पादमा ट्याप गर्नुहोस्"},
-        "hi": {"action": "शब्दार्थ के लिए चारों पाद खोलें",
-               "instruction": "शब्दार्थ देखने के लिए किसी पाद पर टैप करें"},
+    control = pg.evaluate("""() => {
+      const el = document.querySelector('#modal #verseContent');
+      const copy = {};
+      for (const code of ['en','ne','hi']) {
+        setLang(code);
+        copy[code] = document.querySelector('#modal #verseContent')?.getAttribute('aria-label');
+      }
+      const verse = document.querySelector('#modal #verseContent');
+      const result = {
+        role: verse?.getAttribute('role'), tabindex: verse?.getAttribute('tabindex'),
+        expanded: verse?.getAttribute('aria-expanded'), label: copy,
+        cursor: verse && getComputedStyle(verse).cursor
+      };
+      setLang('ne');
+      return result;
+    }""")
+    expected_labels = {
+      "en": "Open the four quarters for word meanings",
+      "ne": "शब्दार्थका लागि चारै पाद खोल्नुहोस्",
+      "hi": "शब्दार्थ के लिए चारों पाद खोलें",
     }
-    ok(hint_copy == expected_hint_copy,
-       f"the action and pāda instruction are clear in all three languages ({hint_copy})")
+    ok(bool(control and control["role"] == "button" and control["tabindex"] == "0"
+            and control["expanded"] == "false" and control["cursor"] == "pointer"
+            and control["label"] == expected_labels),
+       f"the verse card itself is the localized keyboard and pointer control ({control})")
 
-    # The master hide/show-meanings switch sleeps until a quarter is open —
-    # before that there is no meaning on screen for it to hide.
+    # The master switch sleeps until a pāda is open; the four pādas are rendered
+    # inside the exact same #verseContent node and carry valid hidden hints.
     ok(pg.evaluate("document.querySelector('#modal .wb-btn').disabled"),
        "the hide/show meanings switch is inactive before the quarters open")
-
-    # Option 1: clicking the verse box converts it in place, no <details>.
     pg.locator("#modal #verseContent").click()
     pg.wait_for_timeout(300)
     converted = pg.evaluate("""() => {
       const content = document.querySelector('#modal #verseContent');
-      const container = document.querySelector('#modal .m-verse-box-container');
-      const hint = document.querySelector('#modal #padaHint');
-      const grid = document.querySelector('#modal .pada-grid');
-      const boxes = document.querySelectorAll('#modal .pada-box');
-      const firstPada = document.querySelector('#modal .pada-toggle');
+      const container = document.querySelector('#modal #verseContainer');
+      const grid = content?.querySelector('.pada-grid');
+      const boxes = content?.querySelectorAll('.pada-box');
+      const hidden = id => {
+        const el = content?.querySelector(`#${id}`);
+        return !!(el && el.classList.contains('sr-only')
+          && getComputedStyle(el).position === 'absolute');
+      };
+      const toggles = [...(content?.querySelectorAll('.pada-toggle') || [])];
       return !!(content && content.classList.contains('m-verse')
         && !content.classList.contains('m-whole-verse')
-        && container && container.classList.contains('expanded-mode')
-        && hint && hint.getBoundingClientRect().height > 0
-        && grid && boxes.length === 4
-        && firstPada && firstPada.getAttribute('aria-describedby') === 'padaHint'
-        && (hint.compareDocumentPosition(grid) & Node.DOCUMENT_POSITION_FOLLOWING));
+        && container?.classList.contains('expanded-mode')
+        && grid && grid.parentElement === content && boxes?.length === 4
+        && [...boxes].every(box => box.parentElement === grid || box.parentElement?.classList.contains('pada-row'))
+        && !content.hasAttribute('role') && !content.hasAttribute('tabindex')
+        && !content.hasAttribute('aria-label') && !content.hasAttribute('aria-expanded')
+        && hidden('wordsHint') && hidden('padaHint')
+        && toggles.every(btn => btn.getAttribute('aria-describedby') === 'padaHint')
+        && [...content.querySelectorAll('.spk-line')].every(btn => btn.getAttribute('aria-describedby') === 'wordsHint'));
     }""")
     ok(converted,
-       "clicking the verse box converts it into the four-quarter grid with the tap instruction above it")
+       "clicking converts the same card into its four descendant pādas, removes button semantics, and keeps both hidden descriptions valid")
 
     pg.locator("#modal .pada-toggle").first.click()
     pg.wait_for_timeout(300)
-    ok(not pg.evaluate("document.querySelector('#modal .wb-btn').disabled")
-       and pg.evaluate("document.querySelector('#modal #verseContent').classList.contains('m-verse')"),
-       "opening a quarter wakes the switch without collapsing the converted verse")
+    word_state = pg.evaluate("""() => {
+      const content = document.querySelector('#modal #verseContent');
+      const btn = document.querySelector('#modal .pada-toggle');
+      const words = btn?.nextElementSibling;
+      const master = document.querySelector('#modal .wb-btn');
+      if (!words?.classList.contains('open') || !content?.classList.contains('m-verse') || master.disabled) return false;
+      master.click();
+      const hidden = words.classList.contains('mean-off') && master.getAttribute('aria-pressed') === 'true';
+      master.click();
+      return hidden && !words.classList.contains('mean-off') && master.getAttribute('aria-pressed') === 'false'
+        && content.classList.contains('m-verse');
+    }""")
+    ok(word_state,
+       "a pāda opens its own words without collapsing, and the master hide/show switch still works")
 
-    pg.locator("#modal .pada-toggle").first.click()
-    pg.wait_for_timeout(300)
-    ok(pg.evaluate("""() => {
-      const asleep = document.querySelector('#modal .wb-btn').disabled;
-      document.querySelector('#modal #verseAction').click();
+    # Padding/background is a click-to-collapse area; then verify the corner
+    # button's keyboard activation is also an explicit way back.
+    pg.locator("#modal #verseContent").click(position={"x": 3, "y": 3})
+    pg.wait_for_timeout(250)
+    background_back = pg.evaluate("""() => {
       const c = document.querySelector('#modal #verseContent');
-      return asleep && c.classList.contains('m-whole-verse') && !c.classList.contains('m-verse');
-    }"""),
-       "closing the last quarter puts the switch back to sleep and the action returns to the whole verse")
+      return c.classList.contains('m-whole-verse') && !c.classList.contains('m-verse')
+        && c.getAttribute('role') === 'button' && c.getAttribute('tabindex') === '0'
+        && c.getAttribute('aria-expanded') === 'false';
+    }""")
+    ok(background_back, "clicking the expanded card background returns it to the accessible whole-verse control")
+
+    pg.locator("#modal #verseContent").click()
+    pg.wait_for_timeout(250)
+    back = pg.locator("#modal .m-verse-back")
+    back.focus()
+    pg.keyboard.press("Enter")
+    pg.wait_for_timeout(250)
+    enter_back = pg.evaluate("""() => {
+      const c = document.querySelector('#modal #verseContent');
+      return c.classList.contains('m-whole-verse') && !document.querySelector('#modal .m-verse-back');
+    }""")
+    pg.locator("#modal #verseContent").click()
+    pg.wait_for_timeout(150)
+    pg.locator("#modal .m-verse-back").focus()
+    pg.keyboard.press("Space")
+    pg.wait_for_timeout(150)
+    space_back = pg.evaluate("document.querySelector('#modal #verseContent').classList.contains('m-whole-verse')")
+    pg.locator("#modal #verseContent").click()
+    pg.wait_for_timeout(150)
+    pg.locator("#modal #verseContent").evaluate("el => el.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true}))")
+    box_key_back = pg.evaluate("document.querySelector('#modal #verseContent').classList.contains('m-whole-verse')")
+    ok(enter_back and space_back and box_key_back,
+       "the inner ↩ button returns on Enter and Space, and Enter on the expanded card works without an inner control focused")
+    pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(400)
     pg.keyboard.press("Escape")
     pg.wait_for_timeout(400)
 
