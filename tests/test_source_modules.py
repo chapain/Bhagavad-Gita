@@ -92,8 +92,10 @@ class SourceModuleContractTests(unittest.TestCase):
         files = {path.name: path.read_text(encoding="utf-8")
                  for path in (SOURCE / "js").glob("*.js")}
         owners = {
-            "10-library.js": ("VERSES", "FAV", "FAVNOTE", "FAV_LIST", "SRCH_HITS"),
-            "20-learn.js": ("LV", "FP", "lrTest", "lrOpen"),
+            "10-library.js": ("VERSES", "FAV", "FAVNOTE", "FAV_LIST"),
+            "12-search.js": ("SRCH_HITS", "SRCH_NOTE"),
+            "20-learn.js": ("LV", "lrTest", "lrOpen"),
+            "27-learn-free.js": ("FP",),
             "30-play.js": ("PL",),
             "35-drills.js": ("LQ", "LQi", "LQmiss", "LQpick"),
         }
@@ -105,6 +107,10 @@ class SourceModuleContractTests(unittest.TestCase):
             if owner == "20-learn.js":
                 allowed.add("25-learn-session.js")
                 allowed.add("45-data.js")
+            if owner == "27-learn-free.js":
+                # the restoration path rebuilds FP and repaints the mode; the
+                # board itself stays here.
+                allowed.add("25-learn-session.js")
             for name in names:
                 for filename, text in files.items():
                     if filename not in allowed:

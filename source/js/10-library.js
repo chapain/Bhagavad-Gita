@@ -1,9 +1,6 @@
 // ---------- global verse index (search / favorites / random) ----------
 const VERSES = [];
-let SRCH_HITS = [], FAV_LIST = [];
-/* Set only when C3 rescued a diacritic query onto its plain reading; read by
-   the search render and by the screen-reader announcement, cleared otherwise. */
-let SRCH_NOTE = '';
+let FAV_LIST = [];
 function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
 function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {s:p.sutras[i], part:p}; i-=p.sutras.length; } return {s:t.parts[t.parts.length-1].sutras[0], part:t.parts[t.parts.length-1]}; }
 function buildIndex(){
@@ -18,6 +15,14 @@ function verseLoc(id){ return VERSES.find(v=>v.id===id); }
 /* VERSES belongs to this module (see test_mutable_feature_state_has_one_owner);
    the suggestion module reads it through here rather than by name. */
 function versesForChapter(ci){ return VERSES.filter(v => v.ci === ci); }
+/* The search screen (12-search.js) walks the whole index and tests each verse
+   against its own query rules; it is handed the location, the searchable text
+   and the folded text so the arrays stay here. */
+function versesMatching(match){
+  const out = [];
+  VERSES.forEach((loc, i)=>{ if(match(loc, VERSE_TEXT[i], VERSE_FOLDED_TEXT[i])) out.push(loc); });
+  return out;
+}
 function verseAt(loc){ const t = DATA[loc.ci].themes[loc.ti]; return sutraAt(t, loc.si).s; }
 function normTxt(s){ return String(s||'').normalize('NFD').toLowerCase(); }
 function searchExactKey(s){ return normTxt(s).replace(/\s+/g, ''); }
@@ -170,210 +175,6 @@ function assembleData(){
 }
 function allChReady(){ for(var n=1;n<=18;n++) if(!GITA_CH[n]||!GITA_CH[n].themes) return false; return true; }
 
-// ---------- search ----------
-let searchTimer = null;
-function onSearchInput(v){
-  clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); searchX();
-  sugRender(v);   // opens on the keystroke, not after the 220ms debounce
-}
-/* the in-field ✕ exists only while there is text to clear — the modern
-   pattern; a standing "Clear" button was dead chrome on an empty field */
-function searchX(){ const f = document.querySelector('.sw-field');
-  if(f) f.classList.toggle('has-x', ($('#searchInput').value || '').length > 0); }
-function recentLoad(){
-  try{
-    const a = JSON.parse(localStorage.getItem('gitaRecent') || '[]');
-    return Array.isArray(a) ? a.filter(x => typeof x === 'string' && x.trim().length >= 2 && x.length <= 40).slice(0, 6) : [];
-  }catch(e){ return []; }
-}
-function recentSave(q){
-  q = String(q || '').trim();
-  if(q.length < 2 || q.length > 40) return;
-  const next = [q, ...recentLoad().filter(x => x.toLowerCase() !== q.toLowerCase())].slice(0, 6);
-  try{ localStorage.setItem('gitaRecent', JSON.stringify(next)); }catch(e){}
-}
-function hlSearchText(text, q){
-  const s = String(text || ''), needle = String(q || '').trim();
-  if(needle.length < 2 || /^\d/.test(digitNorm(needle))) return esc(s);
-  const re = new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-  let out = '', last = 0, m;
-  while((m = re.exec(s)) !== null){
-    out += esc(s.slice(last, m.index)) + '<mark class="srch-hl">' + esc(m[0]) + '</mark>';
-    last = m.index + m[0].length;
-    if(!m[0].length) break;
-  }
-  return out + esc(s.slice(last));
-}
-function srchChipsHtml(q, hitCount){
-  const cur = String(q || '').trim().toLowerCase();
-  const rec = recentLoad().filter(x => x.toLowerCase() !== cur);
-  const items = hitCount === 0
-    ? [...new Set([...rec, numL('2.47'), numL('4.7'), numL('18.66'), 'धर्मक्षेत्रे'])].slice(0, 6)
-    : rec.slice(0, 5);
-  if(!items.length) return '';
-  const lbl = hitCount > 0 ? `<span class="srch-chips-lbl">${esc(L('search_recent'))}:</span>` : '';
-  return `<div class="srch-chips fade-in">${lbl}${items.map(x =>
-    `<button type="button" class="srch-chip" data-q="${esc(x)}" onclick="App.library.pickSearch(this.dataset.q)">${esc(x)}</button>`
-  ).join('')}</div>`;
-}
-function pickSearch(q){
-  const inp = $('#searchInput');
-  if(!inp) return;
-  inp.value = String(q || '');
-  searchX();
-  doSearch();
-}
-
-/* Free text searched more than the verse line: the phrase may come from a word
-   gloss, which the card does not otherwise show, so name the word that matched
-   rather than leaving the reader to wonder why a verse is in the list. */
-function glossHit(s, q){
-  const LI = {en:0, ne:1, hi:2}[state.lang] || 0;
-  for(const f of (s.flow || [])) for(const w of (f.words || [])){
-    for(const k of [2 + LI, 2]){
-      const g = w[k];
-      if(g && searchTextMatches(searchExactKey(g), '', q)) return [w[0], g];
-    }
-  }
-  return null;
-}
-function passageHits(nq, nqd){
-  const out = [];
-  SEARCH_PASSAGES.forEach(p=>{
-    if(searchTextMatches(p.exact, p.folded, nq)
-       || (nqd.exact !== nq.exact && searchTextMatches(p.exact, p.folded, nqd))) out.push(p);
-  });
-  return out;
-}
-function resGroupHtml(label, count, inner){
-  return `<div class="res-group fade-in"><div class="res-gl"><span>${esc(label)}</span>`
-    + `<span class="res-gn">${numL(count)}</span></div>${inner}</div>`;
-}
-function passageCard(p, q){
-  if(p.kind === 'chapter'){
-    const ch = DATA[p.ci];
-    return `<div class="res-passage" role="button" tabindex="0" onclick="App.views.chapter(${p.ci})">
-      <div class="rp-top"><span class="rp-kind">${esc(L('chapter'))} ${numL(ch.num)}</span></div>
-      <div class="rp-title">${hlSearchText(T(ch.names), q)}</div>
-      <div class="rp-sub">${hlSearchText(T(ch.subs), q)}</div></div>`;
-  }
-  const ch = DATA[p.ci], t = ch.themes[p.ti];
-  return `<div class="res-passage" role="button" tabindex="0" onclick="App.views.chapter(${p.ci},${p.ti})">
-    <div class="rp-top"><span class="rp-kind">${esc(L('theme_sg'))} ${numL(p.ti+1)}</span>
-      <span class="rp-rng">${esc(fmtRangeL(t.range))}</span></div>
-    <div class="rp-title">${hlSearchText(T(t.titles), q)}</div>
-    <div class="rp-sub">${esc(L('chapter'))} ${numL(ch.num)} · ${hlSearchText(T(ch.names), q)}</div></div>`;
-}
-function doSearch(){
-  if(!allChReady()){ loadAllChapters().then(doSearch); return; }
-  const q = ($('#searchInput').value || '').trim();
-  if(!q){ clearSearch(); return; }
-  SRCH_HITS = [];
-  rememberOrigin();
-  App.session.update({view:'search', chapter:null, theme:null}); App.views.persist(); App.views.renderCrumbs();
-  const nq = prepareSearchQuery(q);
-  /* Accept whatever separator the reader's keyboard gives. On a Devanagari
-     layout the danda । sits where the full stop is, so १।१ is the natural way to
-     type 1.1; also allow : - / , the double danda, and stray surrounding dandas. */
-  const num = digitNorm(q).replace(/^[\s।॥]+|[\s।॥]+$/g, '')
-                          .match(/^(\d{1,2})[.।॥:\-\/,\s]+(\d{1,2})$/);
-  let hits, passages = [];
-  if(num){
-    const target = parseInt(num[1],10) + '.' + parseInt(num[2],10);
-    hits = VERSES.filter(loc => loc.norm === target);
-    if(hits.length === 0){
-      const c = parseInt(num[1],10), v = parseInt(num[2],10);
-      let msg = '';
-      if(c >= 1 && c <= 18){
-        const cnt = DATA[c-1].verses;
-        if(v < 1 || v > cnt) msg = L('oob_verse').replace('{ch}', numL(c)).replace('{n}', numL(cnt));
-      } else {
-        msg = L('oob_chapter');
-      }
-      if(msg){
-        view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
-          <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
-          <div class="view-sub fade-in">${esc(msg)}</div>`;
-        announceView();
-        return;
-      }
-    }
-  } else {
-    /* Free text. The index holds verse numbers as ASCII ("1.1"), so a query in
-       Devanagari digits — १, १७ — has to be converted too, or typing १ finds
-       nothing while 1 finds the whole chapter. Try both forms. */
-    const nqd = prepareSearchQuery(digitNorm(q).replace(/[।॥]/g, '.'));
-    hits = [];
-    VERSES.forEach((loc, i)=>{
-      const t = VERSE_TEXT[i], folded = VERSE_FOLDED_TEXT[i];
-      if(searchTextMatches(t, folded, nq) ||
-         (nqd.exact !== nq.exact && searchTextMatches(t, folded, nqd))) hits.push(loc);
-    });
-    passages = passageHits(nq, nqd);
-  }
-  /* C3: a marked query that found nothing is almost always a slip on one
-     vowel, not a word the book lacks. Re-run the same search on the plain
-     reading before declaring zero. The results are real, so the count stays
-     honest and the reader is told why the screen changed. */
-  SRCH_NOTE = '';
-  let total = hits.length + passages.length;
-  if(total === 0){
-    const alt = searchFoldAlternative(q);
-    if(alt){
-      const altHits = [];
-      VERSES.forEach((loc, i)=>{
-        if(searchTextMatches(VERSE_TEXT[i], VERSE_FOLDED_TEXT[i], alt)) altHits.push(loc);
-      });
-      const altPassages = passageHits(alt, alt);
-      if(altHits.length + altPassages.length){
-        hits = altHits; passages = altPassages; total = hits.length + passages.length;
-        SRCH_NOTE = L('search_meant').replace('{q}', q);
-      }
-    }
-  }
-  if(total === 0){
-    view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
-      <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
-      <div class="view-sub fade-in">${esc(L('no_results'))}</div>
-      <div class="srch-empty-hint fade-in">${esc(L('search_try'))}</div>
-      ${srchChipsHtml(q, 0)}`;
-    announceView();
-    return;
-  }
-  recentSave(q);
-  SRCH_HITS = hits;
-  const themes = passages.filter(p=>p.kind === 'theme'),
-        chapters = passages.filter(p=>p.kind === 'chapter'),
-        groups = (hits.length?1:0) + (themes.length?1:0) + (chapters.length?1:0);
-  const verseGrid = `<div class="grid verses">${hits.map((loc,i)=>{
-      const ch = DATA[loc.ci], v = verseAt(loc);
-      const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
-      const wm = glossHit(v, nq);
-      const shown = searchTextMatches(searchExactKey(T(part.titles) + ' ' + T(v.paras) + ' ' + v.d), '', nq);
-      return `<div class="mini" role="button" tabindex="0" onclick="App.reader.open(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
-        <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
-        <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${hlSearchText(T(part.titles), q)}</div>
-        <div class="padas" lang="sa">${App.reader.padaBlock(v)}</div>
-        <div class="vhint">${hlSearchText(T(v.paras), q)}</div>
-        ${wm && !shown ? `<div class="res-word">${esc(L('search_word_match').replace('{w}', wm[0] + ' — ' + wm[1]))}</div>` : ''}
-      </div>`;}).join('')}</div>`;
-  const passageGrid = list => `<div class="grid passages">${list.map(p=>passageCard(p, q)).join('')}</div>`;
-  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
-    <div class="res-count fade-in">${esc(resultCountLabel(total))}</div>
-    ${SRCH_NOTE ? `<div class="view-sub srch-relaxed fade-in">${esc(SRCH_NOTE)}</div>` : ''}
-    ${srchChipsHtml(q, total)}
-    ${hits.length
-      ? (groups > 1 ? resGroupHtml(L('search_in_verses'), hits.length, verseGrid) : verseGrid)
-      : ''}
-    ${themes.length ? resGroupHtml(L('search_in_themes'), themes.length, passageGrid(themes)) : ''}
-    ${chapters.length ? resGroupHtml(L('search_in_chapters'), chapters.length, passageGrid(chapters)) : ''}`;
-  announceView();
-}
-function clearSearch(){
-  $('#searchInput').value = '';
-  searchX();
-  goToOrigin();
-}
 
 // ---------- favorites (localStorage with in-memory fallback) ----------
 let FAV = [], FAVNOTE = {};
@@ -607,8 +408,7 @@ function announceView(){
     const ch = (state.chapter != null && DATA[state.chapter]) ? DATA[state.chapter] : null;
     if(state.view === 'welcome')        msg = L('welcome_title');
     else if(state.view === 'search')
-      msg = L('search_results') + ' · ' + resultCountLabel(SRCH_HITS.length)
-            + (SRCH_NOTE ? ' · ' + SRCH_NOTE : '');
+      msg = L('search_results') + ' · ' + srchAnnounced();   // 12-search.js owns the results
     else if(state.view === 'favorites')
       msg = `${L('favorites')} · ${resultCountLabel(FAV_LIST.length)}`;
     else if(state.view === 'chapter' && ch && state.theme != null)

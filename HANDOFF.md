@@ -5,11 +5,11 @@
 | | |
 |---|---|
 | Last updated | 2026-11-04 |
-| Updated by | Arena session `arena/77480584-bhagavad-gita` |
-| Base commit | `24111f9` on `arena/77480584-bhagavad-gita` (review fixes 1, 2, 5, 8, 9) |
+| Updated by | Arena session `arena/bab20070-bhagavad-gita` |
+| Base commit | `dc0abfd` on `main` (PR #68 merged) |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
-| Archived | `docs/archive/HANDOFF-2026-09-10-19.md` (329KB, 2427 lines) |
+| Archived | `docs/archive/HANDOFF-2026-09-10-19.md` (329KB, 2427 lines), `docs/archive/PROJECT-2026-10.md` (113KB, 15 October batches) |
 
 > **Maintenance rule (2026-10-19):** Keep this file lean (<100KB). Update §1 and §6 only when status/roadmap actually changes. Detailed per-fix evidence goes to `docs/archive/` yearly slices, not here. Durable rules → `AGENTS.md`, rationale → `PROJECT.md`. If work is done, don't append — archive.
 
@@ -17,15 +17,17 @@
 
 ## 1. Where we are (concise)
 
+- **The provenance page exists (2026-11-04, branch `arena/bab20070-bhagavad-gita`).** REVIEW §20 item 5 shipped as a **static** `method/` page (source `source/method.html`): recension, both translation registers, the pāda/word-split rules, what the build checks, provenance and privacy — in English · नेपाली · हिन्दी, no JavaScript, self-contained CSS. Linked from the app footer (`method_link`, 232 strings), all 18 chapter footers, the sitemap, and the worker's precache. Its numbers (700 / 2,800 / 9,484 / 644 / 51 / 5 / 13.34) and its three quotations are recomputed from `source/ch*.json` by 46 new site-health checks, so the page cannot drift. Fixing its offline path exposed a worker gap: only the root and `/chapter/N/` consulted the cache, so a precached page still 504'd — any in-scope navigation now serves an exact-URL hit, and `tests/test_offline_navigation.js` runs `install` to prove it.
+
 - **Search reaches ideas; notes belong to the verse (2026-11-04, branch `arena/77480584-bhagavad-gita`).** Search indexed the verse line, IAST and paraphrase only — a chapter name (“Sankhya”), a theme title or one glossed word (“not hating”) returned nothing. `verseSearchText()` now also carries the verse title (×3 languages) and every word gloss; a `SEARCH_PASSAGES` index holds the 18 chapters and 169 themes; results group as Verses/Themes/Chapters under one total that adds both (`hits.length + passages.length`); a gloss-only hit says which word matched. Notes used to be written only on saved cards and were deleted by `removeFav()` — now every verse has a note field in the sheet, saved as you type, listed in Saved whether the verse is a favourite or not, and the `gitaFavNotes` storage key/backup schema is unchanged. i18n +7 → 224 strings ×3. **CI was false-green:** it called `source/browser_checks.py` (root file) and ended with `|| echo`, and installed Playwright after `build.py` (which detects the suite with `import playwright`); now Playwright installs first, `build.py` gates on the real suite, nothing swallows the exit code, and `source/prove_data_only.py` runs.
 
 - **Phase 5.4 data export/import done (2026-10-19).** Favourites, notes, Learn progress were localStorage-only — cleared browser lost months. New `source/js/45-data.js` (9794 bytes trimmed) + `32-data.css`, view `#data`, footer + welcome link, versioned schema v1 `{version, app, exportedAt, data:{favs[], favNotes{}, learn{}}}`, validation + merge (favs union, notes overwrite, learn themes+held union, story max). i18n +19 keys (183→202 en/ne/hi), no Latin residue. Tests: `test_source_modules` allows `45-data.js`, `run_gita_app.js` 832 assertions, `tests/test_data_backup.js`.
 
 - **Minor build nits (2026-10-19) — fixed.** ResourceWarnings closed with `with`, icons canonical in `icons/`, manifest/SW/chapter og:image → `icons/`, sitemap stable (last commit date). `og-card.png` 283KB→119KB (Pillow optimize, 57% saving). CI `.github/workflows/ci.yml` now runs full `build.py` + Playwright browser checks, Pillow for share-art.
 
-- **Shell size:** 334,897 (Phase A–E) → 350,392 → **363,141 chars / 385,851 bytes / 105,035 gzip**. Cap moved twice on 2026-11-04, both times with the arithmetic at the check: 360,000 → 370,000 for A5 + C3 (+4,799) and → **375,000** for C2 (+7,086, after trimming 6,723 of its own code first). Measured, not assumed: `45-data.js` is only 13,228 chars, so lazy-loading it would win less than the bump while changing boot order, SW precache and the browser suite, which cannot run in this sandbox. Sitting at ~12.5KB headroom now; if it drops under 5KB again, split `20-learn.js` (34,114) or `10-library.js` (33,548), not the data module.
+- **Shell size:** 334,897 (Phase A–E) → 350,392 → 363,141 → **365,393 chars / 388,182 bytes / 105,670 gzip**, cap **375,000** (9,607 chars of room). The cap moved twice on 2026-11-04 for real features (A5 + C3, then C2) and then stopped moving: measured, not assumed, the binding constraint is the 700-line module guard, not this number. **Shell headroom item is done (2026-11-04):** the search screen moved into `12-search.js` and free practice into `27-learn-free.js`, so `10-library.js` is 477 lines (was 677) and `20-learn.js` 589 (was 686). The reader got the same split on 2026-11-04 (eighth batch): the presentation half moved to `48-reader-view.js` (188 lines), so `50-reader.js` is 426 and the next tightest is `20-learn.js` (589). Still never lazy-load `45-data.js` (13,228 chars, changes boot order + SW precache for less than the trouble).
 
-- **Current build:** `python3 build.py` ALL GREEN — 60 Python, **934 document assertions**, 506 site-health, 9,658 study, 17 migration, **13 search**, 700 theme-cards, backup; Playwright browser suite (**302 checks**) is run by `build.py` itself and fails the build.
+- **Current build:** `python3 build.py` ALL GREEN — 60 Python, **937 document assertions**, 552 site-health, 9,658 study, 17 migration, **13 search**, 700 theme-cards, backup, offline routing; Playwright browser suite (**302 checks**) is run by `build.py` itself and fails the build.
 
 ## 2. Resume in five minutes
 
@@ -42,18 +44,19 @@ Everything browser loads is **generated** by `source/build_gita.py`. Never hand-
 |---|---|
 | Verse text (Deva+IAST) | `source/ch<N>.json` |
 | Word split + glosses | `source/ch<N>.json` flow |
-| UI strings (231 keys ×3) | `source/i18n_ui.py` |
+| UI strings (232 keys ×3) | `source/i18n_ui.py` |
 | App HTML/CSS/JS | `source/app.html`, `source/css/*.css`, `source/js/*.js` (order in `build_gita.py`) |
 | Data backup | `source/js/45-data.js`, `source/css/32-data.css` |
 | Reviewed maps | `source/study_map_contract.json` |
 | Checks | `source/check_*.py`, `tests/test_source_modules.py` |
+| Working docs (not published) | `docs/outreach.md` (E3 kit), `docs/title-review.md` (advisory worksheet) |
 
 ## 4. Build and test
 
 ```bash
-python3 build.py          # build + all checks (60 Python, 934 doc, 506 health, 9658 study, 17 migration, 13 search, 700 cards, backup, 302 browser)
+python3 build.py          # build + all checks (60 Python, 937 doc, 552 health, 9658 study, 17 migration, 13 search, 700 cards, backup, offline, 302 browser)
 python3 build.py --fast   # build only
-node run_gita_app.js      # 934 assertions
+node run_gita_app.js      # 937 assertions
 node tests/test_data_backup.js
 ```
 
@@ -66,12 +69,18 @@ Browser checks need Playwright — skipped in sandbox, report when skipped.
 - [x] **Phase 5.4:** data export/import — favs, notes, Learn progress backup (versioned JSON, #data view, footer+welcome link)
 - [x] **Shell lean:** cap 295k→320k for 5.4, trimmed 311,813→310,251 chars, og-card 283KB→119KB
 - [x] **#1 Memory files:** archived HANDOFF 329KB→8KB lean (<100KB), yearly slices in `docs/archive/`
+- [x] **PROJECT.md ceiling (2026-11-04):** 190.6 → 83.5 KB; October batches moved to `docs/archive/PROJECT-2026-10.md`; slice when it nears 200 KB again
 - [x] **#2 Shell creep:** trimmed data module (11366→9794 bytes), stable under 320k
+- [~] **50 title/description advisories (2026-11-04):** triaged, not decided. `python3 source/audit_titles.py --markdown` prints a worksheet and `docs/title-review.md` is its snapshot: 39 are first-person verses (naming the speaker is correct), 8 are enumeration titles that never say the number, 3 needed a scene read — I read those three and all three look correct. Canonical titles untouched; the decisions are Dhruba's.
+- [~] **E3 backlink ritual (2026-11-04):** kit in `docs/outreach.md` (post/Quora/Nepali drafts, monthly cadence, measurement without analytics, E4 recommendation = skip). Still owner-only: posting, and the two GitHub topic fixes (`triligual` → `trilingual`, add `hindi`) — the API token returns 403 for topics.
+- [x] **Provenance page (2026-11-04):** static `method/`, trilingual, precached, numbers data-checked (46 site-health checks)
+- [x] **Shell headroom (2026-11-04):** split `12-search.js` (search screen) + `27-learn-free.js` (free practice); 10-library 677→477, 20-learn 686→589 lines; cap unchanged at 375,000
+- [x] **Reader split (2026-11-04):** `48-reader-view.js` (188) holds pāda/fit/verse-card/text-size/⋯-menu/word switches; `50-reader.js` 604→426 keeps the sheet, note field, history, sharing; cap unchanged
 - [x] **Public polish (2026-10-19):** CI full + Playwright, Pillow share-art, welcome backup discoverability
 - [ ] **Phase 2.4 "Start here / Gītā in 18 verses":** declined by owner as childish — not planned
 - [ ] **Phase 5.1 audio:** licence/recording decision, parked until 5.4 done (now done, still parked per owner)
 
-Next suggested: keep HANDOFF lean (<100KB), watch shell if >350k lazy-load data module.
+Next suggested: keep HANDOFF lean (<100KB); with both tight modules split, a 5KB feature now fits in either.
 
 ### Next session — fresh eyes (owner approved 2026-10-19)
 After a break, look with fresh eyes at UX/content nuances invisible when deep in code:
@@ -100,6 +109,13 @@ Phase 5.4 before audio. Versioned JSON export/import with merge. Footer link + #
 
 ## 8. Session log (last 20, newest first)
 
+- 2026-11-04 · `arena/bab20070-bhagavad-gita` · **PR #66's body corrected after the fact.** The merged PR described its first batch only, so four counters in it were stale: it said 892 assertions (908 at the merge commit), 279 browser checks (296), 224 UI strings (225) and a 347,934-char shell (350,608 / 372,546 B / 100,830 gzip). Measured on a clean extraction of `beaaddc` with a full build, not recalled. The original text is untouched — a dated Corrections section was appended, so the record shows both what was claimed and what was true. The same section **retracts the two data observations** it lists for `18.66` and `2.47`: those readings were re-checked and are correct as shipped, so nobody should act on them. `AGENTS.md` also lost a stray fragment line and gained the module-size rule.
+- 2026-11-04 · `arena/bab20070-bhagavad-gita` · **Reader split, and PROJECT.md back under its ceiling.** `50-reader.js` stood at 604 of a 700-line guard — a real feature's worth of debt — so the presentation half moved to `48-reader-view.js` (188 lines): pāda rendering, `fitWholeVerse`, `setVerseView` and the expansion toggle, reader text size, the ⋯ menu and the word-meaning switches, plus `verseViewState` which all of them read. What stayed is the sheet: open/close, `fillModal` with its note field, history, sharing, `navSutra` (426 lines). No function was rewritten, no accessor needed, boot order gained one insertion and the SW precache is untouched — it is still one inline script. Shell 365,000 → 365,393 chars / 388,182 bytes / 105,670 gzip (the delta is the header comment), cap unchanged. Separately, `PROJECT.md` was 190.6 KB against a 200 KB ceiling: the 15 October batches (112.6 KB) moved verbatim to `docs/archive/PROJECT-2026-10.md`, leaving 83.5 KB and §1–§10 intact; all 24 batches verified present once. Driving the moved functions in a real DOM (jsdom, installed outside the repo, session evidence only) gave 42/42: both card shapes and their roles, the quarter toggles and the master meaning switch, the text-size scale and readout, the ⋯ menu, the share panel and next-verse navigation — wiring and class/style effects, not layout or touch. Build green: 60 Python, 937 doc assertions, 552 site-health, 13 search, 700 cards. 302 browser checks still CI-only (**not run here**).
+- 2026-11-04 · `arena/bab20070-bhagavad-gita` · **`PROJECT.md` sliced under the 200 KB ceiling.** It had reached 190.6 KB — the batch notes, not the rationale, were the growth. Moved the 15 October batches (2026-10-18 → 2026-10-08, 112.6 KB, including the 78.5 KB recovered study-guide record) verbatim into `docs/archive/PROJECT-2026-10.md` (113 KB) and left a pointer at the end of §0; PROJECT.md is now **83.5 KB**. §1–§10 (what the app is, settled decisions, mistakes) did not move — that is the part a new session reads. Proof of the move is structural, not a rejoin: all 24 batches accounted for (9 kept, 15 archived, none duplicated), every line of the original still present in one file or the other, and the archived bytes compared verbatim before writing. `docs/archive/README.md` now records the slice and its policy. Build unchanged (937 assertions / 552 health / 60 Python).
+- 2026-11-04 · `arena/bab20070-bhagavad-gita` · **Title-advisory worksheet, read-only.** `audit_titles.py --markdown` now triages the 50 advisories mechanically — first-person evidence (39: the verse is the speaker talking, so a summary naming him is correct), vocative address (1), enumeration titles that never say the number (8), and theme summaries needing a scene read (2) — and prints each with the verse's own literal beside the title and a keep/revise/fix line. Snapshot in `docs/title-review.md` (490 lines). I read the three non-mechanical items against their verses (1.t4, 18.t4 and the 13.24-class number titles) and they look correct as written; nothing in `source/ch*.json` was touched. Build unchanged at 937 assertions / 552 health, advisory 50 / blocking 0.
+- 2026-11-04 · `arena/bab20070-bhagavad-gita` · **E3 outreach kit (`docs/outreach.md`), E4 recommendation.** Drafts for r/bhagavadgita, r/Hinduism, r/Nepal, a Quora answer and one Nepali group share — first person, written to be edited, with the 2.47 word rows copied from `source/ch2.json` rather than recalled. Cadence table (one channel a month), what not to do, and the measurement truth: no analytics means Search Console plus GitHub's referrer list, nothing more. **Blocked, honestly:** `gh repo edit --add-topic` returns HTTP 403 (token cannot edit topics), and the existing topics contain a typo (`triligual`) plus a missing `hindi` — both are two clicks in the GitHub UI. Nothing was posted anywhere; no code changed in this batch.
+- 2026-11-04 · `arena/bab20070-bhagavad-gita` · **Provenance page (`method/`) — REVIEW §20 item 5.** Static page, no JS, three language sections, sourced sentence by sentence from README/PROJECT §4/HANDOFF 7.2–7.3/LICENSE. Numbers and the 1.8, 4.33, 8.20 quotations are recomputed from `source/ch*.json` by the build (46 checks, 506 → 552), in English digits and Devanagari numerals. Reachable from the app footer (`method_link` → 232 strings, translated by `applyStatic`), all 18 chapter footers, sitemap (now 20 URLs) and the SW precache. **Worker fix:** navigation used to consult the cache only for root and `/chapter/N/`, so a precached page still 504'd offline; any in-scope navigation now serves an exact-URL hit and stores what was visited. `tests/test_offline_navigation.js` runs `install` and proves precached/visited/504 cases. Shell 364,612 → 365,000 chars / 105,531 gzip; page 26 KB precached. Counts 937 doc assertions / 552 health / 302 browser (**not run here** — Playwright unavailable, so the changed worker is CI's to prove in a browser).
+- 2026-11-04 · `arena/bab20070-bhagavad-gita` · **Shell headroom, by splitting rather than bumping.** The 700-line module guard was about to bind before the character cap: `10-library.js` was 677 lines and `20-learn.js` 686, so a 5KB feature would have failed the guard first. Split the search screen into `12-search.js` (204 lines) and free practice into `27-learn-free.js` (97 lines); 10-library 677→477, 20-learn 686→589. No data, CSS, view, route or string changed, boot order only gained two insertions, SW precache identical (one inline script, same cache name pattern). The ownership guard rejected the new file reaching into `VERSES`, so the owner gained `versesMatching(match)` and `srchAnnounced()` — accessors, not exemptions. Cap **unchanged** at 375,000; shell 363,141 → 364,612 chars / 105,412 gzip. Verified: full build green (60 Python, 934 doc assertions, 13 search, 700 card-nav) plus 21 checks driving the moved code in a real DOM via jsdom installed outside the repo; 302 browser checks still CI-only (**not run here**).
 - 2026-11-04 · `arena/82a47fa2-bhagavad-gita` · **Offline chapter navigation:** visited chapter pages cache under their own URL; unvisited pages return an offline 504 rather than the app shell. Simulated worker regression and 2 browser checks added; 302 browser checks (local browser skipped). Shell and verse data unchanged.
 
 - 2026-11-04 · `arena/187d5ce8-bhagavad-gita` · **C2 search suggestions.** Two characters open a real ARIA combobox (role=combobox + listbox + aria-activedescendant + aria-expanded), at most ten flat rows: 5 recent, 3 chapter titles matched by name, 2 verse numbers the digits could become (`2.4` → 2.4/2.40; Devanagari digits too). ↑/↓ move exactly one selection, Enter opens the highlighted row and cannot double as a submit, Escape closes the list only; a chapter row navigates instead of searching. One new string `search_suggest_hint` (231), row kinds reuse search_recent/chapters/verses. 13 search regressions (builders tested without a DOM) + 4 browser checks (**not run here** — Playwright cannot install; CI proves them). Shell 355,407 → 363,141, cap 370,000 → 375,000 after trimming the code first. Counts 934 assertions / 300 browser checks.

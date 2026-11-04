@@ -2,8 +2,9 @@
    Kept out of 10-library.js, which the monolith guard holds at 700 lines, and
    separate from the search engine on purpose: the builders are pure (query in,
    rows out) so the tests can rank them without a DOM, and only sugRender
-   touches the page. Loaded after 10-library.js, which owns recentLoad,
-   searchFoldKey, digitNorm, fmtNL, numL, T and L. */
+   touches the page. Loaded after 12-search.js, which owns recentLoad, and
+   after 10-library.js, which owns searchFoldKey, digitNorm, fmtNL, numL, T
+   and L. */
 /* ---------------- C2: suggestions while typing ----------------
    Pure row builders first (testable without a DOM), then the listbox. */
 let SUG_ROWS = [], SUG_CUR = -1, SUG_OPEN = false;

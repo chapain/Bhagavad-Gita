@@ -98,8 +98,9 @@ def check_local():
         return
     ok("parses as XML — %d <url> entries" % len(locs))
 
-    if len(locs) != CHAPTERS + 1:
-        bad("expected %d URLs (root + %d chapters), found %d" % (CHAPTERS + 1, CHAPTERS, len(locs)))
+    if len(locs) != CHAPTERS + 2:
+        bad("expected %d URLs (root + %d chapters + the method page), found %d"
+            % (CHAPTERS + 2, CHAPTERS, len(locs)))
     if locs[0] != SITE_BASE + "/":
         bad("first <loc> is %r, expected %r" % (locs[0], SITE_BASE + "/"))
     for i, loc in enumerate(locs):

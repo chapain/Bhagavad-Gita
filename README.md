@@ -76,7 +76,7 @@ source/                 ← edit here
   css/*.css                ordered feature styles; concatenated and inlined
   js/*.js                  ordered feature runtime; concatenated and inlined
   ch1.json … ch18.json    one compact canonical content file per chapter
-  i18n_ui.py              interface strings (en/ne/hi; 231 keys each)
+  i18n_ui.py              interface strings (en/ne/hi; 232 keys each)
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
   verify.py               shared text/transliteration helpers
   check_padas.py          verifies word splits against the pādas
@@ -89,7 +89,7 @@ source/                 ← edit here
 
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         934 assertions on the built document
+run_gita_app.js         937 assertions on the built document
 browser_checks.py       302 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
 ```
 
@@ -101,7 +101,7 @@ shell-asset requests. Cross-feature calls use frozen interfaces on one `App`
 namespace; mutable Library, Learn, Play and Drills state stays with its owning
 feature. Shared route, reader and session transitions go through the validated
 `App.session.update({...})` gateway, and architecture tests reject direct
-writes outside Core. The shell is about 98 KB gzipped and loads the verses from 18
+writes outside Core. The shell is about 103 KB gzipped and loads the verses from 18
 `data/ch<N>.js` files in parallel; the service worker precaches them. After the
 first visit everything is cached, so the app runs offline and installs to the
 home screen. Share it by link.
@@ -111,12 +111,15 @@ The JavaScript source order is also the dependency map:
 | Source | Responsibility / mutable owner |
 |---|---|
 | `00-core.js` | shell primitives, validated shared session transitions and snapshots |
-| `10-library.js` | chapter loading, verse/theme/chapter index, search, favourites and notes |
-| `20-learn.js` + `25-learn-session.js` | Learn path, practice state and Learn restoration |
+| `10-library.js` | chapter loading, verse/theme/chapter index, searchable-text index, favourites and notes |
+| `12-search.js` | the search screen: query parsing, results, recent queries and highlighting |
+| `15-suggest.js` | the suggestion combobox's pure row builders and listbox |
+| `20-learn.js` + `25-learn-session.js` + `27-learn-free.js` | Learn path, practice state, Learn restoration and free practice |
 | `30-play.js` | Play setup and active-game state |
 | `35-drills.js` | quiz queue, answers and drill restoration |
 | `40-views.js` | route-level rendering and persistence |
-| `50-reader.js` | verse sheet (including the note field), reader navigation and sizing |
+| `48-reader-view.js` | scripture presentation: pāda block, the card fit, the verse card's two shapes, text size, the ⋯ menu, meaning switches |
+| `50-reader.js` | verse sheet lifecycle (including the note field), history, sharing and verse navigation |
 | `60-runtime.js` | event wiring, boot, restoration and deep links |
 
 `tests/test_source_modules.py` protects this boundary: manifests must cover every
@@ -179,7 +182,7 @@ both are generated.
 | what you want to fix | file |
 |---|---|
 | chapter names and summaries; themes/parts, titles and descriptions; verse text, translations, word glosses, pāda flow and colophon | `source/ch<N>.json` |
-| interface wording (buttons and labels; 231 UI strings in each of three languages) | `source/i18n_ui.py` |
+| interface wording (buttons and labels; 232 UI strings in each of three languages) | `source/i18n_ui.py` |
 | shell structure, styling and client behavior | `source/app.html`, `source/css/*.css`, `source/js/*.js` |
 | approved story maps and safe legacy-progress migration | `source/study_map_contract.json` |
 

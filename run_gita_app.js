@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 934;      // keep in step with the printed total
+const TOTAL_ASSERTIONS = 937;      // keep in step with the printed total
 const TOTAL_BROWSER_CHECKS = 302;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
@@ -117,7 +117,9 @@ const enKeys = Object.keys(UI.en);
 // search_meant (5) → 230.
 // 2026-11-04 (fourth batch): search_suggest_hint (1) → 231. The listbox needs
 // exactly one spoken sentence; the row kinds reuse chapters/verses/Recent.
-ok(enKeys.length === 231, `UI has 231 keys (got ${enKeys.length})`);
+// 2026-11-04 (fifth batch): method_link (1) → 232 — the footer link to the new
+// method page. It costs two assertions here (the ne/hi completeness loops).
+ok(enKeys.length === 232, `UI has 232 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -851,7 +853,9 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(sw.includes("root + 'index.html'"), "sw.js shell-caches only the app root (a chapter page cannot poison it)");
   const sm = fs.readFileSync(path.join(S, 'sitemap.xml'), 'utf8');
   ok(/<loc>https?:\/\/[^<]+\/<\/loc>/.test(sm), 'sitemap.xml lists the absolute site URL');
-  ok((sm.match(/<loc>/g) || []).length === DATA.length + 1, 'sitemap lists the app plus all 18 chapter pages');
+  ok((sm.match(/<loc>/g) || []).length === DATA.length + 2,
+     'sitemap lists the app, all 18 chapter pages and the method page');
+  ok(/\/method\/<\/loc>/.test(sm), 'sitemap lists the provenance page the footer links to');
   const rb = fs.readFileSync(path.join(S, 'robots.txt'), 'utf8');
   ok(!/Disallow/i.test(rb), 'robots.txt disallows nothing');
   ok(/Sitemap: https?:\/\/\S+\/sitemap\.xml/.test(rb), 'robots.txt points at the sitemap');

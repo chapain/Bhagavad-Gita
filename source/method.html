@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How this edition was made — Bhagavad Gita</title>
+<meta name="description" content="The recension behind the Sanskrit, how the literal translation and the paraphrase differ, how the four pādas and the word-by-word meanings are split, what the build checks, and who made this edition.">
+<meta name="author" content="Dhruba Chapain">
+<link rel="canonical" href="%%SITE_BASE%%/method/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How this edition was made — Bhagavad Gita">
+<meta property="og:description" content="Recension, translation method and word splits of this trilingual Bhagavad Gita study edition.">
+<meta property="og:url" content="%%SITE_BASE%%/method/">
+<meta property="og:site_name" content="Bhagavad Gita — an Interactive Study">
+<meta property="og:image" content="%%SITE_BASE%%/icons/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<style>
+  /* Self-contained on purpose: this page must read even if the app's stylesheet
+     fails, and it is precached by the service worker so it reads offline. */
+  @font-face{ font-family:"Noto Serif Devanagari"; font-style:normal; font-weight:400; font-display:swap;
+              src:url("../noto-deva-regular.woff2") format("woff2");
+              unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF; }
+  :root{ --paper:#FFF8EC; --card:#FFFDF7; --ink:#2A2118; --ink-soft:#6B5D4F;
+         --accent:#1A5648; --saffron:#B45A24; --line:#E6D8C2; }
+  @media (prefers-color-scheme:dark){
+    :root{ --paper:#1F1A14; --card:#262019; --ink:#EDE3D0; --ink-soft:#B0A28C;
+           --accent:#8FBEB0; --saffron:#DE8F52; --line:#3A322A; }
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--ink);
+        font:17px/1.7 Georgia,"Noto Serif Devanagari",serif; }
+  main{ max-width:38rem; margin:0 auto; padding:28px 20px 8px; }
+  h1{ font-size:1.55rem; line-height:1.3; color:var(--accent); margin:6px 0 4px; }
+  h2{ font-size:1.18rem; line-height:1.35; color:var(--accent); margin:34px 0 8px;
+      padding-top:18px; border-top:1px solid var(--line); }
+  section > section h2{ font-size:1.05rem; border-top:0; padding-top:0; margin:20px 0 6px; }
+  p{ margin:0 0 12px; }
+  .lede{ color:var(--ink-soft); }
+  .langnav{ display:flex; gap:14px; flex-wrap:wrap; margin:0 0 22px;
+            font-size:.9rem; letter-spacing:.02em; }
+  .langnav a{ color:var(--saffron); text-decoration:none; border-bottom:1px solid transparent; }
+  .langnav a:hover, .langnav a:focus{ border-bottom-color:currentColor; }
+  a{ color:var(--accent); }
+  .sa{ font-family:"Noto Serif Devanagari",Georgia,serif; }
+  .cta{ display:inline-block; margin:8px 0 4px; padding:11px 18px; border-radius:12px;
+        background:var(--accent); color:var(--paper); text-decoration:none; font-weight:700; }
+  .cta:hover, .cta:focus{ background:var(--saffron); color:#2A2118; }
+  footer{ max-width:38rem; margin:0 auto; padding:18px 20px 40px; color:var(--ink-soft);
+          font-size:.86rem; line-height:1.7; border-top:1px solid var(--line); }
+  footer a{ color:var(--ink-soft); }
+  :focus-visible{ outline:2px solid var(--saffron); outline-offset:2px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>How this edition was made</h1>
+  <nav class="langnav" aria-label="Language">
+    <a href="#english" hreflang="en">English</a>
+    <a href="#nepali" hreflang="ne" lang="ne">नेपाली</a>
+    <a href="#hindi" hreflang="hi" lang="hi">हिन्दी</a>
+  </nav>
+
+  <!-- ============================ English ============================ -->
+  <section lang="en" id="english">
+    <p class="lede">A study edition of the Bhagavad Gita: 18 chapters and 700 verses in
+      English, Nepali and Hindi. Every verse is shown in its traditional four quarters,
+      with the Sanskrit, word-by-word meanings, a literal translation and a paraphrase in
+      plain prose; the English view also carries the IAST transliteration. The whole book
+      is one page that works without a connection.</p>
+
+    <section>
+      <h2>The text</h2>
+      <p>The Sanskrit follows the <b>Śaṅkara-bhāṣya</b> recension. Where the traditions
+        read differently, the bhāṣya's reading is printed: 1.8 reads
+        <span class="sa">सौमदत्तिस्तथैव च</span> (<i>saumadattis tathaiva ca</i>), not the
+        <i>jayadrathaḥ</i> variant. Chapter 13 has 34 verses; taking the 35-verse recension
+        of that chapter would make 701, and it is this edition's 34 that makes the book 700.</p>
+      <p>Nothing is rewritten to fit a rule. The two display lines of a verse are cut from
+        the canonical text at its daṇḍas and are never re-joined or re-sandhied.</p>
+    </section>
+
+    <section>
+      <h2>The translation</h2>
+      <p>Each verse carries two renderings: a <b>literal</b> one that keeps close to the
+        Sanskrit, and a <b>paraphrase</b> in plainer prose that says the same thing the way
+        one would explain it. Disputed places follow the Śaṅkara reading — 18.66 and 15.7
+        were settled this way.</p>
+      <p>There is deliberately no commentary: the reader meets the verse itself rather than
+        an argument about it.</p>
+    </section>
+
+    <section>
+      <h2>The four quarters and the word splits</h2>
+      <p>The pādas carry their syllable counts: 644 verses are anuṣṭubh (8/8/8/8), 51 are
+        triṣṭubh (11/11/11/11), and five are irregular and correct as they stand
+        (2.6, 2.29, 8.10, 11.1, 15.3).</p>
+      <p>A pāda prints the words as the verse runs, with sandhi applied, while the word list
+        gives each word in the form it has outside the compound: 4.33's first pāda ends
+        <span class="sa">…यज्ञाज्</span> and its word list says
+        <span class="sa">यज्ञात्</span> (<i>yajñāt</i>). An avagraha marks a vowel lost to
+        elision, and it is printed at the start of the pāda that lost it, as in 8.20:
+        <span class="sa">…भावोऽन्यो</span> | <span class="sa">ऽव्यक्तो…</span></p>
+    </section>
+
+    <section>
+      <h2>What is checked</h2>
+      <p>Before the site can build, all 2,800 pādas must rebuild letter for letter from
+        their own word rows, all 9,484 word meanings must be complete in all three
+        languages, and every paraphrase must differ from its literal by a set margin.
+        Translation fields are screened for known wrong readings, Latin letters inside
+        Devanagari, doubled words and broken spacing. The build also refuses to publish if
+        any verse, theme or chapter is unreachable, or if a single interface string is
+        missing in any language.</p>
+      <p>What those checks prove is consistency, not beauty. The verses are read by the
+        author, and the titles are still being re-read against their verses one by one.</p>
+    </section>
+
+    <section>
+      <h2>Who made it, and what it is not</h2>
+      <p>Created by <b>Dhruba Chapain</b>, Pokhara, Nepal. AI tools were used under his
+        direction — drafting translations and paraphrases, writing and checking the code,
+        looking for inconsistencies across 700 verses — and the content was reviewed,
+        corrected and approved by him; the full disclosure is in the licence file
+        (<code>LICENSE.md</code>). The Sanskrit is public domain; the translations, word
+        meanings, theme structure, pāda divisions, interface and code are © 2026 Dhruba
+        Chapain, all rights reserved.</p>
+      <p>This is a reading and study edition. It is not a critical edition of the
+        manuscripts, and it is not a commentary.</p>
+    </section>
+
+    <section>
+      <h2>Your reading stays yours</h2>
+      <p>No account, no analytics, no server. Progress, favourites and notes are stored in
+        your own browser, can be exported as a file and imported on another device, and the
+        app caches itself so it reads offline. Corrections and corrections of corrections
+        are welcome through the repository.</p>
+    </section>
+
+    <p><a class="cta" href="../">Open the app →</a></p>
+  </section>
+
+  <!-- ============================ नेपाली ============================ -->
+  <section lang="ne" id="nepali">
+    <h2>यो संस्करण कसरी बनियो</h2>
+    <p class="lede">श्रीमद्भगवद्गीताको अध्ययन-संस्करण: १८ अध्याय र ७०० श्लोक, अङ्ग्रेजी,
+      नेपाली र हिन्दीमा। हरेक श्लोक आफ्ना परम्परागत चार पादमा देखाइएको छ — संस्कृत,
+      शब्दार्थ, शब्दशः अनुवाद र सरल भाषाको भावानुवादसहित; अङ्ग्रेजी पाठमा रोमन
+      लिप्यन्तरण पनि हुन्छ। सारा ग्रन्थ एउटै पृष्ठमा छ र इन्टरनेट नभए पनि चल्छ।</p>
+
+    <section>
+      <h2>पाठ</h2>
+      <p>संस्कृत पाठ <b>शाङ्करभाष्य</b> को पाठ-परम्परा अनुसार छ। जहाँ परम्पराहरू फरक
+        पर्छन्, त्यहाँ भाष्यको पाठ राखिएको छ: १.८ मा
+        <span class="sa">सौमदत्तिस्तथैव च</span> पढिन्छ, <i>जयद्रथः</i> पाठ होइन।
+        तेह्रौँ अध्यायमा ३४ श्लोक छन्; त्यस अध्यायको ३५ श्लोक भएको पाठ लिँदा जम्मा ७०१
+        हुन्थ्यो, र यही ३४ ले ग्रन्थ ७०० मा टुङ्गिन्छ।</p>
+      <p>कुनै नियममा मिलाउन पाठ फेरि लेखिएको छैन। श्लोकका दुई पङ्क्ति मूल पाठबाट
+        दण्डचिह्नमा काटिएका हुन् — जोडेर वा सन्धि फर्काएर बनाइएका होइनन्।</p>
+    </section>
+
+    <section>
+      <h2>अनुवाद</h2>
+      <p>हरेक श्लोकमा दुई अनुवाद छन्: संस्कृतसँग नजिक रहने <b>शब्दशः</b> अनुवाद, र त्यही
+        कुरा बुझाउने सरल भाषाको <b>भावानुवाद</b>। विवादित ठाउँमा शाङ्कर पाठ मानिएको छ —
+        १८.६६ र १५.७ यसै अनुसार टुङ्गिएका हुन्।</p>
+      <p>टीका-व्याख्या जानाजान छैन: पाठकले श्लोक आफैँ भेटून्, श्लोकबारेको बहस होइन।</p>
+    </section>
+
+    <section>
+      <h2>चार पाद र शब्द-विभाजन</h2>
+      <p>पादका अक्षर-सङ्ख्या: ६४४ श्लोक अनुष्टुप् (८/८/८/८), ५१ त्रिष्टुप्
+        (११/११/११/११), र पाँच श्लोक अनियमित छन् — ती यथावत् ठीक छन्
+        (२.६, २.२९, ८.१०, ११.१, १५.३)।</p>
+      <p>पादमा श्लोकजस्तै सन्धि लागेको रूप पढिन्छ, तर शब्दार्थमा हरेक शब्द सन्धि अघिको
+        रूपमा दिइन्छ: ४.३३ को पहिलो पाद <span class="sa">…यज्ञाज्</span> मा टुङ्गिन्छ,
+        शब्दार्थमा भने <span class="sa">यज्ञात्</span> छ। लोप भएको स्वरको अवग्रह (ऽ)
+        जुन पादमा स्वर लोप भयो त्यसैको सुरुमा राखिन्छ, जस्तै ८.२० मा:
+        <span class="sa">…भावोऽन्यो</span> | <span class="sa">ऽव्यक्तो…</span></p>
+    </section>
+
+    <section>
+      <h2>के-के जाँचिन्छ</h2>
+      <p>साइट बन्नु अघि २,८०० पाद आ-आफ्नै शब्द-पङ्क्तिबाट अक्षरशः जोडिएर मिल्नुपर्छ,
+        ९,४८४ शब्दार्थ तीनै भाषामा पूरा हुनुपर्छ, र हरेक भावानुवाद शब्दशः अनुवादभन्दा
+        तोकिएको मात्रामा फरक हुनुपर्छ। अनुवादका खण्डमा चिनिएका गलत पाठ, देवनागरीभित्र
+        छिरेका अङ्ग्रेजी अक्षर, दोहोरिएका शब्द र बिग्रिएको खाली ठाउँ जाँचिन्छ। कुनै
+        श्लोक, विषय वा अध्याय पुग्नै नसकिने भए, वा कुनै भाषामा एउटा पनि इन्टरफेस शब्द
+        छुटेको भए, बिल्डले प्रकाशित गर्दैन।</p>
+      <p>ती जाँचले एकरूपता देखाउँछन्, सुन्दरता होइन। श्लोक लेखक आफैँ पढ्नुहुन्छ, र
+        शीर्षकहरू अझै एक-एक गरेर श्लोकसँग भिडाइँदै छन्।</p>
+    </section>
+
+    <section>
+      <h2>कसले बनायो, र यो के होइन</h2>
+      <p>पोखरा, नेपालका <b>ध्रुव चापाइन</b> ले बनाउनुभएको। कृत्रिम बुद्धिमत्ताका साधन
+        उहाँकै निर्देशनमा प्रयोग भए — अनुवाद र भावानुवादको प्रारूप, कोड लेख्ने र जाँच्ने,
+        र ७०० श्लोकभरि बेमिलन खोज्ने काममा — र सामग्री उहाँले पढेर, सुधारेर स्वीकृत
+        गर्नुभएको हो; पूरा विवरण इजाजतपत्र फाइलमा छ। संस्कृत पाठ सार्वजनिक क्षेत्रमा छ;
+        अनुवाद, शब्दार्थ, विषय-संरचना, पाद-विभाजन, इन्टरफेस र कोड © २०२६ ध्रुव चापाइन,
+        सर्वाधिकार सुरक्षित।</p>
+      <p>यो पढ्ने र अध्ययन गर्ने संस्करण हो। यो हस्तलिखित प्रतिहरूको समालोचित संस्करण
+        होइन, र टीका पनि होइन।</p>
+    </section>
+
+    <section>
+      <h2>तपाईंको पढाइ तपाईंकै रहन्छ</h2>
+      <p>खाता छैन, एनालिटिक्स छैन, सर्भर छैन। पढाइको प्रगति, मनपर्ने श्लोक र टिप्पणी
+        तपाईंकै ब्राउजरमा रहन्छ; फाइलमा निकालेर अर्को यन्त्रमा ल्याउन सकिन्छ, र एपले
+        आफैँलाई अफलाइन पढ्नका लागि सँगालेर राख्छ। सुधार सुझाव रिपोजिटरीमार्फत स्वागत छ।</p>
+    </section>
+
+    <p><a class="cta" href="../" lang="ne">एप खोल्नुहोस् →</a></p>
+  </section>
+
+  <!-- ============================ हिन्दी ============================ -->
+  <section lang="hi" id="hindi">
+    <h2>यह संस्करण कैसे बना</h2>
+    <p class="lede">श्रीमद्भगवद्गीता का अध्ययन-संस्करण: १८ अध्याय और ७०० श्लोक, अंग्रेज़ी,
+      नेपाली और हिन्दी में। हर श्लोक अपने पारंपरिक चार पादों में दिखाया गया है — संस्कृत,
+      शब्दार्थ, शब्दशः अनुवाद और सरल भाषा के भावानुवाद के साथ; अंग्रेज़ी पाठ में रोमन
+      लिप्यंतरण भी है। पूरा ग्रंथ एक ही पृष्ठ पर है और बिना इंटरनेट भी चलता है।</p>
+
+    <section>
+      <h2>पाठ</h2>
+      <p>संस्कृत पाठ <b>शाङ्करभाष्य</b> की पाठ-परंपरा के अनुसार है। जहाँ परंपराएँ अलग
+        पढ़ती हैं, वहाँ भाष्य का पाठ रखा गया है: १.८ में
+        <span class="sa">सौमदत्तिस्तथैव च</span> पढ़ा जाता है, <i>जयद्रथः</i> पाठ नहीं।
+        तेरहवें अध्याय में ३४ श्लोक हैं; उस अध्याय का ३५ श्लोक वाला पाठ लेने पर कुल ७०१
+        होते, और यही ३४ ग्रंथ को ७०० पर पूरा करते हैं।</p>
+      <p>किसी नियम में फिट करने के लिए पाठ दोबारा नहीं लिखा गया। श्लोक की दो पंक्तियाँ मूल
+        पाठ से दंड-चिह्नों पर काटी गई हैं — जोड़कर या संधि लौटाकर बनाई गई नहीं हैं।</p>
+    </section>
+
+    <section>
+      <h2>अनुवाद</h2>
+      <p>हर श्लोक में दो अनुवाद हैं: संस्कृत के निकट रहने वाला <b>शब्दशः</b> अनुवाद, और वही
+        बात समझाने वाला सरल भाषा का <b>भावानुवाद</b>। विवादित स्थलों पर शाङ्कर पाठ माना गया
+        है — १८.६६ और १५.७ इसी तरह तय हुए।</p>
+      <p>टीका-व्याख्या जान-बूझकर नहीं है: पाठक श्लोक से सीधे मिले, श्लोक पर बहस से नहीं।</p>
+    </section>
+
+    <section>
+      <h2>चार पाद और शब्द-विभाजन</h2>
+      <p>पादों की अक्षर-संख्या: ६४४ श्लोक अनुष्टुप् (८/८/८/८), ५१ त्रिष्टुप्
+        (११/११/११/११), और पाँच श्लोक अनियमित हैं — वे जैसे हैं वैसे ही सही हैं
+        (२.६, २.२९, ८.१०, ११.१, १५.३)।</p>
+      <p>पाद में संधि लगा रूप पढ़ा जाता है, पर शब्दार्थ में हर शब्द संधि से पहले के रूप में
+        दिया जाता है: ४.३३ का पहला पाद <span class="sa">…यज्ञाज्</span> पर पूरा होता है,
+        शब्दार्थ में <span class="sa">यज्ञात्</span> है। लुप्त स्वर का अवग्रह (ऽ) उसी पाद
+        के आरंभ में रखा जाता है जिसमें स्वर लुप्त हुआ, जैसे ८.२० में:
+        <span class="sa">…भावोऽन्यो</span> | <span class="sa">ऽव्यक्तो…</span></p>
+    </section>
+
+    <section>
+      <h2>क्या-क्या जाँचा जाता है</h2>
+      <p>साइट बनने से पहले २,८०० पाद अपनी-अपनी शब्द-पंक्तियों से अक्षरशः जुड़कर मिलने
+        चाहिए, ९,४८४ शब्दार्थ तीनों भाषाओं में पूरे होने चाहिए, और हर भावानुवाद शब्दशः
+        अनुवाद से तय मात्रा में अलग होना चाहिए। अनुवाद के खंडों में जाने-पहचाने गलत पाठ,
+        देवनागरी के भीतर घुसे अंग्रेज़ी अक्षर, दोहराए गए शब्द और बिगड़ी हुई जगह जाँची
+        जाती है। कोई श्लोक, विषय या अध्याय पहुँच से बाहर हो, या किसी भाषा में एक भी
+        इंटरफ़ेस शब्द छूटा हो, तो बिल्ड प्रकाशित नहीं करता।</p>
+      <p>ये जाँचें एकरूपता दिखाती हैं, सुंदरता नहीं। श्लोक लेखक स्वयं पढ़ते हैं, और शीर्षक
+        अब भी एक-एक करके श्लोकों से मिलाए जा रहे हैं।</p>
+    </section>
+
+    <section>
+      <h2>किसने बनाया, और यह क्या नहीं है</h2>
+      <p>पोखरा, नेपाल के <b>ध्रुव चापाइन</b> द्वारा बनाया गया। कृत्रिम बुद्धिमत्ता के साधन
+        उनके निर्देशन में प्रयोग हुए — अनुवाद और भावानुवाद का प्रारूप, कोड लिखना और
+        जाँचना, और ७०० श्लोकों में असंगतियाँ खोजना — और सामग्री उन्होंने पढ़कर, सुधारकर
+        स्वीकृत की; पूरा विवरण लाइसेंस फ़ाइल में है। संस्कृत पाठ सार्वजनिक क्षेत्र में है;
+        अनुवाद, शब्दार्थ, विषय-संरचना, पाद-विभाजन, इंटरफ़ेस और कोड © २०२६ ध्रुव चापाइन,
+        सर्वाधिकार सुरक्षित।</p>
+      <p>यह पढ़ने और अध्ययन करने का संस्करण है। यह पांडुलिपियों का समालोचित संस्करण नहीं
+        है, और टीका भी नहीं है।</p>
+    </section>
+
+    <section>
+      <h2>आपका पढ़ना आपका ही रहता है</h2>
+      <p>कोई खाता नहीं, कोई एनालिटिक्स नहीं, कोई सर्वर नहीं। पढ़ने की प्रगति, पसंदीदा श्लोक
+        और टिप्पणियाँ आपके ही ब्राउज़र में रहती हैं; फ़ाइल में निकालकर दूसरे यंत्र पर लाई जा
+        सकती हैं, और ऐप स्वयं को ऑफ़लाइन पढ़ने के लिए सहेजता है। सुधार सुझाव
+        रिपॉज़िटरी के माध्यम से स्वागत योग्य हैं।</p>
+    </section>
+
+    <p><a class="cta" href="../" lang="hi">ऐप खोलें →</a></p>
+  </section>
+</main>
+<footer>
+  <p>Bhagavad Gita — an Interactive Study · <a href="../">chapain.github.io/Bhagavad-Gita</a><br>
+    Sanskrit text: public domain · Translations, word meanings and structure © 2026 Dhruba Chapain.
+    See <code>LICENSE.md</code> in the repository for the AI disclosure and terms.</p>
+</footer>
+</body>
+</html>
