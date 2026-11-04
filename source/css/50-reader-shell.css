@@ -25,23 +25,6 @@
   .sw-field.has-x .sw-x{ display:flex; }
   .sw-field.has-x input[type=search]{ padding-right:40px; }
   .sw-field input[type=search]::-webkit-search-cancel-button{ -webkit-appearance:none; display:none; }
-  /* C2: the suggestion listbox. Positioned against .sw-field so it hangs from
-     the field on every width; the cap and the scroll keep a long chapter list
-     from covering the page. z-index is above the sticky toolbar it drops over. */
-  .search-suggest{ position:absolute; left:0; right:0; top:calc(100% + 6px); margin:0; padding:4px;
-                   list-style:none; background:var(--paper); border:1px solid var(--line);
-                   border-radius:12px; box-shadow:0 10px 28px rgba(0,0,0,.14);
-                   max-height:min(52vh, 340px); overflow-y:auto; z-index:60; }
-  .search-suggest[hidden]{ display:none; }
-  .sug-row{ display:flex; align-items:center; justify-content:space-between; gap:12px;
-            padding:8px 10px; border-radius:8px; cursor:pointer; font-size:.9rem; color:var(--ink); }
-  .sug-row.is-active, .sug-row[aria-selected="true"]{ background:var(--saffron-soft); color:var(--saffron-text); }
-  .sug-label{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .sug-kind{ flex:none; font-size:.74rem; color:var(--ink-soft); text-transform:uppercase;
-             letter-spacing:.04em; font-weight:600; }
-  .sug-row.is-active .sug-kind{ color:var(--saffron-text); }
-  .sug-hint[hidden]{ display:none; }
-  @media print{ .search-suggest, .sug-hint{ display:none !important; } }
   ::selection{ background:var(--saffron-soft); color:var(--ink); }
   .tool-btn{ background:var(--paper); border:1px solid var(--line); color:var(--teal); font-weight:700; font-size:.85rem; padding:8px 16px; border-radius:999px; cursor:pointer; transition:.15s;}
   .tool-btn:hover{ border-color:var(--saffron); background:var(--saffron-soft);}
@@ -53,11 +36,11 @@
   .res-count{ color:var(--ink-soft); font-size:.9rem; margin-bottom:16px;}
   .srch-hl{ background:var(--saffron-soft); color:var(--ink); border-radius:3px; padding:0 2px; }
   .srch-empty-hint{ color:var(--ink-soft); font-size:.92rem; margin:-10px 0 14px; max-width:640px; }
-  /* C3: the results are shown, the exact reading was not found. Sits where
-     the chips go, above them, so the reader sees the reason before results. */
+  /* C3: the results are shown, the exact reading was not found. Sits under the
+     result count, so the reader sees the reason before the cards. The chips
+     below it only appear on the zero-result screen now. */
   .srch-relaxed{ margin:-6px 0 12px; max-width:640px; color:var(--saffron-text); }
   .srch-chips{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:-4px 0 16px; }
-  .srch-chips-lbl{ color:var(--ink-soft); font-size:.82rem; font-weight:600; }
   .srch-chip{ background:var(--paper); border:1px solid var(--line); color:var(--teal);
               border-radius:999px; padding:4px 12px; font-size:.82rem; font-weight:600; cursor:pointer; transition:.15s; }
   .srch-chip:hover{ border-color:var(--saffron); background:var(--saffron-soft); }

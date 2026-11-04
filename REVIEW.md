@@ -104,7 +104,7 @@ Totals: 18 ch, 700 verses, 169 themes, 700 parts — all green
 
 ## 5. Frontend Architecture — Ordered Modules
 
-**7 CSS + 13 JS ordered modules, concatenated and inlined. No bundler, no extra request.**
+**7 CSS + 12 JS ordered modules, concatenated and inlined. No bundler, no extra request.** (`15-suggest` was withdrawn on 2026-11-04 — the floating suggestion combobox covered the live search results.)
 
 | Order | File | Owns (mutable state in bold) |
 |---|---|---|
@@ -112,7 +112,6 @@ Totals: 18 ch, 700 verses, 169 themes, 700 parts — all green
 | JS | `00-core` | `App.session.update()`, `GITA_SESSION_KEY`, `state`, `GITA_CH`, `UI`, i18n helpers |
 | | `10-library` | **VERSES, FAV/FAVNOTE**, chapter/verse index, favourites, theme toggle |
 | | `12-search` | **SRCH_HITS/SRCH_NOTE**, search screen and results |
-| | `15-suggest` | **SUG_ROWS/SUG_CUR**, suggestion combobox |
 | | `20-learn` + `25-learn-session` + `27-learn-free` | **LR progress, LR_RANDOM_STATE, FP** |
 | | `30-play` | **PL scope/mode/run/q** |
 | | `35-drills` | **LQ queue, LQpick** |

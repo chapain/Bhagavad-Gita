@@ -15,6 +15,149 @@ the start of every session.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
+### 2026-11-04 (sixteenth batch) — the whole book, read verse by verse
+
+* **The semantic audit is finished: 700 of 700 verses.** Every verse of all
+  eighteen chapters was read in the Devanagari, the IAST, the literal
+  (en/ne/hi), the paraphrase (en/ne/hi), the title (en/ne/hi) and every word
+  row with its three glosses. Chapters 1–12 were read first; 13–18 followed in
+  the same pass, with the same rules, the same reading order and the same
+  ledger format, so the two halves are comparable line for line. The ledger is
+  `docs/semantic-audit.md`; `source/ch<N>.json` stayed canonical throughout.
+* **Nine findings, seven verses, sixteen strings.** 1.04's Hindi row said
+  "from Bhīma" for "equal to Bhīma" (F1); 1.13's English instrument rows
+  disagreed with its own literal and read "kettledrums" twice (F2, F3);
+  1.24's three paraphrases named a different addressee from the literal they
+  paraphrased and said the chariot was *driven* where the verse says it was
+  *placed* (F5); 1.46's first privative `अ` row was glossed "not" where the
+  shape is the same privative the second one glossed "without" (F6); 2.10's
+  Nepali literal and its three paraphrases named "O Dhṛtarāṣṭra" and dropped
+  the "as if" the verse carries for `prahasann iva` (F7); 5.12's Nepali
+  literal and its own word row ran two words together — "योगमा नस्थित" (F8);
+  3.22's Nepali word row ran the negator into its word — "नप्राप्त", where the
+  verse's own literal reads "न प्राप्त" (F9). Every other verse passed on
+  first reading, in all three languages, literals and paraphrases included.
+* **The findings cluster in four small places, and that is the useful
+  result.** The vocative `bhārata` and the privative `a-` are two of them —
+  each has a single canonical form and a single obvious misreading — and the
+  instrument list of 1.13 and the one Hindi preposition of 1.04 are the other
+  two. A word-row gloss that drifts away from its own verse's literal is the
+  defect; the literal itself was never changed to suit a gloss. The two
+  run-together negators (F8, F9) are typographic rather than semantic, and
+  both were found by the class checks rather than by the reading.
+* **The class checks now cover the whole book, not the first chapter.** Two
+  different Sanskrit words may not carry one English gloss inside a verse —
+  88 pairs survive, and each was read and accepted: the same lemma in another
+  surface form (इदम् / इमम्), a synonym pair (एव / हि = "indeed"), or the
+  house convention that a separate `न` row carries the negation (1.31, 15.10).
+  All 88 are listed in the test, so a new pair is a finding and a fixed pair
+  must be taken out. No row anywhere glosses a comparison with a preposition
+  of departure (`से`); all 19 `सम`-family rows read "समान" in Nepali and in
+  Hindi; no verse is missing a literal or a paraphrase in any language; no
+  gloss is empty; no Latin survives in the Nepali or the Hindi; and no verse's
+  literal duplicates its own paraphrase.
+* **The pins grew with the reading.** `tests/test_semantic_audit.py` is now
+  ten tests over all 700 verses: the reviewed rows *and* their literal and
+  paraphrase context for all seven corrected verses, the duplicate-gloss rule
+  with its reviewed-pair list, the instrument-row rule, the book-wide
+  departure-preposition guard, the `समः` style, the book-wide guard against a
+  Nepali negator run into its word, the ledger's own coverage of all eighteen
+  chapters and 700 verses, and the three-language completeness check. A
+  negative control confirms the duplicate-gloss rule rejects an unreviewed
+  pair.
+* **Counts:** 90 Python (4 more than 86), 937 assertions, 300 browser checks,
+  230 UI strings, 13 search regressions. The browser suite still cannot run
+  here — Playwright will not install in this sandbox — so that proof is CI's
+  and the owner's, not ours. Two consecutive full builds are byte-identical
+  across all 164 tracked files.
+
+### 2026-11-04 (fifteenth batch) — the first chapter, read verse by verse
+
+* **A semantic audit has started, and it is a ledger, not a pass.** Every verse
+  of 1.01–1.20 was read in the Devanagari, the IAST, the literal (en/ne/hi),
+  the paraphrase (en/ne/hi), the title (en/ne/hi) and every word row with its
+  three glosses, against the Sanskrit and the edition's own prior verdicts.
+  `docs/semantic-audit.md` records each verdict, the evidence and the decision
+  before anything is edited — 20 verses, 18 clean on first reading, two
+  corrected.
+* **1.04 — a Hindi row said "from Bhīma" where the verse says "equal to
+  Bhīma".** `भीम से` is the only row in the book whose English gloss starts
+  with "to" while its Hindi uses `से`; the Nepali `भीमसँग` and the English
+  "to Bhīma" were both right. The row is now `भीम के समान`. Sivananda
+  ("equal in battle to Bhima and Arjuna"), Ramsukhdas ("भीम और अर्जुनके समान")
+  and this edition's own Hindi literal all read a comparison, not a departure.
+* **1.13 — the verse the earlier boundary pass had left open, now closed.**
+  `docs/padachheda-verse-review.md` recorded "**but paṇava's ne/hi glosses are
+  a collateral mismatch** … Do not label this verse's glosses fully verified",
+  and `docs/padachheda-conflict-resolution.md` decided the Nepali and Hindi
+  rows (drums, not trumpets). The **English** rows were never brought in line:
+  they read bherī "kettledrums", paṇava "tabors", ānaka "kettledrums" while
+  the literal read "drums, kettledrums, tabors" — two rows with the same word
+  and neither matching. They now follow the literal, and the Hindi horn row
+  follows its own literal ("तुरहियाँ", not the bare "गोमुख").
+* **Two notes were closed with no change, and that is a decision too.** 1.15's
+  `भीम` row reads as the adjective "terrific" while the literal reads Bhīma
+  the name: both references read it the row's way ("the doer of terrible deeds"
+  · "भयानक कर्म करनेवाले"), and the earlier pass had already accepted the
+  literal's idiomatic "herculean deeds". 1.20's `ध्वजः` = "bannered" is terse
+  but correct ("whose ensign was a monkey"), and the edition already uses that
+  adjectival shape for 1.18's `बाहुः` = "armed".
+* **The rules the audit found are now mechanical.** `tests/test_semantic_audit.py`
+  pins the reviewed rows with their literal context, and enforces three
+  checkable rules: two *different* words may not carry one gloss (the same
+  word may — बलम् twice in 1.10 is correct), the English instrument rows must
+  follow the English literal, and no row anywhere may gloss a comparison with a
+  preposition of departure. Reintroducing either defect fails five of the six
+  tests. The earlier snapshot `tests/fixtures/reference_conflicts.json` was
+  amended deliberately for 1.13 and its test's docstring records why.
+* **Counts:** 86 Python (6 new), 937 assertions, 300 browser checks, 230 UI
+  strings, 13 search regressions. The browser suite still cannot run here.
+
+### 2026-11-04 (fourteenth batch) — the floating listbox is withdrawn
+
+* **The owner reported the panel and it was right to.** His screenshot showed the
+  suggestion list floating over the search results, with a stray "Back to
+  Chapter 1" pill on top of it, and his judgement was blunt: *"I don't think we
+  need the recent searches dropdown is necessary."* Two separate defects were
+  behind it. First, the listbox was `position:absolute` with `z-index:60` inside
+  the sticky search field, so by design it hovered over the results it was meant
+  to help find — and it opened on the **keystroke**, 220 ms before the live
+  results rendered, so both were on screen together. Second, its first five rows
+  were the reader's own past queries, offered back regardless of what was being
+  typed — for the query "18" it listed 11.47, 11.4, 11., 11 and 18.76.
+* **The recents were junk because every keystroke of one search was a search.**
+  `doSearch()` called `recentSave(q)` on each debounced live search, so looking
+  for 11.47 stored four separate "recent" queries: "11", "11.", "11.4" and
+  "11.47". A history that records its own prefixes is not a history; it is a
+  transcript of typing.
+* **So the feature is removed, not restyled.** `15-suggest.js` (105 lines) is
+  deleted and its entry dropped from `APP_JS_FILES`; with it go the combobox
+  ARIA on the field, the `<ul role="listbox">`, the `.search-suggest` CSS, the
+  `sugRender/sugKey/sugPick/sugBlur` exports, the `search_suggest_hint` and
+  `search_recent` strings (×3 → 230), and the `gitaRecent` localStorage key.
+  The field is a plain `<input type="search">` again, Enter searches, and
+  nothing is written down. **Raising the z-index or shrinking the panel was
+  rejected**: the owner asked for the dropdown to go, and a floating panel that
+  still floats is the same defect wearing a different hat.
+* **Search still works, and now shows nothing but the answer.** The live
+  results, the chapter and theme groups and the folded second chance (C3) are
+  untouched. The chips that remain are the four real starting points — 2.47,
+  4.7, 18.66 and धर्मक्षेत्रे — and they appear **only on the zero-result
+  screen**, where a suggestion is genuinely useful; a screen with hits carries
+  no chip row at all.
+* **The locks now guard the removal**, because a lock that only exists to
+  celebrate a feature is a lock that will be deleted with it. Seven document
+  assertions became five that the overlay cannot come back by accident (no
+  `searchSuggest`, no `sugRender`/`sugKey`, no combobox ARIA, Enter still
+  searches, no `gitaRecent` in the shell); the C2 builder test in
+  `tests/test_search.js` became a test that the listbox and the stored queries
+  are gone; the four C2 browser checks became two (no overlay covers the live
+  results while typing; the field is a plain input that stores nothing).
+  **Those two browser checks have not run here** — Playwright cannot be
+  installed in this sandbox — so the lock moved 302 → 300 and CI owns the proof.
+* **Counts:** 937 assertions, 300 browser checks, 230 UI strings, 13 search
+  regressions.
+
 ### 2026-11-04 (thirteenth batch) — the other half: all 869 descriptions read
 
 * The title pass (eleventh and twelfth batches) covered names, not the paragraphs
@@ -181,8 +324,8 @@ For a brand-new session: read §1–§10, then this box, then build.
   belongs here, in PROJECT.md, not in every page load. The next feature needs a
   real trim or a deliberate, measured cap raise; it must not slip in under a
   comment.
-* **Counts:** 943 assertions, 302 browser checks, 232 UI strings, 560 site-health,
-  10 SEO checks, 68 Python, 13 search regressions. D1's clipboard behaviour and
+* **Counts:** 937 assertions, 300 browser checks, 230 UI strings, 560 site-health,
+  10 SEO checks, 86 Python, 13 search regressions. D1's clipboard behaviour and
   D2's touch gesture are **not proven here** — both need a real browser, so CI and
   the owner's phone own that.
 

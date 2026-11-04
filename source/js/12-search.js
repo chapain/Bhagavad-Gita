@@ -12,24 +12,11 @@ let SRCH_NOTE = '';
 let searchTimer = null;
 function onSearchInput(v){
   clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); searchX();
-  sugRender(v);   // opens on the keystroke, not after the 220ms debounce
 }
 /* the in-field ✕ exists only while there is text to clear — the modern
    pattern; a standing "Clear" button was dead chrome on an empty field */
 function searchX(){ const f = document.querySelector('.sw-field');
   if(f) f.classList.toggle('has-x', ($('#searchInput').value || '').length > 0); }
-function recentLoad(){
-  try{
-    const a = JSON.parse(localStorage.getItem('gitaRecent') || '[]');
-    return Array.isArray(a) ? a.filter(x => typeof x === 'string' && x.trim().length >= 2 && x.length <= 40).slice(0, 6) : [];
-  }catch(e){ return []; }
-}
-function recentSave(q){
-  q = String(q || '').trim();
-  if(q.length < 2 || q.length > 40) return;
-  const next = [q, ...recentLoad().filter(x => x.toLowerCase() !== q.toLowerCase())].slice(0, 6);
-  try{ localStorage.setItem('gitaRecent', JSON.stringify(next)); }catch(e){}
-}
 function hlSearchText(text, q){
   const s = String(text || ''), needle = String(q || '').trim();
   if(needle.length < 2 || /^\d/.test(digitNorm(needle))) return esc(s);
@@ -42,15 +29,14 @@ function hlSearchText(text, q){
   }
   return out + esc(s.slice(last));
 }
-function srchChipsHtml(q, hitCount){
-  const cur = String(q || '').trim().toLowerCase();
-  const rec = recentLoad().filter(x => x.toLowerCase() !== cur);
-  const items = hitCount === 0
-    ? [...new Set([...rec, numL('2.47'), numL('4.7'), numL('18.66'), 'धर्मक्षेत्रे'])].slice(0, 6)
-    : rec.slice(0, 5);
-  if(!items.length) return '';
-  const lbl = hitCount > 0 ? `<span class="srch-chips-lbl">${esc(L('search_recent'))}:</span>` : '';
-  return `<div class="srch-chips fade-in">${lbl}${items.map(x =>
+/* Zero results is the only place a chip earns its space: four real starting
+   points the book actually contains. Recent queries are deliberately NOT a
+   chip source any more — a live search screen that offers the reader's own past
+   queries back while they type a new one is noise stacked on noise, and every
+   keystroke of the previous search had been stored as its own "recent". */
+function srchChipsHtml(){
+  const items = [numL('2.47'), numL('4.7'), numL('18.66'), 'धर्मक्षेत्रे'];
+  return `<div class="srch-chips fade-in">${items.map(x =>
     `<button type="button" class="srch-chip" data-q="${esc(x)}" onclick="App.library.pickSearch(this.dataset.q)">${esc(x)}</button>`
   ).join('')}</div>`;
 }
@@ -169,11 +155,10 @@ function doSearch(){
       <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
       <div class="view-sub fade-in">${esc(L('no_results'))}</div>
       <div class="srch-empty-hint fade-in">${esc(L('search_try'))}</div>
-      ${srchChipsHtml(q, 0)}`;
+      ${srchChipsHtml()}`;
     announceView();
     return;
   }
-  recentSave(q);
   SRCH_HITS = hits;
   const themes = passages.filter(p=>p.kind === 'theme'),
         chapters = passages.filter(p=>p.kind === 'chapter'),
@@ -194,7 +179,6 @@ function doSearch(){
   view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
     <div class="res-count fade-in">${esc(resultCountLabel(total))}</div>
     ${SRCH_NOTE ? `<div class="view-sub srch-relaxed fade-in">${esc(SRCH_NOTE)}</div>` : ''}
-    ${srchChipsHtml(q, total)}
     ${hits.length
       ? (groups > 1 ? resGroupHtml(L('search_in_verses'), hits.length, verseGrid) : verseGrid)
       : ''}

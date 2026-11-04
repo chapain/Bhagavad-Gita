@@ -27,12 +27,16 @@ ROOT = pathlib.Path(__file__).resolve().parent
 # so the number itself must be checked against what actually ran — otherwise a
 # stale constant blesses a stale claim in three files. Same rule as
 # TOTAL_ASSERTIONS in run_gita_app.js.
-# 2026-11-04 (fourth batch): C2 suggestions add 4 (opens with rows, hangs under
-# the field inside a 390px viewport, one selection follows the arrows, Escape
-# clears the ARIA state) → 300. Cannot be run in this sandbox (Playwright's CDN
-# resets); the number is checked against the real run in CI.
+# 2026-11-04 (fourth batch): C2 suggestions added 4 (opens with rows, hangs
+# under the field inside a 390px viewport, one selection follows the arrows,
+# Escape clears the ARIA state) → 300.
 # Offline chapter-page cache and cache-miss behavior add two checks → 302.
-EXPECTED_CHECKS = 302
+# 2026-11-04 (sixth batch): the suggestion listbox is withdrawn — it covered the
+# live results and offered the reader's own past queries back. Its four checks
+# become two: no overlay over the results, and the field is not a combobox.
+# 302 - 4 + 2 → 300. Cannot be run in this sandbox (Playwright's CDN resets);
+# the number is checked against the real run in CI.
+EXPECTED_CHECKS = 300
 PASS, FAIL = 0, []
 
 
@@ -1861,51 +1865,34 @@ def run(pw, url, offline_capable=False):
     ok(bool(geo and geo["inside"] and geo["overflow"]),
        f"chapter/theme result cards stay inside a 390px viewport ({geo})")
 
-    # C2: the listbox has to open, hang under the field inside the viewport,
-    # and take the keyboard. Only a real browser can prove those three.
+    # C2, withdrawn 2026-11-04. The suggestion listbox floated over the live
+    # results and its first rows were the reader's own past queries. These two
+    # checks are the regression for that report: typing must not cover the
+    # results, and the field must stay a plain input.
     np_.fill("#searchInput", "")
     np_.wait_for_timeout(200)
     np_.fill("#searchInput", "2.4")
     np_.wait_for_timeout(400)
     sug = np_.evaluate("""() => {
         const l = document.querySelector('#searchSuggest'),
-              f = document.querySelector('.sw-field'),
-              i = document.querySelector('#searchInput');
-        if(!l || !f) return null;
-        const lr = l.getBoundingClientRect(), fr = f.getBoundingClientRect();
-        return {open: !l.hidden, rows: l.querySelectorAll('[role=option]').length,
-          expanded: i.getAttribute('aria-expanded'),
-          under: lr.top >= fr.bottom - 1, inside: lr.left >= -1 && lr.right <= document.documentElement.clientWidth + 1,
-          width: Math.round(lr.width)};
+              head = document.querySelector('#view .res-head'),
+              cards = document.querySelectorAll('#view .res-passage, #view .mini').length;
+        const hr = head ? head.getBoundingClientRect() : null;
+        const top = hr ? document.elementFromPoint(hr.left + 2, hr.top + hr.height / 2) : null;
+        return {overlay: !!l, head: !!head, cards: cards,
+          covered: top ? !!top.closest('.search-suggest') : false};
     }""")
-    ok(bool(sug) and sug["open"] and sug["rows"] >= 1,
-       f"C2 a verse-number prefix opens suggestion rows ({sug})")
-    ok(bool(sug) and sug["expanded"] == "true" and sug["under"] and sug["inside"],
-       f"C2 the listbox hangs under the field and fits the phone ({sug})")
-
-    np_.keyboard.press("ArrowDown")
-    np_.wait_for_timeout(150)
-    nav = np_.evaluate("""() => {
+    ok(bool(sug) and not sug["overlay"] and sug["head"] and not sug["covered"],
+       f"C2 no overlay covers the live results while typing ({sug})")
+    field = np_.evaluate("""() => {
         const i = document.querySelector('#searchInput');
-        const id = i.getAttribute('aria-activedescendant');
-        const el = id && document.getElementById(id);
-        return {id: id, selected: el ? el.getAttribute('aria-selected') : null,
-          active: el ? el.classList.contains('is-active') : false,
-          rows: [...document.querySelectorAll('#searchSuggest [role=option]')]
-                  .filter(r => r.getAttribute('aria-selected') === 'true').length};
+        return {expanded: i.getAttribute('aria-expanded'),
+                controls: i.getAttribute('aria-controls'),
+                stored: (() => { try { return localStorage.getItem('gitaRecent'); }
+                                 catch(e){ return null; } })()};
     }""")
-    ok(bool(nav) and nav["selected"] == "true" and nav["rows"] == 1,
-       f"C2 the arrow keys move one selection through the rows ({nav})")
-
-    np_.keyboard.press("Escape")
-    np_.wait_for_timeout(200)
-    closed = np_.evaluate("""() => {
-        const l = document.querySelector('#searchSuggest'), i = document.querySelector('#searchInput');
-        return {hidden: l.hidden, expanded: i.getAttribute('aria-expanded'),
-                ad: i.getAttribute('aria-activedescendant')};
-    }""")
-    ok(bool(closed) and closed["hidden"] and closed["expanded"] == "false" and closed["ad"] is None,
-       f"C2 Escape closes the listbox and clears its ARIA state ({closed})")
+    ok(bool(field) and field["expanded"] is None and field["controls"] is None and field["stored"] is None,
+       f"C2 the search field is a plain input and stores nothing ({field})")
     np_.fill("#searchInput", "")
     np_.wait_for_timeout(200)
 

@@ -410,6 +410,19 @@ ok('<a href="#view" class="skip-link" id="skipLink">' in idx and ".skip-link{" i
 # Shell 365,000 → 365,393 characters (the difference is the new header comment),
 # cap still 375,000; module headroom 223 (library) / 111 (learn) / 274 (reader),
 # so 20-learn.js at 589 lines is now the next tightest.
+# 2026-11-04 (fourteenth batch): the suggestion listbox is withdrawn. The owner
+# reported it covering the live search results, and its first five rows were the
+# reader's own past queries — one search for 11.47 had stored "11", "11.",
+# "11.4" and "11.47" as four recents, because every debounced live search was
+# saved. Removed outright rather than restyled: 15-suggest.js (105 lines) and
+# its APP_JS_FILES entry, the combobox ARIA and the <ul role="listbox">, the
+# .search-suggest CSS, the sug* exports, the gitaRecent localStorage key and
+# two UI strings (×3 → 230). The field is a plain input again; Enter searches;
+# the four real starter chips remain on the zero-result screen only.
+# Shell 373,731 → 365,879 characters — 7,852 back, and the cap is unchanged at
+# 375,000, so the room is 9,121 characters instead of 1,269. Module headroom:
+# 225 (library) / 111 (learn) / 154 (reader); 20-learn.js at 589 lines is still
+# the next tightest.
 ok(len(idx) < 375000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
