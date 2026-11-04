@@ -23,9 +23,9 @@
 
 - **Minor build nits (2026-10-19) — fixed.** ResourceWarnings closed with `with`, icons canonical in `icons/`, manifest/SW/chapter og:image → `icons/`, sitemap stable (last commit date). `og-card.png` 283KB→119KB (Pillow optimize, 57% saving). CI `.github/workflows/ci.yml` now runs full `build.py` + Playwright browser checks, Pillow for share-art.
 
-- **Shell size:** 310,251 → 334,897 (Phase A–E) → **347,934 chars / 369,749 bytes / 99,694 gzip**. Cap raised 350,000 → 360,000 on 2026-11-04 (search v3 + note field add ~13KB; 2KB of headroom is not headroom). Next if >360k: lazy-load the data module on `#data` only.
+- **Shell size:** 310,251 → 334,897 (Phase A–E) → **350,392 chars / 372,328 bytes / 100,750 gzip**. Cap raised 350,000 → 360,000 on 2026-11-04 (search v3 + note field add ~13KB; 2KB of headroom is not headroom). Next if >360k: lazy-load the data module on `#data` only.
 
-- **Current build:** `python3 build.py` ALL GREEN — 60 Python, **890 document assertions**, 506 site-health, 9,658 study, 15 migration, **11 search**, 700 theme-cards, backup; Playwright browser suite (**286 checks**) is run by `build.py` itself and fails the build.
+- **Current build:** `python3 build.py` ALL GREEN — 60 Python, **908 document assertions**, 506 site-health, 9,658 study, 15 migration, **11 search**, 700 theme-cards, backup; Playwright browser suite (**296 checks**) is run by `build.py` itself and fails the build.
 
 ## 2. Resume in five minutes
 
@@ -42,7 +42,7 @@ Everything browser loads is **generated** by `source/build_gita.py`. Never hand-
 |---|---|
 | Verse text (Deva+IAST) | `source/ch<N>.json` |
 | Word split + glosses | `source/ch<N>.json` flow |
-| UI strings (224 keys ×3) | `source/i18n_ui.py` |
+| UI strings (225 keys ×3) | `source/i18n_ui.py` |
 | App HTML/CSS/JS | `source/app.html`, `source/css/*.css`, `source/js/*.js` (order in `build_gita.py`) |
 | Data backup | `source/js/45-data.js`, `source/css/32-data.css` |
 | Reviewed maps | `source/study_map_contract.json` |
@@ -51,9 +51,9 @@ Everything browser loads is **generated** by `source/build_gita.py`. Never hand-
 ## 4. Build and test
 
 ```bash
-python3 build.py          # build + all checks (60 Python, 890 doc, 506 health, 9658 study, 15 migration, 11 search, 700 cards, backup, 286 browser)
+python3 build.py          # build + all checks (60 Python, 908 doc, 506 health, 9658 study, 15 migration, 11 search, 700 cards, backup, 296 browser)
 python3 build.py --fast   # build only
-node run_gita_app.js      # 890 assertions
+node run_gita_app.js      # 908 assertions
 node tests/test_data_backup.js
 ```
 
@@ -100,6 +100,7 @@ Phase 5.4 before audio. Versioned JSON export/import with merge. Footer link + #
 
 ## 8. Session log (last 20, newest first)
 
+- 2026-11-04 · `arena/77480584-bhagavad-gita` · **Review fixes 3, 4, 6, 7.** The bottom bar is a nav with `aria-current` instead of a tab list, and — with the skip link — it is now inert while the sheet is open; read/learn is a group of pressed buttons; `img/share-art.jpg` is finally referenced, as the share-panel preview (browser check reads `naturalWidth ≥ 900`); the SRS finish screen stops claiming “complete for today” while chapters still have dues and starts with the most overdue chapter (`srs_review_more`, 225 strings); `build.py --prove` runs `prove_data_only.py`. Counts 908 assertions / 296 browser checks, shell 350,392 chars.
 - 2026-11-04 · `arena/77480584-bhagavad-gita` · **Review fixes 1, 2, 5, 8, 9.** CI made honest (Playwright before build, `--serve` at the root path, no `|| echo`, `prove_data_only.py` step); search now indexes chapter names, theme titles, verse titles and word glosses with grouped results (`Sankhya` → Sāṅkhya Yoga, `not hating` → 12.13 with the word named); notes are per-verse, saved as typed, listed in Saved and survive un-favouriting (`gitaFavNotes` unchanged); ne/hi copy pass within the granted scope; docs/counts reconciled (832→892 assertions, 270→286 browser checks, 217→224 strings, 83→97 KB gzip) and `TOTAL_ASSERTIONS` now fails the suite when it drifts from what actually ran. Shell 347,934 chars, cap 350k→360k.
 - 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Public polish — make app better.** CI full build + Playwright, Pillow share-art, og-card.png 283KB→119KB (57% saving), welcome data link for backup discoverability, trim data module 11366→9794 bytes. Shell 310,251 chars / 330,279 bytes. Full build ALL GREEN.
 - 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Memory monolith killed (#1).** HANDOFF 329KB/2427 lines → archived to docs/archive/HANDOFF-2026-09-10-19.md, new lean 8.1KB/108 lines (<100KB), AGENTS.md updated, docs/archive/README.md policy.

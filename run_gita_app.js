@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 892;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 286;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
+const TOTAL_ASSERTIONS = 908;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 296;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -110,7 +110,9 @@ const enKeys = Object.keys(UI.en);
 // chapters and themes, so the strings those surfaces need are new: note_label,
 // note_ph, notes_title, search_in_chapters, search_in_themes, search_in_verses,
 // search_word_match (7) → 224.
-ok(enKeys.length === 224, `UI has 224 keys (got ${enKeys.length})`);
+// 2026-11-04 (second batch): srs_review_more (1) → 225. The review screen used
+// to claim "complete for today" after at most seven verses of one chapter.
+ok(enKeys.length === 225, `UI has 225 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -862,6 +864,58 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
      'export includes favs, notes and Learn progress');
   ok(/dataClearAll/.test(html) && /data_clear_q/.test(html),
      'clear-all-data guarded by confirmation');
+}
+
+// ---------- what sits behind the sheet, and the promises around it ----------
+{
+  // A tab list must contain tabs. The five bottom destinations change the page;
+  // Random is not even a destination. They are a nav with aria-current now, and
+  // the read/learn switch is a group of pressed buttons.
+  const bar = html.slice(html.indexOf('<nav class="tabbar"'), html.indexOf('</nav>', html.indexOf('<nav class="tabbar"')));
+  ok(bar.length > 0 && !/role="tab/.test(bar) && !/aria-selected/.test(bar),
+     'the bottom bar is a nav of destinations, not a tab list');
+  ok(/data-tab="home"[^>]*aria-current="page"/.test(bar),
+     'the current destination is marked with aria-current');
+  ok(/setAttribute\('aria-current','page'\)/.test(html)
+     && /removeAttribute\('aria-current'\)/.test(html),
+     'syncTabs keeps exactly one destination current');
+  ok(/class="mode-seg" role="group"/.test(html),
+     'the read/learn switch is a group, not a tab list without tabs');
+  // The sheet makes the page inert; the phone tab bar is part of the page.
+  ok(/body > \.skip-link, body > header, body > \.toolbar/.test(html)
+     && /body > nav\.tabbar, body > \.wrap, body > footer/.test(html),
+     'opening the sheet also takes the skip link and the bottom bar out of the tab order');
+}
+
+// ---------- the painted share art earns its place ----------
+{
+  ok(/class="sp-art" src="img\/share-art\.jpg"/.test(html),
+     'the share panel shows img/share-art.jpg');
+  ok(/class="sp-art"[^>]*width="960"[^>]*height="504"/.test(html)
+     && /class="sp-art"[^>]*loading="lazy"/.test(html),
+     'the preview reserves its box and loads only when the panel opens');
+  ok(/class="sp-art"[^>]*onerror="this\.remove\(\)"/.test(html),
+     'a missing image removes itself instead of showing a broken frame');
+  ok(fs.existsSync(path.join(__dirname, 'img', 'share-art.jpg'))
+     && /sp-art\{/.test(html),
+     'the image exists and carries its own styling');
+}
+
+// ---------- the review screen tells the truth about what is left ----------
+{
+  ok(/function srsDueAll\(today\)\{[\s\S]*?firstDue[\s\S]*?\}/.test(html),
+     'due totals remember the earliest due date, not just the first chapter');
+  ok(/function srsDueLabel\(n\)/.test(html)
+     && (html.match(/srsDueLabel\(/g) || []).length >= 3,
+     'one wording for "what is due" is shared by the badge and the finish screen');
+  const fin = html.slice(html.indexOf('function srsFinishReview('));
+  const finBody = fin.slice(0, fin.indexOf('\nfunction '));
+  ok(/const left = srsDueAll\(\)/.test(finBody) && /srs_review_more/.test(finBody),
+     'finishing a seven-verse review offers the rest instead of claiming completion');
+  ok(/lrMoreDue/.test(finBody) && /App\.learn\.openDue\(\)/.test(finBody),
+     'the continue control opens the next due session');
+  ok((html.match(/L\('srs_review_more'\)/g) || []).length === 1,
+     'the new string is used exactly where it is needed');
 }
 
 // ---------- search reaches ideas, notes outlive favourites ----------

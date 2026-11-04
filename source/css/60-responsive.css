@@ -64,7 +64,7 @@
     .tab-btn[data-tab="search"] .ic circle,
     .tab-btn[data-tab="search"] .ic path,
     .tab-btn[data-tab="random"] .ic path{ fill:none; }
-    .tab-btn[aria-selected="true"]{ color:var(--saffron-text); }
+    .tab-btn[aria-current="page"]{ color:var(--saffron-text); }
     .tab-btn:active{ background:var(--saffron-soft); }
     .tab-btn .tab-lbl{ font-size:.66rem; letter-spacing:.01em; }
 

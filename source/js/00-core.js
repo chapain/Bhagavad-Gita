@@ -309,9 +309,12 @@ function syncTabs(){
     default: /* read/themes/verses/learn = inside content -> Home */ tab = 'home';
   }
   /* Random is a transient action (it jumps straight to a verse), so it
-     never stays selected — you land back in reading. */
+     never stays current — you land back in reading. The bar is a nav of
+     destinations, so the active one is aria-current="page"; there are no
+     tabpanels for a tab role to point at. */
   bar.querySelectorAll('.tab-btn').forEach(b=>{
-    b.setAttribute('aria-selected', String(b.dataset.tab === tab));
+    if(b.dataset.tab === tab) b.setAttribute('aria-current','page');
+    else b.removeAttribute('aria-current');
   });
 }
 function tabGoSearch(){

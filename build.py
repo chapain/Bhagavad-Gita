@@ -7,6 +7,10 @@ launched directly: just press Run on this file, or:
     python3 build.py            build + verify   (what you normally want)
     python3 build.py --fast     build only, skip the tests
     python3 build.py --serve    build, verify, then serve locally at :8000
+    python3 build.py --prove    verify, then prove content authorship: eight
+                                temporary edits to source JSON / UI wording,
+                                each rebuilt and found in the published output,
+                                then restored byte-for-byte (adds ~4 s)
 
 It runs, in order:
     1. source/build_gita.py   combines the app templates with one compact
@@ -22,11 +26,13 @@ It runs, in order:
     2g. source/check_study_structure.py  approved story maps and verse titles
     2h. tests/  mutation/regression checks for canonical chapter schema, study
         structure and translations (including checker failure proofs)
-    3. run_gita_app.js        892 assertions on the compact built document (needs node)
+    3. run_gita_app.js        908 assertions on the compact built document (needs node)
     3a. tests/test_progress_maps.js  saved-learning map migration (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
     3c. tests/test_theme_card_navigation.js  all 700 chapter cards open their own verses (needs node)
-    4. browser_checks.py      286 live-browser checks (Learn/Play, refresh, storage and disclosures) (needs playwright)
+    4. browser_checks.py      296 live-browser checks (Learn/Play, refresh, storage and disclosures) (needs playwright)
+    5. source/prove_data_only.py  (only with --prove, and always in CI) that the
+                               published site is the source as written
 
 Node-dependent checks (steps 3–3c) and the browser check (step 4) are
 skipped with warnings if Node / Playwright are missing — the build itself still
@@ -43,6 +49,7 @@ PY = sys.executable or "python3"
 
 FAST = "--fast" in sys.argv
 SERVE = "--serve" in sys.argv
+PROVE = "--prove" in sys.argv
 
 
 def run(cmd, cwd, label, tail=None, optional=False):
@@ -145,6 +152,13 @@ def main():
     except ImportError:
         print("\n--- browser tests ---")
         print("(skipped — pip install playwright && python3 -m playwright install chromium)")
+
+    # The data-only proof edits source files, rebuilds, checks the marker
+    # reached the published artifact and restores the bytes, so it is opt-in
+    # here (a normal build must not touch the tree) and unconditional in CI.
+    if PROVE and ok:
+        ok &= run([PY, os.path.join("source", "prove_data_only.py")], ROOT,
+                  "prove content edits reach the published site", tail=6)
 
     print()
     if ok:

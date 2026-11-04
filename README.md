@@ -76,7 +76,7 @@ source/                 ← edit here
   css/*.css                ordered feature styles; concatenated and inlined
   js/*.js                  ordered feature runtime; concatenated and inlined
   ch1.json … ch18.json    one compact canonical content file per chapter
-  i18n_ui.py              interface strings (en/ne/hi; 224 keys each)
+  i18n_ui.py              interface strings (en/ne/hi; 225 keys each)
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
   verify.py               shared text/transliteration helpers
   check_padas.py          verifies word splits against the pādas
@@ -89,8 +89,8 @@ source/                 ← edit here
 
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         892 assertions on the built document
-browser_checks.py       286 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
+run_gita_app.js         908 assertions on the built document
+browser_checks.py       296 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
 ```
 
 `index.html` remains a **single-shell split site**. Its document is maintained
@@ -101,7 +101,7 @@ shell-asset requests. Cross-feature calls use frozen interfaces on one `App`
 namespace; mutable Library, Learn, Play and Drills state stays with its owning
 feature. Shared route, reader and session transitions go through the validated
 `App.session.update({...})` gateway, and architecture tests reject direct
-writes outside Core. The shell is about 97 KB gzipped and loads the verses from 18
+writes outside Core. The shell is about 98 KB gzipped and loads the verses from 18
 `data/ch<N>.js` files in parallel; the service worker precaches them. After the
 first visit everything is cached, so the app runs offline and installs to the
 home screen. Share it by link.
@@ -161,7 +161,13 @@ Both do the same work. Options:
 python3 build.py            build + verify   (what you normally want)
 python3 build.py --fast     build only, skip the tests
 python3 build.py --serve    build, verify, then serve at http://localhost:8000
+python3 build.py --prove    verify, then prove content authorship (~4 s)
 ```
+
+`--prove` runs `source/prove_data_only.py`: eight temporary edits to chapter JSON
+and UI wording, each rebuilt and found in the published output, then restored
+byte-for-byte with the artifact hash re-checked. It edits source files while it
+runs, so it is opt-in locally; CI runs it as its own step.
 
 ### Fixing content
 
@@ -173,7 +179,7 @@ both are generated.
 | what you want to fix | file |
 |---|---|
 | chapter names and summaries; themes/parts, titles and descriptions; verse text, translations, word glosses, pāda flow and colophon | `source/ch<N>.json` |
-| interface wording (buttons and labels; 224 UI strings in each of three languages) | `source/i18n_ui.py` |
+| interface wording (buttons and labels; 225 UI strings in each of three languages) | `source/i18n_ui.py` |
 | shell structure, styling and client behavior | `source/app.html`, `source/css/*.css`, `source/js/*.js` |
 | approved story maps and safe legacy-progress migration | `source/study_map_contract.json` |
 

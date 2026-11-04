@@ -15,6 +15,47 @@ the start of every session.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
+### 2026-11-04 (second batch) — the furniture behind the sheet, and the share art
+
+* **A tab list with no tabs, twice.** `modeSwitch()` wrapped the read/learn
+  buttons in `role="tablist"` while they carried `aria-pressed` (a toggle, not a
+  tab), and the phone `.tabbar` declared `role="tablist"` with `role="tab"`
+  buttons that change the *page* — there are no tabpanels, and Random is not even
+  a destination. Both are now honest: the mode switch is `role="group"` with two
+  pressed buttons; the bar is a `nav` whose current destination carries
+  `aria-current="page"` (set by `syncTabs()`, styled by
+  `.tab-btn[aria-current="page"]`). A browser check asserts no tab list exists
+  without tabs.
+* **The bottom bar stayed focusable behind the sheet.** `setAppInert()` covered
+  `header`, `.toolbar`, `.wrap`, `footer` — everything except `nav.tabbar`, which
+  the CSS merely dimmed (`pointer-events:none; opacity:.4`) and so kept in the Tab
+  order and in the screen-reader tree. Added; a browser check asserts all five
+  regions are inert while the sheet is open and released after it closes.
+* **`img/share-art.jpg` was committed and referenced by nothing.** 44,653 bytes,
+  960×504, repainted by `build.py` whenever Pillow exists, `og:image` pointing at
+  `icons/og-card.png`. It now earns its place as the preview inside the share
+  panel, *after* the copy actions, with `width`/`height` (no layout shift),
+  `loading="lazy"`, `alt=""` (the panel text carries the meaning) and
+  `onerror="this.remove()"` so an offline miss leaves no broken frame. A browser
+  check reads `naturalWidth ≥ 900`, so the test proves the picture actually
+  loads — the first time this asset has been exercised at all.
+* **“Review complete for today” was false.** The welcome badge counts due verses
+  across all 18 chapters (`srsDueAll`), but a review session serves at most seven
+  verses of *one* chapter (`lrReview` → `ids.slice(0,7)`), then said the day was
+  done. Now `srsFinishReview()` re-counts: if anything is still due it says how
+  many and offers “Continue review” (`srs_review_more`, new key ×3 → 225 UI
+  strings), and only claims completion when nothing is due anywhere. One shared
+  `srsDueLabel()` feeds both the badge and the finish screen so the two can never
+  disagree, and `srsDueAll()` now starts with the **most overdue** chapter
+  (`firstDue`) rather than the lowest chapter number.
+* **`prove_data_only.py` is reachable from the build.** It ran in CI since item
+  1, but not from `build.py`; `python3 build.py --prove` now runs it after the
+  checks (it edits source files, rebuilds and restores them, so it stays opt-in
+  locally and unconditional in CI).
+* **Counts:** 908 assertions, 296 browser checks, 225 UI strings, shell 350,392
+  chars / 372,328 bytes / 100,750 gzip. Both totals keep their drift locks, so a
+  stale number fails the run instead of quietly blessing three documents.
+
 ### 2026-11-04 — search reaches ideas; a note belongs to its verse
 
 * **The search index remembered the words and forgot the ideas.** It held the

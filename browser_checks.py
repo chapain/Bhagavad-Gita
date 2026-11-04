@@ -27,7 +27,7 @@ ROOT = pathlib.Path(__file__).resolve().parent
 # so the number itself must be checked against what actually ran — otherwise a
 # stale constant blesses a stale claim in three files. Same rule as
 # TOTAL_ASSERTIONS in run_gita_app.js.
-EXPECTED_CHECKS = 286
+EXPECTED_CHECKS = 296
 PASS, FAIL = 0, []
 
 
@@ -1821,6 +1821,130 @@ def run(pw, url, offline_capable=False):
        "valid favorites survive mixed corrupt entries while malformed IDs and non-string notes are ignored")
     ok(not favorites_errors, f"malformed favorites never throw on favorites or verse views ({favorites_errors[:2]})")
     fctx.close()
+
+    # ---- the new surfaces, measured ---------------------------------------
+    # jsdom can prove these exist and behave; only a layout engine can prove they
+    # fit. Search result groups, the note field and the share preview were added
+    # without ever being measured, so measure them here at the phone width the
+    # main context runs at (390x844).
+    group("new surfaces fit the phone")
+    def inside_view(sel):
+        return pg.evaluate("""sel => {
+            const vw = document.documentElement.clientWidth;
+            const cards = [...document.querySelectorAll(sel)];
+            return {n: cards.length,
+              inside: cards.length > 0 && cards.every(c => {
+                const r = c.getBoundingClientRect();
+                return r.width > 0 && r.left >= -1 && r.right <= vw + 1; }),
+              overflow: (() => { const v = document.querySelector('#view');
+                return v.scrollWidth <= v.clientWidth + 1; })()};
+        }""", sel)
+    show("Sankhya")
+    geo = inside_view("#view .res-passage")
+    ok(bool(geo and geo["inside"] and geo["overflow"]),
+       f"chapter/theme result cards stay inside a 390px viewport ({geo})")
+
+    show("yoga")
+    head = pg.evaluate("""() => {
+        const g = document.querySelector('#view .res-gl'); if(!g) return null;
+        const label = g.firstElementChild, count = g.querySelector('.res-gn');
+        if(!label || !count) return null;
+        const a = label.getBoundingClientRect(), b = count.getBoundingClientRect();
+        return {apart: a.right <= b.left + 1, countRight: b.right > a.left,
+          overflow: (() => { const v = document.querySelector('#view');
+            return v.scrollWidth <= v.clientWidth + 1; })()};
+    }""")
+    ok(bool(head) and head["apart"] and head["countRight"] and head["overflow"],
+       f"the result-group head keeps its label and its count apart ({head})")
+
+    pg.evaluate("setLang('ne')")
+    pg.wait_for_timeout(300)
+    show("कर्म")
+    ne_geo = inside_view("#view .res-passage")
+    ok(bool(ne_geo and ne_geo["overflow"]),
+       f"Nepali search results do not overflow the phone width ({ne_geo})")
+    pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(250)
+
+    pg.evaluate("App.library.setNote('2.47','A note long enough to wrap inside the field on a phone.')")
+    pg.evaluate("App.reader.open(1,0,0,'theme')")
+    pg.wait_for_timeout(500)
+    note_box = pg.evaluate("""() => {
+        const d = document.querySelector('#modal details.m-note');
+        if(d && !d.open) d.open = true;
+        const t = document.querySelector('#modal .m-note textarea');
+        const m = document.querySelector('#modal');
+        if(!t || !m) return null;
+        const r = t.getBoundingClientRect(), mr = m.getBoundingClientRect();
+        return {w: Math.round(r.width), h: Math.round(r.height),
+          inside: r.left >= mr.left - 1 && r.right <= mr.right + 1};
+    }""")
+    ok(bool(note_box) and note_box["w"] >= 150 and note_box["h"] >= 40 and note_box["inside"],
+       f"the note field is a real, usable box inside the sheet ({note_box})")
+
+    pg.evaluate("App.reader.close()")
+    pg.wait_for_timeout(300)
+    pg.evaluate("App.library.showFavorites()")
+    pg.wait_for_timeout(400)
+    note_card = inside_view("#view .note-card")
+    ok(bool(note_card and note_card["inside"] and note_card["overflow"]),
+       f"a note card stays inside the saved view ({note_card})")
+
+    # The painted share art used to be committed and referenced by nothing. It is
+    # now the preview inside the share panel, so prove the browser really loads it.
+    pg.evaluate("App.reader.open(1,0,0,'theme')")
+    pg.wait_for_timeout(400)
+    pg.evaluate("openSharePanel()")
+    pg.wait_for_timeout(700)
+    art = pg.evaluate("""() => {
+        const i = document.querySelector('#sharePanel .sp-art');
+        if(!i) return {present: false};
+        const r = i.getBoundingClientRect();
+        return {present: true, natural: i.naturalWidth, w: Math.round(r.width),
+          fits: r.width > 0 && r.right <= document.documentElement.clientWidth + 1};
+    }""")
+    ok(bool(art and art["present"]) and art["natural"] >= 900 and art["w"] >= 200 and art["fits"],
+       f"the share panel shows the painted share art at a readable size ({art})")
+    pg.evaluate("closeSharePanel()")
+    pg.evaluate("App.reader.close()")
+    pg.wait_for_timeout(300)
+    pg.evaluate("App.library.setNote('2.47','')")
+
+    # ---- the furniture behind the sheet (a11y) ----------------------------
+    # A tab list must contain tabs; the five bottom destinations are links, not
+    # tabs, and the bottom bar must leave the page when the sheet is open.
+    group("what is behind the sheet")
+    pg.evaluate("showChapter(0)")
+    pg.wait_for_timeout(400)
+    a11y = pg.evaluate("""() => {
+        const orphan = [...document.querySelectorAll('[role="tablist"]')]
+          .filter(t => !t.querySelector('[role="tab"]')).length;
+        const bar = document.querySelector('.tabbar');
+        const seg = document.querySelector('.mode-seg');
+        return {orphan,
+          barTag: bar && bar.tagName, barRole: bar && bar.getAttribute('role'),
+          current: bar ? bar.querySelectorAll('[aria-current="page"]').length : -1,
+          selected: bar ? bar.querySelectorAll('[aria-selected]').length : -1,
+          segRole: seg && seg.getAttribute('role'),
+          segPressed: seg ? seg.querySelectorAll('button[aria-pressed]').length : -1};
+    }""")
+    ok(bool(a11y) and a11y["orphan"] == 0 and a11y["barTag"] == "NAV"
+       and a11y["barRole"] is None and a11y["current"] == 1 and a11y["selected"] == 0,
+       f"the bottom bar is a nav with one aria-current item, not a tab list ({a11y})")
+    ok(bool(a11y) and a11y["segRole"] == "group" and a11y["segPressed"] == 2,
+       f"read/learn is a group of pressed buttons, not a tab list ({a11y})")
+
+    pg.evaluate("App.reader.open(0,0,0,'theme')")
+    pg.wait_for_timeout(500)
+    behind = pg.evaluate("""() => [...document.querySelectorAll(
+        'body > .skip-link, body > header, body > .toolbar, body > nav.tabbar,'
+        + ' body > .wrap, body > footer')].map(e => !!e.inert)""")
+    ok(len(behind) == 6 and all(behind),
+       f"every page region behind the sheet is inert, tab bar included ({behind})")
+    pg.evaluate("closeModal()")
+    pg.wait_for_timeout(350)
+    ok(pg.evaluate("document.querySelector('.tabbar').inert === false"),
+       "closing the sheet gives the page back")
 
     group("responsive")
     for name, w, h, expect in [("iPhone SE", 375, 667, "column"), ("Pixel 7", 412, 915, "column"),

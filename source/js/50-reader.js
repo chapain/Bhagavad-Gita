@@ -71,7 +71,13 @@ function themeBounds(t){
   return {start:0, end:Math.max(0, n-1)};
 }
 function setAppInert(inert){
-  document.querySelectorAll('body > header, body > .toolbar, body > .wrap, body > footer')
+  /* Everything focusable behind the sheet: the skip link, the header, the phone
+     toolbar, the phone tab bar, the page and the footer. The CSS only dims
+     .tabbar (pointer-events:none, opacity .4), which stops a finger but not the
+     Tab key or a screen reader — focus could land on furniture the reader cannot
+     see. .atm is a decorative SVG (aria-hidden, pointer-events:none), so it stays. */
+  document.querySelectorAll('body > .skip-link, body > header, body > .toolbar,'
+    + ' body > nav.tabbar, body > .wrap, body > footer')
     .forEach(el=>{ el.inert = inert; });
 }
 function updateModalAddress(){
@@ -323,6 +329,13 @@ function fillModal(){
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
       <button class="sp-copy sp-copy-txt" id="shCpTxt" onclick="copyVerseText()">${esc(L('copy_verse_text'))}</button>
+      <!-- img/share-art.jpg is the site's one painted face (960x504, repainted
+           by build.py when Pillow is present). It earns its place here as the
+           preview of what the copied link shows; the intrinsic width/height keep
+           the panel from jumping, lazy loading keeps it off the first paint, and
+           onerror removes it rather than showing a broken frame offline. -->
+      <img class="sp-art" src="img/share-art.jpg" alt="" width="960" height="504"
+           loading="lazy" decoding="async" onerror="this.remove()">
     </div>
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
