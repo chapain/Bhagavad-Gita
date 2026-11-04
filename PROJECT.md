@@ -15,6 +15,42 @@ the start of every session.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
+### 2026-11-04 (ninth batch) — the worksheet becomes a column of ticks
+
+* The seventh batch produced the right triage in the wrong shape for the job it
+  was written for. It printed 50 advisories as 490 lines of prose, and the task
+  attached to it is a **quarterly read-through of all 700 titles**. Nobody reads
+  700 titles from a list of 50 problems: the problems are where a reader should
+  *start*, not what he should read.
+* `audit_titles.py --markdown` now emits both, in order:
+  `| ☐ | Verse | Title | The verse says (literal) | keep | revise | fix |`, one
+  row per title, grouped chapter by chapter with the chapter name and its verse
+  range. A ⚑ in the first column marks the 10 verses that do carry an advisory,
+  and each flagged verse is named with its advisory kind under its chapter, so a
+  row is self-explanatory without scrolling to a second section.
+* **All 700 rows, not only the flagged ones.** A title with no mechanical doubt
+  still gets a tick, because the read-through exists to catch what no check can:
+  a correct but dull title, a summary that misses the verse's turn. The 40
+  theme-level advisories (`1.t4` and friends) cover runs of verses and so have no
+  single row; they are a separate small table with their own ticks.
+* **Prose is now the minority of the file.** The 10 verse-level advisories keep
+  their “*the verse says:*” evidence in a closing section, grouped by triage
+  label; the 40 theme items are table rows. 490 → 1,025 lines, but 700 of those
+  lines are the tickable rows — the prose roughly halved.
+* **Read-only, and now provably so.** `tests/test_title_worksheet.py` (8 checks)
+  re-reads the snapshot against `data/ch*.json`: 700 unique rows in canonical
+  order, every title byte-identical, every literal byte-identical (or a genuine
+  prefix when truncated), ⚑ exactly equal to the audit's verse-level refs, 50
+  advisories, 0 blocking, 18 chapter headings, three tick boxes on every row, and
+  the snapshot equal to the generator's own output. A future edit to a title
+  therefore cannot leave a worksheet claiming to show it. Nothing writes to
+  `source/ch*.json`; the decisions remain the owner's.
+* Python tests 60 → 68; every other count unchanged (937 document, 552 health,
+  9,658 study, 17 migration, 13 search, 700 cards). `48-reader-view.js` is
+  corrected from 188 to **184** lines in `HANDOFF.md` (three places), the
+  eighth-batch entry below, and the dated comment in `check_site_health.py` —
+  prose only, no build effect.
+
 ### 2026-11-04 (eighth batch) — the reader keeps its sheet and gives up its paint
 
 * `50-reader.js` was 604 lines against a 700-line module guard. Nothing was broken,
@@ -23,7 +59,7 @@ For a brand-new session: read §1–§10, then this box, then build.
   the same problem (2026-11-04, fifth batch) had already shown the seam: the guard
   binds long before the character cap ever does.
 * Split along the seam that was actually there: **presentation** vs **the sheet**.
-  `48-reader-view.js` (188 lines) now holds the pāda block, `fitWholeVerse`'s
+  `48-reader-view.js` (184 lines) now holds the pāda block, `fitWholeVerse`'s
   measure-and-shrink loop, `setVerseView` and its expansion toggle, reader text
   size, the ⋯ menu and the word-meaning switches — plus `verseViewState`, because
   every one of those functions reads it. `50-reader.js` (426) keeps opening and

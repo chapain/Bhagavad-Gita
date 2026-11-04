@@ -366,6 +366,16 @@ def _worksheet(findings, chapters):
         label, text = triage(x)
         buckets.setdefault((x["kind"], label), []).append((x, text))
 
+    # Which rows of the compact table below carry an advisory. A title can be
+    # flagged by two kinds at once, so this is a list, not a flag. Theme
+    # advisories (1.t4, 18.t4) cover several verses and so have no single row
+    # to sit beside; they get their own table further down.
+    flagged = {}
+    for x in findings:
+        _ch, _, _v = x["ref"].partition(".")
+        if _v.isdigit():          # a verse ref ("2.47"), never a theme ("1.t4")
+            flagged.setdefault(x["ref"], []).append(x["kind"])
+
     out = []
     import datetime
     out.append("# Title and description advisories — review worksheet\n")
@@ -387,8 +397,85 @@ def _worksheet(findings, chapters):
     out.append("* **theme summary / read by hand** — the ones worth real attention.\n")
     out.append("---\n")
 
+    # ---- the compact worksheet: all 700 titles, one row each ----
+    # The prose below is a list of problems. A quarterly read-through is not a
+    # problem list: it is every title, in order, with a place to tick. So the
+    # table carries all 700 rows (not only the flagged ones) — a title with no
+    # advisory still gets a row, because the read-through is the point and the
+    # advisories only say where to look first. Tick columns stay blank: a
+    # decision is the owner's, and this script never edits a title.
+    out.append("## The worksheet — 700 titles, one row each\n")
+    out.append("Every verse title in the edition, chapter by chapter, with the verse's own")
+    out.append("English literal beside it. **Tick one of the last three columns per row.**")
+    out.append("A ⚑ in the first column means that verse has an advisory — its row already")
+    out.append("carries the evidence, so the ticker does not need to open anything else; the")
+    out.append("reason it was flagged is noted under each chapter. No ⚑ means no mechanical")
+    out.append("doubt was found, which is not the same as a good title — that is what the")
+    out.append("read-through is for.\n")
+    out.append("This table is generated, so do not edit it by hand: it prints blank boxes")
+    out.append("again on the next run. Ticks are working notes, not a change to a title, and")
+    out.append("nothing here writes to `source/ch*.json`. Keep the boxes in a copy if you")
+    out.append("want them to survive a regeneration.\n")
+
+    for ch in chapters:
+        n = ch["num"]
+        rows = [(p["sutras"][0]["n"], p) for t in ch["themes"] for p in t["parts"]]
+        first, last = rows[0][0], rows[-1][0]
+        nflag = sum(1 for ref, _ in rows if flagged.get(ref))
+        out.append("### Chapter %d — %s · verses %s–%s · %d titles, %d flagged\n"
+                   % (n, ch["names"]["en"], first, last, len(rows), nflag))
+        out.append("| ☐ | Verse | Title | The verse says (literal) | keep | revise | fix |")
+        out.append("|---|---|---|---|:-:|:-:|:-:|")
+        for ref, p in rows:
+            title = p["titles"]["en"].replace("|", "\\|")
+            lit = p["sutras"][0]["lits"]["en"].replace("|", "\\|")
+            if len(lit) > 200:
+                lit = lit[:197].rsplit(" ", 1)[0] + " …"
+            marks = flagged.get(ref, [])
+            out.append("| %s | %s | %s | %s | ☐ | ☐ | ☐ |"
+                       % ("⚑" if marks else "", ref, title, lit))
+        out.append("")
+        for ref, p in rows:
+            for kind in sorted(set(flagged.get(ref, []))):
+                out.append("* ⚑ **%s** — %s. Advisory text: “%s”"
+                           % (ref, kind.replace("-", " "), p["titles"]["en"]))
+        if nflag:
+            out.append("")
+        out.append("")
+
+    # ---- theme-level advisories: they span verses, so they get their own list ----
+    out.append("## Theme titles and descriptions (not in the table above)\n")
+    out.append("A theme advisory covers a run of verses and so has no single row. They are")
+    out.append("all of one class — the summary names a speaker whom the verses address or")
+    out.append("who is speaking, and Sanskrit drops the pronoun — so they are listed here")
+    out.append("once, with the verse range, rather than repeated in the prose below.\n")
     for (kind, label) in sorted(buckets, key=lambda k: (k[0], -len(buckets[k]))):
-        items = buckets[(kind, label)]
+        theme_items = [(x, t) for x, t in buckets[(kind, label)]
+                       if not x["ref"].partition(".")[2].isdigit()]
+        if not theme_items:
+            continue
+        out.append("### %s — %s (%d)\n" % (kind, label, len(theme_items)))
+        out.append("| ☐ | Ref | Title or description | Verses | keep | revise | fix |")
+        out.append("|---|---|---|:-:|:-:|:-:|")
+        for x, text in theme_items:
+            rs = refs_of(x["ref"])
+            rng = "%s–%s" % (rs[0], rs[-1]) if len(rs) > 1 else (rs[0] if rs else "—")
+            out.append("|  | %s | %s | %s | ☐ | ☐ | ☐ |"
+                       % (x["ref"], x["title"].replace("|", "\\|"), rng))
+        out.append("")
+
+    # ---- verse-level advisories in full: title, evidence, the verse's words ----
+    out.append("---\n")
+    out.append("## Verse advisories in full\n")
+    out.append("The 10 verse-level advisories with the verse's own words, grouped by triage")
+    out.append("label. Their rows are already flagged in the table above; this section is the")
+    out.append("evidence for each verdict.\n")
+
+    for (kind, label) in sorted(buckets, key=lambda k: (k[0], -len(buckets[k]))):
+        items = [(x, t) for x, t in buckets[(kind, label)]
+                 if x["ref"].partition(".")[2].isdigit()]
+        if not items:
+            continue
         out.append("## %s — %s (%d)\n" % (kind, label, len(items)))
         for x, text in items:
             rs = refs_of(x["ref"])

@@ -401,7 +401,7 @@ ok('<a href="#view" class="skip-link" id="skipLink">' in idx and ".skip-link{" i
 # 2026-11-04 (eighth batch): the reader got the same treatment, again without a
 # feature asking. 50-reader.js was 604 lines — 96 from the guard, and every later
 # reader change would have paid that debt. The presentation half moved to
-# 48-reader-view.js (188 lines): pāda rendering, fitWholeVerse, setVerseView and
+# 48-reader-view.js (184 lines): pāda rendering, fitWholeVerse, setVerseView and
 # the expansion toggle, reader text size, the ⋯ menu, the meaning switches, and
 # verseViewState, which all of them read. The sheet itself stayed in
 # 50-reader.js (426): open/close, fillModal and its note field, history,
