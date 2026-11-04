@@ -216,7 +216,7 @@
   .m-rec-lbl{ color:var(--ink-soft); font-size:.8rem; font-weight:600; }
   @media print{
     .atm, header, .toolbar, .tabbar, .crumbs, .mode-box, .back-foot,
-    .m-close, .m-more, .m-menu, .share-panel, .m-nav, .m-recent,
+    .m-close, .m-more, .m-menu, .share-panel, .m-nav, .m-recent, .wpeek,
     footer .foot-link{ display:none !important; }
     body, .modal{ background:#FFFFFF !important; color:#000000 !important; }
     .modal-bg.open{ position:static !important; background:transparent !important; padding:0 !important; }

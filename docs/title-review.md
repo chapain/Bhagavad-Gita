@@ -43,7 +43,7 @@ want them to survive a regeneration.
 | ☐ | Verse | Title | The verse says (literal) | keep | revise | fix |
 |---|---|---|---|:-:|:-:|:-:|
 |  | 1.01 | Dhṛtarāṣṭra asks what they did | Dhṛtarāṣṭra said: On the field of dharma, the field of the Kurus, assembled and eager for battle — my people and the sons of Pāṇḍu — what did they do, O Sañjaya? | ☐ | ☐ | ☐ |
-|  | 1.02 | Duryodhana approaches Droṇa | Sañjaya said: Seeing the Pāṇḍava army drawn up in battle-array, Duryodhana then approached his teacher and spoke these words, O King. | ☐ | ☐ | ☐ |
+|  | 1.02 | Duryodhana approaches Droṇa | Sañjaya said: Seeing the Pāṇḍava army drawn up in battle-array, Duryodhana then approached his teacher, and the king spoke these words. | ☐ | ☐ | ☐ |
 |  | 1.03 | Behold the Pāṇḍava army | Behold, O teacher, this great army of the sons of Pāṇḍu, arrayed for battle by the son of Drupada, your wise disciple. | ☐ | ☐ | ☐ |
 |  | 1.04 | Heroes and master bowmen | Here are heroes, great archers, equals of Bhīma and Arjuna in war: Yuyudhāna, Virāṭa, and Drupada, the great chariot-warrior. | ☐ | ☐ | ☐ |
 |  | 1.05 | More Pāṇḍava champions | And Dhṛṣṭaketu, Cekitāna, the valiant king of Kāśī, Purujit, Kuntibhoja, and Śaibya, the bull among men. | ☐ | ☐ | ☐ |

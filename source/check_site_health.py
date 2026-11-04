@@ -763,6 +763,53 @@ ok("'./method/'" in read("sw.js"),
 ok("%s/method/" % SITE_BASE in read("sitemap.xml"),
    "sitemap.xml must list the method page (it is for readers, not just crawlers)")
 
+# --------------------------------- 11. structured data (JSON-LD) -------------
+# Nothing used to read these blocks. That is how `"numberOfPages": 18` — the
+# chapter count, not a page count — sat in the WebApplication node unnoticed:
+# a crawler silently drops invalid or unsupported JSON-LD, so a broken block
+# fails nothing a reader can see. Parse it here instead of trusting it.
+import json as _json
+
+_ld_raw = re.findall(r'<script type="application/ld\+json">(.*?)</script>',
+                     read("index.html"), re.S)
+_ld, _ld_bad = [], 0
+for _b in _ld_raw:
+    try:
+        _ld.append(_json.loads(_b))
+    except ValueError:
+        _ld_bad += 1
+ok(len(_ld_raw) == 3 and _ld_bad == 0,
+   "the shell carries 3 JSON-LD blocks (WebApplication, Book, FAQPage) and every one parses")
+
+_by_type = {o.get("@type"): o for o in _ld if isinstance(o, dict)}
+_app = _by_type.get("WebApplication") or {}
+_book = _by_type.get("Book") or {}
+_faq = _by_type.get("FAQPage") or {}
+
+ok(bool(_app.get("name")) and _app.get("isAccessibleForFree") is True
+   and {"en", "ne", "hi"} <= set(_app.get("inLanguage") or []),
+   "the WebApplication node names the app, declares it free, and carries the three interface languages")
+ok((_app.get("about") or {}).get("@id") == SITE_BASE + "/#book",
+   "the WebApplication points at the Book node by @id instead of repeating it inline")
+
+ok(_book.get("@id") == SITE_BASE + "/#book"
+   and (_book.get("author") or {}).get("name") == "Vyāsa"
+   and (_book.get("translator") or {}).get("name") == "Dhruba Chapain",
+   "the Book node is identified, attributes the work to Vyāsa by tradition and the translation to Dhruba Chapain")
+ok(_book.get("bookFormat") == "https://schema.org/EBook"
+   and _book.get("isAccessibleForFree") is True
+   and {"sa", "en", "ne", "hi"} <= set(_book.get("inLanguage") or []),
+   "the Book node describes a free ebook in Sanskrit plus the three study languages")
+ok("numberOfPages" not in _book and "numberOfPages" not in _app,
+   "no JSON-LD node claims a page count — this edition is measured in chapters and verses, not pages")
+
+ok(len(_faq.get("mainEntity") or []) >= 2
+   and all((q.get("acceptedAnswer") or {}).get("text")
+           for q in _faq.get("mainEntity") or []),
+   "the FAQPage keeps at least two questions, each with a real answer, for rich results")
+ok("__BASE__" not in read("index.html"),
+   "no __BASE__ placeholder survives into the published shell")
+
 print(f"site-health checks: {checks}")
 print(f"failures:           {len(errors)}")
 for e in errors:

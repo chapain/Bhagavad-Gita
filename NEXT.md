@@ -1,147 +1,66 @@
-# What next to make the app top notch
-### Balanced plan — no audio, en = ne = hi · 2026-10-19
+# NEXT.md — what is actually left
 
-> You chose: balanced upgrades, skip audio, keep all three languages equal.
-> This is the build order I'd follow. Each phase is a shippable PR.
+**Updated 2026-11-04.** Base `2b33495` — the merge of PR #70 on `main` (PR #69 was `014e67c`). Baseline measured by `python3 build.py` at that commit, not quoted from a chat log.
 
----
-
-## Phase A — Polish Sprint (½–1 day) — *ship first*
-
-**Goal:** Lighthouse 100, axe-clean, zero micro-frustrations. No new features, just craft.
-
-| # | What | Why | How |
-|---|---|---|---|
-| A1 | `Skip to content` link | Only missing a11y baseline. Keyboard users tab through header+toolbar+sacrificially every view. | `sr-only focusable` anchor → `#view`. One line in `app.html`, one rule in `00-foundation.css`. Lock in `check_site_health.py`. |
-| A2 | Lighthouse 100 checklist | You are at ~92–96 today; 100 is trust + share signal. | Preload both WOFF2 (`rel=preload as=font crossorigin`), add explicit `width/height` on icons (CLS), verify `tap-target` + `color-contrast` green. Run `lighthouse --preset=desktop` + `mobile` and fix only failures. |
-| A3 | Focus-visible audit | `prefers-reduced-motion` already done; focus-ring on every control is correct. Verify no `outline:none` without replacement. | `axe-core` one pass (`npm i -D @axe-core/playwright`). Fix only violations, never warnings. |
-| A4 | Search loupe fix (verify) + empty-state polish | You fixed the loupe overlay on 2026-10-19. Re-verify at 390px ne/hi (wider glyphs). Add kind empty state for 0 results (you have `no_results`, but no hint like “Try 2.47 or ‘karmanye’”). | Screenshot 390px en/ne/hi search. Keep empty view quiet + helpful. |
-| A5 | Backup discoverability ring | Export/Import exists but new users never find it until they lose data. | Add muted “Backed up ✓ 3 days ago / Never backed up” badge under Learn progress + footer link you already added. Reads from `dataCurrentSnapshot()` timestamp. Not naggy. |
-
-**Done when:** `python3 build.py` green + `npx lighthouse` 100/100/100/100 + `axe` 0 violations + 6 screenshots (desktop/phone × light/dark × en/ne/hi) attached to PR.
+> The previous edition of this file (dated 2026-10-19) presented Phases A–E as future work. Almost all of it has since shipped, so it was misleading as a to-do list. Its full text and history are archived verbatim at [`docs/archive/NEXT-2026-10-19.md`](docs/archive/NEXT-2026-10-19.md); this file is only the remainder. If an item below is finished, delete it rather than appending a log — history belongs in `HANDOFF.md` §1 and `docs/archive/`.
 
 ---
 
-## Phase B — Learn: from sequential to spaced repetition (2–3 days) — *the biggest learning win*
+## 0. Already shipped — do not re-plan these
 
-**Today:** Learn is sequential — story → verses in order. It teaches, but it doesn't *retain*. A reader who finishes Ch.2 tomorrow will forget it next week because nothing asks them back.
+Verified in source at `2b33495`, not assumed:
 
-**After:** Leitner-ish boxes, due queue, streak.
-
-### Design (fits your devotional tone — no gamification spam)
-
-- **Boxes:** New → Learning → Review (3 boxes only, not Anki's 7). A right answer moves forward, a miss moves back to Learning.
-- **Schedule:** Learning = 10 min / 1 day / 3 days. Review = 7 / 21 / 60 days. All computed locally, no server.
-- **Due inbox:** Welcome screen shows one quiet line — “3 verses to revisit today” — tapping opens Review. Not a red badge; a gentle nudge in `--ink-soft`.
-- **Streak:** Days you reviewed *something* (not “learn all”). Stored as set of `YYYY-MM-DD` in `gitaLearn.streak`. Max honest motivator.
-
-### Data shape (additive — no migration loss)
-
-```js
-gitaLearn = {
-  "2": {
-    story: 1,
-    themes: { "3": 1 },
-    held:   { "2.47": 1 },
-    map:   [...],
-    srs:   { "2.47": { box: 2, due: "2026-10-26", reps: 4, lapses: 1 } },
-    streak: ["2026-10-18","2026-10-19"]  // or top-level gitaStreak
-  }
-}
-```
-
-- `srs` only added for verses the reader has seen in Learn — never retroactively.
-- Old `gitaLearn` without `srs` keeps working (no `srs` = treat as New).
-- Merge in `45-data.js` unions `srs` by `max(box)` + `earliest due` tie-break.
-
-### UI changes
-
-- Learn home: progress bar + “Due today: 3” + Start Review.
-- Drill: same queue, but queue = `due ∩ chapterScope` sorted by `due ASC` (+ shuffle within same day).
-- Completion screen: “Held” moves to higher box; miss → Learning.
-
-### Tests
-
-- `check_study_structure` unchanged (maps).
-- Node: 4 new `test_srs.js` — new→learning, miss→demote, due ordering, empty due skips.
-- Browser: 4 checks — due inbox renders, review opens due verse, miss requeues, streak increments.
-- Mutation-proof: deleting `due` calc must fail suite.
-
-**Owner note:** No points, no leaderboard, no “share your score”. The tone is *abhyāsa* (practice), not game. Keep the completion seal teal-on-teal — you fixed that visibility bug once.
-
----
-
-## Phase C — Search v2 (1–1.5 days) — *from functional to delightful*
-
-Search works today. Top-notch = it *helps* while you type.
-
-| # | What | Detail |
+| Plan item | Where it lives | Evidence |
 |---|---|---|
-| C1 | **Highlight matches** in results | Wrap matching substring in `<mark>` (styled with `var(--saffron-soft)`). Works for en/ne/hi + IAST folded. Don't highlight Devanagari digits separately. |
-| C2 | **Autocomplete / suggestions** | As you type ≥2 chars, show 5 recent + 3 chapter-title matches + 2 verse-number completions (e.g., `2.4` → `2.40 … 2.47`). Debounced 200ms, keyboard navigable (↑/↓ + Enter). Keeps `prepareSearchQuery`/`searchFoldKey` you already have — just surfaces it earlier. |
-| C3 | **Transliteration tolerance already good — surface it** | Your folded keys (`ś→sh`, `ā→a`, `c→ch`) are excellent. Add a quiet hint when 0 hits but folded would hit: “No results for ‘karmanye’ — did you mean ‘karmaṇy’? (same results)”. |
-| C4 | **Recent + saved searches** | `gitaRecentSearches` (cap 8, no personal data). Chips below input. Clear individually. |
-| C5 | **Empty-state upgrade** | Today: “No results”. After: illustration feather + “Try a verse number like 2.47, a Sanskrit word like dharmakṣetra, or a translation phrase.” Trilingual. |
+| A1 skip-to-content | `source/app.html:157` | `<a href="#view" class="skip-link" id="skipLink">` |
+| A2 font preload | `source/app.html:22–23` | both WOFF2 files, `as="font" crossorigin` |
+| A5 backup-age badge | `source/js/45-data.js:20` | `dataBackupLine()` → `backupLine` export |
+| B spaced repetition | `source/js/20-learn.js` | `box`/`due`/`reps` validation, `srsDueChapter`, `srsDueAll`, `srsStreakCount` |
+| C1 match highlight | `source/js/12-search.js:39` | `<mark class="srch-hl">` |
+| C2 suggestions | `source/js/15-suggest.js`, `source/app.html:224` | `#searchSuggest` listbox, debounced, arrow-key navigable |
+| C3 fold fallback | `source/js/12-search.js:154–166` | `searchFoldAlternative()` + `search_meant` note |
+| C4 recent searches | `source/js/12-search.js:21–31` | `gitaRecent`, capped at 6, chips |
+| C5 empty state | `source/js/12-search.js:171` | `search_try` hint in en/ne/hi |
+| D3 print stylesheet | `source/css/60-responsive.css:217` | `@media print` hides chrome, `break-inside:avoid` |
+| D4 recently viewed | `source/js/50-reader.js:126–145` | `gitaRecentVerses` (sessionStorage, capped 6), `.m-recent` row |
+| E1 FAQPage | `source/app.html:120` | FAQ rich results already eligible |
+| E1 `Book` JSON-LD | `source/app.html` (third `ld+json` block) | own node at `#book`: Vyāsa, translator Dhruba, sa/en/ne/hi, `EBook`, free, `creditText`; `WebApplication.about` links by `@id`; the false `numberOfPages: 18` is gone; 8 new `check_site_health.py` checks (552 → 560) |
+| D1 copy verse as rich text | `source/js/50-reader.js` (`verseShareHtml`, `copyVerseText`) | language-following verse + link as `text/html` beside `text/plain` via `ClipboardItem`, synchronous write for iOS, plain-text fallback; 3 `run_gita_app.js` assertions (937 → 940) |
+| D2 word-gloss peek | `source/js/50-reader.js` (`openWordPeek`) + `50-reader-shell.css` | long-press (450 ms, cancelled by a 10 px move), tap, `Enter`/`Space`, right-click on a word row → all three glosses; `aria-expanded` + `Escape`; 3 assertions (940 → 943) |
+| E2 chapter titles + descriptions | `source/build_gita.py` `CHAPTER_TOPICS` | 18 unique titles (≤60, longest 57) and descriptions (≤155, longest 153), each naming its chapter, verse count and three languages; guarded by `source/check_seo.py` (10 checks) and two `run_gita_app.js` assertions |
 
-No index rebuild — you already have `VERSE_TEXT`/`VERSE_FOLDED_TEXT`. All changes in `10-library.js` + `50-reader-shell.css`.
-
----
-
-## Phase D — Reader Delight (1 day) — *small things readers remember*
-
-| # | What | Detail |
-|---|---|---|
-| D1 | **Copy verse as rich text** | Current: copy link only. Add “Copy verse text” — Devanagari + English literal + link, as formatted text (not just URL). Uses `ClipboardItem` where available, fallback to plaintext. Test on iOS Safari + Android Chrome 390px. |
-| D2 | **Long-press a word → its 3-language gloss** | Today: tap pāda → see all words. Also allow long-pressing a word in the *live* verse line to peek its gloss (small tooltip). Reduces one tap. |
-| D3 | **Print stylesheet** | `@media print` hide header/toolbar/tabbar/modal chrome, show verse + translations cleanly. One page per verse. Lets teachers print a chapter. Test: `Ctrl+P` from chapter view. |
-| D4 | **Verse history (back/forward in sheet)** | Prev/Next exists *within* scope, but no “recently viewed 5”. Add subtle `· Recently viewed` row in modal footer (sessionStorage only, capped 8). |
-
----
-
-## Phase E — Growth: be found (ongoing, 2–3 hrs + outreach)
-
-You already did the hard part (18 chapter pages, sitemap, canonical, JSON-LD, og-card). This is the last 20%.
-
-| # | What | Detail |
-|---|---|---|
-| E1 | **Schema upgrade** | Keep `WebApplication` as primary. Add companion `Book` object (Vyāsa author, 700 verses, translator Dhruba) + `FAQPage` on welcome (“Is it offline? Is it free? How many verses?”) — FAQ is fastest to rich results. |
-| E2 | **Chapter pages: tighten `<title>` + meta `description`** | Today: `Chapter N — En Name` + generic desc. Make each unique: include en/ne/hi topic phrase + verse count, e.g., `अर्जुनविषादयोग — Chapter 1: Despondency (47 verses) — Gita in Nepali/English/Hindi`. Length ≤ 60/155. |
-| E3 | **Backlink ritual (not code)** — kit written 2026-11-04: `docs/outreach.md` (drafts, cadence, measurement). Still owner-only: the posts themselves, and the two topic fixes the API token could not make. | (a) GitHub repo topics: `bhagavad-gita sanskrit nepali hindi gita` (b) One genuine post each on r/Hinduism, r/bhagavadgita, r/Nepal (no spam — “We made this…” story) (c) One Quora answer: “Where can I read Gita word-by-word in Nepali?” (d) Nepali Facebook/Viber groups — one share with the **live link**, not screenshot. Repeat monthly, not daily. |
-| E4 | **Analytics — only if you want it** | Cloudflare Web Analytics or Plausible — cookie-free, no consent banner, 1 script, privacy-first. Helps you know: which 10 verses/chapters are most opened, which language is chosen most, where search fails. If you dislike tracking, skip. Recommendation on record (2026-11-04, `docs/outreach.md` §5): skip — Search Console answers the growth question, and the provenance page's “no analytics” sentence would otherwise become false. |
+So `REVIEW.md` §20's "High value" list was also out of date; it is annotated there now.
 
 ---
 
-## Sequencing & shipping
+## 1. Remaining, in value order
 
-```
-Week 1:  Phase A (polish)           → PR #1  (safe, green)
-         Phase C (search v2)        → PR #2  (visible win, low risk)
-
-Week 2:  Phase B (Learn SRS)        → PR #3  ( biggest retention win )
-         Phase D (delight)          → PR #4
-
-Ongoing: Phase E (growth)            — outreach + FAQ schema in any PR
-```
-
-Each phase ends with `python3 build.py` green, 390px screenshots, and a zip for Dhruba (your standing rule).
+### A2/A3 — Lighthouse 100 + axe sweep *(needs a real browser)*
+`prefers-reduced-motion` and focus rings are in place, preloads are in, but **100/100 and 0 axe violations are unproven from this sandbox** — Playwright will not install here. Either CI runs it or Dhruba runs Lighthouse/axe locally. Do not report these as done without a real run.
 
 ---
 
-## What I will NOT do (respecting your choices)
+## 2. Owner-only — say so, don't attempt
 
-- No audio (you parked it — keep parked).
-- No backend, no accounts, no cloud sync (localStorage + JSON backup is the right privacy stance).
-- No 700 per-verse OG images (you killed 60 MB bloat correctly).
-- No single-file export revival (`file://` cannot `fetch`; share-by-link stands).
-- No “gamification” — no XP, confetti, streak flames. Devotional apps earn trust with restraint.
+- **GitHub topics:** `triligual` → `trilingual`, add `hindi`. The API returns 403 ("Resource not accessible by integration"); only the About → gear UI works.
+- **E3 — post the kit in `docs/outreach.md`:** r/bhagavadgita, r/Hinduism, r/Nepal, one Quora answer, one Nepali group. The drafts and cadence are written; nothing has been posted.
+- **E4 — analytics:** the recommendation on record is **skip**. Search Console answers the growth question, and adding a script would falsify the provenance page's "no analytics" sentence in the same commit.
+- **`docs/title-review.md`:** 700 rows with tick boxes, generated by `python3 source/audit_titles.py --markdown`. It is Dhruba's read-through. Machine checks keep titles consistent; only reading keeps them honest. Never tick or edit a title for him.
 
 ---
 
-## If you say “go”, I’ll start with Phase A + C in one PR
+## 3. Standing constraints (they bind every item above)
 
-- Add `skip-to-content`, preload fonts, focus/style audit, backup-age badge.
-- Add search highlights + autocomplete + recent chips.
+- `source/ch1.json` … `ch18.json` are canonical. Code renders and validates; it never invents or duplicates text.
+- Never hand-edit generated files (`index.html`, `data/ch*.js`, `chapter/*/`, `method/index.html`, `chapter.css`, `sw.js`, `sitemap.xml`, `robots.txt`, `404.html`, fonts/icons). Change `source/`, run `python3 build.py`, keep both diffs together.
+- **JS module guard is 700 lines and never moves.** Next tightest at this commit: `20-learn.js` 589, `10-library.js` 477, `50-reader.js` 426, `48-reader-view.js` 184. Split along a real seam (presentation vs the state that owns it) and list new files in `APP_JS_FILES` sorted.
+- Shell cap **375,000 chars** (currently **373,731 — only 1,269 of room**), enforced in `source/check_site_health.py`. This is now the binding constraint, not the 700-line guard: the next feature needs a real trim or a deliberate, measured cap raise.
+- Nepali and Hindi UI strings contain no Latin characters.
+- Counts stay synchronized across code, README, PROJECT.md, HANDOFF.md, build.py and docs. Never print a success line unless the command actually succeeded.
+- Browser checks (currently 302) are proven by CI, not by this sandbox. Report them that way.
 
-Both are behind your 320KB inline-shell cap (Phase C adds ~2–3 KB gzipped), keep all 3 languages equal, and are fully browser-tested.
+---
 
-Tell me “go” and I’ll open the branch.
+## 4. Not doing — settled, don't revive
+
+Audio (parked until a licence/recording decision) · backend, accounts, cloud sync · 700 per-verse share pages or painted cards · single-file `file://` edition · gamification (points, leaderboards, streak flames). The tone is *abhyāsa* — practice, not a game.

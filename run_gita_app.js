@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 937;      // keep in step with the printed total
+const TOTAL_ASSERTIONS = 943;      // keep in step with the printed total (+3: D1 rich copy)
 const TOTAL_BROWSER_CHECKS = 302;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
@@ -191,9 +191,9 @@ const ch17Asat = ch17Themes.find(t => t.range === '17.28–17.28');
 ok(ch17Austerity && ch17Austerity.titles.en === 'Three kinds of austerity'
    && ch17Austerity.titles.ne === 'तपका तीन प्रकार'
    && ch17Austerity.titles.hi === 'तपस्या के तीन प्रकार'
-   && ch17Asat && ch17Asat.titles.en === 'Acts without faith are called Asat'
-   && ch17Asat.titles.ne === 'श्रद्धाविना गरिएका कर्मलाई असत् भनिन्छ'
-   && ch17Asat.titles.hi === 'श्रद्धा के बिना किए गए कर्म असत् कहलाते हैं'
+   && ch17Asat && ch17Asat.titles.en === 'Without faith, an act counts for nothing'
+   && ch17Asat.titles.ne === 'श्रद्धा बिनाको कर्मको कुनै मूल्य छैन'
+   && ch17Asat.titles.hi === 'श्रद्धा बिना किया कर्म का कोई मूल्य नहीं'
    && ch17Austerity.descs.en.includes('without desire for fruit')
    && ch17Austerity.descs.ne.includes('फलको इच्छा नराखी')
    && ch17Austerity.descs.hi.includes('फल की इच्छा के बिना')
@@ -202,7 +202,7 @@ ok(ch17Austerity && ch17Austerity.titles.en === 'Three kinds of austerity'
    && ch17Asat.descs.hi.includes('असत्'),
    'chapter 17 reviewed austerity and Asat titles/descriptions stay aligned ×3');
 const ch17Page = fs.readFileSync(path.join(ROOT, 'chapter', '17', 'index.html'), 'utf8');
-ok(ch17Page.includes('Three kinds of austerity') && ch17Page.includes('Acts without faith are called Asat'),
+ok(ch17Page.includes('Three kinds of austerity') && ch17Page.includes('Without faith, an act counts for nothing'),
    'chapter 17 landing page carries the reviewed theme titles');
 // Individual pearls are addressed by canonical verse, never an old theme index.
 const reviewedPart = (ch, ref) => DATA[ch-1].themes.flatMap(t=>t.parts)
@@ -789,10 +789,43 @@ ok(/<link rel="canonical" href="https?:\/\/[^"]+\/">/.test(html), 'canonical lin
   ok(ld && ld.url === canon, 'JSON-LD url matches the canonical URL');
   ok(ld && Array.isArray(ld.inLanguage) && ld.inLanguage.length === 3,
      'JSON-LD lists all three languages');
-  ok(ld && ld.about && ld.about['@type'] === 'Book', 'JSON-LD includes companion Book object');
+  // E1 (2026-11-04): the Book used to be an inline copy with no author and no
+  // translator, and it called the 18 chapters "numberOfPages". It is now its
+  // own node, referenced by @id, so the app and the work are distinguishable.
+  const ldAll = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map(x => { try { return JSON.parse(x[1]); } catch (e) { return null; } });
+  const book = ldAll.find(o => o && o['@type'] === 'Book') || null;
+  ok(!!book && !!ld && !!ld.about && ld.about['@id'] === book['@id']
+     && !!book.author && book.author.name === 'Vyāsa'
+     && !!book.translator && book.translator.name === 'Dhruba Chapain'
+     && book.numberOfPages === undefined,
+     'JSON-LD links the app to a companion Book node: Vyāsa, the translator, and no false page count');
   ok(/"@type":\s*"FAQPage"/.test(html), 'JSON-LD includes FAQPage schema');
-  ok(/function verseShareText\(/.test(html) && /function copyVerseText\(/.test(html) && /id="shCpTxt"/.test(html),
-     'Phase D1: copy verse as formatted text is wired');
+  // D1 (2026-11-04): the copy is rich text in the reader's own language, with
+  // the plain-text path kept as the fallback. The three claims are separate on
+  // purpose — a broken ClipboardItem branch must not hide behind a working one.
+  const shareFn = (html.match(/function copyVerseText\(\)\{[\s\S]*?\n\}/) || [''])[0];
+  ok(/function verseShareHtml\(/.test(html) && /id="shCpTxt"/.test(html)
+     && /onclick="copyVerseText\(\)"/.test(html),
+     'Phase D1: copy verse as rich text is wired to the share panel');
+  ok(/new ClipboardItem\(\{[\s\S]*?'text\/html'[\s\S]*?'text\/plain'/.test(shareFn),
+     'D1: the clipboard item carries BOTH text/html and text/plain, so a paste target can choose');
+  ok(/window\.ClipboardItem/.test(shareFn) && /copyTextToClipboard\(plain, 'verse_copied'\)/.test(shareFn),
+     'D1: a browser without ClipboardItem still copies plain text — no dead button');
+  ok(/state\.lang === 'en' && s\.t/.test(html) && /<p lang="sa">/.test(html)
+     && /T\(s\.lits\)/.test(html),
+     'D1: the copied verse follows the reader language and hides IAST outside English, like the sheet');
+  /* D2: the peek hangs off the word rows, never the verse line — the printed
+     verse is sandhi-joined, so a token cannot be mapped to one word. Keyboard
+     must reach it, so rows are real focusable buttons. */
+  ok(/class="wrow" role="button" tabindex="0" data-wi=/.test(html) && /data-words=/.test(html),
+     'D2: word rows are focusable buttons carrying their true split, not the sandhi-joined line');
+  ok(/GITA_LANGS\.map\(\(l, i\)/.test(html) && /wp-line/.test(html) && /function langEndonym/.test(html),
+     'D2: the peek prints the gloss in all three languages, labelled from the switcher endonyms');
+  ok(/PEEK_TIMER = setTimeout\(function\(\)\{ PEEK_TIMER = 0; openWordPeek/.test(html)
+     && /Math\.abs\(e\.clientX - PEEK_XY\[0\]\) > 10/.test(html)
+     && /e\.key==='Escape' && PEEK_ROW/.test(html),
+     'D2: a long press opens it, a scroll flick cancels it, and Escape closes the peek before the sheet');
   ok(/function recentVersesHtml\(/.test(html) && /gitaRecentVerses/.test(html),
      'Phase D4: recently viewed verses row is wired in sessionStorage');
   ok(/@media print\{/.test(html), 'Phase D3: print stylesheet is included');
@@ -975,7 +1008,12 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
     if (!fs.existsSync(f)) continue;
     const s = fs.readFileSync(f, 'utf8');
     if (new RegExp(`<link rel="canonical" href="https?://[^"]+/chapter/${n}/">`).test(s)) canonOK++;
-    if (s.includes(`<title>Bhagavad Gita Chapter ${n} — `)) titleOK++;
+    // The title is per-chapter SEO copy (source/build_gita.py CHAPTER_TOPICS):
+    // it must name its own chapter AND its own verse count, and 18 identical
+    // "Chapter N — Name" titles are exactly what this replaced.
+    const tm = s.match(/<title>([^<]*)<\/title>/);
+    const title = tm ? tm[1] : '';
+    if (title.includes(`Bhagavad Gita ${n} — `) && title.includes(`(${ch.verses} verses)`)) titleOK++;
     if (s.includes(`href="../../index.html#chapter=${n}&tab=study"`)) ctaOK++;
     if (fs.statSync(f).size < 400 * 1024) sizeOK++;
     let have = 0, total = 0;
@@ -1056,8 +1094,10 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   ok(sw.includes('c.add(u).catch') && sw.includes('status: 504'),
      'sw.js precaches per-asset and answers offline misses with a Response, never undefined');
   const ch1 = fs.readFileSync(path.join(__dirname, 'chapter', '1', 'index.html'), 'utf8');
-  ok(/<title>Bhagavad Gita Chapter 1 — [^<]{1,45}<\/title>/.test(ch1),
-     'chapter page titles stay short enough not to be truncated in search results');
+  const ch1Title = (ch1.match(/<title>([^<]*)<\/title>/) || ['', ''])[1];
+  ok(ch1Title.length > 0 && ch1Title.length <= 60
+     && ch1Title.indexOf('Bhagavad Gita 1 — ') === 0 && /\(47 verses\)$/.test(ch1Title),
+     'chapter page titles stay within 60 chars, naming the chapter and its verse count');
   ok((ch1.match(/og:image:alt/g) || []).length === 1,
      'chapter pages carry exactly one og:image:alt');
 }

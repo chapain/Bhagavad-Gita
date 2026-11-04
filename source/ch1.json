@@ -359,14 +359,14 @@
                 }
               ],
               "lits": {
-                "en": "Sañjaya said: Seeing the Pāṇḍava army drawn up in battle-array, Duryodhana then approached his teacher and spoke these words, O King.",
-                "ne": "सञ्जयले भने: पाण्डव सेनालाई युद्ध-व्यूहमा सजिएको देखेर, दुर्योधन त्यसपछि आफ्नो गुरुकहाँ गएर यी वचन बोले, हे राजन्।",
-                "hi": "संजय ने कहा: पांडव सेना को युद्ध-व्यूह में सजा देखकर, दुर्योधन तब अपने गुरु के पास जाकर ये वचन बोला, हे राजन्।"
+                "en": "Sañjaya said: Seeing the Pāṇḍava army drawn up in battle-array, Duryodhana then approached his teacher, and the king spoke these words.",
+                "ne": "सञ्जयले भने: पाण्डव सेनालाई युद्ध-व्यूहमा सजिएको देखेर, दुर्योधन त्यसपछि आफ्नो गुरुकहाँ पुगे, र राजाले यी वचन बोले।",
+                "hi": "संजय ने कहा: पांडव सेना को युद्ध-व्यूह में सजा देखकर, दुर्योधन तब अपने गुरु के पास पहुँचा, और राजा ने ये वचन बोले।"
               },
               "paras": {
-                "en": "Sañjaya replies: “Seeing the Pāṇḍavas' army in formation, Duryodhana went to his teacher Droṇa and said, O King…”",
-                "ne": "सञ्जयले जवाफ दिन्छन्: “पाण्डवहरूको सेना व्यूहमा सजिएको देखेर दुर्योधन आफ्ना गुरु द्रोणकहाँ गएर भन्छन्, हे राजा…”",
-                "hi": "संजय उत्तर देते हैं: “पांडवों की सेना को व्यूह में खड़ा देखकर दुर्योधन अपने गुरु द्रोण के पास गया और बोला, हे राजा…”"
+                "en": "Sañjaya replies: “Seeing the Pāṇḍavas' army in formation, Duryodhana went to his teacher Droṇa and spoke:”",
+                "ne": "सञ्जयले जवाफ दिन्छन्: “पाण्डवहरूको सेना व्यूहमा सजिएको देखेर दुर्योधन आफ्ना गुरु द्रोणकहाँ गएर बोल्छन्:”",
+                "hi": "संजय उत्तर देते हैं: “पांडवों की सेना को व्यूह में खड़ा देखकर दुर्योधन अपने गुरु द्रोण के पास जाकर बोलता है:”"
               }
             }
           ]
@@ -1504,9 +1504,9 @@
     {
       "range": "1.10–1.11",
       "titles": {
-        "en": "Guard Bhīṣma above all",
-        "ne": "सबैले भीष्मको रक्षा गर",
-        "hi": "सब मिलकर भीष्म की रक्षा करो"
+        "en": "Both armies weighed; Bhīṣma must be guarded",
+        "ne": "दुवै सेना तौलिए; भीष्मको रक्षा हुनुपर्छ",
+        "hi": "दोनों सेनाएँ तौली गईं; भीष्म की रक्षा हो"
       },
       "descs": {
         "en": "Duryodhana compares the forces, then orders every division to hold position and protect Bhīṣma.",

@@ -773,11 +773,55 @@ with open(os.path.join(SITE_DIR, "sw.js"), "w", encoding="utf-8") as f:
 with open(os.path.join(SITE_DIR, "chapter.css"), "w", encoding="utf-8") as f:
     f.write(CHAPTER_CSS)
 
+# ---------------- chapter SEO copy (title + description) ----------------
+# Each of the 18 pages needs a *unique* title and description: 18 identical
+# "Chapter N — Name" titles are one weak page repeated, and a search engine
+# treats them that way. The rule here is editorial, not mechanical:
+#
+#   title       "Bhagavad Gita {n} — {topic} ({verses} verses)"   <= 60 chars
+#   description "Chapter {n}, {deva}: {blurb}. {verses} verses with
+#                English, Nepali and Hindi translation — free and offline."
+#                                                                 <= 155 chars
+#
+# Why topic-forward instead of name-forward: the traditional yoga names are too
+# long to share a title with anything else (ch. 13's is 31 characters alone),
+# so a name-first formula could not carry a topic and a verse count at all.
+# The Sanskrit name is not lost — it is the <h1>, the og:title, the whole page
+# body, and (in Devanagari, which both Nepali and Hindi readers recognise) the
+# opening of the description.
+#
+# Do not edit a generated chapter/*/index.html to change this copy: it is
+# rebuilt from here every time. `source/check_seo.py` re-reads the 18 built
+# pages and fails the build if a title or description is missing, duplicated,
+# over length, or no longer names its own chapter and verse count.
+CHAPTER_TOPICS = {
+    1:  ("Arjuna’s despair",               "Arjuna’s despair on the battlefield"),
+    2:  ("Sāṅkhya Yoga and the Self",      "the immortal Self and action without attachment"),
+    3:  ("Karma Yoga: selfless action",    "the discipline of selfless action"),
+    4:  ("Knowledge and renunciation",     "knowledge, action and renouncing their fruits"),
+    5:  ("Renunciation of action",         "renunciation, and the true yogi of action"),
+    6:  ("Dhyāna Yoga: meditation",        "meditation and the mastery of the mind"),
+    7:  ("Knowledge of the divine",        "knowledge of the divine and the ways to reach it"),
+    8:  ("The imperishable Brahman",       "the imperishable Brahman and the path of departure"),
+    9:  ("The royal secret",               "the royal secret — devotion and divine majesty"),
+    10: ("Divine glories",                 "the glories and powers of the divine"),
+    11: ("The cosmic form",                "the vision of the cosmic form"),
+    12: ("Bhakti Yoga: devotion",          "the path of devotion"),
+    13: ("The field and its knower",       "the field, its knower, and discernment"),
+    14: ("The three guṇas",                "the three guṇas and the one who transcends them"),
+    15: ("The supreme Person",             "the supreme Person, the root of all"),
+    16: ("Divine and demonic natures",     "the divine and demonic natures"),
+    17: ("The three kinds of faith",       "the three kinds of faith"),
+    18: ("Liberation by renunciation",     "liberation through renunciation"),
+}
+
 for _ch in data:
     _n = _ch["num"]
     _en = _ch["names"]["en"]
     _url = f"{SITE_BASE}/chapter/{_n}/"
     _nverses = _ch["verses"]
+    _topic, _blurb = CHAPTER_TOPICS[_n]
+    _title = f"Bhagavad Gita {_n} — {_topic} ({_nverses} verses)"
     # Phase 2.3: the closing colophon for this chapter (from source/ch<N>.json).
     _col = _ch.get("colophon") or {}
     _col_html = ""
@@ -785,8 +829,8 @@ for _ch in data:
         _col_html = (f'  <div class="colophon" lang="sa">{_h.escape(_col["deva"])}'
                      f'<span class="col-iast" lang="sa-Latn">'
                      f'{_h.escape(_col.get("iast", ""))}</span></div>')
-    _desc = (f"Read Chapter {_n} of the Bhagavad Gita ({_en}) — all {_nverses} verses "
-             f"in Sanskrit with translations in English, Nepali and Hindi.")
+    _desc = (f"Chapter {_n}, {_ch['deva']}: {_blurb}. {_nverses} verses with "
+             f"English, Nepali and Hindi translation — free and offline.")
     # Each theme is a native disclosure: its range and title stay visible as
     # an outline, while the description and verse titles appear on expansion.
     # The full text remains in a nested <details> for progressive disclosure.
@@ -867,7 +911,7 @@ for _ch in data:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhagavad Gita Chapter {_n} — {_h.escape(_en)}</title>
+<title>{_h.escape(_title)}</title>
 <meta name="description" content="{_h.escape(_desc)}">
 <meta name="author" content="Dhruba Chapain">
 <link rel="canonical" href="{_url}">

@@ -18,7 +18,7 @@ seen", `NEXT.md` E3/E4.
 As of 2026-11-04 two commits are local only — the module split and the
 provenance page. The live site does **not** have `method/` yet. So:
 
-1. `python3 build.py` → all green (937 assertions, 552 site-health, 68 Python).
+1. `python3 build.py` → all green (937 assertions, 560 site-health, 68 Python).
 2. Push, wait for the Pages build, then open
    <https://chapain.github.io/Bhagavad-Gita/> in a **private window** and check:
    the app opens; the footer says “How this edition was made”; that page opens;

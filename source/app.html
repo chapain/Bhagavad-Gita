@@ -107,13 +107,33 @@
     "name": "Dhruba Chapain",
     "address": {"@type": "PostalAddress", "addressLocality": "Pokhara", "addressCountry": "NP"}
   },
-  "about": {
-    "@type": "Book",
-    "name": "Bhagavad Gita",
-    "alternateName": "श्रीमद्भगवद्गीता",
-    "inLanguage": ["sa", "en", "ne", "hi"],
-    "numberOfPages": 18
-  },
+  "about": {"@id": "__BASE__/#book"},
+  "sameAs": "https://github.com/chapain/Bhagavad-Gita"
+}
+</script>
+<!-- The work itself, as its own node so a crawler can tell the app from the
+     book it contains. `numberOfPages` used to sit here as 18 — that is the
+     chapter count, not a page count, and it was false. Verse and chapter
+     counts belong in prose (there is no schema.org property for verses), so
+     the description carries them and nothing here states a number it cannot
+     support. `author` is the traditional attribution, said plainly in
+     creditText; the full authorship and AI disclosure is LICENSE.md. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "@id": "__BASE__/#book",
+  "name": "Bhagavad Gita",
+  "alternateName": "श्रीमद्भगवद्गीता",
+  "url": "__BASE__/",
+  "author": {"@type": "Person", "name": "Vyāsa"},
+  "translator": {"@type": "Person", "name": "Dhruba Chapain"},
+  "inLanguage": ["sa", "en", "ne", "hi"],
+  "bookFormat": "https://schema.org/EBook",
+  "isAccessibleForFree": true,
+  "copyrightNotice": "© 2026 Dhruba Chapain. All rights reserved.",
+  "creditText": "Traditional attribution to Vyāsa. Translations, word-by-word meanings, theme structure and the four-pāda division: Dhruba Chapain.",
+  "description": "The Bhagavad Gita in 18 chapters and 700 verses: Devanagari and IAST, with English, Nepali (नेपाली) and Hindi (हिन्दी) translations, word-by-word meanings and the four pādas of every verse. Free, offline, no account.",
   "sameAs": "https://github.com/chapain/Bhagavad-Gita"
 }
 </script>
