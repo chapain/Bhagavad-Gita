@@ -271,6 +271,9 @@ function fillModal(){
   }
   recentVersesRecord(s.n);
   const isSaved = App.library.isFavorite(s.n);
+  /* A note belongs to the verse, not to the saved list — every verse can carry
+     one, and it is kept whether or not the verse is a favourite. */
+  const noteText = App.library.note(s.n);
 
   /* Option 1: the whole verse and the four-quarter grid are both prepared up
      front, then swapped into the same box by toggleVerseExpansion(). */
@@ -333,6 +336,11 @@ function fillModal(){
       </div>
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+      <details class="m-note"${noteText ? ' open' : ''}>
+        <summary><span>${esc(L('note_label'))}</span>${noteText ? `<span class="m-note-dot" aria-hidden="true">•</span>` : ''}<span class="m-note-chev" aria-hidden="true">▾</span></summary>
+        <textarea rows="2" aria-label="${esc(L('note_label'))}" placeholder="${esc(L('note_ph'))}"
+          oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px';App.library.setNote('${esc(s.n)}', this.value)">${esc(noteText)}</textarea>
+      </details>
       ${recentVersesHtml(s.n)}
     </div>
     <div class="m-tail" aria-hidden="true"></div>
@@ -355,6 +363,9 @@ function fillModal(){
     </div>`;
   applyReaderSize();
   setVerseView(false);
+  // grow the note box to its saved text, as the saved cards do
+  const nt = $('#modal .m-note textarea');
+  if(nt && nt.value){ nt.style.height='auto'; nt.style.height=nt.scrollHeight+'px'; }
 }
 
 /* Option 1 - one verse box, two shapes. The card itself converts in place;

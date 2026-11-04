@@ -437,6 +437,11 @@ def run(pw, url, offline_capable=False):
         a, d = count(ascii_q), count(deva_q)
         ok(a == d and a > 0, f"searching {deva_q!r} matches {ascii_q!r} ({d} vs {a})")
     ok(count("धर्मक्षेत्रे") == 1, "Devanagari word search still finds its verse")
+    # The headline count is the whole page: verse cards plus the chapter/theme
+    # passage cards that share it. Verse-only counts stay in count().
+    def total(q):
+        count(q)
+        return pg.locator(".mini").count() + pg.locator(".res-passage").count()
     pg.fill("#searchInput", "")
     pg.wait_for_timeout(400)
     for q in ("2.47", "२.४७", "16.6", "yoga", "कर्म"):
@@ -471,7 +476,7 @@ def run(pw, url, offline_capable=False):
     one = count("2.47")
     one_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
     ok(one == 1 and one_label == "1 result", "English single-result wording")
-    many = count("yoga")
+    many = total("yoga")
     many_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
     ok(many > 1 and many_label == f"{many} results", "English plural-result wording")
     deva_num = lambda n: str(n).translate(str.maketrans("0123456789", "०१२३४५६७८९"))
@@ -485,11 +490,68 @@ def run(pw, url, offline_capable=False):
         one_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
         ok(one == 1 and one_label == f"{deva_num(one)} {singular}",
            f"{lang}: singular-result wording")
-        many = count("yoga")
+        many = total("yoga")
         many_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
         ok(many > 1 and many_label == f"{deva_num(many)} {plural}",
            f"{lang}: plural-result wording")
     pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(300)
+
+    # ---- search reaches ideas; a note is not a favouriting side-effect -------
+    # The index covers chapter names, theme titles and the word-by-word glosses,
+    # so a reader who remembers the story or one glossed word is answered. A note
+    # can be written on any verse and survives un-favouriting.
+    group("search by chapter, theme and gloss; notes without favourites")
+    def show(q):
+        pg.fill("#searchInput", "")
+        pg.wait_for_timeout(200)
+        pg.fill("#searchInput", q)
+        pg.wait_for_timeout(800)
+    show("Mokṣa-Sannyāsa")
+    ok(pg.locator(".res-passage").count() >= 1 and pg.locator(".mini").count() == 0,
+       "a chapter name finds its chapter card and no verse cards")
+    ok(any("Chapter" in t for t in pg.eval_on_selector_all(
+        ".res-gl", "e=>e.map(x=>x.textContent)")), "chapter results carry their own group label")
+    show("Kṛṣṇa rebukes Arjuna's dejection")
+    ok(pg.locator(".res-passage").count() == 1,
+       "a theme title finds exactly its theme")
+    show("not hating")
+    ok(pg.locator(".mini").count() == 1 and pg.locator(".res-word").count() == 1,
+       "one glossed word finds its verse and names the word that matched")
+    show("Sankhya")
+    ok(pg.locator(".res-passage").count() == 1,
+       "ASCII 'Sankhya' reaches the chapter named Sāṅkhya")
+    show("2.47")
+    ok(pg.locator(".mini").count() == 1 and pg.locator(".res-passage").count() == 0,
+       "a verse number returns the verse alone")
+
+    pg.evaluate("closeModal()")
+    pg.wait_for_timeout(200)
+    pg.evaluate("App.reader.open(0,0,0,'theme')")
+    pg.wait_for_timeout(500)
+    ok(pg.locator("#modal .m-note").count() == 1,
+       "every verse opens with its own note field, saved or not")
+    pg.click("#modal .m-note summary")
+    pg.wait_for_timeout(200)
+    pg.fill("#modal .m-note textarea", "A note on an unsaved verse.")
+    pg.wait_for_timeout(250)
+    ok("A note on an unsaved verse." in (pg.evaluate(
+        "localStorage.getItem('gitaFavNotes')||''")),
+       "the note is stored as it is typed")
+    pg.evaluate("closeModal()")
+    pg.wait_for_timeout(200)
+    pg.evaluate("App.library.showFavorites()")
+    pg.wait_for_timeout(300)
+    ok(pg.locator("#view .note-card").count() >= 1,
+       "saved lists the note though the verse was never favourited")
+    pg.evaluate("App.library.toggleFavorite('1.01')")
+    pg.wait_for_timeout(150)
+    pg.evaluate("App.library.toggleFavorite('1.01')")
+    pg.wait_for_timeout(300)
+    ok(pg.locator("#view .note-card").count() >= 1,
+       "un-favouriting a verse keeps its note")
+    pg.evaluate("App.library.setNote('1.01','')")
+    pg.fill("#searchInput", "")
     pg.wait_for_timeout(300)
 
     group("touch / mobile")

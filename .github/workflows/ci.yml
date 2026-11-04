@@ -23,14 +23,23 @@ jobs:
         with:
           node-version: '20'
 
+      # Playwright must be importable BEFORE build.py runs: build.py only runs
+      # the live-browser suite when `import playwright` succeeds, so installing
+      # it afterwards silently downgraded the build to "browser tests skipped".
       - name: Install Python deps
-        run: pip install Pillow
+        run: pip install Pillow playwright
 
-      - name: Build site (full)
+      - name: Install Chromium for the browser checks
+        run: python3 -m playwright install --with-deps chromium
+
+      # The browser suite is part of build.py (browser_checks.py --serve, real
+      # Chromium, offline service worker included) and a failed check fails the
+      # build. Never mask it with `|| echo`: a green CI run must mean green.
+      - name: Build and check
         run: python3 build.py
 
-      - name: Browser tests (Playwright)
-        run: |
-          pip install playwright
-          python3 -m playwright install --with-deps chromium
-          python3 source/browser_checks.py || echo "browser checks skipped or failed — see log"
+      # Independent proof that editing source JSON is enough: one marker per
+      # content kind is injected, rebuilt, found in the published output, then
+      # the source files are restored and the artifact hash re-checked.
+      - name: Prove content edits reach the published site
+        run: python3 source/prove_data_only.py

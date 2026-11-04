@@ -364,7 +364,12 @@ ok('<a href="#view" class="skip-link" id="skipLink">' in idx and ".skip-link{" i
 # search v2 highlights/chips, spaced-repetition Learn (SRS + due inbox + streak),
 # reader delight (copy verse text, print stylesheet, recent verses), and
 # Book/FAQPage JSON-LD bring the maintained shell cap to 350000 characters.
-ok(len(idx) < 350000, f"the shell should stay lean; it is {len(idx)} characters")
+# 2026-11-04: search v3 (chapter/theme/gloss index + grouped results) and the
+# per-verse note field add ~13KB, taking the shell from 334,897 to 347,934
+# characters — too close to a 350000 cap to leave any room for the next session.
+# Raised to 360000: the guard is here to catch accidental bloat, not to freeze
+# the UI, and the note/search surfaces are load-bearing, not decoration.
+ok(len(idx) < 360000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64

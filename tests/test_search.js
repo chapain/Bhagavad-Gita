@@ -131,7 +131,11 @@ test('search and favorites render counts through the grammar helper', () => {
   const searchCode = html.slice(searchStart, searchEnd);
   const favoritesCode = html.slice(favStart, favEnd);
   assert(searchCode.includes('resultCountLabel(0)'), 'zero-result labels use the helper');
-  assert(searchCode.includes('resultCountLabel(hits.length)'), 'search count uses the helper');
+  // The headline count is the whole page: verses plus the chapter/theme passages
+  // that share it. Counting only hits would say "0 results" above a theme card.
+  assert(searchCode.includes('resultCountLabel(total)'), 'search count covers every result group');
+  assert(searchCode.includes('const total = hits.length + passages.length'),
+         'the total adds passage hits to verse hits');
   assert(favoritesCode.includes('resultCountLabel(saved.length)'), 'favorite count uses the helper');
   assert(searchCode.includes('searchTextMatches('), 'doSearch() uses the tested search matcher');
   assert.match(html, /VERSE_FOLDED_TEXT\.push\(searchFoldKey\(s\.t\)\)/,
@@ -167,6 +171,102 @@ test('search v2 highlights substring matches safely and offers chips', () => {
   const hitChips = ctx.srchChipsHtml('karma', 5);
   assert(hitChips.includes('data-q="bhakti"') && !hitChips.includes('data-q="karma"'),
          'hit chips show other recent queries without repeating current query');
+});
+
+
+/* ---- the widened index: titles, glosses, chapters, themes ---------------
+   Search used to index the Sanskrit, the IAST and the paraphrase — so a reader
+   who remembered the story ("Time's decree") or one word of the glossary ("not
+   hating") got nothing. These execute the shipped `verseSearchText()` and
+   `buildPassages()` against the real chapter payloads. */
+function loadVerseIndex() {
+  const start = html.indexOf('function verseSearchText(');
+  const end = html.indexOf('\nconst VERSE_TEXT', start);
+  assert(start >= 0 && end > start, 'verseSearchText() must be emitted');
+  const ctx = vm.createContext({
+    state: { lang: 'en' },
+    T: value => (value && value.en) || '',
+    fmtN: n => String(n),
+    SANSKRIT_RE: /[\u0900-\u097F]/,
+  });
+  vm.runInContext(html.slice(start, end), ctx);
+  return ctx;
+}
+function partOf(ref) {
+  for (const ch of data) {
+    for (const th of ch.themes) {
+      for (const part of th.parts) {
+        if (part.sutras.some(sutra => displayRef(sutra.n) === ref)) return part;
+      }
+    }
+  }
+  assert.fail(`no part holds verse ${ref}`);
+}
+
+test('a verse answers to its own title and to its word-by-word glosses', () => {
+  const ctx = loadVerseIndex();
+  const text = ref => ctx.verseSearchText(verse(ref), partOf(ref));
+  assert(searchMatches(text('1.29'), 'My limbs fail'),
+         'the verse title "My limbs fail" must find 1.29');
+  assert(searchMatches(text('12.13'), 'not hating'),
+         'a gloss word (not hating) must find its verse');
+  assert(!searchMatches(text('12.13'), 'compassionate llama'),
+         'the widened index must not match two absent words');
+  const sanskritOnly = data[0].themes[0].parts[0].sutras[0];
+  assert(ctx.verseSearchText(sanskritOnly, partOf(displayRef(sanskritOnly.n)))
+           .includes(sanskritOnly.d),
+         'the Devanagari line stays in the index');
+});
+
+test('chapters and themes are searchable by name, and only as passages', () => {
+  const start = html.indexOf('const SEARCH_PASSAGES = [];');
+  const end = html.indexOf('\nfunction assembleData(){', start);
+  assert(start >= 0 && end > start, 'buildPassages() must be emitted');
+  const ctx = vm.createContext({
+    DATA: data,
+    state: { lang: 'en' },
+    T: value => (value && typeof value === 'object') ? (value.en || '') : (value || ''),
+    searchExactKey: exactKey,
+    searchFoldKey: foldedKey,
+  });
+  vm.runInContext(html.slice(start, end) + '\nbuildPassages();\nglobalThis.__passages = SEARCH_PASSAGES;', ctx);
+  const passages = ctx.__passages;
+  assert.equal(passages.filter(p => p.kind === 'chapter').length, 18,
+               'every chapter is a passage result');
+  assert.equal(passages.filter(p => p.kind === 'theme').length, 169,
+               'every theme is a passage result');
+  // Match exactly the way passageHits() does: the stored exact + folded keys.
+  const hit = (kind, query) => passages.filter(p => p.kind === kind &&
+    searchContext.searchTextMatches(p.exact, p.folded, prepareQuery(query)));
+  assert(hit('chapter', 'Sankhya').some(p => p.ci === 1),
+         'ASCII "Sankhya" must reach the chapter named Sāṅkhya');
+  assert(hit('chapter', 'Moksha-Sannyasa').some(p => p.ci === 17),
+         'ASCII "Moksha-Sannyasa" must reach chapter 18');
+  assert(hit('theme', "Kṛṣṇa rebukes Arjuna's dejection").length === 1,
+         'a theme title must find its theme');
+  assert.equal(hit('chapter', 'not hating').length, 0,
+               'passages do not borrow verse words');
+});
+
+test('a note is independent of the favourites list', () => {
+  const start = html.indexOf('function removeFav(');
+  const end = html.indexOf('\nfunction ', start + 10);
+  assert(start >= 0 && end > start, 'removeFav() must be emitted');
+  const body = html.slice(start, end);
+  assert(!/FAVNOTE/.test(body),
+         'un-favouriting must not touch the note store (notes outlive favourites)');
+  assert(html.includes('function noteGet(') && html.includes('function notesList('),
+         'the notes list reads the note store directly');
+  assert(/note: noteGet,/.test(html) && /setNote: setFavNote,/.test(html),
+         'the reader reaches notes through App.library');
+  assert((html.match(/L\('note_label'\)/g) || []).length >= 2 &&
+         html.includes("L('note_ph')"),
+         'the note field is localized wherever it appears');
+  assert(html.includes('class="m-note"') && html.includes('class="note-card"'),
+         'a note can be written in the sheet and listed in saved');
+  assert(!/id=|FAVNOTE/.test(html.slice(html.indexOf('function removeFav('),
+                html.indexOf('function removeFav(') + 400)),
+         'un-favouriting leaves the verse and its note alone');
 });
 
 console.log(`\nsearch regressions: ${passed} tests passed`);

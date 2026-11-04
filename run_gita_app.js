@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 832;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 270;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
+const TOTAL_ASSERTIONS = 892;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 279;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -106,7 +106,11 @@ const enKeys = Object.keys(UI.en);
 // added click_pada_meanings (1) → 187
 // 2026-10-17: removed read_sub, opt_full_g, opt_study_g, back_themes (4) → 183,
 // together with the per-theme and continuous-reading views that used them.
-ok(enKeys.length === 217, `UI has 217 keys (got ${enKeys.length})`);
+// 2026-11-04: notes stopped being a favouriting side-effect and search grew
+// chapters and themes, so the strings those surfaces need are new: note_label,
+// note_ph, notes_title, search_in_chapters, search_in_themes, search_in_verses,
+// search_word_match (7) → 224.
+ok(enKeys.length === 224, `UI has 224 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -860,6 +864,44 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
      'clear-all-data guarded by confirmation');
 }
 
+// ---------- search reaches ideas, notes outlive favourites ----------
+{
+  // Search used to index only the verse line, its IAST and its paraphrase, so a
+  // reader who remembered a chapter name, a theme title or one glossed word got
+  // "no results" from a corpus that plainly contains it. The index now carries
+  // titles and word glosses, and chapters/themes are their own result kind.
+  ok(/const SEARCH_PASSAGES = \[\]/.test(html) && /function buildPassages\(\)/.test(html) &&
+     /buildPassages\(\);/.test(html),
+     'chapters and themes are indexed and the index is built with the data');
+  ok(/for\(const w of \(f\.words \|\| \[\]\)\)\s*\n?\s*gloss \+= ' ' \+ w\[2\]/.test(html),
+     'verse search text includes word-by-word glosses');
+  ok(/const t = \(part && part\.titles\) \|\| \{\}/.test(html) &&
+     /\(t\.en \|\| ''\) \+ ' ' \+ \(t\.ne \|\| ''\) \+ ' ' \+ \(t\.hi \|\| ''\)/.test(html),
+     'verse search text includes the verse title in all three languages');
+  ok(/searchExactKey\(\[ch\.names\.en, ch\.names\.ne, ch\.names\.hi/.test(html),
+     'a chapter is searchable by its name and subtitle');
+  ok(/searchExactKey\(\[t\.titles\.en, t\.titles\.ne, t\.titles\.hi/.test(html),
+     'a theme is searchable by its title and description');
+  ok(/const total = hits\.length \+ passages\.length/.test(html),
+     'the result count adds passages to verses');
+  const usedKeys = ['search_in_verses', 'search_in_themes', 'search_in_chapters',
+                    'search_word_match', 'note_label', 'note_ph', 'notes_title'];
+  ok(usedKeys.every(k => new RegExp(`L\\('${k}'\\)`).test(html)),
+     'every new string is actually used by the app');
+  // Notes were stored beside favourites and deleted with them — un-favouriting a
+  // verse erased what the reader had written about it.
+  const rf = html.slice(html.indexOf('function removeFav('));
+  const rfBody = rf.slice(0, rf.indexOf('\nfunction '));
+  ok(!/FAVNOTE/.test(rfBody), 'un-favouriting no longer deletes the note');
+  ok(/function noteGet\(id\)\{[^}]*FAVNOTE\[id\]/.test(html) &&
+     /note: noteGet,/.test(html),
+     'notes are read from their own accessor');
+  ok(/class="m-note"/.test(html) && /App\.library\.note\(s\.n\)/.test(html),
+     'every verse opens its own note field in the reader');
+  ok(/function notesHtml\(\)/.test(html) && /notesHtml\(\)/.test(html.slice(html.indexOf('function showFavorites('))),
+     'saved lists every note, whether or not the verse is still saved');
+}
+
 // ---------- chapter landing pages (generated SEO satellites) ----------
 {
   let canonOK = 0, titleOK = 0, ctaOK = 0, fullTextOK = 0, sizeOK = 0;
@@ -960,6 +1002,12 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
 // ---------- summary ----------
 console.log('\n' + '='.repeat(46));
 console.log(`run_gita_app.js: ${PASS} assertions passed, ${FAIL} failed`);
+// The documents are checked against TOTAL_ASSERTIONS, so a stale constant would
+// quietly bless a stale number in three files. Compare it with what actually ran.
+if (PASS + FAIL !== TOTAL_ASSERTIONS) {
+  console.log(`assertion total drifted: ran ${PASS + FAIL}, locked ${TOTAL_ASSERTIONS}`);
+  process.exit(1);
+}
 if (FAIL > 0) {
   console.log('failures:');
   failures.forEach(f => console.log('  - ' + f));
