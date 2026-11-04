@@ -51,12 +51,18 @@ render the affected verse.
   `source/check_*.py`
 - Architecture contracts: `tests/test_source_modules.py`. Update this test with
   an intentional boundary change; do not weaken it merely to admit a shortcut.
+  No JS module may exceed **700 lines**: when one nears it, split along a real
+  seam (presentation vs the state that owns it) and list the new file in
+  `APP_JS_FILES` in sorted order — never raise the guard.
 
 ## Never hand-edit generated output
 
-`index.html`, `data/ch*.js`, `chapter/*/index.html`, `chapter.css`, `sw.js`,
-`sitemap.xml`, `robots.txt`, root fonts/icons and `404.html` are generated.
-Change `source/`, rebuild, and keep the resulting output diff with its source.
+`index.html`, `data/ch*.js`, `chapter/*/index.html`, `method/index.html`,
+`chapter.css`, `sw.js`, `sitemap.xml`, `robots.txt`, root fonts/icons and
+`404.html` are generated. Change `source/`, rebuild, and keep the resulting
+output diff with its source. The provenance page's source is
+`source/method.html`; its numbers and quotations are checked against the data
+by `check_site_health.py`, so it cannot drift.
 
 The app is an inline shell plus 18 chapter payloads. The service worker
 precaches it for offline use. Static chapter pages are the crawler-facing full
@@ -100,7 +106,10 @@ desktop and 390 px, light/dark, and every affected language.
 
 - `README.md`: user-facing features, build and publishing.
 - `HANDOFF.md`: *lean* current status (last 3 months) + roadmap only — <100KB. Older detailed evidence lives in `docs/archive/HANDOFF-*.md` yearly slices.
-- `PROJECT.md`: rationale, editorial decisions, mistakes and history — keep <200KB, archive yearly if needed.
+- `PROJECT.md`: rationale, editorial decisions, mistakes and history — keep <200KB.
+  When it nears the ceiling, slice the batch notes to `docs/archive/` and leave
+  the current month plus §1–§10; the October 2026 batches are already in
+  `docs/archive/PROJECT-2026-10.md`, and `docs/archive/README.md` states the policy.
 - `STUDY_MAPS.md`: approved thematic map.
 
 At session start: check Git state/recent commits, run the full build, then read
@@ -109,4 +118,3 @@ only archive sections relevant to the task. Update this file only when a
 when status/roadmap actually changes; don't append detailed per-fix logs —
 archive them to `docs/archive/` instead. If work is done, don't append —
 archive.
-routine build reports across files.

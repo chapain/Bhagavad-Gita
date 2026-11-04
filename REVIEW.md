@@ -37,7 +37,7 @@ What follows is categorical. Each section ends with **Strengths → Gaps → Sug
 - ⚠️ **Gaps:** the subtitle “an Interactive Study” is accurate but modest as a discoverability hook — the long-tail SEO title *is* correct (`Bhagavad Gita — English, Nepali, Hindi · 700 Verses`), but the JSON-LD `WebApplication` + `EducationalApplication` slightly understates the scholarly weight; a `Book`/`LearningResource` companion object could be added without contradicting the current type.
 - 💡 **Suggestions:**
   1. Keep the parked-audio decision; when you revisit, decide *license/recording* before code (owner concern is valid).
-  2. Consider one editorial companion page (e.g., `about.html` or `method.html`) describing the Śaṅkara-bhāṣya recension choice and translation method — strengthens credibility for search and for first-time visitors; no app code change needed.
+  2. ~~Consider one editorial companion page (`method.html`)~~ — **shipped 2026-11-04** as a static, JS-free `method/` page (recension, both translation registers, word splits, what the build checks, provenance, privacy), linked from the footer and all 18 chapter pages, precached for offline, with every number on it recomputed from the data by the build.
 
 ---
 
@@ -104,14 +104,16 @@ Totals: 18 ch, 700 verses, 169 themes, 700 parts — all green
 
 ## 5. Frontend Architecture — Ordered Modules
 
-**7 CSS + 10 JS ordered modules, concatenated and inlined. No bundler, no extra request.**
+**7 CSS + 13 JS ordered modules, concatenated and inlined. No bundler, no extra request.**
 
 | Order | File | Owns (mutable state in bold) |
 |---|---|---|
 | CSS | `00-foundation` → `60-responsive` | tokens → play → learn → favorites → data → welcome → reader → responsive |
 | JS | `00-core` | `App.session.update()`, `GITA_SESSION_KEY`, `state`, `GITA_CH`, `UI`, i18n helpers |
-| | `10-library` | **VERSES, SRCH_HITS, FAV/FAVNOTE**, search, favourites, theme toggle |
-| | `20-learn` + `25-learn-session` | **LR progress, LR_RANDOM_STATE** |
+| | `10-library` | **VERSES, FAV/FAVNOTE**, chapter/verse index, favourites, theme toggle |
+| | `12-search` | **SRCH_HITS/SRCH_NOTE**, search screen and results |
+| | `15-suggest` | **SUG_ROWS/SUG_CUR**, suggestion combobox |
+| | `20-learn` + `25-learn-session` + `27-learn-free` | **LR progress, LR_RANDOM_STATE, FP** |
 | | `30-play` | **PL scope/mode/run/q** |
 | | `35-drills` | **LQ queue, LQpick** |
 | | `40-views` | route rendering, crumbs, welcome |
@@ -234,7 +236,7 @@ Totals: 18 ch, 700 verses, 169 themes, 700 parts — all green
   - Drill quality high: duplicate-option guard (0.7% → 0), answer-leak guard (2.4% → 0), whole-verse options (not pādas — owner call correct, and full verses are unique book-wide, verified over 5,000 draws), single-verse themes skip ordering correctly.
   - `lrShuffle` with `lrWithSeed(seed, fn)` + `LR_RANDOM_STATE` for deterministic restoration after refresh.
   - Learn cards now use one card scale (12 px hairline, 2 px brand edge only for state — not decorative) — owner: “not gaudy, Apple style.”
-- ⚠️ **Gaps:** None significant. The learn-path stage logic (`learn_all_done`, `learn_next_theme`, free-practice) is the most stateful code in the app — browser checks cover it (20 Learn/Play checks), but a future refactor should keep `20-learn.js` + `25-learn-session.js` + `35-drills.js` as the clear triad they already are.
+- ⚠️ **Gaps:** None significant. The learn-path stage logic (`learn_all_done`, `learn_next_theme`, free-practice) is the most stateful code in the app — browser checks cover it (20 Learn/Play checks), but a future refactor should keep `20-learn.js` + `25-learn-session.js` + `27-learn-free.js` + `35-drills.js` as the clear chain they already are.
 - 💡 **Suggestions:** Keep Learn and Play visually distinct — Learn is the path with gating/progress, Play is the shuffle with streak. The current `lrn` column + `pl-scope`/`pl-modes` styling does this well.
 
 ---
@@ -390,13 +392,13 @@ Browser (270)    rendering, i18n, numerals, search, favs, Learn/Play, refresh, s
 ### Next — High value, low risk
 
 1. **Add a `skip-to-content` link** (a11y, one line, zero visual cost).
-2. **Schedule a quarterly 700-title read-through** — machine checks keep consistency, only reading keeps prose honest.
+2. **Schedule a quarterly 700-title read-through** — machine checks keep consistency, only reading keeps prose honest. Starting list exists since 2026-11-04: `python3 source/audit_titles.py --markdown` (snapshot: `docs/title-review.md`) triages the 50 advisories so the read starts from the three that need it.
 3. **Archive `PROJECT.md` when it crosses 200 KB** (same yearly-slice policy as HANDOFF).
 4. **Watch shell size** — if it crosses 350 KB, lazy-load `45-data.js` on `#data` only.
 
 ### Next — Medium value
 
-5. **One editorial companion page** (`method.html` — recension, translation method, word-split approach) — strengthens SEO and trust, no app change.
+5. ~~One editorial companion page (recension, translation method, word-split approach)~~ — **done 2026-11-04**: `method/index.html`, static and self-contained, in all three languages, sitemap + precache + footer/chapter links; 46 site-health checks keep its claims tied to the data.
 6. **Hreflang** is intentionally absent (one URL, in-page switching) — correct. If you ever add `chapter/<n>/?lang=ne` deep links, revisit.
 7. **Audio** — parked correctly. When ready, decide recording/license first, then code.
 

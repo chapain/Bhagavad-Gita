@@ -279,6 +279,8 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   const sl = $('#skipLink'); if(sl) sl.textContent = L('skip_to_content');
   $('#tagVerses').textContent = L('tag_sub'); $('#appFooter').textContent = L('footer');
   const footData = $('#footDataLink'); if(footData) footData.textContent = L('data_title') + ' · ' + L('data_export') + ' / ' + L('data_import');
+  /* The method page is static, so only its label is ours to translate. */
+  const footMethod = $('#footMethodLink'); if(footMethod) footMethod.textContent = L('method_link');
   $('#clearBtn').setAttribute('aria-label', L('clear'));
   $('#randLbl').textContent = L('random'); $('#favLbl').textContent = L('favorites');
   $('#homeLbl').textContent = L('home');

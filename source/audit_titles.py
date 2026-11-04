@@ -21,6 +21,10 @@ Every check here is mechanical and evidence-based — it reads the Sanskrit and
 the literal translation and flags a contradiction. It reports; it never edits.
 A finding is a candidate for human review, not proof of error: Sanskrit drops
 pronouns freely and a title may legitimately summarise rather than restate.
+
+    python3 audit_titles.py            # the report build.py prints
+    python3 audit_titles.py --markdown # a review worksheet, triaged by evidence
+                                       # (snapshot kept in docs/title-review.md)
 """
 import io
 import json
@@ -307,8 +311,109 @@ STRICT = ("possessive-inverted", "adjacent-duplicate",
           "desc-cites-other-verse", "missing-language")
 
 
+# ------------------------------------------------------------ worksheet ----
+# `--markdown` prints the advisories as a review worksheet instead of a report.
+# It exists because "50 advisories" is not a task anyone starts: the list has to
+# be triaged first, and the triage is mechanical. Two facts decide most items:
+#
+#   * the verse is spoken in the FIRST PERSON, so a summary that names the
+#     speaker (Kṛṣṇa for most of the book, Duryodhana in 1.1–1.11) is correct
+#     even though the IAST never contains that name — Sanskrit drops pronouns;
+#   * a "number" title ("The three qualities") summarises an enumeration, and
+#     the verse names the three things without saying the word "three".
+#
+# Neither fact makes a finding wrong; it only says which items a human can skim
+# and which need a careful read. The worksheet never edits anything.
+
+FIRST_PERSON = re.compile(r"\b(I|I'm|I'll|my|mine|me|we|our|ours|us)\b")
+# A vocative in the literal ("O Bhārata", "O Dhanañjaya") means the verse is
+# being spoken TO someone — and in this poem that speaker is Kṛṣṇa, who is the
+# person most often named in a summary that the IAST never names.
+VOCATIVE = re.compile(r"\bO\s+[A-ZĀĪŪṚṢṬḌṆṄÑŚ]")
+
+
+def _worksheet(findings, chapters):
+    lit = {}          # "2.47" -> English literal
+    theme_vs = {}     # "2.t3" -> [verse refs]
+    for ch in chapters:
+        for ti, th in enumerate(ch["themes"], 1):
+            vs = [s for p in th["parts"] for s in p["sutras"]]
+            for v in vs:
+                lit[v["n"]] = v["lits"]["en"]
+            theme_vs["%d.t%d" % (ch["num"], ti)] = [v["n"] for v in vs]
+
+    def refs_of(ref):
+        if ref in lit:
+            return [ref]
+        return theme_vs.get(ref, [])
+
+    def triage(x):
+        """(label, the verses' own words) — evidence, never a verdict."""
+        rs = refs_of(x["ref"])
+        text = " ".join(lit.get(r, "") for r in rs)
+        if x["kind"] == "number-unsupported":
+            return ("the verse lists the things but never says the number", text)
+        if FIRST_PERSON.search(text):
+            return ("first person: the verse is spoken by this person", text)
+        if VOCATIVE.search(text):
+            return ("the verse addresses its listener (“O …”): the named speaker is the one talking", text)
+        if x["ref"].count(".t"):
+            return ("theme summary across %d verses: check the scene" % len(rs), text)
+        return ("no first person in the verse: read by hand", text)
+
+    buckets = {}
+    for x in findings:
+        label, text = triage(x)
+        buckets.setdefault((x["kind"], label), []).append((x, text))
+
+    out = []
+    import datetime
+    out.append("# Title and description advisories — review worksheet\n")
+    out.append("Snapshot of %s, from `python3 source/audit_titles.py --markdown`. Re-run it after"
+               % datetime.date.today().isoformat())
+    out.append("any change to `source/ch*.json`; this file is a worklist, not site content.\n")
+    out.append("**An advisory is a candidate for review, not a finding of error.** Sanskrit")
+    out.append("drops pronouns freely and a title may legitimately summarise rather than")
+    out.append("restate. The one class that *fails* the build is possessive inversion")
+    out.append("(the 1.10 defect: “Their force is shielded by Bhīṣma” when the Sanskrit says")
+    out.append("*ours* is) — that is blocking, and it is not in this list.\n")
+    out.append("Each item shows what the verse actually says, so the decision can be made")
+    out.append("without opening the app. Triage labels are mechanical:\n")
+    out.append("* **first person** — the verse is spoken by that person, so naming the")
+    out.append("  speaker in a summary is correct (Kṛṣṇa speaks in the first person for most")
+    out.append("  of the book; Duryodhana in 1.1–1.11). Skim these.\n")
+    out.append("* **lists the things, never the number** — “The three qualities” for sattva,")
+    out.append("  rajas and tamas. Count the items in the verse; the title is usually right.\n")
+    out.append("* **theme summary / read by hand** — the ones worth real attention.\n")
+    out.append("---\n")
+
+    for (kind, label) in sorted(buckets, key=lambda k: (k[0], -len(buckets[k]))):
+        items = buckets[(kind, label)]
+        out.append("## %s — %s (%d)\n" % (kind, label, len(items)))
+        for x, text in items:
+            rs = refs_of(x["ref"])
+            out.append("### %s · %s" % (x["ref"], x["detail"]))
+            if rs:
+                out.append("Verses %s–%s" % (rs[0], rs[-1]) if len(rs) > 1 else "Verse %s" % rs[0])
+            out.append("")
+            out.append("> %s" % x["title"])
+            out.append("")
+            if text:
+                shown = text if len(text) < 460 else text[:457].rsplit(" ", 1)[0] + " …"
+                out.append("*the verse says:* %s" % shown)
+                out.append("")
+            out.append("☐ keep   ☐ revise   ☐ fix")
+            out.append("")
+        out.append("")
+    return "\n".join(out)
+
+
 if __name__ == "__main__":
     f = audit()
+    if "--markdown" in sys.argv:
+        print(_worksheet(f, load()))
+        hard = [x for x in f if x["kind"] in STRICT]
+        sys.exit(1 if hard else 0)
     by = {}
     for x in f:
         by.setdefault(x["kind"], []).append(x)

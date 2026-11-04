@@ -320,9 +320,11 @@ APP_CSS_FILES = (
     "60-responsive.css",
 )
 APP_JS_FILES = (
-    "00-core.js", "10-library.js", "15-suggest.js", "20-learn.js",
-    "25-learn-session.js", "30-play.js", "35-drills.js", "40-views.js",
-    "45-data.js", "50-reader.js", "60-runtime.js",
+    "00-core.js", "10-library.js", "12-search.js", "15-suggest.js",
+    "20-learn.js", "25-learn-session.js", "27-learn-free.js", "30-play.js",
+    "35-drills.js", "40-views.js", "45-data.js", "48-reader-view.js",
+    "50-reader.js",
+    "60-runtime.js",
 )
 APP_CSS = _read_templates("css", APP_CSS_FILES)
 APP_JS = _read_templates("js", APP_JS_FILES)
@@ -608,6 +610,20 @@ summary{ cursor:pointer; color:var(--saffron-text); font-weight:600; font-size:.
            font-style:italic; font-size:.85rem; line-height:1.6; }
 """
 
+# ---------------- method/ — how this edition was made (2026-11-04) ----------
+# Provenance, recension, translation method and the pāda/word-split rules, in the
+# three languages of the edition. It is a STATIC page, not an app view, on
+# purpose: it must read for a crawler and for a reader with no JavaScript, it
+# costs the shell nothing, and being a directory it ends in "/" like every other
+# sitemap URL (Google fetches a non-slash URL and eats a 301). Everything it
+# claims is checked by method_page_checks() in check_site_health.py against the
+# data and the build — a provenance page that drifts is worse than none.
+METHOD_HTML = _read_template(os.path.join(BASE, "method.html")).replace("%%SITE_BASE%%", SITE_BASE)
+_mp_dir = os.path.join(SITE_DIR, "method")
+os.makedirs(_mp_dir, exist_ok=True)
+with open(os.path.join(_mp_dir, "index.html"), "w", encoding="utf-8") as f:
+    f.write(METHOD_HTML)
+
 # cache version — bump automatically from the content hash of EVERY precached
 # artefact (shell + all data files + chapter.css) so any change invalidates the
 # old service-worker cache. chapter.css is in the hash because it is in ASSETS:
@@ -625,7 +641,7 @@ for _fn in ("noto-deva-regular.woff2", "noto-deva-bold.woff2"):
         with open(_fp, "rb") as _fh:
             _font_bytes += _fh.read()
 CACHE_VER = hashlib.sha256(
-    (out + "".join(data_js) + CHAPTER_CSS).encode("utf-8") + _font_bytes).hexdigest()[:12]
+    (out + "".join(data_js) + CHAPTER_CSS + METHOD_HTML).encode("utf-8") + _font_bytes).hexdigest()[:12]
 
 manifest = {
     "name": "Bhagavad Gita — an Interactive Study",
@@ -664,11 +680,15 @@ const CACHE = 'gita-%%VER%%';
    font are always there. The font is a real file rather than a data: URI, so
    it is fetched once and shared by all 18 pages — but that also means it is a
    network request, which offline would fail without this line. */
+/* './method/' is precached for the same reason as chapter.css: it is the one
+   static page the app links to, it is small, and "works offline" is a promise
+   made on the welcome screen. The navigation handler serves it back by exact
+   URL — see below. */
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
                 './icons/apple-touch-icon.png', './favicon.ico', './chapter.css',
                 './noto-deva-regular.woff2', './noto-deva-bold.woff2',
-                %%DATAASSETS%%];
+                './method/', %%DATAASSETS%%];
 
 self.addEventListener('install', e => {
   /* addAll() is atomic — if even one optional asset 404s nothing is cached,
@@ -703,13 +723,18 @@ self.addEventListener('fetch', e => {
   if (req.mode === 'navigate') {
     // Cache successful chapter navigations under their own URL, never as the
     // app shell. An unvisited chapter must not silently become the app offline.
+    // The same rule covers any other page in scope — the method page is
+    // precached, and a page the reader visited is kept under its own address —
+    // but only an EXACT url match is ever served back: offline never hands over
+    // a different page than the one asked for.
     const root = new URL('./', location.href).pathname;
     const isRoot = url.pathname === root || url.pathname === root + 'index.html';
+    const inScope = url.pathname.startsWith(root);
     const chapterPath = url.pathname.slice(root.length);
-    const isChapter = url.pathname.startsWith(root) &&
+    const isChapter = inScope &&
       /^chapter\\/(?:[1-9]|1[0-8])\\/(?:index\\.html)?$/.test(chapterPath);
     e.respondWith(fetch(req).then(res => {
-      if (res.ok && res.type === 'basic' && (isRoot || isChapter)) {
+      if (res.ok && res.type === 'basic' && (isRoot || inScope)) {
         const copy = res.clone();
         return caches.open(CACHE).then(c => c.put(isRoot ? './index.html' : req, copy))
           .catch(() => undefined).then(() => res);
@@ -717,7 +742,7 @@ self.addEventListener('fetch', e => {
       return res;
     }).catch(() => caches.open(CACHE).then(c =>
       isRoot ? c.match('./index.html').then(r => r || c.match('./')) :
-      isChapter ? c.match(req) : undefined
+      c.match(req)
     ).then(r => r || new Response(
       '<!doctype html><meta charset="utf-8"><title>Offline</title>' +
       '<p>You are offline and this page is not cached yet. Reconnect and reload.</p>',
@@ -883,7 +908,8 @@ for _ch in data:
 <footer>
   <a href="../../">← Bhagavad Gita — an Interactive Study</a><br>
   Sanskrit text: public domain · Translations © 2026 Dhruba Chapain<br>
-  Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.
+  Created by <b>Dhruba Chapain</b>, Pokhara, Nepal ·
+  <a href="../../method/">How this edition was made</a>
 </footer>
 <script>
 /* Shared verse links land inside two collapsed disclosures: the theme, and
@@ -1033,6 +1059,9 @@ _urls = [f'  <url>\n    <loc>{SITE_BASE}/</loc>\n    <lastmod>{_lastmod("index.h
 for _ch in data:
     _rel = f'chapter/{_ch["num"]}/index.html'
     _urls.append(f'  <url>\n    <loc>{SITE_BASE}/chapter/{_ch["num"]}/</loc>\n    <lastmod>{_lastmod(_rel)}</lastmod>\n    <priority>0.8</priority>\n  </url>')
+_urls.append(f'  <url>\n    <loc>{SITE_BASE}/method/</loc>\n    '
+             f'<lastmod>{_lastmod("method/index.html")}</lastmod>\n    '
+             f'<priority>0.6</priority>\n  </url>')
 SITEMAP = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
            + "\n".join(_urls) + '\n'

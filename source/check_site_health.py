@@ -386,6 +386,30 @@ ok('<a href="#view" class="skip-link" id="skipLink">' in idx and ".skip-link{" i
 # 375,000 keeps a real 12.5KB reserve. Still no module split: the measured
 # candidates are below, and the browser suite that would have to be re-locked
 # for a lazy-load cannot run in this sandbox.
+# 2026-11-04 (fifth batch): no feature asked for this room — the 700-line module
+# guard was the thing about to break first. 10-library.js stood at 677 lines and
+# 20-learn.js at 686, so a 5KB feature would have breached the guard long before
+# it brushed this cap. The search screen moved whole into 12-search.js (10-library
+# 677 → 477 lines) and free practice into 27-learn-free.js (20-learn 686 → 589).
+# The shipped script is the same script apart from two header comments and two
+# accessors — versesMatching() in the index owner (the search screen no longer
+# reaches into VERSES) and srchAnnounced() (Library's screen-reader announcement
+# asks for the count instead of holding a copy). Shell 363,141 → 364,612
+# characters; still one inline script, fetched once, precached by the same name.
+# Cap UNCHANGED at 375,000 — 10,388 characters of room, and module headroom now
+# 223 (library) / 111 (learn) / 96 (reader, the next tightest) lines.
+# 2026-11-04 (eighth batch): the reader got the same treatment, again without a
+# feature asking. 50-reader.js was 604 lines — 96 from the guard, and every later
+# reader change would have paid that debt. The presentation half moved to
+# 48-reader-view.js (188 lines): pāda rendering, fitWholeVerse, setVerseView and
+# the expansion toggle, reader text size, the ⋯ menu, the meaning switches, and
+# verseViewState, which all of them read. The sheet itself stayed in
+# 50-reader.js (426): open/close, fillModal and its note field, history,
+# sharing, navSutra. No reordering, no accessor needed — the moved functions
+# were already globals and the new file loads before its old home.
+# Shell 365,000 → 365,393 characters (the difference is the new header comment),
+# cap still 375,000; module headroom 223 (library) / 111 (learn) / 274 (reader),
+# so 20-learn.js at 589 lines is now the next tightest.
 ok(len(idx) < 375000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
@@ -604,6 +628,140 @@ _missing = sorted(n for n in _cited if not os.path.isfile(os.path.join(ROOT, "so
 ok(not _missing, f"code cites source scripts that do not exist: {_missing}")
 ok(bool(_cited), "the citation scan actually found citations to check (sanity)")
 
+
+# ------------------------------------------------ method/ — the provenance page
+# A provenance page states numbers and quotations about THIS edition, so every
+# one of them is recomputed from source/ch*.json here. If a verse is re-split, a
+# gloss removed or a sixth irregular verse appears, this goes red instead of the
+# page quietly lying about how the edition was made. The page is static, has no
+# <script>, and is precached: a reader who is offline can still read why the text
+# looks the way it does.
+import json as _json
+
+_meth = read("method", "index.html")
+ok(bool(_meth), "method/index.html must be published (the provenance page)")
+ok('<link rel="canonical" href="%s/method/">' % SITE_BASE in _meth,
+   "method/index.html must declare its canonical URL")
+ok("<title>" in _meth and 'name="description"' in _meth,
+   "method/index.html must have a title and a description")
+ok('name="robots" content="noindex"' not in _meth,
+   "the provenance page is for readers and crawlers, not a noindex dead end")
+ok("<style>" in _meth and 'rel="stylesheet"' not in _meth,
+   "method/index.html must be self-contained: it reads even if chapter.css fails")
+ok("<script" not in _meth,
+   "method/index.html must read with JavaScript off — that is the whole point of it")
+
+def _lang_block(page, lang, nxt):
+    a = page.index('<section lang="%s"' % lang)
+    b = page.index('<section lang="%s"' % nxt) if nxt else page.index("</main>")
+    return page[a:b]
+
+_blocks = {"en": _lang_block(_meth, "en", "ne"),
+           "ne": _lang_block(_meth, "ne", "hi"),
+           "hi": _lang_block(_meth, "hi", None)}
+LATIN_IN_PROSE = re.compile(r"[A-Za-z\u00c0-\u024f\u1e00-\u1eff]")
+for _lang, _blk in _blocks.items():
+    _text = re.sub(r"<[^>]+>", " ", _blk)
+    ok(bool(_text.strip()), f"method page: the {_lang} section must not be empty")
+    if _lang in ("ne", "hi"):
+        _hit = LATIN_IN_PROSE.search(_text)
+        ok(_hit is None,
+           f"method page: the {_lang} section must carry no Latin letters (found {(_hit.group(0) if _hit else '')})")
+
+# --- the numbers, recomputed from the canonical data -------------------------
+_verses = []
+for _n in range(1, 19):
+    try:
+        _ch = _json.loads(read("source", f"ch{_n}.json"))
+    except ValueError:
+        ok(False, f"source/ch{_n}.json must parse (method page numbers depend on it)")
+        continue
+    for _t in _ch["themes"]:
+        for _part in _t["parts"]:
+            for _v in _part["sutras"]:
+                _verses.append(_v)
+
+_padas = 0
+_glosses = 0
+_anustubh = _trishtubh = _irregular = 0
+for _v in _verses:
+    _pads = [x for x in _v["flow"] if x["k"] == "p"]
+    _padas += len(_pads)
+    for _x in _v["flow"]:
+        _glosses += len(_x.get("words") or [])
+    _total = sum(_x["n"] for _x in _pads)
+    if _total == 32:
+        _anustubh += 1
+    elif _total == 44:
+        _trishtubh += 1
+    else:
+        _irregular += 1
+_ch13 = len([1 for _v in _verses if _v["n"].startswith("13.")])
+
+ok(len(_verses) == 700, f"method page numbers assume 700 verses (data has {len(_verses)})")
+
+def _deva(s):
+    return str(s).translate(str.maketrans("0123456789", "\u0966\u0967\u0968\u0969\u096a\u096b\u096c\u096d\u096e\u096f"))
+
+_facts = [
+    ("verses", len(_verses), "700"),
+    ("pādas", _padas, "{:,}"),
+    ("word glosses", _glosses, "{:,}"),
+    ("anuṣṭubh verses", _anustubh, "{:,}"),
+    ("triṣṭubh verses", _trishtubh, "{:,}"),
+    ("irregular verses", _irregular, "{:,}"),
+]
+for _what, _value, _fmt in _facts:
+    _en_form = _fmt.format(_value)
+    _deva_form = _deva(_en_form)
+    ok(_en_form in _blocks["en"],
+       f"method page (en) must state {_what} as {_en_form} — the data now says {_en_form}")
+    ok(_deva_form in _blocks["ne"],
+       f"method page (ne) must state {_what} as {_deva_form}")
+    ok(_deva_form in _blocks["hi"],
+       f"method page (hi) must state {_what} as {_deva_form}")
+
+# --- the recension and the quotations, tied to the verses they cite ----------
+ok("\u015aa\u1e45kara" in _blocks["en"], "method page (en) must name the Śaṅkara-bhāṣya recension")
+ok("\u0936\u093e\u0919\u094d\u0915\u0930\u092d\u093e\u0937\u094d\u092f" in _blocks["ne"],
+   "method page (ne) must name the Śaṅkara-bhāṣya recension")
+ok("\u0936\u093e\u0919\u094d\u0915\u0930\u092d\u093e\u0937\u094d\u092f" in _blocks["hi"],
+   "method page (hi) must name the Śaṅkara-bhāṣya recension")
+_1_8 = "\u0938\u094c\u092e\u0926\u0924\u094d\u0924\u093f\u0938\u094d\u0924\u0925\u0948\u0935 \u091a"   # saumadattis tathaiva ca
+_4_33_pada = "\u092f\u091c\u094d\u091e\u093e\u091c\u094d"                                                    # ...yajñāj
+_4_33_word = "\u092f\u091c\u094d\u091e\u093e\u0924\u094d"                                                    # yajñāt
+_avagr_a = "\u092d\u093e\u0935\u094b\u093d\u0928\u094d\u092f\u094b"   # bhaavo'nyo - U+093D avagraha, as the data has it
+_avagr_b = "\u093d\u0935\u094d\u092f\u0915\u094d\u0924\u094b"         # 'vyakto - the lost vowel sits at the START of this pada
+_by_ref = {_v["n"]: _v for _v in _verses}
+ok(_1_8 in _by_ref.get("1.08", {}).get("d", ""),
+   "method page quotes 1.8 as saumadattis tathaiva ca — and 1.8 in the data must say it")
+ok(_1_8 in _blocks["en"] and _1_8 in _blocks["ne"] and _1_8 in _blocks["hi"],
+   "method page must quote the 1.8 reading in all three languages")
+_p433 = [x for x in _by_ref.get("4.33", {}).get("flow", []) if x["k"] == "p"]
+_433_words = [w[0] for x in _p433 for w in (x.get("words") or [])]
+ok(_p433 and _p433[0]["d"].rstrip().endswith(_4_33_pada),
+   "the 4.33 example must still be true: its first pāda ends as printed")
+ok(_4_33_word in _433_words,
+   "the 4.33 example must still be true: its word row carries the pre-sandhi form")
+ok(_4_33_pada in _blocks["en"] and _4_33_word in _blocks["en"],
+   "method page (en) must show the 4.33 printed form beside its word form")
+_p820 = [x["d"] for x in _by_ref.get("8.20", {}).get("flow", []) if x["k"] == "p"]
+ok(any(_avagr_a in x for x in _p820) and any(x.strip().startswith(_avagr_b) for x in _p820),
+   "the 8.20 avagraha example must still be true in the data")
+ok(_avagr_a in _blocks["en"] and _avagr_b in _blocks["en"],
+   "method page (en) must quote the 8.20 avagraha across the pāda break")
+
+# --- it must be reachable: footer, chapter pages, precache, sitemap ----------
+ok('href="method/"' in read("index.html") and 'id="footMethodLink"' in read("index.html"),
+   "the app footer must link to method/ (how this edition was made)")
+ok("L('method_link')" in read("index.html"),
+   "the footer link's label must come from the UI strings, not a hard-coded English word")
+ok('href="../../method/"' in read("chapter", "1", "index.html"),
+   "chapter pages must link to the method page (they are the crawl surface)")
+ok("'./method/'" in read("sw.js"),
+   "sw.js must precache './method/' or the page is a 504 the first time it is opened offline")
+ok("%s/method/" % SITE_BASE in read("sitemap.xml"),
+   "sitemap.xml must list the method page (it is for readers, not just crawlers)")
 
 print(f"site-health checks: {checks}")
 print(f"failures:           {len(errors)}")
