@@ -96,6 +96,27 @@ test('13.27 retains its short-a IAST search spelling', () => {
   assert(!searchMatches(text, wrong), 'the long-a spelling must not match precise IAST search');
 });
 
+test('a marked query that misses gets one folded second chance (C3)', () => {
+  const alt = searchContext.searchFoldAlternative;
+  assert.equal(typeof alt, 'function',
+               'the built app must emit searchFoldAlternative()');
+  const rescue = alt('sankhyā');
+  assert(rescue && rescue.folded === 'sankhya',
+         'a marked query folds to its plain reading');
+  assert.equal(alt('sankhya'), null,
+               'a query that is already plain is not folded again');
+  // The rescue has to be a real one: zero exact hits, hits once folded.
+  const exactHits = query => verses.filter(v => searchMatches(v.t, query)).length;
+  const foldedHits = query => {
+    const folded = foldedKey(query);
+    return verses.filter(v => foldedKey(v.t).includes(folded)).length;
+  };
+  for (const q of ['sankhyā', 'arjunā', 'karmanyā']) {
+    assert.equal(exactHits(q), 0, `${q} must miss the exact pass`);
+    assert(foldedHits(q) > 0, `${q} must find verses once folded`);
+  }
+});
+
 test('result count labels use singular/plural wording in all three languages', () => {
   const start = html.indexOf('function resultCountLabel(');
   const end = html.indexOf('\nfunction announceView', start);
@@ -121,6 +142,65 @@ test('result count labels use singular/plural wording in all three languages', (
   }
 });
 
+test('C2 suggestions rank recent, then chapters, then verse numbers', () => {
+  /* Execute the emitted builders, not a reimplementation. The listbox itself is
+     DOM; what it shows is pure data, so that is what is locked here. */
+  /* The builders live in their own module (15-suggest.js) so 10-library.js
+     stays under the 700-line monolith guard. They are read from the emitted
+     shell, not from a reimplementation. */
+  const st = html.indexOf('function sugVerseNumbers(');
+  const en = html.indexOf('function sugClose(', st);
+  assert(st >= 0 && en > st, 'the suggestion builders must be emitted');
+
+  const index = [];
+  data.forEach((ch, ci) => ch.themes.forEach((t, ti) =>
+    t.parts.forEach(p => p.sutras.forEach(s =>
+      index.push({ id: s.n, norm: displayRef(s.n), ci, ti })))));
+
+  const strings = { search_recent: 'Recent', chapters: 'Chapters', verse: 'Verse', verses: 'verses' };
+  let recents = [];
+  const ctx = vm.createContext({
+    DATA: data,
+    versesForChapter: ci => index.filter(v => v.ci === ci),
+    recentLoad: () => recents,
+    L: k => strings[k], T: o => (o && (o.en || o)) || '',
+    numL: n => String(n), fmtNL: n => String(n), esc: x => String(x),
+    searchFoldKey: foldedKey, searchExactKey: exactKey,
+    digitNorm: q => String(q).replace(/[\u0966-\u096f]/g,
+                  d => '0123456789'['\u0966\u0967\u0968\u0969\u096a\u096b\u096c\u096d\u096e\u096f'.indexOf(d)]),
+  });
+  vm.runInContext(html.slice(st, en) + '; SUG_MAX = 10;', ctx);
+  const rows = q => JSON.parse(JSON.stringify(ctx.sugRowsFor(q)));
+
+  assert.deepEqual(rows('d'), [], 'one character offers nothing');
+  assert.deepEqual(rows('   '), [], 'whitespace offers nothing');
+  assert.deepEqual(rows('zzzzqqq'), [], 'a word the book lacks offers nothing');
+
+  // Verse numbers: a prefix, a whole verse, and Devanagari digits.
+  const pre = rows('2.4').filter(r => r.kind === 'verse');
+  assert(pre.length === 2, 'a verse prefix offers at most two numbers');
+  assert(pre.every(r => /^2\.4/.test(r.value)), 'prefix suggestions match the digits typed');
+  assert.deepEqual(rows('2.47').filter(r => r.kind === 'verse').map(r => r.value), ['2.47']);
+  assert.deepEqual(rows('\u0968.\u096a').filter(r => r.kind === 'verse').map(r => r.value.slice(0, 3)),
+                 ['2.4', '2.4'], 'Devanagari digits suggest the same verses');
+  assert.deepEqual(rows('19.1'), [], 'a chapter the book does not have offers nothing');
+
+  // Chapter titles by name, carrying the chapter number as the action value.
+  const ch = rows('sankh').filter(r => r.kind === 'chapter');
+  assert.equal(ch.length, 1, 'Sankhya finds exactly one chapter');
+  assert.equal(ch[0].value, '2', 'the chapter row carries its number, not its title');
+  assert(ch[0].hint.startsWith('Chapters'), 'the row says what kind of thing it is');
+
+  // Recents lead, are capped at five, and the whole list stops at ten.
+  recents = ['karma', 'dharma', 'atman', 'yoga', 'brahman', 'moksha', 'sankhya'];
+  const mixed = rows('sankh');
+  assert.equal(mixed.filter(r => r.kind === 'recent').length, 5, 'recents cap at five');
+  assert(mixed.length <= 10, 'the listbox never exceeds ten rows');
+  assert(mixed[0].kind === 'recent', 'a remembered search is offered before a chapter');
+  assert(!mixed.some(r => r.kind === 'recent' && r.value.toLowerCase() === 'sankh'),
+         'the query itself is not offered back as a recent');
+});
+
 test('search and favorites render counts through the grammar helper', () => {
   const searchStart = html.indexOf('function doSearch(){');
   const searchEnd = html.indexOf('\nfunction clearSearch(){', searchStart);
@@ -134,8 +214,15 @@ test('search and favorites render counts through the grammar helper', () => {
   // The headline count is the whole page: verses plus the chapter/theme passages
   // that share it. Counting only hits would say "0 results" above a theme card.
   assert(searchCode.includes('resultCountLabel(total)'), 'search count covers every result group');
-  assert(searchCode.includes('const total = hits.length + passages.length'),
+  assert(/total = hits\.length \+ passages\.length/.test(searchCode),
          'the total adds passage hits to verse hits');
+  // C3 reclaims the same total after a rescue, so it is recomputed, not frozen.
+  assert(searchCode.includes('searchFoldAlternative(q)'),
+         'doSearch() asks for a folded second chance');
+  assert(/if\(total === 0\)\{[\s\S]*?searchFoldAlternative\(q\)/.test(searchCode),
+         'the second chance is only taken when the exact pass found nothing');
+  assert(searchCode.includes("SRCH_NOTE = L('search_meant')"),
+         'the reader is told when the query was relaxed');
   assert(favoritesCode.includes('resultCountLabel(saved.length)'), 'favorite count uses the helper');
   assert(searchCode.includes('searchTextMatches('), 'doSearch() uses the tested search matcher');
   assert.match(html, /VERSE_FOLDED_TEXT\.push\(searchFoldKey\(s\.t\)\)/,

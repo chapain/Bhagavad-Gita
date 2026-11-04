@@ -153,4 +153,73 @@ if(mergedStreak.length !== 2 || !mergedStreak.includes("2026-10-18") || !mergedS
 }
 console.log('PASS: SRS merge (max box + earliest due tie-break) and streak union');
 
+
+
+// ---------- A5: the backup line on the Learn path ----------
+{
+  const start = html.indexOf('function dataBackupLine(');
+  const end = html.indexOf('function dataBackupBadgeHtml(', start);
+  if(start < 0 || end <= start){ console.error('FAIL: dataBackupLine() must be emitted'); process.exit(1); }
+  const src = html.slice(start, end);
+
+  // Fixed clock so "yesterday" is a fact, not whatever day CI runs on.
+  const NOW = new Date(2026, 10, 4, 15, 30, 0);          // 4 Nov 2026, local
+  const iso = d => d.toISOString().slice(0, 10);
+  function run(backupAt, snapshot){
+    const store = {};
+    if(backupAt) store.gitaBackupAt = backupAt;
+    const ctx = require('vm').createContext({
+      localStorage: { getItem: k => (k in store ? store[k] : null),
+                      setItem: (k, v) => { store[k] = v; },
+                      removeItem: k => { delete store[k]; } },
+      dataLastBackup(){ return store.gitaBackupAt || ''; },
+      dataCurrentSnapshot(){ return snapshot; },
+      dataStats: null, L: null, numL: n => String(n),
+      Date: class extends Date { constructor(...a){ super(...(a.length ? a : [NOW.getTime()])); }
+                                 static now(){ return NOW.getTime(); } },
+    });
+    ctx.dataStats = require('vm').runInContext(
+      'function dataStats(snap){' +
+      '  const favs=snap.favs||[],notes=snap.favNotes||{},learn=snap.learn||{};' +
+      '  let held=0,chapters=0;' +
+      '  for(const ch in learn){ if(!/^\\d{1,2}$/.test(ch)) continue; chapters++; }' +
+      '  return {favs:favs.length,notes:Object.keys(notes).length,chapters:chapters,held:held}; }' +
+      '; dataStats', ctx);
+    const strings = {
+      backup_never: 'No backup yet — export one',
+      backup_today: 'Backed up today',
+      backup_yesterday: 'Backed up yesterday',
+      backup_n_days: 'Last backup {n} days ago',
+    };
+    ctx.L = k => strings[k];
+    return require('vm').runInContext(src + '; dataBackupLine', ctx)();
+  }
+
+  const something = { favs: ['2.47'], favNotes: {}, learn: {} };
+  const nothing   = { favs: [], favNotes: {}, learn: {} };
+
+  const cases = [
+    [iso(NOW),        something, 'Backed up today'],
+    [iso(new Date(2026, 10, 3)), something, 'Backed up yesterday'],
+    [iso(new Date(2026, 10, 1)), something, 'Last backup 3 days ago'],
+    [iso(new Date(2026, 10, 4)), nothing,   'Backed up today'],
+  ];
+  for(const [at, snap, want] of cases){
+    const got = run(at, snap);
+    if(got !== want){ console.error('FAIL: backup line', at, '→', JSON.stringify(got), 'want', JSON.stringify(want)); process.exit(1); }
+  }
+  if(run('', nothing) !== ''){ console.error('FAIL: a first visit with nothing saved must stay silent'); process.exit(1); }
+  if(run('', something) !== 'No backup yet — export one'){
+    console.error('FAIL: saved data but no backup must say so'); process.exit(1);
+  }
+  // A future or corrupted stamp must never print a negative age.
+  if(run('2026-12-25', something) !== 'Backed up today'){
+    console.error('FAIL: a future backup date must clamp to today'); process.exit(1);
+  }
+  if(!/class="foot-link lr-backup"/.test(html) || !/App\.data\.show\(\)/.test(html)){
+    console.error('FAIL: the Learn path must link the line to the data screen'); process.exit(1);
+  }
+  console.log('PASS: A5 backup line reads today/yesterday/N days, silent when empty, opens the data screen');
+}
+
 console.log('test_data_backup.js: ALL GREEN');

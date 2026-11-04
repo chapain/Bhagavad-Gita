@@ -61,6 +61,9 @@
 
   .lr-foot{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:16px;
             font-size:.76rem; color:var(--ink-soft);}
+  /* A5: muted, but a real button — it opens the data screen. Text, not a pill,
+     so it reads as a footnote to the progress meter and not as a fourth step. */
+  .lr-backup{ font-size:.76rem; text-decoration:underline; text-underline-offset:2px; }
 
   .lr-thread{ list-style:none; margin:16px 0 0; padding:0;}
   .lr-thread li{ display:flex; gap:13px; padding:12px 13px; border-radius:13px; position:relative;}

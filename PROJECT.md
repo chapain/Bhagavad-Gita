@@ -52,9 +52,116 @@ For a brand-new session: read §1–§10, then this box, then build.
   1, but not from `build.py`; `python3 build.py --prove` now runs it after the
   checks (it edits source files, rebuilds and restores them, so it stays opt-in
   locally and unconditional in CI).
-* **Counts:** 908 assertions, 296 browser checks, 225 UI strings, shell 350,392
-  chars / 372,328 bytes / 100,750 gzip. Both totals keep their drift locks, so a
+* **Two repository guards fired, and both were right.** `tests/test_source_modules.py`
+  refuses any module over 700 lines, and C2 had pushed `10-library.js` to 772;
+  it is now 674, with the suggestion code in its own `15-suggest.js` (103). The
+  same file also enforces single ownership of mutable state, which rejected the
+  new module reading `VERSES` by name — correctly, by the same rule that keeps
+  `LV`, `PL` and `LQ` from leaking between modules. `10-library.js` now offers
+  `versesForChapter(ci)` and the suggestions go through it.
+* **Counts:** 934 assertions, 300 browser checks, 231 UI strings, shell 363,141
+  chars / 385,851 bytes / 105,035 gzip. Both totals keep their drift locks, so a
   stale number fails the run instead of quietly blessing three documents.
+
+### 2026-11-04 — suggestions that are actually a combobox
+
+* **C2 — search now helps before you commit to a guess.** Typing two characters
+  opens a listbox of at most ten rows, built from three sources in the order a
+  reader wants them: the last five searches that are not the current query, up
+  to three chapter titles matched by name (folded, so `sankh` finds Sāṅkhya
+  Yoga), and up to two verse numbers their digits could still become (`2.4` →
+  2.4, 2.40 … 2.47; Devanagari digits work through `digitNorm`). Rows carry
+  their own kind label, so the list stays **flat** — one index for ↑/↓ instead
+  of nested groups — and each row says whether it is a Recent, a Chapter or a
+  Verse.
+* **It is a real combobox, not a div that looks like one.** The previous batch
+  refused a fake tablist; the same rule applies here. The field is
+  `role="combobox"` with `aria-autocomplete="list"`, `aria-controls` naming the
+  `<ul role="listbox">`, and `aria-expanded` kept in step by the code that
+  shows and hides it. The active row is announced through
+  `aria-activedescendant` + `aria-selected`, never by a CSS class alone. One
+  new string (`search_suggest_hint`, ×3 → 231 UI strings) describes the keys;
+  the row kinds reuse `search_recent`, `chapters` and `verses` rather than
+  adding three more. ne/hi say एन्टर/एस्केप as words, not Latin key names — the
+  Latin-residue check caught my first attempt using “Enter” and “Escape”.
+* **Keys cannot do two things at once.** `sugKey()` returns true when it
+  consumed the key, and the markup is `if(App.library.sugKey(event))return;`
+  before the Enter-to-search call, so Enter on a highlighted row opens that row
+  and Enter on a plain field still searches. Escape closes the list first and
+  leaves the view alone. Choosing a chapter row navigates to the chapter and
+  clears the field; choosing a recent or a verse row runs that search.
+* **Coverage.** `tests/test_search.js` executes the emitted builders with no
+  DOM: one character and whitespace offer nothing, a word the book lacks offers
+  nothing, `2.4` offers at most two numbers that all start with the digits
+  typed, `2.47` offers exactly itself, १७-digit input suggests the same verses,
+  chapter 19 does not exist, recents cap at five, the list never exceeds ten,
+  and the query is never offered back as a recent. Four browser checks were
+  added for what only a real browser can prove — that the list opens with
+  rows, hangs under the field inside a 390px viewport, moves exactly one
+  selection with the arrows, and clears its ARIA state on Escape. **Those four
+  have not run here**: Playwright cannot be installed in this sandbox, so the
+  lock moved 296 → 300 and CI is the real proof.
+* **The cap moved once more, and the comment says why.** C2 costs 7,086
+  characters (355,407 → 362,493 before the module split below took it to
+  363,141), leaving 7.5KB of the 370,000 cap — under the
+  5KB floor the previous batch set itself. The code was trimmed first (a
+  duplicated `.sr-only` rule, a group wrapper the flat listbox did not need),
+  then the cap went 370,000 → 375,000 for a real 12.5KB reserve. No module
+  split: the lazy-load candidates need the browser suite re-locked, and that
+  suite cannot run here.
+* **Counts:** 934 assertions, 300 browser checks, 231 UI strings, shell 363,141
+  chars / 385,851 bytes / 105,035 gzip. Search regressions 12 → 13.
+
+### 2026-11-04 — the backup nobody found; the vowel that found nothing
+
+Two gaps, both measured before they were fixed, and one cap decision taken on
+numbers rather than on the pressure of a full file.
+
+* **A5 — export/import existed and nobody knew.** The backup controls live on
+  the `#data` screen, reachable from the welcome footer; a reader who learned a
+  chapter and never opened that screen had no hint that their progress was one
+  cleared cache away from gone. The Learn path now carries one muted line under
+  the progress meter — `backup_never` / `backup_today` / `backup_yesterday` /
+  `backup_n_days` (5 new keys ×3, 230 UI strings) — reading the same
+  `gitaBackupAt` stamp the badge uses, compared as **calendar days**
+  (`Date.UTC(y,m,d)`) so a DST shift cannot say "0 days ago" the morning after a
+  backup. It is a real button that opens the data screen, and it renders nothing
+  at all for a first visitor with nothing to lose: a warning about protecting
+  data that does not exist is noise. `tests/test_data_backup.js` runs the
+  emitted helper against a fixed clock with an injected `Date`, covering today,
+  yesterday, three days, the empty-first-visit case, saved-but-never-backed-up,
+  and a corrupted future stamp (clamped to today, never "-2 days ago").
+* **C3 — a marked query that missed said nothing at all.** Search deliberately
+  keeps a query carrying diacritics exact, so a/ā, t/ṭ and ś/ṣ stay
+  distinguishable — correct, but it means one wrong vowel is a blank screen. The
+  measured cases: `sankhyā` → 0 hits (plain `sankhya` → 3), `karmanyā` → 0 (7),
+  `arjunā` → 0 (36), `sanjayā` → 0 (14). The brief proposed a "did you mean"
+  line; that is the worse shape here, because the plain reading is not a
+  suggestion to confirm, it is the answer the reader is looking for. So
+  `searchFoldAlternative()` offers a folded second chance **only** when the
+  exact pass returns nothing, and the app renders those real results under their
+  real count, with one line saying the exact form was not found
+  (`search_meant`, ×3). A query already plain returns `null`, so the escape
+  hatch can never fire twice or loop, and `SRCH_NOTE` is module-scoped and reset
+  per search so a stale note can never describe the current results.
+  `tests/test_search.js` proves it is a genuine rescue — zero exact hits and
+  hits once folded, for all three words — rather than asserting a string exists.
+* **C5 was already shipped** and was dropped from the batch after checking:
+  `10-library.js` already renders `no_results` *plus* a `search_try` hint (2.47,
+  dharmakṣetra, a phrase from the translation) and suggestion chips, in all
+  three languages. The backlog entry describing it as "prints only
+  `no_results`" was stale; nothing was rebuilt.
+* **The shell cap moved on the arithmetic, and the reason is written at the
+  check.** The batch adds 4,799 characters (350,608 → 355,407), taking the shell
+  to 98.7% of the old 360,000 cap. The measured alternative was lazy-loading
+  `source/js/45-data.js` — the whole module is 13,228 characters, so it buys
+  less than the bump while changing boot order, the SW precache and the browser
+  suite that cannot run in this sandbox. Cap 360,000 → 370,000, leaving ~14.6KB;
+  `check_site_health.py` records the measurement and names the two modules to
+  split (`20-learn.js` 34,114 · `10-library.js` 33,548) if headroom falls under
+  5KB again.
+* **Counts:** 925 assertions, 296 browser checks, 230 UI strings, shell 355,407
+  chars / 377,877 bytes / 102,584 gzip. Search regressions 11 → 12.
 
 ### 2026-11-04 — search reaches ideas; a note belongs to its verse
 

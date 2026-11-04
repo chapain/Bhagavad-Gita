@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 908;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 296;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
+const TOTAL_ASSERTIONS = 934;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 300;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -112,7 +112,12 @@ const enKeys = Object.keys(UI.en);
 // search_word_match (7) → 224.
 // 2026-11-04 (second batch): srs_review_more (1) → 225. The review screen used
 // to claim "complete for today" after at most seven verses of one chapter.
-ok(enKeys.length === 225, `UI has 225 keys (got ${enKeys.length})`);
+// 2026-11-04 (third batch): A5 backup discoverability and C3 the folded second
+// chance: backup_never, backup_today, backup_yesterday, backup_n_days,
+// search_meant (5) → 230.
+// 2026-11-04 (fourth batch): search_suggest_hint (1) → 231. The listbox needs
+// exactly one spoken sentence; the row kinds reuse chapters/verses/Recent.
+ok(enKeys.length === 231, `UI has 231 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -936,7 +941,7 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
      'a chapter is searchable by its name and subtitle');
   ok(/searchExactKey\(\[t\.titles\.en, t\.titles\.ne, t\.titles\.hi/.test(html),
      'a theme is searchable by its title and description');
-  ok(/const total = hits\.length \+ passages\.length/.test(html),
+  ok(/total = hits\.length \+ passages\.length/.test(html),
      'the result count adds passages to verses');
   const usedKeys = ['search_in_verses', 'search_in_themes', 'search_in_chapters',
                     'search_word_match', 'note_label', 'note_ph', 'notes_title'];
@@ -1051,6 +1056,46 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
      'chapter page titles stay short enough not to be truncated in search results');
   ok((ch1.match(/og:image:alt/g) || []).length === 1,
      'chapter pages carry exactly one og:image:alt');
+}
+
+// ---------- A5 / C3 surfaces ----------
+group('learn + search affordances');
+{
+  // A5: the backup state is a real line on the Learn path, not a dangling idea.
+  ok(/function dataBackupLine\(/.test(html) && /backupLine:dataBackupLine/.test(html),
+     'A5 backup line helper is emitted and exported on App.data');
+  ok(/const backupLine = \(App\.data && App\.data\.backupLine\)/.test(html) &&
+     /class="foot-link lr-backup" onclick="App\.data\.show\(\)"/.test(html),
+     'A5 the Learn path shows the backup state and opens the data screen');
+  ok(/backupLine \? `/.test(html),
+     'A5 an empty state renders no backup control at all');
+  // C3: the folded second chance is module-scoped so the a11y announcement
+  // can carry it, and it is cleared on every search so it never goes stale.
+  ok(/let SRCH_NOTE = '';/.test(html) && /SRCH_NOTE = '';/.test(html),
+     'C3 the relaxed-search note is module-scoped and reset per search');
+  ok(/if\(total === 0\)\{[\s\S]{0,120}searchFoldAlternative\(q\)/.test(html.split('function doSearch()')[1] || ''),
+     'C3 only a zero-hit search takes the second chance');
+  ok(/srch-relaxed/.test(html) && /\.srch-relaxed\{/.test(html),
+     'C3 the relaxed-search note is styled');
+  ok(/\.lr-backup\{/.test(html), 'A5 the backup line is styled as a footnote');
+
+  // C2: a real combobox. The previous accessibility batch deliberately refused
+  // a fake tablist; the same rule applies to a suggestion box that looks
+  // navigable but is not, so the wiring is asserted rather than the look.
+  ok(/role="combobox"[^>]*aria-expanded="false"[^>]*aria-controls="searchSuggest"/.test(html),
+     'C2 the search field is a combobox that owns its listbox');
+  ok(/<ul class="search-suggest" id="searchSuggest" role="listbox"/.test(html),
+     'C2 the suggestions are a listbox, not a styled div');
+  ok(/aria-activedescendant/.test(html) && /setAttribute\('aria-activedescendant', 'sug-'/.test(html),
+     'C2 the active row is announced from the field');
+  ok(/aria-selected', on \? 'true' \?/.test(html) || /aria-selected', on \? 'true' : 'false'/.test(html),
+     'C2 exactly one row is selected at a time');
+  ok(/onkeydown="if\(App\.library\.sugKey\(event\)\)return; if\(event\.key==='Enter'\)App\.library\.search\(\)"/.test(html),
+     'C2 a consumed key never also submits the search');
+  ok(/function sugKey\(e\)[\s\S]{0,400}Escape/.test(html),
+     'C2 Escape dismisses the list before it closes the view');
+  ok(/sug-hint/.test(html) && /class="sr-only" id="searchSuggestHint"/.test(html),
+     'C2 the keyboard hint is spoken, not painted');
 }
 
 // ---------- summary ----------

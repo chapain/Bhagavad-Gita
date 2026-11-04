@@ -12,6 +12,26 @@ function dataMarkBackup(iso){
     try{ localStorage.setItem('gitaBackupAt',d); }catch(e){}
   }
 }
+/* A5 — export/import existed on the #data screen, but a reader who never
+   opened that screen never learned it existed. This is the one muted line on
+   the Learn path: it names the state in words that invite a click, and it is
+   the same timestamp the badge reads, compared as calendar days rather than
+   milliseconds so "yesterday" survives a DST shift. */
+function dataBackupLine(){
+  const last = dataLastBackup();
+  const st = dataStats(dataCurrentSnapshot());
+  /* Nothing written yet means nothing to lose: a first visit should not open
+     with a warning. Returns '' so the caller renders no control at all. */
+  if(!last) return (st.favs + st.notes + st.chapters) > 0 ? L('backup_never') : '';
+  const p = last.split('-').map(Number);
+  const then = Date.UTC(p[0], p[1] - 1, p[2]);
+  const now = new Date();
+  const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  const days = Math.max(0, Math.round((today - then) / 86400000));
+  if(days <= 0) return L('backup_today');
+  if(days === 1) return L('backup_yesterday');
+  return L('backup_n_days').replace('{n}', numL(days));
+}
 function dataBackupBadgeHtml(hasData){
   const last=dataLastBackup();
   if(last) return `<div id="dataBackupBadge" class="data-badge ok">✓ ${esc(L('data_backed_up').replace('{d}',numL(last)))}</div>`;
@@ -262,5 +282,7 @@ App.data = Object.freeze({
   validate:dataValidateImport,
   merge:dataMergeImport,
   lastBackup:dataLastBackup,
+  backupLine:dataBackupLine,
+  markBackup:dataMarkBackup,
   version:DATA_SCHEMA_VERSION
 });
