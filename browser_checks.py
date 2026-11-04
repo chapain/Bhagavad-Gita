@@ -883,8 +883,12 @@ def run(pw, url, offline_capable=False):
       const visible = el => !!(el && el.getClientRects().length
         && getComputedStyle(el).visibility !== 'hidden'
         && getComputedStyle(el).display !== 'none');
+      /* One disclosure is intended in the sheet — the verse's own note field
+         (2026-11-04). Anything else (an action bar, a word-meanings card, a
+         hint card) would duplicate the card's own two states. */
       const forbidden = copy && [...copy.querySelectorAll(
-        '.m-verse-action,.m-words-section,details,summary,.m-pada-hint')].some(visible);
+        '.m-verse-action,.m-words-section,details,summary,.m-pada-hint')]
+        .some(el => visible(el) && !el.closest('.m-note'));
       return {
         order: !!(kids[0] === container && kids[1]?.matches('.m-line.lit')
           && kids[2]?.matches('.m-line.para')),
@@ -893,14 +897,17 @@ def run(pw, url, offline_capable=False):
         directLiteral: !!(container && container.nextElementSibling?.matches('.m-line.lit')),
         forbidden: !!forbidden,
         noAction: !document.querySelector('#modal .m-verse-action'),
-        noMeaningDisclosure: !document.querySelector('#modal .m-words-section, #modal details, #modal summary'),
+        noMeaningDisclosure: [...document.querySelectorAll(
+            '#modal .m-words-section, #modal details, #modal summary')]
+          .every(el => el.closest('.m-note')),
+        noteField: document.querySelectorAll('#modal details.m-note').length === 1,
         noHintCard: !document.querySelector('#modal .m-pada-hint')
       };
     }""")
     ok(bool(structure and structure["order"] and structure["soleVisibleChild"]
             and structure["directLiteral"] and not structure["forbidden"]
             and structure["noAction"] and structure["noMeaningDisclosure"]
-            and structure["noHintCard"]),
+            and structure["noteField"] and structure["noHintCard"]),
        f"the single verse card is followed directly by literal and paraphrase, with no action/disclosure card ({structure})")
 
     # The whole-verse shape explains itself: a short localized instruction sits
@@ -1014,24 +1021,32 @@ def run(pw, url, offline_capable=False):
         el.getAttribute('aria-describedby').split(/\s+/).filter(Boolean)
           .every(id => ids.filter(x => x === id).length === 1
             && document.getElementById(id)));
-      return !!(content && content.classList.contains('m-verse')
-        && !content.classList.contains('m-whole-verse')
-        && container?.classList.contains('expanded-mode')
-        && content.querySelector('.pada-meanings-hint')
-        && content.querySelector('.m-verse-back')
-        && hintsMatch && hintOk.en && hintOk.ne && hintOk.hi
-        && uniqueIds && validRefs
-        && grid && grid.parentElement === content && boxes?.length === 4
-        && [...boxes].every(box => box.parentElement === grid || box.parentElement?.classList.contains('pada-row'))
-        && !content.hasAttribute('role') && !content.hasAttribute('tabindex')
-        && !content.hasAttribute('aria-label') && !content.hasAttribute('aria-expanded')
-        && hidden('wordsHint') && hidden('padaHint')
-        && toggles.every(btn => btn.getAttribute('aria-describedby') === 'padaHint')
-        && [...content.querySelectorAll('.spk-line')].every(btn => btn.getAttribute('aria-describedby') === 'wordsHint'));
+      /* Named, so a failure says WHICH promise broke instead of one false. */
+      return {
+        expandedShape: !!(content && content.classList.contains('m-verse')
+          && !content.classList.contains('m-whole-verse')
+          && container?.classList.contains('expanded-mode')),
+        hint: !!content?.querySelector('.pada-meanings-hint'),
+        back: !!content?.querySelector('.m-verse-back'),
+        hintsMatch: hintsMatch,
+        hintOk: hintOk.en && hintOk.ne && hintOk.hi,
+        uniqueIds: uniqueIds,
+        validRefs: validRefs,
+        gridInCard: !!(grid && grid.parentElement === content),
+        fourBoxes: boxes?.length === 4,
+        boxParents: [...(boxes || [])].every(box => box.parentElement === grid
+          || box.parentElement?.classList.contains('pada-row')),
+        noCardRole: !content?.hasAttribute('role') && !content?.hasAttribute('tabindex')
+          && !content?.hasAttribute('aria-label') && !content?.hasAttribute('aria-expanded'),
+        hiddenHints: hidden('wordsHint') && hidden('padaHint'),
+        toggles: toggles.every(btn => btn.getAttribute('aria-describedby') === 'padaHint'),
+        spkRefs: [...(content?.querySelectorAll('.spk-line') || [])]
+          .every(btn => btn.getAttribute('aria-describedby') === 'wordsHint'),
+      };
     }""")
-    ok(converted,
+    ok(converted and all(converted.values()),
        "clicking converts the same card into its four descendant pādas, shows a localized 'tap a pāda' instruction inside it above the grid with no sibling bar, keeps ↩, and keeps both hidden descriptions unique and valid "
-       f"({pg.evaluate('window.__padaHints')})")
+       f"(broken: {[k for k, v in (converted or {}).items() if not v] or pg.evaluate('window.__padaHints')})")
 
     pg.locator("#modal .pada-toggle").first.click()
     pg.wait_for_timeout(300)
