@@ -23,6 +23,11 @@ import unicodedata
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parent
+# Every document that states this number is checked against it (run_gita_app.js),
+# so the number itself must be checked against what actually ran — otherwise a
+# stale constant blesses a stale claim in three files. Same rule as
+# TOTAL_ASSERTIONS in run_gita_app.js.
+EXPECTED_CHECKS = 279
 PASS, FAIL = 0, []
 
 
@@ -2129,6 +2134,9 @@ def main():
 
     print("\n" + "=" * 46)
     print(f"browser_checks.py: {PASS} passed, {len(FAIL)} failed")
+    if PASS + len(FAIL) != EXPECTED_CHECKS:
+        print(f"  check total drifted: ran {PASS + len(FAIL)}, locked {EXPECTED_CHECKS}")
+        FAIL.append(f"check total drifted: ran {PASS + len(FAIL)}, locked {EXPECTED_CHECKS}")
     if FAIL:
         for f in FAIL:
             print("  -", f)
