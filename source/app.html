@@ -208,8 +208,22 @@ __APP_CSS__
   <div class="searchwrap" role="search" aria-label="Search verses" id="searchWrap">
     <div class="sw-field">
       <span class="sw-ic">__ICON_SEARCH__</span>
-      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses" oninput="App.library.onSearchInput(this.value)" onkeydown="if(event.key==='Enter')App.library.search()">
+      <!-- C2: a real combobox, not a div that looks like one. The listbox is
+           owned by aria-controls and the active row is announced through
+           aria-activedescendant, so the keyboard and a screen reader follow the
+           same path the eye does. aria-expanded is kept in step by sugRender
+           and sugClose, never by CSS alone. -->
+      <input type="search" id="searchInput" placeholder="…" aria-label="Search verses"
+             role="combobox" aria-autocomplete="list" aria-expanded="false"
+             aria-controls="searchSuggest" aria-describedby="searchSuggestHint"
+             autocomplete="off"
+             oninput="App.library.onSearchInput(this.value)"
+             onkeydown="if(App.library.sugKey(event))return; if(event.key==='Enter')App.library.search()"
+             onblur="App.library.sugBlur()">
       <button type="button" class="sw-x" id="clearBtn" onclick="App.library.clearSearch()">__ICON_CLEARX__</button>
+      <ul class="search-suggest" id="searchSuggest" role="listbox" aria-label="Search suggestions" hidden
+          onmousedown="event.preventDefault()"></ul>
+      <div class="sr-only" id="searchSuggestHint" hidden></div>
     </div>
   </div>
   <button class="tool-btn" onclick="App.library.randomVerse()" id="randomBtn">__ICON_SHUFFLE__<span id="randLbl">Random</span></button>

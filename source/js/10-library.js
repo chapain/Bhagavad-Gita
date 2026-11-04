@@ -1,6 +1,9 @@
 // ---------- global verse index (search / favorites / random) ----------
 const VERSES = [];
 let SRCH_HITS = [], FAV_LIST = [];
+/* Set only when C3 rescued a diacritic query onto its plain reading; read by
+   the search render and by the screen-reader announcement, cleared otherwise. */
+let SRCH_NOTE = '';
 function flatIndex(t,p,s){ let idx=0; for(const pp of t.parts){ if(pp===p) return idx+s; idx+=pp.sutras.length; } return idx; }
 function sutraAt(t,i){ for(const p of t.parts){ if(i < p.sutras.length) return {s:p.sutras[i], part:p}; i-=p.sutras.length; } return {s:t.parts[t.parts.length-1].sutras[0], part:t.parts[t.parts.length-1]}; }
 function buildIndex(){
@@ -12,6 +15,9 @@ function buildIndex(){
   });
 }
 function verseLoc(id){ return VERSES.find(v=>v.id===id); }
+/* VERSES belongs to this module (see test_mutable_feature_state_has_one_owner);
+   the suggestion module reads it through here rather than by name. */
+function versesForChapter(ci){ return VERSES.filter(v => v.ci === ci); }
 function verseAt(loc){ const t = DATA[loc.ci].themes[loc.ti]; return sutraAt(t, loc.si).s; }
 function normTxt(s){ return String(s||'').normalize('NFD').toLowerCase(); }
 function searchExactKey(s){ return normTxt(s).replace(/\s+/g, ''); }
@@ -46,6 +52,22 @@ function prepareSearchQuery(s){
 function searchTextMatches(exactText, foldedText, query){
   return (!!query.exact && exactText.includes(query.exact)) ||
          (!!query.folded && foldedText.includes(query.folded));
+}
+/* The second chance a diacritic query gets when the exact pass finds nothing.
+   A query that carries any mark is matched exactly so that a/ā, t/ṭ and ś/ṣ
+   stay distinguishable for a reader who types them — but one wrong vowel then
+   returns an empty screen. arjunā, sankhyā and karmanyā are all spellings a
+   reader plausibly types, and all three miss every verse while the same words
+   folded to plain ASCII find 36, 3 and 7 of them. Returns null when the query
+   is already plain or when folding would not change it, so the caller only
+   ever retries a query the retry could actually change — and only shows the
+   "no exact match" line when that retry found something. */
+function searchFoldAlternative(s){
+  const q = prepareSearchQuery(s);
+  if(q.folded) return null;                 // already the plain reading
+  const folded = searchFoldKey(s);
+  if(!folded || folded === q.exact) return null;
+  return prepareSearchQuery(folded);
 }
 function fmtN(n){ const m = String(n).split('.'); return m.length===2 ? (parseInt(m[0],10)+'.'+parseInt(m[1],10)) : String(n); }
 function fmtRange(r){ const parts = String(r).split(/[–-]/).map(x=>x.trim()?fmtN(x):x); return (parts.length===2 && parts[0]===parts[1]) ? parts[0] : parts.join('–'); }
@@ -152,6 +174,7 @@ function allChReady(){ for(var n=1;n<=18;n++) if(!GITA_CH[n]||!GITA_CH[n].themes
 let searchTimer = null;
 function onSearchInput(v){
   clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 220); searchX();
+  sugRender(v);   // opens on the keystroke, not after the 220ms debounce
 }
 /* the in-field ✕ exists only while there is text to clear — the modern
    pattern; a standing "Clear" button was dead chrome on an empty field */
@@ -200,6 +223,7 @@ function pickSearch(q){
   searchX();
   doSearch();
 }
+
 /* Free text searched more than the verse line: the phrase may come from a word
    gloss, which the card does not otherwise show, so name the word that matched
    rather than leaving the reader to wonder why a verse is in the list. */
@@ -287,7 +311,26 @@ function doSearch(){
     });
     passages = passageHits(nq, nqd);
   }
-  const total = hits.length + passages.length;
+  /* C3: a marked query that found nothing is almost always a slip on one
+     vowel, not a word the book lacks. Re-run the same search on the plain
+     reading before declaring zero. The results are real, so the count stays
+     honest and the reader is told why the screen changed. */
+  SRCH_NOTE = '';
+  let total = hits.length + passages.length;
+  if(total === 0){
+    const alt = searchFoldAlternative(q);
+    if(alt){
+      const altHits = [];
+      VERSES.forEach((loc, i)=>{
+        if(searchTextMatches(VERSE_TEXT[i], VERSE_FOLDED_TEXT[i], alt)) altHits.push(loc);
+      });
+      const altPassages = passageHits(alt, alt);
+      if(altHits.length + altPassages.length){
+        hits = altHits; passages = altPassages; total = hits.length + passages.length;
+        SRCH_NOTE = L('search_meant').replace('{q}', q);
+      }
+    }
+  }
   if(total === 0){
     view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
       <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
@@ -317,6 +360,7 @@ function doSearch(){
   const passageGrid = list => `<div class="grid passages">${list.map(p=>passageCard(p, q)).join('')}</div>`;
   view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
     <div class="res-count fade-in">${esc(resultCountLabel(total))}</div>
+    ${SRCH_NOTE ? `<div class="view-sub srch-relaxed fade-in">${esc(SRCH_NOTE)}</div>` : ''}
     ${srchChipsHtml(q, total)}
     ${hits.length
       ? (groups > 1 ? resGroupHtml(L('search_in_verses'), hits.length, verseGrid) : verseGrid)
@@ -563,7 +607,8 @@ function announceView(){
     const ch = (state.chapter != null && DATA[state.chapter]) ? DATA[state.chapter] : null;
     if(state.view === 'welcome')        msg = L('welcome_title');
     else if(state.view === 'search')
-      msg = `${L('search_results')} · ${resultCountLabel(SRCH_HITS.length)}`;
+      msg = L('search_results') + ' · ' + resultCountLabel(SRCH_HITS.length)
+            + (SRCH_NOTE ? ' · ' + SRCH_NOTE : '');
     else if(state.view === 'favorites')
       msg = `${L('favorites')} · ${resultCountLabel(FAV_LIST.length)}`;
     else if(state.view === 'chapter' && ch && state.theme != null)
@@ -598,7 +643,6 @@ function _drangeJS(r){
   return r.replace(/(\d+)\.0*(\d+)/g, function(m,a,b){ return a+'.'+parseInt(b,10); });
 }
 
-
 /* Public Library boundary. Mutable indexes and saved-list navigation stay in
    this file; Reader and routing consume snapshots and lookup operations rather
    than reaching into those arrays directly. */
@@ -608,6 +652,7 @@ App.library = Object.freeze({
   entryAt: sutraAt,
   assemble: assembleData,
   onSearchInput,
+  sugKey, sugPick, sugBlur, sugRender,
   syncSearchControl: searchX,
   paintTheme,
   rememberOrigin,

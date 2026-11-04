@@ -128,6 +128,8 @@ function showLearn(ci){
   const total = ch.themes.length, done = Object.keys(p.themes).length;
   const nv = chVerseN(ch), nh = Object.keys(p.held||{}).length;
   const pct = Math.round((p.story + done + nh) / (1 + total + nv) * 100);
+  /* A5: the backup state, said once on the path where progress is earned. */
+  const backupLine = (App.data && App.data.backupLine) ? App.data.backupLine() : '';
   /* Which stage the reader is on. Every step used to render as `.now`, so all
      three wore the saffron edge at once and the accent meant nothing; the CSS
      has always defined `.done` and a quiet resting state. Exactly one card is
@@ -188,6 +190,7 @@ function showLearn(ci){
 
       <div class="lr-foot">
         <span>${esc(L('learn_local'))}</span>
+        ${backupLine ? `<button class="foot-link lr-backup" onclick="App.data.show()">${esc(backupLine)}</button>` : ''}
         ${(p.story||done||nh)?`<button class="lr-ghost sm" onclick="lrReset(${ch.num})">${esc(L('learn_restart'))}</button>`:''}
       </div>
     </div>` + backFoot(`App.views.chapters(${state.section||0})`, L('back_chapters'));
