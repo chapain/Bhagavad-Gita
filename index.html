@@ -737,6 +737,8 @@
   .share-panel{ display:none; flex-direction:column; align-items:flex-start; gap:8px; margin:10px 0 0;
     background:var(--cream); border:1px solid var(--line); border-radius:14px; padding:12px 14px;}
   .sp-hint{ font-size:.85rem; color:var(--ink-soft); line-height:1.5;}
+  .sp-art{ display:block; width:100%; height:auto; border:1px solid var(--line);
+    border-radius:10px; background:var(--paper);}
   .sp-link{ width:100%; font-size:.76rem; color:var(--teal); background:var(--paper);
     border:1px dashed var(--line); border-radius:8px; padding:7px 9px; word-break:break-all;}
   .sp-copy{ background:var(--saffron); color:var(--on-saffron); border:none; border-radius:999px;
@@ -830,6 +832,46 @@
   .wc-chip.wc-cur{ background:var(--saffron-soft); color:var(--saffron-text); border-color:var(--saffron-soft); }
   .wc-sep{ color:var(--muted); font-size:.78rem; }
 
+
+  /* ---- search v3: one page, three kinds of answer ----------------------
+     A reader searches for a verse ("2.47"), a story ("Time's decree"), a
+     chapter ("Sankhya"), or one word of the glossary ("not hating"). Verses,
+     themes and chapters are different objects, so they are listed in their own
+     groups under one total. The group head is a hairline rule with the count on
+     the right — the same quiet grammar as .res-count, not a second heading. */
+  .res-group{ margin:0 0 24px; }
+  .res-gl{ display:flex; align-items:center; gap:9px; margin:0 0 11px; padding-bottom:7px;
+           border-bottom:1px solid var(--line);
+           font:700 .74rem/1 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",sans-serif;
+           letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); }
+  .res-gl .res-gn{ margin-left:auto; color:var(--saffron-text); font-variant-numeric:tabular-nums; }
+  .notes-block .res-gl{ margin-top:26px; }
+  .grid.passages{ grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+  /* Saffron = something you act on (open it), teal = something already yours. */
+  .res-passage{ background:var(--paper); border:1px solid var(--line); border-left:2px solid var(--teal);
+                border-radius:12px; padding:11px 14px; cursor:pointer; transition:.16s; }
+  .res-passage:hover{ border-color:var(--saffron); border-left-color:var(--saffron); background:var(--teal-soft); }
+  .rp-top{ display:flex; align-items:baseline; gap:8px; margin-bottom:5px; }
+  .rp-kind{ font:700 .66rem/1 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",sans-serif;
+            letter-spacing:.08em; text-transform:uppercase; color:var(--saffron-text); }
+  .rp-rng{ margin-left:auto; color:var(--ink-soft); font-size:.76rem; font-variant-numeric:tabular-nums; }
+  .rp-title{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:600; color:var(--ink);
+             font-size:1rem; line-height:1.4; }
+  .rp-sub{ color:var(--ink-soft); font-size:.84rem; line-height:1.5; margin-top:3px; }
+  /* Why this verse answered a word query the card does not otherwise show. */
+  .res-word{ display:inline-block; margin-top:7px; background:var(--saffron-soft); color:var(--saffron-text);
+             border-radius:999px; padding:3px 10px; font-size:.76rem; font-weight:600; }
+
+  /* ---- your notes: every note, saved or not ---------------------------- */
+  .notes-list{ display:grid; gap:10px; }
+  .note-card{ background:var(--paper); border:1px solid var(--line); border-left:2px solid var(--saffron);
+              border-radius:12px; padding:10px 14px; cursor:pointer; transition:.16s; }
+  .note-card:hover{ border-color:var(--saffron); background:var(--cream); }
+  .nc-top{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .nc-num{ font-weight:700; color:var(--saffron-text); font-size:.86rem; }
+  .nc-title{ color:var(--ink-soft); font-size:.8rem; }
+  .nc-text{ margin-top:5px; color:var(--ink); font-size:.9rem; line-height:1.55;
+            white-space:pre-wrap; overflow-wrap:anywhere; }
 /* ---- footer data link ---- */
 .foot-link{ background:none; border:none; color:var(--teal); font:inherit; font-size:.8rem;
             cursor:pointer; text-decoration:underline; text-decoration-style:dotted; padding:0; }
@@ -1316,6 +1358,29 @@
     .pl-scope .lr-ghost.on:hover{ background:var(--saffron-soft); border-color:var(--saffron-soft); }
   }
 
+
+  /* ---- the verse's own note -------------------------------------------
+     Notes used to exist only on saved verses, which meant a reader had to
+     favourite a verse to think about it — and un-favouriting erased the
+     thought. The field lives in the sheet, under the paraphrase, closed and
+     quiet until wanted; a saffron dot in the summary says one is already
+     written. */
+  .m-note{ margin:14px 0 0; border:1px solid var(--line); border-radius:12px; background:var(--cream); }
+  .m-note summary{ list-style:none; cursor:pointer; display:flex; align-items:center; gap:8px;
+                   padding:9px 13px;
+                   font:600 .85rem/1.25 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",sans-serif;
+                   color:var(--teal); }
+  .m-note summary::-webkit-details-marker{ display:none; }
+  .m-note summary:hover{ color:var(--saffron-text); }
+  .m-note[open] summary{ border-bottom:1px solid var(--line); }
+  .m-note-dot{ color:var(--saffron); font-size:1.1rem; line-height:.6; }
+  .m-note-chev{ margin-left:auto; color:var(--ink-soft); transition:transform .16s; }
+  .m-note[open] .m-note-chev{ transform:rotate(180deg); }
+  .m-note textarea{ display:block; width:100%; border:0; background:transparent; color:var(--ink);
+                    font:inherit; font-size:.94rem; line-height:1.6; padding:10px 13px;
+                    min-height:66px; resize:none; overflow:hidden; border-radius:0 0 12px 12px; }
+  .m-note textarea:focus{ background:var(--paper); }
+  .m-note textarea::placeholder{ color:var(--muted); }
   /* ---- Phase 3.3 bottom tab bar (phones only) ---- */
   .tabbar{ display:none; }
   .m-search{ display:none; }
@@ -1382,7 +1447,7 @@
     .tab-btn[data-tab="search"] .ic circle,
     .tab-btn[data-tab="search"] .ic path,
     .tab-btn[data-tab="random"] .ic path{ fill:none; }
-    .tab-btn[aria-selected="true"]{ color:var(--saffron-text); }
+    .tab-btn[aria-current="page"]{ color:var(--saffron-text); }
     .tab-btn:active{ background:var(--saffron-soft); }
     .tab-btn .tab-lbl{ font-size:.66rem; letter-spacing:.01em; }
 
@@ -1610,24 +1675,27 @@
 
 <!-- Mobile bottom tab bar: 5 thumb-reachable destinations. Desktop-only
      (hidden via CSS on ≥761px); on phones it replaces the .toolbar row. -->
-<nav class="tabbar" id="tabbar" aria-label="Main navigation" role="tablist">
-  <button class="tab-btn" data-tab="home" role="tab" onclick="App.views.home()" aria-selected="true">
+<!-- A nav of destinations, not a tab list: these buttons change the page,
+     they do not switch panels, and Random is an action that never stays
+     current. The active item carries aria-current="page" (syncTabs()). -->
+<nav class="tabbar" id="tabbar" aria-label="Main navigation">
+  <button class="tab-btn" data-tab="home" onclick="App.views.home()" aria-current="page">
     <svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
     <span class="tab-lbl" id="tabHomeLbl">Home</span>
   </button>
-  <button class="tab-btn" data-tab="search" role="tab" onclick="tabGoSearch()" aria-selected="false">
+  <button class="tab-btn" data-tab="search" onclick="tabGoSearch()">
     <svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
     <span class="tab-lbl" id="tabSearchLbl">Search</span>
   </button>
-  <button class="tab-btn" data-tab="random" role="tab" onclick="App.library.randomVerse()" aria-selected="false">
+  <button class="tab-btn" data-tab="random" onclick="App.library.randomVerse()">
     <svg class="ic" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M21 3 4 20"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="m4 4 5 5"/></svg>
     <span class="tab-lbl" id="tabRandLbl">Random</span>
   </button>
-  <button class="tab-btn" data-tab="play" role="tab" onclick="App.play.show()" aria-selected="false">
+  <button class="tab-btn" data-tab="play" onclick="App.play.show()">
     <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg>
     <span class="tab-lbl" id="tabPlayLbl">Play</span>
   </button>
-  <button class="tab-btn" data-tab="fav" role="tab" onclick="App.library.showFavorites()" aria-selected="false">
+  <button class="tab-btn" data-tab="fav" onclick="App.library.showFavorites()">
     <svg class="ic" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>
     <span class="tab-lbl" id="tabFavLbl">Saved</span>
   </button>
@@ -1711,7 +1779,7 @@ function gitaLoadFail(){ var b = document.getElementById('bootNote');
   if (b) b.textContent = 'Could not load the verse data. Check your connection and reload.'; }
 window.__gitaLoaded = function(){};
 
-const UI = {"en": {"app_sub": "श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 quarters", "app_title": "Bhagavad Gita — an Interactive Study", "back_chapter_one": "← Back to chapter", "back_chapters": "← Back to chapters", "back_to_theme": "← Back to theme", "back_to_x": "← Back to {x}", "back_ways": "← Back to the Three Ways", "breadcrumb": "Breadcrumb navigation", "chapter": "Chapter", "chapters": "Chapters", "choose_title": "How would you like to receive this chapter?", "clear": "Clear", "click_hint": "Click any verse title to show the Sanskrit verse", "click_hint_pada": "Tap this verse to reveal all four pādas", "click_pada_meanings": "Tap a pāda to see its word-by-word meanings", "close_verse": "Close verse", "copy_link": "Copy verse link", "copy_verse_text": "Copy verse text", "data_backed_up": "Last backup: {d}", "data_chapters": "chapters", "data_clear": "Clear all data", "data_clear_desc": "Remove all favourites, notes and Learn progress from this browser.", "data_clear_q": "Clear all favourites, notes and Learn progress from this browser? This cannot be undone.", "data_cleared": "All data cleared", "data_current": "Currently in this browser", "data_export": "Export backup", "data_export_desc": "Download a JSON file with your favourites, notes and Learn progress.", "data_exported": "Backup downloaded", "data_foot": "Your backup is a plain JSON file. Keep it private — it contains your personal notes.", "data_held": "verses held", "data_import": "Import backup", "data_import_desc": "Restore from a backup file. Existing data will be merged.", "data_import_failed": "Could not read backup — not a valid Gita backup file", "data_imported": "Backup restored — {n} favourites, {m} notes, {k} chapters of progress", "data_local_note": "Progress is kept in this browser only. Export a backup so you don't lose it.", "data_never_backed": "No backup exported yet", "data_notes": "notes", "data_sub": "Favourites, notes and Learn progress live in this browser. Export a backup, or import one you saved before.", "data_title": "Your data", "fav_down": "↓", "fav_move_down": "Move favorite down", "fav_move_up": "Move favorite up", "fav_note": "note", "fav_note_ph": "why this verse matters to you…", "fav_up": "↑", "favorites": "Favorites", "footer": "ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.", "guide_chapter": "In a chapter, read the verses grouped by theme, or choose learn by heart.", "guide_explore": "How to explore", "guide_verse": "Tap a verse or any of its four quarters to reveal word-by-word meanings.", "guide_way": "Choose a way — action, devotion, or knowledge — to find a chapter.", "hide_meanings": "Hide meanings", "home": "Home", "home_plain": "home", "in_other_words": "In other words", "language": "Interface language", "learn_after": "After “{t}” — what comes next?", "learn_again": "Walk it again", "learn_all_done": "Every theme of chapter {n} is yours.", "learn_begin": "Begin", "learn_done_free": "Done for now", "learn_free": "Practise as long as you like", "learn_free_d": "A verse from this theme, its four quarters shuffled. Put them in order, then shuffle another — as often as you wish.", "learn_free_go": "Practise the quarters →", "learn_held": "Held", "learn_held_n": "{a} of {b} verses held", "learn_lad_blind": "From the heart", "learn_lad_blind_s": "all hidden — tap to peek", "learn_lad_first": "First words", "learn_lad_first_s": "opening word of each quarter", "learn_lad_full": "Full read", "learn_lad_full_s": "every word open", "learn_lad_half": "Half hidden", "learn_lad_half_s": "every other word hidden", "learn_ladder": "Memory ladder", "learn_land_d": "You have met the verses. Practise the quarters, or test recall — as gently as you like.", "learn_local": "Progress is kept in this browser only.", "learn_mark_held": "Mark held", "learn_meet": "Meet the verses", "learn_missing": "Quarter {q} of {v} — which word is missing?", "learn_next_theme": "Next theme →", "learn_next_verse": "Next verse →", "learn_nextis": "Not there yet — next comes", "learn_order_all": "The whole story — all {n} beats, in order", "learn_order_few": "Put these {n} beats back in the order they happen", "learn_qorder": "Put the four quarters of {v} back in order", "learn_read_d": "Walk down it once, slowly. Notice how each beat causes the next — that chain is what you will remember.", "learn_read_go": "I've read it →", "learn_read_h": "The story of chapter {n}", "learn_recall_opt": "Test recall →", "learn_restart": "Start this chapter over", "learn_restart_q": "Forget your progress for this chapter and start again?", "learn_retry": "Select again →", "learn_reveal": "Recall, then tap to see", "learn_revisit": "{n} to revisit", "learn_s1": "The Story", "learn_s1_d": "Learn the {n} themes in order — the storyline of this chapter.", "learn_s2": "The Verses", "learn_s2_d": "Theme by theme — meet each verse, then recall it. {a} of {b} held.", "learn_s3": "The quarters", "learn_s3_d": "Put each śloka back together, pāda by pāda — the way the mouth learns it.", "learn_shuffle": "Shuffle another verse", "learn_step": "Step {a} of {b}", "learn_story_done": "The story of chapter {n} is yours", "learn_story_done_d": "You can say what happens, in order, without looking. Every verse now has somewhere to belong.", "learn_sub": "First the story, then the verses. The story is the thread; without it the verses are beads on the floor.", "learn_tap_blank": "Tap a hidden word to peek", "learn_test": "Self-test", "learn_theme_done_d": "Held — {n} recalled without the page in front of you.", "learn_thread_ok": "That's the thread.", "learn_to_verses": "On to the verses →", "learn_unhold": "Unmark", "learn_vorder": "Put the verses of “{t}” back in order", "learn_walked": "{p}% of this chapter walked", "learn_which": "Which verse says this?", "learn_yes": "Yes.", "link_copied": "Link copied", "literal": "Literal", "meter_anustubh": "anuṣṭubh", "meter_irregular": "irregular", "meter_padas": "{n} quarters", "meter_padas_of": "{n} quarters of {k}", "meter_syllables": "{n} syllables", "meter_trishtubh": "triṣṭubh", "next": "Next →", "next_random": "Next Random", "next_theme": "Next theme →", "no_favorites": "No saved verses yet — open any verse and tap Add to favorites.", "no_results": "No matches — try a verse number (e.g. 2.47), a Sanskrit word, or an English word.", "of": "of", "oob_chapter": "The Gita has only 18 chapters.", "oob_verse": "Chapter {ch} has only {n} verses.", "open_verse": "Open verse", "opt_chapter": "Thematic study", "opt_chapter_d": "All verses of the chapter grouped by theme — tap any verse for word-by-word meanings.", "opt_full": "Verses with translation", "opt_full_d": "Each verse with its literal translation and the flowing paraphrase.", "opt_learn_d": "First the storyline, then the verses — recalled, not re-read.", "opt_learn_g": "कण्ठस्थ", "opt_learn_s": "Learn by heart", "opt_study_d": "Themes and their verses, with word-by-word meanings.", "opt_study_s": "Study guide", "pada_label": "Quarter", "pick_theme": "Pick a theme to open its verses.", "play": "Play", "play_all": "The whole Gītā", "play_ch": "One chapter", "play_m1": "What does it say?", "play_m1_d": "Read the Sanskrit. Choose the sense that belongs to this verse.", "play_m2": "What comes next?", "play_m2_d": "The Gītā is a chain. Given this verse, which śloka follows?", "play_m3": "Rebuild the śloka", "play_m3_d": "Four quarters, shuffled. Put them back in order.", "play_q1": "What does this śloka say?", "play_q2": "After this, which śloka comes next?", "play_round": "{n} in a row", "play_scope": "Where from?", "play_sub": "Hear a śloka, take its sense, follow the argument, rebuild the line.", "play_title": "Play", "prev_theme": "← Previous theme", "previous": "← Previous", "random": "Random", "range_chapters": "Chapters {a}–{b}", "reader_size": "Text size", "reader_size_decrease": "Make verse text smaller", "reader_size_increase": "Make verse text larger", "reader_size_reset": "Reset verse text size", "recent_verses": "Recently viewed", "remove_fav": "✕ remove", "result": "result", "results": "results", "save_verse": "Add to favorites", "saved_verse": "In favorites", "search_label": "Search verses", "search_ph": "Search e.g. 1.1", "search_recent": "Recent", "search_results": "Search results", "search_try": "Try a verse number like 2.47, a Sanskrit word like dharmakṣetra, or a phrase from the translation.", "sec_bhakti": "भक्तिमार्ग · The Way of Bhakti", "sec_bhakti_desc": "Chapters 7–12 · devotion and surrender to the Lord.", "sec_jnana": "ज्ञानमार्ग · The Way of Jñāna", "sec_jnana_desc": "Chapters 13–18 · knowledge, the guṇas, and liberation.", "sec_karma": "कर्ममार्ग · The Way of Karma", "sec_karma_desc": "Chapters 1–6 · action, duty, and renouncing the fruits of action.", "sections_sub": "The Gita's eighteen chapters in three ways — action, devotion, knowledge — each ripening into the next.", "sections_title": "The Three Ways", "share": "Share", "share_hint": "Like this verse? Copy the link and share it with friends.", "shared_hint": "Click the verse to show/hide the word-by-word meanings.", "shared_label": "Shared verse", "show_meanings": "Show meanings", "skip_to_content": "Skip to content", "srs_all_caught_up": "All caught up · {n} verses in review", "srs_ch_due": "{n} verses due for review today", "srs_due_many": "{n} verses to revisit today", "srs_due_one": "1 verse to revisit today", "srs_review_btn": "Review due verses", "srs_review_done": "Review complete for today.", "srs_streak": "{n}-day practice streak", "tab_bhakti": "Way of Bhakti", "tab_jnana": "Way of Jñāna", "tab_karma": "Way of Karma", "tag_sub": "18 chapters · 700 verses · study edition", "theme_dark": "Switch to dark mode", "theme_light": "Switch to light mode", "theme_sg": "Theme", "themes": "Themes", "verse": "Verse", "verse_copied": "Verse copied", "verse_of_day": "Verse of the Day", "verse_topic": "Verse topic", "verses": "verses", "welcome_enter": "Enter the Gita", "welcome_foot": "ॐ 700 verses · three ways · one goal", "welcome_sub": "The timeless dialogue between Kṛṣṇa and Arjuna on the battlefield of Kurukṣetra — 700 verses, three ways, one goal.", "welcome_title": "Welcome to the Bhagavad Gita", "wip": "A work in progress — still building, still fixing, and dedicated to making the Gītā easier to study."}, "ne": {"app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा", "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "back_chapter_one": "← अध्यायमा फर्कनुहोस्", "back_chapters": "← अध्यायहरूमा फर्कनुहोस्", "back_to_theme": "← विषयमा फर्कनुहोस्", "back_to_x": "← {x}मा फर्कनुहोस्", "back_ways": "← तीन मार्गमा फर्कनुहोस्", "breadcrumb": "नेभिगेसन मार्ग", "chapter": "अध्याय", "chapters": "अध्यायहरू", "choose_title": "यो अध्याय कसरी पढ्न चाहनुहुन्छ?", "clear": "मेट्नुहोस्", "click_hint": "संस्कृत श्लोक देखाउन कुनै पनि श्लोकको शीर्षकमा क्लिक गर्नुहोस्", "click_hint_pada": "चारै पाद हेर्न यो श्लोकमा ट्याप गर्नुहोस्", "click_pada_meanings": "शब्दार्थ हेर्न कुनै पादमा ट्याप गर्नुहोस्", "close_verse": "श्लोक बन्द गर्नुहोस्", "copy_link": "श्लोक लिङ्क कपी गर्नुहोस्", "copy_verse_text": "श्लोक पाठ कपी गर्नुहोस्", "data_backed_up": "पछिल्लो ब्याकअप: {d}", "data_chapters": "अध्याय", "data_clear": "सबै डाटा मेटाउनुहोस्", "data_clear_desc": "यस ब्राउजरबाट सबै मनपर्ने, टिपोट र कण्ठस्थ प्रगति हटाउनुहोस्।", "data_clear_q": "यस ब्राउजरबाट सबै मनपर्ने, टिपोट र कण्ठस्थ प्रगति मेटाउने? यो फिर्ता गर्न सकिँदैन।", "data_cleared": "सबै डाटा मेटियो", "data_current": "यस ब्राउजरमा अहिले", "data_export": "ब्याकअप निर्यात", "data_export_desc": "मनपर्ने, टिपोट र कण्ठस्थ प्रगति भएको ब्याकअप फाइल डाउनलोड गर्नुहोस्।", "data_exported": "ब्याकअप डाउनलोड भयो", "data_foot": "तपाईंको ब्याकअप सामान्य फाइल हो। यसलाई गोप्य राख्नुहोस् — यसमा तपाईंका व्यक्तिगत टिपोटहरू छन्।", "data_held": "कण्ठस्थ श्लोक", "data_import": "ब्याकअप आयात", "data_import_desc": "ब्याकअप फाइलबाट पुनर्स्थापना गर्नुहोस्। भएको डाटा मर्ज हुनेछ।", "data_import_failed": "ब्याकअप पढ्न सकिएन — मान्य गीता ब्याकअप फाइल होइन", "data_imported": "ब्याकअप पुनर्स्थापित — {n} मनपर्ने, {m} टिपोट, {k} अध्यायको प्रगति", "data_local_note": "प्रगति यस ब्राउजरमा मात्र रहन्छ। ब्याकअप निर्यात गर्नुहोस् ताकि हराउन नपरोस्।", "data_never_backed": "अझै ब्याकअप निर्यात गरिएको छैन", "data_notes": "टिपोट", "data_sub": "मनपर्ने, टिपोट र कण्ठस्थ प्रगति यस ब्राउजरमा मात्र रहन्छ। ब्याकअप निर्यात गर्नुहोस्, वा पहिले सेभ गरेको फाइल आयात गर्नुहोस्।", "data_title": "तपाईंको डाटा", "fav_down": "↓", "fav_move_down": "मनपर्ने श्लोक तल सार्नुहोस्", "fav_move_up": "मनपर्ने श्लोक माथि सार्नुहोस्", "fav_note": "टिप्पणी", "fav_note_ph": "यो श्लोक किन महत्त्वपूर्ण छ…", "fav_up": "↑", "favorites": "मनपर्ने", "footer": "ॐ · भगवद्गीताको अध्ययन संस्करण — प्रत्येक श्लोक यसका परम्परागत चार पादमा, संस्कृत, शब्दार्थ, शाब्दिक अनुवाद र सरल अर्थ सहित।", "guide_chapter": "अध्यायमा विषयअनुसार समूहबद्ध श्लोक पढ्नुहोस्, वा कण्ठस्थ अभ्यास रोज्नुहोस्।", "guide_explore": "यस अध्ययनमा कसरी अघि बढ्ने", "guide_verse": "शब्दार्थ हेर्न श्लोक वा त्यसको कुनै पादमा थिच्नुहोस्।", "guide_way": "कर्म, भक्ति वा ज्ञानमध्ये एउटा मार्ग छानेर अध्याय खोल्नुहोस्।", "hide_meanings": "अर्थ लुकाउनुहोस्", "home": "गृह", "home_plain": "गृह", "in_other_words": "सरल अर्थमा", "language": "एपको भाषा", "learn_after": "“{t}” पछि — के आउँछ?", "learn_again": "फेरि हिँड्नुहोस्", "learn_all_done": "अध्याय {n} का सबै विषय तपाईंको भयो।", "learn_begin": "सुरु गर्नुहोस्", "learn_done_free": "अहिलेलाई पुग्यो", "learn_free": "मन लागुन्जेल अभ्यास गर्नुहोस्", "learn_free_d": "यस विषयको कुनै श्लोक, यसका चार पाद मिसाइएका। क्रममा मिलाउनुहोस्, अनि अर्को श्लोक झिक्नुहोस् — जति पटक चाहनुहुन्छ।", "learn_free_go": "पाद अभ्यास गर्नुहोस् →", "learn_held": "कण्ठस्थ", "learn_held_n": "{b} श्लोकमध्ये {a} कण्ठस्थ", "learn_lad_blind": "हृदयबाट", "learn_lad_blind_s": "सबै गुप्त — हेर्न थिच्नुहोस्", "learn_lad_first": "पहिलो शब्द", "learn_lad_first_s": "प्रत्येक पादको पहिलो शब्द", "learn_lad_full": "पूर्ण पठन", "learn_lad_full_s": "सबै शब्द खुला", "learn_lad_half": "आधा गुप्त", "learn_lad_half_s": "एक अन्तर एक शब्द गुप्त", "learn_ladder": "कण्ठस्थ सोपान", "learn_land_d": "श्लोक भेटियो। पाद मिलाएर अभ्यास गर्नुहोस्, वा स्मरण जाँच गर्नुहोस् — जति नरम चाहियो।", "learn_local": "प्रगति यही ब्राउजरमा मात्र रहन्छ।", "learn_mark_held": "कण्ठस्थ भयो", "learn_meet": "श्लोकहरूसँग परिचय", "learn_missing": "{v} को {q} औं पाद — कुन शब्द छुट्यो?", "learn_next_theme": "अर्को विषय →", "learn_next_verse": "अर्को श्लोक →", "learn_nextis": "अहँ — अब आउने हो", "learn_order_all": "पूरा कथा — सबै {n} चरण, क्रमैसँग", "learn_order_few": "यी {n} चरणलाई घट्ने क्रममा मिलाउनुहोस्", "learn_qorder": "{v} का चार पादलाई क्रममा मिलाउनुहोस्", "learn_read_d": "एकपटक बिस्तारै हिँड्नुहोस्। हरेक चरणले अर्कोलाई कसरी जन्माउँछ — त्यही शृङ्खला सम्झनामा बस्छ।", "learn_read_go": "पढेँ →", "learn_read_h": "अध्याय {n} को कथा", "learn_recall_opt": "स्मरण जाँच →", "learn_restart": "यो अध्याय सुरुदेखि", "learn_restart_q": "यस अध्यायको प्रगति मेटेर फेरि सुरु गर्ने?", "learn_retry": "फेरि चयन गर्नुहोस् →", "learn_reveal": "सम्झनुहोस्, अनि थिच्नुहोस्", "learn_revisit": "{n} फेरि हेर्न बाँकी", "learn_s1": "कथा", "learn_s1_d": "{n} वटा विषय क्रमैसँग सिक्नुहोस् — यही यस अध्यायको कथासूत्र हो।", "learn_s2": "श्लोकहरू", "learn_s2_d": "विषय-विषय गरी — हरेक श्लोकसँग परिचित हुनुहोस्, अनि सम्झनुहोस्। {b} मध्ये {a} भयो।", "learn_s3": "चार पाद", "learn_s3_d": "श्लोकलाई पाद-पाद मिलाएर कण्ठस्थ पार्नुहोस् — मुखले सिक्ने बाटो।", "learn_shuffle": "अर्को श्लोक झिक्नुहोस्", "learn_step": "चरण {a} / {b}", "learn_story_done": "अध्याय {n} को कथा तपाईंको भयो", "learn_story_done_d": "अब नहेरीकनै क्रमैसँग भन्न सक्नुहुन्छ। हरेक श्लोकले आफ्नो ठाउँ पायो।", "learn_sub": "पहिले कथा, अनि श्लोक। कथा नै धागो हो; धागोबिना श्लोकहरू भुइँमा छरिएका मणि हुन्।", "learn_tap_blank": "लुकेको शब्द देखाउन थिच्नुहोस्", "learn_test": "आत्म-परीक्षा", "learn_theme_done_d": "भयो — {n} पानाविनै सम्झनुभयो।", "learn_thread_ok": "यही हो धागो।", "learn_to_verses": "अब श्लोकतिर →", "learn_unhold": "हटाउनुहोस्", "learn_vorder": "“{t}” का श्लोकहरू क्रममा मिलाउनुहोस्", "learn_walked": "यो अध्यायको {p}% हिँडियो", "learn_which": "कुन श्लोकले यो भन्छ?", "learn_yes": "ठीक!", "link_copied": "लिङ्क कपी भयो", "literal": "शाब्दिक अनुवाद", "meter_anustubh": "अनुष्टुभ्", "meter_irregular": "अनियमित", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)", "meter_syllables": "{n} अक्षर", "meter_trishtubh": "त्रिष्टुभ्", "next": "अर्को →", "next_random": "अर्को यादृच्छिक", "next_theme": "अर्को विषय →", "no_favorites": "अहिलेसम्म कुनै सुरक्षित श्लोक छैन — कुनै श्लोक खोल्नुहोस् र मनपर्नेमा थप्नुहोस्।", "no_results": "केही भेटिएन — श्लोक सङ्ख्या (जस्तै २.४७), संस्कृत वा अङ्ग्रेजी शब्द प्रयास गर्नुहोस्।", "of": "मध्ये", "oob_chapter": "गीतामा मात्र १८ अध्याय छन्।", "oob_verse": "अध्याय {ch} मा मात्र {n} श्लोक छन्।", "open_verse": "श्लोक खोल्नुहोस्", "opt_chapter": "विषयगत अध्ययन", "opt_chapter_d": "अध्यायका सबै श्लोक विषयअनुसार — शब्दार्थका लागि कुनै श्लोकमा ट्याप गर्नुहोस्।", "opt_full": "अनुवादसहित श्लोक", "opt_full_d": "प्रत्येक श्लोक शाब्दिक अनुवाद र सरल अर्थसहित।", "opt_learn_d": "पहिले कथासूत्र, अनि श्लोक — पढेर होइन, सम्झेर।", "opt_learn_g": "कण्ठस्थ", "opt_learn_s": "कण्ठस्थ", "opt_study_d": "विषय र तिनका श्लोकहरू — शब्दार्थसहित।", "opt_study_s": "अध्ययन गाइड", "pada_label": "पाद", "pick_theme": "यसका श्लोकहरू खोल्न विषय छान्नुहोस्।", "play": "खेल", "play_all": "पूरा गीता", "play_ch": "एउटा अध्याय", "play_m1": "के भन्छ?", "play_m1_d": "संस्कृत पढ्नुहोस्। यस श्लोकको अर्थ छान्नुहोस्।", "play_m2": "अर्को के आउँछ?", "play_m2_d": "गीता शृङ्खला हो। यो श्लोकपछि कुन श्लोक आउँछ?", "play_m3": "श्लोक जोड्नुहोस्", "play_m3_d": "चार पाद मिसाइएका। क्रममा मिलाउनुहोस्।", "play_q1": "यो श्लोकले के भन्छ?", "play_q2": "यसपछि कुन श्लोक आउँछ?", "play_round": "लगातार {n}", "play_scope": "कहाँबाट?", "play_sub": "श्लोक पढ्नुहोस्, अर्थ लिनुहोस्, शृङ्खला समात्नुहोस्, पाद मिलाउनुहोस्।", "play_title": "खेल", "prev_theme": "← अघिल्लो विषय", "previous": "← अघिल्लो", "random": "यादृच्छिक", "range_chapters": "अध्याय {a}–{b}", "reader_size": "अक्षरको आकार", "reader_size_decrease": "श्लोकको अक्षर सानो बनाउनुहोस्", "reader_size_increase": "श्लोकको अक्षर ठूलो बनाउनुहोस्", "reader_size_reset": "श्लोकको अक्षरको आकार फेरि मिलाउनुहोस्", "recent_verses": "हालै हेरिएका", "remove_fav": "✕ हटाउनुहोस्", "result": "परिणाम", "results": "परिणामहरू", "save_verse": "मनपर्नेमा थप्नुहोस्", "saved_verse": "मनपर्नेमा", "search_label": "श्लोक खोज्नुहोस्", "search_ph": "खोज्नुहोस् जस्तै १.१", "search_recent": "हालैका", "search_results": "खोज परिणामहरू", "search_try": "२.४७ जस्तो श्लोक सङ्ख्या, धर्मक्षेत्र जस्तो संस्कृत शब्द, वा अनुवादको कुनै वाक्यांश खोजिहेर्नुहोस्।", "sec_bhakti": "भक्तिमार्ग", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान्प्रतिको भक्ति र समर्पण।", "sec_jnana": "ज्ञानमार्ग", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण र मुक्ति।", "sec_karma": "कर्ममार्ग", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य र कर्मफलको त्याग।", "sections_sub": "गीताका अठार अध्याय तीन मार्गमा — कर्म, भक्ति र ज्ञान — एउटा अर्कोमा परिपक्व हुँदै।", "sections_title": "तीन मार्ग", "share": "शेयर गर्नुहोस्", "share_hint": "यो श्लोक मन पर्यो? लिङ्क कपी गरेर साथीहरूसँग साझा गर्नुहोस्।", "shared_hint": "शब्दार्थ हेर्न/लुकाउन श्लोकमा क्लिक गर्नुहोस्।", "shared_label": "साझा श्लोक", "show_meanings": "अर्थ देखाउनुहोस्", "skip_to_content": "मुख्य सामग्रीमा जानुहोस्", "srs_all_caught_up": "आजको अभ्यास पूरा · {n} श्लोक पुनरावलोकनमा", "srs_ch_due": "आज पुनरावलोकनका लागि {n} श्लोक", "srs_due_many": "आज दोहोर्याउनुपर्ने {n} श्लोक", "srs_due_one": "आज दोहोर्याउनुपर्ने १ श्लोक", "srs_review_btn": "श्लोक पुनरावलोकन गर्नुहोस्", "srs_review_done": "आजको पुनरावलोकन पूरा भयो।", "srs_streak": "{n} दिनको निरन्तर अभ्यास", "tab_bhakti": "भक्तिमार्ग", "tab_jnana": "ज्ञानमार्ग", "tab_karma": "कर्ममार्ग", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "theme_dark": "डार्क मोडमा जानुहोस्", "theme_light": "लाइट मोडमा जानुहोस्", "theme_sg": "विषय", "themes": "विषयहरू", "verse": "श्लोक", "verse_copied": "श्लोक कपी भयो", "verse_of_day": "आजको श्लोक", "verse_topic": "श्लोक विषय", "verses": "श्लोकहरू", "welcome_enter": "गीतामा प्रवेश गर्नुहोस्", "welcome_foot": "ॐ ७०० श्लोक · तीन मार्ग · एउटै लक्ष्य", "welcome_sub": "कुरुक्षेत्रको युद्धभूमिमा कृष्ण र अर्जुनको कालातीत संवाद — ७०० श्लोक, तीन मार्ग, एउटै लक्ष्य।", "welcome_title": "भगवद्गीतामा स्वागत छ", "wip": "निर्माणाधीन — अझै बन्दै, सुधार्दै; गीताको अध्ययन सजिलो बनाउनु नै लक्ष्य।"}, "hi": {"app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में", "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "back_chapter_one": "← अध्याय पर लौटें", "back_chapters": "← अध्यायों पर लौटें", "back_to_theme": "← विषय पर लौटें", "back_to_x": "← {x} पर लौटें", "back_ways": "← तीन मार्गों पर लौटें", "breadcrumb": "नेविगेशन पथ", "chapter": "अध्याय", "chapters": "अध्याय", "choose_title": "इस अध्याय को आप कैसे पढ़ना चाहेंगे?", "clear": "हटाएँ", "click_hint": "संस्कृत श्लोक दिखाने के लिए किसी श्लोक के शीर्षक पर क्लिक करें", "click_hint_pada": "चारों पाद देखने के लिए इस श्लोक पर टैप करें", "click_pada_meanings": "शब्दार्थ देखने के लिए किसी पाद पर टैप करें", "close_verse": "श्लोक बंद करें", "copy_link": "श्लोक लिंक कॉपी करें", "copy_verse_text": "श्लोक पाठ कॉपी करें", "data_backed_up": "पिछला बैकअप: {d}", "data_chapters": "अध्याय", "data_clear": "सभी डेटा मिटाएँ", "data_clear_desc": "इस ब्राउज़र से सभी पसंदीदा, नोट्स और कण्ठस्थ प्रगति हटाएँ।", "data_clear_q": "इस ब्राउज़र से सभी पसंदीदा, नोट्स और कण्ठस्थ प्रगति मिटा दें? इसे वापस नहीं लाया जा सकता।", "data_cleared": "सभी डेटा मिटा दिया गया", "data_current": "इस ब्राउज़र में अभी", "data_export": "बैकअप निर्यात", "data_export_desc": "पसंदीदा, नोट्स और कण्ठस्थ प्रगति वाली बैकअप फ़ाइल डाउनलोड करें।", "data_exported": "बैकअप डाउनलोड हुआ", "data_foot": "आपका बैकअप एक सामान्य फ़ाइल है। इसे निजी रखें — इसमें आपके व्यक्तिगत नोट्स हैं।", "data_held": "कण्ठस्थ श्लोक", "data_import": "बैकअप आयात", "data_import_desc": "बैकअप फ़ाइल से पुनर्स्थापित करें। मौजूदा डेटा मर्ज हो जाएगा।", "data_import_failed": "बैकअप पढ़ा नहीं जा सका — मान्य गीता बैकअप फ़ाइल नहीं है", "data_imported": "बैकअप पुनर्स्थापित — {n} पसंदीदा, {m} नोट्स, {k} अध्यायों की प्रगति", "data_local_note": "प्रगति केवल इस ब्राउज़र में रहती है। बैकअप निर्यात करें ताकि यह खो न जाए।", "data_never_backed": "अभी तक कोई बैकअप निर्यात नहीं किया गया", "data_notes": "नोट्स", "data_sub": "पसंदीदा, नोट्स और कण्ठस्थ प्रगति केवल इस ब्राउज़र में रहती है। बैकअप निर्यात करें, या पहले सहेजी हुई फ़ाइल आयात करें।", "data_title": "आपका डेटा", "fav_down": "↓", "fav_move_down": "पसंदीदा श्लोक नीचे ले जाएँ", "fav_move_up": "पसंदीदा श्लोक ऊपर ले जाएँ", "fav_note": "टिप्पणी", "fav_note_ph": "यह श्लोक आपके लिए क्यों महत्त्वपूर्ण है…", "fav_up": "↑", "favorites": "पसंदीदा", "footer": "ॐ · भगवद्गीता का अध्ययन संस्करण — प्रत्येक श्लोक अपने पारंपरिक चार पादों में, संस्कृत, शब्दार्थ, शाब्दिक अनुवाद और सरल अर्थ सहित।", "guide_chapter": "अध्याय में विषयवार समूहबद्ध श्लोक पढ़ें, या कंठस्थ अभ्यास चुनें।", "guide_explore": "इस अध्ययन को कैसे करें", "guide_verse": "शब्दार्थ देखने के लिए श्लोक या उसके किसी एक पाद पर टैप करें।", "guide_way": "कर्म, भक्ति या ज्ञान में से एक मार्ग चुनकर अध्याय खोलें।", "hide_meanings": "अर्थ छिपाएँ", "home": "गृह", "home_plain": "गृह", "in_other_words": "सरल शब्दों में", "language": "ऐप की भाषा", "learn_after": "“{t}” के बाद — क्या आता है?", "learn_again": "फिर से चलें", "learn_all_done": "अध्याय {n} के सभी विषय आपके हुए।", "learn_begin": "आरम्भ करें", "learn_done_free": "अभी के लिए बस", "learn_free": "जब तक मन करे अभ्यास करें", "learn_free_d": "इस विषय का कोई श्लोक, उसके चारों पाद मिश्रित। क्रम में लगाएँ, फिर दूसरा श्लोक निकालें — जितनी बार चाहें।", "learn_free_go": "पादों का अभ्यास करें →", "learn_held": "कंठस्थ", "learn_held_n": "{b} में से {a} श्लोक कंठस्थ", "learn_lad_blind": "हृदय से", "learn_lad_blind_s": "सब गुप्त — देखने के लिए टैप करें", "learn_lad_first": "प्रथम शब्द", "learn_lad_first_s": "प्रत्येक पाद का पहला शब्द", "learn_lad_full": "पूर्ण पठन", "learn_lad_full_s": "सभी शब्द खुले", "learn_lad_half": "आधा गुप्त", "learn_lad_half_s": "एक अंतर एक शब्द गुप्त", "learn_ladder": "कंठस्थ सोपान", "learn_land_d": "श्लोक मिल गए। पाद जोड़कर अभ्यास करें, या स्मरण जाँचें — जितना नरम चाहें।", "learn_local": "प्रगति केवल इसी ब्राउज़र में रहती है।", "learn_mark_held": "कंठस्थ हुआ", "learn_meet": "श्लोकों से परिचय", "learn_missing": "{v} का {q}वाँ पाद — कौन-सा शब्द छूटा?", "learn_next_theme": "अगला विषय →", "learn_next_verse": "अगला श्लोक →", "learn_nextis": "अभी नहीं — अब आता है", "learn_order_all": "पूरी कथा — सभी {n} चरण, क्रम से", "learn_order_few": "इन {n} चरणों को घटने के क्रम में लगाएँ", "learn_qorder": "{v} के चारों पादों को क्रम में लगाएँ", "learn_read_d": "एक बार धीरे-धीरे चलें। हर चरण अगले को कैसे जन्म देता है — वही शृंखला याद रहती है।", "learn_read_go": "पढ़ लिया →", "learn_read_h": "अध्याय {n} की कथा", "learn_recall_opt": "स्मरण जाँच →", "learn_restart": "यह अध्याय फिर से", "learn_restart_q": "इस अध्याय की प्रगति मिटाकर फिर से आरम्भ करें?", "learn_retry": "फिर चयन करें →", "learn_reveal": "स्मरण करें, फिर टैप करें", "learn_revisit": "{n} फिर देखने हैं", "learn_s1": "कथा", "learn_s1_d": "{n} विषय क्रम से सीखें — यही इस अध्याय का कथासूत्र है।", "learn_s2": "श्लोक", "learn_s2_d": "विषय-दर-विषय — हर श्लोक से मिलें, फिर उसे स्मरण करें। {b} में से {a} हुए।", "learn_s3": "चार पाद", "learn_s3_d": "श्लोक को पाद-पाद जोड़कर कंठस्थ करें — मुख से सीखने का मार्ग।", "learn_shuffle": "दूसरा श्लोक निकालें", "learn_step": "चरण {a} / {b}", "learn_story_done": "अध्याय {n} की कथा आपकी हुई", "learn_story_done_d": "अब बिना देखे क्रम से कह सकते हैं। हर श्लोक को अपनी जगह मिल गई।", "learn_sub": "पहले कथा, फिर श्लोक। कथा ही धागा है; धागे बिना श्लोक बिखरे मोती हैं।", "learn_tap_blank": "छिपे शब्द को देखने के लिए टैप करें", "learn_test": "आत्म-परीक्षा", "learn_theme_done_d": "हुआ — {n} बिना पन्ना देखे स्मरण किए।", "learn_thread_ok": "यही है धागा।", "learn_to_verses": "अब श्लोकों की ओर →", "learn_unhold": "हटाएँ", "learn_vorder": "“{t}” के श्लोकों को क्रम में लगाएँ", "learn_walked": "इस अध्याय का {p}% चला", "learn_which": "कौन-सा श्लोक यह कहता है?", "learn_yes": "ठीक!", "link_copied": "लिंक कॉपी हुआ", "literal": "शाब्दिक अनुवाद", "meter_anustubh": "अनुष्टुभ्", "meter_irregular": "अनियमित", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)", "meter_syllables": "{n} अक्षर", "meter_trishtubh": "त्रिष्टुभ्", "next": "अगला →", "next_random": "अगला यादृच्छिक", "next_theme": "अगला विषय →", "no_favorites": "अभी कोई सहेजा गया श्लोक नहीं — किसी श्लोक को खोलकर पसंदीदा में जोड़ें पर टैप करें।", "no_results": "कुछ नहीं मिला — श्लोक संख्या (जैसे २.४७), संस्कृत या अंग्रेज़ी शब्द आज़माएँ।", "of": "में से", "oob_chapter": "गीता में केवल १८ अध्याय हैं।", "oob_verse": "अध्याय {ch} में केवल {n} श्लोक हैं।", "open_verse": "श्लोक खोलें", "opt_chapter": "विषयगत अध्ययन", "opt_chapter_d": "अध्याय के सभी श्लोक विषयवार — शब्दार्थ के लिए किसी श्लोक पर टैप करें।", "opt_full": "अनुवादसहित श्लोक", "opt_full_d": "प्रत्येक श्लोक शाब्दिक अनुवाद और सरल अर्थ सहित।", "opt_learn_d": "पहले कथासूत्र, फिर श्लोक — पढ़कर नहीं, स्मरण करके।", "opt_learn_g": "कण्ठस्थ", "opt_learn_s": "कंठस्थ", "opt_study_d": "विषय और उनके श्लोक — शब्दार्थ सहित।", "opt_study_s": "अध्ययन गाइड", "pada_label": "पाद", "pick_theme": "इसके श्लोक खोलने के लिए विषय चुनें।", "play": "खेल", "play_all": "पूरी गीता", "play_ch": "एक अध्याय", "play_m1": "क्या कहता है?", "play_m1_d": "संस्कृत पढ़ें। इस श्लोक का अर्थ चुनें।", "play_m2": "आगे क्या आता है?", "play_m2_d": "गीता एक शृंखला है। इस श्लोक के बाद कौन-सा श्लोक आता है?", "play_m3": "श्लोक जोड़ें", "play_m3_d": "चार पाद मिश्रित। क्रम में लगाएँ।", "play_q1": "यह श्लोक क्या कहता है?", "play_q2": "इसके बाद कौन-सा श्लोक आता है?", "play_round": "लगातार {n}", "play_scope": "कहाँ से?", "play_sub": "श्लोक पढ़ें, अर्थ लें, शृंखला पकड़ें, पाद मिलाएँ।", "play_title": "खेल", "prev_theme": "← पिछला विषय", "previous": "← पिछला", "random": "यादृच्छिक", "range_chapters": "अध्याय {a}–{b}", "reader_size": "पाठ का आकार", "reader_size_decrease": "श्लोक का अक्षर छोटा करें", "reader_size_increase": "श्लोक का अक्षर बड़ा करें", "reader_size_reset": "श्लोक का अक्षर सामान्य करें", "recent_verses": "हाल में देखे गए", "remove_fav": "✕ हटाएँ", "result": "परिणाम", "results": "परिणाम", "save_verse": "पसंदीदा में जोड़ें", "saved_verse": "पसंदीदा में", "search_label": "श्लोक खोजें", "search_ph": "खोजें जैसे १.१", "search_recent": "हाल के", "search_results": "खोज परिणाम", "search_try": "२.४७ जैसी श्लोक संख्या, धर्मक्षेत्र जैसा संस्कृत शब्द, या अनुवाद का कोई वाक्यांश खोजें।", "sec_bhakti": "भक्तिमार्ग", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान् के प्रति भक्ति और समर्पण।", "sec_jnana": "ज्ञानमार्ग", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण और मुक्ति।", "sec_karma": "कर्ममार्ग", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य और कर्म-फल का त्याग।", "sections_sub": "गीता के अठारह अध्याय तीन मार्गों में — कर्म, भक्ति और ज्ञान — एक अगले में परिपक्व होते हुए।", "sections_title": "तीन मार्ग", "share": "शेयर करें", "share_hint": "यह श्लोक पसंद आया? लिंक कॉपी करके मित्रों के साथ साझा करें।", "shared_hint": "शब्दार्थ देखने/छिपाने के लिए श्लोक पर क्लिक करें।", "shared_label": "साझा श्लोक", "show_meanings": "अर्थ दिखाएँ", "skip_to_content": "मुख्य सामग्री पर जाएँ", "srs_all_caught_up": "आज का अभ्यास पूरा · {n} श्लोक पुनरावलोकन में", "srs_ch_due": "आज पुनरावलोकन के लिए {n} श्लोक", "srs_due_many": "आज दोहराने के लिए {n} श्लोक", "srs_due_one": "आज दोहराने के लिए १ श्लोक", "srs_review_btn": "श्लोकों का पुनरावलोकन करें", "srs_review_done": "आज का पुनरावलोकन पूरा हुआ।", "srs_streak": "{n} दिन का निरन्तर अभ्यास", "tab_bhakti": "भक्तिमार्ग", "tab_jnana": "ज्ञानमार्ग", "tab_karma": "कर्ममार्ग", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "theme_dark": "डार्क मोड पर जाएँ", "theme_light": "लाइट मोड पर जाएँ", "theme_sg": "विषय", "themes": "विषय", "verse": "श्लोक", "verse_copied": "श्लोक कॉपी हुआ", "verse_of_day": "आज का श्लोक", "verse_topic": "श्लोक विषय", "verses": "श्लोक", "welcome_enter": "गीता में प्रवेश करें", "welcome_foot": "ॐ ७०० श्लोक · तीन मार्ग · एक लक्ष्य", "welcome_sub": "कुरुक्षेत्र के रणक्षेत्र में कृष्ण और अर्जुन का कालातीत संवाद — ७०० श्लोक, तीन मार्ग, एक लक्ष्य।", "welcome_title": "भगवद्गीता में आपका स्वागत है", "wip": "निर्माणाधीन — अभी बन रहा है, सुधर रहा है; गीता का अध्ययन सरल बनाना ही ध्येय है।"}};
+const UI = {"en": {"app_sub": "श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 quarters", "app_title": "Bhagavad Gita — an Interactive Study", "back_chapter_one": "← Back to chapter", "back_chapters": "← Back to chapters", "back_to_theme": "← Back to theme", "back_to_x": "← Back to {x}", "back_ways": "← Back to the Three Ways", "breadcrumb": "Breadcrumb navigation", "chapter": "Chapter", "chapters": "Chapters", "choose_title": "How would you like to receive this chapter?", "clear": "Clear", "click_hint": "Click any verse title to show the Sanskrit verse", "click_hint_pada": "Tap this verse to reveal all four pādas", "click_pada_meanings": "Tap a pāda to see its word-by-word meanings", "close_verse": "Close verse", "copy_link": "Copy verse link", "copy_verse_text": "Copy verse text", "data_backed_up": "Last backup: {d}", "data_chapters": "chapters", "data_clear": "Clear all data", "data_clear_desc": "Remove all favourites, notes and Learn progress from this browser.", "data_clear_q": "Clear all favourites, notes and Learn progress from this browser? This cannot be undone.", "data_cleared": "All data cleared", "data_current": "Currently in this browser", "data_export": "Export backup", "data_export_desc": "Download a JSON file with your favourites, notes and Learn progress.", "data_exported": "Backup downloaded", "data_foot": "Your backup is a plain JSON file. Keep it private — it contains your personal notes.", "data_held": "verses held", "data_import": "Import backup", "data_import_desc": "Restore from a backup file. Existing data will be merged.", "data_import_failed": "Could not read backup — not a valid Gita backup file", "data_imported": "Backup restored — {n} favourites, {m} notes, {k} chapters of progress", "data_local_note": "Progress is kept in this browser only. Export a backup so you don't lose it.", "data_never_backed": "No backup exported yet", "data_notes": "notes", "data_sub": "Favourites, notes and Learn progress live in this browser. Export a backup, or import one you saved before.", "data_title": "Your data", "fav_down": "↓", "fav_move_down": "Move favorite down", "fav_move_up": "Move favorite up", "fav_note": "note", "fav_note_ph": "why this verse matters to you…", "fav_up": "↑", "favorites": "Favorites", "footer": "ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.", "guide_chapter": "In a chapter, read the verses grouped by theme, or choose learn by heart.", "guide_explore": "How to explore", "guide_verse": "Tap a verse or any of its four quarters to reveal word-by-word meanings.", "guide_way": "Choose a way — action, devotion, or knowledge — to find a chapter.", "hide_meanings": "Hide meanings", "home": "Home", "home_plain": "home", "in_other_words": "In other words", "language": "Interface language", "learn_after": "After “{t}” — what comes next?", "learn_again": "Walk it again", "learn_all_done": "Every theme of chapter {n} is yours.", "learn_begin": "Begin", "learn_done_free": "Done for now", "learn_free": "Practise as long as you like", "learn_free_d": "A verse from this theme, its four quarters shuffled. Put them in order, then shuffle another — as often as you wish.", "learn_free_go": "Practise the quarters →", "learn_held": "Held", "learn_held_n": "{a} of {b} verses held", "learn_lad_blind": "From the heart", "learn_lad_blind_s": "all hidden — tap to peek", "learn_lad_first": "First words", "learn_lad_first_s": "opening word of each quarter", "learn_lad_full": "Full read", "learn_lad_full_s": "every word open", "learn_lad_half": "Half hidden", "learn_lad_half_s": "every other word hidden", "learn_ladder": "Memory ladder", "learn_land_d": "You have met the verses. Practise the quarters, or test recall — as gently as you like.", "learn_local": "Progress is kept in this browser only.", "learn_mark_held": "Mark held", "learn_meet": "Meet the verses", "learn_missing": "Quarter {q} of {v} — which word is missing?", "learn_next_theme": "Next theme →", "learn_next_verse": "Next verse →", "learn_nextis": "Not there yet — next comes", "learn_order_all": "The whole story — all {n} beats, in order", "learn_order_few": "Put these {n} beats back in the order they happen", "learn_qorder": "Put the four quarters of {v} back in order", "learn_read_d": "Walk down it once, slowly. Notice how each beat causes the next — that chain is what you will remember.", "learn_read_go": "I've read it →", "learn_read_h": "The story of chapter {n}", "learn_recall_opt": "Test recall →", "learn_restart": "Start this chapter over", "learn_restart_q": "Forget your progress for this chapter and start again?", "learn_retry": "Select again →", "learn_reveal": "Recall, then tap to see", "learn_revisit": "{n} to revisit", "learn_s1": "The Story", "learn_s1_d": "Learn the {n} themes in order — the storyline of this chapter.", "learn_s2": "The Verses", "learn_s2_d": "Theme by theme — meet each verse, then recall it. {a} of {b} held.", "learn_s3": "The quarters", "learn_s3_d": "Put each śloka back together, pāda by pāda — the way the mouth learns it.", "learn_shuffle": "Shuffle another verse", "learn_step": "Step {a} of {b}", "learn_story_done": "The story of chapter {n} is yours", "learn_story_done_d": "You can say what happens, in order, without looking. Every verse now has somewhere to belong.", "learn_sub": "First the story, then the verses. The story is the thread; without it the verses are beads on the floor.", "learn_tap_blank": "Tap a hidden word to peek", "learn_test": "Self-test", "learn_theme_done_d": "Held — {n} recalled without the page in front of you.", "learn_thread_ok": "That's the thread.", "learn_to_verses": "On to the verses →", "learn_unhold": "Unmark", "learn_vorder": "Put the verses of “{t}” back in order", "learn_walked": "{p}% of this chapter walked", "learn_which": "Which verse says this?", "learn_yes": "Yes.", "link_copied": "Link copied", "literal": "Literal", "meter_anustubh": "anuṣṭubh", "meter_irregular": "irregular", "meter_padas": "{n} quarters", "meter_padas_of": "{n} quarters of {k}", "meter_syllables": "{n} syllables", "meter_trishtubh": "triṣṭubh", "next": "Next →", "next_random": "Next Random", "next_theme": "Next theme →", "no_favorites": "No saved verses yet — open any verse and tap Add to favorites.", "no_results": "No matches — try a verse number (e.g. 2.47), a Sanskrit word, or an English word.", "note_label": "Your note", "note_ph": "what this verse means to you…", "notes_title": "Your notes", "of": "of", "oob_chapter": "The Gita has only 18 chapters.", "oob_verse": "Chapter {ch} has only {n} verses.", "open_verse": "Open verse", "opt_chapter": "Thematic study", "opt_chapter_d": "All verses of the chapter grouped by theme — tap any verse for word-by-word meanings.", "opt_full": "Verses with translation", "opt_full_d": "Each verse with its literal translation and the flowing paraphrase.", "opt_learn_d": "First the storyline, then the verses — recalled, not re-read.", "opt_learn_g": "कण्ठस्थ", "opt_learn_s": "Learn by heart", "opt_study_d": "Themes and their verses, with word-by-word meanings.", "opt_study_s": "Study guide", "pada_label": "Quarter", "pick_theme": "Pick a theme to open its verses.", "play": "Play", "play_all": "The whole Gītā", "play_ch": "One chapter", "play_m1": "What does it say?", "play_m1_d": "Read the Sanskrit. Choose the sense that belongs to this verse.", "play_m2": "What comes next?", "play_m2_d": "The Gītā is a chain. Given this verse, which śloka follows?", "play_m3": "Rebuild the śloka", "play_m3_d": "Four quarters, shuffled. Put them back in order.", "play_q1": "What does this śloka say?", "play_q2": "After this, which śloka comes next?", "play_round": "{n} in a row", "play_scope": "Where from?", "play_sub": "Hear a śloka, take its sense, follow the argument, rebuild the line.", "play_title": "Play", "prev_theme": "← Previous theme", "previous": "← Previous", "random": "Random", "range_chapters": "Chapters {a}–{b}", "reader_size": "Text size", "reader_size_decrease": "Make verse text smaller", "reader_size_increase": "Make verse text larger", "reader_size_reset": "Reset verse text size", "recent_verses": "Recently viewed", "remove_fav": "✕ remove", "result": "result", "results": "results", "save_verse": "Add to favorites", "saved_verse": "In favorites", "search_label": "Search verses", "search_ph": "Search e.g. 1.1", "search_recent": "Recent", "search_results": "Search results", "search_in_chapters": "Chapters", "search_in_themes": "Themes", "search_in_verses": "Verses", "search_word_match": "word: {w}", "search_try": "Try a verse number like 2.47, a Sanskrit word like dharmakṣetra, or a phrase from the translation.", "sec_bhakti": "भक्तिमार्ग · The Way of Bhakti", "sec_bhakti_desc": "Chapters 7–12 · devotion and surrender to the Lord.", "sec_jnana": "ज्ञानमार्ग · The Way of Jñāna", "sec_jnana_desc": "Chapters 13–18 · knowledge, the guṇas, and liberation.", "sec_karma": "कर्ममार्ग · The Way of Karma", "sec_karma_desc": "Chapters 1–6 · action, duty, and renouncing the fruits of action.", "sections_sub": "The Gita's eighteen chapters in three ways — action, devotion, knowledge — each ripening into the next.", "sections_title": "The Three Ways", "share": "Share", "share_hint": "Like this verse? Copy the link and share it with friends.", "shared_hint": "Click the verse to show/hide the word-by-word meanings.", "shared_label": "Shared verse", "show_meanings": "Show meanings", "skip_to_content": "Skip to content", "srs_all_caught_up": "All caught up · {n} verses in review", "srs_ch_due": "{n} verses due for review today", "srs_due_many": "{n} verses to revisit today", "srs_due_one": "1 verse to revisit today", "srs_review_btn": "Review due verses", "srs_review_done": "Review complete for today.", "srs_review_more": "Continue review · {n} still due", "srs_streak": "{n}-day practice streak", "tab_bhakti": "Way of Bhakti", "tab_jnana": "Way of Jñāna", "tab_karma": "Way of Karma", "tag_sub": "18 chapters · 700 verses · study edition", "theme_dark": "Switch to dark mode", "theme_light": "Switch to light mode", "theme_sg": "Theme", "themes": "Themes", "verse": "Verse", "verse_copied": "Verse copied", "verse_of_day": "Verse of the Day", "verse_topic": "Verse topic", "verses": "verses", "welcome_enter": "Enter the Gita", "welcome_foot": "ॐ 700 verses · three ways · one goal", "welcome_sub": "The timeless dialogue between Kṛṣṇa and Arjuna on the battlefield of Kurukṣetra — 700 verses, three ways, one goal.", "welcome_title": "Welcome to the Bhagavad Gita", "wip": "A work in progress — still building, still fixing, and dedicated to making the Gītā easier to study."}, "ne": {"app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा", "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "back_chapter_one": "← अध्यायमा फर्कनुहोस्", "back_chapters": "← अध्यायहरूमा फर्कनुहोस्", "back_to_theme": "← विषयमा फर्कनुहोस्", "back_to_x": "← {x}मा फर्कनुहोस्", "back_ways": "← तीन मार्गमा फर्कनुहोस्", "breadcrumb": "नेभिगेसन मार्ग", "chapter": "अध्याय", "chapters": "अध्यायहरू", "choose_title": "यो अध्याय कसरी पढ्न चाहनुहुन्छ?", "clear": "मेट्नुहोस्", "click_hint": "संस्कृत श्लोक देखाउन कुनै पनि श्लोकको शीर्षकमा क्लिक गर्नुहोस्", "click_hint_pada": "चारै पाद हेर्न यो श्लोकमा ट्याप गर्नुहोस्", "click_pada_meanings": "शब्दार्थ हेर्न कुनै पादमा ट्याप गर्नुहोस्", "close_verse": "श्लोक बन्द गर्नुहोस्", "copy_link": "श्लोक लिङ्क कपी गर्नुहोस्", "copy_verse_text": "श्लोक पाठ कपी गर्नुहोस्", "data_backed_up": "पछिल्लो ब्याकअप: {d}", "data_chapters": "अध्याय", "data_clear": "सबै डाटा मेटाउनुहोस्", "data_clear_desc": "यस ब्राउजरबाट सबै मनपर्ने, टिप्पणी र कण्ठस्थ प्रगति हटाउनुहोस्।", "data_clear_q": "यस ब्राउजरबाट सबै मनपर्ने, टिप्पणी र कण्ठस्थ प्रगति मेटाउने? यो फिर्ता गर्न सकिँदैन।", "data_cleared": "सबै डाटा मेटियो", "data_current": "यस ब्राउजरमा अहिले", "data_export": "ब्याकअप निर्यात", "data_export_desc": "मनपर्ने, टिप्पणी र कण्ठस्थ प्रगति भएको ब्याकअप फाइल डाउनलोड गर्नुहोस्।", "data_exported": "ब्याकअप डाउनलोड भयो", "data_foot": "तपाईंको ब्याकअप सामान्य फाइल हो। यसलाई गोप्य राख्नुहोस् — यसमा तपाईंका व्यक्तिगत टिप्पणीहरू छन्।", "data_held": "कण्ठस्थ श्लोक", "data_import": "ब्याकअप आयात", "data_import_desc": "ब्याकअप फाइलबाट पुनर्स्थापना गर्नुहोस्। भएको डाटा मर्ज हुनेछ।", "data_import_failed": "ब्याकअप पढ्न सकिएन — मान्य गीता ब्याकअप फाइल होइन", "data_imported": "ब्याकअप पुनर्स्थापित — {n} मनपर्ने, {m} टिप्पणी, {k} अध्यायको प्रगति", "data_local_note": "प्रगति यस ब्राउजरमा मात्र रहन्छ। ब्याकअप निर्यात गर्नुहोस् ताकि हराउन नपरोस्।", "data_never_backed": "अझै ब्याकअप निर्यात गरिएको छैन", "data_notes": "टिप्पणी", "data_sub": "मनपर्ने, टिप्पणी र कण्ठस्थ प्रगति यस ब्राउजरमा मात्र रहन्छ। ब्याकअप निर्यात गर्नुहोस्, वा पहिले सेभ गरेको फाइल आयात गर्नुहोस्।", "data_title": "तपाईंको डाटा", "fav_down": "↓", "fav_move_down": "मनपर्ने श्लोक तल सार्नुहोस्", "fav_move_up": "मनपर्ने श्लोक माथि सार्नुहोस्", "fav_note": "टिप्पणी", "fav_note_ph": "यो श्लोक किन महत्त्वपूर्ण छ…", "fav_up": "↑", "favorites": "मनपर्ने", "footer": "ॐ · भगवद्गीताको अध्ययन संस्करण — प्रत्येक श्लोक यसका परम्परागत चार पादमा, संस्कृत, शब्दार्थ, शाब्दिक अनुवाद र सरल अर्थ सहित।", "guide_chapter": "अध्यायमा विषयअनुसार समूहबद्ध श्लोक पढ्नुहोस्, वा कण्ठस्थ अभ्यास रोज्नुहोस्।", "guide_explore": "यस अध्ययनमा कसरी अघि बढ्ने", "guide_verse": "शब्दार्थ हेर्न श्लोक वा त्यसको कुनै पादमा थिच्नुहोस्।", "guide_way": "कर्म, भक्ति वा ज्ञानमध्ये एउटा मार्ग छानेर अध्याय खोल्नुहोस्।", "hide_meanings": "अर्थ लुकाउनुहोस्", "home": "गृह", "home_plain": "गृह", "in_other_words": "सरल अर्थमा", "language": "एपको भाषा", "learn_after": "“{t}” पछि — के आउँछ?", "learn_again": "फेरि हिँड्नुहोस्", "learn_all_done": "अध्याय {n} का सबै विषय तपाईंको भयो।", "learn_begin": "सुरु गर्नुहोस्", "learn_done_free": "अहिलेलाई पुग्यो", "learn_free": "मन लागुन्जेल अभ्यास गर्नुहोस्", "learn_free_d": "यस विषयको कुनै श्लोक, यसका चार पाद मिसाइएका। क्रममा मिलाउनुहोस्, अनि अर्को श्लोक झिक्नुहोस् — जति पटक चाहनुहुन्छ।", "learn_free_go": "पाद अभ्यास गर्नुहोस् →", "learn_held": "कण्ठस्थ", "learn_held_n": "{b} श्लोकमध्ये {a} कण्ठस्थ", "learn_lad_blind": "हृदयबाट", "learn_lad_blind_s": "सबै गुप्त — हेर्न थिच्नुहोस्", "learn_lad_first": "पहिलो शब्द", "learn_lad_first_s": "प्रत्येक पादको पहिलो शब्द", "learn_lad_full": "पूर्ण पठन", "learn_lad_full_s": "सबै शब्द खुला", "learn_lad_half": "आधा गुप्त", "learn_lad_half_s": "एक अन्तर एक शब्द गुप्त", "learn_ladder": "कण्ठस्थ सोपान", "learn_land_d": "श्लोक भेटियो। पाद मिलाएर अभ्यास गर्नुहोस्, वा स्मरण जाँच गर्नुहोस् — जति नरम चाहियो।", "learn_local": "प्रगति यही ब्राउजरमा मात्र रहन्छ।", "learn_mark_held": "कण्ठस्थ भयो", "learn_meet": "श्लोकहरूसँग परिचय", "learn_missing": "{v} को {q} औं पाद — कुन शब्द छुट्यो?", "learn_next_theme": "अर्को विषय →", "learn_next_verse": "अर्को श्लोक →", "learn_nextis": "अहँ — अब आउने हो", "learn_order_all": "पूरा कथा — सबै {n} चरण, क्रमैसँग", "learn_order_few": "यी {n} चरणलाई घट्ने क्रममा मिलाउनुहोस्", "learn_qorder": "{v} का चार पादलाई क्रममा मिलाउनुहोस्", "learn_read_d": "एकपटक बिस्तारै हिँड्नुहोस्। हरेक चरणले अर्कोलाई कसरी जन्माउँछ — त्यही शृङ्खला सम्झनामा बस्छ।", "learn_read_go": "पढेँ →", "learn_read_h": "अध्याय {n} को कथा", "learn_recall_opt": "स्मरण जाँच →", "learn_restart": "यो अध्याय सुरुदेखि", "learn_restart_q": "यस अध्यायको प्रगति मेटेर फेरि सुरु गर्ने?", "learn_retry": "फेरि चयन गर्नुहोस् →", "learn_reveal": "सम्झनुहोस्, अनि थिच्नुहोस्", "learn_revisit": "{n} फेरि हेर्न बाँकी", "learn_s1": "कथा", "learn_s1_d": "{n} वटा विषय क्रमैसँग सिक्नुहोस् — यही यस अध्यायको कथासूत्र हो।", "learn_s2": "श्लोकहरू", "learn_s2_d": "विषय-विषय गरी — हरेक श्लोकसँग परिचित हुनुहोस्, अनि सम्झनुहोस्। {b} मध्ये {a} भयो।", "learn_s3": "चार पाद", "learn_s3_d": "श्लोकलाई पाद-पाद मिलाएर कण्ठस्थ पार्नुहोस् — मुखले सिक्ने बाटो।", "learn_shuffle": "अर्को श्लोक झिक्नुहोस्", "learn_step": "चरण {a} / {b}", "learn_story_done": "अध्याय {n} को कथा तपाईंको भयो", "learn_story_done_d": "अब नहेरीकनै क्रमैसँग भन्न सक्नुहुन्छ। हरेक श्लोकले आफ्नो ठाउँ पायो।", "learn_sub": "पहिले कथा, अनि श्लोक। कथा नै धागो हो; धागोबिना श्लोकहरू भुइँमा छरिएका मणि हुन्।", "learn_tap_blank": "लुकेको शब्द देखाउन थिच्नुहोस्", "learn_test": "आत्म-परीक्षा", "learn_theme_done_d": "भयो — {n} पानाविनै सम्झनुभयो।", "learn_thread_ok": "यही हो धागो।", "learn_to_verses": "अब श्लोकतिर →", "learn_unhold": "हटाउनुहोस्", "learn_vorder": "“{t}” का श्लोकहरू क्रममा मिलाउनुहोस्", "learn_walked": "यो अध्यायको {p}% हिँडियो", "learn_which": "कुन श्लोकले यो भन्छ?", "learn_yes": "ठीक!", "link_copied": "लिङ्क कपी भयो", "literal": "शाब्दिक अनुवाद", "meter_anustubh": "अनुष्टुभ्", "meter_irregular": "अनियमित", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)", "meter_syllables": "{n} अक्षर", "meter_trishtubh": "त्रिष्टुभ्", "next": "अर्को →", "next_random": "अर्को यादृच्छिक", "next_theme": "अर्को विषय →", "no_favorites": "अहिलेसम्म कुनै सुरक्षित श्लोक छैन — कुनै श्लोक खोल्नुहोस् र मनपर्नेमा थप्नुहोस्।", "no_results": "केही भेटिएन — श्लोक सङ्ख्या (जस्तै २.४७), संस्कृत वा अङ्ग्रेजी शब्द प्रयास गर्नुहोस्।", "note_label": "तपाईंको टिप्पणी", "note_ph": "यो श्लोक तपाईंका लागि के अर्थ राख्छ…", "notes_title": "तपाईंका टिप्पणीहरू", "of": "मध्ये", "oob_chapter": "गीतामा मात्र १८ अध्याय छन्।", "oob_verse": "अध्याय {ch} मा मात्र {n} श्लोक छन्।", "open_verse": "श्लोक खोल्नुहोस्", "opt_chapter": "विषयगत अध्ययन", "opt_chapter_d": "अध्यायका सबै श्लोक विषयअनुसार — शब्दार्थका लागि कुनै श्लोकमा ट्याप गर्नुहोस्।", "opt_full": "अनुवादसहित श्लोक", "opt_full_d": "प्रत्येक श्लोक शाब्दिक अनुवाद र सरल अर्थसहित।", "opt_learn_d": "पहिले कथासूत्र, अनि श्लोक — पढेर होइन, सम्झेर।", "opt_learn_g": "कण्ठस्थ", "opt_learn_s": "कण्ठस्थ", "opt_study_d": "विषय र तिनका श्लोकहरू — शब्दार्थसहित।", "opt_study_s": "अध्ययन गाइड", "pada_label": "पाद", "pick_theme": "यसका श्लोकहरू खोल्न विषय छान्नुहोस्।", "play": "खेल", "play_all": "पूरा गीता", "play_ch": "एउटा अध्याय", "play_m1": "के भन्छ?", "play_m1_d": "संस्कृत पढ्नुहोस्। यस श्लोकको अर्थ छान्नुहोस्।", "play_m2": "अर्को के आउँछ?", "play_m2_d": "गीता शृङ्खला हो। यो श्लोकपछि कुन श्लोक आउँछ?", "play_m3": "श्लोक जोड्नुहोस्", "play_m3_d": "चार पाद मिसाइएका। क्रममा मिलाउनुहोस्।", "play_q1": "यो श्लोकले के भन्छ?", "play_q2": "यसपछि कुन श्लोक आउँछ?", "play_round": "लगातार {n}", "play_scope": "कहाँबाट?", "play_sub": "श्लोक पढ्नुहोस्, अर्थ लिनुहोस्, शृङ्खला समात्नुहोस्, पाद मिलाउनुहोस्।", "play_title": "खेल", "prev_theme": "← अघिल्लो विषय", "previous": "← अघिल्लो", "random": "यादृच्छिक", "range_chapters": "अध्याय {a}–{b}", "reader_size": "अक्षरको आकार", "reader_size_decrease": "श्लोकको अक्षर सानो बनाउनुहोस्", "reader_size_increase": "श्लोकको अक्षर ठूलो बनाउनुहोस्", "reader_size_reset": "श्लोकको अक्षरको आकार फेरि मिलाउनुहोस्", "recent_verses": "हालै हेरिएका", "remove_fav": "✕ हटाउनुहोस्", "result": "परिणाम", "results": "परिणामहरू", "save_verse": "मनपर्नेमा थप्नुहोस्", "saved_verse": "मनपर्नेमा", "search_label": "श्लोक खोज्नुहोस्", "search_ph": "खोज्नुहोस् जस्तै १.१", "search_recent": "हालैका", "search_results": "खोज परिणामहरू", "search_in_chapters": "अध्यायहरू", "search_in_themes": "विषयहरू", "search_in_verses": "श्लोकहरू", "search_word_match": "शब्द: {w}", "search_try": "२.४७ जस्तो श्लोक सङ्ख्या, धर्मक्षेत्र जस्तो संस्कृत शब्द, वा अनुवादको कुनै वाक्यांश खोजिहेर्नुहोस्।", "sec_bhakti": "भक्तिमार्ग", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान्प्रतिको भक्ति र समर्पण।", "sec_jnana": "ज्ञानमार्ग", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण र मुक्ति।", "sec_karma": "कर्ममार्ग", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य र कर्मफलको त्याग।", "sections_sub": "गीताका अठार अध्याय तीन मार्गमा — कर्म, भक्ति र ज्ञान — एउटा अर्कोमा परिपक्व हुँदै।", "sections_title": "तीन मार्ग", "share": "शेयर गर्नुहोस्", "share_hint": "यो श्लोक मन पर्यो? लिङ्क कपी गरेर साथीहरूसँग साझा गर्नुहोस्।", "shared_hint": "शब्दार्थ हेर्न/लुकाउन श्लोकमा क्लिक गर्नुहोस्।", "shared_label": "साझा श्लोक", "show_meanings": "अर्थ देखाउनुहोस्", "skip_to_content": "मुख्य सामग्रीमा जानुहोस्", "srs_all_caught_up": "आजको अभ्यास पूरा · {n} श्लोक पुनरावलोकनमा", "srs_ch_due": "आज पुनरावलोकनका लागि {n} श्लोक", "srs_due_many": "आज दोहोर्याउनुपर्ने {n} श्लोक", "srs_due_one": "आज दोहोर्याउनुपर्ने १ श्लोक", "srs_review_btn": "श्लोक पुनरावलोकन गर्नुहोस्", "srs_review_done": "आजको पुनरावलोकन पूरा भयो।", "srs_review_more": "पुनरावलोकन जारी राख्नुहोस् · अझै {n} बाँकी", "srs_streak": "{n} दिनको निरन्तर अभ्यास", "tab_bhakti": "भक्तिमार्ग", "tab_jnana": "ज्ञानमार्ग", "tab_karma": "कर्ममार्ग", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "theme_dark": "डार्क मोडमा जानुहोस्", "theme_light": "लाइट मोडमा जानुहोस्", "theme_sg": "विषय", "themes": "विषयहरू", "verse": "श्लोक", "verse_copied": "श्लोक कपी भयो", "verse_of_day": "आजको श्लोक", "verse_topic": "श्लोक विषय", "verses": "श्लोकहरू", "welcome_enter": "गीतामा प्रवेश गर्नुहोस्", "welcome_foot": "ॐ ७०० श्लोक · तीन मार्ग · एउटै लक्ष्य", "welcome_sub": "कुरुक्षेत्रको युद्धभूमिमा कृष्ण र अर्जुनको कालातीत संवाद — ७०० श्लोक, तीन मार्ग, एउटै लक्ष्य।", "welcome_title": "भगवद्गीतामा स्वागत छ", "wip": "निर्माणाधीन — अझै बन्दै, सुधार्दै; गीताको अध्ययन सजिलो बनाउनु नै लक्ष्य।"}, "hi": {"app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में", "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन", "back_chapter_one": "← अध्याय पर लौटें", "back_chapters": "← अध्यायों पर लौटें", "back_to_theme": "← विषय पर लौटें", "back_to_x": "← {x} पर लौटें", "back_ways": "← तीन मार्गों पर लौटें", "breadcrumb": "नेविगेशन पथ", "chapter": "अध्याय", "chapters": "अध्याय", "choose_title": "इस अध्याय को आप कैसे पढ़ना चाहेंगे?", "clear": "हटाएँ", "click_hint": "संस्कृत श्लोक दिखाने के लिए किसी श्लोक के शीर्षक पर क्लिक करें", "click_hint_pada": "चारों पाद देखने के लिए इस श्लोक पर टैप करें", "click_pada_meanings": "शब्दार्थ देखने के लिए किसी पाद पर टैप करें", "close_verse": "श्लोक बंद करें", "copy_link": "श्लोक लिंक कॉपी करें", "copy_verse_text": "श्लोक पाठ कॉपी करें", "data_backed_up": "पिछला बैकअप: {d}", "data_chapters": "अध्याय", "data_clear": "सभी डेटा मिटाएँ", "data_clear_desc": "इस ब्राउज़र से सभी पसंदीदा, नोट्स और कण्ठस्थ प्रगति हटाएँ।", "data_clear_q": "इस ब्राउज़र से सभी पसंदीदा, नोट्स और कण्ठस्थ प्रगति मिटा दें? इसे वापस नहीं लाया जा सकता।", "data_cleared": "सभी डेटा मिटा दिया गया", "data_current": "इस ब्राउज़र में अभी", "data_export": "बैकअप निर्यात", "data_export_desc": "पसंदीदा, नोट्स और कण्ठस्थ प्रगति वाली बैकअप फ़ाइल डाउनलोड करें।", "data_exported": "बैकअप डाउनलोड हुआ", "data_foot": "आपका बैकअप एक सामान्य फ़ाइल है। इसे निजी रखें — इसमें आपके व्यक्तिगत नोट्स हैं।", "data_held": "कण्ठस्थ श्लोक", "data_import": "बैकअप आयात", "data_import_desc": "बैकअप फ़ाइल से पुनर्स्थापित करें। मौजूदा डेटा मर्ज हो जाएगा।", "data_import_failed": "बैकअप पढ़ा नहीं जा सका — मान्य गीता बैकअप फ़ाइल नहीं है", "data_imported": "बैकअप पुनर्स्थापित — {n} पसंदीदा, {m} नोट्स, {k} अध्यायों की प्रगति", "data_local_note": "प्रगति केवल इस ब्राउज़र में रहती है। बैकअप निर्यात करें ताकि यह खो न जाए।", "data_never_backed": "अभी तक कोई बैकअप निर्यात नहीं किया गया", "data_notes": "नोट्स", "data_sub": "पसंदीदा, नोट्स और कण्ठस्थ प्रगति केवल इस ब्राउज़र में रहती है। बैकअप निर्यात करें, या पहले सहेजी हुई फ़ाइल आयात करें।", "data_title": "आपका डेटा", "fav_down": "↓", "fav_move_down": "पसंदीदा श्लोक नीचे ले जाएँ", "fav_move_up": "पसंदीदा श्लोक ऊपर ले जाएँ", "fav_note": "टिप्पणी", "fav_note_ph": "यह श्लोक आपके लिए क्यों महत्त्वपूर्ण है…", "fav_up": "↑", "favorites": "पसंदीदा", "footer": "ॐ · भगवद्गीता का अध्ययन संस्करण — प्रत्येक श्लोक अपने पारंपरिक चार पादों में, संस्कृत, शब्दार्थ, शाब्दिक अनुवाद और सरल अर्थ सहित।", "guide_chapter": "अध्याय में विषयवार समूहबद्ध श्लोक पढ़ें, या कंठस्थ अभ्यास चुनें।", "guide_explore": "इस अध्ययन को कैसे करें", "guide_verse": "शब्दार्थ देखने के लिए श्लोक या उसके किसी एक पाद पर टैप करें।", "guide_way": "कर्म, भक्ति या ज्ञान में से एक मार्ग चुनकर अध्याय खोलें।", "hide_meanings": "अर्थ छिपाएँ", "home": "गृह", "home_plain": "गृह", "in_other_words": "सरल शब्दों में", "language": "ऐप की भाषा", "learn_after": "“{t}” के बाद — क्या आता है?", "learn_again": "फिर से चलें", "learn_all_done": "अध्याय {n} के सभी विषय आपके हुए।", "learn_begin": "आरम्भ करें", "learn_done_free": "अभी के लिए बस", "learn_free": "जब तक मन करे अभ्यास करें", "learn_free_d": "इस विषय का कोई श्लोक, उसके चारों पाद मिश्रित। क्रम में लगाएँ, फिर दूसरा श्लोक निकालें — जितनी बार चाहें।", "learn_free_go": "पादों का अभ्यास करें →", "learn_held": "कंठस्थ", "learn_held_n": "{b} में से {a} श्लोक कंठस्थ", "learn_lad_blind": "हृदय से", "learn_lad_blind_s": "सब गुप्त — देखने के लिए टैप करें", "learn_lad_first": "प्रथम शब्द", "learn_lad_first_s": "प्रत्येक पाद का पहला शब्द", "learn_lad_full": "पूर्ण पठन", "learn_lad_full_s": "सभी शब्द खुले", "learn_lad_half": "आधा गुप्त", "learn_lad_half_s": "एक अंतर एक शब्द गुप्त", "learn_ladder": "कंठस्थ सोपान", "learn_land_d": "श्लोक मिल गए। पाद जोड़कर अभ्यास करें, या स्मरण जाँचें — जितना नरम चाहें।", "learn_local": "प्रगति केवल इसी ब्राउज़र में रहती है।", "learn_mark_held": "कंठस्थ हुआ", "learn_meet": "श्लोकों से परिचय", "learn_missing": "{v} का {q}वाँ पाद — कौन-सा शब्द छूटा?", "learn_next_theme": "अगला विषय →", "learn_next_verse": "अगला श्लोक →", "learn_nextis": "अभी नहीं — अब आता है", "learn_order_all": "पूरी कथा — सभी {n} चरण, क्रम से", "learn_order_few": "इन {n} चरणों को घटने के क्रम में लगाएँ", "learn_qorder": "{v} के चारों पादों को क्रम में लगाएँ", "learn_read_d": "एक बार धीरे-धीरे चलें। हर चरण अगले को कैसे जन्म देता है — वही शृंखला याद रहती है।", "learn_read_go": "पढ़ लिया →", "learn_read_h": "अध्याय {n} की कथा", "learn_recall_opt": "स्मरण जाँच →", "learn_restart": "यह अध्याय फिर से", "learn_restart_q": "इस अध्याय की प्रगति मिटाकर फिर से आरम्भ करें?", "learn_retry": "फिर चयन करें →", "learn_reveal": "स्मरण करें, फिर टैप करें", "learn_revisit": "{n} फिर देखने हैं", "learn_s1": "कथा", "learn_s1_d": "{n} विषय क्रम से सीखें — यही इस अध्याय का कथासूत्र है।", "learn_s2": "श्लोक", "learn_s2_d": "विषय-दर-विषय — हर श्लोक से मिलें, फिर उसे स्मरण करें। {b} में से {a} हुए।", "learn_s3": "चार पाद", "learn_s3_d": "श्लोक को पाद-पाद जोड़कर कंठस्थ करें — मुख से सीखने का मार्ग।", "learn_shuffle": "दूसरा श्लोक निकालें", "learn_step": "चरण {a} / {b}", "learn_story_done": "अध्याय {n} की कथा आपकी हुई", "learn_story_done_d": "अब बिना देखे क्रम से कह सकते हैं। हर श्लोक को अपनी जगह मिल गई।", "learn_sub": "पहले कथा, फिर श्लोक। कथा ही धागा है; धागे बिना श्लोक बिखरे मोती हैं।", "learn_tap_blank": "छिपे शब्द को देखने के लिए टैप करें", "learn_test": "आत्म-परीक्षा", "learn_theme_done_d": "हुआ — {n} बिना पन्ना देखे स्मरण किए।", "learn_thread_ok": "यही है धागा।", "learn_to_verses": "अब श्लोकों की ओर →", "learn_unhold": "हटाएँ", "learn_vorder": "“{t}” के श्लोकों को क्रम में लगाएँ", "learn_walked": "इस अध्याय का {p}% चला", "learn_which": "कौन-सा श्लोक यह कहता है?", "learn_yes": "ठीक!", "link_copied": "लिंक कॉपी हुआ", "literal": "शाब्दिक अनुवाद", "meter_anustubh": "अनुष्टुभ्", "meter_irregular": "अनियमित", "meter_padas": "{n} पाद", "meter_padas_of": "{n} पाद (प्रत्येक {k} अक्षर)", "meter_syllables": "{n} अक्षर", "meter_trishtubh": "त्रिष्टुभ्", "next": "अगला →", "next_random": "अगला यादृच्छिक", "next_theme": "अगला विषय →", "no_favorites": "अभी कोई सहेजा गया श्लोक नहीं — किसी श्लोक को खोलकर पसंदीदा में जोड़ें पर टैप करें।", "no_results": "कुछ नहीं मिला — श्लोक संख्या (जैसे २.४७), संस्कृत या अंग्रेज़ी शब्द आज़माएँ।", "note_label": "आपकी टिप्पणी", "note_ph": "यह श्लोक आपके लिए क्या अर्थ रखता है…", "notes_title": "आपकी टिप्पणियाँ", "of": "में से", "oob_chapter": "गीता में केवल १८ अध्याय हैं।", "oob_verse": "अध्याय {ch} में केवल {n} श्लोक हैं।", "open_verse": "श्लोक खोलें", "opt_chapter": "विषयगत अध्ययन", "opt_chapter_d": "अध्याय के सभी श्लोक विषयवार — शब्दार्थ के लिए किसी श्लोक पर टैप करें।", "opt_full": "अनुवादसहित श्लोक", "opt_full_d": "प्रत्येक श्लोक शाब्दिक अनुवाद और सरल अर्थ सहित।", "opt_learn_d": "पहले कथासूत्र, फिर श्लोक — पढ़कर नहीं, स्मरण करके।", "opt_learn_g": "कण्ठस्थ", "opt_learn_s": "कंठस्थ", "opt_study_d": "विषय और उनके श्लोक — शब्दार्थ सहित।", "opt_study_s": "अध्ययन गाइड", "pada_label": "पाद", "pick_theme": "इसके श्लोक खोलने के लिए विषय चुनें।", "play": "खेल", "play_all": "पूरी गीता", "play_ch": "एक अध्याय", "play_m1": "क्या कहता है?", "play_m1_d": "संस्कृत पढ़ें। इस श्लोक का अर्थ चुनें।", "play_m2": "आगे क्या आता है?", "play_m2_d": "गीता एक शृंखला है। इस श्लोक के बाद कौन-सा श्लोक आता है?", "play_m3": "श्लोक जोड़ें", "play_m3_d": "चार पाद मिश्रित। क्रम में लगाएँ।", "play_q1": "यह श्लोक क्या कहता है?", "play_q2": "इसके बाद कौन-सा श्लोक आता है?", "play_round": "लगातार {n}", "play_scope": "कहाँ से?", "play_sub": "श्लोक पढ़ें, अर्थ लें, शृंखला पकड़ें, पाद मिलाएँ।", "play_title": "खेल", "prev_theme": "← पिछला विषय", "previous": "← पिछला", "random": "यादृच्छिक", "range_chapters": "अध्याय {a}–{b}", "reader_size": "पाठ का आकार", "reader_size_decrease": "श्लोक का अक्षर छोटा करें", "reader_size_increase": "श्लोक का अक्षर बड़ा करें", "reader_size_reset": "श्लोक का अक्षर सामान्य करें", "recent_verses": "हाल में देखे गए", "remove_fav": "✕ हटाएँ", "result": "परिणाम", "results": "परिणाम", "save_verse": "पसंदीदा में जोड़ें", "saved_verse": "पसंदीदा में", "search_label": "श्लोक खोजें", "search_ph": "खोजें जैसे १.१", "search_recent": "हाल के", "search_results": "खोज परिणाम", "search_in_chapters": "अध्याय", "search_in_themes": "विषय", "search_in_verses": "श्लोक", "search_word_match": "शब्द: {w}", "search_try": "२.४७ जैसी श्लोक संख्या, धर्मक्षेत्र जैसा संस्कृत शब्द, या अनुवाद का कोई वाक्यांश खोजें।", "sec_bhakti": "भक्तिमार्ग", "sec_bhakti_desc": "अध्याय ७–१२ · भगवान् के प्रति भक्ति और समर्पण।", "sec_jnana": "ज्ञानमार्ग", "sec_jnana_desc": "अध्याय १३–१८ · ज्ञान, गुण और मुक्ति।", "sec_karma": "कर्ममार्ग", "sec_karma_desc": "अध्याय १–६ · कर्म, कर्तव्य और कर्म-फल का त्याग।", "sections_sub": "गीता के अठारह अध्याय तीन मार्गों में — कर्म, भक्ति और ज्ञान — एक अगले में परिपक्व होते हुए।", "sections_title": "तीन मार्ग", "share": "शेयर करें", "share_hint": "यह श्लोक पसंद आया? लिंक कॉपी करके मित्रों के साथ साझा करें।", "shared_hint": "शब्दार्थ देखने/छिपाने के लिए श्लोक पर क्लिक करें।", "shared_label": "साझा श्लोक", "show_meanings": "अर्थ दिखाएँ", "skip_to_content": "मुख्य सामग्री पर जाएँ", "srs_all_caught_up": "आज का अभ्यास पूरा · {n} श्लोक पुनरावलोकन में", "srs_ch_due": "आज पुनरावलोकन के लिए {n} श्लोक", "srs_due_many": "आज दोहराने के लिए {n} श्लोक", "srs_due_one": "आज दोहराने के लिए १ श्लोक", "srs_review_btn": "श्लोकों का पुनरावलोकन करें", "srs_review_done": "आज का पुनरावलोकन पूरा हुआ।", "srs_review_more": "पुनरावलोकन जारी रखें · अब भी {n} शेष", "srs_streak": "{n} दिन का निरन्तर अभ्यास", "tab_bhakti": "भक्तिमार्ग", "tab_jnana": "ज्ञानमार्ग", "tab_karma": "कर्ममार्ग", "tag_sub": "१८ अध्याय · ७०० श्लोक · अध्ययन संस्करण", "theme_dark": "डार्क मोड पर जाएँ", "theme_light": "लाइट मोड पर जाएँ", "theme_sg": "विषय", "themes": "विषय", "verse": "श्लोक", "verse_copied": "श्लोक कॉपी हुआ", "verse_of_day": "आज का श्लोक", "verse_topic": "श्लोक विषय", "verses": "श्लोक", "welcome_enter": "गीता में प्रवेश करें", "welcome_foot": "ॐ ७०० श्लोक · तीन मार्ग · एक लक्ष्य", "welcome_sub": "कुरुक्षेत्र के रणक्षेत्र में कृष्ण और अर्जुन का कालातीत संवाद — ७०० श्लोक, तीन मार्ग, एक लक्ष्य।", "welcome_title": "भगवद्गीता में आपका स्वागत है", "wip": "निर्माणाधीन — अभी बन रहा है, सुधर रहा है; गीता का अध्ययन सरल बनाना ही ध्येय है।"}};
 const READER_SIZES = [80,90,100,110,120,130,140];
 function savedReaderSize(){
   let size = 100;
@@ -2016,9 +2084,12 @@ function syncTabs(){
     default: /* read/themes/verses/learn = inside content -> Home */ tab = 'home';
   }
   /* Random is a transient action (it jumps straight to a verse), so it
-     never stays selected — you land back in reading. */
+     never stays current — you land back in reading. The bar is a nav of
+     destinations, so the active one is aria-current="page"; there are no
+     tabpanels for a tab role to point at. */
   bar.querySelectorAll('.tab-btn').forEach(b=>{
-    b.setAttribute('aria-selected', String(b.dataset.tab === tab));
+    if(b.dataset.tab === tab) b.setAttribute('aria-current','page');
+    else b.removeAttribute('aria-current');
   });
 }
 function tabGoSearch(){
@@ -2125,7 +2196,12 @@ function searchFoldKey(s){
     .replace(/a{2,}/g, 'a')            // aa... -> a
     .replace(/e{2,}/g, 'i')            // ee... -> i
     .replace(/o{2,}/g, 'u')            // oo... -> u
-    .replace(/c(?!h)/g, 'ch');         // IAST c <-> common ch
+    .replace(/c(?!h)/g, 'ch')          // IAST c <-> common ch
+    /* Any remaining Latin diacritic is dropped so a plain keyboard reaches the
+       word: ṅ ṭ ḍ ḥ ṃ ñ ś leftovers. This is the ASCII path only — a query that
+       already carries diacritics stays exact (see prepareSearchQuery), so
+       a/ā, t/ṭ and ś/ṣ remain distinguishable for a reader who types them. */
+    .replace(/[\u0300-\u036f]/g, '');
 }
 function prepareSearchQuery(s){
   const exact = searchExactKey(s);
@@ -2182,9 +2258,20 @@ function meterText(s){
     : L('meter_padas').replace('{n}', numL(m.n)));
   return bits.join(' · ');
 }
-function verseSearchText(v){
+/* What a verse answers to: its number, both scripts, all three translations and
+   paraphrases, the title it is filed under, and every word gloss. The glosses
+   and the part title are why "not hating" or "My limbs fail" can find a verse:
+   a reader remembers a phrase from the word-by-word row as often as from the
+   translation, and a study edition should not make them guess which column. */
+function verseSearchText(v, part){
+  let gloss = '';
+  for(const f of (v.flow || [])) for(const w of (f.words || []))
+    gloss += ' ' + w[2] + ' ' + w[3] + ' ' + w[4];
+  const t = (part && part.titles) || {};
   return v.n + ' ' + fmtN(v.n) + ' ' + v.d + ' ' + v.t + ' ' + v.lits.en + ' ' + v.lits.ne + ' ' + v.lits.hi
-    + ' ' + v.paras.en + ' ' + v.paras.ne + ' ' + v.paras.hi + ' ' + T(v.lits);
+    + ' ' + v.paras.en + ' ' + v.paras.ne + ' ' + v.paras.hi + ' ' + T(v.lits)
+    + ' ' + (t.en || '') + ' ' + (t.ne || '') + ' ' + (t.hi || '')
+    + gloss;
 }
 const VERSE_TEXT = [], VERSE_FOLDED_TEXT = [];
 function buildVerseText(){
@@ -2193,17 +2280,35 @@ function buildVerseText(){
   (DATA||[]).forEach(ch=>{
     if(!ch||!ch.themes) return;
     ch.themes.forEach(t=> t.parts.forEach(p=> p.sutras.forEach(s=>{
-      const text = verseSearchText(s);
+      const text = verseSearchText(s, p);
       VERSE_TEXT.push(searchExactKey(text));
       // Keep approximate folds out of English, Nepali, Hindi and Devanagari.
       VERSE_FOLDED_TEXT.push(searchFoldKey(s.t));
     })));
   });
 }
+/* A chapter or a theme is a passage, not a verse: it has no number to open and
+   its result belongs in its own group. Indexed separately so the verse index
+   stays positional (VERSE_TEXT[i] belongs to VERSES[i]). */
+const SEARCH_PASSAGES = [];
+function buildPassages(){
+  SEARCH_PASSAGES.length = 0;
+  (DATA||[]).forEach((ch, ci)=>{
+    if(!ch || !ch.themes) return;
+    SEARCH_PASSAGES.push({kind:'chapter', ci:ci, ti:null,
+      exact:searchExactKey([ch.names.en, ch.names.ne, ch.names.hi,
+        ch.subs.en, ch.subs.ne, ch.subs.hi, ch.deva].join(' ')),
+      folded:searchFoldKey(ch.names.en)});
+    ch.themes.forEach((t, ti)=> SEARCH_PASSAGES.push({kind:'theme', ci:ci, ti:ti,
+      exact:searchExactKey([t.titles.en, t.titles.ne, t.titles.hi,
+        t.descs.en, t.descs.ne, t.descs.hi].join(' ')),
+      folded:searchFoldKey(t.titles.en)}));
+  });
+}
 function assembleData(){
   DATA = [];
   for(var n=1;n<=18;n++) DATA.push(GITA_CH[n] || null);
-  buildIndex(); buildVerseText();
+  buildIndex(); buildVerseText(); buildPassages();
 }
 function allChReady(){ for(var n=1;n<=18;n++) if(!GITA_CH[n]||!GITA_CH[n].themes) return false; return true; }
 
@@ -2259,6 +2364,46 @@ function pickSearch(q){
   searchX();
   doSearch();
 }
+/* Free text searched more than the verse line: the phrase may come from a word
+   gloss, which the card does not otherwise show, so name the word that matched
+   rather than leaving the reader to wonder why a verse is in the list. */
+function glossHit(s, q){
+  const LI = {en:0, ne:1, hi:2}[state.lang] || 0;
+  for(const f of (s.flow || [])) for(const w of (f.words || [])){
+    for(const k of [2 + LI, 2]){
+      const g = w[k];
+      if(g && searchTextMatches(searchExactKey(g), '', q)) return [w[0], g];
+    }
+  }
+  return null;
+}
+function passageHits(nq, nqd){
+  const out = [];
+  SEARCH_PASSAGES.forEach(p=>{
+    if(searchTextMatches(p.exact, p.folded, nq)
+       || (nqd.exact !== nq.exact && searchTextMatches(p.exact, p.folded, nqd))) out.push(p);
+  });
+  return out;
+}
+function resGroupHtml(label, count, inner){
+  return `<div class="res-group fade-in"><div class="res-gl"><span>${esc(label)}</span>`
+    + `<span class="res-gn">${numL(count)}</span></div>${inner}</div>`;
+}
+function passageCard(p, q){
+  if(p.kind === 'chapter'){
+    const ch = DATA[p.ci];
+    return `<div class="res-passage" role="button" tabindex="0" onclick="App.views.chapter(${p.ci})">
+      <div class="rp-top"><span class="rp-kind">${esc(L('chapter'))} ${numL(ch.num)}</span></div>
+      <div class="rp-title">${hlSearchText(T(ch.names), q)}</div>
+      <div class="rp-sub">${hlSearchText(T(ch.subs), q)}</div></div>`;
+  }
+  const ch = DATA[p.ci], t = ch.themes[p.ti];
+  return `<div class="res-passage" role="button" tabindex="0" onclick="App.views.chapter(${p.ci},${p.ti})">
+    <div class="rp-top"><span class="rp-kind">${esc(L('theme_sg'))} ${numL(p.ti+1)}</span>
+      <span class="rp-rng">${esc(fmtRangeL(t.range))}</span></div>
+    <div class="rp-title">${hlSearchText(T(t.titles), q)}</div>
+    <div class="rp-sub">${esc(L('chapter'))} ${numL(ch.num)} · ${hlSearchText(T(ch.names), q)}</div></div>`;
+}
 function doSearch(){
   if(!allChReady()){ loadAllChapters().then(doSearch); return; }
   const q = ($('#searchInput').value || '').trim();
@@ -2272,7 +2417,7 @@ function doSearch(){
      type 1.1; also allow : - / , the double danda, and stray surrounding dandas. */
   const num = digitNorm(q).replace(/^[\s।॥]+|[\s।॥]+$/g, '')
                           .match(/^(\d{1,2})[.।॥:\-\/,\s]+(\d{1,2})$/);
-  let hits;
+  let hits, passages = [];
   if(num){
     const target = parseInt(num[1],10) + '.' + parseInt(num[2],10);
     hits = VERSES.filter(loc => loc.norm === target);
@@ -2304,8 +2449,10 @@ function doSearch(){
       if(searchTextMatches(t, folded, nq) ||
          (nqd.exact !== nq.exact && searchTextMatches(t, folded, nqd))) hits.push(loc);
     });
+    passages = passageHits(nq, nqd);
   }
-  if(hits.length === 0){
+  const total = hits.length + passages.length;
+  if(total === 0){
     view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
       <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
       <div class="view-sub fade-in">${esc(L('no_results'))}</div>
@@ -2316,19 +2463,30 @@ function doSearch(){
   }
   recentSave(q);
   SRCH_HITS = hits;
-  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
-    <div class="res-count fade-in">${esc(resultCountLabel(hits.length))}</div>
-    ${srchChipsHtml(q, hits.length)}
-    <div class="grid verses fade-in">${hits.map((loc,i)=>{
+  const themes = passages.filter(p=>p.kind === 'theme'),
+        chapters = passages.filter(p=>p.kind === 'chapter'),
+        groups = (hits.length?1:0) + (themes.length?1:0) + (chapters.length?1:0);
+  const verseGrid = `<div class="grid verses">${hits.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
-      const pi = th.parts.indexOf(part);
+      const wm = glossHit(v, nq);
+      const shown = searchTextMatches(searchExactKey(T(part.titles) + ' ' + T(v.paras) + ' ' + v.d), '', nq);
       return `<div class="mini" role="button" tabindex="0" onclick="App.reader.open(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
         <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${hlSearchText(T(part.titles), q)}</div>
         <div class="padas" lang="sa">${App.reader.padaBlock(v)}</div>
         <div class="vhint">${hlSearchText(T(v.paras), q)}</div>
+        ${wm && !shown ? `<div class="res-word">${esc(L('search_word_match').replace('{w}', wm[0] + ' — ' + wm[1]))}</div>` : ''}
       </div>`;}).join('')}</div>`;
+  const passageGrid = list => `<div class="grid passages">${list.map(p=>passageCard(p, q)).join('')}</div>`;
+  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
+    <div class="res-count fade-in">${esc(resultCountLabel(total))}</div>
+    ${srchChipsHtml(q, total)}
+    ${hits.length
+      ? (groups > 1 ? resGroupHtml(L('search_in_verses'), hits.length, verseGrid) : verseGrid)
+      : ''}
+    ${themes.length ? resGroupHtml(L('search_in_themes'), themes.length, passageGrid(themes)) : ''}
+    ${chapters.length ? resGroupHtml(L('search_in_chapters'), chapters.length, passageGrid(chapters)) : ''}`;
   announceView();
 }
 function clearSearch(){
@@ -2434,7 +2592,8 @@ function showFavorites(){
   FAV_LIST = saved;
   if(saved.length === 0){
     view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('favorites'))}</div>
-      <div class="view-sub fade-in">${esc(L('no_favorites'))}</div>`;
+      <div class="view-sub fade-in">${esc(L('no_favorites'))}</div>`
+      + notesHtml();
     announceView();
     return;
   }
@@ -2457,20 +2616,24 @@ function showFavorites(){
         <div class="fav-note" onclick="event.stopPropagation()">
           <label for="fav-note-${esc(v.n)}">${esc(L('fav_note'))}</label>
           <textarea id="fav-note-${esc(v.n)}" rows="1" placeholder="${esc(L('fav_note_ph'))}"
-            oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
-            onchange="setFavNote('${esc(v.n)}', this.value)">${esc(note)}</textarea>
+            oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px';App.library.setNote('${esc(v.n)}', this.value)">${esc(note)}</textarea>
         </div>
-      </div>`;}).join('')}`;
+      </div>`;}).join('')}`
+    + notesHtml();
   // grow each note box to fit what is already written
   view.querySelectorAll('.fav-note textarea').forEach(t=>{
     if(t.value){ t.style.height='auto'; t.style.height=t.scrollHeight+'px'; }
   });
   announceView();
 }
+/* Removing a verse from the saved list is not the same as erasing what the
+   reader wrote about it. The note is a separate act with a separate store; it
+   survives, and it stays visible in the notes list. Losing a paragraph to a
+   button that says "remove" is the worst kind of data loss — silent and
+   unrecoverable. */
 function removeFav(id){
   const i = FAV.indexOf(id);
   if(i>=0){ FAV.splice(i,1); favSave(); }
-  if(FAVNOTE[id]){ delete FAVNOTE[id]; favNoteSave(); }
   showFavorites();
 }
 /* Favourites are a personal collection, so the reader orders them and can say
@@ -2485,6 +2648,38 @@ function setFavNote(id, text){
   text = (text||'').trim();
   if(text) FAVNOTE[id] = text; else delete FAVNOTE[id];
   favNoteSave();
+}
+/* A note belongs to the verse, not to the saved list: any verse can carry one,
+   written from the reader sheet or from the saved card, and every one of them
+   is listed together. Stored in the same `gitaFavNotes` key the backup schema
+   already ships, so months of notes keep importing. */
+function noteGet(id){ return FAVNOTE[id] || ''; }
+function noteCount(){ return notesList().length; }
+function notesList(){
+  const out = [];
+  Object.keys(FAVNOTE).forEach(id=>{
+    if(!/^\d{1,2}\.\d{2}$/.test(id)) return;
+    const loc = verseLoc(id);
+    if(loc) out.push({id:id, loc:loc, text:FAVNOTE[id]});
+  });
+  return out.sort((a,b)=>{
+    const A = a.id.split('.').map(Number), B = b.id.split('.').map(Number);
+    return A[0] - B[0] || A[1] - B[1];
+  });
+}
+function notesHtml(){
+  const notes = notesList();
+  if(!notes.length) return '';
+  return `<div class="notes-block fade-in">
+    <div class="res-gl"><span>${esc(L('notes_title'))}</span><span class="res-gn">${numL(notes.length)}</span></div>
+    <div class="notes-list">${notes.map(n=>{
+      const ch = DATA[n.loc.ci], v = verseAt(n.loc);
+      return `<div class="note-card" role="button" tabindex="0"
+          onclick="App.reader.open(${n.loc.ci},${n.loc.ti},${n.loc.si},'book',null,this)">
+        <div class="nc-top"><span class="nc-num">${esc(L('verse'))} ${esc(fmtNL(v.n))}</span>
+          <span class="nc-title">${esc(T(ch.names))}</span></div>
+        <div class="nc-text">${esc(n.text)}</div>
+      </div>`;}).join('')}</div></div>`;
 }
 
 // ---------- random verse ----------
@@ -2591,7 +2786,13 @@ App.library = Object.freeze({
   count(){ return VERSES.length; },
   ready: allChReady,
   isFavorite(id){ return FAV.includes(id); },
-  favoriteLocations(){ return FAV_LIST.slice(); }
+  favoriteLocations(){ return FAV_LIST.slice(); },
+  /* Notes are the library's data, written by the reader sheet and by the saved
+     cards; nobody else keeps a copy. */
+  note: noteGet,
+  setNote: setFavNote,
+  notes: notesList,
+  noteCount
 });
 /* ==================== Learn by heart ==================== */
 /* ---------------- progress ----------------
@@ -3347,16 +3548,25 @@ function srsDueChapter(chNum, today){
 }
 function srsDueAll(today){
   const t = today || srsToday(), a = lrAll();
-  let total = 0, firstCi = null;
+  let total = 0, firstCi = null, firstDue = null;
   for(let n=1; n<=18; n++){
     const srs = (a[n] && a[n].srs) || {};
     const due = Object.keys(srs).filter(vn => srs[vn].due <= t);
     if(due.length){
       total += due.length;
-      if(firstCi === null) firstCi = n - 1;
+      /* Start with what has waited longest, not with the lowest chapter
+         number: a chapter-3 verse due a week ago outranks a chapter-1 verse
+         that fell due this morning. */
+      const earliest = due.reduce((m, vn) => (srs[vn].due < m ? srs[vn].due : m), srs[due[0]].due);
+      if(firstDue === null || earliest < firstDue){ firstDue = earliest; firstCi = n - 1; }
     }
   }
-  return {total, firstCi};
+  return {total, firstCi, firstDue};
+}
+/* One wording for "what is due", used by the welcome badge and by the screen
+   that ends a review — so the two can never disagree about the number. */
+function srsDueLabel(n){
+  return n === 1 ? L('srs_due_one') : fmt(L('srs_due_many'), {n:numL(n)});
 }
 function srsBarHtml(ci){
   const chNum = ci + 1, a = lrAll(), p = a[chNum] || {};
@@ -3376,7 +3586,7 @@ function srsBarHtml(ci){
 function srsWelcomeHtml(){
   const info = srsDueAll();
   if(!info.total || info.firstCi === null) return '';
-  const lbl = info.total === 1 ? L('srs_due_one') : fmt(L('srs_due_many'), {n:numL(info.total)});
+  const lbl = srsDueLabel(info.total);
   return `<button type="button" class="w-due" id="wDueBtn" onclick="App.learn.openDue()">${esc(lbl)} →</button>`;
 }
 function lrOpenDue(){
@@ -3397,10 +3607,19 @@ function lrReview(ci, seed){
   lrDrill(ci, -1, vs, seed);
 }
 function srsFinishReview(ci){
+  /* A session covers at most seven verses of one chapter, so "Review complete
+     for today" was false whenever more was due — the badge on the welcome
+     screen counts every chapter. Say how much is left and offer the next
+     session; only claim completion when nothing is due anywhere. */
+  const left = srsDueAll();
+  const more = left.total
+    ? `<p>${esc(srsDueLabel(left.total))}</p>
+       <button class="lr-cta" id="lrMoreDue" onclick="App.learn.openDue()">${esc(fmt(L('srs_review_more'), {n: numL(left.total)}))}</button>`
+    : `<p>${esc(L('srs_review_done'))}</p>`;
   view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
       <div class="lr-seal">✓</div>
       <h2>${esc(L('srs_review_btn'))}</h2>
-      <p>${esc(L('srs_review_done'))}</p>
+      ${more}
       <button class="lr-cta" onclick="showLearn(${ci})">${esc(L('opt_learn_s'))}</button>
     </div></div>`;
   scrollViewTop();
@@ -4177,7 +4396,7 @@ function modeSwitch(ci){
   const btn = (mode, lab, fn, tip) =>
     `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
-    <div class="mode-seg" role="tablist" aria-label="${esc(L('choose_title'))}">
+    <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
       ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
       ${btn('learn',   esc(L('opt_learn_s')), `App.learn.show(${ci})`,   esc(L('opt_learn_d')))}
     </div>
@@ -4615,7 +4834,13 @@ function themeBounds(t){
   return {start:0, end:Math.max(0, n-1)};
 }
 function setAppInert(inert){
-  document.querySelectorAll('body > header, body > .toolbar, body > .wrap, body > footer')
+  /* Everything focusable behind the sheet: the skip link, the header, the phone
+     toolbar, the phone tab bar, the page and the footer. The CSS only dims
+     .tabbar (pointer-events:none, opacity .4), which stops a finger but not the
+     Tab key or a screen reader — focus could land on furniture the reader cannot
+     see. .atm is a decorative SVG (aria-hidden, pointer-events:none), so it stays. */
+  document.querySelectorAll('body > .skip-link, body > header, body > .toolbar,'
+    + ' body > nav.tabbar, body > .wrap, body > footer')
     .forEach(el=>{ el.inert = inert; });
 }
 function updateModalAddress(){
@@ -4815,6 +5040,9 @@ function fillModal(){
   }
   recentVersesRecord(s.n);
   const isSaved = App.library.isFavorite(s.n);
+  /* A note belongs to the verse, not to the saved list — every verse can carry
+     one, and it is kept whether or not the verse is a favourite. */
+  const noteText = App.library.note(s.n);
 
   /* Option 1: the whole verse and the four-quarter grid are both prepared up
      front, then swapped into the same box by toggleVerseExpansion(). */
@@ -4864,6 +5092,13 @@ function fillModal(){
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
       <button class="sp-copy sp-copy-txt" id="shCpTxt" onclick="copyVerseText()">${esc(L('copy_verse_text'))}</button>
+      <!-- img/share-art.jpg is the site's one painted face (960x504, repainted
+           by build.py when Pillow is present). It earns its place here as the
+           preview of what the copied link shows; the intrinsic width/height keep
+           the panel from jumping, lazy loading keeps it off the first paint, and
+           onerror removes it rather than showing a broken frame offline. -->
+      <img class="sp-art" src="img/share-art.jpg" alt="" width="960" height="504"
+           loading="lazy" decoding="async" onerror="this.remove()">
     </div>
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
@@ -4877,6 +5112,11 @@ function fillModal(){
       </div>
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+      <details class="m-note"${noteText ? ' open' : ''}>
+        <summary><span>${esc(L('note_label'))}</span>${noteText ? `<span class="m-note-dot" aria-hidden="true">•</span>` : ''}<span class="m-note-chev" aria-hidden="true">▾</span></summary>
+        <textarea rows="2" aria-label="${esc(L('note_label'))}" placeholder="${esc(L('note_ph'))}"
+          oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px';App.library.setNote('${esc(s.n)}', this.value)">${esc(noteText)}</textarea>
+      </details>
       ${recentVersesHtml(s.n)}
     </div>
     <div class="m-tail" aria-hidden="true"></div>
@@ -4899,6 +5139,9 @@ function fillModal(){
     </div>`;
   applyReaderSize();
   setVerseView(false);
+  // grow the note box to its saved text, as the saved cards do
+  const nt = $('#modal .m-note textarea');
+  if(nt && nt.value){ nt.style.height='auto'; nt.style.height=nt.scrollHeight+'px'; }
 }
 
 /* Option 1 - one verse box, two shapes. The card itself converts in place;

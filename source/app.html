@@ -219,24 +219,27 @@ __APP_CSS__
 
 <!-- Mobile bottom tab bar: 5 thumb-reachable destinations. Desktop-only
      (hidden via CSS on ≥761px); on phones it replaces the .toolbar row. -->
-<nav class="tabbar" id="tabbar" aria-label="Main navigation" role="tablist">
-  <button class="tab-btn" data-tab="home" role="tab" onclick="App.views.home()" aria-selected="true">
+<!-- A nav of destinations, not a tab list: these buttons change the page,
+     they do not switch panels, and Random is an action that never stays
+     current. The active item carries aria-current="page" (syncTabs()). -->
+<nav class="tabbar" id="tabbar" aria-label="Main navigation">
+  <button class="tab-btn" data-tab="home" onclick="App.views.home()" aria-current="page">
     __ICON_HOME__
     <span class="tab-lbl" id="tabHomeLbl">Home</span>
   </button>
-  <button class="tab-btn" data-tab="search" role="tab" onclick="tabGoSearch()" aria-selected="false">
+  <button class="tab-btn" data-tab="search" onclick="tabGoSearch()">
     __ICON_SEARCH__
     <span class="tab-lbl" id="tabSearchLbl">Search</span>
   </button>
-  <button class="tab-btn" data-tab="random" role="tab" onclick="App.library.randomVerse()" aria-selected="false">
+  <button class="tab-btn" data-tab="random" onclick="App.library.randomVerse()">
     __ICON_SHUFFLE__
     <span class="tab-lbl" id="tabRandLbl">Random</span>
   </button>
-  <button class="tab-btn" data-tab="play" role="tab" onclick="App.play.show()" aria-selected="false">
+  <button class="tab-btn" data-tab="play" onclick="App.play.show()">
     __ICON_PLAY__
     <span class="tab-lbl" id="tabPlayLbl">Play</span>
   </button>
-  <button class="tab-btn" data-tab="fav" role="tab" onclick="App.library.showFavorites()" aria-selected="false">
+  <button class="tab-btn" data-tab="fav" onclick="App.library.showFavorites()">
     __ICON_STAR__
     <span class="tab-lbl" id="tabFavLbl">Saved</span>
   </button>

@@ -226,7 +226,7 @@ function modeSwitch(ci){
   const btn = (mode, lab, fn, tip) =>
     `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
-    <div class="mode-seg" role="tablist" aria-label="${esc(L('choose_title'))}">
+    <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
       ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
       ${btn('learn',   esc(L('opt_learn_s')), `App.learn.show(${ci})`,   esc(L('opt_learn_d')))}
     </div>

@@ -23,14 +23,47 @@ jobs:
         with:
           node-version: '20'
 
+      # Playwright must be importable BEFORE build.py runs: build.py only runs
+      # the live-browser suite when `import playwright` succeeds, so installing
+      # it afterwards silently downgraded the build to "browser tests skipped".
       - name: Install Python deps
-        run: pip install Pillow
+        run: pip install Pillow playwright
 
-      - name: Build site (full)
-        run: python3 build.py
+      - name: Install Chromium for the browser checks
+        run: python3 -m playwright install --with-deps chromium
 
-      - name: Browser tests (Playwright)
+      # The browser suite is part of build.py (browser_checks.py --serve, real
+      # Chromium, offline service worker included) and a failed check fails the
+      # build. Never mask it with `|| echo`: a green CI run must mean green.
+      - name: Build and check
+        shell: bash
         run: |
-          pip install playwright
-          python3 -m playwright install --with-deps chromium
-          python3 source/browser_checks.py || echo "browser checks skipped or failed — see log"
+          set -o pipefail
+          python3 build.py 2>&1 | tee build.log
+
+      # A red run must say WHY where a reviewer can see it: the step log is
+      # served from a host some networks cannot reach, so every failing check is
+      # lifted into a check-run annotation as well.
+      - name: Report failing checks
+        if: failure()
+        shell: bash
+        run: |
+          tail -40 build.log || true
+          grep -E '✗ FAIL|FAILED|Error|Traceback|Exception|drifted|^  - ' build.log \
+            | head -40 | while IFS= read -r line; do
+            echo "::error::${line}"
+          done
+
+      # The artifact keeps the full build output readable even off the runner.
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+
+      # Independent proof that editing source JSON is enough: one marker per
+      # content kind is injected, rebuilt, found in the published output, then
+      # the source files are restored and the artifact hash re-checked.
+      - name: Prove content edits reach the published site
+        run: python3 source/prove_data_only.py

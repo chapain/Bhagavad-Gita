@@ -23,6 +23,11 @@ import unicodedata
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parent
+# Every document that states this number is checked against it (run_gita_app.js),
+# so the number itself must be checked against what actually ran — otherwise a
+# stale constant blesses a stale claim in three files. Same rule as
+# TOTAL_ASSERTIONS in run_gita_app.js.
+EXPECTED_CHECKS = 296
 PASS, FAIL = 0, []
 
 
@@ -66,6 +71,17 @@ def run(pw, url, offline_capable=False):
             el.remove();
             return result;
         }""", token)
+
+    def expand_verse(page=pg):
+        """The sheet opens on the whole verse (2026-11-03); the four-quarter grid
+        is one tap in. Idempotent, so a check may call it without knowing the
+        current state — several checks read .pb-num/.pada-row, which only exist
+        once expanded."""
+        page.evaluate("""() => {
+            const c = document.querySelector('#modal #verseContent');
+            if (c && !c.querySelector('.pada-grid')) toggleVerseExpansion();
+        }""")
+        page.wait_for_timeout(250)
 
     group("rendering")
     ok(pg.title() == "Bhagavad Gita — English, Nepali, Hindi · 700 Verses", "title")
@@ -200,6 +216,7 @@ def run(pw, url, offline_capable=False):
     pg.locator(".mini").first.click()
     pg.wait_for_timeout(600)
     ok("4 quarters of 8" in pg.eval_on_selector(".m-meter", "e=>e.textContent"), "meter uses 'quarters'")
+    expand_verse()
     ok(pg.eval_on_selector_all(".pb-num", "e=>e.map(x=>x.textContent.trim())")
        == ["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"], "boxes say Quarter 1-4")
     foot = pg.eval_on_selector("#appFooter", "e=>e.textContent")
@@ -210,6 +227,7 @@ def run(pw, url, offline_capable=False):
     for lang in ("ne", "hi"):
         pg.evaluate(f"setLang('{lang}')")
         pg.wait_for_timeout(400)
+        expand_verse()
         # Phase 3.2: verse ref lives inside .m-title, meter inside the
         # ⋯ overflow menu (open it to assert its localised text).
         ok("श्लोक २.४७" in pg.eval_on_selector(".m-title", "e=>e.textContent"), f"{lang}: verse ref")
@@ -437,6 +455,11 @@ def run(pw, url, offline_capable=False):
         a, d = count(ascii_q), count(deva_q)
         ok(a == d and a > 0, f"searching {deva_q!r} matches {ascii_q!r} ({d} vs {a})")
     ok(count("धर्मक्षेत्रे") == 1, "Devanagari word search still finds its verse")
+    # The headline count is the whole page: verse cards plus the chapter/theme
+    # passage cards that share it. Verse-only counts stay in count().
+    def total(q):
+        count(q)
+        return pg.locator(".mini").count() + pg.locator(".res-passage").count()
     pg.fill("#searchInput", "")
     pg.wait_for_timeout(400)
     for q in ("2.47", "२.४७", "16.6", "yoga", "कर्म"):
@@ -471,7 +494,7 @@ def run(pw, url, offline_capable=False):
     one = count("2.47")
     one_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
     ok(one == 1 and one_label == "1 result", "English single-result wording")
-    many = count("yoga")
+    many = total("yoga")
     many_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
     ok(many > 1 and many_label == f"{many} results", "English plural-result wording")
     deva_num = lambda n: str(n).translate(str.maketrans("0123456789", "०१२३४५६७८९"))
@@ -485,11 +508,68 @@ def run(pw, url, offline_capable=False):
         one_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
         ok(one == 1 and one_label == f"{deva_num(one)} {singular}",
            f"{lang}: singular-result wording")
-        many = count("yoga")
+        many = total("yoga")
         many_label = pg.eval_on_selector(".res-count", "e=>e.textContent.trim()")
         ok(many > 1 and many_label == f"{deva_num(many)} {plural}",
            f"{lang}: plural-result wording")
     pg.evaluate("setLang('en')")
+    pg.wait_for_timeout(300)
+
+    # ---- search reaches ideas; a note is not a favouriting side-effect -------
+    # The index covers chapter names, theme titles and the word-by-word glosses,
+    # so a reader who remembers the story or one glossed word is answered. A note
+    # can be written on any verse and survives un-favouriting.
+    group("search by chapter, theme and gloss; notes without favourites")
+    def show(q):
+        pg.fill("#searchInput", "")
+        pg.wait_for_timeout(200)
+        pg.fill("#searchInput", q)
+        pg.wait_for_timeout(800)
+    show("Mokṣa-Sannyāsa")
+    ok(pg.locator(".res-passage").count() >= 1 and pg.locator(".mini").count() == 0,
+       "a chapter name finds its chapter card and no verse cards")
+    ok(any("Chapter" in t for t in pg.eval_on_selector_all(
+        ".res-gl", "e=>e.map(x=>x.textContent)")), "chapter results carry their own group label")
+    show("Kṛṣṇa rebukes Arjuna's dejection")
+    ok(pg.locator(".res-passage").count() == 1,
+       "a theme title finds exactly its theme")
+    show("not hating")
+    ok(pg.locator(".mini").count() == 1 and pg.locator(".res-word").count() == 1,
+       "one glossed word finds its verse and names the word that matched")
+    show("Sankhya")
+    ok(pg.locator(".res-passage").count() == 1,
+       "ASCII 'Sankhya' reaches the chapter named Sāṅkhya")
+    show("2.47")
+    ok(pg.locator(".mini").count() == 1 and pg.locator(".res-passage").count() == 0,
+       "a verse number returns the verse alone")
+
+    pg.evaluate("closeModal()")
+    pg.wait_for_timeout(200)
+    pg.evaluate("App.reader.open(0,0,0,'theme')")
+    pg.wait_for_timeout(500)
+    ok(pg.locator("#modal .m-note").count() == 1,
+       "every verse opens with its own note field, saved or not")
+    pg.click("#modal .m-note summary")
+    pg.wait_for_timeout(200)
+    pg.fill("#modal .m-note textarea", "A note on an unsaved verse.")
+    pg.wait_for_timeout(250)
+    ok("A note on an unsaved verse." in (pg.evaluate(
+        "localStorage.getItem('gitaFavNotes')||''")),
+       "the note is stored as it is typed")
+    pg.evaluate("closeModal()")
+    pg.wait_for_timeout(200)
+    pg.evaluate("App.library.showFavorites()")
+    pg.wait_for_timeout(300)
+    ok(pg.locator("#view .note-card").count() >= 1,
+       "saved lists the note though the verse was never favourited")
+    pg.evaluate("App.library.toggleFavorite('1.01')")
+    pg.wait_for_timeout(150)
+    pg.evaluate("App.library.toggleFavorite('1.01')")
+    pg.wait_for_timeout(300)
+    ok(pg.locator("#view .note-card").count() >= 1,
+       "un-favouriting a verse keeps its note")
+    pg.evaluate("App.library.setNote('1.01','')")
+    pg.fill("#searchInput", "")
     pg.wait_for_timeout(300)
 
     group("touch / mobile")
@@ -808,8 +888,12 @@ def run(pw, url, offline_capable=False):
       const visible = el => !!(el && el.getClientRects().length
         && getComputedStyle(el).visibility !== 'hidden'
         && getComputedStyle(el).display !== 'none');
+      /* One disclosure is intended in the sheet — the verse's own note field
+         (2026-11-04). Anything else (an action bar, a word-meanings card, a
+         hint card) would duplicate the card's own two states. */
       const forbidden = copy && [...copy.querySelectorAll(
-        '.m-verse-action,.m-words-section,details,summary,.m-pada-hint')].some(visible);
+        '.m-verse-action,.m-words-section,details,summary,.m-pada-hint')]
+        .some(el => visible(el) && !el.closest('.m-note'));
       return {
         order: !!(kids[0] === container && kids[1]?.matches('.m-line.lit')
           && kids[2]?.matches('.m-line.para')),
@@ -818,14 +902,17 @@ def run(pw, url, offline_capable=False):
         directLiteral: !!(container && container.nextElementSibling?.matches('.m-line.lit')),
         forbidden: !!forbidden,
         noAction: !document.querySelector('#modal .m-verse-action'),
-        noMeaningDisclosure: !document.querySelector('#modal .m-words-section, #modal details, #modal summary'),
+        noMeaningDisclosure: [...document.querySelectorAll(
+            '#modal .m-words-section, #modal details, #modal summary')]
+          .every(el => el.closest('.m-note')),
+        noteField: document.querySelectorAll('#modal details.m-note').length === 1,
         noHintCard: !document.querySelector('#modal .m-pada-hint')
       };
     }""")
     ok(bool(structure and structure["order"] and structure["soleVisibleChild"]
             and structure["directLiteral"] and not structure["forbidden"]
             and structure["noAction"] and structure["noMeaningDisclosure"]
-            and structure["noHintCard"]),
+            and structure["noteField"] and structure["noHintCard"]),
        f"the single verse card is followed directly by literal and paraphrase, with no action/disclosure card ({structure})")
 
     # The whole-verse shape explains itself: a short localized instruction sits
@@ -904,12 +991,18 @@ def run(pw, url, offline_capable=False):
         const g = c?.querySelector('.pada-grid');
         const copy = document.querySelector('#modal .reader-copy');
         hints[code] = hint ? clean(hint) : null;
+        /* "No sibling bar" used to be spelled as "no .reader-copy child other
+           than the card contains the hint" — true only while #verseContent was a
+           direct child of .reader-copy. It is now inside #verseContainer, so the
+           promise is stated directly: the hint lives inside the card, inside
+           .reader-copy, and inside no action bar, card, line or disclosure. */
         hintOk[code] = !!(hint && c.contains(hint) && hint.getClientRects().length
           && hint.parentElement === c && g && g.parentElement === c
           && hint.nextElementSibling === g
           && (hint.compareDocumentPosition(g) & Node.DOCUMENT_POSITION_FOLLOWING)
-          && copy && ![...copy.children].some(el => el !== c && el.contains(hint))
-          && !hint.closest('details, summary, .m-verse-action, .m-words-section')
+          && copy && copy.contains(hint) && c.contains(hint)
+          && !hint.closest('.m-verse-action, .m-words-section, details, summary,'
+                           + ' .m-pada-hint, .m-line')
           && !hint.querySelector('button, a, [role], [tabindex]'));
       }
       setLang('ne');
@@ -939,24 +1032,32 @@ def run(pw, url, offline_capable=False):
         el.getAttribute('aria-describedby').split(/\s+/).filter(Boolean)
           .every(id => ids.filter(x => x === id).length === 1
             && document.getElementById(id)));
-      return !!(content && content.classList.contains('m-verse')
-        && !content.classList.contains('m-whole-verse')
-        && container?.classList.contains('expanded-mode')
-        && content.querySelector('.pada-meanings-hint')
-        && content.querySelector('.m-verse-back')
-        && hintsMatch && hintOk.en && hintOk.ne && hintOk.hi
-        && uniqueIds && validRefs
-        && grid && grid.parentElement === content && boxes?.length === 4
-        && [...boxes].every(box => box.parentElement === grid || box.parentElement?.classList.contains('pada-row'))
-        && !content.hasAttribute('role') && !content.hasAttribute('tabindex')
-        && !content.hasAttribute('aria-label') && !content.hasAttribute('aria-expanded')
-        && hidden('wordsHint') && hidden('padaHint')
-        && toggles.every(btn => btn.getAttribute('aria-describedby') === 'padaHint')
-        && [...content.querySelectorAll('.spk-line')].every(btn => btn.getAttribute('aria-describedby') === 'wordsHint'));
+      /* Named, so a failure says WHICH promise broke instead of one false. */
+      return {
+        expandedShape: !!(content && content.classList.contains('m-verse')
+          && !content.classList.contains('m-whole-verse')
+          && container?.classList.contains('expanded-mode')),
+        hint: !!content?.querySelector('.pada-meanings-hint'),
+        back: !!content?.querySelector('.m-verse-back'),
+        hintsMatch: hintsMatch,
+        hintOk: hintOk.en && hintOk.ne && hintOk.hi,
+        uniqueIds: uniqueIds,
+        validRefs: validRefs,
+        gridInCard: !!(grid && grid.parentElement === content),
+        fourBoxes: boxes?.length === 4,
+        boxParents: [...(boxes || [])].every(box => box.parentElement === grid
+          || box.parentElement?.classList.contains('pada-row')),
+        noCardRole: !content?.hasAttribute('role') && !content?.hasAttribute('tabindex')
+          && !content?.hasAttribute('aria-label') && !content?.hasAttribute('aria-expanded'),
+        hiddenHints: hidden('wordsHint') && hidden('padaHint'),
+        toggles: toggles.every(btn => btn.getAttribute('aria-describedby') === 'padaHint'),
+        spkRefs: [...(content?.querySelectorAll('.spk-line') || [])]
+          .every(btn => btn.getAttribute('aria-describedby') === 'wordsHint'),
+      };
     }""")
-    ok(converted,
+    ok(converted and all(converted.values()),
        "clicking converts the same card into its four descendant pādas, shows a localized 'tap a pāda' instruction inside it above the grid with no sibling bar, keeps ↩, and keeps both hidden descriptions unique and valid "
-       f"({pg.evaluate('window.__padaHints')})")
+       f"(broken: {[k for k, v in (converted or {}).items() if not v] or pg.evaluate('window.__padaHints')})")
 
     pg.locator("#modal .pada-toggle").first.click()
     pg.wait_for_timeout(300)
@@ -1523,7 +1624,6 @@ def run(pw, url, offline_capable=False):
     ok(mode_one_ok and relang_one_ok,
        "Play mode 1 asks for a localized meaning and language changes keep the same verse/options")
 
-    before_retry = lp.evaluate("LQ[LQi].opts.map(o=>({label:o.label,ok:o.ok}))")
     wrong_option = lp.evaluate("LQ[LQi].opts.findIndex(o=>!o.ok)")
     lp.locator(".lr-opt").nth(wrong_option).click()
     wrong_mark = lp.locator(".lr-opt.wrong").count() == 1
@@ -1541,12 +1641,18 @@ def run(pw, url, offline_capable=False):
         ({id:x.dataset.lrOpt,wrong:x.classList.contains('wrong'),right:x.classList.contains('right')}))})""")
     ok(play_after == play_before,
        "refresh restores the active Play question, choices and wrong-answer feedback")
-    lp.evaluate("window.__realRandom = Math.random; Math.random = () => 0")
+    # Retry is `LQi++; lrPaint()` — it moves on, and the missed item returns later
+    # in the queue. The old assertion compared the answer's index before and after
+    # with Math.random pinned to 0 and expected it to differ; that is a property of
+    # one deterministic shuffle, not a promise the app ever made, so it was red in
+    # Chromium while every real contract held. Assert what retry does: a different
+    # question, four fresh options, exactly one correct, feedback cleared.
+    retry_before = lp.evaluate("({index:LQi, qid:LQ[LQi].qid})")
     lp.locator(".lr-fb .lr-cta").click()
+    lp.wait_for_timeout(200)
     after_retry = lp.evaluate("LQ[LQi].opts.map(o=>({label:o.label,ok:o.ok}))")
-    lp.evaluate("Math.random = window.__realRandom; delete window.__realRandom")
-    before_answer = next(i for i,o in enumerate(before_retry) if o["ok"])
-    after_answer = next(i for i,o in enumerate(after_retry) if o["ok"])
+    retry_after = lp.evaluate("({index:LQi, queued:LQ.map(x=>x.qid)})")
+    stale_feedback = lp.locator(".lr-opt.wrong, .lr-opt.right").count()
 
     # Open the completed-theme recall control and inspect actual rendered
     # question choices, not the implementation strings that build them.
@@ -1589,9 +1695,13 @@ def run(pw, url, offline_capable=False):
     }""")
     learn_drill_ok = all(learn_drill.values())
     ok(wrong_mark and retry_label and len(after_retry) == 4
-       and sum(o["ok"] for o in after_retry) == 1 and before_answer != after_answer
+       and len({o["label"] for o in after_retry}) == 4
+       and sum(o["ok"] for o in after_retry) == 1
+       and retry_after["index"] == retry_before["index"] + 1
+       and retry_before["qid"] in retry_after["queued"]
+       and stale_feedback == 0
        and learn_drill_ok,
-       "Play retry changes the answer position; Learn recall emits fair blanks, full verses, theme order and every quarter")
+       "Play retry advances to a fresh fair question, keeps the missed one queued and clears the feedback; Learn recall emits fair blanks, full verses, theme order and every quarter")
 
     lp.locator('.tab-btn[data-tab="play"]').click()
     lp.wait_for_selector(".pl-mode")
@@ -1712,6 +1822,146 @@ def run(pw, url, offline_capable=False):
     ok(not favorites_errors, f"malformed favorites never throw on favorites or verse views ({favorites_errors[:2]})")
     fctx.close()
 
+    # ---- the new surfaces, measured ---------------------------------------
+    # jsdom can prove these exist and behave; only a layout engine can prove they
+    # fit. Search result groups, the note field and the share preview were added
+    # without ever being measured, so measure them at 390px. The main page's
+    # context is closed earlier in this run, so this group brings its own.
+    group("new surfaces fit the phone")
+    nc = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    np_ = nc.new_page()
+    np_.goto(url, wait_until="load", timeout=90000)
+    np_.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    np_.wait_for_timeout(600)
+
+    def nshow(q):
+        np_.fill("#searchInput", "")
+        np_.wait_for_timeout(200)
+        np_.fill("#searchInput", q)
+        np_.wait_for_timeout(800)
+
+    def inside_view(sel):
+        return np_.evaluate("""sel => {
+            const vw = document.documentElement.clientWidth;
+            const cards = [...document.querySelectorAll(sel)];
+            return {n: cards.length,
+              inside: cards.length > 0 && cards.every(c => {
+                const r = c.getBoundingClientRect();
+                return r.width > 0 && r.left >= -1 && r.right <= vw + 1; }),
+              overflow: (() => { const v = document.querySelector('#view');
+                return v.scrollWidth <= v.clientWidth + 1; })()};
+        }""", sel)
+    nshow("Sankhya")
+    geo = inside_view("#view .res-passage")
+    ok(bool(geo and geo["inside"] and geo["overflow"]),
+       f"chapter/theme result cards stay inside a 390px viewport ({geo})")
+
+    nshow("yoga")
+    head = np_.evaluate("""() => {
+        const g = document.querySelector('#view .res-gl'); if(!g) return null;
+        const label = g.firstElementChild, count = g.querySelector('.res-gn');
+        if(!label || !count) return null;
+        const a = label.getBoundingClientRect(), b = count.getBoundingClientRect();
+        return {apart: a.right <= b.left + 1, countRight: b.right > a.left,
+          overflow: (() => { const v = document.querySelector('#view');
+            return v.scrollWidth <= v.clientWidth + 1; })()};
+    }""")
+    ok(bool(head) and head["apart"] and head["countRight"] and head["overflow"],
+       f"the result-group head keeps its label and its count apart ({head})")
+
+    np_.evaluate("setLang('ne')")
+    np_.wait_for_timeout(400)
+    nshow("कर्म")
+    ne_geo = inside_view("#view .res-passage")
+    ok(bool(ne_geo and ne_geo["overflow"]),
+       f"Nepali search results do not overflow the phone width ({ne_geo})")
+    np_.evaluate("setLang('en')")
+    np_.wait_for_timeout(300)
+
+    np_.evaluate("App.library.setNote('2.47','A note long enough to wrap inside the field on a phone.')")
+    np_.evaluate("App.reader.open(1,0,0,'theme')")
+    np_.wait_for_timeout(600)
+    note_box = np_.evaluate("""() => {
+        const d = document.querySelector('#modal details.m-note');
+        if(d && !d.open) d.open = true;
+        const t = document.querySelector('#modal .m-note textarea');
+        const m = document.querySelector('#modal');
+        if(!t || !m) return null;
+        const r = t.getBoundingClientRect(), mr = m.getBoundingClientRect();
+        return {w: Math.round(r.width), h: Math.round(r.height),
+          inside: r.left >= mr.left - 1 && r.right <= mr.right + 1};
+    }""")
+    ok(bool(note_box) and note_box["w"] >= 150 and note_box["h"] >= 40 and note_box["inside"],
+       f"the note field is a real, usable box inside the sheet ({note_box})")
+
+    np_.evaluate("App.reader.close()")
+    np_.wait_for_timeout(350)
+    np_.evaluate("App.library.showFavorites()")
+    np_.wait_for_timeout(450)
+    note_card = inside_view("#view .note-card")
+    ok(bool(note_card and note_card["inside"] and note_card["overflow"]),
+       f"a note card stays inside the saved view ({note_card})")
+
+    # The painted share art used to be committed and referenced by nothing. It is
+    # now the preview inside the share panel, so prove the browser really loads it.
+    np_.evaluate("App.reader.open(1,0,0,'theme')")
+    np_.wait_for_timeout(450)
+    np_.evaluate("openSharePanel()")
+    np_.wait_for_timeout(300)
+    # loading="lazy" only fetches the art once the panel is on screen.
+    np_.evaluate("document.querySelector('#sharePanel .sp-art')"
+                 ".scrollIntoView({block: 'center'})")
+    np_.wait_for_timeout(900)
+    art = np_.evaluate("""() => {
+        const i = document.querySelector('#sharePanel .sp-art');
+        if(!i) return {present: false};
+        const r = i.getBoundingClientRect();
+        return {present: true, natural: i.naturalWidth, w: Math.round(r.width),
+          fits: r.width > 0 && r.right <= document.documentElement.clientWidth + 1};
+    }""")
+    ok(bool(art and art["present"]) and art["natural"] >= 900 and art["w"] >= 200 and art["fits"],
+       f"the share panel shows the painted share art at a readable size ({art})")
+    np_.evaluate("closeSharePanel(); App.reader.close()")
+    np_.wait_for_timeout(350)
+    np_.evaluate("App.library.setNote('2.47','')")
+
+    # ---- the furniture behind the sheet (a11y) ----------------------------
+    # A tab list must contain tabs; the five bottom destinations are links, not
+    # tabs, and the bottom bar must leave the page when the sheet is open.
+    group("what is behind the sheet")
+    np_.evaluate("showChapter(0)")
+    np_.wait_for_timeout(500)
+    a11y = np_.evaluate("""() => {
+        const orphan = [...document.querySelectorAll('[role="tablist"]')]
+          .filter(t => !t.querySelector('[role="tab"]')).length;
+        const bar = document.querySelector('.tabbar');
+        const seg = document.querySelector('.mode-seg');
+        return {orphan,
+          barTag: bar && bar.tagName, barRole: bar && bar.getAttribute('role'),
+          current: bar ? bar.querySelectorAll('[aria-current="page"]').length : -1,
+          selected: bar ? bar.querySelectorAll('[aria-selected]').length : -1,
+          segRole: seg && seg.getAttribute('role'),
+          segPressed: seg ? seg.querySelectorAll('button[aria-pressed]').length : -1};
+    }""")
+    ok(bool(a11y) and a11y["orphan"] == 0 and a11y["barTag"] == "NAV"
+       and a11y["barRole"] is None and a11y["current"] == 1 and a11y["selected"] == 0,
+       f"the bottom bar is a nav with one aria-current item, not a tab list ({a11y})")
+    ok(bool(a11y) and a11y["segRole"] == "group" and a11y["segPressed"] == 2,
+       f"read/learn is a group of pressed buttons, not a tab list ({a11y})")
+
+    np_.evaluate("App.reader.open(0,0,0,'theme')")
+    np_.wait_for_timeout(600)
+    behind = np_.evaluate("""() => [...document.querySelectorAll(
+        'body > .skip-link, body > header, body > .toolbar, body > nav.tabbar,'
+        + ' body > .wrap, body > footer')].map(e => !!e.inert)""")
+    ok(len(behind) == 6 and all(behind),
+       f"every page region behind the sheet is inert, tab bar included ({behind})")
+    np_.evaluate("closeModal()")
+    np_.wait_for_timeout(400)
+    ok(np_.evaluate("document.querySelector('.tabbar').inert === false"),
+       "closing the sheet gives the page back")
+    nc.close()
+
     group("responsive")
     for name, w, h, expect in [("iPhone SE", 375, 667, "column"), ("Pixel 7", 412, 915, "column"),
                                ("iPad mini", 768, 1024, "row"), ("Desktop", 1440, 900, "row")]:
@@ -1726,6 +1976,7 @@ def run(pw, url, offline_capable=False):
         q.wait_for_timeout(200)
         q.locator(".ch-theme .mini").first.click()
         q.wait_for_timeout(500)
+        expand_verse(q)
         ok(q.eval_on_selector(".pada-row", "e=>getComputedStyle(e).flexDirection") == expect,
            f"{name}: quarters {expect}")
         ok(not q.evaluate("document.documentElement.scrollWidth>document.documentElement.clientWidth"),
@@ -2032,6 +2283,9 @@ def main():
 
     print("\n" + "=" * 46)
     print(f"browser_checks.py: {PASS} passed, {len(FAIL)} failed")
+    if PASS + len(FAIL) != EXPECTED_CHECKS:
+        print(f"  check total drifted: ran {PASS + len(FAIL)}, locked {EXPECTED_CHECKS}")
+        FAIL.append(f"check total drifted: ran {PASS + len(FAIL)}, locked {EXPECTED_CHECKS}")
     if FAIL:
         for f in FAIL:
             print("  -", f)

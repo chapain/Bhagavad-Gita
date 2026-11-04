@@ -368,6 +368,8 @@
   .share-panel{ display:none; flex-direction:column; align-items:flex-start; gap:8px; margin:10px 0 0;
     background:var(--cream); border:1px solid var(--line); border-radius:14px; padding:12px 14px;}
   .sp-hint{ font-size:.85rem; color:var(--ink-soft); line-height:1.5;}
+  .sp-art{ display:block; width:100%; height:auto; border:1px solid var(--line);
+    border-radius:10px; background:var(--paper);}
   .sp-link{ width:100%; font-size:.76rem; color:var(--teal); background:var(--paper);
     border:1px dashed var(--line); border-radius:8px; padding:7px 9px; word-break:break-all;}
   .sp-copy{ background:var(--saffron); color:var(--on-saffron); border:none; border-radius:999px;

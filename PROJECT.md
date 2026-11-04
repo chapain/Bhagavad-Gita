@@ -11,9 +11,117 @@ the start of every session.
 
 ---
 
-## 0. Handoff snapshot (keep current; last touched 2026-10-18)
+## 0. Handoff snapshot (keep current; last touched 2026-11-04)
 
 For a brand-new session: read §1–§10, then this box, then build.
+
+### 2026-11-04 (second batch) — the furniture behind the sheet, and the share art
+
+* **A tab list with no tabs, twice.** `modeSwitch()` wrapped the read/learn
+  buttons in `role="tablist"` while they carried `aria-pressed` (a toggle, not a
+  tab), and the phone `.tabbar` declared `role="tablist"` with `role="tab"`
+  buttons that change the *page* — there are no tabpanels, and Random is not even
+  a destination. Both are now honest: the mode switch is `role="group"` with two
+  pressed buttons; the bar is a `nav` whose current destination carries
+  `aria-current="page"` (set by `syncTabs()`, styled by
+  `.tab-btn[aria-current="page"]`). A browser check asserts no tab list exists
+  without tabs.
+* **The bottom bar stayed focusable behind the sheet.** `setAppInert()` covered
+  `header`, `.toolbar`, `.wrap`, `footer` — everything except `nav.tabbar`, which
+  the CSS merely dimmed (`pointer-events:none; opacity:.4`) and so kept in the Tab
+  order and in the screen-reader tree. Added; a browser check asserts all five
+  regions are inert while the sheet is open and released after it closes.
+* **`img/share-art.jpg` was committed and referenced by nothing.** 44,653 bytes,
+  960×504, repainted by `build.py` whenever Pillow exists, `og:image` pointing at
+  `icons/og-card.png`. It now earns its place as the preview inside the share
+  panel, *after* the copy actions, with `width`/`height` (no layout shift),
+  `loading="lazy"`, `alt=""` (the panel text carries the meaning) and
+  `onerror="this.remove()"` so an offline miss leaves no broken frame. A browser
+  check reads `naturalWidth ≥ 900`, so the test proves the picture actually
+  loads — the first time this asset has been exercised at all.
+* **“Review complete for today” was false.** The welcome badge counts due verses
+  across all 18 chapters (`srsDueAll`), but a review session serves at most seven
+  verses of *one* chapter (`lrReview` → `ids.slice(0,7)`), then said the day was
+  done. Now `srsFinishReview()` re-counts: if anything is still due it says how
+  many and offers “Continue review” (`srs_review_more`, new key ×3 → 225 UI
+  strings), and only claims completion when nothing is due anywhere. One shared
+  `srsDueLabel()` feeds both the badge and the finish screen so the two can never
+  disagree, and `srsDueAll()` now starts with the **most overdue** chapter
+  (`firstDue`) rather than the lowest chapter number.
+* **`prove_data_only.py` is reachable from the build.** It ran in CI since item
+  1, but not from `build.py`; `python3 build.py --prove` now runs it after the
+  checks (it edits source files, rebuilds and restores them, so it stays opt-in
+  locally and unconditional in CI).
+* **Counts:** 908 assertions, 296 browser checks, 225 UI strings, shell 350,392
+  chars / 372,328 bytes / 100,750 gzip. Both totals keep their drift locks, so a
+  stale number fails the run instead of quietly blessing three documents.
+
+### 2026-11-04 — search reaches ideas; a note belongs to its verse
+
+* **The search index remembered the words and forgot the ideas.** It held the
+  Devanagari line, its IAST, the paraphrase and (since v2) nothing else, so a
+  reader who typed a chapter name, a theme title or a single glossed word got
+  “no results” from a corpus that plainly contains it. `verseSearchText()` now
+  also indexes the verse title (all three languages) and every word gloss
+  (`w[2..4]`), and a new `SEARCH_PASSAGES` index carries the 18 chapter names/
+  subtitles/Devanagari lines and the 169 theme titles/descriptions. Results are
+  grouped — Verses, Themes, Chapters — under one count that adds both kinds
+  (`hits.length + passages.length`); a group head appears only when more than one
+  kind answered, so `2.47` still looks exactly as it did. A verse card that
+  answered on a gloss the card does not display says so (`word: अद्वेष्टा — not
+  hating`). `searchFoldKey()` also strips any residual combining mark, so plain
+  ASCII reaches ṅ/ṭ/ḍ/ḥ/ṃ/ñ — “Sankhya” finds Sāṅkhya Yoga. The priced trade-off
+  is the index growing to ~843 KB of strings, which is why a common query costs
+  12–50 ms in jsdom; it is built once with the data, not per keystroke.
+* **Notes were a side-effect of favouriting, and un-favouriting deleted them.**
+  `FAVNOTE` was keyed per verse but written only from the saved cards, and
+  `removeFav()` erased the entry with the favourite. Now every verse opens a
+  `<details class="m-note">` field in the sheet (`App.library.note/setNote`), the
+  note is saved as it is typed, and Saved lists every note — saved or not — as a
+  read-only `.note-card`, including on the empty-favourites screen. The storage
+  key stays `gitaFavNotes` on purpose: the shipped backup schema and
+  `45-data.js` import/export keep working with no migration path to get wrong.
+* **Strings:** +7 → 224 UI strings in en/ne/hi (`note_label`, `note_ph`,
+  `notes_title`, `search_in_chapters`, `search_in_themes`, `search_in_verses`,
+  `search_word_match`). The note wording now matches the verse field already
+  shipped in the data: टिप्पणी, not टिपोट.
+* **CI was configured to be green.** It called `source/browser_checks.py` (the
+  file is at the repo root) and ended the step with `|| echo "browser checks
+  skipped or failed"`, so the Playwright suite had never gated a build. It also
+  installed Playwright *after* `build.py`, which detects the browser suite with
+  `import playwright` — so the build itself reported “browser tests skipped”.
+  Playwright now installs first, `build.py` runs the real suite
+  (`browser_checks.py --serve`, service worker included), nothing swallows the
+  exit code, and `source/prove_data_only.py` runs as its own step.
+* **Counts:** 60 Python, **892 assertions** on the document, 286 browser checks,
+  506 site-health, 9,658 study-structure, 11 search regressions (was 8).
+  `TOTAL_ASSERTIONS` said 832 while the suite printed 867 — reconciled here, and
+  the constant is now compared with `PASS + FAIL` so it cannot bless a stale
+  number in three files again. `browser_checks.py` got the same lock
+  (`EXPECTED_CHECKS`), which is how the real total turned out to be **286**, not
+  the 270 three documents claimed: the suite had already drifted seven checks
+  (270 + 9 added here = 279), and nothing had ever run it.
+* **What the first real browser run found.** Making CI honest turned the suite
+  red three times, and each red was a stale check, not a broken app: four checks
+  read `.pb-num`/`.pada-row` straight after opening a verse although the
+  2026-11-03 card opens on the whole verse and needs one tap for the quarters;
+  “no sibling bar” was spelled as “no `.reader-copy` child other than the card
+  contains the hint”, true only while `#verseContent` was a direct child of
+  `.reader-copy` (it now sits in `#verseContainer`); and “Play retry changes the
+  answer position” compared option indexes with `Math.random` pinned to 0 even
+  though retry is `LQi++` and the missed question is re-queued — a coincidence,
+  not a promise. All three now assert what the app actually promises, and the
+  reader sheet's one intended disclosure (the note field) is allowed by name
+  instead of failing the “no disclosure card” rule.
+  Shell 347,934 chars / 369,749 bytes / 99,694 gzip; README said “about 83 KB”.
+* **Shell cap 350,000 → 360,000.** Search v3 and the note field add ~13 KB and
+  left 2 KB of headroom, which is not headroom. Raised deliberately, with the
+  reason written at the check, in the spirit of the earlier 250→290→320→350
+  raises: the cap catches accidental bloat, it does not freeze the UI.
+* **Left alone, on purpose:** `img/share-art.jpg` is unreferenced; `srsDueAll()`
+  and `App.learn.openDue()` disagree on first chapter and the 7-verse cap;
+  `modeSwitch()` has `role="tablist"` with no `role="tab"`; `nav.tabbar` is
+  missing from `setAppInert()`. Reported, not fixed in this change.
 
 ### 2026-11-03 — the verse card explains its own two states
 
@@ -1772,14 +1880,14 @@ sitemap.xml, robots.txt   generated shell/offline and crawler files
 chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
-run_gita_app.js       832 assertions on the built document and data (needs node)
-browser_checks.py     270 live-browser checks (needs Playwright)
+run_gita_app.js       892 assertions on the built document and data (needs node)
+browser_checks.py     286 browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)
   css/*.css            ordered feature styles, concatenated into index.html
   js/*.js              ordered feature runtime, concatenated into index.html
-  i18n_ui.py           217 UI strings × 3 languages
+  i18n_ui.py           224 UI strings × 3 languages
   study_map_contract.json all 18 reviewed maps + legacy-progress migration
   build_gita.py        assembles templates + chapter data; enforces source schema
   verify.py            IAST normalization and syllable helpers used for checks

@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 832;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 270;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
+const TOTAL_ASSERTIONS = 908;      // keep in step with the printed total
+const TOTAL_BROWSER_CHECKS = 296;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -106,7 +106,13 @@ const enKeys = Object.keys(UI.en);
 // added click_pada_meanings (1) → 187
 // 2026-10-17: removed read_sub, opt_full_g, opt_study_g, back_themes (4) → 183,
 // together with the per-theme and continuous-reading views that used them.
-ok(enKeys.length === 217, `UI has 217 keys (got ${enKeys.length})`);
+// 2026-11-04: notes stopped being a favouriting side-effect and search grew
+// chapters and themes, so the strings those surfaces need are new: note_label,
+// note_ph, notes_title, search_in_chapters, search_in_themes, search_in_verses,
+// search_word_match (7) → 224.
+// 2026-11-04 (second batch): srs_review_more (1) → 225. The review screen used
+// to claim "complete for today" after at most seven verses of one chapter.
+ok(enKeys.length === 225, `UI has 225 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -860,6 +866,96 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
      'clear-all-data guarded by confirmation');
 }
 
+// ---------- what sits behind the sheet, and the promises around it ----------
+{
+  // A tab list must contain tabs. The five bottom destinations change the page;
+  // Random is not even a destination. They are a nav with aria-current now, and
+  // the read/learn switch is a group of pressed buttons.
+  const bar = html.slice(html.indexOf('<nav class="tabbar"'), html.indexOf('</nav>', html.indexOf('<nav class="tabbar"')));
+  ok(bar.length > 0 && !/role="tab/.test(bar) && !/aria-selected/.test(bar),
+     'the bottom bar is a nav of destinations, not a tab list');
+  ok(/data-tab="home"[^>]*aria-current="page"/.test(bar),
+     'the current destination is marked with aria-current');
+  ok(/setAttribute\('aria-current','page'\)/.test(html)
+     && /removeAttribute\('aria-current'\)/.test(html),
+     'syncTabs keeps exactly one destination current');
+  ok(/class="mode-seg" role="group"/.test(html),
+     'the read/learn switch is a group, not a tab list without tabs');
+  // The sheet makes the page inert; the phone tab bar is part of the page.
+  ok(/body > \.skip-link, body > header, body > \.toolbar/.test(html)
+     && /body > nav\.tabbar, body > \.wrap, body > footer/.test(html),
+     'opening the sheet also takes the skip link and the bottom bar out of the tab order');
+}
+
+// ---------- the painted share art earns its place ----------
+{
+  ok(/class="sp-art" src="img\/share-art\.jpg"/.test(html),
+     'the share panel shows img/share-art.jpg');
+  ok(/class="sp-art"[^>]*width="960"[^>]*height="504"/.test(html)
+     && /class="sp-art"[^>]*loading="lazy"/.test(html),
+     'the preview reserves its box and loads only when the panel opens');
+  ok(/class="sp-art"[^>]*onerror="this\.remove\(\)"/.test(html),
+     'a missing image removes itself instead of showing a broken frame');
+  ok(fs.existsSync(path.join(__dirname, 'img', 'share-art.jpg'))
+     && /sp-art\{/.test(html),
+     'the image exists and carries its own styling');
+}
+
+// ---------- the review screen tells the truth about what is left ----------
+{
+  ok(/function srsDueAll\(today\)\{[\s\S]*?firstDue[\s\S]*?\}/.test(html),
+     'due totals remember the earliest due date, not just the first chapter');
+  ok(/function srsDueLabel\(n\)/.test(html)
+     && (html.match(/srsDueLabel\(/g) || []).length >= 3,
+     'one wording for "what is due" is shared by the badge and the finish screen');
+  const fin = html.slice(html.indexOf('function srsFinishReview('));
+  const finBody = fin.slice(0, fin.indexOf('\nfunction '));
+  ok(/const left = srsDueAll\(\)/.test(finBody) && /srs_review_more/.test(finBody),
+     'finishing a seven-verse review offers the rest instead of claiming completion');
+  ok(/lrMoreDue/.test(finBody) && /App\.learn\.openDue\(\)/.test(finBody),
+     'the continue control opens the next due session');
+  ok((html.match(/L\('srs_review_more'\)/g) || []).length === 1,
+     'the new string is used exactly where it is needed');
+}
+
+// ---------- search reaches ideas, notes outlive favourites ----------
+{
+  // Search used to index only the verse line, its IAST and its paraphrase, so a
+  // reader who remembered a chapter name, a theme title or one glossed word got
+  // "no results" from a corpus that plainly contains it. The index now carries
+  // titles and word glosses, and chapters/themes are their own result kind.
+  ok(/const SEARCH_PASSAGES = \[\]/.test(html) && /function buildPassages\(\)/.test(html) &&
+     /buildPassages\(\);/.test(html),
+     'chapters and themes are indexed and the index is built with the data');
+  ok(/for\(const w of \(f\.words \|\| \[\]\)\)\s*\n?\s*gloss \+= ' ' \+ w\[2\]/.test(html),
+     'verse search text includes word-by-word glosses');
+  ok(/const t = \(part && part\.titles\) \|\| \{\}/.test(html) &&
+     /\(t\.en \|\| ''\) \+ ' ' \+ \(t\.ne \|\| ''\) \+ ' ' \+ \(t\.hi \|\| ''\)/.test(html),
+     'verse search text includes the verse title in all three languages');
+  ok(/searchExactKey\(\[ch\.names\.en, ch\.names\.ne, ch\.names\.hi/.test(html),
+     'a chapter is searchable by its name and subtitle');
+  ok(/searchExactKey\(\[t\.titles\.en, t\.titles\.ne, t\.titles\.hi/.test(html),
+     'a theme is searchable by its title and description');
+  ok(/const total = hits\.length \+ passages\.length/.test(html),
+     'the result count adds passages to verses');
+  const usedKeys = ['search_in_verses', 'search_in_themes', 'search_in_chapters',
+                    'search_word_match', 'note_label', 'note_ph', 'notes_title'];
+  ok(usedKeys.every(k => new RegExp(`L\\('${k}'\\)`).test(html)),
+     'every new string is actually used by the app');
+  // Notes were stored beside favourites and deleted with them — un-favouriting a
+  // verse erased what the reader had written about it.
+  const rf = html.slice(html.indexOf('function removeFav('));
+  const rfBody = rf.slice(0, rf.indexOf('\nfunction '));
+  ok(!/FAVNOTE/.test(rfBody), 'un-favouriting no longer deletes the note');
+  ok(/function noteGet\(id\)\{[^}]*FAVNOTE\[id\]/.test(html) &&
+     /note: noteGet,/.test(html),
+     'notes are read from their own accessor');
+  ok(/class="m-note"/.test(html) && /App\.library\.note\(s\.n\)/.test(html),
+     'every verse opens its own note field in the reader');
+  ok(/function notesHtml\(\)/.test(html) && /notesHtml\(\)/.test(html.slice(html.indexOf('function showFavorites('))),
+     'saved lists every note, whether or not the verse is still saved');
+}
+
 // ---------- chapter landing pages (generated SEO satellites) ----------
 {
   let canonOK = 0, titleOK = 0, ctaOK = 0, fullTextOK = 0, sizeOK = 0;
@@ -960,6 +1056,12 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
 // ---------- summary ----------
 console.log('\n' + '='.repeat(46));
 console.log(`run_gita_app.js: ${PASS} assertions passed, ${FAIL} failed`);
+// The documents are checked against TOTAL_ASSERTIONS, so a stale constant would
+// quietly bless a stale number in three files. Compare it with what actually ran.
+if (PASS + FAIL !== TOTAL_ASSERTIONS) {
+  console.log(`assertion total drifted: ran ${PASS + FAIL}, locked ${TOTAL_ASSERTIONS}`);
+  process.exit(1);
+}
 if (FAIL > 0) {
   console.log('failures:');
   failures.forEach(f => console.log('  - ' + f));

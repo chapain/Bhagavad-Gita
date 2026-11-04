@@ -71,7 +71,13 @@ function themeBounds(t){
   return {start:0, end:Math.max(0, n-1)};
 }
 function setAppInert(inert){
-  document.querySelectorAll('body > header, body > .toolbar, body > .wrap, body > footer')
+  /* Everything focusable behind the sheet: the skip link, the header, the phone
+     toolbar, the phone tab bar, the page and the footer. The CSS only dims
+     .tabbar (pointer-events:none, opacity .4), which stops a finger but not the
+     Tab key or a screen reader — focus could land on furniture the reader cannot
+     see. .atm is a decorative SVG (aria-hidden, pointer-events:none), so it stays. */
+  document.querySelectorAll('body > .skip-link, body > header, body > .toolbar,'
+    + ' body > nav.tabbar, body > .wrap, body > footer')
     .forEach(el=>{ el.inert = inert; });
 }
 function updateModalAddress(){
@@ -271,6 +277,9 @@ function fillModal(){
   }
   recentVersesRecord(s.n);
   const isSaved = App.library.isFavorite(s.n);
+  /* A note belongs to the verse, not to the saved list — every verse can carry
+     one, and it is kept whether or not the verse is a favourite. */
+  const noteText = App.library.note(s.n);
 
   /* Option 1: the whole verse and the four-quarter grid are both prepared up
      front, then swapped into the same box by toggleVerseExpansion(). */
@@ -320,6 +329,13 @@ function fillModal(){
       <div class="sp-link" id="spLink"></div>
       <button class="sp-copy" id="shCp" onclick="copyVerseLink()">${L('copy_link')}</button>
       <button class="sp-copy sp-copy-txt" id="shCpTxt" onclick="copyVerseText()">${esc(L('copy_verse_text'))}</button>
+      <!-- img/share-art.jpg is the site's one painted face (960x504, repainted
+           by build.py when Pillow is present). It earns its place here as the
+           preview of what the copied link shows; the intrinsic width/height keep
+           the panel from jumping, lazy loading keeps it off the first paint, and
+           onerror removes it rather than showing a broken frame offline. -->
+      <img class="sp-art" src="img/share-art.jpg" alt="" width="960" height="504"
+           loading="lazy" decoding="async" onerror="this.remove()">
     </div>
     <div class="m-part">${esc(L('theme_sg'))} ${fmtRangeL(t.range)} · ${esc(T(t.titles))}</div>
     <div class="reader-copy">
@@ -333,6 +349,11 @@ function fillModal(){
       </div>
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
+      <details class="m-note"${noteText ? ' open' : ''}>
+        <summary><span>${esc(L('note_label'))}</span>${noteText ? `<span class="m-note-dot" aria-hidden="true">•</span>` : ''}<span class="m-note-chev" aria-hidden="true">▾</span></summary>
+        <textarea rows="2" aria-label="${esc(L('note_label'))}" placeholder="${esc(L('note_ph'))}"
+          oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px';App.library.setNote('${esc(s.n)}', this.value)">${esc(noteText)}</textarea>
+      </details>
       ${recentVersesHtml(s.n)}
     </div>
     <div class="m-tail" aria-hidden="true"></div>
@@ -355,6 +376,9 @@ function fillModal(){
     </div>`;
   applyReaderSize();
   setVerseView(false);
+  // grow the note box to its saved text, as the saved cards do
+  const nt = $('#modal .m-note textarea');
+  if(nt && nt.value){ nt.style.height='auto'; nt.style.height=nt.scrollHeight+'px'; }
 }
 
 /* Option 1 - one verse box, two shapes. The card itself converts in place;

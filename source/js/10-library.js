@@ -32,7 +32,12 @@ function searchFoldKey(s){
     .replace(/a{2,}/g, 'a')            // aa... -> a
     .replace(/e{2,}/g, 'i')            // ee... -> i
     .replace(/o{2,}/g, 'u')            // oo... -> u
-    .replace(/c(?!h)/g, 'ch');         // IAST c <-> common ch
+    .replace(/c(?!h)/g, 'ch')          // IAST c <-> common ch
+    /* Any remaining Latin diacritic is dropped so a plain keyboard reaches the
+       word: ṅ ṭ ḍ ḥ ṃ ñ ś leftovers. This is the ASCII path only — a query that
+       already carries diacritics stays exact (see prepareSearchQuery), so
+       a/ā, t/ṭ and ś/ṣ remain distinguishable for a reader who types them. */
+    .replace(/[\u0300-\u036f]/g, '');
 }
 function prepareSearchQuery(s){
   const exact = searchExactKey(s);
@@ -89,9 +94,20 @@ function meterText(s){
     : L('meter_padas').replace('{n}', numL(m.n)));
   return bits.join(' · ');
 }
-function verseSearchText(v){
+/* What a verse answers to: its number, both scripts, all three translations and
+   paraphrases, the title it is filed under, and every word gloss. The glosses
+   and the part title are why "not hating" or "My limbs fail" can find a verse:
+   a reader remembers a phrase from the word-by-word row as often as from the
+   translation, and a study edition should not make them guess which column. */
+function verseSearchText(v, part){
+  let gloss = '';
+  for(const f of (v.flow || [])) for(const w of (f.words || []))
+    gloss += ' ' + w[2] + ' ' + w[3] + ' ' + w[4];
+  const t = (part && part.titles) || {};
   return v.n + ' ' + fmtN(v.n) + ' ' + v.d + ' ' + v.t + ' ' + v.lits.en + ' ' + v.lits.ne + ' ' + v.lits.hi
-    + ' ' + v.paras.en + ' ' + v.paras.ne + ' ' + v.paras.hi + ' ' + T(v.lits);
+    + ' ' + v.paras.en + ' ' + v.paras.ne + ' ' + v.paras.hi + ' ' + T(v.lits)
+    + ' ' + (t.en || '') + ' ' + (t.ne || '') + ' ' + (t.hi || '')
+    + gloss;
 }
 const VERSE_TEXT = [], VERSE_FOLDED_TEXT = [];
 function buildVerseText(){
@@ -100,17 +116,35 @@ function buildVerseText(){
   (DATA||[]).forEach(ch=>{
     if(!ch||!ch.themes) return;
     ch.themes.forEach(t=> t.parts.forEach(p=> p.sutras.forEach(s=>{
-      const text = verseSearchText(s);
+      const text = verseSearchText(s, p);
       VERSE_TEXT.push(searchExactKey(text));
       // Keep approximate folds out of English, Nepali, Hindi and Devanagari.
       VERSE_FOLDED_TEXT.push(searchFoldKey(s.t));
     })));
   });
 }
+/* A chapter or a theme is a passage, not a verse: it has no number to open and
+   its result belongs in its own group. Indexed separately so the verse index
+   stays positional (VERSE_TEXT[i] belongs to VERSES[i]). */
+const SEARCH_PASSAGES = [];
+function buildPassages(){
+  SEARCH_PASSAGES.length = 0;
+  (DATA||[]).forEach((ch, ci)=>{
+    if(!ch || !ch.themes) return;
+    SEARCH_PASSAGES.push({kind:'chapter', ci:ci, ti:null,
+      exact:searchExactKey([ch.names.en, ch.names.ne, ch.names.hi,
+        ch.subs.en, ch.subs.ne, ch.subs.hi, ch.deva].join(' ')),
+      folded:searchFoldKey(ch.names.en)});
+    ch.themes.forEach((t, ti)=> SEARCH_PASSAGES.push({kind:'theme', ci:ci, ti:ti,
+      exact:searchExactKey([t.titles.en, t.titles.ne, t.titles.hi,
+        t.descs.en, t.descs.ne, t.descs.hi].join(' ')),
+      folded:searchFoldKey(t.titles.en)}));
+  });
+}
 function assembleData(){
   DATA = [];
   for(var n=1;n<=18;n++) DATA.push(GITA_CH[n] || null);
-  buildIndex(); buildVerseText();
+  buildIndex(); buildVerseText(); buildPassages();
 }
 function allChReady(){ for(var n=1;n<=18;n++) if(!GITA_CH[n]||!GITA_CH[n].themes) return false; return true; }
 
@@ -166,6 +200,46 @@ function pickSearch(q){
   searchX();
   doSearch();
 }
+/* Free text searched more than the verse line: the phrase may come from a word
+   gloss, which the card does not otherwise show, so name the word that matched
+   rather than leaving the reader to wonder why a verse is in the list. */
+function glossHit(s, q){
+  const LI = {en:0, ne:1, hi:2}[state.lang] || 0;
+  for(const f of (s.flow || [])) for(const w of (f.words || [])){
+    for(const k of [2 + LI, 2]){
+      const g = w[k];
+      if(g && searchTextMatches(searchExactKey(g), '', q)) return [w[0], g];
+    }
+  }
+  return null;
+}
+function passageHits(nq, nqd){
+  const out = [];
+  SEARCH_PASSAGES.forEach(p=>{
+    if(searchTextMatches(p.exact, p.folded, nq)
+       || (nqd.exact !== nq.exact && searchTextMatches(p.exact, p.folded, nqd))) out.push(p);
+  });
+  return out;
+}
+function resGroupHtml(label, count, inner){
+  return `<div class="res-group fade-in"><div class="res-gl"><span>${esc(label)}</span>`
+    + `<span class="res-gn">${numL(count)}</span></div>${inner}</div>`;
+}
+function passageCard(p, q){
+  if(p.kind === 'chapter'){
+    const ch = DATA[p.ci];
+    return `<div class="res-passage" role="button" tabindex="0" onclick="App.views.chapter(${p.ci})">
+      <div class="rp-top"><span class="rp-kind">${esc(L('chapter'))} ${numL(ch.num)}</span></div>
+      <div class="rp-title">${hlSearchText(T(ch.names), q)}</div>
+      <div class="rp-sub">${hlSearchText(T(ch.subs), q)}</div></div>`;
+  }
+  const ch = DATA[p.ci], t = ch.themes[p.ti];
+  return `<div class="res-passage" role="button" tabindex="0" onclick="App.views.chapter(${p.ci},${p.ti})">
+    <div class="rp-top"><span class="rp-kind">${esc(L('theme_sg'))} ${numL(p.ti+1)}</span>
+      <span class="rp-rng">${esc(fmtRangeL(t.range))}</span></div>
+    <div class="rp-title">${hlSearchText(T(t.titles), q)}</div>
+    <div class="rp-sub">${esc(L('chapter'))} ${numL(ch.num)} · ${hlSearchText(T(ch.names), q)}</div></div>`;
+}
 function doSearch(){
   if(!allChReady()){ loadAllChapters().then(doSearch); return; }
   const q = ($('#searchInput').value || '').trim();
@@ -179,7 +253,7 @@ function doSearch(){
      type 1.1; also allow : - / , the double danda, and stray surrounding dandas. */
   const num = digitNorm(q).replace(/^[\s।॥]+|[\s।॥]+$/g, '')
                           .match(/^(\d{1,2})[.।॥:\-\/,\s]+(\d{1,2})$/);
-  let hits;
+  let hits, passages = [];
   if(num){
     const target = parseInt(num[1],10) + '.' + parseInt(num[2],10);
     hits = VERSES.filter(loc => loc.norm === target);
@@ -211,8 +285,10 @@ function doSearch(){
       if(searchTextMatches(t, folded, nq) ||
          (nqd.exact !== nq.exact && searchTextMatches(t, folded, nqd))) hits.push(loc);
     });
+    passages = passageHits(nq, nqd);
   }
-  if(hits.length === 0){
+  const total = hits.length + passages.length;
+  if(total === 0){
     view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
       <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
       <div class="view-sub fade-in">${esc(L('no_results'))}</div>
@@ -223,19 +299,30 @@ function doSearch(){
   }
   recentSave(q);
   SRCH_HITS = hits;
-  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
-    <div class="res-count fade-in">${esc(resultCountLabel(hits.length))}</div>
-    ${srchChipsHtml(q, hits.length)}
-    <div class="grid verses fade-in">${hits.map((loc,i)=>{
+  const themes = passages.filter(p=>p.kind === 'theme'),
+        chapters = passages.filter(p=>p.kind === 'chapter'),
+        groups = (hits.length?1:0) + (themes.length?1:0) + (chapters.length?1:0);
+  const verseGrid = `<div class="grid verses">${hits.map((loc,i)=>{
       const ch = DATA[loc.ci], v = verseAt(loc);
       const th = ch.themes[loc.ti]; const part = sutraAt(th, loc.si).part;
-      const pi = th.parts.indexOf(part);
+      const wm = glossHit(v, nq);
+      const shown = searchTextMatches(searchExactKey(T(part.titles) + ' ' + T(v.paras) + ' ' + v.d), '', nq);
       return `<div class="mini" role="button" tabindex="0" onclick="App.reader.open(${loc.ci},${loc.ti},${loc.si},'search',${i},this)">
         <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
         <div class="m-topic"><span class="mt-lab">${esc(L('verse_topic'))}:</span> ${hlSearchText(T(part.titles), q)}</div>
         <div class="padas" lang="sa">${App.reader.padaBlock(v)}</div>
         <div class="vhint">${hlSearchText(T(v.paras), q)}</div>
+        ${wm && !shown ? `<div class="res-word">${esc(L('search_word_match').replace('{w}', wm[0] + ' — ' + wm[1]))}</div>` : ''}
       </div>`;}).join('')}</div>`;
+  const passageGrid = list => `<div class="grid passages">${list.map(p=>passageCard(p, q)).join('')}</div>`;
+  view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
+    <div class="res-count fade-in">${esc(resultCountLabel(total))}</div>
+    ${srchChipsHtml(q, total)}
+    ${hits.length
+      ? (groups > 1 ? resGroupHtml(L('search_in_verses'), hits.length, verseGrid) : verseGrid)
+      : ''}
+    ${themes.length ? resGroupHtml(L('search_in_themes'), themes.length, passageGrid(themes)) : ''}
+    ${chapters.length ? resGroupHtml(L('search_in_chapters'), chapters.length, passageGrid(chapters)) : ''}`;
   announceView();
 }
 function clearSearch(){
@@ -341,7 +428,8 @@ function showFavorites(){
   FAV_LIST = saved;
   if(saved.length === 0){
     view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('favorites'))}</div>
-      <div class="view-sub fade-in">${esc(L('no_favorites'))}</div>`;
+      <div class="view-sub fade-in">${esc(L('no_favorites'))}</div>`
+      + notesHtml();
     announceView();
     return;
   }
@@ -364,20 +452,24 @@ function showFavorites(){
         <div class="fav-note" onclick="event.stopPropagation()">
           <label for="fav-note-${esc(v.n)}">${esc(L('fav_note'))}</label>
           <textarea id="fav-note-${esc(v.n)}" rows="1" placeholder="${esc(L('fav_note_ph'))}"
-            oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
-            onchange="setFavNote('${esc(v.n)}', this.value)">${esc(note)}</textarea>
+            oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px';App.library.setNote('${esc(v.n)}', this.value)">${esc(note)}</textarea>
         </div>
-      </div>`;}).join('')}`;
+      </div>`;}).join('')}`
+    + notesHtml();
   // grow each note box to fit what is already written
   view.querySelectorAll('.fav-note textarea').forEach(t=>{
     if(t.value){ t.style.height='auto'; t.style.height=t.scrollHeight+'px'; }
   });
   announceView();
 }
+/* Removing a verse from the saved list is not the same as erasing what the
+   reader wrote about it. The note is a separate act with a separate store; it
+   survives, and it stays visible in the notes list. Losing a paragraph to a
+   button that says "remove" is the worst kind of data loss — silent and
+   unrecoverable. */
 function removeFav(id){
   const i = FAV.indexOf(id);
   if(i>=0){ FAV.splice(i,1); favSave(); }
-  if(FAVNOTE[id]){ delete FAVNOTE[id]; favNoteSave(); }
   showFavorites();
 }
 /* Favourites are a personal collection, so the reader orders them and can say
@@ -392,6 +484,38 @@ function setFavNote(id, text){
   text = (text||'').trim();
   if(text) FAVNOTE[id] = text; else delete FAVNOTE[id];
   favNoteSave();
+}
+/* A note belongs to the verse, not to the saved list: any verse can carry one,
+   written from the reader sheet or from the saved card, and every one of them
+   is listed together. Stored in the same `gitaFavNotes` key the backup schema
+   already ships, so months of notes keep importing. */
+function noteGet(id){ return FAVNOTE[id] || ''; }
+function noteCount(){ return notesList().length; }
+function notesList(){
+  const out = [];
+  Object.keys(FAVNOTE).forEach(id=>{
+    if(!/^\d{1,2}\.\d{2}$/.test(id)) return;
+    const loc = verseLoc(id);
+    if(loc) out.push({id:id, loc:loc, text:FAVNOTE[id]});
+  });
+  return out.sort((a,b)=>{
+    const A = a.id.split('.').map(Number), B = b.id.split('.').map(Number);
+    return A[0] - B[0] || A[1] - B[1];
+  });
+}
+function notesHtml(){
+  const notes = notesList();
+  if(!notes.length) return '';
+  return `<div class="notes-block fade-in">
+    <div class="res-gl"><span>${esc(L('notes_title'))}</span><span class="res-gn">${numL(notes.length)}</span></div>
+    <div class="notes-list">${notes.map(n=>{
+      const ch = DATA[n.loc.ci], v = verseAt(n.loc);
+      return `<div class="note-card" role="button" tabindex="0"
+          onclick="App.reader.open(${n.loc.ci},${n.loc.ti},${n.loc.si},'book',null,this)">
+        <div class="nc-top"><span class="nc-num">${esc(L('verse'))} ${esc(fmtNL(v.n))}</span>
+          <span class="nc-title">${esc(T(ch.names))}</span></div>
+        <div class="nc-text">${esc(n.text)}</div>
+      </div>`;}).join('')}</div></div>`;
 }
 
 // ---------- random verse ----------
@@ -498,5 +622,11 @@ App.library = Object.freeze({
   count(){ return VERSES.length; },
   ready: allChReady,
   isFavorite(id){ return FAV.includes(id); },
-  favoriteLocations(){ return FAV_LIST.slice(); }
+  favoriteLocations(){ return FAV_LIST.slice(); },
+  /* Notes are the library's data, written by the reader sheet and by the saved
+     cards; nobody else keeps a copy. */
+  note: noteGet,
+  setNote: setFavNote,
+  notes: notesList,
+  noteCount
 });

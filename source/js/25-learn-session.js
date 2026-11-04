@@ -69,16 +69,25 @@ function srsDueChapter(chNum, today){
 }
 function srsDueAll(today){
   const t = today || srsToday(), a = lrAll();
-  let total = 0, firstCi = null;
+  let total = 0, firstCi = null, firstDue = null;
   for(let n=1; n<=18; n++){
     const srs = (a[n] && a[n].srs) || {};
     const due = Object.keys(srs).filter(vn => srs[vn].due <= t);
     if(due.length){
       total += due.length;
-      if(firstCi === null) firstCi = n - 1;
+      /* Start with what has waited longest, not with the lowest chapter
+         number: a chapter-3 verse due a week ago outranks a chapter-1 verse
+         that fell due this morning. */
+      const earliest = due.reduce((m, vn) => (srs[vn].due < m ? srs[vn].due : m), srs[due[0]].due);
+      if(firstDue === null || earliest < firstDue){ firstDue = earliest; firstCi = n - 1; }
     }
   }
-  return {total, firstCi};
+  return {total, firstCi, firstDue};
+}
+/* One wording for "what is due", used by the welcome badge and by the screen
+   that ends a review — so the two can never disagree about the number. */
+function srsDueLabel(n){
+  return n === 1 ? L('srs_due_one') : fmt(L('srs_due_many'), {n:numL(n)});
 }
 function srsBarHtml(ci){
   const chNum = ci + 1, a = lrAll(), p = a[chNum] || {};
@@ -98,7 +107,7 @@ function srsBarHtml(ci){
 function srsWelcomeHtml(){
   const info = srsDueAll();
   if(!info.total || info.firstCi === null) return '';
-  const lbl = info.total === 1 ? L('srs_due_one') : fmt(L('srs_due_many'), {n:numL(info.total)});
+  const lbl = srsDueLabel(info.total);
   return `<button type="button" class="w-due" id="wDueBtn" onclick="App.learn.openDue()">${esc(lbl)} →</button>`;
 }
 function lrOpenDue(){
@@ -119,10 +128,19 @@ function lrReview(ci, seed){
   lrDrill(ci, -1, vs, seed);
 }
 function srsFinishReview(ci){
+  /* A session covers at most seven verses of one chapter, so "Review complete
+     for today" was false whenever more was due — the badge on the welcome
+     screen counts every chapter. Say how much is left and offer the next
+     session; only claim completion when nothing is due anywhere. */
+  const left = srsDueAll();
+  const more = left.total
+    ? `<p>${esc(srsDueLabel(left.total))}</p>
+       <button class="lr-cta" id="lrMoreDue" onclick="App.learn.openDue()">${esc(fmt(L('srs_review_more'), {n: numL(left.total)}))}</button>`
+    : `<p>${esc(L('srs_review_done'))}</p>`;
   view.innerHTML = `<div class="lrn fade-in"><div class="lr-finis">
       <div class="lr-seal">✓</div>
       <h2>${esc(L('srs_review_btn'))}</h2>
-      <p>${esc(L('srs_review_done'))}</p>
+      ${more}
       <button class="lr-cta" onclick="showLearn(${ci})">${esc(L('opt_learn_s'))}</button>
     </div></div>`;
   scrollViewTop();

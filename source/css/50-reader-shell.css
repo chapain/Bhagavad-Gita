@@ -371,3 +371,26 @@
     .pl-scope .lr-ghost.on:hover{ background:var(--saffron-soft); border-color:var(--saffron-soft); }
   }
 
+
+  /* ---- the verse's own note -------------------------------------------
+     Notes used to exist only on saved verses, which meant a reader had to
+     favourite a verse to think about it — and un-favouriting erased the
+     thought. The field lives in the sheet, under the paraphrase, closed and
+     quiet until wanted; a saffron dot in the summary says one is already
+     written. */
+  .m-note{ margin:14px 0 0; border:1px solid var(--line); border-radius:12px; background:var(--cream); }
+  .m-note summary{ list-style:none; cursor:pointer; display:flex; align-items:center; gap:8px;
+                   padding:9px 13px;
+                   font:600 .85rem/1.25 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",sans-serif;
+                   color:var(--teal); }
+  .m-note summary::-webkit-details-marker{ display:none; }
+  .m-note summary:hover{ color:var(--saffron-text); }
+  .m-note[open] summary{ border-bottom:1px solid var(--line); }
+  .m-note-dot{ color:var(--saffron); font-size:1.1rem; line-height:.6; }
+  .m-note-chev{ margin-left:auto; color:var(--ink-soft); transition:transform .16s; }
+  .m-note[open] .m-note-chev{ transform:rotate(180deg); }
+  .m-note textarea{ display:block; width:100%; border:0; background:transparent; color:var(--ink);
+                    font:inherit; font-size:.94rem; line-height:1.6; padding:10px 13px;
+                    min-height:66px; resize:none; overflow:hidden; border-radius:0 0 12px 12px; }
+  .m-note textarea:focus{ background:var(--paper); }
+  .m-note textarea::placeholder{ color:var(--muted); }
