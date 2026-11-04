@@ -3543,6 +3543,13 @@
                       "करते हुए"
                     ],
                     [
+                      "न",
+                      "na",
+                      "not",
+                      "न",
+                      "नहीं"
+                    ],
+                    [
                       "आप्नोति",
                       "āpnoti",
                       "incurs, meets",
@@ -4311,8 +4318,8 @@
                       "विषय"
                     ],
                     [
-                      "अन्य",
-                      "anya",
+                      "अन्ये",
+                      "anye",
                       "others",
                       "अरूहरू",
                       "अन्य"
@@ -4681,14 +4688,14 @@
                 }
               ],
               "lits": {
-                "en": "Others perform the sacrifices of wealth, austerity, yoga, and scriptural study — ascetics of firm vows.",
-                "ne": "अरूहरू द्रव्ययज्ञ, तपोयज्ञ, योगयज्ञ र स्वाध्याययज्ञ गर्छन् — दृढ व्रत भएका तपस्वीहरू।",
-                "hi": "अन्य लोग द्रव्य-यज्ञ, तपो-यज्ञ, योग-यज्ञ और स्वाध्याय-यज्ञ करते हैं — दृढ़ व्रत वाले तपस्वी।"
+                "en": "Others perform the sacrifices of wealth, austerity, yoga, and scriptural study and knowledge — ascetics of firm vows.",
+                "ne": "अरूहरू द्रव्ययज्ञ, तपोयज्ञ, योगयज्ञ र स्वाध्याय तथा ज्ञानयज्ञ गर्छन् — दृढ व्रत भएका तपस्वीहरू।",
+                "hi": "अन्य लोग द्रव्य-यज्ञ, तपो-यज्ञ, योग-यज्ञ और स्वाध्याय तथा ज्ञान-यज्ञ करते हैं — दृढ़ व्रत वाले तपस्वी।"
               },
               "paras": {
-                "en": "“Some sacrifice by giving wealth, by austerities, by meditation, or by studying the scriptures — all are seekers of firm resolve.”",
-                "ne": "“कोही धन दान गरेर, कोही तपस्या, कोही ध्यान, कोही शास्त्र अध्ययनले यज्ञ गर्छन् — सबै दृढ संकल्पका खोजीहरू।”",
-                "hi": "“कोई धन-दान से, कोई तप से, कोई ध्यान से, कोई शास्त्र-अध्ययन से यज्ञ करते हैं — सब दृढ़ संकल्प के खोजी।”"
+                "en": "“Some sacrifice by giving wealth, by austerities, by meditation, or through scriptural learning and knowledge — all are seekers of firm resolve.”",
+                "ne": "“कोही धन दान गरेर, कोही तपस्या, कोही ध्यान, कोही शास्त्र अध्ययन र ज्ञानद्वारा यज्ञ गर्छन् — सबै दृढ संकल्पका खोजीहरू।”",
+                "hi": "“कोई धन-दान से, कोई तप से, कोई ध्यान से, कोई शास्त्र-अध्ययन और ज्ञान से यज्ञ करते हैं — सब दृढ़ संकल्प के खोजी।”"
               }
             }
           ]
