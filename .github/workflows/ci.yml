@@ -41,8 +41,19 @@ jobs:
           set -o pipefail
           python3 build.py 2>&1 | tee build.log
 
-      # The runner serves step logs from a host some networks cannot reach; the
-      # artifact keeps the full build output readable either way.
+      # A red run must say WHY where a reviewer can see it: the step log is
+      # served from a host some networks cannot reach, so every failing check is
+      # lifted into a check-run annotation as well.
+      - name: Report failing checks
+        if: failure()
+        shell: bash
+        run: |
+          tail -40 build.log || true
+          grep -E '✗ FAIL|FAILED|assertion total drifted' build.log | head -40 | while IFS= read -r line; do
+            echo "::error::${line}"
+          done
+
+      # The artifact keeps the full build output readable even off the runner.
       - name: Upload build log
         if: always()
         uses: actions/upload-artifact@v4
