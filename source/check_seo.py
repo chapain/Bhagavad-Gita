@@ -12,12 +12,17 @@ order a crawler would hit them, and prints the actual byte it saw:
     4. the classic submission typos are spelled out with the status each one
        gives — because "Couldn't fetch" almost always means one of *these*
        URLs was typed into the Search Console box, not the good one.
+    5. the 18 chapter pages each carry a *unique* title and meta description,
+       inside 60 / 155 characters, still naming their own chapter, verse count
+       and the three languages. Eighteen templated titles are one weak page
+       repeated; this is what keeps them 18 doors into the book.
 
 With no arguments it checks the local build only (no network). Add `--live` to
 also fetch the published site and diff it against the local build.
 
 It only reads and reports; it never changes your data.
 """
+import json
 import os
 import re
 import sys
@@ -140,6 +145,70 @@ def check_local():
     info("if Search Console shows \"Couldn't fetch\", first check which of the four you typed.")
 
 
+def check_chapter_meta():
+    """Each chapter page must be its own door, not a template with a new number.
+
+    It reads the *built* pages rather than `source/build_gita.py`, because the
+    built bytes are what a crawler actually receives — a generator that is right
+    while a stale page sits on disk is exactly the failure worth catching.
+    """
+    print("\n--- chapter titles + descriptions (%d built pages) ---" % CHAPTERS)
+    titles, descs, topics, problems = [], [], [], []
+    for n in range(1, CHAPTERS + 1):
+        page = os.path.join(SITE, "chapter", str(n), "index.html")
+        with open(os.path.join(BASE, "source", "ch%d.json" % n), encoding="utf-8") as f:
+            verses = json.load(f)["verses"]
+        try:
+            with open(page, encoding="utf-8") as f:
+                html = f.read()
+        except OSError:
+            problems.append("chapter %d: no built page at %s" % (n, page))
+            continue
+        mt = re.search(r"<title>(.*?)</title>", html, re.S)
+        md = re.search(r'<meta name="description" content="([^"]*)"', html)
+        if not mt or not md:
+            problems.append("chapter %d: missing <title> or meta description" % n)
+            continue
+        title, desc = mt.group(1).strip(), md.group(1).strip()
+        titles.append(title)
+        descs.append(desc)
+        # The *topic* has to be unique on its own, not just the whole title:
+        # "Gita 6 — Dhyāna Yoga: meditation (47 verses)" and "Gita 7 — Dhyāna
+        # Yoga: meditation (30 verses)" are different strings but the same page
+        # idea, and that is the copy-paste a generator actually produces.
+        tm = re.search(r"^Bhagavad Gita \d+ — (.*) \(\d+ verses\)$", title)
+        topics.append(tm.group(1) if tm else title)
+        if len(title) > 60:
+            problems.append("chapter %d: title is %d chars (cap 60) — %s" % (n, len(title), title))
+        if len(desc) > 155:
+            problems.append("chapter %d: description is %d chars (cap 155) — %s" % (n, len(desc), desc))
+        if "Bhagavad Gita %d —" % n not in title:
+            problems.append("chapter %d: title does not name its own chapter — %s" % (n, title))
+        if "(%d verses)" % verses not in title:
+            problems.append("chapter %d: title lacks its own %d-verse count — %s" % (n, verses, title))
+        if "Chapter %d," % n not in desc:
+            problems.append("chapter %d: description does not open 'Chapter %d,'" % (n, n))
+        if "%d verses" % verses not in desc:
+            problems.append("chapter %d: description lacks its own %d-verse count" % (n, verses))
+        if "English, Nepali and Hindi" not in desc:
+            problems.append("chapter %d: description does not name all three languages" % n)
+
+    for label, seen in (("titles", titles), ("descriptions", descs), ("topics", topics)):
+        dupes = sorted({s for s in seen if seen.count(s) > 1})
+        if dupes:
+            bad("%d of the 18 chapter %s are duplicated — e.g. %s"
+                % (sum(seen.count(s) for s in dupes), label, dupes[0][:70]))
+        elif len(seen) == CHAPTERS:
+            ok("all %d chapter %s are unique" % (CHAPTERS, label))
+    if problems:
+        for p in problems:
+            bad(p)
+    elif titles and descs:
+        ok("every title <= 60 chars (longest %d) and description <= 155 (longest %d), "
+           "each naming its own chapter, verse count and three languages"
+           % (max(len(t) for t in titles), max(len(d) for d in descs)))
+
+
 def check_live():
     print("\n--- live site (%s) ---" % SITE_BASE)
     url = "%s/sitemap.xml" % SITE_BASE
@@ -196,6 +265,7 @@ def main():
     print("check_seo.py — sitemap / robots proof")
     print("SITE_BASE: %s" % SITE_BASE)
     check_local()
+    check_chapter_meta()
     if LIVE:
         if NET:
             info("--no-net given, skipping the live fetch")

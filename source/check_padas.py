@@ -227,6 +227,23 @@ def ext_sandhi(w1, w2):
     out.append(w1 + w2)
     return out
 
+def aksaras(text):
+    """Syllables (akṣaras) printed in one pāda.
+
+    A consonant carries its inherent vowel unless a virama closes it; an
+    independent vowel counts once. Anusvāra, visarga, candrabindu and avagraha
+    attach to the syllable already counted, so they add nothing.
+    """
+    n = 0
+    for i, char in enumerate(text):
+        if ("\u0915" <= char <= "\u0939" or "\u0958" <= char <= "\u095f"
+                or char in "\u0979\u097a"):
+            if text[i + 1:i + 2] != "\u094d":
+                n += 1
+        elif "\u0905" <= char <= "\u0914":
+            n += 1
+    return n
+
 def reconstruct(words):
     words = [w.replace(" ", "") for w in words]
     states = {words[0]}
@@ -244,8 +261,10 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 flags = []
 word_flags = []
 strict_line_flags = []
+deva_flags = []
 checked = 0
 words_checked = 0
+meters = {}
 for ch in range(1, 19):
     path = os.path.join(BASE, f"ch{ch}.json")
     with open(path, encoding="utf-8") as f:
@@ -254,6 +273,18 @@ for ch in range(1, 19):
         for part in theme["parts"]:
             for v in part["sutras"]:
                 pads = [item for item in v["flow"] if item["k"] == "p"]
+                meters[v["n"]] = tuple(aksaras(item["d"]) for item in pads)
+                # The Devanagari of a pāda is what the reader is shown; the IAST
+                # beside it is what every other check reads. Nothing compared the
+                # two, so a mistyped matra or a letter dropped from the printed
+                # line could ship unseen. Transliterate the printed line and
+                # require it to match its own transliteration.
+                for item in pads:
+                    printed = strict_key(deva_to_iast(item["d"]))
+                    stored = strict_key(item["t"])
+                    if printed != stored:
+                        deva_flags.append((v["n"], item["d"], item["t"],
+                                           printed, stored))
                 for p, pada in enumerate(pads):
                     wl = pada.get("words", [])
                     if not wl:
@@ -327,7 +358,36 @@ print("strict line checks:", checked, "| diacritic flags:", len(strict_line_flag
 for f in strict_line_flags:
     print("line spelling:", f)
 print("pādas checked:", checked, "| residual flags:", len(flags))
+print("printed line vs transliteration:", len(deva_flags), "flags")
+for n, deva, iast, printed, stored in deva_flags:
+    print("devanagari vs iast:", n, "|", deva, "|", iast,
+          "| printed reads", printed, "but the transliteration reads", stored)
+
+# The method page tells the reader how the book scans: 644 verses anuṣṭubh at
+# eight syllables a pāda, 51 triṣṭubh at eleven, and five irregular verses named
+# one by one (2.6, 2.29, 8.10, 11.1, 15.3). A reader can count that, so it is
+# counted here rather than trusted as hand-written prose: an edit that changes a
+# pāda's syllable count must either correct the page or fail the build.
+ANUSTUBH, TRISTUBH = (8, 8, 8, 8), (11, 11, 11, 11)
+IRREGULAR = {"2.06", "2.29", "8.10", "11.01", "15.03"}
+anu = sum(1 for m in meters.values() if m == ANUSTUBH)
+tri = sum(1 for m in meters.values() if m == TRISTUBH)
+off = {n: m for n, m in meters.items() if m not in (ANUSTUBH, TRISTUBH)}
+meter_flags = []
+if anu != 644:
+    meter_flags.append(f"anuṣṭubh verses: {anu} — the method page says 644")
+if tri != 51:
+    meter_flags.append(f"triṣṭubh verses: {tri} — the method page says 51")
+if len(meters) != 700:
+    meter_flags.append(f"verses counted: {len(meters)} — the book has 700")
+for n in sorted(set(off) - IRREGULAR):
+    meter_flags.append(f"{n} scans {off[n]} but the page does not name it irregular")
+for n in sorted(IRREGULAR - set(off)):
+    meter_flags.append(f"{n} is named irregular on the page but scans {meters.get(n)}")
+print("meter:", anu, "anuṣṭubh |", tri, "triṣṭubh |", len(off), "irregular")
+for f in meter_flags:
+    print("meter vs method page:", f)
 for f in flags:
     print("pāda reconstruction:", f)
-if word_flags or strict_line_flags or flags:
+if word_flags or strict_line_flags or flags or deva_flags or meter_flags:
     sys.exit(1)

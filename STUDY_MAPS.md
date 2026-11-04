@@ -44,7 +44,7 @@ The previously reviewed pilot map and teaching copy are retained.
 
 1. **1.1–1.3 · The blind king asks** — Sañjaya answers with Duryodhana inspecting the Pāṇḍava ranks.
 2. **1.4–1.9 · Duryodhana sizes up both armies** — He first names the Pāṇḍava champions, then his own commanders and fighters.
-3. **1.10–1.11 · Guard Bhīṣma above all** — Duryodhana compares the forces, then orders every division to hold position and protect Bhīṣma.
+3. **1.10–1.11 · Both armies weighed; Bhīṣma must be guarded** — Duryodhana compares the forces, then orders every division to hold position and protect Bhīṣma.
 4. **1.12–1.13 · The Kaurava war cry** — Bhīṣma’s roar and conch hearten Duryodhana; the Kaurava instruments sound together.
 5. **1.14–1.19 · The Pāṇḍava blast shakes the Kauravas** — Kṛṣṇa and Arjuna lead the reply; Bhīma and the other Pāṇḍava heroes sound their conches.
 6. **1.20–1.25 · Arjuna asks to see the armies** — Kṛṣṇa answers by placing the chariot before the assembled Kurus and inviting Arjuna to look.
@@ -154,7 +154,7 @@ Join questions to definitions; keep ongoing remembrance with the final thought. 
 1. **8.1–8.4 · Arjuna’s questions and Kṛṣṇa’s definitions** — Arjuna asks about Brahman, adhyātma, action, the elements, deities and sacrifice. Kṛṣṇa defines them before explaining remembrance at death.
 2. **8.5–8.10 · Lifelong remembrance shapes the final thought** — The final remembered state directs departure. Therefore remember Kṛṣṇa while acting; steady practice, devotion and yogic concentration prepare the last moment.
 3. **8.11–8.15 · Om and devotion lead beyond rebirth** — For the imperishable goal, restrain the body’s gates and depart uttering Om. Constant, single-minded remembrance makes Kṛṣṇa easy to reach, without return.
-4. **8.16–8.19 · Even Brahmā’s world returns in cosmic cycles** — Even Brahmā’s world is subject to return. Through his vast days and nights, beings repeatedly emerge from the unmanifest and dissolve into it.
+4. **8.16–8.19 · Brahmā's day and night: worlds appear and dissolve** — Even Brahmā’s world is subject to return. Through his vast days and nights, beings repeatedly emerge from the unmanifest and dissolve into it.
 5. **8.20–8.22 · The imperishable abode beyond the cycles** — Beyond the dissolving unmanifest is the eternal, imperishable goal. It is Kṛṣṇa’s supreme abode, reached through undivided devotion, with no return.
 6. **8.23–8.26 · The bright path and the returning path** — Kṛṣṇa contrasts the bright northern path to Brahman with the dark southern path that returns. The teaching names the two paths and their different outcomes.
 7. **8.27–8.28 · Remain in yoga beyond ritual rewards** — Knowing the two paths prevents delusion: remain in yoga at all times. Such knowledge carries the yogi beyond the promised fruits of rites to the primal abode.
@@ -265,14 +265,14 @@ The previously reviewed pilot map and teaching copy are retained.
 1. **17.1–17.3 · Faith takes three forms, shaped by nature** — Arjuna asks about those who worship with faith but without following scripture; Kṛṣṇa replies that faith is threefold and follows each person's nature.
 2. **17.4 · Three kinds of worshippers** — Sāttvic people worship the gods; rājasic people worship yakṣas and rākṣasas; tāmasic people worship ghosts and spirits.
 3. **17.5–17.6 · Those who torture themselves are demoniac** — Driven by hypocrisy, ego and desire, some perform unscriptural austerities that torment the body and the Lord dwelling within it; their resolve is demoniac.
-4. **17.7 · Food, sacrifice, austerity and giving are each threefold** — Food, sacrifice, austerity and gifts each have three forms; hear how they differ.
+4. **17.7 · Threefold food, sacrifice, austerity and gift** — Food, sacrifice, austerity and gifts each have three forms; hear how they differ.
 5. **17.8–17.10 · The food each nature loves** — Food dear to each is threefold — sāttvic, rājasic and tāmasic; hear what each is.
 6. **17.11–17.13 · Sacrifice by rule, for reward, or without faith** — Sāttvic sacrifice follows scriptural rule without desire for fruit; rājasic sacrifice seeks fruit or display; tāmasic sacrifice lacks rule, food offerings, mantra, fees and faith.
 7. **17.14–17.16 · Austerity of the body, speech and mind** — Austerity is threefold: of the body, of speech, and of the mind.
 8. **17.17–17.19 · Three kinds of austerity** — Austerity performed with supreme faith and without desire for fruit is sāttvic; austerity for honour and display is rājasic; austerity involving self-torture is tāmasic.
 9. **17.20–17.22 · Three kinds of giving** — Sāttvic giving is made to a worthy recipient at the right time and place without expectation; rājasic giving seeks a return or is reluctant; tāmasic giving is disrespectful and contemptuous.
-10. **17.23–17.27 · Om Tat Sat: the threefold designation of Brahman** — Om, Tat and Sat are the threefold designation of Brahman. Om marks the start of prescribed sacrifice, giving and austerity; acts done with Tat are performed without desire for fruit; Sat denotes reality, goodness and steadfastness.
-11. **17.28 · Acts without faith are called Asat** — Anything offered, given, performed or done without faith is called Asat; it has no value here or hereafter.
+10. **17.23–17.27 · Om, Tat, Sat: the words that make an act sacred** — Om, Tat and Sat are the threefold designation of Brahman. Om marks the start of prescribed sacrifice, giving and austerity; acts done with Tat are performed without desire for fruit; Sat denotes reality, goodness and steadfastness.
+11. **17.28 · Without faith, an act counts for nothing** — Anything offered, given, performed or done without faith is called Asat; it has no value here or hereafter.
 
 ## Chapter 18 — 18 turns
 

@@ -83,13 +83,13 @@ source/                 ← edit here
   check_paraphrase.py     paraphrases must not echo their literals
   check_translations.py   banned readings, shape, words printed twice
   prove_data_only.py      proves source edits reach the built artifacts
-  check_seo.py            sitemap/robots proof (`--live` also fetches the site)
+  check_seo.py            sitemap/robots proof + 18 unique chapter titles/descriptions (`--live` fetches the site)
   check_site_health.py    chapter pages, CSS vars, og: tags, offline, a11y
   check_study_structure.py approved story maps, trilingual pearls, theme sizes
 
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         937 assertions on the built document
+run_gita_app.js         943 assertions on the built document
 browser_checks.py       302 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
 ```
 

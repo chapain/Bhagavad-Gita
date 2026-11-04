@@ -220,8 +220,17 @@
   .m-verse .words{ display:none; margin-top:6px; background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:8px 12px; min-width:0; max-width:100%;}
   .m-verse .words.open{ display:block;}
   .m-verse .words.mean-off .wmean{ display:none;}
-  .m-verse .wrow{ padding:3px 0; border-bottom:1px dotted var(--line); min-width:0; max-width:100%;}
+  .m-verse .wrow{ padding:3px 0; border-bottom:1px dotted var(--line); min-width:0; max-width:100%; cursor:pointer;}
   .m-verse .wrow:last-child{ border-bottom:none;}
+  .m-verse .wrow:focus-visible{ outline:2px solid var(--saffron); outline-offset:2px; border-radius:6px;}
+  /* D2: revealed in flow, not as a floating tooltip — nothing to clip on a phone. */
+  .wpeek{ display:flex; flex-direction:column; gap:3px; margin:6px 0 10px 14px; padding:8px 10px;
+          border-left:2px solid var(--saffron); border-radius:0 8px 8px 0; background:var(--saffron-soft);}
+  .wpeek .wp-iast{ font-style:italic; color:var(--ink-soft); font-size:.82rem; margin-bottom:2px;}
+  .wpeek .wp-line{ display:flex; gap:10px; align-items:baseline;}
+  .wpeek .wp-lang{ min-width:62px; color:var(--ink-soft); font-size:.7rem; font-weight:700;
+                   text-transform:uppercase; letter-spacing:.04em;}
+  .wpeek .wp-line span:last-child{ color:var(--ink); font-size:calc(.9rem * var(--reader-scale,1));}
   .m-verse .wrow .wdeva{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--teal); font-size:calc(1.12rem * var(--reader-scale,1)); overflow-wrap:anywhere; word-break:normal;}
   .m-verse .wrow .wiast{ font-style:italic; color:var(--ink-soft); font-size:calc(.88rem * var(--reader-scale,1)); margin-left:10px; overflow-wrap:anywhere; word-break:normal;}
   .m-verse .wrow .wmean{ display:block; color:var(--ink); font-size:calc(.9rem * var(--reader-scale,1)); margin-left:14px; margin-top:1px; overflow-wrap:anywhere; word-break:normal;}

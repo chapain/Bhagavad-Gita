@@ -98,13 +98,14 @@ function openSharePanel(){
   p.style.display = (p.style.display === 'flex') ? 'none' : 'flex';
 }
 function closeSharePanel(){ const p=$('#sharePanel'); if(p) p.style.display='none'; }
+function copiedFeedback(msgKey){
+  const p = $('#sharePanel'); if(p) p.style.display = 'none';
+  const sh = $('#shareBtn');
+  if(sh){ sh.textContent = L(msgKey || 'link_copied');
+    setTimeout(function(){ sh.textContent = L('share'); }, 1600); }
+}
 function copyTextToClipboard(t, msgKey){
-  function copied(){
-    const p = $('#sharePanel'); if(p) p.style.display = 'none';
-    const sh = $('#shareBtn');
-    if(sh){ sh.textContent = L(msgKey || 'link_copied');
-      setTimeout(function(){ sh.textContent = L('share'); }, 1600); }
-  }
+  function copied(){ copiedFeedback(msgKey); }
   try { navigator.clipboard.writeText(t).then(copied, copied); }
   catch(e){ const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta);
     ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); copied(); }
@@ -112,16 +113,56 @@ function copyTextToClipboard(t, msgKey){
 function copyVerseLink(){
   copyTextToClipboard($('#spLink').textContent, 'link_copied');
 }
-function verseShareText(){
+/* D1: the copy follows the reader's language — Devanagari, IAST only where the
+   app shows it (en), the literal in that language, then the link. Not the
+   paraphrase: a verse in a chat, not an essay. Rationale: PROJECT.md. */
+function verseShareParts(){
   const ch = DATA[state.chapter], t = ch.themes[state.theme];
-  const {s, part} = App.library.entryAt(t, state.idx);
-  const lines = [L('verse') + ' ' + fmtNL(s.n) + ' — ' + T(part.titles), s.d];
+  const {s} = App.library.entryAt(t, state.idx);
+  return {s: s, url: shareUrl()};
+}
+function verseShareText(){
+  const {s, url} = verseShareParts();
+  const lines = [L('verse') + ' ' + fmtNL(s.n), s.d];
   if(state.lang === 'en' && s.t) lines.push(s.t);
-  lines.push(T(s.lits), T(s.paras), shareUrl());
+  lines.push(T(s.lits), url);
   return lines.filter(Boolean).join('\n\n');
 }
+/* The same verse as formatted text, so Notes, Docs, a chat and the reader's
+   own email paste it as a verse with a heading and a real link rather than as
+   a run-on paragraph. Deliberately plain markup: chat apps strip CSS and a
+   pasted stylesheet would only make the recipient's client do extra work. */
+function verseShareHtml(){
+  const {s, url} = verseShareParts();
+  const lit = state.lang === 'en' ? 'en' : state.lang;
+  let h = '<p><strong>' + esc(L('verse') + ' ' + fmtNL(s.n)) + '</strong></p>'
+        + '<p lang="sa">' + esc(s.d) + '</p>';
+  if(state.lang === 'en' && s.t) h += '<p lang="sa-Latn"><em>' + esc(s.t) + '</em></p>';
+  h += '<p lang="' + lit + '">' + esc(T(s.lits)) + '</p>'
+     + '<p><a href="' + esc(url) + '">' + esc(L('verse') + ' ' + fmtNL(s.n)) + '</a></p>';
+  return h;
+}
 function copyVerseText(){
-  copyTextToClipboard(verseShareText(), 'verse_copied');
+  const plain = verseShareText();
+  /* ClipboardItem is written synchronously inside the click: iOS Safari drops
+     the permission if anything is awaited first. Where the API or the MIME
+     support is missing (older Firefox, any odd webview) we fall back to the
+     plain-text path that has always worked — never leave the reader with a
+     dead button and a silent failure. */
+  if(window.ClipboardItem && navigator.clipboard && navigator.clipboard.write){
+    try{
+      const item = new ClipboardItem({
+        'text/html': new Blob([verseShareHtml()], {type:'text/html'}),
+        'text/plain': new Blob([plain], {type:'text/plain'})
+      });
+      navigator.clipboard.write([item]).then(
+        function(){ copiedFeedback('verse_copied'); },
+        function(){ copyTextToClipboard(plain, 'verse_copied'); }
+      );
+      return;
+    }catch(e){ /* fall through to plain text */ }
+  }
+  copyTextToClipboard(plain, 'verse_copied');
 }
 function recentVersesLoad(){
   try{
@@ -187,7 +228,11 @@ function fillModal(){
   const LI = {en:0, ne:1, hi:2}[state.lang] || 0;
   let speakerId = 0;
   function wordsHtml(it, id){
-    return `<div class="words" id="${id}">${(it.words||[]).map(w=>`<div class="wrow"><span class="wdeva" lang="sa">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('')}</div>`;
+    const ws = it.words || [];
+    /* The glosses ride with the rows as JSON: a verse has several word
+       containers (four pādas plus speaker lines), so a global would be
+       overwritten by whichever rendered last. */
+    return `<div class="words" id="${id}" data-words="${esc(JSON.stringify(ws))}">${ws.map((w,i)=>`<div class="wrow" role="button" tabindex="0" data-wi="${i}" aria-expanded="false"><span class="wdeva" lang="sa">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('')}</div>`;
   }
   function spkHtml(list){
     return list.map(x=>{
@@ -373,6 +418,78 @@ function navSutra(d){
   const m = $('#modal'); if(m) m.scrollTo({top:0, behavior:'smooth'});
 }
 function backToTheme(){ closeModal(); App.views.verses(state.chapter, state.theme); }
+/* ---------- D2: one word, all three glosses ----------
+   It sits on the word rows, never the verse line: the printed verse is
+   sandhi-joined (2.47 prints कर्मण्येवाधिकारस्ते as one token while its words
+   are कर्मणि / एव / अधिकारः / ते), so a token cannot be mapped to a word
+   without inventing a boundary. Tap, Enter/Space and contextmenu all reach it
+   too — this is not a gesture-only feature. Full rationale: PROJECT.md. */
+let PEEK_ROW = null, PEEK_BOX = null, PEEK_TIMER = 0, PEEK_DOWN = 0, PEEK_XY = null;
+
+function langEndonym(l){
+  /* The three endonyms are literals in the header switcher, not UI copy; read
+     that one source rather than keeping a second copy of "नेपाली" in JS. */
+  const b = document.querySelector('.lang-btn[data-lang="' + l + '"]');
+  return b ? b.textContent.trim() : l;
+}
+function closeWordPeek(){
+  if(PEEK_BOX && PEEK_BOX.parentNode) PEEK_BOX.parentNode.removeChild(PEEK_BOX);
+  if(PEEK_ROW && PEEK_ROW.setAttribute) PEEK_ROW.setAttribute('aria-expanded','false');
+  PEEK_BOX = null; PEEK_ROW = null;
+}
+function openWordPeek(row){
+  if(!row || row === PEEK_ROW) return;
+  closeWordPeek();
+  const holder = row.closest ? row.closest('.words') : null;
+  let ws = [];
+  try{ ws = JSON.parse((holder && holder.getAttribute('data-words')) || '[]') || []; }
+  catch(e){ return; }
+  const w = ws[Number(row.getAttribute('data-wi')) || 0];
+  if(!w) return;
+  const lines = GITA_LANGS.map((l, i) =>
+    `<span class="wp-line"><span class="wp-lang" lang="${l}">${esc(langEndonym(l))}</span>` +
+    `<span lang="${l}">${esc(w[2 + i] || w[2])}</span></span>`).join('');
+  const box = document.createElement('div');
+  box.className = 'wpeek';
+  box.setAttribute('role','status');
+  box.innerHTML = (w[1] ? `<span class="wp-iast" lang="sa-Latn">${esc(w[1])}</span>` : '') + lines;
+  row.parentNode.insertBefore(box, row.nextSibling);
+  row.setAttribute('aria-expanded','true');
+  PEEK_ROW = row; PEEK_BOX = box;
+}
+function toggleWordPeek(row){ if(row && row === PEEK_ROW) closeWordPeek(); else openWordPeek(row); }
+
+document.addEventListener('pointerdown', e=>{
+  const row = e.target && e.target.closest ? e.target.closest('.wrow') : null;
+  if(!row){ closeWordPeek(); return; }
+  if(e.pointerType === 'mouse' && e.button !== 0) return;
+  PEEK_DOWN = Date.now(); PEEK_XY = [e.clientX, e.clientY];
+  clearTimeout(PEEK_TIMER);
+  /* 450 ms, and any move past 10 px cancels — a scroll flick must never open a
+     peek halfway down the page. */
+  PEEK_TIMER = setTimeout(function(){ PEEK_TIMER = 0; openWordPeek(row); }, 450);
+}, true);
+function peekPointerEnd(){ if(PEEK_TIMER){ clearTimeout(PEEK_TIMER); PEEK_TIMER = 0; } }
+document.addEventListener('pointerup', peekPointerEnd, true);
+document.addEventListener('pointercancel', peekPointerEnd, true);
+document.addEventListener('pointermove', e=>{
+  if(!PEEK_TIMER || !PEEK_XY) return;
+  if(Math.abs(e.clientX - PEEK_XY[0]) > 10 || Math.abs(e.clientY - PEEK_XY[1]) > 10) peekPointerEnd();
+}, true);
+document.addEventListener('click', e=>{
+  const row = e.target && e.target.closest ? e.target.closest('.wrow') : null;
+  if(!row) return;
+  /* A long press ends in a click as well; without this the peek would open and
+     then close in the same gesture. */
+  if(Date.now() - PEEK_DOWN > 400) return;
+  toggleWordPeek(row);
+});
+document.addEventListener('contextmenu', e=>{
+  const row = e.target && e.target.closest ? e.target.closest('.wrow') : null;
+  if(!row) return;
+  e.preventDefault(); peekPointerEnd(); openWordPeek(row);
+});
+
 document.addEventListener('keydown', e=>{
   /* Keyboard parity (audit 2026-08-30): the tappable divs carry role="button"
      tabindex="0"; Enter/Space must do what the tap does. */
@@ -396,6 +513,9 @@ document.addEventListener('keydown', e=>{
       }
       return;
     }
+    /* Escape closes the word peek first, so the sheet does not vanish while
+       the reader is looking at one word. */
+    if(e.key==='Escape' && PEEK_ROW){ closeWordPeek(); return; }
     if(e.key==='Escape'){ closeModal(); return; }
     if(state.mode==='random') return;
     if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;

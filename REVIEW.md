@@ -179,10 +179,10 @@ Totals: 18 ch, 700 verses, 169 themes, 700 parts — all green
   - `prefers-reduced-motion:reduce` honored; `color-scheme` declared.
   - `noscript` fallback (owner 2026-08) — trilingual “Please open in browser” box with `.ns-box` styling, so WhatsApp/Gmail in-app viewers (no JS) don’t render a blank shell.
 - ⚠️ **Gaps:**
-  - No `skip-to-content` link — not critical (header is short and views are announced), but a standard a11y expectation for keyboard users.
+  - ~~No `skip-to-content` link~~ — **closed 2026-11-04**: `source/app.html:157` carries `<a href="#view" class="skip-link" id="skipLink">Skip to content</a>`, styled in `00-foundation.css:36` (off-screen until `:focus`/`:focus-visible`). See §20 item 1.
   - `aria-expanded`/`aria-controls` on pāda toggles present, good; `aria-describedby` now points to the actual tap instruction (`padaHint`/`wordsHint`) — correct after the 2026-10-17 fix.
 - 💡 **Suggestions:**
-  1. Tiny win: add `<a href="#view" class="sr-only focusable">Skip to content</a>` at the very top of `<body>` — one line, zero visual cost.
+  1. ~~Tiny win: add a skip-to-content link at the very top of `<body>`~~ — **done 2026-11-04** (`.skip-link` → `#view`); the remaining a11y proof is a real axe/Lighthouse run, not more markup.
   2. Consider adding `aria-current="page"` to the way-crumb’s last chip (you already do for `wc-cur` via `breadcrumbs`, but `wayCrumbs()` uses `aria-current="page"` on the `wc-cur span` — good, keep it).
 
 ---
@@ -391,10 +391,10 @@ Browser (270)    rendering, i18n, numerals, search, favs, Learn/Play, refresh, s
 
 ### Next — High value, low risk
 
-1. **Add a `skip-to-content` link** (a11y, one line, zero visual cost).
+1. ~~Add a `skip-to-content` link~~ **(done)** — shipped as `<a href="#view" class="skip-link" id="skipLink">` at `source/app.html:157`, styled in `00-foundation.css`. Remaining accessibility proof is not the link but a real axe/Lighthouse run, which needs a browser (see `NEXT.md` §1, A2/A3).
 2. **Schedule a quarterly 700-title read-through** — machine checks keep consistency, only reading keeps prose honest. Starting list exists since 2026-11-04: `python3 source/audit_titles.py --markdown` (snapshot: `docs/title-review.md`) triages the 50 advisories so the read starts from the three that need it.
-3. **Archive `PROJECT.md` when it crosses 200 KB** (same yearly-slice policy as HANDOFF).
-4. **Watch shell size** — if it crosses 350 KB, lazy-load `45-data.js` on `#data` only.
+3. ~~Archive `PROJECT.md` when it crosses 200 KB~~ — **done 2026-11-04**: October batches moved to `docs/archive/PROJECT-2026-10.md`, 190.6 → 83.5 KB. Slice again when it nears 200 KB.
+4. **Watch shell size** — cap is **375,000 chars** (`source/check_site_health.py:413`), currently **365,393** (388,182 bytes, 105,670 gzip). The old advice here ("if it crosses 350 KB, lazy-load `45-data.js`") is **withdrawn**: measured, the binding constraint is the 700-line JS module guard, not this number, and lazy-loading the data module changes boot order and SW precache for no real gain. Split along a seam — as `12-search.js`, `27-learn-free.js` and `48-reader-view.js` already do — rather than defer a load.
 
 ### Next — Medium value
 

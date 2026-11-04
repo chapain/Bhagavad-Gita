@@ -15,6 +15,177 @@ the start of every session.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
+### 2026-11-04 (thirteenth batch) — the other half: all 869 descriptions read
+
+* The title pass (eleventh and twelfth batches) covered names, not the paragraphs
+  under them. Asked whether the whole editorial layer was finished, the honest
+  answer was "titles yes, descriptions no", so they were read: **700 verse
+  descriptions and 169 theme descriptions**, every one against its verse, its
+  range and — for themes — the parts inside it. **No factual defect found**: no
+  wrong speaker, no wrong count, no verse described that its neighbour states.
+* Screens that ran before the reading, so the reading was aimed rather than
+  hopeful: descriptions that assert a **count** (43 of them, every one correct
+  when recounted against the Sanskrit), **speaker attribution** at the 60 verses
+  that open a speech (0 mismatches — the description never hands a verse to the
+  wrong speaker), and desc-vs-title polarity (too noisy to mean anything: a
+  description is a fuller sentence than its title, which is not a contradiction).
+* The descriptions are **third person** ("He asks Kṛṣṇa…") while the literals are
+  second — a deliberate split, not drift, and it holds across all 700.
+* One line flagged for the owner's awareness and **not changed**: 9.32's list
+  ("those of sinful birth, women, traders and labourers") is exactly what the
+  Sanskrit prints, and the description states it no more strongly than the
+  literal. The edition carries no commentary, so the faithful rendering stands.
+* **What this pass does not prove:** the ~5,200 strings exist in three languages,
+  but only the **English** was read semantically; the Nepali and Hindi were
+  checked structurally (present, no Latin letters, no banned readings, no stubs —
+  median length 0.82 and 0.87 of English, shortest 0.48 and that one is simply
+  concise). A semantic read of ne/hi is the one piece of this layer still owed.
+* Counts unchanged: 68 Python, 943 assertions, 560 site-health, 10 SEO, 9,658
+  study, 50 advisories / 0 blocking, shell 373,731.
+
+### 2026-11-04 (twelfth batch) — the king who was called "O King", and five theme titles narrower than their own descriptions
+
+* **1.02 read as a vocative when it is a nominative.** The owner heard it at once
+  — "it looks like it means Duryodhana goes to his guru and calls him 'hey rājā'".
+  He was right, and the diagnosis was grammatical: `ācāryam upasaṅgamya rājā
+  vacanam abravīt` (`duryodhanaḥ` is the subject; `rājā` is apposition), so it is
+  "the king spoke these words", not "…O King". The tell is inside the edition:
+  1.16 renders nominative `rājā` as "King Yudhiṣṭhira", and the real vocative
+  `rājan` is "O king" in 11.09, 18.76 and 18.77 — 1.02 was the only slip. It was
+  wrong twice over: not a vocative, *and* pointing at the wrong listener (in the
+  paraphrase Duryodhana appears to call Droṇa "king", when his first words come
+  in 1.03 and address him as `ācārya`). Fixed in all three languages in both the
+  literal and the paraphrase; the paraphrase now ends "…and spoke:", handing off
+  to 1.03. See §4.11.
+* **Five theme titles did not speak for their spans.** The owner asked whether
+  theme titles represent the essence of *all* their verses, citing 1.10–1.11,
+  where the theme title echoed the 1.11 part title. All 169 were read against
+  their ranges, their parts and — the sharpest test — their own descriptions:
+  * **1.10–1.11** "Guard Bhīṣma above all" named only 1.11 while its description
+    began "Duryodhana compares the forces, then orders…". Now "Both armies
+    weighed; Bhīṣma must be guarded". A first draft named Duryodhana and the
+    auditor immediately flagged it — correctly: he is the *speaker*, not named in
+    1.10–1.11 — so the name stays in the description, which already carries that
+    benign advisory, rather than adding a second.
+  * **8.16–8.19** "Even Brahmā's world returns in cosmic cycles" restated 8.16
+    with a suffix; now "Brahmā's day and night: worlds appear and dissolve",
+    which is what 8.17–8.19 actually do.
+  * **17.23–17.27** reordered 17.23's own words; now "Om, Tat, Sat: the words that
+    make an act sacred", covering 17.24–17.27.
+  * **17.07** and **17.28**, both single-verse themes, were near-verbatim copies of
+    their only part title. Now "Threefold food, sacrifice, austerity and gift" and
+    "Without faith, an act counts for nothing".
+  * Everything else stands, including 2.19–2.21, which is allowlisted as
+    deliberately identical to its part title. Closest calls left alone, with
+    reasons: 7.01–7.03 ("…one in a thousand" adds 7.03), 7.28–7.30, 2.26–2.30
+    (titles genuinely extend their first verse), 6.20–6.23 and 5.06–5.10 (the
+    image in the last verse names the whole run — a real heading, not a narrow one).
+* **The pins that caught it, and what had to move.** The stale-literal test, the
+  worksheet snapshot test and the two chapter-17 assertions all failed on the
+  first build — which meant the guards were doing their jobs rather than being
+  quietly satisfied. Regenerated `docs/title-review.md` from the generator (never
+  hand-edited) and updated the five `STUDY_MAPS.md` lines plus the two JS pins to
+  the new approved wording. Advisories returned to exactly **50 / 0 blocking**.
+* **Counts:** 68 Python, 943 assertions, 560 site-health, 10 SEO, 9,658 study,
+  13 search. No interface string, no shell character (373,731 of 375,000).
+
+### 2026-11-04 (eleventh batch) — the book read against itself, and two claims counted
+
+* **The 700 titles were read against their verses, all of them.** Every verse
+  title in chapters 1–18 was compared with its Sanskrit, its literal and its
+  paraphrase; the 56 titles that assert a **count** were recounted one by one,
+  and every title naming a speaker was checked against who is actually speaking.
+  No title misstates its verse. The auditor's 50 advisories are a **counting
+  prompt, not an error list**: the 42 `name-not-in-verse` hits are speaker-named
+  titles (“Duryodhana…”) and theme titles summarising the speaker's own words,
+  and the 8 `number-unsupported` hits are right when counted — 1.15 three
+  conches, 8.23 two times, 13.24 three paths, 14.05 three guṇas, 14.18 three
+  destinies, 16.04 six marks, 18.12 three fruits, 18.29 threefold intellect and
+  fortitude. **1.44 stands**: the title states what Arjuna is arguing, the
+  literal keeps `iti anuśuśruma` (“thus have we heard”), and all three
+  descriptions already carry the hedge. Rewriting the title would flatten a
+  voice the text itself qualifies.
+* **Nothing compared the printed Devanagari with its own transliteration.** This
+  is the batch's one real defect, found by mutation rather than by reading:
+  appending a syllable to a pāda's `d` failed **no check at all**. Every check
+  read `t` — `build_gita.py` derives each pāda's stored count `n` from `t`,
+  `check_site_health.py` recomputes the method page's figures from `n`, and the
+  word rows are compared word by word — so the line the reader actually sees was
+  the one link in that chain nobody tested. A mistyped matra, a dropped visarga
+  or a vowel length written short in `d` could ship while every counter stayed
+  green. `check_padas.py` now transliterates each pāda's `d` and requires it to
+  equal its `t` under the same folds the word check uses: **2,800 lines, 0
+  flags**. Proof of bite, three mutations: an extra syllable trips this guard
+  *and* the metre count; a dropped visarga — which costs no syllable — trips only
+  this one; `ś → ṣ` trips it, so vowel length and sibilants are live, not folded
+  away.
+* **The metre is now counted at the reader-visible end too.** The method page
+  tells the reader 644 verses are anuṣṭubh at 8/8/8/8, 51 are triṣṭubh at
+  11/11/11/11, and five are irregular and named one by one. Those figures were
+  already pinned by site-health, but only against the stored counts `n`, which in
+  turn come from `t`. `check_padas.py` now counts akṣaras from the printed `d`
+  itself and pins both the totals and the **names** of the five irregular verses,
+  which were previously only counted, never identified. Reproduced independently
+  before being wired: 11.01 `9/8/8/8` (33), 2.29 `11/12/11/11`, 8.10
+  `11/11/11/12`, 15.03 `12/11/11/11` (all 45), 2.06 `12/12/11/11` (46) — exactly
+  the totals §4.3 states, so the documentation was right as written.
+* **One sentence was left alone on purpose.** The method page says the titles
+  “are still being re-read against their verses one by one”. That describes the
+  owner's own review, not the text, and only he can retire it — an AI pass is not
+  a reason to tell a reader the author has finished reading.
+* **Counts unchanged:** 68 Python, 943 assertions, 560 site-health, 10 SEO,
+  9,658 study, 13 search, 50 advisories / 0 blocking. No interface string, no
+  generated page and no shell character moved (373,731 of 375,000).
+
+### 2026-11-04 (tenth batch) — 18 doors into the book, and a book that says what it is
+
+* **Chapter titles became editorial copy.** Eighteen pages shared one formula,
+  `Bhagavad Gita Chapter N — {name}`, with one generic description between them;
+  a crawler reads that as one weak page repeated. Each now has its own topic and
+  blurb (`CHAPTER_TOPICS` in `build_gita.py`), measured at ≤57 characters for a
+  title and ≤153 for a description, 18/18 unique. The choice was **topic-forward**
+  because name-forward cannot fit: chapter 13's traditional name alone is 31
+  characters, leaving no room for a topic *and* a verse count inside 60. The
+  Sanskrit name did not leave — it is the `<h1>`, the og:title, the page body,
+  and the first words of every description in Devanagari, which Nepali and Hindi
+  readers both recognise. `og:title` and `twitter:title` deliberately keep the
+  name form: a share card should read as a name, not a query.
+* **The structured data was lying and nothing read it.** `WebApplication` carried
+  an inline `Book` with no author, no translator, and `"numberOfPages": 18` — the
+  chapter count wearing a page count's name. `Book` is now its own node (`#book`,
+  linked by `@id`): Vyāsa by traditional attribution (stated in `creditText`),
+  translator Dhruba Chapain, `sa/en/ne/hi`, `EBook`, free, copyright notice, and
+  “18 chapters and 700 verses” in the **description**, because schema.org has no
+  verses property and a false field is worse than a sentence. `check_site_health.py`
+  had zero JSON-LD checks — a malformed block fails nothing a reader can see — so
+  it gained eight (552 → 560), including “no node claims a page count”.
+* **Copy verse follows the reader's language** (owner's choice): Devanagari, IAST
+  only where the app shows it (English), the literal in the current language, and
+  the chapter-page link — as `text/html` via `ClipboardItem` so a paste keeps its
+  shape, with the old plain-text path as fallback for browsers without it. The
+  paraphrase is deliberately not copied: a verse in a chat, not an essay.
+* **The word peek went on the rows, not the verse line** — the brief asked for a
+  long-press on a word in the live verse. That is not honestly implementable: the
+  printed verse is sandhi-joined (2.47 prints `कर्मण्येवाधिकारस्ते` as one token
+  while its words are `कर्मणि / एव / अधिकारः / ते`), so a touched token has no
+  single word behind it, and splitting the printed line to make it tappable would
+  invent a boundary the text does not print. The gesture lives on the word rows,
+  which carry the true split, and reveals the two languages the reader is not
+  reading. Tap, `Enter`/`Space`, right-click and `Escape` all reach it, so it is an
+  accelerator rather than the only door. Each row carries its own `data-words`
+  because a verse has four pāda containers plus speaker lines and a single global
+  would be overwritten by whichever rendered last.
+* **The shell cap is the binding constraint again.** D1 + D2 took it 365,393 →
+  373,731 against a 375,000 cap: **1,269 characters**. Two rounds of trimming the
+  comments I had just written bought back ~850, which is the lesson — rationale
+  belongs here, in PROJECT.md, not in every page load. The next feature needs a
+  real trim or a deliberate, measured cap raise; it must not slip in under a
+  comment.
+* **Counts:** 943 assertions, 302 browser checks, 232 UI strings, 560 site-health,
+  10 SEO checks, 68 Python, 13 search regressions. D1's clipboard behaviour and
+  D2's touch gesture are **not proven here** — both need a real browser, so CI and
+  the owner's phone own that.
+
 ### 2026-11-04 (ninth batch) — the worksheet becomes a column of ticks
 
 * The seventh batch produced the right triage in the wrong shape for the job it
@@ -634,7 +805,29 @@ opening) found exactly this one defect; single *terms* like राजविद�
 "ज्ञानयज्ञ" / "ब्रह्मभूत" are genuine words and stay, as do proper names in
 IAST (Bhīṣma, Sāttvic, Puruṣottama) — the established style.
 
----
+**4.11 `rājā` in 1.02 is nominative — Duryodhana, never a vocative.** The verse
+runs `ācāryam upasaṅgamya rājā vacanam abravīt`: the subject is `duryodhanaḥ`, and
+`rājā` is apposition — "the king Duryodhana spoke". It shipped as "...spoke these
+words, O King", which reads as though Sañjaya address Dhṛtarāṣṭra and, in the
+paraphrase, as though Duryodhana addressed *Droṇa* as king (the owner heard this
+immediately, 2026-11-04). The edition's own style proves the distinction: 1.16
+renders the same nominative `rājā` as "King Yudhiṣṭhira", while the true vocatives
+`rājan` in 11.09, 18.76 and 18.77 are "O king". Corrected in en/ne/hi, literal
+and paraphrase; the paraphrase now ends "…and spoke:", handing off to Duryodhana's
+first words in 1.03. Do not restore the vocative.
+
+**4.12 A theme title must speak for its whole span, not one verse of it.** Found
+2026-11-04: the 1.10–1.11 theme was titled "Guard Bhīṣma above all" while its own
+description began "Duryodhana compares the forces…" — the title named only 1.11
+and left 1.10 unrepresented (the owner spotted the echo of the 1.11 part title).
+All 169 theme titles were then read against their verse ranges and their own
+descriptions; five were rewording problems and were fixed (1.10–1.11, 8.16–8.19,
+17.07, 17.23–17.27, 17.28). The test: a theme title must not restate a part title
+inside it, and must not be narrower than its own description. 2.19–2.21 stays
+deliberately identical to its part title — see `SAME_TITLE_ALLOWED` in
+`check_study_structure.py`; the whole theme *is* that one doctrine.
+
+--- 
 
 ## 5. The build's manual-edit audit
 
@@ -655,7 +848,12 @@ translation, gloss or pāda modules.
 | editorial titles | drafting slashes or a raw Sanskrit opening used as a part headline |
 
 `check_padas.py` separately rebuilds each pāda from its nested word rows via
-sandhi: **2,800 pādas, 0 residual flags**. The approved study-map audit remains
+sandhi: **2,800 pādas, 0 residual flags**. It also closes the one link the chain
+above never tested — the printed line itself. It transliterates each pāda's
+Devanagari `d` and requires it to equal that pāda's IAST `t` (**2,800 lines, 0
+flags**; before this, an extra syllable in a `d` failed nothing), and it counts
+akṣaras from `d` to confirm the metre and the **five named irregular verses** that
+the method page publishes. The approved study-map audit remains
 separate and pins the 169 themes, 700 verse titles, and ranges in all languages.
 
 `check_paraphrase.py` measures how much each flowing paraphrase overlaps its
