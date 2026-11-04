@@ -1480,14 +1480,14 @@
                 }
               ],
               "lits": {
-                "en": "He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen and the righteous — he excels.",
+                "en": "He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen, the righteous and even sinners — he excels.",
                 "ne": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा गर्ने, नातेदार, सज्जन र पापी — सबैप्रति समान छ, ऊ नै श्रेष्ठ हुन्छ।",
-                "hi": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा करने वाले, नातेदार और धार्मिक — सबके प्रति समान है, वही श्रेष्ठ है।"
+                "hi": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा करने वाले, नातेदार, सज्जन और पापी — सबके प्रति समान है, वही श्रेष्ठ है।"
               },
               "paras": {
-                "en": "“Equal to friends and enemies, the neutral and the hostile, kin and strangers — such a one stands highest.”",
-                "ne": "“मित्र र शत्रु, तटस्थ र विरोधी, आफन्त र अपरिचित — सबैलाई समान हेर्ने — यस्तो व्यक्ति सबैभन्दा उच्च हुन्छ।”",
-                "hi": "“मित्र और शत्रु, तटस्थ और विरोधी, अपने और पराए — सबको समान देखने वाला — ऐसा व्यक्ति सबसे ऊँचा है।”"
+                "en": "“Equal to friends and enemies, the neutral and the hostile, kin, the righteous and the unrighteous — such a one stands highest.”",
+                "ne": "“मित्र र शत्रु, तटस्थ र विरोधी, आफन्त, सदाचारी र दुराचारी — सबैलाई समान हेर्ने — यस्तो व्यक्ति सबैभन्दा उच्च हुन्छ।”",
+                "hi": "“मित्र और शत्रु, तटस्थ और विरोधी, संबंधियों, सदाचारी और दुराचारी — सबको समान देखने वाला — ऐसा व्यक्ति सबसे ऊँचा है।”"
               }
             }
           ]
@@ -2932,21 +2932,21 @@
           "sutras": [
             {
               "n": "6.19",
-              "d": "यदा दीपो निवातस्थो नेङ्गते सोपमा स्मृता । योगिनो यतचित्तस्य युञ्जतो योगमात्मनः",
-              "t": "yadā dīpo nivātastho neṅgate sopamā smṛtā । yogino yatacittasya yuñjato yogamātmanaḥ",
+              "d": "यथा दीपो निवातस्थो नेङ्गते सोपमा स्मृता । योगिनो यतचित्तस्य युञ्जतो योगमात्मनः",
+              "t": "yathā dīpo nivātastho neṅgate sopamā smṛtā । yogino yatacittasya yuñjato yogamātmanaḥ",
               "flow": [
                 {
                   "k": "p",
-                  "d": "यदा दीपो निवातस्थो",
-                  "t": "yadā dīpo nivātastho",
+                  "d": "यथा दीपो निवातस्थो",
+                  "t": "yathā dīpo nivātastho",
                   "n": 8,
                   "words": [
                     [
-                      "यदा",
-                      "yadā",
-                      "when, as",
-                      "जब",
-                      "जब"
+                      "यथा",
+                      "yathā",
+                      "as",
+                      "जसरी",
+                      "जैसे"
                     ],
                     [
                       "दीपः",
@@ -2971,18 +2971,25 @@
                   "n": 8,
                   "words": [
                     [
-                      "नेङ्गते",
-                      "neṅgate",
-                      "does not flicker",
-                      "चलमलाउँदैन",
-                      "डगमगाता नहीं"
+                      "न",
+                      "na",
+                      "not",
+                      "न",
+                      "नहीं"
                     ],
                     [
-                      "सः",
-                      "saḥ",
-                      "that",
-                      "ऊ",
-                      "वह"
+                      "इङ्गते",
+                      "iṅgate",
+                      "flickers",
+                      "चलमलाउँछ",
+                      "डगमगाता है"
+                    ],
+                    [
+                      "सा",
+                      "sā",
+                      "that (simile)",
+                      "त्यो (उपमा)",
+                      "वह (उपमा)"
                     ],
                     [
                       "उपमा",
@@ -3055,7 +3062,7 @@
               "lits": {
                 "en": "As a lamp placed in a windless spot does not flicker — this simile is declared of a yogi of controlled mind, practising yoga of the Self.",
                 "ne": "जसरी हावा नभएको ठाउँमा राखिएको बत्ती चलमलाउँदैन — संयत मनको, आत्मयोगको अभ्यास गर्ने योगीको यही उपमा भनिएको छ।",
-                "hi": "जैसे हवा रहित स्थान में रखा दीपक नहीं चमकता-धमकता — ऐसा ही संयत मन वाले, आत्म-योग का अभ्यास करने वाले योगी का दृष्टान्त कहा गया है।"
+                "hi": "जैसे हवा रहित स्थान में रखा दीपक नहीं डगमगाता — ऐसा ही संयत मन वाले, आत्म-योग का अभ्यास करने वाले योगी का दृष्टान्त कहा गया है।"
               },
               "paras": {
                 "en": "“Like a lamp in a windless place that never flickers — so is the yogi whose mind is stilled in the Self.”",
@@ -4620,14 +4627,14 @@
                 }
               ],
               "lits": {
-                "en": "Seeing the Self in all beings and all beings in the Self, one who sees the same in everything — he attains the Supreme.",
-                "ne": "सबै प्राणीमा आत्मा र आत्मामा सबै प्राणी देख्ने, सबै कुरामा समान दृष्टि राख्ने — ऊ परम तत्त्व प्राप्त गर्छ।",
-                "hi": "सब प्राणियों में आत्मा और आत्मा में सब प्राणियों को देखने वाला, सब में समान दृष्टि रखने वाला — वह परम तत्त्व को प्राप्त होता है।"
+                "en": "The one whose mind is united in yoga, seeing equally everywhere, sees the Self dwelling in all beings and all beings in the Self.",
+                "ne": "योगमा मन जोडिएको, सर्वत्र समान दृष्टि राख्ने व्यक्तिले सबै प्राणीमा आत्मा र आत्मामा सबै प्राणी देख्छ।",
+                "hi": "योग में मन लगाए हुए, सर्वत्र समान दृष्टि वाला व्यक्ति आत्मा को सब प्राणियों में और सब प्राणियों को आत्मा में देखता है।"
               },
               "paras": {
-                "en": "“Seeing the Self in all and all in the Self, seeing the same everywhere — such a one reaches the highest.”",
-                "ne": "“सबैमा आत्मा र आत्मामा सबै देख्ने, सर्वत्र एकै देख्ने — यस्तो व्यक्ति सर्वोच्चमा पुग्छ।”",
-                "hi": "“सब में आत्मा और आत्मा में सब देखने वाला, सर्वत्र एक ही देखने वाला — ऐसा व्यक्ति सर्वोच्च तक पहुँचता है।”"
+                "en": "“For the yogi absorbed in practice, no creature stands outside the Self, nor is the Self absent from any creature: his vision makes no distinction.”",
+                "ne": "“योगाभ्यासमा एकाग्र योगीका लागि कुनै जीव आत्माबाहिर छैन, न कुनै जीवमा आत्माको अभाव छ; उसको नजरमा भेद रहँदैन।”",
+                "hi": "“योगाभ्यास में एकाग्र योगी के लिए कोई जीव आत्मा से बाहर नहीं, न किसी जीव में आत्मा का अभाव है; उसकी निगाह में भेद नहीं रहता।”"
               }
             }
           ]
@@ -6231,11 +6238,18 @@
                   "n": 8,
                   "words": [
                     [
-                      "त्वदन्यः",
-                      "tvadanyaḥ",
-                      "other than you",
-                      "तिमीबाहेक अरू",
-                      "तुझसे अन्य"
+                      "त्वत्",
+                      "tvat",
+                      "than you",
+                      "तिमीभन्दा",
+                      "तुझसे"
+                    ],
+                    [
+                      "अन्यः",
+                      "anyaḥ",
+                      "other",
+                      "अरू",
+                      "अन्य"
                     ],
                     [
                       "संशयस्य",

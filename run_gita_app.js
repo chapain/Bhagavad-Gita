@@ -459,8 +459,8 @@ ok(dBad.length === 0, `every verse Devanagari pure (${dBad.join(',') || 'clean'}
 ok(tBad.length === 0, `every verse carries an IAST transliteration (${tBad.join(',') || 'clean'})`);
 ok(flowBad === 0, 'every verse has well-formed flow segments (k ∈ {s,p})');
 ok(tupleBad.length === 0, `every word tuple = [deva, iast, en, ne, hi] (${tupleBad.join(',') || 'clean'})`);
-ok(wordTotal === 9484, `9,484 word-instances (got ${wordTotal})`);
-ok(padaWords === 9366, `9,366 pāda word-instances (got ${padaWords})`);
+ok(wordTotal === 9506, `9,506 word-instances (got ${wordTotal})`);
+ok(padaWords === 9388, `9,388 pāda word-instances (got ${padaWords})`);
 ok(w0.length === 0, `word Devanagari column free of Latin (${w0.join(',') || 'clean'})`);
 ok(w1.length === 0, `word IAST well-formed (${w1.slice(0, 3).join(',') || 'clean'})`);
 ok(w34.length === 0, `word NE/HI glosses free of Latin residue (${w34.join(',') || 'clean'})`);

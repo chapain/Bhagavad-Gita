@@ -21,9 +21,19 @@ class StrictTextValidatorTests(unittest.TestCase):
         self.assertNotEqual(validator.strict_key("tāmasa"), validator.strict_key("tamasa"))
         self.assertNotEqual(validator.strict_key("karśayantaḥ"), validator.strict_key("karṣayantaḥ"))
 
-    def test_known_word_boundary_convention_is_narrow(self):
-        self.assertIn(("2.06", "यत् वा", "yad vā"), validator.WORD_SPELLING_CONVENTIONS)
-        self.assertNotIn(("2.06", "यत् वा", "yat vā"), validator.WORD_SPELLING_CONVENTIONS)
+    def test_e_before_u_allows_y_lopa_without_changing_vowels(self):
+        forms = validator.ext_sandhi("rathopasthe", "upāviśat")
+        self.assertIn("rathopasthayupāviśat", forms)
+        self.assertIn("rathopasthaupāviśat", forms)
+        self.assertNotIn("rathopasthopāviśat", forms)
+
+    def test_no_word_spelling_exceptions_after_kratu_normalization(self):
+        self.assertEqual(validator.WORD_SPELLING_CONVENTIONS, set())
+        self.assertNotEqual(validator.strict_key(validator.deva_to_iast("क्रतुः")),
+                            validator.strict_key("kratur"))
+        self.assertEqual(validator.strict_key(validator.deva_to_iast("क्रतुः")),
+                         validator.strict_key("kratuḥ"))
+
 
 
 if __name__ == "__main__":

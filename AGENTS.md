@@ -32,6 +32,9 @@ Parse structured data; never regex-rewrite JSON. Locate exact values and require
 one unambiguous match. When one defect is found, inspect all 700 verses for the
 same class. Green tests prove consistency, not textual correctness: read and
 render the affected verse.
+For word-row splits, check the combined glosses against the existing literal
+translation in en/ne/hi. The literal is the semantic standard; flag conflicts
+rather than silently rewriting it to fit new glosses.
 
 ## Edit here
 

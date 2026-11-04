@@ -107,7 +107,7 @@ want them to survive a regeneration.
 |  | 2.06 | Victory or defeat—which is better? | Nor do we know which is better for us — to conquer them or be conquered. The very sons of Dhṛtarāṣṭra stand before us; killing them, we should not care to live. | ☐ | ☐ | ☐ |
 |  | 2.07 | Teach me, I am your disciple | My nature is overcome by weak compassion; my mind is confused about duty. I ask you: tell me for certain what is good — I am your disciple; teach me, I have taken refuge in you. | ☐ | ☐ | ☐ |
 |  | 2.08 | This grief no kingdom could drive away | I do not see what could drive away this grief that dries up my senses — even if I won an unrivaled kingdom on earth or lordship over the gods. | ☐ | ☐ | ☐ |
-|  | 2.09 | I will not fight, he said | Sañjaya said: Having spoken thus to Hṛṣīkeśa, Arjuna, the scorcher of foes, said to Govinda, 'I will not fight' — and fell silent. | ☐ | ☐ | ☐ |
+|  | 2.09 | I will not fight, he said | Sañjaya said: O scorcher of foes, having spoken thus to Hṛṣīkeśa, Arjuna said to Govinda, 'I will not fight' — and fell silent. | ☐ | ☐ | ☐ |
 |  | 2.10 | Kṛṣṇa speaks as if smiling | To him, as he grieved between the two armies, Hṛṣīkeśa, as if smiling, spoke these words, O descendant of Bharata. | ☐ | ☐ | ☐ |
 |  | 2.11 | You grieve where no grief is due | The Blessed Lord said: You grieve for those who should not be grieved for, yet speak words of wisdom. The wise grieve neither for the living nor for the dead. | ☐ | ☐ | ☐ |
 |  | 2.12 | Neither we nor these kings cease to exist | Never was there a time I did not exist, nor you, nor these rulers of men; nor will any of us ever cease to be hereafter. | ☐ | ☐ | ☐ |
@@ -253,7 +253,7 @@ want them to survive a regeneration.
 |  | 4.25 | Sacrifice to the gods, and into Brahman | Some yogis worship the gods through sacrifice; others offer the sacrifice itself, by sacrifice, into the fire of Brahman. | ☐ | ☐ | ☐ |
 |  | 4.26 | Senses offered into the fires of restraint | Some offer hearing and the other senses into the fires of restraint; others offer sound and the other sense-objects into the fires of the senses. | ☐ | ☐ | ☐ |
 |  | 4.27 | All action offered in the fire of yoga | And others offer all the activities of the senses and of the vital breaths into the fire of the yoga of self-restraint, kindled by knowledge. | ☐ | ☐ | ☐ |
-|  | 4.28 | Sacrifices of wealth, austerity, yoga and study | Others perform the sacrifices of wealth, austerity, yoga, and scriptural study — ascetics of firm vows. | ☐ | ☐ | ☐ |
+|  | 4.28 | Sacrifices of wealth, austerity, yoga and study | Others perform the sacrifices of wealth, austerity, yoga, and scriptural study and knowledge — ascetics of firm vows. | ☐ | ☐ | ☐ |
 |  | 4.29 | Breath offered to breath | Some offer the up-breath into the down-breath, and the down-breath into the up-breath, checking the courses of the breaths, devoted to breath-control. | ☐ | ☐ | ☐ |
 |  | 4.30 | Breath offered into breath, sins consumed | Others, with regulated diet, offer the vital breaths into the vital breaths; all these are knowers of sacrifice, whose sins are consumed by sacrifice. | ☐ | ☐ | ☐ |
 |  | 4.31 | Not even this world for the non-sacrificer | Tasting the nectar of the remnant of sacrifice, they reach the eternal Brahman; this world is not for the non-sacrificer, how then the next, O best of the Kurus? | ☐ | ☐ | ☐ |
@@ -317,7 +317,7 @@ want them to survive a regeneration.
 |  | 6.06 | Friend if conquered, enemy if not | For him who has conquered the self by the Self, the Self is a friend; but for him who has not conquered the self, the Self abides as an enemy, hostile. | ☐ | ☐ | ☐ |
 |  | 6.07 | The self-conquered is at peace | The self-conquered, tranquil one is established in the Self — equal in cold and heat, pleasure and pain, honour and dishonour. | ☐ | ☐ | ☐ |
 |  | 6.08 | A clod, a stone, and gold alike | He who is satisfied with knowledge and realization, unmoved, with senses conquered, to whom a lump of earth, a stone and gold are alike — he is called a yoked one. | ☐ | ☐ | ☐ |
-|  | 6.09 | Equal to friend and foe | He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen and the righteous — he excels. | ☐ | ☐ | ☐ |
+|  | 6.09 | Equal to friend and foe | He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen, the righteous and even sinners — he excels. | ☐ | ☐ | ☐ |
 |  | 6.10 | Alone, in solitude | Let the yogi constantly discipline himself, abiding in a solitary place, alone, with mind and self controlled, free from desire and possessiveness. | ☐ | ☐ | ☐ |
 |  | 6.11 | A clean place, neither too high nor too low | Establishing in a pure spot a steady seat for himself, neither too high nor too low, covered with cloth, a deer-skin and kuśa grass, | ☐ | ☐ | ☐ |
 |  | 6.12 | Calm the mind and senses | making the mind one-pointed, restraining the activities of the mind and the senses, seated on that seat, let him practise yoga for the purification of the self. | ☐ | ☐ | ☐ |
@@ -337,7 +337,7 @@ want them to survive a regeneration.
 |  | 6.26 | Wherever the mind wanders, bring it back | From whatever cause the wavering, unsteady mind wanders away, from that alone let him withdraw it and bring it under the control of the Self. | ☐ | ☐ | ☐ |
 |  | 6.27 | Supreme bliss comes to the stainless | Supreme bliss verily comes to this yogi whose mind is peaceful, whose passion is stilled, who is become Brahman, free from stain. | ☐ | ☐ | ☐ |
 |  | 6.28 | The purified reach bliss | Thus constantly disciplining the self, the yogi, freed from stain, easily attains the endless joy of union with Brahman. | ☐ | ☐ | ☐ |
-|  | 6.29 | The Self in all beings | Seeing the Self in all beings and all beings in the Self, one who sees the same in everything — he attains the Supreme. | ☐ | ☐ | ☐ |
+|  | 6.29 | The Self in all beings | The one whose mind is united in yoga, seeing equally everywhere, sees the Self dwelling in all beings and all beings in the Self. | ☐ | ☐ | ☐ |
 |  | 6.30 | I am never lost to him | He who sees me everywhere and sees everything in me — for him I am not lost, and he is not lost to me. | ☐ | ☐ | ☐ |
 |  | 6.31 | He lives in me, whatever his way | Established in unity, the yogi who worships me abiding in all beings — abiding in that, he lives in me, whatever his way of life. | ☐ | ☐ | ☐ |
 |  | 6.32 | He who feels all as his own | He who, through the likeness of the self, sees the same everywhere, in pleasure and in pain — he is deemed the supreme yogi, O Arjuna. | ☐ | ☐ | ☐ |
@@ -533,7 +533,7 @@ want them to survive a regeneration.
 |  | 11.09 | The great Lord of yoga showed his form | Sañjaya said: Having spoken thus, O king, the great Lord of yoga, Hari, showed Pārtha his supreme divine form. | ☐ | ☐ | ☐ |
 |  | 11.10 | Marvels beyond count | With countless faces and eyes, with countless wondrous sights, with countless divine ornaments and uplifted weapons, | ☐ | ☐ | ☐ |
 |  | 11.11 | Infinite, facing everywhere, full of wonders | wearing divine garlands and robes, anointed with divine perfumes, full of all wonders — the infinite God, facing everywhere. | ☐ | ☐ | ☐ |
-|  | 11.12 | Brighter than a thousand suns at once | If the splendour of a thousand suns were to rise at once in the sky, it would not equal the splendour of that great being. | ☐ | ☐ | ☐ |
+|  | 11.12 | Brighter than a thousand suns at once | If the splendour of a thousand suns were to rise at once in the sky, it might resemble the splendour of that great being. | ☐ | ☐ | ☐ |
 |  | 11.13 | The whole universe in one place | There, in the body of the God of gods, the son of Pāṇḍu saw the whole universe, one yet divided into manifold forms. | ☐ | ☐ | ☐ |
 |  | 11.14 | Hair on end, bowing with folded hands | Then, filled with wonder, his hair standing on end, Dhanañjaya bowed his head to the God and spoke with joined palms. | ☐ | ☐ | ☐ |
 |  | 11.15 | I see all beings in your body | I see all the gods in your body, O God, and all the hosts of beings; Brahmā the Lord seated on the lotus, and all the seers and divine serpents. | ☐ | ☐ | ☐ |
@@ -565,7 +565,7 @@ want them to survive a regeneration.
 |  | 11.41 | Whatever I said, calling you “friend” | Whatever I said in rash familiarity — 'O Kṛṣṇa, O Yādava, O friend' — not knowing your majesty, whether in carelessness or in love, | ☐ | ☐ | ☐ |
 |  | 11.42 | Whatever disrespect I showed in sport | and whatever disrespect I showed you in sport, rest, sitting or at meals, alone or before others, O Acyuta — that I beg you to forgive, O immeasurable one. | ☐ | ☐ | ☐ |
 |  | 11.43 | Father of the world, teacher beyond compare | You are the father of this world, moving and unmoving; you are its supreme object of worship and the most venerable teacher; none equals you in the three worlds, how then could any surpass you, O … | ☐ | ☐ | ☐ |
-|  | 11.44 | Forgive as a father forgives his son | Therefore I bow and prostrate my body before you, and beg your grace, O adorable Lord; as a father forgives his son, a friend his friend, a lover the beloved — so forgive me, O God. | ☐ | ☐ | ☐ |
+|  | 11.44 | Forgive as a father forgives his son | Therefore, bowing and prostrating my body, I implore you, the adorable Lord, to forgive me as a father forgives his son, a friend his friend, and a lover his beloved, O God. | ☐ | ☐ | ☐ |
 |  | 11.45 | Delighted, yet my mind trembles | Having seen what I never saw before, I am delighted, yet my mind trembles with fear; show me, O God, your gracious form — be merciful, O Lord of the universe. | ☐ | ☐ | ☐ |
 |  | 11.46 | I long to see you crowned, with mace and discus | I long to see you as before — crowned, with mace and discus in hand; appear in that four-armed form, O thousand-armed, universal form. | ☐ | ☐ | ☐ |
 |  | 11.47 | By my grace you have seen it | The Blessed Lord said: By my grace, Arjuna, I have shown you this supreme form by my own power — the luminous, universal, infinite, primeval form that none but you has ever seen. | ☐ | ☐ | ☐ |

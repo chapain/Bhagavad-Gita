@@ -61,10 +61,7 @@ def strict_key(text):
 # Deliberate display/sandhi conventions that cannot be inferred from one word
 # in isolation. Keep this list exact and reviewable rather than weakening the
 # validator globally.
-WORD_SPELLING_CONVENTIONS = {
-    ("2.06", "यत् वा", "yad vā"),
-    ("9.16", "क्रतुः", "kratur"),
-}
+WORD_SPELLING_CONVENTIONS = set()
 
 VOW1 = "aāiīuūṛṝḷḹeo"
 DIGR = ("ai", "au")
@@ -128,7 +125,11 @@ def ext_sandhi(w1, w2):
                     out.append(w1[:-1] + "ay" + w2)
                     out.append(w1[:-1] + "a" + w2)
                     out.append(w1 + w2[1:])
-                elif R in "uū": out.append(w1[:-1] + "ay" + w2)
+                elif R in "uū":
+                    out.append(w1[:-1] + "ay" + w2)
+                    # e → ay before a vowel other than a; optional y-lopa
+                    # leaves a hiatus (rathopasthe + upāviśat, 1.47).
+                    out.append(w1[:-1] + "a" + w2)
                 elif R == "e":
                     out.append(w1[:-1] + "e" + w2[1:])
                     out.append(w1[:-1] + "a" + w2)
