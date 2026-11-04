@@ -1825,11 +1825,23 @@ def run(pw, url, offline_capable=False):
     # ---- the new surfaces, measured ---------------------------------------
     # jsdom can prove these exist and behave; only a layout engine can prove they
     # fit. Search result groups, the note field and the share preview were added
-    # without ever being measured, so measure them here at the phone width the
-    # main context runs at (390x844).
+    # without ever being measured, so measure them at 390px. The main page's
+    # context is closed earlier in this run, so this group brings its own.
     group("new surfaces fit the phone")
+    nc = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    np_ = nc.new_page()
+    np_.goto(url, wait_until="load", timeout=90000)
+    np_.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    np_.wait_for_timeout(600)
+
+    def nshow(q):
+        np_.fill("#searchInput", "")
+        np_.wait_for_timeout(200)
+        np_.fill("#searchInput", q)
+        np_.wait_for_timeout(800)
+
     def inside_view(sel):
-        return pg.evaluate("""sel => {
+        return np_.evaluate("""sel => {
             const vw = document.documentElement.clientWidth;
             const cards = [...document.querySelectorAll(sel)];
             return {n: cards.length,
@@ -1839,13 +1851,13 @@ def run(pw, url, offline_capable=False):
               overflow: (() => { const v = document.querySelector('#view');
                 return v.scrollWidth <= v.clientWidth + 1; })()};
         }""", sel)
-    show("Sankhya")
+    nshow("Sankhya")
     geo = inside_view("#view .res-passage")
     ok(bool(geo and geo["inside"] and geo["overflow"]),
        f"chapter/theme result cards stay inside a 390px viewport ({geo})")
 
-    show("yoga")
-    head = pg.evaluate("""() => {
+    nshow("yoga")
+    head = np_.evaluate("""() => {
         const g = document.querySelector('#view .res-gl'); if(!g) return null;
         const label = g.firstElementChild, count = g.querySelector('.res-gn');
         if(!label || !count) return null;
@@ -1857,19 +1869,19 @@ def run(pw, url, offline_capable=False):
     ok(bool(head) and head["apart"] and head["countRight"] and head["overflow"],
        f"the result-group head keeps its label and its count apart ({head})")
 
-    pg.evaluate("setLang('ne')")
-    pg.wait_for_timeout(300)
-    show("कर्म")
+    np_.evaluate("setLang('ne')")
+    np_.wait_for_timeout(400)
+    nshow("कर्म")
     ne_geo = inside_view("#view .res-passage")
     ok(bool(ne_geo and ne_geo["overflow"]),
        f"Nepali search results do not overflow the phone width ({ne_geo})")
-    pg.evaluate("setLang('en')")
-    pg.wait_for_timeout(250)
+    np_.evaluate("setLang('en')")
+    np_.wait_for_timeout(300)
 
-    pg.evaluate("App.library.setNote('2.47','A note long enough to wrap inside the field on a phone.')")
-    pg.evaluate("App.reader.open(1,0,0,'theme')")
-    pg.wait_for_timeout(500)
-    note_box = pg.evaluate("""() => {
+    np_.evaluate("App.library.setNote('2.47','A note long enough to wrap inside the field on a phone.')")
+    np_.evaluate("App.reader.open(1,0,0,'theme')")
+    np_.wait_for_timeout(600)
+    note_box = np_.evaluate("""() => {
         const d = document.querySelector('#modal details.m-note');
         if(d && !d.open) d.open = true;
         const t = document.querySelector('#modal .m-note textarea');
@@ -1882,21 +1894,25 @@ def run(pw, url, offline_capable=False):
     ok(bool(note_box) and note_box["w"] >= 150 and note_box["h"] >= 40 and note_box["inside"],
        f"the note field is a real, usable box inside the sheet ({note_box})")
 
-    pg.evaluate("App.reader.close()")
-    pg.wait_for_timeout(300)
-    pg.evaluate("App.library.showFavorites()")
-    pg.wait_for_timeout(400)
+    np_.evaluate("App.reader.close()")
+    np_.wait_for_timeout(350)
+    np_.evaluate("App.library.showFavorites()")
+    np_.wait_for_timeout(450)
     note_card = inside_view("#view .note-card")
     ok(bool(note_card and note_card["inside"] and note_card["overflow"]),
        f"a note card stays inside the saved view ({note_card})")
 
     # The painted share art used to be committed and referenced by nothing. It is
     # now the preview inside the share panel, so prove the browser really loads it.
-    pg.evaluate("App.reader.open(1,0,0,'theme')")
-    pg.wait_for_timeout(400)
-    pg.evaluate("openSharePanel()")
-    pg.wait_for_timeout(700)
-    art = pg.evaluate("""() => {
+    np_.evaluate("App.reader.open(1,0,0,'theme')")
+    np_.wait_for_timeout(450)
+    np_.evaluate("openSharePanel()")
+    np_.wait_for_timeout(300)
+    # loading="lazy" only fetches the art once the panel is on screen.
+    np_.evaluate("document.querySelector('#sharePanel .sp-art')"
+                 ".scrollIntoView({block: 'center'})")
+    np_.wait_for_timeout(900)
+    art = np_.evaluate("""() => {
         const i = document.querySelector('#sharePanel .sp-art');
         if(!i) return {present: false};
         const r = i.getBoundingClientRect();
@@ -1905,18 +1921,17 @@ def run(pw, url, offline_capable=False):
     }""")
     ok(bool(art and art["present"]) and art["natural"] >= 900 and art["w"] >= 200 and art["fits"],
        f"the share panel shows the painted share art at a readable size ({art})")
-    pg.evaluate("closeSharePanel()")
-    pg.evaluate("App.reader.close()")
-    pg.wait_for_timeout(300)
-    pg.evaluate("App.library.setNote('2.47','')")
+    np_.evaluate("closeSharePanel(); App.reader.close()")
+    np_.wait_for_timeout(350)
+    np_.evaluate("App.library.setNote('2.47','')")
 
     # ---- the furniture behind the sheet (a11y) ----------------------------
     # A tab list must contain tabs; the five bottom destinations are links, not
     # tabs, and the bottom bar must leave the page when the sheet is open.
     group("what is behind the sheet")
-    pg.evaluate("showChapter(0)")
-    pg.wait_for_timeout(400)
-    a11y = pg.evaluate("""() => {
+    np_.evaluate("showChapter(0)")
+    np_.wait_for_timeout(500)
+    a11y = np_.evaluate("""() => {
         const orphan = [...document.querySelectorAll('[role="tablist"]')]
           .filter(t => !t.querySelector('[role="tab"]')).length;
         const bar = document.querySelector('.tabbar');
@@ -1934,17 +1949,18 @@ def run(pw, url, offline_capable=False):
     ok(bool(a11y) and a11y["segRole"] == "group" and a11y["segPressed"] == 2,
        f"read/learn is a group of pressed buttons, not a tab list ({a11y})")
 
-    pg.evaluate("App.reader.open(0,0,0,'theme')")
-    pg.wait_for_timeout(500)
-    behind = pg.evaluate("""() => [...document.querySelectorAll(
+    np_.evaluate("App.reader.open(0,0,0,'theme')")
+    np_.wait_for_timeout(600)
+    behind = np_.evaluate("""() => [...document.querySelectorAll(
         'body > .skip-link, body > header, body > .toolbar, body > nav.tabbar,'
         + ' body > .wrap, body > footer')].map(e => !!e.inert)""")
     ok(len(behind) == 6 and all(behind),
        f"every page region behind the sheet is inert, tab bar included ({behind})")
-    pg.evaluate("closeModal()")
-    pg.wait_for_timeout(350)
-    ok(pg.evaluate("document.querySelector('.tabbar').inert === false"),
+    np_.evaluate("closeModal()")
+    np_.wait_for_timeout(400)
+    ok(np_.evaluate("document.querySelector('.tabbar').inert === false"),
        "closing the sheet gives the page back")
+    nc.close()
 
     group("responsive")
     for name, w, h, expect in [("iPhone SE", 375, 667, "column"), ("Pixel 7", 412, 915, "column"),
