@@ -139,7 +139,9 @@ def main():
         args = [PY, "browser_checks.py", target]
         # Once Playwright is installed, failures must fail the build. Marking
         # this run optional used to report success even after failed assertions.
-        ok &= run(args, ROOT, "browser tests", tail=6)
+        # A failed browser check names itself in the output; six lines of tail
+        # used to cut the failing labels off the end of the run.
+        ok &= run(args, ROOT, "browser tests", tail=30)
     except ImportError:
         print("\n--- browser tests ---")
         print("(skipped — pip install playwright && python3 -m playwright install chromium)")
