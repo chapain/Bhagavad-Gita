@@ -57,6 +57,7 @@ The same-form class was screened across all 700 verses: the other standalone sar
 ## Open collateral issues — not silently repaired
 
 - **1.13 paṇava ne/hi glosses:** inspect instrument terminology together with the complete list. Proposed direction is a drum gloss (not trumpet), preserving the literals; no glossary edits made in this boundary batch.
+  - **Closed 2026-11-04** by the semantic audit (`docs/semantic-audit.md`): the Nepali and Hindi rows had already been corrected under `docs/padachheda-conflict-resolution.md`; the **English** rows had not. They now follow the verse's own literal — bherī "drums", paṇava "kettledrums", ānaka "tabors" — and the Hindi horn row follows its literal ("तुरहियाँ"). This entry keeps the original finding; the decision is recorded in the audit ledger.
 - **1.08 samitiñjayaḥ ne/hi:** transliteration rather than an explanatory gloss. Literals contain the correct battle-victory meaning; no word-boundary change needed.
 - **1.09 tyaktajīvitāḥ:** the gloss is a formally literal rendering; the existing literals contextualize the warriors as ready to surrender life. Not a missing split. No change made.
 

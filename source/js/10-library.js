@@ -13,8 +13,7 @@ function buildIndex(){
 }
 function verseLoc(id){ return VERSES.find(v=>v.id===id); }
 /* VERSES belongs to this module (see test_mutable_feature_state_has_one_owner);
-   the suggestion module reads it through here rather than by name. */
-function versesForChapter(ci){ return VERSES.filter(v => v.ci === ci); }
+   other modules reach it through versesMatching() rather than by name. */
 /* The search screen (12-search.js) walks the whole index and tests each verse
    against its own query rules; it is handed the location, the searchable text
    and the folded text so the arrays stay here. */
@@ -452,7 +451,6 @@ App.library = Object.freeze({
   entryAt: sutraAt,
   assemble: assembleData,
   onSearchInput,
-  sugKey, sugPick, sugBlur, sugRender,
   syncSearchControl: searchX,
   paintTheme,
   rememberOrigin,

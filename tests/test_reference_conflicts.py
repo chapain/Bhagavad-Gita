@@ -3,6 +3,13 @@
 The offline snapshot preserves editorial decisions made against pinned online
 sources. It is test-only context, never an alternative runtime content store.
 See docs/padachheda-conflict-resolution.md for sources, variants and limits.
+
+Amended 2026-11-04 by the semantic audit (docs/semantic-audit.md): the 1.13
+instrument rows are aligned to the verse's own literal — bherī "drums",
+paṇava "kettledrums", ānaka "tabors" in English, and the Hindi horn row to
+"तुरहियाँ" as its literal reads. The earlier batch had already put the Nepali
+rows right and had marked this verse "not fully verified"; the English half
+was left behind. Nothing else in the snapshot moved.
 """
 import json
 from pathlib import Path

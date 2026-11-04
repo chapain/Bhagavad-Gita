@@ -142,63 +142,25 @@ test('result count labels use singular/plural wording in all three languages', (
   }
 });
 
-test('C2 suggestions rank recent, then chapters, then verse numbers', () => {
-  /* Execute the emitted builders, not a reimplementation. The listbox itself is
-     DOM; what it shows is pure data, so that is what is locked here. */
-  /* The builders live in their own module (15-suggest.js) so 10-library.js
-     stays under the 700-line monolith guard. They are read from the emitted
-     shell, not from a reimplementation. */
-  const st = html.indexOf('function sugVerseNumbers(');
-  const en = html.indexOf('function sugClose(', st);
-  assert(st >= 0 && en > st, 'the suggestion builders must be emitted');
-
-  const index = [];
-  data.forEach((ch, ci) => ch.themes.forEach((t, ti) =>
-    t.parts.forEach(p => p.sutras.forEach(s =>
-      index.push({ id: s.n, norm: displayRef(s.n), ci, ti })))));
-
-  const strings = { search_recent: 'Recent', chapters: 'Chapters', verse: 'Verse', verses: 'verses' };
-  let recents = [];
-  const ctx = vm.createContext({
-    DATA: data,
-    versesForChapter: ci => index.filter(v => v.ci === ci),
-    recentLoad: () => recents,
-    L: k => strings[k], T: o => (o && (o.en || o)) || '',
-    numL: n => String(n), fmtNL: n => String(n), esc: x => String(x),
-    searchFoldKey: foldedKey, searchExactKey: exactKey,
-    digitNorm: q => String(q).replace(/[\u0966-\u096f]/g,
-                  d => '0123456789'['\u0966\u0967\u0968\u0969\u096a\u096b\u096c\u096d\u096e\u096f'.indexOf(d)]),
-  });
-  vm.runInContext(html.slice(st, en) + '; SUG_MAX = 10;', ctx);
-  const rows = q => JSON.parse(JSON.stringify(ctx.sugRowsFor(q)));
-
-  assert.deepEqual(rows('d'), [], 'one character offers nothing');
-  assert.deepEqual(rows('   '), [], 'whitespace offers nothing');
-  assert.deepEqual(rows('zzzzqqq'), [], 'a word the book lacks offers nothing');
-
-  // Verse numbers: a prefix, a whole verse, and Devanagari digits.
-  const pre = rows('2.4').filter(r => r.kind === 'verse');
-  assert(pre.length === 2, 'a verse prefix offers at most two numbers');
-  assert(pre.every(r => /^2\.4/.test(r.value)), 'prefix suggestions match the digits typed');
-  assert.deepEqual(rows('2.47').filter(r => r.kind === 'verse').map(r => r.value), ['2.47']);
-  assert.deepEqual(rows('\u0968.\u096a').filter(r => r.kind === 'verse').map(r => r.value.slice(0, 3)),
-                 ['2.4', '2.4'], 'Devanagari digits suggest the same verses');
-  assert.deepEqual(rows('19.1'), [], 'a chapter the book does not have offers nothing');
-
-  // Chapter titles by name, carrying the chapter number as the action value.
-  const ch = rows('sankh').filter(r => r.kind === 'chapter');
-  assert.equal(ch.length, 1, 'Sankhya finds exactly one chapter');
-  assert.equal(ch[0].value, '2', 'the chapter row carries its number, not its title');
-  assert(ch[0].hint.startsWith('Chapters'), 'the row says what kind of thing it is');
-
-  // Recents lead, are capped at five, and the whole list stops at ten.
-  recents = ['karma', 'dharma', 'atman', 'yoga', 'brahman', 'moksha', 'sankhya'];
-  const mixed = rows('sankh');
-  assert.equal(mixed.filter(r => r.kind === 'recent').length, 5, 'recents cap at five');
-  assert(mixed.length <= 10, 'the listbox never exceeds ten rows');
-  assert(mixed[0].kind === 'recent', 'a remembered search is offered before a chapter');
-  assert(!mixed.some(r => r.kind === 'recent' && r.value.toLowerCase() === 'sankh'),
-         'the query itself is not offered back as a recent');
+test('the floating listbox and stored queries are gone, by design', () => {
+  /* 2026-11-04, owner report: the suggestion panel covered the live results and
+     its first five rows were his own past queries — one search for 11.47 had
+     stored "11", "11.", "11.4" and "11.47" as four separate recents, because
+     the old code saved the query on every debounced live search. Search already
+     renders its results as he types, so the overlay was removed, not restyled. */
+  assert(!/id="searchSuggest"/.test(html), 'no floating suggestion list is emitted');
+  assert(!/sugRowsFor|sugRender|sugKey|sugPick/.test(html), 'no suggestion code survives');
+  assert(!/'gitaRecent'/.test(html), 'typed queries are never written to storage');
+  const start = html.indexOf('function doSearch(){');
+  const end = html.indexOf('\nfunction clearSearch(){', start);
+  const code = html.slice(start, end);
+  const zeroStart = code.lastIndexOf('if(total === 0){');
+  const zeroEnd = code.indexOf('return;', zeroStart);
+  assert(zeroStart >= 0 && zeroEnd > zeroStart, 'the zero-result branch must be locatable');
+  assert(/srchChipsHtml\(\)/.test(code.slice(zeroStart, zeroEnd)),
+         'the empty state offers its four real starters');
+  assert(!/srchChipsHtml/.test(code.slice(zeroEnd)),
+         'a screen with hits carries no chip row');
 });
 
 test('search and favorites render counts through the grammar helper', () => {
@@ -229,8 +191,8 @@ test('search and favorites render counts through the grammar helper', () => {
                'loose spelling folds are confined to the IAST verse field');
 });
 
-test('search v2 highlights substring matches safely and offers chips', () => {
-  const hlStart = html.indexOf('function recentLoad(');
+test('search v2 highlights substring matches safely and offers four real starters', () => {
+  const hlStart = html.indexOf('function hlSearchText(');
   const hlEnd = html.indexOf('\nfunction doSearch(){', hlStart);
   assert(hlStart >= 0 && hlEnd > hlStart, 'hlSearchText and chip helpers must be emitted');
   const store = {};
@@ -242,7 +204,7 @@ test('search v2 highlights substring matches safely and offers chips', () => {
     esc: s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'),
     digitNorm: s => String(s).replace(/[०-९]/g, d => '0123456789'['०१२३४५६७८९'.indexOf(d)]),
     numL: s => String(s),
-    L: k => ({ search_recent: 'Recent' }[k] || k),
+    L: k => k,
     $: () => null,
   });
   vm.runInContext(html.slice(hlStart, hlEnd), ctx);
@@ -250,14 +212,11 @@ test('search v2 highlights substring matches safely and offers chips', () => {
                'The <mark class="srch-hl">Yoga</mark> of Action');
   assert.equal(ctx.hlSearchText('Verse 2.47 <script>', '2.47'),
                'Verse 2.47 &lt;script&gt;', 'numeric queries are not wrapped in <mark>');
-  ctx.recentSave('karma');
-  ctx.recentSave('bhakti');
-  const zeroChips = ctx.srchChipsHtml('nonexistent', 0);
-  assert(zeroChips.includes('data-q="2.47"') && zeroChips.includes('data-q="bhakti"'),
-         'zero-result chips include starter refs and recent queries');
-  const hitChips = ctx.srchChipsHtml('karma', 5);
-  assert(hitChips.includes('data-q="bhakti"') && !hitChips.includes('data-q="karma"'),
-         'hit chips show other recent queries without repeating current query');
+  const chips = ctx.srchChipsHtml();
+  for (const q of ['2.47', '4.7', '18.66', 'धर्मक्षेत्रे'])
+    assert(chips.includes(`data-q="${q}"`), `the empty state offers ${q}`);
+  assert(!/gitaRecent/.test(html.slice(hlStart, hlEnd)),
+         'the search screen keeps no history of what the reader typed');
 });
 
 

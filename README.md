@@ -48,7 +48,7 @@ app and works with no internet connection.
 |---|---|
 | Chapters · verses | 18 · 700 |
 | Themes · parts | 169 · 700 |
-| Word-instances glossed | 9,484 — each with English, Nepali **and** Hindi meanings |
+| Word-instances glossed | 9,506 — each with English, Nepali **and** Hindi meanings |
 | Languages | English, नेपाली, हिन्दी (no English fallback anywhere) |
 
 ---
@@ -76,7 +76,7 @@ source/                 ← edit here
   css/*.css                ordered feature styles; concatenated and inlined
   js/*.js                  ordered feature runtime; concatenated and inlined
   ch1.json … ch18.json    one compact canonical content file per chapter
-  i18n_ui.py              interface strings (en/ne/hi; 232 keys each)
+  i18n_ui.py              interface strings (en/ne/hi; 230 keys each)
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
   verify.py               shared text/transliteration helpers
   check_padas.py          verifies word splits against the pādas
@@ -89,8 +89,8 @@ source/                 ← edit here
 
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         943 assertions on the built document
-browser_checks.py       302 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
+run_gita_app.js         937 assertions on the built document
+browser_checks.py       300 live-browser checks (Learn/Play, refresh, storage, i18n, touch, offline)
 ```
 
 `index.html` remains a **single-shell split site**. Its document is maintained
@@ -112,8 +112,7 @@ The JavaScript source order is also the dependency map:
 |---|---|
 | `00-core.js` | shell primitives, validated shared session transitions and snapshots |
 | `10-library.js` | chapter loading, verse/theme/chapter index, searchable-text index, favourites and notes |
-| `12-search.js` | the search screen: query parsing, results, recent queries and highlighting |
-| `15-suggest.js` | the suggestion combobox's pure row builders and listbox |
+| `12-search.js` | the search screen: query parsing, live results and highlighting |
 | `20-learn.js` + `25-learn-session.js` + `27-learn-free.js` | Learn path, practice state, Learn restoration and free practice |
 | `30-play.js` | Play setup and active-game state |
 | `35-drills.js` | quiz queue, answers and drill restoration |
@@ -182,7 +181,7 @@ both are generated.
 | what you want to fix | file |
 |---|---|
 | chapter names and summaries; themes/parts, titles and descriptions; verse text, translations, word glosses, pāda flow and colophon | `source/ch<N>.json` |
-| interface wording (buttons and labels; 232 UI strings in each of three languages) | `source/i18n_ui.py` |
+| interface wording (buttons and labels; 230 UI strings in each of three languages) | `source/i18n_ui.py` |
 | shell structure, styling and client behavior | `source/app.html`, `source/css/*.css`, `source/js/*.js` |
 | approved story maps and safe legacy-progress migration | `source/study_map_contract.json` |
 

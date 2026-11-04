@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 943;      // keep in step with the printed total (+3: D1 rich copy)
-const TOTAL_BROWSER_CHECKS = 302;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
+const TOTAL_ASSERTIONS = 937;      // keep in step with the printed total (-6: C2 withdrawn)
+const TOTAL_BROWSER_CHECKS = 300;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;
@@ -119,7 +119,10 @@ const enKeys = Object.keys(UI.en);
 // exactly one spoken sentence; the row kinds reuse chapters/verses/Recent.
 // 2026-11-04 (fifth batch): method_link (1) → 232 — the footer link to the new
 // method page. It costs two assertions here (the ne/hi completeness loops).
-ok(enKeys.length === 232, `UI has 232 keys (got ${enKeys.length})`);
+// 2026-11-04 (sixth batch): the suggestion listbox is withdrawn, so
+// search_suggest_hint and search_recent (2) → 230. The overlay is gone; its two
+// strings went with it.
+ok(enKeys.length === 230, `UI has 230 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -1123,23 +1126,23 @@ group('learn + search affordances');
      'C3 the relaxed-search note is styled');
   ok(/\.lr-backup\{/.test(html), 'A5 the backup line is styled as a footnote');
 
-  // C2: a real combobox. The previous accessibility batch deliberately refused
-  // a fake tablist; the same rule applies to a suggestion box that looks
-  // navigable but is not, so the wiring is asserted rather than the look.
-  ok(/role="combobox"[^>]*aria-expanded="false"[^>]*aria-controls="searchSuggest"/.test(html),
-     'C2 the search field is a combobox that owns its listbox');
-  ok(/<ul class="search-suggest" id="searchSuggest" role="listbox"/.test(html),
-     'C2 the suggestions are a listbox, not a styled div');
-  ok(/aria-activedescendant/.test(html) && /setAttribute\('aria-activedescendant', 'sug-'/.test(html),
-     'C2 the active row is announced from the field');
-  ok(/aria-selected', on \? 'true' \?/.test(html) || /aria-selected', on \? 'true' : 'false'/.test(html),
-     'C2 exactly one row is selected at a time');
-  ok(/onkeydown="if\(App\.library\.sugKey\(event\)\)return; if\(event\.key==='Enter'\)App\.library\.search\(\)"/.test(html),
-     'C2 a consumed key never also submits the search');
-  ok(/function sugKey\(e\)[\s\S]{0,400}Escape/.test(html),
-     'C2 Escape dismisses the list before it closes the view');
-  ok(/sug-hint/.test(html) && /class="sr-only" id="searchSuggestHint"/.test(html),
-     'C2 the keyboard hint is spoken, not painted');
+  // C2, withdrawn 2026-11-04. The combobox was built to be a real ARIA
+  // listbox, and it was — but it floated over the live results it was meant to
+  // help find, and its first five rows were the reader's own past queries.
+  // The owner asked for it to go, so the locks now guard the removal: the
+  // field is a plain input, the overlay cannot come back by accident, and the
+  // shell keeps no record of what was typed.
+  ok(/id="searchInput"/.test(html) && !/role="combobox"/.test(html) &&
+     !/aria-controls="searchSuggest"/.test(html),
+     'C2 the search field is a plain input, not a combobox');
+  ok(!/id="searchSuggest"/.test(html) && !/class="search-suggest"/.test(html),
+     'C2 the floating suggestion list is gone');
+  ok(!/sugRender|sugKey|sugRowsFor|sugPick/.test(html),
+     'C2 no suggestion code survives in the shell');
+  ok(/onkeydown="if\(event\.key==='Enter'\)App\.library\.search\(\)"/.test(html),
+     'C2 Enter still submits the search');
+  ok(!/'gitaRecent'/.test(html),
+     'C2 the shell keeps no record of what the reader typed');
 }
 
 // ---------- summary ----------

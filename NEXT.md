@@ -1,6 +1,6 @@
 # NEXT.md — what is actually left
 
-**Updated 2026-11-04.** Base `2b33495` — the merge of PR #70 on `main` (PR #69 was `014e67c`). Baseline measured by `python3 build.py` at that commit, not quoted from a chat log.
+**Updated 2026-11-04.** Base `801a99f` — the merge of PR #72 on `main` (PR #70 was `2b33495`). Baseline measured by `python3 build.py` at that commit, not quoted from a chat log.
 
 > The previous edition of this file (dated 2026-10-19) presented Phases A–E as future work. Almost all of it has since shipped, so it was misleading as a to-do list. Its full text and history are archived verbatim at [`docs/archive/NEXT-2026-10-19.md`](docs/archive/NEXT-2026-10-19.md); this file is only the remainder. If an item below is finished, delete it rather than appending a log — history belongs in `HANDOFF.md` §1 and `docs/archive/`.
 
@@ -17,9 +17,10 @@ Verified in source at `2b33495`, not assumed:
 | A5 backup-age badge | `source/js/45-data.js:20` | `dataBackupLine()` → `backupLine` export |
 | B spaced repetition | `source/js/20-learn.js` | `box`/`due`/`reps` validation, `srsDueChapter`, `srsDueAll`, `srsStreakCount` |
 | C1 match highlight | `source/js/12-search.js:39` | `<mark class="srch-hl">` |
-| C2 suggestions | `source/js/15-suggest.js`, `source/app.html:224` | `#searchSuggest` listbox, debounced, arrow-key navigable |
+| C2 suggestions | **withdrawn 2026-11-04** | the floating listbox covered the live results and offered the reader's own past queries back; the field is a plain input again and Enter searches. Locks now guard the removal (`run_gita_app.js`, `tests/test_search.js`, 2 browser checks) |
 | C3 fold fallback | `source/js/12-search.js:154–166` | `searchFoldAlternative()` + `search_meant` note |
-| C4 recent searches | `source/js/12-search.js:21–31` | `gitaRecent`, capped at 6, chips |
+| C4 recent searches | **withdrawn 2026-11-04** | `gitaRecent` is gone; nothing is stored. The zero-result screen keeps four real starters (2.47 · 4.7 · 18.66 · धर्मक्षेत्रे) |
+| Semantic audit — every verse read | **shipped 2026-11-04** | all 700 verses of all 18 chapters read against the Sanskrit — Devanagari, IAST, literal (en/ne/hi), paraphrase (en/ne/hi), title, and every word row with its three glosses. The ledger is [`docs/semantic-audit.md`](docs/semantic-audit.md); nine findings in seven verses (1.04, 1.13, 1.24, 1.46, 2.10, 3.22, 5.12). `tests/test_semantic_audit.py` — 10 tests over all 700 verses |
 | C5 empty state | `source/js/12-search.js:171` | `search_try` hint in en/ne/hi |
 | D3 print stylesheet | `source/css/60-responsive.css:217` | `@media print` hides chrome, `break-inside:avoid` |
 | D4 recently viewed | `source/js/50-reader.js:126–145` | `gitaRecentVerses` (sessionStorage, capped 6), `.m-recent` row |
@@ -53,11 +54,11 @@ So `REVIEW.md` §20's "High value" list was also out of date; it is annotated th
 
 - `source/ch1.json` … `ch18.json` are canonical. Code renders and validates; it never invents or duplicates text.
 - Never hand-edit generated files (`index.html`, `data/ch*.js`, `chapter/*/`, `method/index.html`, `chapter.css`, `sw.js`, `sitemap.xml`, `robots.txt`, `404.html`, fonts/icons). Change `source/`, run `python3 build.py`, keep both diffs together.
-- **JS module guard is 700 lines and never moves.** Next tightest at this commit: `20-learn.js` 589, `10-library.js` 477, `50-reader.js` 426, `48-reader-view.js` 184. Split along a real seam (presentation vs the state that owns it) and list new files in `APP_JS_FILES` sorted.
-- Shell cap **375,000 chars** (currently **373,731 — only 1,269 of room**), enforced in `source/check_site_health.py`. This is now the binding constraint, not the 700-line guard: the next feature needs a real trim or a deliberate, measured cap raise.
+- **JS module guard is 700 lines and never moves.** Next tightest at this commit: `20-learn.js` 589, `50-reader.js` 546, `10-library.js` 475, `48-reader-view.js` 184. Split along a real seam (presentation vs the state that owns it) and list new files in `APP_JS_FILES` sorted.
+- Shell cap **375,000 chars** (currently **365,940 — 9,060 of room**), enforced in `source/check_site_health.py`. The audit's own text corrections moved it by 61 characters; it is still the 700-line module guard that binds first. The cap stopped being the binding constraint on 2026-11-04, when the withdrawn suggestion listbox freed 7,852 characters; the 700-line module guard binds first again.
 - Nepali and Hindi UI strings contain no Latin characters.
 - Counts stay synchronized across code, README, PROJECT.md, HANDOFF.md, build.py and docs. Never print a success line unless the command actually succeeded.
-- Browser checks (currently 302) are proven by CI, not by this sandbox. Report them that way.
+- Browser checks (currently 300) are proven by CI, not by this sandbox. Report them that way.
 
 ---
 
