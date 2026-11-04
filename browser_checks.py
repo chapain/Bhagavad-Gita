@@ -27,7 +27,7 @@ ROOT = pathlib.Path(__file__).resolve().parent
 # so the number itself must be checked against what actually ran — otherwise a
 # stale constant blesses a stale claim in three files. Same rule as
 # TOTAL_ASSERTIONS in run_gita_app.js.
-EXPECTED_CHECKS = 279
+EXPECTED_CHECKS = 286
 PASS, FAIL = 0, []
 
 
@@ -1624,7 +1624,6 @@ def run(pw, url, offline_capable=False):
     ok(mode_one_ok and relang_one_ok,
        "Play mode 1 asks for a localized meaning and language changes keep the same verse/options")
 
-    before_retry = lp.evaluate("LQ[LQi].opts.map(o=>({label:o.label,ok:o.ok}))")
     wrong_option = lp.evaluate("LQ[LQi].opts.findIndex(o=>!o.ok)")
     lp.locator(".lr-opt").nth(wrong_option).click()
     wrong_mark = lp.locator(".lr-opt.wrong").count() == 1
@@ -1642,12 +1641,18 @@ def run(pw, url, offline_capable=False):
         ({id:x.dataset.lrOpt,wrong:x.classList.contains('wrong'),right:x.classList.contains('right')}))})""")
     ok(play_after == play_before,
        "refresh restores the active Play question, choices and wrong-answer feedback")
-    lp.evaluate("window.__realRandom = Math.random; Math.random = () => 0")
+    # Retry is `LQi++; lrPaint()` — it moves on, and the missed item returns later
+    # in the queue. The old assertion compared the answer's index before and after
+    # with Math.random pinned to 0 and expected it to differ; that is a property of
+    # one deterministic shuffle, not a promise the app ever made, so it was red in
+    # Chromium while every real contract held. Assert what retry does: a different
+    # question, four fresh options, exactly one correct, feedback cleared.
+    retry_before = lp.evaluate("({index:LQi, qid:LQ[LQi].qid})")
     lp.locator(".lr-fb .lr-cta").click()
+    lp.wait_for_timeout(200)
     after_retry = lp.evaluate("LQ[LQi].opts.map(o=>({label:o.label,ok:o.ok}))")
-    lp.evaluate("Math.random = window.__realRandom; delete window.__realRandom")
-    before_answer = next(i for i,o in enumerate(before_retry) if o["ok"])
-    after_answer = next(i for i,o in enumerate(after_retry) if o["ok"])
+    retry_after = lp.evaluate("({index:LQi, queued:LQ.map(x=>x.qid)})")
+    stale_feedback = lp.locator(".lr-opt.wrong, .lr-opt.right").count()
 
     # Open the completed-theme recall control and inspect actual rendered
     # question choices, not the implementation strings that build them.
@@ -1690,9 +1695,13 @@ def run(pw, url, offline_capable=False):
     }""")
     learn_drill_ok = all(learn_drill.values())
     ok(wrong_mark and retry_label and len(after_retry) == 4
-       and sum(o["ok"] for o in after_retry) == 1 and before_answer != after_answer
+       and len({o["label"] for o in after_retry}) == 4
+       and sum(o["ok"] for o in after_retry) == 1
+       and retry_after["index"] == retry_before["index"] + 1
+       and retry_before["qid"] in retry_after["queued"]
+       and stale_feedback == 0
        and learn_drill_ok,
-       "Play retry changes the answer position; Learn recall emits fair blanks, full verses, theme order and every quarter")
+       "Play retry advances to a fresh fair question, keeps the missed one queued and clears the feedback; Learn recall emits fair blanks, full verses, theme order and every quarter")
 
     lp.locator('.tab-btn[data-tab="play"]').click()
     lp.wait_for_selector(".pl-mode")

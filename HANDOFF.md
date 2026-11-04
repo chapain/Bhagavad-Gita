@@ -25,7 +25,7 @@
 
 - **Shell size:** 310,251 → 334,897 (Phase A–E) → **347,934 chars / 369,749 bytes / 99,694 gzip**. Cap raised 350,000 → 360,000 on 2026-11-04 (search v3 + note field add ~13KB; 2KB of headroom is not headroom). Next if >360k: lazy-load the data module on `#data` only.
 
-- **Current build:** `python3 build.py` ALL GREEN — 60 Python, **890 document assertions**, 506 site-health, 9,658 study, 15 migration, **11 search**, 700 theme-cards, backup; Playwright browser suite (**279 checks**) is run by `build.py` itself and fails the build.
+- **Current build:** `python3 build.py` ALL GREEN — 60 Python, **890 document assertions**, 506 site-health, 9,658 study, 15 migration, **11 search**, 700 theme-cards, backup; Playwright browser suite (**286 checks**) is run by `build.py` itself and fails the build.
 
 ## 2. Resume in five minutes
 
@@ -51,7 +51,7 @@ Everything browser loads is **generated** by `source/build_gita.py`. Never hand-
 ## 4. Build and test
 
 ```bash
-python3 build.py          # build + all checks (60 Python, 890 doc, 506 health, 9658 study, 15 migration, 11 search, 700 cards, backup, 279 browser)
+python3 build.py          # build + all checks (60 Python, 890 doc, 506 health, 9658 study, 15 migration, 11 search, 700 cards, backup, 286 browser)
 python3 build.py --fast   # build only
 node run_gita_app.js      # 890 assertions
 node tests/test_data_backup.js
@@ -100,7 +100,7 @@ Phase 5.4 before audio. Versioned JSON export/import with merge. Footer link + #
 
 ## 8. Session log (last 20, newest first)
 
-- 2026-11-04 · `arena/77480584-bhagavad-gita` · **Review fixes 1, 2, 5, 8, 9.** CI made honest (Playwright before build, `--serve` at the root path, no `|| echo`, `prove_data_only.py` step); search now indexes chapter names, theme titles, verse titles and word glosses with grouped results (`Sankhya` → Sāṅkhya Yoga, `not hating` → 12.13 with the word named); notes are per-verse, saved as typed, listed in Saved and survive un-favouriting (`gitaFavNotes` unchanged); ne/hi copy pass within the granted scope; docs/counts reconciled (832→892 assertions, 270→279 browser checks, 217→224 strings, 83→97 KB gzip) and `TOTAL_ASSERTIONS` now fails the suite when it drifts from what actually ran. Shell 347,934 chars, cap 350k→360k.
+- 2026-11-04 · `arena/77480584-bhagavad-gita` · **Review fixes 1, 2, 5, 8, 9.** CI made honest (Playwright before build, `--serve` at the root path, no `|| echo`, `prove_data_only.py` step); search now indexes chapter names, theme titles, verse titles and word glosses with grouped results (`Sankhya` → Sāṅkhya Yoga, `not hating` → 12.13 with the word named); notes are per-verse, saved as typed, listed in Saved and survive un-favouriting (`gitaFavNotes` unchanged); ne/hi copy pass within the granted scope; docs/counts reconciled (832→892 assertions, 270→286 browser checks, 217→224 strings, 83→97 KB gzip) and `TOTAL_ASSERTIONS` now fails the suite when it drifts from what actually ran. Shell 347,934 chars, cap 350k→360k.
 - 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Public polish — make app better.** CI full build + Playwright, Pillow share-art, og-card.png 283KB→119KB (57% saving), welcome data link for backup discoverability, trim data module 11366→9794 bytes. Shell 310,251 chars / 330,279 bytes. Full build ALL GREEN.
 - 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Memory monolith killed (#1).** HANDOFF 329KB/2427 lines → archived to docs/archive/HANDOFF-2026-09-10-19.md, new lean 8.1KB/108 lines (<100KB), AGENTS.md updated, docs/archive/README.md policy.
 - 2026-10-19 · `arena/7aa49440-bhagavad-gita` · **Phase 5.4 data export/import — close data-loss risk.** 45-data.js + 32-data.css, #data view, footer link, schema v1, merge logic, i18n 183→202, tests, CI. Shell 311,813 chars, cap 295k→320k. Full build ALL GREEN (60 Python, 827 doc, 503 health, 9658 study). Pushed.

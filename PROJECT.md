@@ -52,8 +52,8 @@ For a brand-new session: read §1–§10, then this box, then build.
   Playwright now installs first, `build.py` runs the real suite
   (`browser_checks.py --serve`, service worker included), nothing swallows the
   exit code, and `source/prove_data_only.py` runs as its own step.
-* **Counts:** 60 Python, **892 assertions** on the document, 279 browser checks
-  (was 270), 506 site-health, 9,658 study-structure, 11 search regressions (was
+* **Counts:** 60 Python, **892 assertions** on the document, 286 browser checks
+  (the documents said 270), 506 site-health, 9,658 study-structure, 11 search regressions (was
   8). `TOTAL_ASSERTIONS` said 832 while the suite printed 867 —
   reconciled here, and the three files that state the numbers now agree.
   Shell 347,934 chars / 369,749 bytes / 99,694 gzip; README said “about 83 KB”.
@@ -1824,7 +1824,7 @@ chapter/ + chapter.css    generated chapter landing pages
 build.py              full build + checks (cross-platform, IDE-friendly)
 rebuild.sh            same, as a shell script
 run_gita_app.js       892 assertions on the built document and data (needs node)
-browser_checks.py     279 browser checks (needs Playwright)
+browser_checks.py     286 browser checks (needs Playwright)
 source/
   ch1.json … ch18.json one compact canonical content file per chapter
   app.html             app document template (build-time placeholders)
