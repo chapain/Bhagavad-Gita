@@ -36,7 +36,19 @@ jobs:
       # Chromium, offline service worker included) and a failed check fails the
       # build. Never mask it with `|| echo`: a green CI run must mean green.
       - name: Build and check
-        run: python3 build.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 build.py 2>&1 | tee build.log
+
+      # The runner serves step logs from a host some networks cannot reach; the
+      # artifact keeps the full build output readable either way.
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
 
       # Independent proof that editing source JSON is enough: one marker per
       # content kind is injected, rebuilt, found in the published output, then
