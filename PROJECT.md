@@ -15,6 +15,20 @@ the start of every session.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
+### 2026-11-04 — offline chapter pages keep their identity
+
+* The service worker promised to cache visited chapter pages but navigations were
+  never stored: any offline navigation got the app shell, even at a chapter URL.
+  It now caches successful same-origin chapter navigations under their own request,
+  keeps the root shell separate, and returns an honest 504 offline page for an
+  unvisited chapter or other uncached navigation. Failed HTTP responses cannot
+  overwrite a good cache; a cache write failure does not hide a live response.
+* `tests/test_offline_navigation.js` executes the generated worker with simulated
+  network and cache; two browser checks cover a real visited and unvisited chapter
+  offline. These browser checks are not locally verified without Playwright.
+  Counts: 934 assertions, 302 browser checks, 231 UI strings; the shell is
+  unchanged at 363,141 chars / 385,851 bytes / 105,035 gzip.
+
 ### 2026-11-04 (second batch) — the furniture behind the sheet, and the share art
 
 * **A tab list with no tabs, twice.** `modeSwitch()` wrapped the read/learn

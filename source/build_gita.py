@@ -701,24 +701,27 @@ self.addEventListener('fetch', e => {
   }
 
   if (req.mode === 'navigate') {
-    // network-first for the page itself, so updates land; fall back to cache offline.
-    // Only the app root is stored as the shell: caching any other page (e.g. a
-    // /chapter/N/ landing page) as './index.html' would poison the offline fallback.
-    e.respondWith(
-      fetch(req)
-        .then(res => {
-          const u = new URL(req.url), root = new URL('./', location.href).pathname;
-          if (u.pathname === root || u.pathname === root + 'index.html') {
-            const copy = res.clone();
-            caches.open(CACHE).then(c => c.put('./index.html', copy));
-          }
-          return res; })
-        .catch(() => caches.match('./index.html').then(r => r || caches.match('./'))
-          .then(r => r || new Response(
-            '<!doctype html><meta charset="utf-8"><title>Offline</title>' +
-            '<p>You are offline and this page is not cached yet. Reconnect and reload.</p>',
-            { status: 504, headers: { 'Content-Type': 'text/html; charset=utf-8' } })))
-    );
+    // Cache successful chapter navigations under their own URL, never as the
+    // app shell. An unvisited chapter must not silently become the app offline.
+    const root = new URL('./', location.href).pathname;
+    const isRoot = url.pathname === root || url.pathname === root + 'index.html';
+    const chapterPath = url.pathname.slice(root.length);
+    const isChapter = url.pathname.startsWith(root) &&
+      /^chapter\\/(?:[1-9]|1[0-8])\\/(?:index\\.html)?$/.test(chapterPath);
+    e.respondWith(fetch(req).then(res => {
+      if (res.ok && res.type === 'basic' && (isRoot || isChapter)) {
+        const copy = res.clone();
+        return caches.open(CACHE).then(c => c.put(isRoot ? './index.html' : req, copy))
+          .catch(() => undefined).then(() => res);
+      }
+      return res;
+    }).catch(() => caches.open(CACHE).then(c =>
+      isRoot ? c.match('./index.html').then(r => r || c.match('./')) :
+      isChapter ? c.match(req) : undefined
+    ).then(r => r || new Response(
+      '<!doctype html><meta charset="utf-8"><title>Offline</title>' +
+      '<p>You are offline and this page is not cached yet. Reconnect and reload.</p>',
+      { status: 504, headers: { 'Content-Type': 'text/html; charset=utf-8' } }))));
     return;
   }
   e.respondWith(

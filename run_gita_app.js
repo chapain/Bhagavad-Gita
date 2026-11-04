@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const TOTAL_ASSERTIONS = 934;      // keep in step with the printed total
-const TOTAL_BROWSER_CHECKS = 300;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
+const TOTAL_BROWSER_CHECKS = 302;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
 const ROOT = __dirname;

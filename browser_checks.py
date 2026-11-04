@@ -31,7 +31,8 @@ ROOT = pathlib.Path(__file__).resolve().parent
 # the field inside a 390px viewport, one selection follows the arrows, Escape
 # clears the ARIA state) → 300. Cannot be run in this sandbox (Playwright's CDN
 # resets); the number is checked against the real run in CI.
-EXPECTED_CHECKS = 300
+# Offline chapter-page cache and cache-miss behavior add two checks → 302.
+EXPECTED_CHECKS = 302
 PASS, FAIL = 0, []
 
 
@@ -2236,6 +2237,12 @@ def run(pw, url, offline_capable=False):
         q.goto(url + "chapter/1/", wait_until="load", timeout=30000)
         q.wait_for_timeout(1200)
         c.set_offline(True)
+        q.goto(url + "chapter/1/", wait_until="load", timeout=30000)
+        ok("Chapter 1" in q.inner_text("h1") and not q.locator("#appTitle").count(),
+           "OFFLINE visited chapter retains its own page")
+        missing = q.goto(url + "chapter/2/", wait_until="load", timeout=30000)
+        ok(missing.status == 504 and "not cached yet" in q.inner_text("body"),
+           "OFFLINE unvisited chapter reports a cache miss instead of serving the app")
         q.goto(url, wait_until="load", timeout=30000)
         q.wait_for_timeout(1000)
         ok(q.evaluate("!!document.querySelector('#appTitle')") and "Chapter 1" not in q.inner_text("h1"),

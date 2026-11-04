@@ -25,7 +25,7 @@
 
 - **Shell size:** 334,897 (Phase A–E) → 350,392 → **363,141 chars / 385,851 bytes / 105,035 gzip**. Cap moved twice on 2026-11-04, both times with the arithmetic at the check: 360,000 → 370,000 for A5 + C3 (+4,799) and → **375,000** for C2 (+7,086, after trimming 6,723 of its own code first). Measured, not assumed: `45-data.js` is only 13,228 chars, so lazy-loading it would win less than the bump while changing boot order, SW precache and the browser suite, which cannot run in this sandbox. Sitting at ~12.5KB headroom now; if it drops under 5KB again, split `20-learn.js` (34,114) or `10-library.js` (33,548), not the data module.
 
-- **Current build:** `python3 build.py` ALL GREEN — 60 Python, **934 document assertions**, 506 site-health, 9,658 study, 17 migration, **13 search**, 700 theme-cards, backup; Playwright browser suite (**300 checks**) is run by `build.py` itself and fails the build.
+- **Current build:** `python3 build.py` ALL GREEN — 60 Python, **934 document assertions**, 506 site-health, 9,658 study, 17 migration, **13 search**, 700 theme-cards, backup; Playwright browser suite (**302 checks**) is run by `build.py` itself and fails the build.
 
 ## 2. Resume in five minutes
 
@@ -51,7 +51,7 @@ Everything browser loads is **generated** by `source/build_gita.py`. Never hand-
 ## 4. Build and test
 
 ```bash
-python3 build.py          # build + all checks (60 Python, 934 doc, 506 health, 9658 study, 17 migration, 13 search, 700 cards, backup, 300 browser)
+python3 build.py          # build + all checks (60 Python, 934 doc, 506 health, 9658 study, 17 migration, 13 search, 700 cards, backup, 302 browser)
 python3 build.py --fast   # build only
 node run_gita_app.js      # 934 assertions
 node tests/test_data_backup.js
@@ -99,6 +99,8 @@ Phase 5.4 before audio. Versioned JSON export/import with merge. Footer link + #
 `icons/` is single source of truth, root duplicates removed, only `favicon.ico` at root.
 
 ## 8. Session log (last 20, newest first)
+
+- 2026-11-04 · `arena/82a47fa2-bhagavad-gita` · **Offline chapter navigation:** visited chapter pages cache under their own URL; unvisited pages return an offline 504 rather than the app shell. Simulated worker regression and 2 browser checks added; 302 browser checks (local browser skipped). Shell and verse data unchanged.
 
 - 2026-11-04 · `arena/187d5ce8-bhagavad-gita` · **C2 search suggestions.** Two characters open a real ARIA combobox (role=combobox + listbox + aria-activedescendant + aria-expanded), at most ten flat rows: 5 recent, 3 chapter titles matched by name, 2 verse numbers the digits could become (`2.4` → 2.4/2.40; Devanagari digits too). ↑/↓ move exactly one selection, Enter opens the highlighted row and cannot double as a submit, Escape closes the list only; a chapter row navigates instead of searching. One new string `search_suggest_hint` (231), row kinds reuse search_recent/chapters/verses. 13 search regressions (builders tested without a DOM) + 4 browser checks (**not run here** — Playwright cannot install; CI proves them). Shell 355,407 → 363,141, cap 370,000 → 375,000 after trimming the code first. Counts 934 assertions / 300 browser checks.
 - 2026-11-04 · `arena/187d5ce8-bhagavad-gita` · **A5 backup discoverability + C3 folded second chance.** The Learn path says how long ago you last exported (today / yesterday / N days ago, calendar days so DST cannot produce "0 days ago"), reads the existing `gitaBackupAt` stamp and opens the data screen, and stays silent for a visitor with nothing saved (`backup_*`, 5 keys ×3 → 230 strings). A diacritic query that found nothing now gets one plain-reading retry and shows the real results under their real count — `sankhyā` 0→3, `arjunā` 0→36, `karmanyā` 0→7 — with `search_meant` saying why (`searchFoldAlternative()`, fires only on zero, never loops). C5 was verified as already shipped (hint + chips) and dropped. Cap 360,000 → 370,000 on the measured arithmetic (+4,799 chars; lazy-loading `45-data.js` would win only 13,228). Counts 925 assertions / 296 browser checks, 12 search regressions, shell 355,407 chars.

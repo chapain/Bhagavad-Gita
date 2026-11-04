@@ -30,7 +30,7 @@ It runs, in order:
     3a. tests/test_progress_maps.js  saved-learning map migration (needs node)
     3b. tests/test_search.js   search normalization / result-count regressions (needs node)
     3c. tests/test_theme_card_navigation.js  all 700 chapter cards open their own verses (needs node)
-    4. browser_checks.py      300 live-browser checks (Learn/Play, refresh, storage and disclosures) (needs playwright)
+    4. browser_checks.py      302 live-browser checks (Learn/Play, refresh, storage and disclosures) (needs playwright)
     5. source/prove_data_only.py  (only with --prove, and always in CI) that the
                                published site is the source as written
 
@@ -135,6 +135,8 @@ def main():
                   "search normalization regressions", tail=3)
         ok &= run([node, "tests/test_theme_card_navigation.js"], ROOT,
                   "theme card navigation (700 verses)", tail=3)
+        ok &= run([node, "tests/test_offline_navigation.js"], ROOT,
+                  "offline navigation routing", tail=3)
         ok &= run([node, "tests/test_data_backup.js"], ROOT,
                   "data export/import (backup)", tail=6)
     else:
