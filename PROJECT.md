@@ -52,10 +52,26 @@ For a brand-new session: read §1–§10, then this box, then build.
   Playwright now installs first, `build.py` runs the real suite
   (`browser_checks.py --serve`, service worker included), nothing swallows the
   exit code, and `source/prove_data_only.py` runs as its own step.
-* **Counts:** 60 Python, **892 assertions** on the document, 286 browser checks
-  (the documents said 270), 506 site-health, 9,658 study-structure, 11 search regressions (was
-  8). `TOTAL_ASSERTIONS` said 832 while the suite printed 867 —
-  reconciled here, and the three files that state the numbers now agree.
+* **Counts:** 60 Python, **892 assertions** on the document, 286 browser checks,
+  506 site-health, 9,658 study-structure, 11 search regressions (was 8).
+  `TOTAL_ASSERTIONS` said 832 while the suite printed 867 — reconciled here, and
+  the constant is now compared with `PASS + FAIL` so it cannot bless a stale
+  number in three files again. `browser_checks.py` got the same lock
+  (`EXPECTED_CHECKS`), which is how the real total turned out to be **286**, not
+  the 270 three documents claimed: the suite had already drifted seven checks
+  (270 + 9 added here = 279), and nothing had ever run it.
+* **What the first real browser run found.** Making CI honest turned the suite
+  red three times, and each red was a stale check, not a broken app: four checks
+  read `.pb-num`/`.pada-row` straight after opening a verse although the
+  2026-11-03 card opens on the whole verse and needs one tap for the quarters;
+  “no sibling bar” was spelled as “no `.reader-copy` child other than the card
+  contains the hint”, true only while `#verseContent` was a direct child of
+  `.reader-copy` (it now sits in `#verseContainer`); and “Play retry changes the
+  answer position” compared option indexes with `Math.random` pinned to 0 even
+  though retry is `LQi++` and the missed question is re-queued — a coincidence,
+  not a promise. All three now assert what the app actually promises, and the
+  reader sheet's one intended disclosure (the note field) is allowed by name
+  instead of failing the “no disclosure card” rule.
   Shell 347,934 chars / 369,749 bytes / 99,694 gzip; README said “about 83 KB”.
 * **Shell cap 350,000 → 360,000.** Search v3 and the note field add ~13 KB and
   left 2 KB of headroom, which is not headroom. Raised deliberately, with the
