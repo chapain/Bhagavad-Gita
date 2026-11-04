@@ -67,6 +67,17 @@ def run(pw, url, offline_capable=False):
             return result;
         }""", token)
 
+    def expand_verse(page=pg):
+        """The sheet opens on the whole verse (2026-11-03); the four-quarter grid
+        is one tap in. Idempotent, so a check may call it without knowing the
+        current state — several checks read .pb-num/.pada-row, which only exist
+        once expanded."""
+        page.evaluate("""() => {
+            const c = document.querySelector('#modal #verseContent');
+            if (c && !c.querySelector('.pada-grid')) toggleVerseExpansion();
+        }""")
+        page.wait_for_timeout(250)
+
     group("rendering")
     ok(pg.title() == "Bhagavad Gita — English, Nepali, Hindi · 700 Verses", "title")
     ok("Welcome" in pg.inner_text("#view"), "welcome renders (JS runs)")
@@ -200,6 +211,7 @@ def run(pw, url, offline_capable=False):
     pg.locator(".mini").first.click()
     pg.wait_for_timeout(600)
     ok("4 quarters of 8" in pg.eval_on_selector(".m-meter", "e=>e.textContent"), "meter uses 'quarters'")
+    expand_verse()
     ok(pg.eval_on_selector_all(".pb-num", "e=>e.map(x=>x.textContent.trim())")
        == ["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"], "boxes say Quarter 1-4")
     foot = pg.eval_on_selector("#appFooter", "e=>e.textContent")
@@ -210,6 +222,7 @@ def run(pw, url, offline_capable=False):
     for lang in ("ne", "hi"):
         pg.evaluate(f"setLang('{lang}')")
         pg.wait_for_timeout(400)
+        expand_verse()
         # Phase 3.2: verse ref lives inside .m-title, meter inside the
         # ⋯ overflow menu (open it to assert its localised text).
         ok("श्लोक २.४७" in pg.eval_on_selector(".m-title", "e=>e.textContent"), f"{lang}: verse ref")
@@ -1788,6 +1801,7 @@ def run(pw, url, offline_capable=False):
         q.wait_for_timeout(200)
         q.locator(".ch-theme .mini").first.click()
         q.wait_for_timeout(500)
+        expand_verse(q)
         ok(q.eval_on_selector(".pada-row", "e=>getComputedStyle(e).flexDirection") == expect,
            f"{name}: quarters {expect}")
         ok(not q.evaluate("document.documentElement.scrollWidth>document.documentElement.clientWidth"),
