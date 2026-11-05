@@ -1,6 +1,6 @@
 # Title and description advisories — review worksheet
 
-Snapshot of 2026-11-04, from `python3 source/audit_titles.py --markdown`. Re-run it after
+Snapshot of 2026-11-05, from `python3 source/audit_titles.py --markdown`. Re-run it after
 any change to `source/ch*.json`; this file is a worklist, not site content.
 
 **An advisory is a candidate for review, not a finding of error.** Sanskrit
@@ -78,7 +78,7 @@ want them to survive a regeneration.
 |  | 1.34 | Teachers, fathers, sons | “Teachers, fathers, sons, and likewise grandfathers, maternal uncles, fathers-in-law, grandsons, brothers-in-law and other relatives.” | ☐ | ☐ | ☐ |
 |  | 1.35 | Not even for the three worlds | “I do not wish to kill them, even if they kill me, O Madhusūdana — not even for the sovereignty of the three worlds, let alone for the sake of this earth.” | ☐ | ☐ | ☐ |
 |  | 1.36 | Only sin would follow | “Slaying the sons of Dhṛtarāṣṭra, what pleasure would be ours, O Janārdana? Sin alone would take hold of us for killing these aggressors.” | ☐ | ☐ | ☐ |
-|  | 1.37 | Wrong to kill our own | “Therefore we should not kill our kinsmen, the sons of Dhṛtarāṣṭra; for how, having slain our own people, could we be happy, O Mādhava?” | ☐ | ☐ | ☐ |
+|  | 1.37 | We should not kill our own kin | “Therefore we should not kill our kinsmen, the sons of Dhṛtarāṣṭra; for how, having slain our own people, could we be happy, O Mādhava?” | ☐ | ☐ | ☐ |
 |  | 1.38 | Greed blinds them to the crime | “Though these men, their minds overcome by greed, see no fault in destroying the family and no crime in treachery toward friends…” | ☐ | ☐ | ☐ |
 |  | 1.39 | Seeing family ruin, turn away from sin | “But how can we not know — we who see the fault of family-destruction — that we must turn back from this sin, O Janārdana?” | ☐ | ☐ | ☐ |
 |  | 1.40 | When dharma is lost | “With the destruction of the family, the eternal family-duties are lost; and when dharma is lost, adharma overwhelms the whole family.” | ☐ | ☐ | ☐ |
@@ -158,7 +158,7 @@ want them to survive a regeneration.
 |  | 2.57 | Neither rejoicing nor recoiling | One who is without affection everywhere, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.58 | Like a tortoise drawing in its limbs | When, like a tortoise drawing in its limbs from all sides, one withdraws the senses from their objects — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.59 | Craving ends when the Supreme is seen | The objects fall away from the self-controlled one, but the taste for them remains; and when the Supreme is seen, even that taste departs. | ☐ | ☐ | ☐ |
-|  | 2.60 | Turbulent senses carry away the mind | Even for the striving sage, O son of Kuntī, the turbulent senses forcibly carry away the mind. | ☐ | ☐ | ☐ |
+|  | 2.60 | The mind following the senses loses its wisdom | Even for the striving sage, O son of Kuntī, the turbulent senses forcibly carry away the mind. | ☐ | ☐ | ☐ |
 |  | 2.61 | Reining in the senses | Having restrained them all, the disciplined one should sit intent on Me; for one whose senses are under control, wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.62 | Brooding breeds desire, desire breeds anger | Brooding on sense objects breeds attachment to them; from attachment arises desire; from desire arises anger. | ☐ | ☐ | ☐ |
 |  | 2.63 | Anger brings delusion and ruin | From anger comes delusion; from delusion, confusion of memory; from broken memory, the ruin of understanding; and from that ruin, one is destroyed. | ☐ | ☐ | ☐ |
@@ -192,7 +192,7 @@ want them to survive a regeneration.
 |  | 3.13 | Sacrificial remnants free one from sin | The good who eat the remnants of sacrifice are released from all sins; but the wicked who cook for their own sake verily eat sin. | ☐ | ☐ | ☐ |
 |  | 3.14 | From food, from rain, from sacrifice | Beings arise from food; food arises from rain; rain arises from sacrifice; sacrifice arises from action. | ☐ | ☐ | ☐ |
 |  | 3.15 | Action arises from Brahman | Know that action arises from Brahman, and Brahman from the Imperishable; therefore the all-pervading Brahman is ever established in sacrifice. | ☐ | ☐ | ☐ |
-|  | 3.16 | Who does not turn the wheel lives in vain | He who does not follow here this wheel thus set in motion, whose life is sin, delighting in the senses — lives in vain, O Pārtha. | ☐ | ☐ | ☐ |
+|  | 3.16 | Who does not follow the wheel lives in vain | He who does not follow here this wheel thus set in motion, whose life is sin, delighting in the senses — lives in vain, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 3.17 | For him there is nothing left to do | But the man who rejoices only in the Self, is gratified with the Self, and is content in the Self alone — for him there is nothing to do. | ☐ | ☐ | ☐ |
 |  | 3.18 | Nothing to gain or lose | For him there is no purpose in what has been done or not done, nor does he depend on any being for any purpose. | ☐ | ☐ | ☐ |
 |  | 3.19 | Therefore act, unattached | Therefore, always perform the action that is your duty, unattached; for performing action without attachment, a man attains the Supreme. | ☐ | ☐ | ☐ |
@@ -208,7 +208,7 @@ want them to survive a regeneration.
 |  | 3.29 | Let the knower not disturb them | Those deluded by the guṇas of prakṛti cling to actions born of the guṇas; the one of complete knowledge should not unsettle the dull-witted, partial knowers. | ☐ | ☐ | ☐ |
 |  | 3.30 | Renouncing all actions in me, fight | Renouncing all actions in me, with the mind fixed on the Self, being free from desire and from possessiveness, fight — free from fever. | ☐ | ☐ | ☐ |
 |  | 3.31 | Those who follow it are freed | Those men who always follow this teaching of mine with faith, without finding fault, are released even from the bondage of action. | ☐ | ☐ | ☐ |
-|  | 3.32 | Those who scoff at it are lost | But those who, finding fault, do not follow this teaching of mine — know them as deprived of all wisdom, ruined, and without understanding. | ☐ | ☐ | ☐ |
+|  | 3.32 | Those who find fault and do not follow are lost | But those who, finding fault, do not follow this teaching of mine — know them as deprived of all wisdom, ruined, and without understanding. | ☐ | ☐ | ☐ |
 |  | 3.33 | Even the wise follow their nature | Even a man of knowledge acts according to his own nature; beings follow their nature — what will restraint accomplish? | ☐ | ☐ | ☐ |
 |  | 3.34 | Attraction and aversion lie in wait | Attachment and aversion are fixed regarding the object of each sense; let one not come under their power, for they are one's waylayers. | ☐ | ☐ | ☐ |
 |  | 3.35 | Better one's own dharma, though flawed | Better is one's own dharma, though defective, than another's well-performed; death in one's own dharma is better — another's dharma brings fear. | ☐ | ☐ | ☐ |
@@ -290,12 +290,12 @@ want them to survive a regeneration.
 |  | 5.14 | The Lord creates no doership | The Lord neither creates agency nor actions for the world, nor the connection of action with its fruit; it is nature that acts. | ☐ | ☐ | ☐ |
 |  | 5.15 | He takes on neither sin nor merit | The all-pervading One neither accepts the sin nor the merit of anyone; knowledge is enveloped by ignorance, and thereby beings are deluded. | ☐ | ☐ | ☐ |
 |  | 5.16 | Knowledge reveals like the sun | But for those whose ignorance is destroyed by the knowledge of the Self, that knowledge shines forth like the sun, revealing the Supreme. | ☐ | ☐ | ☐ |
-|  | 5.17 | Mind, self and refuge all in that | With their intellect in that, their self in that, steadfast in that, and that as their highest goal — they reach the state of no return, their sins cleansed by knowledge. | ☐ | ☐ | ☐ |
+|  | 5.17 | Intellect, self and refuge all in that | With their intellect in that, their self in that, steadfast in that, and that as their highest goal — they reach the state of no return, their sins cleansed by knowledge. | ☐ | ☐ | ☐ |
 |  | 5.18 | The sage sees the same in all | The wise look equally on a brāhmaṇa endowed with learning and humility, a cow, an elephant, a dog, and even an outcaste. | ☐ | ☐ | ☐ |
 |  | 5.19 | Equanimity conquers the world of birth and death | Here itself the world of birth and death is conquered by those whose minds rest in equanimity; Brahman is flawless and equal; therefore they are established in Brahman. | ☐ | ☐ | ☐ |
 |  | 5.20 | He neither rejoices nor is disturbed | He does not rejoice on obtaining what is dear, nor is he perturbed on obtaining what is not dear; with steady intellect, undeluded, the knower of Brahman abides in Brahman. | ☐ | ☐ | ☐ |
 |  | 5.21 | The joy within | With the self unattached to external contacts, he finds the happiness that is in the Self; joined with the yoga of Brahman, he enjoys bliss that is imperishable. | ☐ | ☐ | ☐ |
-|  | 5.22 | Contacts are wombs of pain | Indeed, the pleasures born of contact with the senses are only wombs of sorrow; they have a beginning and an end, O son of Kuntī — the wise do not rejoice in them. | ☐ | ☐ | ☐ |
+|  | 5.22 | Contact-born pleasures are wombs of pain | Indeed, the pleasures born of contact with the senses are only wombs of sorrow; they have a beginning and an end, O son of Kuntī — the wise do not rejoice in them. | ☐ | ☐ | ☐ |
 |  | 5.23 | He who withstands desire and anger | He who, even here, before the release of the body, is able to endure the impulse born of desire and anger — he is yoked in yoga, he is a happy man. | ☐ | ☐ | ☐ |
 |  | 5.24 | Whose joy is within | He who is happy within, who delights within, who is illumined within — that yogi, become Brahman, attains to Brahman-nirvāṇa. | ☐ | ☐ | ☐ |
 |  | 5.25 | Sages with dispelled doubts reach Brahman-nirvāṇa | The seers whose sins are destroyed, whose doubts are cut, whose selves are controlled, who delight in the welfare of all beings — they attain Brahman-nirvāṇa. | ☐ | ☐ | ☐ |
@@ -458,14 +458,14 @@ want them to survive a regeneration.
 |  | 9.22 | I bear the welfare of my devotees | To those who worship me, ever united, thinking of me alone — for them, ever devoted, I myself carry what they lack and preserve what they have. | ☐ | ☐ | ☐ |
 |  | 9.23 | Even those who worship other gods | Even those who, devoted to other deities, worship them with faith — they worship me alone, O son of Kuntī, though not in the prescribed way. | ☐ | ☐ | ☐ |
 |  | 9.24 | I am the enjoyer of all sacrifices | For I alone am the enjoyer and lord of all sacrifices; but they do not know me in truth, and so they fall. | ☐ | ☐ | ☐ |
-|  | 9.25 | Each reaches the god he worships | The worshippers of the gods go to the gods; the worshippers of the ancestors go to the ancestors; the worshippers of the spirits go to the spirits; but my worshippers come to me. | ☐ | ☐ | ☐ |
+|  | 9.25 | Each reaches the object they worship | The worshippers of the gods go to the gods; the worshippers of the ancestors go to the ancestors; the worshippers of the spirits go to the spirits; but my worshippers come to me. | ☐ | ☐ | ☐ |
 |  | 9.26 | A leaf, a flower, fruit or water | Whoever offers me with devotion a leaf, a flower, a fruit or water — I accept that offering of the pure-hearted. | ☐ | ☐ | ☐ |
 |  | 9.27 | Whatever you do, offer it to me | Whatever you do, whatever you eat, whatever you offer, whatever you give, whatever austerity you perform, O son of Kuntī — do it as an offering to me. | ☐ | ☐ | ☐ |
 |  | 9.28 | The fruit of renunciation | Thus you shall be freed from the bonds of actions, which bear good and evil fruit; with the self yoked in renunciation, liberated, you shall come to me. | ☐ | ☐ | ☐ |
 |  | 9.29 | Equal to all | I am the same to all beings; none is dear or hated by me; but those who worship me with devotion — they are in me, and I am in them. | ☐ | ☐ | ☐ |
-|  | 9.30 | Even a grave sinner is to be regarded as righteous | Even if a man of very evil conduct worships me with single-minded devotion, he is to be regarded as good, for he is rightly resolved. | ☐ | ☐ | ☐ |
+|  | 9.30 | Even a grave sinner, if wholly devoted, is righteous | Even if a man of very evil conduct worships me with single-minded devotion, he is to be regarded as good, for he is rightly resolved. | ☐ | ☐ | ☐ |
 |  | 9.31 | My devotee never perishes | Quickly he becomes righteous of soul and attains lasting peace; know this for certain, O son of Kuntī: my devotee never perishes. | ☐ | ☐ | ☐ |
-|  | 9.32 | All who take refuge in me reach me | For those who take refuge in me, O Pārtha — even those of sinful birth, women, traders and labourers — they too reach the supreme goal. | ☐ | ☐ | ☐ |
+|  | 9.32 | All who take refuge reach the supreme goal | For those who take refuge in me, O Pārtha — even those of sinful birth, women, traders and labourers — they too reach the supreme goal. | ☐ | ☐ | ☐ |
 |  | 9.33 | Having come to this fleeting world, worship me | How much more then the holy brāhmaṇas and the devoted royal sages! Having come to this impermanent, joyless world, worship me. | ☐ | ☐ | ☐ |
 |  | 9.34 | Fix your mind on me | Fix your mind on me, be my devotee, offer to me, bow to me — thus yoking the self to me, intent on me, you shall surely come to me. | ☐ | ☐ | ☐ |
 
@@ -674,7 +674,7 @@ want them to survive a regeneration.
 |  | 14.21 | The marks of the transcendent | Arjuna said: By what marks is he who has transcended these three guṇas known, O Lord? What is his conduct, and how does he transcend them? | ☐ | ☐ | ☐ |
 |  | 14.22 | Neither hates them nor longs for them | The Blessed Lord said: He who neither hates illumination, activity and delusion when they arise, nor longs for them when they cease, O Pāṇḍava, | ☐ | ☐ | ☐ |
 |  | 14.23 | Seated like a witness | — seated as one indifferent, unshaken by the guṇas, thinking 'the guṇas act' and abiding unmoved — | ☐ | ☐ | ☐ |
-|  | 14.24 | Equal in all things | — equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in praise and blame — | ☐ | ☐ | ☐ |
+|  | 14.24 | Even in pleasure and pain; clod, stone and gold alike | — equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in praise and blame — | ☐ | ☐ | ☐ |
 |  | 14.25 | Equal in honour and dishonour | — equal in honour and dishonour, equal to friend and foe, renouncing all undertakings — he is said to have transcended the guṇas. | ☐ | ☐ | ☐ |
 |  | 14.26 | Unwavering devotion carries one beyond | He who serves me with the unwavering yoga of devotion — transcending these guṇas, he becomes fit for Brahman. | ☐ | ☐ | ☐ |
 |  | 14.27 | I am the support | For I am the support of Brahman, of immortality and the imperishable, of eternal dharma and of absolute bliss. | ☐ | ☐ | ☐ |
@@ -795,7 +795,7 @@ want them to survive a regeneration.
 |  | 18.14 | Destiny, the fifth cause | — the seat, the agent, the instruments of various kinds, the various separate efforts, and destiny, the fifth. | ☐ | ☐ | ☐ |
 |  | 18.15 | Whatever action a person undertakes | Whatever action a man undertakes with body, speech or mind — rightly or wrongly — these five are its causes. | ☐ | ☐ | ☐ |
 |  | 18.16 | Seeing the Self alone as the doer is mistaken | That being so, he who — wrong-minded and with imperfect understanding — sees the Self alone as the agent, does not truly see. | ☐ | ☐ | ☐ |
-|  | 18.17 | Free of ego, he slays and is not bound | He whose mind is free from ego, whose intellect is not stained — though he slays these worlds, he slays not, nor is bound. | ☐ | ☐ | ☐ |
+|  | 18.17 | Ego-free, he neither kills nor is bound | He whose mind is free from ego, whose intellect is not stained — though he slays these worlds, he slays not, nor is bound. | ☐ | ☐ | ☐ |
 |  | 18.18 | Knowledge, action, agent | Knowledge, the known and the knower — the threefold impulse to action; the instrument, the act and the agent — the threefold basis of action. | ☐ | ☐ | ☐ |
 |  | 18.19 | Knowledge, action, agent: threefold by the guṇas | Knowledge, action and agent are declared threefold by the distinction of the guṇas — hear them as they are in the enumeration of the guṇas. | ☐ | ☐ | ☐ |
 |  | 18.20 | The sāttvic knowledge | That knowledge by which one sees one imperishable being in all beings, undivided in the divided — know that as sāttvic. | ☐ | ☐ | ☐ |

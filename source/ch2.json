@@ -531,9 +531,9 @@
     {
       "range": "2.04–2.06",
       "titles": {
-        "en": "Arjuna cannot strike his teachers",
-        "ne": "अर्जुन पूजनीय गुरुहरूलाई प्रहार गर्न सक्दैनन्",
-        "hi": "अर्जुन पूजनीय गुरुओं पर शस्त्र नहीं उठा सकते"
+        "en": "Arjuna cannot bring himself to fight",
+        "ne": "अर्जुन युद्ध गर्न सक्नुहुन्न",
+        "hi": "अर्जुन युद्ध नहीं कर पाते"
       },
       "descs": {
         "en": "Arjuna cannot bring himself to raise his bow against revered teachers; he would rather beg and cannot see whether victory or defeat is better.",
@@ -3865,9 +3865,9 @@
     {
       "range": "2.22–2.25",
       "titles": {
-        "en": "The Self sheds bodies as worn clothes",
-        "ne": "जीर्ण वस्त्रझैँ आत्मा पुरानो शरीर त्याग्छ",
-        "hi": "पुराने वस्त्रों की तरह आत्मा देह बदलती है"
+        "en": "Bodies change; the Self remains untouched",
+        "ne": "शरीर फेरिए पनि आत्मा अविकारी रहन्छ",
+        "hi": "शरीर बदलते हैं, आत्मा अविकारी रहती है"
       },
       "descs": {
         "en": "As a person changes worn clothes for new ones, the embodied Self leaves old bodies and takes new ones. No weapon, fire, water or wind can alter it; it is unmanifest and unchanging.",
@@ -10029,9 +10029,9 @@
         {
           "range": "2.60–2.60",
           "titles": {
-            "en": "Turbulent senses carry away the mind",
-            "ne": "चञ्चल इन्द्रियले मनलाई बलपूर्वक तान्छन्",
-            "hi": "चंचल इन्द्रियाँ मन को बलपूर्वक खींच लेती हैं"
+            "en": "The mind following the senses loses its wisdom",
+            "ne": "इन्द्रियको पछि लाग्ने मनले बुद्धि हराउँछ",
+            "hi": "इन्द्रियों के पीछे चलने वाला मन बुद्धि हर लेता है"
           },
           "descs": {
             "en": "Even a striving, wise person’s mind can be carried off by the turbulent senses.",

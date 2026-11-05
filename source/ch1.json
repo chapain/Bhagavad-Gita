@@ -16,9 +16,9 @@
     {
       "range": "1.01–1.03",
       "titles": {
-        "en": "The blind king asks",
-        "ne": "अन्धा राजाको प्रश्न",
-        "hi": "अंधे राजा का प्रश्न"
+        "en": "Dhṛtarāṣṭra asks; Duryodhana surveys the Pāṇḍava ranks",
+        "ne": "धृतराष्ट्रको प्रश्नपछि दुर्योधनले पाण्डव सेना नियाल्छन्",
+        "hi": "धृतराष्ट्र के प्रश्न के बाद दुर्योधन पांडव सेना का निरीक्षण करते हैं"
       },
       "descs": {
         "en": "Sañjaya answers with Duryodhana inspecting the Pāṇḍava ranks.",
@@ -5931,9 +5931,9 @@
         {
           "range": "1.37–1.37",
           "titles": {
-            "en": "Wrong to kill our own",
-            "ne": "आफ्नैलाई मार्नु पाप",
-            "hi": "अपनों को मारना पाप"
+            "en": "We should not kill our own kin",
+            "ne": "आफ्ना नातेदारलाई मार्नु हुँदैन",
+            "hi": "अपने कुटुंबियों को नहीं मारना चाहिए"
           },
           "descs": {
             "en": "So these kinsmen should not be killed; how could he be happy after slaying his own people?",
@@ -7202,9 +7202,9 @@
     {
       "range": "1.45–1.47",
       "titles": {
-        "en": "He would rather die—and lays down his bow",
-        "ne": "अर्जुन धनुष त्यागेर बस्छन्",
-        "hi": "अर्जुन धनुष-बाण रखकर बैठ जाते हैं"
+        "en": "A great sin, an unarmed death, and grief",
+        "ne": "महापाप, निःशस्त्र मृत्यु र शोक",
+        "hi": "महापाप, निहत्थी मृत्यु और शोक"
       },
       "descs": {
         "en": "He calls the choice a great sin and would rather be killed unarmed; his final words give way to grief.",

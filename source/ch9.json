@@ -3803,7 +3803,7 @@
         {
           "range": "9.25–9.25",
           "titles": {
-            "en": "Each reaches the god he worships",
+            "en": "Each reaches the object they worship",
             "ne": "जसलाई पुज्यो, त्यही पाउँछ",
             "hi": "जिसे पूजे, उसी को पाता है"
           },
@@ -4629,9 +4629,9 @@
         {
           "range": "9.30–9.30",
           "titles": {
-            "en": "Even a grave sinner is to be regarded as righteous",
-            "ne": "अति दुराचारीलाई पनि साधु मान्नुपर्छ",
-            "hi": "अति दुराचारी को भी साधु मानना चाहिए"
+            "en": "Even a grave sinner, if wholly devoted, is righteous",
+            "ne": "एकनिष्ठ भक्त भए अति दुराचारी पनि साधु मानिन्छ",
+            "hi": "अनन्य भक्त हो तो अति दुराचारी भी साधु माना जाए"
           },
           "descs": {
             "en": "Even a person of very evil conduct who worships him with single-minded devotion is to be regarded as good, being rightly resolved.",
@@ -4939,9 +4939,9 @@
         {
           "range": "9.32–9.32",
           "titles": {
-            "en": "All who take refuge in me reach me",
-            "ne": "मेरो शरण लिने सबै मकहाँ पुग्छन्",
-            "hi": "मेरी शरण लेने वाले सब मुझ तक पहुँचते हैं"
+            "en": "All who take refuge reach the supreme goal",
+            "ne": "मेरो शरण लिने सबै परम गति पाउँछन्",
+            "hi": "मेरी शरण लेने वाले सब परम गति पाते हैं"
           },
           "descs": {
             "en": "Even those of sinful birth, women, traders and labourers who take refuge in him reach the supreme goal.",
