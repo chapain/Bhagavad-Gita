@@ -4,9 +4,9 @@
 
 | | |
 |---|---|
-| Last updated | 2026-11-04 |
-| Updated by | Arena session `arena/8d6ee12a-bhagavad-gita` |
-| Base commit | `39e56d6` on `main` |
+| Last updated | 2026-11-05 |
+| Updated by | Arena session `arena/911680d2-bhagavad-gita` |
+| Base commit | `5c84bde` on `main` |
 | Owner | Dhruba Chapain, Pokhara |
 | Live site | https://chapain.github.io/Bhagavad-Gita/ |
 | Archived | `docs/archive/HANDOFF-2026-09-10-19.md` (329KB, 2427 lines), `docs/archive/PROJECT-2026-10.md` (113KB, 15 October batches), `docs/archive/NEXT-2026-10-19.md` (the superseded Phase A–E plan) |
@@ -16,6 +16,8 @@
 ---
 
 ## 1. Where we are (concise)
+
+- **Independent title audit, complete through Chapter 18 (2026-11-05, `arena/911680d2-bhagavad-gita`).** Best-judgment corrections are authorized; after the initial Chapter 10 request, scope expanded through Chapter 18. `docs/title-audit.md` now records all chapters: 169/169 theme titles and 700/700 verse titles in en/ne/hi, each with a chapter verdict table before edits. Twenty-two title records are corrected across Chapters 1–9, 12–14 and 18; Chapters 8, 10, 11 and 15–17 passed without edits. Every correction was applied only after its chapter’s verdict table was recorded. The final expanded-scope build/proof results are recorded in PROJECT.md §4.12. `source/check_study_structure.py` has a non-blocking ledger pointer; four regressions pin all 22 corrected trilingual title records, full-book ledger coverage (169 themes / 700 verses) and the pointer. Final `python3 build.py --prove` results cover this full scope. At the initial Chapter 10 checkpoint, two consecutive full builds were byte-identical across 42 files (SHA-256 `2504c66f7bb6e597a0470effc779efd761a8ae49f2c2b02a8e28661db3d19b61`); deterministic double-build verification was not repeated after the expanded audit. Browser tests were skipped (Playwright/Chromium unavailable); browser/live checks were not run. Pillow was missing, so share art was not repainted. See PROJECT.md §4.12.
 
 - **The whole book has now been read verse by verse (arena/fe4d0fed-bhagavad-gita).** The semantic audit that began at 1.01–1.20 is **finished: 700 of 700 verses**, all eighteen chapters, each read in the Devanagari, the IAST, the literal (en/ne/hi), the paraphrase (en/ne/hi), the title (en/ne/hi) and every word row with its three glosses. Chapters 1–12 were read first, 13–18 in the same pass under the same rules, so the ledger (`docs/semantic-audit.md`) is comparable line for line across the two halves. **Nine findings in seven verses, sixteen strings:** 1.04 (`भीम से` → `भीम के समान`), 1.13 (the English instrument rows now follow their own literal; the Hindi horn row reads `तुरहियाँ`), 1.24 (three paraphrases now address "O descendant of Bharata" and say the chariot was *placed*), 1.46 (the first privative `अ` row reads "without", not "not"), 2.10 (the Nepali literal and the three paraphrases keep "as if" and the literal's addressee), 3.22 (the Nepali word row reads `न प्राप्त`, the wording of its own literal, where it read `नप्राप्त`), 5.12 (`योगमा न स्थित`, in the literal and in the word row). Every other verse passed on first reading. The class checks now run over the whole book: no comparison glossed with `से`, all 19 `सम`-family rows read "समान" in Nepali and Hindi, no missing literal or paraphrase, no empty gloss, no Latin in Nepali or Hindi, no literal duplicating its own paraphrase, and the 88 surviving same-gloss word pairs are each reviewed and listed rather than ignored. `tests/test_semantic_audit.py` is now **10 tests over all 700 verses**, pinning the reviewed rows and their literal *and* paraphrase context for all seven corrected verses; a negative control confirms the duplicate-gloss rule rejects an unreviewed pair. Build ALL GREEN: **90 Python**, 937 document assertions, 560 site-health, 10 SEO, 9,658 study, 17 migration, 13 search, 700 cards, backup, offline; two consecutive full builds byte-identical. **The 300 browser checks did not run here** — Playwright cannot install in this sandbox — so CI and the owner own that proof.
 

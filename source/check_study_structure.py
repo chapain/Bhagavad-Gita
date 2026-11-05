@@ -23,6 +23,13 @@ REVIEWED_TOTAL = sum(len(ranges) for ranges in APPROVED_MAPS.values())
 # so the theme name and the 2.19 pearl name are the same sentence on purpose.
 SAME_TITLE_ALLOWED = {'2.19–2.21'}
 
+# A human reading ledger is the semantic review record; structural checks and
+# mechanical title advisories are only prompts, never substitutes for it.
+TITLE_AUDIT_POINTER = (
+    'title audit pointer (report-only): docs/title-audit.md — independent '
+    'en/ne/hi verdicts through Chapter 18; mechanical advisories are prompts, '
+    'not defect determinations')
+
 # Advisory 2: a theme title may name a person only if the name (or a known
 # alias for that person) appears in the theme's own EN text or, for a
 # mid-speech continuation, in the verse immediately before the theme.
@@ -226,6 +233,7 @@ def main():
     # Advisories first, so the summary line stays the last line of output.
     for advisory in advisories:
         print(f'title advisory (report-only): {advisory}')
+    print(TITLE_AUDIT_POINTER)
     print(f'study structure: {checks} checks passed — {REVIEWED_TOTAL} story themes, 700 pearls, three languages')
     if '--explain' in __import__('sys').argv:
         for rng, (count, reason) in LONG_THEME_EXCEPTIONS.items():

@@ -2567,9 +2567,9 @@
         {
           "range": "3.16–3.16",
           "titles": {
-            "en": "Who does not turn the wheel lives in vain",
-            "ne": "चक्र नचलाउने व्यर्थ बाँच्छ",
-            "hi": "चक्र न चलाने वाला व्यर्थ जीता है"
+            "en": "Who does not follow the wheel lives in vain",
+            "ne": "यो चक्र अनुसरण नगर्ने व्यर्थ बाँच्छ",
+            "hi": "चक्र का अनुसरण न करने वाला व्यर्थ जीता है"
           },
           "descs": {
             "en": "Whoever does not turn this wheel, living for the senses, lives in vain.",
@@ -5233,9 +5233,9 @@
         {
           "range": "3.32–3.32",
           "titles": {
-            "en": "Those who scoff at it are lost",
-            "ne": "यसलाई हेला गर्ने नष्ट हुन्छन्",
-            "hi": "इसका उपहास करने वाले नष्ट होते हैं"
+            "en": "Those who find fault and do not follow are lost",
+            "ne": "दोष देखेर पालन नगर्ने नष्ट हुन्छन्",
+            "hi": "दोष निकालकर न मानने वाले नष्ट होते हैं"
           },
           "descs": {
             "en": "Those who carp and do not follow it are ruined and lose all wisdom.",
