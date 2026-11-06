@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 937;      // keep in step with the printed total (-6: C2 withdrawn)
+const TOTAL_ASSERTIONS = 939;      // keep in step with the printed total (-6: C2 withdrawn)
 const TOTAL_BROWSER_CHECKS = 300;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
 const path = require('path');
 
@@ -122,7 +122,8 @@ const enKeys = Object.keys(UI.en);
 // 2026-11-04 (sixth batch): the suggestion listbox is withdrawn, so
 // search_suggest_hint and search_recent (2) → 230. The overlay is gone; its two
 // strings went with it.
-ok(enKeys.length === 230, `UI has 230 keys (got ${enKeys.length})`);
+// The mobile search tab uses its own short label (one key, two parity checks).
+ok(enKeys.length === 231, `UI has 231 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -928,8 +929,8 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
      'the read/learn switch is a group, not a tab list without tabs');
   // The sheet makes the page inert; the phone tab bar is part of the page.
   ok(/body > \.skip-link, body > header, body > \.toolbar/.test(html)
-     && /body > nav\.tabbar, body > \.wrap, body > footer/.test(html),
-     'opening the sheet also takes the skip link and the bottom bar out of the tab order');
+     && /body > nav\.tabbar, body > \.wrap, body > \.footer-links, body > footer/.test(html),
+     'opening the sheet takes the skip link, bottom bar and utility links out of the tab order');
 }
 
 // ---------- the painted share art earns its place ----------

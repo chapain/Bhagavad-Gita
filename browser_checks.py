@@ -1993,8 +1993,8 @@ def run(pw, url, offline_capable=False):
     np_.wait_for_timeout(600)
     behind = np_.evaluate("""() => [...document.querySelectorAll(
         'body > .skip-link, body > header, body > .toolbar, body > nav.tabbar,'
-        + ' body > .wrap, body > footer')].map(e => !!e.inert)""")
-    ok(len(behind) == 6 and all(behind),
+        + ' body > .wrap, body > .footer-links, body > footer')].map(e => !!e.inert)""")
+    ok(len(behind) == 7 and all(behind),
        f"every page region behind the sheet is inert, tab bar included ({behind})")
     np_.evaluate("closeModal()")
     np_.wait_for_timeout(400)

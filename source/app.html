@@ -304,13 +304,17 @@ __APP_CSS__
   </noscript>
 </div>
 
+<!-- A quiet utility row, separate from the closing edition credit. -->
+<div class="footer-links">
+  <button class="foot-link" onclick="App.data.show()" id="footDataLink">Your data · Export / Import</button>
+  <a class="foot-link" href="method/" id="footMethodLink">How this edition was made</a>
+</div>
+
 <footer>
   <div id="appFooter">ॐ · A study edition of the Bhagavad Gita — every verse shown in its traditional four quarters (pādas), with Sanskrit, transliteration, word-by-word meanings, a literal translation and a flowing paraphrase.</div>
   <!-- Credit lives in its own element: applyStatic() replaces #appFooter's
        textContent on every language switch and would otherwise wipe it. -->
   <div class="credit">Created by <b>Dhruba Chapain</b>, Pokhara, Nepal.</div>
-  <div class="credit"><button class="foot-link" onclick="App.data.show()" id="footDataLink">Your data · Export / Import</button>
-    <a class="foot-link" href="method/" id="footMethodLink">How this edition was made</a></div>
 </footer>
 
 <div class="modal-bg" id="modalBg" aria-hidden="true" onclick="if(event.target===this)App.reader.close()">

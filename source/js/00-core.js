@@ -292,7 +292,7 @@ function applyStatic(){ $('#appTitle').textContent = L('app_title'); $('#appSub'
   { const pb = $('#playLbl'); if(pb) pb.textContent = L('play'); }
   /* Phase 3.3 — bottom tab labels (mobile). */
   const th = $('#tabHomeLbl'); if(th) th.textContent = L('home');
-  const ts = $('#tabSearchLbl'); if(ts) ts.textContent = L('search_ph').replace('…','').trim() || 'Search';
+  const ts = $('#tabSearchLbl'); if(ts) ts.textContent = L('search_tab');
   const tr = $('#tabRandLbl'); if(tr) tr.textContent = L('random');
   const tp = $('#tabPlayLbl'); if(tp) tp.textContent = L('play');
   const tf = $('#tabFavLbl'); if(tf) tf.textContent = L('favorites');
