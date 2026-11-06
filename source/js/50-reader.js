@@ -14,7 +14,7 @@ function setAppInert(inert){
      Tab key or a screen reader — focus could land on furniture the reader cannot
      see. .atm is a decorative SVG (aria-hidden, pointer-events:none), so it stays. */
   document.querySelectorAll('body > .skip-link, body > header, body > .toolbar,'
-    + ' body > nav.tabbar, body > .wrap, body > footer')
+    + ' body > nav.tabbar, body > .wrap, body > .footer-links, body > footer')
     .forEach(el=>{ el.inert = inert; });
 }
 function updateModalAddress(){

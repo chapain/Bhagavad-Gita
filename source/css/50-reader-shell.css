@@ -256,6 +256,9 @@
   .m-nav .m-back:hover{ background:var(--teal); color:var(--on-accent);}
 
   .m-count{ color:var(--ink-soft); font-size:.85rem; font-weight:600;}
+  .footer-links{ position:relative; z-index:1; display:flex; justify-content:center;
+    align-items:center; flex-wrap:wrap; gap:8px 20px; padding:0 16px 18px;
+    text-align:center; font-size:.8rem; }
   footer{ text-align:center; color:var(--ink-soft); font-size:.82rem; padding:18px 20px 26px;
           border-top:1px solid color-mix(in srgb, var(--teal) 42%, transparent);}
   /* plain inline text — no flex gap, or the <b> would push the comma away */
