@@ -822,10 +822,10 @@ shape the final checks cannot see.
 
 | approach | scope | result | why it was rejected |
 |---|---|---|---|
-| Book vocabulary test — is each literal word in *any* of the 9,389 glosses? | 700 × 3 | 150 unseen English words, 1,964 unseen Nepali/Hindi tokens | **It cannot see either known defect.** "scripture" and "Veda" are both in the house vocabulary elsewhere (शास्त्र, वेद rows), so the test licenses the exact substitution it was built for. Nepali/Hindi are worse still: the glosses are lemmas (धर्म) and the literals are inflected (धर्ममा), and Devanagari compounds (धर्मक्षेत्र) break token equality. |
-| Per-verse scope — every literal word must come from *this verse's* rows | 700 | 470 verses flagged, 880 tokens | Synonymy, not addition: the literal renders दृष्ट्वा "having seen" as "seeing", युयुत्सवः "desiring to fight" as "eager for battle". A false positive rate near 70 % is not a detector. |
+| Book vocabulary test — is each literal word in *any* of the 9,507 glosses (9,389 word rows, English column)? | 700 × 3 | 139 unseen English word-types in 164 occurrences; 1,055 unseen Nepali/Hindi types in 1,497 occurrences | **It cannot see either known defect.** "scripture" and "Veda" are both in the house vocabulary elsewhere (शास्त्र, वेद rows), so the test licenses the exact substitution it was built for — checked directly: neither `scriptures` in the old 4.32 nor `Vedas` in the old 6.44 is flagged. Nepali/Hindi are worse still: the glosses are lemmas (धर्म) and the literals are inflected (धर्ममा), and Devanagari compounds (धर्मक्षेत्र) break token equality. |
+| Per-verse scope — every literal word must come from *this verse's* rows | 700 | 502 verses flagged, 1,109 tokens | Synonymy, not addition: the literal renders दृष्ट्वा "having seen" as "seeing", युयुत्सवः "desiring to fight" as "eager for battle". A false-positive rate near 72 % is not a detector. |
 | Sequence alignment of literal against its row glosses | 700 | 695 verses, 3,281 unmatched tokens | Same cause; order does not help when neither side shares a word. |
-| **Term rule — a gloss shaped `term (explanation)` must carry its term** | all 68 parenthetical rows × 3 languages | **11 English hits, all read; 1 finding** | Kept. The parenthetical is the house's own mark that a gloss is a term *and* an explanation, which is exactly the boundary 4.32 and 6.44 crossed. |
+| **Term rule — a gloss shaped `term (explanation)` must carry its term** | the 68 English parenthetical rows across all 700 verses | **9 hits, all read; 1 finding** | Kept. The parenthetical is the house's own mark that a gloss is a term *and* an explanation, which is exactly the boundary 4.32 and 6.44 crossed. |
 
 **The rule, stated exactly.** A row gloss of the form `term (explanation)` — for
 example `of Brahman (the Vedas)` — requires the literal to carry the *term*.
@@ -833,17 +833,22 @@ Retrospectively, 4.32's literal said "the scriptures" (the explanation; the term
 missing) and 6.44's said "the mere word of the Vedas" (the term `word-Brahman`
 missing). Both are caught. The current text of both now passes.
 
-**The census, read by hand.** Eleven hits across all 700 verses; every one read
-against its Sanskrit and its three literals. Seven are name-pairs where the
-literal uses one member of the pair (`Vṛkodara (Bhīma)` → literal "Bhīma";
-`Guḍākeśa (Arjuna)` → literal "Guḍākeśa"), one is an editorial note on a
-repeated word, and one is `practised (by)` for जुष्टम् inside
-`अनार्यजुष्टम्`, where the English renders the compound as "unworthy of an
-Āryan" while Nepali and Hindi carry the practice sense explicitly. **No
-substitution of a doctrinal term remains.** The exemptions are named one by one
-in `TERM_PAIR_EXEMPT`, `TERM_NOTE_NOT_EXPLANATION` and `TERM_IN_COMPOUND` in
-`tests/test_translation_fidelity.py`, each with its reading; a new kind of hit
-is red.
+**The census, read by hand.** Nine hits after the term rule was made sound — the
+eleven it produced in its first, cruder form included 1.24 and 3.37, both of
+which the final rule stops reporting because the literal does carry the word
+(1.24 says `Guḍākeśa`, the gloss's own spelling; 3.37 says "rajo-guṇa" against
+`of rajas`, the same loanword). All nine were read against their Sanskrit and
+their three literals: seven are name-pairs where the literal uses one member of
+the pair (`Vṛkodara (Bhīma)` → literal "Bhīma"; `Guḍākeśa (Arjuna)` → literal
+"Guḍākeśa"), one is an editorial note on a repeated word, and one is
+`practised (by)` for जुष्टम् inside `अनार्यजुष्टम्`, where the English renders
+the compound as "unworthy of an Āryan" while Nepali and Hindi carry the practice
+sense explicitly (अभ्यास गरिएको / सेवित). **No substitution of a doctrinal term
+remains.** The exemptions are named one by one in `TERM_PAIR_EXEMPT`,
+`TERM_NOTE_NOT_EXPLANATION` and `TERM_IN_COMPOUND` in
+`tests/test_translation_fidelity.py` (8 + 3 + 1, with 1.18 and 1.20 appearing in
+two sets for the two different reasons each carries), each with its reading; a
+new kind of hit is red.
 
 #### F13 — 1.24, `Gudākeśa` for गुडाकेश — **fixed**
 
@@ -881,7 +886,7 @@ docstring saying exactly why, and it is not offered as a proof of fidelity.
 * **Synonymy is invisible.** A literal can swap a word for a near-synonym the
   rows never pair it with, and nothing above moves: the term check needs a
   parenthetical, and only 68 of 9,389 rows have one.
-* **Nepali and Hindi are read, not checked.** All 11 term hits and the one
+* **Nepali and Hindi are read, not checked.** All nine term hits and the one
   spelling hit were English. The Devanagari parentheticals in this book are
   reading notes on pronouns and repetitions (`यो (आत्मा)`, `वह (दोहराकर: जो भी
   मिले)`), not term/explanation pairs, so the same rule there would produce

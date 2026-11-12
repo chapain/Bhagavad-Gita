@@ -196,7 +196,8 @@ TERM_PAIR_EXEMPT = {
     ("1.20", "पाण्डवः"),   # "the son of Pāṇḍu (Arjuna)" — the literal says "the
                             # Pāṇḍava", the verse's own word; naming Arjuna is a
                             # reader's help, not the verse's claim
-    ("2.09", "गुडाकेशः"),  # "Guḍākeśa (Arjuna)" — the literal says Guḍākeśa
+    ("2.09", "गुडाकेशः"),  # "Guḍākeśa (Arjuna)" — the literal names him as
+                            # Arjuna, the pair's own second member
     ("3.05", "प्रकृति"),   # "of nature (prakṛti)" — the literal says prakṛti
     ("3.10", "पतिः"),      # "the Lord (Prajāpati)" — the literal says Prajāpati
     ("15.01", "अश्वत्थम्"),  # "the sacred fig (world-tree)" — the literal says aśvattha
