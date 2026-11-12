@@ -1703,14 +1703,21 @@ def run(pw, url, offline_capable=False):
       return {wordOK,verseOK,orderOK,quarterOK};
     }""")
     learn_drill_ok = all(learn_drill.values())
-    ok(wrong_mark and retry_label and len(after_retry) == 4
-       and len({o["label"] for o in after_retry}) == 4
-       and sum(o["ok"] for o in after_retry) == 1
-       and retry_after["index"] == retry_before["index"] + 1
-       and retry_before["qid"] in retry_after["queued"]
-       and stale_feedback == 0
-       and learn_drill_ok,
-       "Play retry advances to a fresh fair question, keeps the missed one queued and clears the feedback; Learn recall emits fair blanks, full verses, theme order and every quarter")
+    retry_ok = (wrong_mark and retry_label and len(after_retry) == 4
+                and len({o["label"] for o in after_retry}) == 4
+                and sum(o["ok"] for o in after_retry) == 1
+                and retry_after["index"] == retry_before["index"] + 1
+                and retry_before["qid"] in retry_after["queued"]
+                and stale_feedback == 0)
+    ok(retry_ok and learn_drill_ok,
+       "Play retry advances to a fresh fair question, keeps the missed one queued and clears the feedback; Learn recall emits fair blanks, full verses, theme order and every quarter"
+       + ("" if retry_ok and learn_drill_ok else
+          f" [retry_ok={retry_ok} wrong_mark={wrong_mark} retry_label={retry_label}"
+          f" opts={len(after_retry)} unique={len({o['label'] for o in after_retry})}"
+          f" correct={sum(o['ok'] for o in after_retry)}"
+          f" index={retry_before['index']}->{retry_after['index']}"
+          f" requeued={retry_before['qid'] in retry_after['queued']}"
+          f" stale={stale_feedback} learn={learn_drill}]"))
 
     lp.locator('.tab-btn[data-tab="play"]').click()
     lp.wait_for_selector(".pl-mode")
