@@ -258,8 +258,8 @@ Bharata" / "हे भरतवंशी" and "smiled as if" / "जस्तो 
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 3.01–3.09 | pass | The four questions of Arjuna (3.01–3.02); the two yogas of 3.03; the four `na … na …` clauses of 3.04; `prakṛtijair guṇaiḥ` = "by the guṇas born of prakṛti" (3.05); the hypocrite of 3.06 (`mānasā smaran` = "recollecting in the mind") and its opposite in 3.07; `yajñārthāt karmaṇo'nyatra` = "except action performed for the sake of sacrifice" (3.09). |
-| 3.10–3.18 | pass | `iṣṭakāmadhuk` = "the cow of desires" (3.10); the mutual nourishing of 3.11; `tena dattān apradāyibhyaḥ … stena eva saḥ` = "a thief" (3.12); `yajñaśiṣṭāśinaḥ` = "those who eat the remnants" (3.13); the five-stage chain anna → varṣa → yajña → karma (3.14); `brahmākṣarasamudbhavam` = "Brahman from the Imperishable" (3.15); the `nānavāptamavāptavyam` of 3.22 (see 3.19–3.22 below). |
+| 3.01–3.09 | **corrected — 3.03** | The four questions of Arjuna (3.01–3.02); the two yogas of 3.03; the four `na … na …` clauses of 3.04; `prakṛtijair guṇaiḥ` = "by the guṇas born of prakṛti" (3.05); the hypocrite of 3.06 (`mānasā smaran` = "recollecting in the mind") and its opposite in 3.07; `yajñārthāt karmaṇo'nyatra` = "except action performed for the sake of sacrifice" (3.09). |
+| 3.10–3.18 | **corrected — 3.15** | `iṣṭakāmadhuk` = "the cow of desires" (3.10); the mutual nourishing of 3.11; `tena dattān apradāyibhyaḥ … stena eva saḥ` = "a thief" (3.12); `yajñaśiṣṭāśinaḥ` = "those who eat the remnants" (3.13); the five-stage chain anna → varṣa → yajña → karma (3.14); `brahmākṣarasamudbhavam` = "Brahman from the Imperishable" (3.15); the `nānavāptamavāptavyam` of 3.22 (see 3.19–3.22 below). |
 | 3.19–3.27 | pass | `asakto hyācaran karma paramāpnoti` = "a man attains the Supreme" (3.19); `lokasaṅgrahamevāpi` = "even having regard for the welfare of the world" (3.20); the standard of the best man (3.21); `naivaṃ pāpamavāpsyasi` (3.38); the "guṇas move among the guṇas" (3.28); `akṛtsnavidaḥ` = "partial knowers" (3.29); the four `ni-` rows of 3.30. |
 | 3.28–3.36 | pass | The guṇa/karma distinction (3.28–3.29); `mayi sarvāṇi karmāṇi sannyasyādhyātmaceṣṭā` (3.30); the two `anutusthanti` verses (3.31, 3.32) keep their opposite senses in all three languages; `sadṛśaṃ ceṣṭate` = "acts according to his own nature" (3.33); `tayor na vaśam āgacchet` = "let one not come under their power" (3.34); `śreyān svadharmaḥ viguṇaḥ` = "one's own dharma, though defective" (3.35); `anichchann api` = "even against his will" (3.36). |
 | 3.37–3.43 | pass | `kāma eṣa krodha eṣa` = "it is desire, it is anger" (3.37); the smoke/mirror/membrane figure (3.38); `duṣpūreṇa analena` = "insatiable, like fire" (3.39); `etair vimohayaty eṣa` = "it deludes" (3.40); `pāpmānaṃ prajahihyenaṃ` = "cast off this sinner" (3.41); the ascending scale of 3.42 and `jahi śatruṃ` = "slay the enemy" (3.43). |
@@ -301,18 +301,19 @@ the row matches it.
 |---|---|---|
 | 4.01–4.09 | pass | The teaching chain Vivasvān → Manu → Ikṣvāku (4.01), the loss of the yoga (4.02), `bhakto'si me sakhā ca iti` = "you are my devotee and friend" (4.03); Arjuna's question about the birth (4.04); `ajo'pi san avyayātmā` = "though unborn, though the imperishable Self" (4.06); `abhyutthānam adharmasya` = "a rise of adharma" (4.07); `yuge yuge` = "age after age" (4.08). |
 | 4.10–4.18 | pass | `māṃ upāśritāḥ` = "taking refuge in me" (4.10); `bhajāmy aham` = "I favour them" (4.11); `karmajā siddhiḥ` = "success born of action" (4.12); `cāturvarṇyaṃ` = "the fourfold order" (4.13); `na māṃ karmāṇi limpanti` = "actions do not stain me" (4.14); `kimakarma iti` (4.16); the three things to be known (4.17); `karmaṇi akarma` (4.18). |
-| 4.19–4.26 | pass | `jñānāgnidagdha karmāṇaṃ` = "actions burnt by the fire of knowledge" (4.19); `naiva kiñcit karoti saḥ` = "he verily does nothing" (4.20); `nirāśīryata cittātmā` = "desireless, with the mind and self controlled" (4.21); the Brahman-sacrifice of 4.24; `daivam evāpare yajñaṃ` / `brahmāgnāv apare yajñaṃ` (4.25); the two oblations of 4.26. |
-| 4.27–4.34 | pass | The five kinds of sacrifice (4.27–4.30); `yajñaśiṣṭāmṛtabhujo` = "tasting the nectar of the remnant" (4.31); `brahmaṇo mukhe` = "in the mouth of the Vedas" (4.32); `jñānayajñaḥ` = "the sacrifice of knowledge" (4.33); `praṇipātena paripraśnena sevayā` (4.34). |
+| 4.19–4.26 | **corrected — 4.19** | `jñānāgnidagdha karmāṇaṃ` = "actions burnt by the fire of knowledge" (4.19); `naiva kiñcit karoti saḥ` = "he verily does nothing" (4.20); `nirāśīryata cittātmā` = "desireless, with the mind and self controlled" (4.21); the Brahman-sacrifice of 4.24; `daivam evāpare yajñaṃ` / `brahmāgnāv apare yajñaṃ` (4.25); the two oblations of 4.26. |
+| 4.27–4.34 | **corrected — 4.32** | The five kinds of sacrifice (4.27–4.30); `yajñaśiṣṭāmṛtabhujo` = "tasting the nectar of the remnant" (4.31); **4.32's `brahmaṇo mukhe` was recorded here as "in the mouth of the Vedas" while all three literals read "in the scriptures" / `शास्त्रमा` — the row alone carried the interpretation.** They now read "in the mouth of Brahman" / `ब्रह्मको मुखमा` / `ब्रह्म के मुख में`; `jñānayajñaḥ` = "the sacrifice of knowledge" (4.33); `praṇipātena paripraśnena sevayā` (4.34). |
 | 4.35–4.42 | pass | `yena bhūtānyaśeṣeṇa drakṣyasy ātmany atho mayi` = "you will see all beings in the Self and also in me" (4.35); `jñānaplavenaiva` = "by the boat of knowledge alone" (4.36); the two fires of 4.37; `tatsvayaṃ yogasaṃsiddhaḥ kālenātmani vindati` = "finds it in the Self in time, of himself" (4.38); `acirena` = "soon" (4.39); `nāyaṃ loko'sti na paro na sukham` = "neither this world, nor the next, nor happiness" (4.40); `jñānasañchinnasaṃśayam` = "whose doubt is destroyed by knowledge" (4.41); `jñānāsinā` = "with the sword of knowledge" (4.42). |
 
-**42 verses, no correction.** The chapter passed on first reading in all three
-languages.
+**42 verses, 1 correction — 4.19.** The chapter otherwise passed on first reading
+in all three languages; 4.19 was corrected on 2026-11-12 (see the interpretive
+cases above).
 
 ## Ledger — Chapter 5, 5.01–5.29 (read 2026-11-04)
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 5.01–5.09 | pass | Arjuna's question (5.01) and the answer "both lead to the supreme good, but karma-yoga is superior" (5.02); `jñeyaḥ sa nityasannyāsī` = "he is to be known as ever-renouncing" (5.03); `pṛthag bālāḥ pravadanti na paṇḍitāḥ` = "the childish, not the wise" (5.04); the one state reached by both (5.05); `duḥkham āptum ayogataḥ` = "hard to attain without yoga" (5.06); the "I do nothing at all" of 5.08, continued in 5.09 (the house style splits a running sentence with a trailing comma, as here and at 5.27). |
+| 5.01–5.09 | **corrected — 5.02** | Arjuna's question (5.01) and the answer "both lead to the supreme good, but karma-yoga is superior" (5.02); `jñeyaḥ sa nityasannyāsī` = "he is to be known as ever-renouncing" (5.03); `pṛthag bālāḥ pravadanti na paṇḍitāḥ` = "the childish, not the wise" (5.04); the one state reached by both (5.05); `duḥkham āptum ayogataḥ` = "hard to attain without yoga" (5.06); the "I do nothing at all" of 5.08, continued in 5.09 (the house style splits a running sentence with a trailing comma, as here and at 5.27). |
 | 5.10–5.18 | pass | The lotus-leaf figure (5.10); `kāyena manasā buddhyā … kevalair indriyair api` (5.11); `naiṣṭhikīṃ śāntim` = "lasting peace" (5.12); `navadvāre pure` = "the city of nine gates" (5.13); the Lord creates neither agency nor action (5.14); `nādatte kasyacit pāpaṃ na caiva sukṛtaṃ` = "accepts neither sin nor merit" (5.15); `teṣām ādityavaj jñānaṃ` = "shines like the sun" (5.16); the `tad buddhi … tad ātmānam` chain (5.17); `samadarśinaḥ` = "of equal vision" over brāhmaṇa, cow, elephant, dog, outcaste (5.18). |
 | 5.19–5.29 | pass | `ihaiva tair jitaḥ sargaḥ` = "here itself the world is conquered" (5.19); `na prahṛṣyet … nodyvijet` (5.20); `duḥkhayonaya eva te` = "wombs of sorrow" (5.22); `prāk charīravimokṣaṇāt` = "before the release of the body" (5.23); `brahmabhūtaḥ adhigacchati` (5.24); `chinnadvaidhā` = "whose doubts are cut" (5.25); `abhito brahmanirvāṇaṃ vartate` = "Brahman-nirvāṇa is present all around" (5.26); the pranayama of 5.27–5.28; `bhoktāraṃ yajñatapasāṃ` = "the enjoyer of sacrifices and austerities" (5.29). |
 
@@ -340,13 +341,14 @@ in F9).
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 6.01–6.10 | pass | `anāśritaḥ karmaphalaṃ` = "without depending on its fruit"; `na niragnir na cākriyaḥ` = "not he who is without fire and without rites" (6.01); `na hyasannyastasaṅkalpo yogī bhavati` (6.02); `ārarukṣor muner yogaṃ karma kāraṇam ucyate` (6.03); `nendriyārtheṣu na karmasu anuṣajjate` (6.04); the Self as friend and enemy (6.05–6.06); the three pairs of 6.07; `samaloṣṭāśmakāñcanaḥ` = "a lump of earth, a stone and gold" (6.08); the nine categories of 6.09; `rahasi … ekākī` = "in solitude, alone" (6.10). |
+| 6.01–6.10 | **corrected — 6.02, 6.04** | `anāśritaḥ karmaphalaṃ` = "without depending on its fruit"; `na niragnir na cākriyaḥ` = "not he who is without fire and without rites" (6.01); `na hyasannyastasaṅkalpo yogī bhavati` (6.02); `ārarukṣor muner yogaṃ karma kāraṇam ucyate` (6.03); `nendriyārtheṣu na karmasu anuṣajjate` (6.04); the Self as friend and enemy (6.05–6.06); the three pairs of 6.07; `samaloṣṭāśmakāñcanaḥ` = "a lump of earth, a stone and gold" (6.08); the nine categories of 6.09; `rahasi … ekākī` = "in solitude, alone" (6.10). |
 | 6.11–6.20 | pass | The seat and its coverings (6.11); `ekāgraṃ manaḥ` = "one-pointed mind" (6.12); the nose-tip and the eyes (6.13); `maccitto … matparaḥ` = "thoughts on me, devoted to me" (6.14); `nacireṇa adhigacchati` (6.15); the four `na … na … na … na` of 6.16; the four `yukta` of 6.17; `viniyataṃ cittam ātmany evāvatiṣṭhate` (6.18); the lamp in the windless place (6.19); `yatra caivātmanātmānaṃ paśyann ātmani tuṣyati` (6.20). |
-| 6.21–6.30 | pass | `sukham ātyantikaṃ` = "boundless joy" (6.21); `na duḥkhena guruṇāpi vicālayate` = "not disturbed even by great sorrow" (6.22); `duḥkhasaṃyogaviyogaṃ yogasaṃjñitam` (6.23); `saṅkalpaprabhavān kāmān` = "desires born of selfish intention" (6.24); `śanaiḥ śanaiḥ` = "slowly, gradually" (6.25); the restless mind drawn back (6.26); `śāntarajasam` = "whose passion is stilled" (6.27); the endless joy of union with Brahman (6.28); `sarvabhūtastham ātmānaṃ sarvabhūtāni cātmani` (6.29); `tasyāhaṃ na praṇaśyāmi` (6.30). |
-| 6.31–6.47 | pass | `sarvabhūtasthitaṃ yo māṃ bhajati ekatvam āsthitaḥ` (6.31); `ātmaupamyena sarvatra samam paśyati` (6.32); Arjuna's restlessness (6.33–6.35); `vaśyātmānā tu yatatā śakyo'vāptum upāyataḥ` (6.36); the fate of the fallen (6.37–6.38); `tvadanyaḥ saṃśayasyāsya chettā na hyupapadyate` (6.39); `na hi kalyāṇakṛt kaścid durgatiṃ tāta gacchati` (6.40); `yogabhraṣṭo'abhijāyate` = "he who fell from yoga is born again" (6.41); `durlabhataraṃ loke janma` (6.42); `paurvadehikam` = "of the former body" (6.43); `jijñāsur api yogasya śabdabrahma ātivartate` (6.44); `anekajanmasaṃsiddhaḥ` (6.45); the three gradations of 6.46; `yuktatamaḥ mataḥ` = "the most yoked" (6.47). |
+| 6.21–6.30 | **corrected — 6.24** | `sukham ātyantikaṃ` = "boundless joy" (6.21); `na duḥkhena guruṇāpi vicālayate` = "not disturbed even by great sorrow" (6.22); `duḥkhasaṃyogaviyogaṃ yogasaṃjñitam` (6.23); `saṅkalpaprabhavān kāmān` = "desires born of selfish intention" (6.24); `śanaiḥ śanaiḥ` = "slowly, gradually" (6.25); the restless mind drawn back (6.26); `śāntarajasam` = "whose passion is stilled" (6.27); the endless joy of union with Brahman (6.28); `sarvabhūtastham ātmānaṃ sarvabhūtāni cātmani` (6.29); `tasyāhaṃ na praṇaśyāmi` (6.30). |
+| 6.31–6.47 | **corrected — 6.44** | `sarvabhūtasthitaṃ yo māṃ bhajati ekatvam āsthitaḥ` (6.31); `ātmaupamyena sarvatra samam paśyati` (6.32); Arjuna's restlessness (6.33–6.35); `vaśyātmānā tu yatatā śakyo'vāptum upāyataḥ` (6.36); the fate of the fallen (6.37–6.38); `tvadanyaḥ saṃśayasyāsya chettā na hyupapadyate` (6.39); `na hi kalyāṇakṛt kaścid durgatiṃ tāta gacchati` (6.40); `yogabhraṣṭo'abhijāyate` = "he who fell from yoga is born again" (6.41); `durlabhataraṃ loke janma` (6.42); `paurvadehikam` = "of the former body" (6.43); `jijñāsur api yogasya śabdabrahma ātivartate` (6.44); `anekajanmasaṃsiddhaḥ` (6.45); the three gradations of 6.46; `yuktatamaḥ mataḥ` = "the most yoked" (6.47). |
 
-**47 verses, no correction.** The chapter passed on first reading in all three
-languages.
+**47 verses, 4 corrections — 6.02, 6.04, 6.24, 6.44.** The chapter otherwise
+passed on first reading in all three languages; these four were corrected on
+2026-11-12 (see the interpretive cases above).
 
 ## Ledger — Chapter 7, 7.01–7.30 (read 2026-11-04)
 
@@ -407,9 +409,9 @@ languages.
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 12.01–12.05 | **corrected** — 12.03 | Arjuna's question, which group are the better knowers of yoga (12.01); `yuktatamā matāḥ` = "the most yoked" (12.02); `sarvabhūtahite ratāḥ` = "rejoicing in the welfare of all beings" (12.04); `kleśo'dhikataras teṣām` = "greater is the toil" of those attached to the unmanifest (12.05). **12.03 was recorded as passing while all three paraphrases cut the tail of `anirdeśyam acintyam kūṭastham acalam dhruvam`:** the Hindi dropped अचलम् and ध्रुवम् outright and stopped mid-sentence, the Nepali dropped ध्रुवम्, and the English folded अचलम् and ध्रुवम् into "immutable, eternal". The compound is a list of five qualifications; a paraphrase may compress the list but may not delete its last members, so all three lanes now close it (कूटस्थम् "unchanging" / अचलम् "unmoving" / ध्रुवम् "eternal"). Overlap with the literal after the fix: en 0.26, ne 0.13, hi 0.20. Pinned by `tests/test_translation_fidelity.py::WholeBookFidelity::test_no_lane_stops_mid_phrase` and the ledger pin in `tests/test_semantic_audit.py`. |
+| 12.01–12.05 | **corrected** — 12.03 | Arjuna's question, which group are the better knowers of yoga (12.01); `yuktatamā matāḥ` = "the most yoked" (12.02); `sarvabhūtahite ratāḥ` = "rejoicing in the welfare of all beings" (12.04); `kleśo'dhikataras teṣām` = "greater is the toil" of those attached to the unmanifest (12.05). **12.03 was recorded as passing while all three paraphrases cut the tail of `anirdeśyam acintyam kūṭastham acalam dhruvam`:** the Hindi dropped अचलम् and ध्रुवम् outright and stopped mid-sentence, the Nepali dropped ध्रुवम्, and the English folded अचलम् and ध्रुवम् into "immutable, eternal". The compound is a list of five qualifications; a paraphrase may compress the list but may not delete its last members, so all three lanes now close it (कूटस्थम् "unchanging" / अचलम् "unmoving" / ध्रुवम् "eternal"). Overlap with the literal after the fix: en 0.26, ne 0.13, hi 0.20. Pinned by `tests/test_translation_fidelity.py::WholeBookFidelity::test_lag_no_lane_stops_mid_phrase_where_siblings_end_a_sentence` and the ledger pin in `tests/test_semantic_audit.py`. |
 | 12.06–12.12 | pass | `ananyenaiva yogenā` = "with undivided yoga" (12.06); `samuddhartā` = "the deliverer" (12.07); `nivasiṣyasi mayy eva` (12.08); the three graded steps of 12.09–12.11 (`abhyāsayoga`, `matkarmaparama`, `sarvakarmaphalatyāga`); the four-fold scale `jñānam abhyāsāt … dhyānam … karmaphalatyāgaḥ` = "knowledge > practice > meditation > renunciation of the fruit of action" (12.12). |
-| 12.13–12.20 | pass | The six qualities of 12.13 (`nirmamaḥ nirahaṅkāraḥ samaduḥkhasukhaḥ kṣamī`); `dṛḍhaniścayaḥ` = "of firm resolve" (12.14); `harṣāmarṣabhayo'dvegaiḥ muktaḥ` = "free from elation, anger, fear and anxiety" (12.15); `anapekṣaḥ śucir dakṣa udāsīno gatavyathaḥ` = "indifferent, pure, capable, unconcerned, free from anxiety" (12.16); `śubhāśubhaparityāgī` = "renouncing both good and evil" (12.17); `samaḥ śatrau ca mitre ca` (12.18); `aniketaḥ` = "having no abode" (12.19); `dharmyāmṛtam` = "this nectar of dharma" (12.20). |
+| 12.13–12.20 | **corrected — 12.16** | The six qualities of 12.13 (`nirmamaḥ nirahaṅkāraḥ samaduḥkhasukhaḥ kṣamī`); `dṛḍhaniścayaḥ` = "of firm resolve" (12.14); `harṣāmarṣabhayo'dvegaiḥ muktaḥ` = "free from elation, anger, fear and anxiety" (12.15); `anapekṣaḥ śucir dakṣa udāsīno gatavyathaḥ` = "indifferent, pure, capable, unconcerned, free from anxiety" (12.16); `śubhāśubhaparityāgī` = "renouncing both good and evil" (12.17); `samaḥ śatrau ca mitre ca` (12.18); `aniketaḥ` = "having no abode" (12.19); `dharmyāmṛtam` = "this nectar of dharma" (12.20). |
 
 **20 verses, one correction (12.03).**
 
@@ -420,9 +422,9 @@ languages.
 | 13.01–13.06 | pass | The body as the field and the knower of the field (13.01–13.02); the six questions of 13.03; the seers, the meters and the Brahman-sūtras (13.04); the great elements, ego, intellect, the unmanifest, the ten senses plus the eleventh, the five objects (13.05); `icchā dveṣaḥ sukhaṃ duḥkhaṃ saṅghātaś cetanā dhṛtiḥ` = "desire, aversion, pleasure, pain, the body, consciousness and constancy" (13.06). |
 | 13.07–13.12 | pass | The ninefold list of qualities (13.07); `janmamṛtyujarāvyādhiduḥkhadoṣānudarśanam` = "the perception of the evil of suffering in birth, death, old age and disease" (13.08); `anabhiṣvaṅgaḥ` = "non-clinging" to son, wife and home (13.09); `viviktadeśasevitvam` = "delight in solitude" (13.10); `adhyātmajñānanityatvaṃ` (13.11); `na sattannāsad ucyate` = "neither being nor non-being" (13.12). |
 | 13.13–13.20 | pass | The hands and feet everywhere (13.13); `sarvendriyaguṇābhāsaṃ … nirguṇaṃ guṇabhoktṛ` (13.14); `dūrasthaṃ cāntike ca` = "far away, and yet near" (13.15); `grasiṣṇu prabhaviṣṇu` = "the devourer and the creator" (13.16); `jñānaṃ jñeyaṃ jñānagamyaṃ` = "knowledge, the knowable, the goal of knowledge" (13.17); `madbhāvāyopapadyate` = "attains my being" (13.18); `anādī ubhāv api` = "both beginningless" (13.19); `kāryakaraṇakartṛtve` (13.20). |
-| 13.21–13.34 | pass | `guṇasaṅgo'sya` = "attachment to the guṇas" as the cause of birth (13.21); `upadraṣṭānumantā` (13.22); `na sa bhūyo'bhijāyate` (13.23); the three yogas and the hearing of teaching (13.24–13.25); `kṣetrakṣetrajñasaṃyogāt` (13.26); `vinaśyatsv avinaśyantam` = "the imperishable among the perishing" (13.27); `na hinasty ātmanā ātmānam` = "he does not harm the Self by the self" (13.28); `akartāram` = "the non-doer" (13.29); `bhūtapṛthagbhāvaṃ ekastham` (13.30); `na karoti na lipyate` (13.31); the space figure (13.32); the sun figure (13.33); `jñānacakṣuṣā` = "with the eye of knowledge" (13.34). |
+| 13.21–13.34 | **corrected — 13.24** | `guṇasaṅgo'sya` = "attachment to the guṇas" as the cause of birth (13.21); `upadraṣṭānumantā` (13.22); `na sa bhūyo'bhijāyate` (13.23); the three yogas and the hearing of teaching (13.24–13.25); `kṣetrakṣetrajñasaṃyogāt` (13.26); `vinaśyatsv avinaśyantam` = "the imperishable among the perishing" (13.27); `na hinasty ātmanā ātmānam` = "he does not harm the Self by the self" (13.28); `akartāram` = "the non-doer" (13.29); `bhūtapṛthagbhāvaṃ ekastham` (13.30); `na karoti na lipyate` (13.31); the space figure (13.32); the sun figure (13.33); `jñānacakṣuṣā` = "with the eye of knowledge" (13.34). |
 
-**34 verses, no correction.**
+**34 verses, 1 correction — 13.24.**
 
 ## Ledger — Chapter 14, 14.01–14.27 (read 2026-11-04)
 
@@ -431,9 +433,9 @@ languages.
 | 14.01–14.04 | pass | `jñānānāṃ jñānam uttamam` = "the best of all knowledges" (14.01); `sādharmyam āgatāḥ` = "attain unity with my being" (14.02); the great Brahman as the womb (14.03); `bījapradaḥ pitā` = "the father who gives the seed" (14.04). |
 | 14.05–14.12 | pass | The three guṇas binding the embodied one (14.05); sattva as `prakāśaka` = "illumining" and `anāmaya` = "free from disease" (14.06); rajas as passion born of thirst (14.07); tamas born of ignorance (14.08); the three attachments (14.09); the mutual overpowering (14.10); `sarvadvāreṣu … prakāśa upajāyate` (14.11); `rajasy etāni jāyante` = the five marks of rajas (14.12). |
 | 14.13–14.20 | pass | The four marks of tamas (14.13); the pure worlds of the knowers of the highest (14.14); rebirth among the action-bound and the deluded (14.15); the three fruits (14.16); the arising of knowledge, greed, and carelessness (14.17); `ūrdhvaṃ … madhye … adho` (14.18); `nānyam guṇebhyaḥ kartāram` = "no agent other than the guṇas" (14.19); `trīn dehī dehasaṃudbhavān` = "the three guṇas that give rise to the body" (14.20). |
-| 14.21–14.27 | pass | Arjuna's question (14.21); `na dveṣṭi … na nivṛttāni kāṅkṣati` (14.22); `udāsīnavad āsīno` (14.23); `samaloṣṭāśmakāñcanaḥ` (14.24); `mānāpamānayoḥ … mitra aripakṣayoḥ` (14.25); `avyabhicāreṇa bhaktiyogena` (14.26); `brahmaṇo hi pratiṣṭhāham` = "I am the support of Brahman" (14.27). |
+| 14.21–14.27 | **corrected — 14.25** | Arjuna's question (14.21); `na dveṣṭi … na nivṛttāni kāṅkṣati` (14.22); `udāsīnavad āsīno` (14.23); `samaloṣṭāśmakāñcanaḥ` (14.24); `mānāpamānayoḥ … mitra aripakṣayoḥ` (14.25); `avyabhicāreṇa bhaktiyogena` (14.26); `brahmaṇo hi pratiṣṭhāham` = "I am the support of Brahman" (14.27). |
 
-**27 verses, no correction.**
+**27 verses, 1 correction — 14.25.**
 
 ## Ledger — Chapter 15, 15.01–15.20 (read 2026-11-04)
 
@@ -471,7 +473,7 @@ languages.
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 18.01–18.06 | pass | Arjuna's question on sannyāsa and tyāga (18.01); `kāmyānāṃ karmaṇāṃ nyāsaṃ` = "the giving up of desired actions" and `sarvakarmaphalatyāgaṃ` = "the abandonment of all fruits" (18.02); the two schools of 18.03; `tyāgo hi puruṣavyāghra trividhaḥ` (18.04); `yajñadānatapaḥkarma na tyājyaṃ kāryameva tat` (18.05); `saṅgaṃ tyaktvā phalāni ca` (18.06). |
+| 18.01–18.06 | **corrected — 18.02** | Arjuna's question on sannyāsa and tyāga (18.01); `kāmyānāṃ karmaṇāṃ nyāsaṃ` = "the giving up of desired actions" and `sarvakarmaphalatyāgaṃ` = "the abandonment of all fruits" (18.02); the two schools of 18.03; `tyāgo hi puruṣavyāghra trividhaḥ` (18.04); `yajñadānatapaḥkarma na tyājyaṃ kāryameva tat` (18.05); `saṅgaṃ tyaktvā phalāni ca` (18.06). |
 | 18.07–18.12 | pass | `niyatasya tu saṃnyāsaḥ karmaṇo nopapadyate` (18.07); the rājasic abandonment that gains no fruit (18.08); `kāryamityeva yat karma niyataṃ kriyate` = "done because it ought to be done" (18.09); `na dveṣṭy akūśalaṃ karma` (18.10); `karmaphalatyāgī` (18.11); the threefold fruit of action (18.12). |
 | 18.13–18.19 | pass | The five causes of action, `adhiṣṭhānaṃ … kartā … karaṇaṃ … ceṣṭā … daivaṃ` (18.13–18.14); `śarīravāṅmanobhiḥ` (18.15); `akṛtabuddhitvān na sa paśyati` = "with imperfect understanding he does not truly see" (18.16); `hatvāpi sa imāṃl lokān na hanti na nibadhyate` (18.17); the threefold impulse and basis of action (18.18); `guṇabhedataḥ` (18.19). |
 | 18.20–18.26 | pass | The sāttvic, rājasic and tāmasic knowledge (18.20–18.22); `niyataṃ saṅgarahitaṃ arāgadveṣataḥ kṛtam` (18.23); `bahulāyāsaṃ` (18.24); `anubandhaṃ kṣayaṃ hiṃsām apekṣya ca pauruṣam` (18.25); `siddhyasiddhyor nirvikāraḥ` (18.26). |
@@ -483,7 +485,7 @@ languages.
 | 18.63–18.70 | pass | `guhyād guhyataraṃ` (18.63); `iṣṭo'si me dṛḍham iti` (18.64); `manmanā bhava madbhakto` (18.65); `sarvadharmān parityajya` (18.66); the four classes not to be told (18.67); `bhaktiṃ mayi parāṃ kṛtvā` (18.68); `na ca tasmān manuṣyeṣu kāś cin me priyakṛttamaḥ` (18.69); `jñānayajñena tenāham iṣṭaḥ syām iti me matiḥ` (18.70). |
 | 18.71–18.78 | pass | The one who only hears with faith (18.71); Arjuna's question `kaccid etac chrutaṃ` (18.72); his answer `naṣṭo mohaḥ smṛtiḥ labdhā` (18.73); Sañjaya's narration (18.74); `vyāsaprasādāt śrutavān` (18.75); `saṃsmṛtya saṃsmṛtya` (18.76–18.77); the closing verse `yatra yogeśvaraḥ kṛṣṇo` (18.78). |
 
-**78 verses, no correction.**
+**78 verses, 1 correction — 18.02.**
 
 ## The whole book — closing summary (read 2026-11-04)
 
@@ -491,23 +493,23 @@ languages.
 |---|---|---|
 | 1 | 47 | 9 strings in 4 verses (1.04 ×1, 1.13 ×4, 1.24 ×3, 1.46 ×1) |
 | 2 | 72 | 4 strings in 1 verse (2.10: ne literal + en/ne/hi paraphrases) |
-| 3 | 43 | 1 string in 1 verse (3.22: the Nepali word-row gloss) |
-| 4 | 42 | 0 |
+| 3 | 43 | 1 string in 1 verse (3.22: the Nepali word-row gloss); 2 paraphrases on 2026-11-12 (3.03, 3.15 — निःस्वार्थ removed) |
+| 4 | 42 | 4 strings in 1 verse (4.19: row gloss, en literal, 3 paraphrases) |
 | 5 | 29 | 2 strings in 1 verse (5.12: the Nepali literal and the Nepali word-row gloss) |
-| 6 | 47 | 0 |
+| 6 | 47 | 18 strings in 4 verses (6.02 ×4, 6.04 ×4, 6.24 ×4, 6.44 ×6) |
 | 7 | 30 | 0 |
 | 8 | 28 | 0 |
 | 9 | 34 | 0 |
 | 10 | 42 | 0 |
 | 11 | 55 | 0 |
-| 12 | 20 | 0 |
-| 13 | 34 | 0 |
-| 14 | 27 | 0 |
+| 12 | 20 | 3 strings in 1 verse (12.16 paraphrases) |
+| 13 | 34 | 2 strings in 1 verse (13.24 paraphrases) |
+| 14 | 27 | 3 strings in 1 verse (14.25 paraphrases) |
 | 15 | 20 | 0 |
 | 16 | 24 | 0 |
 | 17 | 28 | 0 |
-| 18 | 78 | 0 |
-| **Total** | **700** | **16 strings in 7 verses — nine findings, F1–F9** (first pass; F10–F16 are recorded in the later sections below and are not added into these per-chapter counts) |
+| 18 | 78 | 2 strings in 1 verse (18.02 paraphrases) |
+| **Total** | **700** | **16 strings in 7 verses — nine findings, F1–F9** (first pass; F10–F16 and the 2026-11-12 motive/शब्दब्रह्म pass — 38 strings in 12 verses — are recorded in the later sections below and are not added into these per-chapter counts) |
 
 Every verse was read in the Devanagari, the IAST, the literal (en, ne, hi), the
 paraphrase (en, ne, hi) and every word row with its three glosses. Chapters
@@ -553,6 +555,7 @@ found two defects in the Hindi renderings and nothing else.
 | Vocative rows rendered or dropped consistently across the three languages | 175 address rows | 3 apparent splits, all false: "O best of men/persons" for पुरुषोत्तम (8.01, 11.03) and शत्रुतापन/परंतप (2.09). Dropping a vocative in all three languages is house style; dropping it in one is what the check hunts. |
 | Numeral rows rendered or dropped consistently | 40 numeral rows | 5 apparent splits, all false: केवल (18.66), एउटाबाट (8.26), दुवैको (2.16), तीनै (3.22), "neither" for उभौ (2.19). |
 | Negation present in all three or none | 306 negation rows | 0 real splits. The apparent Hindi gaps were the bare particle न, which the detector's word-boundary guard was rejecting because the Devanagari danda `।` sits inside the same Unicode block. |
+| Locked negation pairs (the blind spot, 2026-11-12) | 26 row pairs + 6 two-lane pairs | **20 row pairs and 5 two-lane pairs cleared; 6 row pairs and 1 two-lane pair kept.** See the section below. |
 | Cross-language word forms | 2,100 literals/paraphrases | **2 findings, both fixed** — see F10, F11. |
 
 ### 16.04 — settled: अभिमानश्च (owner's copy, 2026-11-12)
@@ -607,6 +610,7 @@ wanting.
 | Address parity across the three literals | all 700 × 3 | the same ten verses; every other difference was a legitimate translation of the epithet (परन्तप → शत्रुतापन in Nepali, जगन्निवास → "abode of the world", पार्थ → "Arjuna", etc.) |
 | Nothing added — names | every capitalised token in all 700 English literals, against that verse's row glosses | 30 candidates, all read: every one is either the person the Sanskrit describes (1.12 Bhīṣma from `pitāmahaḥ`, 1.20 Dhārtarāṣṭras from `dhārtarāṣṭrān`), the same epithet under its Sanskrit name (Acyuta for "infallible one"), or a row's own alternative form (Kāmadhuk/Kāmadhenu, Uśanā/Uśanas). None added a new actor. |
 | Nothing added — numbers | all 700 × 3 literals; number words and numerals against row glosses | no added or dropped number. The flagged cases were the indefinite article ("one"), `छ` = "is", or a number the Sanskrit carries in a compound (`navadvāre` 5.13, `trividhaḥ` 18.04). |
+| Nothing added — motive | all 700 × 3 literals and paraphrases, for "selfish" / स्वार्थ and निःस्वार्थ | **28 strings in 11 verses carried a motive no word of the verse states; all corrected (2026-11-12)** — 6.02 4.19 6.04 6.24 18.02 (सङ्कल्प / काम्य, "selfish resolve" and "selfish actions"), 12.16 14.25 (सर्वारम्भ, "selfish undertakings"), 3.15 (निःस्वार्थ for a verse with no काम), 3.03 5.02 13.24 (निःस्वार्थ added to a bare कर्मयोग). One kept: 3.09, whose own contrast `यज्ञार्थात्कर्मणोऽन्यत्र` names desire-led action as the alternative. Pinned by `test_nothing_added_no_lane_asserts_selfishness_the_sanskrit_lacks`. This row is narrower than "no added motive anywhere": it searches one motive, in one vocabulary. |
 | Nothing added — negation | all 700 English literals against their row negations; all 700 literal/paraphrase pairs | 8 candidates, all read: `anāvṛtti` (8.23), `asakta` (3.09, 3.19), `avijñeya` (13.15), `na … avasthitaḥ` (13.27), and the "cannot" of 2.24/12.11 are all carried by a privative or a separate row. No literal negates what the Sanskrit affirms. Literal and paraphrase agree on negation in all 2,100 pairs. |
 | Cross-language number parity | all 700 × 3 | no verse in which one language states a number the other two do not. |
 | Relative clause coverage | all 700 × 3: row-gloss content words traceable in the same language's literal, compared across languages | 41 verses where one language's vocabulary lags the other two; **all 41 read in full** (1.14 1.15 1.26 1.33 1.34 1.42 2.01 2.06 2.13 2.19 2.23 2.46 2.56 2.67 3.04 3.17 3.21 3.29 3.39 3.41 4.32 5.17 6.02 6.05 6.21 6.27 6.34 7.12 7.13 7.22 8.11 8.28 9.25 14.22 16.07 16.14 16.20 17.11 18.21 18.67 18.70). All are register differences — Nepali/Hindi carry the same clause in inherited Sanskrit vocabulary, or the literal uses a synonym the row gloss does not spell — not dropped content. |
@@ -692,23 +696,114 @@ pinned padaccheda fixture was updated with them.
 | Paraphrase-only vocative drops (19 verses: 2.21 2.39 2.42 2.55 3.22 3.23 4.33 7.01 8.14 8.22 9.32 10.24 12.07 16.04 16.06 18.06 18.30 18.32 18.34) | **confirmed; no change** | In every one the literal carries the address in all three languages and the paraphrase carries none. This is the house convention of not padding a paraphrase. Rewriting nineteen verses would be a style change, not a fidelity fix. Recommendation: keep, and keep the literal as the place the address is guaranteed. |
 | 11.47 Hindi `tvat` | **does not reproduce** | The Hindi literal reads `जिसे तेरे सिवा पहले किसी ने नहीं देखा` — exclusion, matching en (“none but you”) and ne (`तिमीबाहेक`). The row is `त्वत् | tvat | than you | तिमीभन्दा | तुझसे`; with `अन्येन` = “by another” it is “by another than you”. The alleged “तुझसे पहले” chronology is not in the data. Nothing changed. |
 
-### Open interpretive cases — reported, not changed
+### Interpretive cases — decided 2026-11-12 (owner's ruling: add nothing)
 
-Two additions are editorial interpretation rather than grammar, and both
-predate this pass. Neither was changed unilaterally:
+The two additions below were editorial interpretation rather than grammar. Both
+predate this pass. The owner's ruling of 2026-11-12 — *"we cannot add anything
+that's not there in the sanskrit"* — settled both; the 4.32 and 6.44 entries
+below record what changed, and 6.02's entry records the wider change the same
+ruling required.
 
-* **6.02** — English literal “who has not renounced **selfish** intention” and
-  all three paraphrases (“selfish planning”, `स्वार्थी योजना`) add a motive the
-  Sanskrit `असन्न्यस्तसङ्कल्प` (“whose resolve is not renounced”) does not
-  state. The edition uses “selfish intention/resolve” for `सङ्कल्प` as a house
-  gloss elsewhere (4.19's row reads “selfish resolve”; 6.04, 6.24, 12.16,
-  14.25), so this is a settled interpretative convention, not a one-off. If the
-  owner wants the stricter rule enforced, it is a seven-verse editorial change,
-  not a single-string fix.
-* **4.32** — all three literals render `ब्रह्मणो मुखे` (“in the mouth of
-  Brahman”) as “in the scriptures” / `शास्त्रमा`. The verse's own row gloss
-  already carries the interpretation: `of Brahman (the Vedas)`. This is a
-  deliberate metaphor-to-referent rendering, applied in all three languages.
+* **6.02 सङ्कल्प — settled by the owner, 2026-11-12: the added motive is
+  removed, book-wide.** The owner's ruling: *"we cannot add anything that's not
+  there in the sanskrit. let's be true to the sanskrit verse itself."* The
+  house gloss had read "selfish resolve / selfish intention" for सङ्कल्प and
+  "selfish projects/undertakings" for सर्वारम्भ, neither of which any Sanskrit
+  word in those verses states. The table below is the first six verses; the class
+  sweep that followed found the same motive in five more (3.03, 3.15, 5.02,
+  13.24, 18.02), recorded under "A class sweep run after the six-verse fix".
+  28 strings in 11 verses changed, plus one row gloss:
+
+  | verse | before | after |
+  |---|---|---|
+  | 6.02 lit en | "who has not renounced selfish intention" | "who has not renounced resolve" |
+  | 6.02 para en / ne / hi | "giving up selfish planning" / `स्वार्थी योजना` ×2 | "letting go of resolve" / `सङ्कल्प नत्यागी` / `संकल्प न छोड़े` |
+  | 4.19 row | `सङ्कल्प = selfish resolve` | `resolve` |
+  | 4.19 lit en | "free from desire and selfish intention" | "free from desire and resolve" |
+  | 4.19 para en / ne / hi | `स्वार्थ` ×2 | "resolve" / `सङ्कल्पबाट` ×2 |
+  | 6.04 lit en | "having abandoned all selfish intentions" | "having abandoned every resolve" |
+  | 6.04 para en / ne / hi | `स्वार्थी लक्ष्य` ×2 | "every resolve" / `सबै सङ्कल्प` ×2 |
+  | 6.24 lit en / para en / ne / hi | "desires born of selfish intention" | "desires born of resolve", `सङ्कल्पबाट जन्मने` ×2 |
+  | 12.16 para en / ne / hi | "all selfish projects" | "every undertaking", `सबै आरम्भ` ×2 |
+  | 14.25 para en / ne / hi | "all selfish undertakings" | "every undertaking", `सबै आरम्भ` ×2 |
+  | 18.02 para en / hi | "giving up selfish actions" | "giving up actions of desire", `कामना से भरे कर्मों` |
+
+  Evidence for the readings, from the standard commentaries consulted for this
+  verse: Śaṅkara (as translated by Gambhirananda) glosses
+  `asannyasta-saṅkalpaḥ` as *"one by whom has not been renounced expectation,
+  anticipation, of results"*; Sivananda glosses सङ्कल्प as *"the working of the
+  imagining faculty of the mind that makes plans for the future and guesses the
+  results of plans so formed"*. Both make सङ्कल्प *resolve/planning*, not
+  *selfishness* — which the Sanskrit never says. The `selfish` sense survives in
+  one place only: 3.09's paraphrase, where the verse's own contrast is
+  `यज्ञार्थात्कर्मणोऽन्यत्र` — "the world is bound by action other than action
+  for sacrifice" — so the alternative it names is desire-led action.
+
+  A class sweep run after the six-verse fix found four more strings carrying
+  the same added motive, none of them सङ्कल्प: 3.15 `निःस्वार्थ अर्पण` for a
+  verse that never mentions desire, and `निःस्वार्थ` / "selfish" added to the
+  bare कर्मयोग of 3.03, 5.02 and 13.24. They now read कर्मयोग / "karma-yoga",
+  and 3.15's paraphrase follows its own literal (`यज्ञमा प्रतिष्ठित`). 18.02's
+  paraphrases were brought onto the Sanskrit's own word (काम्यानाम्) as well:
+  "actions of desire" / `कामना से भरे कर्मों`, not "selfish actions".
+
+  Overlap with each own literal after the change, all below the 80 % limit:
+  6.02 en 0.54 / ne 0.64 / hi 0.66; 4.19 en 0.49 / ne 0.62 / hi 0.71;
+  6.04 en 0.54 / ne 0.59 / hi 0.57; 6.24 en 0.44 / ne 0.52 / hi 0.54;
+  12.16 en 0.67 / ne 0.79 / hi 0.76; 14.25 en 0.66 / ne 0.73 / hi 0.80 (raised
+  as 0.798, close to the line, and flagged here for that reason); 18.02 en 0.54
+  / hi 0.77.
+
+  **Counting, honestly.** 38 strings changed across 12 verses, plus one row
+  gloss. The split, measured against `HEAD~1` rather than estimated:
+
+  * 28 strings in 11 verses removed the selfish motive. The indicator is
+    "selfish"/स्वार्थ before; seven of the 28 changed wording for a second
+    reason at the same time (5 return to the literal's `सङ्कल्प` /
+    "undertaking", 2 move to कामना), so "selfish gone" and "सङ्कल्प restored"
+    overlap and must not be added together.
+  * 5 strings are 6.44's lits.en / ne / hi and paras.en / ne, which carry
+    शब्दब्रह्म and never said "selfish". Its paras.hi is the 38th string and
+    also carries शब्दब्रह्म, but it was rewritten twice — see below.
+  * 4 strings in 3 verses are 6.24 and 4.19 paraphrases that dropped
+    "imagined"/"craving" as well.
+
+  **A defect this pass introduced, and the check it forced.** 6.44's Hindi
+  paraphrase was written in Nepali — `पुरानै अभ्यासको जोरले ऊ नचाहँदा नचाहँदै पनि
+  अघि बढ्छ … पुग्छ` — in the `hi` lane. It passed every gate, including the
+  paraphrase limit, because a Nepali sentence shares little with a Hindi
+  literal (0.491). Only the before/after dump written for the commit message
+  showed it. It is now Hindi
+  (`पुराने अभ्यास की धक्का-मुक्की से, अपनी मर्ज़ी के बिना भी खिंचा चला आता है …`,
+  0.598), and `test_no_lane_is_written_in_the_other_language` scans all
+  700 × 2 lanes × 2 languages for one language's function words in the other's
+  lane. Verified at zero hits before being pinned; it catches the exact string
+  above (`भए`). It is a contamination net, not a language model.
+
+  **Why the earlier entry said "seven-verse change".** The count was taken from
+  the verses sharing the सङ्कल्प row gloss; 16.04's अभिमान was named in the
+  brief as settled and is not reopened. The search actually needed is wider and
+  narrower at once: wider because सर्वारम्भ rows (12.16, 14.25) carry the same
+  added motive, narrower because only six verses ever carried it.
+
+* **6.44 `शब्दब्रह्म` — fixed in the same pass, on the owner's same ruling.**
+  The row reads `शब्दब्रह्म | the word-Brahman (Vedas)` while all three
+  literals had substituted the referent: "the mere word of the Vedas", `वेदको
+  शब्दभन्दा`, `वेद के शब्द से परे`. That is 4.32's shape. The literals now say
+  "the word-Brahman" / `शब्दब्रह्मभन्दा` / `शब्दब्रह्म से परे`, and the
+  paraphrases say "the Vedic word" / `शब्दब्रह्मभन्दा` / `शब्दब्रह्म से परे`.
+  The term is standard and dictionary-attested — *"the Veda considered as a
+  revealed sound or word and identified with the Supreme"* (Maitrī-upaniṣad),
+  and Gītā 6.44 is the dictionary's own citation for it — so restoring it is
+  not adding a doctrine the verse lacks; it is putting back the word the verse
+  says. Overlap with the literal: en 0.46, ne 0.63, hi 0.50 (paraphrase en
+  0.55, ne 0.69, hi 0.49).
+
+  The check caught this itself: restoring `शब्दब्रह्म` made the English
+  paraphrase name "the Vedic word", a name in neither its literal nor any
+  chapter-6 row, and `test_nothing_added_name_in_a_paraphrase_is_in_the_literal_or_rows`
+  went red until the occurrence was read and listed in PARAPHRASE_NAME_BASELINE
+  with its reason.
 
 ### What this pass does not prove
 
@@ -738,6 +833,69 @@ these specific, mechanical ways. Two limits are worth stating plainly:
   They cover rows whose Sanskrit gloss or stem names a small number or negates;
   they say nothing about tense, case, voice, or the many English words with no
   Nepali/Hindi counterpart in a one-to-one map.
+
+### The negation blind spot — 20 row pairs cleared, 6 kept (2026-11-12)
+
+`negation_count` decides whether a literal negates by looking for a न/नहीं token
+or a closed list of negative suffixes. Nepali negative **verbs** do not carry
+either: चाहन्नँ "I do not wish", नगर "do not", सक्दैनौ "you cannot",
+जान्दैनौ "you do not know", नसोचोस् "let him not think". Every verse whose
+Nepali literal negates that way stayed locked, which is exactly where a real
+dropped negation would hide.
+
+**What was done.** `NE_NEG_VERB`, a fifteen-form closed list in
+`tests/test_translation_fidelity.py`, matched token-exactly (never as a prefix:
+a `न…` prefix rule was tried and threw 644 false hits — नगरा "kettledrum",
+नमस्कार, नरक, नित्य, नराम्रो). Three second-person / simple-past endings were
+added to the existing suffix set: `छैनौ` (पाउनेछैनौ 2.38), `एनौ` (थिएनौ 2.12),
+`ेनौ` (लडेनौ 2.33). Then every pair that came loose was cleared **one at a
+time by reading its three literals**, not because the counter said so:
+
+| verse | Nepali form | cleared from | read: does the Nepali negate the Sanskrit's negation? |
+|---|---|---|---|
+| 1.35 | चाहन्नँ | rows | `म तिनीहरूलाई मार्न चाहन्नँ` renders न हन्तुमिच्छामि. Yes |
+| 1.39 | नजान्ने | rows | `हामीले कसरी नजान्ने` = कथं न ज्ञेयम्. Yes |
+| 3.24 | नगरें | rows | `यदि मैले कर्म नगरें भने` = न कुर्यां कर्म चेत्. Yes |
+| 3.26 | नपारोस् | rows + two-lane | `बुद्धिमा खलल नपारोस्` = न बुद्धिभेदं जनयेत्. Yes |
+| 3.29 | नगरोस् | rows | `विचलित नगरोस्` = न विचालयेत्. Yes |
+| 4.05 | जान्दैनौ | rows + two-lane | `तर तिमी जान्दैनौ` = न त्वं वेत्थ. Yes |
+| 5.04 | होइन | rows | `ज्ञानीले होइन` = न पण्डिताः. Yes |
+| 6.25 | नसोचोस् | rows + two-lane | `अरू केही नसोचोस्` = न किञ्चिदपि चिन्तयेत्. Yes |
+| 8.08 | नजाने | rows | `अरू कतै नजाने मनले` = न अन्यगामिना. Yes |
+| 11.08 | सक्दैनौ | rows | `देख्न सक्दैनौ` = न शक्यसे द्रष्टुम्. Yes |
+| 11.34 | नडराइकन | rows | `नडराइकन प्रहार गर` = मा व्यथिष्ठाः. Yes |
+| 12.09 | सक्दैनौ | rows + two-lane | `स्थिर गर्न सक्दैनौ` = न शक्नोषि. Yes |
+| 16.05 | नगर | rows + two-lane | `शोक नगर` = मा शुचः. Yes |
+| 18.07 | होइन | rows | `उचित होइन` = न उपपद्यते. Yes |
+| 18.58 | नसुन्यौ | rows | `नसुन्यौ भने` = न श्रोष्यसि. Yes |
+| 18.60 | नचाहेको | rows | `गर्न नचाहेको` = कर्तुं नेच्छसि. Yes |
+| 18.66 | नगर | rows | `शोक नगर` = मा शुचः. Yes |
+| 2.12 | थिएन, थिएनौ | — (not a baseline pair) | not cleared: its Nepali count was never 0 in *this* pass only because `एनौ` is in the suffix set; the literal `म थिइनँ … न तिमी थिएनौ` is correct either way. Listed here so the suffix change has a named witness. |
+| 2.33 | लडेनौ | rows | `यो धर्मयुद्ध लडेनौ भने` = न करिष्यसि. Yes |
+| 2.38 | पाउनेछैनौ | rows | `पाप पाउनेछैनौ` = नैवं पापम्. Yes |
+| 4.35 | पर्नेछैनौ | rows | `मोहमा पर्नेछैनौ` = न पुनर्मोहम्. Yes |
+
+**Kept, with the reason each one is not a defect** (six row pairs, five of them
+Nepali/Hindi and one English; the two-lane rule keeps 14.23 en from its own list):
+
+| verse | lane | why locked |
+|---|---|---|
+| 12.07 | en | `न चिरात्` "not after long" is rendered "I swiftly become the deliverer" — a positive idiom for the same clause. The Nepali and Hindi negate the same phrase the same way ( `चाँडै नै` / `शीघ्र ही`). Nothing dropped; the check wants a "not". |
+| 14.23 | en (rows and two-lane) | `न विचाल्यते` rendered "unshaken by the guṇas" and `नेङ्गते` as "abiding unmoved" — the negation lives in the English privative `un-`. |
+| 16.03 | en | `नातिमानिता` rendered "freedom from pride". The negation is inside `-freedom from`, which the counter does not list. |
+| 16.03 | ne, hi | `द्वेषरहितता र अभिमानरहितता` / `द्वेष-रहितता और अभिमान-रहितता` — the negation is the `-रहित` suffix, already in `NE_STANDING` for the bare word but not as a suffix on a compound. |
+
+**Net: `NEGATION_BASELINE_ROWS` 26 → 6 (Nepali 21 → 1), and
+`NEGATION_BASELINE_TWO_LANE` 6 → 1.** Twenty row pairs and five two-lane pairs
+cleared; no new hit appeared anywhere in the book under the wider count, which
+is the proof that the list was not widened into a hole. Every remaining pair is
+a language carrying the negation lexically, not a lane that dropped it.
+
+**Still unverified.** The list is closed and corpus-sized: a negative verb form
+that never occurs in these 700 verses is not covered, and a future literal that
+needs one must add it with its own reading. The check can now say "this lane
+does not negate anywhere" far less often than before, but it still cannot tell
+whether the negation landed on the right clause.
 
 A cross-language advisory pass was written and then removed: it could not
 separate genuine borrowing from the shared Sanskrit vocabulary that Nepali and

@@ -477,7 +477,18 @@ function lrDrill(ci, ti, vs, seed){
     qs.forEach(function(q,qi){
       const ws = q.words||[];
       if(ws.length < 2) return;                    // nothing to hide it among
-      ws.forEach(function(w,wi){ if(lrMeaty(w)) cands.push({q:q,qi:qi,w:w,wi:wi,ws:ws}); });
+      /* A word written TWICE in one pāda cannot be a cloze answer: धर्मक्षेत्रे
+         कुरुक्षेत्रे (1.01) splits into धर्म + क्षेत्रे + कुरु + क्षेत्रे, so
+         blanking the second क्षेत्रे leaves the first क्षेत्रे on screen — the
+         question shows its own answer, and the "not already visible" distractor
+         filter then removes the only honest options. 53 of the book's 6,399
+         candidates are this case, across 25 verses; measured in Chromium-free
+         Node, the check that failed CI on 2026-11-12 (`wordOK` false with
+         क्षेत्रे among the choices) is exactly one of them. Skip the row. */
+      const times = {};
+      ws.forEach(function(w){ times[w[0]] = (times[w[0]]||0) + 1; });
+      ws.forEach(function(w,wi){
+        if(lrMeaty(w) && times[w[0]] === 1) cands.push({q:q,qi:qi,w:w,wi:wi,ws:ws}); });
     });
     if(cands.length){
       const c = cands[Math.floor(lrRandom()*cands.length)];
