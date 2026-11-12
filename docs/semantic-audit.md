@@ -608,6 +608,7 @@ wanting.
 | Address parity across the three literals | all 700 × 3 | the same ten verses; every other difference was a legitimate translation of the epithet (परन्तप → शत्रुतापन in Nepali, जगन्निवास → "abode of the world", पार्थ → "Arjuna", etc.) |
 | Nothing added — names | every capitalised token in all 700 English literals, against that verse's row glosses | 30 candidates, all read: every one is either the person the Sanskrit describes (1.12 Bhīṣma from `pitāmahaḥ`, 1.20 Dhārtarāṣṭras from `dhārtarāṣṭrān`), the same epithet under its Sanskrit name (Acyuta for "infallible one"), or a row's own alternative form (Kāmadhuk/Kāmadhenu, Uśanā/Uśanas). None added a new actor. |
 | Nothing added — numbers | all 700 × 3 literals; number words and numerals against row glosses | no added or dropped number. The flagged cases were the indefinite article ("one"), `छ` = "is", or a number the Sanskrit carries in a compound (`navadvāre` 5.13, `trividhaḥ` 18.04). |
+| Nothing added — motive | all 700 × 3 literals and paraphrases, for "selfish" / स्वार्थ and निःस्वार्थ | **28 strings in 11 verses carried a motive no word of the verse states; all corrected (2026-11-12)** — 6.02 4.19 6.04 6.24 18.02 (सङ्कल्प / काम्य, "selfish resolve" and "selfish actions"), 12.16 14.25 (सर्वारम्भ, "selfish undertakings"), 3.15 (निःस्वार्थ for a verse with no काम), 3.03 5.02 13.24 (निःस्वार्थ added to a bare कर्मयोग). One kept: 3.09, whose own contrast `यज्ञार्थात्कर्मणोऽन्यत्र` names desire-led action as the alternative. Pinned by `test_nothing_added_no_lane_asserts_selfishness_the_sanskrit_lacks`. This row is narrower than "no added motive anywhere": it searches one motive, in one vocabulary. |
 | Nothing added — negation | all 700 English literals against their row negations; all 700 literal/paraphrase pairs | 8 candidates, all read: `anāvṛtti` (8.23), `asakta` (3.09, 3.19), `avijñeya` (13.15), `na … avasthitaḥ` (13.27), and the "cannot" of 2.24/12.11 are all carried by a privative or a separate row. No literal negates what the Sanskrit affirms. Literal and paraphrase agree on negation in all 2,100 pairs. |
 | Cross-language number parity | all 700 × 3 | no verse in which one language states a number the other two do not. |
 | Relative clause coverage | all 700 × 3: row-gloss content words traceable in the same language's literal, compared across languages | 41 verses where one language's vocabulary lags the other two; **all 41 read in full** (1.14 1.15 1.26 1.33 1.34 1.42 2.01 2.06 2.13 2.19 2.23 2.46 2.56 2.67 3.04 3.17 3.21 3.29 3.39 3.41 4.32 5.17 6.02 6.05 6.21 6.27 6.34 7.12 7.13 7.22 8.11 8.28 9.25 14.22 16.07 16.14 16.20 17.11 18.21 18.67 18.70). All are register differences — Nepali/Hindi carry the same clause in inherited Sanskrit vocabulary, or the literal uses a synonym the row gloss does not spell — not dropped content. |
@@ -693,36 +694,112 @@ pinned padaccheda fixture was updated with them.
 | Paraphrase-only vocative drops (19 verses: 2.21 2.39 2.42 2.55 3.22 3.23 4.33 7.01 8.14 8.22 9.32 10.24 12.07 16.04 16.06 18.06 18.30 18.32 18.34) | **confirmed; no change** | In every one the literal carries the address in all three languages and the paraphrase carries none. This is the house convention of not padding a paraphrase. Rewriting nineteen verses would be a style change, not a fidelity fix. Recommendation: keep, and keep the literal as the place the address is guaranteed. |
 | 11.47 Hindi `tvat` | **does not reproduce** | The Hindi literal reads `जिसे तेरे सिवा पहले किसी ने नहीं देखा` — exclusion, matching en (“none but you”) and ne (`तिमीबाहेक`). The row is `त्वत् | tvat | than you | तिमीभन्दा | तुझसे`; with `अन्येन` = “by another” it is “by another than you”. The alleged “तुझसे पहले” chronology is not in the data. Nothing changed. |
 
-### Open interpretive cases — reported, not changed
+### Interpretive cases — decided 2026-11-12 (owner's ruling: add nothing)
 
-Two additions are editorial interpretation rather than grammar, and both
-predate this pass. Neither was changed unilaterally:
+The two additions below were editorial interpretation rather than grammar. Both
+predate this pass. The owner's ruling of 2026-11-12 — *"we cannot add anything
+that's not there in the sanskrit"* — settled both; the 4.32 and 6.44 entries
+below record what changed, and 6.02's entry records the wider change the same
+ruling required.
 
-* **6.02** — English literal “who has not renounced **selfish** intention” and
-  all three paraphrases (“selfish planning”, `स्वार्थी योजना`) add a motive the
-  Sanskrit `असन्न्यस्तसङ्कल्प` (“whose resolve is not renounced”) does not
-  state. The edition uses “selfish intention/resolve” for `सङ्कल्प` as a house
-  gloss elsewhere (4.19's row reads “selfish resolve”; 6.04, 6.24, 12.16,
-  14.25), so this is a settled interpretative convention, not a one-off. If the
-  owner wants the stricter rule enforced, it is a seven-verse editorial change,
-  not a single-string fix.
-* **4.32** — **closed in this pass; the literals moved, the row stands.** All
-  three literals rendered `ब्रह्मणो मुखे` (“in the mouth of Brahman”) as “in the
-  scriptures” / `शास्त्रमा`, keeping the interpretation only in the row's
-  parenthetical `of Brahman (the Vedas)`. That is the one arrangement the
-  edition's own rule forbids: a literal may not replace a word the Sanskrit
-  states with the gloss of that word. The literals now read “in the mouth of
-  Brahman” / `ब्रह्मको मुखमा` / `ब्रह्म के मुख में`, and the row keeps its
-  parenthetical for the reader who wants the referent.
-* **6.44** — `शब्दब्रह्म` (“the word-Brahman”) is rendered in all three
-  literals as its referent: en “the mere word of the Vedas”, ne
-  `वेदको शब्दभन्दा`, hi `वेद के शब्द से परे`. The row reads
-  `शब्दब्रह्म | the word-Brahman (Vedas)`. This is 4.32's shape exactly. It is
-  **reported, not changed**: unlike ब्रह्मणो मुखे, “the word-Brahman” is not a
-  phrase a general reader can be handed without a gloss, and the paraphrase in
-  all three languages already says `शास्त्रको शब्द` / “mere scripture”. If the
-  owner wants the strict rule, the fix is to restore `शब्दब्रह्म` in the three
-  literals and let the row's parenthetical do the explaining.
+* **6.02 सङ्कल्प — settled by the owner, 2026-11-12: the added motive is
+  removed, book-wide.** The owner's ruling: *"we cannot add anything that's not
+  there in the sanskrit. let's be true to the sanskrit verse itself."* The
+  house gloss had read "selfish resolve / selfish intention" for सङ्कल्प and
+  "selfish projects/undertakings" for सर्वारम्भ, neither of which any Sanskrit
+  word in those verses states. Seventeen strings in six verses changed, plus one
+  row gloss:
+
+  | verse | before | after |
+  |---|---|---|
+  | 6.02 lit en | "who has not renounced selfish intention" | "who has not renounced resolve" |
+  | 6.02 para en / ne / hi | "giving up selfish planning" / `स्वार्थी योजना` ×2 | "letting go of resolve" / `सङ्कल्प नत्यागी` / `संकल्प न छोड़े` |
+  | 4.19 row | `सङ्कल्प = selfish resolve` | `resolve` |
+  | 4.19 lit en | "free from desire and selfish intention" | "free from desire and resolve" |
+  | 4.19 para en / ne / hi | `स्वार्थ` ×2 | "resolve" / `सङ्कल्पबाट` ×2 |
+  | 6.04 lit en | "having abandoned all selfish intentions" | "having abandoned every resolve" |
+  | 6.04 para en / ne / hi | `स्वार्थी लक्ष्य` ×2 | "every resolve" / `सबै सङ्कल्प` ×2 |
+  | 6.24 lit en / para en / ne / hi | "desires born of selfish intention" | "desires born of resolve", `सङ्कल्पबाट जन्मने` ×2 |
+  | 12.16 para en / ne / hi | "all selfish projects" | "every undertaking", `सबै आरम्भ` ×2 |
+  | 14.25 para en / ne / hi | "all selfish undertakings" | "every undertaking", `सबै आरम्भ` ×2 |
+  | 18.02 para en / hi | "giving up selfish actions" | "giving up actions of desire", `कामना से भरे कर्मों` |
+
+  Evidence for the readings, from the standard commentaries consulted for this
+  verse: Śaṅkara (as translated by Gambhirananda) glosses
+  `asannyasta-saṅkalpaḥ` as *"one by whom has not been renounced expectation,
+  anticipation, of results"*; Sivananda glosses सङ्कल्प as *"the working of the
+  imagining faculty of the mind that makes plans for the future and guesses the
+  results of plans so formed"*. Both make सङ्कल्प *resolve/planning*, not
+  *selfishness* — which the Sanskrit never says. The `selfish` sense survives in
+  one place only: 3.09's paraphrase, where the verse's own contrast is
+  `यज्ञार्थात्कर्मणोऽन्यत्र` — "the world is bound by action other than action
+  for sacrifice" — so the alternative it names is desire-led action.
+
+  A class sweep run after the six-verse fix found four more strings carrying
+  the same added motive, none of them सङ्कल्प: 3.15 `निःस्वार्थ अर्पण` for a
+  verse that never mentions desire, and `निःस्वार्थ` / "selfish" added to the
+  bare कर्मयोग of 3.03, 5.02 and 13.24. They now read कर्मयोग / "karma-yoga",
+  and 3.15's paraphrase follows its own literal (`यज्ञमा प्रतिष्ठित`). 18.02's
+  paraphrases were brought onto the Sanskrit's own word (काम्यानाम्) as well:
+  "actions of desire" / `कामना से भरे कर्मों`, not "selfish actions".
+
+  Overlap with each own literal after the change, all below the 80 % limit:
+  6.02 en 0.54 / ne 0.64 / hi 0.66; 4.19 en 0.49 / ne 0.62 / hi 0.71;
+  6.04 en 0.54 / ne 0.59 / hi 0.57; 6.24 en 0.44 / ne 0.52 / hi 0.54;
+  12.16 en 0.67 / ne 0.79 / hi 0.76; 14.25 en 0.66 / ne 0.73 / hi 0.80 (raised
+  as 0.798, close to the line, and flagged here for that reason); 18.02 en 0.54
+  / hi 0.77.
+
+  **Counting, honestly.** 38 strings changed across 12 verses, plus one row
+  gloss. The split, measured against `HEAD~1` rather than estimated:
+
+  * 28 strings in 11 verses removed the selfish motive. The indicator is
+    "selfish"/स्वार्थ before; seven of the 28 changed wording for a second
+    reason at the same time (5 return to the literal's `सङ्कल्प` /
+    "undertaking", 2 move to कामना), so "selfish gone" and "सङ्कल्प restored"
+    overlap and must not be added together.
+  * 5 strings are 6.44's lits.en / ne / hi and paras.en / ne, which carry
+    शब्दब्रह्म and never said "selfish". Its paras.hi is the 38th string and
+    also carries शब्दब्रह्म, but it was rewritten twice — see below.
+  * 4 strings in 3 verses are 6.24 and 4.19 paraphrases that dropped
+    "imagined"/"craving" as well.
+
+  **A defect this pass introduced, and the check it forced.** 6.44's Hindi
+  paraphrase was written in Nepali — `पुरानै अभ्यासको जोरले ऊ नचाहँदा नचाहँदै पनि
+  अघि बढ्छ … पुग्छ` — in the `hi` lane. It passed every gate, including the
+  paraphrase limit, because a Nepali sentence shares little with a Hindi
+  literal (0.491). Only the before/after dump written for the commit message
+  showed it. It is now Hindi
+  (`पुराने अभ्यास की धक्का-मुक्की से, अपनी मर्ज़ी के बिना भी खिंचा चला आता है …`,
+  0.598), and `test_no_lane_is_written_in_the_other_language` scans all
+  700 × 2 lanes × 2 languages for one language's function words in the other's
+  lane. Verified at zero hits before being pinned; it catches the exact string
+  above (`भए`). It is a contamination net, not a language model.
+
+  **Why the earlier entry said "seven-verse change".** The count was taken from
+  the verses sharing the सङ्कल्प row gloss; 16.04's अभिमान was named in the
+  brief as settled and is not reopened. The search actually needed is wider and
+  narrower at once: wider because सर्वारम्भ rows (12.16, 14.25) carry the same
+  added motive, narrower because only six verses ever carried it.
+
+* **6.44 `शब्दब्रह्म` — fixed in the same pass, on the owner's same ruling.**
+  The row reads `शब्दब्रह्म | the word-Brahman (Vedas)` while all three
+  literals had substituted the referent: "the mere word of the Vedas", `वेदको
+  शब्दभन्दा`, `वेद के शब्द से परे`. That is 4.32's shape. The literals now say
+  "the word-Brahman" / `शब्दब्रह्मभन्दा` / `शब्दब्रह्म से परे`, and the
+  paraphrases say "the Vedic word" / `शब्दब्रह्मभन्दा` / `शब्दब्रह्म से परे`.
+  The term is standard and dictionary-attested — *"the Veda considered as a
+  revealed sound or word and identified with the Supreme"* (Maitrī-upaniṣad),
+  and Gītā 6.44 is the dictionary's own citation for it — so restoring it is
+  not adding a doctrine the verse lacks; it is putting back the word the verse
+  says. Overlap with the literal: en 0.46, ne 0.63, hi 0.50 (paraphrase en
+  0.55, ne 0.69, hi 0.49).
+
+  The check caught this itself: restoring `शब्दब्रह्म` made the English
+  paraphrase name "the Vedic word", a name in neither its literal nor any
+  chapter-6 row, and `test_nothing_added_name_in_a_paraphrase_is_in_the_literal_or_rows`
+  went red until the occurrence was read and listed in PARAPHRASE_NAME_BASELINE
+  with its reason.
 
 ### What this pass does not prove
 

@@ -380,14 +380,14 @@
                 }
               ],
               "lits": {
-                "en": "That which they call renunciation, know that to be yoga, O son of Pāṇḍu; for none becomes a yogi who has not renounced selfish intention.",
+                "en": "That which they call renunciation, know that to be yoga, O son of Pāṇḍu; for none becomes a yogi who has not renounced resolve.",
                 "ne": "हे पाण्डुपुत्र, जसलाई संन्यास भनिन्छ, त्यसलाई नै योग जान; किनकि सङ्कल्प त्याग नगरेको व्यक्ति योगी हुँदैन।",
                 "hi": "हे पाण्डुपुत्र, जिसे संन्यास कहते हैं, उसे ही योग जान; क्योंकि संकल्प का त्याग किए बिना कोई योगी नहीं होता।"
               },
               "paras": {
-                "en": "“What people call renunciation is the same as yoga — no one can be a yogi without giving up selfish planning.”",
-                "ne": "“जसलाई मानिसहरू संन्यास भन्छन्, त्यही योग हो — स्वार्थी योजना नछोडी कोही योगी हुन सक्दैन।”",
-                "hi": "“जिसे लोग संन्यास कहते हैं, वही योग है — स्वार्थी योजना न छोड़े कोई योगी नहीं हो सकता।”"
+                "en": "“What people call renunciation is the same as yoga — no one becomes a yogi without letting go of resolve.”",
+                "ne": "“जसलाई मानिसहरू संन्यास भन्छन्, त्यही योग हो — सङ्कल्प नत्यागी कोही योगी हुँदैन।”",
+                "hi": "“जिसे लोग संन्यास कहते हैं, वही योग है — संकल्प न छोड़े कोई योगी नहीं होता।”"
               }
             }
           ]
@@ -683,14 +683,14 @@
                 }
               ],
               "lits": {
-                "en": "When one is attached neither to sense-objects nor to actions, having abandoned all selfish intentions — then he is said to have ascended in yoga.",
+                "en": "When one is attached neither to sense-objects nor to actions, having abandoned every resolve — then he is said to have ascended in yoga.",
                 "ne": "जब मानिस न विषयहरूमा आसक्त हुन्छ न कर्ममा, र सबै सङ्कल्प त्यागेको हुन्छ — तब ऊ योगमा चढेको भनिन्छ।",
                 "hi": "जब पुरुष न विषयों में आसक्त होता है न कर्मों में, और सब संकल्पों को त्याग चुका होता है — तब वह योग में चढ़ा हुआ कहा जाता है।"
               },
               "paras": {
-                "en": "“When you cling neither to pleasures nor to work, having dropped all selfish aims — you have truly risen in yoga.”",
-                "ne": "“जब तिमी न भोगमा टाँसिन्छौ न काममा, सबै स्वार्थी लक्ष्य छोडेर — तब तिमी साँच्चै योगमा उक्लेका हुन्छौ।”",
-                "hi": "“जब तू न भोगों से चिपकता है न काम से, सब स्वार्थी लक्ष्य छोड़कर — तब तू सचमुच योग में उठ चुका है।”"
+                "en": "“When you cling neither to pleasures nor to work, having let go of every resolve — you have truly risen in yoga.”",
+                "ne": "“जब तिमी न भोगमा टाँसिन्छौ न काममा, सबै सङ्कल्प छोडेर — तब तिमी साँच्चै योगमा उक्लेका हुन्छौ।”",
+                "hi": "“जब तू न भोगों से चिपकता है न काम से, सब संकल्प छोड़कर — तब तू सचमुच योग में उठ चुका है।”"
               }
             }
           ]
@@ -3886,14 +3886,14 @@
                 }
               ],
               "lits": {
-                "en": "Abandoning without exception all desires born of selfish intention, restraining the whole group of senses on every side by the mind alone —",
+                "en": "Abandoning without exception all desires born of resolve, restraining the whole group of senses on every side by the mind alone —",
                 "ne": "सङ्कल्पबाट जन्मेका सबै कामनाहरूलाई पूर्ण रूपमा त्यागेर, मनद्वारा नै चारैतिरबाट सम्पूर्ण इन्द्रिय-समूहलाई रोकेर —",
                 "hi": "संकल्प से उत्पन्न सब कामनाओं को पूर्णतः त्यागकर, मन द्वारा ही चारों ओर से सम्पूर्ण इन्द्रिय-समूह को रोककर —"
               },
               "paras": {
-                "en": "“Let go of all imagined desires; rein in every sense with the mind —”",
-                "ne": "“सबै कल्पित इच्छाहरू छोड; मनले नै हरेक इन्द्रियलाई काबूमा ल्याऊ —”",
-                "hi": "“सब कल्पित इच्छाओं को छोड़; मन से ही हर इन्द्रिय को काबू में ले —”"
+                "en": "“Let go of every desire that resolve gives birth to; rein in all the senses with the mind —”",
+                "ne": "“सङ्कल्पबाट जन्मने सबै इच्छा छोड; मनले नै हरेक इन्द्रियलाई काबूमा ल्याऊ —”",
+                "hi": "“संकल्प से जन्मने सब इच्छाओं को छोड़; मन से ही हर इन्द्रिय को काबू में ले —”"
               }
             }
           ]
@@ -7109,14 +7109,14 @@
                 }
               ],
               "lits": {
-                "en": "By that very former practice he is carried along, even in spite of himself; even the one who merely wishes to know yoga transcends the mere word of the Vedas.",
-                "ne": "त्यही पूर्वाभ्यासले गर्दा ऊ अनिच्छाले पनि अघि बढ्छ; योग जान्न चाहने मात्रले पनि वेदको शब्दभन्दा माथि उक्लन्छ।",
-                "hi": "उसी पूर्व-अभ्यास से वह अनिच्छा से भी आगे बढ़ता है; योग को जानने की इच्छा मात्र करने वाला भी वेद के शब्द से परे चला जाता है।"
+                "en": "By that very former practice he is carried along, even in spite of himself; even the one who merely wishes to know yoga transcends the word-Brahman.",
+                "ne": "त्यही पूर्वाभ्यासले गर्दा ऊ अनिच्छाले पनि अघि बढ्छ; योग जान्न चाहने मात्रले पनि शब्दब्रह्मभन्दा माथि उक्लन्छ।",
+                "hi": "उसी पूर्व-अभ्यास से वह अनिच्छा से भी आगे बढ़ता है; योग को जानने की इच्छा मात्र करने वाला भी शब्दब्रह्म से परे चला जाता है।"
               },
               "paras": {
-                "en": "“His past practice carries him forward even against his will — even wanting to know yoga takes you beyond mere scripture.”",
-                "ne": "“उसको पुरानो अभ्यासले उसलाई नचाहँदा पनि अगाडि बढाउँछ — योग जान्न चाहने मात्रले पनि शास्त्रको शब्दभन्दा पर जान्छ।”",
-                "hi": "“उसका पुराना अभ्यास उसे अनिच्छा से भी आगे बढ़ाता है — योग जानने की इच्छा मात्र भी शास्त्र के शब्द से परे ले जाती है।”"
+                "en": "“His past practice carries him forward even against his will — even wanting to know yoga takes you beyond the Vedic word.”",
+                "ne": "“उसको पुरानो अभ्यासले उसलाई नचाहँदा पनि अगाडि बढाउँछ — योग जान्न चाहने मात्रले पनि शब्दब्रह्मभन्दा पर जान्छ।”",
+                "hi": "“वह पुराने अभ्यास की धक्का-मुक्की से, अपनी मर्ज़ी के बिना भी खिंचा चला आता है; योग का ज्ञान सिर्फ़ पाने की ख़्वाहिश रखने वाला भी शब्दब्रह्म से आगे निकल जाता है।”"
               }
             }
           ]

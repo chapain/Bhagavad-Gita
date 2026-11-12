@@ -244,7 +244,7 @@ want them to survive a regeneration.
 |  | 4.16 | Even the wise are bewildered here | What is action, what is inaction — even the wise are bewildered here; I shall declare to you that action, knowing which you will be released from evil. | ☐ | ☐ | ☐ |
 |  | 4.17 | The mystery of action | Indeed the nature of action must be understood, and of forbidden action too, and of inaction; mysterious is the course of action. | ☐ | ☐ | ☐ |
 |  | 4.18 | Inaction in action, action in inaction | He who sees inaction in action, and action in inaction, is intelligent among men; he is engaged in yoga and performs all actions. | ☐ | ☐ | ☐ |
-|  | 4.19 | Actions burned in the fire of knowledge | Whose undertakings are all free from desire and selfish intention, and whose actions are burnt by the fire of knowledge — him the wise call a man of learning. | ☐ | ☐ | ☐ |
+|  | 4.19 | Actions burned in the fire of knowledge | Whose undertakings are all free from desire and resolve, and whose actions are burnt by the fire of knowledge — him the wise call a man of learning. | ☐ | ☐ | ☐ |
 |  | 4.20 | Though acting, he does nothing | Having abandoned attachment to the fruit of action, ever content, without any support — though engaged in action, he verily does nothing. | ☐ | ☐ | ☐ |
 |  | 4.21 | Owning nothing, he incurs no sin | Free from desire, with the mind and self controlled, having given up all possessions, performing only bodily action, he does not incur sin. | ☐ | ☐ | ☐ |
 |  | 4.22 | Content with what comes | Content with what comes unsought, beyond the pairs of opposites, free from envy, equal in success and failure — even acting, he is not bound. | ☐ | ☐ | ☐ |
@@ -310,9 +310,9 @@ want them to survive a regeneration.
 | ☐ | Verse | Title | The verse says (literal) | keep | revise | fix |
 |---|---|---|---|:-:|:-:|:-:|
 |  | 6.01 | He who acts without fruit-seeking: renouncer and yogi | The Blessed Lord said: He who performs his bounden action without depending on its fruit — he is both a renouncer and a yogi, not he who is without fire and without rites. | ☐ | ☐ | ☐ |
-|  | 6.02 | Renunciation is yoga | That which they call renunciation, know that to be yoga, O son of Pāṇḍu; for none becomes a yogi who has not renounced selfish intention. | ☐ | ☐ | ☐ |
+|  | 6.02 | Renunciation is yoga | That which they call renunciation, know that to be yoga, O son of Pāṇḍu; for none becomes a yogi who has not renounced resolve. | ☐ | ☐ | ☐ |
 |  | 6.03 | Action for the ascending, stillness for the ascended | For the sage who wishes to ascend in yoga, action is said to be the means; for him who has ascended, quiescence is said to be the means. | ☐ | ☐ | ☐ |
-|  | 6.04 | Clinging to nothing, he has risen in yoga | When one is attached neither to sense-objects nor to actions, having abandoned all selfish intentions — then he is said to have ascended in yoga. | ☐ | ☐ | ☐ |
+|  | 6.04 | Clinging to nothing, he has risen in yoga | When one is attached neither to sense-objects nor to actions, having abandoned every resolve — then he is said to have ascended in yoga. | ☐ | ☐ | ☐ |
 |  | 6.05 | The Self is the friend and the enemy of the Self | Let one raise the self by the Self and not degrade the self; for the Self alone is the friend of the self, and the Self alone is the enemy of the self. | ☐ | ☐ | ☐ |
 |  | 6.06 | Friend if conquered, enemy if not | For him who has conquered the self by the Self, the Self is a friend; but for him who has not conquered the self, the Self abides as an enemy, hostile. | ☐ | ☐ | ☐ |
 |  | 6.07 | The self-conquered is at peace | The self-conquered, tranquil one is established in the Self — equal in cold and heat, pleasure and pain, honour and dishonour. | ☐ | ☐ | ☐ |
@@ -332,7 +332,7 @@ want them to survive a regeneration.
 |  | 6.21 | A joy the senses cannot reach | — that which, being apprehended by the intellect beyond the senses, one knows as boundless joy, and established in which one never departs from the truth — | ☐ | ☐ | ☐ |
 |  | 6.22 | No gain is counted greater than this | — having gained which one deems no other gain superior, in which one is not disturbed even by great sorrow — that state is known as yoga, the sundering of union with sorrow. | ☐ | ☐ | ☐ |
 |  | 6.23 | Practise with resolve and an undiscouraged mind | That yoga, the disconnection of union with sorrow, should be practised with determination, with an undiscouraged mind. | ☐ | ☐ | ☐ |
-|  | 6.24 | Abandon all desires born of intention | Abandoning without exception all desires born of selfish intention, restraining the whole group of senses on every side by the mind alone — | ☐ | ☐ | ☐ |
+|  | 6.24 | Abandon all desires born of intention | Abandoning without exception all desires born of resolve, restraining the whole group of senses on every side by the mind alone — | ☐ | ☐ | ☐ |
 |  | 6.25 | Slowly, gradually, let him come to rest | — slowly, gradually, let him come to rest through the intellect held firm by resolve; and fixing the mind on the Self alone, let him think of nothing else. | ☐ | ☐ | ☐ |
 |  | 6.26 | Wherever the mind wanders, bring it back | From whatever cause the wavering, unsteady mind wanders away, from that alone let him withdraw it and bring it under the control of the Self. | ☐ | ☐ | ☐ |
 |  | 6.27 | Supreme bliss comes to the stainless | Supreme bliss verily comes to this yogi whose mind is peaceful, whose passion is stilled, who is become Brahman, free from stain. | ☐ | ☐ | ☐ |
@@ -352,7 +352,7 @@ want them to survive a regeneration.
 |  | 6.41 | Born again in a pure house | Having attained the worlds of the righteous and dwelt there for immemorial years, he who fell from yoga is born again in the house of the pure and prosperous. | ☐ | ☐ | ☐ |
 |  | 6.42 | Or in a family of yogis | Or he is born into a family of wise yogis; truly a birth like this is very hard to obtain in this world. | ☐ | ☐ | ☐ |
 |  | 6.43 | He regains spiritual insight from a past life | There he regains the understanding of his former body, O son of the Kurus, and from there he strives again for perfection. | ☐ | ☐ | ☐ |
-|  | 6.44 | Carried onward by former practice | By that very former practice he is carried along, even in spite of himself; even the one who merely wishes to know yoga transcends the mere word of the Vedas. | ☐ | ☐ | ☐ |
+|  | 6.44 | Carried onward by former practice | By that very former practice he is carried along, even in spite of himself; even the one who merely wishes to know yoga transcends the word-Brahman. | ☐ | ☐ | ☐ |
 |  | 6.45 | Perfected through many births | But the yogi who strives with effort, purified of sin, perfected gradually through many births, then reaches the highest state. | ☐ | ☐ | ☐ |
 |  | 6.46 | The yogi is greater than the ascetic | The yogi is greater than the ascetic, deemed greater than the man of knowledge, and greater than the man of rites; therefore be a yogi, O Arjuna. | ☐ | ☐ | ☐ |
 |  | 6.47 | Most yoked: he who worships me with faith | And among all yogis, he who, full of faith, worships me with his inmost self established in me — him I deem the most yoked, in my view. | ☐ | ☐ | ☐ |

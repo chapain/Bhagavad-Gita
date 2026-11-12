@@ -177,6 +177,8 @@ PARAPHRASE_NAME_BASELINE = {
     ("16.05", "Arjuna"),      # as 13.26
     ("16.22", "Arjuna"),      # as 13.26
     ("18.13", "Vedānta"),     # वेदान्त row
+    ("6.44", "Vedic"),        # वेद row (chapter 6 has none); शब्दब्रह्म is the
+                              # word-Brahman, and "the Vedic word" names it plainly
 }
 
 
@@ -683,6 +685,81 @@ class WholeBookFidelity(unittest.TestCase):
         deva = [(verse["n"], lang) for verse in self.verses for row in rows_of(verse)
                 for lang in ("ne", "hi") if row[GLOSS[lang]].startswith("हे ")]
         self.assertGreaterEqual(len(deva), 200)
+
+    def test_nothing_added_no_lane_asserts_selfishness_the_sanskrit_lacks(self):
+        """The owner's ruling, 2026-11-12: "we cannot add anything that's not
+        there in the sanskrit."
+
+        सङ्कल्प is resolve/planning — Śaṅkara: "expectation, anticipation, of
+        results"; Sivananda: "the imagining faculty … that makes plans for the
+        future". It is never *selfishness*, which no Sanskrit word in 6.02,
+        4.19, 6.04, 6.24, 12.16 or 14.25 states. सर्वारम्भ is "undertakings",
+        not "selfish undertakings". The old house gloss asserted the motive
+        anyway; eighteen strings were corrected.
+
+        The check that found the remaining four was this rule's own class
+        sweep, not a reading of those verses: 3.15 निःस्वार्थ for a verse with
+        no काम, and निःस्वार्थ / "selfish" added to the bare कर्मयोग of 3.03,
+        5.02 and 13.24. Paraphrases of verses that DO say काम keep the sense
+        (3.09 names the alternative to यज्ञ; 18.02 काम्यानाम्); the short
+        exemptions below are exactly those, listed so a later pass does not
+        delete a reading the Sanskrit supports."""
+        # Paraphrases whose Sanskrit names desire outright, so the paraphrase may.
+        kama_allowed = {("3.09", "en"), ("3.09", "ne"), ("3.09", "hi")}
+        hits = set()
+        for verse in self.verses:
+            for kind in ("lits", "paras"):
+                for language in LANGUAGES:
+                    text = verse[kind][language]
+                    if ("selfish" in text) if language == "en" else ("स्वार्थ" in text):
+                        hits.add((verse["n"], language))
+        self.assertEqual(sorted(hits - kama_allowed), [],
+                         "a lane asserts a selfish motive no word of the verse states")
+        for number, language in sorted(kama_allowed):
+            # 3.09 is the one verse where the paraphrase's contrast is the
+            # Sanskrit's own: "except action for the sake of sacrifice" says the
+            # alternative is desire-led action, and काम appears in no row of it,
+            # so the exemption is the यज्ञ row plus a reading, not a token.
+            self.assertIn("यज्ञ", [r[0] for r in rows_of(load_verse(number))])
+        # one consistent house gloss for सङ्कल्प, and the rows carry no motive
+        for number in ("6.02", "4.19", "6.04", "6.24"):
+            for row in rows_of(load_verse(number)):
+                if row[0].startswith("सङ्कल्प"):
+                    self.assertNotIn("selfish", row[2],
+                                     f"{number} {row[0]} still glosses the motive")
+        self.assertEqual([r[2] for r in rows_of(load_verse("4.19"))
+                          if r[0] == "सङ्कल्प"], ["resolve"])
+    def test_no_lane_is_written_in_the_other_language(self):
+        """A real defect caught by eye, not by a check: 6.44's Hindi paraphrase
+        was written in Nepali (`ऊ … अघि बढ्छ … पुग्छ`) while claiming the hi lane.
+        It passed every gate — the overlap was 0.491 because a Nepali sentence
+        shares little with a Hindi literal — and only the before/after dump for
+        the commit message exposed it.
+
+        The markers below are function words that are native to one language and
+        do not occur in the other's Gītā register. Verified at zero hits across
+        all 700 verses x 2 lanes x 2 languages before being pinned. They are a
+        contamination net, not a language model: a short lane with no marker
+        could still be wrong, and this test cannot see that."""
+        nepali_markers = ("छ", "छन्", "हरू", "तिमी", "भए", "भयो", "गर्छ", "गर्नु",
+                          "कोही", "उसले", "हुँदैन", "भन्नुभयो", "गरेर", "गर्दै",
+                          "छैन", "सक्दैन", "हुँदै", "पर्छ", "दिन्छ", "भन्छ")
+        hindi_markers = ("है", "हैं", "नहीं", "वाला", "वाले", "किन्तु", "हुआ",
+                         "हुई", "गया", "गई", "था", "थी", "जिस", "उसी", "मुझे",
+                         "करता", "करते", "होता", "होते", "और", "भी")
+
+        def occurs(text, word):
+            return re.search(r"(?<![\u0900-\u097F])" + re.escape(word) +
+                             r"(?![\u0900-\u097F])", text) is not None
+
+        for verse in self.verses:
+            for kind in ("lits", "paras"):
+                for word in nepali_markers:
+                    self.assertFalse(occurs(verse[kind]["hi"], word),
+                                     f"{verse['n']} {kind}.hi looks Nepali: {word}")
+                for word in hindi_markers:
+                    self.assertFalse(occurs(verse[kind]["ne"], word),
+                                     f"{verse['n']} {kind}.ne looks Hindi: {word}")
 
 
 if __name__ == "__main__":
