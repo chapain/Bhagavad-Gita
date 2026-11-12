@@ -805,12 +805,103 @@ ruling required.
   went red until the occurrence was read and listed in PARAPHRASE_NAME_BASELINE
   with its reason.
 
+### The substitution class — detector built, census read, one finding (2026-11-12)
+
+The hole this session was opened to close, in the audit's own words: *"a
+different added claim that uses no name, number or negator is still invisible to
+every check."* 4.32 (`ब्रह्मणः` rendered "the scriptures") and 6.44
+(`शब्दब्रह्म` rendered "the mere word of the Vedas") are both that shape: a
+literal replacing a Sanskrit word with a **gloss of that word**. Both were found
+by eye. Their class is closed here as far as a machine can close it.
+
+#### The detector, and what it took to make it sound
+
+Three approaches were built and measured before one was kept. Recording the
+failures matters more than recording the winner, because each failure is a
+shape the final checks cannot see.
+
+| approach | scope | result | why it was rejected |
+|---|---|---|---|
+| Book vocabulary test — is each literal word in *any* of the 9,507 glosses (9,389 word rows, English column)? | 700 × 3 | 139 unseen English word-types in 164 occurrences; 1,055 unseen Nepali/Hindi types in 1,497 occurrences | **It cannot see either known defect.** "scripture" and "Veda" are both in the house vocabulary elsewhere (शास्त्र, वेद rows), so the test licenses the exact substitution it was built for — checked directly: neither `scriptures` in the old 4.32 nor `Vedas` in the old 6.44 is flagged. Nepali/Hindi are worse still: the glosses are lemmas (धर्म) and the literals are inflected (धर्ममा), and Devanagari compounds (धर्मक्षेत्र) break token equality. |
+| Per-verse scope — every literal word must come from *this verse's* rows | 700 | 502 verses flagged, 1,109 tokens | Synonymy, not addition: the literal renders दृष्ट्वा "having seen" as "seeing", युयुत्सवः "desiring to fight" as "eager for battle". A false-positive rate near 72 % is not a detector. |
+| Sequence alignment of literal against its row glosses | 700 | 695 verses, 3,281 unmatched tokens | Same cause; order does not help when neither side shares a word. |
+| **Term rule — a gloss shaped `term (explanation)` must carry its term** | the 68 English parenthetical rows across all 700 verses | **9 hits, all read; 1 finding** | Kept. The parenthetical is the house's own mark that a gloss is a term *and* an explanation, which is exactly the boundary 4.32 and 6.44 crossed. |
+
+**The rule, stated exactly.** A row gloss of the form `term (explanation)` — for
+example `of Brahman (the Vedas)` — requires the literal to carry the *term*.
+Retrospectively, 4.32's literal said "the scriptures" (the explanation; the term
+missing) and 6.44's said "the mere word of the Vedas" (the term `word-Brahman`
+missing). Both are caught. The current text of both now passes.
+
+**The census, read by hand.** Nine hits after the term rule was made sound — the
+eleven it produced in its first, cruder form included 1.24 and 3.37, both of
+which the final rule stops reporting because the literal does carry the word
+(1.24 says `Guḍākeśa`, the gloss's own spelling; 3.37 says "rajo-guṇa" against
+`of rajas`, the same loanword). All nine were read against their Sanskrit and
+their three literals: seven are name-pairs where the literal uses one member of
+the pair (`Vṛkodara (Bhīma)` → literal "Bhīma"; `Guḍākeśa (Arjuna)` → literal
+"Guḍākeśa"), one is an editorial note on a repeated word, and one is
+`practised (by)` for जुष्टम् inside `अनार्यजुष्टम्`, where the English renders
+the compound as "unworthy of an Āryan" while Nepali and Hindi carry the practice
+sense explicitly (अभ्यास गरिएको / सेवित). **No substitution of a doctrinal term
+remains.** The exemptions are named one by one in `TERM_PAIR_EXEMPT`,
+`TERM_NOTE_NOT_EXPLANATION` and `TERM_IN_COMPOUND` in
+`tests/test_translation_fidelity.py` (8 + 3 + 1, with 1.18 and 1.20 appearing in
+two sets for the two different reasons each carries), each with its reading; a
+new kind of hit is red.
+
+#### F13 — 1.24, `Gudākeśa` for गुडाकेश — **fixed**
+
+A second check was built from the same sweep: a name in a literal must be
+spelled the way the house glosses that name. It made exactly one finding in 700
+verses.
+
+| | before | after |
+|---|---|---|
+| 1.24 lits.en | "Thus addressed by **Gudākeśa**…" | "Thus addressed by **Guḍākeśa**…" |
+
+गुडाकेश has a retroflex ḍ. That verse's own row reads `guḍākeśena` and glosses
+it "by Guḍākeśa"; the same name is glossed `Guḍākeśa` in 2.09, 10.20 and 11.07.
+1.24's literal was the only dental spelling in the book — one letter short, not
+a different name, and the Nepali and Hindi literals of the same verse already
+read गुडाकेश. Pinned by
+`test_the_one_two_four_literal_spells_gudakesa_with_the_retroflex`.
+
+The 2026-11-04 name baseline in `LITERAL_NAME_BASELINE` carried
+`("1.24", "Gudākeśa")`; that entry is removed and the pinned 1.24 fixture in
+`tests/test_semantic_audit.py` moves with the text, so a revert fails two tests.
+
+#### The census that stayed a number
+
+The widest form of the rule — does the literal carry each row's own head gloss?
+— is **1,022 rows in 515 verses**, every one of which was read as synonymy.
+Adding a house-alternate allowance (any gloss the same Sanskrit word carries
+anywhere) drops that to **0**, which is vacuous: it licenses every substitution
+short of a word the house has never used, and 4.32's "scriptures" is a word the
+house has used. So it is not asserted as zero. It is pinned at 1,022 with a
+docstring saying exactly why, and it is not offered as a proof of fidelity.
+
+#### What this class still cannot see
+
+* **Synonymy is invisible.** A literal can swap a word for a near-synonym the
+  rows never pair it with, and nothing above moves: the term check needs a
+  parenthetical, and only 68 of 9,389 rows have one.
+* **Nepali and Hindi are read, not checked.** All nine term hits and the one
+  spelling hit were English. The Devanagari parentheticals in this book are
+  reading notes on pronouns and repetitions (`यो (आत्मा)`, `वह (दोहराकर: जो भी
+  मिले)`), not term/explanation pairs, so the same rule there would produce
+  seven hits and seven false positives. No Devanagari equivalent of this class
+  is claimed.
+* **Verbs, case relations and tense remain unread** by every check in this file.
+
 ### What this pass does not prove
 
-* The mechanical classes cover address, names, numbers, negation and relative
-  clause coverage. They cannot see a mistranslated verb, a reversed case
-  relation, a wrong tense, or an added theological claim that uses no name,
-  number or negator. The per-verse ledger remains the fidelity record.
+* The mechanical classes cover address, names, numbers, negation, relative
+  clause coverage, and — since 2026-11-12 — the substitution of a glossed term
+  by its own explanation. They still cannot see a mistranslated verb, a
+  reversed case relation, a wrong tense, or a claim substituted through a
+  **synonym** the rows never pair. The per-verse ledger remains the fidelity
+  record.
 * This session read every English literal of all 700 verses end to end and
   read the Nepali and Hindi in full for all flagged and corrected verses. It
   did not re-read every Nepali and Hindi sentence of the other verses one by

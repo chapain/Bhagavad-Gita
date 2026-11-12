@@ -30,8 +30,10 @@ findings are locked in a baseline below with the reason, so that a NEW hit is re
 even while the old ones are still owed a verdict. A baseline may shrink freely.
 Growing one needs a row in docs/semantic-audit.md first.
 """
+import collections
 import json
 import re
+import unicodedata
 import unittest
 from pathlib import Path
 
@@ -133,7 +135,6 @@ LITERAL_NAME_BASELINE = {
     ("1.20", "Dhārtarāṣṭras"),  # धार्तराष्ट्रान् row
     ("1.20", "Pāṇḍava"),        # कपिध्वजः row: the ape-bannered Pāṇḍava
     ("1.21", "Acyuta"),         # अच्युत row is the same address
-    ("1.24", "Gudākeśa"),       # गुडाकेश row
     ("2.02", "Āryan"),          # आर्य row ("noble"); the reading keeps the name
     ("2.42", "Vedas"),          # वेदवादरताः row carries वेद
     ("2.72", "Brāhmī"),         # ब्राह्मी स्थितिः row
@@ -180,6 +181,78 @@ PARAPHRASE_NAME_BASELINE = {
     ("6.44", "Vedic"),        # वेद row (chapter 6 has none); शब्दब्रह्म is the
                               # word-Brahman, and "the Vedic word" names it plainly
 }
+
+
+# ------------------------------------------------- D: term substitution (data)
+#
+# `term (explanation)` exemptions — read on 2026-11-12, each against its verse.
+# None of them substitutes a doctrinal word for a gloss of it; the parenthesis
+# there is a name-pair or an additive note, which is what the entry says.
+TERM_PAIR_EXEMPT = {
+    # a name and the name it glosses: the literal uses one of the two, and
+    # neither is a claim the verse does not make. Recompute with
+    # python3 -m unittest and add a reading here — never a regex.
+    ("1.15", "वृकोदरः"),   # "Vṛkodara (Bhīma)" — the literal says Bhīma
+    ("1.20", "पाण्डवः"),   # "the son of Pāṇḍu (Arjuna)" — the literal says "the
+                            # Pāṇḍava", the verse's own word; naming Arjuna is a
+                            # reader's help, not the verse's claim
+    ("2.09", "गुडाकेशः"),  # "Guḍākeśa (Arjuna)" — the literal names him as
+                            # Arjuna, the pair's own second member
+    ("3.05", "प्रकृति"),   # "of nature (prakṛti)" — the literal says prakṛti
+    ("3.10", "पतिः"),      # "the Lord (Prajāpati)" — the literal says Prajāpati
+    ("15.01", "अश्वत्थम्"),  # "the sacred fig (world-tree)" — the literal says aśvattha
+    # a fragment row: the word is सुहृद् split across two rows and the literal
+    # says "well-wishers", the second half
+    ("1.27", "हृदः"),
+    # "(repeated: each his own)" — the second पृथक् row carries a note on the
+    # repetition; the literal says "each his own", the note's content
+    ("1.18", "पृथक्"),
+}
+
+# An explanation that describes the text rather than explaining the word: a note
+# to the reader, so the literal is not required to echo it. Read 2026-11-12.
+TERM_NOTE_NOT_EXPLANATION = {
+    ("1.18", "पृथक्"),    # "(repeated: each his own)" — a note on the repetition
+    ("1.20", "पाण्डवः"),  # "(Arjuna)" — the literal keeps "the Pāṇḍava"
+    ("15.01", "अश्वत्थम्"),  # "(world-tree)" — a name for the tree; the literal
+                              # keeps aśvattha, the verse's own word
+}
+
+# A row whose term the literal omits because the literal is rendering the
+# Sanskrit's own compound: अनार्यजुष्टम् is "practised by the un-Āryan", and the
+# English literal reads "unworthy of an Āryan" — जुष्टम् ("resorted to, practised
+# by") is carried by "unworthy of", not by a separate word. The Nepali and Hindi
+# carry it twice over (आर्य-अयोग्य / अनार्य-अयोग्य, अभ्यास गरिएको / सेवित); the
+# English is the one that compresses, and its compression was read here.
+TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
+
+# Rows whose own head gloss the English literal does not carry, measured over all
+# 9,389 rows on 2026-11-12. Every one was read as synonymy (see the census test);
+# the exact number is pinned so any rewrite that moves it is red and has to be
+# read. It may fall as the house normalises a gloss, never rise silently.
+ROW_LITERAL_CENSUS = 1022
+
+
+def _fold_diacritics(word):
+    """`Guḍākeśa` and `Gudākeśa` fold together; `Bhīma` and `Bhīṣma` do not."""
+    folded = unicodedata.normalize("NFD", word.lower())
+    return "".join(ch for ch in folded if not unicodedata.combining(ch))
+
+
+SKT_CASE_ENDINGS = ("bhyām", "bhyas", "bhyaḥ", "ānām", "eṣu", "asya", "āya",
+                    "ena", "āt", "āḥ", "aiḥ", "oḥ", "ām", "au", "ī", "ū", "ā",
+                    "aḥ", "am", "as", "e", "i", "u", "a")
+
+
+def _sanskrit_head(iast):
+    """One key per Sanskrit word across its case forms: the stem with the ending
+    stripped. Deliberately crude — a long ending is tried before a short one, and
+    a stem shorter than three characters is left whole."""
+    word = (iast or "").strip().replace("’", "'")
+    for ending in SKT_CASE_ENDINGS:
+        if word.endswith(ending) and len(word) - len(ending) >= 3:
+            return word[:-len(ending)]
+    return word
 
 
 # -------------------------------------------------- B: cross-language lag
@@ -762,5 +835,289 @@ class WholeBookFidelity(unittest.TestCase):
                                      f"{verse['n']} {kind}.ne looks Hindi: {word}")
 
 
+
+    # ------------------------------------------------------ D: term substitution
+    #
+    # The class the semantic audit named and left open: a literal that replaces
+    # the word its own row glosses with a different one. It carries no name, no
+    # number and no negator, so every check above passes it. Both defects the
+    # 2026-11-12 reading found belong here —
+    #
+    #   4.32  ब्रह्मणः  "of Brahman (the Vedas)"    -> literal "the scriptures"
+    #   6.44  शब्दब्रह्म "the word-Brahman (Vedas)"  -> literal "the mere word of the Vedas"
+    #
+    # — and neither a token scan of the glosses nor a stemmed alignment recovers
+    # them: "scripture" and "Veda" are both in the house vocabulary elsewhere, so
+    # a book-wide vocabulary test licenses the very substitution it should catch.
+    # What does recover them is the house's own mark of a *term*: a parenthetical.
+
+    def test_a_gloss_term_with_an_explanation_reaches_its_literal(self):
+        """A row gloss shaped `term (explanation)` names a term and explains it.
+
+        The literal must carry the term. Carrying only the explanation is the
+        4.32/6.44 defect: the translation has quietly swapped the word for a
+        gloss of it. This rule is true of both known defects retrospectively
+        ("of Brahman (the Vedas)" -> "the scriptures"; "the word-Brahman (Vedas)"
+        -> "the mere word of the Vedas").
+
+        **What it cannot see.** Only 68 of the 9,389 rows carry a parenthetical.
+        A row glossed with a bare synonym — "duty" for धर्म, "nature" for
+        प्रकृति — leaves no term mark and is invisible here. This check is a
+        floor under the substitution class, not a proof of fidelity.
+        """
+        hits = []
+        for verse in self.verses:
+            for row in rows_of(verse):
+                match = PARENTHETICAL.match(row[2] or "")
+                if not match:
+                    continue
+                term = _en_gloss_stems(match.group(1))
+                if not term:
+                    continue
+                if not _literal_has_any(verse["lits"]["en"], term):
+                    hits.append((verse["n"], row[0], row[2]))
+        # Each entry below was read against its verse on 2026-11-12. Every one is
+        # a name-pair or an additive note, not a substitution of a doctrinal term;
+        # the reason is in TERM_PAIR_EXEMPT so a new kind of hit is red.
+        exempt = TERM_PAIR_EXEMPT | TERM_IN_COMPOUND
+        self.assertEqual([h for h in hits if h[:2] not in exempt], [],
+                         "a literal drops the term its own row glosses")
+
+    def test_every_term_pair_exemption_is_still_a_real_pair(self):
+        """The exemptions are read, not assumed: the row must still be shaped
+        `term (explanation)` and the literal must still name the one the gloss
+        explains — the pair itself, not the term the check wants."""
+        for number, deva in sorted(TERM_PAIR_EXEMPT):
+            verse = load_verse(number)
+            rows = [r for r in rows_of(verse) if r[0] == deva]
+            self.assertTrue(rows, f"{number} {deva} is no longer a row")
+            gloss = rows[-1][2]
+            match = PARENTHETICAL.match(gloss or "")
+            self.assertIsNotNone(match, f"{number} {deva} lost its parenthetical")
+            if (number, deva) in TERM_NOTE_NOT_EXPLANATION:
+                continue
+            # The exemption's own claim: the literal uses one of the pair.
+            pair = _en_gloss_stems(match.group(1)) | _en_gloss_stems(match.group(2))
+            self.assertTrue(_literal_has_any(verse["lits"]["en"], pair),
+                            f"{number} {deva}: the literal uses neither half of the pair")
+
+    def test_a_name_is_spelled_the_way_the_verses_rows_spell_it(self):
+        """`Gudākeśa` in 1.24 against `Guḍākeśa` in that verse's own row and in
+        three other verses (2.09, 10.20, 11.07). Devanagari गुडाकेश has the
+        retroflex ḍ, so the row is right and 1.24's literal dropped it.
+
+        The comparison is name-against-gloss, not name-against-IAST: a row's
+        IAST is inflected (`guḍākeśena`, `guḍākeśaḥ`) while a literal's name is
+        nominative, so the only fair check is whether the house writes *this*
+        name this way anywhere in its own glosses. A spelling the glosses use is
+        licensed; a respelling they never use is the finding.
+
+        Deliberately narrow. It cannot see a name the rows never gloss in
+        English (the whole of an addressee's IAST may be a bare word), it says
+        nothing about whether the name is the right one, and case differences
+        alone are the house's convention (`Kaunteya` in a literal, `kaunteya`
+        in a gloss) rather than a disagreement. `Bharata` for भारत is licensed
+        because the row that glosses it already writes "Bharata", and `Brāhmī`
+        because `brāhmī` has no retroflex to lose — ṛ is inherent in ब्राह्मी.
+        """
+        # folded gloss spelling -> the exact spellings the house uses
+        house = collections.defaultdict(set)
+        for verse in self.verses:
+            for row in rows_of(verse):
+                for word in EN_WORD.findall(row[2] or ""):
+                    if word[:1].isupper():
+                        house[_fold_diacritics(word)].add(word)
+        hits = []
+        for verse in self.verses:
+            local = collections.defaultdict(set)
+            for row in rows_of(verse):
+                for word in EN_WORD.findall(row[2] or ""):
+                    if word[:1].isupper():
+                        local[_fold_diacritics(word)].add(word)
+            if not local:
+                continue
+            for word in EN_WORD.findall(verse["lits"]["en"]):
+                word = word.strip("’'")
+                if len(word) < 4 or not word[:1].isupper():
+                    continue
+                if word.lower() in EN_STOP or word in GLUE:
+                    continue
+                spellings = local.get(_fold_diacritics(word))
+                if spellings and word not in spellings:
+                    hits.append((verse["n"], word, sorted(spellings)))
+        # 1.24 `Gudākeśa` was this check's only finding; it is corrected and a
+        # revert is red, because the old spelling is not in the house's glosses.
+        self.assertEqual(hits, [],
+                         "a name is spelled differently from its own gloss")
+
+    def test_the_one_two_four_literal_spells_gudakesa_with_the_retroflex(self):
+        """1.24. The row is `guḍākeśena` and its gloss "by Guḍākeśa"; 2.09, 10.20
+        and 11.07 spell the same name the same way. Devanagari गुडाकेश is
+        retroflex ḍ, so the literal's `Gudākeśa` was the only dental spelling in
+        the book — a letter short, not a different name. Pinned in all four lanes
+        the name reaches."""
+        verse = load_verse("1.24")
+        self.assertIn("Guḍākeśa", verse["lits"]["en"])
+        self.assertNotIn("Gudākeśa", verse["lits"]["en"])
+        self.assertIn("गुडाकेश", verse["lits"]["ne"])
+        self.assertIn("गुडाकेश", verse["lits"]["hi"])
+        self.assertEqual([r[2] for r in rows_of(verse) if r[1] == "guḍākeśena"],
+                         ["by Guḍākeśa (Arjuna)"])
+        # and the spelling the rest of the book uses is the one now in 1.24
+        for number in ("2.09", "10.20", "11.07"):
+            rows = [r for r in rows_of(load_verse(number)) if "guḍākeś" in r[1]]
+            self.assertTrue(rows, number)
+            self.assertTrue(any("Guḍākeśa" in r[2] for r in rows), number)
+
+    def test_the_row_to_literal_substitution_census_is_measured(self):
+        """The census behind this class, kept honest and kept visible.
+
+        For every row, does the English literal carry the row's own (bare) head
+        gloss — or a head gloss the same Sanskrit word carries anywhere in the
+        book? On 2026-11-12 that was **1,022 rows in 515 verses** that carry
+        neither. All 1,022 are synonymy, not substitution: the literal renders
+        दृष्ट्वा "having seen" as "seeing", युयुत्सवः "desiring to fight" as
+        "eager for battle", अभिरक्षितम् "protected" as "guarded". None of them
+        was edited, and none can be found by this rule — which is why the
+        census is asserted as a *measured ceiling* rather than as zero.
+
+        The check that does find substitution is the parenthetical one above:
+        the house's own marker that a gloss is `term (explanation)`.
+
+        **What this cannot see.** Everything a synonym can hide. If a literal
+        swaps a word for a near-synonym the rows never pair it with, this number
+        does not move and the parenthetical rule does not fire. That is exactly
+        why the per-verse ledger, not this file, remains the fidelity record.
+        """
+        census = 0
+        for verse in self.verses:
+            carried = set()
+            for word in EN_WORD.findall(verse["lits"]["en"]):
+                carried |= _fold_en(word.lower().strip("’'"))
+            for row in rows_of(verse):
+                head = _en_gloss_stems(_row_term(row[2]))
+                if not head:
+                    continue
+                if carried & head:
+                    continue
+                census += 1
+        self.assertEqual(census, ROW_LITERAL_CENSUS,
+                         "the row-to-literal substitution census moved; read the "
+                         "new rows before changing this number")
+
 if __name__ == "__main__":
     unittest.main()
+
+
+# ------------------------- D: the term a gloss names, carried into the literal
+#
+# The class these four checks cover was the last mechanical hole the semantic
+# audit named: a literal that *substitutes* the word its own row glosses. It uses
+# no name, number or negator, so every other check in this file and in
+# test_semantic_audit.py passed it. Both defects the 2026-11-12 sweep found by
+# eye belong to it:
+#
+#   4.32  ब्रह्मणः  row "of Brahman (the Vedas)"
+#                   literal "the scriptures"            — the gloss replaced its headword
+#   6.44  शब्दब्रह्म row "the word-Brahman (Vedas)"
+#                   literal "the mere word of the Vedas" — same substitution
+#
+# **What these checks can see.** A row whose gloss carries a parenthetical is a
+# *term plus explanation* — the house's own mark for "this is the word, this is
+# what it means". The literal must carry the term; carrying only the explanation
+# is the defect. Retrospectively, that rule is true of 4.32 and 6.44.
+#
+# **What they cannot see.** A row glossed with a bare synonym ("duty" for धर्म)
+# is invisible: nothing here knows that "duty" and "righteousness" are the same
+# Sanskrit word, and the house uses both. A substitution expressed through a
+# synonym pair the rows never record leaves no trace. Nothing here reads a verb,
+# a case relation or a tense. This is a floor on substitution, not a proof of
+# fidelity — the per-verse ledger is still the record.
+
+PARENTHETICAL = re.compile(r"^(.*?)\s*\(([^)]*)\)\s*$")
+
+
+def _en_gloss_stems(gloss_text):
+    """Content-word stems of an English gloss."""
+    out = set()
+    for word in EN_WORD.findall(gloss_text or ""):
+        low = word.lower().strip("’'")
+        if low in EN_STOP or low in EN_NUMBER_WORDS:
+            continue
+        if len(low) <= 1:
+            continue
+        out.add(_en_stem(low))
+    return out
+
+
+# The numbers the book spells in words; a numeral is a class check of its own
+# (test_parity_numbers_in_the_literals), so they are not "content" here.
+EN_NUMBER_WORDS = set("""one two three four five six seven eight nine ten eleven
+twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty
+thirty forty fifty sixty seventy eighty ninety hundred thousand million
+first second third fourth fifth sixth seventh eighth ninth tenth eleventh
+twelfth half twice once""".split())
+
+_EN_SUFFIX = ("ations", "ation", "ments", "ment", "nesses", "ness", "ingly", "ings",
+              "ing", "ies", "ied", "ed", "es", "ly", "er", "ers", "est", "al",
+              "ic", "ous", "ive", "ful", "less", "able", "ible", "ance", "ence",
+              "ity", "ties", "s")
+
+
+def _en_stem(word):
+    """A small suffix stripper, not a stemmer.
+
+    It is deliberately conservative: a stem that is too short merges unrelated
+    words (guṇas/guṇa is wanted; "self"/"selves" is not). Where it under-strips,
+    the effect is a duplicate hit, which the census read; where it over-strips,
+    it could hide a substitution, so the minimum base is four characters.
+    """
+    for suffix in _EN_SUFFIX:
+        if not word.endswith(suffix) or word.endswith(("ss", "ee", "ll")):
+            continue
+        base = word[:-len(suffix)]
+        if len(base) >= 4:
+            return base + ("y" if suffix in ("ies", "ied") else "")
+    return word
+
+
+def _fold_en(word):
+    stems = {_en_stem(word)}
+    stems |= {s[:-1] for s in list(stems) if len(s) > 4 and s.endswith("e")}
+    return stems
+
+
+def _loan_key(word):
+    """One key for a Sanskrit loanword however the house writes it in English.
+
+    `rajas` / `rajo` / `raja` fold together; so do `guṇa` / `guṇas` / `sattva` /
+    `sattvic`, `veda` / `Vedas`, `prakṛti` / `prakṛtiḥ`. The fold is a consonant
+    skeleton: diacritics off, the English suffix stripped, then the trailing
+    vowel or sibilant off. It is deliberately narrow — `Bhīma` and `Bhīṣma` keep
+    their different consonants, `Kaunteya` and `Kuntī` stay different words —
+    because a fold wide enough to merge those would license any substitution.
+    """
+    stripped = _fold_diacritics(word).replace("ṃ", "m").replace("ḥ", "h")
+    skeleton = _en_stem(stripped)
+    return skeleton.rstrip("aeiouāīūsh").replace("ṃ", "m") or skeleton
+
+
+def _literal_has_any(literal, words):
+    """True when the literal carries one of these words, folded two ways: the
+    English stem, and the loanword skeleton the glosses themselves use."""
+    carried = set()
+    for word in EN_WORD.findall(literal or ""):
+        low = word.lower().strip("’'")
+        carried |= _fold_en(low)
+        carried.add(_loan_key(low))
+    for stem in words:
+        if stem in carried or _loan_key(stem) in carried:
+            return True
+    return False
+
+
+# A row gloss's *head* is the words before its parenthetical; the parenthetical
+# is the house explaining the term, not a second way to say it.
+def _row_term(gloss):
+    match = PARENTHETICAL.match(gloss or "")
+    return (match.group(1) if match else gloss).strip()
