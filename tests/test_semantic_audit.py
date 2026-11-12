@@ -40,6 +40,7 @@ Rules from the audit that are enforced mechanically, because they are checkable:
    exist - the defect in 5.12 and 3.22.
 """
 import json
+import sys
 import re
 import unittest
 from pathlib import Path
@@ -565,6 +566,45 @@ class SemanticAuditTests(unittest.TestCase):
         for language, text in verse["paras"].items():
             self.assertNotRegex(text.rstrip(), r"[,—]$",
                                 f"12.03 {language} paraphrase stops mid-list")
+
+    def test_the_four_three_two_literals_say_brahman(self):
+        """4.32 ब्रह्मणो मुखे. The row read "of Brahman (the Vedas)" while all
+        three literals said "the scriptures" / शास्त्रमा — the gloss had replaced
+        the word it glosses. Pinned so the substitution cannot come back through
+        a paraphrase rewrite either."""
+        verse = load_verse("4.32")
+        row = [r for r in rows_of(verse) if r[0] == "ब्रह्मणः"]
+        self.assertEqual(len(row), 1)
+        self.assertEqual(row[0][2], "of Brahman (the Vedas)")
+        self.assertIn("ब्रह्मको", verse["lits"]["ne"])
+        self.assertIn("ब्रह्म के", verse["lits"]["hi"])
+        self.assertIn("mouth of Brahman", verse["lits"]["en"])
+        for language, text in verse["lits"].items():
+            self.assertNotIn("शास्त्र" if language != "en" else "scripture",
+                             text, f"4.32 {language} literal still says the referent")
+        self.assertIn("mouth of Brahman", verse["paras"]["en"])
+
+    def test_the_negation_blind_spot_list_is_closed_and_witnessed(self):
+        """Task C. `NE_NEG_VERB` is what stopped twenty Nepali pairs from being
+        lock-only. Every form must still occur in the book as a whole token, so
+        the list cannot outlive its witnesses; and the two baselines must have
+        shrunk, because growing one needs a ledger row first."""
+        sys.path.insert(0, str(ROOT / "tests"))
+        from test_translation_fidelity import (NE_NEG_VERB, NEGATION_BASELINE_ROWS,
+                                               NEGATION_BASELINE_TWO_LANE, negation_count)
+        corpus = [verse[kind][lang] for verse in all_verses()
+                  for kind in ("lits", "paras") for lang in ("ne",)]
+        tokens = {t for text in corpus
+                  for t in re.split(r"[\s,;:!?।“”\"()—–\-’']+", text) if t}
+        for form in NE_NEG_VERB:
+            self.assertIn(form, tokens, f"{form} no longer occurs; drop it from the list")
+        self.assertLessEqual(len(NEGATION_BASELINE_ROWS), 6)
+        self.assertLessEqual(len(NEGATION_BASELINE_TWO_LANE), 1)
+        # and the rule now reads the verbs it used to miss
+        self.assertEqual(negation_count("म तिनीहरूलाई मार्न चाहन्नँ", "ne"), 1)
+        self.assertEqual(negation_count("यदि मैले कर्म नगरें भने", "ne"), 1)
+        self.assertEqual(negation_count("तर तिमी जान्दैनौ", "ne"), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
