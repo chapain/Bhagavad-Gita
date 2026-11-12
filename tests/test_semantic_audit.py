@@ -12,6 +12,14 @@ in one pass (see `docs/semantic-audit.md`), so these pins cover every edit that
 reading produced - F1-F9, sixteen strings in seven verses - and the class
 checks run over every verse of the book.
 
+A later whole-book address pass (2026-11-12) added F12-F16: 31 strings in ten
+verses where a vocative in the verse's own `flow[].words[]` rows was missing
+from a literal, or a second/third vocative was collapsed into the first. Those
+are pinned by ADDRESS_PINS below. F12 (3.07) is the reason every mechanical
+check in that pass was driven from the rows: the avagraha in
+`नियम्यारभतेऽर्जुन` elides the initial अ, so a search of `v['d']` for 'अर्जुन'
+returns False even though the address is there.
+
 Rules from the audit that are enforced mechanically, because they are checkable:
 
 1. A word row's gloss must not contradict the verse's own literal (AGENTS.md:
@@ -272,6 +280,63 @@ REVIEWED_SAME_GLOSS = {
     ("18.68", ("परमम्", "पराम्"), "supreme"),
 }
 
+# The address fixes of the 2026-11-12 whole-book pass (F12-F16). Each pin names
+# the word row that carries the Sanskrit vocative and the address every
+# rendering must still carry. 3.07 is the confirmed defect: all six strings had
+# dropped `अर्जुन`. The others are listed in docs/semantic-audit.md.
+ADDRESS_PINS = {
+    "3.07": {
+        "rows": ["अर्जुन"],
+        "lit": {"en": ["O Arjuna"], "ne": ["हे अर्जुन"], "hi": ["हे अर्जुन"]},
+        "para": {"en": ["O Arjuna"], "ne": ["हे अर्जुन"], "hi": ["हे अर्जुन"]},
+    },
+    "7.10": {
+        "rows": ["पार्थ"],
+        "lit": {"en": ["O Pārtha"], "ne": ["हे पार्थ"], "hi": ["हे पार्थ"]},
+    },
+    "7.16": {
+        "rows": ["भरतर्षभ"],
+        "lit": {"en": ["O bull of the Bhāratas"],
+                "ne": ["हे भरतश्रेष्ठ"], "hi": ["हे भरतश्रेष्ठ"]},
+    },
+    "8.06": {
+        "rows": ["कौन्तेय"],
+        "lit": {"en": ["O son of Kuntī"],
+                "ne": ["हे कुन्तीपुत्र"], "hi": ["हे कुन्तीपुत्र"]},
+    },
+    "8.08": {
+        "rows": ["पार्थ"],
+        "lit": {"en": ["O Pārtha"], "ne": ["हे पार्थ"], "hi": ["हे पार्थ"]},
+    },
+    "8.19": {
+        "rows": ["पार्थ"],
+        "lit": {"en": ["O Pārtha"], "ne": ["हे पार्थ"], "hi": ["हे पार्थ"]},
+    },
+    "11.16": {
+        "rows": ["विश्वेश्वर", "विश्वरूप"],
+        "lit": {"en": ["O Lord of the universe", "O cosmic form"],
+                "ne": ["हे विश्वेश्वर", "हे विश्वरूप"],
+                "hi": ["हे विश्वेश्वर", "हे विश्व-रूप"]},
+    },
+    "11.45": {
+        "rows": ["देव", "देवेश", "जगन्निवास"],
+        "lit": {"en": ["O God", "O Lord of gods", "O Lord of the universe"],
+                "ne": ["हे देवता", "हे देवेश", "हे जगन्निवास"],
+                "hi": ["हे देव", "हे देवेश", "हे जगन्निवास"]},
+    },
+    "11.48": {
+        "rows": ["कुरुप्रवीर"],
+        "lit": {"en": ["O prince of the Kurus"],
+                "ne": ["हे कुरुप्रवीर"], "hi": ["हे कुरुप्रवीर"]},
+    },
+    "11.54": {
+        "rows": ["अर्जुन", "परन्तप"],
+        "lit": {"en": ["O Arjuna", "O scorcher of foes"],
+                "ne": ["हे अर्जुन", "हे परन्तप"],
+                "hi": ["हे अर्जुन", "हे परंतप"]},
+    },
+}
+
 LATIN = re.compile(r"[A-Za-z]")
 
 
@@ -447,6 +512,31 @@ class SemanticAuditTests(unittest.TestCase):
                                           f"{verse['n']} {row[0]}: Latin residue "
                                           f"in the {language} gloss")
 
+    def test_the_address_fixes_of_the_second_whole_book_pass(self):
+        """F12-F16. Every address the verse's own row carries must still be in
+        the literal (and, for 3.07, in the paraphrase). The pins are driven
+        from the rows so that the avagraha in 3.07 cannot hide the vocative
+        again: `v['d']` does not contain 'अर्जुन', the row does."""
+        for number, expected in ADDRESS_PINS.items():
+            with self.subTest(verse=number):
+                verse = load_verse(number)
+                row_words = {row[0] for row in rows_of(verse)}
+                for row_word in expected["rows"]:
+                    self.assertIn(row_word, row_words,
+                                  f"{number}: the vocative row {row_word} is gone")
+                for language, phrases in expected["lit"].items():
+                    for phrase in phrases:
+                        self.assertIn(phrase, verse["lits"][language],
+                                      f"{number} {language} literal dropped {phrase!r}")
+                for language, phrases in expected.get("para", {}).items():
+                    for phrase in phrases:
+                        self.assertIn(phrase, verse["paras"][language],
+                                      f"{number} {language} paraphrase dropped {phrase!r}")
+        # the trap itself, pinned: the avagraha hides the word from a search of
+        # the verse text, which is why the audit reads rows.
+        verse = load_verse("3.07")
+        self.assertNotIn("अर्जुन", verse["d"])
+        self.assertIn("अर्जुन", {row[0] for row in rows_of(verse)})
 
 if __name__ == "__main__":
     unittest.main()

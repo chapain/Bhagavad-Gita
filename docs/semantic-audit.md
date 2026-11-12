@@ -1,8 +1,11 @@
 # Semantic audit — the verses, read against the Sanskrit
 
 **Started 2026-11-04.** One chapter at a time, beginning with 1.01–1.20.
-**All 700 verses of all 18 chapters are now read, decided and applied**
-(nine findings, F1–F9, in seven verses — sixteen strings). Chapters 1–12 were
+**All 700 verses of all 18 chapters are now read, decided and applied.**
+The first pass (2026-11-04) produced nine findings, F1–F9, in seven verses —
+sixteen strings. Two later cross-language passes added F10–F11 (two strings,
+2026-11-12) and the second whole-book address pass added F12–F16 (31 strings in
+ten verses, 2026-11-12). Chapters 1–12 were
 read first; 13–18 followed in the same pass, in the same reading order, with
 the same rules. F9 was found last, by the whole-book class check rather than
 by the first reading of its chapter; it is filed under its chapter below.
@@ -504,7 +507,7 @@ languages.
 | 16 | 24 | 0 |
 | 17 | 28 | 0 |
 | 18 | 78 | 0 |
-| **Total** | **700** | **16 strings in 7 verses — nine findings, F1–F9** |
+| **Total** | **700** | **16 strings in 7 verses — nine findings, F1–F9** (first pass; F10–F16 are recorded in the later sections below and are not added into these per-chapter counts) |
 
 Every verse was read in the Devanagari, the IAST, the literal (en, ne, hi), the
 paraphrase (en, ne, hi) and every word row with its three glosses. Chapters
@@ -584,6 +587,144 @@ mind, the eleventh. English says "the ten senses and the one", Nepali says
 Hindi said `दस इन्द्रियाँ और मन` — which reads as ten senses *including* the
 mind inside the count of ten, not ten plus one. Hindi now reads
 `दस इन्द्रियाँ और एकादश मन`.
+
+## Second whole-book pass — completeness and restraint (2026-11-12)
+
+The 2026-11-04 pass asked whether each rendering was faithful in the classes it
+tested. The owner restated the standard on 2026-11-12: *"check through all 700
+verses and make sure the translation represents the Sanskrit verse, not less
+not more."* This pass re-ran every verse through the classes below, drove every
+mechanical check from `flow[].words[]` rows rather than from `v['d']`, and fixed
+the address class it exposed. It found **31 strings in ten verses** (F12–F16).
+No clause, negation, number, actor or comparison outside that class was found
+wanting.
+
+### What was run, and over what
+
+| Class | Scope | Result |
+|---|---|---|
+| Vocative / address coverage | 9,389 pāda word rows, all 700 verses; every row whose en gloss begins `O ` and every row whose ne/hi gloss begins `हे ` | **10 verses defective, 31 strings — F12–F16, all fixed** |
+| Address parity across the three literals | all 700 × 3 | the same ten verses; every other difference was a legitimate translation of the epithet (परन्तप → शत्रुतापन in Nepali, जगन्निवास → "abode of the world", पार्थ → "Arjuna", etc.) |
+| Nothing added — names | every capitalised token in all 700 English literals, against that verse's row glosses | 30 candidates, all read: every one is either the person the Sanskrit describes (1.12 Bhīṣma from `pitāmahaḥ`, 1.20 Dhārtarāṣṭras from `dhārtarāṣṭrān`), the same epithet under its Sanskrit name (Acyuta for "infallible one"), or a row's own alternative form (Kāmadhuk/Kāmadhenu, Uśanā/Uśanas). None added a new actor. |
+| Nothing added — numbers | all 700 × 3 literals; number words and numerals against row glosses | no added or dropped number. The flagged cases were the indefinite article ("one"), `छ` = "is", or a number the Sanskrit carries in a compound (`navadvāre` 5.13, `trividhaḥ` 18.04). |
+| Nothing added — negation | all 700 English literals against their row negations; all 700 literal/paraphrase pairs | 8 candidates, all read: `anāvṛtti` (8.23), `asakta` (3.09, 3.19), `avijñeya` (13.15), `na … avasthitaḥ` (13.27), and the "cannot" of 2.24/12.11 are all carried by a privative or a separate row. No literal negates what the Sanskrit affirms. Literal and paraphrase agree on negation in all 2,100 pairs. |
+| Cross-language number parity | all 700 × 3 | no verse in which one language states a number the other two do not. |
+| Relative clause coverage | all 700 × 3: row-gloss content words traceable in the same language's literal, compared across languages | 41 verses where one language's vocabulary lags the other two; **all 41 read in full** (1.14 1.15 1.26 1.33 1.34 1.42 2.01 2.06 2.13 2.19 2.23 2.46 2.56 2.67 3.04 3.17 3.21 3.29 3.39 3.41 4.32 5.17 6.02 6.05 6.21 6.27 6.34 7.12 7.13 7.22 8.11 8.28 9.25 14.22 16.07 16.14 16.20 17.11 18.21 18.67 18.70). All are register differences — Nepali/Hindi carry the same clause in inherited Sanskrit vocabulary, or the literal uses a synonym the row gloss does not spell — not dropped content. |
+| Literal length against the Sanskrit | all 700 × 3; no verse where all three literals are under 60% of their own median | two one-language outliers (5.06 ne, 15.18 ne), both read: Nepali is simply denser, both carry every clause. |
+| IAST against its own Devanagari | 2,800 pādas, 9,389 word rows | 0 mismatches (`check_padas.py`). |
+| Literal / paraphrase divergence | 2,100 pairs | 0 pairs ≥ 80% (max 79.4/79.8/79.8), no pair reverses a literal's negation. |
+| Paraphrase vocatives | all 700 × 3 | the 19 known verses below; no paraphrase invents an address the Sanskrit does not have. |
+
+The ten corrected verses were then read whole — Devanagari, IAST, all four
+pādas and their rows, all six renderings, and the title — before and after the
+edit.
+
+### F12 — 3.07, all six renderings omitted अर्जुन — **fixed**
+
+The verse addresses Arjuna at the end of the second pāda:
+`नियम्यारभतेऽर्जुन`. The word row is `अर्जुन | arjuna | O Arjuna | हे अर्जुन |
+हे अर्जुन`; the literal and paraphrase in all three languages read the
+sentence without the address. This is the defect the owner named, and the one
+a verse-text search cannot see: the avagraha elides the initial अ, so
+`'अर्जुन' in v['d']` is `False`. Every mechanical check in this pass therefore
+read the row, not `v['d']`.
+
+Fixed strings: en/ne/hi literal + en/ne/hi paraphrase, e.g. en literal now
+reads “But he who, O Arjuna, controlling the senses by the mind …”. Overlap
+after the edit: 0.607 / 0.635 / 0.722 — all under 80%.
+
+### F13 — 7.10, 8.06, 8.08, 8.19, the only vocative was dropped by all three literals — **fixed**
+
+In each verse the Sanskrit addresses Arjuna and no literal carried the address:
+
+| Verse | Sanskrit address | Row | Was |
+|---|---|---|---|
+| 7.10 | `पार्थ` (pāda 2) | O Pārtha / हे पार्थ / हे पार्थ | absent from en/ne/hi literal |
+| 8.06 | `कौन्तेय` (pāda 3) | O son of Kuntī / हे कुन्तीपुत्र / हे कुन्तीपुत्र | absent from en/ne/hi literal |
+| 8.08 | `पार्थ` (pāda 4) | O Pārtha / हे पार्थ / हे पार्थ | absent from en/ne/hi literal |
+| 8.19 | `पार्थ` (pāda 3) | O Pārtha / हे पार्थ / हे पार्थ | absent from en/ne/hi literal |
+
+8.06 was not on the owner's list; the row-driven count found it. 7.10, 8.08
+and 8.19 were on the list and are now settled. Their paraphrases still drop
+the address, under the house convention recorded below; the literal — the
+semantic standard — carries it.
+
+### F14 — 7.16 and 11.54, a second vocative was dropped while the first was kept — **fixed**
+
+These verses have two addresses, and each literal carried only one:
+
+* **7.16** — `अर्जुन` (pāda 2) and `भरतर्षभ` (pāda 4). All three literals had
+  “O Arjuna” and stopped there. The row is `भरतर्षभ | bharatarṣabha | O bull of
+  the Bhāratas | हे भरतश्रेष्ठ | हे भरतश्रेष्ठ`; the literals now end with it.
+* **11.54** — `अर्जुन` (pāda 2) and `परन्तप` (pāda 4). All three literals had
+  “O Arjuna” only. They now also carry “O scorcher of foes” / `हे परन्तप` /
+  `हे परंतप`.
+
+A literal that renders one address and silently drops the other makes the
+verse say less than the Sanskrit, even though an address is present.
+
+### F15 — 11.16 and 11.45, several addresses collapsed into fewer — **fixed**
+
+* **11.16** — `विश्वेश्वर` and `विश्वरूप` close the verse. English carried both,
+  Nepali and Hindi only `हे विश्वरूप`. Both now close with
+  `हे विश्वेश्वर, हे विश्वरूप`, in the Sanskrit's order.
+* **11.45** — `देव`, `देवेश` and `जगन्निवास`. English carried `देव` and
+  `जगन्निवास`; Nepali and Hindi carried `देव` and `विश्वेश्वर` (an epithet not
+  in this verse). All three now carry `देव` + `देवेश` + `जगन्निवास`.
+
+### F16 — 11.48, Nepali and Hindi substituted a different epithet for कुरुप्रवीर — **fixed**
+
+`कुरुप्रवीर` (“O prince/bull of the Kurus”) is the verse's address. English
+reads “O prince of the Kurus” and the row reads `हे कुरुप्रवीर`; the Nepali and
+Hindi literals read `हे कुरुनन्दन` (“O joy of the Kurus”) — a different
+epithet, not a translation of this one. Both now read `हे कुरुप्रवीर`. The
+pinned padaccheda fixture was updated with them.
+
+### Triage of the questions the owner named — evidence, no silent decisions
+
+| Question | Verdict | Evidence |
+|---|---|---|
+| 17.28 `पार्थ` | **no defect now** | All three literals carry it: en “O Pārtha”, ne/hi `हे पार्थ`. The paraphrase drops it under the convention below. The row is present. Nothing changed. |
+| 10.11 “address dropped” | **does not reproduce** | 10.11 has no vocative in its Sanskrit (`तेषामेवानुकम्पार्थम् … ज्ञानदीपेन भास्वता`) and its rows contain none. No address exists to drop. |
+| 7.10, 8.08, 8.19 | **fixed (F13)** | See above. |
+| 11.15 | **literal correct; paraphrase follows convention** | Literal en “O God”, ne `हे देवता`, hi `हे देव`; only the paraphrase drops it. |
+| 11.36 | **literal correct; paraphrase uses the plain name** | Literal en “O Hṛṣīkeśa”, ne/hi `हे हृषीकेश`. The paraphrase says “O Kṛṣṇa” — the same referent, the name the paraphrase uses throughout, not a dropped address. |
+| Paraphrase-only vocative drops (19 verses: 2.21 2.39 2.42 2.55 3.22 3.23 4.33 7.01 8.14 8.22 9.32 10.24 12.07 16.04 16.06 18.06 18.30 18.32 18.34) | **confirmed; no change** | In every one the literal carries the address in all three languages and the paraphrase carries none. This is the house convention of not padding a paraphrase. Rewriting nineteen verses would be a style change, not a fidelity fix. Recommendation: keep, and keep the literal as the place the address is guaranteed. |
+| 11.47 Hindi `tvat` | **does not reproduce** | The Hindi literal reads `जिसे तेरे सिवा पहले किसी ने नहीं देखा` — exclusion, matching en (“none but you”) and ne (`तिमीबाहेक`). The row is `त्वत् | tvat | than you | तिमीभन्दा | तुझसे`; with `अन्येन` = “by another” it is “by another than you”. The alleged “तुझसे पहले” chronology is not in the data. Nothing changed. |
+
+### Open interpretive cases — reported, not changed
+
+Two additions are editorial interpretation rather than grammar, and both
+predate this pass. Neither was changed unilaterally:
+
+* **6.02** — English literal “who has not renounced **selfish** intention” and
+  all three paraphrases (“selfish planning”, `स्वार्थी योजना`) add a motive the
+  Sanskrit `असन्न्यस्तसङ्कल्प` (“whose resolve is not renounced”) does not
+  state. The edition uses “selfish intention/resolve” for `सङ्कल्प` as a house
+  gloss elsewhere (4.19's row reads “selfish resolve”; 6.04, 6.24, 12.16,
+  14.25), so this is a settled interpretative convention, not a one-off. If the
+  owner wants the stricter rule enforced, it is a seven-verse editorial change,
+  not a single-string fix.
+* **4.32** — all three literals render `ब्रह्मणो मुखे` (“in the mouth of
+  Brahman”) as “in the scriptures” / `शास्त्रमा`. The verse's own row gloss
+  already carries the interpretation: `of Brahman (the Vedas)`. This is a
+  deliberate metaphor-to-referent rendering, applied in all three languages.
+
+### What this pass does not prove
+
+* The mechanical classes cover address, names, numbers, negation and relative
+  clause coverage. They cannot see a mistranslated verb, a reversed case
+  relation, a wrong tense, or an added theological claim that uses no name,
+  number or negator. The per-verse ledger remains the fidelity record.
+* This session read every English literal of all 700 verses end to end and
+  read the Nepali and Hindi in full for all flagged and corrected verses. It
+  did not re-read every Nepali and Hindi sentence of the other verses one by
+  one; those were checked mechanically against their rows and against the
+  English and against each other in the classes above. The 2026-11-04 pass
+  records the earlier full reading of all three.
+* A green build proves consistency, not correctness. The ten verses here are
+  fixed because their own rows and Sanskrit say so, not because a test turned
+  green.
 
 ### What these checks do not prove
 
