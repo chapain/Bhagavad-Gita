@@ -253,9 +253,41 @@ LAG_BASELINE = {
 # ------------------------------------------------------------- C: parity
 
 NE_STANDING = {"न", "नै", "बिना", "रहित", "छैन", "छैनन्", "कहिल्यै", "नहुने",
-               "हुन्न", "अभाव", "नपर्ने", "नगरी", "नगरे", "नभई", "नभए"}
+               "हुन्न", "अभाव", "नपर्ने", "नगरी", "नगरे", "नभई", "नभए", "होइन", "होइनन्"}
 NE_SUFFIX = ("दैन", "दैनन्", "दिनँ", "दिनुहुन्न", "एन", "एनन्", "इनँ", "इनन्",
-             "्यैन", "छैन", "नहुन्", "नपरोस्", "नहोस्")
+             "्यैन", "छैन", "नहुन्", "नपरोस्", "नहोस्",
+             # the second-person and simple-past endings the list above misses:
+             # पाउनेछैनौ (2.38), पर्नेछैनौ (4.35), थिएनौ (2.12), लडेनौ (2.33).
+             # Each is a one-token closed form, not a stem; all four were read.
+             "छैनौ", "एनौ", "ेनौ")
+# The closed class of Devanagari negative VERB forms the suffix scan above cannot
+# reach. A Nepali negative verb does not carry a negative participle; it changes
+# stem and ending (गर्दिनँ, देख्दैनन्, लडेनौ, सक्दैनौ) or is a prohibitive/optative
+# with a fused न (नगर, नसोचोस्). Listed whole, token-exact, never as a suffix: a
+# `न…` prefix rule was tried and threw 644 false hits (नगरा "kettledrum",
+# नमस्कार, नरक, नित्य …), which is why this is a list and not a pattern.
+#
+# Every entry below occurs in this corpus (700 verses × literal + paraphrase) and
+# was read in its sentence before it was listed. The count is deliberately small:
+# each form earns its place by clearing a locked baseline pair, and the verse it
+# clears is named beside it.
+NE_NEG_VERB = {
+    "होइन",            # copular negative — "the childish, NOT the wise" (5.04)
+    "होइनन्",          # its plural (2.04, 18.40)
+    "चाहन्नँ",         # "I do not wish" (1.32, 1.35)
+    "सक्दैनौ",         # "you cannot" (11.08, 12.09)
+    "जान्दैनौ",        # "you do not know" (4.05)
+    "नजान्ने",         # "how should we not know" (1.39)
+    "नगर",             # prohibitive "do not do" — शोक नगर (16.05, 18.66)
+    "नगरें",           # "if I did not act" (3.24; also 3.23)
+    "नगरोस्",          # "let him not unsettle" (3.29)
+    "नसोचोस्",         # "let him not think" (6.25)
+    "नपारोस्",         # "let him not create" (3.26)
+    "नसुन्यौ",         # "if you do not listen" (18.58)
+    "नचाहेको",         # "what you do not wish" (18.60)
+    "नजाने",           # "a mind that goes nowhere else" (8.08)
+    "नडराइकन",         # "without fearing" (11.34)
+}
 HI_STANDING = {"न", "नहीं", "मत", "बिना", "विना", "बगैर", "रहित", "कभी",
                "कदापि", "अभाव", "निर्"}
 EN_NEGATION = re.compile(
@@ -283,43 +315,29 @@ NEGATOR_ROWS = {"न", "मा", "नैव", "न हि", "न च"}
 NEGATED_ROWS = set(NEGATION_LEXICON) | {"अपर्याप्त", "अपराध", "अशुभ", "असुर",
                                         "अज्ञान", "अन्धकार", "अमङ्गल"}
 
-# Locked literal-negation findings: verse, language. Every one was read; the lane
-# carries the negation inside a word the lexicon does not list, or the row that
-# triggered the check negates a different clause (2.70's कामकामी isn't a negator).
-# A new pair here is a defect until it has a verdict in docs/semantic-audit.md.
+# Locked literal-negation findings: verse, language. Every remaining pair was read
+# in this pass and the reason it stays is written beside it. A pair whose lane now
+# negates is caught by test_every_negation_baseline_row_is_still_real and must be
+# dropped, not explained away.
+#
+# What this list used to hold, and no longer does: seventeen pairs were locked
+# only because `negation_count` could not read a Nepali negative VERB (चाहन्नँ
+# "I do not wish", नगर "do not", सक्दैनौ "you cannot"). The closed list
+# NE_NEG_VERB above now reads those forms token-exactly, and each of the
+# seventeen was cleared by reading its three literals. 26 pairs → 6.
 NEGATION_BASELINE_ROWS = {
-    ("1.35", "ne"),
-    ("1.39", "ne"),
-    ("11.08", "ne"),
-    ("11.34", "ne"),
-    ("12.07", "en"), ("12.07", "hi"),
-    ("12.09", "ne"),
-    ("14.23", "en"),
-    ("16.03", "en"), ("16.03", "ne"), ("16.03", "hi"),
-    ("16.05", "ne"),
-    ("18.07", "ne"),
-    ("18.58", "ne"),
-    ("18.60", "ne"),
-    ("18.66", "ne"),
-    ("2.33", "ne"),
-    ("2.38", "ne"),
-    ("3.24", "ne"),
-    ("3.26", "ne"),
-    ("3.29", "ne"),
-    ("4.05", "ne"),
-    ("4.35", "ne"),
-    ("5.04", "ne"),
-    ("6.25", "ne"),
-    ("8.08", "ne"),
+    # English renders न as a lexical negative the counter does not list:
+    ("12.07", "en"),   # "I swiftly become the deliverer" — न चिरात् "not after long"
+    ("14.23", "en"),   # "unshaken by the guṇas" for न विचाल्यते
+    ("16.03", "en"),   # "freedom from malice" for नातिमानिता; ने/हि use -रहितता
+    ("16.03", "ne"),   # द्वेषरहितता / अभिमानरहितता: the negation is inside -रहित
+    # Hindi renders the same verse's नातिमानिता with a privative अ-
+    ("16.03", "hi"),
+    ("12.07", "hi"),   # न चिरात् = "शीघ्र ही" — a positive idiom, same clause kept
 }
 
 NEGATION_BASELINE_TWO_LANE = {
-    ("3.26", "ne"),     # खलल नपारोस् — the negator row lands as a verb prefix
-    ("4.05", "ne"),     # म ती सबै सम्झन्छु; the negation sits in "bilangsa"
-    ("6.25", "ne"),     # मनलाई … स्थिर गरेर — नसोच in the paraphrase only
-    ("12.09", "ne"),    # सक्दैनौ / सक्दैनौ — Nepali negative conjugation
-    ("14.23", "en"),    # "not is shaken" said as "unshaken"/"unconcerned"
-    ("16.05", "ne"),    # शोक नगर — imperativ  न + verb
+    ("14.23", "en"),   # "not is shaken" said as "unshaken"/"unconcerned"
 }
 
 NUMBER_FORMS = {
@@ -383,7 +401,7 @@ def negation_count(text, lang):
         if not word:
             continue
         if lang == "ne":
-            if word in NE_STANDING or word.endswith(NE_SUFFIX):
+            if word in NE_STANDING or word in NE_NEG_VERB or word.endswith(NE_SUFFIX):
                 total += 1
         else:
             if word in HI_STANDING or "नहीं" in word:

@@ -553,6 +553,7 @@ found two defects in the Hindi renderings and nothing else.
 | Vocative rows rendered or dropped consistently across the three languages | 175 address rows | 3 apparent splits, all false: "O best of men/persons" for पुरुषोत्तम (8.01, 11.03) and शत्रुतापन/परंतप (2.09). Dropping a vocative in all three languages is house style; dropping it in one is what the check hunts. |
 | Numeral rows rendered or dropped consistently | 40 numeral rows | 5 apparent splits, all false: केवल (18.66), एउटाबाट (8.26), दुवैको (2.16), तीनै (3.22), "neither" for उभौ (2.19). |
 | Negation present in all three or none | 306 negation rows | 0 real splits. The apparent Hindi gaps were the bare particle न, which the detector's word-boundary guard was rejecting because the Devanagari danda `।` sits inside the same Unicode block. |
+| Locked negation pairs (the blind spot, 2026-11-12) | 26 row pairs + 6 two-lane pairs | **20 row pairs and 5 two-lane pairs cleared; 6 row pairs and 1 two-lane pair kept.** See the section below. |
 | Cross-language word forms | 2,100 literals/paraphrases | **2 findings, both fixed** — see F10, F11. |
 
 ### 16.04 — settled: अभिमानश्च (owner's copy, 2026-11-12)
@@ -751,6 +752,69 @@ these specific, mechanical ways. Two limits are worth stating plainly:
   They cover rows whose Sanskrit gloss or stem names a small number or negates;
   they say nothing about tense, case, voice, or the many English words with no
   Nepali/Hindi counterpart in a one-to-one map.
+
+### The negation blind spot — 20 row pairs cleared, 6 kept (2026-11-12)
+
+`negation_count` decides whether a literal negates by looking for a न/नहीं token
+or a closed list of negative suffixes. Nepali negative **verbs** do not carry
+either: चाहन्नँ "I do not wish", नगर "do not", सक्दैनौ "you cannot",
+जान्दैनौ "you do not know", नसोचोस् "let him not think". Every verse whose
+Nepali literal negates that way stayed locked, which is exactly where a real
+dropped negation would hide.
+
+**What was done.** `NE_NEG_VERB`, a fifteen-form closed list in
+`tests/test_translation_fidelity.py`, matched token-exactly (never as a prefix:
+a `न…` prefix rule was tried and threw 644 false hits — नगरा "kettledrum",
+नमस्कार, नरक, नित्य, नराम्रो). Three second-person / simple-past endings were
+added to the existing suffix set: `छैनौ` (पाउनेछैनौ 2.38), `एनौ` (थिएनौ 2.12),
+`ेनौ` (लडेनौ 2.33). Then every pair that came loose was cleared **one at a
+time by reading its three literals**, not because the counter said so:
+
+| verse | Nepali form | cleared from | read: does the Nepali negate the Sanskrit's negation? |
+|---|---|---|---|
+| 1.35 | चाहन्नँ | rows | `म तिनीहरूलाई मार्न चाहन्नँ` renders न हन्तुमिच्छामि. Yes |
+| 1.39 | नजान्ने | rows | `हामीले कसरी नजान्ने` = कथं न ज्ञेयम्. Yes |
+| 3.24 | नगरें | rows | `यदि मैले कर्म नगरें भने` = न कुर्यां कर्म चेत्. Yes |
+| 3.26 | नपारोस् | rows + two-lane | `बुद्धिमा खलल नपारोस्` = न बुद्धिभेदं जनयेत्. Yes |
+| 3.29 | नगरोस् | rows | `विचलित नगरोस्` = न विचालयेत्. Yes |
+| 4.05 | जान्दैनौ | rows + two-lane | `तर तिमी जान्दैनौ` = न त्वं वेत्थ. Yes |
+| 5.04 | होइन | rows | `ज्ञानीले होइन` = न पण्डिताः. Yes |
+| 6.25 | नसोचोस् | rows + two-lane | `अरू केही नसोचोस्` = न किञ्चिदपि चिन्तयेत्. Yes |
+| 8.08 | नजाने | rows | `अरू कतै नजाने मनले` = न अन्यगामिना. Yes |
+| 11.08 | सक्दैनौ | rows | `देख्न सक्दैनौ` = न शक्यसे द्रष्टुम्. Yes |
+| 11.34 | नडराइकन | rows | `नडराइकन प्रहार गर` = मा व्यथिष्ठाः. Yes |
+| 12.09 | सक्दैनौ | rows + two-lane | `स्थिर गर्न सक्दैनौ` = न शक्नोषि. Yes |
+| 16.05 | नगर | rows + two-lane | `शोक नगर` = मा शुचः. Yes |
+| 18.07 | होइन | rows | `उचित होइन` = न उपपद्यते. Yes |
+| 18.58 | नसुन्यौ | rows | `नसुन्यौ भने` = न श्रोष्यसि. Yes |
+| 18.60 | नचाहेको | rows | `गर्न नचाहेको` = कर्तुं नेच्छसि. Yes |
+| 18.66 | नगर | rows | `शोक नगर` = मा शुचः. Yes |
+| 2.12 | थिएन, थिएनौ | — (not a baseline pair) | not cleared: its Nepali count was never 0 in *this* pass only because `एनौ` is in the suffix set; the literal `म थिइनँ … न तिमी थिएनौ` is correct either way. Listed here so the suffix change has a named witness. |
+| 2.33 | लडेनौ | rows | `यो धर्मयुद्ध लडेनौ भने` = न करिष्यसि. Yes |
+| 2.38 | पाउनेछैनौ | rows | `पाप पाउनेछैनौ` = नैवं पापम्. Yes |
+| 4.35 | पर्नेछैनौ | rows | `मोहमा पर्नेछैनौ` = न पुनर्मोहम्. Yes |
+
+**Kept, with the reason each one is not a defect** (six row pairs, five of them
+Nepali/Hindi and one English; the two-lane rule keeps 14.23 en from its own list):
+
+| verse | lane | why locked |
+|---|---|---|
+| 12.07 | en | `न चिरात्` "not after long" is rendered "I swiftly become the deliverer" — a positive idiom for the same clause. The Nepali and Hindi negate the same phrase the same way ( `चाँडै नै` / `शीघ्र ही`). Nothing dropped; the check wants a "not". |
+| 14.23 | en (rows and two-lane) | `न विचाल्यते` rendered "unshaken by the guṇas" and `नेङ्गते` as "abiding unmoved" — the negation lives in the English privative `un-`. |
+| 16.03 | en | `नातिमानिता` rendered "freedom from pride". The negation is inside `-freedom from`, which the counter does not list. |
+| 16.03 | ne, hi | `द्वेषरहितता र अभिमानरहितता` / `द्वेष-रहितता और अभिमान-रहितता` — the negation is the `-रहित` suffix, already in `NE_STANDING` for the bare word but not as a suffix on a compound. |
+
+**Net: `NEGATION_BASELINE_ROWS` 26 → 6 (Nepali 21 → 1), and
+`NEGATION_BASELINE_TWO_LANE` 6 → 1.** Twenty row pairs and five two-lane pairs
+cleared; no new hit appeared anywhere in the book under the wider count, which
+is the proof that the list was not widened into a hole. Every remaining pair is
+a language carrying the negation lexically, not a lane that dropped it.
+
+**Still unverified.** The list is closed and corpus-sized: a negative verb form
+that never occurs in these 700 verses is not covered, and a future literal that
+needs one must add it with its own reading. The check can now say "this lane
+does not negate anywhere" far less often than before, but it still cannot tell
+whether the negation landed on the right clause.
 
 A cross-language advisory pass was written and then removed: it could not
 separate genuine borrowing from the shared Sanskrit vocabulary that Nepali and

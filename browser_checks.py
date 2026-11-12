@@ -1686,9 +1686,26 @@ def run(pw, url, offline_capable=False):
       const chapterVerses=DATA[0].themes.flatMap(t=>thVerses(t));
       const rows=chapterVerses.flatMap(v=>v.flow.flatMap(f=>f.words||[]));
       const glosses=o=>[...new Set(rows.filter(w=>w[0]===o.label&&w[1]===o.iast).map(w=>w[2]))];
+      const shownOf=it=>[...new Set(it.ask.replace(/<[^>]*>/g,' ').split('+')
+        .map(x=>x.trim()).filter(x=>x&&x!=='?'))];
+      /* Pick the cloze item whose rendering is UNAMBIGUOUS in the document —
+         exactly one option is right, the answer is not printed in the split,
+         and no distractor carries the answer's gloss — and then assert those
+         same properties on screen. The old predicate instead demanded a cloze
+         whose four options each had one book-wide gloss, which is a property of
+         the corpus, not of the question: it went red on 2026-11-12 with
+         [क्षेत्रे …] when 1.01 blanked the second क्षेत्रे of धर्मक्षेत्रे
+         कुरुक्षेत्रे and left the first on screen. That case is now impossible
+         (lrDrill skips a word written twice in its pāda); this predicate does
+         not depend on a random seed either way. */
       const clozeIx=LQ.findIndex(it=>it.kind==='pick'&&it.ask.includes('lr-split')
-        && it.opts.length===4&&it.opts.every(o=>glosses(o).length===1)
-        && new Set(it.opts.map(o=>glosses(o)[0])).size===4);
+        && it.opts.length===4
+        && new Set(it.opts.map(o=>o.label)).size===4
+        && it.opts.filter(o=>o.ok).length===1
+        && (()=>{const ans=it.opts.find(o=>o.ok), seen=shownOf(it);
+          const one=o=>glosses(o).length===1?glosses(o)[0]:null;
+          return !seen.includes(ans.label) && one(ans) !== null
+            && it.opts.every(o=>o===ans||one(o)!==one(ans));})());
       const verseIx=LQ.findIndex(it=>it.kind==='pick'&&it.opts.length===4&&it.opts.every(o=>o.sub));
       const order=LQ.find(it=>it.kind==='order'&&it.chips.length===verses.length);
       const expected=verses.map(v=>v.flow.filter(f=>f.k==='p').map((q,i)=>q.d+pDanda(i,4)));

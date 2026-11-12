@@ -257,7 +257,7 @@ want them to survive a regeneration.
 |  | 4.29 | Breath offered to breath | Some offer the up-breath into the down-breath, and the down-breath into the up-breath, checking the courses of the breaths, devoted to breath-control. | ☐ | ☐ | ☐ |
 |  | 4.30 | Breath offered into breath, sins consumed | Others, with regulated diet, offer the vital breaths into the vital breaths; all these are knowers of sacrifice, whose sins are consumed by sacrifice. | ☐ | ☐ | ☐ |
 |  | 4.31 | Not even this world for the non-sacrificer | Tasting the nectar of the remnant of sacrifice, they reach the eternal Brahman; this world is not for the non-sacrificer, how then the next, O best of the Kurus? | ☐ | ☐ | ☐ |
-|  | 4.32 | All sacrifices are born of action | Thus manifold sacrifices are set forth in the scriptures; know them all as born of action — knowing this, you shall be released. | ☐ | ☐ | ☐ |
+|  | 4.32 | All sacrifices are born of action | Thus manifold sacrifices are set forth in the mouth of Brahman; know them all as born of action — knowing this, you shall be released. | ☐ | ☐ | ☐ |
 |  | 4.33 | Knowledge-sacrifice excels material sacrifice | The sacrifice of knowledge is better than the sacrifice of material things, O scorcher of foes; all action, in its entirety, O Pārtha, culminates in knowledge. | ☐ | ☐ | ☐ |
 |  | 4.34 | Approach a teacher, ask, serve | Know that wisdom through prostration, by questioning, and by service; the knowers of truth who have seen reality will instruct you. | ☐ | ☐ | ☐ |
 |  | 4.35 | You will see all beings in the Self | Knowing that, O son of Pāṇḍu, you will not again fall under delusion; by it you will see all beings without exception in the Self, and also in me. | ☐ | ☐ | ☐ |
