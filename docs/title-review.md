@@ -183,7 +183,7 @@ want them to survive a regeneration.
 |  | 3.04 | Not by abstaining | Not by the non-performance of actions does one attain freedom from action, nor by mere renunciation alone does one reach perfection. | ☐ | ☐ | ☐ |
 |  | 3.05 | No one can sit idle | Indeed no one ever remains actionless even for a moment; everyone is made to act, helpless, by the guṇas born of prakṛti. | ☐ | ☐ | ☐ |
 |  | 3.06 | Organs of action restrained, mind on sense-objects | He who, restraining the organs of action, sits recollecting sense objects in his mind — that deluded one is called a hypocrite. | ☐ | ☐ | ☐ |
-|  | 3.07 | He who acts unattached excels | But he who, controlling the senses by the mind, undertakes karma-yoga with the organs of action, unattached — he excels. | ☐ | ☐ | ☐ |
+|  | 3.07 | He who acts unattached excels | But he who, O Arjuna, controlling the senses by the mind, undertakes karma-yoga with the organs of action, unattached — he excels. | ☐ | ☐ | ☐ |
 |  | 3.08 | Do the allotted duty | Perform your prescribed action, for action is superior to inaction; even the maintenance of the body would not be accomplished by inaction. | ☐ | ☐ | ☐ |
 |  | 3.09 | Act for sacrifice alone | The world is bound by action, except action performed for the sake of sacrifice; for that purpose, O son of Kuntī, perform action free from attachment. | ☐ | ☐ | ☐ |
 |  | 3.10 | Prajāpati made beings with sacrifice | Having created creatures together with sacrifice from the beginning, Prajāpati declared: “By this shall you prosper; may this be to you the cow of desires.” | ☐ | ☐ | ☐ |
@@ -371,13 +371,13 @@ want them to survive a regeneration.
 |  | 7.07 | Strung on me like pearls on a thread | There is nothing whatever higher than me, O Dhanañjaya; all this is strung on me, like a row of gems on a thread. | ☐ | ☐ | ☐ |
 |  | 7.08 | The taste in water, the light in sun and moon | I am the taste in waters, O son of Kuntī; I am the radiance of the moon and the sun; the sacred syllable Om in all the Vedas; the sound in ether; the manliness in men. | ☐ | ☐ | ☐ |
 |  | 7.09 | The fragrance of earth, the heat in fire | I am the pure fragrance of the earth and the heat of fire; the life of all beings and the austerity of the ascetics. | ☐ | ☐ | ☐ |
-|  | 7.10 | The eternal seed of all beings | Know me as the eternal seed of all beings; I am the intelligence of the intelligent, the splendour of the splendid. | ☐ | ☐ | ☐ |
+|  | 7.10 | The eternal seed of all beings | Know me, O Pārtha, as the eternal seed of all beings; I am the intelligence of the intelligent, the splendour of the splendid. | ☐ | ☐ | ☐ |
 |  | 7.11 | Desire not opposed to dharma | And I am the strength of the strong, devoid of desire and attachment; and in beings I am desire that is not opposed to dharma, O bull of the Bhāratas. | ☐ | ☐ | ☐ |
 |  | 7.12 | They are in me, I am not in them | And whatever states there are, of sattva, rajas or tamas — know them all as from me alone; yet I am not in them, they are in me. | ☐ | ☐ | ☐ |
 |  | 7.13 | The world does not know me | Deluded by these states made of the three guṇas, this entire world does not know me, who am beyond them, imperishable. | ☐ | ☐ | ☐ |
 |  | 7.14 | Take refuge in me to cross my difficult māyā | This divine māyā of mine, consisting of the guṇas, is hard to overcome; but those who take refuge in me alone cross beyond this māyā. | ☐ | ☐ | ☐ |
 |  | 7.15 | The evildoers do not come to me | The wrong-doers, the deluded, the lowest of men do not resort to me; robbed of knowledge by māyā, they cling to a demoniac nature. | ☐ | ☐ | ☐ |
-|  | 7.16 | Four kinds worship me | Four kinds of men of good deeds worship me, O Arjuna: the afflicted, the seeker of knowledge, the seeker of wealth, and the wise. | ☐ | ☐ | ☐ |
+|  | 7.16 | Four kinds worship me | Four kinds of men of good deeds worship me, O Arjuna: the afflicted, the seeker of knowledge, the seeker of wealth, and the wise, O bull of the Bhāratas. | ☐ | ☐ | ☐ |
 |  | 7.17 | The wise one is dearest | Of them, the man of knowledge, ever yoked, of single devotion, is the best; for I am extremely dear to the wise, and he is dear to me. | ☐ | ☐ | ☐ |
 |  | 7.18 | The wise one is my very Self | Noble are all these; but the wise one is my very self, in my opinion; for he, self-possessed, is established in me, the supreme goal. | ☐ | ☐ | ☐ |
 |  | 7.19 | At the end of many births | At the end of many births, the man of wisdom resorts to me, thinking 'Vāsudeva is all'; that great soul is very rare. | ☐ | ☐ | ☐ |
@@ -403,9 +403,9 @@ want them to survive a regeneration.
 |  | 8.03 | Brahman, adhyātma, karma | The Blessed Lord said: The imperishable is the supreme Brahman; one's own nature is called adhyātma; the creative impulse that brings forth beings is called karma. | ☐ | ☐ | ☐ |
 |  | 8.04 | Adhibhūta, adhidaiva, adhiyajña | Adhibhūta is the perishable nature; the Puruṣa is adhidaivata; I myself am adhiyajña here in the body, O best of the embodied. | ☐ | ☐ | ☐ |
 |  | 8.05 | He who remembers me at the end | Whoever, at the end, leaves the body remembering me alone — he attains my being; there is no doubt of this. | ☐ | ☐ | ☐ |
-|  | 8.06 | Whatever state one remembers at death | Whatever state one remembers at the end while leaving the body — to that state one goes, ever pervaded by that thought. | ☐ | ☐ | ☐ |
+|  | 8.06 | Whatever state one remembers at death | Whatever state one remembers at the end while leaving the body — to that state one goes, O son of Kuntī, ever pervaded by that thought. | ☐ | ☐ | ☐ |
 |  | 8.07 | Therefore remember me and fight | Therefore remember me at all times and fight; with mind and intellect offered to me, you will surely come to me, without doubt. | ☐ | ☐ | ☐ |
-|  | 8.08 | With mind unwavering | United with the yoga of practice, with a mind that goes nowhere else — one reaches the supreme divine Person, contemplating him. | ☐ | ☐ | ☐ |
+|  | 8.08 | With mind unwavering | United with the yoga of practice, with a mind that goes nowhere else, O Pārtha — one reaches the supreme divine Person, contemplating him. | ☐ | ☐ | ☐ |
 |  | 8.09 | The ancient seer, subtler than the atom | He who meditates on the ancient seer, the ruler, subtler than the subtle, the support of all, of inconceivable form, radiant as the sun, beyond darkness — | ☐ | ☐ | ☐ |
 |  | 8.10 | At death, with the breath between the brows | — at the time of death, with an unwavering mind, united with devotion and the power of yoga, breath fixed between the brows — he reaches that supreme divine Person. | ☐ | ☐ | ☐ |
 |  | 8.11 | That which the Vedas call imperishable | That which the knowers of the Vedas call the imperishable, which the desireless ascetics enter, desiring which they practise celibacy — that goal I shall declare to you briefly. | ☐ | ☐ | ☐ |
@@ -416,7 +416,7 @@ want them to survive a regeneration.
 |  | 8.16 | Even Brahmā's world returns | From the world of Brahmā down, all worlds return again, O Arjuna; but reaching me, O Kaunteya, there is no rebirth. | ☐ | ☐ | ☐ |
 |  | 8.17 | A thousand ages are one day | Those who know Brahmā's day to end in a thousand yugas, and the night to end in a thousand — they know day and night. | ☐ | ☐ | ☐ |
 |  | 8.18 | At daybreak all emerge, at nightfall dissolve | From the unmanifest all manifest things arise at the coming of day; at the coming of night they dissolve into the unmanifest. | ☐ | ☐ | ☐ |
-|  | 8.19 | At Brahmā's dawn, beings rise; at night, they dissolve | This same host of beings, arising again and again, dissolves at the coming of night, and arises at the coming of day. | ☐ | ☐ | ☐ |
+|  | 8.19 | At Brahmā's dawn, beings rise; at night, they dissolve | This same host of beings, arising again and again, dissolves at the coming of night, O Pārtha, and arises at the coming of day. | ☐ | ☐ | ☐ |
 |  | 8.20 | Another unmanifest, eternal | But beyond this unmanifest is another unmanifest, eternal — which, when all beings perish, does not perish. | ☐ | ☐ | ☐ |
 |  | 8.21 | Reaching it, they do not return | That unmanifest is called the imperishable; they call it the supreme goal; reaching which they do not return — that is my supreme abode. | ☐ | ☐ | ☐ |
 |  | 8.22 | Attained by devotion alone | That supreme Person, O Pārtha, is attainable by devotion to him alone; in him all beings dwell, and by him all this is pervaded. | ☐ | ☐ | ☐ |
@@ -566,7 +566,7 @@ want them to survive a regeneration.
 |  | 11.42 | Whatever disrespect I showed in sport | and whatever disrespect I showed you in sport, rest, sitting or at meals, alone or before others, O Acyuta — that I beg you to forgive, O immeasurable one. | ☐ | ☐ | ☐ |
 |  | 11.43 | Father of the world, teacher beyond compare | You are the father of this world, moving and unmoving; you are its supreme object of worship and the most venerable teacher; none equals you in the three worlds, how then could any surpass you, O … | ☐ | ☐ | ☐ |
 |  | 11.44 | Forgive as a father forgives his son | Therefore, bowing and prostrating my body, I implore you, the adorable Lord, to forgive me as a father forgives his son, a friend his friend, and a lover his beloved, O God. | ☐ | ☐ | ☐ |
-|  | 11.45 | Delighted, yet my mind trembles | Having seen what I never saw before, I am delighted, yet my mind trembles with fear; show me, O God, your gracious form — be merciful, O Lord of the universe. | ☐ | ☐ | ☐ |
+|  | 11.45 | Delighted, yet my mind trembles | Having seen what I never saw before, I am delighted, yet my mind trembles with fear; show me, O God, your gracious form — be merciful, O Lord of gods, O Lord of the universe. | ☐ | ☐ | ☐ |
 |  | 11.46 | I long to see you crowned, with mace and discus | I long to see you as before — crowned, with mace and discus in hand; appear in that four-armed form, O thousand-armed, universal form. | ☐ | ☐ | ☐ |
 |  | 11.47 | By my grace you have seen it | The Blessed Lord said: By my grace, Arjuna, I have shown you this supreme form by my own power — the luminous, universal, infinite, primeval form that none but you has ever seen. | ☐ | ☐ | ☐ |
 |  | 11.48 | Not by Vedas or austerities can it be seen | Not by the study of the Vedas and sacrifices, nor by gifts, rites or fierce austerities, can I be seen in this form in the world of men — by any but you, O prince of the Kurus. | ☐ | ☐ | ☐ |
@@ -575,7 +575,7 @@ want them to survive a regeneration.
 |  | 11.51 | Now I am composed and restored | Arjuna said: Seeing this your gracious human form, O Janārdana, I am now composed and restored to my own nature. | ☐ | ☐ | ☐ |
 |  | 11.52 | Even the gods long to see this form | The Blessed Lord said: This form of mine that you have seen is very hard to see; even the gods ever long to see this form. | ☐ | ☐ | ☐ |
 |  | 11.53 | Not by Vedas, austerity or gifts | I am not to be seen in this way through the Vedas, nor through austerity, nor through gifts, nor through worship; only in the way you have seen me can I be seen. | ☐ | ☐ | ☐ |
-|  | 11.54 | By undivided devotion alone | But through single-pointed devotion I can be known, seen and entered in truth, O Arjuna, in this very form. | ☐ | ☐ | ☐ |
+|  | 11.54 | By undivided devotion alone | But through single-pointed devotion I can be known, seen and entered in truth, O Arjuna, in this very form, O scorcher of foes. | ☐ | ☐ | ☐ |
 |  | 11.55 | He who works for me comes to me | He who does my work, who holds me as the supreme goal, who is devoted to me, free from attachment, without enmity toward any being — he comes to me, O Pāṇḍava. | ☐ | ☐ | ☐ |
 
 
