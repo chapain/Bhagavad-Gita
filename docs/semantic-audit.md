@@ -258,8 +258,8 @@ Bharata" / "हे भरतवंशी" and "smiled as if" / "जस्तो 
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 3.01–3.09 | pass | The four questions of Arjuna (3.01–3.02); the two yogas of 3.03; the four `na … na …` clauses of 3.04; `prakṛtijair guṇaiḥ` = "by the guṇas born of prakṛti" (3.05); the hypocrite of 3.06 (`mānasā smaran` = "recollecting in the mind") and its opposite in 3.07; `yajñārthāt karmaṇo'nyatra` = "except action performed for the sake of sacrifice" (3.09). |
-| 3.10–3.18 | pass | `iṣṭakāmadhuk` = "the cow of desires" (3.10); the mutual nourishing of 3.11; `tena dattān apradāyibhyaḥ … stena eva saḥ` = "a thief" (3.12); `yajñaśiṣṭāśinaḥ` = "those who eat the remnants" (3.13); the five-stage chain anna → varṣa → yajña → karma (3.14); `brahmākṣarasamudbhavam` = "Brahman from the Imperishable" (3.15); the `nānavāptamavāptavyam` of 3.22 (see 3.19–3.22 below). |
+| 3.01–3.09 | **corrected — 3.03** | The four questions of Arjuna (3.01–3.02); the two yogas of 3.03; the four `na … na …` clauses of 3.04; `prakṛtijair guṇaiḥ` = "by the guṇas born of prakṛti" (3.05); the hypocrite of 3.06 (`mānasā smaran` = "recollecting in the mind") and its opposite in 3.07; `yajñārthāt karmaṇo'nyatra` = "except action performed for the sake of sacrifice" (3.09). |
+| 3.10–3.18 | **corrected — 3.15** | `iṣṭakāmadhuk` = "the cow of desires" (3.10); the mutual nourishing of 3.11; `tena dattān apradāyibhyaḥ … stena eva saḥ` = "a thief" (3.12); `yajñaśiṣṭāśinaḥ` = "those who eat the remnants" (3.13); the five-stage chain anna → varṣa → yajña → karma (3.14); `brahmākṣarasamudbhavam` = "Brahman from the Imperishable" (3.15); the `nānavāptamavāptavyam` of 3.22 (see 3.19–3.22 below). |
 | 3.19–3.27 | pass | `asakto hyācaran karma paramāpnoti` = "a man attains the Supreme" (3.19); `lokasaṅgrahamevāpi` = "even having regard for the welfare of the world" (3.20); the standard of the best man (3.21); `naivaṃ pāpamavāpsyasi` (3.38); the "guṇas move among the guṇas" (3.28); `akṛtsnavidaḥ` = "partial knowers" (3.29); the four `ni-` rows of 3.30. |
 | 3.28–3.36 | pass | The guṇa/karma distinction (3.28–3.29); `mayi sarvāṇi karmāṇi sannyasyādhyātmaceṣṭā` (3.30); the two `anutusthanti` verses (3.31, 3.32) keep their opposite senses in all three languages; `sadṛśaṃ ceṣṭate` = "acts according to his own nature" (3.33); `tayor na vaśam āgacchet` = "let one not come under their power" (3.34); `śreyān svadharmaḥ viguṇaḥ` = "one's own dharma, though defective" (3.35); `anichchann api` = "even against his will" (3.36). |
 | 3.37–3.43 | pass | `kāma eṣa krodha eṣa` = "it is desire, it is anger" (3.37); the smoke/mirror/membrane figure (3.38); `duṣpūreṇa analena` = "insatiable, like fire" (3.39); `etair vimohayaty eṣa` = "it deludes" (3.40); `pāpmānaṃ prajahihyenaṃ` = "cast off this sinner" (3.41); the ascending scale of 3.42 and `jahi śatruṃ` = "slay the enemy" (3.43). |
@@ -301,18 +301,19 @@ the row matches it.
 |---|---|---|
 | 4.01–4.09 | pass | The teaching chain Vivasvān → Manu → Ikṣvāku (4.01), the loss of the yoga (4.02), `bhakto'si me sakhā ca iti` = "you are my devotee and friend" (4.03); Arjuna's question about the birth (4.04); `ajo'pi san avyayātmā` = "though unborn, though the imperishable Self" (4.06); `abhyutthānam adharmasya` = "a rise of adharma" (4.07); `yuge yuge` = "age after age" (4.08). |
 | 4.10–4.18 | pass | `māṃ upāśritāḥ` = "taking refuge in me" (4.10); `bhajāmy aham` = "I favour them" (4.11); `karmajā siddhiḥ` = "success born of action" (4.12); `cāturvarṇyaṃ` = "the fourfold order" (4.13); `na māṃ karmāṇi limpanti` = "actions do not stain me" (4.14); `kimakarma iti` (4.16); the three things to be known (4.17); `karmaṇi akarma` (4.18). |
-| 4.19–4.26 | pass | `jñānāgnidagdha karmāṇaṃ` = "actions burnt by the fire of knowledge" (4.19); `naiva kiñcit karoti saḥ` = "he verily does nothing" (4.20); `nirāśīryata cittātmā` = "desireless, with the mind and self controlled" (4.21); the Brahman-sacrifice of 4.24; `daivam evāpare yajñaṃ` / `brahmāgnāv apare yajñaṃ` (4.25); the two oblations of 4.26. |
+| 4.19–4.26 | **corrected — 4.19** | `jñānāgnidagdha karmāṇaṃ` = "actions burnt by the fire of knowledge" (4.19); `naiva kiñcit karoti saḥ` = "he verily does nothing" (4.20); `nirāśīryata cittātmā` = "desireless, with the mind and self controlled" (4.21); the Brahman-sacrifice of 4.24; `daivam evāpare yajñaṃ` / `brahmāgnāv apare yajñaṃ` (4.25); the two oblations of 4.26. |
 | 4.27–4.34 | **corrected — 4.32** | The five kinds of sacrifice (4.27–4.30); `yajñaśiṣṭāmṛtabhujo` = "tasting the nectar of the remnant" (4.31); **4.32's `brahmaṇo mukhe` was recorded here as "in the mouth of the Vedas" while all three literals read "in the scriptures" / `शास्त्रमा` — the row alone carried the interpretation.** They now read "in the mouth of Brahman" / `ब्रह्मको मुखमा` / `ब्रह्म के मुख में`; `jñānayajñaḥ` = "the sacrifice of knowledge" (4.33); `praṇipātena paripraśnena sevayā` (4.34). |
 | 4.35–4.42 | pass | `yena bhūtānyaśeṣeṇa drakṣyasy ātmany atho mayi` = "you will see all beings in the Self and also in me" (4.35); `jñānaplavenaiva` = "by the boat of knowledge alone" (4.36); the two fires of 4.37; `tatsvayaṃ yogasaṃsiddhaḥ kālenātmani vindati` = "finds it in the Self in time, of himself" (4.38); `acirena` = "soon" (4.39); `nāyaṃ loko'sti na paro na sukham` = "neither this world, nor the next, nor happiness" (4.40); `jñānasañchinnasaṃśayam` = "whose doubt is destroyed by knowledge" (4.41); `jñānāsinā` = "with the sword of knowledge" (4.42). |
 
-**42 verses, no correction.** The chapter passed on first reading in all three
-languages.
+**42 verses, 1 correction — 4.19.** The chapter otherwise passed on first reading
+in all three languages; 4.19 was corrected on 2026-11-12 (see the interpretive
+cases above).
 
 ## Ledger — Chapter 5, 5.01–5.29 (read 2026-11-04)
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 5.01–5.09 | pass | Arjuna's question (5.01) and the answer "both lead to the supreme good, but karma-yoga is superior" (5.02); `jñeyaḥ sa nityasannyāsī` = "he is to be known as ever-renouncing" (5.03); `pṛthag bālāḥ pravadanti na paṇḍitāḥ` = "the childish, not the wise" (5.04); the one state reached by both (5.05); `duḥkham āptum ayogataḥ` = "hard to attain without yoga" (5.06); the "I do nothing at all" of 5.08, continued in 5.09 (the house style splits a running sentence with a trailing comma, as here and at 5.27). |
+| 5.01–5.09 | **corrected — 5.02** | Arjuna's question (5.01) and the answer "both lead to the supreme good, but karma-yoga is superior" (5.02); `jñeyaḥ sa nityasannyāsī` = "he is to be known as ever-renouncing" (5.03); `pṛthag bālāḥ pravadanti na paṇḍitāḥ` = "the childish, not the wise" (5.04); the one state reached by both (5.05); `duḥkham āptum ayogataḥ` = "hard to attain without yoga" (5.06); the "I do nothing at all" of 5.08, continued in 5.09 (the house style splits a running sentence with a trailing comma, as here and at 5.27). |
 | 5.10–5.18 | pass | The lotus-leaf figure (5.10); `kāyena manasā buddhyā … kevalair indriyair api` (5.11); `naiṣṭhikīṃ śāntim` = "lasting peace" (5.12); `navadvāre pure` = "the city of nine gates" (5.13); the Lord creates neither agency nor action (5.14); `nādatte kasyacit pāpaṃ na caiva sukṛtaṃ` = "accepts neither sin nor merit" (5.15); `teṣām ādityavaj jñānaṃ` = "shines like the sun" (5.16); the `tad buddhi … tad ātmānam` chain (5.17); `samadarśinaḥ` = "of equal vision" over brāhmaṇa, cow, elephant, dog, outcaste (5.18). |
 | 5.19–5.29 | pass | `ihaiva tair jitaḥ sargaḥ` = "here itself the world is conquered" (5.19); `na prahṛṣyet … nodyvijet` (5.20); `duḥkhayonaya eva te` = "wombs of sorrow" (5.22); `prāk charīravimokṣaṇāt` = "before the release of the body" (5.23); `brahmabhūtaḥ adhigacchati` (5.24); `chinnadvaidhā` = "whose doubts are cut" (5.25); `abhito brahmanirvāṇaṃ vartate` = "Brahman-nirvāṇa is present all around" (5.26); the pranayama of 5.27–5.28; `bhoktāraṃ yajñatapasāṃ` = "the enjoyer of sacrifices and austerities" (5.29). |
 
@@ -340,13 +341,14 @@ in F9).
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 6.01–6.10 | pass | `anāśritaḥ karmaphalaṃ` = "without depending on its fruit"; `na niragnir na cākriyaḥ` = "not he who is without fire and without rites" (6.01); `na hyasannyastasaṅkalpo yogī bhavati` (6.02); `ārarukṣor muner yogaṃ karma kāraṇam ucyate` (6.03); `nendriyārtheṣu na karmasu anuṣajjate` (6.04); the Self as friend and enemy (6.05–6.06); the three pairs of 6.07; `samaloṣṭāśmakāñcanaḥ` = "a lump of earth, a stone and gold" (6.08); the nine categories of 6.09; `rahasi … ekākī` = "in solitude, alone" (6.10). |
+| 6.01–6.10 | **corrected — 6.02, 6.04** | `anāśritaḥ karmaphalaṃ` = "without depending on its fruit"; `na niragnir na cākriyaḥ` = "not he who is without fire and without rites" (6.01); `na hyasannyastasaṅkalpo yogī bhavati` (6.02); `ārarukṣor muner yogaṃ karma kāraṇam ucyate` (6.03); `nendriyārtheṣu na karmasu anuṣajjate` (6.04); the Self as friend and enemy (6.05–6.06); the three pairs of 6.07; `samaloṣṭāśmakāñcanaḥ` = "a lump of earth, a stone and gold" (6.08); the nine categories of 6.09; `rahasi … ekākī` = "in solitude, alone" (6.10). |
 | 6.11–6.20 | pass | The seat and its coverings (6.11); `ekāgraṃ manaḥ` = "one-pointed mind" (6.12); the nose-tip and the eyes (6.13); `maccitto … matparaḥ` = "thoughts on me, devoted to me" (6.14); `nacireṇa adhigacchati` (6.15); the four `na … na … na … na` of 6.16; the four `yukta` of 6.17; `viniyataṃ cittam ātmany evāvatiṣṭhate` (6.18); the lamp in the windless place (6.19); `yatra caivātmanātmānaṃ paśyann ātmani tuṣyati` (6.20). |
-| 6.21–6.30 | pass | `sukham ātyantikaṃ` = "boundless joy" (6.21); `na duḥkhena guruṇāpi vicālayate` = "not disturbed even by great sorrow" (6.22); `duḥkhasaṃyogaviyogaṃ yogasaṃjñitam` (6.23); `saṅkalpaprabhavān kāmān` = "desires born of selfish intention" (6.24); `śanaiḥ śanaiḥ` = "slowly, gradually" (6.25); the restless mind drawn back (6.26); `śāntarajasam` = "whose passion is stilled" (6.27); the endless joy of union with Brahman (6.28); `sarvabhūtastham ātmānaṃ sarvabhūtāni cātmani` (6.29); `tasyāhaṃ na praṇaśyāmi` (6.30). |
-| 6.31–6.47 | pass | `sarvabhūtasthitaṃ yo māṃ bhajati ekatvam āsthitaḥ` (6.31); `ātmaupamyena sarvatra samam paśyati` (6.32); Arjuna's restlessness (6.33–6.35); `vaśyātmānā tu yatatā śakyo'vāptum upāyataḥ` (6.36); the fate of the fallen (6.37–6.38); `tvadanyaḥ saṃśayasyāsya chettā na hyupapadyate` (6.39); `na hi kalyāṇakṛt kaścid durgatiṃ tāta gacchati` (6.40); `yogabhraṣṭo'abhijāyate` = "he who fell from yoga is born again" (6.41); `durlabhataraṃ loke janma` (6.42); `paurvadehikam` = "of the former body" (6.43); `jijñāsur api yogasya śabdabrahma ātivartate` (6.44); `anekajanmasaṃsiddhaḥ` (6.45); the three gradations of 6.46; `yuktatamaḥ mataḥ` = "the most yoked" (6.47). |
+| 6.21–6.30 | **corrected — 6.24** | `sukham ātyantikaṃ` = "boundless joy" (6.21); `na duḥkhena guruṇāpi vicālayate` = "not disturbed even by great sorrow" (6.22); `duḥkhasaṃyogaviyogaṃ yogasaṃjñitam` (6.23); `saṅkalpaprabhavān kāmān` = "desires born of selfish intention" (6.24); `śanaiḥ śanaiḥ` = "slowly, gradually" (6.25); the restless mind drawn back (6.26); `śāntarajasam` = "whose passion is stilled" (6.27); the endless joy of union with Brahman (6.28); `sarvabhūtastham ātmānaṃ sarvabhūtāni cātmani` (6.29); `tasyāhaṃ na praṇaśyāmi` (6.30). |
+| 6.31–6.47 | **corrected — 6.44** | `sarvabhūtasthitaṃ yo māṃ bhajati ekatvam āsthitaḥ` (6.31); `ātmaupamyena sarvatra samam paśyati` (6.32); Arjuna's restlessness (6.33–6.35); `vaśyātmānā tu yatatā śakyo'vāptum upāyataḥ` (6.36); the fate of the fallen (6.37–6.38); `tvadanyaḥ saṃśayasyāsya chettā na hyupapadyate` (6.39); `na hi kalyāṇakṛt kaścid durgatiṃ tāta gacchati` (6.40); `yogabhraṣṭo'abhijāyate` = "he who fell from yoga is born again" (6.41); `durlabhataraṃ loke janma` (6.42); `paurvadehikam` = "of the former body" (6.43); `jijñāsur api yogasya śabdabrahma ātivartate` (6.44); `anekajanmasaṃsiddhaḥ` (6.45); the three gradations of 6.46; `yuktatamaḥ mataḥ` = "the most yoked" (6.47). |
 
-**47 verses, no correction.** The chapter passed on first reading in all three
-languages.
+**47 verses, 4 corrections — 6.02, 6.04, 6.24, 6.44.** The chapter otherwise
+passed on first reading in all three languages; these four were corrected on
+2026-11-12 (see the interpretive cases above).
 
 ## Ledger — Chapter 7, 7.01–7.30 (read 2026-11-04)
 
@@ -409,7 +411,7 @@ languages.
 |---|---|---|
 | 12.01–12.05 | **corrected** — 12.03 | Arjuna's question, which group are the better knowers of yoga (12.01); `yuktatamā matāḥ` = "the most yoked" (12.02); `sarvabhūtahite ratāḥ` = "rejoicing in the welfare of all beings" (12.04); `kleśo'dhikataras teṣām` = "greater is the toil" of those attached to the unmanifest (12.05). **12.03 was recorded as passing while all three paraphrases cut the tail of `anirdeśyam acintyam kūṭastham acalam dhruvam`:** the Hindi dropped अचलम् and ध्रुवम् outright and stopped mid-sentence, the Nepali dropped ध्रुवम्, and the English folded अचलम् and ध्रुवम् into "immutable, eternal". The compound is a list of five qualifications; a paraphrase may compress the list but may not delete its last members, so all three lanes now close it (कूटस्थम् "unchanging" / अचलम् "unmoving" / ध्रुवम् "eternal"). Overlap with the literal after the fix: en 0.26, ne 0.13, hi 0.20. Pinned by `tests/test_translation_fidelity.py::WholeBookFidelity::test_lag_no_lane_stops_mid_phrase_where_siblings_end_a_sentence` and the ledger pin in `tests/test_semantic_audit.py`. |
 | 12.06–12.12 | pass | `ananyenaiva yogenā` = "with undivided yoga" (12.06); `samuddhartā` = "the deliverer" (12.07); `nivasiṣyasi mayy eva` (12.08); the three graded steps of 12.09–12.11 (`abhyāsayoga`, `matkarmaparama`, `sarvakarmaphalatyāga`); the four-fold scale `jñānam abhyāsāt … dhyānam … karmaphalatyāgaḥ` = "knowledge > practice > meditation > renunciation of the fruit of action" (12.12). |
-| 12.13–12.20 | pass | The six qualities of 12.13 (`nirmamaḥ nirahaṅkāraḥ samaduḥkhasukhaḥ kṣamī`); `dṛḍhaniścayaḥ` = "of firm resolve" (12.14); `harṣāmarṣabhayo'dvegaiḥ muktaḥ` = "free from elation, anger, fear and anxiety" (12.15); `anapekṣaḥ śucir dakṣa udāsīno gatavyathaḥ` = "indifferent, pure, capable, unconcerned, free from anxiety" (12.16); `śubhāśubhaparityāgī` = "renouncing both good and evil" (12.17); `samaḥ śatrau ca mitre ca` (12.18); `aniketaḥ` = "having no abode" (12.19); `dharmyāmṛtam` = "this nectar of dharma" (12.20). |
+| 12.13–12.20 | **corrected — 12.16** | The six qualities of 12.13 (`nirmamaḥ nirahaṅkāraḥ samaduḥkhasukhaḥ kṣamī`); `dṛḍhaniścayaḥ` = "of firm resolve" (12.14); `harṣāmarṣabhayo'dvegaiḥ muktaḥ` = "free from elation, anger, fear and anxiety" (12.15); `anapekṣaḥ śucir dakṣa udāsīno gatavyathaḥ` = "indifferent, pure, capable, unconcerned, free from anxiety" (12.16); `śubhāśubhaparityāgī` = "renouncing both good and evil" (12.17); `samaḥ śatrau ca mitre ca` (12.18); `aniketaḥ` = "having no abode" (12.19); `dharmyāmṛtam` = "this nectar of dharma" (12.20). |
 
 **20 verses, one correction (12.03).**
 
@@ -420,9 +422,9 @@ languages.
 | 13.01–13.06 | pass | The body as the field and the knower of the field (13.01–13.02); the six questions of 13.03; the seers, the meters and the Brahman-sūtras (13.04); the great elements, ego, intellect, the unmanifest, the ten senses plus the eleventh, the five objects (13.05); `icchā dveṣaḥ sukhaṃ duḥkhaṃ saṅghātaś cetanā dhṛtiḥ` = "desire, aversion, pleasure, pain, the body, consciousness and constancy" (13.06). |
 | 13.07–13.12 | pass | The ninefold list of qualities (13.07); `janmamṛtyujarāvyādhiduḥkhadoṣānudarśanam` = "the perception of the evil of suffering in birth, death, old age and disease" (13.08); `anabhiṣvaṅgaḥ` = "non-clinging" to son, wife and home (13.09); `viviktadeśasevitvam` = "delight in solitude" (13.10); `adhyātmajñānanityatvaṃ` (13.11); `na sattannāsad ucyate` = "neither being nor non-being" (13.12). |
 | 13.13–13.20 | pass | The hands and feet everywhere (13.13); `sarvendriyaguṇābhāsaṃ … nirguṇaṃ guṇabhoktṛ` (13.14); `dūrasthaṃ cāntike ca` = "far away, and yet near" (13.15); `grasiṣṇu prabhaviṣṇu` = "the devourer and the creator" (13.16); `jñānaṃ jñeyaṃ jñānagamyaṃ` = "knowledge, the knowable, the goal of knowledge" (13.17); `madbhāvāyopapadyate` = "attains my being" (13.18); `anādī ubhāv api` = "both beginningless" (13.19); `kāryakaraṇakartṛtve` (13.20). |
-| 13.21–13.34 | pass | `guṇasaṅgo'sya` = "attachment to the guṇas" as the cause of birth (13.21); `upadraṣṭānumantā` (13.22); `na sa bhūyo'bhijāyate` (13.23); the three yogas and the hearing of teaching (13.24–13.25); `kṣetrakṣetrajñasaṃyogāt` (13.26); `vinaśyatsv avinaśyantam` = "the imperishable among the perishing" (13.27); `na hinasty ātmanā ātmānam` = "he does not harm the Self by the self" (13.28); `akartāram` = "the non-doer" (13.29); `bhūtapṛthagbhāvaṃ ekastham` (13.30); `na karoti na lipyate` (13.31); the space figure (13.32); the sun figure (13.33); `jñānacakṣuṣā` = "with the eye of knowledge" (13.34). |
+| 13.21–13.34 | **corrected — 13.24** | `guṇasaṅgo'sya` = "attachment to the guṇas" as the cause of birth (13.21); `upadraṣṭānumantā` (13.22); `na sa bhūyo'bhijāyate` (13.23); the three yogas and the hearing of teaching (13.24–13.25); `kṣetrakṣetrajñasaṃyogāt` (13.26); `vinaśyatsv avinaśyantam` = "the imperishable among the perishing" (13.27); `na hinasty ātmanā ātmānam` = "he does not harm the Self by the self" (13.28); `akartāram` = "the non-doer" (13.29); `bhūtapṛthagbhāvaṃ ekastham` (13.30); `na karoti na lipyate` (13.31); the space figure (13.32); the sun figure (13.33); `jñānacakṣuṣā` = "with the eye of knowledge" (13.34). |
 
-**34 verses, no correction.**
+**34 verses, 1 correction — 13.24.**
 
 ## Ledger — Chapter 14, 14.01–14.27 (read 2026-11-04)
 
@@ -431,9 +433,9 @@ languages.
 | 14.01–14.04 | pass | `jñānānāṃ jñānam uttamam` = "the best of all knowledges" (14.01); `sādharmyam āgatāḥ` = "attain unity with my being" (14.02); the great Brahman as the womb (14.03); `bījapradaḥ pitā` = "the father who gives the seed" (14.04). |
 | 14.05–14.12 | pass | The three guṇas binding the embodied one (14.05); sattva as `prakāśaka` = "illumining" and `anāmaya` = "free from disease" (14.06); rajas as passion born of thirst (14.07); tamas born of ignorance (14.08); the three attachments (14.09); the mutual overpowering (14.10); `sarvadvāreṣu … prakāśa upajāyate` (14.11); `rajasy etāni jāyante` = the five marks of rajas (14.12). |
 | 14.13–14.20 | pass | The four marks of tamas (14.13); the pure worlds of the knowers of the highest (14.14); rebirth among the action-bound and the deluded (14.15); the three fruits (14.16); the arising of knowledge, greed, and carelessness (14.17); `ūrdhvaṃ … madhye … adho` (14.18); `nānyam guṇebhyaḥ kartāram` = "no agent other than the guṇas" (14.19); `trīn dehī dehasaṃudbhavān` = "the three guṇas that give rise to the body" (14.20). |
-| 14.21–14.27 | pass | Arjuna's question (14.21); `na dveṣṭi … na nivṛttāni kāṅkṣati` (14.22); `udāsīnavad āsīno` (14.23); `samaloṣṭāśmakāñcanaḥ` (14.24); `mānāpamānayoḥ … mitra aripakṣayoḥ` (14.25); `avyabhicāreṇa bhaktiyogena` (14.26); `brahmaṇo hi pratiṣṭhāham` = "I am the support of Brahman" (14.27). |
+| 14.21–14.27 | **corrected — 14.25** | Arjuna's question (14.21); `na dveṣṭi … na nivṛttāni kāṅkṣati` (14.22); `udāsīnavad āsīno` (14.23); `samaloṣṭāśmakāñcanaḥ` (14.24); `mānāpamānayoḥ … mitra aripakṣayoḥ` (14.25); `avyabhicāreṇa bhaktiyogena` (14.26); `brahmaṇo hi pratiṣṭhāham` = "I am the support of Brahman" (14.27). |
 
-**27 verses, no correction.**
+**27 verses, 1 correction — 14.25.**
 
 ## Ledger — Chapter 15, 15.01–15.20 (read 2026-11-04)
 
@@ -471,7 +473,7 @@ languages.
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 18.01–18.06 | pass | Arjuna's question on sannyāsa and tyāga (18.01); `kāmyānāṃ karmaṇāṃ nyāsaṃ` = "the giving up of desired actions" and `sarvakarmaphalatyāgaṃ` = "the abandonment of all fruits" (18.02); the two schools of 18.03; `tyāgo hi puruṣavyāghra trividhaḥ` (18.04); `yajñadānatapaḥkarma na tyājyaṃ kāryameva tat` (18.05); `saṅgaṃ tyaktvā phalāni ca` (18.06). |
+| 18.01–18.06 | **corrected — 18.02** | Arjuna's question on sannyāsa and tyāga (18.01); `kāmyānāṃ karmaṇāṃ nyāsaṃ` = "the giving up of desired actions" and `sarvakarmaphalatyāgaṃ` = "the abandonment of all fruits" (18.02); the two schools of 18.03; `tyāgo hi puruṣavyāghra trividhaḥ` (18.04); `yajñadānatapaḥkarma na tyājyaṃ kāryameva tat` (18.05); `saṅgaṃ tyaktvā phalāni ca` (18.06). |
 | 18.07–18.12 | pass | `niyatasya tu saṃnyāsaḥ karmaṇo nopapadyate` (18.07); the rājasic abandonment that gains no fruit (18.08); `kāryamityeva yat karma niyataṃ kriyate` = "done because it ought to be done" (18.09); `na dveṣṭy akūśalaṃ karma` (18.10); `karmaphalatyāgī` (18.11); the threefold fruit of action (18.12). |
 | 18.13–18.19 | pass | The five causes of action, `adhiṣṭhānaṃ … kartā … karaṇaṃ … ceṣṭā … daivaṃ` (18.13–18.14); `śarīravāṅmanobhiḥ` (18.15); `akṛtabuddhitvān na sa paśyati` = "with imperfect understanding he does not truly see" (18.16); `hatvāpi sa imāṃl lokān na hanti na nibadhyate` (18.17); the threefold impulse and basis of action (18.18); `guṇabhedataḥ` (18.19). |
 | 18.20–18.26 | pass | The sāttvic, rājasic and tāmasic knowledge (18.20–18.22); `niyataṃ saṅgarahitaṃ arāgadveṣataḥ kṛtam` (18.23); `bahulāyāsaṃ` (18.24); `anubandhaṃ kṣayaṃ hiṃsām apekṣya ca pauruṣam` (18.25); `siddhyasiddhyor nirvikāraḥ` (18.26). |
@@ -483,7 +485,7 @@ languages.
 | 18.63–18.70 | pass | `guhyād guhyataraṃ` (18.63); `iṣṭo'si me dṛḍham iti` (18.64); `manmanā bhava madbhakto` (18.65); `sarvadharmān parityajya` (18.66); the four classes not to be told (18.67); `bhaktiṃ mayi parāṃ kṛtvā` (18.68); `na ca tasmān manuṣyeṣu kāś cin me priyakṛttamaḥ` (18.69); `jñānayajñena tenāham iṣṭaḥ syām iti me matiḥ` (18.70). |
 | 18.71–18.78 | pass | The one who only hears with faith (18.71); Arjuna's question `kaccid etac chrutaṃ` (18.72); his answer `naṣṭo mohaḥ smṛtiḥ labdhā` (18.73); Sañjaya's narration (18.74); `vyāsaprasādāt śrutavān` (18.75); `saṃsmṛtya saṃsmṛtya` (18.76–18.77); the closing verse `yatra yogeśvaraḥ kṛṣṇo` (18.78). |
 
-**78 verses, no correction.**
+**78 verses, 1 correction — 18.02.**
 
 ## The whole book — closing summary (read 2026-11-04)
 
@@ -491,23 +493,23 @@ languages.
 |---|---|---|
 | 1 | 47 | 9 strings in 4 verses (1.04 ×1, 1.13 ×4, 1.24 ×3, 1.46 ×1) |
 | 2 | 72 | 4 strings in 1 verse (2.10: ne literal + en/ne/hi paraphrases) |
-| 3 | 43 | 1 string in 1 verse (3.22: the Nepali word-row gloss) |
-| 4 | 42 | 0 |
+| 3 | 43 | 1 string in 1 verse (3.22: the Nepali word-row gloss); 2 paraphrases on 2026-11-12 (3.03, 3.15 — निःस्वार्थ removed) |
+| 4 | 42 | 4 strings in 1 verse (4.19: row gloss, en literal, 3 paraphrases) |
 | 5 | 29 | 2 strings in 1 verse (5.12: the Nepali literal and the Nepali word-row gloss) |
-| 6 | 47 | 0 |
+| 6 | 47 | 18 strings in 4 verses (6.02 ×4, 6.04 ×4, 6.24 ×4, 6.44 ×6) |
 | 7 | 30 | 0 |
 | 8 | 28 | 0 |
 | 9 | 34 | 0 |
 | 10 | 42 | 0 |
 | 11 | 55 | 0 |
-| 12 | 20 | 0 |
-| 13 | 34 | 0 |
-| 14 | 27 | 0 |
+| 12 | 20 | 3 strings in 1 verse (12.16 paraphrases) |
+| 13 | 34 | 2 strings in 1 verse (13.24 paraphrases) |
+| 14 | 27 | 3 strings in 1 verse (14.25 paraphrases) |
 | 15 | 20 | 0 |
 | 16 | 24 | 0 |
 | 17 | 28 | 0 |
-| 18 | 78 | 0 |
-| **Total** | **700** | **16 strings in 7 verses — nine findings, F1–F9** (first pass; F10–F16 are recorded in the later sections below and are not added into these per-chapter counts) |
+| 18 | 78 | 2 strings in 1 verse (18.02 paraphrases) |
+| **Total** | **700** | **16 strings in 7 verses — nine findings, F1–F9** (first pass; F10–F16 and the 2026-11-12 motive/शब्दब्रह्म pass — 38 strings in 12 verses — are recorded in the later sections below and are not added into these per-chapter counts) |
 
 Every verse was read in the Devanagari, the IAST, the literal (en, ne, hi), the
 paraphrase (en, ne, hi) and every word row with its three glosses. Chapters
