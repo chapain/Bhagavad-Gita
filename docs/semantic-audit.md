@@ -537,6 +537,57 @@ single dropped or shifted item hides.
 | Nepali token in which the negator is attached to the word it negates | 700 verses / 9,506 rows | 86 rows begin with an attached "न"; 82 are ordinary words or the negator standing on a verb, four put it on a nominal — "नस्थित" (5.12), "नप्राप्त" (3.22), "नतृप्त हुने" (3.37), "ननष्ट हुने" (13.27). The first two are fixed (F8, F9); the last two are closed, because the negator stands on a predicate and 13.27's own literal writes the same shape. No run-together non-word is left. |
 | Pāda reconstruction from word rows (sandhi) | 2,800 pādas | 0 flags (`check_padas.py`) |
 
+## Renderings pass over all 700 verses x 3 languages (2026-11-12)
+
+The ledger above is a *reading* record. This pass added checks that need no
+reading, so that fidelity claims rest on more than one person's attention. It
+found two defects in the Hindi renderings and nothing else.
+
+| check | scope | result |
+|---|---|---|
+| IAST is a transliteration of its own Devanagari | 700 verses, 2,800 pādas | 0 mismatches. `check_padas.py` already enforced this; an independent transliterator was written to confirm the enforcement itself rather than trust it. |
+| Word-row IAST vs its Sanskrit word | 9,389 rows | 0 after the project's anusvāra convention is applied: `ṁ`/`ṃ`/`ṅ` are one sound (`strict_key`), and `saṃgha` may be written `saṅgha` before a velar. Without that convention 130 rows differ, all in that one class — a spelling style, not a wrong word. |
+| Vocative rows rendered or dropped consistently across the three languages | 175 address rows | 3 apparent splits, all false: "O best of men/persons" for पुरुषोत्तम (8.01, 11.03) and शत्रुतापन/परंतप (2.09). Dropping a vocative in all three languages is house style; dropping it in one is what the check hunts. |
+| Numeral rows rendered or dropped consistently | 40 numeral rows | 5 apparent splits, all false: केवल (18.66), एउटाबाट (8.26), दुवैको (2.16), तीनै (3.22), "neither" for उभौ (2.19). |
+| Negation present in all three or none | 306 negation rows | 0 real splits. The apparent Hindi gaps were the bare particle न, which the detector's word-boundary guard was rejecting because the Devanagari danda `।` sits inside the same Unicode block. |
+| Cross-language word forms | 2,100 literals/paraphrases | **2 findings, both fixed** — see F10, F11. |
+
+### F10 — 2.09, the Hindi literal called Arjuna by the Nepali name — **fixed**
+
+`परन्तप` is how this book addresses Arjuna as "scorcher of foes". The Hindi
+column has it at 4.02, 4.05 and 4.33. The Nepali column renders the same word
+as `शत्रुतापन` — 2.03, 4.05, 4.33, 7.27, 9.03, 10.40, 18.41. At 2.09 the Hindi
+cell read `हे शत्रुतापन, …`, the Nepali form in the Hindi column. The IAST row
+was never wrong (`parantapa`), so only the Hindi literal moved.
+
+### F11 — 13.05, the Hindi literal dropped the count the verse is making — **fixed**
+
+13.05 enumerates the field: `इन्द्रियाणि दशैकं च` — "the ten senses and the
+one". The row glosses `एकम्` as "and the one" / "एक" / "एक"; the one is the
+mind, the eleventh. English says "the ten senses and the one", Nepali says
+`दश इन्द्रिय र एघारौं मन` ("the ten senses and the eleventh, mind"), and the
+Hindi said `दस इन्द्रियाँ और मन` — which reads as ten senses *including* the
+mind inside the count of ten, not ten plus one. Hindi now reads
+`दस इन्द्रियाँ और एकादश मन`.
+
+### What these checks do not prove
+
+They cannot tell you a rendering is *right*; they tell you it is not wrong in
+these specific, mechanical ways. Two limits are worth stating plainly:
+
+* A literal can pass every check and still mistranslate a word nobody
+  pattern-matched. That is what the per-verse ledger is for, and why the ledger
+  — not this table — remains the fidelity record.
+* The numeral and negation checks are only as good as their closed vocabularies.
+  They cover rows whose Sanskrit gloss or stem names a small number or negates;
+  they say nothing about tense, case, voice, or the many English words with no
+  Nepali/Hindi counterpart in a one-to-one map.
+
+A cross-language advisory pass was written and then removed: it could not
+separate genuine borrowing from the shared Sanskrit vocabulary that Nepali and
+Hindi both inherit (`क्षत्रिय`, `वैश्य`, `वैराग्य`), and 18 advisories of noise
+would have made the four real ones unreadable.
+
 ## Sources used for the decisions
 
 Every finding was checked against the same pinned sources the earlier
