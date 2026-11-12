@@ -552,6 +552,21 @@ found two defects in the Hindi renderings and nothing else.
 | Negation present in all three or none | 306 negation rows | 0 real splits. The apparent Hindi gaps were the bare particle न, which the detector's word-boundary guard was rejecting because the Devanagari danda `।` sits inside the same Unicode block. |
 | Cross-language word forms | 2,100 literals/paraphrases | **2 findings, both fixed** — see F10, F11. |
 
+### 16.04 — settled: अभिमानश्च (owner's copy, 2026-11-12)
+
+16.04 was the one reading among the fifteen Sanskrit corrections where the
+witnesses genuinely split. The Supersite mūla and padaccheda (`दर्पः | अभिमानः`)
+and Gambhirananda read **अभिमानश्च**; GRETIL and all four derivative corpora
+read **अतिमानश्च**. The Supersite was the edition's basis, so अभिमानश्च is what
+the book has shipped since `eb836bc`. Dhruba checked his printed copy and
+confirmed **अभिमानश्च**. No content changed — `source/ch16.json` and
+`data/ch16.js` already read `दम्भो दर्पोऽभिमानश्च` and `dambho darpo'bhimānaśca`,
+which also matches the transliteration and the `अभिमानः / abhimānaḥ /
+self-conceit` word row.
+
+This is not the same word as 16.03's `अतिमानिता` (atimānitā, "excessive
+pride"), which the book keeps and which is not in dispute.
+
 ### F10 — 2.09, the Hindi literal called Arjuna by the Nepali name — **fixed**
 
 `परन्तप` is how this book addresses Arjuna as "scorcher of foes". The Hindi
