@@ -65,7 +65,7 @@ want them to survive a regeneration.
 |  | 1.21 | Place my chariot between the armies | O lord of the earth, he then spoke this word to Hṛṣīkeśa: “Place my chariot between the two armies, O Acyuta.” | ☐ | ☐ | ☐ |
 |  | 1.22 | Let me see whom I must fight | “So that I may see those standing here eager for battle — with whom I must contend in this great enterprise of war.” | ☐ | ☐ | ☐ |
 |  | 1.23 | Those who came to please Duryodhana | “I wish to see those who are to fight, who have gathered here — desiring to please the evil-minded son of Dhṛtarāṣṭra in battle.” | ☐ | ☐ | ☐ |
-|  | 1.24 | Kṛṣṇa places the chariot between the armies | Sañjaya said: Thus addressed by Gudākeśa, Hṛṣīkeśa, O descendant of Bharata, placed that best of chariots between the two armies. | ☐ | ☐ | ☐ |
+|  | 1.24 | Kṛṣṇa places the chariot between the armies | Sañjaya said: Thus addressed by Guḍākeśa, Hṛṣīkeśa, O descendant of Bharata, placed that best of chariots between the two armies. | ☐ | ☐ | ☐ |
 |  | 1.25 | Behold the assembled Kurus | Before Bhīṣma, Droṇa, and all the rulers of the earth, he said: “O Pārtha, behold these Kurus assembled here.” | ☐ | ☐ | ☐ |
 |  | 1.26 | Arjuna sees teachers and relatives | There Arjuna saw stationed: fathers, grandfathers, teachers, maternal uncles, brothers, sons, grandsons, and friends as well. | ☐ | ☐ | ☐ |
 |  | 1.27 | Kinsmen and friends stand on both sides | Fathers-in-law and well-wishers in both armies — seeing all these kinsmen stationed there, the son of Kuntī… | ☐ | ☐ | ☐ |
