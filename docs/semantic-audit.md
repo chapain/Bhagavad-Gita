@@ -705,10 +705,23 @@ predate this pass. Neither was changed unilaterally:
   14.25), so this is a settled interpretative convention, not a one-off. If the
   owner wants the stricter rule enforced, it is a seven-verse editorial change,
   not a single-string fix.
-* **4.32** — all three literals render `ब्रह्मणो मुखे` (“in the mouth of
-  Brahman”) as “in the scriptures” / `शास्त्रमा`. The verse's own row gloss
-  already carries the interpretation: `of Brahman (the Vedas)`. This is a
-  deliberate metaphor-to-referent rendering, applied in all three languages.
+* **4.32** — **closed in this pass; the literals moved, the row stands.** All
+  three literals rendered `ब्रह्मणो मुखे` (“in the mouth of Brahman”) as “in the
+  scriptures” / `शास्त्रमा`, keeping the interpretation only in the row's
+  parenthetical `of Brahman (the Vedas)`. That is the one arrangement the
+  edition's own rule forbids: a literal may not replace a word the Sanskrit
+  states with the gloss of that word. The literals now read “in the mouth of
+  Brahman” / `ब्रह्मको मुखमा` / `ब्रह्म के मुख में`, and the row keeps its
+  parenthetical for the reader who wants the referent.
+* **6.44** — `शब्दब्रह्म` (“the word-Brahman”) is rendered in all three
+  literals as its referent: en “the mere word of the Vedas”, ne
+  `वेदको शब्दभन्दा`, hi `वेद के शब्द से परे`. The row reads
+  `शब्दब्रह्म | the word-Brahman (Vedas)`. This is 4.32's shape exactly. It is
+  **reported, not changed**: unlike ब्रह्मणो मुखे, “the word-Brahman” is not a
+  phrase a general reader can be handed without a gloss, and the paraphrase in
+  all three languages already says `शास्त्रको शब्द` / “mere scripture”. If the
+  owner wants the strict rule, the fix is to restore `शब्दब्रह्म` in the three
+  literals and let the row's parenthetical do the explaining.
 
 ### What this pass does not prove
 
