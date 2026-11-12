@@ -709,8 +709,10 @@ ruling required.
   there in the sanskrit. let's be true to the sanskrit verse itself."* The
   house gloss had read "selfish resolve / selfish intention" for सङ्कल्प and
   "selfish projects/undertakings" for सर्वारम्भ, neither of which any Sanskrit
-  word in those verses states. Seventeen strings in six verses changed, plus one
-  row gloss:
+  word in those verses states. The table below is the first six verses; the class
+  sweep that followed found the same motive in five more (3.03, 3.15, 5.02,
+  13.24, 18.02), recorded under "A class sweep run after the six-verse fix".
+  28 strings in 11 verses changed, plus one row gloss:
 
   | verse | before | after |
   |---|---|---|
