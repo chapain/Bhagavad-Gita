@@ -861,7 +861,7 @@
               "lits": {
                 "en": "— the great elements, ego, intellect, the unmanifest, the ten senses and the one, the five objects of the senses,",
                 "ne": "— महाभूतहरू, अहंकार, बुद्धि, अव्यक्त, दश इन्द्रिय र एघारौं मन, र इन्द्रियका पाँच विषयहरू,",
-                "hi": "— महाभूत, अहंकार, बुद्धि, अव्यक्त, दस इन्द्रियाँ और मन, और पाँच इन्द्रिय-विषय,"
+                "hi": "— महाभूत, अहंकार, बुद्धि, अव्यक्त, दस इन्द्रियाँ और एकादश मन, और पाँच इन्द्रिय-विषय,"
               },
               "paras": {
                 "en": "“Break it down and you get: the five elements, the sense of 'I', the reasoning mind, unformed nature, the ten senses with mind as the eleventh, and the five things the senses reach for.”",
@@ -2954,21 +2954,21 @@
           "sutras": [
             {
               "n": "13.20",
-              "d": "कार्यकरणकर्तृत्वे हेतुः प्रकृतिरुच्यते । पुरुषः सुखदुःखानां भोक्तृत्वे हेतुरुच्यते",
-              "t": "kāryakaraṇakartṛtve hetuḥ prakṛtirucyate । puruṣaḥ sukhaduḥkhānāṃ bhoktṛtve heturucyate",
+              "d": "कार्यकारणकर्तृत्वे हेतुः प्रकृतिरुच्यते । पुरुषः सुखदुःखानां भोक्तृत्वे हेतुरुच्यते",
+              "t": "kāryakāraṇakartṛtve hetuḥ prakṛtirucyate । puruṣaḥ sukhaduḥkhānāṃ bhoktṛtve heturucyate",
               "flow": [
                 {
                   "k": "p",
-                  "d": "कार्यकरणकर्तृत्वे",
-                  "t": "kāryakaraṇakartṛtve",
+                  "d": "कार्यकारणकर्तृत्वे",
+                  "t": "kāryakāraṇakartṛtve",
                   "n": 8,
                   "words": [
                     [
-                      "कार्यकरणकर्तृत्वे",
-                      "kāryakaraṇakartṛtve",
-                      "in agency of effect and instrument",
-                      "कार्य र करणको कर्तृत्वमा",
-                      "कार्य और करण की कर्तृता में"
+                      "कार्यकारणकर्तृत्वे",
+                      "kāryakāraṇakartṛtve",
+                      "in agency of effect and cause",
+                      "कार्य र कारणको कर्तृत्वमा",
+                      "कार्य और कारण की कर्तृता में"
                     ]
                   ]
                 },
@@ -3054,14 +3054,14 @@
                 }
               ],
               "lits": {
-                "en": "Prakṛti is declared the cause in producing the body and its instruments; puruṣa is declared the cause of the enjoyment of pleasure and pain.",
-                "ne": "प्रकृति शरीर र त्यसका करणहरूको उत्पत्तिमा कारण भनिन्छ; पुरुष सुख-दुःखको भोगको कारण भनिन्छ।",
-                "hi": "प्रकृति शरीर और उसके करणों की उत्पत्ति में कारण कही जाती है; पुरुष सुख-दुःख के भोग का कारण कहा जाता है।"
+                "en": "Prakṛti is declared the cause in the agency of effect and cause; puruṣa is declared the cause of the enjoyment of pleasure and pain.",
+                "ne": "प्रकृति कार्य र कारणको कर्तृत्वमा कारण भनिन्छ; पुरुष सुख-दुःखको भोगमा कारण भनिन्छ।",
+                "hi": "प्रकृति कार्य और कारण की कर्तृता में कारण कही जाती है; पुरुष सुख-दुःख के भोग में कारण कहा जाता है।"
               },
               "paras": {
-                "en": "“Nature is the cause of doing; the person is the cause of experiencing joy and sorrow.”",
-                "ne": "“प्रकृति गर्नेपनको कारण हो; पुरुष सुख-दुःख अनुभव गर्ने कारण हो।”",
-                "hi": "“प्रकृति करने का कारण है; पुरुष सुख-दुःख का अनुभव करने का कारण है।”"
+                "en": "“Nature accounts for effect and cause; the person accounts for the tasting of joy and sorrow.”",
+                "ne": "“प्रकृति कार्य र कारणको हेतु हो; पुरुष सुख-दुःख भोग्ने हेतु हो।”",
+                "hi": "“प्रकृति कार्य और कारण की हेतु है; पुरुष सुख-दुःख भोगने का हेतु है।”"
               }
             }
           ]

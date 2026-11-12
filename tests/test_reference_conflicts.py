@@ -10,6 +10,12 @@ paṇava "kettledrums", ānaka "tabors" in English, and the Hindi horn row to
 "तुरहियाँ" as its literal reads. The earlier batch had already put the Nepali
 rows right and had marked this verse "not fully verified"; the English half
 was left behind. Nothing else in the snapshot moved.
+
+Amended 2026-11-12 by the all-700 renderings pass: the 2.09 Hindi literal now
+addresses Arjuna as परंतप, the form the Hindi column uses in 4.02, 4.05 and
+4.33. The pinned snapshot had शत्रुतापन, which is the Nepali form (2.03, 4.05,
+4.33, 7.27, 9.03, 10.40, 18.41 all read शत्रुतापन in Nepali). The IAST gloss
+row for परन्तप already reads "Parantapa", so only the Hindi rendering moved.
 """
 import json
 from pathlib import Path

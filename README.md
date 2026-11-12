@@ -48,7 +48,7 @@ app and works with no internet connection.
 |---|---|
 | Chapters · verses | 18 · 700 |
 | Themes · parts | 169 · 700 |
-| Word-instances glossed | 9,506 — each with English, Nepali **and** Hindi meanings |
+| Word-instances glossed | 9,507 — each with English, Nepali **and** Hindi meanings |
 | Languages | English, नेपाली, हिन्दी (no English fallback anywhere) |
 
 ---

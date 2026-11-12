@@ -725,8 +725,8 @@
           "sutras": [
             {
               "n": "1.05",
-              "d": "धृष्टकेतुश्चेकितानः काशीराजश्च वीर्यवान् । पुरुजित्कुन्तिभोजश्च शैब्यश्च नरपुङ्गवः",
-              "t": "dhṛṣṭaketuścekitānaḥ kāśīrājaśca vīryavān । purujitkuntibhojaśca śaibyaśca narapuṅgavaḥ",
+              "d": "धृष्टकेतुश्चेकितानः काशिराजश्च वीर्यवान् । पुरुजित्कुन्तिभोजश्च शैब्यश्च नरपुङ्गवः",
+              "t": "dhṛṣṭaketuścekitānaḥ kāśirājaśca vīryavān । purujitkuntibhojaśca śaibyaśca narapuṅgavaḥ",
               "flow": [
                 {
                   "k": "p",
@@ -752,14 +752,14 @@
                 },
                 {
                   "k": "p",
-                  "d": "काशीराजश्च वीर्यवान्",
-                  "t": "kāśīrājaśca vīryavān",
+                  "d": "काशिराजश्च वीर्यवान्",
+                  "t": "kāśirājaśca vīryavān",
                   "n": 8,
                   "words": [
                     [
-                      "काशीराजः",
-                      "kāśīrājaḥ",
-                      "king of Kāśī",
+                      "काशिराजः",
+                      "kāśirājaḥ",
+                      "king of Kāśi",
                       "काशीका राजा",
                       "काशी का राजा"
                     ],
@@ -839,12 +839,12 @@
                 }
               ],
               "lits": {
-                "en": "And Dhṛṣṭaketu, Cekitāna, the valiant king of Kāśī, Purujit, Kuntibhoja, and Śaibya, the bull among men.",
+                "en": "And Dhṛṣṭaketu, Cekitāna, the valiant king of Kāśi, Purujit, Kuntibhoja, and Śaibya, the bull among men.",
                 "ne": "र धृष्टकेतु, चेकितान, वीर्यवान् काशीका राजा, पुरुजित्, कुन्तिभोज, र मानिसहरूमा श्रेष्ठ शैब्य।",
                 "hi": "और धृष्टकेतु, चेकितान, वीर्यवान् काशी का राजा, पुरुजित्, कुंतिभोज, और मनुष्यों में श्रेष्ठ शैब्य।"
               },
               "paras": {
-                "en": "“And there too: Dhṛṣṭaketu, Cekitāna, the brave King of Kāśī, Purujit, Kuntibhoja, and the peerless Śaibya.”",
+                "en": "“And there too: Dhṛṣṭaketu, Cekitāna, the brave King of Kāśi, Purujit, Kuntibhoja, and the peerless Śaibya.”",
                 "ne": "“अनि त्यहाँ पनि: धृष्टकेतु, चेकितान, वीर काशीराज, पुरुजित्, कुन्तिभोज, र अतुलनीय शैब्य।”",
                 "hi": "“और वहाँ भी: धृष्टकेतु, चेकितान, वीर काशीराज, पुरुजित्, कुंतिभोज, और अतुलनीय शैब्य।”"
               }

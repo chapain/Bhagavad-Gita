@@ -499,13 +499,13 @@
           "sutras": [
             {
               "n": "16.04",
-              "d": "दम्भो दर्पोऽतिमानश्च क्रोधः पारुष्यमेव च । अज्ञानं चाभिजातस्य पार्थ सम्पदमासुरीम्",
-              "t": "dambho darpo’timānaśca krodhaḥ pāruṣyameva ca । ajñānaṃ cābhijātasya pārtha sampadamāsurīm",
+              "d": "दम्भो दर्पोऽभिमानश्च क्रोधः पारुष्यमेव च । अज्ञानं चाभिजातस्य पार्थ सम्पदमासुरीम्",
+              "t": "dambho darpo’bhimānaśca krodhaḥ pāruṣyameva ca । ajñānaṃ cābhijātasya pārtha sampadamāsurīm",
               "flow": [
                 {
                   "k": "p",
-                  "d": "दम्भो दर्पोऽतिमानश्च",
-                  "t": "dambho darpo’timānaśca",
+                  "d": "दम्भो दर्पोऽभिमानश्च",
+                  "t": "dambho darpo’bhimānaśca",
                   "n": 8,
                   "words": [
                     [
@@ -523,9 +523,9 @@
                       "दर्प"
                     ],
                     [
-                      "अतिमानः",
-                      "atimānaḥ",
-                      "pride",
+                      "अभिमानः",
+                      "abhimānaḥ",
+                      "self-conceit",
                       "अभिमान",
                       "अभिमान"
                     ],
@@ -634,12 +634,12 @@
                 }
               ],
               "lits": {
-                "en": "Hypocrisy, arrogance, pride, anger, harshness and ignorance — these belong to one born to the demoniac destiny, O Pārtha.",
+                "en": "Hypocrisy, arrogance, self-conceit, anger, harshness and ignorance belong to one born to the demoniac destiny, O Pārtha.",
                 "ne": "हे पार्थ, दम्भ, घमण्ड, अभिमान, क्रोध, कठोरता र अज्ञान — यी आसुरी सम्पत्ति भएर जन्मेकाका चिह्न हुन्।",
                 "hi": "हे पार्थ, दम्भ, दर्प, अभिमान, क्रोध, कठोरता और अज्ञान — ये आसुरी सम्पदा से जन्मे की पहचान हैं।"
               },
               "paras": {
-                "en": "“Hypocrisy, haughtiness, vanity, anger, rudeness, and ignorance — these mark the demonic nature.”",
+                "en": "“Hypocrisy, haughtiness, self-conceit, anger, rudeness, and ignorance — these mark the demonic nature.”",
                 "ne": "“दम्भ, अहंकार, घमण्ड, क्रोध, कठोरता र अज्ञान — यी आसुरी प्रकृतिका चिह्न हुन्।”",
                 "hi": "“दम्भ, अहंकार, घमण्ड, क्रोध, रूखापन और अज्ञान — ये आसुरी प्रकृति के चिह्न हैं।”"
               }
@@ -1861,8 +1861,8 @@
           "sutras": [
             {
               "n": "16.13",
-              "d": "इदमद्य मया लब्धमिदं प्राप्स्ये मनोरथम् । इदमस्तीदमपि मे भविष्यति पुनर्धनम्",
-              "t": "idamadya mayā labdhamidaṃ prāpsye manoratham । idamastīdamapi me bhaviṣyati punardhanam",
+              "d": "इदमद्य मया लब्धमिमं प्राप्स्ये मनोरथम् । इदमस्तीदमपि मे भविष्यति पुनर्धनम्",
+              "t": "idamadya mayā labdhamimaṃ prāpsye manoratham । idamastīdamapi me bhaviṣyati punardhanam",
               "flow": [
                 {
                   "k": "p",
@@ -1902,13 +1902,13 @@
                 },
                 {
                   "k": "p",
-                  "d": "इदं प्राप्स्ये मनोरथम्",
-                  "t": "idaṃ prāpsye manoratham",
+                  "d": "इमं प्राप्स्ये मनोरथम्",
+                  "t": "imaṃ prāpsye manoratham",
                   "n": 8,
                   "words": [
                     [
-                      "इदम्",
-                      "idam",
+                      "इमम्",
+                      "imam",
                       "this",
                       "यो",
                       "यह"
@@ -2008,9 +2008,9 @@
                 "hi": "'यह मैंने आज पाया; यह इच्छा मैं पूरी करूँगा; यह धन मेरा है — और भी मेरा होगा,' वे सोचते हैं —"
               },
               "paras": {
-                "en": "‘I got this today; I will get that desire tomorrow; this is mine, and more will be mine,’ they boast —",
+                "en": "‘This I got today; that wish too I shall obtain; this is mine, and more will be mine,’ they boast —",
                 "ne": "मनमनै हिसाब गर्छन् — 'आज यत्ति हात लाग्यो; अर्को इच्छा पनि पूरा गर्छु; यति सम्पत्ति मेरो भइसक्यो, अझै थपिन्छ।'",
-                "hi": "मन ही मन हिसाब लगाते हैं — 'आज इतना हाथ लगा; वह अरमान भी पूरा कर लूँगा; इतना मेरा हो चुका, और भी होगा।'"
+                "hi": "मन ही मन हिसाब लगाते हैं — ‘आज इतना हाथ लगा; यह अरमान भी पूरा कर लूँगा; इतना मेरा हो चुका, और भी होगा।’"
               }
             }
           ]

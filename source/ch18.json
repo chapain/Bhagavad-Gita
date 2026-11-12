@@ -4237,8 +4237,8 @@
           "sutras": [
             {
               "n": "18.28",
-              "d": "अयुक्तः प्राकृतः स्तब्धः शठो नैकृतिकोऽलसः । विषादी दीर्घसूत्री च कर्ता तामस उच्यते",
-              "t": "ayuktaḥ prākṛtaḥ stabdhaḥ śaṭho naikṛtiko’lasaḥ । viṣādī dīrghasūtrī ca kartā tāmasa ucyate",
+              "d": "अयुक्तः प्राकृतः स्तब्धः शठो नैष्कृतिकोऽलसः । विषादी दीर्घसूत्री च कर्ता तामस उच्यते",
+              "t": "ayuktaḥ prākṛtaḥ stabdhaḥ śaṭho naiṣkṛtiko’lasaḥ । viṣādī dīrghasūtrī ca kartā tāmasa ucyate",
               "flow": [
                 {
                   "k": "p",
@@ -4271,8 +4271,8 @@
                 },
                 {
                   "k": "p",
-                  "d": "शठो नैकृतिकोऽलसः",
-                  "t": "śaṭho naikṛtiko’lasaḥ",
+                  "d": "शठो नैष्कृतिकोऽलसः",
+                  "t": "śaṭho naiṣkṛtiko’lasaḥ",
                   "n": 8,
                   "words": [
                     [
@@ -4283,8 +4283,8 @@
                       "कपटी"
                     ],
                     [
-                      "नैकृतिकः",
-                      "naikṛtikaḥ",
+                      "नैष्कृतिकः",
+                      "naiṣkṛtikaḥ",
                       "malicious",
                       "दुष्ट",
                       "दुष्ट"
@@ -4363,9 +4363,9 @@
                 "hi": "असंयत, असभ्य, हठी, कपटी, दुष्ट, आलसी, उदास और देर करने वाला कर्ता — तामस कहा गया है।"
               },
               "paras": {
-                "en": "“The doer who is undisciplined, coarse, stubborn, deceitful, dishonest, lazy, morose, and forever putting things off — that doer is tāmasic.”",
-                "ne": "“अनुशासनहीन, कठोर, जिद्दी, ढोंगी, बेइमान, अल्छी, उदास र काम पछि सारिरहने कर्ता — त्यो तामस हो।”",
-                "hi": "“अनुशासनहीन, रूखा, हठी, ढोंगी, बेईमान, आलसी, उदास और काम टालते रहने वाला कर्ता — वह तामस है।”"
+                "en": "“The doer who is undisciplined, coarse, stubborn, deceitful, malicious, lazy, morose, and forever putting things off — that doer is tāmasic.”",
+                "ne": "“अनुशासनहीन, कठोर, जिद्दी, कपटी, दुष्ट, अल्छी, उदास र काम पछि सारिरहने कर्ता — त्यो तामस हो।”",
+                "hi": "“अनुशासनहीन, रूखा, हठी, ठग, दुष्ट, आलसी, उदास और काम टालते रहने वाला कर्ता — वह तामस है।”"
               }
             }
           ]
@@ -5338,8 +5338,8 @@
           "sutras": [
             {
               "n": "18.35",
-              "d": "यया स्वप्नं भयं शोकं विषादं मदमेव च । न विमुञ्चति दुर्मेधा धृतिः सा तामसी मता",
-              "t": "yayā svapnaṃ bhayaṃ śokaṃ viṣādaṃ madameva ca । na vimuñcati durmedhā dhṛtiḥ sā tāmasī matā",
+              "d": "यया स्वप्नं भयं शोकं विषादं मदमेव च । न विमुञ्चति दुर्मेधा धृतिः सा पार्थ तामसी",
+              "t": "yayā svapnaṃ bhayaṃ śokaṃ viṣādaṃ madameva ca । na vimuñcati durmedhā dhṛtiḥ sā pārtha tāmasī",
               "flow": [
                 {
                   "k": "p",
@@ -5444,8 +5444,8 @@
                 },
                 {
                   "k": "p",
-                  "d": "धृतिः सा तामसी मता",
-                  "t": "dhṛtiḥ sā tāmasī matā",
+                  "d": "धृतिः सा पार्थ तामसी",
+                  "t": "dhṛtiḥ sā pārtha tāmasī",
                   "n": 8,
                   "words": [
                     [
@@ -5463,31 +5463,31 @@
                       "वह"
                     ],
                     [
+                      "पार्थ",
+                      "pārtha",
+                      "O Pārtha",
+                      "हे पार्थ",
+                      "हे पार्थ"
+                    ],
+                    [
                       "तामसी",
                       "tāmasī",
                       "tāmasic",
                       "तामसी",
                       "तामसी"
-                    ],
-                    [
-                      "मता",
-                      "matā",
-                      "is deemed",
-                      "मानिन्छ",
-                      "मानी जाती है"
                     ]
                   ]
                 }
               ],
               "lits": {
-                "en": "The fortitude by which a dull man does not give up sleep, fear, grief, despair and arrogance — that is tāmasic.",
-                "ne": "जुन धृतिले मन्दबुद्धि मानिसले निद्रा, भय, शोक, निराशा र घमण्ड छोड्न सक्दैन — त्यो तामस हो।",
-                "hi": "जिस धृति से मन्द बुद्धि निद्रा, भय, शोक, विषाद और दर्प को नहीं छोड़ पाता — वह तामस है।"
+                "en": "The fortitude by which a dull man does not give up sleep, fear, grief, despair and arrogance — that, O Pārtha, is tāmasic.",
+                "ne": "जुन धृतिले मन्दबुद्धि मानिसले निद्रा, भय, शोक, निराशा र घमण्ड छोड्न सक्दैन — हे पार्थ, त्यो तामस हो।",
+                "hi": "जिस धृति से मन्दबुद्धि मनुष्य निद्रा, भय, शोक, विषाद और दर्प को नहीं छोड़ पाता — हे पार्थ, वह तामस है।"
               },
               "paras": {
-                "en": "“And the resolve by which a foolish person cannot let go of sleep, fear, sorrow, gloom, and vanity — that is tāmasic.”",
-                "ne": "निद्रा, डर, शोक, हतासा र मात — यी छोड्नै नसक्ने अल्छी टेक तामसी हो।",
-                "hi": "“और जिस संकल्प से मूर्ख मनुष्य नींद, भय, शोक, निराशा और घमण्ड को नहीं छोड़ पाता — वह तामस है।”"
+                "en": "“And the resolve by which a foolish person cannot let go of sleep, fear, sorrow, gloom, and vanity — that, O Pārtha, is tāmasic.”",
+                "ne": "हे पार्थ, जो मान्छे निद्रा, डर, शोक, हतासा र मातसँग टाँसिएर बस्छ र ती छोड्नै सक्दैन, उसको त्यो अडान तामसी हो।",
+                "hi": "“और जिस संकल्प से मूर्ख मनुष्य नींद, भय, शोक, निराशा और घमण्ड को नहीं छोड़ पाता — हे पार्थ, वह तामस है।”"
               }
             }
           ]
@@ -8973,18 +8973,18 @@
           "sutras": [
             {
               "n": "18.59",
-              "d": "यद्यहंकारमाश्रित्य न योत्स्य इति मन्यसे । मिथ्यैष व्यवसायस्ते प्रकृतिस्त्वां नियोक्ष्यति",
-              "t": "yadyahaṃkāramāśritya na yotsya iti manyase । mithyaiṣa vyavasāyaste prakṛtistvāṃ niyokṣyati",
+              "d": "यदहंकारमाश्रित्य न योत्स्य इति मन्यसे । मिथ्यैष व्यवसायस्ते प्रकृतिस्त्वां नियोक्ष्यति",
+              "t": "yadahaṃkāramāśritya na yotsya iti manyase । mithyaiṣa vyavasāyaste prakṛtistvāṃ niyokṣyati",
               "flow": [
                 {
                   "k": "p",
-                  "d": "यद्यहंकारमाश्रित्य",
-                  "t": "yadyahaṃkāramāśritya",
+                  "d": "यदहंकारमाश्रित्य",
+                  "t": "yadahaṃkāramāśritya",
                   "n": 8,
                   "words": [
                     [
-                      "यदि",
-                      "yadi",
+                      "यत्",
+                      "yat",
                       "if",
                       "यदि",
                       "यदि"
@@ -11118,8 +11118,8 @@
           "sutras": [
             {
               "n": "18.72",
-              "d": "कच्चिदेतच्छ्रुतं पार्थ त्वयैकाग्रेण चेतसा । कच्चिदज्ञानसंमोहः प्रणष्टस्ते धनंजय",
-              "t": "kaccidetacchrutaṃ pārtha tvayaikāgreṇa cetasā । kaccidajñānasaṃmohaḥ praṇaṣṭaste dhanaṃjaya",
+              "d": "कच्चिदेतच्छ्रुतं पार्थ त्वयैकाग्रेण चेतसा । कच्चिदज्ञानसंमोहः प्रनष्टस्ते धनंजय",
+              "t": "kaccidetacchrutaṃ pārtha tvayaikāgreṇa cetasā । kaccidajñānasaṃmohaḥ pranaṣṭaste dhanaṃjaya",
               "flow": [
                 {
                   "k": "p",
@@ -11210,13 +11210,13 @@
                 },
                 {
                   "k": "p",
-                  "d": "प्रणष्टस्ते धनंजय",
-                  "t": "praṇaṣṭaste dhanaṃjaya",
+                  "d": "प्रनष्टस्ते धनंजय",
+                  "t": "pranaṣṭaste dhanaṃjaya",
                   "n": 8,
                   "words": [
                     [
-                      "प्रणष्टः",
-                      "praṇaṣṭaḥ",
+                      "प्रनष्टः",
+                      "pranaṣṭaḥ",
                       "destroyed",
                       "नष्ट",
                       "नष्ट"
@@ -11619,8 +11619,8 @@
           "sutras": [
             {
               "n": "18.75",
-              "d": "व्यासप्रसादाच्छ्रुतवानिमं गुह्यतमं परम् । योगं योगेश्वरात्कृष्णात्साक्षात्कथयतः स्वयम्",
-              "t": "vyāsaprasādācchrutavānimaṃ guhyatamaṃ param । yogaṃ yogeśvarātkṛṣṇātsākṣātkathayataḥ svayam",
+              "d": "व्यासप्रसादाच्छ्रुतवानेतद्गुह्यमहं परम् । योगं योगेश्वरात्कृष्णात्साक्षात्कथयतः स्वयम्",
+              "t": "vyāsaprasādācchrutavānetadguhyamahaṃ param । yogaṃ yogeśvarātkṛṣṇātsākṣātkathayataḥ svayam",
               "flow": [
                 {
                   "k": "p",
@@ -11646,23 +11646,30 @@
                 },
                 {
                   "k": "p",
-                  "d": "इमं गुह्यतमं परम्",
-                  "t": "imaṃ guhyatamaṃ param",
+                  "d": "एतद्गुह्यमहं परम्",
+                  "t": "etadguhyamahaṃ param",
                   "n": 8,
                   "words": [
                     [
-                      "इमम्",
-                      "imam",
+                      "एतत्",
+                      "etat",
                       "this",
                       "यो",
                       "यह"
                     ],
                     [
-                      "गुह्यतमम्",
-                      "guhyatamam",
-                      "most secret",
-                      "सबैभन्दा गोप्य",
-                      "सबसे गुह्य"
+                      "गुह्यम्",
+                      "guhyam",
+                      "secret",
+                      "गोप्य",
+                      "गुह्य"
+                    ],
+                    [
+                      "अहम्",
+                      "aham",
+                      "I",
+                      "मैले",
+                      "मैंने"
                     ],
                     [
                       "परम्",
@@ -11733,14 +11740,14 @@
                 }
               ],
               "lits": {
-                "en": "By the grace of Vyāsa I heard this supreme, most secret yoga from Kṛṣṇa, the Lord of yoga, speaking himself.",
-                "ne": "व्यासको कृपाले मैले यो परम, सबैभन्दा गोप्य योग — योगेश्वर कृष्ण आफैं बोलेको — सुनेँ।",
-                "hi": "व्यास की कृपा से मैंने यह परम, सबसे गुह्य योग — योगेश्वर कृष्ण स्वयं बोले — सुना।"
+                "en": "By the grace of Vyāsa I heard this supreme secret, this yoga, from Kṛṣṇa, the Lord of yoga, as he himself spoke.",
+                "ne": "व्यासको कृपाले मैले यो परम गोप्य योग — योगेश्वर कृष्ण आफैं बोलेको — सुनेँ।",
+                "hi": "व्यास की कृपा से मैंने यह परम गुह्य योग — योगेश्वर कृष्ण स्वयं बोले — सुना।"
               },
               "paras": {
-                "en": "“By Vyāsa's grace I heard this supreme, secret yoga from Kṛṣṇa himself, the master of yoga.”",
-                "ne": "व्यासको अनुग्रहले यो परम गोप्य योग मैले सुन्न पाएँ — योगेश्वर कृष्णकै मुखबाट।",
-                "hi": "व्यास की मेहरबानी से यह सबसे गहरा भेद मेरे कानों तक आया — कहा खुद योगेश्वर कृष्ण ने।"
+                "en": "“It was Vyāsa’s kindness that let me hear this highest mystery of yoga straight from Kṛṣṇa, the master of yogis, as he spoke.”",
+                "ne": "“व्यासको अनुग्रहले यो परम गोप्य योग मैले सुन्न पाएँ — योगेश्वर कृष्णकै मुखबाट।”",
+                "hi": "“व्यास की कृपा से मैंने यह परम गोप्य योग स्वयं योगेश्वर कृष्ण के मुख से, कहते हुए सुना।”"
               }
             }
           ]
