@@ -182,6 +182,7 @@ REVIEWED = {
 # negated verb keeps its plain gloss (1.31, 15.10).
 REVIEWED_SAME_GLOSS = {
     ("1.28", ("इदम्", "इमम्"), "this"),
+    ("16.13", ("इदम्", "इमम्"), "this"),
     ("1.29", ("मम", "मे"), "my"),
     ("1.31", ("अनुपश्यामि", "पश्यामि"), "i see"),
     ("1.35", ("कृते", "हेतोः"), "for the sake of"),

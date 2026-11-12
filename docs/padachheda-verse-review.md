@@ -6,6 +6,9 @@
 
 **Outcome:** 20 fused-row occurrences split, two missing negatives restored,
 six standalone-form corrections, affecting 27 verses. Final count **9,506**.
+A later Sanskrit reading audit (2026-11-12) corrected fifteen verse readings
+and added one pāda row, so the current total is **9,507 = 9,389 pāda + 118
+speaker rows**; see [the second pass](padachheda-conflict-resolution.md#second-pass--dhrubas-205-report-then-a-whole-text-sanskrit-audit-2026-11-12).
 The boundary pass left printed Sanskrit and all literals/paraphrases unchanged.
 **Subsequent source-backed conflict resolution:** [decisions, provenance and verification](padachheda-conflict-resolution.md).
 That separate, owner-authorized pass resolves the collateral findings below,
@@ -28,7 +31,7 @@ This pass seeks missing word boundaries. Existing compound-component rows are no
 | 1.02 | No new split. pāṇḍava/anīkam, ācāryam/upasaṅgamya and vacanam/abravīt are already separate. duryodhanaḥ is a name; upasaṅgamya one prefixed absolutive. | King rājā remains nominative Duryodhana, not a vocative. Seeing the army, approaching the teacher and speaking map to all three literals. |
 | 1.03 | No new split. pāṇḍu/putrāṇām and drupada/putreṇa already separated; vyūḍhām and dhīmatā are single inflected words. | The army belongs to Pāṇḍu's sons and is arrayed by Drupada's son, the teacher's wise disciple, in all three literals. |
 | 1.04 | No new split. mahā/iṣvāsāḥ, bhīma/arjuna/samāḥ and mahā/rathaḥ already have component rows. yuyudhānaḥ is the warrior's name, not independent verb words. | Heroes, great archers, equals of Bhīma and Arjuna, and the three named warriors match en/ne/hi; no new gloss allocation required. |
-| 1.05 | Keep kāśīrājaḥ (king of Kāśī) and narapuṅgavaḥ (bull/best among men) as compounds, the personal names as names, vīryavān as one derivative. | A genitive relationship or metaphor in a translated gloss is not a missing Sanskrit boundary. Both epithets and the warrior list agree with all three literals. |
+| 1.05 | Keep kāśirājaḥ (king of Kāśi) and narapuṅgavaḥ (bull/best among men) as compounds, the personal names as names, vīryavān as one derivative. | A genitive relationship or metaphor in a translated gloss is not a missing Sanskrit boundary. Both epithets and the warrior list agree with all three literals. The printed reading here was later corrected from काशीराजः to काशिराजः (Gita Supersite, GRETIL, all four corpora); the boundary decision is unchanged. |
 | 1.06 | No new split; keep mahārathāḥ, names and patronymic derivatives. **Correct sarva → sarve**, nominative plural before eva. | sarve + eva + mahārathāḥ gives “all great chariot-warriors” / “सबै महारथीहरू” / “सब महारथी”. Same glosses, correct independent form. Printed sarva eva is unchanged. |
 | 1.07 | No new split. dvija/uttama and saṁjñā/artham already separated. nibodha and bravīmi are single verbs. | Distinguished leaders of my army, addressed to the best of the twice-born, named for information: constituent meanings support en/ne/hi literals. |
 | 1.08 | Keep samitiñjayaḥ, the compound epithet “conqueror in battle”, rather than inventing independent samitim/jayaḥ rows. Keep aśvatthāmā and other names; saumadattiḥ is a patronymic. tathā/eva/ca already separated. | Kṛpa's battle epithet and Somadatta's son match the literals. Collateral: ne/hi glosses transliterate samitiñjayaḥ rather than explaining it, although the literals explicitly supply युद्धमा विजयी / युद्ध में विजयी. This is gloss informativeness, not a fused-word defect; unchanged. |
@@ -629,7 +632,7 @@ These are boundary judgments, not blanket approval of every unchanged translatio
 | 13.17 | Keep jñānagamyam compound. tamasaḥ/param separate; light/knowable/goal predicates. |
 | 13.18 | Keep madbhaktaḥ/madbhāvāya compounds. ca/uktam separate; summary and attainment. |
 | 13.19 | Keep prakṛtisambhavān compound. anādī/ubhau/api separate; both beginningless. |
-| 13.20 | Keep kāryakaraṇakartṛtve/sukhaduḥkhānām compounds. Causality roles not fused clauses. |
+| 13.20 | Keep kāryakāraṇakartṛtve/sukhaduḥkhānām compounds. Causality roles not fused clauses. |
 | 13.21 | Keep prakṛtisthaḥ/prakṛtijān/guṇasaṅgaḥ compounds. sat/asat/yoni/janmasu components separate. |
 | 13.22 | Keep paramātmā/maheśvaraḥ compounds. iti/ca/api/uktaḥ separate; indwelling witness. |
 | 13.23 | No join: yaḥ/evam, vartamānaḥ/api and bhūyaḥ/abhijāyate separate. No rebirth. |
@@ -770,7 +773,7 @@ These are boundary judgments, not blanket approval of every unchanged translatio
 | 18.25 | Keep anapekṣya negative absolutive. mohāt/ārabhyate separate; consequence-blind action. |
 | 18.26 | Keep muktasaṅgaḥ/anahaṁvādī/dhṛtyutsāhasamanvitaḥ/siddhyasiddhyoḥ compounds. |
 | 18.27 | Keep karmaphalaprepsuḥ/hiṁsātmakaḥ/harṣaśokānvitaḥ compounds. Emotional fruit-seeking agent. |
-| 18.28 | Keep naikṛtikaḥ derivative, dīrghasūtrī compound. Not na/ikṛtikaḥ; lexical maliciousness. |
+| 18.28 | Keep naiṣkṛtikaḥ derivative, dīrghasūtrī compound. Not na/ikṛtikaḥ; lexical maliciousness. |
 | 18.29 | No join: dhṛteḥ/ca/eva and procyamānam/aśeṣeṇa separate. Threefold discernment/fortitude. |
 | 18.30 | Keep kāryākārye/bhayābhaye dual compounds. Bondage/liberation entries separate. |
 | 18.31 | Keep ayathāvat lexical negative derivative. ca/akāryam/eva separate; incorrect understanding. |

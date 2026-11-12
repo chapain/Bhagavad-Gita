@@ -2954,21 +2954,21 @@
           "sutras": [
             {
               "n": "13.20",
-              "d": "कार्यकरणकर्तृत्वे हेतुः प्रकृतिरुच्यते । पुरुषः सुखदुःखानां भोक्तृत्वे हेतुरुच्यते",
-              "t": "kāryakaraṇakartṛtve hetuḥ prakṛtirucyate । puruṣaḥ sukhaduḥkhānāṃ bhoktṛtve heturucyate",
+              "d": "कार्यकारणकर्तृत्वे हेतुः प्रकृतिरुच्यते । पुरुषः सुखदुःखानां भोक्तृत्वे हेतुरुच्यते",
+              "t": "kāryakāraṇakartṛtve hetuḥ prakṛtirucyate । puruṣaḥ sukhaduḥkhānāṃ bhoktṛtve heturucyate",
               "flow": [
                 {
                   "k": "p",
-                  "d": "कार्यकरणकर्तृत्वे",
-                  "t": "kāryakaraṇakartṛtve",
+                  "d": "कार्यकारणकर्तृत्वे",
+                  "t": "kāryakāraṇakartṛtve",
                   "n": 8,
                   "words": [
                     [
-                      "कार्यकरणकर्तृत्वे",
-                      "kāryakaraṇakartṛtve",
-                      "in agency of effect and instrument",
-                      "कार्य र करणको कर्तृत्वमा",
-                      "कार्य और करण की कर्तृता में"
+                      "कार्यकारणकर्तृत्वे",
+                      "kāryakāraṇakartṛtve",
+                      "in agency of effect and cause",
+                      "कार्य र कारणको कर्तृत्वमा",
+                      "कार्य और कारण की कर्तृता में"
                     ]
                   ]
                 },
@@ -3054,9 +3054,9 @@
                 }
               ],
               "lits": {
-                "en": "Prakṛti is declared the cause in producing the body and its instruments; puruṣa is declared the cause of the enjoyment of pleasure and pain.",
-                "ne": "प्रकृति शरीर र त्यसका करणहरूको उत्पत्तिमा कारण भनिन्छ; पुरुष सुख-दुःखको भोगको कारण भनिन्छ।",
-                "hi": "प्रकृति शरीर और उसके करणों की उत्पत्ति में कारण कही जाती है; पुरुष सुख-दुःख के भोग का कारण कहा जाता है।"
+                "en": "Prakṛti is declared the cause in producing effect and cause; puruṣa is declared the cause of the enjoyment of pleasure and pain.",
+                "ne": "प्रकृति कार्य र कारणको उत्पत्तिमा कारण भनिन्छ; पुरुष सुख-दुःखको भोगको कारण भनिन्छ।",
+                "hi": "प्रकृति कार्य और कारण की उत्पत्ति में कारण कही जाती है; पुरुष सुख-दुःख के भोग का कारण कहा जाता है।"
               },
               "paras": {
                 "en": "“Nature is the cause of doing; the person is the cause of experiencing joy and sorrow.”",

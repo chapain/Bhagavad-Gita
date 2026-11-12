@@ -2404,8 +2404,8 @@
           "sutras": [
             {
               "n": "11.16",
-              "d": "अनेकबाहूदरवक्त्रनेत्रं पश्यामि त्वा सर्वतोऽनन्तरूपम् । नान्तं न मध्यं न पुनस्तवादिं पश्यामि विश्वेश्वर विश्वरूप",
-              "t": "anekabāhūdaravaktranetraṃ paśyāmi tvā sarvato’nantarūpam । nāntaṃ na madhyaṃ na punastavādiṃ paśyāmi viśveśvara viśvarūpa",
+              "d": "अनेकबाहूदरवक्त्रनेत्रं पश्यामि त्वां सर्वतोऽनन्तरूपम् । नान्तं न मध्यं न पुनस्तवादिं पश्यामि विश्वेश्वर विश्वरूप",
+              "t": "anekabāhūdaravaktranetraṃ paśyāmi tvāṃ sarvato’nantarūpam । nāntaṃ na madhyaṃ na punastavādiṃ paśyāmi viśveśvara viśvarūpa",
               "flow": [
                 {
                   "k": "p",
@@ -2424,8 +2424,8 @@
                 },
                 {
                   "k": "p",
-                  "d": "पश्यामि त्वा सर्वतोऽनन्तरूपम्",
-                  "t": "paśyāmi tvā sarvato’nantarūpam",
+                  "d": "पश्यामि त्वां सर्वतोऽनन्तरूपम्",
+                  "t": "paśyāmi tvāṃ sarvato’nantarūpam",
                   "n": 11,
                   "words": [
                     [
@@ -3059,8 +3059,8 @@
           "sutras": [
             {
               "n": "11.20",
-              "d": "द्यावापृथिव्योरिदमन्तरं हि व्याप्तं त्वयैकेन दिशश्च सर्वाः । दृष्ट्वाद्भुतं रूपमिदं तवोग्रं लोकत्रयं प्रव्यथितं महात्मन्",
-              "t": "dyāvāpṛthivyoridamantaraṃ hi vyāptaṃ tvayaikena diśaśca sarvāḥ । dṛṣṭvādbhutaṃ rūpamidaṃ tavograṃ lokatrayaṃ pravyathitaṃ mahātman",
+              "d": "द्यावापृथिव्योरिदमन्तरं हि व्याप्तं त्वयैकेन दिशश्च सर्वाः । दृष्ट्वाद्भुतं रूपमुग्रं तवेदं लोकत्रयं प्रव्यथितं महात्मन्",
+              "t": "dyāvāpṛthivyoridamantaraṃ hi vyāptaṃ tvayaikena diśaśca sarvāḥ । dṛṣṭvādbhutaṃ rūpamugraṃ tavedaṃ lokatrayaṃ pravyathitaṃ mahātman",
               "flow": [
                 {
                   "k": "p",
@@ -3150,8 +3150,8 @@
                 },
                 {
                   "k": "p",
-                  "d": "दृष्ट्वाद्भुतं रूपमिदं तवोग्रं",
-                  "t": "dṛṣṭvādbhutaṃ rūpamidaṃ tavograṃ",
+                  "d": "दृष्ट्वाद्भुतं रूपमुग्रं तवेदं",
+                  "t": "dṛṣṭvādbhutaṃ rūpamugraṃ tavedaṃ",
                   "n": 11,
                   "words": [
                     [
@@ -3176,11 +3176,11 @@
                       "रूप"
                     ],
                     [
-                      "इदम्",
-                      "idam",
-                      "this",
-                      "यो",
-                      "यह"
+                      "उग्रम्",
+                      "ugram",
+                      "terrible",
+                      "भयानक",
+                      "भयंकर"
                     ],
                     [
                       "तव",
@@ -3190,11 +3190,11 @@
                       "तुम्हारा"
                     ],
                     [
-                      "उग्रम्",
-                      "ugram",
-                      "terrible",
-                      "भयानक",
-                      "भयंकर"
+                      "इदम्",
+                      "idam",
+                      "this",
+                      "यो",
+                      "यह"
                     ]
                   ]
                 },
@@ -3271,13 +3271,13 @@
           "sutras": [
             {
               "n": "11.21",
-              "d": "अमी हि त्वा सुरसङ्घा विशन्ति केचिद्भीताः प्राञ्जलयो गृणन्ति । स्वस्तीत्युक्त्वा महर्षिसिद्धसङ्घाः स्तुवन्ति त्वां स्तुतिभिः पुष्कलाभिः",
-              "t": "amī hi tvā surasaṅghā viśanti kecidbhītāḥ prāñjalayo gṛṇanti । svastītyuktvā maharṣisiddhasaṅghāḥ stuvanti tvāṃ stutibhiḥ puṣkalābhiḥ",
+              "d": "अमी हि त्वां सुरसङ्घा विशन्ति केचिद्भीताः प्राञ्जलयो गृणन्ति । स्वस्तीत्युक्त्वा महर्षिसिद्धसङ्घाः स्तुवन्ति त्वां स्तुतिभिः पुष्कलाभिः",
+              "t": "amī hi tvāṃ surasaṅghā viśanti kecidbhītāḥ prāñjalayo gṛṇanti । svastītyuktvā maharṣisiddhasaṅghāḥ stuvanti tvāṃ stutibhiḥ puṣkalābhiḥ",
               "flow": [
                 {
                   "k": "p",
-                  "d": "अमी हि त्वा सुरसङ्घा विशन्ति",
-                  "t": "amī hi tvā surasaṅghā viśanti",
+                  "d": "अमी हि त्वां सुरसङ्घा विशन्ति",
+                  "t": "amī hi tvāṃ surasaṅghā viśanti",
                   "n": 11,
                   "words": [
                     [
@@ -5237,8 +5237,8 @@
           "sutras": [
             {
               "n": "11.32",
-              "d": "श्रीभगवानुवाच । कालोऽस्मि लोकक्षयकृत्प्रवृद्धो लोकान्समाहर्तुमिह प्रवृत्तः । ऋतेऽपि त्वा न भविष्यन्ति सर्वे येऽवस्थिताः प्रत्यनीकेषु योधाः",
-              "t": "śrībhagavānuvāca । kālo’smi lokakṣayakṛtpravṛddho lokānsamāhartumiha pravṛttaḥ । ṛte’pi tvā na bhaviṣyanti sarve ye’vasthitāḥ pratyanīkeṣu yodhāḥ",
+              "d": "श्रीभगवानुवाच । कालोऽस्मि लोकक्षयकृत्प्रवृद्धो लोकान्समाहर्तुमिह प्रवृत्तः । ऋतेऽपि त्वां न भविष्यन्ति सर्वे येऽवस्थिताः प्रत्यनीकेषु योधाः",
+              "t": "śrībhagavānuvāca । kālo’smi lokakṣayakṛtpravṛddho lokānsamāhartumiha pravṛttaḥ । ṛte’pi tvāṃ na bhaviṣyanti sarve ye’vasthitāḥ pratyanīkeṣu yodhāḥ",
               "flow": [
                 {
                   "k": "s",
@@ -5335,8 +5335,8 @@
                 },
                 {
                   "k": "p",
-                  "d": "ऋतेऽपि त्वा न भविष्यन्ति सर्वे",
-                  "t": "ṛte’pi tvā na bhaviṣyanti sarve",
+                  "d": "ऋतेऽपि त्वां न भविष्यन्ति सर्वे",
+                  "t": "ṛte’pi tvāṃ na bhaviṣyanti sarve",
                   "n": 11,
                   "words": [
                     [

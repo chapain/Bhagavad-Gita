@@ -1,6 +1,6 @@
 # Title and description advisories — review worksheet
 
-Snapshot of 2026-11-05, from `python3 source/audit_titles.py --markdown`. Re-run it after
+Snapshot of 2026-11-12, from `python3 source/audit_titles.py --markdown`. Re-run it after
 any change to `source/ch*.json`; this file is a worklist, not site content.
 
 **An advisory is a candidate for review, not a finding of error.** Sanskrit
@@ -46,7 +46,7 @@ want them to survive a regeneration.
 |  | 1.02 | Duryodhana approaches Droṇa | Sañjaya said: Seeing the Pāṇḍava army drawn up in battle-array, Duryodhana then approached his teacher, and the king spoke these words. | ☐ | ☐ | ☐ |
 |  | 1.03 | Behold the Pāṇḍava army | Behold, O teacher, this great army of the sons of Pāṇḍu, arrayed for battle by the son of Drupada, your wise disciple. | ☐ | ☐ | ☐ |
 |  | 1.04 | Heroes and master bowmen | Here are heroes, great archers, equals of Bhīma and Arjuna in war: Yuyudhāna, Virāṭa, and Drupada, the great chariot-warrior. | ☐ | ☐ | ☐ |
-|  | 1.05 | More Pāṇḍava champions | And Dhṛṣṭaketu, Cekitāna, the valiant king of Kāśī, Purujit, Kuntibhoja, and Śaibya, the bull among men. | ☐ | ☐ | ☐ |
+|  | 1.05 | More Pāṇḍava champions | And Dhṛṣṭaketu, Cekitāna, the valiant king of Kāśi, Purujit, Kuntibhoja, and Śaibya, the bull among men. | ☐ | ☐ | ☐ |
 |  | 1.06 | Abhimanyu and the warriors | The mighty Yudhāmanyu and the valiant Uttamaujas, the son of Subhadrā, and the sons of Draupadī — all great chariot-warriors. | ☐ | ☐ | ☐ |
 | ⚑ | 1.07 | Duryodhana names his own commanders | But know, O best of the twice-born, those who are distinguished among us — the leaders of my army; I name them to you for your information. | ☐ | ☐ | ☐ |
 |  | 1.08 | Bhīṣma, Karṇa, Kṛpa, Aśvatthāmā and others | You yourself, Bhīṣma, Karṇa, Kṛpa the conqueror in battle, Aśvatthāmā, Vikarṇa, and the son of Somadatta as well. | ☐ | ☐ | ☐ |
@@ -628,7 +628,7 @@ want them to survive a regeneration.
 |  | 13.17 | The light of lights | It is the light of lights, declared beyond darkness — knowledge, the object of knowledge, and the goal of knowledge, seated in the heart of all. | ☐ | ☐ | ☐ |
 |  | 13.18 | The field, knowledge and the knowable | Thus the field, knowledge and the knowable have been declared in brief; my devotee, knowing this, attains my being. | ☐ | ☐ | ☐ |
 |  | 13.19 | Both prakṛti and puruṣa are beginningless | Know prakṛti and puruṣa both as beginningless; and know the modifications and the guṇas as born of prakṛti. | ☐ | ☐ | ☐ |
-|  | 13.20 | Agency and enjoyment | Prakṛti is declared the cause in producing the body and its instruments; puruṣa is declared the cause of the enjoyment of pleasure and pain. | ☐ | ☐ | ☐ |
+|  | 13.20 | Agency and enjoyment | Prakṛti is declared the cause in producing effect and cause; puruṣa is declared the cause of the enjoyment of pleasure and pain. | ☐ | ☐ | ☐ |
 |  | 13.21 | Attachment to the guṇas causes birth | Puruṣa, seated in prakṛti, enjoys the guṇas born of prakṛti; attachment to the guṇas is the cause of birth in good and evil wombs. | ☐ | ☐ | ☐ |
 |  | 13.22 | The witness and Lord | The witness, the approver, the sustainer, the enjoyer, the great Lord — and called the supreme Self: this supreme puruṣa in the body. | ☐ | ☐ | ☐ |
 |  | 13.23 | Knowing these two, he is not born again | He who thus knows puruṣa and prakṛti with its guṇas — whatever his way of life, he is not born again. | ☐ | ☐ | ☐ |
@@ -716,7 +716,7 @@ want them to survive a regeneration.
 |  | 16.01 | Fearlessness and purity | The Blessed Lord said: Fearlessness, purity of heart, steadfastness in knowledge and yoga, charity, self-control, sacrifice, study of scripture, austerity and uprightness, | ☐ | ☐ | ☐ |
 |  | 16.02 | Non-violence and truth | — non-violence, truth, freedom from anger, renunciation, peace, absence of slander, compassion toward beings, non-covetousness, gentleness, modesty and steadiness — | ☐ | ☐ | ☐ |
 |  | 16.03 | Vigour and forgiveness | — vigour, forgiveness, fortitude, purity, freedom from malice and from pride — these belong to one born to the divine destiny, O Bhārata. | ☐ | ☐ | ☐ |
-| ⚑ | 16.04 | Six marks of the demoniac | Hypocrisy, arrogance, pride, anger, harshness and ignorance — these belong to one born to the demoniac destiny, O Pārtha. | ☐ | ☐ | ☐ |
+| ⚑ | 16.04 | Six marks of the demoniac | Hypocrisy, arrogance, self-conceit, anger, harshness and ignorance — these belong to one born to the demoniac destiny, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 16.05 | Liberation and bondage | The divine endowment leads to liberation, the demoniac to bondage — grieve not, O Pāṇḍava, for you are born to the divine destiny. | ☐ | ☐ | ☐ |
 |  | 16.06 | The two creations | There are two creations of beings in this world — the divine and the demoniac; the divine has been described at length — now hear from me of the demoniac, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 16.07 | Without truth or purity | The demoniac do not know right action or renunciation; there is no purity, no conduct, no truth in them. | ☐ | ☐ | ☐ |
@@ -813,7 +813,7 @@ want them to survive a regeneration.
 |  | 18.32 | Wrapped in darkness | O Pārtha, the intellect that, enveloped in darkness, takes wrong for right and sees all things perversely — is tāmasic. | ☐ | ☐ | ☐ |
 |  | 18.33 | The sāttvic fortitude | The unwavering fortitude by which one holds, through yoga, the activities of the mind, breath and senses — that, O Pārtha, is sāttvic. | ☐ | ☐ | ☐ |
 |  | 18.34 | The rājasic fortitude | But the fortitude by which one holds to duty, pleasure and wealth, attached and desiring fruit — that, O Arjuna, is rājasic, O Pārtha. | ☐ | ☐ | ☐ |
-|  | 18.35 | Holds on to sleep and fear | The fortitude by which a dull man does not give up sleep, fear, grief, despair and arrogance — that is tāmasic. | ☐ | ☐ | ☐ |
+|  | 18.35 | Holds on to sleep and fear | The fortitude by which a dull man does not give up sleep, fear, grief, despair and arrogance — that, O Pārtha, is tāmasic. | ☐ | ☐ | ☐ |
 |  | 18.36 | The threefold happiness | Hear now from me, O bull of the Bhāratas, the threefold happiness — that in which one rejoices by practice and reaches the end of suffering. | ☐ | ☐ | ☐ |
 |  | 18.37 | Poison at first, nectar at the end | That which is like poison at first and nectar at the end — born of the clarity of the intellect concerning the Self — is declared sāttvic happiness. | ☐ | ☐ | ☐ |
 |  | 18.38 | Sweet at first, poison at last | The happiness from the contact of the senses with their objects, nectar at first and poison at the end — is declared rājasic. | ☐ | ☐ | ☐ |
@@ -853,7 +853,7 @@ want them to survive a regeneration.
 |  | 18.72 | The Lord's question | Has this been heard by you, O Pārtha, with a one-pointed mind? Has the delusion of ignorance been destroyed, O Dhanañjaya? | ☐ | ☐ | ☐ |
 |  | 18.73 | My delusion is gone; I will do your word | Arjuna said: Destroyed is my delusion; I have gained memory by your grace, O Acyuta; I stand firm, my doubt gone — I will do your word. | ☐ | ☐ | ☐ |
 |  | 18.74 | Thus I heard this wondrous dialogue | Sañjaya said: Thus I heard the wondrous, thrilling dialogue of Vāsudeva and the great-souled Pārtha. | ☐ | ☐ | ☐ |
-|  | 18.75 | The grace of Vyāsa | By the grace of Vyāsa I heard this supreme, most secret yoga from Kṛṣṇa, the Lord of yoga, speaking himself. | ☐ | ☐ | ☐ |
+|  | 18.75 | The grace of Vyāsa | By the grace of Vyāsa I heard this supreme secret, the yoga, from Kṛṣṇa, the Lord of yoga, speaking himself. | ☐ | ☐ | ☐ |
 |  | 18.76 | The joy of remembering | Remembering again and again this wondrous, holy dialogue of Keśava and Arjuna, O king, I rejoice again and again. | ☐ | ☐ | ☐ |
 |  | 18.77 | Remembering that form, I rejoice again | And remembering again and again that most wondrous form of Hari, my wonder is great, O king — and I rejoice again and again. | ☐ | ☐ | ☐ |
 |  | 18.78 | Where Kṛṣṇa and Arjuna are | Wherever Kṛṣṇa, the Lord of yoga, and Pārtha, the archer, are — there are prosperity, victory, glory and unfailing prudence; so I deem. | ☐ | ☐ | ☐ |
@@ -1002,7 +1002,7 @@ evidence for each verdict.
 
 > Six marks of the demoniac
 
-*the verse says:* Hypocrisy, arrogance, pride, anger, harshness and ignorance — these belong to one born to the demoniac destiny, O Pārtha.
+*the verse says:* Hypocrisy, arrogance, self-conceit, anger, harshness and ignorance — these belong to one born to the demoniac destiny, O Pārtha.
 
 ☐ keep   ☐ revise   ☐ fix
 

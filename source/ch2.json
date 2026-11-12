@@ -718,8 +718,8 @@
           "sutras": [
             {
               "n": "2.05",
-              "d": "गुरूनहत्वा हि महानुभावान् श्रेयो भोक्तुं भैक्षमपीह लोके । हत्वार्थकामांस्तु गुरूनिहैव भुञ्जीय भोगान् रुधिरप्रदिग्धान्",
-              "t": "gurūnahatvā hi mahānubhāvān śreyo bhoktuṃ bhaikṣamapīha loke । hatvārthakāmāṃstu gurūnihaiva bhuñjīya bhogān rudhirapradigdhān",
+              "d": "गुरूनहत्वा हि महानुभावान् श्रेयो भोक्तुं भैक्ष्यमपीह लोके । हत्वार्थकामांस्तु गुरूनिहैव भुञ्जीय भोगान् रुधिरप्रदिग्धान्",
+              "t": "gurūnahatvā hi mahānubhāvān śreyo bhoktuṃ bhaikṣyamapīha loke । hatvārthakāmāṃstu gurūnihaiva bhuñjīya bhogān rudhirapradigdhān",
               "flow": [
                 {
                   "k": "p",
@@ -759,8 +759,8 @@
                 },
                 {
                   "k": "p",
-                  "d": "श्रेयो भोक्तुं भैक्षमपीह लोके",
-                  "t": "śreyo bhoktuṃ bhaikṣamapīha loke",
+                  "d": "श्रेयो भोक्तुं भैक्ष्यमपीह लोके",
+                  "t": "śreyo bhoktuṃ bhaikṣyamapīha loke",
                   "n": 11,
                   "words": [
                     [
@@ -778,8 +778,8 @@
                       "जीने को"
                     ],
                     [
-                      "भैक्षम्",
-                      "bhaikṣam",
+                      "भैक्ष्यम्",
+                      "bhaikṣyam",
                       "alms",
                       "भिक्षा",
                       "भिक्षा"

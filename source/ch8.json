@@ -41,8 +41,8 @@
           "sutras": [
             {
               "n": "8.01",
-              "d": "अर्जुन उवाच । किं तद्ब्रह्म किमध्यात्मं कि कर्म पुरुषोत्तम । अधिभूतं च किं प्रोक्तमधिदैवं किमुच्यते",
-              "t": "arjuna uvāca । kiṃ tadbrahma kimadhyātmaṃ ki karma puruṣottama । adhibhūtaṃ ca kiṃ proktamadhidaivaṃ kimucyate",
+              "d": "अर्जुन उवाच । किं तद्ब्रह्म किमध्यात्मं किं कर्म पुरुषोत्तम । अधिभूतं च किं प्रोक्तमधिदैवं किमुच्यते",
+              "t": "arjuna uvāca । kiṃ tadbrahma kimadhyātmaṃ kiṃ karma puruṣottama । adhibhūtaṃ ca kiṃ proktamadhidaivaṃ kimucyate",
               "flow": [
                 {
                   "k": "s",
@@ -110,8 +110,8 @@
                 },
                 {
                   "k": "p",
-                  "d": "कि कर्म पुरुषोत्तम",
-                  "t": "ki karma puruṣottama",
+                  "d": "किं कर्म पुरुषोत्तम",
+                  "t": "kiṃ karma puruṣottama",
                   "n": 8,
                   "words": [
                     [
