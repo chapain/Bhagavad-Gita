@@ -407,11 +407,11 @@ languages.
 
 | Verse | Verdict | Note |
 |---|---|---|
-| 12.01–12.05 | pass | Arjuna's question, which group are the better knowers of yoga (12.01); `yuktatamā matāḥ` = "the most yoked" (12.02); `anirdeśyam acintyam kūṭastham acalam dhruvam` (12.03); `sarvabhūtahite ratāḥ` = "rejoicing in the welfare of all beings" (12.04); `kleśo'dhikataras teṣām` = "greater is the toil" of those attached to the unmanifest (12.05). |
+| 12.01–12.05 | **corrected** — 12.03 | Arjuna's question, which group are the better knowers of yoga (12.01); `yuktatamā matāḥ` = "the most yoked" (12.02); `sarvabhūtahite ratāḥ` = "rejoicing in the welfare of all beings" (12.04); `kleśo'dhikataras teṣām` = "greater is the toil" of those attached to the unmanifest (12.05). **12.03 was recorded as passing while all three paraphrases cut the tail of `anirdeśyam acintyam kūṭastham acalam dhruvam`:** the Hindi dropped अचलम् and ध्रुवम् outright and stopped mid-sentence, the Nepali dropped ध्रुवम्, and the English folded अचलम् and ध्रुवम् into "immutable, eternal". The compound is a list of five qualifications; a paraphrase may compress the list but may not delete its last members, so all three lanes now close it (कूटस्थम् "unchanging" / अचलम् "unmoving" / ध्रुवम् "eternal"). Overlap with the literal after the fix: en 0.26, ne 0.13, hi 0.20. Pinned by `tests/test_translation_fidelity.py::WholeBookFidelity::test_no_lane_stops_mid_phrase` and the ledger pin in `tests/test_semantic_audit.py`. |
 | 12.06–12.12 | pass | `ananyenaiva yogenā` = "with undivided yoga" (12.06); `samuddhartā` = "the deliverer" (12.07); `nivasiṣyasi mayy eva` (12.08); the three graded steps of 12.09–12.11 (`abhyāsayoga`, `matkarmaparama`, `sarvakarmaphalatyāga`); the four-fold scale `jñānam abhyāsāt … dhyānam … karmaphalatyāgaḥ` = "knowledge > practice > meditation > renunciation of the fruit of action" (12.12). |
 | 12.13–12.20 | pass | The six qualities of 12.13 (`nirmamaḥ nirahaṅkāraḥ samaduḥkhasukhaḥ kṣamī`); `dṛḍhaniścayaḥ` = "of firm resolve" (12.14); `harṣāmarṣabhayo'dvegaiḥ muktaḥ` = "free from elation, anger, fear and anxiety" (12.15); `anapekṣaḥ śucir dakṣa udāsīno gatavyathaḥ` = "indifferent, pure, capable, unconcerned, free from anxiety" (12.16); `śubhāśubhaparityāgī` = "renouncing both good and evil" (12.17); `samaḥ śatrau ca mitre ca` (12.18); `aniketaḥ` = "having no abode" (12.19); `dharmyāmṛtam` = "this nectar of dharma" (12.20). |
 
-**20 verses, no correction.**
+**20 verses, one correction (12.03).**
 
 ## Ledger — Chapter 13, 13.01–13.34 (read 2026-11-04)
 

@@ -538,5 +538,33 @@ class SemanticAuditTests(unittest.TestCase):
         self.assertNotIn("अर्जुन", verse["d"])
         self.assertIn("अर्जुन", {row[0] for row in rows_of(verse)})
 
+    def test_the_twelve_three_tail_fix(self):
+        """12.03. `anirdeśyam acintyam kūṭastham acalam dhruvam` is a list of five
+        qualifications; every paraphrase used to cut its last one or two. The pin
+        is driven from the rows, so it fails if the row list or any of the three
+        paraphrases loses the tail again.
+
+        Old Hindi: `... कभी न बदलने वाला,` — अचलम् and ध्रुवम् gone, sentence left
+        open. Old English: `immutable, eternal` — two words for three Sanskrit
+        terms. Old Nepali: dropped ध्रुवम्.
+        """
+        verse = load_verse("12.03")
+        rows = [row[0] for row in rows_of(verse)]
+        for word in ("कूटस्थम्", "अचलम्", "ध्रुवम्"):
+            self.assertIn(word, rows, f"12.03: the row {word} is gone")
+        tails = {
+            "en": ("never stirring", "forever the same"),
+            "ne": ("न हल्लिन्छ", "सधैँको"),
+            "hi": ("हिलता नहीं", "सदा एक-सा"),
+        }
+        for language, phrases in tails.items():
+            for phrase in phrases:
+                self.assertIn(phrase, verse["paras"][language],
+                              f"12.03 {language} paraphrase dropped {phrase!r}")
+        # a closed list, not a dash into nothing
+        for language, text in verse["paras"].items():
+            self.assertNotRegex(text.rstrip(), r"[,—]$",
+                                f"12.03 {language} paraphrase stops mid-list")
+
 if __name__ == "__main__":
     unittest.main()

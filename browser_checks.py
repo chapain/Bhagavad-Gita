@@ -1658,7 +1658,20 @@ def run(pw, url, offline_capable=False):
     # question, four fresh options, exactly one correct, feedback cleared.
     retry_before = lp.evaluate("({index:LQi, qid:LQ[LQi].qid})")
     lp.locator(".lr-fb .lr-cta").click()
-    lp.wait_for_timeout(200)
+    # Wait for the condition, not for the clock. `lrRetry` is `LQi++; lrPaint()` and
+    # lrPaint re-shuffles `it.opts` on a fresh paint, so for one instant after the
+    # click the queue index can be new while the DOM still shows the answered item —
+    # a fixed 200ms sleep raced that against a slow CI runner and is what made this
+    # check flaky across two identical-logic runs.
+    lp.wait_for_function(
+        """before => LQ && LQ[LQi] && LQ[LQi].kind === 'pick'
+             && LQi === before + 1
+             && document.querySelectorAll('.lr-opt').length === 4
+             && document.querySelectorAll('.lr-opt.wrong, .lr-opt.right').length === 0
+             && new Set([...document.querySelectorAll('.lr-opt .ol')]
+                   .map(e => e.textContent.trim())).size === 4
+             && LQ[LQi].opts.filter(o => o.ok).length === 1""",
+        arg=retry_before["index"], timeout=15000)
     after_retry = lp.evaluate("LQ[LQi].opts.map(o=>({label:o.label,ok:o.ok}))")
     retry_after = lp.evaluate("({index:LQi, queued:LQ.map(x=>x.qid)})")
     stale_feedback = lp.locator(".lr-opt.wrong, .lr-opt.right").count()
