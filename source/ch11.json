@@ -2553,7 +2553,7 @@
                 }
               ],
               "lits": {
-                "en": "I see you with countless arms, bellies, mouths and eyes — your form is endless on every side; I see no end, no middle, no beginning of you, O Lord of the universe, cosmic form.",
+                "en": "I see you with countless arms, bellies, mouths and eyes — of endless form on every side; I see no end, no middle, no beginning of you, O Lord of the universe, O cosmic form.",
                 "ne": "हे विश्वरूप, म तपाईंलाई असंख्य बाहु, उदर, मुख र आँखासहित देख्छु — चारैतिर अनन्त; म तपाईंको न अन्त्य, न मध्य, न आदि देख्छु।",
                 "hi": "हे विश्व-रूप, मैं आपको असंख्य बाहुओं, उदरों, मुखों और नेत्रों सहित देखता हूँ — चारों ओर अनन्त; मैं आपका न आदि देखता हूँ, न मध्य, न अन्त।"
               },
@@ -3215,8 +3215,8 @@
                       "प्रव्यथितम्",
                       "pravyathitam",
                       "trembling",
-                      "कामेको",
-                      "काँपता हुआ"
+                      "व्याकुल",
+                      "व्याकुल"
                     ],
                     [
                       "महात्मन्",
@@ -3229,14 +3229,14 @@
                 }
               ],
               "lits": {
-                "en": "The space between earth and heaven is filled by you alone, and all the directions; seeing your terrible, wondrous form, the three worlds tremble, O great soul.",
-                "ne": "पृथ्वी र आकाशको बीचको आकाश र सबै दिशाहरू तपाईंले मात्र भरिएका छन्; तपाईंको भयानक, अद्भुत रूप देखेर तीनै लोक काम्छन्, हे महात्मा।",
-                "hi": "पृथ्वी और आकाश के बीच का आकाश और सब दिशाएँ आपसे ही भरी हैं; आपका भयंकर, अद्भुत रूप देखकर तीनों लोक काँपते हैं, हे महात्मा।"
+                "en": "The space between earth and heaven is filled by you alone, and all the directions; seeing your wondrous, terrible form, the three worlds are in anguish, O great soul.",
+                "ne": "पृथ्वी र आकाशको बीचको अन्तराल र सबै दिशाहरू तपाईंले एक्लै भरिएका छन्; तपाईंको अद्भुत र भयानक रूप देखेर तीनै लोक व्याकुल छन्, हे महात्मा।",
+                "hi": "पृथ्वी और आकाश के बीच का अन्तराल और सब दिशाएँ आप अकेले ही भरे हुए हैं; आपका अद्भुत और भयंकर रूप देखकर तीनों लोक व्याकुल हैं, हे महात्मा।"
               },
               "paras": {
-                "en": "“Between heaven and earth, in every direction, you alone fill all — and the three worlds tremble at your awesome form.”",
-                "ne": "“स्वर्ग र पृथ्वीको बीच, हरेक दिशामा, तपाईं एक्लैले सबै भर्नुभएको छ — र तीनै लोक तपाईंको भयानक रूप देखेर काम्छन्।”",
-                "hi": "“स्वर्ग और पृथ्वी के बीच, हर दिशा में, आप अकेले ही सब कुछ भरते हैं — और तीनों लोक आपके भयानक रूप से काँपते हैं।”"
+                "en": "“Heaven and earth and every direction between them are filled by you alone — and the three worlds are shaken by the sight of your awesome form.”",
+                "ne": "“स्वर्ग र पृथ्वी र तिनका बीचका सबै दिशा तपाईं एक्लैले भर्नुभएको छ — र तीनै लोक तपाईंको भयानक रूप देखेर व्याकुल छन्।”",
+                "hi": "“स्वर्ग और पृथ्वी तथा उनके बीच की सब दिशाएँ आप अकेले ही भरे हुए हैं — और तीनों लोक आपके भयंकर रूप को देखकर व्याकुल हो रहे हैं।”"
               }
             }
           ]
@@ -3432,7 +3432,7 @@
                 "hi": "देवताओं के समूह आप में प्रवेश करते हैं; कोई, डरकर, हाथ जोड़कर आपकी प्रशंसा करते हैं; महर्षियों और सिद्धों के समूह 'कल्याण हो' कहकर प्रचुर स्तोत्रों से आपकी स्तुति करते हैं।"
               },
               "paras": {
-                "en": "“The troops of gods stream into you; some, terrified, glorify you with joined palms; the sages and perfected ones, wishing all well, praise you with abundant hymns.”",
+                "en": "“The troops of gods stream into you; some, terrified, glorify you with joined palms; the great seers and perfected ones, crying ‘may all be well’, praise you with abundant hymns.”",
                 "ne": "“देवताहरूका सेनाहरू तपाईंभित्र बग्छन्; कोही, त्रसित भएर, जोडिएका हातले तपाईंको महिमा गाउँछन्; ऋषि र सिद्धहरू, कल्याणको कामना गर्दै, प्रशस्त स्तोत्रले तपाईंको प्रशंसा गर्छन्।”",
                 "hi": "“देवताओं की सेनाएँ आप में बहती हैं; कोई, त्रस्त होकर, जुड़े हाथों से आपकी महिमा गाते हैं; ऋषि और सिद्ध, कल्याण की कामना करते हुए, प्रचुर स्तोत्रों से आपकी प्रशंसा करते हैं।”"
               }

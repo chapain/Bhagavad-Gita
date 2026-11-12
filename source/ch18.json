@@ -4363,9 +4363,9 @@
                 "hi": "असंयत, असभ्य, हठी, कपटी, दुष्ट, आलसी, उदास और देर करने वाला कर्ता — तामस कहा गया है।"
               },
               "paras": {
-                "en": "“The doer who is undisciplined, coarse, stubborn, deceitful, dishonest, lazy, morose, and forever putting things off — that doer is tāmasic.”",
-                "ne": "“अनुशासनहीन, कठोर, जिद्दी, ढोंगी, बेइमान, अल्छी, उदास र काम पछि सारिरहने कर्ता — त्यो तामस हो।”",
-                "hi": "“अनुशासनहीन, रूखा, हठी, ढोंगी, बेईमान, आलसी, उदास और काम टालते रहने वाला कर्ता — वह तामस है।”"
+                "en": "“The doer who is undisciplined, coarse, stubborn, deceitful, malicious, lazy, morose, and forever putting things off — that doer is tāmasic.”",
+                "ne": "“अनुशासनहीन, कठोर, जिद्दी, कपटी, दुष्ट, अल्छी, उदास र काम पछि सारिरहने कर्ता — त्यो तामस हो।”",
+                "hi": "“अनुशासनहीन, रूखा, हठी, ठग, दुष्ट, आलसी, उदास और काम टालते रहने वाला कर्ता — वह तामस है।”"
               }
             }
           ]
@@ -5482,11 +5482,11 @@
               "lits": {
                 "en": "The fortitude by which a dull man does not give up sleep, fear, grief, despair and arrogance — that, O Pārtha, is tāmasic.",
                 "ne": "जुन धृतिले मन्दबुद्धि मानिसले निद्रा, भय, शोक, निराशा र घमण्ड छोड्न सक्दैन — हे पार्थ, त्यो तामस हो।",
-                "hi": "जिस धृति से मन्द बुद्धि निद्रा, भय, शोक, विषाद और दर्प को नहीं छोड़ पाता — हे पार्थ, वह तामस है।"
+                "hi": "जिस धृति से मन्दबुद्धि मनुष्य निद्रा, भय, शोक, विषाद और दर्प को नहीं छोड़ पाता — हे पार्थ, वह तामस है।"
               },
               "paras": {
                 "en": "“And the resolve by which a foolish person cannot let go of sleep, fear, sorrow, gloom, and vanity — that, O Pārtha, is tāmasic.”",
-                "ne": "निद्रा, डर, शोक, हतासा र मात — हे पार्थ, यी छोड्नै नसक्ने अल्छी टेक तामसी हो।",
+                "ne": "हे पार्थ, जो मान्छे निद्रा, डर, शोक, हतासा र मातसँग टाँसिएर बस्छ र ती छोड्नै सक्दैन, उसको त्यो अडान तामसी हो।",
                 "hi": "“और जिस संकल्प से मूर्ख मनुष्य नींद, भय, शोक, निराशा और घमण्ड को नहीं छोड़ पाता — हे पार्थ, वह तामस है।”"
               }
             }
@@ -11740,14 +11740,14 @@
                 }
               ],
               "lits": {
-                "en": "By the grace of Vyāsa I heard this supreme secret, the yoga, from Kṛṣṇa, the Lord of yoga, speaking himself.",
+                "en": "By the grace of Vyāsa I heard this supreme secret, this yoga, from Kṛṣṇa, the Lord of yoga, as he himself spoke.",
                 "ne": "व्यासको कृपाले मैले यो परम गोप्य योग — योगेश्वर कृष्ण आफैं बोलेको — सुनेँ।",
                 "hi": "व्यास की कृपा से मैंने यह परम गुह्य योग — योगेश्वर कृष्ण स्वयं बोले — सुना।"
               },
               "paras": {
-                "en": "“By Vyāsa's grace I heard this supreme, secret yoga from Kṛṣṇa himself, the master of yoga.”",
-                "ne": "व्यासको अनुग्रहले यो परम गोप्य योग मैले सुन्न पाएँ — योगेश्वर कृष्णकै मुखबाट।",
-                "hi": "व्यास की मेहरबानी से यह सबसे गहरा भेद मेरे कानों तक आया — कहा खुद योगेश्वर कृष्ण ने।"
+                "en": "“It was Vyāsa’s kindness that let me hear this highest mystery of yoga straight from Kṛṣṇa, the master of yogis, as he spoke.”",
+                "ne": "“व्यासको अनुग्रहले यो परम गोप्य योग मैले सुन्न पाएँ — योगेश्वर कृष्णकै मुखबाट।”",
+                "hi": "“व्यास की कृपा से मैंने यह परम गोप्य योग स्वयं योगेश्वर कृष्ण के मुख से, कहते हुए सुना।”"
               }
             }
           ]

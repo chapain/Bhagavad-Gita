@@ -103,7 +103,7 @@ want them to survive a regeneration.
 |  | 2.02 | Where has this weakness come from? | The Blessed Lord said: Whence has come upon you, in this hour of peril, this dejection — unworthy of an Āryan, closing the door of heaven, and bringing disgrace, O Arjuna? | ☐ | ☐ | ☐ |
 |  | 2.03 | Cast off this faintness and arise | Yield not to unmanliness, O Pārtha — it does not become you. Cast off this petty faintness of heart and arise, O scorcher of foes! | ☐ | ☐ | ☐ |
 |  | 2.04 | How can I strike Bhīṣma and Droṇa? | Arjuna said: How shall I strike Bhīṣma and Droṇa in battle with my arrows, O Madhusūdana — they who are worthy of worship, O slayer of foes? | ☐ | ☐ | ☐ |
-|  | 2.05 | Better to beg than kill revered teachers | Better in this world to live on alms as a beggar than to slay these noble teachers. Killing them — even with worldly aims in view — I would taste only pleasures stained with blood. | ☐ | ☐ | ☐ |
+|  | 2.05 | Better to beg than kill revered teachers | Better to eat alms-food even here in this world than to slay these noble, great-souled teachers. Killing these very teachers — even for the sake of wealth and desires — I would taste pleasures … | ☐ | ☐ | ☐ |
 |  | 2.06 | Victory or defeat—which is better? | Nor do we know which is better for us — to conquer them or be conquered. The very sons of Dhṛtarāṣṭra stand before us; killing them, we should not care to live. | ☐ | ☐ | ☐ |
 |  | 2.07 | Teach me, I am your disciple | My nature is overcome by weak compassion; my mind is confused about duty. I ask you: tell me for certain what is good — I am your disciple; teach me, I have taken refuge in you. | ☐ | ☐ | ☐ |
 |  | 2.08 | This grief no kingdom could drive away | I do not see what could drive away this grief that dries up my senses — even if I won an unrivaled kingdom on earth or lordship over the gods. | ☐ | ☐ | ☐ |
@@ -537,11 +537,11 @@ want them to survive a regeneration.
 |  | 11.13 | The whole universe in one place | There, in the body of the God of gods, the son of Pāṇḍu saw the whole universe, one yet divided into manifold forms. | ☐ | ☐ | ☐ |
 |  | 11.14 | Hair on end, bowing with folded hands | Then, filled with wonder, his hair standing on end, Dhanañjaya bowed his head to the God and spoke with joined palms. | ☐ | ☐ | ☐ |
 |  | 11.15 | I see all beings in your body | I see all the gods in your body, O God, and all the hosts of beings; Brahmā the Lord seated on the lotus, and all the seers and divine serpents. | ☐ | ☐ | ☐ |
-|  | 11.16 | Infinite arms, no beginning, middle or end | I see you with countless arms, bellies, mouths and eyes — your form is endless on every side; I see no end, no middle, no beginning of you, O Lord of the universe, cosmic form. | ☐ | ☐ | ☐ |
+|  | 11.16 | Infinite arms, no beginning, middle or end | I see you with countless arms, bellies, mouths and eyes — of endless form on every side; I see no end, no middle, no beginning of you, O Lord of the universe, O cosmic form. | ☐ | ☐ | ☐ |
 |  | 11.17 | A blazing mass of radiance | I see you crowned, wielding mace and discus, a mass of light shining everywhere — hard to gaze upon, blazing like fire and sun, immeasurable. | ☐ | ☐ | ☐ |
 |  | 11.18 | You are the imperishable, the supreme to be known | You are the imperishable, the supreme object of knowledge; you are the supreme refuge of this universe; you are the eternal guardian of dharma — the primal Person, so I deem you. | ☐ | ☐ | ☐ |
 |  | 11.19 | Sun and moon for eyes | Without beginning, middle or end, of infinite power, with countless arms, with sun and moon for eyes — I see you blazing with fire-like mouths, scorching the whole world with your radiance. | ☐ | ☐ | ☐ |
-|  | 11.20 | The three worlds tremble | The space between earth and heaven is filled by you alone, and all the directions; seeing your terrible, wondrous form, the three worlds tremble, O great soul. | ☐ | ☐ | ☐ |
+|  | 11.20 | The three worlds tremble | The space between earth and heaven is filled by you alone, and all the directions; seeing your wondrous, terrible form, the three worlds are in anguish, O great soul. | ☐ | ☐ | ☐ |
 |  | 11.21 | The hosts of gods enter you | The hosts of gods enter you; some, afraid, praise you with folded hands; the hosts of great seers and siddhas, saying 'may all be well', extol you with abundant hymns. | ☐ | ☐ | ☐ |
 |  | 11.22 | Rudras, Ādityas, Vasus gaze in wonder | The Rudras, Ādityas, Vasus, Sādhyas, Viśve-devas, Aśvins, Maruts and the ancestors — the gandharvas, yakṣas, demons and siddhas — all gaze on you in wonder. | ☐ | ☐ | ☐ |
 |  | 11.23 | Seeing your fearsome form, I tremble | Seeing your immense form, O mighty-armed one, with many mouths and eyes, many arms, thighs and feet, many bellies, many fearsome fangs, the worlds tremble — and so do I. | ☐ | ☐ | ☐ |
@@ -628,7 +628,7 @@ want them to survive a regeneration.
 |  | 13.17 | The light of lights | It is the light of lights, declared beyond darkness — knowledge, the object of knowledge, and the goal of knowledge, seated in the heart of all. | ☐ | ☐ | ☐ |
 |  | 13.18 | The field, knowledge and the knowable | Thus the field, knowledge and the knowable have been declared in brief; my devotee, knowing this, attains my being. | ☐ | ☐ | ☐ |
 |  | 13.19 | Both prakṛti and puruṣa are beginningless | Know prakṛti and puruṣa both as beginningless; and know the modifications and the guṇas as born of prakṛti. | ☐ | ☐ | ☐ |
-|  | 13.20 | Agency and enjoyment | Prakṛti is declared the cause in producing effect and cause; puruṣa is declared the cause of the enjoyment of pleasure and pain. | ☐ | ☐ | ☐ |
+|  | 13.20 | Agency and enjoyment | Prakṛti is declared the cause in the agency of effect and cause; puruṣa is declared the cause of the enjoyment of pleasure and pain. | ☐ | ☐ | ☐ |
 |  | 13.21 | Attachment to the guṇas causes birth | Puruṣa, seated in prakṛti, enjoys the guṇas born of prakṛti; attachment to the guṇas is the cause of birth in good and evil wombs. | ☐ | ☐ | ☐ |
 |  | 13.22 | The witness and Lord | The witness, the approver, the sustainer, the enjoyer, the great Lord — and called the supreme Self: this supreme puruṣa in the body. | ☐ | ☐ | ☐ |
 |  | 13.23 | Knowing these two, he is not born again | He who thus knows puruṣa and prakṛti with its guṇas — whatever his way of life, he is not born again. | ☐ | ☐ | ☐ |
@@ -716,7 +716,7 @@ want them to survive a regeneration.
 |  | 16.01 | Fearlessness and purity | The Blessed Lord said: Fearlessness, purity of heart, steadfastness in knowledge and yoga, charity, self-control, sacrifice, study of scripture, austerity and uprightness, | ☐ | ☐ | ☐ |
 |  | 16.02 | Non-violence and truth | — non-violence, truth, freedom from anger, renunciation, peace, absence of slander, compassion toward beings, non-covetousness, gentleness, modesty and steadiness — | ☐ | ☐ | ☐ |
 |  | 16.03 | Vigour and forgiveness | — vigour, forgiveness, fortitude, purity, freedom from malice and from pride — these belong to one born to the divine destiny, O Bhārata. | ☐ | ☐ | ☐ |
-| ⚑ | 16.04 | Six marks of the demoniac | Hypocrisy, arrogance, self-conceit, anger, harshness and ignorance — these belong to one born to the demoniac destiny, O Pārtha. | ☐ | ☐ | ☐ |
+| ⚑ | 16.04 | Six marks of the demoniac | Hypocrisy, arrogance, self-conceit, anger, harshness and ignorance belong to one born to the demoniac destiny, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 16.05 | Liberation and bondage | The divine endowment leads to liberation, the demoniac to bondage — grieve not, O Pāṇḍava, for you are born to the divine destiny. | ☐ | ☐ | ☐ |
 |  | 16.06 | The two creations | There are two creations of beings in this world — the divine and the demoniac; the divine has been described at length — now hear from me of the demoniac, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 16.07 | Without truth or purity | The demoniac do not know right action or renunciation; there is no purity, no conduct, no truth in them. | ☐ | ☐ | ☐ |
@@ -853,7 +853,7 @@ want them to survive a regeneration.
 |  | 18.72 | The Lord's question | Has this been heard by you, O Pārtha, with a one-pointed mind? Has the delusion of ignorance been destroyed, O Dhanañjaya? | ☐ | ☐ | ☐ |
 |  | 18.73 | My delusion is gone; I will do your word | Arjuna said: Destroyed is my delusion; I have gained memory by your grace, O Acyuta; I stand firm, my doubt gone — I will do your word. | ☐ | ☐ | ☐ |
 |  | 18.74 | Thus I heard this wondrous dialogue | Sañjaya said: Thus I heard the wondrous, thrilling dialogue of Vāsudeva and the great-souled Pārtha. | ☐ | ☐ | ☐ |
-|  | 18.75 | The grace of Vyāsa | By the grace of Vyāsa I heard this supreme secret, the yoga, from Kṛṣṇa, the Lord of yoga, speaking himself. | ☐ | ☐ | ☐ |
+|  | 18.75 | The grace of Vyāsa | By the grace of Vyāsa I heard this supreme secret, this yoga, from Kṛṣṇa, the Lord of yoga, as he himself spoke. | ☐ | ☐ | ☐ |
 |  | 18.76 | The joy of remembering | Remembering again and again this wondrous, holy dialogue of Keśava and Arjuna, O king, I rejoice again and again. | ☐ | ☐ | ☐ |
 |  | 18.77 | Remembering that form, I rejoice again | And remembering again and again that most wondrous form of Hari, my wonder is great, O king — and I rejoice again and again. | ☐ | ☐ | ☐ |
 |  | 18.78 | Where Kṛṣṇa and Arjuna are | Wherever Kṛṣṇa, the Lord of yoga, and Pārtha, the archer, are — there are prosperity, victory, glory and unfailing prudence; so I deem. | ☐ | ☐ | ☐ |
@@ -1002,7 +1002,7 @@ evidence for each verdict.
 
 > Six marks of the demoniac
 
-*the verse says:* Hypocrisy, arrogance, self-conceit, anger, harshness and ignorance — these belong to one born to the demoniac destiny, O Pārtha.
+*the verse says:* Hypocrisy, arrogance, self-conceit, anger, harshness and ignorance belong to one born to the demoniac destiny, O Pārtha.
 
 ☐ keep   ☐ revise   ☐ fix
 
