@@ -39,11 +39,13 @@ So `REVIEW.md` §20's "High value" list was also out of date; it is annotated th
 ### A2/A3 — axe sweep *(the axe half is done; Lighthouse still owed)*
 **0 axe violations** is now a check, not a hope: `browser_checks.py` loads vendored
 axe-core 4.14.0 (`tests/axe.min.js`, MPL-2.0, no npm, no bundler) in the browser CI
-already installs and requires zero WCAG 2.0/2.1/2.2 A+AA violations on welcome,
-the reader sheet, search, learn, favorites, the chapter view and the method page.
-The first run of that sweep found three real defects (two `aria-label`s that
-dropped their own visible text from the accessible name, and a 4.49:1 link on the
-method page); they were fixed in `source/`, not suppressed. Lighthouse's numeric
+already installs and requires zero WCAG 2.0/2.1/2.2 A+AA violations on 390x844 light
+welcome/reader/search/learn/favorites/chapter; on 1440x900 welcome/reader/search/
+favorites/chapter in both light and the app's `setTheme(true, false)` dark mode; and
+on method at 1440x900 with `prefers-color-scheme: dark`. The first run found three
+real defects (two `aria-label`s that dropped their own visible text from the
+accessible name, and a 4.49:1 link on the method page); they were fixed in `source/`,
+not suppressed. Lighthouse's numeric
 100/100 is still unmeasured and still drifts with Chrome versions — the numeric
 target is not a requirement, so treat it as an optional extra rather than a gate.
 
@@ -66,7 +68,7 @@ target is not a requirement, so treat it as an optional extra rather than a gate
 - Shell cap **375,000 chars** (currently **365,940 — 9,060 of room**), enforced in `source/check_site_health.py`. The audit's own text corrections moved it by 61 characters; it is still the 700-line module guard that binds first. The cap stopped being the binding constraint on 2026-11-04, when the withdrawn suggestion listbox freed 7,852 characters; the 700-line module guard binds first again.
 - Nepali and Hindi UI strings contain no Latin characters.
 - Counts stay synchronized across code, README, PROJECT.md, HANDOFF.md, build.py and docs. Never print a success line unless the command actually succeeded.
-- Browser checks are **346** over http (337 over file://). They now run in this sandbox too
+- Browser checks are **357** over http (348 over file://), including desktop and dark-theme axe sweeps. They now run in this sandbox too
   via a vendored Chromium (`GITA_CHROMIUM_EXECUTABLE`); CI remains the authority.
 
 ---

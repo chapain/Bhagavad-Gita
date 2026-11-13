@@ -15,8 +15,10 @@ the start of every session.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
-Current UI/test counts: 231 UI strings per language, 941 assertions, 346 browser checks over
-http (337 over file://), 560 site-health checks.
+Current UI/test counts: 231 UI strings per language, 941 assertions, 357 browser checks over
+http (348 over file://), 560 site-health checks. Axe covers the 390x844 light app views and
+1440x900 light plus app-toggle dark coverage on welcome/chapter/search/reader/favorites; the
+method page is checked at 1440x900 with prefers-color-scheme: dark.
 
 ### 2026-11-04 (sixteenth batch) — the whole book, read verse by verse
 

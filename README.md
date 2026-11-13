@@ -90,9 +90,9 @@ source/                 ← edit here
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
 run_gita_app.js         941 assertions on the built document
-browser_checks.py       346 live-browser checks over http (337 over file://): Learn/Play,
-                        refresh, storage, i18n, touch, offline, error capture in every
-                        context, and an axe-core accessibility sweep
+browser_checks.py       357 live-browser checks over http (348 over file://): Learn/Play,
+                        refresh, storage, i18n, touch, offline, per-context error capture,
+                        and mobile + desktop/light-dark axe-core accessibility sweeps
 ```
 
 `index.html` remains a **single-shell split site**. Its document is maintained
