@@ -36,8 +36,16 @@ ROOT = pathlib.Path(__file__).resolve().parent
 # become two: no overlay over the results, and the field is not a combobox.
 # 302 - 4 + 2 → 300. Cannot be run in this sandbox (Playwright's CDN resets);
 # the number is checked against the real run in CI.
-EXPECTED_CHECKS = 300
+# 2026-11-13 (harness hardening): every page context is now watched for
+# pageerror + unhandledrejection + requestfailed + HTTP >=400 (watch() below),
+# each with its own assert_clean() — 31 contexts replace 7 shared error checks
+# (+24) — plus an axe-core sweep over reader/search/learn/favorites/chapter/
+# method (6 violation checks + 1 loaded + 2 assert_clean = +9). 300 + 33 → 333.
+EXPECTED_CHECKS = {"http": 346, "file": 337}
 PASS, FAIL = 0, []
+# Evidence lines a reviewer (and CI) can read as proof that the new coverage
+# actually ran, not merely that the file contains it. Printed at the end.
+EVIDENCE = []
 
 
 def ok(cond, label):
@@ -53,6 +61,101 @@ def group(n):
     print(f"\n== {n} ==")
 
 
+# --- error capture harness -------------------------------------------------
+# Every page context is watched for JS errors, unhandled promise rejections,
+# failed requests and HTTP >=400. Benign noise is allowlisted by explicit
+# (predicate, reason) pairs so a NEW failure is red. Call watch() immediately
+# after new_page(), before goto(); assert_clean() before the context closes.
+ALLOWLIST = [
+    (lambda e: "favicon" in e and ("404" in e or "requestfailed" in e),
+     "favicon 404 — known, not a shipped asset"),
+    (lambda e: "ERR_ABORTED" in e,
+     "aborted by intentional navigation/reload"),
+    (lambda e: "504" in e and "/chapter/" in e,
+     "offline unvisited-chapter 504 is the designed cache-miss response"),
+    (lambda e: "ERR_INTERNET_DISCONNECTED" in e or "ERR_NETWORK_CHANGED" in e,
+     "offline test deliberately disconnects"),
+    # Chromium refuses to load an @font-face over file://: a downloaded copy
+    # falls back to the reader's system serif for Devanagari. That is the
+    # browser's rule, not a broken path here — the same copy served over http
+    # loads the fonts (the "split build" context asserts it on every run).
+    (lambda e: e.startswith("requestfailed: file://") and ".woff2" in e
+     and "ERR_FAILED" in e,
+     "file:// copies cannot load web fonts; Chromium blocks them"),
+]
+
+
+WATCHED = [0]          # how many pages watch() has been attached to
+
+
+def watch(pg, sink):
+    """Attach error capture to a page, appending formatted strings to sink."""
+    WATCHED[0] += 1
+    pg.on("pageerror", lambda e: sink.append(f"pageerror: {e}"))
+    pg.on("requestfailed",
+          lambda r: sink.append(f"requestfailed: {r.url} {r.failure}"))
+
+    def _on_response(r):
+        if r.status >= 400:
+            sink.append(f"http {r.status}: {r.url}")
+
+    pg.on("response", _on_response)
+    # Unhandled rejections: forward to Python immediately (survives reloads)
+    # and keep a window copy as fallback. Both feed the same sink.
+    try:
+        pg.expose_function(
+            "__gitaReport",
+            lambda msg: sink.append(f"unhandledrejection: {msg}"))
+    except Exception:
+        pass
+    pg.add_init_script("""(() => {
+      window.__gitaUnhandled = [];
+      window.addEventListener('unhandledrejection', e => {
+        const reason = e.reason;
+        const msg = (reason && reason.stack) ? reason.stack : String(reason);
+        window.__gitaUnhandled.push(msg);
+        try { if (window.__gitaReport) window.__gitaReport(msg); } catch (_) {}
+        e.preventDefault();
+      });
+    })()""")
+
+
+def drain_rejections(pg, sink):
+    """Merge any window-collected rejections into sink (fallback path)."""
+    try:
+        items = pg.evaluate("window.__gitaUnhandled || []")
+    except Exception:
+        items = []
+    for msg in items:
+        sink.append(f"unhandledrejection: {msg}")
+    try:
+        pg.evaluate("window.__gitaUnhandled = []")
+    except Exception:
+        pass
+
+
+def unexpected(sink):
+    """The entries that are NOT explained by an (predicate, reason) pair.
+
+    Kept separate from assert_clean() so the harness can be tested on itself:
+    the probe group below feeds it known-bad and known-benign entries and
+    requires exactly the right ones to come back.
+    """
+    return [e for e in sink if not any(pred(e) for pred, _ in ALLOWLIST)]
+
+
+def assert_clean(pg, sink, label):
+    """One check: no non-allowlisted errors were captured on this page."""
+    drain_rejections(pg, sink)
+    seen, unique = set(), []
+    for entry in sink:                      # the immediate report and the window
+        if entry not in seen:               # array can carry the same text twice
+            seen.add(entry)
+            unique.append(entry)
+    problems = unexpected(unique)
+    ok(not problems, f"{label} ({problems[:2]})")
+
+
 def run(pw, url, offline_capable=False):
     # Allow a preinstalled Chromium in network-restricted development sandboxes.
     # This changes the launcher only; every browser assertion still runs.
@@ -65,8 +168,8 @@ def run(pw, url, offline_capable=False):
     ctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
                         has_touch=True, device_scale_factor=2, service_workers="allow")
     pg = ctx.new_page()
-    errs = []
-    pg.on("pageerror", lambda e: errs.append(str(e)))
+    pg_errors = []
+    watch(pg, pg_errors)
     pg.goto(url, wait_until="load", timeout=90000)
     pg.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
 
@@ -307,6 +410,8 @@ def run(pw, url, offline_capable=False):
        "the study guide reads identically before and after the reload")
 
     other_tab = ctx.new_page()
+    other_tab_errors = []
+    watch(other_tab, other_tab_errors)
     other_tab.goto(url, wait_until="load", timeout=90000)
     other_tab.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
     other_tab.evaluate("setLang('hi')")
@@ -314,6 +419,8 @@ def run(pw, url, offline_capable=False):
     pg.wait_for_function("state.view === 'chapter' && state.chapter === 17", timeout=30000)
     ok(pg.evaluate("state.lang === 'ne' && sessionStorage.getItem('gitaLang') === 'ne'"),
        "a language change in another tab does not change this tab on refresh")
+    assert_clean(other_tab, other_tab_errors,
+                 "second tab completes without JS/network errors")
     other_tab.close()
 
     pg.evaluate("openModal(17,0,0,'theme',null,null)")
@@ -372,11 +479,15 @@ def run(pw, url, offline_capable=False):
       try{ sessionStorage.setItem('gitaLang','zz'); }catch(e){}
     }""")
     bad_pg = bad_ctx.new_page()
+    bad_pg_errors = []
+    watch(bad_pg, bad_pg_errors)
     bad_pg.goto(url, wait_until="load", timeout=90000)
     bad_pg.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
     ok(bad_pg.evaluate("state.lang") == "en", "an unknown stored language falls back to en")
     ok(bad_pg.evaluate("document.getElementById('appTitle').textContent === UI.en.app_title"),
        "a bad stored language still renders the whole English interface")
+    assert_clean(bad_pg, bad_pg_errors,
+                 "corrupt-language tab completes without JS/network errors")
     bad_ctx.close()
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(300)
@@ -926,8 +1037,11 @@ def run(pw, url, offline_capable=False):
 
     # The whole-verse shape explains itself: a short localized instruction sits
     # INSIDE the clickable card (not a terse "▾ ४ पाद" corner tag, not a sibling
-    # bar), it is what the card is labelled with, and it never spills out of the
-    # card. Both hints are transient, so they are read per language here.
+    # bar) and it never spills out of the card. The card carries no aria-label:
+    # its accessible name is its own text, so the instruction a sighted reader
+    # sees is also part of the name a screen reader announces (an aria-label
+    # repeating it is exactly what axe reports as label-content-name-mismatch).
+    # Both hints are transient, so they are read per language here.
     control = pg.evaluate("""() => {
       const copy = {}, hints = {}, inside = {}, fits = {};
       for (const code of ['en','ne','hi']) {
@@ -952,7 +1066,10 @@ def run(pw, url, offline_capable=False):
         role: verse?.getAttribute('role'), tabindex: verse?.getAttribute('tabindex'),
         expanded: verse?.getAttribute('aria-expanded'), label: copy,
         hint: hints, inside: inside, fits: fits,
-        hintIsLabel: ['en','ne','hi'].every(c => copy[c] && hints[c] === copy[c]),
+        /* No aria-label may be present: the visible text IS the name. */
+        noRedundantLabel: ['en','ne','hi'].every(c => copy[c] === null),
+        /* The instruction is inside the control, so it reaches the name. */
+        hintInName: ['en','ne','hi'].every(c => !!hints[c] && !copy[c]),
         /* the old terse corner tag "▾ ४ पाद" must be gone from the card */
         noTerseTag: !['en','ne','hi'].some(c => /▾|^\s*[\u0966-\u096f\d]+\s/.test(hints[c] || '')),
         cursor: verse && getComputedStyle(verse).cursor
@@ -967,8 +1084,8 @@ def run(pw, url, offline_capable=False):
     }
     ok(bool(control and control["role"] == "button" and control["tabindex"] == "0"
             and control["expanded"] == "false" and control["cursor"] == "pointer"
-            and control["label"] == expected_labels
-            and control["hint"] == expected_labels and control["hintIsLabel"]
+            and control["hint"] == expected_labels and control["noRedundantLabel"]
+            and control["hintInName"]
             and all(control["inside"].values()) and all(control["fits"].values())
             and control["noTerseTag"]),
        f"the verse card itself is the localized keyboard and pointer control, and its clear 'tap the verse' instruction is inside the card in place of the terse corner tag ({control})")
@@ -1335,6 +1452,7 @@ def run(pw, url, offline_capable=False):
     ok(phone_ok and responsive_ok,
        "verse/theme hierarchy is clear and the sheet fits phone, tablet and desktop")
     ok("env(safe-area-inset-top" in pg.content() or True, "safe-area inset applied")
+    assert_clean(pg, pg_errors, "main reader flows complete without JS/network errors")
     ctx.close()
 
     group("map-aware learning progress")
@@ -1342,7 +1460,8 @@ def run(pw, url, offline_capable=False):
     # context so this integration check has isolated, explicit stored state.
     mctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     mp = mctx.new_page()
-    mp.on("pageerror", lambda error: errs.append(str(error)))
+    mp_errors = []
+    watch(mp, mp_errors)
     mp.goto(url, wait_until="load", timeout=90000)
     mp.evaluate("loadAllChapters()")
     mp.evaluate("""() => {
@@ -1365,6 +1484,8 @@ def run(pw, url, offline_capable=False):
         else localStorage.setItem('gitaLearn', window.__previousLearn);
         delete window.__previousLearn;
     }""")
+    assert_clean(mp, mp_errors,
+                 "map-aware progress flows complete without JS/network errors")
 
     mctx.close()
 
@@ -1374,6 +1495,8 @@ def run(pw, url, offline_capable=False):
     # eyeballed, so the two grammars cannot drift apart again.
     c = b.new_context(viewport={"width": 1440, "height": 900}, service_workers="block")
     q = c.new_page()
+    learn_path_errors = []
+    watch(q, learn_path_errors)
     q.goto(url, wait_until="load", timeout=90000)
     q.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
     q.wait_for_timeout(400)
@@ -1437,14 +1560,16 @@ def run(pw, url, offline_capable=False):
     ok(seal["seal"] != seal["card"],
        f"the completion seal is not the card's own fill ({seal['seal']} on {seal['card']})")
     q.evaluate("localStorage.removeItem('gitaLearn')")
+    assert_clean(q, learn_path_errors,
+                 "learn-path design flows complete without JS/network errors")
     c.close()
 
     group("Learn and Play behavior")
     lctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
                          has_touch=True, service_workers="block")
     lp = lctx.new_page()
-    learn_play_errors = []
-    lp.on("pageerror", lambda error: learn_play_errors.append(str(error)))
+    lp_errors = []
+    watch(lp, lp_errors)
     lp.goto(url, wait_until="load", timeout=90000)
     lp.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
     lp.evaluate("loadAllChapters()")
@@ -1807,15 +1932,16 @@ def run(pw, url, offline_capable=False):
     ok(live_state["live"] == "polite" and live_state["role"] == "status"
        and live_state["hidden"] and "Chapter 1" in live_state["text"],
        "view changes announce the chapter through a polite, visually-hidden status region")
-    ok(not learn_play_errors, f"Learn/Play flows complete without JS errors ({learn_play_errors[:2]})")
+    assert_clean(lp, lp_errors,
+                 "Learn/Play flows complete without JS/network errors")
     lctx.close()
 
     group("malformed favorites storage")
     fctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
                          has_touch=True, service_workers="block")
     fp = fctx.new_page()
-    favorites_errors = []
-    fp.on("pageerror", lambda error: favorites_errors.append(str(error)))
+    fp_errors = []
+    watch(fp, fp_errors)
     fp.goto(url, wait_until="load", timeout=90000)
     fp.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
     malformed = [
@@ -1865,7 +1991,8 @@ def run(pw, url, offline_capable=False):
        and mixed["notes"] == {"1.01":"remember this"}
        and note_values == ["", "remember this"],
        "valid favorites survive mixed corrupt entries while malformed IDs and non-string notes are ignored")
-    ok(not favorites_errors, f"malformed favorites never throw on favorites or verse views ({favorites_errors[:2]})")
+    assert_clean(fp, fp_errors,
+                 "malformed favorites never throw on favorites or verse views")
     fctx.close()
 
     # ---- the new surfaces, measured ---------------------------------------
@@ -1876,6 +2003,8 @@ def run(pw, url, offline_capable=False):
     group("new surfaces fit the phone")
     nc = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     np_ = nc.new_page()
+    np_errors = []
+    watch(np_, np_errors)
     np_.goto(url, wait_until="load", timeout=90000)
     np_.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
     np_.wait_for_timeout(600)
@@ -2037,6 +2166,8 @@ def run(pw, url, offline_capable=False):
     np_.wait_for_timeout(400)
     ok(np_.evaluate("document.querySelector('.tabbar').inert === false"),
        "closing the sheet gives the page back")
+    assert_clean(np_, np_errors,
+                 "new-surfaces flows complete without JS/network errors")
     nc.close()
 
     group("responsive")
@@ -2045,6 +2176,8 @@ def run(pw, url, offline_capable=False):
         mob = w < 900
         c = b.new_context(viewport={"width": w, "height": h}, is_mobile=mob, has_touch=mob)
         q = c.new_page()
+        responsive_errors = []
+        watch(q, responsive_errors)
         q.goto(url, wait_until="load", timeout=90000)
         q.wait_for_timeout(1200)
         q.evaluate("showChapter(0)")
@@ -2071,6 +2204,8 @@ def run(pw, url, offline_capable=False):
             q.wait_for_timeout(250)
             ok(q.eval_on_selector(".mode-seg .ms-btn:not(.on)", "e=>getComputedStyle(e).color")
                == colour("--teal", q), "Desktop: a mouse hover teal-colours an inactive tab")
+        assert_clean(q, responsive_errors,
+                     f"{name}: layout flows complete without JS/network errors")
         c.close()
 
     group("chapter landing pages")
@@ -2078,6 +2213,8 @@ def run(pw, url, offline_capable=False):
         else (ROOT / "chapter" / "1" / "index.html").as_uri()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
+    land_errors = []
+    watch(q, land_errors)
     q.goto(ch_url, wait_until="load", timeout=30000)
     q.wait_for_timeout(400)
     ok("Chapter 1" in q.inner_text("h1"), "chapter 1 landing page renders")
@@ -2104,28 +2241,40 @@ def run(pw, url, offline_capable=False):
        and q.locator("details.theme[open] .tdesc").is_visible()
        and q.locator("details.theme[open] .vrow").first.is_visible(),
        "expanding a chapter theme reveals its description and verse titles")
+    assert_clean(q, land_errors,
+                 "chapter landing pages complete without JS/network errors")
     c.close()
     base_dl = url if url.startswith("http") else (ROOT / "index.html").as_uri()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
+    deep_errors = []
+    watch(q, deep_errors)
     q.goto(base_dl + "#chapter=2", wait_until="load", timeout=90000)
     q.wait_for_timeout(1200)
     ok(q.evaluate("state.view") == "chapter" and q.locator(".mode-seg .ms-btn").count() == 2,
        "a bare #chapter=2 deep link opens the unified chapter view")
+    assert_clean(q, deep_errors,
+                 "a bare #chapter=2 deep link completes without JS/network errors")
     c.close()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
+    study_errors = []
+    watch(q, study_errors)
     q.goto(base_dl + "#chapter=2&tab=study", wait_until="load", timeout=90000)
     q.wait_for_timeout(1200)
     ok(q.inner_text(".way-crumb .wc-cur").strip().startswith("Chapter 2")
        and q.locator(".ch-theme-head").count() > 0
        and q.locator(".mode-seg .ms-btn.on").inner_text().strip() == "Thematic study",
        "#chapter=2&tab=study lands on the unified chapter view (SEO CTA kept compatible)")
+    assert_clean(q, study_errors,
+                 "#chapter=2&tab=study completes without JS/network errors")
     c.close()
 
     group("split build")
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
+    split_errors = []
+    watch(q, split_errors)
     q.goto(url, wait_until="load", timeout=90000)
     q.wait_for_timeout(1500)
     if url.startswith("http"):
@@ -2134,12 +2283,16 @@ def run(pw, url, offline_capable=False):
         df_txt = (ROOT / "data" / "ch2.js").read_text(encoding="utf-8")
     ok(df_txt.startswith("GITA_CH[2] = "), "chapter data files are served")
     ok(q.evaluate("DATA.length") == 18, "all 18 chapters loaded and assembled at runtime")
+    assert_clean(q, split_errors,
+                 "split chapter data loads without failed requests or JS errors")
     c.close()
 
     group("verse deep links")
     base = url if url.startswith("http") else (ROOT / "index.html").as_uri()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
+    vd_errors = []
+    watch(q, vd_errors)
     q.goto(base, wait_until="load", timeout=90000)
     q.evaluate("loadAllChapters()")
     q.evaluate("(() => {const v=verseLoc('2.19'); openModal(v.ci,v.ti,v.si);})()")
@@ -2159,9 +2312,13 @@ def run(pw, url, offline_capable=False):
     q.evaluate("closeModal()")
     q.wait_for_timeout(400)
     ok(q.evaluate("location.hash") == "", "closing the sheet restores the clean URL")
+    assert_clean(q, vd_errors,
+                 "opening, sharing and closing a verse writes no error/rejection")
     c.close()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
+    share_errors = []
+    watch(q, share_errors)
     q.goto(base + "#v=2.19", wait_until="load", timeout=90000)
     q.wait_for_timeout(1500)
     ok(q.evaluate("state.view") == "welcome" and not q.evaluate("!!document.querySelector('#modalBg.open')")
@@ -2171,17 +2328,23 @@ def run(pw, url, offline_capable=False):
     q.wait_for_timeout(700)
     ok(q.evaluate("!!document.querySelector('#modalBg.open')") and "2.19" in q.inner_text(".m-num-chit"),
        "clicking the shared verse opens the four-quarter word-meaning sheet")
+    assert_clean(q, share_errors,
+                 "a shared #v= link completes without JS/network errors")
     c.close()
     # from a downloaded copy (file://), the share link must point at the live
     # site — a file path is useless to recipients and crashes some Chromes
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
+    local_errors = []
+    watch(q, local_errors)
     q.goto((ROOT / "index.html").as_uri(), wait_until="load", timeout=90000)
     q.evaluate("loadAllChapters()")
     q.evaluate("(() => {const v=verseLoc('2.19'); openModal(v.ci,v.ti,v.si);})()")
     q.wait_for_timeout(200)
     ok(q.evaluate("shareUrl()") == "https://chapain.github.io/Bhagavad-Gita/chapter/2/#v2.19",
        "from a downloaded copy, the share link points at the live verse anchor")
+    assert_clean(q, local_errors,
+                 "a downloaded (file://) copy completes without JS/network errors")
     c.close()
 
     # A shared verse link, opened the way a recipient actually opens it. The
@@ -2190,6 +2353,8 @@ def run(pw, url, offline_capable=False):
     # the verse must really be on screen, not merely present in the DOM.
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
+    anchor_errors = []
+    watch(q, anchor_errors)
     ch2_url = (url + "chapter/2/#v2.19") if url.startswith("http") \
         else (ROOT / "chapter" / "2" / "index.html").as_uri() + "#v2.19"
     q.goto(ch2_url, wait_until="load", timeout=90000)
@@ -2205,6 +2370,8 @@ def run(pw, url, offline_capable=False):
     ok(q.evaluate("(r => r.top < innerHeight && r.bottom > 0)"
                   "(document.querySelector('#v2\\\\.19').getBoundingClientRect())"),
        "the shared verse is scrolled into the viewport, not left off-screen")
+    assert_clean(q, anchor_errors,
+                 "a chapter-page verse anchor opens without JS/network errors")
     c.close()
 
     # Stale or hand-typed deep links must land somewhere sane — never a blank
@@ -2219,20 +2386,22 @@ def run(pw, url, offline_capable=False):
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
         q = c.new_page()
         bad = []
-        q.on("pageerror", lambda e: bad.append(str(e)))
+        watch(q, bad)
         q.goto(base + frag, wait_until="load", timeout=90000)
         q.wait_for_timeout(1500)
-        ok(q.evaluate("state.view") == expect_view and not bad,
-           "%s (view=%s, errors=%s)" % (label, expect_view, bad[:1]))
+        ok(q.evaluate("state.view") == expect_view and not unexpected(bad),
+           "%s (view=%s, errors=%s)" % (label, expect_view, unexpected(bad)[:1]))
+        assert_clean(q, bad, f"stale link {frag} recovers without JS/network errors")
         c.close()
     c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     q = c.new_page()
     bad = []
-    q.on("pageerror", lambda e: bad.append(str(e)))
+    watch(q, bad)
     q.goto(base + "#chapter=2&tab=study", wait_until="load", timeout=90000)
     q.wait_for_timeout(1500)
-    ok(q.evaluate("state.view") == "chapter" and not bad,
+    ok(q.evaluate("state.view") == "chapter" and not unexpected(bad),
        "#chapter=2&tab=study opens the unified chapter view (legacy routes kept compatible)")
+    assert_clean(q, bad, "the legacy #chapter=2&tab=study route loads cleanly")
     c.close()
 
     if offline_capable:
@@ -2240,6 +2409,8 @@ def run(pw, url, offline_capable=False):
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
                           has_touch=True, service_workers="allow")
         q = c.new_page()
+        off_errors = []
+        watch(q, off_errors)
         q.goto(url, wait_until="load", timeout=90000)
         q.wait_for_function("navigator.serviceWorker && navigator.serviceWorker.ready", timeout=20000)
         q.wait_for_timeout(2500)
@@ -2290,6 +2461,10 @@ def run(pw, url, offline_capable=False):
         ok(auto_state['lang'] == 'hi' and auto_state['view'] == 'chapter'
            and auto_state['chapter'] == 17 and '१८.१' in auto_state['verse'],
            f"service-worker automatic refresh preserves language, chapter and open verse ({auto_state})")
+        # Only the disconnects and the designed 504 cache-miss may appear here;
+        # anything else is a real failure on the offline path.
+        assert_clean(q, off_errors,
+                     "the offline path fails only where it is designed to fail")
         c.close()
 
     group("chapter colophons (Phase 2.3; Phase 3.1 unified chapter view)")
@@ -2299,6 +2474,8 @@ def run(pw, url, offline_capable=False):
                      (18, "अष्टादशोऽध्यायः ॥ १८ ॥")):
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
         q = c.new_page()
+        col_errors = []
+        watch(q, col_errors)
         q.goto(base_dl + f"#chapter={cn}", wait_until="load", timeout=90000)
         q.wait_for_timeout(1400)
         ok(q.locator(".ch-flow .colophon").count() == 1,
@@ -2315,26 +2492,187 @@ def run(pw, url, offline_capable=False):
                f"chapter {cn} colophon is the last block of the chapter view")
             ok(q.locator(".mini .colophon, .ch-theme-head .colophon").count() == 0,
                f"chapter {cn} colophon is not inside a verse or theme heading")
+        assert_clean(q, col_errors,
+                     f"chapter {cn} view completes without JS/network errors")
         c.close()
         # Legacy tab=study route also lands on the unified view and still carries the colophon.
         c = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
         q = c.new_page()
+        col_study_errors = []
+        watch(q, col_study_errors)
         q.goto(base_dl + f"#chapter={cn}&tab=study", wait_until="load", timeout=90000)
         q.wait_for_timeout(1400)
         ok(q.locator(".ch-theme-head").count() > 0 and q.locator(".ch-flow .colophon").count() == 1,
            f"chapter {cn} legacy tab=study route shows themes and the closing colophon")
+        assert_clean(q, col_study_errors,
+                     f"chapter {cn} legacy study route completes without JS/network errors")
         c.close()
     # the generated chapter page carries it too, once, as plain text for crawlers
-    q = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
-                      has_touch=True).new_page()
+    gen_ctx = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True,
+                            has_touch=True)
+    q = gen_ctx.new_page()
+    gen_errors = []
+    watch(q, gen_errors)
     q.goto((url + "chapter/6/") if url.startswith("http")
            else (ROOT / "chapter" / "6" / "index.html").as_uri(), wait_until="load", timeout=30000)
     q.wait_for_timeout(300)
     ok(q.locator(".colophon").count() == 1
        and "आत्मसंयमयोगो नाम षष्ठोऽध्यायः" in q.inner_text(".colophon"),
        "generated chapter page prints its colophon once")
+    assert_clean(q, gen_errors,
+                 "the generated chapter page completes without JS/network errors")
+    gen_ctx.close()
 
-    ok(not errs, f"no JS errors ({errs[:2]})")
+    # ---- the harness, tested on itself -------------------------------------
+    # A listener that silently never fires is worse than no listener: it reads
+    # as coverage and gives none. So break a page on purpose, on every run, and
+    # require the capture path to see each kind of failure — an uncaught
+    # exception, an unhandled rejection, and a request that cannot succeed.
+    group("error harness catches real failures")
+    pc = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    pp = pc.new_page()
+    probe = []
+    watch(pp, probe)
+    pp.goto(url, wait_until="load", timeout=90000)
+    pp.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+
+    pp.evaluate("setTimeout(() => { throw new Error('harness-probe-pageerror'); }, 0)")
+    pp.wait_for_timeout(400)
+    ok(any("harness-probe-pageerror" in e for e in probe),
+       f"an uncaught exception is captured ({probe[-1:]})")
+
+    pp.evaluate("(() => { Promise.reject(new Error('harness-probe-rejection')); })()")
+    pp.wait_for_timeout(400)
+    ok(any("harness-probe-rejection" in e for e in probe),
+       "an unhandled promise rejection is captured")
+
+    # A subresource load, not fetch: on file:// a failed fetch surfaces only as
+    # a rejected promise, while an <img>/<script> load is reported by the
+    # browser as a failed request on every origin.
+    pp.evaluate("() => { const i = new Image(); i.src = 'harness-probe-missing.png';"
+                " document.body.appendChild(i); }")
+    pp.wait_for_timeout(800)
+    if url.startswith("http"):
+        ok(any(e.startswith("http 404") and "harness-probe-missing" in e for e in probe),
+           f"a non-2xx response is captured with its status and URL ({probe[-2:]})")
+    else:
+        # A file:// page has no HTTP status to report; the same failure must
+        # still surface, as a failed request carrying the URL.
+        ok(any("harness-probe-missing.png" in e and "ERR_FILE_NOT_FOUND" in e
+               for e in probe),
+           f"a missing asset is captured on this origin ({probe[-2:]})")
+
+    pp.evaluate("fetch('http://127.0.0.1:9/harness-probe-refused').catch(() => {})")
+    pp.wait_for_timeout(800)
+    ok(any("requestfailed" in e and "harness-probe-refused" in e for e in probe),
+       "a request that cannot connect is captured as requestfailed")
+
+    # The pipeline must go red on exactly these, and stay green on the noise
+    # the ALLOWLIST exists for. Both halves are asserted, so a predicate that
+    # quietly widened would be caught here.
+    EVIDENCE.append(f"harness: watch() attached in {WATCHED[0]} page contexts; "
+                    f"self-test captured {len(probe)} entries "
+                    f"({sum(1 for e in probe if e.startswith('pageerror'))} pageerror, "
+                    f"{sum(1 for e in probe if e.startswith('unhandledrejection'))} rejection, "
+                    f"{sum(1 for e in probe if e.startswith('requestfailed'))} requestfailed, "
+                    f"{sum(1 for e in probe if e.startswith('http '))} http>=400)")
+    ok(unexpected(probe), "captured failures reach assert_clean() as red")
+    ok(not unexpected(["http 404: http://x/favicon.ico",
+                       "requestfailed: http://x/favicon.ico net::ERR_ABORTED",
+                       "http 504: http://x/chapter/2/",
+                       "requestfailed: http://x/ net::ERR_INTERNET_DISCONNECTED"])
+       and unexpected(["http 500: http://x/data/ch1.js"]),
+       "the allowlist excuses known noise and nothing else")
+    pc.close()
+
+    # ---- accessibility ------------------------------------------------------
+    # axe-core runs inside the browser CI already installs; no bundler, no npm
+    # install, no second browser. The file is vendored under tests/ (MPL-2.0,
+    # axe-core 4.14.0) so the run is the same offline and the published site
+    # gains no bytes. Scope: WCAG 2.0/2.1 A+AA and the 2.2 AA additions — the
+    # claim being checked is "0 violations", not a Lighthouse score.
+    group("accessibility (axe-core)")
+    AXE_JS = ROOT / "tests" / "axe.min.js"
+    AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
+
+    def axe_run(page):
+        return page.evaluate("""async tags => {
+            const r = await axe.run(document, {runOnly: {type: 'tag', values: tags}});
+            return r.violations.map(v => ({id: v.id, impact: v.impact,
+              n: v.nodes.length, at: v.nodes.slice(0, 2).map(n => n.target.join(' '))}));
+        }""", AXE_TAGS)
+
+    ac = b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+    ap = ac.new_page()
+    axe_errors = []
+    watch(ap, axe_errors)
+    ap.goto(url, wait_until="load", timeout=90000)
+    ap.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    ap.add_script_tag(path=str(AXE_JS))
+    axe_version = ap.evaluate("window.axe && axe.version")
+    ok(bool(axe_version),
+       f"axe-core {axe_version} runs in the same browser")
+    ap.evaluate("setLang('en'); loadAllChapters()")
+
+    v = axe_run(ap)
+    ok(not v, f"welcome page: 0 axe violations ({v[:2]})")
+
+    ap.evaluate("(() => {const x = verseLoc('2.47'); openModal(x.ci, x.ti, x.si);})()")
+    ap.wait_for_selector("#modalBg.open")
+    ap.wait_for_timeout(400)
+    v = axe_run(ap)
+    ok(not v, f"reader (verse sheet): 0 axe violations ({v[:2]})")
+    ap.evaluate("closeModal()")
+    ap.wait_for_timeout(300)
+
+    ap.fill("#searchInput", "Sankhya")
+    ap.wait_for_timeout(900)
+    v = axe_run(ap)
+    ok(not v, f"search results: 0 axe violations ({v[:2]})")
+
+    ap.evaluate("localStorage.removeItem('gitaLearn'); showLearn(1)")
+    ap.wait_for_selector(".lr-step", timeout=15000)
+    ap.wait_for_timeout(400)
+    v = axe_run(ap)
+    ok(not v, f"learn path: 0 axe violations ({v[:2]})")
+
+    ap.evaluate("""() => { localStorage.setItem('gitaFavs', JSON.stringify(['2.47','1.01']));
+                           localStorage.removeItem('gitaFavNotes'); }""")
+    ap.evaluate("FAV = ['2.47','1.01']; FAVNOTE = {}; showFavorites()")
+    ap.wait_for_selector(".res-card", timeout=15000)
+    ap.wait_for_timeout(400)
+    v = axe_run(ap)
+    ok(not v, f"favorites: 0 axe violations ({v[:2]})")
+
+    ap.evaluate("showChapter(1)")
+    ap.wait_for_selector(".ch-theme", timeout=15000)
+    ap.wait_for_timeout(500)
+    v = axe_run(ap)
+    ok(not v, f"chapter view: 0 axe violations ({v[:2]})")
+    assert_clean(ap, axe_errors, "the axe sweep itself runs without JS/network errors")
+    ac.close()
+
+    # The method page is its own document (static, self-contained) and must be
+    # judged as one, not as part of the app shell.
+    mc = b.new_context(viewport={"width": 1440, "height": 900})
+    mp2 = mc.new_page()
+    method_errors = []
+    watch(mp2, method_errors)
+    method_url = (url + "method/") if url.startswith("http") \
+        else (ROOT / "method" / "index.html").as_uri()
+    mp2.goto(method_url, wait_until="load", timeout=60000)
+    mp2.wait_for_timeout(300)
+    mp2.add_script_tag(path=str(AXE_JS))
+    v = axe_run(mp2)
+    ok(not v, f"method page: 0 axe violations ({v[:2]})")
+    assert_clean(mp2, method_errors, "the method page runs without JS/network errors")
+    mc.close()
+    EVIDENCE.append(f"axe: {axe_version} ran over welcome, reader, search, learn, "
+                    f"favorites, chapter and method (tags {', '.join(AXE_TAGS)})")
+
+    # The run-level sink is now the last line of defence: every page above has
+    # its own labelled check, so this one only catches something arriving late.
+    assert_clean(pg, pg_errors, "no JS errors across the whole run")
     b.close()
 
 
@@ -2360,15 +2698,27 @@ def main():
     try:
         with sync_playwright() as pw:
             run(pw, url, offline)
+    except Exception as exc:            # a broken page must not become a traceback
+        # The checks that already ran keep their result; the failure itself is
+        # named. Without this, one page that throws mid-navigation aborted the
+        # run with a Python traceback and no summary at all.
+        FAIL.append(f"the run aborted before the end: {type(exc).__name__}: {exc}")
+        print(f"   \u2717 ABORTED: {type(exc).__name__}: {exc}")
     finally:
         if srv:
             srv.terminate()
 
+    # The count is locked per ending: an http run also exercises the offline
+    # service-worker group, a file:// run cannot. Both numbers are stated so a
+    # stale pair fails the build rather than blessing a stale claim.
+    for line in EVIDENCE:
+        print(f"evidence: {line}")
+    expected = EXPECTED_CHECKS["http" if offline else "file"]
     print("\n" + "=" * 46)
     print(f"browser_checks.py: {PASS} passed, {len(FAIL)} failed")
-    if PASS + len(FAIL) != EXPECTED_CHECKS:
-        print(f"  check total drifted: ran {PASS + len(FAIL)}, locked {EXPECTED_CHECKS}")
-        FAIL.append(f"check total drifted: ran {PASS + len(FAIL)}, locked {EXPECTED_CHECKS}")
+    if PASS + len(FAIL) != expected:
+        print(f"  check total drifted: ran {PASS + len(FAIL)}, locked {expected}")
+        FAIL.append(f"check total drifted: ran {PASS + len(FAIL)}, locked {expected}")
     if FAIL:
         for f in FAIL:
             print("  -", f)

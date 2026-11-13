@@ -32,9 +32,18 @@ jobs:
       - name: Install Chromium for the browser checks
         run: python3 -m playwright install --with-deps chromium
 
+      # axe-core is vendored, not installed: the accessibility sweep must run
+      # with no network and no npm step. A missing file is a build error here,
+      # not a skipped check later.
+      - name: Check the vendored axe-core is present
+        run: python3 -c "import pathlib; p = pathlib.Path('tests/axe.min.js'); s = p.read_text(); assert p.stat().st_size > 500000 and 'axe v4.14.0' in s, 'axe-core missing or wrong version'; print('axe-core vendored:', round(p.stat().st_size/1024), 'KB')"
+
       # The browser suite is part of build.py (browser_checks.py --serve, real
       # Chromium, offline service worker included) and a failed check fails the
       # build. Never mask it with `|| echo`: a green CI run must mean green.
+      # It also runs axe-core from tests/axe.min.js (vendored, MPL-2.0, no npm
+      # install needed) — the vendored file is asserted present so a checkout
+      # that lost it fails loudly instead of silently skipping accessibility.
       - name: Build and check
         shell: bash
         run: |
@@ -53,6 +62,21 @@ jobs:
             | head -40 | while IFS= read -r line; do
             echo "::error::${line}"
           done
+
+      # The step log and the artifact both live on hosts some networks cannot
+      # reach, so the two proof lines are lifted into check-run annotations as
+      # well — that is how a reviewer confirms the new coverage RAN (listeners
+      # live in N contexts, axe ran over the seven surfaces) rather than merely
+      # being present in the file.
+      - name: Publish harness and axe evidence
+        if: always()
+        shell: bash
+        run: |
+          grep -E '^evidence: ' build.log | while IFS= read -r line; do
+            echo "::notice::${line#evidence: }"
+          done || true
+          grep -E 'browser_checks.py: [0-9]+ passed|check total drifted' build.log \
+            | head -2 | while IFS= read -r line; do echo "::notice::${line}"; done || true
 
       # The artifact keeps the full build output readable even off the runner.
       - name: Upload build log

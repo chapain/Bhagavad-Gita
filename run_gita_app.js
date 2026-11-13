@@ -11,8 +11,8 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 939;      // keep in step with the printed total (-6: C2 withdrawn)
-const TOTAL_BROWSER_CHECKS = 300;   // browser_checks.py (Learn/Play, refresh, storage, disclosures)
+const TOTAL_ASSERTIONS = 941;      // keep in step with the printed total (940 + HANDOFF count check)
+const TOTAL_BROWSER_CHECKS = 346;   // browser_checks.py, http run (337 over file://); error capture + axe
 const path = require('path');
 
 const ROOT = __dirname;
@@ -612,10 +612,18 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
   const bp = fs.readFileSync(path.join(__dirname, 'build.py'), 'utf8');
   const nAssert = (fs.readFileSync(path.join(__dirname, 'run_gita_app.js'), 'utf8')
                      .match(/^ *ok\(/gm) || []).length;
-  for (const [name, doc] of [['PROJECT.md', pm], ['README.md', rd], ['build.py', bp]]) {
-    ok(new RegExp(`${TOTAL_ASSERTIONS} assertions`).test(doc),
+  // The browser count is stated in three shapes now (README's tools table, the
+  // build.py step list, PROJECT's snapshot sentence), plus HANDOFF, so the
+  // pattern accepts the number anywhere in those documents rather than
+  // insisting on one phrase and silently skipping a file.
+  const hd = fs.readFileSync(path.join(ROOT, 'HANDOFF.md'), 'utf8');
+  for (const [name, doc] of [['PROJECT.md', pm], ['README.md', rd], ['build.py', bp],
+                             ['HANDOFF.md', hd]]) {
+    // Accept "941 assertions" and "941 document assertions": the same number is
+    // stated in both shapes across the four documents.
+    ok(new RegExp(`${TOTAL_ASSERTIONS} (document )?assertions`).test(doc),
        `${name} states the assertion count (${TOTAL_ASSERTIONS})`);
-    ok(new RegExp(`${TOTAL_BROWSER_CHECKS} (live-)?browser checks`).test(doc),
+    ok(new RegExp(`${TOTAL_BROWSER_CHECKS} (live-)?browser checks|${TOTAL_BROWSER_CHECKS} checks`).test(doc),
        `${name} states the browser-check count (${TOTAL_BROWSER_CHECKS})`);
   }
   ok(new RegExp(`${Object.keys(UI.en).length} UI strings`).test(rd),

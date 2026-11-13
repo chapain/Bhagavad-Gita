@@ -15,7 +15,8 @@ the start of every session.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
-Current UI/test counts: 231 UI strings per language, 939 assertions and 300 browser checks.
+Current UI/test counts: 231 UI strings per language, 941 assertions, 346 browser checks over
+http (337 over file://), 560 site-health checks.
 
 ### 2026-11-04 (sixteenth batch) — the whole book, read verse by verse
 
