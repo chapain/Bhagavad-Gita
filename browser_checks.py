@@ -39,9 +39,10 @@ ROOT = pathlib.Path(__file__).resolve().parent
 # 2026-11-13 (harness hardening): every page context is now watched for
 # pageerror + unhandledrejection + requestfailed + HTTP >=400 (watch() below),
 # each with its own assert_clean() — 31 contexts replace 7 shared error checks
-# (+24) — plus an axe-core sweep over reader/search/learn/favorites/chapter/
-# method (6 violation checks + 1 loaded + 2 assert_clean = +9). 300 + 33 → 333.
-EXPECTED_CHECKS = {"http": 346, "file": 337}
+# (+24) — plus axe sweeps. The desktop light+dark passes add 10 scans across
+# welcome/chapter/search/reader/favorites: 346 + 10 scans + 1 desktop error-sink
+# assertion → 357 (file:// 337 + 11 → 348).
+EXPECTED_CHECKS = {"http": 357, "file": 348}
 PASS, FAIL = 0, []
 # Evidence lines a reviewer (and CI) can read as proof that the new coverage
 # actually ran, not merely that the file contains it. Printed at the end.
@@ -2612,7 +2613,7 @@ def run(pw, url, offline_capable=False):
     axe_version = ap.evaluate("window.axe && axe.version")
     ok(bool(axe_version),
        f"axe-core {axe_version} runs in the same browser")
-    ap.evaluate("setLang('en'); loadAllChapters()")
+    ap.evaluate("setLang('en'); loadAllChapters(); setTheme(false, false)")
 
     v = axe_run(ap)
     ok(not v, f"welcome page: 0 axe violations ({v[:2]})")
@@ -2652,10 +2653,68 @@ def run(pw, url, offline_capable=False):
     assert_clean(ap, axe_errors, "the axe sweep itself runs without JS/network errors")
     ac.close()
 
+    # One 1440x900 context is reused for the responsive app surfaces and the
+    # standalone method page. Its media preference is dark so the method page's
+    # prefers-color-scheme branch is exercised; the app's explicit theme switch
+    # is set in turn for light and dark regardless of that media preference.
+    desktop_ctx = b.new_context(viewport={"width": 1440, "height": 900},
+                                color_scheme="dark")
+    dp = desktop_ctx.new_page()
+    desktop_errors = []
+    watch(dp, desktop_errors)
+    dp.goto(url, wait_until="load", timeout=90000)
+    dp.wait_for_function("DATA && VERSES.length === 700", timeout=30000)
+    dp.add_script_tag(path=str(AXE_JS))
+    dp.evaluate("setLang('en'); loadAllChapters()")
+
+    def desktop_axe(surface, dark):
+        dp.evaluate(f"setTheme({str(dark).lower()}, false)")
+        # The app deliberately fades newly rendered views in (280 ms); wait
+        # for that transition so axe evaluates the settled colors, not blended
+        # intermediate animation frames.
+        dp.wait_for_timeout(450)
+        v = axe_run(dp)
+        theme_matches = dp.evaluate(
+            "document.documentElement.getAttribute('data-theme') === 'dark'")
+        ok(theme_matches == dark and not v,
+           f"desktop {surface} ({'dark' if dark else 'light'} app theme): "
+           f"0 axe violations ({v[:2]})")
+
+    # Welcome is already active. For each changed layout/state, run both app
+    # themes in this same desktop context; the light pass is explicit too.
+    desktop_axe("welcome", False)
+    desktop_axe("welcome", True)
+
+    dp.evaluate("(() => {const x = verseLoc('2.47'); openModal(x.ci, x.ti, x.si);})()")
+    dp.wait_for_selector("#modalBg.open")
+    desktop_axe("reader sheet", False)
+    desktop_axe("reader sheet", True)
+    dp.evaluate("closeModal()")
+    dp.wait_for_timeout(250)
+
+    dp.fill("#searchInput", "Sankhya")
+    dp.wait_for_timeout(700)
+    desktop_axe("search results", False)
+    desktop_axe("search results", True)
+
+    dp.evaluate("() => { localStorage.setItem('gitaFavs', JSON.stringify(['2.47','1.01']));"
+                 " localStorage.removeItem('gitaFavNotes'); FAV = ['2.47','1.01'];"
+                 " FAVNOTE = {}; showFavorites(); }")
+    dp.wait_for_selector(".res-card", timeout=15000)
+    desktop_axe("favorites", False)
+    desktop_axe("favorites", True)
+
+    dp.evaluate("showChapter(1)")
+    dp.wait_for_selector(".ch-theme", timeout=15000)
+    desktop_axe("chapter view", False)
+    desktop_axe("chapter view", True)
+    assert_clean(dp, desktop_errors,
+                 "the desktop axe sweep runs without JS/network errors")
+
     # The method page is its own document (static, self-contained) and must be
-    # judged as one, not as part of the app shell.
-    mc = b.new_context(viewport={"width": 1440, "height": 900})
-    mp2 = mc.new_page()
+    # judged separately. Reuse the desktop context with prefers-color-scheme:
+    # dark, because its styling follows the system rather than setTheme().
+    mp2 = desktop_ctx.new_page()
     method_errors = []
     watch(mp2, method_errors)
     method_url = (url + "method/") if url.startswith("http") \
@@ -2664,11 +2723,16 @@ def run(pw, url, offline_capable=False):
     mp2.wait_for_timeout(300)
     mp2.add_script_tag(path=str(AXE_JS))
     v = axe_run(mp2)
-    ok(not v, f"method page: 0 axe violations ({v[:2]})")
+    prefers_dark = mp2.evaluate("matchMedia('(prefers-color-scheme: dark)').matches")
+    ok(prefers_dark and not v,
+       f"method page (desktop prefers-color-scheme: dark): 0 axe violations ({v[:2]})")
     assert_clean(mp2, method_errors, "the method page runs without JS/network errors")
-    mc.close()
-    EVIDENCE.append(f"axe: {axe_version} ran over welcome, reader, search, learn, "
-                    f"favorites, chapter and method (tags {', '.join(AXE_TAGS)})")
+    desktop_ctx.close()
+    EVIDENCE.append(f"axe: {axe_version} ran at 390x844 light over welcome, reader, "
+                    f"search, learn, favorites, chapter; at 1440x900 light and "
+                    f"setTheme(true, false) dark over welcome, reader, search, "
+                    f"favorites, chapter; method at 1440x900 prefers-color-scheme: "
+                    f"dark (tags {', '.join(AXE_TAGS)})")
 
     # The run-level sink is now the last line of defence: every page above has
     # its own labelled check, so this one only catches something arriving late.

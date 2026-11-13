@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const TOTAL_ASSERTIONS = 941;      // keep in step with the printed total (940 + HANDOFF count check)
-const TOTAL_BROWSER_CHECKS = 346;   // browser_checks.py, http run (337 over file://); error capture + axe
+const TOTAL_BROWSER_CHECKS = 357;   // browser_checks.py, http run (348 over file://); error capture + responsive/theme axe
 const path = require('path');
 
 const ROOT = __dirname;
