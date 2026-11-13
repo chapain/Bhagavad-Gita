@@ -319,7 +319,7 @@ function fillModal(){
     <div class="reader-copy">
       <div id="verseContainer" class="m-verse-box-container">
         <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
-             aria-label="${esc(L('click_hint_pada'))}" aria-expanded="false"
+             aria-expanded="false"
              onclick="App.reader.toggleVerseExpansion(event)"
              onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}

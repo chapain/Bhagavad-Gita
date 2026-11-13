@@ -41,8 +41,13 @@
   .lede{ color:var(--ink-soft); }
   .langnav{ display:flex; gap:14px; flex-wrap:wrap; margin:0 0 22px;
             font-size:.9rem; letter-spacing:.02em; }
-  .langnav a{ color:var(--saffron); text-decoration:none; border-bottom:1px solid transparent; }
+  /* --saffron (#B45A24) measures 4.49:1 on --paper — a hair under the 4.5:1 AA
+     floor for body-size text, so the language links use the darker accent
+     #8A4A1D (6.46:1). axe-core reports the old pair as color-contrast. */
+  .langnav a{ color:#8A4A1D; text-decoration:none; border-bottom:1px solid transparent; }
   .langnav a:hover, .langnav a:focus{ border-bottom-color:currentColor; }
+  /* The dark palette's #DE8F52 on #1F1A14 is 6.7:1 — readable as it stands. */
+  @media (prefers-color-scheme:dark){ .langnav a{ color:var(--saffron); } }
   a{ color:var(--accent); }
   .sa{ font-family:"Noto Serif Devanagari",Georgia,serif; }
   .cta{ display:inline-block; margin:8px 0 4px; padding:11px 18px; border-radius:12px;

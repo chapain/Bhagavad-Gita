@@ -1,0 +1,20 @@
+axe-core 4.14.0 — vendored for the accessibility sweep in browser_checks.py
+================================================================================
+File:    tests/axe.min.js  (unmodified axe.min.js from the published package)
+Package: axe-core@4.14.0
+Source:  https://registry.npmjs.org/axe-core/-/axe-core-4.14.0.tgz  (package/axe.min.js)
+Licence: Mozilla Public License 2.0 (MPL-2.0)
+
+Why vendored and not an npm devDependency
+-----------------------------------------
+The sweep must run inside the Chromium that CI already installs, with no bundler,
+no npm step and no network at test time. A checked-in, unmodified minified build
+is loaded with page.add_script_tag() and driven with axe.run(). It is never
+served to readers: it lives under tests/, is not referenced by index.html, and is
+not in the service worker's precache list, so it adds zero bytes to the download.
+
+To update: `npm pack axe-core@<version>`, extract package/axe.min.js over
+tests/axe.min.js, update this file, and check the version string that
+browser_checks.py prints. MPL-2.0 requires the licence to travel with the file
+and any modified version to be published under the same licence; this copy is
+unmodified.

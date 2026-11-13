@@ -4437,7 +4437,6 @@ function showWelcome(){
     const part = App.library.entryAt(c.themes[dv.ti], dv.si).part;
     const el = document.getElementById('wDay'); if(!el) return;
     el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0"
-          aria-label="${esc(L('verse'))} ${esc(fmtNL(v.n))}: ${esc(T(part.titles))}. ${esc(L('open_verse'))}"
           onclick="App.reader.open(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
           <div class="wd-label">${esc(shared ? L('shared_label') : L('verse_of_day'))}</div>
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
@@ -4513,7 +4512,7 @@ function modeSwitch(ci){
      setup wizard. */
   const m = state.view === 'learn' ? 'learn' : 'chapter';
   const btn = (mode, lab, fn, tip) =>
-    `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
+    `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
     <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
       ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
@@ -5000,7 +4999,7 @@ function setVerseView(expanded){
   } else {
     content.setAttribute('role', 'button');
     content.setAttribute('tabindex', '0');
-    content.setAttribute('aria-label', L('click_hint_pada'));
+    content.removeAttribute('aria-label');
     content.setAttribute('aria-expanded', 'false');
     fitWholeVerse();
   }
@@ -5407,7 +5406,7 @@ function fillModal(){
     <div class="reader-copy">
       <div id="verseContainer" class="m-verse-box-container">
         <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
-             aria-label="${esc(L('click_hint_pada'))}" aria-expanded="false"
+             aria-expanded="false"
              onclick="App.reader.toggleVerseExpansion(event)"
              onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}

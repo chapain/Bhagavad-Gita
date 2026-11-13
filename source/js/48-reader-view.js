@@ -96,7 +96,7 @@ function setVerseView(expanded){
   } else {
     content.setAttribute('role', 'button');
     content.setAttribute('tabindex', '0');
-    content.setAttribute('aria-label', L('click_hint_pada'));
+    content.removeAttribute('aria-label');
     content.setAttribute('aria-expanded', 'false');
     fitWholeVerse();
   }

@@ -148,7 +148,6 @@ function showWelcome(){
     const part = App.library.entryAt(c.themes[dv.ti], dv.si).part;
     const el = document.getElementById('wDay'); if(!el) return;
     el.innerHTML = `<div class="w-day fade-in" role="button" tabindex="0"
-          aria-label="${esc(L('verse'))} ${esc(fmtNL(v.n))}: ${esc(T(part.titles))}. ${esc(L('open_verse'))}"
           onclick="App.reader.open(${dv.ci},${dv.ti},${dv.si},'book',null,this)">
           <div class="wd-label">${esc(shared ? L('shared_label') : L('verse_of_day'))}</div>
           <div class="vnum">${esc(L('verse'))} ${esc(fmtNL(v.n))}</div>
@@ -224,7 +223,7 @@ function modeSwitch(ci){
      setup wizard. */
   const m = state.view === 'learn' ? 'learn' : 'chapter';
   const btn = (mode, lab, fn, tip) =>
-    `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-label="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
+    `<button class="ms-btn${m === mode ? ' on' : ''}" title="${tip}" aria-pressed="${m === mode ? 'true' : 'false'}" onclick="${fn}">${lab}</button>`;
   return `<div class="mode-box fade-in">
     <div class="mode-seg" role="group" aria-label="${esc(L('choose_title'))}">
       ${btn('chapter', esc(L('opt_chapter')), `showChapter(${ci})`, esc(L('opt_chapter_d')))}
