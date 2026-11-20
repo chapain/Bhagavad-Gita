@@ -59,7 +59,7 @@ function openModal(ci,ti,si, mode, navIdx, invoker, restoring){
 function closeModal(){
   const bg = $('#modalBg');
   const wasOpen = bg.classList.contains('open');
-  closeVerseMenu(); closeSharePanel();
+  closeVerseMenu(); closeSharePanel(); closeWordPeek(); peekPointerEnd(); PEEK_LONG = false;
   bg.classList.remove('open'); document.body.style.overflow='';
   document.body.classList.remove('modal-open');
   if(wasOpen){
@@ -189,7 +189,13 @@ function openVerseById(id){
     if(n >= 1 && n <= 18) loadChapter(n).then(()=>openVerseById(id)).catch(gitaLoadFail);
     return;
   }
-  openModal(loc.ci, loc.ti, loc.si, state.mode || 'theme');
+  let mode = state.mode || 'theme', navIdx;
+  if(mode === 'fav'){
+    const favs = App.library.favoriteLocations();
+    const k = favs.findIndex(x => x.ci === loc.ci && x.ti === loc.ti && x.si === loc.si);
+    if(k >= 0) navIdx = k; else mode = 'theme';
+  }
+  openModal(loc.ci, loc.ti, loc.si, mode, navIdx);
 }
 /* ---------- mobile: Android hardware / iOS swipe "back" closes the verse sheet ---------- */
 let MODAL_HIST = false, MODAL_POPPING = false, MODAL_RETURN_FOCUS = null;
@@ -213,6 +219,7 @@ window.addEventListener('popstate', ()=>{
 
 
 function fillModal(){
+  closeWordPeek(); peekPointerEnd(); PEEK_LONG = false;
   const ch = DATA[state.chapter], t = ch.themes[state.theme];
   const {s, part} = App.library.entryAt(t, state.idx);
   let partIdx = 0; { let acc = 0;
@@ -424,7 +431,7 @@ function backToTheme(){ closeModal(); App.views.verses(state.chapter, state.them
    are कर्मणि / एव / अधिकारः / ते), so a token cannot be mapped to a word
    without inventing a boundary. Tap, Enter/Space and contextmenu all reach it
    too — this is not a gesture-only feature. Full rationale: PROJECT.md. */
-let PEEK_ROW = null, PEEK_BOX = null, PEEK_TIMER = 0, PEEK_DOWN = 0, PEEK_XY = null;
+let PEEK_ROW = null, PEEK_BOX = null, PEEK_TIMER = 0, PEEK_LONG = false, PEEK_XY = null;
 
 function langEndonym(l){
   /* The three endonyms are literals in the header switcher, not UI copy; read
@@ -463,11 +470,11 @@ document.addEventListener('pointerdown', e=>{
   const row = e.target && e.target.closest ? e.target.closest('.wrow') : null;
   if(!row){ closeWordPeek(); return; }
   if(e.pointerType === 'mouse' && e.button !== 0) return;
-  PEEK_DOWN = Date.now(); PEEK_XY = [e.clientX, e.clientY];
+  PEEK_LONG = false; PEEK_XY = [e.clientX, e.clientY];
   clearTimeout(PEEK_TIMER);
   /* 450 ms, and any move past 10 px cancels — a scroll flick must never open a
      peek halfway down the page. */
-  PEEK_TIMER = setTimeout(function(){ PEEK_TIMER = 0; openWordPeek(row); }, 450);
+  PEEK_TIMER = setTimeout(function(){ PEEK_TIMER = 0; openWordPeek(row); PEEK_LONG = true; }, 450);
 }, true);
 function peekPointerEnd(){ if(PEEK_TIMER){ clearTimeout(PEEK_TIMER); PEEK_TIMER = 0; } }
 document.addEventListener('pointerup', peekPointerEnd, true);
@@ -479,9 +486,9 @@ document.addEventListener('pointermove', e=>{
 document.addEventListener('click', e=>{
   const row = e.target && e.target.closest ? e.target.closest('.wrow') : null;
   if(!row) return;
-  /* A long press ends in a click as well; without this the peek would open and
-     then close in the same gesture. */
-  if(Date.now() - PEEK_DOWN > 400) return;
+  /* A long press ends in a click as well; ignore ONLY that click so keyboard
+     Enter/Space (which never fires pointerdown) still toggles the peek. */
+  if(PEEK_LONG){ PEEK_LONG = false; return; }
   toggleWordPeek(row);
 });
 document.addEventListener('contextmenu', e=>{
@@ -513,10 +520,17 @@ document.addEventListener('keydown', e=>{
       }
       return;
     }
-    /* Escape closes the word peek first, so the sheet does not vanish while
-       the reader is looking at one word. */
+    /* Escape closes the word peek first, then the overflow menu, then the sheet. */
     if(e.key==='Escape' && PEEK_ROW){ closeWordPeek(); return; }
-    if(e.key==='Escape'){ closeModal(); return; }
+    if(e.key==='Escape'){
+      const menu = $('#mVerseMenu');
+      if(menu && !menu.hasAttribute('hidden')){
+        closeVerseMenu();
+        const mb = $('#mMoreBtn'); if(mb && mb.focus) mb.focus();
+        return;
+      }
+      closeModal(); return;
+    }
     if(state.mode==='random') return;
     if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
     if(e.key==='ArrowLeft') navSutra(-1);
@@ -537,6 +551,7 @@ App.reader = Object.freeze({
   open: openModal,
   openId: openVerseById,
   close: closeModal,
+  closePeek: closeWordPeek,
   restore: restoreModalSession,
   refresh: fillModal,
   navigate: navSutra,

@@ -2,7 +2,7 @@
    Strategy: cache-first for the shell (the app is one static file and never
    changes between deploys), with a network revalidation for navigations so a
    new deploy is picked up on the next visit. */
-const CACHE = 'gita-6d29fd25d031';
+const CACHE = 'gita-7c1d8280cf29';
 /* chapter.css is precached even though the app itself never loads it: a reader
    who arrives on a /chapter/N/ landing page and later opens it offline would
    otherwise get an unstyled wall of text, while the manifest and README both
@@ -47,7 +47,7 @@ self.addEventListener('fetch', e => {
   // The service worker script itself MUST come from the network every time, or
   // the browser can never discover a new worker and the cache pins itself
   // forever across deploys (typical "stuck SW" bug).
-  if (url.pathname.endsWith('/sw.js') || url.pathname.endsWith('\sw.js')) {
+  if (url.pathname.endsWith('/sw.js') || url.pathname.endsWith('\\sw.js')) {
     e.respondWith(fetch(req).catch(() => caches.match(req)));
     return;
   }
@@ -62,9 +62,6 @@ self.addEventListener('fetch', e => {
     const root = new URL('./', location.href).pathname;
     const isRoot = url.pathname === root || url.pathname === root + 'index.html';
     const inScope = url.pathname.startsWith(root);
-    const chapterPath = url.pathname.slice(root.length);
-    const isChapter = inScope &&
-      /^chapter\/(?:[1-9]|1[0-8])\/(?:index\.html)?$/.test(chapterPath);
     e.respondWith(fetch(req).then(res => {
       if (res.ok && res.type === 'basic' && (isRoot || inScope)) {
         const copy = res.clone();

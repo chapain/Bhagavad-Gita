@@ -338,8 +338,8 @@ function noteCount(){ return notesList().length; }
 function notesList(){
   const out = [];
   Object.keys(FAVNOTE).forEach(id=>{
-    if(!/^\d{1,2}\.\d{2}$/.test(id)) return;
-    const loc = verseLoc(id);
+    if(!/^\d{1,2}\.\d{1,2}$/.test(id)) return;
+    const loc = verseLoc(id) || VERSES.find(v => v.norm === fmtN(id));
     if(loc) out.push({id:id, loc:loc, text:FAVNOTE[id]});
   });
   return out.sort((a,b)=>{

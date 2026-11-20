@@ -123,4 +123,73 @@ test('SRS schedule promotes on right answer, demotes to box 1 on miss, orders du
   vm.runInContext('srsTouchStreak("2026-10-17");srsTouchStreak("2026-10-18");srsTouchStreak("2026-10-19");',f.ctx);
   assert.equal(vm.runInContext('srsStreakCount("2026-10-19")',f.ctx),3);
 });
+test('SRS updates at most once per verse across multi-question drills',()=>{
+  const srsStart=html.indexOf('const SRS_DAYS = [0, 1, 3, 7, 21, 60];');
+  const srsEnd=html.indexOf('function srsBarHtml(',srsStart);
+  const dStart=html.indexOf('var LQ=[], LQi=0');
+  const dEnd=html.indexOf('function captureQuizSession(',dStart);
+  assert(srsStart>=0 && srsEnd>srsStart && dStart>=0 && dEnd>dStart,'SRS and drills engine must be emitted');
+  const f=fixture();
+  const fakeEl=()=>{const el={disabled:false,className:'',classList:{add(){},remove(){},contains(){return false;}},dataset:{},innerHTML:'',textContent:'',insertAdjacentHTML(){},appendChild(){}};return el;};
+  const ctx=vm.createContext({
+    localStorage:{getItem:k=>f.store[k]||null,setItem:(k,v)=>{f.store[k]=v;}},
+    DATA, state:{lang:'en'},
+    esc:s=>String(s), numL:s=>String(s), L:k=>k, fmt:s=>s,
+    backFoot:()=>'', scrollViewTop:()=>{}, setTimeout:(fn)=>{},
+    view:{innerHTML:''},
+    document:{
+      getElementById:()=>fakeEl(),
+      querySelectorAll:()=>[fakeEl(),fakeEl()],
+      createElement:()=>fakeEl()
+    },
+    App:{
+      learn:{
+        show:()=>{}, shuffle:a=>a.slice(),
+        srsRecord:(ch,vn,ok)=>ctx.srsRecord(ch,vn,ok,'2026-10-20')
+      },
+      views:{chapter:()=>{}},
+      drills:{retry:()=>{}}
+    }
+  });
+  vm.runInContext(
+    html.slice(html.indexOf('const LR_LEGACY_MAP_OPTIONS ='),html.indexOf('function lrIast(){'))+
+    'function vCount(t){return t.parts.reduce((a,p)=>a+p.sutras.length,0);}\n'+
+    'function lrPut(n,o){const a=lrAll();a[n]=o;localStorage.setItem("gitaLearn",JSON.stringify(a));}\n'+
+    html.slice(srsStart,srsEnd)+
+    html.slice(dStart,dEnd), ctx);
+  // Three questions for 2.47, all passed -> advances only ONCE (to box 1, not box 3)
+  ctx.lrRun(1, [
+    {kind:'pick', vn:'2.47', qid:'m', ask:'', opts:[{oid:'a',label:'ok',ok:true},{oid:'b',label:'no',ok:false}]},
+    {kind:'pick', vn:'2.47', qid:'c', ask:'', opts:[{oid:'a',label:'ok',ok:true},{oid:'b',label:'no',ok:false}]},
+    {kind:'order', vn:'2.47', qid:'p', ask:'', chips:[{id:0,label:'a'},{id:1,label:'b'}], answer:[0,1]}
+  ], 'drill', ()=>{});
+  ctx.lrPick(0);
+  ctx.lrPick(0);
+  ctx.lrChip(fakeEl(), 0); ctx.lrChip(fakeEl(), 1);
+  assert.equal(JSON.parse(f.store.gitaLearn)['2'].srs['2.47'].box, 1, '3 passed items for one verse promote once');
+  assert.equal(JSON.parse(f.store.gitaLearn)['2'].srs['2.47'].reps, 1);
+
+  // Start a new drill for 2.11: miss 1st item, pass 2nd and requeued 1st -> stays Box 1 with 1 lapse
+  ctx.srsRecord(2,'2.11',true,'2026-10-10'); // box 1
+  ctx.srsRecord(2,'2.11',true,'2026-10-11'); // box 2
+  ctx.lrRun(1, [
+    {kind:'pick', vn:'2.11', qid:'m', ask:'', opts:[{oid:'a',label:'ok',ok:true},{oid:'b',label:'no',ok:false}]},
+    {kind:'pick', vn:'2.11', qid:'c', ask:'', opts:[{oid:'a',label:'ok',ok:true},{oid:'b',label:'no',ok:false}]}
+  ], 'drill', ()=>{});
+  ctx.lrPick(1); ctx.lrRetry(); // miss -> requeued
+  ctx.lrPick(0);                // pass second item
+  ctx.lrPick(0);                // pass requeued first item
+  const s211=JSON.parse(f.store.gitaLearn)['2'].srs['2.11'];
+  assert.equal(s211.box, 1, 'a missed verse must not re-promote during the same drill');
+  assert.equal(s211.lapses, 1, 'a verse lapses at most once per drill');
+});
+test('cloze drill uses active language glosses (ne/hi) rather than raw English',()=>{
+  const dStart=html.indexOf('function lrDrill(');
+  const dEnd=html.indexOf('/* Learn public boundary',dStart);
+  assert(dStart>=0 && dEnd>dStart,'lrDrill must be emitted');
+  const clozeCode=html.slice(dStart,dEnd);
+  assert(!/\bc\.w\[2\]|\bx\[2\]/.test(clozeCode),'cloze drill must call lrGloss() instead of indexing [2]');
+  assert(/lrGloss\(x\)\s*===\s*lrGloss\(c\.w\)/.test(clozeCode),'cloze distractors deduplicate in current language');
+  assert(/esc\(lrGloss\(c\.w\)\)/.test(clozeCode),'cloze explanation note prints current-language gloss');
+});
 console.log(`\nprogress maps: ${count} tests passed — retained verse ranges migrate; held verses, notes and favourites survive`);
