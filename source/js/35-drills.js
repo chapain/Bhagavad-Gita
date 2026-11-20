@@ -1,14 +1,27 @@
 /* ---------------- the drill engine ----------------
    One queue. A miss is not a failure: it goes to the back and comes round
    again, and the run ends only when the queue is genuinely empty. */
-var LQ=[], LQi=0, LQmiss=0, LQdone=null, LQlab='', LQpick=[], LQci=0;
+var LQ=[], LQi=0, LQmiss=0, LQdone=null, LQlab='', LQpick=[], LQci=0, LQsrs={};
 /* Where the queue's footer should lead. The learn path is inside a chapter;
    Play is not — it passed ci=0 and so offered "back to chapter", which sent the
    reader to chapter 1 from a game that spans the whole Gītā (owner
    2026-09-01). */
 var LQback = null;
 function lrRun(ci, items, label, done, back){
-  LQci=ci; LQback=back||null; LQ=items.slice(); LQi=0; LQmiss=0; LQlab=label; LQdone=done; lrPaint();
+  LQci=ci; LQback=back||null; LQ=items.slice(); LQi=0; LQmiss=0; LQlab=label; LQdone=done; LQsrs={}; lrPaint();
+}
+function srsMarkMissed(vn){
+  if(!vn || LQback) return;
+  if(!LQsrs[vn]){ LQsrs[vn] = 'missed'; App.learn.srsRecord(LQci+1, vn, false); }
+}
+function srsMaybePass(it){
+  const vn = it && it.vn;
+  if(!vn || LQback || it._missed || LQsrs[vn]) return;
+  if(LQ.slice(LQi + 1).some(x => x.vn === vn)) return;
+  const earlierMiss = LQ.slice(0, LQi).some(x => x.vn === vn && LQ.slice(LQi).some(y => y.qid === x.qid));
+  if(earlierMiss){ LQsrs[vn] = 'missed'; return; }
+  LQsrs[vn] = 'promoted';
+  App.learn.srsRecord(LQci+1, vn, true);
 }
 function lrRetry(){ LQi++; lrPaint(); }
 function lrPaint(resumeUi){
@@ -175,11 +188,11 @@ function lrPick(i){
   });
   const fb = document.getElementById('lrFb');
   if(o.ok){
-    if(it.vn && !LQback && !it._missed) App.learn.srsRecord(LQci+1, it.vn, true);
+    srsMaybePass(it);
     fb.innerHTML = `<div class="good">${esc(L('learn_yes'))}</div>`;
     LQi++; setTimeout(lrPaint, 620);
   }else{
-    if(it.vn && !LQback && !it._missed){ it._missed = 1; App.learn.srsRecord(LQci+1, it.vn, false); }
+    if(it.vn && !LQback && !it._missed){ it._missed = 1; srsMarkMissed(it.vn); }
     LQmiss++; LQ.push(it);
     /* The tick and cross on the options already say right and wrong, so the
        feedback line drops the verdict and keeps only what the reader cannot
@@ -244,12 +257,12 @@ function lrChip(el, id){
     document.getElementById('lrSlots').insertAdjacentHTML('beforeend',
       `<span class="lr-slot${dv}"${dv?' lang="sa"':''}>${numL(LQpick.length)}. ${esc(chp?chp.label:el.textContent.trim())}${iast}</span>`);
     if(LQpick.length === it.answer.length){
-      if(it.vn && !LQback && !it._missed) App.learn.srsRecord(LQci+1, it.vn, true);
+      srsMaybePass(it);
       fb.innerHTML = `<div class="good">${esc(L('learn_thread_ok'))}</div>`;
       LQi++; setTimeout(lrPaint, 700);
     }
   }else{
-    if(it.vn && !LQback && !it._missed){ it._missed = 1; App.learn.srsRecord(LQci+1, it.vn, false); }
+    if(it.vn && !LQback && !it._missed){ it._missed = 1; srsMarkMissed(it.vn); }
     LQmiss++;
     el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'), 380);
     const r = it.chips.find(c=>c.id===want);

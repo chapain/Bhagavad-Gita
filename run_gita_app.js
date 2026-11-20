@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 941;      // keep in step with the printed total (940 + HANDOFF count check)
+const TOTAL_ASSERTIONS = 946;      // keep in step with the printed total (941 + 5 defect-regression locks)
 const TOTAL_BROWSER_CHECKS = 357;   // browser_checks.py, http run (348 over file://); error capture + responsive/theme axe
 const path = require('path');
 
@@ -838,6 +838,11 @@ ok(/<link rel="canonical" href="https?:\/\/[^"]+\/">/.test(html), 'canonical lin
      && /Math\.abs\(e\.clientX - PEEK_XY\[0\]\) > 10/.test(html)
      && /e\.key==='Escape' && PEEK_ROW/.test(html),
      'D2: a long press opens it, a scroll flick cancels it, and Escape closes the peek before the sheet');
+  ok(/if\(PEEK_LONG\)\{ PEEK_LONG = false; return; \}/.test(html)
+     && !/PEEK_DOWN/.test(html) && /closeWordPeek\(\); peekPointerEnd\(\);/.test(html),
+     'D2: keyboard Enter/Space opens the peek without pointerdown gating, and sheet navigation resets peek state');
+  ok(/function openVerseById\(id\)[\s\S]{0,450}favoriteLocations\(\)/.test(html),
+     'D4: opening a recently viewed verse from favourites resolves its favourite index or switches to theme mode');
   ok(/function recentVersesHtml\(/.test(html) && /gitaRecentVerses/.test(html),
      'Phase D4: recently viewed verses row is wired in sessionStorage');
   ok(/@media print\{/.test(html), 'Phase D3: print stylesheet is included');
@@ -1102,6 +1107,12 @@ ok(!/<link rel="(?:icon|apple-touch-icon|manifest)"[^>]*href="\//.test(html),
   const f404 = fs.readFileSync(path.join(__dirname, '404.html'), 'utf8');
   ok(f404.includes("('0' + m[2]).slice(-2)"),
      '404.html zero-pads single-digit legacy verse links to the #vN.NN anchors');
+  ok(/prefers-color-scheme:dark[\s\S]*a\.cta\{[^}]*color:#1A1209/.test(f404),
+     '404.html dark-mode CTA uses readable dark ink on saffron rather than cream on sage');
+  ok((html.slice(html.indexOf('function notesList()'), html.indexOf('function notesList()') + 180)).includes('/^\\d{1,2}\\.\\d{1,2}$/'),
+     'notesList accepts the same verse-id regex as favLoad and data backup');
+  ok(/function srchAnnounced\(\)\{[\s\S]{0,100}SRCH_TOTAL/.test(html),
+     'search live-region announcement uses total hits (verses + passages)');
   const sw = fs.readFileSync(path.join(__dirname, 'sw.js'), 'utf8');
   ok(sw.includes('c.add(u).catch') && sw.includes('status: 504'),
      'sw.js precaches per-asset and answers offline misses with a Response, never undefined');

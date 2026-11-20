@@ -80,7 +80,9 @@ function setVerseView(expanded){
   const content = document.getElementById('verseContent');
   if(!container || !content) return;
   const on = !!expanded;
+  const hadFocus = document.activeElement && content.contains(document.activeElement);
   verseViewState.isExpanded = on;
+  if(App.reader && App.reader.closePeek) App.reader.closePeek();
   content.innerHTML = on ? verseViewState.expanded : verseViewState.whole;
   content.classList.toggle('m-whole-verse', !on);
   content.classList.toggle('m-verse', on);
@@ -93,12 +95,17 @@ function setVerseView(expanded){
     content.removeAttribute('aria-label');
     content.removeAttribute('aria-expanded');
     refreshWordsBtn();
+    if(hadFocus){
+      const first = content.querySelector('.pada-toggle, .spk-line, .m-verse-back');
+      if(first && first.focus) first.focus({preventScroll:true});
+    }
   } else {
     content.setAttribute('role', 'button');
     content.setAttribute('tabindex', '0');
     content.removeAttribute('aria-label');
     content.setAttribute('aria-expanded', 'false');
     fitWholeVerse();
+    if(hadFocus && content.focus) content.focus({preventScroll:true});
   }
 }
 function toggleVerseExpansion(ev){
@@ -154,6 +161,7 @@ function toggleWords(el){
   const words = id ? document.getElementById(id) : null;
   if(!words) return;
   const open = words.classList.toggle('open');
+  if(!open && App.reader && App.reader.closePeek) App.reader.closePeek();
   el.setAttribute('aria-expanded', String(open));
   refreshWordsBtn();
 }

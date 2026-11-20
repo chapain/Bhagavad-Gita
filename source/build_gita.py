@@ -715,7 +715,7 @@ self.addEventListener('fetch', e => {
   // The service worker script itself MUST come from the network every time, or
   // the browser can never discover a new worker and the cache pins itself
   // forever across deploys (typical "stuck SW" bug).
-  if (url.pathname.endsWith('/sw.js') || url.pathname.endsWith('\\sw.js')) {
+  if (url.pathname.endsWith('/sw.js') || url.pathname.endsWith('\\\\sw.js')) {
     e.respondWith(fetch(req).catch(() => caches.match(req)));
     return;
   }
@@ -730,9 +730,6 @@ self.addEventListener('fetch', e => {
     const root = new URL('./', location.href).pathname;
     const isRoot = url.pathname === root || url.pathname === root + 'index.html';
     const inScope = url.pathname.startsWith(root);
-    const chapterPath = url.pathname.slice(root.length);
-    const isChapter = inScope &&
-      /^chapter\\/(?:[1-9]|1[0-8])\\/(?:index\\.html)?$/.test(chapterPath);
     e.respondWith(fetch(req).then(res => {
       if (res.ok && res.type === 'basic' && (isRoot || inScope)) {
         const copy = res.clone();
@@ -1133,11 +1130,12 @@ NOT_FOUND = f"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, follow">
 <title>Page not found — Bhagavad Gita</title>
-<link rel="icon" href="/Bhagavad-Gita/favicon.ico" sizes="any">
+<link rel="icon" href="{SITE_BASE}/favicon.ico" sizes="any">
 <style>
   :root{{ --paper:#FFF8EC; --ink:#2A2118; --ink-soft:#6B5D4F; --accent:#1A5648; --saffron:#B45A24; }}
   @media (prefers-color-scheme:dark){{
-    :root{{ --paper:#1F1A14; --ink:#EDE3D0; --ink-soft:#B0A28C; --accent:#8FBEB0; --saffron:#DE8F52; }}
+    :root{{ --paper:#16120D; --ink:#E9DCC3; --ink-soft:#A79A80; --accent:#8FBEB0; --saffron:#E1953A; }}
+    a.cta{{ background:var(--saffron); color:#1A1209; }}
   }}
   body{{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
         background:var(--paper); color:var(--ink); text-align:center;

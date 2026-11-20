@@ -315,4 +315,42 @@ test('a note is independent of the favourites list', () => {
          'un-favouriting leaves the verse and its note alone');
 });
 
+test('folded search highlighting marks ASCII-folded IAST matches without splitting clusters', () => {
+  const hlStart = html.indexOf('function hlSearchText(');
+  const hlEnd = html.indexOf('\nfunction doSearch(){', hlStart);
+  const ctx = vm.createContext({
+    esc: s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'),
+    digitNorm: s => String(s).replace(/[०-९]/g, d => '0123456789'['०१२३४५६७८९'.indexOf(d)]),
+    numL: s => String(s),
+    L: k => k,
+    $: () => null,
+    searchExactKey: searchContext.searchExactKey,
+    hasSearchDiacritics: searchContext.hasSearchDiacritics,
+    searchFoldKey: searchContext.searchFoldKey,
+  });
+  vm.runInContext(html.slice(hlStart, hlEnd), ctx);
+  assert.equal(ctx.hlSearchText('The Sāṅkhya Yoga', 'sankhya'),
+               'The <mark class="srch-hl">Sāṅkhya</mark> Yoga');
+  assert.equal(ctx.hlSearchText('Kṛṣṇa & Arjuna', 'krishna'),
+               '<mark class="srch-hl">Kṛṣṇa</mark> &amp; Arjuna');
+  assert.equal(ctx.hlSearchText('Kṛṣṇa', 'is'), 'Kṛṣṇa',
+               'partial digraph match must not split a single IAST cluster');
+});
+
+test('srchAnnounced reports total hits including chapters and themes, not only verse hits', () => {
+  const sStart = html.indexOf('let SRCH_HITS =');
+  const sEnd = html.indexOf('\n/* ==================== Learn by heart', sStart);
+  assert(sStart >= 0 && sEnd > sStart, '12-search module must be emitted');
+  const srchCode = html.slice(sStart, sEnd);
+  assert(/SRCH_TOTAL\s*=\s*total/.test(srchCode) && /resultCountLabel\(SRCH_TOTAL\)/.test(srchCode),
+         'srchAnnounced must announce SRCH_TOTAL (verses + passages)');
+  const ctx = vm.createContext({
+    resultCountLabel: n => `${n} ${n === 1 ? 'result' : 'results'}`,
+  });
+  vm.runInContext('let SRCH_HITS = [], SRCH_TOTAL = 2, SRCH_NOTE = "";\n' +
+    srchCode.slice(srchCode.indexOf('function srchAnnounced(')), ctx);
+  assert.equal(ctx.srchAnnounced(), '2 results',
+               'passage-only searches must not announce 0 results');
+});
+
 console.log(`\nsearch regressions: ${passed} tests passed`);

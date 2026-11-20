@@ -508,9 +508,9 @@ function lrDrill(ci, ti, vs, seed){
       const dw = [];
       lrShuffle(pool).forEach(function(x){
         if(dw.length >= 3) return;
-        if(x[2] === c.w[2]) return;          // same meaning
-        if(shownForms[x[0]]) return;         // already on screen
-        if(seenOpt[x[0]]) return;            // duplicate option
+        if(lrGloss(x) === lrGloss(c.w)) return; // same meaning in current language
+        if(shownForms[x[0]]) return;            // already on screen
+        if(seenOpt[x[0]]) return;               // duplicate option
         seenOpt[x[0]] = 1; dw.push(x);
       });
       items.push({kind:'pick', vn:s.n, qid:'drill:cloze:'+s.n+':'+c.qi+':'+c.wi,
@@ -527,7 +527,7 @@ function lrDrill(ci, ti, vs, seed){
              + `<div class="lr-split" lang="sa">${split}</div>`,
         opts: lrShuffle([c.w].concat(dw)).map(function(o){
                 return {oid:'word:'+o[0], label:o[0], iast:o[1], deva:1, ok:o===c.w}; }),
-        note: `<b lang="sa">${esc(c.w[0])}</b>${state.lang==='en' ? ` (${esc(c.w[1])})` : ''} — ${esc(c.w[2])}`});
+        note: `<b lang="sa">${esc(c.w[0])}</b>${state.lang==='en' ? ` (${esc(c.w[1])})` : ''} — ${esc(lrGloss(c.w))}`});
     }
   });
   /* Reorder the verses of the theme. The chip must NOT carry the verse number:

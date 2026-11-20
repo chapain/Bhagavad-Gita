@@ -4,7 +4,7 @@
    (prepareSearchQuery, searchTextMatches, SEARCH_PASSAGES, verseAt, sutraAt,
    allChReady) stay in 10-library.js, which loads first; it walks the index through
    versesMatching(). Results are owned here and read via srchAnnounced(). */
-let SRCH_HITS = [];
+let SRCH_HITS = [], SRCH_TOTAL = 0;
 /* Set only when C3 rescued a diacritic query onto its plain reading; read by
    the search render and by the screen-reader announcement, cleared otherwise. */
 let SRCH_NOTE = '';
@@ -27,7 +27,36 @@ function hlSearchText(text, q){
     last = m.index + m[0].length;
     if(!m[0].length) break;
   }
-  return out + esc(s.slice(last));
+  if(last > 0) return out + esc(s.slice(last));
+  if(typeof searchFoldKey === 'function' && typeof hasSearchDiacritics === 'function'
+     && !hasSearchDiacritics(needle)){
+    const fk = searchFoldKey(needle);
+    if(fk.length >= 2){
+      let folded = '', starts = [], ends = [], i = 0;
+      while(i < s.length){
+        let end = i + 1;
+        while(end < s.length && /[\u0300-\u036f]/.test(s[end])) end++;
+        const ch = s.slice(i, end);
+        const part = /\s/.test(ch) ? '' : (ch.toLowerCase() === 'c' && (s[end] || '').toLowerCase() !== 'h' ? 'ch' : searchFoldKey(ch));
+        for(let k = 0; k < part.length; k++){ folded += part[k]; starts.push(i); ends.push(end); }
+        i = end;
+      }
+      let pos = 0, fLast = 0, fOut = '';
+      while((pos = folded.indexOf(fk, pos)) >= 0){
+        const endPos = pos + fk.length;
+        const okBound = (pos === 0 || starts[pos] !== starts[pos - 1])
+          && (endPos === folded.length || ends[endPos - 1] !== ends[endPos]);
+        if(okBound && starts[pos] >= fLast){
+          fOut += esc(s.slice(fLast, starts[pos])) + '<mark class="srch-hl">'
+                + esc(s.slice(starts[pos], ends[endPos - 1])) + '</mark>';
+          fLast = ends[endPos - 1];
+        }
+        pos = endPos;
+      }
+      if(fLast > 0) return fOut + esc(s.slice(fLast));
+    }
+  }
+  return esc(s);
 }
 /* Zero results is the only place a chip earns its space: four real starting
    points the book actually contains. Recent queries are deliberately NOT a
@@ -92,7 +121,7 @@ function doSearch(){
   if(!allChReady()){ loadAllChapters().then(doSearch); return; }
   const q = ($('#searchInput').value || '').trim();
   if(!q){ clearSearch(); return; }
-  SRCH_HITS = [];
+  SRCH_HITS = []; SRCH_TOTAL = 0; SRCH_NOTE = '';
   rememberOrigin();
   App.session.update({view:'search', chapter:null, theme:null}); App.views.persist(); App.views.renderCrumbs();
   const nq = prepareSearchQuery(q);
@@ -117,7 +146,8 @@ function doSearch(){
       if(msg){
         view.innerHTML = `<div class="res-head fade-in" role="heading" aria-level="2">${esc(L('search_results'))}</div>
           <div class="res-count fade-in">${esc(resultCountLabel(0))}</div>
-          <div class="view-sub fade-in">${esc(msg)}</div>`;
+          <div class="view-sub fade-in">${esc(msg)}</div>
+          ${srchChipsHtml()}`;
         announceView();
         return;
       }
@@ -160,6 +190,7 @@ function doSearch(){
     return;
   }
   SRCH_HITS = hits;
+  SRCH_TOTAL = total;
   const themes = passages.filter(p=>p.kind === 'theme'),
         chapters = passages.filter(p=>p.kind === 'chapter'),
         groups = (hits.length?1:0) + (themes.length?1:0) + (chapters.length?1:0);
@@ -195,5 +226,5 @@ function clearSearch(){
 /* Library's announceView speaks the count and the relaxed-query note; both are
    this module's state, so the read travels through a function. */
 function srchAnnounced(){
-  return resultCountLabel(SRCH_HITS.length) + (SRCH_NOTE ? ' · ' + SRCH_NOTE : '');
+  return resultCountLabel(SRCH_TOTAL) + (SRCH_NOTE ? ' · ' + SRCH_NOTE : '');
 }

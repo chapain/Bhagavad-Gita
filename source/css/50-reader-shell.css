@@ -160,20 +160,12 @@
     font:600 .8rem/1.5 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
     text-align:left; }
 
-  /* Old selectors that no longer apply to the new layout but are harmless
-     if left in place — the dead ones below are overridden above. */
-  .m-num{ display:none; }
-  .m-readerbar{ display:none; }
   .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:.95rem; font-weight:600;
            margin:0 52px 8px 0; line-height:1.4;}
-  .m-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:1.2rem; color:var(--saffron-text); font-weight:700;
-          display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
   .m-title{ margin:0; padding:0; flex:1 1 auto; min-width:0; color:inherit; font:inherit; }
   .m-vtitle{ color:var(--teal); font-weight:600; font-size:1.05rem; }
   .m-meter{ display:inline-block; background:var(--teal-soft); color:var(--teal); font-size:.78rem; font-weight:700;
             padding:3px 12px; border-radius:999px; margin:6px 0 12px; letter-spacing:.03em;}
-  .m-readerbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px 12px; }
-  .m-readerbar .m-meter{ margin:6px 0 12px; }
   .reader-size{ display:flex; align-items:center; gap:4px; margin:6px 0 12px; color:var(--ink-soft);
                 font: .78rem/1.3 system-ui,-apple-system,"Segoe UI",sans-serif; white-space:nowrap; }
   .reader-size .reader-size-label{ font-weight:600; margin-right:3px; }
