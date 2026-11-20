@@ -400,9 +400,9 @@ REVIEWED = json.loads(r'''{
         [
           "तत्",
           "tat",
-          "that (knowledge)",
+          "that (the Supreme)",
           "त्यो (परम तत्त्व)",
-          "वह (ज्ञान)"
+          "वह (परम तत्त्व)"
         ],
         [
           "परम्",

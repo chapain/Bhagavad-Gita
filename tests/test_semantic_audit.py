@@ -151,9 +151,9 @@ REVIEWED = {
             "hi": "दोनों सेनाओं के बीच शोक करते हुए उसे, हे भरतवंशी, हृषीकेश ने मानो मुस्कुराकर ये वचन कहे।",
         },
         "paras": {
-            "en": "Sañjaya adds: “Then, O descendant of Bharata, as Arjuna sat sorrowing between the two armies, Kṛṣṇa smiled as if and spoke to him.”",
+            "en": "Sañjaya adds: “Then, O descendant of Bharata, as Arjuna sat sorrowing between the two armies, Kṛṣṇa seemed to smile as he spoke to him.”",
             "ne": "सञ्जय थप्छन्: “त्यसपछि, हे भरतवंशी, दुवै सेनाको बीचमा शोकमा बसेका अर्जुनलाई कृष्णले मुस्कुराएझैँ गरी भने।”",
-            "hi": "संजय आगे कहते हैं: “तब, हे भरतवंशी, दोनों सेनाओं के बीच शोक में बैठे अर्जुन को कृष्ण ने जैसे मुस्कुराकर कहा।”",
+            "hi": "संजय आगे कहते हैं: “तब, हे भरतवंशी, दोनों सेनाओं के बीच शोक में बैठे अर्जुन से कृष्ण बोले। लगा जैसे वे मुस्कुरा रहे हों।”",
         },
     },
     "3.22": {

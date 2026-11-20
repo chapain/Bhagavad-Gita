@@ -230,7 +230,9 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # 9,389 rows on 2026-11-12. Every one was read as synonymy (see the census test);
 # the exact number is pinned so any rewrite that moves it is red and has to be
 # read. It may fall as the house normalises a gloss, never rise silently.
-ROW_LITERAL_CENSUS = 1022
+# Reviewed 2026-11-20: 3.26 encourage, 4.10 absorbed, and both
+# external/outside in 5.27 now appear in the literal as well as the rows.
+ROW_LITERAL_CENSUS = 1018
 
 
 def _fold_diacritics(word):
