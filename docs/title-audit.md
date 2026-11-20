@@ -6,6 +6,8 @@
 
 **Owner decision (2026-11-05):** Approved the six Chapter 1–2 proposals recorded below and authorized continuing the audit through Chapter 10 using best editorial judgment. The scope was subsequently expanded to Chapters 11–18, with the same correction authority. Verdicts must be recorded before each chapter’s canonical edits.
 
+
+**Advisory closure (2026-11-20):** the 50 mechanical advisories were then re-read independently of both earlier passes, item by item; all 50 were upheld and **no canonical title changed**. The per-item evidence is the last section of this file, “Advisory closure, 2026-11-20”.
 ## Method and verdicts
 
 - A theme title is judged against the entire range, its own description, its parts’ titles/descriptions and the verses—not just the opening verse. Each language is judged independently.
@@ -1252,3 +1254,93 @@
 - **Full build proof:** `python3 build.py --prove` passed. See the final totals recorded in `PROJECT.md` §4.12 and `HANDOFF.md`.
 - **Verification limits:** browser tests were skipped because Playwright/Chromium is unavailable; no browser or live-site verification was performed. SEO proof was local-only. Pillow was missing, so `img/share-art.jpg` was not repainted. These checks are explicitly unverified, not passed.
 
+## Advisory closure, 2026-11-20 — all 50 read, all 50 upheld
+
+The worksheet's 50 mechanical advisories were the last open item of the title
+work. On 2026-11-20 the owner delegated the verdict (“use your best judgment,
+check against valid sources, fix them all”), so each advisory was read a third
+time — independently of the 2026-11-04/05 passes — against the verse it
+represents: its own Devanagari and IAST, its en/ne/hi literal, its part
+description, and for a theme its whole range.
+
+**Outcome: 50 advisories examined, 50 upheld, 0 title edits.** The two advisory
+classes are false positives *by construction*: `name-not-in-verse` fires when a
+title names a speaker whose name Sanskrit drops (the pronoun is in the verse);
+`number-unsupported` fires when a title counts what the verse lists without
+printing the numeral. Neither class can distinguish “unsupported” from
+“supported by the verse's own syntax”, which is why the report is a reading
+prompt and never a gate. Nothing here weakens the check: the 50/0 lock and the
+blocking possessive-inversion class are untouched, and no validator, test or
+assertion was changed.
+
+Canonical JSON was not opened for writing; `python3 build.py --prove` after this
+record produced no source or generated diff.
+
+### Verse-level advisories — 10/10 upheld
+
+| Ref | Class | Verdict | Evidence (verse's own words) |
+|---|---|---|---|
+| `1.07` | name-not-in-verse | keep | Duryodhana is the speaker: “the leaders of my army; I name them to you” (`mama sainyasya … tān bravīmi te`). Naming him is naming the speaker, not importing a fact. |
+| `1.09` | name-not-in-verse | keep | Same speech, “ready to give up their lives **for my sake**” (`madarthe tyaktajīvitāḥ`). “For Duryodhana” is the literal sense of *madarthe*. |
+| `1.15` | number-unsupported | keep | Exactly three conches and three blowers are named: Pāñcajanya (Hṛṣīkeśa), Devadatta (Dhanañjaya), Pauṇḍra (Vṛkodara). All three titles say “three”. |
+| `8.23` | number-unsupported | keep | “The time in which yogis, departing, do not return, and the time in which they return” — the verse itself names two (`anāvṛttim āvṛttiṃ ca`). |
+| `13.24` | number-unsupported | keep | Three means are enumerated: meditation, the yoga of knowledge, the yoga of action (`kecit … anye … apare`). |
+| `14.05` | number-unsupported | keep | “Sattva, rajas and tamas — the qualities born of prakṛti”: three, listed in the opening line. |
+| `14.18` | number-unsupported | keep | Three destinations: upward (sattva), the middle (rajas), downward (tamas). |
+| `16.04` | number-unsupported | keep | Six marks: hypocrisy, arrogance, self-conceit, anger, harshness, ignorance — counted in the literal. |
+| `18.12` | number-unsupported | keep | The numeral is in the Sanskrit: “the **threefold** fruit of action — pleasant, unpleasant and mixed” (`trividhaṃ karmaṇaḥ phalam`). |
+| `18.29` | number-unsupported | keep | “Hear the **threefold** distinction of intellect and fortitude” (`trividhaṃ śṛṇu`). Weakening this title would contradict the verse. |
+
+### Theme-level advisories — 40/40 upheld
+
+| Ref | Verses | Class | Verdict | Evidence |
+|---|---|---|---|---|
+| `1.t2` | 1.04–1.09 | name, first person | keep | One continuous speech: 1.07 “my army … I name them”, 1.09 “for my sake”. The description also names both sides, which the Pāṇḍava roster in 1.04–1.06 and his own in 1.07–1.09 support. |
+| `1.t3` | 1.10–1.11 | name, first person | keep | The comparison (“ours … theirs”, 1.10) and the order to hold position and protect Bhīṣma (1.11) are both Duryodhana's. |
+| `1.t4` | 1.12–1.13 | name, scene read | keep | 1.12 says Bhīṣma roared “to gladden him” and 1.13 that the Kaurava instruments sounded together; “hearten Duryodhana” is the verse's stated purpose. |
+| `3.t6` | 3.22–3.26 | name, first person | keep | Kṛṣṇa speaks of himself (“nothing to be done … yet I continue to act”), and 3.25–3.26 draw the wise man's example without unsettling others. |
+| `3.t7` | 3.27–3.30 | name, first person | keep | 3.27–3.28 guṇas act, the deluded think “I am the doer”; 3.30 surrender of all actions, “fight — free from fever”. |
+| `4.t3` | 4.11–4.14 | name, first person | keep | 4.11 “in whatever way men approach me”; 4.13 the fourfold order “created by me … know me as the non-doer”; 4.14 “actions do not stain me”. |
+| `5.t6` | 5.24–5.29 | name, first person | keep | 5.24 inner joy → Brahman-nirvāṇa; 5.26 desire and anger gone; 5.27–5.28 sense and breath discipline; 5.29 “the friend of all beings — he attains peace”. |
+| `6.t3` | 6.10–6.15 | name, first person | keep | 6.11–6.12 the seat and one-pointed practice; 6.13 upright body; 6.14 fearless, “thoughts resting on me”; 6.15 the peace of nirvāṇa. |
+| `6.t7` | 6.29–6.32 | name, first person | keep | 6.29 the Self in all; 6.30–6.31 all in Kṛṣṇa; 6.32 “in pleasure and in pain” — the highest yogi. |
+| `6.t11` | 6.45–6.47 | name, first person | keep | 6.45 perfection through many births; 6.46 “be a yogi”; 6.47 the faithful worshipper with his inmost self in Kṛṣṇa. |
+| `7.t2` | 7.04–7.07 | name, first person | keep | 7.04 the eightfold lower nature; 7.05 the higher nature that upholds the world; 7.07 “strung on me, like a row of gems on a thread”. |
+| `7.t3` | 7.08–7.11 | name, first person | keep | Taste, light, fragrance, life, wisdom and strength appear in order across 7.08–7.11, ending with “desire that is not opposed to dharma”. |
+| `7.t4` | 7.12–7.15 | name, first person | keep | 7.12 the three guṇas “from me alone”; 7.14 māyā “hard to overcome” and crossed by refuge in him; 7.15 those who do not resort to him. |
+| `7.t6` | 7.20–7.23 | name, first person | keep | 7.20 desire-driven worship of other deities; 7.21 faith made steady; 7.22 the desired fruit granted; 7.23 “the fruit … is limited” against “my devotees come to me”. |
+| `7.t8` | 7.28–7.30 | name, first person | keep | 7.28 freedom from the pairs of opposites; 7.29 refuge, knowing Brahman, adhyātma and action; 7.30 knowing him at the time of death. |
+| `8.t2` | 8.05–8.10 | name, first person | keep | 8.05–8.06 the last remembered state decides the destination; 8.07 remember while fighting; 8.08–8.10 practice, devotion, breath between the brows. |
+| `8.t3` | 8.11–8.15 | name, first person | keep | 8.11 the imperishable goal; 8.12 the gates of the body restrained; 8.13 Om and remembrance; 8.14 “easy to reach”; 8.15 no return to birth. |
+| `8.t5` | 8.20–8.22 | name, first person | keep | 8.20–8.21 the eternal unmanifest beyond the dissolving one, “my supreme abode”; 8.22 attained “by devotion to him alone”. |
+| `9.t2` | 9.04–9.08 | name, first person | keep | 9.04 pervasion without containment; 9.07–9.08 beings withdrawn into prakṛti and sent forth again — the cycles, as described. |
+| `9.t6` | 9.20–9.25 | name, first person | keep | 9.21 pleasure ends when merit is spent; 9.22 “I carry what they lack and preserve what they have”; 9.25 destination follows the worship. |
+| `9.t8` | 9.30–9.34 | name, first person | keep | 9.30–9.32 wrongdoing and birth do not bar refuge; 9.34 “fix your mind on me, be my devotee, offer to me, bow to me” — the same four instructions as 18.65, compared directly. |
+| `10.t2` | 10.04–10.07 | name, first person | keep | 10.04–10.05 the states of beings “arise from me alone”; 10.06 the seven seers and four Manus born of his mind; 10.07 unwavering yoga from knowing this. |
+| `10.t3` | 10.08–10.11 | name, first person | keep | 10.08 the source of all; 10.09 devotees rejoicing together; 10.10 the yoga of discernment given; 10.11 the lamp of knowledge destroying darkness. |
+| `10.t5` | 10.16–10.18 | name, first person | keep | 10.16 the glories that pervade the worlds; 10.17 how to contemplate him; 10.18 “I am never satiated with hearing your nectar”. |
+| `10.t7` | 10.24–10.26 | name, first person | keep | Every noun in the description is a quoted item: Bṛhaspati, Skanda, ocean (10.24); Bhṛgu, Om, japa, Himālaya (10.25); aśvattha, Nārada, Citraratha, Kapila (10.26). |
+| `10.t11` | 10.39–10.42 | name, first person | keep | 10.39 the seed of all beings; 10.40 “no end to my divine glories”; 10.41 splendour “born of a portion”; 10.42 “with one part of myself”. |
+| `11.t9` | 11.41–11.44 | name, first person | keep | 11.41 rash familiarity, 11.42 sport and meals, 11.43 “father of this world … teacher”, 11.44 forgiveness “as a father forgives his son, a friend his friend”. |
+| `11.t10` | 11.45–11.46 | name, first person | keep | 11.45 delight mixed with fear and the request for the gracious form; 11.46 “crowned, with mace and discus in hand … four-armed form”. |
+| `12.t2` | 12.06–12.08 | name, first person | keep | 12.06 surrender and meditation; 12.07 “deliverer from the ocean of death and rebirth”; 12.08 mind and intellect fixed, “you shall live in me alone”. |
+| `12.t3` | 12.09–12.12 | name, first person | keep | The ladder is explicit and in order: practice (12.09), work for him (12.10), renunciation of fruits (12.11), “from renunciation comes peace” (12.12). |
+| `13.t3` | 13.12–13.18 | name, first person | keep | 13.12 the beginningless Brahman; 13.13–13.16 pervading, undivided; 13.17 “the light of lights”; 13.18 the devotee “attains my being”. |
+| `14.t7` | 14.26–14.27 | name, first person | keep | 14.26 unwavering devotion crosses the guṇas and makes one fit for Brahman; 14.27 “the support of Brahman, of immortality … eternal dharma and of absolute bliss”. |
+| `15.t4` | 15.12–15.15 | name, first person | keep | 15.12 light of sun, moon and fire; 15.13 nourishment; 15.14 the fire of digestion; 15.15 memory, knowledge and their removal, seated in every heart. |
+| `15.t5` | 15.16–15.20 | name, first person | keep | 15.16–15.17 the perishable, the imperishable and the higher Person; 15.19 undeluded knowledge of the highest Person; 15.20 the most secret teaching, “accomplished all”. |
+| `18.t4` | 18.18–18.22 | name, scene read | keep | 18.18 names the threefold impulse and basis of action; 18.19–18.22 divide knowledge by the guṇas. The description's position (“after naming …”) is exact. |
+| `18.t12` | 18.54–18.55 | name, first person | keep | 18.54 serene, equal to all, neither grieving nor desiring, attaining supreme devotion; 18.55 knowing him in truth and entering him. |
+| `18.t13` | 18.56–18.60 | name, first person | keep | 18.56 refuge and “by my grace”; 18.58 “if from ego you will not listen”; 18.59 “your nature will compel you”. |
+| `18.t15` | 18.64–18.66 | name, first person | keep | 18.64 the supreme secret spoken out of love; 18.65 the four instructions; 18.66 refuge alone, freedom from all sin, “grieve not”. |
+| `18.t16` | 18.67–18.71 | name, first person | keep | 18.67 the four exclusions; 18.68–18.69 the teacher honoured; 18.70 study as the sacrifice of knowledge; 18.71 the faithful listener freed. |
+
+### What this does and does not prove
+
+- **Proves:** no advisory in the 50 misstates its verse; none of the ten counts is
+  wrong; none of the three scene reads invents a claim; and the 50/0 lock is
+  reporting on real text rather than on a stale snapshot.
+- **Does not prove:** that every title is the best wording available. That is a
+  taste judgement on 869 trilingual records, and the worksheet exists so the owner
+  can keep making it. This pass changed nothing, so nothing here needs a
+  regression test beyond the existing worksheet/lock tests, which still pass.

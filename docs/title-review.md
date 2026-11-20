@@ -1,6 +1,6 @@
 # Title and description advisories — review worksheet
 
-Snapshot of 2026-11-12, from `python3 source/audit_titles.py --markdown`. Re-run it after
+Snapshot of 2026-11-20, from `python3 source/audit_titles.py --markdown`. Re-run it after
 any change to `source/ch*.json`; this file is a worklist, not site content.
 
 **An advisory is a candidate for review, not a finding of error.** Sanskrit
@@ -8,6 +8,13 @@ drops pronouns freely and a title may legitimately summarise rather than
 restate. The one class that *fails* the build is possessive inversion
 (the 1.10 defect: “Their force is shielded by Bhīṣma” when the Sanskrit says
 *ours* is) — that is blocking, and it is not in this list.
+
+**All 50 advisories were read and upheld on 2026-11-20**, item by item,
+against each verse's Sanskrit, IAST, literals and description; no canonical
+title was changed. The evidence for each is `docs/title-audit.md` →
+“Advisory closure, 2026-11-20”. This worksheet still prints blank boxes on
+purpose: the quarterly read-through is the owner's, and a later session should
+not tick or edit a title on his behalf.
 
 Each item shows what the verse actually says, so the decision can be made
 without opening the app. Triage labels are mechanical:

@@ -13,23 +13,52 @@ seen", `NEXT.md` E3/E4.
 
 ---
 
-## 0. Publish before you point anyone at it
+## 0. The site is live — verify it before you point anyone at it
 
-As of 2026-11-04 two commits are local only — the module split and the
-provenance page. The live site does **not** have `method/` yet. So:
+**Status, 2026-11-20.** The published site is current, not pending. `main` is at
+`ac7e50e` (the merge of PR #84); CI on that commit passed; the GitHub Pages
+build for that same commit is `built`. So the live site *is* the audited commit,
+and `method/` — the page a sceptical reader will look for — has been live since
+the provenance release, not waiting on a push. This section previously said the
+opposite (two local commits, no `method/`, 937/560/68 counts); that was true on
+2026-11-04 and is false now.
 
-1. `python3 build.py` → all green (937 assertions, 560 site-health, 68 Python).
-2. Push, wait for the Pages build, then open
-   <https://chapain.github.io/Bhagavad-Gita/> in a **private window** and check:
-   the app opens; the footer says “How this edition was made”; that page opens;
-   a chapter page opens; `…/method/` opens directly.
-3. Only then post. A post that lands on a 404 (or on yesterday's build) wastes
+Current numbers, measured on `ac7e50e` with `python3 build.py --prove`, not
+quoted from memory:
+
+| Check | Count |
+|---|---|
+| Python mutation/regression tests | 122 |
+| Document assertions (`run_gita_app.js`) | 946 |
+| Site-health checks | 560 |
+| SEO checks | 10 |
+| Study-map checks | 9,658 |
+| Browser checks | 357 over http / 348 over `file://` — **CI only**, not runnable in this sandbox |
+
+**The five-minute check.** Do it in a **private window**, because a cached
+service worker will happily serve you last week's build and tell you nothing:
+
+1. `python3 build.py --prove` → all green. If it is not green, do not post.
+2. Open <https://chapain.github.io/Bhagavad-Gita/>. The app must open.
+3. Scroll to the footer: “How this edition was made” must be there, and it must
+   open — directly as `…/method/` too, not only through the link.
+4. Open any chapter page (`…/chapter/2/`) and confirm the full text renders.
+5. Switch to नेपाली, then हिन्दी: no English leaking into the interface.
+6. Optional but worth it: install to the home screen and read one verse in
+   airplane mode. If the offline path is broken, strangers will find out first.
+
+7. Only then post. A post that lands on a 404 (or on yesterday's build) wastes
    the one first impression a small subreddit gives you.
+
+**If you have commits that are not pushed yet,** push, wait for the Pages build
+to report `built`, and repeat steps 2–6. Never announce a link you have not
+opened yourself in that same session.
 
 ## 1. Repo topics (E3-a) — one item is still open
 
-GitHub → the repo → **About** (gear icon) → Topics. Currently 11 topics, and
-two things are wrong:
+GitHub → the repo → **About** (gear icon) → Topics. Currently 11 topics (re-read
+via the API on 2026-11-20 — `triligual` is still there and `hindi` is still
+absent), and two things are wrong:
 
 * `triligual` is a typo. Replace it with `trilingual` — a misspelt topic
   matches no search.
@@ -94,19 +123,75 @@ Body:
 
 Title: `A trilingual study edition of the Gita that works offline (free, no account, no tracking)`
 
-Body: the r/bhagavadgita text, but lead with the reading practice rather than
-the engineering, and cut the second paragraph to one sentence. This sub is
-larger and less tolerant of self-promotion; if the rules require flair or a
-weekly thread, use it. Do not post the same day as the other sub.
+Lead with the reading practice, not the engineering, and keep the recension to
+one sentence. This sub is larger and less tolerant of self-promotion; if the
+rules require flair or a weekly thread, use it. Do not post the same day as the
+other sub.
+
+Body:
+
+> Most Gita sites give you the verse and then a commentary. What I wanted for my
+> own practice was the verse itself, laid out so it can be read slowly: the four
+> pādas, the Sanskrit, word-by-word meanings, a literal translation and a plain
+> paraphrase — and nothing arguing between me and the text.
+>
+> I have finished that for all 18 chapters and 700 verses in English, नेपाली and
+> हिन्दी. It follows the Śaṅkara-bhāṣya recension and has no commentary, by
+> choice. It installs to the home screen and reads with no connection — which
+> matters to me because I read on a phone with patchy data.
+>
+> Two honest disclosures: this is a personal edition, not a critical one, and AI
+> tools were used under my direction to draft translations and check the code —
+> every verse was reviewed by me, and the method is written up on the site rather
+> than hidden.
+>
+> Link: https://chapain.github.io/Bhagavad-Gita/
+>
+> Corrections are more useful to me than praise, especially on the Nepali and
+> Hindi wording.
 
 ### r/Nepal — only if you are comfortable being a Nepali builder in public
 
 Title: `मैले नेपालीमा पनि पढ्न मिल्ने भगवद्गीता एप बनाएँ — इन्टरनेट नभए पनि चल्छ`
 
-Body (Nepali, short): what it is, that it works offline, that it is free, that
-Nepali and Hindi are included, the link. Mention Pokhara. Expect the question
-“why not an app store app?” — answer: it installs from the browser, works
-offline, and needs no store, no account and no permissions.
+Body (Nepali, ready to paste):
+
+> नमस्ते,
+>
+> धेरै समयदेखि आफ्नै पढाइका लागि भगवद्गीताको एउटा अध्ययन संस्करण बनाइरहेको
+> थिएँ। अहिले १८ वटै अध्याय र ७०० श्लोक तयार छन् — अङ्ग्रेजी, नेपाली र हिन्दी
+> तीनै भाषामा।
+>
+> हरेक श्लोक चार पादमा खुल्छ: संस्कृत, शब्दार्थ, शब्दशः अनुवाद र सरल
+> अर्थ। फोनको होम स्क्रिनमा राख्न मिल्छ, र इन्टरनेट नभए पनि पढ्न सकिन्छ — म
+> आफैँ धेरै ठाउँमा कमजोर इन्टरनेटमा पढ्ने भएकाले यो मेरा लागि जरुरी थियो।
+>
+> पाठ शाङ्करभाष्यको परम्पराअनुसार राखिएको छ: जहाँ परम्परामा फरक पर्छ, भाष्यको
+> पाठ नै छापिएको छ — जस्तै १.८ मा “सौमदत्तिस्तथैव च”। जानाजान कुनै टीका राखेको
+> छैन; म श्लोक र पाठकबीच आफ्नो बहस राख्न चाहन्नँ।
+>
+> दुई कुरा खुलस्त भन्नुपर्छ। यो मेरो व्यक्तिगत संस्करण हो, विद्वान्हरूले सम्पादन
+> गरेको संस्करण होइन। र यसमा AI साधनहरू मेरो निर्देशनमा प्रयोग भएका छन् —
+> अनुवादको मस्यौदा र कोड जाँचका लागि; हरेक श्लोक मैले पढेर जाँचेको छु, र विधि
+> साइटमै लेखिएको छ, लुकाइएको छैन।
+>
+> लिङ्क: https://chapain.github.io/Bhagavad-Gita/
+>
+> म पोखराबाट यो बनाइरहेको छु। तारिफभन्दा गल्ती सुन्न मन छ — विशेषगरी नेपाली र
+> हिन्दी शब्दहरूमा। केही बिग्रिएको भेट्नुभयो भने यहीँ लेख्नुहोस्, सुधार्छु।
+
+Expect “why not an app store app?” — keep this reply ready rather than repeating
+it in the post:
+
+> किन Play Store मा छैन? — ब्राउजरबाटै होम स्क्रिनमा राख्न मिल्छ, इन्टरनेट बिना
+> चल्छ, र स्टोर, खाता वा अनुमति केही चाहिँदैन। एउटा श्लोक पढ्नका लागि ठूलो एप
+> इन्स्टल गर्नु नपरोस् भन्ने पनि हो।
+
+Two r/Nepal specifics: the audience will ask whether the Nepali is yours or
+machine-drafted, so answer the same way the method page does (drafted with AI
+tools under your direction, every verse reviewed by you) — a straight answer
+costs nothing and a vague one reads badly. And do not lead with the technology;
+lead with reading the Gita in Nepali on a phone with no data.
 
 ### Quora — the highest-yield single item
 
