@@ -230,7 +230,9 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # 9,389 rows on 2026-11-12. Every one was read as synonymy (see the census test);
 # the exact number is pinned so any rewrite that moves it is red and has to be
 # read. It may fall as the house normalises a gloss, never rise silently.
-ROW_LITERAL_CENSUS = 1022
+# Reviewed 2026-11-20: 3.26 encourage, 4.10 absorbed, and both
+# external/outside in 5.27 now appear in the literal as well as the rows.
+ROW_LITERAL_CENSUS = 1018
 
 
 def _fold_diacritics(word):
@@ -354,7 +356,8 @@ NE_NEG_VERB = {
     "जान्दैनौ",        # "you do not know" (4.05)
     "नजान्ने",         # "how should we not know" (1.39)
     "नगर",             # prohibitive "do not do" — शोक नगर (16.05, 18.66)
-    "नगरें",           # "if I did not act" (3.24; also 3.23)
+    "नगरें",           # "if I did not act" (3.24)
+    "लागिनँ",           # "if I did not engage" (3.23)
     "नगरोस्",          # "let him not unsettle" (3.29)
     "नसोचोस्",         # "let him not think" (6.25)
     "नपारोस्",         # "let him not create" (3.26)

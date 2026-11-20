@@ -112,7 +112,7 @@ want them to survive a regeneration.
 |  | 2.04 | How can I strike Bhīṣma and Droṇa? | Arjuna said: How shall I strike Bhīṣma and Droṇa in battle with my arrows, O Madhusūdana — they who are worthy of worship, O slayer of foes? | ☐ | ☐ | ☐ |
 |  | 2.05 | Better to beg than kill revered teachers | Better to eat alms-food even here in this world than to slay these noble, great-souled teachers. Killing these very teachers — even for the sake of wealth and desires — I would taste pleasures … | ☐ | ☐ | ☐ |
 |  | 2.06 | Victory or defeat—which is better? | Nor do we know which is better for us — to conquer them or be conquered. The very sons of Dhṛtarāṣṭra stand before us; killing them, we should not care to live. | ☐ | ☐ | ☐ |
-|  | 2.07 | Teach me, I am your disciple | My nature is overcome by weak compassion; my mind is confused about duty. I ask you: tell me for certain what is good — I am your disciple; teach me, I have taken refuge in you. | ☐ | ☐ | ☐ |
+|  | 2.07 | Teach me, I am your disciple | My nature is overcome by confusion; my mind is confused about duty. I ask you: tell me for certain what is good — I am your disciple; teach me, I have taken refuge in you. | ☐ | ☐ | ☐ |
 |  | 2.08 | This grief no kingdom could drive away | I do not see what could drive away this grief that dries up my senses — even if I won an unrivaled kingdom on earth or lordship over the gods. | ☐ | ☐ | ☐ |
 |  | 2.09 | I will not fight, he said | Sañjaya said: O scorcher of foes, having spoken thus to Hṛṣīkeśa, Arjuna said to Govinda, 'I will not fight' — and fell silent. | ☐ | ☐ | ☐ |
 |  | 2.10 | Kṛṣṇa speaks as if smiling | To him, as he grieved between the two armies, Hṛṣīkeśa, as if smiling, spoke these words, O descendant of Bharata. | ☐ | ☐ | ☐ |
@@ -162,7 +162,7 @@ want them to survive a regeneration.
 |  | 2.54 | Arjuna asks the marks of steady wisdom | Arjuna said: What is the description of the man of steady wisdom, established in samādhi, O Keśava? How does the steady-minded one speak, how sit, how move? | ☐ | ☐ | ☐ |
 |  | 2.55 | Content in the Self alone | The Blessed Lord said: When one casts off all desires of the mind, O Pārtha, and is content in the Self alone through the Self — then one is called steady in wisdom. | ☐ | ☐ | ☐ |
 |  | 2.56 | The muni of steady wisdom | One whose mind is untroubled in sorrow and free from longing in joy, from whom passion, fear and anger have departed — that one is the steady-minded sage. | ☐ | ☐ | ☐ |
-|  | 2.57 | Neither rejoicing nor recoiling | One who is without affection everywhere, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
+|  | 2.57 | Neither rejoicing nor recoiling | One who is everywhere free from attachment, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.58 | Like a tortoise drawing in its limbs | When, like a tortoise drawing in its limbs from all sides, one withdraws the senses from their objects — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.59 | Craving ends when the Supreme is seen | The objects fall away from the self-controlled one, but the taste for them remains; and when the Supreme is seen, even that taste departs. | ☐ | ☐ | ☐ |
 |  | 2.60 | The mind following the senses loses its wisdom | Even for the striving sage, O son of Kuntī, the turbulent senses forcibly carry away the mind. | ☐ | ☐ | ☐ |
@@ -209,14 +209,14 @@ want them to survive a regeneration.
 |  | 3.23 | All would follow my example | If I did not engage in action ever, untiringly, then people would follow my path in all respects, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 3.24 | These worlds would perish | These worlds would perish if I did not perform action; I would be the maker of chaos and would destroy these creatures. | ☐ | ☐ | ☐ |
 |  | 3.25 | Act as the unwise do—but without attachment | As the unwise act, attached to action, O Bhārata, so should the wise act, unattached, desiring the welfare of the world. | ☐ | ☐ | ☐ |
-|  | 3.26 | Do not unsettle the ignorant | Let him not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him make them do all actions. | ☐ | ☐ | ☐ |
+|  | 3.26 | Do not unsettle the ignorant | Let him not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him encourage them to carry out their duties. | ☐ | ☐ | ☐ |
 |  | 3.27 | The guṇas are the doers | All actions are performed by the guṇas of prakṛti in every way; the one deluded by egoism thinks, “I am the doer.” | ☐ | ☐ | ☐ |
 |  | 3.28 | Qualities act on qualities | But the knower of truth, O mighty-armed, knowing the distinction of the guṇas and actions, and that the guṇas move among the guṇas, does not become attached. | ☐ | ☐ | ☐ |
 |  | 3.29 | Let the knower not disturb them | Those deluded by the guṇas of prakṛti cling to actions born of the guṇas; the one of complete knowledge should not unsettle the dull-witted, partial knowers. | ☐ | ☐ | ☐ |
 |  | 3.30 | Renouncing all actions in me, fight | Renouncing all actions in me, with the mind fixed on the Self, being free from desire and from possessiveness, fight — free from fever. | ☐ | ☐ | ☐ |
 |  | 3.31 | Those who follow it are freed | Those men who always follow this teaching of mine with faith, without finding fault, are released even from the bondage of action. | ☐ | ☐ | ☐ |
 |  | 3.32 | Those who find fault and do not follow are lost | But those who, finding fault, do not follow this teaching of mine — know them as deprived of all wisdom, ruined, and without understanding. | ☐ | ☐ | ☐ |
-|  | 3.33 | Even the wise follow their nature | Even a man of knowledge acts according to his own nature; beings follow their nature — what will restraint accomplish? | ☐ | ☐ | ☐ |
+|  | 3.33 | Even the wise follow their nature | Even a man of knowledge acts according to his own nature; beings follow their nature — what will forcible suppression accomplish? | ☐ | ☐ | ☐ |
 |  | 3.34 | Attraction and aversion lie in wait | Attachment and aversion are fixed regarding the object of each sense; let one not come under their power, for they are one's waylayers. | ☐ | ☐ | ☐ |
 |  | 3.35 | Better one's own dharma, though flawed | Better is one's own dharma, though defective, than another's well-performed; death in one's own dharma is better — another's dharma brings fear. | ☐ | ☐ | ☐ |
 |  | 3.36 | Arjuna asks what drives a man to sin | Arjuna said: Then, impelled by what, O Vārṣṇeya, does a man commit evil, even against his will, as though forced by power? | ☐ | ☐ | ☐ |
@@ -242,7 +242,7 @@ want them to survive a regeneration.
 |  | 4.07 | Whenever dharma declines | Whenever, O Bhārata, there is a decline of dharma and a rise of adharma, then I bring myself into being. | ☐ | ☐ | ☐ |
 |  | 4.08 | To protect the righteous | For the protection of the good, for the destruction of the evil-doers, for the establishment of dharma, I take birth age after age. | ☐ | ☐ | ☐ |
 |  | 4.09 | Knowing this, one is not reborn | He who thus knows in truth my divine birth and action — having abandoned the body, he is not born again; he comes to me, O Arjuna. | ☐ | ☐ | ☐ |
-|  | 4.10 | Free from attachment, fear and anger | Free from attachment, fear and anger, filled with me, taking refuge in me, many — purified by the austerity of knowledge — have attained my state. | ☐ | ☐ | ☐ |
+|  | 4.10 | Free from attachment, fear and anger | Free from attachment, fear and anger, absorbed in me, taking refuge in me, many — purified by the austerity of knowledge — have attained my state. | ☐ | ☐ | ☐ |
 |  | 4.11 | As they approach me, so I respond | In whatever way men approach me, in that same way I favour them; people follow my path in every way, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 4.12 | Those who want quick fruit worship gods | Those who desire the success of actions worship the gods here; indeed, in this human world success born of action comes quickly. | ☐ | ☐ | ☐ |
 |  | 4.13 | The fourfold order was created by me | The fourfold order was created by me according to the distinction of guṇas and actions; though I am its author, know me as the non-doer and imperishable. | ☐ | ☐ | ☐ |
@@ -288,7 +288,7 @@ want them to survive a regeneration.
 |  | 5.05 | The same goal | The state attained by the sāṅkhyas is also reached by the yogis; he who sees sāṅkhya and yoga as one — he truly sees. | ☐ | ☐ | ☐ |
 |  | 5.06 | Renunciation is hard without yoga | But renunciation, O mighty-armed one, is hard to attain without yoga; the sage endowed with yoga reaches Brahman before long. | ☐ | ☐ | ☐ |
 |  | 5.07 | The Self of all beings | Devoted to karma-yoga, of pure soul, self-conquered, senses conquered, the Self of all beings — though acting, he is not stained. | ☐ | ☐ | ☐ |
-|  | 5.08 | “I do nothing at all” | “I do nothing at all” — thus should the knower of truth think, while seeing, hearing, touching, smelling, eating, moving, sleeping, breathing, | ☐ | ☐ | ☐ |
+|  | 5.08 | “I do nothing at all” | “I do nothing at all” — thus should the knower of truth established in yoga think, while seeing, hearing, touching, smelling, eating, moving, sleeping, breathing, | ☐ | ☐ | ☐ |
 |  | 5.09 | The senses among their objects | speaking, giving up, holding, opening and closing the eyes — holding that the senses move among the objects of the senses. | ☐ | ☐ | ☐ |
 |  | 5.10 | The lotus leaf | He who acts, offering all actions to Brahman and abandoning attachment, is not stained by sin, just as a lotus leaf is not wetted by water. | ☐ | ☐ | ☐ |
 |  | 5.11 | Action for self-purification | The yogis perform action by body, mind, intellect, or even by the senses alone, having abandoned attachment, for the purification of the self. | ☐ | ☐ | ☐ |
@@ -307,7 +307,7 @@ want them to survive a regeneration.
 |  | 5.24 | Whose joy is within | He who is happy within, who delights within, who is illumined within — that yogi, become Brahman, attains to Brahman-nirvāṇa. | ☐ | ☐ | ☐ |
 |  | 5.25 | Sages with dispelled doubts reach Brahman-nirvāṇa | The seers whose sins are destroyed, whose doubts are cut, whose selves are controlled, who delight in the welfare of all beings — they attain Brahman-nirvāṇa. | ☐ | ☐ | ☐ |
 |  | 5.26 | Free from desire and anger | For the ascetics free from desire and anger, whose thoughts are controlled, who know the Self — Brahman-nirvāṇa is present all around. | ☐ | ☐ | ☐ |
-|  | 5.27 | Breath, gaze, and stillness | Turning the sense-objects outward, fixing the vision between the eyebrows, making the out-breath and in-breath flow evenly within the nostrils — | ☐ | ☐ | ☐ |
+|  | 5.27 | Breath, gaze, and stillness | Leaving external sense objects outside, fixing the vision between the eyebrows, making the out-breath and in-breath flow evenly within the nostrils — | ☐ | ☐ | ☐ |
 |  | 5.28 | Free of craving, fear and anger | — with senses, mind and intellect controlled, the sage intent on liberation, free from desire, fear and anger — he is ever free. | ☐ | ☐ | ☐ |
 |  | 5.29 | Knowing me, friend of all beings, he attains peace | Knowing me as the enjoyer of sacrifices and austerities, the great Lord of all the worlds, the friend of all beings — he attains peace. | ☐ | ☐ | ☐ |
 
@@ -553,7 +553,7 @@ want them to survive a regeneration.
 |  | 11.22 | Rudras, Ādityas, Vasus gaze in wonder | The Rudras, Ādityas, Vasus, Sādhyas, Viśve-devas, Aśvins, Maruts and the ancestors — the gandharvas, yakṣas, demons and siddhas — all gaze on you in wonder. | ☐ | ☐ | ☐ |
 |  | 11.23 | Seeing your fearsome form, I tremble | Seeing your immense form, O mighty-armed one, with many mouths and eyes, many arms, thighs and feet, many bellies, many fearsome fangs, the worlds tremble — and so do I. | ☐ | ☐ | ☐ |
 |  | 11.24 | Touching the sky, blazing with many colours | Touching the sky, blazing, of many colours, with gaping mouths and blazing wide eyes — seeing you, my inmost heart trembles; I find no firmness or peace, O Viṣṇu. | ☐ | ☐ | ☐ |
-|  | 11.25 | Like the fire at the end of time | Seeing your terrible mouths with their fearful fangs, like the fire of the end of time, I do not know the directions, nor find any refuge; be gracious, O Lord of gods, abode of the world. | ☐ | ☐ | ☐ |
+|  | 11.25 | Like the fire at the end of time | Seeing your terrible mouths with their fearful fangs, like the fire of the end of time, I do not know the directions, nor do I find peace; be gracious, O Lord of gods, abode of the world. | ☐ | ☐ | ☐ |
 |  | 11.26 | The sons of Dhṛtarāṣṭra enter your mouths | All these sons of Dhṛtarāṣṭra, with the hosts of kings, enter your mouths — Bhīṣma, Droṇa, Karṇa, and the chief warriors of our side, | ☐ | ☐ | ☐ |
 |  | 11.27 | Heads crushed between your teeth | hurrying, they enter your mouths, terrible and frightful with fangs; some are seen stuck between the teeth, their heads crushed. | ☐ | ☐ | ☐ |
 |  | 11.28 | As rivers rush into the ocean | As the many rushing currents of rivers pour into the ocean, so these heroes of the mortal world enter your blazing mouths. | ☐ | ☐ | ☐ |
@@ -928,7 +928,7 @@ once, with the verse range, rather than repeated in the prose below.
 
 | ☐ | Ref | Title or description | Verses | keep | revise | fix |
 |---|---|---|:-:|:-:|:-:|
-|  | 4.t10 | The doubter perishes: neither this world, nor the next, nor happiness. Renunciation through yoga and the sword of knowledge cut bondage: Kṛṣṇa calls Arjuna to rise. | 4.40–4.42 | ☐ | ☐ | ☐ |
+|  | 4.t10 | The doubter perishes: neither this world, nor the next, nor happiness. Actions do not bind one who renounces them through yoga; the sword of knowledge cuts doubt: Kṛṣṇa calls Arjuna to rise. | 4.40–4.42 | ☐ | ☐ | ☐ |
 
 ### name-not-in-verse — theme summary across 5 verses: check the scene (1)
 

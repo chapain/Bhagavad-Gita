@@ -89,9 +89,9 @@ REVIEWED = json.loads(r'''{
       ]
     ],
     "lits": {
-      "en": "One who is without affection everywhere, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set.",
+      "en": "One who is everywhere free from attachment, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set.",
       "ne": "जो सर्वत्र आसक्तिरहित छ, शुभ वा अशुभ पाएर न रम्छ न रिसाउँछ — त्यसको बुद्धि दृढ स्थापित हुन्छ।",
-      "hi": "जो सर्वत्र स्नेहरहित है, शुभ या अशुभ पाकर न हर्षित होता है न विमुख — उसकी बुद्धि दृढ़ स्थापित है।"
+      "hi": "जो सर्वत्र आसक्तिरहित है, शुभ या अशुभ पाकर न हर्षित होता है न विमुख — उसकी बुद्धि दृढ़ स्थापित है।"
     }
   },
   "9.30": {

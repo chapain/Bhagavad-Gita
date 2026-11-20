@@ -157,7 +157,7 @@ REVIEWED = json.loads(r'''{
     ],
     "lits": {
       "en": "Whoever thinks the Self is the killer, and whoever thinks it is killed — neither truly knows: it does not kill, nor is it killed.",
-      "ne": "जसले आत्मालाई मार्ने ठान्छ, र जसले आत्मा मारिन्छ भनी ठान्छ — दुवै साँच्चै बुझ्दैनन्: यसले न मार्छ न मारिन्छ।",
+      "ne": "जसले आत्माले मार्छ भनी ठान्छ र जसले आत्मा मारिन्छ भनी ठान्छ — दुवै साँच्चै बुझ्दैनन्: यसले न मार्छ न मारिन्छ।",
       "hi": "जो आत्मा को मारने वाला समझता है, और जो आत्मा मारा जाता है समझता है — दोनों सचमुच नहीं जानते: यह न मारता है, न मारा जाता है।"
     },
     "flow_text": [
@@ -336,7 +336,7 @@ REVIEWED = json.loads(r'''{
     ],
     "lits": {
       "en": "Free from desire, with the mind and self controlled, having given up all possessions, performing only bodily action, he does not incur sin.",
-      "ne": "आशा रहित, मन र आत्मा संयत गरेर, सबै परिग्रह त्यागेर, केवल शारीरिक कर्म गर्दा ऊ पापमा लाग्दैन।",
+      "ne": "आशा रहित, मन र आत्मा संयत गरेर, सबै परिग्रह त्यागेर, केवल शारीरिक कर्म गर्दा उसलाई पाप लाग्दैन।",
       "hi": "आशा से रहित, मन और आत्मा को संयत कर, सब परिग्रह त्यागकर, केवल शारीरिक कर्म करने से वह पाप को नहीं प्राप्त होता।"
     },
     "flow_text": [
@@ -400,9 +400,9 @@ REVIEWED = json.loads(r'''{
         [
           "तत्",
           "tat",
-          "that (knowledge)",
-          "त्यो (ज्ञान)",
-          "वह (ज्ञान)"
+          "that (the Supreme)",
+          "त्यो (परम तत्त्व)",
+          "वह (परम तत्त्व)"
         ],
         [
           "परम्",
