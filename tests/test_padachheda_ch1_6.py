@@ -336,7 +336,7 @@ REVIEWED = json.loads(r'''{
     ],
     "lits": {
       "en": "Free from desire, with the mind and self controlled, having given up all possessions, performing only bodily action, he does not incur sin.",
-      "ne": "आशा रहित, मन र आत्मा संयत गरेर, सबै परिग्रह त्यागेर, केवल शारीरिक कर्म गर्दा ऊ पापमा लाग्दैन।",
+      "ne": "आशा रहित, मन र आत्मा संयत गरेर, सबै परिग्रह त्यागेर, केवल शारीरिक कर्म गर्दा उसलाई पाप लाग्दैन।",
       "hi": "आशा से रहित, मन और आत्मा को संयत कर, सब परिग्रह त्यागकर, केवल शारीरिक कर्म करने से वह पाप को नहीं प्राप्त होता।"
     },
     "flow_text": [
