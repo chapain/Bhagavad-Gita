@@ -142,7 +142,7 @@ REVIEWED = {
         # "as if" that the literal carries for `prahasann iva`.
         "rows": [
             ["प्रहसन्", "prahasan", "smiling", "मुस्कुराउँदै", "मुस्कुराता हुआ"],
-            ["इव", "iva", "as if", "झैँ", "के समान"],
+            ["इव", "iva", "as if", "झैँ", "मानो"],
             ["भारत", "bhārata", "O descendant of Bharata", "हे भारत", "हे भारत"],
         ],
         "lits": {
