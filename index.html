@@ -5458,7 +5458,7 @@ function fillModal(){
         <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
              aria-expanded="false"
              onclick="App.reader.toggleVerseExpansion(event)"
-             onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();App.reader.toggleVerseExpansion(event)}">
+             onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();event.stopPropagation();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}
         </div>
       </div>
@@ -5630,7 +5630,7 @@ document.addEventListener('contextmenu', e=>{
 document.addEventListener('keydown', e=>{
   /* Keyboard parity (audit 2026-08-30): the tappable divs carry role="button"
      tabindex="0"; Enter/Space must do what the tap does. */
-  if((e.key==='Enter' || e.key===' ') && document.activeElement
+  if((e.key==='Enter' || e.key===' ') && !e.defaultPrevented && document.activeElement
      && document.activeElement.matches && document.activeElement.matches('[role="button"]')){
     e.preventDefault(); document.activeElement.click(); return;
   }

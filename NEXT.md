@@ -65,7 +65,7 @@ target is not a requirement, so treat it as an optional extra rather than a gate
 - `source/ch1.json` … `ch18.json` are canonical. Code renders and validates; it never invents or duplicates text.
 - Never hand-edit generated files (`index.html`, `data/ch*.js`, `chapter/*/`, `method/index.html`, `chapter.css`, `sw.js`, `sitemap.xml`, `robots.txt`, `404.html`, fonts/icons). Change `source/`, run `python3 build.py`, keep both diffs together.
 - **JS module guard is 700 lines and never moves.** Next tightest at this commit: `20-learn.js` 600, `50-reader.js` 561, `10-library.js` 475, `48-reader-view.js` 192. Split along a real seam (presentation vs the state that owns it) and list new files in `APP_JS_FILES` sorted.
-- Shell cap **375,000 chars** (currently **369,329 — 5,671 of room**), enforced in `source/check_site_health.py`. The 700-line module guard binds first.
+- Shell cap **375,000 chars** (currently **369,376 — 5,624 of room**), enforced in `source/check_site_health.py`. The 700-line module guard binds first.
 - Nepali and Hindi UI strings contain no Latin characters.
 - Counts stay synchronized across code, README, PROJECT.md, HANDOFF.md, build.py and docs. Never print a success line unless the command actually succeeded.
 - Browser checks are **357** over http (348 over file://), including desktop and dark-theme axe sweeps; run in CI whenever Playwright/Chromium is absent from the sandbox.
