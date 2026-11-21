@@ -191,6 +191,46 @@
                 "en": "Sañjaya narrates: “Seeing Arjuna drowning in pity, his eyes brimming with tears and agitation, Kṛṣṇa (Madhusūdana) addressed him as he grieved.”",
                 "ne": "सञ्जय वर्णन गर्छन्: “करुणामा डुबेका, आँखाभरि आँसु र आवेग लिएका शोकाकुल अर्जुनलाई देखेर कृष्ण (मधुसूदन) ले उनलाई सम्बोधन गरे।”",
                 "hi": "संजय वर्णन करते हैं: “करुणा में डूबे हुए, आँखों में आँसू और विक्षोभ भरे हुए शोकाकुल अर्जुन को देखकर कृष्ण (मधुसूदन) ने उन्हें सम्बोधित किया।”"
+              },
+              "anv": {
+                "d": "सञ्जय उवाच।\nतथा कृपया आविष्टम् अश्रुपूर्णाकुलेक्षणम् विषीदन्तम् तम् मधुसूदनः इदम् वाक्यम् उवाच।",
+                "t": "sañjaya uvāca .\ntathā kṛpayā āviṣṭam aśru-pūrṇa-ākula-īkṣaṇam viṣīdantam tam madhusūdanaḥ idam vākyam uvāca|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "सञ्जय"
+                  },
+                  {
+                    "r": [
+                      12
+                    ],
+                    "t": "उवाच"
+                  },
+                  3,
+                  4,
+                  5,
+                  {
+                    "r": [
+                      6,
+                      7,
+                      8
+                    ],
+                    "t": "अश्रु-पूर्ण-आकुल-ईक्षणम्"
+                  },
+                  9,
+                  2,
+                  13,
+                  10,
+                  11,
+                  1
+                ],
+                "lit": {
+                  "en": "Sañjaya (the narrator), spoke, thus, with compassion, overcome, filled with tears agitated eyes, the grieving one, him (Arjuna), Madhusūdana (Kṛṣṇa / slayer of Madhu), this, words, said",
+                  "ne": "सञ्जयले भने त्यसरी कृपाले ग्रस्त आँसुले भरिएको आकुल आँखा शोक गर्ने उसलाई मधुसूदन यो वाक्य भने",
+                  "hi": "संजय बोले वैसे ही कृपा से ग्रस्त आँसुओं से भरी आकुल नेत्र शोक करते हुए उसे मधुसूदन यह वाक्य बोले"
+                }
               }
             }
           ]
@@ -353,6 +393,50 @@
                 "en": "Kṛṣṇa said: “Where has this weakness come from, Arjuna — at this very moment of crisis? It is unworthy of you, it shuts heaven's door, and it will bring you dishonour.”",
                 "ne": "कृष्णले भन्नुभयो: “अर्जुन, यो कमजोरी तिमीलाई यही सङ्कटको घडीमा कहाँबाट आयो? यो तिमीलाई सुहाउँदैन, यसले स्वर्गको ढोका बन्द गर्छ र तिमीलाई अपमानित तुल्याउँछ।”",
                 "hi": "कृष्ण ने कहा: “अर्जुन, यह कमज़ोरी तुझ पर ठीक इसी संकट की घड़ी में कहाँ से आ पड़ी? यह तुझे शोभा नहीं देती, यह स्वर्ग का द्वार बंद करती है और तुझे अपमानित करेगी।”"
+              },
+              "anv": {
+                "d": "श्रीभगवान् उवाच।\nहे अर्जुन! अनार्यजुष्टम् अस्वर्ग्यम् अकीर्तिकरम् इदम् कश्मलम् विषमे त्वा कुतः समुपस्थितम्?",
+                "t": "śrībhagavān uvāca .\nhe arjuna! anārya-juṣṭam asvargyam akīrtikaram idam kaśmalam viṣame tvā kutaḥ samupasthitam?",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "श्रीभगवान्"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  12,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "अनार्य-जुष्टम्"
+                  },
+                  10,
+                  11,
+                  5,
+                  4,
+                  6,
+                  3,
+                  2,
+                  7
+                ],
+                "lit": {
+                  "en": "the Blessed Lord, said, O, O Arjuna, unworthy of the noble practised (by), not leading to heaven, causing disgrace, this, faintness, in the perilous, on you, whence, come upon",
+                  "ne": "श्रीभगवान्ले भन्नुभयो हे हे अर्जुन आर्य-अयोग्य अभ्यास गरिएको स्वर्ग नदिने अपकीर्ति ल्याउने यो मोह सङ्कटमा तिमीलाई कहाँबाट आइपरेको",
+                  "hi": "श्रीभगवान् बोले हे हे अर्जुन अनार्य-अयोग्य सेवित स्वर्ग का नहीं अपकीर्ति करने वाला यह मोह संकट में तुझे कहाँ से आ पड़ा"
+                }
               }
             }
           ]
@@ -522,6 +606,56 @@
                 "en": "“Do not give in to this unmanliness, Arjuna — it ill becomes you. Shake off this small-hearted weakness, stand up, O burner of enemies!”",
                 "ne": "“यो कायरताको अगाडि नझुक, अर्जुन — यो तिमीलाई शोभादैन। मनको यो क्षुद्र कमजोरी त्यागेर उठ, हे शत्रु जलाउने!”",
                 "hi": "“इस कायरता के आगे मत झुक, अर्जुन — यह तुझे शोभा नहीं देती। इस क्षुद्र कमज़ोरी को झाड़कर खड़ा हो जा, हे शत्रुओं को जलाने वाले!”"
+              },
+              "anv": {
+                "d": "हे पार्थ! क्लैब्यम् मा स्म गमः। एतत् त्वयि न उपपद्यते। हे परन्तप! क्षुद्रम् हृदयदौर्बल्यम् त्यक्त्वा उत्तिष्ठ।",
+                "t": "he pārtha! klaibyam mā sma gamaḥ| etat tvayi na upapadyate| he parantapa! kṣudram hṛdaya-daurbalyam tyaktvā uttiṣṭha|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  4,
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "क्लैब्यम्"
+                  },
+                  {
+                    "t": "मा",
+                    "i": "mā"
+                  },
+                  2,
+                  3,
+                  6,
+                  7,
+                  5,
+                  8,
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  14,
+                  9,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "हृदय-दौर्बल्यम्"
+                  },
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "O, O Pārtha, unmanliness not, indeed, go, this, in you, not, is becoming, O, O scorcher of foes, petty, weakness of heart, having abandoned, arise",
+                  "ne": "हे हे पार्थ कापुरुषता न नै जाऊ यो तिमीमा न उचित हुन्छ हे हे परन्तप क्षुद्र हृदयको दुर्बलता त्यागेर उठ",
+                  "hi": "हे हे पार्थ कापुरुषता मत ही जा यह तुझ में नहीं उचित है हे हे परंतप क्षुद्र दुर्बलता हृदय का त्यागकर उठ"
+                }
               }
             }
           ]
@@ -699,6 +833,49 @@
                 "en": "Arjuna asks: “How can I aim my arrows at Bhīṣma and Droṇa in war, Kṛṣṇa? They deserve my reverence, not my weapons.”",
                 "ne": "अर्जुन सोध्छन्: “कृष्ण, भीष्म र द्रोणलाई म कसरी मेरा वाणहरू लगाउन सक्छु? उनीहरू मेरो आदरका पात्र हुन्, हतियारका होइनन्।”",
                 "hi": "अर्जुन पूछते हैं: “हे कृष्ण, भीष्म और द्रोण पर मैं बाण कैसे चला सकता हूँ? वे मेरे आदर के पात्र हैं, हथियारों के नहीं।”"
+              },
+              "anv": {
+                "d": "अर्जुन उवाच।\nहे मधुसूदन! अहम् भीष्मम् द्रोणम् च सङ्ख्ये इषुभिः कथम् प्रतियोत्स्यामि? अरिसूदन! (एतौ) पूजार्हौ।",
+                "t": "arjuna uvāca .\nhe madhusūdana! aham bhīṣmam droṇam ca saṅkhye iṣubhiḥ katham pratiyotsyāmi? ari-sūdana! (etau) pūjā-arhau|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "अर्जुन"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  8,
+                  4,
+                  3,
+                  6,
+                  7,
+                  5,
+                  9,
+                  2,
+                  10,
+                  12,
+                  {
+                    "t": "एतौ",
+                    "i": "etau"
+                  },
+                  11
+                ],
+                "lit": {
+                  "en": "Arjuna, said, O, O Madhusūdana, I, Bhīṣma, Droṇa, and, in battle, with arrows, how, shall I fight against, O slayer of enemies, worthy of worship",
+                  "ne": "अर्जुनले भने हे हे मधुसूदन म भीष्मलाई द्रोणलाई र युद्धमा वाणहरूले कसरी लड्नेछु हे अरिसूदन पूजनीय",
+                  "hi": "अर्जुन बोले हे हे मधुसूदन मैं भीष्म को द्रोण को और युद्ध में बाणों से कैसे लड़ूँगा हे अरिसूदन पूजनीय"
+                }
               }
             }
           ]
@@ -910,6 +1087,48 @@
                 "en": "“Better to beg for my food than to kill these revered elders. If I killed them for kingdom and pleasure, every enjoyment would taste of their blood.”",
                 "ne": "“यी पूजनीय गुरुजनलाई मार्नुभन्दा भोजनका लागि भीख माग्नु नै राम्रो। यदि मैले राज्य र भोगका निम्ति तिनलाई मारें भने हरेक सुखमा तिनको रगतको स्वाद आउनेछ।”",
                 "hi": "“इन पूज्य गुरुओं को मारने से भिक्षा माँगकर खाना ही अच्छा। यदि मैंने राज्य और भोग के लिए इन्हें मारा, तो हर सुख में उनके रक्त का स्वाद आएगा।”"
+              },
+              "anv": {
+                "d": "हि महानुभावान् गुरून् अहत्वा, इह लोके भैक्ष्यम् भोक्तुम् अपि श्रेयः।\nगुरून् हत्वा तु इह एव रुधिरप्रदिग्धान् अर्थकामान् भोगान् भुञ्जीय।",
+                "t": "hi mahānubhāvān gurūn ahatvā, iha loke bhaikṣyam bhoktum api śreyaḥ|\ngurūn hatvā tu iha eva rudhira-pradigdhān artha-kāmān bhogān bhuñjīya|",
+                "w": [
+                  2,
+                  3,
+                  0,
+                  1,
+                  8,
+                  9,
+                  6,
+                  5,
+                  7,
+                  4,
+                  14,
+                  10,
+                  13,
+                  15,
+                  16,
+                  {
+                    "r": [
+                      19,
+                      20
+                    ],
+                    "t": "रुधिर-प्रदिग्धान्"
+                  },
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "अर्थ-कामान्"
+                  },
+                  18,
+                  17
+                ],
+                "lit": {
+                  "en": "indeed, the noble-minded, the teachers, not having slain, in this, world, alms, to enjoy, even, better, the teachers, having slain, indeed, here, indeed, smeared with blood, and desires for wealth, pleasures, I would enjoy",
+                  "ne": "नै महानुभावहरूलाई गुरुहरूलाई नमारी यहाँ संसारमा भिक्षा भोग्न पनि राम्रो गुरुहरूलाई मारेर तर यहाँ नै रगतले लतपतिएका प्रयोजनको कामनाहरू भोगहरू भोग्थेँ",
+                  "hi": "ही महानुभावों को गुरुओं को बिना मारे यहाँ संसार में भिक्षा भोगने को भी अच्छा गुरुओं को मारकर पर यहाँ ही सने हुए रक्त से कामनाएँ प्रयोजन का भोग भोगता"
+                }
               }
             }
           ]
@@ -1135,6 +1354,48 @@
                 "en": "“We cannot even tell which is preferable — victory or defeat. These sons of Dhṛtarāṣṭra stand before us, and after killing them we would not want to live.”",
                 "ne": "“हामीलाई के उत्तम हो भनी छुट्याउन सकिँदैन — विजय वा पराजय। धृतराष्ट्रका यी छोराहरू हाम्रो अगाडि छन्, र तिनलाई मारेपछि हामी बाँच्नै चाहँदैनौं।”",
                 "hi": "“हम यह भी नहीं बता सकते कि विजय अच्छी है या पराजय। धृतराष्ट्र के ये पुत्र हमारे सामने हैं, और इन्हें मारने के बाद हम जीना नहीं चाहेंगे।”"
+              },
+              "anv": {
+                "d": "नः कतरत् गरीयः? यत् वा (वयं) जयेम, यदि वा (ते) नः जयेयुः, एतत् च न विद्मः।\nयान् हत्वा न जिजीविषामः, ते एव धार्तराष्ट्राः प्रमुखे अवस्थिताः।",
+                "t": "naḥ katarat garīyaḥ? yat vā (vayaṃ) jayema, yadi vā (te) naḥ jayeyuḥ, etat ca na vidmaḥ|\nyān hatvā na jijīviṣāmaḥ, te eva dhārtarāṣṭrāḥ pramukhe avasthitāḥ|",
+                "w": [
+                  0,
+                  4,
+                  6,
+                  7,
+                  8,
+                  {
+                    "t": "वयं",
+                    "i": "vayaṁ"
+                  },
+                  9,
+                  10,
+                  11,
+                  19,
+                  5,
+                  13,
+                  2,
+                  1,
+                  12,
+                  3,
+                  14,
+                  16,
+                  17,
+                  18,
+                  {
+                    "t": "ते",
+                    "i": "te"
+                  },
+                  15,
+                  22,
+                  21,
+                  20
+                ],
+                "lit": {
+                  "en": "not, which, better, whether, or, we should conquer, if, or, they, for us, they should conquer, this, and, us, we know, whom, having slain, not, we would wish to live, indeed, the sons of Dhṛtarāṣṭra, in front, stand",
+                  "ne": "न कुन राम्रो कि वा जित्थ्यौं यदि वा तिनीहरू हामीलाई जित्थे यो र हामीलाई जान्दछौं जसलाई मारेर न जिउन चाहन्थ्यौं नै धृतराष्ट्रका पुत्रहरू अगाडि स्थित",
+                  "hi": "नहीं कौन-सा अच्छा कि या जीतें यदि या वे हमें जीतें यह और हमें जानते हैं जिन्हें मारकर नहीं जीना चाहते ही धृतराष्ट्र के पुत्र सामने स्थित"
+                }
               }
             }
           ]
@@ -1375,6 +1636,55 @@
                 "en": "“My courage has failed me and I am confused about what is right. Tell me plainly what is best. I am your student — guide me, for I have come to you for refuge.”",
                 "ne": "“मेरो हिम्मत टुटेको छ र धर्मबारे म अलमलमा छु। के नै राम्रो हो, मलाई स्पष्ट भन। म तपाईंको शिष्य हुँ — मलाई मार्ग देखाउनुहोस्, म तपाईंको शरणमा आएको छु।”",
                 "hi": "“मेरी हिम्मत टूट गई है और धर्म के विषय में मैं उलझन में हूँ। मुझे साफ़-साफ़ बता कि क्या अच्छा है। मैं तेरा शिष्य हूँ — मुझे मार्ग दिखा, मैं तेरी शरण में आया हूँ।”"
+              },
+              "anv": {
+                "d": "कार्पण्यदोषोपहतस्वभावः धर्मसम्मूढचेताः (अहं) त्वाम् पृच्छामि। यत् निश्चितम् श्रेयः स्यात्, तत् मे ब्रूहि। अहम् ते शिष्यः। त्वाम् प्रपन्नम् माम् शाधि।",
+                "t": "kārpaṇya-doṣa-upahata-svabhāvaḥ dharma-sammūḍha-cetāḥ (ahaṃ) tvām pṛcchāmi| yat niścitam śreyaḥ syāt, tat me brūhi| aham te śiṣyaḥ| tvām prapannam mām śādhi|",
+                "w": [
+                  {
+                    "r": [
+                      0,
+                      1,
+                      2,
+                      3
+                    ],
+                    "t": "कार्पण्य-दोष-उपहत-स्वभावः"
+                  },
+                  {
+                    "r": [
+                      6,
+                      7,
+                      8
+                    ],
+                    "t": "धर्म-सम्मूढ-चेताः"
+                  },
+                  18,
+                  5,
+                  4,
+                  9,
+                  12,
+                  10,
+                  11,
+                  14,
+                  15,
+                  13,
+                  {
+                    "t": "अहम्",
+                    "i": "aham",
+                    "sup": "aham"
+                  },
+                  17,
+                  16,
+                  21,
+                  22,
+                  20,
+                  19
+                ],
+                "lit": {
+                  "en": "of weakness the defect overcome my nature, of duty confused mind, I, you, I ask, what, certainly, is good, may be, that, to me, tell, your, a disciple, you, I have taken refuge in, me, teach",
+                  "ne": "कापुरुषताको दोष ग्रस्त स्वभाव धर्म भ्रमित चित्त म तपाईंलाई सोध्छु के निश्चित कल्याण होला त्यो मलाई भन तपाईंको शिष्य तपाईंलाई शरण परेको मलाई सिकाऊ",
+                  "hi": "कापुरुषता का दोष ग्रस्त स्वभाव धर्म भ्रमित चित्त मैं तुम्हें पूछता हूँ क्या निश्चित कल्याण हो वह मुझे कह तुम्हारा शिष्य तुम्हें शरण पड़ा हुआ मुझे सिखा"
+                }
               }
             }
           ]
@@ -1565,6 +1875,35 @@
                 "en": "“Nothing I can see would remove this grief that parches my senses — not even an undivided kingdom of the earth, or rule over the gods themselves.”",
                 "ne": "“यो मेरा इन्द्रियहरू सुकाउने शोक हटाउने कुनै उपाय म देख्दिनँ — न अविभाजित राज्यले, न देवताहरूको शासनले नै।”",
                 "hi": "“मैं कोई उपाय नहीं देखता जो मेरी इन्द्रियों को सुखाने वाले इस शोक को हटा सके — न तो अविभाजित राज्य से, न देवताओं के शासन से ही।”"
+              },
+              "anv": {
+                "d": "हि भूमौ असपत्नम् ऋद्धम् राज्यम् अवाप्य, सुराणाम् च अपि आधिपत्यम्, यत् मम इन्द्रियाणाम् उच्छोषणम् शोकम् अपनुद्यात् न प्रपश्यामि।",
+                "t": "hi bhūmau asapatnam ṛddham rājyam avāpya, surāṇām ca api ādhipatyam, yat mama indriyāṇām ucchoṣaṇam śokam apanudyāt na prapaśyāmi|",
+                "w": [
+                  1,
+                  10,
+                  11,
+                  12,
+                  13,
+                  9,
+                  14,
+                  16,
+                  15,
+                  17,
+                  5,
+                  3,
+                  8,
+                  7,
+                  6,
+                  4,
+                  0,
+                  2
+                ],
+                "lit": {
+                  "en": "indeed, on earth, without a rival, prosperous, kingdom, having obtained, of the gods, and, even, lordship, which, my, of the senses, drying up, grief, would remove, not, I see",
+                  "ne": "नै पृथ्वीमा प्रतिद्वन्द्वीरहित समृद्ध राज्य पाएर देवताहरूका र पनि स्वामित्व जुन मेरो इन्द्रियहरूका सुकाउने शोक हटाउन सक्थ्यो न देख्छु",
+                  "hi": "ही पृथ्वी पर बिना प्रतिद्वंद्वी समृद्ध राज्य पाकर देवताओं का और भी स्वामित्व जो मेरा इन्द्रियों के सुखाने वाला शोक हटा सकता नहीं देखता हूँ"
+                }
               }
             }
           ]
@@ -1741,6 +2080,42 @@
                 "en": "Sañjaya tells the king: “O terror of your enemies, Arjuna told Kṛṣṇa that he would not take up battle; then he said no more.”",
                 "ne": "सञ्जय राजालाई भन्छन्: “हे शत्रुहरूलाई सन्ताप दिने राजा, अर्जुनले कृष्णसामु युद्धमा नउत्रने आफ्नो निर्णय सुनाए; त्यसपछि उनी चुप लागे।”",
                 "hi": "संजय राजा से कहते हैं: “हे शत्रुओं को संताप देने वाले राजन्, अर्जुन ने कृष्ण के सामने लड़ने से इनकार किया; फिर वे मौन हो गए।”"
+              },
+              "anv": {
+                "d": "सञ्जय उवाच।\nपरन्तपः गुडाकेशः हृषीकेशम् एवम् उक्त्वा ऽन योत्स्येऽ इति गोविन्दम् उक्त्वा तूष्णीम् बभूव ह।",
+                "t": "sañjaya uvāca .\nparantapaḥ guḍākeśaḥ hṛṣīkeśam evam uktvā 'na yotsye' iti govindam uktvā tūṣṇīm babhūva ha|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "सञ्जय"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  6,
+                  5,
+                  4,
+                  2,
+                  3,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "Sañjaya, said, O scorcher of foes, Guḍākeśa (Arjuna), to Hṛṣīkeśa (Kṛṣṇa), thus, having spoken, not, I will fight, thus, to Govinda (Kṛṣṇa), having said, silent, became, indeed",
+                  "ne": "सञ्जयले भने हे परन्तप गुडाकेश हृषीकेशलाई यसरी भनेर न लड्नेछु यसरी गोविन्दलाई भनेर मौन भयो नै",
+                  "hi": "संजय बोले हे परंतप गुडाकेश हृषीकेश को इस प्रकार कहकर नहीं लड़ूँगा इस प्रकार गोविन्द को कहकर मौन हुआ ही"
+                }
               }
             }
           ]
@@ -1889,6 +2264,38 @@
                 "en": "Sañjaya adds: “Then, O descendant of Bharata, as Arjuna sat sorrowing between the two armies, Kṛṣṇa seemed to smile as he spoke to him.”",
                 "ne": "सञ्जय थप्छन्: “त्यसपछि, हे भरतवंशी, दुवै सेनाको बीचमा शोकमा बसेका अर्जुनलाई कृष्णले मुस्कुराएझैँ गरी भने।”",
                 "hi": "संजय आगे कहते हैं: “तब, हे भरतवंशी, दोनों सेनाओं के बीच शोक में बैठे अर्जुन से कृष्ण बोले। लगा जैसे वे मुस्कुरा रहे हों।”"
+              },
+              "anv": {
+                "d": "हे भारत! उभयोः सेनयोः मध्ये विषीदन्तम् (अर्जुनं) तम् हृषीकेशः प्रहसन् इव इदम् वचः उवाच।",
+                "t": "he bhārata! ubhayoḥ senayoḥ madhye viṣīdantam (arjunaṃ) tam hṛṣīkeśaḥ prahasan iva idam vacaḥ uvāca|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  5,
+                  7,
+                  6,
+                  8,
+                  9,
+                  {
+                    "t": "अर्जुनं",
+                    "i": "arjunaṁ"
+                  },
+                  0,
+                  2,
+                  3,
+                  4,
+                  10,
+                  11,
+                  1
+                ],
+                "lit": {
+                  "en": "O, O descendant of Bharata, of both, of the two armies, in the midst, the grieving one, him, Hṛṣīkeśa, smiling, as if, this, speech, spoke to",
+                  "ne": "हे हे भारत दुवैको दुवै सेनाको बीचमा शोक गर्ने उसलाई हृषीकेश मुस्कुराउँदै झैँ यो वचन भने",
+                  "hi": "हे हे भारत दोनों का दोनों सेनाओं का मध्य में शोक करते हुए उसे हृषीकेश मुस्कुराता हुआ मानो यह वचन बोले"
+                }
               }
             }
           ]
@@ -2073,6 +2480,41 @@
                 "en": "Kṛṣṇa said: “You mourn for those who deserve no mourning, and yet you talk like a sage. The wise mourn neither the living nor the dead.”",
                 "ne": "कृष्णले भन्नुभयो: “जसका निम्ति शोक उचित छैन, उसैका निम्ति तिमी विलाप गर्छौ, तर कुरा भने ज्ञानीले जस्तै गर्छौ। ज्ञानी न जिउँदाका निम्ति रुन्छन् न मरेकाका निम्ति।”",
                 "hi": "कृष्ण ने कहा: “जिनके लिए शोक उचित नहीं, उन्हीं के लिए तू विलाप करता है, और ऋषि की बातें करता है। ज्ञानी न जीते हुए के लिए रोते हैं, न मरे हुए के लिए।”"
+              },
+              "anv": {
+                "d": "श्रीभगवान् उवाच।\nत्वम् अशोच्यान् अन्वशोचः। प्रज्ञावादान् च भाषसे। पण्डिताः गतासून् अगतासून् च न अनुशोचन्ति।",
+                "t": "śrībhagavān uvāca .\ntvam aśocyān anvaśocaḥ| prajñā-vādān ca bhāṣase| paṇḍitāḥ gatāsūn agatāsūn ca na anuśocanti|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "श्रीभगवान्"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  4,
+                  2,
+                  3,
+                  5,
+                  6,
+                  7,
+                  13,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "the Blessed Lord, said, you, those not to be grieved for, you grieve, words of wisdom, and, you speak, the wise, the dead, the living, and, not, they grieve",
+                  "ne": "श्रीभगवान्ले भन्नुभयो तिमी शोक नगर्नुपर्नेहरूलाई शोक गर्छौ ज्ञानका वचन र बोल्छौ ज्ञानीहरू मृतकहरूलाई जिउँदाहरूलाई र न शोक गर्छन्",
+                  "hi": "श्रीभगवान् बोले तुम जिन पर शोक नहीं करना चाहिए शोक करता है ज्ञान की बातें और बोलते हो ज्ञानी मृतकों को जीवितों को और नहीं शोक करते हैं"
+                }
               }
             }
           ]
@@ -2284,6 +2726,78 @@
                 "en": "“There was never a time when I was not, nor you, nor these kings; and none of us will ever cease to be in the future.”",
                 "ne": "म कहिल्यै नभएको त्यस्तो बेला नै आएन — तिमी पनि, यी राजाहरू पनि। अनि अबउप्रान्त पनि हामी कोही मेटिने छैनौँ।",
                 "hi": "ऐसा कोई क्षण कभी था ही नहीं जब मैं न रहा हूँ — या तू, या ये सब राजा। और आगे भी हममें से कोई मिटने वाला नहीं।"
+              },
+              "anv": {
+                "d": "अहम् जातु न आसम् (इति) न तु एव, त्वम् (जातु न आसीः इति)न, इमे जनाधिपाः (जातु न आसन् इति) न,।\nअतः परम् च वयम् सर्वे न भविष्यामः (इति) न एव।",
+                "t": "aham jātu na āsam (iti) na tu eva, tvam (jātu na āsīḥ iti)na, ime janādhipāḥ (jātu na āsan iti) na,|\nataḥ param ca vayam sarve na bhaviṣyāmaḥ (iti) na eva|",
+                "w": [
+                  3,
+                  4,
+                  0,
+                  6,
+                  {
+                    "t": "इति",
+                    "i": "iti",
+                    "sup": "iti"
+                  },
+                  5,
+                  1,
+                  2,
+                  8,
+                  {
+                    "t": "जातु",
+                    "i": "jātu"
+                  },
+                  7,
+                  {
+                    "t": "आसीः",
+                    "i": "āsīḥ"
+                  },
+                  {
+                    "t": "इति)न",
+                    "i": "iti)na"
+                  },
+                  10,
+                  11,
+                  {
+                    "t": "जातु",
+                    "i": "jātu"
+                  },
+                  9,
+                  {
+                    "t": "आसन्",
+                    "i": "āsan"
+                  },
+                  {
+                    "t": "इति",
+                    "i": "iti",
+                    "sup": "iti"
+                  },
+                  12,
+                  19,
+                  20,
+                  13,
+                  18,
+                  17,
+                  15,
+                  16,
+                  {
+                    "t": "इति",
+                    "i": "iti",
+                    "sup": "iti"
+                  },
+                  {
+                    "t": "न",
+                    "i": "na",
+                    "sup": "na"
+                  },
+                  14
+                ],
+                "lit": {
+                  "en": "I, ever, not, did exist, not, but, indeed, you, not, these, rulers of men, nor, not, from now, hereafter, and, we, all, not, shall we exist, indeed",
+                  "ne": "म कहिल्यै न थिएँ न तर नै तिमी न यी जनका शासकहरू न न अबदेखि भविष्यमा र हामी सबै न हुनेछौं नै",
+                  "hi": "मैं कभी नहीं था नहीं पर ही तुम नहीं ये मनुष्यों के शासक नहीं नहीं अब से भविष्य में और हम सब नहीं होंगे ही"
+                }
               }
             }
           ]
@@ -2446,6 +2960,36 @@
                 "en": "“Just as the Self within this body moves through childhood, youth, and old age, so it passes on to a new body at death. The wise are never confused by this.”",
                 "ne": "“जसरी शरीरभित्रको आत्मा बाल्यावस्था, जवानी र बुढ्यौली हुँदै जान्छ, मृत्युमा त्यसरी नै नयाँ शरीरमा पुग्छ। ज्ञानीहरू यसमा कहिल्यै अलमलिँदैनन्।”",
                 "hi": "“जैसे शरीर के भीतर की आत्मा बचपन, जवानी और बुढ़ापे से होकर गुजरती है, वैसे ही मृत्यु पर वह नए शरीर में पहुँचती है। ज्ञानी इसमें कभी भ्रमित नहीं होते।”"
+              },
+              "anv": {
+                "d": "देहिनः अस्मिन् देहे यथा कौमारम् यौवनम् जरा, तथा देहान्तरप्राप्तिः।\nतत्र धीरः न मुह्यति।",
+                "t": "dehinaḥ asmin dehe yathā kaumāram yauvanam jarā, tathā dehāntara-prāptiḥ|\ntatra dhīraḥ na muhyati|",
+                "w": [
+                  0,
+                  1,
+                  3,
+                  2,
+                  4,
+                  5,
+                  6,
+                  7,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "देहान्तर-प्राप्तिः"
+                  },
+                  11,
+                  10,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "of the embodied one, in this, in the body, as, childhood, youth, old age, so, another body the obtaining, therein, the wise one, not, is deluded",
+                  "ne": "देहधारीको यसमा शरीरमा जसरी बाल्यावस्था युवावस्था बुढ्यौली त्यसरी अर्को शरीर प्राप्ति त्यहाँ धीर न भ्रमित हुन्छ",
+                  "hi": "देहधारी का इसमें शरीर में जैसे बचपन युवावस्था बुढ़ापा वैसे ही दूसरा शरीर प्राप्ति वहाँ धीर नहीं भ्रमित होता है"
+                }
               }
             }
           ]
@@ -2615,6 +3159,52 @@
                 "en": "“Contact with the world brings cold and heat, joy and sorrow — these come and go, Arjuna; they are fleeting. Learn to endure them.”",
                 "ne": "“संसारसँगको सम्पर्कले जाडो-गर्मी, सुख-दुःख ल्याउँछ — यी आउँछन् र जान्छन्, अर्जुन; क्षणिक हुन्। तिनलाई सहन सिक।”",
                 "hi": "“संसार से संपर्क सर्दी-गर्मी, सुख-दुःख लाता है — ये आते-जाते हैं, अर्जुन; क्षणिक हैं। इन्हें सहना सीख।”"
+              },
+              "anv": {
+                "d": "हे कौन्तेय! मात्रास्पर्शाः तु शीतोष्णसुखदुःखदाः, आगम अपायिनः, अनित्याः।\nहे भारत! तान् तितिक्षस्व।",
+                "t": "he kaunteya! mātrā-sparśāḥ tu śīta-uṣṇa-sukha-duḥkha-dāḥ, āgama apāyinaḥ, anityāḥ|\nhe bhārata! tān titikṣasva|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  3,
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "मात्रा-स्पर्शाः"
+                  },
+                  2,
+                  {
+                    "r": [
+                      4,
+                      5,
+                      6,
+                      7,
+                      8
+                    ],
+                    "t": "शीत-उष्ण-सुख-दुःख-दाः"
+                  },
+                  9,
+                  10,
+                  11,
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  14,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "O, O son of Kuntī, sense-objects contacts, indeed, cold heat pleasure pain giving, coming, going, impermanent, O, O Bhārata, them, endure",
+                  "ne": "हे हे कुन्तीपुत्र विषयहरू सम्पर्कहरू तर जाडो तातो सुख दुःख दिने आगमन जाने अनित्य हे हे भारत तिनीहरूलाई सहन गर",
+                  "hi": "हे हे कुन्तीपुत्र विषय संपर्क पर सर्दी गर्म सुख दुःख देने वाले आगमन जाते हुए अनित्य हे हे भारत उन्हें सहन कर"
+                }
               }
             }
           ]
@@ -2777,6 +3367,41 @@
                 "en": "“The person these cannot shake — the sage who stays even-minded in joy and pain — that one is worthy of immortality.”",
                 "ne": "“जसलाई यी कुराले हल्लाउन सक्दैनन् — सुख-दुःखमा एकनास रहने ज्ञानी — उही अमरत्वको अधिकारी हुन्छ।”",
                 "hi": "“जिसे ये हिला नहीं सकते — सुख-दुःख में एक-सा रहने वाला ज्ञानी — वही अमरत्व के योग्य है।”"
+              },
+              "anv": {
+                "d": "हे पुरुषर्षभ! हि यम् समदुःखसुखम् धीरम् पुरुषम् एते न व्यथयन्ति, सः अमृतत्वाय कल्पते।",
+                "t": "he puruṣa-ṛṣabha! hi yam sama-duḥkha-sukham dhīram puruṣam ete na vyathayanti, saḥ amṛtatvāya kalpate|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  6,
+                  1,
+                  0,
+                  {
+                    "r": [
+                      7,
+                      8,
+                      9
+                    ],
+                    "t": "सम-दुःख-सुखम्"
+                  },
+                  10,
+                  5,
+                  4,
+                  2,
+                  3,
+                  11,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "O, O bull among men, indeed, whom, equal in pain and pleasure, the wise, the person, these, not, disturb, that one, for immortality, is fit",
+                  "ne": "हे हे नरर्षभ नै जसलाई समान दुःख सुख ज्ञानीलाई पुरुषलाई यी न विचलित गर्छन् ऊ अमरत्वका निम्ति योग्य हुन्छ",
+                  "hi": "हे हे नरर्षभ ही जिसे समान दुःख सुख ज्ञानी को पुरुष को ये नहीं विचलित करते हैं वह अमरत्व के लिए योग्य होता है"
+                }
               }
             }
           ]
@@ -2961,6 +3586,32 @@
                 "en": "“What is not real never truly exists; what is real never ceases. Those who see reality have understood the boundary between the two.”",
                 "ne": "“जो वास्तविक होइन, त्यो कहिल्यै साँच्चै अस्तित्वमा रहँदैन; जो वास्तविक छ, त्यो कहिल्यै मेटिँदैन। सत्य देख्नेहरूले यी दुवैको सीमा बुझेका छन्।”",
                 "hi": "“जो वास्तविक नहीं, वह कभी सचमुच रहता नहीं; जो वास्तविक है, वह कभी मिटता नहीं। सत्य को देखने वालों ने दोनों की सीमा समझ ली है।”"
+              },
+              "anv": {
+                "d": "असतः भावः न विद्यते सतः अभावः न विद्यते।\nतत्त्वदर्शिभिः तु उभयोः अपि अनयोः अन्तः दृष्टः।",
+                "t": "asataḥ bhāvaḥ na vidyate sataḥ abhāvaḥ na vidyate|\ntattva-darśibhiḥ tu ubhayoḥ api anayoḥ antaḥ dṛṣṭaḥ|",
+                "w": [
+                  1,
+                  3,
+                  0,
+                  2,
+                  7,
+                  5,
+                  4,
+                  6,
+                  14,
+                  12,
+                  8,
+                  9,
+                  13,
+                  11,
+                  10
+                ],
+                "lit": {
+                  "en": "of the unreal, being, not, is, of the real, non-being, not, is, by the seers of truth, but, of both, indeed, of these two, the end, seen",
+                  "ne": "असत्को भाव न हुन्छ सत्को अभाव न हुन्छ तत्त्वदर्शीहरूद्वारा तर दुवैको पनि यी दुईका अन्त्य देखिएको",
+                  "hi": "असत् का भाव नहीं है सत् का अभाव नहीं है तत्त्व-दर्शियों द्वारा पर दोनों का भी इन दोनों का अंत देखा गया"
+                }
               }
             }
           ]
@@ -3130,6 +3781,32 @@
                 "en": "“Know that the One pervading all of this is indestructible. Nothing in existence can destroy that which is changeless.”",
                 "ne": "“यो सबैलाई व्याप्त गर्ने एक नै अविनाशी हो भनी जान। अस्तित्वमा कुनै पनि कुराले त्यो अपरिवर्तनीय तत्त्वलाई नष्ट गर्न सक्दैन।”",
                 "hi": "“जान ले कि यह सब जिससे व्याप्त है, वह अविनाशी है। अस्तित्व की कोई वस्तु उस अपरिवर्तनीय को नष्ट नहीं कर सकती।”"
+              },
+              "anv": {
+                "d": "विद्धि, येन इदम् सर्वम् ततम्, तत् तु अविनाशि।\nअस्य अव्ययस्य विनाशम् कर्तुम्, कश्चित् न अर्हति।",
+                "t": "viddhi, yena idam sarvam tatam, tat tu avināśi|\nasya avyayasya vināśam kartum, kaścit na arhati|",
+                "w": [
+                  3,
+                  4,
+                  6,
+                  5,
+                  7,
+                  2,
+                  1,
+                  0,
+                  10,
+                  9,
+                  8,
+                  13,
+                  12,
+                  11,
+                  14
+                ],
+                "lit": {
+                  "en": "know, by which, this, all, pervaded, that, indeed, imperishable, this, of the inexhaustible, destruction, to bring about, anyone, not, is able",
+                  "ne": "जान जसद्वारा यो सबै व्याप्त त्यो तर अविनाशी यसको अविनाशीको विनाश गर्न कोही न सक्छ",
+                  "hi": "जानो जिससे यह सब व्याप्त वह पर अविनाशी इसका अविनाशी का विनाश करना कोई नहीं समर्थ है"
+                }
               }
             }
           ]
@@ -3271,6 +3948,33 @@
                 "en": "“The bodies of the eternal, imperishable, immeasurable Self come to an end — but the Self does not. So fight, Arjuna.”",
                 "ne": "“अनन्त, अविनाशी, अप्रमेय आत्माका शरीरहरू मात्र समाप्त हुन्छन् — आत्मा होइन। त्यसैले, अर्जुन, युद्ध गर।”",
                 "hi": "“अनन्त, अविनाशी, अप्रमेय आत्मा के शरीर ही समाप्त होते हैं — आत्मा नहीं। इसलिए, अर्जुन, युद्ध कर।”"
+              },
+              "anv": {
+                "d": "अनाशिनः अप्रमेयस्य नित्यस्य शरीरिणः इमे देहाः अन्तवन्तः उक्ताः।\nहे भारत! तस्मात् युध्यस्व।",
+                "t": "anāśinaḥ aprameyasya nityasya śarīriṇaḥ ime dehāḥ antavantaḥ uktāḥ|\nhe bhārata! tasmāt yudhyasva|",
+                "w": [
+                  6,
+                  7,
+                  3,
+                  5,
+                  1,
+                  2,
+                  0,
+                  4,
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  10,
+                  8,
+                  9
+                ],
+                "lit": {
+                  "en": "of the indestructible, of the immeasurable, of the eternal, of the embodied, these, bodies, having an end, are said, O, O Bhārata, therefore, fight",
+                  "ne": "अविनाशीको अप्रमेयको नित्यको देहधारीको यी शरीरहरू अन्त्य भएका भनिएका हे हे भारत त्यसकारण लड",
+                  "hi": "अविनाशी का अप्रमेय का नित्य का देहधारी का ये शरीर अन्त वाले कहे गए हे हे भारत इसलिए युद्ध कर"
+                }
               }
             }
           ]
@@ -3476,6 +4180,35 @@
                 "en": "“One who thinks the Self can kill, and one who thinks it can be killed, are both mistaken: the Self neither kills nor is killed.”",
                 "ne": "“जो आत्माले मार्न सक्छ भनी ठान्छ, र जो आत्मा मारिन सक्छ भनी ठान्छ — दुवै गलत छन्: आत्मा न मार्छ, न मारिन्छ।”",
                 "hi": "“जो सोचता है कि आत्मा मार सकती है, और जो सोचता है कि आत्मा मारी जा सकती है — दोनों ग़लत हैं: आत्मा न मारती है, न मारी जाती है।”"
+              },
+              "anv": {
+                "d": "यः एनम् हन्तारम् वेत्ति, यः च एनम् हतम् मन्यते तौ उभौ न विजानीतः, अयम् न हन्ति न हन्यते।",
+                "t": "yaḥ enam hantāram vetti, yaḥ ca enam hatam manyate tau ubhau na vijānītaḥ, ayam na hanti na hanyate|",
+                "w": [
+                  0,
+                  1,
+                  3,
+                  2,
+                  4,
+                  5,
+                  6,
+                  8,
+                  7,
+                  10,
+                  9,
+                  11,
+                  12,
+                  14,
+                  13,
+                  15,
+                  16,
+                  17
+                ],
+                "lit": {
+                  "en": "who, this (Self), the killer, knows, who, and, this, killed, thinks, those, both, not, know, this (Self), not, kill, nor, is killed",
+                  "ne": "जो यसलाई मार्नेलाई जान्दछ जो र यसलाई मारिएको सोच्छ ती दुई दुवै न जान्दछन् यो (आत्मा) न मार्छ न मारिन्छ",
+                  "hi": "जो इसे मारने वाले को जानता है जो और इसे मारा गया सोचता है वे दोनों दोनों नहीं जानते हैं यह (आत्मा) नहीं मारता है नहीं मारा जाता है"
+                }
               }
             }
           ]
@@ -3687,6 +4420,42 @@
                 "en": "“The Self is never born and never dies. Once it is, it never stops being. Unborn, eternal, timeless — it is not killed when the body is killed.”",
                 "ne": "“आत्मा कहिल्यै जन्मँदैन र कहिल्यै मर्दैन। एकपटक भएपछि त्यो कहिल्यै हुन छोड्दैन। अजन्मा, नित्य, कालातीत — शरीर मरे पनि आत्मा मर्दैन।”",
                 "hi": "“आत्मा कभी जन्मती नहीं और कभी मरती नहीं। एक बार होकर वह कभी नहीं मिटती। अजन्मा, नित्य, कालातीत — शरीर मरने पर भी आत्मा नहीं मरती।”"
+              },
+              "anv": {
+                "d": "अयम् कदाचित् न जायते, न वा म्रियते, (अयम्) भूत्वा भूयः अभविता वा न।\nअयम् अजः नित्यः शाश्वतः पुराणः, शरीरे हन्यमाने न हन्यते।",
+                "t": "ayam kadācit na jāyate, na vā mriyate, (ayam) bhūtvā bhūyaḥ abhavitā vā na|\nayam ajaḥ nityaḥ śāśvataḥ purāṇaḥ, śarīre hanyamāne na hanyate|",
+                "w": [
+                  6,
+                  4,
+                  0,
+                  1,
+                  5,
+                  3,
+                  2,
+                  15,
+                  7,
+                  11,
+                  8,
+                  9,
+                  10,
+                  {
+                    "t": "अयम्",
+                    "i": "ayam"
+                  },
+                  12,
+                  13,
+                  14,
+                  16,
+                  20,
+                  19,
+                  17,
+                  18
+                ],
+                "lit": {
+                  "en": "this (Self), ever, not, is born, not, or, dies, this, having been, again, will be, or, not, unborn, eternal, everlasting, ancient, the body, when killed, not, is killed",
+                  "ne": "यो (आत्मा) कहिल्यै न जन्मन्छ न वा मर्छ यो भएर फेरि हुनेछ वा न अजन्मा नित्य शाश्वत पुरातन शरीरमा मारिँदा न मारिन्छ",
+                  "hi": "यह (आत्मा) कभी नहीं जन्म लेता है नहीं या मरता है यह होकर फिर होगा या नहीं अजन्मा नित्य शाश्वत पुरातन शरीर में मारे जाने पर नहीं मारा जाता है"
+                }
               }
             }
           ]
@@ -3856,6 +4625,37 @@
                 "en": "“When one knows the Self as indestructible, eternal, unborn, and inexhaustible — how can such a person kill anyone, or cause anyone to be killed?”",
                 "ne": "“जब कसैले आत्मालाई अविनाशी, नित्य, अजन्मा र अक्षय जान्दछ — त्यस्तो व्यक्तिले कसलाई मार्न वा मार्न लगाउन सक्छ र?”",
                 "hi": "“जब कोई आत्मा को अविनाशी, नित्य, अजन्मा और अक्षय जान लेता है — तो ऐसा व्यक्ति किसे मार सकता है, या किससे मरवा सकता है?”"
+              },
+              "anv": {
+                "d": "हे पार्थ! यः एनम् अविनाशिनम् नित्यम् अजम् अव्ययम् वेद, सः पुरुषः कथम् कम् घातयति, कम् हन्ति?",
+                "t": "he pārtha! yaḥ enam avināśinam nityam ajam avyayam veda, saḥ puruṣaḥ katham kam ghātayati, kam hanti?",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  10,
+                  3,
+                  4,
+                  1,
+                  2,
+                  5,
+                  6,
+                  0,
+                  8,
+                  9,
+                  7,
+                  11,
+                  12,
+                  14,
+                  13
+                ],
+                "lit": {
+                  "en": "O, O Pārtha, who, this, the imperishable, eternal, unborn, inexhaustible, knows, that, person, how, whom, causes to kill, whom, kills",
+                  "ne": "हे हे पार्थ जो यसलाई अविनाशीलाई नित्य अजन्मा अव्यय जान्दछ ऊ पुरुष कसरी कसलाई मार्न लगाउँछ कसलाई मार्छ",
+                  "hi": "हे हे पार्थ जो इसे अविनाशी को नित्य अजन्मा अविनाशी जानता है वह पुरुष कैसे किसे मरवाता है किसे मारता है"
+                }
               }
             }
           ]
@@ -4047,6 +4847,33 @@
                 "en": "“Just as a person sheds old garments and takes up fresh ones, so the Self sheds its worn-out bodies and takes on new ones.”",
                 "ne": "“जसरी मानिसले पुराना वस्त्र फालेर नयाँ धारण गर्छ, त्यसरी नै आत्माले जीर्ण शरीर त्यागेर नयाँ शरीर लिन्छ।”",
                 "hi": "“जैसे व्यक्ति पुराने कपड़े उतारकर नए पहनता है, वैसे ही आत्मा अपने घिसे हुए शरीर को छोड़कर नया शरीर लेती है।”"
+              },
+              "anv": {
+                "d": "यथा नरः जीर्णानि वासांसि विहाय, अपराणि नवानि गृह्णाति, तथा देही जीर्णानि शरीराणि विहाय अन्यानि नवानि संयाति।",
+                "t": "yathā naraḥ jīrṇāni vāsāṃsi vihāya, aparāṇi navāni gṛhṇāti, tathā dehī jīrṇāni śarīrāṇi vihāya anyāni navāni saṃyāti|",
+                "w": [
+                  2,
+                  6,
+                  1,
+                  0,
+                  3,
+                  7,
+                  4,
+                  5,
+                  8,
+                  15,
+                  11,
+                  9,
+                  10,
+                  12,
+                  14,
+                  13
+                ],
+                "lit": {
+                  "en": "as, a man, worn out, garments, having cast off, others, new, takes, so, the embodied one, worn out, bodies, having cast off, other, new, goes to",
+                  "ne": "जसरी मानिस जीर्ण वस्त्रहरू त्यागेर अरूहरू नयाँ लिन्छ त्यसरी देहधारी जीर्ण शरीरहरू त्यागेर अरू नयाँ जान्छ",
+                  "hi": "जैसे मनुष्य जीर्ण वस्त्र त्यागकर अन्य नए लेता है वैसे ही देहधारी जीर्ण शरीर त्यागकर अन्य नए जाता है"
+                }
               }
             }
           ]
@@ -4223,6 +5050,37 @@
                 "en": "“No weapon can cleave the Self, no fire burn it, no water drench it, no wind parch it.”",
                 "ne": "“कुनै हतियारले आत्मालाई चिर्न सक्दैन, कुनै आगोले बाल्न सक्दैन, कुनै पानीले भिजाउन सक्दैन, कुनै हावाले सुकाउन सक्दैन।”",
                 "hi": "“कोई हथियार आत्मा को नहीं चीर सकता, कोई आग नहीं जला सकती, कोई पानी नहीं भिगो सकता, कोई हवा नहीं सुखा सकती।”"
+              },
+              "anv": {
+                "d": "एनम् शस्त्राणि न छिन्दन्ति, एनम् पावकः न दहति एनम् आपः न क्लेदयन्ति, (एनम्) च मारुतः न शोषयति।",
+                "t": "enam śastrāṇi na chindanti, enam pāvakaḥ na dahati enam āpaḥ na kledayanti, (enam) ca mārutaḥ na śoṣayati|",
+                "w": [
+                  1,
+                  3,
+                  0,
+                  2,
+                  5,
+                  7,
+                  4,
+                  6,
+                  10,
+                  12,
+                  8,
+                  11,
+                  {
+                    "t": "एनम्",
+                    "i": "enam"
+                  },
+                  9,
+                  15,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "this, weapons, not, cut, this, fire, not, burns, this, waters, not, wet, and, the wind, not, dries",
+                  "ne": "यसलाई शस्त्रहरू न काट्छन् यसलाई अग्नि न बाल्छ यसलाई जल न भिजाउँछन् र वायु न सुकाउँछ",
+                  "hi": "इसे शस्त्र नहीं काटते हैं इसे अग्नि नहीं जलाता है इसे जल नहीं भिगोते हैं और वायु नहीं सुखाता है"
+                }
               }
             }
           ]
@@ -4385,6 +5243,39 @@
                 "en": "“The Self cannot be cut, burnt, wetted, or dried. It is eternal, omnipresent, stable, immovable, and ancient.”",
                 "ne": "“आत्मा न काटिन्छ, न बालिन्छ, न भिज्छ, न सुक्छ। यो नित्य, सर्वव्यापी, स्थिर, अचल र पुरातन छ।”",
                 "hi": "“आत्मा न कटती है, न जलती है, न भीगती है, न सूखती है। वह नित्य, सर्वव्यापी, स्थिर, अचल और पुरातन है।”"
+              },
+              "anv": {
+                "d": "अयम् अच्छेद्यः, अयम् अदाह्यः, अयम् अक्लेद्यः, (अयम्) अशोष्यः च एव।\nअयम् नित्यः, सर्वगतः, स्थाणुः, अचलः, सनातनः।",
+                "t": "ayam acchedyaḥ, ayam adāhyaḥ, ayam akledyaḥ, (ayam) aśoṣyaḥ ca eva|\nayam nityaḥ, sarvagataḥ, sthāṇuḥ, acalaḥ, sanātanaḥ|",
+                "w": [
+                  1,
+                  0,
+                  3,
+                  2,
+                  12,
+                  4,
+                  {
+                    "t": "अयम्",
+                    "i": "ayam"
+                  },
+                  5,
+                  7,
+                  6,
+                  {
+                    "t": "अयम्",
+                    "i": "ayam"
+                  },
+                  8,
+                  9,
+                  10,
+                  11,
+                  13
+                ],
+                "lit": {
+                  "en": "this, uncuttable, this, unburnable, this, unwettable, undryable, and, indeed, eternal, all-pervading, fixed, immovable, everlasting",
+                  "ne": "यो नकाटिने यो नबल्ने यो नभिज्ने नसुक्ने र नै नित्य सर्वव्यापी स्थिर अचल सनातन",
+                  "hi": "यह न कटने वाला यह न जलने वाला यह न भीगने वाला न सूखने वाला और ही नित्य सर्वव्यापी स्थिर अचल सनातन"
+                }
               }
             }
           ]
@@ -4547,6 +5438,35 @@
                 "en": "“The Self is called unmanifest, unthinkable, and immutable. Knowing it this way, you have no reason to mourn.”",
                 "ne": "“आत्मा अव्यक्त, अचिन्त्य र अपरिवर्तनीय कहिन्छ। यसरी बुझेपछि तिमीसँग शोक गर्ने कुनै कारण छैन।”",
                 "hi": "“आत्मा अव्यक्त, अचिन्त्य और अपरिवर्तनीय कही जाती है। इसे ऐसे जान लेने पर तुझे शोक का कोई कारण नहीं है।”"
+              },
+              "anv": {
+                "d": "अयम् अव्यक्तः, अयम् अचिन्त्यः, अयम् अविकार्यः उच्यते।\nतस्मात् एनम् एवम् विदित्वा (त्वं) अनुशोचितुम् न अर्हसि।",
+                "t": "ayam avyaktaḥ, ayam acintyaḥ, ayam avikāryaḥ ucyate|\ntasmāt enam evam viditvā (tvaṃ) anuśocitum na arhasi|",
+                "w": [
+                  1,
+                  0,
+                  3,
+                  2,
+                  5,
+                  4,
+                  6,
+                  7,
+                  10,
+                  8,
+                  9,
+                  {
+                    "t": "त्वं",
+                    "i": "tvaṁ"
+                  },
+                  12,
+                  11,
+                  13
+                ],
+                "lit": {
+                  "en": "this, unmanifest, this, unthinkable, this, unchanging, is said, therefore, this, thus, having known, to grieve, not, you ought",
+                  "ne": "यो अव्यक्त यो अचिन्त्य यो अपरिवर्तनीय भनिन्छ त्यसकारण यसलाई यसरी जानेर शोक गर्न न योग्य छौ",
+                  "hi": "यह अव्यक्त यह अचिन्त्य यह अपरिवर्तनीय कहा जाता है इसलिए इसे इस प्रकार जानकर शोक करना नहीं योग्य हो"
+                }
               }
             }
           ]
@@ -4731,6 +5651,48 @@
                 "en": "“Even if you mistakenly think the Self is constantly being born and dying, Arjuna — even so, you should not grieve.”",
                 "ne": "“यदि तिमी गल्तीले आत्मा निरन्तर जन्मिरहेको र मर्दै गरेको ठान्छौ भने पनि, अर्जुन — तैपनि शोक गर्नु हुँदैन।”",
                 "hi": "“यदि तू भूल से आत्मा को लगातार जन्मती-मरती हुई मानता है, अर्जुन — तब भी शोक नहीं करना चाहिए।”"
+              },
+              "anv": {
+                "d": "अथ च एनम् नित्यजातम्, नित्यम् वा मृतम् मन्यसे, तथा अपि हे महाबाहो! त्वम् एनम् शोचितुम् न अर्हसि।",
+                "t": "atha ca enam nitya-jātam, nityam vā mṛtam manyase, tathā api he mahā-bāho! tvam enam śocitum na arhasi|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  7,
+                  6,
+                  {
+                    "t": "तथा",
+                    "i": "tathā",
+                    "r": [
+                      8
+                    ]
+                  },
+                  {
+                    "t": "अपि",
+                    "i": "api",
+                    "sup": "api",
+                    "s": 8
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  10,
+                  9,
+                  {
+                    "t": "एनम्",
+                    "i": "enam"
+                  },
+                  13,
+                  11,
+                  14
+                ],
+                "declined": "the reference's anvaya follows a different reading of this verse; see source/reference/gita_anvaya_ch*.itx"
               }
             }
           ]
@@ -4900,6 +5862,32 @@
                 "en": "“Whoever is born will surely die, and whoever dies will surely be born again. So in this unavoidable matter, there is no room for grief.”",
                 "ne": "“जो जन्मेको छ, त्यो निश्चय मर्छ; जो मरेको छ, त्यो निश्चय फेरि जन्मिन्छ। त्यसैले यो अनिवार्य कुरामा शोकको ठाउँ छैन।”",
                 "hi": "“जो जन्मा है वह निश्चय मरेगा, और जो मरा है वह निश्चय फिर जन्मेगा। अतः इस अपरिहार्य विषय में शोक का स्थान नहीं है।”"
+              },
+              "anv": {
+                "d": "हि जातस्य मृत्युः ध्रुवः, मृतस्य च जन्म ध्रुवम्, तस्मात् अपरिहार्ये अर्थे त्वम् शोचितुम् न अर्हसि।",
+                "t": "hi jātasya mṛtyuḥ dhruvaḥ, mṛtasya ca janma dhruvam, tasmāt aparihārye arthe tvam śocitum na arhasi|",
+                "w": [
+                  1,
+                  0,
+                  3,
+                  2,
+                  6,
+                  7,
+                  5,
+                  4,
+                  8,
+                  9,
+                  10,
+                  12,
+                  13,
+                  11,
+                  14
+                ],
+                "lit": {
+                  "en": "indeed, of the born, death, certain, of the dead, and, birth, certain, therefore, in the unavoidable, matter, you, to grieve, not, you ought",
+                  "ne": "नै जन्मेकाको मृत्यु निश्चित मरेकाको र जन्म निश्चित त्यसकारण अनिवार्यमा विषयमा तिमी शोक गर्न न योग्य छौ",
+                  "hi": "ही जन्मे का मृत्यु निश्चित मरे का और जन्म निश्चित इसलिए अनिवार्य में विषय में तुम शोक करना नहीं योग्य हो"
+                }
               }
             }
           ]
@@ -5048,6 +6036,49 @@
                 "en": "“All beings are unseen before birth, visible in life, and unseen again after death. So what is there to grieve about?”",
                 "ne": "“सबै प्राणी जन्मभन्दा अघि अदृश्य हुन्छन्, जीवनमा दृश्य हुन्छन्, र मृत्युपछि फेरि अदृश्य हुन्छन्। त्यसैले शोक गर्ने के नै छ र?”",
                 "hi": "“सभी प्राणी जन्म से पहले अदृश्य हैं, जीवन में दृश्य हैं, और मृत्यु के बाद फिर अदृश्य हो जाते हैं। तो शोक करने की क्या बात है?”"
+              },
+              "anv": {
+                "d": "हे भारत! भूतानि अव्यक्तादीनि व्यक्तमध्यानि अव्यक्तनिधनानि एव, तत्र परिदेवना का?",
+                "t": "he bhārata! bhūtāni avyakta-ādīni vyakta-madhyāni avyakta-nidhanāni eva, tatra paridevanā kā?",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  5,
+                  2,
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "अव्यक्त-आदीनि"
+                  },
+                  {
+                    "r": [
+                      3,
+                      4
+                    ],
+                    "t": "व्यक्त-मध्यानि"
+                  },
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "अव्यक्त-निधनानि"
+                  },
+                  8,
+                  9,
+                  11,
+                  10
+                ],
+                "lit": {
+                  "en": "O, O Bhārata, beings, unmanifest beginning with, in the middle manifest, unmanifest ending in, indeed, therein, lamentation, what",
+                  "ne": "हे हे भारत प्राणीहरू अव्यक्त आदि व्यक्त बीचमा अव्यक्त अन्त्य हुने नै त्यहाँ विलाप के",
+                  "hi": "हे हे भारत प्राणी अव्यक्त आदि मध्य में व्यक्त अव्यक्त समाप्त होने वाले ही वहाँ विलाप क्या"
+                }
               }
             }
           ]
@@ -5273,6 +6304,40 @@
                 "en": "“Some behold the Self as a marvel, some describe it as a marvel, some hear of it as a marvel — and even after hearing, none really understands it.”",
                 "ne": "“कोही आत्मालाई चमत्कारका रूपमा देख्छन्, कोही वर्णन गर्छन्, कोही सुन्छन् — तर सुनेर पनि वास्तवमा कोही बुझ्दैन।”",
                 "hi": "“कोई आत्मा को अद्भुत रूप में देखता है, कोई वर्णन करता है, कोई सुनता है — और सुनकर भी वास्तव में कोई नहीं समझता।”"
+              },
+              "anv": {
+                "d": "कश्चित् एनम् आश्चर्यवत् पश्यति, तथा एव च अन्यः एनम् आश्चर्यवत् वदति, अन्यः च एनम् आश्चर्यवत् शृणोति; श्रुत्वा अपि च कश्चित् एव न वेद।",
+                "t": "kaścit enam āścaryavat paśyati, tathā eva ca anyaḥ enam āścaryavat vadati, anyaḥ ca enam āścaryavat śṛṇoti; śrutvā api ca kaścit eva na veda|",
+                "w": [
+                  2,
+                  3,
+                  0,
+                  1,
+                  6,
+                  7,
+                  8,
+                  9,
+                  12,
+                  4,
+                  5,
+                  13,
+                  11,
+                  17,
+                  10,
+                  14,
+                  15,
+                  16,
+                  20,
+                  22,
+                  21,
+                  19,
+                  18
+                ],
+                "lit": {
+                  "en": "someone, this (Self), as a wonder, sees, thus, indeed, and, another, this, as a wonder, speaks of, another, and, this, as a wonder, hears, having heard, even, and, anyone, indeed, not, knows",
+                  "ne": "कोही यसलाई आश्चर्यझैं देख्छ त्यसरी नै र अर्को यसलाई आश्चर्यझैं भन्छ अर्को र यसलाई आश्चर्यझैं सुन्छ सुनेर पनि र कोही नै न जान्दछ",
+                  "hi": "कोई इसे आश्चर्य की तरह देखता है वैसे ही ही और दूसरा इसे आश्चर्य की तरह बोलता है दूसरा और इसे आश्चर्य की तरह सुनता है सुनकर भी और कोई ही नहीं जानता है"
+                }
               }
             }
           ]
@@ -5435,6 +6500,36 @@
                 "en": "“The Self dwelling in every body is forever indestructible, Arjuna. So you should grieve for no one at all.”",
                 "ne": "“हरेक शरीरमा बस्ने आत्मा सदाका लागि अविनाशी छ, अर्जुन। त्यसैले तिमीले कसैका निम्ति पनि शोक गर्नु हुँदैन।”",
                 "hi": "“हर शरीर में रहने वाली आत्मा सदा के लिए अविनाशी है, अर्जुन। इसलिए तुझे किसी के लिए भी शोक नहीं करना चाहिए।”"
+              },
+              "anv": {
+                "d": "हे भारत! सर्वस्य देहे अयम् देही नित्यम् अवध्यः; तस्मात् त्वम् सर्वाणि भूतानि शोचितुम् न अर्हसि।",
+                "t": "he bhārata! sarvasya dehe ayam dehī nityam avadhyaḥ; tasmāt tvam sarvāṇi bhūtāni śocitum na arhasi|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  6,
+                  5,
+                  4,
+                  3,
+                  0,
+                  1,
+                  2,
+                  7,
+                  11,
+                  8,
+                  9,
+                  12,
+                  10,
+                  13
+                ],
+                "lit": {
+                  "en": "O, O Bhārata, of everyone, in the body, this, the embodied one, always, inviolable, therefore, you, all, beings, to grieve, not, you ought",
+                  "ne": "हे हे भारत सबैको शरीरमा यो देहधारी सधैँ अवध्य त्यसकारण तिमी सबै प्राणीहरू शोक गर्न न योग्य छौ",
+                  "hi": "हे हे भारत सबका शरीर में यह देहधारी सदा अवध्य इसलिए तुम सब प्राणी शोक करना नहीं योग्य हो"
+                }
               }
             }
           ]
@@ -5619,6 +6714,32 @@
                 "en": "“Look also to your own duty, and you will not hesitate: for a warrior, there is nothing better than a war fought for righteousness.”",
                 "ne": "“आफ्नो कर्तव्य हेरे पनि तिमी हिचकिचाउनु हुँदैन: योद्धाका निम्ति धर्मका निम्ति लडिएको युद्धभन्दा उत्तम अरू केही छैन।”",
                 "hi": "“अपने कर्तव्य को देखकर भी तुझे हिचकना नहीं चाहिए: योद्धा के लिए धर्म के लिए लड़े गए युद्ध से बढ़कर कुछ नहीं है।”"
+              },
+              "anv": {
+                "d": "स्वधर्मम् च अपि अवेक्ष्य विकम्पितुम् न अर्हसि।\nहि क्षत्रियस्य धर्म्यात् युद्धात् अन्यत् श्रेयः न विद्यते।",
+                "t": "svadharmam ca api avekṣya vikampitum na arhasi|\nhi kṣatriyasya dharmyāt yuddhāt anyat śreyaḥ na vidyate|",
+                "w": [
+                  0,
+                  2,
+                  1,
+                  3,
+                  5,
+                  4,
+                  6,
+                  8,
+                  12,
+                  7,
+                  9,
+                  11,
+                  10,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "your own duty, and, also, considering, to waver, not, you ought, indeed, of a warrior, than the righteous, than war, other, better, not, is there",
+                  "ne": "आफ्नो धर्म र पनि विचार गरेर हल्लिन न योग्य छौ नै क्षत्रियको धार्मिकभन्दा युद्धभन्दा अरू उत्तम न हुन्छ",
+                  "hi": "अपना धर्म और भी विचार करके डगमगाने नहीं योग्य हो ही क्षत्रिय का धार्मिक से युद्ध से अन्य बढ़कर नहीं है"
+                }
               }
             }
           ]
@@ -5760,6 +6881,44 @@
                 "en": "“Fortunate are the warriors, Arjuna, who meet a war like this — it comes to them unsought, and it is an open gate to heaven.”",
                 "ne": "“भाग्यमानी ती योद्धाहरू, अर्जुन, जसलाई यस्तो युद्ध प्राप्त हुन्छ — यो नबोलाइकनै आउँछ र स्वर्गको खुला द्वार हो।”",
                 "hi": "“भाग्यशाली हैं वे योद्धा, अर्जुन, जिन्हें ऐसा युद्ध मिलता है — यह बिना बुलाए आता है और स्वर्ग का खुला द्वार है।”"
+              },
+              "anv": {
+                "d": "हे पार्थ! यत् ऋच्छया च उपपन्नम् ईदृशम् अपावृतम् स्वर्गद्वारम् युद्धम् सुखिनः क्षत्रियाः लभन्ते।",
+                "t": "he pārtha! yat ṛcchayā ca upapannam īdṛśam apāvṛtam svarga-dvāram yuddham sukhinaḥ kṣatriyāḥ labhante|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  7,
+                  {
+                    "t": "यत्",
+                    "i": "yat",
+                    "r": [
+                      0
+                    ]
+                  },
+                  {
+                    "t": "ऋच्छया",
+                    "i": "ṛcchayā",
+                    "s": 0
+                  },
+                  1,
+                  2,
+                  10,
+                  4,
+                  3,
+                  9,
+                  5,
+                  6,
+                  8
+                ],
+                "lit": {
+                  "en": "O, O Pārtha, of its own accord, of its own accord, and, come, such, open, the door of heaven, war, happy, the warriors, they obtain",
+                  "ne": "हे हे पार्थ आफैं आफैं र प्राप्त यस्तो खुला स्वर्गको ढोका युद्ध सुखी क्षत्रियहरू पाउँछन्",
+                  "hi": "हे हे पार्थ अनायास अनायास और प्राप्त ऐसा खुला स्वर्ग का द्वार युद्ध सुखी क्षत्रिय पाते हैं"
+                }
               }
             }
           ]
@@ -5929,6 +7088,32 @@
                 "en": "“But if you refuse to fight this righteous war, you will turn your back on your duty and your honour — and sin will be yours.”",
                 "ne": "“तर यदि तिमीले यो धर्मयुद्ध लड्न अस्वीकार गर्यौ भने, तिमीले आफ्नो कर्तव्य र सम्मान दुवै गुमाउनेछौ — र पाप तिम्रो हुनेछ।”",
                 "hi": "“किन्तु यदि तू यह धर्मयुद्ध लड़ने से इनकार करेगा, तो अपना कर्तव्य और सम्मान दोनों खो देगा — और पाप तेरा होगा।”"
+              },
+              "anv": {
+                "d": "अथ त्वम् इमम् धर्म्यम् सङ्ग्रामम् न करिष्यसि चेत्, ततः स्वधर्मम् कीर्तिम् च हित्वा पापम् अवाप्स्यसि।",
+                "t": "atha tvam imam dharmyam saṅgrāmam na kariṣyasi cet, tataḥ svadharmam kīrtim ca hitvā pāpam avāpsyasi|",
+                "w": [
+                  0,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  1,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "but, you, this, righteous, war, not, you will wage, if, then, your own duty, glory, and, having abandoned, sin, you will incur",
+                  "ne": "तर तिमी यो धार्मिक युद्ध न गर्नेछौ यदि त्यसपछि आफ्नो धर्म कीर्ति र त्यागेर पाप प्राप्त गर्नेछौ",
+                  "hi": "किन्तु तुम यह धार्मिक युद्ध नहीं करोगे यदि तो अपना धर्म कीर्ति और त्यागकर पाप प्राप्त करोगे"
+                }
               }
             }
           ]
@@ -6077,6 +7262,29 @@
                 "en": "“The world will spread word of your lasting shame; and for one who has been honoured, dishonour is worse than death.”",
                 "ne": "“संसारले तिम्रो चिरन्तन लाज फैलाउनेछ; र जो सम्मानित छ, उसका निम्ति अपमान मृत्युभन्दा नराम्रो हुन्छ।”",
                 "hi": "“संसार तेरी चिरन्तन लाज की बात फैलाएगा; और जो सम्मानित है, उसके लिए अपमान मृत्यु से भी बुरा है।”"
+              },
+              "anv": {
+                "d": "अपि च भूतानि ते अव्ययाम् अकीर्तिम् कथयिष्यन्ति।\nसम्भावितस्य च अकीर्तिः मरणात् अतिरिच्यते।",
+                "t": "api ca bhūtāni te avyayām akīrtim kathayiṣyanti|\nsambhāvitasya ca akīrtiḥ maraṇāt atiricyate|",
+                "w": [
+                  2,
+                  1,
+                  3,
+                  5,
+                  6,
+                  0,
+                  4,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "also, and, people, your, everlasting, disgrace, will speak of, of one held in honour, and, dishonour, than death, is greater",
+                  "ne": "पनि र मानिसहरू तिम्रो अविनाशी अपकीर्ति बोल्नेछन् सम्मानितको र अपकीर्ति मृत्युभन्दा बढी हुन्छ",
+                  "hi": "भी और लोग तुम्हारा अविनाशी अपकीर्ति बोलेंगे सम्मानित का और अपकीर्ति मृत्यु से अधिक होता है"
+                }
               }
             }
           ]
@@ -6247,6 +7455,30 @@
                 "en": "“The great chariot-warriors will say you retreated from fear; those who once admired you will dismiss you with contempt.”",
                 "ne": "“ठूला रथीहरूले तिमी डरले पछि हटेको भन्नेछन्; तिम्रो प्रशंसा गर्नेहरू नै तिमीलाई हेला गर्न थाल्नेछन्।”",
                 "hi": "“बड़े योद्धा कहेंगे कि तू डर से पीछे हट गया; जो पहले तेरी प्रशंसा करते थे, वे ही तुझे तिरस्कार की दृष्टि से देखेंगे।”"
+              },
+              "anv": {
+                "d": "महारथाः त्वाम् भयात् रणात् उपरतम् मंस्यन्ते; येषाम् च त्वम् बहुमतः भूत्वा, लाघवम् यास्यसि।",
+                "t": "mahārathāḥ tvām bhayāt raṇāt uparatam maṃsyante; yeṣām ca tvam bahu-mataḥ bhūtvā, lāghavam yāsyasi|",
+                "w": [
+                  5,
+                  4,
+                  0,
+                  1,
+                  2,
+                  3,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  12,
+                  11
+                ],
+                "lit": {
+                  "en": "the great warriors, you, from fear, from battle, retreated, they will think, by whom, and, you, highly regarded, having been, triviality, you will go to",
+                  "ne": "महारथीहरू तिमीलाई डरले युद्धबाट भागेको सोच्नेछन् जसको र तिमी उच्च सम्मानित भएर तुच्छता जानेछौ",
+                  "hi": "महारथी तुम्हें भय से युद्ध से भागा हुआ समझेंगे जिनका और तुम अत्यन्त सम्मानित होकर तुच्छता जाओगे"
+                }
               }
             }
           ]
@@ -6409,6 +7641,36 @@
                 "en": "“Your foes will say things that should never be said, mocking your courage. What could hurt more than that?”",
                 "ne": "“तिम्रा शत्रुहरूले नभनिनुपर्ने कुरा भनेर तिम्रो साहसको खिल्ली उडाउनेछन्। त्यसभन्दा पीडादायक अरू के हुन सक्छ?”",
                 "hi": "“तेरे शत्रु वे बातें कहेंगे जो कही नहीं जानी चाहिएं — तेरे साहस का उपहास करेंगे। उससे बढ़कर दुखदायी क्या हो सकता है?”"
+              },
+              "anv": {
+                "d": "तव सामर्थ्यम् निन्दन्तः तव अहिताः च बहून् अवाच्यवादान् वदिष्यन्ति।\nततः किम् नु दुःखतरम्?",
+                "t": "tava sāmarthyam nindantaḥ tava ahitāḥ ca bahūn avācya-vādān vadiṣyanti|\ntataḥ kim nu duḥkhataram?",
+                "w": [
+                  5,
+                  9,
+                  7,
+                  8,
+                  6,
+                  2,
+                  3,
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "अवाच्य-वादान्"
+                  },
+                  4,
+                  10,
+                  13,
+                  12,
+                  11
+                ],
+                "lit": {
+                  "en": "your, ability, slandering, your, enemies, and, many, unutterable words, they will speak, than that, what, indeed, more painful",
+                  "ne": "तिम्रो क्षमता निन्दा गर्ने तिम्रो शत्रुहरू र धेरै नभनिने वचनहरू बोल्नेछन् त्योभन्दा के नै अझ पीडादायक",
+                  "hi": "तुम्हारा क्षमता निन्दा करने वाले तुम्हारा शत्रु और अनेक न कहने योग्य वचन बोलेंगे उससे क्या ही और पीड़ादायक"
+                }
               }
             }
           ]
@@ -6564,6 +7826,35 @@
                 "en": "“Killed, you will gain heaven; victorious, you will rule the earth. So stand up, Arjuna, with your mind made up for battle.”",
                 "ne": "“मर्दा तिमीले स्वर्ग पाउनेछौ; जित्दा पृथ्वीमाथि राज्य गर्नेछौ। त्यसैले, अर्जुन, युद्धको निश्चय गरेर उठ।”",
                 "hi": "“मरने पर तुझे स्वर्ग मिलेगा; जीतने पर तू पृथ्वी पर राज्य करेगा। इसलिए, अर्जुन, युद्ध का निश्चय करके खड़ा हो जा।”"
+              },
+              "anv": {
+                "d": "हतः वा स्वर्गम् प्राप्स्यसि, जित्वा वा महीम् भोक्ष्यसे।\nहे कौन्तेय! तस्मात् युद्धाय कृतनिश्चयः उत्तिष्ठ।",
+                "t": "hataḥ vā svargam prāpsyasi, jitvā vā mahīm bhokṣyase|\nhe kaunteya! tasmāt yuddhāya kṛta-niścayaḥ uttiṣṭha|",
+                "w": [
+                  0,
+                  1,
+                  3,
+                  2,
+                  4,
+                  5,
+                  7,
+                  6,
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  10,
+                  8,
+                  11,
+                  12,
+                  9
+                ],
+                "lit": {
+                  "en": "slain, or, heaven, you will obtain, having conquered, or, the earth, you will enjoy, O, O son of Kuntī, therefore, for battle, resolved, arise",
+                  "ne": "मारिएको वा स्वर्ग प्राप्त गर्नेछौ जितेर वा पृथ्वीलाई भोग्नेछौ हे हे कुन्तीपुत्र त्यसकारण युद्धका निम्ति निश्चय गरेको उठ",
+                  "hi": "मारा गया या स्वर्ग प्राप्त करोगे जीतकर या पृथ्वी को भोगोगे हे हे कुन्तीपुत्र इसलिए युद्ध के लिए निश्चय किया हुआ उठ"
+                }
               }
             }
           ]
@@ -6733,6 +8024,47 @@
                 "en": "“Hold pleasure and pain, profit and loss, triumph and defeat as one — then fight. No sin will touch you.”",
                 "ne": "“सुख-दुःख, लाभ-हानि, जित-हारलाई एकै ठानेर युद्ध गर — कुनै पापले तिमीलाई छुनेछैन।”",
                 "hi": "“सुख-दुःख, लाभ-हानि, जय-पराजय को एक-सा मानकर युद्ध कर — तुझे कोई पाप नहीं छुएगा।”"
+              },
+              "anv": {
+                "d": "सुखदुःखे लाभालाभौ जयाजयौ समे कृत्वा ततः युद्धाय युज्यस्व।\nएवम् पापम् न अवाप्स्यसि।",
+                "t": "sukha-duḥkhe lābha-alābhau jaya-ajayau same kṛtvā tataḥ yuddhāya yujyasva|\nevam pāpam na avāpsyasi|",
+                "w": [
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "सुख-दुःखे"
+                  },
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "लाभ-अलाभौ"
+                  },
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "जय-अजयौ"
+                  },
+                  2,
+                  3,
+                  8,
+                  9,
+                  10,
+                  12,
+                  13,
+                  11,
+                  14
+                ],
+                "lit": {
+                  "en": "pleasure pain, gain and loss, victory and defeat, equal, having made, then, for battle, engage, thus, sin, not, you will incur",
+                  "ne": "सुख दुःख लाभ हानि विजय पराजय समान गरेर त्यसपछि युद्धका निम्ति लाग यसरी पाप न प्राप्त गर्नेछौ",
+                  "hi": "सुख दुःख लाभ हानि विजय पराजय समान करके तब युद्ध के लिए लग जा इस प्रकार पाप नहीं प्राप्त करोगे"
+                }
               }
             }
           ]
@@ -6917,6 +8249,45 @@
                 "en": "“I have taught you the discernment of sāṅkhya; now hear the wisdom of yoga. Living by it, you will break free from the bondage of action.”",
                 "ne": "“मैले तिमीलाई साङ्ख्यको विवेक सिकाएँ; अब योगको ज्ञान सुन। यसैमा जिउनेले कर्मको बन्धनबाट मुक्ति पाउँछ।”",
                 "hi": "“मैंने तुझे सांख्य का विवेक सिखाया; अब योग का ज्ञान सुन। इसी में जीने वाला कर्म के बन्धन से मुक्त हो जाता है।”"
+              },
+              "anv": {
+                "d": "हे पार्थ! एषा ते साङ्ख्ये बुद्धिः अभिहिता; योगे तु इमाम् (बुद्धिं) शृणु।\nयया बुद्ध्या युक्तः (त्वं) कर्मबन्धम् प्रहास्यसि।",
+                "t": "he pārtha! eṣā te sāṅkhye buddhiḥ abhihitā; yoge tu imām (buddhiṃ) śṛṇu|\nyayā buddhyā yuktaḥ (tvaṃ) karma-bandham prahāsyasi|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  12,
+                  0,
+                  1,
+                  3,
+                  4,
+                  2,
+                  5,
+                  6,
+                  7,
+                  {
+                    "t": "बुद्धिं",
+                    "i": "buddhiṁ"
+                  },
+                  8,
+                  11,
+                  9,
+                  10,
+                  {
+                    "t": "त्वं",
+                    "i": "tvaṁ"
+                  },
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "O, O Pārtha, this, to you, in sāṅkhya, the wisdom, declared, in yoga, but, this, hear, by which, with this intellect, joined, the bondage of action, you will cast off",
+                  "ne": "हे हे पार्थ यो तिमीलाई साङ्ख्यमा बुद्धि भनिएको योगमा तर यो सुन जसद्वारा बुद्धिले युक्त कर्मबन्धन त्याग्नेछौ",
+                  "hi": "हे हे पार्थ यह तुझे सांख्य में बुद्धि कही गई योग में पर यह सुनो जिससे बुद्धि से युक्त कर्म-बन्धन त्यागोगे"
+                }
               }
             }
           ]
@@ -7086,6 +8457,41 @@
                 "en": "“In this path no effort is wasted and no obstacle turns it back. Even a little of this practice saves you from great dread.”",
                 "ne": "“यस मार्गमा कुनै प्रयास खेर जाँदैन, न कुनै बाधाले उसलाई फर्काउँछ। यस अभ्यासको अलिकति मात्रले पनि ठूलो भयबाट बचाउँछ।”",
                 "hi": "“इस मार्ग में कोई प्रयास व्यर्थ नहीं जाता और कोई बाधा उसे लौटा नहीं देती। इस अभ्यास का थोड़ा-सा भी हिस्सा बड़े भय से बचा लेता है।”"
+              },
+              "anv": {
+                "d": "इह अभिक्रमनाशः न अस्ति, प्रत्यवायः न विद्यते, अस्य धर्मस्य स्वल्पम् अपि (अनुष्ठानं) महतः भयात् त्रायते।",
+                "t": "iha abhikrama-nāśaḥ na asti, pratyavāyaḥ na vidyate, asya dharmasya svalpam api (anuṣṭhānaṃ) mahataḥ bhayāt trāyate|",
+                "w": [
+                  1,
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "अभिक्रम-नाशः"
+                  },
+                  0,
+                  4,
+                  5,
+                  6,
+                  7,
+                  10,
+                  11,
+                  8,
+                  9,
+                  {
+                    "t": "अनुष्ठानं",
+                    "i": "anuṣṭhānaṁ"
+                  },
+                  13,
+                  14,
+                  12
+                ],
+                "lit": {
+                  "en": "here, effort loss, not, is, contrary result, not, is, of this, of this practice, a little, even, from great, fear, protects",
+                  "ne": "यहाँ प्रयास नाश न छ उल्टो फल न हुन्छ यसको धर्मको अलिकति पनि महान्बाट डरबाट रक्षा गर्छ",
+                  "hi": "यहाँ प्रयास नाश नहीं है उल्टा फल नहीं है इसका धर्म का थोड़ा-सा भी महान् से भय से रक्षा करता है"
+                }
               }
             }
           ]
@@ -7227,6 +8633,33 @@
                 "en": "“The mind of firm resolve is single and steady, Arjuna; the minds of the irresolute scatter into countless branches.”",
                 "ne": "“दृढ संकल्पको बुद्धि एक र स्थिर हुन्छ, अर्जुन; अनिश्चित मनहरूका बुद्धिहरू अनगिन्ती दिशामा छरिन्छन्।”",
                 "hi": "“दृढ़ संकल्प की बुद्धि एक और स्थिर होती है, अर्जुन; अनिश्चित मन की बुद्धियाँ अनगिनत दिशाओं में बिखरती हैं।”"
+              },
+              "anv": {
+                "d": "हे कुरुनन्दन! इह व्यवसायात्मिका एका बुद्धिः।\nअव्यवसायिनाम् हि बुद्धयः अनन्ताः बहुशाखाः च।",
+                "t": "he kuru-nandana! iha vyavasāya-ātmikā ekā buddhiḥ|\navyavasāyinām hi buddhayaḥ anantāḥ bahu-śākhāḥ ca|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  4,
+                  3,
+                  0,
+                  2,
+                  1,
+                  10,
+                  6,
+                  9,
+                  7,
+                  5,
+                  8
+                ],
+                "lit": {
+                  "en": "O, O joy of the Kurus, here, resolute, single, the intellect, of the irresolute, indeed, the intellects, endless, many-branched, and",
+                  "ne": "हे हे कुरुनन्दन यहाँ दृढ एक बुद्धि अनिश्चयीहरूका नै बुद्धिहरू अनन्त धेरै हाँगा भएका र",
+                  "hi": "हे हे कुरुनन्दन यहाँ दृढ़ एक बुद्धि अनिश्चयियों का ही बुद्धियाँ अनन्त अनेक शाखाओं वाली और"
+                }
               }
             }
           ]
@@ -7827,6 +9260,41 @@
                 "en": "“The Vedas move within the three guṇas; rise beyond them, Arjuna — beyond duality, resting in purity, free from craving and possessions, master of yourself.”",
                 "ne": "“वेदहरू तीन गुणभित्रै चल्छन्; तिनभन्दा माथि उठ, अर्जुन — द्वन्द्वभन्दा पर, शुद्धतामा टिकेर, मोह र अहंकारबाट मुक्त, आफ्नै स्वामी बनेर।”",
                 "hi": "“वेद तीन गुणों के भीतर ही चलते हैं; उनसे ऊपर उठ, अर्जुन — द्वन्द्व से परे, शुद्धता में टिककर, मोह और स्वामित्व से मुक्त, अपने स्वामी बनकर।”"
+              },
+              "anv": {
+                "d": "हे अर्जुन! वेदाः त्रैगुण्यविषयाः।\n(त्वं) निस्त्रैगुण्यः, नित्यसत्त्वस्थः, निर्द्वन्द्वः, निर्योगक्षेमः आत्मवान् भव।",
+                "t": "he arjuna! vedāḥ traiguṇya-viṣayāḥ|\n(tvaṃ) nistraiguṇyaḥ, nitya-sattvasthaḥ, nirdvandvaḥ, niryogakṣemaḥ ātmavān bhava|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  5,
+                  2,
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "त्रैगुण्य-विषयाः"
+                  },
+                  {
+                    "t": "त्वं",
+                    "i": "tvaṁ"
+                  },
+                  3,
+                  7,
+                  6,
+                  8,
+                  9,
+                  4
+                ],
+                "lit": {
+                  "en": "O, O Arjuna, the Vedas, the three qualities dealing with, beyond the three qualities, ever established in sattva, free from duality, free from gain and keeping, self-possessed, be",
+                  "ne": "हे हे अर्जुन वेदहरू तीन गुण विषयहरू त्रिगुणातीत सधैं सत्त्वमा स्थित द्वन्द्वरहित प्राप्ति र रक्षाभन्दा पर आत्मायुक्त होऊ",
+                  "hi": "हे हे अर्जुन वेद तीन गुण विषय त्रिगुणातीत सदा सत्त्व में स्थित द्वन्द्व-रहित प्राप्ति और रक्षा से परे आत्मा-युक्त बनो"
+                }
               }
             }
           ]
@@ -7961,6 +9429,53 @@
                 "en": "“A well is of little use when water floods the land — likewise all the Vedas to the sage who has realized the truth.”",
                 "ne": "“जमिन जलमग्न हुँदा इनारको अलिकति मात्र काम हुन्छ — त्यस्तै सत्य बुझेका ज्ञानीका निम्ति सबै वेदहरू।”",
                 "hi": "“जब भूमि जलमग्न हो जाती है तो कुएँ का थोड़ा-सा ही काम होता है — वैसे ही सत्य को जान चुके ज्ञानी के लिए सारे वेद।”"
+              },
+              "anv": {
+                "d": "यावान् अर्थः उदपाने (तावान्) सर्वतः सम्प्लुतोदके (भवति)।\n(तथा यावान् अर्थः) सर्वेषु वेदेषु तावान् विजानतः ब्राह्मणस्य (भवति)।",
+                "t": "yāvān arthaḥ udapāne (tāvān) sarvataḥ samplutodake (bhavati)|\n(tathā yāvān arthaḥ) sarveṣu vedeṣu tāvān vijānataḥ brāhmaṇasya (bhavati)|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  5,
+                  3,
+                  4,
+                  {
+                    "t": "भवति",
+                    "i": "bhavati",
+                    "sup": "bhavati"
+                  },
+                  {
+                    "t": "तथा",
+                    "i": "tathā"
+                  },
+                  {
+                    "t": "यावान्",
+                    "i": "yāvān"
+                  },
+                  {
+                    "t": "अर्थः",
+                    "i": "arthaḥ"
+                  },
+                  6,
+                  7,
+                  {
+                    "t": "तावान्",
+                    "i": "tāvān"
+                  },
+                  9,
+                  8,
+                  {
+                    "t": "भवति",
+                    "i": "bhavati",
+                    "sup": "bhavati"
+                  }
+                ],
+                "lit": {
+                  "en": "as much, use, in a well, so much, everywhere, where water covers the land, is, in all, the Vedas, of the knowing, of the brāhmaṇa, is",
+                  "ne": "जति प्रयोजन इनारमा त्यति सबैतिर पानीले भरिएको ठाउँमा हुन्छ सबैमा वेदहरूमा जान्नेको ब्राह्मणको हुन्छ",
+                  "hi": "जितना प्रयोजन कुएँ में उतना सब ओर जल से भरे स्थान में होता है सबमें वेदों में जानने वाले का ब्राह्मण का होता है"
+                }
               }
             }
           ]
@@ -8152,6 +9667,43 @@
                 "en": "“You have a right to act, but never to the results of action. Do not act for reward, and do not cling to doing nothing.”",
                 "ne": "“तिमीलाई कर्म गर्ने अधिकार छ, तर फलमाथि कहिल्यै होइन। फलका निम्ति नगर, र केही नगर्ने आलस्यमा पनि नटाँसिनु।”",
                 "hi": "“तुझे कर्म करने का अधिकार है, पर उसके फल पर कभी नहीं। फल के लिए मत कर, और कुछ न करने के आलस्य में भी मत चिपक।”"
+              },
+              "anv": {
+                "d": "ते अधिकारः कर्मणि एव; कदाचन फलेषु मा।\nकर्मफलहेतुः मा भूः ते सङ्गः (च) अकर्मणि मा अस्तु।",
+                "t": "te adhikāraḥ karmaṇi eva; kadācana phaleṣu mā|\nkarma-phala-hetuḥ mā bhūḥ te saṅgaḥ (ca) akarmaṇi mā astu|",
+                "w": [
+                  3,
+                  2,
+                  0,
+                  1,
+                  6,
+                  5,
+                  4,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "कर्म-फल-हेतुः"
+                  },
+                  7,
+                  10,
+                  12,
+                  13,
+                  {
+                    "t": "च",
+                    "i": "ca",
+                    "sup": "ca"
+                  },
+                  15,
+                  11,
+                  14
+                ],
+                "lit": {
+                  "en": "your, the right, in action, indeed, ever, in the fruits, not, the motive of the fruit of action, not, be, your, attachment, in inaction, not, let be",
+                  "ne": "तिम्रो अधिकार कर्ममा नै कहिल्यै फलहरूमा न कर्मफलको कारण न होऊ तिम्रो आसक्ति अकर्ममा न होस्",
+                  "hi": "तुम्हारा अधिकार कर्म में ही कभी फलों में मत कारण कर्म-फल का मत होऊ तुम्हारा आसक्ति अकर्म में मत हो"
+                }
               }
             }
           ]
@@ -8300,6 +9852,34 @@
                 "en": "“Rooted in yoga, do your work without clinging, Arjuna. Remain the same in success and failure — that poise is what yoga means.”",
                 "ne": "“योगमा जरा गाडेर, आसक्ति बिना आफ्नो काम गर, अर्जुन। जित-हारमा एकनास रह — त्यही सन्तुलन योग हो।”",
                 "hi": "“योग में जड़ जमाकर, बिना आसक्ति के अपना काम कर, अर्जुन। जय-पराजय में एक-सा रह — वही संतुलन योग है।”"
+              },
+              "anv": {
+                "d": "हे धनञ्जय! सङ्गम् त्यक्त्वा, सिद्ध्यसिद्ध्योः समः भूत्वा, योगस्थः कर्माणि कुरु।\nसमत्वम् योगः उच्यते।",
+                "t": "he dhanañjaya! saṅgam tyaktvā, siddhi-asiddhyoḥ samaḥ bhūtvā, yogasthaḥ karmāṇi kuru|\nsamatvam yogaḥ ucyate|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  5,
+                  3,
+                  4,
+                  6,
+                  7,
+                  8,
+                  0,
+                  2,
+                  1,
+                  9,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "O, O Dhanañjaya, attachment, having abandoned, in success and failure, equal, having become, established in yoga, actions, perform, evenness, yoga, is called",
+                  "ne": "हे हे धनञ्जय आसक्ति त्यागेर सिद्धि-असिद्धिमा समान भएर योगमा स्थित कर्महरू गर समत्व योग भनिन्छ",
+                  "hi": "हे हे धनंजय आसक्ति त्यागकर सिद्धि-असिद्धि में समान बनकर योग में स्थित कर्म करो समत्व योग कहा जाता है"
+                }
               }
             }
           ]
@@ -8441,6 +10021,33 @@
                 "en": "“Ordinary action is far below the yoga of understanding, Arjuna. Take refuge in wise discernment — pitiable are those who labor only for reward.”",
                 "ne": "“सामान्य कर्म समझको योगभन्दा धेरै तल छ, अर्जुन। विवेकी बुद्धिमा शरण लेऊ — फलका निम्ति मात्र खट्नेहरू दयनीय हुन्।”",
                 "hi": "“साधारण कर्म समझ के योग से कहीं नीचे है, अर्जुन। विवेकपूर्ण बुद्धि में शरण ले — जो केवल फल के लिए परिश्रम करते हैं, वे दयनीय हैं।”"
+              },
+              "anv": {
+                "d": "हे धनञ्जय! कर्म बुद्धियोगात् दूरेण अवरम् हि। बुद्धौ शरणम् अन्विच्छ। फलहेतवः कृपणाः।",
+                "t": "he dhanañjaya! karma buddhi-yogāt dūreṇa avaram hi| buddhau śaraṇam anviccha| phala-hetavaḥ kṛpaṇāḥ|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  5,
+                  3,
+                  4,
+                  0,
+                  2,
+                  1,
+                  6,
+                  7,
+                  8,
+                  10,
+                  9
+                ],
+                "lit": {
+                  "en": "O, O Dhanañjaya, action, than the yoga of discernment, far, inferior, indeed, in the intellect, refuge, seek, motive-seeking, pitiable",
+                  "ne": "हे हे धनञ्जय कर्म बुद्धियोगभन्दा टाढा निकृष्ट नै बुद्धिमा शरण खोज फलको खोजी गर्ने दयनीय",
+                  "hi": "हे हे धनंजय कर्म बुद्धि-योग से दूर निकृष्ट ही बुद्धि में शरण खोज फल चाहने वाले दयनीय"
+                }
               }
             }
           ]
@@ -8589,6 +10196,34 @@
                 "en": "“United with wisdom, one sheds both merit and demerit in this very life. So turn to yoga — for yoga is the art of action.”",
                 "ne": "“विवेकसँग एक हुँदा मानिस यही जीवनमा पुण्य र पाप दुवै छोड्छ। त्यसैले योगतिर लाग — किनकि योग नै कर्मको कला हो।”",
                 "hi": "“विवेक से युक्त होकर व्यक्ति इसी जीवन में पुण्य और पाप दोनों छोड़ देता है। इसलिए योग की ओर लग — क्योंकि योग ही कर्म की कला है।”"
+              },
+              "anv": {
+                "d": "इह बुद्धियुक्तः उभे सुकृतदुष्कृते जहाति। तस्मात् योगाय युज्यस्व। योगः कर्मसु कौशलम्।",
+                "t": "iha buddhi-yuktaḥ ubhe sukṛta-duṣkṛte jahāti| tasmāt yogāya yujyasva| yogaḥ karmasu kauśalam|",
+                "w": [
+                  2,
+                  0,
+                  3,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "सुकृत-दुष्कृते"
+                  },
+                  1,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "here, joined to the intellect, both, good and bad deeds, leaves, therefore, to yoga, devote yourself, yoga, in actions, skill",
+                  "ne": "यहाँ बुद्धियुक्त दुवै असल दुष्कर्म त्याग्छ त्यसकारण योगका निम्ति समर्पित होऊ योग कर्महरूमा कुशलता",
+                  "hi": "यहाँ बुद्धि-युक्त दोनों अच्छा दुष्कर्म त्यागता है इसलिए योग के लिए समर्पित हो योग कर्मों में कुशलता"
+                }
               }
             }
           ]
@@ -8745,6 +10380,33 @@
                 "en": "“The wise, established in understanding, give up the fruits of action and are released from the bonds of rebirth, reaching the state that knows no suffering.”",
                 "ne": "“समझमा स्थापित ज्ञानीहरूले कर्मको फल छोडेर पुनर्जन्मको बन्धनबाट मुक्ति पाउँछन्, र कुनै दुःख नभएको अवस्थामा पुग्छन्।”",
                 "hi": "“समझ में स्थापित ज्ञानी कर्म के फल छोड़ देते हैं और पुनर्जन्म के बन्धन से मुक्त होकर उस अवस्था तक पहुँचते हैं जहाँ कोई दुःख नहीं है।”"
+              },
+              "anv": {
+                "d": "हि बुद्धियुक्ताः मनीषिणः कर्मजम् फलं त्यक्त्वा जन्मबन्धविनिर्मुक्ताः अनामयम् पदम् गच्छन्ति।",
+                "t": "hi buddhi-yuktāḥ manīṣiṇaḥ karmajam phalaṃ tyaktvā janma-bandha-vinirmuktāḥ anāmayam padam gacchanti|",
+                "w": [
+                  2,
+                  1,
+                  5,
+                  0,
+                  3,
+                  4,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "जन्म-बन्ध-विनिर्मुक्ताः"
+                  },
+                  10,
+                  8,
+                  9
+                ],
+                "lit": {
+                  "en": "indeed, joined to the intellect, the wise, born of action, the fruit, having renounced, freed of the bond of birth, beyond all ill, the state, they reach",
+                  "ne": "नै बुद्धियुक्त ज्ञानीहरू कर्मबाट जन्मेको फल त्यागेर जन्मको बन्धनको मुक्त रोगरहित स्थान जान्छन्",
+                  "hi": "ही बुद्धि-युक्त ज्ञानी कर्म से उत्पन्न फल त्यागकर मुक्त जन्म-बन्धन का रोग-रहित स्थान जाते हैं"
+                }
               }
             }
           ]
@@ -8886,6 +10548,28 @@
                 "en": "“When your mind passes beyond the swamp of confusion, you will become indifferent to scriptures heard and yet to be heard.”",
                 "ne": "“जब तिम्रो मन भ्रमको दलदलबाट पार हुन्छ, तब तिमी सुनिएका र सुनिन बाँकी शास्त्रहरूप्रति बेपरवाह हुनेछौ।”",
                 "hi": "जिस दिन तेरी समझ इस भ्रम की दलदल से बाहर निकलेगी, उस दिन जो सुन चुका है और जो सुनना बाकी है — दोनों बेमानी लगेंगे।"
+              },
+              "anv": {
+                "d": "यदा ते बुद्धिः मोहकलिलम् व्यतितरिष्यति, तदा श्रोतव्यस्य श्रुतस्य च निर्वेदम् गन्तासि।",
+                "t": "yadā te buddhiḥ moha-kalilam vyatitariṣyati, tadā śrotavyasya śrutasya ca nirvedam gantāsi|",
+                "w": [
+                  0,
+                  1,
+                  3,
+                  2,
+                  4,
+                  5,
+                  8,
+                  9,
+                  10,
+                  7,
+                  6
+                ],
+                "lit": {
+                  "en": "when, your, the intellect, the mire of delusion, will cross beyond, then, of what is to be heard, of what is heard, and, indifference, you will go to",
+                  "ne": "जब तिम्रो बुद्धि मोहको हिलो पार गर्नेछ तब सुन्नुपर्नेको सुनिएकोको र वैराग्य जानेछौ",
+                  "hi": "जब तुम्हारा बुद्धि मोह की दलदल पार करेगा तब सुनने योग्य का सुने हुए का और वैराग्य जाओगे"
+                }
               }
             }
           ]
@@ -9034,6 +10718,38 @@
                 "en": "“When your intellect, no longer shaken by conflicting scriptures, rests steady in absorption — then you have reached yoga.”",
                 "ne": "“जब तिम्रो बुद्धि, शास्त्रका विरोधाभासले नडग्मगाइकन, समाधिमा शान्त हुन्छ — तब तिमी योगमा पुगेका हुन्छौ।”",
                 "hi": "“जब तेरी बुद्धि, शास्त्रों के विरोधाभासों से न डगमगाकर, समाधि में स्थिर हो जाएगी — तब तू योग तक पहुँच गया है।”"
+              },
+              "anv": {
+                "d": "यदा श्रुतिविप्रतिपन्ना ते बुद्धिः निश्चला (भूत्वा) समाधौ अचला स्थास्यति, तदा योगम् अवाप्स्यसि।",
+                "t": "yadā śruti-vipratipannā te buddhiḥ niścalā (bhūtvā) samādhau acalā sthāsyati, tadā yogam avāpsyasi|",
+                "w": [
+                  3,
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "श्रुति-विप्रतिपन्ना"
+                  },
+                  2,
+                  8,
+                  5,
+                  {
+                    "t": "भूत्वा",
+                    "i": "bhūtvā"
+                  },
+                  6,
+                  7,
+                  4,
+                  9,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "when, bewildered of scripture, your, the intellect, unmoved, in absorption, motionless, will stand, then, yoga, you will attain",
+                  "ne": "जब श्रुतिको भ्रमित तिम्रो बुद्धि अचल समाधिमा अचल रहनेछ तब योग प्राप्त गर्नेछौ",
+                  "hi": "जब भ्रमित श्रुति का तुम्हारा बुद्धि अचल समाधि में अचल रहेगा तब योग प्राप्त करोगे"
+                }
               }
             }
           ]
@@ -9218,6 +10934,46 @@
                 "en": "Arjuna asks: “What marks the man of steady wisdom, fixed in absorption, Kṛṣṇa? How does such a one speak, sit, and walk?”",
                 "ne": "अर्जुन सोध्छन्: “हे कृष्ण, समाधिमा टिकेको स्थिर प्रज्ञाको मान्छेको विशेषता के हो? यस्तो मान्छे कसरी बोल्छ, कसरी बस्छ, कसरी हिँड्छ?”",
                 "hi": "अर्जुन पूछते हैं: “हे कृष्ण, समाधि में टिके स्थिर प्रज्ञा वाले पुरुष के चिह्न क्या हैं? ऐसा पुरुष कैसे बोलता है, कैसे बैठता है, कैसे चलता है?”"
+              },
+              "anv": {
+                "d": "अर्जुन उवाच।\nहे केशव! समाधिस्थस्य स्थितप्रज्ञस्य का भाषा? स्थितधीः किम् प्रभाषेत? किम् आसीत? किम् व्रजेत?",
+                "t": "arjuna uvāca .\nhe keśava! samādhisthasya sthitaprajñasya kā bhāṣā? sthitadhīḥ kim prabhāṣeta? kim āsīta? kim vrajeta?",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "अर्जुन"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  6,
+                  5,
+                  2,
+                  3,
+                  4,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  13,
+                  12
+                ],
+                "lit": {
+                  "en": "Arjuna, said, O, O Keśava, of one established in samādhi, of the steady-wisdom, what, description, the steady-minded, what, would speak, how, would sit, how, would move",
+                  "ne": "अर्जुनले भने हे हे केशव समाधिमा स्थितको स्थितप्रज्ञको के वर्णन स्थिरबुद्धि के बोल्थ्यो कसरी बसोस् कसरी जान्थ्यो",
+                  "hi": "अर्जुन बोले हे हे केशव समाधि में स्थित का स्थितप्रज्ञ का क्या वर्णन स्थिरबुद्धि क्या बोलता कैसे बैठे कैसे जाता"
+                }
               }
             }
           ]
@@ -9394,6 +11150,56 @@
                 "en": "Kṛṣṇa answers: “When a person lets go of every desire that arises in the mind and is content in the Self alone, that one is called steady in wisdom.”",
                 "ne": "कृष्णले जवाफ दिनुभयो: “जब मानिसले मनमा उठ्ने हरेक इच्छा छोड्छ र आत्मामै आत्माले सन्तोष पाउँछ — त्यही स्थिर बुद्धिको मान्छे हो।”",
                 "hi": "कृष्ण उत्तर देते हैं: “जब व्यक्ति मन में उठने वाली हर इच्छा छोड़ देता है और आत्मा में ही आत्मा से संतोष पाता है — वही स्थिर बुद्धि वाला है।”"
+              },
+              "anv": {
+                "d": "श्रीभगवान् उवाच।\nहे पार्थ! यदा ( नरः) मनोगतान् सर्वान् कामान् प्रजहाति, आत्मनि एव आत्मना तुष्टः (भवति) तदा स्थितप्रज्ञः उच्यते।",
+                "t": "śrībhagavān uvāca .\nhe pārtha! yadā ( naraḥ) manogatān sarvān kāmān prajahāti, ātmani eva ātmanā tuṣṭaḥ (bhavati) tadā sthitaprajñaḥ ucyate|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "श्रीभगवान्"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  6,
+                  3,
+                  {
+                    "t": "नरः",
+                    "i": "naraḥ"
+                  },
+                  7,
+                  5,
+                  4,
+                  2,
+                  8,
+                  9,
+                  10,
+                  11,
+                  {
+                    "t": "भवति",
+                    "i": "bhavati",
+                    "sup": "bhavati"
+                  },
+                  13,
+                  12,
+                  14
+                ],
+                "lit": {
+                  "en": "the Blessed Lord, said, O, O Pārtha, when, in the mind, all, desires, casts off, in the Self, alone, by the Self, content, is, then, steady in wisdom, is called",
+                  "ne": "श्रीभगवान्ले भन्नुभयो हे हे पार्थ जब मनका सबै कामनाहरू त्याग्छ आत्मामा नै आत्माद्वारा सन्तुष्ट हुन्छ तब स्थितप्रज्ञ भनिन्छ",
+                  "hi": "श्रीभगवान् बोले हे हे पार्थ जब मन के सब कामनाएँ त्यागता है आत्मा में ही आत्मा से संतुष्ट होता है तब स्थितप्रज्ञ कहा जाता है"
+                }
               }
             }
           ]
@@ -9542,6 +11348,39 @@
                 "en": "“The sage whose mind is unshaken by pain and free of craving in pleasure, who has let go of lust, fear, and anger — that one is of steady mind.”",
                 "ne": "“जसको मन दुःखले हल्लिँदैन र सुखमा मोह हुँदैन, जसले काम, डर र क्रोध छोडेको छ — त्यो स्थिर मनको ज्ञानी हो।”",
                 "hi": "“जिसका मन दुःख से नहीं हिलता और सुख में लालसा नहीं रखता, जिसने काम, भय और क्रोध छोड़ दिए हैं — वह स्थिर मन का ज्ञानी है।”"
+              },
+              "anv": {
+                "d": "दुःखेषु अनुद्विग्नमनाः, सुखेषु विगतस्पृहः, वीतरागभयक्रोधः मुनिः स्थितधीः उच्यते।",
+                "t": "duḥkheṣu anudvigna-manāḥ, sukheṣu vigata-spṛhaḥ, vīta-rāga-bhaya-krodhaḥ muniḥ sthitadhīḥ ucyate|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "अनुद्विग्न-मनाः"
+                  },
+                  3,
+                  4,
+                  {
+                    "r": [
+                      5,
+                      6,
+                      7,
+                      8
+                    ],
+                    "t": "वीत-राग-भय-क्रोधः"
+                  },
+                  10,
+                  9,
+                  11
+                ],
+                "lit": {
+                  "en": "in sorrows, untroubled mind, in pleasures, free from longing, free from passion fear anger, sage, steady-minded, is called",
+                  "ne": "दुःखहरूमा अविचलित जसको मन सुखहरूमा इच्छारहित रहित आसक्ति भय क्रोध मुनि स्थिरबुद्धि भनिन्छ",
+                  "hi": "दुःखों में अविचलित जिसका मन सुखों में इच्छा-रहित रहित आसक्ति भय क्रोध मुनि स्थिरबुद्धि कहा जाता है"
+                }
               }
             }
           ]
@@ -9711,6 +11550,37 @@
                 "en": "“One who clings to nothing, who is neither elated by the good nor upset by the bad — that person's understanding stands firm.”",
                 "ne": "“जो कुनै कुरामा टाँसिँदैन, जो राम्रोबाट उल्लासित र नराम्रोबाट विचलित हुँदैन — त्यसको समझ स्थिर हुन्छ।”",
                 "hi": "“जो किसी से चिपकता नहीं, जो अच्छे से प्रसन्न नहीं होता और बुरे से विचलित नहीं होता — उसकी समझ स्थिर होती है।”"
+              },
+              "anv": {
+                "d": "यः सर्वत्र अनभिस्नेहः, तत् तत् शुभाशुभम् प्राप्य, न अभिनन्दति, न द्वेष्टि, तस्य प्रज्ञा प्रतिष्ठिता।",
+                "t": "yaḥ sarvatra anabhisnehaḥ, tat tat śubha-aśubham prāpya, na abhinandati, na dveṣṭi, tasya prajñā pratiṣṭhitā|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "शुभ-अशुभम्"
+                  },
+                  5,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "who, everywhere, free from attachment, this, that (repeated: whatever comes), good and evil, obtaining, not, rejoices, not, reviles, his, wisdom, is established",
+                  "ne": "जो सर्वत्र आसक्तिरहित यो त्यो (दोहोरिएर: जे आए पनि) असल अशुभ पाएर न रम्छ न घृणा गर्दछ त्यसको प्रज्ञा स्थापित",
+                  "hi": "जो सर्वत्र आसक्तिरहित यह वह (दोहराकर: जो भी मिले) अच्छा अशुभ पाकर नहीं हर्षित होता है नहीं द्वेष करता है उसका प्रज्ञा स्थापित"
+                }
               }
             }
           ]
@@ -9866,6 +11736,34 @@
                 "en": "“A tortoise pulls in its legs and head at the first sign of danger. Do that with your senses, and your wisdom is steady.”",
                 "ne": "खतरा देख्नेबित्तिकै कछुवाले खुट्टा र टाउको भित्र लुकाउँछ। इन्द्रियलाई त्यसै गर्न सक्यो भने बुद्धि अडिग भइसक्यो।",
                 "hi": "“जैसे कछुआ अपने अंग भीतर खींच लेता है, वैसे जब व्यक्ति इन्द्रियों को विषयों से हटा लेता है — उसकी बुद्धि दृढ़ होती है।”"
+              },
+              "anv": {
+                "d": "कूर्मः अङ्गानि इव, यदा अयम् इन्द्रियार्थेभ्यः इन्द्रियाणि सर्वशः संहरते, (तदा) तस्य प्रज्ञा प्रतिष्ठिता च।",
+                "t": "kūrmaḥ aṅgāni iva, yadā ayam indriya-arthebhyaḥ indriyāṇi sarvaśaḥ saṃharate, (tadā) tasya prajñā pratiṣṭhitā ca|",
+                "w": [
+                  4,
+                  5,
+                  6,
+                  0,
+                  3,
+                  9,
+                  8,
+                  7,
+                  1,
+                  {
+                    "t": "तदा",
+                    "i": "tadā"
+                  },
+                  10,
+                  11,
+                  12,
+                  2
+                ],
+                "lit": {
+                  "en": "tortoise, limbs, like, when, this, from the sense objects, the senses, from all sides, draws in, his, wisdom, is established, and",
+                  "ne": "कछुवा अङ्गहरू झैँ जब यो इन्द्रियविषयहरूबाट इन्द्रियहरू चारैतिरबाट तान्छ त्यसको प्रज्ञा स्थापित र",
+                  "hi": "कछुआ अंग के समान जब यह इन्द्रिय-विषयों से इन्द्रियाँ चारों ओर से समेटता है उसका प्रज्ञा स्थापित और"
+                }
               }
             }
           ]
@@ -10022,6 +11920,28 @@
                 "en": "“Sense objects drop away from the one who abstains, yet the craving for them lingers; but when one sees the Supreme, even that craving falls away.”",
                 "ne": "“परहेज गर्नेबाट विषय टाढिन्छन्, तर तिनको लोभ लुकेर रहन्छ; तर परम सत्य देख्नेबित्तिकै त्यो लोभ पनि हराउँछ।”",
                 "hi": "“परहेज़ करने वाले से विषय दूर हट जाते हैं, पर उनका लोभ छिपा रहता है; किन्तु परम सत्य को देखते ही वह लोभ भी मिट जाता है।”"
+              },
+              "anv": {
+                "d": "निराहारस्य देहिनः विषयाः रसवर्जम् विनिवर्तन्ते।\nअस्य रसः अपि परम् दृष्ट्वा निवर्तते।",
+                "t": "nirāhārasya dehinaḥ viṣayāḥ rasavarjam vinivartante|\nasya rasaḥ api param dṛṣṭvā nivartate|",
+                "w": [
+                  2,
+                  3,
+                  0,
+                  4,
+                  1,
+                  7,
+                  5,
+                  6,
+                  8,
+                  9,
+                  10
+                ],
+                "lit": {
+                  "en": "of the abstaining, of the embodied one, the sense objects, except the taste, fall away, of him, the taste, even, the Supreme, having seen, departs",
+                  "ne": "निराहारको देहधारीको विषयहरू रस बाहेक टाढिन्छन् यसको रस पनि परम देखेर जान्छ",
+                  "hi": "निराहार का देहधारी का विषय रस को छोड़कर दूर हो जाते हैं इसका रस भी परम देखकर चला जाता है"
+                }
               }
             }
           ]
@@ -10163,6 +12083,33 @@
                 "en": "“Even a wise person who is striving, Arjuna, finds that the restless senses snatch the mind away by force.”",
                 "ne": "“प्रयास गरिरहेका ज्ञानीको पनि, अर्जुन, बेचैन इन्द्रियहरूले मनलाई जबरजस्ती तानेर लैजान्छन्।”",
                 "hi": "“प्रयास करते हुए ज्ञानी की भी, अर्जुन, बेचैन इन्द्रियाँ मन को ज़बरदस्ती खींच ले जाती हैं।”"
+              },
+              "anv": {
+                "d": "हे कौन्तेय! प्रमाथीनि इन्द्रियाणि यततः विपश्चितः अपि पुरुषस्य मनः प्रसभं हरन्ति हि।",
+                "t": "he kaunteya! pramāthīni indriyāṇi yatataḥ vipaścitaḥ api puruṣasya manaḥ prasabhaṃ haranti hi|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  3,
+                  7,
+                  6,
+                  0,
+                  5,
+                  2,
+                  4,
+                  10,
+                  9,
+                  8,
+                  1
+                ],
+                "lit": {
+                  "en": "O, O son of Kuntī, turbulent, the senses, of the striving, of the wise, even, of the person, the mind, by force, carry away, indeed",
+                  "ne": "हे हे कुन्तीपुत्र चञ्चल इन्द्रियहरू प्रयत्न गर्ने ज्ञानीको पनि पुरुषको मन बलपूर्वक लैजान्छन् नै",
+                  "hi": "हे हे कुन्तीपुत्र चंचल इन्द्रियाँ प्रयत्न करने वाले ज्ञानी का भी पुरुष का मन बलपूर्वक ले जाते हैं ही"
+                }
               }
             }
           ]
@@ -10318,6 +12265,30 @@
                 "en": "“Reining in all the senses, the yogi should sit devoted to Me; for one whose senses are mastered, understanding stands firm.”",
                 "ne": "“सबै इन्द्रियलाई काबूमा राखेर योगी ममै ध्यान दिएर बस्नुपर्छ; जसको इन्द्रिय वशमा छ, त्यसकै समझ दृढ हुन्छ।”",
                 "hi": "“सब इन्द्रियों को काबू में रखकर योगी मुझ पर ही ध्यान देकर बैठे; जिसकी इन्द्रियाँ वश में हैं, उसी की समझ दृढ़ होती है।”"
+              },
+              "anv": {
+                "d": "तानि सर्वाणि संयम्य युक्तः मत्परः आसीत।\nहि यस्य वशे इन्द्रियाणि तस्य प्रज्ञा प्रतिष्ठिता।",
+                "t": "tāni sarvāṇi saṃyamya yuktaḥ mat-paraḥ āsīta|\nhi yasya vaśe indriyāṇi tasya prajñā pratiṣṭhitā|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  5,
+                  4,
+                  7,
+                  8,
+                  6,
+                  9,
+                  10,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "them, all, having restrained, disciplined, intent on Me, should sit, indeed, of whom, in the control, the senses, his, wisdom, is established",
+                  "ne": "तिनीहरूलाई सबै संयम गरेर युक्त मलाई परम मान्ने बसोस् नै जसको वशमा इन्द्रियहरू त्यसको प्रज्ञा स्थापित",
+                  "hi": "उन्हें सब संयम करके युक्त मुझे परम मानने वाला बैठे ही जिसका वश में इन्द्रियाँ उसका प्रज्ञा स्थापित"
+                }
               }
             }
           ]
@@ -10481,6 +12452,29 @@
                 "en": "“Dwelling on the objects of the senses creates attachment; from attachment comes craving; from craving comes anger.”",
                 "ne": "“इन्द्रियविषयमा मन दिनुले आसक्ति जन्माउँछ; आसक्तिबाट इच्छा; इच्छाबाट क्रोध आउँछ।”",
                 "hi": "“इन्द्रिय-विषयों पर मन देना आसक्ति जन्माता है; आसक्ति से इच्छा; इच्छा से क्रोध आता है।”"
+              },
+              "anv": {
+                "d": "विषयान् ध्यायतः पुंसः तेषु सङ्गः उपजायते। सङ्गात् कामः सञ्जायते। कामात् क्रोधः अभिजायते।",
+                "t": "viṣayān dhyāyataḥ puṃsaḥ teṣu saṅgaḥ upajāyate| saṅgāt kāmaḥ sañjāyate| kāmāt krodhaḥ abhijāyate|",
+                "w": [
+                  1,
+                  0,
+                  2,
+                  4,
+                  3,
+                  5,
+                  6,
+                  8,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "on sense objects, of one brooding, of a person, to them, attachment, arises, from attachment, desire, is born, from desire, anger, is born",
+                  "ne": "विषयहरू चिन्तन गर्नेको पुरुषको तिनीहरूमा आसक्ति उत्पन्न हुन्छ आसक्तिबाट कामना उत्पन्न हुन्छ कामनाबाट क्रोध जन्मिन्छ",
+                  "hi": "विषय चिन्तन करने वाले का पुरुष का उनमें आसक्ति उत्पन्न होता है आसक्ति से कामना उत्पन्न होता है कामना से क्रोध जन्मता है"
+                }
               }
             }
           ]
@@ -10764,6 +12758,25 @@
                 "en": "“But the self-controlled one who walks among sense objects with the senses mastered, free of liking and disliking — that one wins peace.”",
                 "ne": "“तर आफूलाई नियन्त्रण गर्नेले इन्द्रियलाई वशमा राखेर, आसक्ति र द्वेषबाट मुक्त भएर, विषयहरूका बीच हिँड्छ — र शान्ति जित्छ।”",
                 "hi": "“किन्तु आत्म-संयमी, इन्द्रियों को वश में रखकर, राग-द्वेष के बिना विषयों के बीच चलता है — और शान्ति जीतता है।”"
+              },
+              "anv": {
+                "d": "विधेयात्मा तु रागद्वेषविमुक्तैः आत्मवश्यैः इन्द्रियैः विषयान् चरन् प्रसादम् अधिगच्छति।",
+                "t": "vidheya-ātmā tu rāga-dveṣa-vimuktaiḥ ātma-vaśyaiḥ indriyaiḥ viṣayān caran prasādam adhigacchati|",
+                "w": [
+                  8,
+                  3,
+                  {
+                    "t": "राग-द्वेष-विमुक्तैः",
+                    "i": "rāgadveṣavimuktaiḥ"
+                  },
+                  7,
+                  5,
+                  4,
+                  6,
+                  9,
+                  10
+                ],
+                "declined": "the reference's anvaya follows a different reading of this verse; see source/reference/gita_anvaya_ch*.itx"
               }
             }
           ]
@@ -10905,6 +12918,33 @@
                 "en": "“In that peace all suffering comes to an end for such a person; the heart of the serene quickly settles into clarity.”",
                 "ne": "“त्यो शान्तिमा यस्तो मानिसका सबै कष्ट अन्त्य हुन्छन्; शान्त मन छिट्टै नै स्पष्टतामा टिक्छ।”",
                 "hi": "“उस शान्ति में ऐसे व्यक्ति के सब कष्ट समाप्त हो जाते हैं; शान्त मन शीघ्र ही स्पष्टता में स्थिर हो जाता है।”"
+              },
+              "anv": {
+                "d": "प्रसादे अस्य सर्वदुःखानाम् हानिः उपजायते।\nप्रसन्नचेतसः हि बुद्धिः आशु पर्यवतिष्ठते।",
+                "t": "prasāde asya sarva-duḥkhānām hāniḥ upajāyate|\nprasanna-cetasaḥ hi buddhiḥ āśu paryavatiṣṭhate|",
+                "w": [
+                  0,
+                  4,
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "सर्व-दुःखानाम्"
+                  },
+                  3,
+                  5,
+                  6,
+                  7,
+                  9,
+                  8,
+                  10
+                ],
+                "lit": {
+                  "en": "in serenity, of him, sorrows of all, the destruction, arises, of the serene-minded, indeed, the intellect, quickly, is established",
+                  "ne": "प्रसन्नतामा यसको सबै दुःखहरूका नाश उत्पन्न हुन्छ प्रसन्न मनका नै बुद्धि छिट्टै स्थापित हुन्छ",
+                  "hi": "प्रसन्नता में इसका दुःखों का सब नाश उत्पन्न होता है प्रसन्न मन का ही बुद्धि शीघ्र स्थापित होता है"
+                }
               }
             }
           ]
@@ -11074,6 +13114,42 @@
                 "en": "“The undisciplined have no discernment, the restless have no meditation; without meditation there is no peace, and without peace, how can there be happiness?”",
                 "ne": "“अनुशासनहीनलाई विवेक हुँदैन, चञ्चललाई ध्यान हुँदैन; ध्यान बिना शान्ति हुँदैन, र शान्ति बिना सुख कसरी सम्भव?”",
                 "hi": "“अनुशासनहीन को विवेक नहीं, चंचल को ध्यान नहीं; ध्यान के बिना शान्ति नहीं, और शान्ति के बिना सुख कैसे सम्भव?”"
+              },
+              "anv": {
+                "d": "अयुक्तस्य बुद्धिः न अस्ति, अयुक्तस्य च भावना न (अस्ति); अभावयतः च शान्तिः न (अस्ति); अशान्तस्य सुखम् कुतः?",
+                "t": "ayuktasya buddhiḥ na asti, ayuktasya ca bhāvanā na (asti); abhāvayataḥ ca śāntiḥ na (asti); aśāntasya sukham kutaḥ?",
+                "w": [
+                  3,
+                  2,
+                  0,
+                  1,
+                  6,
+                  5,
+                  7,
+                  4,
+                  {
+                    "t": "अस्ति",
+                    "i": "asti",
+                    "sup": "asti"
+                  },
+                  10,
+                  9,
+                  11,
+                  8,
+                  {
+                    "t": "अस्ति",
+                    "i": "asti",
+                    "sup": "asti"
+                  },
+                  12,
+                  14,
+                  13
+                ],
+                "lit": {
+                  "en": "of the undisciplined, wisdom, not, is, of the undisciplined, and, meditation, not, is, of one without meditation, and, peace, not, is, of the peaceless, happiness, where",
+                  "ne": "असंयतको बुद्धि न छ असंयतको र मनन न छ मनन नगर्ने व्यक्तिको र शान्ति न छ अशान्तको सुख कसरी",
+                  "hi": "असंयत का बुद्धि नहीं है असंयत का और मनन नहीं है मनन न करने वाले का और शान्ति नहीं है अशान्त का सुख कैसे"
+                }
               }
             }
           ]
@@ -11236,6 +13312,31 @@
                 "en": "“The mind that drifts after the roaming senses sweeps away one's judgment, just as the wind drives a boat across the sea.”",
                 "ne": "“इन्द्रियलाई पछ्याउँदै डुल्ने मनले मानिसको विवेक बगाउँछ, जसरी हावाले समुद्रमा डुङ्गा बगाउँछ।”",
                 "hi": "“इन्द्रियों के पीछे भटकता हुआ मन व्यक्ति का विवेक बहा ले जाता है, जैसे हवा समुद्र में नाव को बहा ले जाती है।”"
+              },
+              "anv": {
+                "d": "चरताम् इन्द्रियाणाम् हि यत् मनः अनुविधीयते, तत् अस्य प्रज्ञाम् अम्भसि हरति वायुः नावम् इव।",
+                "t": "caratām indriyāṇām hi yat manaḥ anuvidhīyate, tat asya prajñām ambhasi harati vāyuḥ nāvam iva|",
+                "w": [
+                  2,
+                  0,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  13,
+                  8,
+                  10,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "wandering, of the senses, indeed, which, the mind, follows, that, of him, the understanding, on the waters, carries away, the wind, a boat, as",
+                  "ne": "विचरण गर्ने इन्द्रियहरूका नै जुन मन पछि लाग्छ त्यो यसको विवेक पानीमा लैजान्छ वायु डुङ्गा झैँ",
+                  "hi": "विचरते हुए इन्द्रियों के ही जो मन पीछे चलता है वह इसका समझ जल में ले जाता है वायु नाव के समान"
+                }
               }
             }
           ]
@@ -11370,6 +13471,32 @@
                 "en": "“Therefore, Arjuna, the one who has fully drawn the senses back from their objects — that person's understanding stands firm.”",
                 "ne": "“त्यसैले, अर्जुन, जसले इन्द्रियहरूलाई विषयबाट पूरै फर्काएको छ — त्यसैको समझ दृढ हुन्छ।”",
                 "hi": "“इसलिए, अर्जुन, जिसने इन्द्रियों को विषयों से पूरी तरह हटा लिया है — उसी की समझ दृढ़ होती है।”"
+              },
+              "anv": {
+                "d": "तस्मात् हे महाबाहो! यस्य इन्द्रियाणि इन्द्रियार्थेभ्यः सर्वशः निगृहीतानि तस्य प्रज्ञा प्रतिष्ठिता।",
+                "t": "tasmāt he mahā-bāho! yasya indriyāṇi indriya-arthebhyaḥ sarvaśaḥ nigṛhītāni tasya prajñā pratiṣṭhitā|",
+                "w": [
+                  0,
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  2,
+                  1,
+                  5,
+                  6,
+                  4,
+                  3,
+                  7,
+                  8,
+                  9
+                ],
+                "lit": {
+                  "en": "therefore, O, O mighty-armed one, of whom, the senses, from the sense objects, fully, restrained, his, wisdom, is established",
+                  "ne": "त्यसकारण हे हे महाबाहो जसको इन्द्रियहरू इन्द्रियविषयहरूबाट सबै प्रकारले रोकिएका त्यसको प्रज्ञा स्थापित",
+                  "hi": "इसलिए हे हे महाबाहु जिसका इन्द्रियाँ इन्द्रिय-विषयों से सब प्रकार से रोके हुए उसका प्रज्ञा स्थापित"
+                }
               }
             }
           ]
@@ -11540,6 +13667,30 @@
                 "en": "“What is night to the ordinary world is waking for the self-controlled sage; and what the world calls day is night to the seer.”",
                 "ne": "“सामान्य संसारलाई जो रात हो, संयमी ज्ञानीका निम्ति त्यो जागृति हो; र संसारले जसलाई दिन भन्छ, त्यो द्रष्टाका निम्ति रात हो।”",
                 "hi": "“साधारण संसार के लिए जो रात है, संयमी ज्ञानी के लिए वह जागृति है; और जिसे संसार दिन कहता है, वह द्रष्टा के लिए रात है।”"
+              },
+              "anv": {
+                "d": "या सर्वभूतानाम् निशा, तस्याम् संयमी जागर्ति।\nयस्याम् भूतानि जाग्रति, सा पश्यतः मुनेः निशा।",
+                "t": "yā sarva-bhūtānām niśā, tasyām saṃyamī jāgarti|\nyasyām bhūtāni jāgrati, sā paśyataḥ muneḥ niśā|",
+                "w": [
+                  0,
+                  2,
+                  1,
+                  3,
+                  5,
+                  4,
+                  6,
+                  8,
+                  7,
+                  9,
+                  11,
+                  12,
+                  10
+                ],
+                "lit": {
+                  "en": "which, of all beings, night, in that, the disciplined one, is awake, in which, beings, are awake, that, for the seeing, sage, night",
+                  "ne": "जुन सबै प्राणीको रात त्यसमा संयमी जाग्छ जसमा प्राणीहरू जाग्छन् त्यो हेर्नेको मुनिको रात",
+                  "hi": "जो सब प्राणियों का रात उसमें संयमी जागता है जिसमें प्राणी जागते हैं वह देखने वाले का मुनि का रात"
+                }
               }
             }
           ]
@@ -11723,6 +13874,39 @@
                 "en": "“Just as rivers pour into the ocean, which stays unmoved and full, so the sage into whom all desires flow remains serene — unlike one who craves desire itself.”",
                 "ne": "“जसरी नदीहरू समुद्रमा खस्छन् र समुद्र अचल भरिएको रहन्छ, त्यसरी नै जसमा सबै इच्छाहरू बगेर आउँछन्, ऊ शान्त रहन्छ — इच्छाकै लोभ गर्ने होइन।”",
                 "hi": "“जैसे नदियाँ समुद्र में गिरती हैं और समुद्र अचल भरा रहता है, वैसे ही जिसमें सब इच्छाएँ बहकर आती हैं, वह शान्त रहता है — इच्छा का ही लोभी नहीं।”"
+              },
+              "anv": {
+                "d": "आपूर्यमाणम् अचलप्रतिष्ठम् समुद्रम् यद्वत् आपः प्रविशन्ति, तद्वत् यम् सर्वे कामाः प्रविशन्ति, सः शान्तिम् आप्नोति; कामकामी न।",
+                "t": "āpūryamāṇam acala-pratiṣṭham samudram yadvat āpaḥ praviśanti, tadvat yam sarve kāmāḥ praviśanti, saḥ śāntim āpnoti; kāma-kāmī na|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "अचल-प्रतिष्ठम्"
+                  },
+                  3,
+                  6,
+                  4,
+                  5,
+                  7,
+                  9,
+                  11,
+                  8,
+                  10,
+                  12,
+                  13,
+                  14,
+                  16,
+                  15
+                ],
+                "lit": {
+                  "en": "being filled, unmoved established, the ocean, as, waters, enter, so, whom, all, desires, enter, he, peace, attains, the desirer of desires, not",
+                  "ne": "भरिइरहेको अचल स्थापित समुद्र जसरी जल प्रवेश गर्छन् त्यसरी जसमा सबै कामनाहरू प्रवेश गर्छन् ऊ शान्ति प्राप्त गर्दछ कामना चाहने न",
+                  "hi": "भरा जाता हुआ अचल स्थापित समुद्र जैसे जल प्रवेश करते हैं वैसे जिसमें सब कामनाएँ प्रवेश करते हैं वह शांति प्राप्त करता है कामना चाहने वाला नहीं"
+                }
               }
             }
           ]
@@ -11871,6 +14055,33 @@
                 "en": "“The person who lets go of every desire and lives free of craving, free of 'mine,' free of 'I' — that one finds peace.”",
                 "ne": "“जसले हरेक इच्छा छोडेर, लोभ, 'मेरो' र 'म' बिना जिउँछ — त्यो व्यक्तिले शान्ति पाउँछ।”",
                 "hi": "“जो व्यक्ति हर इच्छा छोड़कर, लोभ, 'मेरा' और 'मैं' के बिना जीता है — वह शान्ति पाता है।”"
+              },
+              "anv": {
+                "d": "यः पुमान् सर्वान् कामान् विहाय, निःस्पृहः निर्ममः निरहङ्कारः (भूत्वा) चरति, सः शान्तिम् अधिगच्छति।",
+                "t": "yaḥ pumān sarvān kāmān vihāya, niḥspṛhaḥ nirmamaḥ nirahaṅkāraḥ (bhūtvā) carati, saḥ śāntim adhigacchati|",
+                "w": [
+                  2,
+                  4,
+                  3,
+                  1,
+                  0,
+                  6,
+                  7,
+                  8,
+                  {
+                    "t": "भूत्वा",
+                    "i": "bhūtvā"
+                  },
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "who, a person, all, desires, having abandoned, free from longing, without possessiveness, without ego, moves, he, peace, attains",
+                  "ne": "जो पुरुष सबै कामनाहरू त्यागेर निःस्पृह मेरोपनरहित अहंकाररहित विचरण गर्छ ऊ शान्ति प्राप्त गर्दछ",
+                  "hi": "जो पुरुष सब कामनाएँ त्यागकर निःस्पृह 'मेरा' भाव से रहित अहंकार-रहित विचरता है वह शांति प्राप्त करता है"
+                }
               }
             }
           ]
@@ -12033,6 +14244,36 @@
                 "en": "“This is the state of Brahman, Arjuna. Reaching it, no one is ever deluded again. Abiding in it even at death, one attains liberation in Brahman.”",
                 "ne": "“यो ब्रह्मको अवस्था हो, अर्जुन। यसमा पुगेपछि कोही फेरि कहिल्यै मोहमा पर्दैन। मृत्युको घडीमा पनि यसैमा टिकेर, ब्रह्ममा मुक्ति पाउँछ।”",
                 "hi": "“यह ब्रह्म की अवस्था है, अर्जुन। इसमें पहुँचकर कोई फिर कभी मोह में नहीं पड़ता। मृत्यु की घड़ी में भी इसमें टिककर वह ब्रह्म में मुक्ति पाता है।”"
+              },
+              "anv": {
+                "d": "हे पार्थ! एषा ब्राह्मी स्थितिः, एनाम् प्राप्य न विमुह्यति, अन्तकाले अपि अस्याम् स्थित्वा ब्रह्मनिर्वाणम् ऋच्छति।",
+                "t": "he pārtha! eṣā brāhmī sthitiḥ, enām prāpya na vimuhyati, antakāle api asyām sthitvā brahma-nirvāṇam ṛcchati|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  3,
+                  0,
+                  1,
+                  2,
+                  5,
+                  6,
+                  4,
+                  7,
+                  10,
+                  11,
+                  9,
+                  8,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "O, O Pārtha, this, of Brahman, the state, this, having attained, not, is deluded, at the end-time, even, in this, abiding, liberation in Brahman, attains",
+                  "ne": "हे हे पार्थ यो ब्राह्मी अवस्था यसलाई पाएर न भ्रमित हुन्छ अन्त्यकालमा पनि यसमा रहेर ब्रह्मनिर्वाण प्राप्त गर्छ",
+                  "hi": "हे हे पार्थ यह ब्राह्मी अवस्था इसे पाकर नहीं भ्रमित होता है अन्त-काल में भी इसमें रहकर ब्रह्म-निर्वाण प्राप्त करता है"
+                }
               }
             }
           ]

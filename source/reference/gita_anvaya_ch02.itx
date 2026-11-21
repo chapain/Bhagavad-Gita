@@ -1,0 +1,275 @@
+# gita_anvaya_ch02.itx — anvaya (prose word order) of Bhagavad Gita 2, verses 2.1–2.72
+# section: the whole chapter.
+#
+# PROVENANCE. Transcribed from the anonymous "gItA sandhivigraha anvaya" edition
+# on sanskritdocuments.org —
+#
+#   https://sanskritdocuments.org/doc_giitaa/gitAanvayasandhivigraha.itx
+#   transliterated and proofread by Sunder Hattangadi, latest update 2008-07-04
+#
+# That file presents the whole Gita with padaccheda and a traditional anvaya for
+# every verse. It is the source of record for the WORDING of every anvaya here:
+# nothing below is composed by this project. What this project decides for
+# itself is only (a) where one reference sentence that spans two printed verses
+# is divided between our verses, and (b) punctuation. Both are marked inline with
+# "SPLIT:" and recorded in PROJECT.md. The applier (source/anvaya.py) turns this
+# into Devanagari + IAST and writes it into source/ch1.json as each verse's "anv".
+#
+# FORMAT. ".. S.." is the verse id the anvaya is filed under IN THIS EDITION.
+# TRANSCRIBED VERSES: 2.01–2.72. Verses 2.42, 2.43, 2.44 and 2.63 are
+# appended once their shared anvaya is cut (see the RECUT note at the end).
+#
+# The bracketed "ref 2-N" is the verse as the reference prints it, so the mapping
+# to the source stays auditable. ITRANS escapes used by the reference:
+#   ##!## "!"   ##?## "?"   ##[## "["   ##]## "]"   ##(## "("   ##)## ")"
+#   ##'## "'"   .h / H visarga   M anusvara   ~N ङ   ~n ञ   j~n / GY ज्ञ
+#   R^i ऋ   Sh ष   A hyphen inside a word marks a compound break and is kept.
+# ज्ञ is written j~n throughout here; the reference mixes j~n and GY for the same
+# syllable and the applier should not have to know both.
+#
+
+# ---------------------------------------------------------------------------
+
+.. 2.01..   {ref 2-1}
+tathA kR^ipayA AviShTam.h ashru-pUrNa-Akula-IkShaNam.h viShIdantam.h tam.h madhusUdanaH idam.h vAkyam.h uvAcha .
+
+.. 2.02..   {ref 2-2}
+he arjuna##!## anArya-juShTam.h asvargyam.h akIrtikaram.h idam.h kashmalam.h viShame tvA kutaH samupasthitam.h ##?##
+
+.. 2.03..   {ref 2-3}
+he pArtha##!## klaibyam.h mA sma gamaH . etat.h tvayi na upapadyate . he parantapa##!## kShudram.h hR^idaya-daurbalyam.h tyaktvA uttiShTha .
+
+.. 2.04..   {ref 2-4}
+he madhusUdana##!## aham.h bhIShmam.h droNam.h cha sa~Nkhye iShubhiH katham.h pratiyotsyAmi##?##  ari-sUdana##!## ##(##etau##)## pUjA-arhau .
+
+.. 2.05..   {ref 2-5}
+hi mahAnubhAvAn.h gurUn.h ahatvA, iha loke bhaikShyam.h bhoktum.h api shreyaH . gurUn.h hatvA tu iha eva rudhira-pradigdhAn.h artha-kAmAn.h bhogAn.h bhu~njIya .
+
+.. 2.06..   {ref 2-6}
+naH katarat.h garIyaH##?## yat.h vA ##(##vayaM##)## jayema, yadi vA ##(##te##)## naH jayeyuH, etat.h cha na vidmaH . yAn.h hatvA na jijIviShAmaH, te eva dhArtarAShTrAH pramukhe avasthitAH .
+
+.. 2.07..   {ref 2-7}
+kArpaNya-doSha-upahata-svabhAvaH dharma-sammUDha-chetAH ##(##ahaM##)## tvAm.h pR^ichChAmi . yat.h nishchitam.h shreyaH syAt.h, tat.h me brUhi . aham.h te shiShyaH . tvAm.h prapannam.h mAm.h shAdhi .
+
+.. 2.08..   {ref 2-8}
+hi bhUmau asapatnam.h R^iddham.h rAjyam.h avApya , surANAm.h cha api Adhipatyam.h, yat.h mama indriyANAm.h uchChoShaNam.h shokam.h apanudyAt.h na prapashyAmi .
+
+.. 2.09..   {ref 2-9}
+parantapaH guDAkeshaH hR^iShIkesham.h evam.h uktvA ##'##na yotsye##'## iti govindam.h uktvA tUShNIm.h babhUva ha .
+
+.. 2.10..   {ref 2-10}
+he bhArata##!## ubhayoH senayoH madhye viShIdantam.h ##(##arjunaM##)## tam.h hR^iShIkeshaH prahasan.h iva idam.h vachaH uvAcha .
+
+.. 2.11..   {ref 2-11}
+tvam.h ashochyAn.h anvashochaH . praGYA-vAdAn.h cha bhAShase . paNDitAH gatAsUn.h agatAsUn.h cha na anushochanti .
+
+.. 2.12..   {ref 2-12}
+aham.h jAtu na Asam.h ##(##iti##)## na tu eva,  tvam.h ##(##jAtu na AsIH iti##)##na, ime janAdhipAH ##(##jAtu na Asan.h iti##)## na, . ataH param.h cha vayam.h sarve na bhaviShyAmaH ##(##iti##)## na eva .
+
+.. 2.13..   {ref 2-13}
+dehinaH asmin.h dehe yathA kaumAram.h yauvanam.h jarA, tathA dehAntara-prAptiH . tatra dhIraH na muhyati .
+
+.. 2.14..   {ref 2-14}
+he kaunteya##!## mAtrA-sparshAH tu shIta-uShNa-sukha-duHkha-dAH, Agama apAyinaH, anityAH . he bhArata##!## tAn.h titikShasva .
+
+.. 2.15..   {ref 2-15}
+he puruSha-R^iShabha##!## hi yam.h sama-duHkha-sukham.h dhIram.h puruSham.h ete na vyathayanti, saH amR^itatvAya kalpate .
+
+.. 2.16..   {ref 2-16}
+asataH bhAvaH na vidyate sataH abhAvaH na vidyate . tattva-darshibhiH tu ubhayoH api anayoH antaH dR^iShTaH .
+
+.. 2.17..   {ref 2-17}
+viddhi, yena idam.h sarvam.h tatam.h, tat.h tu avinAshi . asya avyayasya vinAsham.h kartum.h, kashchit.h na arhati .
+
+.. 2.18..   {ref 2-18}
+anAshinaH aprameyasya nityasya sharIriNaH ime dehAH antavantaH uktAH . he bhArata##!## tasmAt.h yudhyasva .
+
+.. 2.19..   {ref 2-19}
+yaH enam.h hantAram.h vetti, yaH cha enam.h hatam.h manyate tau ubhau na vijAnItaH, ayam.h na hanti na hanyate .
+
+.. 2.20..   {ref 2-20}
+ayam.h kadAchit.h na jAyate, na vA mriyate, ##(##ayam.h##)## bhUtvA bhUyaH abhavitA vA na. ayam.h ajaH nityaH shAshvataH purANaH, sharIre hanyamAne na hanyate .
+
+.. 2.21..   {ref 2-21}
+he pArtha##!## yaH enam.h avinAshinam.h nityam.h ajam.h avyayam.h veda, saH puruShaH katham.h kam.h ghAtayati, kam.h hanti ##?##
+
+.. 2.22..   {ref 2-22}
+yathA naraH jIrNAni vAsA.nsi vihAya, aparANi navAni gR^ihNAti, tathA dehI jIrNAni sharIrANi vihAya anyAni navAni sa.nyAti .
+
+.. 2.23..   {ref 2-23}
+enam.h shastrANi na Chindanti, enam.h pAvakaH na dahati enam.h ApaH na kledayanti, ##(##enam.h##)## cha mArutaH na shoShayati .
+
+.. 2.24..   {ref 2-24}
+ayam.h achChedyaH, ayam.h adAhyaH, ayam.h akledyaH, ##(##ayam.h##)## ashoShyaH cha eva . ayam.h nityaH, sarvagataH, sthANuH, achalaH, sanAtanaH .
+
+.. 2.25..   {ref 2-25}
+ayam.h avyaktaH, ayam.h achintyaH, ayam.h avikAryaH uchyate . tasmAt.h enam.h evam.h viditvA ##(##tvaM##)## anushochitum.h na arhasi .
+
+.. 2.26..   {ref 2-26}
+atha cha enam.h nitya-jAtam.h, nityam.h vA mR^itam.h manyase , tathA api he mahA-bAho##!## tvam.h enam.h shochitum na arhasi .
+
+.. 2.27..   {ref 2-27}
+hi jAtasya mR^ityuH dhruvaH, mR^itasya cha janma dhruvam.h, tasmAt.h aparihArye arthe tvam.h shochitum.h na arhasi .
+
+.. 2.28..   {ref 2-28}
+he bhArata##!## bhUtAni avyakta-AdIni vyakta-madhyAni avyakta-nidhanAni eva, tatra paridevanA kA##?##
+
+.. 2.29..   {ref 2-29}
+kashchit.h enam.h Ashcharyavat.h pashyati, tathA eva cha anyaH enam.h Ashcharyavat.h vadati, anyaH cha enam.h Ashcharyavat.h shR^iNoti; shrutvA api cha kashchit.h eva na veda .
+
+.. 2.30..   {ref 2-30}
+he bhArata##!## sarvasya dehe ayam.h dehI nityam.h avadhyaH; tasmAt.h tvam.h sarvANi bhUtAni shochitum na arhasi .
+
+.. 2.31..   {ref 2-31}
+svadharmam.h cha api avekShya vikampitum.h na arhasi . hi kShatriyasya dharmyAt.h yuddhAt.h anyat.h shreyaH na vidyate .
+
+.. 2.32..   {ref 2-32}
+he pArtha##!## yat.h R^ichChayA cha upapannam.h IdR^isham.h apAvR^itam.h svarga-dvAram.h yuddham.h sukhinaH kShatriyAH labhante .
+
+.. 2.33..   {ref 2-33}
+atha tvam.h imam.h dharmyam.h sa~NgrAmam.h na kariShyasi chet.h, tataH svadharmam.h kIrtim.h cha hitvA pApam.h avApsyasi .
+
+.. 2.34..   {ref 2-34}
+api cha bhUtAni te avyayAm.h akIrtim.h kathayiShyanti . sambhAvitasya cha akIrtiH maraNAt.h atirichyate .
+
+.. 2.35..   {ref 2-35}
+mahArathAH tvAm.h bhayAt.h raNAt.h uparatam.h ma.nsyante; yeShAm.h cha tvam.h bahu-mataH bhUtvA, lAghavam.h yAsyasi .
+
+.. 2.36..   {ref 2-36}
+tava sAmarthyam.h nindantaH tava ahitAH cha bahUn.h avAchya-vAdAn.h vadiShyanti . tataH kim.h nu duHkhataram.h##?##
+
+.. 2.37..   {ref 2-37}
+hataH vA svargam.h prApsyasi, jitvA vA mahIm.h bhokShyase . he kaunteya##!## tasmAt.h yuddhAya kR^ita-nishchayaH uttiShTha .
+
+.. 2.38..   {ref 2-38}
+sukha-duHkhe lAbha-alAbhau jaya-ajayau same kR^itvA tataH yuddhAya yujyasva . evam.h pApam.h na avApsyasi .
+
+.. 2.39..   {ref 2-39}
+he pArtha##!## eShA te sA~Nkhye buddhiH abhihitA; yoge tu imAm.h ##(##buddhiM##)## shR^iNu . yayA buddhyA yuktaH ##(##tvaM##)## karma-bandham.h prahAsyasi .
+
+.. 2.40..   {ref 2-40}
+iha abhikrama-nAshaH na asti, pratyavAyaH na vidyate, asya dharmasya svalpam.h api ##(##anuShThAnaM##)## mahataH bhayAt.h trAyate .
+
+.. 2.41..   {ref 2-41}
+he kuru-nandana##!## iha vyavasAya-AtmikA ekA buddhiH . avyavasAyinAm.h hi buddhayaH anantAH bahu-shAkhAH cha .
+
+.. 2.45..   {ref 2-45}
+he arjuna##!## vedAH traiguNya-viShayAH . ##(##tvaM##)## nistraiguNyaH, nitya-sattvasthaH, nirdvandvaH, niryogakShemaH AtmavAn.h bhava .
+
+.. 2.46..   {ref 2-46}
+yAvAn.h arthaH udapAne ##(##tAvAn.h##)## sarvataH samplutodake ##(##bhavati##)## . ##(##tathA yAvAn.h arthaH##)## sarveShu vedeShu tAvAn.h vijAnataH brAhmaNasya ##(##bhavati##)## .
+
+.. 2.47..   {ref 2-47}
+te adhikAraH karmaNi eva; kadAchana phaleShu mA . karma-phala-hetuH mA bhUH te sa~NgaH ##(##cha##)## akarmaNi mA astu .
+
+.. 2.48..   {ref 2-48}
+he dhana~njaya##!## sa~Ngam.h tyaktvA, siddhi-asiddhyoH samaH bhUtvA, yogasthaH karmANi kuru . samatvam.h yogaH uchyate .
+
+.. 2.49..   {ref 2-49}
+he dhana~njaya##!## karma buddhi-yogAt.h dUreNa avaram.h hi . buddhau sharaNam.h anvichCha . phala-hetavaH kR^ipaNAH .
+
+.. 2.50..   {ref 2-50}
+iha buddhi-yuktaH ubhe sukR^ita-duShkR^ite jahAti . tasmAt.h yogAya yujyasva . yogaH karmasu kaushalam.h .
+
+.. 2.51..   {ref 2-51}
+hi buddhi-yuktAH manIShiNaH karmajam.h phalaM tyaktvA janma-bandha-vinirmuktAH anAmayam.h padam.h gachChanti .
+
+.. 2.52..   {ref 2-52}
+yadA te buddhiH moha-kalilam.h vyatitariShyati, tadA shrotavyasya shrutasya cha nirvedam.h gantAsi .
+
+.. 2.53..   {ref 2-53}
+yadA shruti-vipratipannA te buddhiH nishchalA ##(##bhUtvA##)## samAdhau achalA sthAsyati, tadA yogam.h avApsyasi .
+
+.. 2.54..   {ref 2-54}
+he keshava##!## samAdhisthasya sthitapraGYasya kA bhAShA##?## sthitadhIH kim.h prabhASheta##?## kim.h AsIta##?## kim.h vrajeta##?##
+
+.. 2.55..   {ref 2-55}
+he pArtha##!## yadA ##(## naraH##)## manogatAn.h sarvAn.h kAmAn.h prajahAti, Atmani eva AtmanA tuShTaH ##(##bhavati##)## tadA sthitapraGYaH uchyate .
+
+.. 2.56..   {ref 2-56}
+duHkheShu anudvigna-manAH, sukheShu vigata-spR^ihaH, vIta-rAga-bhaya-krodhaH muniH sthitadhIH uchyate .
+
+.. 2.57..   {ref 2-57}
+yaH sarvatra anabhisnehaH, tat.h tat.h shubha-ashubham.h prApya, na abhinandati, na dveShTi, tasya praGYA pratiShThitA .
+
+.. 2.58..   {ref 2-58}
+kUrmaH a~NgAni iva, yadA ayam.h indriya-arthebhyaH indriyANi sarvashaH sa.nharate, ##(##tadA##)## tasya praGYA pratiShThitA cha .
+
+.. 2.59..   {ref 2-59}
+nirAhArasya dehinaH viShayAH rasavarjam.h vinivartante . asya rasaH api param.h dR^iShTvA nivartate .
+
+.. 2.60..   {ref 2-60}
+he kaunteya##!## pramAthIni indriyANi yatataH vipashchitaH api puruShasya manaH prasabhaM haranti hi .
+
+.. 2.61..   {ref 2-61}
+tAni sarvANi sa.nyamya yuktaH mat.h-paraH AsIta . hi yasya vashe indriyANi tasya praGYA pratiShThitA .
+
+.. 2.62..   {ref 2-62}
+viShayAn.h dhyAyataH pu.nsaH teShu sa~NgaH upajAyate . sa~NgAt.h kAmaH sa~njAyate . kAmAt.h krodhaH abhijAyate .
+
+.. 2.64..   {ref 2-64}
+vidheya-AtmA tu rAga-dveSha-vimuktaiH Atma-vashyaiH indriyaiH viShayAn.h charan.h prasAdam.h adhigachChati .
+
+.. 2.65..   {ref 2-65}
+prasAde asya sarva-duHkhAnAm.h hAniH upajAyate . prasanna-chetasaH hi buddhiH Ashu paryavatiShThate .
+
+.. 2.66..   {ref 2-66}
+ayuktasya buddhiH na asti, ayuktasya cha bhAvanA na ##(##asti##)##; abhAvayataH cha shAntiH na ##(##asti##)##; ashAntasya sukham.h kutaH##?##
+
+.. 2.67..   {ref 2-67}
+charatAm.h indriyANAm.h hi yat.h manaH anuvidhIyate, tat.h asya praGYAm.h ambhasi harati vAyuH nAvam.h iva .
+
+.. 2.68..   {ref 2-68}
+tasmAt.h he mahA-bAho##!## yasya indriyANi indriya-arthebhyaH sarvashaH nigR^ihItAni tasya praGYA pratiShThitA .
+
+.. 2.69..   {ref 2-69}
+yA sarva-bhUtAnAm.h nishA, tasyAm.h sa.nyamI jAgarti . yasyAm.h bhUtAni jAgrati, sA pashyataH muneH nishA .
+
+.. 2.70..   {ref 2-70}
+ApUryamANam.h achala-pratiShTham.h samudram.h yadvat.h ApaH pravishanti, tadvat.h yam.h sarve kAmAH pravishanti, saH shAntim.h Apnoti; kAma-kAmI na .
+
+.. 2.71..   {ref 2-71}
+yaH pumAn.h sarvAn.h kAmAn.h vihAya, niHspR^ihaH nirmamaH niraha~NkAraH ##(##bhUtvA##)## charati, saH shAntim.h adhigachChati .
+
+.. 2.72..   {ref 2-72}
+he pArtha##!## eShA brAhmI sthitiH, enAm.h prApya na vimuhyati, antakAle api asyAm.h sthitvA brahma-nirvANam.h R^ichChati .
+# ---------------------------------------------------------------------------
+# RECUT NOTES — where this edition makes a decision the reference does not.
+#
+# 2.42–2.44. The reference gives ONE anvaya covering three verses:
+#
+#   he pArtha##!## veda-vAda-ratAH, anyat.h na asti iti vAdinaH,
+#   avipashchitaH, kAma-AtmAnaH, svarga-parAH, bhoga-aishvarya-gatim.h
+#   prati kriyA-visheSha-bahulAm.h ... yAm.h imAm.h puShpitAm.h vAcham.h
+#   pravadanti ... buddhiH na vidhIyate .
+#
+# This edition keeps an anvaya per verse, so the single sentence has to be cut
+# into three. The cuts follow the sentence's own clauses, not the verse
+# boundaries, and each cut is recorded here because it is OUR division:
+#   2.42 — the subject and its modifiers up to the object
+#   2.43 — the object and its purpose clause
+#   2.44 — the predicate
+#
+# 2.63. The reference's anvaya for 2.62 and 2.63 sits in one stanza with no
+# trailing verse id, so it cannot be attributed mechanically; it is cut by hand.
+#
+# ---------------------------------------------------------------------------
+# WHERE THIS EDITION DECLINES THE REFERENCE
+#
+# Two verses in this chapter are not given an anvaya, because the reference's
+# reading of them is not our verse's reading. Both differences are substantive,
+# and an anvaya that follows the reference here would teach the wrong sentence.
+#
+# 2.26. Our verse: "tathāpi tvaṃ mahābāho naivaṃ śocitumarhasi" — "even then,
+#   O mighty-armed one, you should not grieve thus". The reference's anvaya
+#   reads "tvam enam śocitum na arhasi": it turns the object of grief into
+#   enam, drops evam, and moves the negation. Our Reading and word rows say
+#   naivaṃ, so following it would contradict both.
+#
+# 2.64. Our verse prints "rāgadveṣaviyuktais tu" (vi-yukta, freed from); the
+#   reference's anvaya writes "rāgadveṣavimuktaiḥ" (vi-mukta, released). A real
+#   variant reading, not a spelling of the same word. Our verse is viyuktaiḥ.
+#
+# Neither is a defect to fix; both are cases where a second witness would decide
+# between readings. Recorded here so they are not silently dropped.
+# ---------------------------------------------------------------------------

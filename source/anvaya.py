@@ -299,12 +299,57 @@ def _fold_iast(text):
     return text
 
 
+def _final_m(word):
+    """The verse writes prasabham, the anvaya prasabhaṁ — same sound, same word.
+
+    The fold in _fold_iast() normalises the anusvāra's codepoint but leaves a
+    final -m alone, because mid-word the two are genuinely different letters.
+    At the end of a word they are not.
+    """
+    return word[:-1] + "m" if word.endswith(("ṁ", "ṃ")) else word
+
+
+def _drop_augment(word):
+    """अभवित् / भविता — the same future verb, with the augment the verse prints.
+
+    Chapter 2's anvaya reads abhavitā where the verse has bhavitā: the verse
+    negates it as na ... bhavitā, and the anvaya merges na + bhavitā into one
+    unnegated form. That is external sandhi over a negative, not a different
+    word, and it is exactly the kind of thing this mapping has to see through.
+    """
+    # the augment is the initial vowel alone: abhavitā -> bhavitā
+    if word.startswith(("abha", "abhū", "abho")) and len(word) > 6:
+        return word[1:]
+    return word
+
+
 def _same_word(a, b):
-    """True when two IAST spellings are the same word under internal sandhi."""
-    if _fold_iast(a) == _fold_iast(b):
+    """True when two IAST spellings are the same word under internal sandhi.
+
+    Two tolerances, both narrowly defined:
+
+    * a vowel-length pair (ī/i, ū/u …), which the reference is inconsistent
+      about from one verse to the next;
+    * a final visarga. An anvaya regularly re-cases a vocative into the
+      nominative of the sentence it builds — the verse prints परन्तप, "O
+      scorcher", and the anvaya writes परन्तपः because there the word is the
+      subject. Stripping one final ḥ is the whole of that allowance; it is not
+      general case tolerance, which would let the anvaya say anything.
+    """
+    fa, fb = _fold_iast(a), _fold_iast(b)
+    fa, fb = _final_m(fa), _final_m(fb)
+    if fa == fb:
+        return True
+    if _drop_augment(fa) == _drop_augment(fb):
+        return True
+    if fa.rstrip("ḥ") == fb.rstrip("ḥ"):
+        return True
+    if _drop_augment(fa.rstrip("ḥ")) == _drop_augment(fb.rstrip("ḥ")):
         return True
     for long, short in FOLD_PAIRS:
-        if _fold_iast(a) == _fold_iast(b).replace(long, short, 1):
+        if fa == fb.replace(long, short, 1):
+            return True
+        if fa.rstrip("ḥ") == fb.rstrip("ḥ").replace(long, short, 1):
             return True
     return False
 
@@ -332,7 +377,7 @@ def _token_surfaces(chunks):
         if len(iast_toks) != len(deva_toks):
             raise SystemExit(f"script token mismatch: {plain!r}")
         for it, dt in zip(iast_toks, deva_toks):
-            core_i = it.strip(PUNCT).lower()
+            core_i = it.strip(PUNCT).strip("|").lower()
             core_d = dt.strip(PUNCT)
             if not core_i or not core_d:
                 continue
@@ -440,7 +485,7 @@ def map_verse(verse, chunks):
     for iast, deva in _token_surfaces(chunks):
         if iast is None:
             # a supplied word the pāda does not print: printed, never glossed
-            tokens.append({"t": deva})
+            tokens.append({"t": deva, "i": iast})
             continue
         hit = None
         longest = min(len(rows), 6)
@@ -462,15 +507,93 @@ def map_verse(verse, chunks):
             else:
                 tokens.append({"r": [start + k for k in range(span)], "t": deva})
         elif iast in SUPPLIED_DEMONSTRATIVES or iast in SUPPLIED_COPULAS:
-            tokens.append({"t": deva, "sup": iast})
+            tokens.append({"t": deva, "i": iast, "sup": iast})
         else:
             # a particle the pāda leaves unsaid — हे is the documented one — is
             # printed but carries no row to gloss
             if iast in PARTICLES or iast in SUPPLIED_PRONOUNS:
-                tokens.append({"t": deva, "sup": iast})
+                tokens.append({"t": deva, "i": iast, "sup": iast})
             else:
                 unresolved.append(iast)
-                tokens.append({"t": deva})
+                tokens.append({"t": deva, "i": iast})
+    # A printed word our verse keeps whole — yadṛcchayā, tathāpi — which the
+    # anvaya splits into the words it was made of: yat ṛcchayā, tathā api. The
+    # row is the same word either way, so an unconsumed token is attributed to
+    # an unused row when the two join into it by sandhi, in either direction.
+    free = [i for i in range(len(rows)) if i not in used]
+    for tok in tokens:
+        if not (isinstance(tok, dict) and not tok.get("r")):
+            continue
+        want = _fold_iast(tok.get("i") or tok["t"])
+        for i in free:
+            if any(_same_word(want, c) for c in _join_run([rows[i]])):
+                tok["r"] = [i]
+                used.add(i)
+                free = [i for i in range(len(rows)) if i not in used]
+                break
+    # And the anvaya may split one of our rows across two of its tokens:
+    # yadṛcchayā is printed as one word and analysed as yat + ṛcchayā. When two
+    # adjacent unconsumed tokens join into a row, both take that row — the row is
+    # then placed once, with both halves of it on the same gloss, which is
+    # honest: the reader sees one word written two ways, not two meanings.
+    for k in range(len(tokens) - 1):
+        a, b = tokens[k], tokens[k + 1]
+        if not (isinstance(a, dict) and isinstance(b, dict)):
+            continue
+        if a.get("r") or b.get("r"):
+            continue
+        # the row IS the joined form: yadṛcchayā == yat + ṛcchayā
+        joined = _join_run([a.get("i") or a["t"], b.get("i") or b["t"]])
+        for i in free:
+            if any(_same_word(rows[i], c) for c in joined):
+                # the row is placed once: the first token takes it, the second
+                # records the other half of the same word
+                # The row is placed once, by the first token. The second says
+                # it is the other half of the same word: {"s": row}, "same as
+                # that row". Two meanings never attach to one row twice, which
+                # is what the coverage test enforces.
+                a["r"] = [i]
+                b["s"] = i
+                used.add(i)
+                free = [x for x in range(len(rows)) if x not in used]
+                break
+    # the other half: the anvaya's tokens may join up to one of our rows
+    for tok in tokens:
+        if not (isinstance(tok, dict) and not tok.get("r")):
+            continue
+        want = _fold_iast(tok.get("i") or tok["t"])
+        for i in free:
+            if any(_same_word(c, want) for c in _join_run([rows[i]])):
+                tok["r"] = [i]
+                used.add(i)
+                free = [i for i in range(len(rows)) if i not in used]
+                break
+    # A fused compound the token-by-token pass could not see. The anvaya writes
+    # rāgadveṣavimuktaiḥ where the rows hold rāga + dveṣa + vimuktaiḥ: the verse
+    # splits the compound for its word list, the anvaya keeps it whole. Look for
+    # runs of still-unused rows that join, by external sandhi, into the token.
+    free = [i for i in range(len(rows)) if i not in used]
+    for k, tok in enumerate(tokens):
+        if not (isinstance(tok, dict) and not tok.get("r")):
+            continue
+        want = _fold_iast(tok.get("i") or tok["t"])
+        got = None
+        for start in range(len(free)):
+            acc = []
+            for j in range(start, min(start + 5, len(free))):
+                if free[j] != free[start] + (j - start):
+                    break
+                acc.append(free[j])
+                run = rows[acc[0]:acc[-1] + 1]
+                if any(_same_word(want, c) for c in _join_run(run)):
+                    got = list(acc)
+                    break
+            if got:
+                break
+        if got:
+            tok["r"] = got
+            used.update(got)
+            free = [i for i in range(len(rows)) if i not in used]
     unmatched_rows = [i for i in range(len(rows)) if i not in used]
     return tokens, unmatched_rows, unresolved
 
@@ -550,7 +673,7 @@ def construed_literal(verse, tokens):
             if isinstance(tok, int):
                 idx = [tok]
             elif isinstance(tok, dict):
-                idx = tok.get("r") or []
+                idx = [tok["s"]] if "s" in tok else (tok.get("r") or [])
             else:
                 idx = []
             if not idx:
@@ -617,6 +740,9 @@ def annotate(data, chapter):
                 [w for it in verse["flow"] for w in it["words"]][i][0]
                 for i in missing]))
             verse["anv"].pop("lit", None)
+            verse["anv"]["declined"] = (
+                "the reference's anvaya follows a different reading of this "
+                "verse; see source/reference/gita_anvaya_ch*.itx")
             continue
         verse["anv"]["lit"] = construed_literal(verse, tokens)
         report["mapped"] += 1

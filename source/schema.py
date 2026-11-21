@@ -16,7 +16,7 @@ VERSE_KEYS = {"n", "d", "t", "flow", "lits", "paras"}
 # transcribed reference, so it is allowed but not yet required on every verse.
 # When present it is validated as strictly as everything else.
 VERSE_OPTIONAL_KEYS = {"anv"}
-ANVAYA_KEYS = {"d", "t", "w", "lit"}
+ANVAYA_KEYS = {"d", "t", "w", "lit", "declined"}
 FLOW_PAD_KEYS = {"k", "d", "t", "n", "words"}
 FLOW_SPEAKER_KEYS = {"k", "d", "t", "words"}
 RANGE_RE = re.compile(r"^(\d+)\.(\d{2})–(\d+)\.(\d{2})$")
@@ -34,14 +34,23 @@ def validate_chapters(chapters):
     def fail(where, message):
         errors.append(f"{where}: {message}")
 
-    def exact_object(value, keys, where):
+    def exact_object(value, keys, where, optional=frozenset()):
+        """Every key required, and nothing outside the allowed set.
+
+        `optional` names keys that may be present or absent: the anvaya's
+        `declined` is only meaningful on the few verses where this edition
+        follows a reading other than the reference's, and `lit`/`w` are absent
+        until the chapter has been mapped.
+        """
         if not isinstance(value, dict):
             fail(where, f"must be an object, got {type(value).__name__}")
             return False
         actual = set(value)
-        if actual != keys:
-            missing = sorted(keys - actual)
-            extra = sorted((str(key) for key in actual - keys))
+        allowed = set(keys) | set(optional or ())
+        missing_keys = set(keys) - set(optional or ()) - actual
+        extra = sorted(str(k) for k in actual - allowed)
+        if missing_keys or extra:
+            missing = sorted(missing_keys)
             bits = []
             if missing:
                 bits.append(f"missing {missing}")
@@ -233,7 +242,8 @@ def validate_chapters(chapters):
 
                     if "anv" in verse:
                         anv = verse["anv"]
-                        if exact_object(anv, ANVAYA_KEYS, f"{vw}.anv"):
+                        if exact_object(anv, ANVAYA_KEYS, f"{vw}.anv",
+                                        optional={"w", "lit", "declined"}):
                             if nonempty_text(anv.get("d"), f"{vw}.anv.d"):
                                 if not any("\u0900" <= ch <= "\u097f"
                                            for ch in anv["d"]):
@@ -247,6 +257,15 @@ def validate_chapters(chapters):
                                 anvaya_words(anv["w"], f"{vw}.anv.w")
                             if "lit" in anv:
                                 language_map(anv["lit"], f"{vw}.anv.lit")
+                            if "declined" in anv:
+                                # a verse whose anvaya follows a reading other
+                                # than our verse's. The reason lives in the
+                                # reference file; here it must be a short
+                                # string, so a bare flag cannot pass as one.
+                                if not isinstance(anv["declined"], str) or \
+                                        len(anv["declined"]) < 12:
+                                    fail(f"{vw}.anv.declined",
+                                         "must name why this verse has no anvaya")
                     language_map(verse.get("lits"), f"{vw}.lits")
                     language_map(verse.get("paras"), f"{vw}.paras")
 
