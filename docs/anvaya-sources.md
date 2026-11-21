@@ -53,18 +53,22 @@ Archive (`archive.org/details/20221128_20221128_1327`), item size 139 MB, with
 DJvu text and hOCR derivatives. Gita Press's own catalogue lists the edition as
 still in print at ₹70, and the Press is an active publisher.
 
-**It is not copyright-free, and the owner's hunch on that point does not hold.**
-Jayadayal Goyandka died on 17 April 1965. Under the Indian Copyright Act (as
-amended in 2012) the term for a literary work is the author's life plus sixty
-years, counted from the start of the calendar year following death — so his
-works entered the public domain on **1 January 2026**, not before. Even now that
-the term has run, only Goyandka's own text is free; the Press's later editorial
-matter, arrangement and typography are separate. And a scan is a copy of a
-particular *edition*, whose typography and layout the publisher can still claim.
+**On copyright, the owner's hunch is right — every word of it.** Jayadayal
+Goyandka died on 17 April 1965. Under the Indian Copyright Act the term for a
+literary work is the author's life plus sixty years, counted from the start of
+the calendar year following death, so his writings entered the public domain on
+**1 January 2026**. As of today (21 November 2026) the text of the
+*Padachchheda-Anvaya* edition is out of copyright.
 
-So: **Gita Press is not a source we may copy from, and it is not added to the
-build.** It was read as a witness to compare our treatment against, which is a
-different act from transcribing it.
+What that does **not** cover is the Press's later editorial additions and the
+typography and layout of any particular printing. And a scan is a reproduction
+of one printing. So the rule is narrow but workable: **Goyandka's text may be
+used; a particular scan's pages may not be republished as pages.** We read the
+text and write our own; we do not copy its pages or its running Hindi.
+
+(Gita's own *anvaya* convention — anvaya, padachheda, word-meanings — predates
+every printed edition; it is how the text has been taught orally for centuries.
+What is attributable to Goyandka is his specific wording and glosses.)
 
 ### What the comparison settled
 
