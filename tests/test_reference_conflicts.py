@@ -16,6 +16,11 @@ addresses Arjuna as परंतप, the form the Hindi column uses in 4.02, 4.0
 4.33. The pinned snapshot had शत्रुतापन, which is the Nepali form (2.03, 4.05,
 4.33, 7.27, 9.03, 10.40, 18.41 all read शत्रुतापन in Nepali). The IAST gloss
 row for परन्तप already reads "Parantapa", so only the Hindi rendering moved.
+
+Amended 2026-11-21 by PR #89 (Arjuna addresses Kṛṣṇa with honorific तपाईं,
+not तिमी): the 11.44 त्वाम् Nepali gloss in the snapshot now reads तपाईंलाई
+to match source/ch11.json. The 11.47 entry is Kṛṣṇa speaking to Arjuna and
+deliberately keeps तिमीलाई — the honorific pass does not run in that direction.
 """
 import json
 from pathlib import Path
