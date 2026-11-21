@@ -239,6 +239,7 @@ def apply_chapter(chapter, dry_run=False, verbose=True):
         if verbose:
             print(f"{verse_id}: {d.splitlines()[0][:70]}")
 
+    report = annotate(data, chapter) if not dry_run else None
     if not dry_run:
         _write_chapter(path, data)
     print(f"\n{Path(path).name}: {applied} anvaya applied"
@@ -246,7 +247,350 @@ def apply_chapter(chapter, dry_run=False, verbose=True):
     if skipped:
         for verse_id, why in skipped:
             print(f"  skipped {verse_id}: {why}")
+    if report:
+        print(f"  word order mapped: {report['mapped']}/{applied}")
+        for verse_id, words in report["no_literal"]:
+            print(f"  no construed literal {verse_id}: anvaya omits {' '.join(words)}")
+        for verse_id, toks in report["unresolved"]:
+            print(f"  unglossed token {verse_id}: {' '.join(toks)}")
     return applied
+
+
+# ---------------------------------------------------------------------------
+# The anvaya as a teaching control
+# ---------------------------------------------------------------------------
+# An anvaya sentence is the verse's OWN words in prose order. So every token in
+# it must be reachable from the pāda's word rows, and each row keeps the very
+# gloss it already has — a word may not mean one thing in the pāda and another
+# in the anvaya. The reader asked to be taught word order from the same glosses
+# (owner, 2026-11-21), so the mapping is computed here, once, and shipped.
+#
+# For each verse the applier adds:
+#   anv.w   the tokens in order. A token that is one row is its row index; a
+#           token fused out of consecutive rows is [i, j, ...] plus the surface
+#           Devanagari it is printed as, because धर्मक्षेत्रे is not the string
+#           धर्म + क्षेत्रे. The glosses themselves are NOT copied — the browser
+#           reads them from the rows, so there is one copy of every meaning.
+#   anv.lit the construed literal: those glosses in anvaya order, in all three
+#           languages. Written only when the mapping covers every row of the
+#           verse; a verse with an unresolved row gets no construed literal and
+#           is reported, never quietly shortened.
+
+JOINERS = {"en": ", ", "ne": " ", "hi": " "}
+
+
+# The chapter data spells the anusvāra ṁ (m with a dot ABOVE, U+1E41) in 121
+# words — siṁha, saṁjaya — while indic_transliteration emits ṃ (dot BELOW,
+# U+1E43). They are the same sound and a reader cannot see the difference, but
+# they are different code points and every one of those words would fail to
+# match. Normalise to the form the source data already uses, so the data stays
+# the standard and the comparison adapts to it.
+ANUSVARA = {"\u1e43": "\u1e41", "\u1e45": "\u1e45"}
+# A compound member that ends in -ā or -ī loses that vowel before the next
+# member: pāṇḍava + anīkam -> pāṇḍavānīkam, mahī + kṛte -> mahīkṛte. The joiner
+# applies the same rule, but a rollback inside _join_run may strip the ā that
+# the fold then cannot restore, so both spellings are accepted when matching.
+FOLD_PAIRS = (("ā", ""), ("ī", ""))
+
+
+def _fold_iast(text):
+    for bad, good in ANUSVARA.items():
+        text = text.replace(bad, good)
+    return text
+
+
+def _same_word(a, b):
+    """True when two IAST spellings are the same word under internal sandhi."""
+    if _fold_iast(a) == _fold_iast(b):
+        return True
+    for long, short in FOLD_PAIRS:
+        if _fold_iast(a) == _fold_iast(b).replace(long, short, 1):
+            return True
+    return False
+
+
+def _iast_of_rows(verse):
+    return [_fold_iast(w[1].lower()) for it in verse["flow"] for w in it.get("words", [])]
+
+
+def _token_surfaces(chunks):
+    """The anvaya's tokens, in order, as (match key, Devanagari to print).
+
+    The stored Devanagari already fuses each compound by sandhi (धर्मक्षेत्रे),
+    so it cannot be split back into rows by spaces. The key is the compound
+    joined the same way in IAST with its hyphens removed — that is what the row
+    words will be joined to in _join_run(). A supplied word in parentheses
+    (sati), (asti) is a token the pāda does not print: it is returned with a
+    None key so the mapping counts it as deliberately unglossed.
+    """
+    out = []
+    for chunk in chunks:
+        plain = re.sub(r"\s+", " ", _unescape(chunk)).strip()
+        iast_line = _itrans_to_iast(plain)
+        deva_line = _itrans_to_deva(plain)
+        iast_toks, deva_toks = iast_line.split(" "), deva_line.split(" ")
+        if len(iast_toks) != len(deva_toks):
+            raise SystemExit(f"script token mismatch: {plain!r}")
+        for it, dt in zip(iast_toks, deva_toks):
+            core_i = it.strip(PUNCT).lower()
+            core_d = dt.strip(PUNCT)
+            if not core_i or not core_d:
+                continue
+            if core_i in ("|", "||") or core_d in ("|", "।", "॥"):
+                continue                       # sentence end, not a word
+            if "(" in it or ")" in it:
+                # The reference parenthesises two different things: a word the
+                # grammar needs but the verse does not print — (sati), (asti),
+                # (bhavati) — and a word the verse DOES print but that the
+                # reference repeats to make an elliptical clause stand on its
+                # own, as (kA~NkShe) does in 1.32. Both are emitted here with a
+                # key; map_verse() matches the key against the rows and only
+                # falls back to "printed, not glossed" when there is no row.
+                bare = core_i.strip("()")
+                out.append((_fold_iast(_join_compound(bare)), core_d.strip("()")))
+                continue
+            out.append((_fold_iast(_join_compound(core_i)), core_d))
+    return out
+
+
+# A conjunction or particle the verse carries fused into its neighbour — the
+# च of धृष्टकेतुश्चेकितानः is written चेकितानः in the rows — has no row of its
+# own. It is still a word of the verse, so the anvaya may print it and the
+# mapping must not treat that as a gap.
+PARTICLES = {"ca", "eva", "iti", "hi", "api", "tu", "vā", "na", "ha", "uta",
+             "he", "aho", "bata", "eva"}
+# Pronouns the reference supplies so a clause has a subject — (mAm) in 1.35,
+# (vayam) in 1.37 — where the verse leaves it understood. They are printed in
+# the anvaya and carry no gloss, because no row of this verse carries one.
+SUPPLIED_PRONOUNS = {"mām", "māṃ", "vayam", "aham", "ahaṃ", "tvam", "tvaṃ"}
+# Demonstratives the reference supplies where the verse leaves the reference of
+# a noun understood — idaṁ in (idaṁ) vacanam, "these words". They are glossed
+# like any other word ("this", "these"), and their Devanagari is the reference's
+# own, so that gloss is the reader's own too.
+SUPPLIED_DEMONSTRATIVES = {"idam", "idaṃ", "imam", "imām", "etat", "etad"}
+
+# Copulas the reference supplies in parentheses — (santi), (asti), (bhavati),
+# (sati), (syāt) — where the verse states a predicate without a verb. Gita Press
+# fills the same slots in the same way and parentheses them the same way, which
+# is what settles our treatment: they belong in the anvaya, they carry no word
+# of the verse's own, and they are printed.
+#
+# The literal is built from the rows, so a supplied copula contributes nothing
+# to it. English needs a "there are"/"is" for the stack to be a sentence at all,
+# so 1.09's literal reads "... heroes, and, many, ..." — a list, not a claim.
+# That is the honest cost of not inventing a sentence: the construal layer has
+# no verb because the verse prints none.
+SUPPLIED_COPULAS = {"santi", "asti", "sati", "bhavati", "bhavanti", "syāt",
+                    "āsīt", "babhūva"}
+
+# The gloss of a supplied word, in the three languages. A supplied word is one
+# the grammar needs and the verse does not print, so no row carries its meaning
+# and there is nothing to read it off: it is written down once, here, and marked
+# as supplied wherever it is shown. Gita Press does the same in its word
+# columns — "(सन्ति) = हैं" — and the parentheses are the mark.
+SUPPLIED_GLOSS = {
+    "idam":  {"en": "this",  "ne": "यो",   "hi": "यह"},
+    "idaṃ":  {"en": "this",  "ne": "यो",   "hi": "यह"},
+    "imam":  {"en": "this",  "ne": "यो",   "hi": "यह"},
+    "imām":  {"en": "this",  "ne": "यी",   "hi": "यह"},
+    "etat":  {"en": "this",  "ne": "यो",   "hi": "यह"},
+    "etad":  {"en": "this",  "ne": "यो",   "hi": "यह"},
+    "santi": {"en": "are",   "ne": "छन्",  "hi": "हैं"},
+    "asti":  {"en": "is",    "ne": "छ",    "hi": "है"},
+    "sati":  {"en": "being", "ne": "हुँदा", "hi": "होने पर"},
+    "bhavati": {"en": "is",  "ne": "हुन्छ", "hi": "होता है"},
+    "bhavanti": {"en": "are", "ne": "हुन्छन्", "hi": "होते हैं"},
+    "syāt":  {"en": "would be", "ne": "हुन्थ्यो", "hi": "होता"},
+    "āsīt":  {"en": "was",   "ne": "थियो", "hi": "था"},
+    "babhūva": {"en": "became", "ne": "भयो", "hi": "हुआ"},
+}
+
+
+def _join_run(words):
+    """Every sandhi spelling of a run of row words (see _unit_set in the test)."""
+    states = {words[0]}
+    for nxt in words[1:]:
+        adds = set()
+        for prev in states:
+            adds |= set(_ext_sandhi(prev, nxt))
+            if prev.endswith("m") and nxt[:1] not in "aāiīuūeoṛ":
+                adds.add(prev[:-1] + nxt)
+        states = adds
+    return states
+
+
+def _ext_sandhi(a, b):
+    from check_padas import ext_sandhi
+    return ext_sandhi(a, b)
+
+
+def map_verse(verse, chunks):
+    """Map anvaya tokens onto word-row indices.
+
+    Returns (tokens, unmatched_rows, unresolved_tokens). Greedy longest-match:
+    try four consecutive rows, then three, then two, then one, so a compound is
+    attributed to the rows it was built from rather than to its first member.
+    """
+    rows = _iast_of_rows(verse)
+    tokens, unresolved = [], []
+    used = set()
+    for iast, deva in _token_surfaces(chunks):
+        if iast is None:
+            # a supplied word the pāda does not print: printed, never glossed
+            tokens.append({"t": deva})
+            continue
+        hit = None
+        longest = min(len(rows), 6)
+        for span in range(longest, 0, -1):
+            for start in range(len(rows) - span + 1):
+                run = rows[start:start + span]
+                if any(i in used for i in range(start, start + span)):
+                    continue
+                if any(_same_word(iast, cand) for cand in _join_run(run)):
+                    hit = (start, span)
+                    break
+            if hit:
+                break
+        if hit:
+            start, span = hit
+            used.update(range(start, start + span))
+            if span == 1:
+                tokens.append(start)
+            else:
+                tokens.append({"r": [start + k for k in range(span)], "t": deva})
+        elif iast in SUPPLIED_DEMONSTRATIVES or iast in SUPPLIED_COPULAS:
+            tokens.append({"t": deva, "sup": iast})
+        else:
+            # a particle the pāda leaves unsaid — हे is the documented one — is
+            # printed but carries no row to gloss
+            if iast in PARTICLES or iast in SUPPLIED_PRONOUNS:
+                tokens.append({"t": deva, "sup": iast})
+            else:
+                unresolved.append(iast)
+                tokens.append({"t": deva})
+    unmatched_rows = [i for i in range(len(rows)) if i not in used]
+    return tokens, unmatched_rows, unresolved
+
+
+# What a gloss's internal comma means. The word rows write a synonym pair with
+# one — "arrayed, drawn up", "righteousness, sacred duty" — and a fused compound
+# is joined by the same mark, so the comma cannot be the literal's separator.
+# " / " says "either gloss, chosen to fit": "arrayed / drawn up".
+GLOSS_ALTERNATIVES = " / "
+
+
+def _gloss(rows, idx):
+    """One token's gloss: its rows' glosses, read as the Sanskrit orders them."""
+    words = [rows[i] for i in idx]
+    # A compound's members arrive in verse order (धर्म + क्षेत्रे). English needs
+    # "field of the Kurus" for कुरुक्षेत्रे — the head last — so a two-member
+    # compound whose first gloss starts with a preposition is turned round.
+    if len(words) == 2:
+        rel = [_is_relational(w[2]) for w in words]
+        if rel[0] != rel[1]:
+            # "of the Kurus" + "on the field" -> "on the field of the Kurus";
+            # "righteousness" + "on the field" -> "on the field of righteousness"
+            words = [words[1], words[0]]
+    return " ".join(w[2] for w in words)
+
+
+def _is_relational(gloss):
+    first = gloss.lower().split(" ")[0]
+    return first in {"of", "to", "for", "with", "in", "on", "from", "by",
+                     "among", "at", "into", "upon"}
+
+
+def construed_literal(verse, tokens):
+    """The verse's own glosses, in anvaya order, one language at a time.
+
+    Concatenation, not composition: no word appears here that is not a gloss of
+    a word in the verse. That is the whole point of the layer — the reader can
+    check it against the rows above it, and the Reading beside it can then be as
+    smooth as it likes without claiming to be literal.
+
+    The glosses keep their own punctuation; where a gloss offers alternatives
+    with a comma ("arrayed, drawn up") each is kept with " / " because the
+    literal needs no choice made for it.
+    """
+    rows = [w for it in verse["flow"] for w in it.get("words", [])]
+    out = {}
+    for lang in ("en", "ne", "hi"):
+        parts = []
+        for tok in tokens:
+            if isinstance(tok, int):
+                idx = [tok]
+            elif isinstance(tok, dict):
+                idx = tok.get("r") or []
+            else:
+                idx = []
+            if not idx:
+                # a supplied word: no row of the verse carries it, so its gloss
+                # is the declared one, and it is marked as supplied in the view
+                sup = tok.get("sup") if isinstance(tok, dict) else None
+                if sup and sup in SUPPLIED_GLOSS:
+                    parts.append(SUPPLIED_GLOSS[sup][lang])
+                continue
+            parts.append(_gloss(rows, idx).replace(", ", GLOSS_ALTERNATIVES))
+        out[lang] = JOINERS[lang].join(p for p in parts if p)
+    return out
+
+
+def _speaker_lead(verse, tokens, missing):
+    """Put the verse's own announcement first: "dhṛtarāṣṭra uvāca".
+
+    The reference's anvaya covers the sentence and drops the stage direction —
+    1.01 opens "dharmakṣetre kurukṣetre" and never says who is speaking, though
+    the verse prints धृतराष्ट्र उवाच first. An anvaya meant to hold the words of
+    the verse cannot omit them, and prose order for a quoted speech names the
+    speaker first, wherever the printed verse puts the announcement (1.21 and
+    1.28 place it between pādas).
+
+    Position, not invention: the words are the verse's own rows, taken in the
+    verse's own order, and only the rows the mapping left unused. Returns the
+    new token list, the remaining gaps, and the Devanagari / IAST lead to print.
+    """
+    rows = _iast_of_rows(verse)
+    said = [w for it in verse["flow"] if it["k"] == "s" for w in it["words"]]
+    if not said:
+        return tokens, missing, "", ""
+    by_row = {i: w for i in missing for w in said if w[1].lower() == rows[i]}
+    if not by_row:
+        return tokens, missing, "", ""      # the anvaya already names the speaker
+    lead = [{"r": [i], "t": by_row[i][0]} for i in sorted(by_row)]
+    return lead + tokens, [i for i in missing if i not in by_row], \
+           " ".join(by_row[i][0] for i in sorted(by_row)) + "।", \
+           " ".join(by_row[i][1] for i in sorted(by_row)) + " ."
+
+
+def annotate(data, chapter):
+    """Add anv.w and anv.lit to every verse that has an anvaya."""
+    entries = parse_reference(chapter)
+    report = {"mapped": 0, "no_literal": [], "unresolved": []}
+    for verse_id, entry in entries.items():
+        verse = _locate(data, verse_id)
+        if "anv" not in verse:
+            continue
+        tokens, missing, unresolved = map_verse(verse, entry["chunks"])
+        tokens, missing, lead_d, lead_t = _speaker_lead(verse, tokens, missing)
+        if lead_d:
+            verse["anv"]["d"] = lead_d + "\n" + verse["anv"]["d"]
+            verse["anv"]["t"] = lead_t + "\n" + verse["anv"]["t"]
+        verse["anv"]["w"] = tokens
+        if unresolved:
+            report["unresolved"].append((verse_id, unresolved))
+        if missing:
+            # A row the anvaya never mentions — the reference leaves it implicit
+            # (1.09's madarthe) or folds it away. Composing anyway would print a
+            # literal that silently drops a word, so it is left absent and
+            # reported for a human to resolve.
+            report["no_literal"].append((verse_id, [verse["flow"][0]["words"] and
+                [w for it in verse["flow"] for w in it["words"]][i][0]
+                for i in missing]))
+            verse["anv"].pop("lit", None)
+            continue
+        verse["anv"]["lit"] = construed_literal(verse, tokens)
+        report["mapped"] += 1
+    return report
 
 
 if __name__ == "__main__":

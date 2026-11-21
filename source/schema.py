@@ -16,7 +16,7 @@ VERSE_KEYS = {"n", "d", "t", "flow", "lits", "paras"}
 # transcribed reference, so it is allowed but not yet required on every verse.
 # When present it is validated as strictly as everything else.
 VERSE_OPTIONAL_KEYS = {"anv"}
-ANVAYA_KEYS = {"d", "t"}
+ANVAYA_KEYS = {"d", "t", "w", "lit"}
 FLOW_PAD_KEYS = {"k", "d", "t", "n", "words"}
 FLOW_SPEAKER_KEYS = {"k", "d", "t", "words"}
 RANGE_RE = re.compile(r"^(\d+)\.(\d{2})–(\d+)\.(\d{2})$")
@@ -55,6 +55,39 @@ def validate_chapters(chapters):
             fail(where, "must be a non-empty string")
             return False
         return True
+
+    def anvaya_words(tokens, where):
+        """anv.w: the verse's words in prose order, as references to its rows.
+
+        A token is one row (an int), several rows fused into one compound
+        ({"r": [i, ...], "t": Devanagari}), or a word the anvaya supplies that
+        no row carries ({"t": Devanagari, "sup": ...}). Anything else would put
+        a meaning in the reader's mouth that the word rows do not back.
+        """
+        if not isinstance(tokens, list) or not tokens:
+            fail(where, "must be a non-empty array of word tokens")
+            return
+        for i, tok in enumerate(tokens, 1):
+            w = f"{where} {i}"
+            if type(tok) is int:
+                if tok < 0:
+                    fail(w, "row index must not be negative")
+                continue
+            if not isinstance(tok, dict):
+                fail(w, "must be a row index or an object, got "
+                        + type(tok).__name__)
+                continue
+            rows = tok.get("r")
+            if rows is not None:
+                if (not isinstance(rows, list) or not rows
+                        or any(type(r) is not int or r < 0 for r in rows)):
+                    fail(w, "r must be a non-empty array of row indices")
+                elif rows != sorted(set(rows)):
+                    fail(w, "r must be ascending and without repeats")
+            if not isinstance(tok.get("t"), str) or not tok["t"].strip():
+                fail(w, "t is the Devanagari the token prints as, and is required")
+            if "sup" in tok and not isinstance(tok["sup"], str):
+                fail(w, "sup names the supplied word, as IAST")
 
     def language_map(value, where):
         if not isinstance(value, dict):
@@ -210,6 +243,10 @@ def validate_chapters(chapters):
                                     fail(f"{vw}.anv.d",
                                          "is prose order, not a verse line: no daṇḍas")
                             nonempty_text(anv.get("t"), f"{vw}.anv.t")
+                            if "w" in anv:
+                                anvaya_words(anv["w"], f"{vw}.anv.w")
+                            if "lit" in anv:
+                                language_map(anv["lit"], f"{vw}.anv.lit")
                     language_map(verse.get("lits"), f"{vw}.lits")
                     language_map(verse.get("paras"), f"{vw}.paras")
 

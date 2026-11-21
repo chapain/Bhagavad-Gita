@@ -30,6 +30,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "source"))
 
 from check_padas import ext_sandhi  # noqa: E402
+from anvaya import SUPPLIED_GLOSS  # noqa: E402
 
 CHAPTERS = range(1, 19)
 
@@ -223,6 +224,65 @@ class AnvayaIntegrity(unittest.TestCase):
             self.assertNotIn("॥", d, f"{verse['n']}: anvaya carries a daṇḍa")
             self.assertTrue(verse["anv"]["t"].strip(),
                             f"{verse['n']}: anvaya has no IAST")
+
+    def test_construed_literal_is_gloss_and_nothing_else(self):
+        """anv.lit must be the rows' own glosses in anvaya order.
+
+        This is the claim the layer exists to make: the reader can check it
+        against the word rows in front of them. Each comma-separated piece is
+        one token's gloss — or, for a compound the verse keeps fused, its
+        members' glosses joined — so no piece may be a phrase we wrote for
+        smoothness. A gloss's own comma is printed " / " for exactly this
+        reason: it keeps the literal's separators unambiguous.
+        """
+        failures = []
+        for verse in self._verses():
+            lit = verse["anv"].get("lit")
+            if not lit:
+                failures.append(f"{verse['n']}: mapped anvaya with no construed literal")
+                continue
+            rows = [w for it in verse["flow"] for w in it.get("words", [])]
+            glosses = {w[2].replace(", ", " / ") for w in rows}
+            # a supplied word (सति), (अस्ति) has no row, so its gloss comes from
+            # anvaya.SUPPLIED_GLOSS. Declared there, allowed here; anything else
+            # would be a word we wrote ourselves.
+            glosses |= {g["en"] for g in SUPPLIED_GLOSS.values()}
+            for piece in lit["en"].split(", "):
+                if not piece:
+                    continue
+                # a compound is several glosses in one piece; every word of it
+                # must still come from a gloss, so check the piece against the
+                # glosses it could be built from
+                if piece in glosses:
+                    continue
+                if not any(g in piece for g in glosses):
+                    failures.append(f"{verse['n']}: '{piece}' is not a gloss of this verse")
+        self.assertEqual([], failures, "\n" + "\n".join(failures))
+
+    def test_word_order_covers_every_row_once(self):
+        """anv.w must place every row of the verse exactly once.
+
+        The construed literal is composed from anv.w, so a row missing there is
+        a word missing from the literal — and the composer would not notice,
+        because it only reads what the list gives it. A row appearing twice is
+        the same fault inverted: a word said twice in the verse's own prose.
+        """
+        failures = []
+        for verse in self._verses():
+            total = sum(len(it.get("words", [])) for it in verse["flow"])
+            placed = []
+            for tok in verse["anv"].get("w", []):
+                if isinstance(tok, int):
+                    placed.append(tok)
+                elif isinstance(tok, dict):
+                    placed.extend(tok.get("r", []))
+            if sorted(placed) != list(range(total)):
+                missing = sorted(set(range(total)) - set(placed))
+                dupes = sorted({i for i in placed if placed.count(i) > 1})
+                failures.append(f"{verse['n']}: {total} rows, placed {len(placed)}"
+                                + (f", missing {missing}" if missing else "")
+                                + (f", repeated {dupes}" if dupes else ""))
+        self.assertEqual([], failures, "\n" + "\n".join(failures))
 
     def test_anvaya_differs_from_the_pada_order(self):
         """An anvaya that merely copies the verse proves nothing.

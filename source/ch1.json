@@ -200,8 +200,54 @@
                 "hi": "राजा धृतराष्ट्र पूछते हैं: “कुरुक्षेत्र के पवित्र मैदान पर मेरे पुत्र और पांडु के पुत्र लड़ने को तैयार होकर इकट्ठे हुए हैं। संजय, बताओ — क्या हुआ?”"
               },
               "anv": {
-                "d": "हे सञ्जय! धर्मक्षेत्रे, कुरुक्षेत्रे, युयुत्सवः समवेताः मामकाः पाण्डवाः च एव किम् अकुर्वत?",
-                "t": "he sañjaya! dharma-kṣetre, kuru-kṣetre, yuyutsavaḥ samavetāḥ māmakāḥ pāṇḍavāḥ ca eva kim akurvata?"
+                "d": "धृतराष्ट्र उवाच।\nहे सञ्जय! धर्मक्षेत्रे, कुरुक्षेत्रे, युयुत्सवः समवेताः मामकाः पाण्डवाः च एव किम् अकुर्वत?",
+                "t": "dhṛtarāṣṭra uvāca .\nhe sañjaya! dharma-kṣetre, kuru-kṣetre, yuyutsavaḥ samavetāḥ māmakāḥ pāṇḍavāḥ ca eva kim akurvata?",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "धृतराष्ट्र"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  14,
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "धर्म-क्षेत्रे"
+                  },
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "कुरु-क्षेत्रे"
+                  },
+                  7,
+                  6,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "Dhṛtarāṣṭra (the blind king), said, O Sañjaya, on the field righteousness / sacred duty, of the Kurus on the field, desiring to fight, assembled, my people, the sons of Pāṇḍu, and, indeed, what, did they do",
+                  "ne": "Dhṛtarāṣṭra (the blind king) said O Sañjaya on the field righteousness / sacred duty of the Kurus on the field desiring to fight assembled my people the sons of Pāṇḍu and indeed what did they do",
+                  "hi": "Dhṛtarāṣṭra (the blind king) said O Sañjaya on the field righteousness / sacred duty of the Kurus on the field desiring to fight assembled my people the sons of Pāṇḍu and indeed what did they do"
+                }
               }
             }
           ]
@@ -373,8 +419,47 @@
                 "hi": "संजय उत्तर देते हैं: “पांडवों की सेना को व्यूह में खड़ा देखकर दुर्योधन अपने गुरु द्रोण के पास जाकर बोलता है:”"
               },
               "anv": {
-                "d": "तदा तु पाण्डवानीकम् व्यूढम् दृष्ट्वा, राजा दुर्योधनः आचार्यम् उपसङ्गम्य, (इदं) वचनम् अब्रवीत्।",
-                "t": "tadā tu pāṇḍava-anīkam vyūḍham dṛṣṭvā, rājā duryodhanaḥ ācāryam upasaṅgamya, (idaṃ) vacanam abravīt|"
+                "d": "सञ्जय उवाच।\nतदा तु पाण्डवानीकम् व्यूढम् दृष्ट्वा, राजा दुर्योधनः आचार्यम् उपसङ्गम्य, (इदं) वचनम् अब्रवीत्।",
+                "t": "sañjaya uvāca .\ntadā tu pāṇḍava-anīkam vyūḍham dṛṣṭvā, rājā duryodhanaḥ ācāryam upasaṅgamya, (idaṃ) vacanam abravīt|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "सञ्जय"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  8,
+                  3,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "पाण्डव-अनीकम्"
+                  },
+                  6,
+                  2,
+                  11,
+                  7,
+                  9,
+                  10,
+                  {
+                    "t": "इदं"
+                  },
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "Sañjaya (the narrator), said, then, but / indeed, the army of the Pāṇḍavas, arrayed / drawn up, having seen, the king, Duryodhana, the teacher, having approached, words, spoke / said",
+                  "ne": "Sañjaya (the narrator) said then but / indeed the army of the Pāṇḍavas arrayed / drawn up having seen the king Duryodhana the teacher having approached words spoke / said",
+                  "hi": "Sañjaya (the narrator) said then but / indeed the army of the Pāṇḍavas arrayed / drawn up having seen the king Duryodhana the teacher having approached words spoke / said"
+                }
               }
             }
           ]
@@ -533,7 +618,41 @@
               },
               "anv": {
                 "d": "हे आचार्य! तव धीमता शिष्येण, द्रुपदपुत्रेण व्यूढाम् पाण्डुपुत्राणाम् एताम् महतीम् चमूम् पश्य।",
-                "t": "he ācārya! tava dhīmatā śiṣyeṇa, drupada-putreṇa vyūḍhām pāṇḍu-putrāṇām etām mahatīm camūm paśya|"
+                "t": "he ācārya! tava dhīmatā śiṣyeṇa, drupada-putreṇa vyūḍhām pāṇḍu-putrāṇām etām mahatīm camūm paśya|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  4,
+                  10,
+                  12,
+                  11,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "द्रुपद-पुत्रेण"
+                  },
+                  7,
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "पाण्डु-पुत्राणाम्"
+                  },
+                  1,
+                  5,
+                  6,
+                  0
+                ],
+                "lit": {
+                  "en": "O teacher, your, wise / intelligent, by the disciple, of Drupada by the son, arrayed, of Pāṇḍu of the sons, this, great, army, behold",
+                  "ne": "O teacher your wise / intelligent by the disciple of Drupada by the son arrayed of Pāṇḍu of the sons this great army behold",
+                  "hi": "O teacher your wise / intelligent by the disciple of Drupada by the son arrayed of Pāṇḍu of the sons this great army behold"
+                }
               }
             }
           ]
@@ -721,7 +840,44 @@
               },
               "anv": {
                 "d": "अत्र, भीमार्जुनसमाः युधि शूराः महेष्वासाः, महारथः युयुधानः, विराटः च द्रुपदः च।",
-                "t": "atra, bhīma-arjuna-samāḥ yudhi śūrāḥ mahā-iṣu-āsāḥ, mahārathaḥ yuyudhānaḥ, virāṭaḥ ca drupadaḥ ca|"
+                "t": "atra, bhīma-arjuna-samāḥ yudhi śūrāḥ mahā-iṣu-āsāḥ, mahārathaḥ yuyudhānaḥ, virāṭaḥ ca drupadaḥ ca|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      4,
+                      5,
+                      6
+                    ],
+                    "t": "भीम-अर्जुन-समाः"
+                  },
+                  7,
+                  1,
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "महा-इषु-आसाः"
+                  },
+                  {
+                    "r": [
+                      13,
+                      14
+                    ],
+                    "t": "महारथः"
+                  },
+                  8,
+                  9,
+                  10,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "here, to Bhīma and Arjuna equal, in war, heroes, great archers, great chariot-warrior, Yuyudhāna (Sātyaki), Virāṭa (king of Matsya), and, Drupada, and",
+                  "ne": "here to Bhīma and Arjuna equal in war heroes great archers great chariot-warrior Yuyudhāna (Sātyaki) Virāṭa (king of Matsya) and Drupada and",
+                  "hi": "here to Bhīma and Arjuna equal in war heroes great archers great chariot-warrior Yuyudhāna (Sātyaki) Virāṭa (king of Matsya) and Drupada and"
+                }
               }
             }
           ]
@@ -866,7 +1022,29 @@
               },
               "anv": {
                 "d": "धृष्टकेतुः, चेकितानः च, वीर्यवान् काशिराजः च, पुरुजित् कुन्तिभोजः च, नरपुङ्गवः शैब्यः च।",
-                "t": "dhṛṣṭaketuḥ, cekitānaḥ ca, vīryavān kāśirājaḥ ca, purujit kuntibhojaḥ ca, nara-puṅgavaḥ śaibyaḥ ca|"
+                "t": "dhṛṣṭaketuḥ, cekitānaḥ ca, vīryavān kāśirājaḥ ca, purujit kuntibhojaḥ ca, nara-puṅgavaḥ śaibyaḥ ca|",
+                "w": [
+                  0,
+                  1,
+                  3,
+                  4,
+                  2,
+                  7,
+                  5,
+                  6,
+                  9,
+                  10,
+                  8,
+                  {
+                    "t": "च",
+                    "sup": "ca"
+                  }
+                ],
+                "lit": {
+                  "en": "Dhṛṣṭaketu, Cekitāna, and, valiant, king of Kāśi, and, Purujit, Kuntibhoja, and, bull among men, Śaibya",
+                  "ne": "Dhṛṣṭaketu Cekitāna and valiant king of Kāśi and Purujit Kuntibhoja and bull among men Śaibya",
+                  "hi": "Dhṛṣṭaketu Cekitāna and valiant king of Kāśi and Purujit Kuntibhoja and bull among men Śaibya"
+                }
               }
             }
           ]
@@ -1018,7 +1196,26 @@
               },
               "anv": {
                 "d": "विक्रान्तः युधामन्युः च, वीर्यवान् उत्तमौजाः सौभद्रः च, द्रौपदेयाः च, सर्वे महारथाः एव।",
-                "t": "vikrāntaḥ yudhāmanyuḥ ca, vīryavān uttamaujāḥ saubhadraḥ ca, draupadeyāḥ ca, sarve mahārathāḥ eva|"
+                "t": "vikrāntaḥ yudhāmanyuḥ ca, vīryavān uttamaujāḥ saubhadraḥ ca, draupadeyāḥ ca, sarve mahārathāḥ eva|",
+                "w": [
+                  2,
+                  0,
+                  1,
+                  5,
+                  3,
+                  6,
+                  4,
+                  7,
+                  8,
+                  9,
+                  11,
+                  10
+                ],
+                "lit": {
+                  "en": "mighty, Yudhāmanyu, and, powerful, Uttamaujas, the son of Subhadrā (Abhimanyu), and, the sons of Draupadī, and, all, great chariot-warriors, indeed",
+                  "ne": "mighty Yudhāmanyu and powerful Uttamaujas the son of Subhadrā (Abhimanyu) and the sons of Draupadī and all great chariot-warriors indeed",
+                  "hi": "mighty Yudhāmanyu and powerful Uttamaujas the son of Subhadrā (Abhimanyu) and the sons of Draupadī and all great chariot-warriors indeed"
+                }
               }
             }
           ]
@@ -1198,7 +1395,44 @@
               },
               "anv": {
                 "d": "हे द्विजोत्तम! अस्माकम् तु ये विशिष्टाः, मम सैन्यस्य नायकाः, तान् निबोध।\nतान् संज्ञार्थम् ते ब्रवीमि।",
-                "t": "he dvija-uttama! asmākam tu ye viśiṣṭāḥ, mama sainyasya nāyakāḥ, tān nibodha|\ntān saṃjñārtham te bravīmi|"
+                "t": "he dvija-uttama! asmākam tu ye viśiṣṭāḥ, mama sainyasya nāyakāḥ, tān nibodha|\ntān saṃjñārtham te bravīmi|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "द्विज-उत्तम"
+                  },
+                  0,
+                  1,
+                  3,
+                  2,
+                  9,
+                  10,
+                  8,
+                  4,
+                  5,
+                  13,
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "संज्ञार्थम्"
+                  },
+                  15,
+                  14
+                ],
+                "lit": {
+                  "en": "O best of the twice-born, of us, but, who, distinguished, my, of the army, leaders, them, know / hear, them, for the sake of information, to you, I tell",
+                  "ne": "O best of the twice-born of us but who distinguished my of the army leaders them know / hear them for the sake of information to you I tell",
+                  "hi": "O best of the twice-born of us but who distinguished my of the army leaders them know / hear them for the sake of information to you I tell"
+                }
               }
             }
           ]
@@ -1371,7 +1605,29 @@
               },
               "anv": {
                 "d": "भवान् भीष्मः च, कर्णः च, समितिञ्जयः कृपः च, अश्वत्थामा विकर्णः च, तथा एव च सौमदत्तिः।",
-                "t": "bhavān bhīṣmaḥ ca, karṇaḥ ca, samitiñjayaḥ kṛpaḥ ca, aśvatthāmā vikarṇaḥ ca, tathā eva ca saumadattiḥ|"
+                "t": "bhavān bhīṣmaḥ ca, karṇaḥ ca, samitiñjayaḥ kṛpaḥ ca, aśvatthāmā vikarṇaḥ ca, tathā eva ca saumadattiḥ|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  7,
+                  5,
+                  6,
+                  8,
+                  9,
+                  10,
+                  12,
+                  13,
+                  14,
+                  11
+                ],
+                "lit": {
+                  "en": "you, Bhīṣma, and, Karṇa, and, conqueror in battle, Kṛpa, and, Aśvatthāmā, Vikarṇa, and, likewise, indeed, and, son of Somadatta (Bhūriśravā)",
+                  "ne": "you Bhīṣma and Karṇa and conqueror in battle Kṛpa and Aśvatthāmā Vikarṇa and likewise indeed and son of Somadatta (Bhūriśravā)",
+                  "hi": "you Bhīṣma and Karṇa and conqueror in battle Kṛpa and Aśvatthāmā Vikarṇa and likewise indeed and son of Somadatta (Bhūriśravā)"
+                }
               }
             }
           ]
@@ -1530,7 +1786,46 @@
               },
               "anv": {
                 "d": "अन्ये च बहवः शूराः, सर्वे मदर्थे त्यक्तजीविताः, नानाशस्त्रप्रहरणाः युद्धविशारदाः (सन्ति)।",
-                "t": "anye ca bahavaḥ śūrāḥ, sarve madarthe tyakta-jīvitāḥ, nānā-śastra-praharaṇāḥ yuddha-viśāradāḥ (santi)|"
+                "t": "anye ca bahavaḥ śūrāḥ, sarve madarthe tyakta-jīvitāḥ, nānā-śastra-praharaṇāḥ yuddha-viśāradāḥ (santi)|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  10,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "मदर्थे"
+                  },
+                  6,
+                  {
+                    "r": [
+                      7,
+                      8,
+                      9
+                    ],
+                    "t": "नाना-शस्त्र-प्रहरणाः"
+                  },
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "युद्ध-विशारदाः"
+                  },
+                  {
+                    "t": "सन्ति",
+                    "sup": "santi"
+                  }
+                ],
+                "lit": {
+                  "en": "others, and, many, heroes, all, for the sake of my, ready to give up their lives, various weapons armed with, skilled in war, are",
+                  "ne": "others and many heroes all for the sake of my ready to give up their lives various weapons armed with skilled in war छन्",
+                  "hi": "others and many heroes all for the sake of my ready to give up their lives various weapons armed with skilled in war हैं"
+                }
               }
             }
           ]
@@ -1704,7 +1999,41 @@
               },
               "anv": {
                 "d": "अस्माकम् भीष्माभिरक्षितम् तत् बलम् अपर्याप्तम्, एतेषाम् तु भीमाभिरक्षितम् इदम् बलम् पर्याप्तम् (अस्ति)।",
-                "t": "asmākam bhīṣma-abhirakṣitam tat balam aparyāptam, eteṣām tu bhīma-abhirakṣitam idam balam paryāptam (asti)|"
+                "t": "asmākam bhīṣma-abhirakṣitam tat balam aparyāptam, eteṣām tu bhīma-abhirakṣitam idam balam paryāptam (asti)|",
+                "w": [
+                  2,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "भीष्म-अभिरक्षितम्"
+                  },
+                  1,
+                  3,
+                  0,
+                  9,
+                  7,
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "भीम-अभिरक्षितम्"
+                  },
+                  8,
+                  10,
+                  6,
+                  {
+                    "t": "अस्ति",
+                    "sup": "asti"
+                  }
+                ],
+                "lit": {
+                  "en": "our, protected by Bhīṣma, that, strength, insufficient / limited, of these, but, protected by Bhīma, this, strength, sufficient, is",
+                  "ne": "our protected by Bhīṣma that strength insufficient / limited of these but protected by Bhīma this strength sufficient छ",
+                  "hi": "our protected by Bhīṣma that strength insufficient / limited of these but protected by Bhīma this strength sufficient है"
+                }
               }
             }
           ]
@@ -1863,7 +2192,32 @@
               },
               "anv": {
                 "d": "भवन्तः सर्वे एव हि सर्वेषु अयनेषु च यथाभागम् अवस्थिताः भीष्मम् एव अभिरक्षन्तु।",
-                "t": "bhavantaḥ sarve eva hi sarveṣu ayaneṣu ca yathā-bhāgam avasthitāḥ bhīṣmam eva abhirakṣantu|"
+                "t": "bhavantaḥ sarve eva hi sarveṣu ayaneṣu ca yathā-bhāgam avasthitāḥ bhīṣmam eva abhirakṣantu|",
+                "w": [
+                  9,
+                  10,
+                  7,
+                  12,
+                  2,
+                  0,
+                  1,
+                  {
+                    "r": [
+                      3,
+                      4
+                    ],
+                    "t": "यथा-भागम्"
+                  },
+                  5,
+                  6,
+                  11,
+                  8
+                ],
+                "lit": {
+                  "en": "you all, all, alone, verily, in all, in the approaches, and, according to their divisions, stationed, Bhīṣma, indeed, let them protect",
+                  "ne": "you all all alone verily in all in the approaches and according to their divisions stationed Bhīṣma indeed let them protect",
+                  "hi": "you all all alone verily in all in the approaches and according to their divisions stationed Bhīṣma indeed let them protect"
+                }
               }
             }
           ]
@@ -2037,7 +2391,37 @@
               },
               "anv": {
                 "d": "तस्य हर्षम् सञ्जनयन् प्रतापवान् कुरुवृद्धः पितामहः, उच्चैः सिंहनादम् विनद्य शङ्खम् दध्मौ।",
-                "t": "tasya harṣam sañjanayan pratāpavān kuru-vṛddhaḥ pitāmahaḥ, uccaiḥ siṃhanādam vinadya śaṅkham dadhmau|"
+                "t": "tasya harṣam sañjanayan pratāpavān kuru-vṛddhaḥ pitāmahaḥ, uccaiḥ siṃhanādam vinadya śaṅkham dadhmau|",
+                "w": [
+                  0,
+                  2,
+                  1,
+                  12,
+                  {
+                    "r": [
+                      3,
+                      4
+                    ],
+                    "t": "कुरु-वृद्धः"
+                  },
+                  5,
+                  9,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "सिंहनादम्"
+                  },
+                  8,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "his (Duryodhana's), joy, causing / giving, the glorious, the elder of the Kurus, the grandsire, loudly, lion's roar, having uttered, the conch, blew",
+                  "ne": "his (Duryodhana's) joy causing / giving the glorious the elder of the Kurus the grandsire loudly lion's roar having uttered the conch blew",
+                  "hi": "his (Duryodhana's) joy causing / giving the glorious the elder of the Kurus the grandsire loudly lion's roar having uttered the conch blew"
+                }
               }
             }
           ]
@@ -2210,7 +2594,34 @@
               },
               "anv": {
                 "d": "ततः शङ्खाः च भेर्यः च पणवानकगोमुखाः सहसा एव अभ्यहन्यन्त।\nसः शब्दः तुमुलः अभवत्।",
-                "t": "tataḥ śaṅkhāḥ ca bheryaḥ ca paṇava-ānaka-gomukhāḥ sahasā eva abhyahanyanta|\nsaḥ śabdaḥ tumulaḥ abhavat|"
+                "t": "tataḥ śaṅkhāḥ ca bheryaḥ ca paṇava-ānaka-gomukhāḥ sahasā eva abhyahanyanta|\nsaḥ śabdaḥ tumulaḥ abhavat|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  {
+                    "r": [
+                      5,
+                      6,
+                      7
+                    ],
+                    "t": "पणव-आनक-गोमुखाः"
+                  },
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "then, conches, and, drums, and, kettledrums tabors horn-trumpets, suddenly, indeed, were struck, that, sound, tumultuous, became",
+                  "ne": "then conches and drums and kettledrums tabors horn-trumpets suddenly indeed were struck that sound tumultuous became",
+                  "hi": "then conches and drums and kettledrums tabors horn-trumpets suddenly indeed were struck that sound tumultuous became"
+                }
               }
             }
           ]
@@ -2391,7 +2802,28 @@
               },
               "anv": {
                 "d": "ततः श्वेतैः हयैः युक्ते महति स्यन्दने स्थितौ माधवः पाण्डवः च एव दिव्यौ शङ्खौ प्रदध्मतुः।",
-                "t": "tataḥ śvetaiḥ hayaiḥ yukte mahati syandane sthitau mādhavaḥ pāṇḍavaḥ ca eva divyau śaṅkhau pradadhmatuḥ|"
+                "t": "tataḥ śvetaiḥ hayaiḥ yukte mahati syandane sthitau mādhavaḥ pāṇḍavaḥ ca eva divyau śaṅkhau pradadhmatuḥ|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "then, with white, horses, yoked, in the great, chariot, stationed, Mādhava (Kṛṣṇa), the son of Pāṇḍu (Arjuna), and, indeed, divine, conches, blew",
+                  "ne": "then with white horses yoked in the great chariot stationed Mādhava (Kṛṣṇa) the son of Pāṇḍu (Arjuna) and indeed divine conches blew",
+                  "hi": "then with white horses yoked in the great chariot stationed Mādhava (Kṛṣṇa) the son of Pāṇḍu (Arjuna) and indeed divine conches blew"
+                }
               }
             }
           ]
@@ -2536,7 +2968,35 @@
               },
               "anv": {
                 "d": "हृषीकेशः पाञ्चजन्यम्, धनञ्जयः देवदत्तम्, भीमकर्मा वृकोदरः पौण्ड्रम् महाशङ्खम् दध्मौ।",
-                "t": "hṛṣīkeśaḥ pāñcajanyam, dhanañjayaḥ devadattam, bhīma-karmā vṛka-udaraḥ pauṇḍram mahā-śaṅkham dadhmau|"
+                "t": "hṛṣīkeśaḥ pāñcajanyam, dhanañjayaḥ devadattam, bhīma-karmā vṛka-udaraḥ pauṇḍram mahā-śaṅkham dadhmau|",
+                "w": [
+                  1,
+                  0,
+                  3,
+                  2,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "भीम-कर्मा"
+                  },
+                  10,
+                  4,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "महा-शङ्खम्"
+                  },
+                  5
+                ],
+                "lit": {
+                  "en": "Hṛṣīkeśa (Kṛṣṇa), Pāñcajanya (Kṛṣṇa's conch), Dhanañjaya (Arjuna), Devadatta (Arjuna's conch), terrific deeds (doer of), Vṛkodara (Bhīma), Pauṇḍra (Bhīma's conch), great the conch, blew",
+                  "ne": "Hṛṣīkeśa (Kṛṣṇa) Pāñcajanya (Kṛṣṇa's conch) Dhanañjaya (Arjuna) Devadatta (Arjuna's conch) terrific deeds (doer of) Vṛkodara (Bhīma) Pauṇḍra (Bhīma's conch) great the conch blew",
+                  "hi": "Hṛṣīkeśa (Kṛṣṇa) Pāñcajanya (Kṛṣṇa's conch) Dhanañjaya (Arjuna) Devadatta (Arjuna's conch) terrific deeds (doer of) Vṛkodara (Bhīma) Pauṇḍra (Bhīma's conch) great the conch blew"
+                }
               }
             }
           ]
@@ -2667,7 +3127,28 @@
               },
               "anv": {
                 "d": "कुन्तीपुत्रः राजा युधिष्ठिरः अनन्तविजयम्, नकुलः सहदेवः च सुघोषमणिपुष्पकौ।",
-                "t": "kuntī-putraḥ rājā yudhiṣṭhiraḥ anantavijayam, nakulaḥ sahadevaḥ ca sughoṣa-maṇi-puṣpakau|"
+                "t": "kuntī-putraḥ rājā yudhiṣṭhiraḥ anantavijayam, nakulaḥ sahadevaḥ ca sughoṣa-maṇi-puṣpakau|",
+                "w": [
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "कुन्ती-पुत्रः"
+                  },
+                  1,
+                  4,
+                  0,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "lit": {
+                  "en": "the son of Kuntī, the king, Yudhiṣṭhira, Anantavijaya (Yudhiṣṭhira's conch), Nakula, Sahadeva, and, Sughoṣa and Maṇipuṣpaka (their conches)",
+                  "ne": "the son of Kuntī the king Yudhiṣṭhira Anantavijaya (Yudhiṣṭhira's conch) Nakula Sahadeva and Sughoṣa and Maṇipuṣpaka (their conches)",
+                  "hi": "the son of Kuntī the king Yudhiṣṭhira Anantavijaya (Yudhiṣṭhira's conch) Nakula Sahadeva and Sughoṣa and Maṇipuṣpaka (their conches)"
+                }
               }
             }
           ]
@@ -2833,7 +3314,38 @@
               },
               "anv": {
                 "d": "परमेष्वासः काश्यः च, महारथः शिखण्डी च धृष्टद्युम्नः विराटः च, अपराजितः सात्यकिः च।",
-                "t": "parama-iṣu-āsaḥ kāśyaḥ ca, mahārathaḥ śikhaṇḍī ca dhṛṣṭadyumnaḥ virāṭaḥ ca, aparājitaḥ sātyakiḥ ca|"
+                "t": "parama-iṣu-āsaḥ kāśyaḥ ca, mahārathaḥ śikhaṇḍī ca dhṛṣṭadyumnaḥ virāṭaḥ ca, aparājitaḥ sātyakiḥ ca|",
+                "w": [
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "परम-इषु-आसः"
+                  },
+                  0,
+                  1,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "महारथः"
+                  },
+                  4,
+                  5,
+                  8,
+                  9,
+                  10,
+                  13,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "supreme archer, king of Kāśī, and, great chariot-warrior, Śikhaṇḍī, and, Dhṛṣṭadyumna, Virāṭa, and, unconquered, Sātyaki, and",
+                  "ne": "supreme archer king of Kāśī and great chariot-warrior Śikhaṇḍī and Dhṛṣṭadyumna Virāṭa and unconquered Sātyaki and",
+                  "hi": "supreme archer king of Kāśī and great chariot-warrior Śikhaṇḍī and Dhṛṣṭadyumna Virāṭa and unconquered Sātyaki and"
+                }
               }
             }
           ]
@@ -2999,7 +3511,42 @@
               },
               "anv": {
                 "d": "द्रुपदः द्रौपदेयाः च, महाबाहुः सौभद्रः च, हे पृथिवीपते! पृथक् पृथक् सर्वशः शङ्खान् दध्मुः।",
-                "t": "drupadaḥ draupadeyāḥ ca, mahā-bāhuḥ saubhadraḥ ca, he pṛthivī-pate! pṛthak pṛthak sarvaśaḥ śaṅkhān dadhmuḥ|"
+                "t": "drupadaḥ draupadeyāḥ ca, mahā-bāhuḥ saubhadraḥ ca, he pṛthivī-pate! pṛthak pṛthak sarvaśaḥ śaṅkhān dadhmuḥ|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "महा-बाहुः"
+                  },
+                  6,
+                  7,
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "पृथिवी-पते"
+                  },
+                  12,
+                  13,
+                  3,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "Drupada, the sons of Draupadī, and, mighty armed, the son of Subhadrā, and, O lord of the earth, separately, separately (repeated: each his own), all / one and all, conches, blew",
+                  "ne": "Drupada the sons of Draupadī and mighty armed the son of Subhadrā and O lord of the earth separately separately (repeated: each his own) all / one and all conches blew",
+                  "hi": "Drupada the sons of Draupadī and mighty armed the son of Subhadrā and O lord of the earth separately separately (repeated: each his own) all / one and all conches blew"
+                }
               }
             }
           ]
@@ -3151,7 +3698,26 @@
               },
               "anv": {
                 "d": "सः तुमुलः घोषः नभः च पृथिवीम् च एव व्यनुनादयन्, धार्तराष्ट्राणाम् हृदयानि व्यदारयत्।",
-                "t": "saḥ tumulaḥ ghoṣaḥ nabhaḥ ca pṛthivīm ca eva vyanunādayan, dhārtarāṣṭrāṇām hṛdayāni vyadārayat|"
+                "t": "saḥ tumulaḥ ghoṣaḥ nabhaḥ ca pṛthivīm ca eva vyanunādayan, dhārtarāṣṭrāṇām hṛdayāni vyadārayat|",
+                "w": [
+                  0,
+                  10,
+                  1,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  11,
+                  2,
+                  3,
+                  4
+                ],
+                "lit": {
+                  "en": "that, tumultuous, clamour / sound, the sky, and, the earth, and, indeed, resounding through, of the sons of Dhṛtarāṣṭra, hearts, rent / shattered",
+                  "ne": "that tumultuous clamour / sound the sky and the earth and indeed resounding through of the sons of Dhṛtarāṣṭra hearts rent / shattered",
+                  "hi": "that tumultuous clamour / sound the sky and the earth and indeed resounding through of the sons of Dhṛtarāṣṭra hearts rent / shattered"
+                }
               }
             }
           ]
@@ -3318,7 +3884,40 @@
               },
               "anv": {
                 "d": "अथ कपिध्वजः पाण्डवः धार्तराष्ट्रान् व्यवस्थितान् दृष्ट्वा, शस्त्रसम्पाते प्रवृत्ते (सति) धनुः उद्यम्य।",
-                "t": "atha kapi-dhvajaḥ pāṇḍavaḥ dhārtarāṣṭrān vyavasthitān dṛṣṭvā, śastra-sampāte pravṛtte (sati) dhanuḥ udyamya|"
+                "t": "atha kapi-dhvajaḥ pāṇḍavaḥ dhārtarāṣṭrān vyavasthitān dṛṣṭvā, śastra-sampāte pravṛtte (sati) dhanuḥ udyamya|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "कपि-ध्वजः"
+                  },
+                  11,
+                  3,
+                  1,
+                  2,
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "शस्त्र-सम्पाते"
+                  },
+                  6,
+                  {
+                    "t": "सति",
+                    "sup": "sati"
+                  },
+                  9,
+                  10
+                ],
+                "lit": {
+                  "en": "then, ape bannered, the son of Pāṇḍu (Arjuna), the sons of Dhṛtarāṣṭra, stationed, having seen, of weapons in the clash, about to begin, being, the bow, having raised",
+                  "ne": "then ape bannered the son of Pāṇḍu (Arjuna) the sons of Dhṛtarāṣṭra stationed having seen of weapons in the clash about to begin हुँदा the bow having raised",
+                  "hi": "then ape bannered the son of Pāṇḍu (Arjuna) the sons of Dhṛtarāṣṭra stationed having seen of weapons in the clash about to begin होने पर the bow having raised"
+                }
               }
             }
           ]
@@ -3497,8 +4096,48 @@
                 "hi": "तब, हे राजा, अर्जुन ने कृष्ण से कहा: “मेरा रथ दोनों सेनाओं के बीच रखो, हे अविनाशी प्रभु।”"
               },
               "anv": {
-                "d": "हे महीपते! हृषीकेशम् तदा इदम् वाक्यम् आह।\nहे अच्युत! उभयोः सेनयोः मध्ये मे रथम् स्थापय।",
-                "t": "he mahīpate! hṛṣīkeśam tadā idam vākyam āha|\nhe acyuta! ubhayoḥ senayoḥ madhye me ratham sthāpaya|"
+                "d": "अर्जुन उवाच।\nहे महीपते! हृषीकेशम् तदा इदम् वाक्यम् आह।\nहे अच्युत! उभयोः सेनयोः मध्ये मे रथम् स्थापय।",
+                "t": "arjuna uvāca .\nhe mahīpate! hṛṣīkeśam tadā idam vākyam āha|\nhe acyuta! ubhayoḥ senayoḥ madhye me ratham sthāpaya|",
+                "w": [
+                  {
+                    "r": [
+                      6
+                    ],
+                    "t": "अर्जुन"
+                  },
+                  {
+                    "r": [
+                      7
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  5,
+                  0,
+                  1,
+                  3,
+                  2,
+                  4,
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  14,
+                  9,
+                  8,
+                  10,
+                  13,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "Arjuna, said, O lord of the earth, to Hṛṣīkeśa (Kṛṣṇa), then, this, words, spoke, O infallible one, of both, of the two armies, in the midst, my, the chariot, place",
+                  "ne": "Arjuna said O lord of the earth to Hṛṣīkeśa (Kṛṣṇa) then this words spoke O infallible one of both of the two armies in the midst my the chariot place",
+                  "hi": "Arjuna said O lord of the earth to Hṛṣīkeśa (Kṛṣṇa) then this words spoke O infallible one of both of the two armies in the midst my the chariot place"
+                }
               }
             }
           ]
@@ -3664,7 +4303,38 @@
               },
               "anv": {
                 "d": "यावत् अहम् योद्धुकामान् अवस्थितान् एतान् निरीक्षे; अस्मिन् रणसमुद्यमे मया कैः सह योद्धव्यम्?",
-                "t": "yāvat aham yoddhu-kāmān avasthitān etān nirīkṣe; asmin raṇa-samudyame mayā kaiḥ saha yoddhavyam?"
+                "t": "yāvat aham yoddhu-kāmān avasthitān etān nirīkṣe; asmin raṇa-samudyame mayā kaiḥ saha yoddhavyam?",
+                "w": [
+                  0,
+                  3,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "योद्धु-कामान्"
+                  },
+                  6,
+                  1,
+                  2,
+                  11,
+                  {
+                    "r": [
+                      12,
+                      13
+                    ],
+                    "t": "रण-समुद्यमे"
+                  },
+                  8,
+                  7,
+                  9,
+                  10
+                ],
+                "lit": {
+                  "en": "so that, I, desiring to fight, stationed, these, I may see, in this, of war in the enterprise, by me, with whom, with, to be fought",
+                  "ne": "so that I desiring to fight stationed these I may see in this of war in the enterprise by me with whom with to be fought",
+                  "hi": "so that I desiring to fight stationed these I may see in this of war in the enterprise by me with whom with to be fought"
+                }
               }
             }
           ]
@@ -3816,7 +4486,31 @@
               },
               "anv": {
                 "d": "दुर्बुद्धेः धार्तराष्ट्रस्य युद्धे प्रियचिकीर्षवः ये एते अत्र समागताः योत्स्यमानान् अहम् अवेक्षे।",
-                "t": "durbuddheḥ dhārtarāṣṭrasya yuddhe priya-cikīrṣavaḥ ye ete atra samāgatāḥ yotsyamānān aham avekṣe|"
+                "t": "durbuddheḥ dhārtarāṣṭrasya yuddhe priya-cikīrṣavaḥ ye ete atra samāgatāḥ yotsyamānān aham avekṣe|",
+                "w": [
+                  8,
+                  7,
+                  9,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "प्रिय-चिकीर्षवः"
+                  },
+                  3,
+                  4,
+                  5,
+                  6,
+                  0,
+                  2,
+                  1
+                ],
+                "lit": {
+                  "en": "of the evil-minded, of the son of Dhṛtarāṣṭra (Duryodhana), in battle, desiring to please, who, these, here, assembled, those who will fight, I, I wish to see",
+                  "ne": "of the evil-minded of the son of Dhṛtarāṣṭra (Duryodhana) in battle desiring to please who these here assembled those who will fight I I wish to see",
+                  "hi": "of the evil-minded of the son of Dhṛtarāṣṭra (Duryodhana) in battle desiring to please who these here assembled those who will fight I I wish to see"
+                }
               }
             }
           ]
@@ -3982,7 +4676,36 @@
               },
               "anv": {
                 "d": "सञ्जय उवाच।\nहे भारत! एवम् गुडाकेशेन उक्तः हृषीकेशः, उभयोः सेनयोः मध्ये, रथोत्तमम् स्थापयित्वा।",
-                "t": "sañjaya uvāca|\nhe bhārata! evam guḍākeśena uktaḥ hṛṣīkeśaḥ, ubhayoḥ senayoḥ madhye, ratha-uttamam sthāpayitvā|"
+                "t": "sañjaya uvāca|\nhe bhārata! evam guḍākeśena uktaḥ hṛṣīkeśaḥ, ubhayoḥ senayoḥ madhye, ratha-uttamam sthāpayitvā|",
+                "w": [
+                  0,
+                  1,
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  6,
+                  2,
+                  5,
+                  3,
+                  4,
+                  8,
+                  7,
+                  9,
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "रथ-उत्तमम्"
+                  },
+                  10
+                ],
+                "lit": {
+                  "en": "Sañjaya, said, O descendant of Bharata, thus, by Guḍākeśa (Arjuna), addressed, Hṛṣīkeśa (Kṛṣṇa), of both, of the two armies, in the midst, the best of chariots, having placed",
+                  "ne": "Sañjaya said O descendant of Bharata thus by Guḍākeśa (Arjuna) addressed Hṛṣīkeśa (Kṛṣṇa) of both of the two armies in the midst the best of chariots having placed",
+                  "hi": "Sañjaya said O descendant of Bharata thus by Guḍākeśa (Arjuna) addressed Hṛṣīkeśa (Kṛṣṇa) of both of the two armies in the midst the best of chariots having placed"
+                }
               }
             }
           ]
@@ -4148,7 +4871,42 @@
               },
               "anv": {
                 "d": "भीष्मद्रोणप्रमुखतः सर्वेषाम् च महीक्षिताम्, हे पार्थ! पश्य एतान् समवेतान् कुरून् इति उवाच।",
-                "t": "bhīṣma-droṇa-pramukhataḥ sarveṣām ca mahī-kṣitām, he pārtha! paśya etān samavetān kurūn iti uvāca|"
+                "t": "bhīṣma-droṇa-pramukhataḥ sarveṣām ca mahī-kṣitām, he pārtha! paśya etān samavetān kurūn iti uvāca|",
+                "w": [
+                  {
+                    "r": [
+                      0,
+                      1,
+                      2
+                    ],
+                    "t": "भीष्म-द्रोण-प्रमुखतः"
+                  },
+                  3,
+                  4,
+                  {
+                    "r": [
+                      5,
+                      6
+                    ],
+                    "t": "मही-क्षिताम्"
+                  },
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  7
+                ],
+                "lit": {
+                  "en": "Bhīṣma Droṇa before (headed by), of all, and, the rulers of the earth, O Pārtha (Arjuna), behold, these, assembled, the Kurus, thus, said",
+                  "ne": "Bhīṣma Droṇa before (headed by) of all and the rulers of the earth O Pārtha (Arjuna) behold these assembled the Kurus thus said",
+                  "hi": "Bhīṣma Droṇa before (headed by) of all and the rulers of the earth O Pārtha (Arjuna) behold these assembled the Kurus thus said"
+                }
               }
             }
           ]
@@ -4329,7 +5087,32 @@
               },
               "anv": {
                 "d": "अथ पार्थः तत्र स्थितान् पितॄन्, पितामहान्, आचार्यान्, मातुलान् भ्रातॄन्, पुत्रान्, पौत्रान् तथा सखीन् च अपश्यत्।",
-                "t": "atha pārthaḥ tatra sthitān pitṝn, pitāmahān, ācāryān, mātulān bhrātṝn, putrān, pautrān tathā sakhīn ca apaśyat|"
+                "t": "atha pārthaḥ tatra sthitān pitṝn, pitāmahān, ācāryān, mātulān bhrātṝn, putrān, pautrān tathā sakhīn ca apaśyat|",
+                "w": [
+                  5,
+                  3,
+                  0,
+                  2,
+                  4,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  13,
+                  12,
+                  {
+                    "t": "च",
+                    "sup": "ca"
+                  },
+                  1
+                ],
+                "lit": {
+                  "en": "then, Arjuna, there, stationed, fathers, grandfathers, teachers, maternal uncles, brothers, sons, grandsons, also, friends, saw",
+                  "ne": "then Arjuna there stationed fathers grandfathers teachers maternal uncles brothers sons grandsons also friends saw",
+                  "hi": "then Arjuna there stationed fathers grandfathers teachers maternal uncles brothers sons grandsons also friends saw"
+                }
               }
             }
           ]
@@ -4502,7 +5285,34 @@
               },
               "anv": {
                 "d": "श्वशुरान् सुहृदः च एव सेनयोः उभयोः अपि, तान् सर्वान् बन्धून् अवस्थितान् समीक्ष्य सः कौन्तेयः।",
-                "t": "śvaśurān suhṛdaḥ ca eva senayoḥ ubhayoḥ api, tān sarvān bandhūn avasthitān samīkṣya saḥ kaunteyaḥ|"
+                "t": "śvaśurān suhṛdaḥ ca eva senayoḥ ubhayoḥ api, tān sarvān bandhūn avasthitān samīkṣya saḥ kaunteyaḥ|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "सुहृदः"
+                  },
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  12,
+                  13,
+                  14,
+                  9,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "fathers-in-law, good hearted (well-wishers), and, indeed, of the armies, of both, also, them, all, kinsmen, stationed, having seen, he, the son of Kuntī",
+                  "ne": "fathers-in-law good hearted (well-wishers) and indeed of the armies of both also them all kinsmen stationed having seen he the son of Kuntī",
+                  "hi": "fathers-in-law good hearted (well-wishers) and indeed of the armies of both also them all kinsmen stationed having seen he the son of Kuntī"
+                }
               }
             }
           ]
@@ -4681,8 +5491,49 @@
                 "hi": "गहरी दया से भरकर, शोक में डूबकर अर्जुन ने कहा: “हे कृष्ण, अपने परिवार को अपने सामने लड़ने को तैयार देखकर…”"
               },
               "anv": {
-                "d": "परया कृपया आविष्टः, विषीदन् इदम् अब्रवीत्।\nहे कृष्ण! इमम् स्वजनम् युयुत्सुम् समुपस्थितम् दृष्ट्वा,",
-                "t": "parayā kṛpayā āviṣṭaḥ, viṣīdan idam abravīt|\nhe kṛṣṇa! imam svajanam yuyutsum samupasthitam dṛṣṭvā,"
+                "d": "अर्जुन उवाच।\nपरया कृपया आविष्टः, विषीदन् इदम् अब्रवीत्।\nहे कृष्ण! इमम् स्वजनम् युयुत्सुम् समुपस्थितम् दृष्ट्वा,",
+                "t": "arjuna uvāca .\nparayā kṛpayā āviṣṭaḥ, viṣīdan idam abravīt|\nhe kṛṣṇa! imam svajanam yuyutsum samupasthitam dṛṣṭvā,",
+                "w": [
+                  {
+                    "r": [
+                      6
+                    ],
+                    "t": "अर्जुन"
+                  },
+                  {
+                    "r": [
+                      7
+                    ],
+                    "t": "उवाच"
+                  },
+                  1,
+                  0,
+                  2,
+                  3,
+                  4,
+                  5,
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  12,
+                  9,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "स्वजनम्"
+                  },
+                  13,
+                  14,
+                  8
+                ],
+                "lit": {
+                  "en": "Arjuna, said, profound, with compassion, overcome, grieving, this, spoke, O Kṛṣṇa, this, own people, eager for battle, standing before, having seen",
+                  "ne": "Arjuna said profound with compassion overcome grieving this spoke O Kṛṣṇa this own people eager for battle standing before having seen",
+                  "hi": "Arjuna said profound with compassion overcome grieving this spoke O Kṛṣṇa this own people eager for battle standing before having seen"
+                }
               }
             }
           ]
@@ -4848,7 +5699,33 @@
               },
               "anv": {
                 "d": "मम गात्राणि सीदन्ति मुखम् च परिशुष्यति, मे शरीरे वेपथुः च रोमहर्षः च जायते।",
-                "t": "mama gātrāṇi sīdanti mukham ca pariśuṣyati, me śarīre vepathuḥ ca roma-harṣaḥ ca jāyate|"
+                "t": "mama gātrāṇi sīdanti mukham ca pariśuṣyati, me śarīre vepathuḥ ca roma-harṣaḥ ca jāyate|",
+                "w": [
+                  1,
+                  2,
+                  0,
+                  3,
+                  4,
+                  5,
+                  9,
+                  8,
+                  6,
+                  7,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "रोम-हर्षः"
+                  },
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "my, limbs, fail / sink, mouth, and, dries up, my, in the body, trembling, and, hair standing on end, and, arises",
+                  "ne": "my limbs fail / sink mouth and dries up my in the body trembling and hair standing on end and arises",
+                  "hi": "my limbs fail / sink mouth and dries up my in the body trembling and hair standing on end and arises"
+                }
               }
             }
           ]
@@ -5028,7 +5905,30 @@
               },
               "anv": {
                 "d": "हस्तात् गाण्डीवम् स्रंसते, त्वक् च एव परिदह्यते, अवस्थातुम् च न शक्नोमि मे मनः च भ्रमति इव।",
-                "t": "hastāt gāṇḍīvam sraṃsate, tvak ca eva paridahyate, avasthātum ca na śaknomi me manaḥ ca bhramati iva|"
+                "t": "hastāt gāṇḍīvam sraṃsate, tvak ca eva paridahyate, avasthātum ca na śaknomi me manaḥ ca bhramati iva|",
+                "w": [
+                  2,
+                  0,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6,
+                  10,
+                  8,
+                  7,
+                  9,
+                  14,
+                  15,
+                  13,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "from the hand, the bow Gāṇḍīva, slips, the skin, and, indeed, burns, to stand, and, not, am able, my, mind, and, reels, as it were",
+                  "ne": "from the hand the bow Gāṇḍīva slips the skin and indeed burns to stand and not am able my mind and reels as it were",
+                  "hi": "from the hand the bow Gāṇḍīva slips the skin and indeed burns to stand and not am able my mind and reels as it were"
+                }
               }
             }
           ]
@@ -5202,7 +6102,36 @@
               },
               "anv": {
                 "d": "हे केशव! निमित्तानि विपरीतानि च पश्यामि।\nआहवे च स्वजनम् हत्वा श्रेयः न अनुपश्यामि।",
-                "t": "he keśava! nimittāni viparītāni ca paśyāmi|\nāhave ca svajanam hatvā śreyaḥ na anupaśyāmi|"
+                "t": "he keśava! nimittāni viparītāni ca paśyāmi|\nāhave ca svajanam hatvā śreyaḥ na anupaśyāmi|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  4,
+                  0,
+                  3,
+                  1,
+                  2,
+                  12,
+                  6,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "स्वजनम्"
+                  },
+                  9,
+                  7,
+                  5,
+                  8
+                ],
+                "lit": {
+                  "en": "O Keśava, omens, inauspicious, and, I see, in battle, and, own people, having killed, good, not, I see",
+                  "ne": "O Keśava omens inauspicious and I see in battle and own people having killed good not I see",
+                  "hi": "O Keśava omens inauspicious and I see in battle and own people having killed good not I see"
+                }
               }
             }
           ]
@@ -5389,7 +6318,39 @@
               },
               "anv": {
                 "d": "हे कृष्ण! विजयम् न, राज्यम् च सुखानि च न (काङ्क्षे)।\nहे गोविन्द! नः राज्येन किम्, भोगैः जीवितेन वा किम्?",
-                "t": "he kṛṣṇa! vijayam na, rājyam ca sukhāni ca na (kāṅkṣe)|\nhe govinda! naḥ rājyena kim, bhogaiḥ jīvitena vā kim?"
+                "t": "he kṛṣṇa! vijayam na, rājyam ca sukhāni ca na (kāṅkṣe)|\nhe govinda! naḥ rājyena kim, bhogaiḥ jīvitena vā kim?",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  3,
+                  2,
+                  0,
+                  6,
+                  5,
+                  7,
+                  8,
+                  4,
+                  1,
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  12,
+                  10,
+                  11,
+                  9,
+                  14,
+                  15,
+                  16,
+                  13
+                ],
+                "lit": {
+                  "en": "O Kṛṣṇa, victory, not, kingdom, and, pleasures, and, not, I desire, O Govinda, to us, with the kingdom, what, with enjoyments, with life, or, what",
+                  "ne": "O Kṛṣṇa victory not kingdom and pleasures and not I desire O Govinda to us with the kingdom what with enjoyments with life or what",
+                  "hi": "O Kṛṣṇa victory not kingdom and pleasures and not I desire O Govinda to us with the kingdom what with enjoyments with life or what"
+                }
               }
             }
           ]
@@ -5568,8 +6529,31 @@
                 "hi": "“जिनके लिए हम राज्य, आराम और खुशी चाहते थे — वे ही यहाँ अपने प्राण और संपत्ति लुटाने को तैयार खड़े हैं।”"
               },
               "anv": {
-                "d": "येषाम् अर्थे नः राज्यम् काङ्क्षितम्, भोगाः सुखानि च; प्राणान् धनानि च त्यक्त्वा, युद्धे अवस्थिताः।",
-                "t": "yeṣām arthe naḥ rājyam kāṅkṣitam, bhogāḥ sukhāni ca; prāṇān dhanāni ca tyaktvā, yuddhe avasthitāḥ|"
+                "d": "येषाम् अर्थे नः राज्यम् काङ्क्षितम्, भोगाः सुखानि च; ते इमे प्राणान् धनानि च त्यक्त्वा, युद्धे अवस्थिताः।",
+                "t": "yeṣām arthe naḥ rājyam kāṅkṣitam, bhogāḥ sukhāni ca; te ime prāṇān dhanāni ca tyaktvā, yuddhe avasthitāḥ|",
+                "w": [
+                  0,
+                  1,
+                  3,
+                  4,
+                  2,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  12,
+                  14,
+                  15,
+                  13,
+                  11,
+                  10
+                ],
+                "lit": {
+                  "en": "for whom, for the sake of, our, kingdom, desired, enjoyments, pleasures, and, they, these, lives, wealth, and, having given up, in battle, stationed",
+                  "ne": "for whom for the sake of our kingdom desired enjoyments pleasures and they these lives wealth and having given up in battle stationed",
+                  "hi": "for whom for the sake of our kingdom desired enjoyments pleasures and they these lives wealth and having given up in battle stationed"
+                }
               }
             }
           ]
@@ -5728,7 +6712,27 @@
               },
               "anv": {
                 "d": "आचार्याः पितरः पुत्राः, तथा एव च पितामहाः, मातुलाः, श्वशुराः, पौत्राः, श्यालाः, तथा सम्बन्धिनः।",
-                "t": "ācāryāḥ pitaraḥ putrāḥ, tathā eva ca pitāmahāḥ, mātulāḥ, śvaśurāḥ, pautrāḥ, śyālāḥ, tathā sambandhinaḥ|"
+                "t": "ācāryāḥ pitaraḥ putrāḥ, tathā eva ca pitāmahāḥ, mātulāḥ, śvaśurāḥ, pautrāḥ, śyālāḥ, tathā sambandhinaḥ|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  12,
+                  11
+                ],
+                "lit": {
+                  "en": "teachers, fathers, sons, likewise, indeed, and, grandfathers, maternal uncles, fathers-in-law, grandsons, brothers-in-law, also, relatives",
+                  "ne": "teachers fathers sons likewise indeed and grandfathers maternal uncles fathers-in-law grandsons brothers-in-law also relatives",
+                  "hi": "teachers fathers sons likewise indeed and grandfathers maternal uncles fathers-in-law grandsons brothers-in-law also relatives"
+                }
               }
             }
           ]
@@ -5901,7 +6905,47 @@
               },
               "anv": {
                 "d": "हे मधुसूदन! (माम्) घ्नतः अपि एतान्, त्रैलोक्यराज्यस्य हेतोः अपि न हन्तुम् इच्छामि, किम् नु महीकृते?",
-                "t": "he madhusūdana! (mām) ghnataḥ api etān, trailokya-rājyasya hetoḥ api na hantum icchāmi, kim nu mahīkṛte?"
+                "t": "he madhusūdana! (mām) ghnataḥ api etān, trailokya-rājyasya hetoḥ api na hantum icchāmi, kim nu mahīkṛte?",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  6,
+                  {
+                    "t": "माम्",
+                    "sup": "mām"
+                  },
+                  4,
+                  5,
+                  0,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "त्रैलोक्य-राज्यस्य"
+                  },
+                  10,
+                  7,
+                  1,
+                  2,
+                  3,
+                  11,
+                  12,
+                  {
+                    "r": [
+                      13,
+                      14
+                    ],
+                    "t": "महीकृते"
+                  }
+                ],
+                "lit": {
+                  "en": "O Madhusūdana, even killing, even, these, of the three worlds of the sovereignty, for the sake of, even, not, to kill, I wish, what, then, for the sake of the earth",
+                  "ne": "O Madhusūdana even killing even these of the three worlds of the sovereignty for the sake of even not to kill I wish what then for the sake of the earth",
+                  "hi": "O Madhusūdana even killing even these of the three worlds of the sovereignty for the sake of even not to kill I wish what then for the sake of the earth"
+                }
               }
             }
           ]
@@ -6067,7 +7111,28 @@
               },
               "anv": {
                 "d": "जनार्दन! एतान् धार्तराष्ट्रान् निहत्य नः का प्रीतिः स्यात्? आततायिनः हत्वा अस्मान् पापम् एव आश्रयेत्।",
-                "t": "janārdana! etān dhārtarāṣṭrān nihatya naḥ kā prītiḥ syāt? ātatāyinaḥ hatvā asmān pāpam eva āśrayet|"
+                "t": "janārdana! etān dhārtarāṣṭrān nihatya naḥ kā prītiḥ syāt? ātatāyinaḥ hatvā asmān pāpam eva āśrayet|",
+                "w": [
+                  6,
+                  12,
+                  1,
+                  0,
+                  2,
+                  3,
+                  4,
+                  5,
+                  13,
+                  11,
+                  10,
+                  7,
+                  8,
+                  9
+                ],
+                "lit": {
+                  "en": "O Janārdana, these, the sons of Dhṛtarāṣṭra, having slain, our, what, pleasure, would be, aggressors, having killed, us, sin, indeed, would take hold of",
+                  "ne": "O Janārdana these the sons of Dhṛtarāṣṭra having slain our what pleasure would be aggressors having killed us sin indeed would take hold of",
+                  "hi": "O Janārdana these the sons of Dhṛtarāṣṭra having slain our what pleasure would be aggressors having killed us sin indeed would take hold of"
+                }
               }
             }
           ]
@@ -6247,7 +7312,48 @@
               },
               "anv": {
                 "d": "हे माधव! तस्मात् स्वबान्धवान् धार्तराष्ट्रान् हन्तुम् वयम् न अर्हाः।\nहि स्वजनम् हत्वा (वयम्) कथम् सुखिनः स्याम?",
-                "t": "he mādhava! tasmāt svabāndhavān dhārtarāṣṭrān hantum vayam na arhāḥ|\nhi svajanam hatvā (vayam) katham sukhinaḥ syāma?"
+                "t": "he mādhava! tasmāt svabāndhavān dhārtarāṣṭrān hantum vayam na arhāḥ|\nhi svajanam hatvā (vayam) katham sukhinaḥ syāma?",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  15,
+                  0,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "स्वबान्धवान्"
+                  },
+                  5,
+                  4,
+                  3,
+                  1,
+                  2,
+                  10,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "स्वजनम्"
+                  },
+                  12,
+                  {
+                    "t": "वयम्",
+                    "sup": "vayam"
+                  },
+                  11,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "O Mādhava, therefore, own kinsmen, the sons of Dhṛtarāṣṭra, to kill, we, not, worthy, indeed, own people, having killed, how, happy, would we be",
+                  "ne": "O Mādhava therefore own kinsmen the sons of Dhṛtarāṣṭra to kill we not worthy indeed own people having killed how happy would we be",
+                  "hi": "O Mādhava therefore own kinsmen the sons of Dhṛtarāṣṭra to kill we not worthy indeed own people having killed how happy would we be"
+                }
               }
             }
           ]
@@ -6428,7 +7534,43 @@
               },
               "anv": {
                 "d": "यद्यपि एते लोभोपहतचेतसः कुलक्षयकृतम् दोषम्, मित्रद्रोहे च पातकम् न पश्यन्ति;",
-                "t": "yadyapi ete lobha-upahata-cetasaḥ kula-kṣaya-kṛtam doṣam, mitra-drohe ca pātakam na paśyanti;"
+                "t": "yadyapi ete lobha-upahata-cetasaḥ kula-kṣaya-kṛtam doṣam, mitra-drohe ca pātakam na paśyanti;",
+                "w": [
+                  0,
+                  1,
+                  {
+                    "r": [
+                      4,
+                      5,
+                      6
+                    ],
+                    "t": "लोभ-उपहत-चेतसः"
+                  },
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "कुल-क्षय-कृतम्"
+                  },
+                  9,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "मित्र-द्रोहे"
+                  },
+                  12,
+                  13,
+                  2,
+                  3
+                ],
+                "lit": {
+                  "en": "although, these, greed overcome minds, family destruction caused by, fault, in treachery toward friends, and, sin, not, see",
+                  "ne": "although these greed overcome minds family destruction caused by fault in treachery toward friends and sin not see",
+                  "hi": "although these greed overcome minds family destruction caused by fault in treachery toward friends and sin not see"
+                }
               }
             }
           ]
@@ -6580,7 +7722,35 @@
               },
               "anv": {
                 "d": "हे जनार्दन! कुलक्षयकृतम् दोषम् प्रपश्यद्भिः अस्माभिः अस्मात् पापात् निवर्तितुम् कथम् न ज्ञेयम्?",
-                "t": "he janārdana! kula-kṣaya-kṛtam doṣam prapaśyadbhiḥ asmābhiḥ asmāt pāpāt nivartitum katham na jñeyam?"
+                "t": "he janārdana! kula-kṣaya-kṛtam doṣam prapaśyadbhiḥ asmābhiḥ asmāt pāpāt nivartitum katham na jñeyam?",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  11,
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "कुल-क्षय-कृतम्"
+                  },
+                  9,
+                  10,
+                  3,
+                  5,
+                  4,
+                  6,
+                  0,
+                  1,
+                  2
+                ],
+                "lit": {
+                  "en": "O Janārdana, family destruction caused by, fault, by those who see, by us, this, from sin, to turn back, how, not, to be known",
+                  "ne": "O Janārdana family destruction caused by fault by those who see by us this from sin to turn back how not to be known",
+                  "hi": "O Janārdana family destruction caused by fault by those who see by us this from sin to turn back how not to be known"
+                }
               }
             }
           ]
@@ -6739,7 +7909,37 @@
               },
               "anv": {
                 "d": "कुलक्षये सनातनाः कुलधर्माः प्रणश्यन्ति, उत धर्मे नष्टे अधर्मः कृत्स्नम् कुलम् अभिभवति।",
-                "t": "kula-kṣaye sanātanāḥ kula-dharmāḥ praṇaśyanti, uta dharme naṣṭe adharmaḥ kṛtsnam kulam abhibhavati|"
+                "t": "kula-kṣaye sanātanāḥ kula-dharmāḥ praṇaśyanti, uta dharme naṣṭe adharmaḥ kṛtsnam kulam abhibhavati|",
+                "w": [
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "कुल-क्षये"
+                  },
+                  5,
+                  {
+                    "r": [
+                      3,
+                      4
+                    ],
+                    "t": "कुल-धर्माः"
+                  },
+                  2,
+                  12,
+                  6,
+                  7,
+                  10,
+                  9,
+                  8,
+                  11
+                ],
+                "lit": {
+                  "en": "of the family with the destruction, eternal, family duties, perish, indeed, when dharma, destroyed, irreligion, whole, the family, overwhelms",
+                  "ne": "of the family with the destruction eternal family duties perish indeed when dharma destroyed irreligion whole the family overwhelms",
+                  "hi": "of the family with the destruction eternal family duties perish indeed when dharma destroyed irreligion whole the family overwhelms"
+                }
               }
             }
           ]
@@ -6891,7 +8091,49 @@
               },
               "anv": {
                 "d": "हे कृष्ण! अधर्माभिभवात् कुलस्त्रियः प्रदुष्यन्ति।\nहे वार्ष्णेय! स्त्रीषु दुष्टासु वर्णसङ्करः जायते।",
-                "t": "he kṛṣṇa! adharma-abhibhavāt kula-striyaḥ praduṣyanti|\nhe vārṣṇeya! strīṣu duṣṭāsu varṇa-saṅkaraḥ jāyate|"
+                "t": "he kṛṣṇa! adharma-abhibhavāt kula-striyaḥ praduṣyanti|\nhe vārṣṇeya! strīṣu duṣṭāsu varṇa-saṅkaraḥ jāyate|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  2,
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "अधर्म-अभिभवात्"
+                  },
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "कुल-स्त्रियः"
+                  },
+                  3,
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  8,
+                  6,
+                  7,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "वर्ण-सङ्करः"
+                  },
+                  9
+                ],
+                "lit": {
+                  "en": "O Kṛṣṇa, from the rise of irreligion, the women of the family, become corrupted, O Vārṣṇeya, when women, corrupted, the mixing of classes, arises",
+                  "ne": "O Kṛṣṇa from the rise of irreligion the women of the family become corrupted O Vārṣṇeya when women corrupted the mixing of classes arises",
+                  "hi": "O Kṛṣṇa from the rise of irreligion the women of the family become corrupted O Vārṣṇeya when women corrupted the mixing of classes arises"
+                }
               }
             }
           ]
@@ -7064,7 +8306,43 @@
               },
               "anv": {
                 "d": "सङ्करः कुलघ्नानाम् कुलस्य च नरकाय एव (भवति); हि एषाम् पितरः लुप्तपिण्डोदकक्रियाः पतन्ति।",
-                "t": "saṅkaraḥ kula-ghnānām kulasya ca narakāya eva (bhavati); hi eṣām pitaraḥ lupta-piṇḍa-udaka-kriyāḥ patanti|"
+                "t": "saṅkaraḥ kula-ghnānām kulasya ca narakāya eva (bhavati); hi eṣām pitaraḥ lupta-piṇḍa-udaka-kriyāḥ patanti|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      3,
+                      4
+                    ],
+                    "t": "कुल-घ्नानाम्"
+                  },
+                  5,
+                  6,
+                  1,
+                  2,
+                  {
+                    "t": "भवति",
+                    "sup": "bhavati"
+                  },
+                  9,
+                  10,
+                  8,
+                  {
+                    "r": [
+                      11,
+                      12,
+                      13,
+                      14
+                    ],
+                    "t": "लुप्त-पिण्ड-उदक-क्रियाः"
+                  },
+                  7
+                ],
+                "lit": {
+                  "en": "the mixing, of the family of the destroyers, of the family, and, to hell, indeed, is, indeed, of them, ancestors, deprived of rice-offerings water rites, fall",
+                  "ne": "the mixing of the family of the destroyers of the family and to hell indeed हुन्छ indeed of them ancestors deprived of rice-offerings water rites fall",
+                  "hi": "the mixing of the family of the destroyers of the family and to hell indeed होता है indeed of them ancestors deprived of rice-offerings water rites fall"
+                }
               }
             }
           ]
@@ -7223,7 +8501,47 @@
               },
               "anv": {
                 "d": "कुलघ्नानाम् एतैः वर्णसङ्करकारकैः दोषैः शाश्वताः जातिधर्माः कुलधर्माः च उत्साद्यन्ते।",
-                "t": "kula-ghnānām etaiḥ varṇa-saṅkara-kārakaiḥ doṣaiḥ śāśvatāḥ jāti-dharmāḥ kula-dharmāḥ ca utsādyante|"
+                "t": "kula-ghnānām etaiḥ varṇa-saṅkara-kārakaiḥ doṣaiḥ śāśvatāḥ jāti-dharmāḥ kula-dharmāḥ ca utsādyante|",
+                "w": [
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "कुल-घ्नानाम्"
+                  },
+                  1,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "वर्ण-सङ्कर-कारकैः"
+                  },
+                  0,
+                  12,
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "जाति-धर्माः"
+                  },
+                  {
+                    "r": [
+                      9,
+                      10
+                    ],
+                    "t": "कुल-धर्माः"
+                  },
+                  11,
+                  6
+                ],
+                "lit": {
+                  "en": "of the family of the destroyers, these, the mixing of classes causing, by the faults, eternal, community duties, family duties, and, are destroyed",
+                  "ne": "of the family of the destroyers these the mixing of classes causing by the faults eternal community duties family duties and are destroyed",
+                  "hi": "of the family of the destroyers these the mixing of classes causing by the faults eternal community duties family duties and are destroyed"
+                }
               }
             }
           ]
@@ -7368,7 +8686,34 @@
               },
               "anv": {
                 "d": "हे जनार्दन! उत्सन्नकुलधर्माणाम् मनुष्याणाम् नरके नियतम् वासः भवति इति अनुशुश्रुम।",
-                "t": "he janārdana! utsanna-kula-dharmāṇām manuṣyāṇām narake niyatam vāsaḥ bhavati iti anuśuśruma|"
+                "t": "he janārdana! utsanna-kula-dharmāṇām manuṣyāṇām narake niyatam vāsaḥ bhavati iti anuśuśruma|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "sup": "he"
+                  },
+                  4,
+                  {
+                    "r": [
+                      0,
+                      1,
+                      2
+                    ],
+                    "t": "उत्सन्न-कुल-धर्माणाम्"
+                  },
+                  3,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "lit": {
+                  "en": "O Janārdana, destroyed family duties, of men, in hell, certainly, dwelling, is, thus, we have heard",
+                  "ne": "O Janārdana destroyed family duties of men in hell certainly dwelling is thus we have heard",
+                  "hi": "O Janārdana destroyed family duties of men in hell certainly dwelling is thus we have heard"
+                }
               }
             }
           ]
@@ -7556,7 +8901,39 @@
               },
               "anv": {
                 "d": "अहो! बत, महत् पापम् कर्तुम् वयम् व्यवसिताः यत् राज्यसुखलोभेन स्वजनम् हन्तुम् उद्यताः।",
-                "t": "aho! bata, mahat pāpam kartum vayam vyavasitāḥ yat rājya-sukha-lobhena svajanam hantum udyatāḥ|"
+                "t": "aho! bata, mahat pāpam kartum vayam vyavasitāḥ yat rājya-sukha-lobhena svajanam hantum udyatāḥ|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  6,
+                  5,
+                  7,
+                  {
+                    "r": [
+                      8,
+                      9,
+                      10
+                    ],
+                    "t": "राज्य-सुख-लोभेन"
+                  },
+                  {
+                    "r": [
+                      12,
+                      13
+                    ],
+                    "t": "स्वजनम्"
+                  },
+                  11,
+                  14
+                ],
+                "lit": {
+                  "en": "alas, alas, great, sin, to commit, we, resolved, because, kingdom pleasure by greed, own people, to kill, prepared",
+                  "ne": "alas alas great sin to commit we resolved because kingdom pleasure by greed own people to kill prepared",
+                  "hi": "alas alas great sin to commit we resolved because kingdom pleasure by greed own people to kill prepared"
+                }
               }
             }
           ]
@@ -7729,7 +9106,44 @@
               },
               "anv": {
                 "d": "यदि शस्त्रपाणयः धार्तराष्ट्राः अशस्त्रम् अप्रतीकारम् माम् रणे हन्युः तत् मे क्षेमतरम् भवेत्।",
-                "t": "yadi śastra-pāṇayaḥ dhārtarāṣṭrāḥ aśastram apratīkāram mām raṇe hanyuḥ tat me kṣema-taram bhavet|"
+                "t": "yadi śastra-pāṇayaḥ dhārtarāṣṭrāḥ aśastram apratīkāram mām raṇe hanyuḥ tat me kṣema-taram bhavet|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "शस्त्र-पाणयः"
+                  },
+                  8,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "अशस्त्रम्"
+                  },
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "अप्रतीकारम्"
+                  },
+                  1,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "if, in hand weapons, the sons of Dhṛtarāṣṭra, without weapons (unarmed), without resisting, me, in battle, would kill, that, for me, better, would be",
+                  "ne": "if in hand weapons the sons of Dhṛtarāṣṭra without weapons (unarmed) without resisting me in battle would kill that for me better would be",
+                  "hi": "if in hand weapons the sons of Dhṛtarāṣṭra without weapons (unarmed) without resisting me in battle would kill that for me better would be"
+                }
               }
             }
           ]
@@ -7901,8 +9315,44 @@
                 "hi": "संजय निष्कर्ष में कहते हैं: “ऐसा कहकर, अर्जुन रथ की सीट पर धँस गया, धनुष-बाण छोड़ दिया, और हृदय शोक से टूटकर बैठ गया।”"
               },
               "anv": {
-                "d": "सङ्ख्ये एवम् उक्त्वा, शोकसंविग्नमानसः अर्जुनः सशरम् चापम् विसृज्य, रथोपस्थे उपाविशत्।",
-                "t": "saṅkhye evam uktvā, śoka-saṃvigna-mānasaḥ arjunaḥ saśaram cāpam visṛjya, ratha-upasthe upāviśat|"
+                "d": "सञ्जय उवाच।\nसङ्ख्ये एवम् उक्त्वा, शोकसंविग्नमानसः अर्जुनः सशरम् चापम् विसृज्य, रथोपस्थे उपाविशत्।",
+                "t": "sañjaya uvāca .\nsaṅkhye evam uktvā, śoka-saṃvigna-mānasaḥ arjunaḥ saśaram cāpam visṛjya, ratha-upasthe upāviśat|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "सञ्जय"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  5,
+                  2,
+                  3,
+                  {
+                    "r": [
+                      11,
+                      12,
+                      13
+                    ],
+                    "t": "शोक-संविग्न-मानसः"
+                  },
+                  4,
+                  9,
+                  10,
+                  8,
+                  6,
+                  7
+                ],
+                "lit": {
+                  "en": "Sañjaya, said, on the battlefield, thus, having spoken, grief agitated / overwhelmed the mind, Arjuna, with arrows, the bow, having cast aside, on the chariot-seat, sat down",
+                  "ne": "Sañjaya said on the battlefield thus having spoken grief agitated / overwhelmed the mind Arjuna with arrows the bow having cast aside on the chariot-seat sat down",
+                  "hi": "Sañjaya said on the battlefield thus having spoken grief agitated / overwhelmed the mind Arjuna with arrows the bow having cast aside on the chariot-seat sat down"
+                }
               }
             }
           ]
