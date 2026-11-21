@@ -11,11 +11,75 @@ the start of every session.
 
 ---
 
-## 0. Handoff snapshot (keep current; last touched 2026-11-04)
+## 0. Handoff snapshot (keep current; last touched 2026-11-21)
+
+### 2026-11-21 — the anvaya
+
+The verse sheet now shows an **anvaya** — the verse's own words in natural
+prose order — between the verse card and the literal translation. Chapter 1 is
+authored (47 verses); the other seventeen are pending and the field is optional
+until they are done.
+
+**Why it earns the space.** The app already taught three of the four steps of
+the traditional reading — pāda, padaccheda (the word rows), artha (the literal
+and paraphrase). Anvaya is the missing hinge, and it is the one that stays in
+Sanskrit instead of asking a Nepali or Hindi reader to jump into English prose.
+It sits below the pādas because that is where the construal is actually needed:
+the reader has just tapped through the words and wants to know how they hang
+together.
+
+**Where the wording comes from.** Not from this project. It is transcribed from
+the anonymous "gītā sandhivigraha anvaya" edition on sanskritdocuments.org
+(transliterated and proofread by Sunder Hattangadi, 2008), which prints a
+padaccheda and a traditional anvaya for all 700 verses. The transcription lives
+in `source/reference/gita_anvaya_ch<N>.itx` with the URL in its header, and
+`source/anvaya.py` transliterates it to Devanagari and IAST and writes it into
+the canonical chapter JSON as `anv: {d, t}`. This keeps the governing rule
+intact: `source/ch<N>.json` stays canonical, and the applier parses structured
+data rather than rewriting JSON.
+
+**What this project decides, and only this:**
+* Punctuation. The reference separates anvaya words with commas and marks a
+  sentence with a full stop. Prose order is not verse, so it takes no daṇḍas:
+  Devanagari ends a sentence with `।` and IAST with `|`, matching the app.
+* Compound joints. The reference writes `dharma-kShetre`. Devanagari joins it
+  by real sandhi (`धर्मक्षेत्रे`) through the same `ext_sandhi` table
+  `check_padas.py` uses; IAST keeps the hyphen (`dharma-kṣetre`), because that
+  is where a reader sees the compound's joints.
+* Verse boundaries. The reference's sentences are often wider than our verses —
+  it runs 1-26 into 1-27, 1-28 into 1-29, 1-33 into 1-34, 1-38 into 1-39, and
+  carries 1-24's verb into 1-25. Each of those sentences is cut at the words
+  our verse owns, and every cut is recorded with a comment in the `.itx` file
+  and with the reference's own verse number (`{ref 1-27}`) so the mapping stays
+  auditable. **Nothing is added to the reference's wording** except where a
+  pāda in this edition genuinely differs from the reference's reading — and
+  then the verse wins: 1.17's `dhṛṣṭadyumna` (the reference prints
+  `dhṛṣṭyumna`), 1.07's `saṁjñārtham`, 1.38's single `yadyapi`.
+* The vocative `हे`. This edition carries a vocative inside the word — सञ्जय is
+  glossed "O Sañjaya" — so the pāda has no separate `हे`. An anvaya that puts
+  the address first must print the particle; that is grammar, not new meaning.
+
+**Checked, not assumed.** `tests/test_anvaya_integrity.py` proves, verse by
+verse, that every anvaya token is in that verse: as a word row, as a compound
+formed from consecutive row words by real sandhi, or as the declared vocative
+particle. A word the reference supplies in parentheses — `(sati)`, `(asti)`,
+`(bhavanti)` — is part of its method and is allowed as such. This is the guard
+that matters: an anvaya may rearrange a verse, never invent one.
+
+**On Annie Besant and Bhagavan Das (1905).** Their edition is public domain and
+was considered as the base. It is a good book, but it is not a fit here: it
+prints Sanskrit, a free translation and a word-for-word gloss, and teaches
+construal in its grammatical introduction rather than printing an anvaya for
+each verse. The word-for-word gloss would also duplicate the 9,507 rows this
+edition already owns and reviews. The sanskritdocuments text is the one that
+carries the anvaya as data.
+
+**Not yet done:** chapters 2–18 (653 verses), and the static chapter pages do
+not print the anvaya — the sheet is the only surface for now.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
-Current UI/test counts: 231 UI strings per language, 946 assertions, 357 browser checks over
+Current UI/test counts: 233 UI strings per language, 950 assertions, 357 browser checks over
 http (348 over file://), 560 site-health checks. Axe covers the 390x844 light app views and
 1440x900 light plus app-toggle dark coverage on welcome/chapter/search/reader/favorites; the
 method page is checked at 1440x900 with prefers-color-scheme: dark.

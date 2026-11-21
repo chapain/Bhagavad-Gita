@@ -27,6 +27,9 @@ app and works with no internet connection.
   theme to reveal its description and verse titles.
 - **Every verse in its four quarters (pādas)** — Devanagari, IAST transliteration,
   a literal translation and a flowing paraphrase.
+- **Anvaya — natural word order** — the verse's words rearranged into prose order,
+  under the Sanskrit and above the literal: the construal a teacher gives before
+  translating. Chapter 1 is complete; the rest are being added chapter by chapter.
 - **Study word by word** — open the four-quarter control directly below a verse,
   then tap any quarter to reveal its words and meanings in the language you're reading.
 - **Switch language live** (English / नेपाली / हिन्दी) — titles, translations, word
@@ -49,6 +52,7 @@ app and works with no internet connection.
 | Chapters · verses | 18 · 700 |
 | Themes · parts | 169 · 700 |
 | Word-instances glossed | 9,507 — each with English, Nepali **and** Hindi meanings |
+| Anvaya | 47 of 700 verses (chapter 1) |
 | Languages | English, नेपाली, हिन्दी (no English fallback anywhere) |
 
 ---
@@ -76,7 +80,9 @@ source/                 ← edit here
   css/*.css                ordered feature styles; concatenated and inlined
   js/*.js                  ordered feature runtime; concatenated and inlined
   ch1.json … ch18.json    one compact canonical content file per chapter
-  i18n_ui.py              interface strings (en/ne/hi; 231 keys each)
+  i18n_ui.py              interface strings (en/ne/hi; 233 keys each)
+  anvaya.py               applies the reference anvaya into ch<N>.json
+  reference/              the transcribed anvaya source of record
   study_map_contract.json  all 18 reviewed maps + safe legacy-progress data
   verify.py               shared text/transliteration helpers
   check_padas.py          verifies word splits against the pādas
@@ -89,7 +95,7 @@ source/                 ← edit here
 
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         946 assertions on the built document
+run_gita_app.js         950 assertions on the built document
 browser_checks.py       357 live-browser checks over http (348 over file://): Learn/Play,
                         refresh, storage, i18n, touch, offline, per-context error capture,
                         and mobile + desktop/light-dark axe-core accessibility sweeps
@@ -183,7 +189,7 @@ both are generated.
 | what you want to fix | file |
 |---|---|
 | chapter names and summaries; themes/parts, titles and descriptions; verse text, translations, word glosses, pāda flow and colophon | `source/ch<N>.json` |
-| interface wording (buttons and labels; 231 UI strings in each of three languages) | `source/i18n_ui.py` |
+| interface wording (buttons and labels; 233 UI strings in each of three languages) | `source/i18n_ui.py` |
 | shell structure, styling and client behavior | `source/app.html`, `source/css/*.css`, `source/js/*.js` |
 | approved story maps and safe legacy-progress migration | `source/study_map_contract.json` |
 

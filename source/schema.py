@@ -12,6 +12,11 @@ CHAPTER_KEYS = {"num", "deva", "verses", "names", "subs", "themes", "colophon"}
 THEME_KEYS = {"range", "titles", "descs", "parts"}
 PART_KEYS = {"range", "titles", "descs", "sutras"}
 VERSE_KEYS = {"n", "d", "t", "flow", "lits", "paras"}
+# The anvaya (natural prose word order) is authored chapter by chapter from the
+# transcribed reference, so it is allowed but not yet required on every verse.
+# When present it is validated as strictly as everything else.
+VERSE_OPTIONAL_KEYS = {"anv"}
+ANVAYA_KEYS = {"d", "t"}
 FLOW_PAD_KEYS = {"k", "d", "t", "n", "words"}
 FLOW_SPEAKER_KEYS = {"k", "d", "t", "words"}
 RANGE_RE = re.compile(r"^(\d+)\.(\d{2})–(\d+)\.(\d{2})$")
@@ -166,7 +171,21 @@ def validate_chapters(chapters):
                 part_ids = []
                 for vi, verse in enumerate(sutras, 1):
                     vw = f"{pw} verse {vi}"
-                    if not exact_object(verse, VERSE_KEYS, vw):
+                    # exact_object() demands every key; the anvaya is optional
+                    # until all 700 verses have one, so the verse check is
+                    # "all required present, nothing unexpected" here.
+                    if not isinstance(verse, dict):
+                        fail(vw, f"must be an object, got {type(verse).__name__}")
+                        continue
+                    _missing = sorted(VERSE_KEYS - set(verse))
+                    _extra = sorted(str(k) for k in set(verse) - VERSE_KEYS - VERSE_OPTIONAL_KEYS)
+                    if _missing or _extra:
+                        bits = []
+                        if _missing:
+                            bits.append(f"missing {_missing}")
+                        if _extra:
+                            bits.append(f"unexpected {_extra}")
+                        fail(vw, "invalid keys (" + "; ".join(bits) + ")")
                         continue
                     verse_id = verse_number(verse.get("n"),
                                             (chapter_num, expected_verse), f"{vw}.n")
@@ -178,6 +197,19 @@ def validate_chapters(chapters):
 
                     nonempty_text(verse.get("d"), f"{vw}.d")
                     nonempty_text(verse.get("t"), f"{vw}.t")
+
+                    if "anv" in verse:
+                        anv = verse["anv"]
+                        if exact_object(anv, ANVAYA_KEYS, f"{vw}.anv"):
+                            if nonempty_text(anv.get("d"), f"{vw}.anv.d"):
+                                if not any("\u0900" <= ch <= "\u097f"
+                                           for ch in anv["d"]):
+                                    fail(f"{vw}.anv.d",
+                                         "must be Devanagari, not transliteration")
+                                if "|" in anv["d"] or "||" in anv["d"]:
+                                    fail(f"{vw}.anv.d",
+                                         "is prose order, not a verse line: no daṇḍas")
+                            nonempty_text(anv.get("t"), f"{vw}.anv.t")
                     language_map(verse.get("lits"), f"{vw}.lits")
                     language_map(verse.get("paras"), f"{vw}.paras")
 

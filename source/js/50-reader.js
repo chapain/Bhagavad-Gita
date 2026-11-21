@@ -332,6 +332,7 @@ function fillModal(){
           ${wholeVerseHtml}
         </div>
       </div>
+      ${anvayaHtml(s)}
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
       <details class="m-note"${noteText ? ' open' : ''}>

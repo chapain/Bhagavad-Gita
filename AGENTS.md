@@ -39,6 +39,8 @@ rather than silently rewriting it to fit new glosses.
 ## Edit here
 
 - All chapter/verse content: `source/ch<N>.json`
+- Anvaya source of record: `source/reference/gita_anvaya_ch<N>.itx`; applied
+  with `python3 source/anvaya.py <N>` (add `--dry-run` to inspect)
 - Shell document: `source/app.html`
 - Ordered feature styles and behavior: `source/css/*.css`, `source/js/*.js`
   (the exact concatenation order is declared in `source/build_gita.py`)
@@ -80,7 +82,15 @@ restore 700 share pages or promise `file://` operation.
   lines; `flow` supplies four pādas, speakers and five-field word rows.
 - Word meanings are disclosed directly below the whole verse, before the
   literal and paraphrase. Keep the control obvious and keyboard accessible.
-- English shows IAST; Nepali and Hindi intentionally hide it.
+- The anvaya (natural prose word order) sits between the verse card and the
+  literal, as a SIBLING of `#verseContent` — never inside it, because that
+  element is `role="button"` and would swallow the block into its label. Its
+  wording is transcribed from `source/reference/gita_anvaya_ch<N>.itx` and
+  applied by `source/anvaya.py`; never compose an anvaya by hand into the
+  chapter JSON. `tests/test_anvaya_integrity.py` must stay green: an anvaya may
+  rearrange a verse, never invent one. Chapters without `anv` render nothing.
+- English shows IAST; Nepali and Hindi intentionally hide it. This applies to
+  the anvaya too.
 - Language, route, reader state and Learn/Play state survive refresh where
   applicable. Do not break session restoration when changing a view.
 - On phones, Search stays in the sticky top bar; the five destinations use the

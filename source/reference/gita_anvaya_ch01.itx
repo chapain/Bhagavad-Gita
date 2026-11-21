@@ -1,0 +1,247 @@
+# gita_anvaya_ch01.itx — anvaya (prose word order) of Bhagavad Gita 1, verses 1.20–1.47
+# section: the whole chapter.
+#
+# PROVENANCE. Transcribed from the anonymous "gItA sandhivigraha anvaya" edition
+# on sanskritdocuments.org —
+#
+#   https://sanskritdocuments.org/doc_giitaa/gitAanvayasandhivigraha.itx
+#   transliterated and proofread by Sunder Hattangadi, latest update 2008-07-04
+#
+# That file presents the whole Gita with padaccheda and a traditional anvaya for
+# every verse. It is the source of record for the WORDING of every anvaya here:
+# nothing below is composed by this project. What this project decides for
+# itself is only (a) where one reference sentence that spans two printed verses
+# is divided between our verses, and (b) punctuation. Both are marked inline with
+# "SPLIT:" and recorded in PROJECT.md. The applier (source/anvaya.py) turns this
+# into Devanagari + IAST and writes it into source/ch1.json as each verse's "anv".
+#
+# FORMAT. ".. S.." is the verse id the anvaya is filed under IN THIS EDITION.
+# The bracketed "ref 1-N" is the verse as the reference prints it, so the mapping
+# to the source stays auditable. ITRANS escapes used by the reference:
+#   ##!## "!"   ##?## "?"   ##[## "["   ##]## "]"   ##(## "("   ##)## ")"
+#   ##'## "'"   .h / H visarga   M anusvara   ~N ङ   ~n ञ   j~n / GY ज्ञ
+#   R^i ऋ   Sh ष   A hyphen inside a word marks a compound break and is kept.
+# ज्ञ is written j~n throughout here; the reference mixes j~n and GY for the same
+# syllable and the applier should not have to know both.
+#
+# ---------------------------------------------------------------------------
+.. 1.01..   {ref 1-1}
+he sa~njaya##!## dharma-kShetre, kuru-kShetre, yuyutsavaH samavetAH
+mAmakAH pANDavAH cha eva kim.h akurvata ##?##
+
+.. 1.02..   {ref 1-2}
+tadA tu pANDava-anIkam.h vyUDham.h dR^iShTvA, rAjA duryodhanaH
+AchAryam.h upasa~Ngamya, ##(##idaM##)## vachanam.h abravIt.h .
+
+.. 1.03..   {ref 1-3}
+he AchArya##!## tava dhImatA shiShyeNa, drupada-putreNa vyUDhAm.h
+pANDu-putrANAm.h etAm.h mahatIm.h chamUm.h pashya .
+
+.. 1.04..   {ref 1-4}
+atra, bhIma-arjuna-samAH yudhi shUrAH mahA-iShu-AsAH,
+mahArathaH yuyudhAnaH, virATaH cha drupadaH cha .
+
+.. 1.05..   {ref 1-5}
+dhR^iShTaketuH, chekitAnaH cha, vIryavAn.h kAshirAjaH cha,
+purujit.h kuntibhojaH cha, nara-pu~NgavaH shaibyaH cha .
+
+.. 1.06..   {ref 1-6}
+vikrAntaH yudhAmanyuH cha, vIryavAn.h uttamaujAH
+saubhadraH cha, draupadeyAH cha, sarve mahArathAH eva .
+
+.. 1.07..   {ref 1-7}
+he dvija-uttama##!## asmAkam.h tu ye vishiShTAH, mama sainyasya
+nAyakAH, tAn.h nibodha . tAn.h sa.nGYArtham.h te bravImi .
+
+.. 1.08..   {ref 1-8}
+bhavAn.h bhIShmaH cha, karNaH cha, samiti~njayaH kR^ipaH cha,
+ashvatthAmA vikarNaH cha, tathA eva cha saumadattiH .
+
+.. 1.09..   {ref 1-9}
+anye cha bahavaH shUrAH, sarve madarthe tyakta-jIvitAH,
+nAnA-shastra-praharaNAH yuddha-vishAradAH ##(##santi##)## .
+
+.. 1.10..   {ref 1-10}
+asmAkam.h bhIShma-abhirakShitam.h tat.h balam.h aparyAptam.h,
+eteShAm.h tu bhIma-abhirakShitam.h idam.h balam.h paryAptam.h ##(##asti##)## .
+
+.. 1.11..   {ref 1-11}
+bhavantaH sarve eva hi sarveShu ayaneShu cha yathA-bhAgam.h avasthitAH
+bhIShmam.h eva abhirakShantu .
+
+.. 1.12..   {ref 1-12}
+tasya harSham.h sa~njanayan.h pratApavAn.h kuru-vR^iddhaH
+pitAmahaH, uchchaiH siMhanAdam.h vinadya sha~Nkham.h dadhmau .
+
+.. 1.13..   {ref 1-13}
+tataH sha~NkhAH cha bheryaH cha paNava-Anaka-gomukhAH
+sahasA eva abhyahanyanta . saH shabdaH tumulaH abhavat.h .
+
+.. 1.14..   {ref 1-14}
+tataH shvetaiH hayaiH yukte mahati syandane sthitau mAdhavaH
+pANDavaH cha eva divyau sha~Nkhau pradadhmatuH .
+
+.. 1.15..   {ref 1-15}
+hR^iShIkeshaH pA~nchajanyam.h, dhana~njayaH devadattam.h,
+bhIma-karmA vR^ika-udaraH pauNDram.h mahA-sha~Nkham.h dadhmau .
+
+.. 1.16..   {ref 1-16}
+kuntI-putraH rAjA yudhiShThiraH anantavijayam.h, nakulaH sahadevaH cha
+sughoSha-maNi-puShpakau .
+
+.. 1.17..   {ref 1-17}
+parama-iShu-AsaH kAshyaH cha, mahArathaH shikhaNDI cha
+dhR^iShTadyumnaH virATaH cha, aparAjitaH sAtyakiH cha .
+
+.. 1.18..   {ref 1-18}
+drupadaH draupadeyAH cha, mahA-bAhuH saubhadraH cha,
+he pR^ithivI-pate##!## pR^ithak.h pR^ithak.h sarvashaH sha~NkhAn.h dadhmuH .
+
+.. 1.19..   {ref 1-19}
+saH tumulaH ghoShaH nabhaH cha pR^ithivIm.h cha eva vyanunAdayan.h,
+dhArtarAShTrANAm.h hR^idayAni vyadArayat.h .
+
+.. 1.20..   {ref 1-20}
+# In this edition 1.20 carries the reference's 1-20 only; the words the
+# reference files under 1-21 ("hR^iShIkesham.h ... Aha") it also files under
+# 1-20, so nothing is lost.
+atha kapi-dhvajaH pANDavaH dhArtarAShTrAn.h vyavasthitAn.h dR^iShTvA,
+shastra-sampAte pravR^itte ##(##sati##)## dhanuH udyamya .
+
+.. 1.21..   {ref 1-21}
+# "he mahIpate" is 1.21's own second pāda in this edition — the reference files
+# it under its 1-20 — and the verse is Sañjaya addressing the king before
+# reporting Arjuna's words. Both belong here.
+he mahIpate##!## hR^iShIkesham.h tadA idam.h vAkyam.h Aha .
+he achyuta##!## ubhayoH senayoH madhye me ratham.h sthApaya .
+
+.. 1.22..   {ref 1-22}
+yAvat.h aham.h yoddhu-kAmAn.h avasthitAn.h etAn.h nirIkShe;
+asmin.h raNa-samudyame mayA kaiH saha yoddhavyam.h ##?##
+
+.. 1.23..   {ref 1-23}
+durbuddheH dhArtarAShTrasya yuddhe priya-chikIrShavaH
+ye ete atra samAgatAH yotsyamAnAn.h aham.h avekShe .
+
+.. 1.24..   {ref 1-24}
+# The reference's 1-24 sentence runs on into its 1-25; "bhIShma-droNa-
+# pramukhataH ... mahI-kShitAm" are 1.25's first two pādas in this edition, so
+# the sentence is cut at the words 1.24 owns — the verse's own four pādas.
+sa~njaya uvAcha .
+he bhArata##!## evam.h guDAkeshena uktaH hR^iShIkeshaH, ubhayoH senayoH madhye,
+ratha-uttamam.h sthApayitvA .
+
+.. 1.25..   {ref 1-25}
+# The reference's sentence is wider than our verse at both ends: it opens with
+# 1.24's "sthApayitvA" (already filed there) and closes with "iti uvAcha", which
+# is 1.25's own fourth pāda. What 1.25 owns is the list of witnesses and the
+# command, so the sentence is cut there.
+bhIShma-droNa-pramukhataH sarveShAm.h cha mahI-kShitAm.h,
+he pArtha##!## pashya etAn.h samavetAn.h kurUn.h iti uvAcha .
+
+.. 1.26..   {ref 1-26}
+# The reference's single 1-26 sentence reaches into 1-27 for "shvashurAn
+# suhR^idaH cha eva ... saH kaunteyaH"; those words are 1.27's four pādas here,
+# so the sentence is cut at the verb 1.26 actually owns. Word order and wording
+# after the cut are the reference's.
+atha pArthaH tatra sthitAn.h pitR^In.h, pitAmahAn.h, AchAryAn.h,
+mAtulAn.h bhrAtR^In.h, putrAn.h, pautrAn.h tathA sakhIn.h cha apashyat.h .
+
+.. 1.27..   {ref 1-27}
+# As with 1.26: the reference's sentence is wider than our verse, so it is cut
+# at the words 1.27 owns. "parayA kR^ipayA AviShTaH" belongs to 1.28 here.
+shvashurAn.h suhR^idaH cha eva senayoH ubhayoH api,
+tAn.h sarvAn.h bandhUn.h avasthitAn.h samIkShya saH kaunteyaH .
+
+.. 1.28..   {ref 1-27 close, then 1-28}
+# RECUT: this verse in our edition opens with the reference's 1-27 closing words
+# and ends with the reference's 1-28. Both halves are the reference's own text.
+parayA kR^ipayA AviShTaH, viShIdan.h idam.h abravIt.h .
+he kR^iShNa##!## imam.h svajanam.h yuyutsum.h samupasthitam.h dR^iShTvA,
+
+.. 1.29..   {ref 1-28 pādas 3-4 and 1-29}
+# The reference keeps 1-28's last two pādas ("mama gAtrANi sIdanti ...") inside
+# its 1-28 sentence; they are 1.29's own first pāda here, so the sentence is
+# filed under 1.29 whole rather than cut mid-clause.
+mama gAtrANi sIdanti mukham.h cha parishuShyati,
+me sharIre vepathuH cha roma-harShaH cha jAyate .
+
+.. 1.30..   {ref 1-30}
+hastAt.h gANDIvam.h sraMsate, tvak.h cha eva paridahyate,
+avasthAtum.h cha na shaknomi me manaH cha bhramati iva .
+
+.. 1.31..   {ref 1-31}
+he keshava##!## nimittAni viparItAni cha pashyAmi . Ahave cha svajanam.h
+hatvA shreyaH na anupashyAmi .
+
+.. 1.32..   {ref 1-32}
+he kR^iShNa##!## vijayam.h na, rAjyam.h cha sukhAni cha na ##(##kA~NkShe##)## .
+he govinda##!## naH rAjyena kim.h, bhogaiH jIvitena vA kim.h ##?##
+
+.. 1.33..   {ref 1-33 and 1-34, with its predicate}
+# RECUT: the reference's single sentence lists the kinsmen (1-34) and then
+# predicates of them (1-33). 1.33 needs its own verb, so it takes the genitive
+# clause and the predicate; 1.34 keeps the list.
+yeShAm.h arthe naH rAjyam.h kA~NkShitam.h, bhogAH sukhAni cha;
+prANAn.h dhanAni cha tyaktvA, yuddhe avasthitAH .
+
+.. 1.34..   {ref 1-34}
+# "te ime" belong to the reference's 1-33 sentence; in our edition they open
+# 1.34's own list, so the sentence begins with them here.
+AchAryAH pitaraH putrAH, tathA eva cha pitAmahAH,
+mAtulAH, shvashurAH, pautrAH, shyAlAH, tathA sambandhinaH .
+
+.. 1.35..   {ref 1-35}
+he madhusUdana##!## ##(##mAm##)## ghnataH api etAn.h, trailokya-rAjyasya
+hetoH api na hantum.h ichChAmi, kim.h nu mahIkR^ite ##?##
+
+.. 1.36..   {ref 1-36}
+janArdana##!## etAn.h dhArtarAShTrAn.h nihatya naH kA prItiH
+syAt.h ##?## AtatAyinaH hatvA asmAn.h pApam.h eva Ashrayet.h .
+
+.. 1.37..   {ref 1-37}
+he mAdhava##!## tasmAt.h svabAndhavAn.h dhArtarAShTrAn.h
+hantum.h vayam.h na arhAH . hi svajanam.h hatvA ##(##vayam.h##)##
+katham.h sukhinaH syAma ##?##
+
+.. 1.38..   {ref 1-38 and 1-39, first sentence}
+# SPLIT: one reference sentence spans 1-38 and 1-39; the turn to the vocative
+# "he janArdana" opens 1-39, so the conditional clause stays with 1.38.
+yadyapi ete lobha-upahata-chetasaH kula-kShaya-kR^itam.h doSham.h,
+mitra-drohe cha pAtakam.h na pashyanti;
+
+.. 1.39..   {ref 1-39, second sentence}
+he janArdana##!## kula-kShaya-kR^itam.h doSham.h prapashyadbhiH
+asmAbhiH asmAt.h pApAt.h nivartitum.h katham.h na j~neyam.h ##?##
+
+.. 1.40..   {ref 1-40}
+kula-kShaye sanAtanAH kula-dharmAH praNashyanti, uta dharme naShTe
+adharmaH kR^itsnam.h kulam.h abhibhavati .
+
+.. 1.41..   {ref 1-41}
+he kR^iShNa##!## adharma-abhibhavAt.h kula-striyaH praduShyanti .
+he vArShNeya##!## strIShu duShTAsu varNa-sa~NkaraH jAyate .
+
+.. 1.42..   {ref 1-42}
+sa~NkaraH kula-ghnAnAm.h kulasya cha narakAya eva ##(##bhavati##)##;
+hi eShAm.h pitaraH lupta-piNDa-udaka-kriyAH patanti .
+
+.. 1.43..   {ref 1-43}
+kula-ghnAnAm.h etaiH varNa-sa~Nkara-kArakaiH doShaiH shAshvatAH
+jAti-dharmAH kula-dharmAH cha utsAdyante .
+
+.. 1.44..   {ref 1-44}
+he janArdana##!## utsanna-kula-dharmANAm.h manuShyANAm.h
+narake niyatam.h vAsaH bhavati iti anushushruma .
+
+.. 1.45..   {ref 1-45}
+aho##!## bata, mahat.h pApam.h kartum.h vayam.h vyavasitAH yat.h
+rAjya-sukha-lobhena svajanam.h hantum.h udyatAH .
+
+.. 1.46..   {ref 1-46}
+yadi shastra-pANayaH dhArtarAShTrAH ashastram.h apratIkAram.h
+mAm.h raNe hanyuH tat.h me kShema-taram.h bhavet.h .
+
+.. 1.47..   {ref 1-47}
+sa~Nkhye evam.h uktvA, shoka-saMvigna-mAnasaH arjunaH
+sasharam.h chApam.h visR^ijya, ratha-upasthe upAvishat.h .

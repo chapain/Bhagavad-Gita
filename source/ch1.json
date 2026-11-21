@@ -198,6 +198,10 @@
                 "en": "King Dhṛtarāṣṭra asks: “On the sacred field of Kurukṣetra, my sons and Pāṇḍu's sons have gathered, ready to fight. Tell me, Sañjaya — what happened?”",
                 "ne": "राजा धृतराष्ट्रले सोध्छन्: “कुरुक्षेत्रको पवित्र मैदानमा मेरा छोराहरू र पाण्डुका छोराहरू लड्न तयार भएर जम्मा भएका छन्। सञ्जय, बताऊ — के भयो?”",
                 "hi": "राजा धृतराष्ट्र पूछते हैं: “कुरुक्षेत्र के पवित्र मैदान पर मेरे पुत्र और पांडु के पुत्र लड़ने को तैयार होकर इकट्ठे हुए हैं। संजय, बताओ — क्या हुआ?”"
+              },
+              "anv": {
+                "d": "हे सञ्जय! धर्मक्षेत्रे, कुरुक्षेत्रे, युयुत्सवः समवेताः मामकाः पाण्डवाः च एव किम् अकुर्वत?",
+                "t": "he sañjaya! dharma-kṣetre, kuru-kṣetre, yuyutsavaḥ samavetāḥ māmakāḥ pāṇḍavāḥ ca eva kim akurvata?"
               }
             }
           ]
@@ -367,6 +371,10 @@
                 "en": "Sañjaya replies: “Seeing the Pāṇḍavas' army in formation, Duryodhana went to his teacher Droṇa and spoke:”",
                 "ne": "सञ्जयले जवाफ दिन्छन्: “पाण्डवहरूको सेना व्यूहमा सजिएको देखेर दुर्योधन आफ्ना गुरु द्रोणकहाँ गएर बोल्छन्:”",
                 "hi": "संजय उत्तर देते हैं: “पांडवों की सेना को व्यूह में खड़ा देखकर दुर्योधन अपने गुरु द्रोण के पास जाकर बोलता है:”"
+              },
+              "anv": {
+                "d": "तदा तु पाण्डवानीकम् व्यूढम् दृष्ट्वा, राजा दुर्योधनः आचार्यम् उपसङ्गम्य, (इदं) वचनम् अब्रवीत्।",
+                "t": "tadā tu pāṇḍava-anīkam vyūḍham dṛṣṭvā, rājā duryodhanaḥ ācāryam upasaṅgamya, (idaṃ) vacanam abravīt|"
               }
             }
           ]
@@ -522,6 +530,10 @@
                 "en": "“Look, my teacher — this mighty host of Pāṇḍu's sons, drawn up by your own clever disciple, Drupada's son Dhṛṣṭadyumna.”",
                 "ne": "“हेर्नुहोस्, गुरुजी — पाण्डुपुत्रहरूको यो विशाल सेना, तपाईंकै चतुर शिष्य द्रुपदपुत्र धृष्टद्युम्नले व्यूहबद्ध गरेका छन्।”",
                 "hi": "“देखिए, गुरुजी — पांडु पुत्रों की यह विशाल सेना, आपके ही चतुर शिष्य द्रुपदपुत्र धृष्टद्युम्न ने व्यूहबद्ध की है।”"
+              },
+              "anv": {
+                "d": "हे आचार्य! तव धीमता शिष्येण, द्रुपदपुत्रेण व्यूढाम् पाण्डुपुत्राणाम् एताम् महतीम् चमूम् पश्य।",
+                "t": "he ācārya! tava dhīmatā śiṣyeṇa, drupada-putreṇa vyūḍhām pāṇḍu-putrāṇām etām mahatīm camūm paśya|"
               }
             }
           ]
@@ -706,6 +718,10 @@
                 "en": "“In their ranks are champions and master bowmen, the match of Bhīma and Arjuna: Yuyudhāna, King Virāṭa, and the great warrior Drupada.”",
                 "ne": "“तिनीहरूको पङ्क्तिमा भीम र अर्जुनसरहका वीर र धनुर्धारीहरू छन्: युयुधान, राजा विराट, र महान् योद्धा द्रुपद।”",
                 "hi": "“उनकी पंक्ति में भीम और अर्जुन की बराबरी करने वाले वीर और धनुर्धारी हैं: युयुधान, राजा विराट, और महान योद्धा द्रुपद।”"
+              },
+              "anv": {
+                "d": "अत्र, भीमार्जुनसमाः युधि शूराः महेष्वासाः, महारथः युयुधानः, विराटः च द्रुपदः च।",
+                "t": "atra, bhīma-arjuna-samāḥ yudhi śūrāḥ mahā-iṣu-āsāḥ, mahārathaḥ yuyudhānaḥ, virāṭaḥ ca drupadaḥ ca|"
               }
             }
           ]
@@ -847,6 +863,10 @@
                 "en": "“And there too: Dhṛṣṭaketu, Cekitāna, the brave King of Kāśi, Purujit, Kuntibhoja, and the peerless Śaibya.”",
                 "ne": "“अनि त्यहाँ पनि: धृष्टकेतु, चेकितान, वीर काशीराज, पुरुजित्, कुन्तिभोज, र अतुलनीय शैब्य।”",
                 "hi": "“और वहाँ भी: धृष्टकेतु, चेकितान, वीर काशीराज, पुरुजित्, कुंतिभोज, और अतुलनीय शैब्य।”"
+              },
+              "anv": {
+                "d": "धृष्टकेतुः, चेकितानः च, वीर्यवान् काशिराजः च, पुरुजित् कुन्तिभोजः च, नरपुङ्गवः शैब्यः च।",
+                "t": "dhṛṣṭaketuḥ, cekitānaḥ ca, vīryavān kāśirājaḥ ca, purujit kuntibhojaḥ ca, nara-puṅgavaḥ śaibyaḥ ca|"
               }
             }
           ]
@@ -995,6 +1015,10 @@
                 "en": "“The fearless Yudhāmanyu, the strong Uttamaujas, Subhadrā's son Abhimanyu, and Draupadī's five sons — all masters of the war-chariot.”",
                 "ne": "“निर्भीक युधामन्यु, बलशाली उत्तमौजा, सुभद्रापुत्र अभिमन्यु, र द्रौपदीका पाँच छोरा — सबै रथयुद्धमा निपुण।”",
                 "hi": "“निडर युधामन्यु, बलशाली उत्तमौजा, सुभद्रा-पुत्र अभिमन्यु, और द्रौपदी के पाँच पुत्र — सब रथकला में निपुण।”"
+              },
+              "anv": {
+                "d": "विक्रान्तः युधामन्युः च, वीर्यवान् उत्तमौजाः सौभद्रः च, द्रौपदेयाः च, सर्वे महारथाः एव।",
+                "t": "vikrāntaḥ yudhāmanyuḥ ca, vīryavān uttamaujāḥ saubhadraḥ ca, draupadeyāḥ ca, sarve mahārathāḥ eva|"
               }
             }
           ]
@@ -1171,6 +1195,10 @@
                 "en": "“But, best of priests, let me tell you who stands out on our side — the commanders of my forces, so you know exactly who leads us.”",
                 "ne": "“तर हे गुरुजी, हाम्रो पक्षमा जो प्रमुख छन् — मेरा सेनाका कमान्डरहरू — तिनको नाम भनिदिन्छु, ताकि तपाईंलाई थाहा होस् कि हामीलाई को-को नेतृत्व गर्छन्।”",
                 "hi": "“पर, हे गुरुवर, हमारी ओर जो प्रमुख हैं — मेरी सेना के कमांडर — उनके नाम बताता हूँ, ताकि आप जानें कि हमें कौन आगे बढ़ाता है।”"
+              },
+              "anv": {
+                "d": "हे द्विजोत्तम! अस्माकम् तु ये विशिष्टाः, मम सैन्यस्य नायकाः, तान् निबोध।\nतान् संज्ञार्थम् ते ब्रवीमि।",
+                "t": "he dvija-uttama! asmākam tu ye viśiṣṭāḥ, mama sainyasya nāyakāḥ, tān nibodha|\ntān saṃjñārtham te bravīmi|"
               }
             }
           ]
@@ -1340,6 +1368,10 @@
                 "en": "“Among our leading warriors are you, the teacher, with Bhīṣma and Karṇa; Kṛpa, victorious in battle; Aśvatthāmā and Vikarṇa; and Somadatta’s son.”",
                 "ne": "“हाम्रा प्रमुख योद्धामा तपाईं गुरु हुनुहुन्छ; भीष्म र कर्ण, रणविजेता कृप, अनि अश्वत्थामा, विकर्ण र सोमदत्त-पुत्र पनि छन्।”",
                 "hi": "“हमारे प्रमुख योद्धाओं में आप गुरु हैं; भीष्म और कर्ण, रणविजेता कृप, फिर अश्वत्थामा, विकर्ण और सोमदत्त-पुत्र भी हैं।”"
+              },
+              "anv": {
+                "d": "भवान् भीष्मः च, कर्णः च, समितिञ्जयः कृपः च, अश्वत्थामा विकर्णः च, तथा एव च सौमदत्तिः।",
+                "t": "bhavān bhīṣmaḥ ca, karṇaḥ ca, samitiñjayaḥ kṛpaḥ ca, aśvatthāmā vikarṇaḥ ca, tathā eva ca saumadattiḥ|"
               }
             }
           ]
@@ -1495,6 +1527,10 @@
                 "en": "“Many more heroes stand with us, ready to die for me, wielding every kind of weapon — all of them seasoned in battle.”",
                 "ne": "“हामीसँग अझ धेरै वीरहरू छन्, मेरा लागि मर्न तयार, हरेक प्रकारका हतियार चलाउने — सबै युद्धमा पोख्त।”",
                 "hi": "“हमारे साथ और भी वीर हैं, मेरे लिए मरने को तैयार, हर प्रकार के शस्त्र चलाने वाले — सब युद्ध में पारंगत।”"
+              },
+              "anv": {
+                "d": "अन्ये च बहवः शूराः, सर्वे मदर्थे त्यक्तजीविताः, नानाशस्त्रप्रहरणाः युद्धविशारदाः (सन्ति)।",
+                "t": "anye ca bahavaḥ śūrāḥ, sarve madarthe tyakta-jīvitāḥ, nānā-śastra-praharaṇāḥ yuddha-viśāradāḥ (santi)|"
               }
             }
           ]
@@ -1665,6 +1701,10 @@
                 "en": "“Our force, though shielded by Bhīṣma, is not enough; theirs, protected by Bhīma, is more than sufficient.”",
                 "ne": "“भीष्मले रक्षा गरे पनि हाम्रो सेना पर्याप्त छैन; भीमले रक्षा गरेको तिनीहरूको सेना अझ बढी छ।”",
                 "hi": "“भीष्म से सुरक्षित होकर भी हमारी सेना पर्याप्त नहीं; भीम से रक्षित उनकी सेना अधिक है।”"
+              },
+              "anv": {
+                "d": "अस्माकम् भीष्माभिरक्षितम् तत् बलम् अपर्याप्तम्, एतेषाम् तु भीमाभिरक्षितम् इदम् बलम् पर्याप्तम् (अस्ति)।",
+                "t": "asmākam bhīṣma-abhirakṣitam tat balam aparyāptam, eteṣām tu bhīma-abhirakṣitam idam balam paryāptam (asti)|"
               }
             }
           ]
@@ -1820,6 +1860,10 @@
                 "en": "“Take your positions at every approach, each in your assigned place — and you must all protect Bhīṣma above all.”",
                 "ne": "“हरेक मोर्चामा आ-आफ्नो स्थान लिनुहोस् — र सबैले भीष्मको विशेष रक्षा गर्नुहोस्।”",
                 "hi": "“हर मोर्चे पर अपना-अपना स्थान लो — और तुम सबको विशेष रूप से भीष्म की रक्षा करनी है।”"
+              },
+              "anv": {
+                "d": "भवन्तः सर्वे एव हि सर्वेषु अयनेषु च यथाभागम् अवस्थिताः भीष्मम् एव अभिरक्षन्तु।",
+                "t": "bhavantaḥ sarve eva hi sarveṣu ayaneṣu ca yathā-bhāgam avasthitāḥ bhīṣmam eva abhirakṣantu|"
               }
             }
           ]
@@ -1990,6 +2034,10 @@
                 "en": "To lift Duryodhana's spirits, the aged grandsire Bhīṣma let out a lion's roar and blew his great conch with all his might.",
                 "ne": "दुर्योधनको हौसला बढाउन वृद्ध पितामह भीष्मले सिंहको गर्जना निकाले र पूरै शक्तिले आफ्नो महाशङ्ख बजाए।",
                 "hi": "दुर्योधन का उत्साह बढ़ाने के लिए वृद्ध पितामह भीष्म ने सिंह की दहाड़ मारी और पूरे बल से अपना महाशंख बजाया।"
+              },
+              "anv": {
+                "d": "तस्य हर्षम् सञ्जनयन् प्रतापवान् कुरुवृद्धः पितामहः, उच्चैः सिंहनादम् विनद्य शङ्खम् दध्मौ।",
+                "t": "tasya harṣam sañjanayan pratāpavān kuru-vṛddhaḥ pitāmahaḥ, uccaiḥ siṃhanādam vinadya śaṅkham dadhmau|"
               }
             }
           ]
@@ -2159,6 +2207,10 @@
                 "en": "At once conches and kettledrums, tabors and trumpets crashed together, and the din swelled into a tremendous clamour.",
                 "ne": "तुरुन्तै शङ्ख र नगारा, ढोल र तुरहीहरू एकैपटक बजे, र कोलाहल विशाल गर्जनमा परिणत भयो।",
                 "hi": "तुरंत शंख और नगाड़े, ढोल और तुरहियाँ एक साथ बजीं, और कोलाहल विशाल गर्जना में बदल गया।"
+              },
+              "anv": {
+                "d": "ततः शङ्खाः च भेर्यः च पणवानकगोमुखाः सहसा एव अभ्यहन्यन्त।\nसः शब्दः तुमुलः अभवत्।",
+                "t": "tataḥ śaṅkhāḥ ca bheryaḥ ca paṇava-ānaka-gomukhāḥ sahasā eva abhyahanyanta|\nsaḥ śabdaḥ tumulaḥ abhavat|"
               }
             }
           ]
@@ -2336,6 +2388,10 @@
                 "en": "Then, on the great chariot drawn by white horses, Kṛṣṇa (Mādhava) and Arjuna raised their celestial conches and blew.",
                 "ne": "अनि सेता घोडाले तानिएको महारथमा कृष्ण (माधव) र अर्जुनले आफ्ना दिव्य शङ्ख फुके।",
                 "hi": "तब श्वेत घोड़ों से खींचे महारथ पर कृष्ण (माधव) और अर्जुन ने अपने दिव्य शंख फूँके।"
+              },
+              "anv": {
+                "d": "ततः श्वेतैः हयैः युक्ते महति स्यन्दने स्थितौ माधवः पाण्डवः च एव दिव्यौ शङ्खौ प्रदध्मतुः।",
+                "t": "tataḥ śvetaiḥ hayaiḥ yukte mahati syandane sthitau mādhavaḥ pāṇḍavaḥ ca eva divyau śaṅkhau pradadhmatuḥ|"
               }
             }
           ]
@@ -2477,6 +2533,10 @@
                 "en": "Kṛṣṇa sounded his conch Pāñcajanya, Arjuna his Devadatta, and the mighty Bhīma, famed for his great deeds, blew the colossal Pauṇḍra.",
                 "ne": "कृष्णले आफ्नो शङ्ख पाञ्चजन्य, अर्जुनले देवदत्त, र महान् पराक्रमी भीमले विशाल पौण्ड्र बजाए।",
                 "hi": "कृष्ण ने अपना शंख पांचजन्य, अर्जुन ने देवदत्त, और महान पराक्रमी भीम ने विशाल पौंड्र बजाया।"
+              },
+              "anv": {
+                "d": "हृषीकेशः पाञ्चजन्यम्, धनञ्जयः देवदत्तम्, भीमकर्मा वृकोदरः पौण्ड्रम् महाशङ्खम् दध्मौ।",
+                "t": "hṛṣīkeśaḥ pāñcajanyam, dhanañjayaḥ devadattam, bhīma-karmā vṛka-udaraḥ pauṇḍram mahā-śaṅkham dadhmau|"
               }
             }
           ]
@@ -2604,6 +2664,10 @@
                 "en": "“King Yudhiṣṭhira sounded the conch called Endless Victory; Nakula and Sahadeva sounded theirs, Sweet-Toned and Jewel-Blossom.”",
                 "ne": "अनन्तविजयको धुन युधिष्ठिरको शङ्खबाट आयो। त्यससँगै नकुलको सुघोष र सहदेवको मणिपुष्पक पनि गुञ्जिए।",
                 "hi": "कुंती-पुत्र राजा युधिष्ठिर ने अनंतविजय बजाया, जबकि नकुल और सहदेव ने अपने शंख सुघोष और मणिपुष्पक फूँके।"
+              },
+              "anv": {
+                "d": "कुन्तीपुत्रः राजा युधिष्ठिरः अनन्तविजयम्, नकुलः सहदेवः च सुघोषमणिपुष्पकौ।",
+                "t": "kuntī-putraḥ rājā yudhiṣṭhiraḥ anantavijayam, nakulaḥ sahadevaḥ ca sughoṣa-maṇi-puṣpakau|"
               }
             }
           ]
@@ -2766,6 +2830,10 @@
                 "en": "So too the great archer of Kāśī, Śikhaṇḍī the mighty warrior, Dhṛṣṭadyumna, King Virāṭa, and the never-defeated Sātyaki.",
                 "ne": "त्यस्तै काशीका महाधनुर्धारी, पराक्रमी शिखण्डी, धृष्टद्युम्न, राजा विराट, र कहिल्यै नहार्ने सात्यकि।",
                 "hi": "वैसे ही काशी के महाधनुर्धारी, पराक्रमी शिखंडी, धृष्टद्युम्न, राजा विराट, और कभी न हारने वाले सात्यकि।"
+              },
+              "anv": {
+                "d": "परमेष्वासः काश्यः च, महारथः शिखण्डी च धृष्टद्युम्नः विराटः च, अपराजितः सात्यकिः च।",
+                "t": "parama-iṣu-āsaḥ kāśyaḥ ca, mahārathaḥ śikhaṇḍī ca dhṛṣṭadyumnaḥ virāṭaḥ ca, aparājitaḥ sātyakiḥ ca|"
               }
             }
           ]
@@ -2928,6 +2996,10 @@
                 "en": "Drupada, Draupadī's sons, and the strong-armed son of Subhadrā — each, O king, blew his own conch in turn.",
                 "ne": "द्रुपद, द्रौपदीका छोरा, र बलशाली सुभद्रापुत्र — प्रत्येकले, हे राजा, आफ्नो शङ्ख बजाए।",
                 "hi": "द्रुपद, द्रौपदी के पुत्र, और बलशाली सुभद्रा-पुत्र — प्रत्येक ने, हे राजा, अपना शंख बजाया।"
+              },
+              "anv": {
+                "d": "द्रुपदः द्रौपदेयाः च, महाबाहुः सौभद्रः च, हे पृथिवीपते! पृथक् पृथक् सर्वशः शङ्खान् दध्मुः।",
+                "t": "drupadaḥ draupadeyāḥ ca, mahā-bāhuḥ saubhadraḥ ca, he pṛthivī-pate! pṛthak pṛthak sarvaśaḥ śaṅkhān dadhmuḥ|"
               }
             }
           ]
@@ -3076,6 +3148,10 @@
                 "en": "The deafening blast tore into the hearts of Dhṛtarāṣṭra's sons and echoed across both heaven and earth.",
                 "ne": "बहिरो बनाउने त्यो ध्वनिले धृतराष्ट्रका छोराहरूको हृदय चिर्यो र स्वर्ग र पृथ्वी दुवैमा प्रतिध्वनित भयो।",
                 "hi": "बहरा कर देने वाली उस ध्वनि ने धृतराष्ट्र के पुत्रों के हृदय तोड़ दिए और स्वर्ग तथा पृथ्वी दोनों में गूँज उठी।"
+              },
+              "anv": {
+                "d": "सः तुमुलः घोषः नभः च पृथिवीम् च एव व्यनुनादयन्, धार्तराष्ट्राणाम् हृदयानि व्यदारयत्।",
+                "t": "saḥ tumulaḥ ghoṣaḥ nabhaḥ ca pṛthivīm ca eva vyanunādayan, dhārtarāṣṭrāṇām hṛdayāni vyadārayat|"
               }
             }
           ]
@@ -3239,6 +3315,10 @@
                 "en": "As the battle was about to erupt, Arjuna — whose banner bore the emblem of Hanumān — looked at the enemy host and lifted his bow.",
                 "ne": "युद्ध सुरु हुनै लाग्दा, हनुमानको चिह्न भएको ध्वज लिएका अर्जुनले शत्रु सेना हेरे र आफ्नो धनुष उठाए।",
                 "hi": "युद्ध शुरू होते ही, हनुमान-चिह्न वाले ध्वज के नीचे अर्जुन ने शत्रु सेना देखी और अपना धनुष उठा लिया।"
+              },
+              "anv": {
+                "d": "अथ कपिध्वजः पाण्डवः धार्तराष्ट्रान् व्यवस्थितान् दृष्ट्वा, शस्त्रसम्पाते प्रवृत्ते (सति) धनुः उद्यम्य।",
+                "t": "atha kapi-dhvajaḥ pāṇḍavaḥ dhārtarāṣṭrān vyavasthitān dṛṣṭvā, śastra-sampāte pravṛtte (sati) dhanuḥ udyamya|"
               }
             }
           ]
@@ -3415,6 +3495,10 @@
                 "en": "Then, O king, Arjuna said to Kṛṣṇa: “Set my chariot between the two armies, O changeless Lord.”",
                 "ne": "अनि, हे राजा, अर्जुनले कृष्णलाई भने: “मेरो रथ दुवै सेनाको बीचमा राख, हे अविनाशी प्रभु।”",
                 "hi": "तब, हे राजा, अर्जुन ने कृष्ण से कहा: “मेरा रथ दोनों सेनाओं के बीच रखो, हे अविनाशी प्रभु।”"
+              },
+              "anv": {
+                "d": "हे महीपते! हृषीकेशम् तदा इदम् वाक्यम् आह।\nहे अच्युत! उभयोः सेनयोः मध्ये मे रथम् स्थापय।",
+                "t": "he mahīpate! hṛṣīkeśam tadā idam vākyam āha|\nhe acyuta! ubhayoḥ senayoḥ madhye me ratham sthāpaya|"
               }
             }
           ]
@@ -3577,6 +3661,10 @@
                 "en": "“Let me see those who have come to fight, and know who it is I must face in this coming battle.”",
                 "ne": "“लड्न आएकाहरूलाई देखूँ, र यस आउँदो युद्धमा मैले कसको सामना गर्नुपर्छ भनी थाहा पाऊँ।”",
                 "hi": "“लड़ने आए लोगों को देखूँ, और जानूँ कि इस आने वाले युद्ध में मुझे किसका सामना करना है।”"
+              },
+              "anv": {
+                "d": "यावत् अहम् योद्धुकामान् अवस्थितान् एतान् निरीक्षे; अस्मिन् रणसमुद्यमे मया कैः सह योद्धव्यम्?",
+                "t": "yāvat aham yoddhu-kāmān avasthitān etān nirīkṣe; asmin raṇa-samudyame mayā kaiḥ saha yoddhavyam?"
               }
             }
           ]
@@ -3725,6 +3813,10 @@
                 "en": "“I want to see the warriors assembled here, those who have come to gratify the wicked Duryodhana by waging this war.”",
                 "ne": "“म यहाँ जम्मा भएका योद्धाहरूलाई देख्न चाहन्छु — जो दुष्ट दुर्योधनलाई खुसी पार्न यो युद्ध गर्न आएका छन्।”",
                 "hi": "“मैं यहाँ एकत्र योद्धाओं को देखना चाहता हूँ — जो दुष्ट दुर्योधन को प्रसन्न करने के लिए यह युद्ध करने आए हैं।”"
+              },
+              "anv": {
+                "d": "दुर्बुद्धेः धार्तराष्ट्रस्य युद्धे प्रियचिकीर्षवः ये एते अत्र समागताः योत्स्यमानान् अहम् अवेक्षे।",
+                "t": "durbuddheḥ dhārtarāṣṭrasya yuddhe priya-cikīrṣavaḥ ye ete atra samāgatāḥ yotsyamānān aham avekṣe|"
               }
             }
           ]
@@ -3887,6 +3979,10 @@
                 "en": "Sañjaya continues: “So ordered by Arjuna, O descendant of Bharata, Kṛṣṇa placed the finest chariot between the two armies.”",
                 "ne": "सञ्जय अगाडि भन्छन्: “अर्जुनको आदेश पाएर, हे भरतवंशी, कृष्णले उत्तम रथ दुवै सेनाको बीचमा राखे।”",
                 "hi": "संजय आगे कहते हैं: “अर्जुन की आज्ञा पाकर, हे भरतवंशी, कृष्ण ने उत्तम रथ को दोनों सेनाओं के बीच रखा।”"
+              },
+              "anv": {
+                "d": "सञ्जय उवाच।\nहे भारत! एवम् गुडाकेशेन उक्तः हृषीकेशः, उभयोः सेनयोः मध्ये, रथोत्तमम् स्थापयित्वा।",
+                "t": "sañjaya uvāca|\nhe bhārata! evam guḍākeśena uktaḥ hṛṣīkeśaḥ, ubhayoḥ senayoḥ madhye, ratha-uttamam sthāpayitvā|"
               }
             }
           ]
@@ -4049,6 +4145,10 @@
                 "en": "Before Bhīṣma, Droṇa, and all the world's kings, Kṛṣṇa said: “Look, Arjuna — the whole Kuru clan gathered before you.”",
                 "ne": "भीष्म, द्रोण, र संसारका सबै राजाहरूका अगाडि कृष्णले भने: “हेर, अर्जुन — तिम्रा अगाडि सम्पूर्ण कुरु वंश भेला भएको।”",
                 "hi": "भीष्म, द्रोण, और संसार के सब राजाओं के सामने कृष्ण ने कहा: “देखो, अर्जुन — तुम्हारे सामने सम्पूर्ण कुरु वंश एकत्र है।”"
+              },
+              "anv": {
+                "d": "भीष्मद्रोणप्रमुखतः सर्वेषाम् च महीक्षिताम्, हे पार्थ! पश्य एतान् समवेतान् कुरून् इति उवाच।",
+                "t": "bhīṣma-droṇa-pramukhataḥ sarveṣām ca mahī-kṣitām, he pārtha! paśya etān samavetān kurūn iti uvāca|"
               }
             }
           ]
@@ -4226,6 +4326,10 @@
                 "en": "There, between the armies, Arjuna saw his fathers and grandfathers, teachers and uncles, brothers, sons, grandsons, and friends.",
                 "ne": "त्यहाँ, सेनाहरूको बीचमा, अर्जुनले आफ्ना पिता र पितामह, गुरु र मामा, भाइ, छोरा, नाति र मित्रहरू देखे।",
                 "hi": "वहाँ, सेनाओं के बीच, अर्जुन ने अपने पिता और पितामह, गुरु और मामा, भाई, पुत्र, पौत्र और मित्र देखे।"
+              },
+              "anv": {
+                "d": "अथ पार्थः तत्र स्थितान् पितॄन्, पितामहान्, आचार्यान्, मातुलान् भ्रातॄन्, पुत्रान्, पौत्रान् तथा सखीन् च अपश्यत्।",
+                "t": "atha pārthaḥ tatra sthitān pitṝn, pitāmahān, ācāryān, mātulān bhrātṝn, putrān, pautrān tathā sakhīn ca apaśyat|"
               }
             }
           ]
@@ -4395,6 +4499,10 @@
                 "en": "Fathers-in-law and dear companions on both sides — as Arjuna, Kuntī's son, looked upon all his kin drawn up for battle…",
                 "ne": "दुवै पक्षमा ससुरा र प्रिय साथीहरू — अर्जुन, कुन्तीपुत्र, युद्धका लागि खडा आफ्ना सबै कुटुम्बलाई हेर्दा…",
                 "hi": "दोनों ओर ससुर और प्रिय साथी — अर्जुन, कुंती-पुत्र, युद्ध के लिए खड़े अपने सब कुटुंब को देखते हुए…"
+              },
+              "anv": {
+                "d": "श्वशुरान् सुहृदः च एव सेनयोः उभयोः अपि, तान् सर्वान् बन्धून् अवस्थितान् समीक्ष्य सः कौन्तेयः।",
+                "t": "śvaśurān suhṛdaḥ ca eva senayoḥ ubhayoḥ api, tān sarvān bandhūn avasthitān samīkṣya saḥ kaunteyaḥ|"
               }
             }
           ]
@@ -4571,6 +4679,10 @@
                 "en": "Filled with deep pity and grief, Arjuna said: “O Kṛṣṇa, seeing my own family before me, ready to fight…”",
                 "ne": "गहिरो दयाले भरिएर, शोकमा डुबेर अर्जुनले भने: “हे कृष्ण, आफ्नै परिवारलाई मेरो अगाडि लड्न तयार देखेर…”",
                 "hi": "गहरी दया से भरकर, शोक में डूबकर अर्जुन ने कहा: “हे कृष्ण, अपने परिवार को अपने सामने लड़ने को तैयार देखकर…”"
+              },
+              "anv": {
+                "d": "परया कृपया आविष्टः, विषीदन् इदम् अब्रवीत्।\nहे कृष्ण! इमम् स्वजनम् युयुत्सुम् समुपस्थितम् दृष्ट्वा,",
+                "t": "parayā kṛpayā āviṣṭaḥ, viṣīdan idam abravīt|\nhe kṛṣṇa! imam svajanam yuyutsum samupasthitam dṛṣṭvā,"
               }
             }
           ]
@@ -4733,6 +4845,10 @@
                 "en": "“My legs give way, my mouth goes dry, my whole body trembles, and my hair bristles with dread.”",
                 "ne": "“मेरा खुट्टा लर्कन्छन्, मुख सुक्छ, सारा शरीर काँप्छ, र डरले रौँ ठाडो हुन्छ।”",
                 "hi": "“मेरे पैर लड़खड़ाते हैं, मुँह सूख जाता है, सारा शरीर काँपता है, और डर से रोंगटे खड़े हो जाते हैं।”"
+              },
+              "anv": {
+                "d": "मम गात्राणि सीदन्ति मुखम् च परिशुष्यति, मे शरीरे वेपथुः च रोमहर्षः च जायते।",
+                "t": "mama gātrāṇi sīdanti mukham ca pariśuṣyati, me śarīre vepathuḥ ca roma-harṣaḥ ca jāyate|"
               }
             }
           ]
@@ -4909,6 +5025,10 @@
                 "en": "“Gāṇḍīva falls from my hand, my skin burns; I can hardly stand, and my mind is spinning out of control.”",
                 "ne": "“गाण्डीव मेरो हातबाट खस्छ, छाला पोल्छ; म उभिनै सक्दिनँ, र मेरो मन नियन्त्रण बाहिर घुम्छ।”",
                 "hi": "धनुष हाथ से फिसल रहा है, खाल जल रही है। पैर जमते ही नहीं, और मन जगह पर टिकता ही नहीं।"
+              },
+              "anv": {
+                "d": "हस्तात् गाण्डीवम् स्रंसते, त्वक् च एव परिदह्यते, अवस्थातुम् च न शक्नोमि मे मनः च भ्रमति इव।",
+                "t": "hastāt gāṇḍīvam sraṃsate, tvak ca eva paridahyate, avasthātum ca na śaknomi me manaḥ ca bhramati iva|"
               }
             }
           ]
@@ -5079,6 +5199,10 @@
                 "en": "“I see only evil omens, Kṛṣṇa — and no good that could come from slaughtering my own people in war.”",
                 "ne": "“म केवल खराब शकुन देख्छु, कृष्ण — र आफ्नै मानिसहरूलाई युद्धमा मारेर आउने कुनै भलो पनि देख्दिनँ।”",
                 "hi": "“मैं केवल अशुभ शकुन देखता हूँ, कृष्ण — और अपने ही लोगों को युद्ध में मारने से आने वाला कोई भला भी नहीं दिखता।”"
+              },
+              "anv": {
+                "d": "हे केशव! निमित्तानि विपरीतानि च पश्यामि।\nआहवे च स्वजनम् हत्वा श्रेयः न अनुपश्यामि।",
+                "t": "he keśava! nimittāni viparītāni ca paśyāmi|\nāhave ca svajanam hatvā śreyaḥ na anupaśyāmi|"
               }
             }
           ]
@@ -5262,6 +5386,10 @@
                 "en": "“I want no victory, Kṛṣṇa — no kingdom, no pleasures. What are a kingdom, delights, or life itself to us now, Govinda?”",
                 "ne": "“मलाई विजय चाहिँदैन, कृष्ण — न राज्य, न सुख। अब हामीलाई राज्य, आनन्द वा जीवनकै के अर्थ छ, गोविन्द?”",
                 "hi": "“मुझे विजय नहीं चाहिए, कृष्ण — न राज्य, न सुख। अब हमें राज्य, आनंद या जीवन से ही क्या प्रयोजन, गोविंद?”"
+              },
+              "anv": {
+                "d": "हे कृष्ण! विजयम् न, राज्यम् च सुखानि च न (काङ्क्षे)।\nहे गोविन्द! नः राज्येन किम्, भोगैः जीवितेन वा किम्?",
+                "t": "he kṛṣṇa! vijayam na, rājyam ca sukhāni ca na (kāṅkṣe)|\nhe govinda! naḥ rājyena kim, bhogaiḥ jīvitena vā kim?"
               }
             }
           ]
@@ -5438,6 +5566,10 @@
                 "en": "“The very people for whom we wanted a kingdom, comforts and happiness stand here now, ready to lay down their lives and fortunes.”",
                 "ne": "“जसका निम्ति हामी राज्य, आराम र खुसी चाहन्थ्यौं — ती नै यहाँ आफ्नो ज्यान र सम्पत्ति सुम्पिन तयार उभिएका छन्।”",
                 "hi": "“जिनके लिए हम राज्य, आराम और खुशी चाहते थे — वे ही यहाँ अपने प्राण और संपत्ति लुटाने को तैयार खड़े हैं।”"
+              },
+              "anv": {
+                "d": "येषाम् अर्थे नः राज्यम् काङ्क्षितम्, भोगाः सुखानि च; प्राणान् धनानि च त्यक्त्वा, युद्धे अवस्थिताः।",
+                "t": "yeṣām arthe naḥ rājyam kāṅkṣitam, bhogāḥ sukhāni ca; prāṇān dhanāni ca tyaktvā, yuddhe avasthitāḥ|"
               }
             }
           ]
@@ -5593,6 +5725,10 @@
                 "en": "“My teachers, fathers, sons and grandfathers, my uncles and fathers-in-law, grandsons, brothers-in-law and all our kin — all are here.”",
                 "ne": "“मेरा गुरु, पिता, छोरा र पितामह, मामा र ससुरा, नाति, साला र सबै कुटुम्ब — सबै यहाँ छन्।”",
                 "hi": "“मेरे गुरु, पिता, पुत्र और पितामह, मामा और ससुर, पौत्र, साले और सब कुटुंबी — सब यहाँ हैं।”"
+              },
+              "anv": {
+                "d": "आचार्याः पितरः पुत्राः, तथा एव च पितामहाः, मातुलाः, श्वशुराः, पौत्राः, श्यालाः, तथा सम्बन्धिनः।",
+                "t": "ācāryāḥ pitaraḥ putrāḥ, tathā eva ca pitāmahāḥ, mātulāḥ, śvaśurāḥ, pautrāḥ, śyālāḥ, tathā sambandhinaḥ|"
               }
             }
           ]
@@ -5762,6 +5898,10 @@
                 "en": "“I will not kill them, Madhusūdana — even if they kill me. Not for dominion over all three worlds would I do it, let alone for this earth.”",
                 "ne": "“म तिनीहरूलाई मार्ने छैन, मधुसूदन — चाहे तिनीहरूले मलाई मारून्। तीनै लोकको अधिकारका लागि पनि होइन, यो पृथ्वीका निम्ति त झन् होइन।”",
                 "hi": "“मैं उन्हें नहीं मारूँगा, मधुसूदन — चाहे वे मुझे ही मारें। तीनों लोकों के अधिकार के लिए भी नहीं, इस पृथ्वी के लिए तो क्या।”"
+              },
+              "anv": {
+                "d": "हे मधुसूदन! (माम्) घ्नतः अपि एतान्, त्रैलोक्यराज्यस्य हेतोः अपि न हन्तुम् इच्छामि, किम् नु महीकृते?",
+                "t": "he madhusūdana! (mām) ghnataḥ api etān, trailokya-rājyasya hetoḥ api na hantum icchāmi, kim nu mahīkṛte?"
               }
             }
           ]
@@ -5924,6 +6064,10 @@
                 "en": "“Even if we destroyed the sons of Dhṛtarāṣṭra, what joy would we feel, Janārdana? Only sin would cling to us for murdering these would-be killers.”",
                 "ne": "“यदि हामीले धृतराष्ट्रका छोराहरूलाई नष्ट गर्यौं भने पनि, जनार्दन, हामीलाई के आनन्द हुनेछ? यी हत्याराहरूलाई मारेको पाप मात्र हामीसँग टाँसिनेछ।”",
                 "hi": "“भले ही हम धृतराष्ट्र के पुत्रों को नष्ट कर दें, जनार्दन, हमें क्या आनंद मिलेगा? इन हत्यारों को मारने का पाप ही हमसे चिपक जाएगा।”"
+              },
+              "anv": {
+                "d": "जनार्दन! एतान् धार्तराष्ट्रान् निहत्य नः का प्रीतिः स्यात्? आततायिनः हत्वा अस्मान् पापम् एव आश्रयेत्।",
+                "t": "janārdana! etān dhārtarāṣṭrān nihatya naḥ kā prītiḥ syāt? ātatāyinaḥ hatvā asmān pāpam eva āśrayet|"
               }
             }
           ]
@@ -6100,6 +6244,10 @@
                 "en": "“So it is wrong for us to kill our own family — the sons of Dhṛtarāṣṭra. How could we ever be happy, Mādhava, after slaughtering our own kin?”",
                 "ne": "“त्यसैले हाम्रा लागि आफ्नै परिवार — धृतराष्ट्रका छोराहरूलाई मार्नु गलत छ। आफ्नै कुटुम्बको हत्या गरेर हामी कहिल्यै खुसी हुन सक्दैनौं, माधव।”",
                 "hi": "“इसलिए हमारे लिए अपने परिवार — धृतराष्ट्र के पुत्रों को मारना गलत है। अपने ही कुटुंब की हत्या करके हम कभी सुखी नहीं हो सकते, माधव।”"
+              },
+              "anv": {
+                "d": "हे माधव! तस्मात् स्वबान्धवान् धार्तराष्ट्रान् हन्तुम् वयम् न अर्हाः।\nहि स्वजनम् हत्वा (वयम्) कथम् सुखिनः स्याम?",
+                "t": "he mādhava! tasmāt svabāndhavān dhārtarāṣṭrān hantum vayam na arhāḥ|\nhi svajanam hatvā (vayam) katham sukhinaḥ syāma?"
               }
             }
           ]
@@ -6277,6 +6425,10 @@
                 "en": "“True, these men — their hearts blinded by greed — see no wrong in wrecking a family and no sin in betraying friends…”",
                 "ne": "“साँचो हो, यी मानिसहरू — जसका हृदय लोभले अन्धा छन् — परिवार भत्काउनमा कुनै गल्ती र मित्रको विश्वासघातमा कुनै पाप देख्दैनन्…”",
                 "hi": "“सच है, ये लोग — जिनके हृदय लोभ से अंधे हैं — परिवार को तोड़ने में कोई गलती और मित्रों के विश्वासघात में कोई पाप नहीं देखते…”"
+              },
+              "anv": {
+                "d": "यद्यपि एते लोभोपहतचेतसः कुलक्षयकृतम् दोषम्, मित्रद्रोहे च पातकम् न पश्यन्ति;",
+                "t": "yadyapi ete lobha-upahata-cetasaḥ kula-kṣaya-kṛtam doṣam, mitra-drohe ca pātakam na paśyanti;"
               }
             }
           ]
@@ -6425,6 +6577,10 @@
                 "en": "“But we can see the ruin that destroying a family brings — so how could we fail to draw back from this sin, Janārdana?”",
                 "ne": "“तर हामी परिवारको नाशले आउने विनाश देख्न सक्छौं — त्यसो भए हामी किन यस पापबाट पछि नहट्ने, जनार्दन?”",
                 "hi": "“पर हम परिवार के नाश से आने वाला विनाश देख सकते हैं — तो हम कैसे इस पाप से पीछे हटने में असफल हो सकते हैं, जनार्दन?”"
+              },
+              "anv": {
+                "d": "हे जनार्दन! कुलक्षयकृतम् दोषम् प्रपश्यद्भिः अस्माभिः अस्मात् पापात् निवर्तितुम् कथम् न ज्ञेयम्?",
+                "t": "he janārdana! kula-kṣaya-kṛtam doṣam prapaśyadbhiḥ asmābhiḥ asmāt pāpāt nivartitum katham na jñeyam?"
               }
             }
           ]
@@ -6580,6 +6736,10 @@
                 "en": "“When a family is destroyed, its age-old sacred customs die with it; and once dharma is lost, irreligion takes over the entire family.”",
                 "ne": "“जब परिवार नष्ट हुन्छ, उसका पुराना पवित्र परम्पराहरू पनि मर्छन्; र एकपटक धर्म हराएपछि अधर्मले सम्पूर्ण परिवारलाई ढाक्छ।”",
                 "hi": "“जब परिवार नष्ट होता है, उसकी प्राचीन पवित्र परंपराएँ उसके साथ मर जाती हैं; और एक बार धर्म लुप्त होते ही अधर्म पूरे परिवार पर छा जाता है।”"
+              },
+              "anv": {
+                "d": "कुलक्षये सनातनाः कुलधर्माः प्रणश्यन्ति, उत धर्मे नष्टे अधर्मः कृत्स्नम् कुलम् अभिभवति।",
+                "t": "kula-kṣaye sanātanāḥ kula-dharmāḥ praṇaśyanti, uta dharme naṣṭe adharmaḥ kṛtsnam kulam abhibhavati|"
               }
             }
           ]
@@ -6728,6 +6888,10 @@
                 "en": "“When adharma prevails, Kṛṣṇa, the family's women are corrupted; and from corrupted women comes the confusion of castes and lines.”",
                 "ne": "“जब अधर्म फैलिन्छ, कृष्ण, परिवारका स्त्रीहरू भ्रष्ट हुन्छन्; र भ्रष्ट स्त्रीहरूबाट जात र वंशको मिश्रण उत्पन्न हुन्छ।”",
                 "hi": "“जब अधर्म फैलता है, कृष्ण, परिवार की स्त्रियाँ भ्रष्ट होती हैं; और भ्रष्ट स्त्रियों से जातियों और वंशों का मिश्रण होता है।”"
+              },
+              "anv": {
+                "d": "हे कृष्ण! अधर्माभिभवात् कुलस्त्रियः प्रदुष्यन्ति।\nहे वार्ष्णेय! स्त्रीषु दुष्टासु वर्णसङ्करः जायते।",
+                "t": "he kṛṣṇa! adharma-abhibhavāt kula-striyaḥ praduṣyanti|\nhe vārṣṇeya! strīṣu duṣṭāsu varṇa-saṅkaraḥ jāyate|"
               }
             }
           ]
@@ -6897,6 +7061,10 @@
                 "en": "“Such confusion drags both the family's destroyers and the family itself toward hell, and their departed ancestors fall, robbed of their funeral rites.”",
                 "ne": "“यस्तो मिश्रणले परिवारका नाशक र परिवार दुवैलाई नरकतिर तान्छ, र तिनका पितृहरू श्राद्ध-क्रियाबाट वञ्चित भई पतन हुन्छन्।”",
                 "hi": "“ऐसा मिश्रण परिवार के नाशकों और परिवार दोनों को नरक की ओर खींचता है, और उनके पितर श्राद्ध-क्रिया से वंचित होकर गिर जाते हैं।”"
+              },
+              "anv": {
+                "d": "सङ्करः कुलघ्नानाम् कुलस्य च नरकाय एव (भवति); हि एषाम् पितरः लुप्तपिण्डोदकक्रियाः पतन्ति।",
+                "t": "saṅkaraḥ kula-ghnānām kulasya ca narakāya eva (bhavati); hi eṣām pitaraḥ lupta-piṇḍa-udaka-kriyāḥ patanti|"
               }
             }
           ]
@@ -7052,6 +7220,10 @@
                 "en": "“Through these sins that breed class-confusion, the timeless duties of both the caste and the clan are swept away.”",
                 "ne": "“वर्णमिश्रण जन्माउने यी पापहरूद्वारा जाति र कुल दुवैका शाश्वत धर्महरू बगाइन्छन्।”",
                 "hi": "“वर्ण-मिश्रण उत्पन्न करने वाले इन पापों द्वारा जाति और कुल दोनों के शाश्वत धर्म बह जाते हैं।”"
+              },
+              "anv": {
+                "d": "कुलघ्नानाम् एतैः वर्णसङ्करकारकैः दोषैः शाश्वताः जातिधर्माः कुलधर्माः च उत्साद्यन्ते।",
+                "t": "kula-ghnānām etaiḥ varṇa-saṅkara-kārakaiḥ doṣaiḥ śāśvatāḥ jāti-dharmāḥ kula-dharmāḥ ca utsādyante|"
               }
             }
           ]
@@ -7193,6 +7365,10 @@
                 "en": "“And, Janārdana, we have heard it said that those whose family-rites are destroyed must dwell in hell.”",
                 "ne": "“र, जनार्दन, हामीले सुनेका छौं कि जसका पारिवारिक क्रियाहरू नष्ट हुन्छन्, तिनीहरूलाई नरकमा बस्नुपर्छ।”",
                 "hi": "“और, जनार्दन, हमने सुना है कि जिनके पारिवारिक कर्म नष्ट हो जाते हैं, उन्हें नरक में रहना पड़ता है।”"
+              },
+              "anv": {
+                "d": "हे जनार्दन! उत्सन्नकुलधर्माणाम् मनुष्याणाम् नरके नियतम् वासः भवति इति अनुशुश्रुम।",
+                "t": "he janārdana! utsanna-kula-dharmāṇām manuṣyāṇām narake niyatam vāsaḥ bhavati iti anuśuśruma|"
               }
             }
           ]
@@ -7377,6 +7553,10 @@
                 "en": "“What terrible wrong are we about to do! Blinded by the craving for a throne and its pleasures, we are prepared to kill our own family.”",
                 "ne": "“हामीले कस्तो भयानक गल्ती गर्न लागेका छौं! राजगद्दी र सुखको लालसाले अन्धा भएर, हामी आफ्नै परिवार मार्न तयार छौं।”",
                 "hi": "“हम कितना भयानक अन्याय करने जा रहे हैं! राजगद्दी और सुख की लालसा से अंधे होकर, हम अपने ही परिवार को मारने को तैयार हैं।”"
+              },
+              "anv": {
+                "d": "अहो! बत, महत् पापम् कर्तुम् वयम् व्यवसिताः यत् राज्यसुखलोभेन स्वजनम् हन्तुम् उद्यताः।",
+                "t": "aho! bata, mahat pāpam kartum vayam vyavasitāḥ yat rājya-sukha-lobhena svajanam hantum udyatāḥ|"
               }
             }
           ]
@@ -7546,6 +7726,10 @@
                 "en": "“If Dhṛtarāṣṭra's sons should strike me down — me defenceless and unarmed — that would be far better than to fight.”",
                 "ne": "“यदि धृतराष्ट्रका छोराहरूले मलाई — निःशस्त्र र रक्षारहित — ढालिदिए भने, त्यो लड्नुभन्दा कैयौं गुणा राम्रो हुनेछ।”",
                 "hi": "“यदि धृतराष्ट्र के पुत्र मुझे — निहत्थे और रक्षाहीन — गिरा दें, तो वह लड़ने से कहीं अच्छा होगा।”"
+              },
+              "anv": {
+                "d": "यदि शस्त्रपाणयः धार्तराष्ट्राः अशस्त्रम् अप्रतीकारम् माम् रणे हन्युः तत् मे क्षेमतरम् भवेत्।",
+                "t": "yadi śastra-pāṇayaḥ dhārtarāṣṭrāḥ aśastram apratīkāram mām raṇe hanyuḥ tat me kṣema-taram bhavet|"
               }
             }
           ]
@@ -7715,6 +7899,10 @@
                 "en": "Sañjaya concludes: “So saying, Arjuna sank down on the chariot's seat, dropped his bow and arrows, and sat there, his heart torn apart with grief.”",
                 "ne": "सञ्जयले निष्कर्षमा भन्छन्: “यसरी भनेर, अर्जुन रथको आसनमा डुबे, धनुष-बाण छोडे, र हृदय शोकले च्यातिएर बसे।”",
                 "hi": "संजय निष्कर्ष में कहते हैं: “ऐसा कहकर, अर्जुन रथ की सीट पर धँस गया, धनुष-बाण छोड़ दिया, और हृदय शोक से टूटकर बैठ गया।”"
+              },
+              "anv": {
+                "d": "सङ्ख्ये एवम् उक्त्वा, शोकसंविग्नमानसः अर्जुनः सशरम् चापम् विसृज्य, रथोपस्थे उपाविशत्।",
+                "t": "saṅkhye evam uktvā, śoka-saṃvigna-mānasaḥ arjunaḥ saśaram cāpam visṛjya, ratha-upasthe upāviśat|"
               }
             }
           ]

@@ -40,6 +40,31 @@ function padaBlockDeva(s, withNum){
   if(withNum) html += '</div>';
   return html;
 }
+/* The anvaya — the verse's words in natural prose order, the construal a
+   teacher gives before translating. It is scripture set as prose, so it is
+   deliberately quieter than the verse and deliberately NOT inside
+   #verseContent: that element is role="button" and owns the tap that opens the
+   four pādas, and a block nested in it would be swallowed by that button and
+   read aloud as part of its label. A sibling, therefore.
+
+   The stored text is Devanagari with its own line breaks (the reference's
+   sentences), so the breaks are rendered as breaks. IAST follows the app's rule
+   for everything else: English shows it, Nepali and Hindi do not. */
+function anvayaHtml(s){
+  const a = s && s.anv;
+  if(!a || !a.d) return '';
+  const lines = a.d.split('\n').filter(x => x.trim());
+  const body = lines.map(x => `<span class="av-line">${esc(x)}</span>`).join('');
+  const iast = (state.lang === 'en' && a.t)
+    ? `<span class="av-iast" lang="sa-Latn">${a.t.split('\n').filter(x=>x.trim())
+        .map(x => `<span class="av-line">${esc(x)}</span>`).join('')}</span>`
+    : '';
+  return `<section class="m-anvaya" aria-label="${esc(L('anvaya_of'))}">`
+    + `<span class="av-label" aria-hidden="true">${esc(L('anvaya'))}</span>`
+    + `<div class="av-text" lang="sa">${body}</div>`
+    + iast
+    + `</section>`;
+}
 /* Two lines, never three: shrink --verse-fit until each line's text fits
    the card's inner width (not the line's clientWidth: 0 inline on phones,
    shrink-to-fit on desktop). The numbered line reserves the number's real
