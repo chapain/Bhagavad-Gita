@@ -317,6 +317,7 @@ HTML = _read_template("app.html")
 APP_CSS_FILES = (
     "00-foundation.css", "10-play.css", "20-learn.css",
     "30-favorites.css", "32-data.css", "40-welcome.css", "50-reader-shell.css",
+    "52-anvaya.css",
     "60-responsive.css",
 )
 APP_JS_FILES = (

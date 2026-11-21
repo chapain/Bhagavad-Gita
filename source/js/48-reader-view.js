@@ -59,12 +59,115 @@ function anvayaHtml(s){
     ? `<span class="av-iast" lang="sa-Latn">${a.t.split('\n').filter(x=>x.trim())
         .map(x => `<span class="av-line">${esc(x)}</span>`).join('')}</span>`
     : '';
+  /* The words in anvaya order are the same anvaya read word by word, so they
+     live on the block rather than beside it: one control, two depths. The
+     tokens address the verse's own word rows, so each gloss shown here is the
+     gloss the pāda boxes show — there is no second copy of any meaning. */
+  const pairs = anvayaPairsHtml(s);
+  const hasPairs = !!pairs;
+  const id = `anv-words-${String(s.n).replace('.', '-')}`;
+  const head = hasPairs
+    ? `<button type="button" class="av-toggle" aria-expanded="false" aria-controls="${id}"
+         aria-label="${esc(L('anvaya_words_show'))}"
+         onclick="App.reader.toggleAnvayaWords(this)">
+         <span class="av-label" aria-hidden="true">${esc(L('anvaya'))}</span>
+         <span class="av-chev" aria-hidden="true">▾</span>
+       </button>`
+    : `<span class="av-label" aria-hidden="true">${esc(L('anvaya'))}</span>`;
   return `<section class="m-anvaya" aria-label="${esc(L('anvaya_of'))}">`
-    + `<span class="av-label" aria-hidden="true">${esc(L('anvaya'))}</span>`
+    + head
     + `<div class="av-text" lang="sa">${body}</div>`
     + iast
+    + pairs
     + `</section>`;
 }
+
+/* The anvaya's tokens as word-meaning pairs in prose order.
+
+   anv.w holds row references, not glosses: an int is one row, {r:[i,j]} is a
+   compound fused out of several, {t:...} alone is a word the anvaya supplies
+   and the verse does not print. Reading the glosses off the rows here is what
+   keeps one meaning in one place — if a row's gloss is corrected, both the
+   pāda box and this list change together. */
+function anvayaPairsHtml(s){
+  const a = s && s.anv, toks = a && a.w;
+  if(!Array.isArray(toks) || !toks.length) return '';
+  const rows = [];
+  (s.flow || []).forEach(it => (it.words || []).forEach(w => rows.push(w)));
+  const LI = state.lang === 'en' ? 0 : (state.lang === 'ne' ? 1 : 2);
+  const items = [];
+  toks.forEach(tok => {
+    if(typeof tok === 'number'){
+      const w = rows[tok];
+      if(w) items.push(pairHtml(w[0], w[1], w[2 + LI] || w[2]));
+      return;
+    }
+    if(!tok || typeof tok !== 'object') return;
+    const idx = tok.r || [];
+    if(idx.length){
+      /* a fused compound: its printed form, glossed by its members */
+      const parts = idx.map(i => rows[i]).filter(Boolean);
+      const deva = tok.t || parts.map(w => w[0]).join('');
+      const gloss = parts.map(w => w[2 + LI] || w[2]).join(' ');
+      items.push(pairHtml(deva, parts.map(w => w[1]).join(''), gloss));
+    }else if(tok.t){
+      /* supplied by the anvaya, with no row of the verse behind it */
+      const g = suppliedGloss(tok.sup);
+      items.push(pairHtml(tok.t, '', g, true));
+    }
+  });
+  if(!items.length) return '';
+  const id = `anv-words-${String(s.n).replace('.', '-')}`;
+  return `<div class="av-pairs" id="${id}" hidden>`
+    + `<span class="av-pairs-label">${esc(L('anvaya_words'))}</span>`
+    + `<ol class="av-pair-list">${items.map(x => `<li class="av-pair">${x}</li>`).join('')}</ol>`
+    + `</div>`;
+}
+
+function pairHtml(deva, iast, gloss, supplied){
+  const mark = supplied ? ` <span class="av-sup" aria-hidden="true">·</span>` : '';
+  const showIast = state.lang === 'en' && iast;
+  return `<span class="av-word" lang="sa"${supplied ? ' data-supplied="1"' : ''}>${esc(deva)}${mark}</span>`
+    + (showIast ? `<span class="av-wiast" lang="sa-Latn">${esc(iast)}</span>` : '')
+    + `<span class="av-gloss">${esc(gloss || '')}</span>`;
+}
+
+/* The declared gloss of a supplied word, mirrored from
+   source/anvaya.py SUPPLIED_GLOSS. Kept tiny on purpose: these are the words
+   the grammar needs and the verse does not print, and there are a handful. */
+const SUPPLIED_GLOSS = {
+  idam:   ['this', 'यो', 'यह'],
+  imam:   ['this', 'यो', 'यह'],
+  imām:   ['this', 'यी', 'यह'],
+  etat:   ['this', 'यो', 'यह'],
+  etad:   ['this', 'यो', 'यह'],
+  santi:  ['are', 'छन्', 'हैं'],
+  asti:   ['is', 'छ', 'है'],
+  sati:   ['being', 'हुँदा', 'होने पर'],
+  bhavati:['is', 'हुन्छ', 'होता है'],
+  bhavanti:['are', 'हुन्छन्', 'होते हैं'],
+  syāt:   ['would be', 'हुन्थ्यो', 'होता'],
+  āsīt:   ['was', 'थियो', 'था'],
+  babhūva:['became', 'भयो', 'हुआ']
+};
+function suppliedGloss(sup){
+  const g = sup && SUPPLIED_GLOSS[sup];
+  if(!g) return '';
+  const LI = state.lang === 'en' ? 0 : (state.lang === 'ne' ? 1 : 2);
+  return g[LI];
+}
+
+function toggleAnvayaWords(btn){
+  const sec = btn.closest('.m-anvaya');
+  const box = sec && sec.querySelector('.av-pairs');
+  if(!box) return;
+  const open = btn.getAttribute('aria-expanded') !== 'true';
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  btn.setAttribute('aria-label', L(open ? 'anvaya_words_hide' : 'anvaya_words_show'));
+  box.hidden = !open;
+  btn.classList.toggle('open', open);
+}
+
 /* Two lines, never three: shrink --verse-fit until each line's text fits
    the card's inner width (not the line's clientWidth: 0 inline on phones,
    shrink-to-fit on desktop). The numbered line reserves the number's real

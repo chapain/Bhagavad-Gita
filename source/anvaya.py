@@ -479,25 +479,52 @@ def map_verse(verse, chunks):
 GLOSS_ALTERNATIVES = " / "
 
 
-def _gloss(rows, idx):
-    """One token's gloss: its rows' glosses, read as the Sanskrit orders them."""
+# Which row column holds the gloss for a language. A row is
+#   [Devanagari, IAST, English, Nepali, Hindi]
+# and the open reader takes the same column. Reading columns was the whole
+# point: an earlier version read column 2 for all three languages, so every
+# Nepali and Hindi construed literal was English.
+ROW_GLOSS_COLUMN = {"en": 2, "ne": 3, "hi": 4}
+
+# A compound's members arrive in verse order, and a head-initial language wants
+# them turned round: कुरुक्षेत्रे is "of the Kurus" + "on the field", read
+# "on the field of the Kurus". The test is the language's own relational
+# vocabulary, not English's — Nepali and Hindi put the relation word at the END
+# (कुरुको खेतमा), which is already the Sanskrit order, so they are never turned.
+RELATIONAL_PREFIX = {
+    "en": {"of", "to", "for", "with", "in", "on", "from", "by", "among", "at",
+           "into", "upon", "over", "under", "through", "without", "toward"},
+    "ne": {"को", "का", "की", "मा", "बाट", "देखि", "लाई", "सँग", "ले", "बिना"},
+    "hi": {"का", "की", "के", "में", "से", "को", "लिए", "साथ", "द्वारा"},
+}
+# Nepali/Hindi are postpositional, so a relational gloss ends the phrase.
+RELATIONAL_SUFFIX = {
+    "ne": {"को", "का", "की", "मा", "बाट", "देखि", "लाई", "सँग", "ले"},
+    "hi": {"का", "की", "के", "में", "से", "को", "लिए", "साथ", "द्वारा"},
+}
+
+
+def _is_relational(gloss, lang):
+    """Does this gloss carry the phrase's relation, rather than its noun?"""
+    words = gloss.split()
+    if not words:
+        return False
+    if lang == "en":
+        return words[0].lower() in RELATIONAL_PREFIX["en"]
+    return words[-1] in RELATIONAL_SUFFIX[lang] or words[0] in RELATIONAL_PREFIX[lang]
+
+
+def _gloss(rows, idx, lang):
+    """One token's gloss: its rows' glosses, read the way the language reads them."""
+    col = ROW_GLOSS_COLUMN[lang]
     words = [rows[i] for i in idx]
-    # A compound's members arrive in verse order (धर्म + क्षेत्रे). English needs
-    # "field of the Kurus" for कुरुक्षेत्रे — the head last — so a two-member
-    # compound whose first gloss starts with a preposition is turned round.
     if len(words) == 2:
-        rel = [_is_relational(w[2]) for w in words]
+        rel = [_is_relational(w[col], lang) for w in words]
         if rel[0] != rel[1]:
             # "of the Kurus" + "on the field" -> "on the field of the Kurus";
             # "righteousness" + "on the field" -> "on the field of righteousness"
             words = [words[1], words[0]]
-    return " ".join(w[2] for w in words)
-
-
-def _is_relational(gloss):
-    first = gloss.lower().split(" ")[0]
-    return first in {"of", "to", "for", "with", "in", "on", "from", "by",
-                     "among", "at", "into", "upon"}
+    return " ".join(w[col] for w in words)
 
 
 def construed_literal(verse, tokens):
@@ -530,7 +557,7 @@ def construed_literal(verse, tokens):
                 if sup and sup in SUPPLIED_GLOSS:
                     parts.append(SUPPLIED_GLOSS[sup][lang])
                 continue
-            parts.append(_gloss(rows, idx).replace(", ", GLOSS_ALTERNATIVES))
+            parts.append(_gloss(rows, idx, lang).replace(", ", GLOSS_ALTERNATIVES))
         out[lang] = JOINERS[lang].join(p for p in parts if p)
     return out
 

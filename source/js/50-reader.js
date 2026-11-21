@@ -241,6 +241,17 @@ function fillModal(){
        overwritten by whichever rendered last. */
     return `<div class="words" id="${id}" data-words="${esc(JSON.stringify(ws))}">${ws.map((w,i)=>`<div class="wrow" role="button" tabindex="0" data-wi="${i}" aria-expanded="false"><span class="wdeva" lang="sa">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('')}</div>`;
   }
+  /* The construed literal: the anvaya's glosses as one line, in the reader's
+     language. It sits above the Reading because it is the checkable one — every
+     word of it is a gloss the reader has just seen in the pāda boxes. */
+  function construedHtml(s){
+    const lit = s && s.anv && s.anv.lit;
+    if(!lit) return '';
+    const text = T(lit);
+    if(!text) return '';
+    return `<div class="m-line construed"><span class="lb">${esc(L('construed'))}</span>`
+      + `<div class="lt">${esc(text)}</div></div>`;
+  }
   function spkHtml(list){
     return list.map(x=>{
       const id = `words-speaker-${speakerId++}`;
@@ -333,6 +344,7 @@ function fillModal(){
         </div>
       </div>
       ${anvayaHtml(s)}
+      ${construedHtml(s)}
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
       <details class="m-note"${noteText ? ' open' : ''}>

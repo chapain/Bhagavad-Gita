@@ -423,7 +423,10 @@ ok('<a href="#view" class="skip-link" id="skipLink">' in idx and ".skip-link{" i
 # 375,000, so the room is 9,121 characters instead of 1,269. Module headroom:
 # 225 (library) / 111 (learn) / 154 (reader); 20-learn.js at 589 lines is still
 # the next tightest.
-ok(len(idx) < 375000, f"the shell should stay lean; it is {len(idx)} characters")
+# The anvaya block added its word-order markup and 52-anvaya.css to the
+# single-file shell; the budget grew with the feature rather than the feature
+# being split across files, because the app must work offline in one page.
+ok(len(idx) < 386000, f"the shell should stay lean; it is {len(idx)} characters")
 
 
 # ------------------------------------------------ font is a file, not base64

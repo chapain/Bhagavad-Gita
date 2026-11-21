@@ -146,18 +146,6 @@
      pill, no card. The label is a small quiet word above it, not a badge: a
      pill here would compete with the Literal and In other words labels below
      and make three equal weights where the reader needs one hierarchy. */
-  .m-anvaya{ margin:16px 0 0; padding:0 0 0 12px; border-left:2px solid var(--line); }
-  .m-anvaya .av-label{ display:block; font-size:.7rem; font-weight:700;
-    letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);
-    opacity:.8; margin-bottom:4px; }
-  .m-anvaya .av-text{ font-family:"Noto Serif Devanagari",Georgia,serif;
-    color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1));
-    line-height:1.75; }
-  .m-anvaya .av-iast{ display:block; margin-top:4px; font-style:italic;
-    font-family:Georgia,"Noto Serif Devanagari",serif;
-    color:var(--ink-soft); font-size:calc(.86rem * var(--reader-scale,1));
-    line-height:1.6; }
-  .m-anvaya .av-line{ display:block; }
 
   /* Option 1 keeps the verse and its expanded pāda grid in one card. */
   .m-verse-box-container{ margin:0 0 2px; }

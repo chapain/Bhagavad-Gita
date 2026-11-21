@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 950;      // keep in step with the printed total (944 + 5 defect-regression locks)
+const TOTAL_ASSERTIONS = 958;      // keep in step with the printed total (952 + 5 defect-regression locks + 1 anvaya loop)
 const TOTAL_BROWSER_CHECKS = 360;   // browser_checks.py, http run (348 over file://); error capture + responsive/theme axe
 const path = require('path');
 
@@ -123,7 +123,7 @@ const enKeys = Object.keys(UI.en);
 // search_suggest_hint and search_recent (2) → 230. The overlay is gone; its two
 // strings went with it.
 // The mobile search tab uses its own short label (one key, two parity checks).
-ok(enKeys.length === 233, `UI has 233 keys (got ${enKeys.length})`);
+ok(enKeys.length === 237, `UI has 237 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;

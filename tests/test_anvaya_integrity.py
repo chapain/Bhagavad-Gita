@@ -259,6 +259,32 @@ class AnvayaIntegrity(unittest.TestCase):
                     failures.append(f"{verse['n']}: '{piece}' is not a gloss of this verse")
         self.assertEqual([], failures, "\n" + "\n".join(failures))
 
+    def test_literal_and_word_order_agree(self):
+        """The loop: the literal is the word order spoken, and vice versa.
+
+        Rebuild each language's construed literal from anv.w and the rows'
+        glosses and require it to equal the stored one. This is the two-way
+        check — a stored literal that someone hand-edited, or a word order that
+        drifted after the literal was written, both fail here.
+
+        What it cannot check is whether the ORDER is right. The literal is
+        generated from anv.w, so reordering anv.w produces a different literal
+        and both agree with each other. Order is settled by the two reference
+        witnesses, never by this test; see docs/anvaya-sources.md.
+        """
+        import anvaya as A
+        failures = []
+        for verse in self._verses():
+            lit = verse["anv"].get("lit")
+            if not lit or "w" not in verse["anv"]:
+                continue
+            rebuilt = A.construed_literal(verse, verse["anv"]["w"])
+            for lang in ("en", "ne", "hi"):
+                if rebuilt[lang] != lit[lang]:
+                    failures.append(f"{verse['n']}.{lang}: stored literal "
+                                    "disagrees with its word order")
+        self.assertEqual([], failures, "\n" + "\n".join(failures))
+
     def test_word_order_covers_every_row_once(self):
         """anv.w must place every row of the verse exactly once.
 

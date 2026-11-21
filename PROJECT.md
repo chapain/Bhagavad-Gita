@@ -79,7 +79,7 @@ not print the anvaya — the sheet is the only surface for now.
 
 For a brand-new session: read §1–§10, then this box, then build.
 
-Current UI/test counts: 233 UI strings per language, 950 assertions, 360 browser checks over
+Current UI/test counts: 237 UI strings per language, 958 assertions, 360 browser checks over
 http (348 over file://), 560 site-health checks. Axe covers the 390x844 light app views and
 1440x900 light plus app-toggle dark coverage on welcome/chapter/search/reader/favorites; the
 method page is checked at 1440x900 with prefers-color-scheme: dark.
