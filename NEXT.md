@@ -1,6 +1,6 @@
 # NEXT.md — what is actually left
 
-**Updated 2026-11-20.** Base `ac7e50e` — the merge of PR #84 on `main`. Baseline measured by `python3 build.py --prove` at this commit, not quoted from a chat log: 122 Python tests, 950 document assertions, 560 site-health, 10 SEO, 9,658 study, 19 migration, 15 search, 700 card-nav, backup, offline; CI and the Pages build for this same commit are green, and the browser suite (357 http / 348 `file://`) is CI-only because this sandbox has no Chromium.
+**Updated 2026-11-20.** Base `ac7e50e` — the merge of PR #84 on `main`. Baseline measured by `python3 build.py --prove` at this commit, not quoted from a chat log: 122 Python tests, 950 document assertions, 560 site-health, 10 SEO, 9,658 study, 19 migration, 15 search, 700 card-nav, backup, offline; CI and the Pages build for this same commit are green, and the browser suite (360 http / 351 `file://`) is CI-only because this sandbox has no Chromium.
 
 > The previous edition of this file (dated 2026-10-19) presented Phases A–E as future work. Almost all of it has since shipped, so it was misleading as a to-do list. Its full text and history are archived verbatim at [`docs/archive/NEXT-2026-10-19.md`](docs/archive/NEXT-2026-10-19.md); this file is only the remainder. If an item below is finished, delete it rather than appending a log — history belongs in `HANDOFF.md` §1 and `docs/archive/`.
 
@@ -87,7 +87,7 @@ and third-party-free but unverified network timings on GitHub Pages.
 - Shell cap **375,000 chars** (currently **369,376 — 5,624 of room**), enforced in `source/check_site_health.py`. The 700-line module guard binds first.
 - Nepali and Hindi UI strings contain no Latin characters.
 - Counts stay synchronized across code, README, PROJECT.md, HANDOFF.md, build.py and docs. Never print a success line unless the command actually succeeded.
-- Browser checks are **357** over http (348 over file://), including desktop and dark-theme axe sweeps; run in CI whenever Playwright/Chromium is absent from the sandbox.
+- Browser checks are **360** over http (351 over file://), including desktop and dark-theme axe sweeps; run in CI whenever Playwright/Chromium is absent from the sandbox.
 
 ---
 

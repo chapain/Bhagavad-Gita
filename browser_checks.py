@@ -42,7 +42,11 @@ ROOT = pathlib.Path(__file__).resolve().parent
 # (+24) — plus axe sweeps. The desktop light+dark passes add 10 scans across
 # welcome/chapter/search/reader/favorites: 346 + 10 scans + 1 desktop error-sink
 # assertion → 357 (file:// 337 + 11 → 348).
-EXPECTED_CHECKS = {"http": 357, "file": 348}
+# 2026-11-21 (pāda box toggles): a pāda box is its own toggle, so three checks
+# guard it — the row keeps each box at its own height, a click on the box's
+# padding opens that pāda, and a second click closes it. 357 + 3 → 360
+# (file:// 348 + 3 → 351).
+EXPECTED_CHECKS = {"http": 360, "file": 351}
 PASS, FAIL = 0, []
 # Evidence lines a reviewer (and CI) can read as proof that the new coverage
 # actually ran, not merely that the file contains it. Printed at the end.
@@ -1202,6 +1206,45 @@ def run(pw, url, offline_capable=False):
     }""")
     ok(word_state,
        "a pāda opens its own words without collapsing, and the master hide/show switch still works")
+
+    # A pāda box is its own toggle, not a hole to fall through. With the boxes no
+    # longer equal height, the padding of the quarter beside an open one is a
+    # real target, and before 2026-11-21 a click there collapsed the whole card
+    # back to the verse — the reader tapped pāda 2 and lost pāda 1 with it.
+    pad_toggle = pg.evaluate("""() => {
+      const boxes = [...document.querySelectorAll('#modal .pada-box')];
+      const content = document.querySelector('#modal #verseContent');
+      if (boxes.length < 2) return {skip:true};
+      const pad = boxes[1].getBoundingClientRect();
+      return {
+        rowAlignsTop: getComputedStyle('#modal .pada-row'
+          ? document.querySelector('#modal .pada-row') : content).alignItems === 'flex-start',
+        /* the second box must not be stretched to the first one's open height */
+        heights: boxes.map(b => Math.round(b.getBoundingClientRect().height)),
+      };
+    }""")
+    ok(pad_toggle.get('skip') or pad_toggle['rowAlignsTop'],
+       "pāda boxes in a row keep their own height instead of stretching to an open neighbour")
+
+    pg.locator("#modal .pada-box").nth(1).click(position={"x": 6, "y": 6})
+    pg.wait_for_timeout(250)
+    pad_open = pg.evaluate("""() => {
+      const boxes = [...document.querySelectorAll('#modal .pada-box')];
+      const content = document.querySelector('#modal #verseContent');
+      const w2 = boxes[1]?.querySelector('.words');
+      const t2 = boxes[1]?.querySelector('.pada-toggle');
+      return {
+        opened: !!w2?.classList.contains('open'),
+        stillExpanded: content.classList.contains('m-verse'),
+        expandedAttr: t2?.getAttribute('aria-expanded') === 'true',
+      };
+    }""")
+    ok(pad_open["opened"] and pad_open["stillExpanded"] and pad_open["expandedAttr"],
+       f"clicking a pāda box's own padding toggles that pāda instead of leaving the pāda view (got {pad_open})")
+    pg.locator("#modal .pada-box").nth(1).click(position={"x": 6, "y": 6})
+    pg.wait_for_timeout(200)
+    ok(pg.evaluate("!document.querySelectorAll('#modal .pada-box')[1].querySelector('.words').classList.contains('open')"),
+       "clicking the same pāda box again closes it and stays in the pāda view")
 
     # Padding/background is a click-to-collapse area; then verify the corner
     # button's keyboard activation is also an explicit way back.

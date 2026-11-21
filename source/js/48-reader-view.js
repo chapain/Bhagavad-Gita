@@ -137,8 +137,21 @@ function toggleVerseExpansion(ev){
   const content = document.getElementById('verseContent');
   const t = ev && ev.target;
   if(ev && verseViewState && verseViewState.isExpanded && content
-     && content.contains(t) && t && t.closest
-     && t.closest('.pada-toggle,.spk-line,.words')) return;
+     && content.contains(t) && t && t.closest){
+    /* Inside the chart, three things belong to a quarter rather than to the
+       card: its toggle, its speaker line, its word rows. */
+    if(t.closest('.pada-toggle,.spk-line,.words')) return;
+    /* The fourth is the paper around them. Each box is its own height, so the
+       padding of the box beside an open one is a real target, and a reader who
+       taps it means this quarter, not "go back to the whole verse" — which is
+       what it used to do (owner, 2026-11-21). A click anywhere inside a pāda
+       box toggles that box's words, exactly like tapping the pāda itself. */
+    const box = t.closest('.pada-box');
+    if(box){
+      const btn = box.querySelector('.pada-toggle');
+      if(btn){ toggleWords(btn); return; }
+    }
+  }
   setVerseView(!(verseViewState && verseViewState.isExpanded));
 }
 function setReaderSize(size){

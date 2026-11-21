@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const TOTAL_ASSERTIONS = 950;      // keep in step with the printed total (944 + 5 defect-regression locks)
-const TOTAL_BROWSER_CHECKS = 357;   // browser_checks.py, http run (348 over file://); error capture + responsive/theme axe
+const TOTAL_BROWSER_CHECKS = 360;   // browser_checks.py, http run (348 over file://); error capture + responsive/theme axe
 const path = require('path');
 
 const ROOT = __dirname;

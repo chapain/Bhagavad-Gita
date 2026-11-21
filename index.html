@@ -1246,10 +1246,23 @@
   .words-bar .wb-btn:disabled:hover{ background:var(--teal); }
   /* four pāda boxes in a 2x2 grid */
   .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
-  .m-verse .pada-row{ display:flex; gap:12px;}
+  /* Each box stands on its own height. The row used to be a plain flex row, so
+     opening pāda 1's words stretched pāda 2's box to match and left a column of
+     blank paper inside it — it looked as though the neighbour had opened too
+     (owner, 2026-11-21). align-items:flex-start pins every box to the top and
+     lets the row grow unevenly, which is what a reader expects when one quarter
+     is open and the next is closed. */
+  .m-verse .pada-row{ display:flex; align-items:flex-start; gap:12px;}
   .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; transition:border-color .15s, background .15s;}
   .m-verse .pada-box .pada-toggle{ display:block; width:100%; padding:0; margin:0; border:0;
       background:transparent; color:inherit; text-align:left; font:inherit; cursor:pointer; }
+  /* With the boxes no longer equal height, the Sanskrit line inside a closed box
+     would sit against its top edge next to an open neighbour's tall column. The
+     toggle fills its box so a click anywhere on the pāda — the number, the
+     Devanagari, the IAST, or the paper around them — is the documented toggle,
+     and the box keeps a usable target when its neighbour is open. */
+  .m-verse .pada-box{ display:flex; flex-direction:column; }
+  .m-verse .pada-box .pada-toggle{ flex:1 1 auto; }
   .m-verse .pada-box .pb-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; gap:8px;}
   .m-verse .pada-box .pb-num{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:700; color:var(--saffron-text); font-size:.85rem; white-space:nowrap;}
 
@@ -5094,8 +5107,21 @@ function toggleVerseExpansion(ev){
   const content = document.getElementById('verseContent');
   const t = ev && ev.target;
   if(ev && verseViewState && verseViewState.isExpanded && content
-     && content.contains(t) && t && t.closest
-     && t.closest('.pada-toggle,.spk-line,.words')) return;
+     && content.contains(t) && t && t.closest){
+    /* Inside the chart, three things belong to a quarter rather than to the
+       card: its toggle, its speaker line, its word rows. */
+    if(t.closest('.pada-toggle,.spk-line,.words')) return;
+    /* The fourth is the paper around them. Each box is its own height, so the
+       padding of the box beside an open one is a real target, and a reader who
+       taps it means this quarter, not "go back to the whole verse" — which is
+       what it used to do (owner, 2026-11-21). A click anywhere inside a pāda
+       box toggles that box's words, exactly like tapping the pāda itself. */
+    const box = t.closest('.pada-box');
+    if(box){
+      const btn = box.querySelector('.pada-toggle');
+      if(btn){ toggleWords(btn); return; }
+    }
+  }
   setVerseView(!(verseViewState && verseViewState.isExpanded));
 }
 function setReaderSize(size){
