@@ -32,9 +32,11 @@ Parse structured data; never regex-rewrite JSON. Locate exact values and require
 one unambiguous match. When one defect is found, inspect all 700 verses for the
 same class. Green tests prove consistency, not textual correctness: read and
 render the affected verse.
-For word-row splits, check the combined glosses against the existing literal
-translation in en/ne/hi. The literal is the semantic standard; flag conflicts
-rather than silently rewriting it to fit new glosses.
+For word-row splits, check the combined glosses against the existing reading
+translation in en/ne/hi. The construed literal (`anv.lit`) is the semantic
+standard, because it can only say what the rows say; the smooth literal — now
+labelled "Reading" — is not, and may legitimately say more than the verse. Flag
+conflicts rather than silently rewriting either to fit new glosses.
 
 ## Edit here
 
@@ -89,6 +91,25 @@ restore 700 share pages or promise `file://` operation.
   applied by `source/anvaya.py`; never compose an anvaya by hand into the
   chapter JSON. `tests/test_anvaya_integrity.py` must stay green: an anvaya may
   rearrange a verse, never invent one. Chapters without `anv` render nothing.
+- **The construed literal is the semantic standard; the Reading is not.**
+  `anv.lit` (en/ne/hi) is the verse's own glosses in anvaya order and may
+  contain nothing else — a word the rows do not carry must be declared in
+  `anvaya.SUPPLIED_GLOSS`, which is the one place this edition supplies a word.
+  So the calm voice belongs to the Reading and the paraphrase; the construed
+  literal is allowed to read like a list, because the verse may be one. Never
+  smooth it with connective words that no row carries. `anv.w` must place every
+  row of the verse exactly once: a row it drops is a word the literal silently
+  drops. Both are asserted, not trusted.
+- The speaker announcement (`dhṛtarāṣṭra uvāca`) leads the anvaya in the five
+  verses that print one, wherever the printed verse puts it. The reference omits
+  the stage direction; an anvaya meant to hold the verse's words cannot.
+- Reference policy: the anvaya is transcribed from Sanskrit Documents'
+  *anvayasandhivigraha*, whose licence forbids redistribution — so the `.itx`
+  files stay out of generated output and `docs/`. Gita Press's
+  *Padachchheda-Anvaya* (code 17) was read for its conventions only and is
+  **not** a source we may copy: Goyandka died in 1965, so his work entered the
+  public domain on 1 January 2026, but a scanned edition's arrangement and
+  typography remain the Press's. See `docs/anvaya-sources.md`.
 - English shows IAST; Nepali and Hindi intentionally hide it. This applies to
   the anvaya too.
 - Language, route, reader state and Learn/Play state survive refresh where
