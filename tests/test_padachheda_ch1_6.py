@@ -3,6 +3,10 @@
 The literal and printed-pāda snapshots are review context, never runtime data.
 6.19 context was updated by the sourced conflict-resolution pass; see its report.
 See docs/padachheda-verse-review.md for grammatical and trilingual reasoning.
+
+Amended 2026-11-21 (PR #89, honorific-address pass): at 6.39 Arjuna addresses
+Kṛṣṇa, so the त्वत् Nepali gloss follows the verse literal's honorific
+तपाईंबाहेक (was तिमीभन्दा). No other snapshot entry moved.
 """
 import json
 from pathlib import Path
@@ -496,7 +500,7 @@ REVIEWED = json.loads(r'''{
           "त्वत्",
           "tvat",
           "than you",
-          "तिमीभन्दा",
+          "तपाईंबाहेक",
           "तुझसे"
         ],
         [
