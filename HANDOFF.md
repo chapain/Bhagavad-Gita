@@ -50,7 +50,7 @@
 
 - **Shell size:** 334,897 (Phase A–E) → 350,392 → 363,141 → 373,731 → **365,940 chars / 388,595 bytes / 105,978 gzip**, cap **375,000** — **9,060 chars of room**. The cap was the binding constraint (1,269 left) until 2026-11-04, when the floating suggestion listbox was withdrawn: it cost 7,852 characters and freed the room again. D1 (rich copy) and D2 (word peek) are what closed it; their long explanations live in `PROJECT.md`, not in the shipped shell. The cap moved twice on 2026-11-04 for real features (A5 + C3, then C2) and then stopped moving: measured, not assumed, the binding constraint is the 700-line module guard, not this number. **Shell headroom item is done (2026-11-04):** the search screen moved into `12-search.js` and free practice into `27-learn-free.js`, so `10-library.js` is 477 lines (was 677) and `20-learn.js` 589 (was 686). The reader got the same split on 2026-11-04 (eighth batch): the presentation half moved to `48-reader-view.js` (184 lines), so `50-reader.js` is 426 and the next tightest is `20-learn.js` (589). Still never lazy-load `45-data.js` (13,228 chars, changes boot order + SW precache for less than the trouble).
 
-- **Current build:** `python3 build.py` ALL GREEN — 122 Python tests (including the title worksheet, boundary-audit suite and semantic audit), **958 document assertions**, 560 site-health, 10 SEO, 9,658 study, 19 migration/drill, **15 search**, 700 theme-cards, backup, offline routing; Playwright browser suite (**360 checks** over http, 351 over file://) is run by `build.py` itself and fails the build, including axe-core mobile and desktop/light-dark sweeps that must report zero violations.
+- **Current build:** `python3 build.py` ALL GREEN — 122 Python tests (including the title worksheet, boundary-audit suite and semantic audit), **955 document assertions**, 560 site-health, 10 SEO, 9,658 study, 19 migration/drill, **15 search**, 700 theme-cards, backup, offline routing; Playwright browser suite (**360 checks** over http, 351 over file://) is run by `build.py` itself and fails the build, including axe-core mobile and desktop/light-dark sweeps that must report zero violations.
 
 ## 2. Resume in five minutes
 
@@ -77,9 +77,9 @@ Everything browser loads is **generated** by `source/build_gita.py`. Never hand-
 ## 4. Build and test
 
 ```bash
-python3 build.py          # build + all checks (122 Python, 958 doc, 560 health, 9658 study, 19 migration, 15 search, 700 cards, backup, offline, 360 browser)
+python3 build.py          # build + all checks (122 Python, 955 doc, 560 health, 9658 study, 19 migration, 15 search, 700 cards, backup, offline, 360 browser)
 python3 build.py --fast   # build only
-node run_gita_app.js      # 958 assertions
+node run_gita_app.js      # 955 assertions
 node tests/test_data_backup.js
 ```
 

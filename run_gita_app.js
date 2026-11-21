@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 958;      // keep in step with the printed total (952 + 5 defect-regression locks + 1 anvaya loop)
+const TOTAL_ASSERTIONS = 955;      // keep in step with the printed total (950 + 5 anvaya locks; four UI keys went with the toggle)
 const TOTAL_BROWSER_CHECKS = 360;   // browser_checks.py, http run (348 over file://); error capture + responsive/theme axe
 const path = require('path');
 
@@ -123,7 +123,11 @@ const enKeys = Object.keys(UI.en);
 // search_suggest_hint and search_recent (2) → 230. The overlay is gone; its two
 // strings went with it.
 // The mobile search tab uses its own short label (one key, two parity checks).
-ok(enKeys.length === 237, `UI has 237 keys (got ${enKeys.length})`);
+// 2026-11-21: the anvaya lost its word list, its construed literal and its
+// toggle, so four strings went with them — anvaya_words, anvaya_words_show,
+// anvaya_words_hide, construed (4) → 233. The anvaya is now one sentence of
+// Sanskrit with a label, and a label needs no control.
+ok(enKeys.length === 233, `UI has 233 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
@@ -598,12 +602,26 @@ ok(!/\bcha\b/.test(allV.map(({ v }) => v.t).join(' ')), 'no stray ITRANS "cha" l
   for (const ref of ['11.01', '2.29', '8.10', '15.03', '2.06']) {
     ok(pm.includes(ref), `PROJECT.md lists irregular verse ${ref}`);
   }
+  // The payload must be the source, byte for byte — with ONE named exception.
+  // anv.w (the word-order mapping) and anv.lit (the construed literal) are the
+  // proof layer: source/anvaya.py computes them, tests/test_anvaya_integrity.py
+  // checks them, and the page prints neither. They stay in source/ch<N>.json and
+  // are stripped on the way out, so a reader downloads the anvaya sentence and
+  // not a hundred kilobytes of mapping per chapter. Nothing else may differ:
+  // the comparison below drops exactly those two keys and requires the rest to
+  // be identical, so a field silently added to one side still fails here.
+  const proofLayerOff = c => {
+    const copy = JSON.parse(JSON.stringify(c));
+    for (const t of copy.themes || []) for (const p of t.parts || []) for (const v of p.sutras || [])
+      if (v.anv) delete v.anv.w, delete v.anv.lit;
+    return copy;
+  };
   let payloadsMatchSource = DATA.length === 18;
   for (let n = 1; n <= 18; n++) {
     const source = JSON.parse(fs.readFileSync(path.join(__dirname, 'source', `ch${n}.json`), 'utf8'));
-    if (JSON.stringify(source) !== JSON.stringify(DATA[n - 1])) payloadsMatchSource = false;
+    if (JSON.stringify(proofLayerOff(source)) !== JSON.stringify(DATA[n - 1])) payloadsMatchSource = false;
   }
-  ok(payloadsMatchSource, 'all generated chapter payloads match canonical source JSON');
+  ok(payloadsMatchSource, 'chapter payloads match canonical source JSON (less the anvaya proof layer)');
 
   // The suite sizes drifted once across PROJECT.md, README.md and build.py --
   // three files each claiming a different, wrong number. Assert them here so a
@@ -1163,6 +1181,31 @@ group('learn + search affordances');
      'C2 Enter still submits the search');
   ok(!/'gitaRecent'/.test(html),
      'C2 the shell keeps no record of what the reader typed');
+}
+
+// ---------- the anvaya: a sentence, not a control ----------
+// The owner's decision (2026-11-21): the padachheda above the verse already
+// prints one meaning per word, so the anvaya shows the ORDER and nothing else.
+// No pairs, no construed literal, no toggle. These locks fail if any of it
+// creeps back, and they fail if the sentence itself stops shipping.
+group('anvaya');
+{
+  const allVerses = [];
+  DATA.forEach(c => (c.themes || []).forEach(t => (t.parts || []).forEach(p =>
+    (p.sutras || []).forEach(v => allVerses.push(v)))));
+  const withAnv = allVerses.filter(v => v.anv && v.anv.d);
+  ok(withAnv.length > 0, `the anvaya ships in the chapter payload (${withAnv.length} verses)`);
+  ok(withAnv.every(v => typeof v.anv.t === 'string' && v.anv.t.trim()),
+     'every published anvaya carries its IAST');
+  ok(withAnv.every(v => v.anv.w === undefined && v.anv.lit === undefined),
+     'no word-order mapping or construed literal is published');
+  ok(withAnv.every(v => !/[|॥]/.test(v.anv.d)),
+     'no published anvaya carries a daṇḍa: it is prose, not a verse line');
+  // The source keeps the proof layer even though the page does not print it.
+  const src = JSON.parse(fs.readFileSync(path.join(ROOT, 'source', 'ch1.json'), 'utf8'));
+  const first = src.themes[0].parts[0].sutras[0];
+  ok(first.anv && Array.isArray(first.anv.w) && first.anv.lit,
+     'the source still carries the proof layer the page does not print');
 }
 
 // ---------- summary ----------

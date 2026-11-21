@@ -7,6 +7,11 @@ bad Sanskrit — it is that a word arrives from the reference which our verse do
 not contain, or that a compound is rescanned into something the verse does not
 say. This test closes that gap word by word.
 
+The page shows this sentence and nothing else of the anvaya layer — no word
+list, no construed literal — so this test is now the ONLY thing standing behind
+the claim that the sentence is the verse's own words reordered. It is not
+decoration; it is the proof.
+
 Two things are allowed and nothing else:
 
 * a compound the verse's pāda keeps whole may be split in the anvaya
@@ -192,6 +197,10 @@ def _unmatched(verse):
     # A function word the reference supplies in an elliptical clause (च, एव,
     # इति, हि) is legitimate — the pads do not print it and the sentence still
     # needs it — as long as it is short, closed-class and not a name or a verb.
+    # the partner in a split may itself be a function word that was just
+    # filtered out — 2.26 prints तथापि as one row and the anvaya as तथा + अपि —
+    # so the join test below looks at every original token, not at `still`.
+    every = list(tokens)
     still = [t for t in still if t not in FUNCTION_WORDS]
     # Finally, the two spellings the applier itself reconciles: a vocative
     # re-cased into the sentence's nominative (verse परन्तप, anvaya परन्तपः), and
@@ -212,10 +221,10 @@ def _unmatched(verse):
         # splits yadṛcchayā into yat + ṛcchayā, and the verse prints one word.
         # Joining happens in IAST, where the sandhi rules are defined.
         if any(_same_word(_join_iast([t, u]), w)
-               for u in still for w in iast_units):
+               for u in every for w in iast_units):
             continue
         if any(_same_word(_join_iast([u, t]), w)
-               for u in still for w in iast_units):
+               for u in every for w in iast_units):
             continue
         kept.append(t)
     return kept
@@ -227,30 +236,6 @@ def _join_iast(tokens):
     from indic_transliteration.sanscript import transliterate as tr
     words = [tr(t, sc.DEVANAGARI, sc.IAST) for t in tokens]
     return _join(words)
-
-
-def _declined(verse):
-    """A verse whose anvaya this edition did not take from the reference.
-
-    The applier marks these in the data rather than omitting the fields, and the
-    reason is recorded in source/reference/gita_anvaya_ch*.itx. Anything else —
-    a mapped verse with no construed literal, a word order that drops a row —
-    still fails.
-    """
-    return bool(verse.get("anv", {}).get("declined"))
-
-
-def _join_iast(tokens):
-    """Join tokens the way the verse prints them, via the sandhi rules."""
-    from indic_transliteration import sanscript as sc
-    from indic_transliteration.sanscript import transliterate as tr
-    words = [tr(t, sc.DEVANAGARI, sc.IAST) for t in tokens]
-    return _join(words)
-
-
-def _declined(verse):
-    """A verse whose anvaya this edition did not take from the reference."""
-    return bool(verse.get("anv", {}).get("declined"))
 
 
 def _load():
@@ -273,11 +258,6 @@ class AnvayaIntegrity(unittest.TestCase):
     def test_every_anvaya_word_is_in_its_verse(self):
         failures = []
         for verse in self._verses():
-            if _declined(verse):
-                # this edition did not take the reference's sentence for this
-                # verse, so its words are not expected to be the verse's words.
-                # The reason is recorded in the reference file, not ignored.
-                continue
             stray = _unmatched(verse)
             if stray:
                 failures.append(f"{verse['n']}: not in the verse -> {' '.join(stray)}")
@@ -307,8 +287,7 @@ class AnvayaIntegrity(unittest.TestCase):
         for verse in self._verses():
             lit = verse["anv"].get("lit")
             if not lit:
-                if not _declined(verse):
-                    failures.append(f"{verse['n']}: mapped anvaya with no construed literal")
+                failures.append(f"{verse['n']}: anvaya with no construed literal")
                 continue
             rows = [w for it in verse["flow"] for w in it.get("words", [])]
             glosses = {w[2].replace(", ", " / ") for w in rows}
@@ -354,18 +333,26 @@ class AnvayaIntegrity(unittest.TestCase):
                                     "disagrees with its word order")
         self.assertEqual([], failures, "\n" + "\n".join(failures))
 
-    def test_declined_verses_say_why(self):
-        """A verse without an anvaya must carry a real reason, not a blank."""
-        for chapter in _load():
-            for theme in chapter["themes"]:
-                for part in theme["parts"]:
-                    for verse in part["sutras"]:
-                        anv = verse.get("anv") or {}
-                        if "declined" in anv:
-                            self.assertGreater(len(anv["declined"]), 40,
-                                               f"{verse['n']}: the reason is too short to be one")
-                            self.assertNotIn("lit", anv,
-                                             f"{verse['n']}: declined asks for no literal")
+    def test_no_verse_is_left_without_an_anvaya(self):
+        """Every verse of a transcribed chapter carries one.
+
+        An earlier design "declined" a verse whose reference reading disagreed
+        with ours and shipped no anvaya for it. That left the reader with a hole
+        where the page is supposed to teach word order, and it hid the
+        disagreement inside the data. Where the two witnesses differ the anvaya
+        now follows the second witness and the difference is written up in
+        source/reference/gita_anvaya_ch*.itx — so there is no longer such a
+        thing as a verse without an anvaya, and a missing one is a defect.
+        """
+        empty = [v["n"] for v in self._verses()
+                 if not (v.get("anv") or {}).get("d", "").strip()]
+        self.assertEqual([], empty, "verses with no anvaya: " + " ".join(empty))
+
+    def test_no_stale_declined_flag(self):
+        """The declined marker is gone from the model; no verse may keep one."""
+        stale = [v["n"] for v in self._verses()
+                 if "declined" in (v.get("anv") or {})]
+        self.assertEqual([], stale, "stale declined flags: " + " ".join(stale))
 
     def test_word_order_covers_every_row_once(self):
         """anv.w must place every row of the verse exactly once.
@@ -377,8 +364,6 @@ class AnvayaIntegrity(unittest.TestCase):
         """
         failures = []
         for verse in self._verses():
-            if _declined(verse):
-                continue
             total = sum(len(it.get("words", [])) for it in verse["flow"])
             placed = []
             for tok in verse["anv"].get("w", []):
@@ -404,8 +389,6 @@ class AnvayaIntegrity(unittest.TestCase):
         changed = 0
         total = 0
         for verse in self._verses():
-            if _declined(verse):
-                continue
             total += 1
             anv = " ".join(_tokens(verse["anv"]["d"]))
             pada = " ".join(_rows(verse))

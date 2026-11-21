@@ -16,7 +16,7 @@ VERSE_KEYS = {"n", "d", "t", "flow", "lits", "paras"}
 # transcribed reference, so it is allowed but not yet required on every verse.
 # When present it is validated as strictly as everything else.
 VERSE_OPTIONAL_KEYS = {"anv"}
-ANVAYA_KEYS = {"d", "t", "w", "lit", "declined"}
+ANVAYA_KEYS = {"d", "t", "w", "lit"}
 FLOW_PAD_KEYS = {"k", "d", "t", "n", "words"}
 FLOW_SPEAKER_KEYS = {"k", "d", "t", "words"}
 RANGE_RE = re.compile(r"^(\d+)\.(\d{2})–(\d+)\.(\d{2})$")
@@ -243,7 +243,7 @@ def validate_chapters(chapters):
                     if "anv" in verse:
                         anv = verse["anv"]
                         if exact_object(anv, ANVAYA_KEYS, f"{vw}.anv",
-                                        optional={"w", "lit", "declined"}):
+                                        optional={"w", "lit"}):
                             if nonempty_text(anv.get("d"), f"{vw}.anv.d"):
                                 if not any("\u0900" <= ch <= "\u097f"
                                            for ch in anv["d"]):
@@ -257,15 +257,6 @@ def validate_chapters(chapters):
                                 anvaya_words(anv["w"], f"{vw}.anv.w")
                             if "lit" in anv:
                                 language_map(anv["lit"], f"{vw}.anv.lit")
-                            if "declined" in anv:
-                                # a verse whose anvaya follows a reading other
-                                # than our verse's. The reason lives in the
-                                # reference file; here it must be a short
-                                # string, so a bare flag cannot pass as one.
-                                if not isinstance(anv["declined"], str) or \
-                                        len(anv["declined"]) < 12:
-                                    fail(f"{vw}.anv.declined",
-                                         "must name why this verse has no anvaya")
                     language_map(verse.get("lits"), f"{vw}.lits")
                     language_map(verse.get("paras"), f"{vw}.paras")
 

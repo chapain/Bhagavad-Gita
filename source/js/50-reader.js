@@ -558,6 +558,5 @@ App.reader = Object.freeze({
   navigate: navSutra,
   shareText: verseShareText,
   padaBlock: padaBlockDeva,
-  toggleVerseExpansion: toggleVerseExpansion,
-  toggleAnvayaWords: toggleAnvayaWords
+  toggleVerseExpansion: toggleVerseExpansion
 });

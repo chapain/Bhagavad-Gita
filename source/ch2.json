@@ -5653,8 +5653,8 @@
                 "hi": "“यदि तू भूल से आत्मा को लगातार जन्मती-मरती हुई मानता है, अर्जुन — तब भी शोक नहीं करना चाहिए।”"
               },
               "anv": {
-                "d": "अथ च एनम् नित्यजातम्, नित्यम् वा मृतम् मन्यसे, तथा अपि हे महाबाहो! त्वम् एनम् शोचितुम् न अर्हसि।",
-                "t": "atha ca enam nitya-jātam, nityam vā mṛtam manyase, tathā api he mahā-bāho! tvam enam śocitum na arhasi|",
+                "d": "अथ च एनम् नित्यजातम्, नित्यम् वा मृतम् मन्यसे, तथा अपि हे महाबाहो! त्वम् एवम् शोचितुम् न अर्हसि।",
+                "t": "atha ca enam nitya-jātam, nityam vā mṛtam manyase, tathā api he mahā-bāho! tvam evam śocitum na arhasi|",
                 "w": [
                   0,
                   1,
@@ -5684,15 +5684,16 @@
                   },
                   10,
                   9,
-                  {
-                    "t": "एनम्",
-                    "i": "enam"
-                  },
+                  12,
                   13,
                   11,
                   14
                 ],
-                "declined": "the reference's anvaya follows a different reading of this verse; see source/reference/gita_anvaya_ch*.itx"
+                "lit": {
+                  "en": "but, and, this, ever-born, always, or, dead, you think, even then, even then, O, O mighty-armed one, you, thus, to grieve, not, you ought",
+                  "ne": "तर र यसलाई नित्य जन्मने सधैँ वा मरेको सोच्छौ तैपनि तैपनि हे हे महाबाहो तिमी यसरी शोक गर्न न योग्य छौ",
+                  "hi": "किन्तु और इसे नित्य जन्मने वाला सदा या मरा हुआ सोचता है फिर भी फिर भी हे हे महाबाहु तुम इस प्रकार शोक करना नहीं योग्य हो"
+                }
               }
             }
           ]
@@ -12760,14 +12761,18 @@
                 "hi": "“किन्तु आत्म-संयमी, इन्द्रियों को वश में रखकर, राग-द्वेष के बिना विषयों के बीच चलता है — और शान्ति जीतता है।”"
               },
               "anv": {
-                "d": "विधेयात्मा तु रागद्वेषविमुक्तैः आत्मवश्यैः इन्द्रियैः विषयान् चरन् प्रसादम् अधिगच्छति।",
-                "t": "vidheya-ātmā tu rāga-dveṣa-vimuktaiḥ ātma-vaśyaiḥ indriyaiḥ viṣayān caran prasādam adhigacchati|",
+                "d": "विधेयात्मा तु रागद्वेषवियुक्तैः आत्मवश्यैः इन्द्रियैः विषयान् चरन् प्रसादम् अधिगच्छति।",
+                "t": "vidheya-ātmā tu rāga-dveṣa-viyuktaiḥ ātma-vaśyaiḥ indriyaiḥ viṣayān caran prasādam adhigacchati|",
                 "w": [
                   8,
                   3,
                   {
-                    "t": "राग-द्वेष-विमुक्तैः",
-                    "i": "rāgadveṣavimuktaiḥ"
+                    "r": [
+                      0,
+                      1,
+                      2
+                    ],
+                    "t": "राग-द्वेष-वियुक्तैः"
                   },
                   7,
                   5,
@@ -12776,7 +12781,11 @@
                   9,
                   10
                 ],
-                "declined": "the reference's anvaya follows a different reading of this verse; see source/reference/gita_anvaya_ch*.itx"
+                "lit": {
+                  "en": "the disciplined one, indeed, attachment aversion free from, self-controlled, with the senses, among objects, moving, serenity, attains",
+                  "ne": "संयत आत्मा तर आसक्ति द्वेष रहित आत्मवश इन्द्रियहरूद्वारा विषयहरू चल्दै प्रसन्नता प्राप्त गर्दछ",
+                  "hi": "संयत आत्मा पर आसक्ति द्वेष रहित आत्म-संयमी इन्द्रियों से विषय चलता हुआ प्रसन्नता प्राप्त करता है"
+                }
               }
             }
           ]

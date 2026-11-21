@@ -3752,29 +3752,21 @@
                 "hi": "“ऐसा व्यक्ति कुछ करने या न करने में अपना कोई निजी लाभ नहीं खोजता। वह किसी मनुष्य पर निर्भर नहीं है।”"
               },
               "anv": {
-                "d": "इह कृतेन तस्य अर्थः न एव\\, अकृतेन (अपि) कश्चन अस्य (अर्थः) न\\, (तथा) सर्वभूतेषु च (अस्य) कश्चित् अर्थव्यपाश्रयः न।",
-                "t": "iha kṛtena tasya arthaḥ na eva\\, akṛtena (api) kaścana asya (arthaḥ) na\\, (tathā) sarva-bhūteṣu ca (asya) kaścit artha-vyapāśrayaḥ na|",
+                "d": "इह तस्य कृतेन अर्थः न एव\\, न अकृतेन कश्चन\\, न च अस्य सर्वभूतेषु कश्चित् अर्थव्यपाश्रयः।",
+                "t": "iha tasya kṛtena arthaḥ na eva\\, na akṛtena kaścana\\, na ca asya sarva-bhūteṣu kaścit artha-vyapāśrayaḥ|",
                 "w": [
                   7,
-                  3,
                   2,
+                  3,
                   4,
                   0,
                   1,
-                  6,
-                  {
-                    "t": "अपि",
-                    "i": "api",
-                    "sup": "api"
-                  },
-                  8,
-                  11,
-                  15,
                   5,
-                  {
-                    "t": "तथा",
-                    "i": "tathā"
-                  },
+                  6,
+                  8,
+                  9,
+                  10,
+                  11,
                   {
                     "r": [
                       12,
@@ -3782,19 +3774,20 @@
                     ],
                     "t": "सर्व-भूतेषु"
                   },
-                  10,
-                  {
-                    "t": "अस्य",
-                    "i": "asya"
-                  },
                   14,
                   {
-                    "t": "अर्थ-व्यपाश्रयः",
-                    "i": "arthavyapāśrayaḥ"
-                  },
-                  9
+                    "r": [
+                      15,
+                      16
+                    ],
+                    "t": "अर्थ-व्यपाश्रयः"
+                  }
                 ],
-                "declined": "the reference's anvaya does not match this verse's words — it follows a different reading, or writes an elliptical sentence out in full by supplying and repeating words. See source/reference/gita_anvaya_ch*.itx for this verse's entry."
+                "lit": {
+                  "en": "here, for him, by what is done, purpose, not, indeed, nor, by what is not done, any, nor, and, of him, among beings all, any, dependence of purpose",
+                  "ne": "यहाँ त्यसको गरिएकोबाट प्रयोजन न नै न नगरिएकोबाट कोही न र उसको सबै प्राणीहरूमा कोही प्रयोजनको भरोसा",
+                  "hi": "यहाँ उसका किये से प्रयोजन नहीं ही नहीं न किये से कोई नहीं और उसका प्राणियों में सब कोई भरोसा प्रयोजन का"
+                }
               }
             }
           ]

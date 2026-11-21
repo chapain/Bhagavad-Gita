@@ -5,10 +5,6 @@ UI = {
  "en": {
   "anvaya": "Natural word order",
   "anvaya_of": "Anvaya · the verse in natural prose order",
-  "anvaya_words": "Word by word, in anvaya order",
-  "anvaya_words_show": "Show the words in this order",
-  "anvaya_words_hide": "Hide the word order",
-  "construed": "Construed literal",
   "app_sub": "श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 quarters",
   "app_title": "Bhagavad Gita — an Interactive Study",
   "back_chapter_one": "← Back to chapter",
@@ -244,10 +240,6 @@ UI = {
  "ne": {
   "anvaya": "अन्वय",
   "anvaya_of": "अन्वय · पदको स्वाभाविक क्रममा",
-  "anvaya_words": "अन्वय-क्रममा शब्दार्थ",
-  "anvaya_words_show": "यस क्रममा शब्द अर्थसहित हेर्नुहोस्",
-  "anvaya_words_hide": "शब्दक्रम लुकाउनुहोस्",
-  "construed": "अन्वय-अर्थ",
   "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा",
   "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन",
   "back_chapter_one": "← अध्यायमा फर्कनुहोस्",
@@ -483,10 +475,6 @@ UI = {
  "hi": {
   "anvaya": "अन्वय",
   "anvaya_of": "अन्वय · पदों का स्वाभाविक क्रम",
-  "anvaya_words": "अन्वय-क्रम में शब्दार्थ",
-  "anvaya_words_show": "इस क्रम में शब्द अर्थसहित देखें",
-  "anvaya_words_hide": "शब्दक्रम छिपाएँ",
-  "construed": "अन्वय-अर्थ",
   "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में",
   "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन",
   "back_chapter_one": "← अध्याय पर लौटें",

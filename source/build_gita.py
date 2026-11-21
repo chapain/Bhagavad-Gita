@@ -388,7 +388,29 @@ with open(os.path.join(BASE, "study_map_contract.json"), encoding="utf-8") as _m
     _legacy_maps = json.load(_mf)["legacy_map_options"]
 _legacy_maps_js = json.dumps(_legacy_maps, ensure_ascii=False, separators=(",", ":"))
 _font_css = _font_face()
-data_js = [f"GITA_CH[{ch['num']}] = {json.dumps(ch, ensure_ascii=False)};\n" for ch in data]
+def _published(chapter):
+    """The chapter as it ships: the anvaya's sentence, and nothing else of it.
+
+    anv.w (the word-order mapping) and anv.lit (the construed literal) are the
+    proof layer, not the reading layer. The page prints the anvaya sentence on
+    its own — no word list, no construed literal — so shipping those two fields
+    would put a hundred kilobytes per chapter on every reader's first visit for
+    data no view reads. They stay in source/ch<N>.json, where
+    tests/test_anvaya_integrity.py checks them against the verse.
+    """
+    out = json.loads(json.dumps(chapter))          # deep copy, no aliasing
+    for theme in out["themes"]:
+        for part in theme["parts"]:
+            for verse in part["sutras"]:
+                anv = verse.get("anv")
+                if anv:
+                    verse["anv"] = {k: v for k, v in anv.items()
+                                    if k in ("d", "t")}
+    return out
+
+
+data_js = [f"GITA_CH[{ch['num']}] = {json.dumps(_published(ch), ensure_ascii=False)};\n"
+           for ch in data]
 
 _ch_len = "[" + ",".join(str(ch["verses"]) for ch in data) + "]"
 _loader = (

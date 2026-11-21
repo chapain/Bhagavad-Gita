@@ -81,7 +81,7 @@ he pArtha##!## evaM pravartitam.h chakram.h yaH iha na anuvartayati\, saH indriy
 yaH tu mAnavaH Atma-ratiH eva\, Atma-tR^iptaH cha\, Atmani eva cha santuShTaH syAt.h tasya kAryam.h na vidyate .
 
 .. 3.18..   {ref 3-18}
-iha kR^itena tasya arthaH na eva\, akR^itena ##(##api##)## kashchana asya ##(##arthaH##)## na\, ##(##tathA##)## sarva-bhUteShu cha ##(##asya##)## kashchit.h artha-vyapAshrayaH na .
+iha tasya kR^itena arthaH na eva\, na akR^itena kashchana\, na cha asya sarva-bhUteShu kashchit.h artha-vyapAshrayaH .
 
 .. 3.19..   {ref 3-19}
 tasmAt.h ##(##tvaM##)## asaktaH ##(##san.h##)## satatam.h kAryam.h karma samAchara\, hi pUruShaH asaktaH ##(##san.h##)## karma Acharan.h\, param.h Apnoti .
@@ -158,14 +158,21 @@ indriyANi parANi AhuH\, indriyebhyaH manaH param.h\, manasaH tu buddhiH parA\, y
 .. 3.43..   {ref 3-43}
 he mahAbAho##!## evam.h ##(##AtmAnaM##)## buddheH param.h buddhvA AtmanA AtmAnam.h sa.nstabhya\, kAma-rUpam.h durAsadam.h shatrum.h jahi .
 # ---------------------------------------------------------------------------
-# WHERE THIS EDITION DECLINES THE REFERENCE
+# WHERE THIS EDITION DIFFERS FROM THE REFERENCE
 #
-# 3.18. Our verse: "naiva tasya kṛtenārtho nākṛteneha kaścana | na cāsya
-#   sarvabhūteṣu kaścid arthavyapāśrayaḥ". The reference writes the ellipsis
-#   out in full — it supplies api, tathā and a second asya, and repeats arthaḥ
-#   where the verse has arthaḥ once and artha inside the compound
-#   arthavyapāśrayaḥ. The resulting sentence has three words and one meaning
-#   more than the verse carries, so an anvaya built from it could not also
-#   claim to hold only the verse's words. The verse's sense is not in doubt;
-#   what is declined is the reference's expansion, not the verse.
-# ---------------------------------------------------------------------------
+# 3.18. The reference (anvayasandhivigraha) writes this verse's ellipsis out in
+#   full, supplying api and tathā, repeating asya, and repeating arthaḥ. That is
+#   a commentarial expansion, not the verse: its sentence carries words and a
+#   meaning that ours does not.
+#
+#   Gita Press's Padachchheda-Anvaya (book code 17) supplies nothing here. Its
+#   padachheda for this verse is our verse word for word — na, eva, tasya,
+#   kṛtena, arthaḥ, na, akṛtena, iha, kaścana, na, ca, asya, sarvabhūteṣu,
+#   kaścit, arthavyapāśrayaḥ — and its anvaya keeps that order without adding
+#   to it. So the anvaya above is Gita Press's, and the reference's expansion is
+#   recorded here instead of being used. The supplied api is an Advaita gloss on
+#   akṛtena ("even by non-action") — the kind of thing a paraphrase may say and
+#   a construal, which claims to hold only the verse's words, must not.
+#
+#   This is the one verse in chapters 1–3 where the two witnesses disagree about
+#   what the sentence IS, rather than about how to spell a word of it.

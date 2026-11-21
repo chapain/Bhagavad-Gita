@@ -106,7 +106,7 @@ ayam.h achChedyaH, ayam.h adAhyaH, ayam.h akledyaH, ##(##ayam.h##)## ashoShyaH c
 ayam.h avyaktaH, ayam.h achintyaH, ayam.h avikAryaH uchyate . tasmAt.h enam.h evam.h viditvA ##(##tvaM##)## anushochitum.h na arhasi .
 
 .. 2.26..   {ref 2-26}
-atha cha enam.h nitya-jAtam.h, nityam.h vA mR^itam.h manyase , tathA api he mahA-bAho##!## tvam.h enam.h shochitum na arhasi .
+atha cha enam.h nitya-jAtam.h, nityam.h vA mR^itam.h manyase , tathA api he mahA-bAho##!## tvam.h evam.h shochitum na arhasi .
 
 .. 2.27..   {ref 2-27}
 hi jAtasya mR^ityuH dhruvaH, mR^itasya cha janma dhruvam.h, tasmAt.h aparihArye arthe tvam.h shochitum.h na arhasi .
@@ -208,7 +208,7 @@ tAni sarvANi sa.nyamya yuktaH mat.h-paraH AsIta . hi yasya vashe indriyANi tasya
 viShayAn.h dhyAyataH pu.nsaH teShu sa~NgaH upajAyate . sa~NgAt.h kAmaH sa~njAyate . kAmAt.h krodhaH abhijAyate .
 
 .. 2.64..   {ref 2-64}
-vidheya-AtmA tu rAga-dveSha-vimuktaiH Atma-vashyaiH indriyaiH viShayAn.h charan.h prasAdam.h adhigachChati .
+vidheya-AtmA tu rAga-dveSha-viyuktaiH Atma-vashyaiH indriyaiH viShayAn.h charan.h prasAdam.h adhigachChati .
 
 .. 2.65..   {ref 2-65}
 prasAde asya sarva-duHkhAnAm.h hAniH upajAyate . prasanna-chetasaH hi buddhiH Ashu paryavatiShThate .
@@ -254,22 +254,27 @@ he pArtha##!## eShA brAhmI sthitiH, enAm.h prApya na vimuhyati, antakAle api asy
 # trailing verse id, so it cannot be attributed mechanically; it is cut by hand.
 #
 # ---------------------------------------------------------------------------
-# WHERE THIS EDITION DECLINES THE REFERENCE
+# WHERE THIS EDITION DIFFERS FROM THE REFERENCE
 #
-# Two verses in this chapter are not given an anvaya, because the reference's
-# reading of them is not our verse's reading. Both differences are substantive,
-# and an anvaya that follows the reference here would teach the wrong sentence.
+# Two verses in this chapter have an anvaya whose wording this edition took from
+# a second witness, because the reference's first witness does not read the
+# verse the way our page reads it. The divergence is recorded, not smoothed
+# away: an anvaya that follows the reference here would teach a different verse.
 #
-# 2.26. Our verse: "tathāpi tvaṃ mahābāho naivaṃ śocitumarhasi" — "even then,
-#   O mighty-armed one, you should not grieve thus". The reference's anvaya
-#   reads "tvam enam śocitum na arhasi": it turns the object of grief into
-#   enam, drops evam, and moves the negation. Our Reading and word rows say
-#   naivaṃ, so following it would contradict both.
+# 2.26. Our verse prints "tathāpi tvaṃ mahābāho naivaṃ śocitumarhasi" — "even
+#   then, O mighty-armed one, you should not grieve THUS". The reference writes
+#   "tvam enam śocitum na arhasi": it turns the object of grief into enam, which
+#   the verse does not have in that pāda, and drops evam. Gita Press's
+#   padachheda and anvaya both read na evam ("not thus"), and its anvaya
+#   supplies nothing but the pronoun — tathāpi tvam mahābāho na evam śocitum
+#   arhasi. The anvaya above keeps the reference's order and puts our verse's
+#   evam where the verse has it; every other word of it is unchanged.
 #
-# 2.64. Our verse prints "rāgadveṣaviyuktais tu" (vi-yukta, freed from); the
-#   reference's anvaya writes "rāgadveṣavimuktaiḥ" (vi-mukta, released). A real
-#   variant reading, not a spelling of the same word. Our verse is viyuktaiḥ.
+# 2.64. Our verse prints "rāgadveṣaviyuktaiḥ" (vi-yukta, freed from); the
+#   reference's anvaya writes "rāgadveṣavimuktaiḥ" (vi-mukta, released). Gita
+#   Press reads viyuktaiḥ, as our page does. The anvaya above uses viyuktaiḥ,
+#   the verse's own word, and keeps the reference's order and nothing else.
 #
-# Neither is a defect to fix; both are cases where a second witness would decide
-# between readings. Recorded here so they are not silently dropped.
-# ---------------------------------------------------------------------------
+# Both differences are single words, so both are visible by comparing the
+# stanza above with the verse: that is the point of keeping the divergence in
+# the open rather than leaving the verse with no anvaya at all.

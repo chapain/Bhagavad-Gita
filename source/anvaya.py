@@ -786,21 +786,23 @@ def annotate(data, chapter):
         if missing:
             # A row the anvaya never mentions — the reference leaves it implicit
             # (1.09's madarthe) or folds it away. Composing anyway would print a
-            # literal that silently drops a word, so it is left absent and
-            # reported for a human to resolve.
-            report["no_literal"].append((verse_id, [verse["flow"][0]["words"] and
-                [w for it in verse["flow"] for w in it["words"]][i][0]
-                for i in missing]))
+            # literal that silently drops a word, so it is left absent. The
+            # ANVAYA still ships: the reader asked for the Sanskrit prose, and
+            # the prose is a whole sentence whether or not our mapping can
+            # account for every row. What the verse loses is the checkable
+            # literal, and the gap is named here so it is never silent.
+            report["no_literal"].append((verse_id, _row_words(verse, missing)))
             verse["anv"].pop("lit", None)
-            verse["anv"]["declined"] = (
-                "the reference's anvaya does not match this verse's words — it "
-                "follows a different reading, or writes an elliptical sentence "
-                "out in full by supplying and repeating words. See "
-                "source/reference/gita_anvaya_ch*.itx for this verse's entry.")
             continue
         verse["anv"]["lit"] = construed_literal(verse, tokens)
         report["mapped"] += 1
     return report
+
+
+def _row_words(verse, indices):
+    """The Devanagari of those rows, for reporting a gap by name."""
+    rows = [w for it in verse["flow"] for w in it.get("words", [])]
+    return [rows[i][0] for i in indices if i < len(rows)]
 
 
 if __name__ == "__main__":
