@@ -1,0 +1,171 @@
+# gita_anvaya_ch03.itx — anvaya (prose word order) of Bhagavad Gita 3, verses 3.1–3.43
+# section: the whole chapter.
+#
+# PROVENANCE. Transcribed from the anonymous "gItA sandhivigraha anvaya" edition
+# on sanskritdocuments.org —
+#
+#   https://sanskritdocuments.org/doc_giitaa/gitAanvayasandhivigraha.itx
+#   transliterated and proofread by Sunder Hattangadi, latest update 2008-07-04
+#
+# That file presents the whole Gita with padaccheda and a traditional anvaya for
+# every verse. It is the source of record for the WORDING of every anvaya here:
+# nothing below is composed by this project. What this project decides for
+# itself is only (a) where one reference sentence that spans two printed verses
+# is divided between our verses, and (b) punctuation. Both are marked inline with
+# "SPLIT:" and recorded in PROJECT.md. The applier (source/anvaya.py) turns this
+# into Devanagari + IAST and writes it into source/ch1.json as each verse's "anv".
+#
+# FORMAT. ".. S.." is the verse id the anvaya is filed under IN THIS EDITION.
+# TRANSCRIBED VERSES: 3.01–3.43, all forty-three.
+# The bracketed "ref 2-N" is the verse as the reference prints it, so the mapping
+# to the source stays auditable. ITRANS escapes used by the reference:
+#   ##!## "!"   ##?## "?"   ##[## "["   ##]## "]"   ##(## "("   ##)## ")"
+#   ##'## "'"   .h / H visarga   M anusvara   ~N ङ   ~n ञ   j~n / GY ज्ञ
+#   R^i ऋ   Sh ष   A hyphen inside a word marks a compound break and is kept.
+# ज्ञ is written j~n throughout here; the reference mixes j~n and GY for the same
+# syllable and the applier should not have to know both.
+#
+
+
+# ---------------------------------------------------------------------------
+
+.. 3.01..   {ref 3-1}
+he janArdana##!## karmaNaH buddhiH jyAyasI te matA chet.h\, tat.h he keshava##!## mAm.h ghore karmaNi kim.h niyojayasi ##?##
+
+.. 3.02..   {ref 3-2}
+vyAmishreNa iva vAkyena me buddhiM mohayasi iva . tat.h nishchitya ekaM vada\, yena aham.h shreyaH ApnuyAm.h .
+
+.. 3.03..   {ref 3-3}
+he anagha##!## asmin.h loke sA~NkhyAnAm.h GYAna-yogena\, yoginAm.h karma-yogena dvividhA niShThA purA mayA proktA .
+
+.. 3.04..   {ref 3-4}
+karmaNAm.h anArambhAt.h puruShaH naiShkarmyaM na ashnute . ##(##karmaNAM##)## cha sa.nnyasanAt.h eva siddhim.h na samadhigachChati .
+
+.. 3.05..   {ref 3-5}
+kashchit.h jAtu kShaNam.h api akarmakR^it.h na hi tiShThati . prakR^itijaiH guNaiH sarvaH hi avashaH karma kAryate .
+
+.. 3.06..   {ref 3-6}
+yaH karma-indriyANi sa.nyamya\, manasA indriyArthAn.h smaran.h Aste\, saH vimUDhAtmA mithyAchAraH uchyate .
+
+.. 3.07..   {ref 3-7}
+he arjuna ##!## yaH tu manasA indriyANi niyamya\, asaktaH karma-indriyaiH karma-yogam.h Arabhate\, saH vishiShyate .
+
+.. 3.08..   {ref 3-8}
+tvaM niyatam.h karma kuru\, akarmaNaH hi karma jyAyaH . te sharIra-yAtrA cha api akarmaNaH na prasid.hdhyet.h .
+
+.. 3.09..   {ref 3-9}
+yaGYArthAt.h karmaNaH anyatra ayam.h lokaH karma-bandhanaH . he kaunteya##!## mukta-sa~NgaH tat.h artham.h karma samAchara .
+
+.. 3.10..   {ref 3-10}
+purA prajApatiH saha-yaGYAH prajAH sR^iShTvA ##'##anena ##(##yUyaM##)## prasaviShyadhvam.h\, eShaH vaH iShTa-kAmadhuk.h astu##'## ##(##iti##)##  uvAcha .
+
+.. 3.11..   {ref 3-11}
+anena ##(##yUyaM##)## devAn.h bhAvayata\, te devAH vaH bhAvayantu\, ##(##evaM##)## parasparaM bhAvayantaH param.h shreyaH avApsyatha .
+
+.. 3.12..   {ref 3-12}
+yaGYa-bhAvitAH devAH vaH iShTAn.h bhogAn.h dAsyante . taiH dattAn.h ebhyaH apradAya\, yaH bhu~Nkte\, saH hi stenaH eva .
+
+.. 3.13..   {ref 3-13}
+yaGYa-shiShTa AshinaH santaH sarva-kilbiShaiH muchyante . ye tu Atma-kAraNAt.h pachanti\, te pApAH aghaM bhu~njate .
+
+.. 3.14..   {ref 3-14}
+bhUtAni annAt.h bhavanti\, parjanyAt.h anna-sambhavaH\, parjanyaH yaGYAt.h bhavati\, yaGYaH karma-samudbhavaH .
+
+.. 3.15..   {ref 3-15}
+karma brahma-udbhava.n viddhi\, brahma akShara-samudbhavam.h\, tasmAt.h sarvagataM brahma yaGYe nityaM pratiShThitam.h .
+
+.. 3.16..   {ref 3-16}
+he pArtha##!## evaM pravartitam.h chakram.h yaH iha na anuvartayati\, saH indriya-ArAmaH aghAyuH mogham.h jIvati .
+
+.. 3.17..   {ref 3-17}
+yaH tu mAnavaH Atma-ratiH eva\, Atma-tR^iptaH cha\, Atmani eva cha santuShTaH syAt.h tasya kAryam.h na vidyate .
+
+.. 3.18..   {ref 3-18}
+iha kR^itena tasya arthaH na eva\, akR^itena ##(##api##)## kashchana asya ##(##arthaH##)## na\, ##(##tathA##)## sarva-bhUteShu cha ##(##asya##)## kashchit.h artha-vyapAshrayaH na .
+
+.. 3.19..   {ref 3-19}
+tasmAt.h ##(##tvaM##)## asaktaH ##(##san.h##)## satatam.h kAryam.h karma samAchara\, hi pUruShaH asaktaH ##(##san.h##)## karma Acharan.h\, param.h Apnoti .
+
+.. 3.20..   {ref 3-20}
+hi janaka-AdayaH karmaNA eva sa.nsiddhim.h AsthitAH . ##(##tvaM##)## api loka-sa.ngraham.h eva sampashyan.h kartum.h arhasi .
+
+.. 3.21..   {ref 3-21}
+yat.h yat.h shreShThaH Acharati tat.h tat.h eva itaraH janaH ##(## Acharati##)##. saH yat.h pramANam.h kurute\, lokaH tat.h anuvartate .
+
+.. 3.22..   {ref 3-22}
+he pArtha##!## ##(##yadyapi##)## me triShu lokeShu ki~nchana kartavyam.h na asti\, anavAptam.h avAptavyam.h cha na ##(##asti, tathA api ahaM##)## karmaNi varte eva .
+
+.. 3.23..   {ref 3-23}
+yadi hi ahaM atandritaH ##(##san.h##)## karmaNi jAtu na varteyam.h\, ##(##tarhi##)## he pArtha##!## manuShyAH sarvashaH mama vartma anuvartante .
+
+.. 3.24..   {ref 3-24}
+aham.h karma na kuryAm.h chet.h ime lokAH utsIdeyuH\, sa~Nkarasya kartA syAm.h imAH prajAH cha upahanyAm.h .
+
+.. 3.25..   {ref 3-25}
+he bhArata##!## avidvA.nsaH yathA karmaNi saktAH ##(##karma##)## kurvanti\, tathA loka-sa.ngraham.h chikIrShuH vidvAn.h asaktaH ##(##san.h karma##)## kuryAt.h .
+
+.. 3.26..   {ref 3-26}
+vidvAn.h karma-sa~NginAm.h aGYAnAm.h buddhi-bhedam.h na janayet.h ##(##kintu##)## yuktaH samAcharan.h sarva-karmANi joShayet.h .
+
+.. 3.27..   {ref 3-27}
+prakR^iteH guNaiH karmANi sarvashaH kriyamANAni ##(##santi, parantu##)## aha~NkAra-vimUDha-AtmA ##'##aham.h##'## kartA iti manyate .
+
+.. 3.28..   {ref 3-28}
+he mahAbAho##!## guNa-karma-vibhAgayoH tattvavit.h tu ##'##guNAH guNeShu vartante##'## iti matvA na sajjate .
+
+.. 3.29..   {ref 3-29}
+prakR^iteH guNa-sammUDhAH guNa-karmasu sajjante\, tAn.h akR^itsnavidaH mandAn.h kR^itsnavit.h na vichAlayet.h .
+
+.. 3.30..   {ref 3-30}
+mayi adhyAtma-chetasA sarvANi karmANi sa.nnyasya nirAshIH nirmamaH vigata-jvaraH bhUtvA\, yudhyasva .
+
+.. 3.31..   {ref 3-31}
+ye mAnavAH shraddhAvantaH anasUyantaH idam.h me matam.h nityam.h anutiShThanti\, te api karmabhiH muchyante .
+
+.. 3.32..   {ref 3-32}
+ye tu etat.h abhyasUyantaH me matam.h na anutiShThanti\, tAn.h sarva-GYAna-vimUDhAn.h achetasaH naShTAn.h viddhi .
+
+.. 3.33..   {ref 3-33}
+GYAnavAn.h api svasyAH prakR^iteH sadR^isham.h cheShTate . bhUtAni prakR^itim.h yAnti . nigrahaH kim.h kariShyati ##?##
+
+.. 3.34..   {ref 3-34}
+indriyasya-arthe indriyasya rAga-dveShau vyavasthitau\, tayoH vasham na AgachChet.h . tau hi asya paripanthinau .
+
+.. 3.35..   {ref 3-35}
+svanuShThitAt.h paradharmAt.h viguNaH svadharmaH ##(##api##)## shreyAn.h . svadharme nidhanam.h shreyaH . paradharmaH bhaya-AvahaH .
+
+.. 3.36..   {ref 3-36}
+he vArShNeya##!## atha kena prayuktaH ayaM pUruShaH anichChan.h api\, balAt.h niyojitaH iva pApam.h charati##?##
+
+.. 3.37..   {ref 3-37}
+rajaH guNa-samudbhavaH mahA-pApmA mahA-ashanaH eShaH kAmaH\, eShaH krodhaH ##(##asti; tvaM##)## enam.h iha vairiNam.h viddhi .
+
+.. 3.38..   {ref 3-38}
+yathA dhUmena vahniH\, yathA cha malena AdarshaH\, Avriyate\, ##(##yathA##)## ulbena garbhaH AvR^itaH\, tathA tena idam.h AvR^itam.h .
+
+.. 3.39..   {ref 3-39}
+he kaunteya##!## nityavairiNA etena duShpUreNa kAmarUpeNa cha analena GYAninaH GYAnam.h AvR^itam.h .
+
+.. 3.40..   {ref 3-40}
+indriyANi manaH buddhiH asya adhiShThAnam.h uchyate . eShaH etaiH GYAnam.h AvR^itya dehinam.h vimohayati .
+
+.. 3.41..   {ref 3-41}
+he bharatarShabha##!## tasmAt.h tvam.h Adau indriyANi niyamya\, GYAna-viGYAna-nAshanam.h enaM pApmAnam.h prajahi hi .
+
+.. 3.42..   {ref 3-42}
+indriyANi parANi AhuH\, indriyebhyaH manaH param.h\, manasaH tu buddhiH parA\, yaH tu buddheH parataH saH ##(##AtmA asti##)##.
+
+.. 3.43..   {ref 3-43}
+he mahAbAho##!## evam.h ##(##AtmAnaM##)## buddheH param.h buddhvA AtmanA AtmAnam.h sa.nstabhya\, kAma-rUpam.h durAsadam.h shatrum.h jahi .
+# ---------------------------------------------------------------------------
+# WHERE THIS EDITION DECLINES THE REFERENCE
+#
+# 3.18. Our verse: "naiva tasya kṛtenārtho nākṛteneha kaścana | na cāsya
+#   sarvabhūteṣu kaścid arthavyapāśrayaḥ". The reference writes the ellipsis
+#   out in full — it supplies api, tathā and a second asya, and repeats arthaḥ
+#   where the verse has arthaḥ once and artha inside the compound
+#   arthavyapāśrayaḥ. The resulting sentence has three words and one meaning
+#   more than the verse carries, so an anvaya built from it could not also
+#   claim to hold only the verse's words. The verse's sense is not in doubt;
+#   what is declined is the reference's expansion, not the verse.
+# ---------------------------------------------------------------------------

@@ -293,7 +293,36 @@ ANUSVARA = {"\u1e43": "\u1e41", "\u1e45": "\u1e45"}
 FOLD_PAIRS = (("ā", ""), ("ī", ""))
 
 
+# Anusvāra and the doubled nasal are the same sound in this position, and the
+# two sources disagree about which to write: our rows say sannyasanāt,
+# sannyasya, the reference saṁnyasanāt, saṁnyasya. Unlike ṅ/ñ/ṇ — which are
+# class nasals that mark a real place of articulation — a doubled nn IS the
+# anusvāra written out, so this fold loses nothing. It is applied as a named
+# pair inside _same_word(), never as a blanket character substitution.
+NASAL_CLUSTER_PAIRS = [("ṁn", "nn"), ("ṁm", "mm"), ("nn", "ṁn"), ("mm", "ṁm"),
+                       # the same nasal written as anusvāra or as the class
+                       # nasal: lokasaṁgraham / lokasaṅgraham, and likewise
+                       # ṁ/n, ṁ/m, ṁ/ñ — never ṅ/ñ, which are different sounds
+                       ("ṁ", "ṅ"), ("ṁ", "ñ"), ("ṁ", "ṇ"), ("ṁ", "n"), ("ṁ", "m")]
+
+# Vowel-length variants the reference is inconsistent about in the same word.
+# Kept as explicit, inspectable pairs: each one is a variant spelling seen in
+# this corpus, not a blanket "any vowel may differ".
+VARIANT_PAIRS = [("ā", "a"), ("ī", "i"), ("ū", "u")]
+
+# A doubled consonant the two sources write singly — prasidhyet / prasiddhyet,
+# the same verb from pra-SIDH. Narrow on purpose: one geminate at one place in
+# the word, nowhere else.
+GEMINATE_PAIRS = [("ddh", "dh"), ("dh", "ddh")]
+
+
 def _fold_iast(text):
+    """Fold the nasal spellings, and nothing else.
+
+    Nasal only: this is a spelling rule both sources apply inconsistently. A
+    vowel length or a consonant difference is NOT folded here — those are
+    handled in _same_word(), where each allowance is named.
+    """
     for bad, good in ANUSVARA.items():
         text = text.replace(bad, good)
     return text
@@ -351,6 +380,23 @@ def _same_word(a, b):
             return True
         if fa.rstrip("ḥ") == fb.rstrip("ḥ").replace(long, short, 1):
             return True
+    # anusvāra written as the doubled nasal: saṁnyasya / sannyasya
+    for a_form, b_form in NASAL_CLUSTER_PAIRS:
+        if fa.replace(a_form, b_form) == fb:
+            return True
+    # a geminate the other source writes singly: prasiddhyet / prasidhyet
+    for gem, single in GEMINATE_PAIRS:
+        if fa.replace(gem, single) == fb or fb.replace(gem, single) == fa:
+            return True
+    # A vowel-length variant of the same word: our aśinaḥ, the reference
+    # āśinaḥ. Tried one position at a time on BOTH sides, so the word must be
+    # identical except for that single vowel — not merely similar.
+    for long, short in VARIANT_PAIRS:
+        for i in range(len(fa)):
+            if fa[i] == long and fa[:i] + short + fa[i + 1:] == fb:
+                return True
+            if fb[i:i + 1] == long and fb[:i] + short + fb[i + 1:] == fa:
+                return True
     return False
 
 
@@ -377,7 +423,10 @@ def _token_surfaces(chunks):
         if len(iast_toks) != len(deva_toks):
             raise SystemExit(f"script token mismatch: {plain!r}")
         for it, dt in zip(iast_toks, deva_toks):
-            core_i = it.strip(PUNCT).strip("|").lower()
+            # the reference escapes punctuation it wants printed literally —
+            # "cet\,", "vAkyam\;" — so the escape is part of the mark, not
+            # part of the word
+            core_i = it.replace("\\", "").strip(PUNCT).strip("|").lower()
             core_d = dt.strip(PUNCT)
             if not core_i or not core_d:
                 continue
@@ -572,19 +621,22 @@ def map_verse(verse, chunks):
     # rāgadveṣavimuktaiḥ where the rows hold rāga + dveṣa + vimuktaiḥ: the verse
     # splits the compound for its word list, the anvaya keeps it whole. Look for
     # runs of still-unused rows that join, by external sandhi, into the token.
-    free = [i for i in range(len(rows)) if i not in used]
     for k, tok in enumerate(tokens):
         if not (isinstance(tok, dict) and not tok.get("r")):
             continue
+        # rebuilt per token: an earlier token in this same pass may have taken
+        # a row, and a stale list would hand the same row out twice
+        free = [i for i in range(len(rows)) if i not in used]
         want = _fold_iast(tok.get("i") or tok["t"])
         got = None
+        # any run of rows still unplaced, not only runs consecutive in the
+        # verse: kuru-kṣetre is dharmakṣetre's sibling, and the rows a compound
+        # is built from need not be adjacent in the padaccheda order.
         for start in range(len(free)):
             acc = []
             for j in range(start, min(start + 5, len(free))):
-                if free[j] != free[start] + (j - start):
-                    break
                 acc.append(free[j])
-                run = rows[acc[0]:acc[-1] + 1]
+                run = [rows[i] for i in acc]
                 if any(_same_word(want, c) for c in _join_run(run)):
                     got = list(acc)
                     break
@@ -741,8 +793,10 @@ def annotate(data, chapter):
                 for i in missing]))
             verse["anv"].pop("lit", None)
             verse["anv"]["declined"] = (
-                "the reference's anvaya follows a different reading of this "
-                "verse; see source/reference/gita_anvaya_ch*.itx")
+                "the reference's anvaya does not match this verse's words — it "
+                "follows a different reading, or writes an elliptical sentence "
+                "out in full by supplying and repeating words. See "
+                "source/reference/gita_anvaya_ch*.itx for this verse's entry.")
             continue
         verse["anv"]["lit"] = construed_literal(verse, tokens)
         report["mapped"] += 1

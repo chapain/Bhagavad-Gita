@@ -205,6 +205,53 @@
                 "en": "Arjuna asks: “If you think knowledge is better than action, then why are you pushing me into this terrible war, Keśava?”",
                 "ne": "अर्जुन सोध्छन्: “यदि तपाईं ज्ञानलाई कर्मभन्दा श्रेष्ठ ठान्नुहुन्छ भने, केशव, मलाई यो भयानक युद्धमा किन धकेल्नुहुन्छ?”",
                 "hi": "अर्जुन पूछते हैं: “यदि आप ज्ञान को कर्म से बेहतर मानते हैं, तो केशव, मुझे इस भयानक युद्ध में क्यों ढकेल रहे हैं?”"
+              },
+              "anv": {
+                "d": "अर्जुनः उवाच।\nहे जनार्दन! कर्मणः बुद्धिः ज्यायसी ते मता चेत्\\, तत् हे केशव! माम् घोरे कर्मणि किम् नियोजयसि?",
+                "t": "arjunaḥ uvāca .\nhe janārdana! karmaṇaḥ buddhiḥ jyāyasī te matā cet\\, tat he keśava! mām ghore karmaṇi kim niyojayasi?",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "अर्जुनः"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  8,
+                  4,
+                  7,
+                  2,
+                  5,
+                  6,
+                  3,
+                  9,
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  15,
+                  13,
+                  12,
+                  11,
+                  10,
+                  14
+                ],
+                "lit": {
+                  "en": "Arjuna, said, O, O Janārdana (Kṛṣṇa), than action, wisdom / intelligence, better / superior, by you, considered, if, then, O, O Keśava (Kṛṣṇa), me, dreadful / terrible, in action, why, you engage",
+                  "ne": "अर्जुनले भने हे हे जनार्दन कर्मभन्दा बुद्धि श्रेष्ठ तपाईंको मानिन्छ यदि त्यसो भए हे हे केशव मलाई भयानक कर्ममा के लगाउँछौ",
+                  "hi": "अर्जुन बोले हे हे जनार्दन कर्म से बुद्धि श्रेष्ठ तुम्हारा मानी जाती है यदि तो हे हे केशव मुझे भयंकर कर्म में क्या लगाते हो"
+                }
               }
             }
           ]
@@ -374,6 +421,32 @@
                 "en": "“Your words seem mixed and contradictory — they only confuse me. Tell me plainly the single path by which I can reach what is truly good.”",
                 "ne": "“तपाईंका वचन मिश्रित र विरोधाभासी लाग्छन् — तीले मलाई मात्र अलमल्याउँछन्। साँचो हितमा पुर्‍याउने एउटै मार्ग स्पष्ट भन्नुहोस्।”",
                 "hi": "“आपके वचन मिश्रित और विरोधाभासी लगते हैं — वे मुझे ही उलझाते हैं। सच्चे कल्याण तक पहुँचाने वाला एक ही मार्ग स्पष्ट बताइए।”"
+              },
+              "anv": {
+                "d": "व्यामिश्रेण इव वाक्येन मे बुद्धिं मोहयसि इव।\nतत् निश्चित्य एकं वद\\, येन अहम् श्रेयः आप्नुयाम्।",
+                "t": "vyāmiśreṇa iva vākyena me buddhiṃ mohayasi iva|\ntat niścitya ekaṃ vada\\, yena aham śreyaḥ āpnuyām|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  6,
+                  3,
+                  4,
+                  5,
+                  7,
+                  10,
+                  8,
+                  9,
+                  11,
+                  13,
+                  12,
+                  14
+                ],
+                "lit": {
+                  "en": "with equivocal / mixed, as it were, words, my, the intellect, you confuse, indeed, therefore, having determined, one, tell, by which, I, the good / welfare, may attain",
+                  "ne": "मिश्रित झैँ वचनले मेरो बुद्धि अलमल्याउँछौ झैँ त्यो निश्चय गरेर एक भन जसद्वारा म कल्याण पाऊँ",
+                  "hi": "मिश्रित के समान वचनों से मेरा बुद्धि उलझाते हो के समान वह निश्चय करके एक कह जिससे मैं कल्याण पाऊँ"
+                }
               }
             }
           ]
@@ -543,6 +616,46 @@
                 "en": "Kṛṣṇa said: “Long ago I taught two paths, blameless one: the way of knowledge for the contemplative, the way of selfless action for the active yogi.”",
                 "ne": "कृष्णले भन्नुभयो: “धेरै अघि मैले दुई मार्ग सिकाएको थिएँ, हे निष्पाप: चिन्तनशीलका निम्ति ज्ञानको मार्ग, र क्रियाशील योगीका निम्ति कर्मयोगको मार्ग।”",
                 "hi": "कृष्ण ने कहा: “बहुत पहले मैंने दो मार्ग सिखाए थे, हे निष्पाप: चिन्तनशील के लिए ज्ञान का मार्ग, और क्रियाशील योगी के लिए कर्मयोग का मार्ग।”"
+              },
+              "anv": {
+                "d": "श्रीभगवान् उवाच।\nहे अनघ! अस्मिन् लोके साङ्ख्यानाम् ज्ञानयोगेन\\, योगिनाम् कर्मयोगेन द्विविधा निष्ठा पुरा मया प्रोक्ता।",
+                "t": "śrībhagavān uvāca .\nhe anagha! asmin loke sāṅkhyānām jñāna-yogena\\, yoginām karma-yogena dvividhā niṣṭhā purā mayā proktā|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "श्रीभगवान्"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  9,
+                  3,
+                  2,
+                  11,
+                  10,
+                  13,
+                  12,
+                  4,
+                  5,
+                  6,
+                  8,
+                  7
+                ],
+                "lit": {
+                  "en": "the Blessed Lord, said, O, O sinless one, this, in the world, of the Sāṅkhyas (contemplatives), through the yoga of knowledge, of the yogis (workers), through the yoga of action, twofold, path of steadfastness, formerly / of old, by me, declared / taught",
+                  "ne": "श्रीभगवान्ले भन्नुभयो हे हे निष्पाप यसमा संसारमा साङ्ख्यहरूका ज्ञानयोगद्वारा योगीहरूका कर्मयोगद्वारा द्विविध निष्ठा पहिले मद्वारा भनिएको",
+                  "hi": "श्रीभगवान् बोले हे हे निष्पाप इसमें संसार में सांख्यों के ज्ञान-योग से योगियों के कर्म-योग से द्विविध निष्ठा पहले मेरे द्वारा कही गई"
+                }
               }
             }
           ]
@@ -691,6 +804,33 @@
                 "en": "“You do not become free of action by refusing to act, nor does giving up the world by itself bring perfection.”",
                 "ne": "“कर्म अस्वीकार गरेर तिमी कर्मबाट मुक्त हुँदैनौ, न संसार त्यागेर मात्र सिद्धि मिल्छ।”",
                 "hi": "“कर्म से इनकार करके तू कर्म से मुक्त नहीं होता, न संसार त्यागने मात्र से सिद्धि मिलती है।”"
+              },
+              "anv": {
+                "d": "कर्मणाम् अनारम्भात् पुरुषः नैष्कर्म्यं न अश्नुते।\n(कर्मणां) च संन्यसनात् एव सिद्धिम् न समधिगच्छति।",
+                "t": "karmaṇām anārambhāt puruṣaḥ naiṣkarmyaṃ na aśnute|\n(karmaṇāṃ) ca saṃnyasanāt eva siddhim na samadhigacchati|",
+                "w": [
+                  1,
+                  2,
+                  4,
+                  3,
+                  0,
+                  5,
+                  {
+                    "t": "कर्मणां",
+                    "i": "karmaṇāṁ"
+                  },
+                  7,
+                  8,
+                  9,
+                  10,
+                  6,
+                  11
+                ],
+                "lit": {
+                  "en": "of actions, by non-performance / non-beginning, a man, freedom from action, not, attains, and, by renunciation, alone / indeed, perfection, nor, reaches",
+                  "ne": "कर्महरूको अनारम्भबाट पुरुष नैष्कर्म्य न प्राप्त गर्छ र संन्यासबाट नै सिद्धि न पुग्छ",
+                  "hi": "कर्मों का अनारम्भ से पुरुष नैष्कर्म्य नहीं प्राप्त करता है और संन्यास से ही सिद्धि नहीं पहुँचता है"
+                }
               }
             }
           ]
@@ -867,6 +1007,38 @@
                 "en": "“Nobody can sit idle even for a second — the forces of nature (the guṇas) compel everyone, willing or not, to act.”",
                 "ne": "“कोही पनि एक सेकेन्ड पनि बेकाम बस्न सक्दैन — प्रकृतिका गुणहरूले सबैलाई, चाहँदा नचाहँदा पनि, कर्म गराउँछन्।”",
                 "hi": "“कोई भी एक पल भी निष्क्रिय नहीं बैठ सकता — प्रकृति के गुण सबसे, चाहे-अनचाहे, कर्म कराते हैं।”"
+              },
+              "anv": {
+                "d": "कश्चित् जातु क्षणम् अपि अकर्मकृत् न हि तिष्ठति।\nप्रकृतिजैः गुणैः सर्वः हि अवशः कर्म कार्यते।",
+                "t": "kaścit jātu kṣaṇam api akarmakṛt na hi tiṣṭhati|\nprakṛtijaiḥ guṇaiḥ sarvaḥ hi avaśaḥ karma kāryate|",
+                "w": [
+                  2,
+                  5,
+                  3,
+                  4,
+                  7,
+                  0,
+                  1,
+                  6,
+                  {
+                    "r": [
+                      13,
+                      14
+                    ],
+                    "t": "प्रकृतिजैः"
+                  },
+                  15,
+                  12,
+                  9,
+                  10,
+                  11,
+                  8
+                ],
+                "lit": {
+                  "en": "anyone, at all / ever, a moment, even, actionless / not performing action, not, indeed, remains, born of nature (prakṛti), by the guṇas (qualities), everyone, indeed, helpless, action, is made to act",
+                  "ne": "कोही कहिल्यै क्षण पनि अकर्मा न नै रहन्छ प्रकृतिको जन्मेका गुणहरूद्वारा सबै नै असहाय कर्म गराइन्छ",
+                  "hi": "कोई कभी क्षण भी अकर्मी नहीं ही रहता है उत्पन्न प्रकृति का गुणों से सब ही असहाय कर्म कराया जाता है"
+                }
               }
             }
           ]
@@ -1044,6 +1216,46 @@
                 "en": "“Someone who keeps the hands idle but lets the mind dwell on pleasures is a self-deceived pretender.”",
                 "ne": "“हातखुट्टा अकर्मी राखेर मनमा भोगका कुरा खेलाउने — त्यो आफैंलाई धोका दिने ढोंगी हो।”",
                 "hi": "“जो हाथ-पैर अकर्मी रखकर मन में भोगों की बातें खेलाता है — वह स्वयं को धोखा देने वाला ढोंगी है।”"
+              },
+              "anv": {
+                "d": "यः कर्मेन्द्रियाणि संयम्य\\, मनसा इन्द्रियार्थान् स्मरन् आस्ते\\, सः विमूढात्मा मिथ्याचारः उच्यते।",
+                "t": "yaḥ karma-indriyāṇi saṃyamya\\, manasā indriyārthān smaran āste\\, saḥ vimūḍhātmā mithyācāraḥ ucyate|",
+                "w": [
+                  3,
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "कर्म-इन्द्रियाणि"
+                  },
+                  2,
+                  5,
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "इन्द्रियार्थान्"
+                  },
+                  6,
+                  4,
+                  12,
+                  {
+                    "r": [
+                      9,
+                      10
+                    ],
+                    "t": "विमूढात्मा"
+                  },
+                  11,
+                  13
+                ],
+                "lit": {
+                  "en": "who, the organs of action, having restrained, in mind, sense objects, recollecting / remembering, sits / remains, he, deluded one whose self, hypocrite / one of false conduct, is called",
+                  "ne": "जो कर्म इन्द्रियहरू संयम गरेर मनले इन्द्रिय विषयहरूलाई सम्झँदै बस्छ ऊ मोहित आत्मा कपटी भनिन्छ",
+                  "hi": "जो कर्म इन्द्रियाँ संयम करके मन से विषयों को इन्द्रिय स्मरण करते हुए रहता है वह मोहित आत्मा कपटी कहा जाता है"
+                }
               }
             }
           ]
@@ -1206,6 +1418,46 @@
                 "en": "“But one who, O Arjuna, disciplines the senses with the mind and then acts with his body, without attachment — that person truly excels.”",
                 "ne": "“तर हे अर्जुन, जसले मनले इन्द्रियलाई काबूमा राखेर शरीरले आसक्ति बिना कर्म गर्छ — त्यो व्यक्ति साँच्चै उत्कृष्ट हुन्छ।”",
                 "hi": "“किन्तु हे अर्जुन, जो मन से इन्द्रियों को काबू में रखकर शरीर से बिना आसक्ति कर्म करता है — वही सचमुच उत्कृष्ट है।”"
+              },
+              "anv": {
+                "d": "हे अर्जुन! यः तु मनसा इन्द्रियाणि नियम्य\\, असक्तः कर्मेन्द्रियैः कर्मयोगम् आरभते\\, सः विशिष्यते।",
+                "t": "he arjuna! yaḥ tu manasā indriyāṇi niyamya\\, asaktaḥ karma-indriyaiḥ karma-yogam ārabhate\\, saḥ viśiṣyate|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  6,
+                  0,
+                  1,
+                  3,
+                  2,
+                  4,
+                  11,
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "कर्म-इन्द्रियैः"
+                  },
+                  {
+                    "r": [
+                      9,
+                      10
+                    ],
+                    "t": "कर्म-योगम्"
+                  },
+                  5,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "O, O Arjuna, who, but, with the mind, the senses, having controlled, unattached, of action with the organs, the yoga of action, begins / undertakes, he, excels / is superior",
+                  "ne": "हे हे अर्जुन जो तर मनले इन्द्रियहरू नियन्त्रण गरेर आसक्तिरहित कर्म इन्द्रियहरूद्वारा कर्म योग सुरु गर्छ ऊ श्रेष्ठ हुन्छ",
+                  "hi": "हे हे अर्जुन जो पर मन से इन्द्रियाँ नियंत्रित करके आसक्ति-रहित इन्द्रियों से कर्म कर्म योग आरम्भ करता है वह श्रेष्ठ है"
+                }
               }
             }
           ]
@@ -1375,6 +1627,32 @@
                 "en": "“Do the duty allotted to you, for action beats inaction — without some action, even keeping the body alive is impossible.”",
                 "ne": "“तिमीलाई दिइएको कर्तव्य पालन गर, किनकि कर्म नै अकर्मभन्दा उत्तम — बिना कर्म शरीर जिउँदै राख्न पनि असम्भव छ।”",
                 "hi": "“तुझे दिया गया कर्तव्य पालन कर, क्योंकि कर्म ही अकर्म से उत्तम — बिना कर्म शरीर को जीवित रखना भी असम्भव है।”"
+              },
+              "anv": {
+                "d": "त्वं नियतम् कर्म कुरु\\, अकर्मणः हि कर्म ज्यायः।\nते शरीरयात्रा च अपि अकर्मणः न प्रसिद्ध्येत्।",
+                "t": "tvaṃ niyatam karma kuru\\, akarmaṇaḥ hi karma jyāyaḥ|\nte śarīra-yātrā ca api akarmaṇaḥ na prasiddhyet|",
+                "w": [
+                  3,
+                  0,
+                  2,
+                  1,
+                  7,
+                  6,
+                  4,
+                  5,
+                  11,
+                  8,
+                  10,
+                  9,
+                  14,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "you, prescribed / fixed, action, perform, than inaction, indeed, action, superior, your, the maintenance of the body, and, even, through inaction, not, would succeed",
+                  "ne": "तिमी विहित कर्म गर अकर्मभन्दा नै कर्म श्रेष्ठ तिम्रो शरीरको निर्वाह र पनि अकर्मले न सफल हुन्थ्यो",
+                  "hi": "तुम विहित कर्म करो अकर्म से ही कर्म श्रेष्ठ तुम्हारा शरीर का निर्वाह और भी अकर्म से नहीं सफल होता"
+                }
               }
             }
           ]
@@ -1544,6 +1822,52 @@
                 "en": "“Action done for selfish gain binds you; only action offered as sacrifice frees you. So act for that purpose, unattached, Arjuna.”",
                 "ne": "“स्वार्थका निम्ति गरिएको कर्मले बाँध्छ; यज्ञका रूपमा अर्पित कर्मले मुक्त गर्छ। त्यसैले, अर्जुन, आसक्ति बिना यसैका निम्ति कर्म गर।”",
                 "hi": "“स्वार्थ के लिए किया कर्म बाँधता है; यज्ञ के रूप में अर्पित कर्म मुक्त करता है। इसलिए, अर्जुन, बिना आसक्ति उसी के लिए कर्म कर।”"
+              },
+              "anv": {
+                "d": "यज्ञार्थात् कर्मणः अन्यत्र अयम् लोकः कर्मबन्धनः।\nहे कौन्तेय! मुक्तसङ्गः तत् अर्थम् कर्म समाचर।",
+                "t": "yajñārthāt karmaṇaḥ anyatra ayam lokaḥ karma-bandhanaḥ|\nhe kaunteya! mukta-saṅgaḥ tat artham karma samācara|",
+                "w": [
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "यज्ञार्थात्"
+                  },
+                  2,
+                  3,
+                  5,
+                  4,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "कर्म-बन्धनः"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  11,
+                  {
+                    "r": [
+                      12,
+                      13
+                    ],
+                    "t": "मुक्त-सङ्गः"
+                  },
+                  8,
+                  9,
+                  10,
+                  14
+                ],
+                "lit": {
+                  "en": "for sacrifice for the sake of, from action, other than / except, this, the world, bound by action, O, O son of Kuntī, from attachment freed, that, for that purpose, action, perform",
+                  "ne": "यज्ञ निम्ति कर्मको बाहेक यो लोक कर्म बाँधिएको हे हे कुन्तीपुत्र मुक्त आसक्ति त्यो त्यसका निम्ति कर्म गर",
+                  "hi": "के लिए यज्ञ कर्म का के अतिरिक्त यह लोक कर्म बँधा हुआ हे हे कुन्तीपुत्र मुक्त आसक्ति वह उसके लिए कर्म कर"
+                }
               }
             }
           ]
@@ -1728,6 +2052,56 @@
                 "en": "“In the beginning the Creator gave humanity the practice of sacrifice: ‘Through this you will flourish; it will grant you all your needs.’”",
                 "ne": "“सृष्टिकर्ताले सुरुमै मानवतालाई यज्ञको विधि दिए: ‘यसबाट तिमी फस्टाउनेछौ; यसले तिम्रा सबै आवश्यकता पूरा गर्नेछ।’”",
                 "hi": "“सृष्टिकर्ता ने आदि में मानवता को यज्ञ की विधि दी: ‘इससे तुम फलोगे-फूलोगे; यह तुम्हारी सब आवश्यकताएँ पूरी करेगा।’”"
+              },
+              "anv": {
+                "d": "पुरा प्रजापतिः सहयज्ञाः प्रजाः सृष्ट्वा ऽअनेन (यूयं) प्रसविष्यध्वम्\\, एषः वः इष्टकामधुक् अस्तुऽ (इति) उवाच।",
+                "t": "purā prajāpatiḥ saha-yajñāḥ prajāḥ sṛṣṭvā 'anena (yūyaṃ) prasaviṣyadhvam\\, eṣaḥ vaḥ iṣṭa-kāmadhuk astu' (iti) uvāca|",
+                "w": [
+                  4,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "प्रजापतिः"
+                  },
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "सह-यज्ञाः"
+                  },
+                  2,
+                  3,
+                  8,
+                  {
+                    "t": "यूयं",
+                    "i": "yūyaṁ"
+                  },
+                  9,
+                  10,
+                  11,
+                  {
+                    "r": [
+                      13,
+                      14
+                    ],
+                    "t": "इष्ट-कामधुक्"
+                  },
+                  12,
+                  {
+                    "t": "इति",
+                    "i": "iti",
+                    "sup": "iti"
+                  },
+                  5
+                ],
+                "lit": {
+                  "en": "in the beginning / of old, the Lord (Prajāpati) of creatures, together with sacrifice, creatures / people, having created, by this, may you prosper / multiply, this, to you, the cow (bestower) of desires, may it be, said",
+                  "ne": "पहिले प्राणीहरूका स्वामी यज्ञहरू सँग प्राणीहरू सृष्टि गरेर यसद्वारा फस्टाउनेछौ यो तिमीहरूलाई इच्छितहरूको कामधेनु होस् भने",
+                  "hi": "पहले स्वामी प्राणियों के यज्ञ साथ प्राणी सृष्टि करके इससे फलो-फूलो यह तुम्हें कामधेनु इच्छाओं का हो बोले"
+                }
               }
             }
           ]
@@ -1876,6 +2250,37 @@
                 "en": "“Serve the higher powers through sacrifice and they will sustain you in return — in this mutual giving all reach the highest good.”",
                 "ne": "“यज्ञद्वारा उच्च शक्तिहरूको सेवा गर र तिनले बदलामा तिमीलाई धानून् — यस परस्पर दानमा सबै परम कल्याणमा पुग्छन्।”",
                 "hi": "“यज्ञ से उच्च शक्तियों की सेवा करो और वे बदले में तुम्हें धारण करें — इस परस्पर दान में सब परम कल्याण तक पहुँचते हैं।”"
+              },
+              "anv": {
+                "d": "अनेन (यूयं) देवान् भावयत\\, ते देवाः वः भावयन्तु\\, (एवं) परस्परं भावयन्तः परम् श्रेयः अवाप्स्यथ।",
+                "t": "anena (yūyaṃ) devān bhāvayata\\, te devāḥ vaḥ bhāvayantu\\, (evaṃ) parasparaṃ bhāvayantaḥ param śreyaḥ avāpsyatha|",
+                "w": [
+                  2,
+                  {
+                    "t": "यूयं",
+                    "i": "yūyaṁ"
+                  },
+                  0,
+                  1,
+                  3,
+                  4,
+                  6,
+                  5,
+                  {
+                    "t": "एवं",
+                    "i": "evaṁ"
+                  },
+                  7,
+                  8,
+                  10,
+                  9,
+                  11
+                ],
+                "lit": {
+                  "en": "with this, the gods, nourish / please, those, gods, you, may they nourish, one another, nourishing, supreme, the highest good, you shall attain",
+                  "ne": "यसद्वारा देवताहरूलाई पोषण गर ती देवताहरू तिमीहरूलाई पोषण गरून् परस्पर पोषण गर्दै परम कल्याण प्राप्त गर्नेछौ",
+                  "hi": "इससे देवताओं को पोषण करो वे देवता तुम्हें पोषण करें परस्पर पोषण करते हुए परम कल्याण प्राप्त करोगे"
+                }
               }
             }
           ]
@@ -2059,6 +2464,39 @@
                 "en": "“The gods, pleased by your offering, grant you the good things of life. Enjoy their gifts without giving back and you are a thief.”",
                 "ne": "“तिम्रा अर्पणले प्रसन्न देवताहरूले जीवनका असल वस्तु दिन्छन्। तिनले दिएको लिएर तिनलाई केही पनि नचढाउने — त्यो चोर हो।”",
                 "hi": "“तेरे अर्पण से प्रसन्न देवता जीवन की अच्छी वस्तुएँ देते हैं। उनका दिया लेकर उन्हें कुछ भी अर्पित न करना — वह चोरी है।”"
+              },
+              "anv": {
+                "d": "यज्ञभाविताः देवाः वः इष्टान् भोगान् दास्यन्ते।\nतैः दत्तान् एभ्यः अप्रदाय\\, यः भुङ्क्ते\\, सः हि स्तेनः एव।",
+                "t": "yajña-bhāvitāḥ devāḥ vaḥ iṣṭān bhogān dāsyante|\ntaiḥ dattān ebhyaḥ apradāya\\, yaḥ bhuṅkte\\, saḥ hi stenaḥ eva|",
+                "w": [
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "यज्ञ-भाविताः"
+                  },
+                  4,
+                  3,
+                  0,
+                  1,
+                  5,
+                  8,
+                  9,
+                  11,
+                  10,
+                  12,
+                  13,
+                  16,
+                  2,
+                  14,
+                  15
+                ],
+                "lit": {
+                  "en": "nourished / gratified by sacrifice, the gods, to you, desired, enjoyments, will give, by them, given, to them, without offering back, who, enjoys, he, indeed, a thief, verily",
+                  "ne": "यज्ञ पोषित देवताहरू तिमीहरूलाई चाहेका भोगहरू दिनेछन् तिनीहरूद्वारा दिइएका तिनीहरूलाई फर्काएर नदिई जो भोग्छ ऊ नै चोर नै",
+                  "hi": "यज्ञ पोषित देवता तुम्हें वांछित भोग देंगे उनसे दिए हुए उन्हें बिना लौटाए जो भोगता है वह ही चोर ही"
+                }
               }
             }
           ]
@@ -2235,6 +2673,48 @@
                 "en": "“Those who share the leftovers of the offering are cleansed of sin; those who cook only for themselves eat nothing but sin.”",
                 "ne": "“यज्ञको बचेको प्रसाद बाँडेर खानेहरू पापबाट शुद्ध हुन्छन्; आफ्नै निम्ति मात्र पकाउनेहरू पापबाहेक केही खाँदैनन्।”",
                 "hi": "“यज्ञ का बचा प्रसाद बाँटकर खाने वाले पाप से शुद्ध होते हैं; जो केवल अपने लिए पकाते हैं, वे पाप के अतिरिक्त कुछ नहीं खाते।”"
+              },
+              "anv": {
+                "d": "यज्ञशिष्ट आशिनः सन्तः सर्वकिल्बिषैः मुच्यन्ते।\nये तु आत्मकारणात् पचन्ति\\, ते पापाः अघं भुञ्जते।",
+                "t": "yajña-śiṣṭa āśinaḥ santaḥ sarva-kilbiṣaiḥ mucyante|\nye tu ātma-kāraṇāt pacanti\\, te pāpāḥ aghaṃ bhuñjate|",
+                "w": [
+                  {
+                    "r": [
+                      0,
+                      1
+                    ],
+                    "t": "यज्ञ-शिष्ट"
+                  },
+                  2,
+                  3,
+                  {
+                    "r": [
+                      5,
+                      6
+                    ],
+                    "t": "सर्व-किल्बिषैः"
+                  },
+                  4,
+                  12,
+                  9,
+                  {
+                    "r": [
+                      14,
+                      15
+                    ],
+                    "t": "आत्म-कारणात्"
+                  },
+                  13,
+                  8,
+                  11,
+                  10,
+                  7
+                ],
+                "lit": {
+                  "en": "the remnant / leftover of sacrifice, who eat, the good / virtuous, from sins all, are released, who, but / indeed, for themselves for the sake of, cook, they, the wicked, sin, they eat",
+                  "ne": "यज्ञ बचेको खानेहरू सज्जनहरू सबै पापहरूबाट मुक्त हुन्छन् जो तर आत्मा निम्ति पकाउँछन् तिनीहरू पापीहरू पाप खान्छन्",
+                  "hi": "यज्ञ बचा हुआ खाने वाले सज्जन पापों से सब मुक्त होते हैं जो पर के लिए आत्मा पकाते हैं वे पापी पाप खाते हैं"
+                }
               }
             }
           ]
@@ -2398,6 +2878,39 @@
                 "en": "“Life comes from food, food from rain, rain from sacrifice, and sacrifice from right action — everything is linked in one chain.”",
                 "ne": "“जीवन अन्नबाट, अन्न वर्षाबाट, वर्षा यज्ञबाट, र यज्ञ असल कर्मबाट — सबै एउटै शृङ्खलामा जोडिएका छन्।”",
                 "hi": "“जीवन अन्न से, अन्न वर्षा से, वर्षा यज्ञ से, और यज्ञ सत्कर्म से — सब एक शृंखला में जुड़े हैं।”"
+              },
+              "anv": {
+                "d": "भूतानि अन्नात् भवन्ति\\, पर्जन्यात् अन्नसम्भवः\\, पर्जन्यः यज्ञात् भवति\\, यज्ञः कर्मसमुद्भवः।",
+                "t": "bhūtāni annāt bhavanti\\, parjanyāt anna-sambhavaḥ\\, parjanyaḥ yajñāt bhavati\\, yajñaḥ karma-samudbhavaḥ|",
+                "w": [
+                  2,
+                  0,
+                  1,
+                  3,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "अन्न-सम्भवः\\"
+                  },
+                  8,
+                  6,
+                  7,
+                  9,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "कर्म-समुद्भवः"
+                  }
+                ],
+                "lit": {
+                  "en": "beings, from food, arise, from rain, the arising of food, rain, from sacrifice, arises, sacrifice, born / arising from action",
+                  "ne": "प्राणीहरू अन्नबाट हुन्छन् वर्षाबाट अन्नको जन्म वर्षा यज्ञबाट हुन्छ यज्ञ कर्मबाट जन्मेको",
+                  "hi": "प्राणी अन्न से होते हैं वर्षा से जन्म अन्न का वर्षा यज्ञ से होता है यज्ञ उत्पन्न कर्म से"
+                }
               }
             }
           ]
@@ -2560,6 +3073,46 @@
                 "en": "“All action springs from the eternal Brahman; hence the all-pervading Absolute is ever present in selfless offering.”",
                 "ne": "“हरेक कर्मको मूल ब्रह्म हो, र ब्रह्मको मूल अक्षर; त्यसैले सर्वव्यापी ब्रह्म सधैं यज्ञमा रहन्छ।”",
                 "hi": "“हर कर्म का मूल ब्रह्म है, और ब्रह्म का मूल अक्षर; इसलिए सर्वव्यापी ब्रह्म सदा यज्ञ में स्थित है।”"
+              },
+              "anv": {
+                "d": "कर्म ब्रह्मोद्भवं विद्धि\\, ब्रह्म अक्षरसमुद्भवम्\\, तस्मात् सर्वगतं ब्रह्म यज्ञे नित्यं प्रतिष्ठितम्।",
+                "t": "karma brahma-udbhavaṃ viddhi\\, brahma akṣara-samudbhavam\\, tasmāt sarvagataṃ brahma yajñe nityaṃ pratiṣṭhitam|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "ब्रह्म-उद्भवं"
+                  },
+                  3,
+                  4,
+                  {
+                    "r": [
+                      5,
+                      6
+                    ],
+                    "t": "अक्षर-समुद्भवम्\\"
+                  },
+                  7,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "सर्वगतं"
+                  },
+                  10,
+                  12,
+                  11,
+                  13
+                ],
+                "lit": {
+                  "en": "action, arising from Brahman, know, Brahman, arising from the Imperishable, therefore, all pervading, Brahman, in sacrifice, eternally / always, established",
+                  "ne": "कर्म ब्रह्मबाट जन्मेको जान ब्रह्म अक्षरबाट उत्पन्न त्यसकारण सबै व्याप्त ब्रह्म यज्ञमा सधैँ स्थापित",
+                  "hi": "कर्म उत्पन्न ब्रह्म से जानो ब्रह्म उत्पन्न अक्षर से इसलिए सब व्याप्त ब्रह्म यज्ञ में सदा स्थापित"
+                }
               }
             }
           ]
@@ -2729,6 +3282,47 @@
                 "en": "“Refuse to take part in this cycle of giving and receiving, and your life is wasted, Arjuna — you live only for your senses.”",
                 "ne": "“दिने र लिने यस चक्रमा सहभागी हुन अस्वीकार गर्‍यौ भने तिम्रो जीवन खेर जान्छ, अर्जुन — तिमी इन्द्रियका निम्ति मात्र बाँच्छौ।”",
                 "hi": "“देने-लेने के इस चक्र में भाग लेने से इनकार करो तो तेरा जीवन व्यर्थ है, अर्जुन — तू केवल इन्द्रियों के लिए जीता है।”"
+              },
+              "anv": {
+                "d": "हे पार्थ! एवं प्रवर्तितम् चक्रम् यः इह न अनुवर्तयति\\, सः इन्द्रियारामः अघायुः मोघम् जीवति।",
+                "t": "he pārtha! evaṃ pravartitam cakram yaḥ iha na anuvartayati\\, saḥ indriya-ārāmaḥ aghāyuḥ mogham jīvati|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  12,
+                  0,
+                  1,
+                  2,
+                  6,
+                  5,
+                  3,
+                  4,
+                  13,
+                  {
+                    "r": [
+                      9,
+                      10
+                    ],
+                    "t": "इन्द्रिय-आरामः"
+                  },
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "अघायुः"
+                  },
+                  11,
+                  14
+                ],
+                "lit": {
+                  "en": "O, O Pārtha, thus, set in motion, the wheel, who, here / in this world, not, follows / keeps turning, he, who delights in the senses, whose life of sin, in vain, lives",
+                  "ne": "हे हे पार्थ यसरी चलाइएको चक्र जो यहाँ न अनुसरण गर्छ ऊ इन्द्रिय रम्ने पापको जीवन व्यर्थ बाँच्छ",
+                  "hi": "हे हे पार्थ इस प्रकार चलाया हुआ चक्र जो यहाँ नहीं अनुसरण करता है वह इन्द्रिय रमने वाला जीवन पाप का व्यर्थ जीता है"
+                }
               }
             }
           ]
@@ -2934,6 +3528,45 @@
                 "en": "“One who is wholly happy within himself has nothing left to do — no duty remains for him.”",
                 "ne": "“जो आफूभित्रै पूर्ण खुसी छ, उसका निम्ति गर्न बाँकी केही छैन — उसका लागि कुनै कर्तव्य रहँदैन।”",
                 "hi": "“जो अपने भीतर ही पूर्ण सुखी है, उसके लिए करने को कुछ नहीं बचता — उसका कोई कर्तव्य नहीं रहता।”"
+              },
+              "anv": {
+                "d": "यः तु मानवः आत्मरतिः एव\\, आत्मतृप्तः च\\, आत्मनि एव च सन्तुष्टः स्यात् तस्य कार्यम् न विद्यते।",
+                "t": "yaḥ tu mānavaḥ ātma-ratiḥ eva\\, ātma-tṛptaḥ ca\\, ātmani eva ca santuṣṭaḥ syāt tasya kāryam na vidyate|",
+                "w": [
+                  0,
+                  1,
+                  9,
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "आत्म-रतिः"
+                  },
+                  4,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "आत्म-तृप्तः"
+                  },
+                  8,
+                  10,
+                  11,
+                  12,
+                  13,
+                  5,
+                  14,
+                  15,
+                  16,
+                  17
+                ],
+                "lit": {
+                  "en": "who, but, a man, taking delight in the Self, alone, satisfied with the Self, and, in the Self, alone, and, content, may be, for him, duty / work, not, there is",
+                  "ne": "जो तर मानिस आत्मा रुचि नै आत्मा तृप्त र आत्मामा नै र सन्तुष्ट होला त्यसको गर्नुपर्ने न हुन्छ",
+                  "hi": "जो पर मनुष्य आत्मा रुचि ही आत्मा तृप्त और आत्मा में ही और संतुष्ट हो उसका कर्तव्य नहीं है"
+                }
               }
             }
           ]
@@ -3117,6 +3750,51 @@
                 "en": "“For such a person, doing or not doing brings no personal gain. Such a person need not depend on anyone.”",
                 "ne": "“यस्तो व्यक्तिले कर्म गरेर वा नगरेर आफ्नो कुनै निजी लाभ खोज्दैन। ऊ कुनै पनि मानिसको भर पर्दैन।”",
                 "hi": "“ऐसा व्यक्ति कुछ करने या न करने में अपना कोई निजी लाभ नहीं खोजता। वह किसी मनुष्य पर निर्भर नहीं है।”"
+              },
+              "anv": {
+                "d": "इह कृतेन तस्य अर्थः न एव\\, अकृतेन (अपि) कश्चन अस्य (अर्थः) न\\, (तथा) सर्वभूतेषु च (अस्य) कश्चित् अर्थव्यपाश्रयः न।",
+                "t": "iha kṛtena tasya arthaḥ na eva\\, akṛtena (api) kaścana asya (arthaḥ) na\\, (tathā) sarva-bhūteṣu ca (asya) kaścit artha-vyapāśrayaḥ na|",
+                "w": [
+                  7,
+                  3,
+                  2,
+                  4,
+                  0,
+                  1,
+                  6,
+                  {
+                    "t": "अपि",
+                    "i": "api",
+                    "sup": "api"
+                  },
+                  8,
+                  11,
+                  15,
+                  5,
+                  {
+                    "t": "तथा",
+                    "i": "tathā"
+                  },
+                  {
+                    "r": [
+                      12,
+                      13
+                    ],
+                    "t": "सर्व-भूतेषु"
+                  },
+                  10,
+                  {
+                    "t": "अस्य",
+                    "i": "asya"
+                  },
+                  14,
+                  {
+                    "t": "अर्थ-व्यपाश्रयः",
+                    "i": "arthavyapāśrayaḥ"
+                  },
+                  9
+                ],
+                "declined": "the reference's anvaya does not match this verse's words — it follows a different reading, or writes an elliptical sentence out in full by supplying and repeating words. See source/reference/gita_anvaya_ch*.itx for this verse's entry."
               }
             }
           ]
@@ -3272,6 +3950,42 @@
                 "en": "“So keep acting, but never cling to the results — acting without attachment is the way to reach the Highest.”",
                 "ne": "“त्यसैले कर्म गरिरह, तर फलमा कहिल्यै नटाँसिनु — आसक्ति बिनाको कर्म नै परमतिर पुर्‍याउने बाटो हो।”",
                 "hi": "“इसलिए कर्म करते रह, पर कभी फल से मत चिपक — बिना आसक्ति का कर्म ही परम तक पहुँचाने का मार्ग है।”"
+              },
+              "anv": {
+                "d": "तस्मात् (त्वं) असक्तः (सन्) सततम् कार्यम् कर्म समाचर\\, हि पूरुषः असक्तः (सन्) कर्म आचरन्\\, परम् आप्नोति।",
+                "t": "tasmāt (tvaṃ) asaktaḥ (san) satatam kāryam karma samācara\\, hi pūruṣaḥ asaktaḥ (san) karma ācaran\\, param āpnoti|",
+                "w": [
+                  0,
+                  {
+                    "t": "त्वं",
+                    "i": "tvaṁ"
+                  },
+                  1,
+                  {
+                    "t": "सन्",
+                    "i": "san"
+                  },
+                  2,
+                  3,
+                  4,
+                  5,
+                  7,
+                  12,
+                  6,
+                  {
+                    "t": "सन्",
+                    "i": "san"
+                  },
+                  9,
+                  8,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "therefore, unattached, always, the duty to be done, action, perform, indeed, a man, unattached, action, performing, the Supreme, attains",
+                  "ne": "त्यसकारण आसक्तिरहित सधैँ गर्नुपर्ने कर्म गर नै पुरुष आसक्तिरहित कर्म गर्दै परम प्राप्त गर्दछ",
+                  "hi": "इसलिए आसक्ति-रहित सदा कर्तव्य कर्म कर ही पुरुष आसक्ति-रहित कर्म आचरण करता हुआ परम प्राप्त करता है"
+                }
               }
             }
           ]
@@ -3427,6 +4141,39 @@
                 "en": "“King Janaka and many others reached perfection through action itself. For the good of the world, you too must act.”",
                 "ne": "“राजा जनक र अरू धेरैले कर्मबाटै सिद्धि पाए। संसारको हितका निम्ति तिमीले पनि कर्म गर्नैपर्छ।”",
                 "hi": "“राजा जनक और अनेकों ने कर्म से ही सिद्धि पाई। संसार के हित के लिए तुझे भी कर्म करना ही चाहिए।”"
+              },
+              "anv": {
+                "d": "हि जनकादयः कर्मणा एव संसिद्धिम् आस्थिताः।\n(त्वं) अपि लोकसंग्रहम् एव सम्पश्यन् कर्तुम् अर्हसि।",
+                "t": "hi janaka-ādayaḥ karmaṇā eva saṃsiddhim āsthitāḥ|\n(tvaṃ) api loka-saṃgraham eva sampaśyan kartum arhasi|",
+                "w": [
+                  2,
+                  5,
+                  0,
+                  1,
+                  3,
+                  4,
+                  {
+                    "t": "त्वं",
+                    "i": "tvaṁ"
+                  },
+                  9,
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "लोक-संग्रहम्"
+                  },
+                  8,
+                  10,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "indeed, Janaka and others, by action, alone, perfection, attained / reached, also, the welfare / gathering of the world, even, having regard for, to do, you should",
+                  "ne": "नै जनक आदि कर्मले नै सिद्धि पुगेका पनि लोक संग्रह नै ध्यान राख्दै गर्न पर्छ",
+                  "hi": "ही जनक आदि कर्म से ही सिद्धि पहुँचे हुए भी लोक संग्रह ही ध्यान रखते हुए करना चाहिए"
+                }
               }
             }
           ]
@@ -3603,6 +4350,37 @@
                 "en": "“People imitate their leaders. Whatever the best among you do becomes the rule others follow.”",
                 "ne": "“मानिसहरू आफ्ना नेताको अनुकरण गर्छन्। तिमीमध्ये श्रेष्ठले जे गर्छ, त्यही अरूका निम्ति नियम बन्छ।”",
                 "hi": "“लोग अपने नेताओं का अनुकरण करते हैं। तुममें से श्रेष्ठ जो करता है, वही दूसरों का नियम बन जाता है।”"
+              },
+              "anv": {
+                "d": "यत् यत् श्रेष्ठः आचरति तत् तत् एव इतरः जनः ( आचरति)।\nसः यत् प्रमाणम् कुरुते\\, लोकः तत् अनुवर्तते।",
+                "t": "yat yat śreṣṭhaḥ ācarati tat tat eva itaraḥ janaḥ ( ācarati)|\nsaḥ yat pramāṇam kurute\\, lokaḥ tat anuvartate|",
+                "w": [
+                  0,
+                  1,
+                  3,
+                  2,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  {
+                    "t": "आचरति)।",
+                    "i": "ācarati"
+                  },
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15
+                ],
+                "lit": {
+                  "en": "whatever, whatever, the best / the leader, does / performs, that, that, indeed, the other / common, person, he, which, standard / authority, makes, the world, that, follows",
+                  "ne": "जे जे श्रेष्ठ गर्छ त्यो त्यो नै अर्को मानिस ऊ जुन प्रमाण गर्छ लोक त्यो अनुसरण गर्छ",
+                  "hi": "जो जो श्रेष्ठ करता है वह वह ही दूसरा मनुष्य वह जो प्रमाण करता है लोक वह अनुसरण करता है"
+                }
               }
             }
           ]
@@ -3787,6 +4565,59 @@
                 "en": "“I have nothing left to gain in all the three worlds — and still I keep working.”",
                 "ne": "“तीनै लोकमा मलाई प्राप्त गर्न बाँकी केही छैन — तैपनि म काम गरिरहन्छु।”",
                 "hi": "“तीनों लोकों में मुझे प्राप्त करने को कुछ बाकी नहीं है — फिर भी मैं काम करता रहता हूँ।”"
+              },
+              "anv": {
+                "d": "हे पार्थ! (यद्यपि) मे त्रिषु लोकेषु किञ्चन कर्तव्यम् न अस्ति\\, अनवाप्तम् अवाप्तव्यम् च न (अस्ति, तथा अपि अहं) कर्मणि वर्ते एव।",
+                "t": "he pārtha! (yadyapi) me triṣu lokeṣu kiñcana kartavyam na asti\\, anavāptam avāptavyam ca na (asti, tathā api ahaṃ) karmaṇi varte eva|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  2,
+                  {
+                    "t": "यद्यपि",
+                    "i": "yadyapi"
+                  },
+                  1,
+                  5,
+                  6,
+                  7,
+                  4,
+                  0,
+                  3,
+                  9,
+                  10,
+                  13,
+                  8,
+                  {
+                    "t": "अस्ति",
+                    "i": "asti",
+                    "sup": "asti"
+                  },
+                  {
+                    "t": "तथा",
+                    "i": "tathā"
+                  },
+                  {
+                    "t": "अपि",
+                    "i": "api",
+                    "sup": "api"
+                  },
+                  {
+                    "t": "अहं",
+                    "i": "ahaṁ"
+                  },
+                  14,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "O, O Pārtha, for me, in the three, worlds, anything, to be done, not, there is, unattained, to be attained, and, not, is, in action, I engage / I am engaged, still / indeed",
+                  "ne": "हे हे पार्थ मेरो तीनमा लोकहरूमा केही गर्नुपर्ने न छ न प्राप्त प्राप्त गर्नुपर्ने र न छ कर्ममा लागेको छु नै",
+                  "hi": "हे हे पार्थ मेरा तीनों में लोकों में कुछ करने योग्य नहीं है अप्राप्त प्राप्त करने योग्य और नहीं है कर्म में लगा हूँ ही"
+                }
               }
             }
           ]
@@ -3949,6 +4780,44 @@
                 "en": "“If I ever stopped working, everyone would follow my example and give up their duties too.”",
                 "ne": "“यदि मैले कहिल्यै काम गर्न छोडें भने, सबैले मेरै उदाहरण पछ्याएर आफ्ना कर्तव्य पनि छोडिदिनेछन्।”",
                 "hi": "“यदि मैं कभी काम करना छोड़ दूँ, तो सब मेरा ही उदाहरण अपनाकर अपने कर्तव्य भी छोड़ देंगे।”"
+              },
+              "anv": {
+                "d": "यदि हि अहं अतन्द्रितः (सन्) कर्मणि जातु न वर्तेयम्\\, (तर्हि) हे पार्थ! मनुष्याः सर्वशः मम वर्त्म अनुवर्तन्ते।",
+                "t": "yadi hi ahaṃ atandritaḥ (san) karmaṇi jātu na varteyam\\, (tarhi) he pārtha! manuṣyāḥ sarvaśaḥ mama vartma anuvartante|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  7,
+                  {
+                    "t": "सन्",
+                    "i": "san"
+                  },
+                  6,
+                  5,
+                  3,
+                  4,
+                  {
+                    "t": "तर्हि",
+                    "i": "tarhi"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  12,
+                  11,
+                  13,
+                  8,
+                  9,
+                  10
+                ],
+                "lit": {
+                  "en": "if, indeed, I, untiring / diligent, in action, ever / at any time, not, I should engage, O, O Pārtha, people, in all respects, my, path, they follow",
+                  "ne": "यदि नै म अथक कर्ममा कहिल्यै न लागूँ हे हे पार्थ मानिसहरू सबै प्रकारले मेरो मार्ग अनुसरण गर्छन्",
+                  "hi": "यदि ही मैं अथक कर्म में कभी नहीं लगूँ हे हे पार्थ मनुष्य सब प्रकार से मेरा मार्ग अनुसरण करते हैं"
+                }
               }
             }
           ]
@@ -4118,6 +4987,32 @@
                 "en": "“If I stopped acting, the worlds would collapse — and I would be the one who ruined them.”",
                 "ne": "“यदि मैले कर्म गर्न छोडें भने संसार भत्किनेछ — र त्यसको विनाश गर्ने म नै हुनेछु।”",
                 "hi": "“यदि मैं कर्म करना छोड़ दूँ तो संसार ढह जाएगा — और उसके विनाश का कारण मैं ही बनूँगा।”"
+              },
+              "anv": {
+                "d": "अहम् कर्म न कुर्याम् चेत् इमे लोकाः उत्सीदेयुः\\, सङ्करस्य कर्ता स्याम् इमाः प्रजाः च उपहन्याम्।",
+                "t": "aham karma na kuryām cet ime lokāḥ utsīdeyuḥ\\, saṅkarasya kartā syām imāḥ prajāḥ ca upahanyām|",
+                "w": [
+                  7,
+                  5,
+                  3,
+                  4,
+                  6,
+                  1,
+                  2,
+                  0,
+                  8,
+                  10,
+                  11,
+                  13,
+                  14,
+                  9,
+                  12
+                ],
+                "lit": {
+                  "en": "I, action, not, I should perform, if, these, worlds, would perish, of chaos / mixture, the author / doer, I would be, these, creatures, and, I would destroy",
+                  "ne": "म कर्म न गरूँ यदि यी लोकहरू नष्ट हुन्थे सङ्करको कर्ता होऊँ यी प्राणीहरू र नष्ट गर्थें",
+                  "hi": "मैं कर्म नहीं करूँ यदि ये लोक नष्ट हो जाएँ संकर का कर्ता होऊँ ये प्राणी और नष्ट करूँ"
+                }
               }
             }
           ]
@@ -4273,6 +5168,52 @@
                 "en": "“The ignorant cling to their work; the wise work just as much but without clinging — for the good of everyone.”",
                 "ne": "“अज्ञानीहरू आफ्नो काममा टाँसिएर काम गर्छन्; ज्ञानी पनि त्यति नै काम गर्छ, तर टाँसिएर होइन — सबैको हितका निम्ति।”",
                 "hi": "“अज्ञानी अपने काम से चिपककर काम करते हैं; ज्ञानी भी उतना ही काम करता है, पर बिना चिपके — सबके हित के लिए।”"
+              },
+              "anv": {
+                "d": "हे भारत! अविद्वांसः यथा कर्मणि सक्ताः (कर्म) कुर्वन्ति\\, तथा लोकसंग्रहम् चिकीर्षुः विद्वान् असक्तः (सन् कर्म) कुर्यात्।",
+                "t": "he bhārata! avidvāṃsaḥ yathā karmaṇi saktāḥ (karma) kurvanti\\, tathā loka-saṃgraham cikīrṣuḥ vidvān asaktaḥ (san karma) kuryāt|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  5,
+                  2,
+                  3,
+                  1,
+                  0,
+                  {
+                    "t": "कर्म",
+                    "i": "karma"
+                  },
+                  4,
+                  8,
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "लोक-संग्रहम्"
+                  },
+                  10,
+                  7,
+                  9,
+                  {
+                    "t": "सन्",
+                    "i": "san"
+                  },
+                  {
+                    "t": "कर्म",
+                    "i": "karma"
+                  },
+                  6
+                ],
+                "lit": {
+                  "en": "O, O Bhārata, the ignorant / unwise, as, to action, attached, they act, so, the welfare of the world, desiring to do, the wise, unattached, should act",
+                  "ne": "हे हे भारत अज्ञानीहरू जसरी कर्ममा आसक्त गर्छन् त्यसरी लोक संग्रह गर्न चाहने ज्ञानी आसक्तिरहित गर्नुपर्छ",
+                  "hi": "हे हे भारत अज्ञानी जैसे कर्म में आसक्त करते हैं वैसे ही लोक संग्रह करना चाहने वाला ज्ञानी आसक्ति-रहित करे"
+                }
               }
             }
           ]
@@ -4428,6 +5369,49 @@
                 "en": "“Don't confuse people who are attached to their duties. Do your own work with devotion — and let them learn from your example.”",
                 "ne": "“आफ्ना कर्तव्यमा टाँसिएकाहरूलाई अलमल्याउने काम नगर। आफ्नो काम भक्तिसाथ गर — र उनीहरूले तिम्रो उदाहरणबाटै सिकून्।”",
                 "hi": "“अपने कर्तव्यों से जुड़े लोगों को मत उलझाओ। अपना काम भक्ति से करो — और वे तुम्हारे उदाहरण से ही सीखें।”"
+              },
+              "anv": {
+                "d": "विद्वान् कर्मसङ्गिनाम् अज्ञानाम् बुद्धिभेदम् न जनयेत् (किन्तु) युक्तः समाचरन् सर्वकर्माणि जोषयेत्।",
+                "t": "vidvān karma-saṅginām ajñānām buddhi-bhedam na janayet (kintu) yuktaḥ samācaran sarva-karmāṇi joṣayet|",
+                "w": [
+                  10,
+                  {
+                    "r": [
+                      5,
+                      6
+                    ],
+                    "t": "कर्म-सङ्गिनाम्"
+                  },
+                  4,
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "बुद्धि-भेदम्"
+                  },
+                  0,
+                  3,
+                  {
+                    "t": "किन्तु",
+                    "i": "kintu"
+                  },
+                  11,
+                  12,
+                  {
+                    "r": [
+                      8,
+                      9
+                    ],
+                    "t": "सर्व-कर्माणि"
+                  },
+                  7
+                ],
+                "lit": {
+                  "en": "the wise, attached in action, of the ignorant, disturbance / division of mind, not, should cause, devoted / engaged, performing, all actions, should encourage",
+                  "ne": "ज्ञानी कर्म आसक्तहरूका अज्ञानीहरूका बुद्धिमा खलल न उत्पन्न गर्नुपर्छ युक्त गर्दै सबै कर्महरू उत्साहित गर्नुपर्छ",
+                  "hi": "ज्ञानी आसक्तों का कर्म अज्ञानियों का खलल बुद्धि में नहीं उत्पन्न करे युक्त करता हुआ सब कर्म उत्साहित करे"
+                }
               }
             }
           ]
@@ -4591,6 +5575,43 @@
                 "en": "“Nature's forces do everything through you. The ego-driven person falsely believes, ‘I am the one doing this.’”",
                 "ne": "“प्रकृतिका शक्तिहरूले नै तिमीबाट सबै काम गराउँछन्। अहंकारी मानिसले झूटो विश्वास गर्छ — ‘यो सब म गर्दैछु।’”",
                 "hi": "“प्रकृति की शक्तियाँ ही तुझसे सब काम कराती हैं। अहंकारी व्यक्ति झूठा विश्वास करता है — ‘यह सब मैं कर रहा हूँ।’”"
+              },
+              "anv": {
+                "d": "प्रकृतेः गुणैः कर्माणि सर्वशः क्रियमाणानि (सन्ति, परन्तु) अहङ्कारविमूढात्मा ऽअहम्ऽ कर्ता इति मन्यते।",
+                "t": "prakṛteḥ guṇaiḥ karmāṇi sarvaśaḥ kriyamāṇāni (santi, parantu) ahaṅkāra-vimūḍha-ātmā 'aham' kartā iti manyate|",
+                "w": [
+                  0,
+                  2,
+                  3,
+                  4,
+                  1,
+                  {
+                    "t": "सन्ति",
+                    "i": "santi",
+                    "sup": "santi"
+                  },
+                  {
+                    "t": "परन्तु",
+                    "i": "parantu"
+                  },
+                  {
+                    "r": [
+                      5,
+                      6,
+                      7
+                    ],
+                    "t": "अहङ्कार-विमूढ-आत्मा"
+                  },
+                  9,
+                  8,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "of prakṛti (nature), by the guṇas, actions, in every way, being performed, are, by egoism deluded one whose self, I, the doer, thus, thinks",
+                  "ne": "प्रकृतिको गुणहरूद्वारा कर्महरू सबै प्रकारले गरिएका छन् अहंकारले मोहित आत्मा म कर्ता यसरी सोच्छ",
+                  "hi": "प्रकृति की गुणों से कर्म सब प्रकार से किये जाते हुए हैं अहंकार से मोहित आत्मा मैं कर्ता इस प्रकार सोचता है"
+                }
               }
             }
           ]
@@ -4753,6 +5774,46 @@
                 "en": "“The wise understand that qualities interact with qualities — they never identify themselves with the action.”",
                 "ne": "“ज्ञानीहरू बुझ्छन् कि गुणहरू गुणहरूसँगै क्रियाशील हुन्छन् — तिनीहरू आफूलाई कर्मसँग कहिल्यै जोड्दैनन्।”",
                 "hi": "“ज्ञानी समझते हैं कि गुण गुणों के साथ ही क्रियाशील होते हैं — वे कभी अपने आपको कर्म से नहीं जोड़ते।”"
+              },
+              "anv": {
+                "d": "हे महाबाहो! गुणकर्मविभागयोः तत्त्ववित् तु ऽगुणाः गुणेषु वर्तन्तेऽ इति मत्वा न सज्जते।",
+                "t": "he mahābāho! guṇa-karma-vibhāgayoḥ tattvavit tu 'guṇāḥ guṇeṣu vartante' iti matvā na sajjate|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  {
+                    "r": [
+                      2,
+                      3
+                    ],
+                    "t": "महाबाहो"
+                  },
+                  {
+                    "r": [
+                      4,
+                      5,
+                      6
+                    ],
+                    "t": "गुण-कर्म-विभागयोः"
+                  },
+                  0,
+                  1,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "O, great O armed one, of the guṇas and actions of the distinction, the knower of truth, but, the guṇas, among the guṇas, move / act, thus, having known, not, becomes attached",
+                  "ne": "हे महान् हे बाहु गुण कर्म विभागको तत्त्वज्ञ तर गुणहरू गुणहरूमा विचरण गर्छन् यसरी सोचेर न आसक्त हुन्छ",
+                  "hi": "हे महान् हे बाहु गुण कर्म विभाग का तत्त्व-ज्ञाता पर गुण गुणों में विचरण करते हैं इस प्रकार सोचकर नहीं आसक्त होता है"
+                }
               }
             }
           ]
@@ -4908,6 +5969,45 @@
                 "en": "“Ignorant people get attached to their work; the enlightened should not unsettle or confuse them.”",
                 "ne": "“अज्ञानी मानिसहरू आफ्नो काममा टाँसिन्छन्; ज्ञानीले तिनलाई विचलित पार्नु वा अलमल्याउनु हुँदैन।”",
                 "hi": "“अज्ञानी लोग अपने काम से चिपके रहते हैं; ज्ञानी को उन्हें विचलित या भ्रमित नहीं करना चाहिए।”"
+              },
+              "anv": {
+                "d": "प्रकृतेः गुणसम्मूढाः गुणकर्मसु सज्जन्ते\\, तान् अकृत्स्नविदः मन्दान् कृत्स्नवित् न विचालयेत्।",
+                "t": "prakṛteḥ guṇa-sammūḍhāḥ guṇa-karmasu sajjante\\, tān akṛtsnavidaḥ mandān kṛtsnavit na vicālayet|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "गुण-सम्मूढाः"
+                  },
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "गुण-कर्मसु"
+                  },
+                  3,
+                  6,
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "अकृत्स्नविदः"
+                  },
+                  9,
+                  10,
+                  11,
+                  12
+                ],
+                "lit": {
+                  "en": "of prakṛti, deluded by the guṇas, to the actions of the guṇas, they cling, them, partial / incomplete knowers, the dull-witted, the one of complete knowledge, not, should unsettle",
+                  "ne": "प्रकृतिको गुण मोहित गुण कर्महरूमा टाँसिन्छन् तिनीहरूलाई अपूर्ण ज्ञाताहरू मन्दबुद्धिहरूलाई सम्पूर्ण ज्ञाता न विचलित गर्नुपर्छ",
+                  "hi": "प्रकृति की गुण मूढ़ कर्मों में गुण चिपकते हैं उन्हें अपूर्ण ज्ञाता मन्दबुद्धियों को सम्पूर्ण ज्ञाता नहीं विचलित करे"
+                }
               }
             }
           ]
@@ -5056,6 +6156,39 @@
                 "en": "“Offer every action to me, keep the mind on the Self, drop all craving and possessiveness — and fight without agitation.”",
                 "ne": "“हरेक कर्म मलाई अर्पण गर, मन आत्मामा राख, सबै लोभ र मोह छोड — र बिना आवेग युद्ध गर।”",
                 "hi": "“हर कर्म मुझे अर्पण कर, मन को आत्मा पर रख, सब लोभ और ममता छोड़ — और बिना आवेग युद्ध कर।”"
+              },
+              "anv": {
+                "d": "मयि अध्यात्मचेतसा सर्वाणि कर्माणि संन्यस्य निराशीः निर्ममः विगतज्वरः भूत्वा\\, युध्यस्व।",
+                "t": "mayi adhyātma-cetasā sarvāṇi karmāṇi saṃnyasya nirāśīḥ nirmamaḥ vigata-jvaraḥ bhūtvā\\, yudhyasva|",
+                "w": [
+                  0,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "अध्यात्म-चेतसा"
+                  },
+                  1,
+                  2,
+                  3,
+                  6,
+                  7,
+                  {
+                    "r": [
+                      10,
+                      11
+                    ],
+                    "t": "विगत-ज्वरः"
+                  },
+                  8,
+                  9
+                ],
+                "lit": {
+                  "en": "in me, on the Self with the mind, all, actions, having renounced / surrendered, free from desire, free from possessiveness, free from fever / agitation, having become, fight",
+                  "ne": "ममा अध्यात्म मनले सबै कर्महरू समर्पण गरेर निःस्पृह मेरोपनरहित गएको ज्वरो भएर लड",
+                  "hi": "मुझमें मन से अध्यात्म सब कर्म समर्पण करके निःस्पृह 'मेरा' भाव से रहित गया हुआ ज्वर बनकर युद्ध कर"
+                }
               }
             }
           ]
@@ -5226,6 +6359,30 @@
                 "en": "“Whoever follows my teaching with trust and no resentment is freed from the grip of karma.”",
                 "ne": "“जो मेरो यो शिक्षालाई श्रद्धापूर्वक र दोष नखोजी पालना गर्छन्, उनीहरू कर्मबन्धनबाट मुक्त हुन्छन्।”",
                 "hi": "“जो मेरी इस शिक्षा को विश्वास के साथ और दोष निकाले बिना अपनाते हैं — वे कर्म की पकड़ से मुक्त हो जाते हैं।”"
+              },
+              "anv": {
+                "d": "ये मानवाः श्रद्धावन्तः अनसूयन्तः इदम् मे मतम् नित्यम् अनुतिष्ठन्ति\\, ते अपि कर्मभिः मुच्यन्ते।",
+                "t": "ye mānavāḥ śraddhāvantaḥ anasūyantaḥ idam me matam nityam anutiṣṭhanti\\, te api karmabhiḥ mucyante|",
+                "w": [
+                  0,
+                  6,
+                  7,
+                  8,
+                  3,
+                  1,
+                  2,
+                  4,
+                  5,
+                  10,
+                  11,
+                  12,
+                  9
+                ],
+                "lit": {
+                  "en": "those who, people, having faith, without finding fault / not grudging, this, my, teaching, always, follow / practise, they, even, from actions, are released",
+                  "ne": "जो मानिसहरू श्रद्धावान्हरू दोष नदेख्नेहरू यो मेरो मत सधैँ अनुसरण गर्छन् तिनीहरू पनि कर्मबाट मुक्त हुन्छन्",
+                  "hi": "जो मनुष्य श्रद्धावान् दोष न देखने वाले यह मेरा मत सदा अनुसरण करते हैं वे भी कर्मों से मुक्त होते हैं"
+                }
               }
             }
           ]
@@ -5395,6 +6552,37 @@
                 "en": "“Those who resent and reject my teaching are lost — bereft of wisdom, they destroy themselves.”",
                 "ne": "“जो मेरो शिक्षाप्रति गुनासो गर्छन् र अस्वीकार गर्छन् — तिनीहरू हराएका हुन्; ज्ञानविहीन भई आफैंलाई नष्ट गर्छन्।”",
                 "hi": "“जो मेरी शिक्षा में दोष निकालते हैं और उसे अस्वीकार करते हैं — वे हारे हुए हैं; ज्ञान से वंचित होकर स्वयं को नष्ट करते हैं।”"
+              },
+              "anv": {
+                "d": "ये तु एतत् अभ्यसूयन्तः मे मतम् न अनुतिष्ठन्ति\\, तान् सर्वज्ञानविमूढान् अचेतसः नष्टान् विद्धि।",
+                "t": "ye tu etat abhyasūyantaḥ me matam na anutiṣṭhanti\\, tān sarva-jñāna-vimūḍhān acetasaḥ naṣṭān viddhi|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  6,
+                  7,
+                  4,
+                  5,
+                  11,
+                  {
+                    "r": [
+                      8,
+                      9,
+                      10
+                    ],
+                    "t": "सर्व-ज्ञान-विमूढान्"
+                  },
+                  14,
+                  13,
+                  12
+                ],
+                "lit": {
+                  "en": "those who, but, this, finding fault / resenting, my, teaching, not, follow, them, all of knowledge deluded, senseless / without understanding, ruined / lost, know",
+                  "ne": "जो तर यो दोष देख्नेहरू मेरो मत न अनुसरण गर्छन् तिनीहरूलाई सबै ज्ञान मोहित विवेकहीन नष्ट जान",
+                  "hi": "जो पर यह दोष देखने वाले मेरा मत नहीं अनुसरण करते हैं उन्हें सब ज्ञान मूढ़ विवेकहीन नष्ट जानो"
+                }
               }
             }
           ]
@@ -5543,6 +6731,29 @@
                 "en": "“Everyone, even the wise, acts from their own nature. Beings follow it — so what is the use of forcing yourself?”",
                 "ne": "“सबैले, ज्ञानीले पनि, आफ्नै स्वभावअनुसार काम गर्छन्। प्राणीहरू आफ्नो प्रकृतिलाई पछ्याउँछन् — जबरजस्ती रोक्नुको के अर्थ?”",
                 "hi": "“सब, ज्ञानी भी, अपने स्वभाव के अनुसार काम करते हैं। प्राणी अपनी प्रकृति को अपनाते हैं — ज़बरदस्ती रोकने का क्या अर्थ?”"
+              },
+              "anv": {
+                "d": "ज्ञानवान् अपि स्वस्याः प्रकृतेः सदृशम् चेष्टते। भूतानि प्रकृतिम् यान्ति। निग्रहः किम् करिष्यति?",
+                "t": "jñānavān api svasyāḥ prakṛteḥ sadṛśam ceṣṭate| bhūtāni prakṛtim yānti| nigrahaḥ kim kariṣyati?",
+                "w": [
+                  4,
+                  5,
+                  2,
+                  3,
+                  0,
+                  1,
+                  8,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "lit": {
+                  "en": "a man of knowledge, even, of one's own, nature, according to / in conformity with, acts, beings, to nature, they go / follow, forcible suppression, what, will accomplish",
+                  "ne": "ज्ञानी पनि आफ्नै प्रकृतिको अनुसार चेष्टा गर्छ प्राणीहरू प्रकृतिलाई जान्छन् दमन के गर्नेछ",
+                  "hi": "ज्ञानी भी अपने प्रकृति की अनुसार चेष्टा करता है प्राणी प्रकृति को जाते हैं दमन क्या करेगा"
+                }
               }
             }
           ]
@@ -5705,6 +6916,41 @@
                 "en": "“Liking and disliking cling to every sense-object. Don't let them rule you — they ambush the spiritual path.”",
                 "ne": "“इन्द्रियका विषयप्रति आकर्षण र द्वेष दुवै हुन्छन्। तिनलाई आफूमाथि हावी हुन नदेऊ — ती आध्यात्मिक मार्गका लुटेरा हुन्।”",
                 "hi": "“हर इन्द्रिय-विषय पर पसंद-नापसंद चिपकी हुई है। उन्हें अपने ऊपर हावी मत होने दे — वे आध्यात्मिक मार्ग के लुटेरे हैं।”"
+              },
+              "anv": {
+                "d": "इन्द्रियस्यार्थे इन्द्रियस्य रागद्वेषौ व्यवस्थितौ\\, तयोः वशम् न आगच्छेत्।\nतौ हि अस्य परिपन्थिनौ।",
+                "t": "indriyasya-arthe indriyasya rāga-dveṣau vyavasthitau\\, tayoḥ vaśam na āgacchet|\ntau hi asya paripanthinau|",
+                "w": [
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "इन्द्रियस्य-अर्थे"
+                  },
+                  0,
+                  {
+                    "r": [
+                      3,
+                      4
+                    ],
+                    "t": "राग-द्वेषौ"
+                  },
+                  5,
+                  6,
+                  8,
+                  7,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "lit": {
+                  "en": "of each sense in the object, of the sense, attachment and aversion, are fixed / established, of them / of those two, under the power, not, should come, those two, indeed, of him, waylayers / enemies on the path",
+                  "ne": "इन्द्रियको विषयमा इन्द्रियको आसक्ति द्वेष स्थापित छन् दुवैको वशमा न आउनुपर्छ ती दुई नै उसको बाटो छेक्ने",
+                  "hi": "इन्द्रिय का विषय में इन्द्रिय का आसक्ति द्वेष स्थापित हैं दोनों का वश में नहीं आना चाहिए वे दोनों ही उसका मार्ग रोकने वाले"
+                }
               }
             }
           ]
@@ -5874,6 +7120,62 @@
                 "en": "“It is better to do your own duty imperfectly than someone else's perfectly. Better even to die fulfilling your own duty; taking on another's is fraught with danger.”",
                 "ne": "“आफ्नो कर्तव्य त्रुटिपूर्ण भए पनि अरूको कर्तव्य पूर्ण रूपमा गर्नुभन्दा राम्रो। आफ्नै कर्तव्य निभाउँदा मर्नु पनि राम्रो हो; अर्काको धर्म अपनाउनु भयावह हुन्छ।”",
                 "hi": "“अपना कर्तव्य त्रुटिपूर्ण हो तो भी दूसरे के कर्तव्य को पूरी तरह करने से अच्छा है। अपना कर्तव्य निभाते हुए मरना भी अच्छा है; दूसरे का धर्म अपनाना भयावह है।”"
+              },
+              "anv": {
+                "d": "स्वनुष्ठितात् परधर्मात् विगुणः स्वधर्मः (अपि) श्रेयान्। स्वधर्मे निधनम् श्रेयः। परधर्मः भयावहः।",
+                "t": "svanuṣṭhitāt paradharmāt viguṇaḥ svadharmaḥ (api) śreyān| svadharme nidhanam śreyaḥ| paradharmaḥ bhaya-āvahaḥ|",
+                "w": [
+                  6,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "परधर्मात्"
+                  },
+                  3,
+                  {
+                    "r": [
+                      1,
+                      2
+                    ],
+                    "t": "स्वधर्मः"
+                  },
+                  {
+                    "t": "अपि",
+                    "i": "api",
+                    "sup": "api"
+                  },
+                  0,
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "स्वधर्मे"
+                  },
+                  9,
+                  10,
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "परधर्मः"
+                  },
+                  {
+                    "r": [
+                      13,
+                      14
+                    ],
+                    "t": "भय-आवहः"
+                  }
+                ],
+                "lit": {
+                  "en": "well-performed, than the dharma of another, though defective, one's own dharma / duty, better, in dharma one's own, death, is better, another's dharma, fear bringing",
+                  "ne": "सुसम्पन्न अर्काको धर्मभन्दा दोषपूर्ण आफ्नो धर्म उत्तम आफ्नो धर्ममा मृत्यु राम्रो अर्काको धर्म भय ल्याउने",
+                  "hi": "सुसम्पन्न दूसरे का धर्म से दोषयुक्त अपना धर्म उत्तम धर्म में अपना मृत्यु अच्छा धर्म दूसरे का भय लाने वाला"
+                }
               }
             }
           ]
@@ -6065,6 +7367,47 @@
                 "en": "Arjuna asks: “What force makes a person sin even when he doesn't want to, as if dragged into it against his will?”",
                 "ne": "अर्जुन सोध्छन्: “के शक्तिले मानिसलाई नचाहँदा नचाहँदै पनि, जबरजस्ती तानेर, पाप गराउँछ?”",
                 "hi": "अर्जुन पूछते हैं: “कौन-सी शक्ति व्यक्ति से, न चाहते हुए भी, मानो ज़बरदस्ती खींचकर पाप कराती है?”"
+              },
+              "anv": {
+                "d": "अर्जुनः उवाच।\nहे वार्ष्णेय! अथ केन प्रयुक्तः अयं पूरुषः अनिच्छन् अपि\\, बलात् नियोजितः इव पापम् चरति?",
+                "t": "arjunaḥ uvāca .\nhe vārṣṇeya! atha kena prayuktaḥ ayaṃ pūruṣaḥ anicchan api\\, balāt niyojitaḥ iva pāpam carati?",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "अर्जुनः"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  11,
+                  2,
+                  3,
+                  4,
+                  5,
+                  8,
+                  9,
+                  10,
+                  12,
+                  14,
+                  13,
+                  6,
+                  7
+                ],
+                "lit": {
+                  "en": "Arjuna, said, O, O Vārṣṇeya (Kṛṣṇa), then, by what, impelled / urged, this, a man, not willing, even, by force, driven / compelled, as it were, sin / evil, commits / practises",
+                  "ne": "अर्जुनले भने हे हे वार्ष्णेय अनि केले प्रेरित यो पुरुष नचाहँदै पनि बलले बाध्य झैँ पाप गर्छ",
+                  "hi": "अर्जुन बोले हे हे वार्ष्णेय फिर किससे प्रेरित यह पुरुष न चाहता हुआ भी बल से बाध्य के समान पाप करता है"
+                }
               }
             }
           ]
@@ -6255,6 +7598,68 @@
                 "en": "Kṛṣṇa said: “It is desire — and the anger born of it — springing from passion. Insatiable and immensely sinful: know this as your real enemy.”",
                 "ne": "कृष्णले भन्नुभयो: “यो कामना हो — र त्यसबाट जन्मेको क्रोध — रजोगुणबाट उठेको। अतृप्त र अत्यन्त पापी: यसलाई नै आफ्नो साँचो शत्रु जान।”",
                 "hi": "कृष्ण ने कहा: “यह कामना है — और उससे जन्मा क्रोध — रजोगुण से उठा हुआ। अतृप्त और अत्यन्त पापी: इसे ही अपना सच्चा शत्रु जान।”"
+              },
+              "anv": {
+                "d": "श्रीभगवान् उवाच।\nरजः गुणसमुद्भवः महापाप्मा महाशनः एषः कामः\\, एषः क्रोधः (अस्ति; त्वं) एनम् इह वैरिणम् विद्धि।",
+                "t": "śrībhagavān uvāca .\nrajaḥ guṇa-samudbhavaḥ mahā-pāpmā mahā-aśanaḥ eṣaḥ kāmaḥ\\, eṣaḥ krodhaḥ (asti; tvaṃ) enam iha vairiṇam viddhi|",
+                "w": [
+                  {
+                    "r": [
+                      0
+                    ],
+                    "t": "श्रीभगवान्"
+                  },
+                  {
+                    "r": [
+                      1
+                    ],
+                    "t": "उवाच"
+                  },
+                  6,
+                  {
+                    "r": [
+                      7,
+                      8
+                    ],
+                    "t": "गुण-समुद्भवः"
+                  },
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "महा-पाप्मा"
+                  },
+                  {
+                    "r": [
+                      9,
+                      10
+                    ],
+                    "t": "महा-अशनः"
+                  },
+                  3,
+                  2,
+                  5,
+                  4,
+                  {
+                    "t": "अस्ति",
+                    "i": "asti",
+                    "sup": "asti"
+                  },
+                  {
+                    "t": "त्वं",
+                    "i": "tvaṁ"
+                  },
+                  14,
+                  15,
+                  16,
+                  13
+                ],
+                "lit": {
+                  "en": "the Blessed Lord, said, of rajas (passion), the guṇa born of, great sinful, great devourer / insatiable, this, desire, this, anger, is, this, here, as the enemy, know",
+                  "ne": "श्रीभगवान्ले भन्नुभयो रज गुण जन्मेको महान् पापी महान् नतृप्त हुने यो कामना यो क्रोध छ यसलाई यहाँ शत्रुलाई जान",
+                  "hi": "श्रीभगवान् बोले रज गुण उत्पन्न महान् पापी महान् अतृप्त यह कामना यह क्रोध है इसे यहाँ शत्रु को जानो"
+                }
               }
             }
           ]
@@ -6424,6 +7829,36 @@
                 "en": "“Desire obscures wisdom the way smoke hides fire, dust hides a mirror, and a membrane hides an embryo.”",
                 "ne": "“कामनाले ज्ञानलाई त्यसरी ढाक्छ, जसरी धुवाँले आगो, धुलोले ऐना, र झिल्लीले भ्रूणलाई।”",
                 "hi": "“कामना ज्ञान को वैसे ढाँकती है, जैसे धुआँ आग को, धूल दर्पण को, और झिल्ली गर्भ को।”"
+              },
+              "anv": {
+                "d": "यथा धूमेन वह्निः\\, यथा च मलेन आदर्शः\\, आव्रियते\\, (यथा) उल्बेन गर्भः आवृतः\\, तथा तेन इदम् आवृतम्।",
+                "t": "yathā dhūmena vahniḥ\\, yathā ca malena ādarśaḥ\\, āvriyate\\, (yathā) ulbena garbhaḥ āvṛtaḥ\\, tathā tena idam āvṛtam|",
+                "w": [
+                  3,
+                  0,
+                  2,
+                  7,
+                  6,
+                  5,
+                  4,
+                  1,
+                  {
+                    "t": "यथा",
+                    "i": "yathā"
+                  },
+                  8,
+                  10,
+                  9,
+                  11,
+                  12,
+                  13,
+                  14
+                ],
+                "lit": {
+                  "en": "as, by smoke, fire, as, and, by dust / dirt, a mirror, is enveloped / covered, by the membrane / caul, an embryo, covered, so, by that, this, covered",
+                  "ne": "जसरी धुवाँले अग्नि जसरी र धुलोले ऐना ढाकिन्छ झिल्लीले भ्रूण ढाकिएको त्यसरी त्यसद्वारा यो ढाकिएको",
+                  "hi": "जैसे धुएँ से अग्नि जैसे और धूल से दर्पण आच्छादित होता है झिल्ली से गर्भ आवृत वैसे ही उससे यह आवृत"
+                }
               }
             }
           ]
@@ -6579,6 +8014,50 @@
                 "en": "“This eternal enemy — desire — shrouds wisdom. It is never satisfied; it burns like fire, Arjuna.”",
                 "ne": "“यो चिर शत्रु — कामना — ले ज्ञानलाई ढाक्छ। यो कहिल्यै तृप्त हुँदैन; यो आगोजस्तै बल्छ, अर्जुन।”",
                 "hi": "“यह चिर शत्रु — कामना — ज्ञान को ढाँकती है। यह कभी तृप्त नहीं होती; यह आग की तरह जलती है, अर्जुन।”"
+              },
+              "anv": {
+                "d": "हे कौन्तेय! नित्यवैरिणा एतेन दुष्पूरेण कामरूपेण च अनलेन ज्ञानिनः ज्ञानम् आवृतम्।",
+                "t": "he kaunteya! nityavairiṇā etena duṣpūreṇa kāmarūpeṇa ca analena jñāninaḥ jñānam āvṛtam|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  8,
+                  {
+                    "r": [
+                      4,
+                      5
+                    ],
+                    "t": "नित्यवैरिणा"
+                  },
+                  2,
+                  {
+                    "r": [
+                      9,
+                      10
+                    ],
+                    "t": "दुष्पूरेण"
+                  },
+                  {
+                    "r": [
+                      6,
+                      7
+                    ],
+                    "t": "कामरूपेण"
+                  },
+                  12,
+                  11,
+                  3,
+                  1,
+                  0
+                ],
+                "lit": {
+                  "en": "O, O son of Kuntī, by the enemy constant, by this, to fill / satisfy hard / difficult, of desire in the form, and, by fire, of the wise, wisdom, covered",
+                  "ne": "हे हे कुन्तीपुत्र नित्य शत्रुद्वारा यसद्वारा कठिन भर्न कामना रूपले र आगोले ज्ञानीका ज्ञान ढाकिएको",
+                  "hi": "हे हे कुन्तीपुत्र शत्रु से नित्य इससे कठिन भरने रूप से कामना और अग्नि से ज्ञानी के ज्ञान आवृत"
+                }
               }
             }
           ]
@@ -6742,6 +8221,29 @@
                 "en": "“Desire lives in the senses, the mind, and the intellect — and through them it blinds and deludes the embodied being.”",
                 "ne": "“कामना इन्द्रिय, मन र बुद्धिमा बस्छ — र तिनैद्वारा देहधारीलाई अन्धो र मोहित पार्छ।”",
                 "hi": "“कामना इन्द्रियों, मन और बुद्धि में बसती है — और उन्हीं से देहधारी को अंधा और मोहित करती है।”"
+              },
+              "anv": {
+                "d": "इन्द्रियाणि मनः बुद्धिः अस्य अधिष्ठानम् उच्यते।\nएषः एतैः ज्ञानम् आवृत्य देहिनम् विमोहयति।",
+                "t": "indriyāṇi manaḥ buddhiḥ asya adhiṣṭhānam ucyate|\neṣaḥ etaiḥ jñānam āvṛtya dehinam vimohayati|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  8,
+                  6,
+                  9,
+                  10,
+                  11,
+                  7
+                ],
+                "lit": {
+                  "en": "the senses, the mind, the intellect, of it, the abode / seat, is said, this (desire), by these, wisdom, having covered, the embodied one, deludes",
+                  "ne": "इन्द्रियहरू मन बुद्धि यसको आधार भनिन्छ यो यिनीहरूबाट ज्ञान ढाकेर देहधारीलाई मोहित गर्छ",
+                  "hi": "इन्द्रियाँ मन बुद्धि इसका आधार कहा जाता है यह इनसे ज्ञान ढाँपकर देहधारी को मोहित करता है"
+                }
               }
             }
           ]
@@ -6897,6 +8399,57 @@
                 "en": "“So first rein in your senses, Arjuna, and kill this evil one that destroys both knowledge and wisdom.”",
                 "ne": "“त्यसैले, अर्जुन, पहिले आफ्ना इन्द्रियलाई काबूमा राख — र ज्ञान र विवेक दुवै नष्ट गर्ने यस दुष्टलाई मार।”",
                 "hi": "“इसलिए, अर्जुन, पहले अपनी इन्द्रियों को काबू में कर — और ज्ञान और विवेक दोनों को नष्ट करने वाले इस दुष्ट को मार।”"
+              },
+              "anv": {
+                "d": "हे भरतर्षभ! तस्मात् त्वम् आदौ इन्द्रियाणि नियम्य\\, ज्ञानविज्ञाननाशनम् एनं पाप्मानम् प्रजहि हि।",
+                "t": "he bharatarṣabha! tasmāt tvam ādau indriyāṇi niyamya\\, jñāna-vijñāna-nāśanam enaṃ pāpmānam prajahi hi|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  {
+                    "r": [
+                      5,
+                      6
+                    ],
+                    "t": "भरतर्षभ"
+                  },
+                  0,
+                  1,
+                  3,
+                  2,
+                  4,
+                  {
+                    "r": [
+                      10,
+                      11,
+                      12
+                    ],
+                    "t": "ज्ञान-विज्ञान-नाशनम्"
+                  },
+                  9,
+                  7,
+                  {
+                    "t": "प्रजहि",
+                    "i": "prajahi",
+                    "r": [
+                      8
+                    ]
+                  },
+                  {
+                    "t": "हि",
+                    "i": "hi",
+                    "sup": "hi",
+                    "s": 8
+                  }
+                ],
+                "lit": {
+                  "en": "O, O bull / best of the Bhāratas, therefore, you, first, the senses, having controlled, of knowledge and discrimination the destroyer, this, this evil one, cast off / give up, cast off / give up",
+                  "ne": "हे भरतका हे श्रेष्ठ त्यसकारण तिमी सुरुमा इन्द्रियहरू नियन्त्रण गरेर ज्ञान विवेक नाशक यसलाई यस पापीलाई त्याग त्याग",
+                  "hi": "हे हे श्रेष्ठ भारत के इसलिए तुम आरम्भ में इन्द्रियाँ नियंत्रित करके ज्ञान विवेक नाश करने वाला इसे इस पापी को त्याग त्याग"
+                }
               }
             }
           ]
@@ -7066,6 +8619,41 @@
                 "en": "“Rise step by step: beyond the senses is the mind, beyond the mind is the intellect — and beyond the intellect is the Self itself.”",
                 "ne": "“क्रमशः माथि उठ: इन्द्रियभन्दा पर मन, मनभन्दा पर बुद्धि — र बुद्धिभन्दा पर आत्मा नै।”",
                 "hi": "“क्रम से ऊपर उठ: इन्द्रियों से परे मन, मन से परे बुद्धि — और बुद्धि से परे आत्मा ही।”"
+              },
+              "anv": {
+                "d": "इन्द्रियाणि पराणि आहुः\\, इन्द्रियेभ्यः मनः परम्\\, मनसः तु बुद्धिः परा\\, यः तु बुद्धेः परतः सः (आत्मा अस्ति)।",
+                "t": "indriyāṇi parāṇi āhuḥ\\, indriyebhyaḥ manaḥ param\\, manasaḥ tu buddhiḥ parā\\, yaḥ tu buddheḥ parataḥ saḥ (ātmā asti)|",
+                "w": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  5,
+                  4,
+                  6,
+                  7,
+                  9,
+                  8,
+                  10,
+                  13,
+                  11,
+                  12,
+                  14,
+                  {
+                    "t": "आत्मा",
+                    "i": "ātmā"
+                  },
+                  {
+                    "t": "अस्ति)।",
+                    "i": "asti",
+                    "sup": "asti"
+                  }
+                ],
+                "lit": {
+                  "en": "the senses, higher / superior, they say, than the senses, the mind, higher, than the mind, but, the intellect, higher, who / which, but, than the intellect, beyond, he / that, is",
+                  "ne": "इन्द्रियहरू उच्च भन्छन् इन्द्रियहरूभन्दा मन श्रेष्ठ मनभन्दा तर बुद्धि परा जो तर बुद्धिभन्दा पर ऊ छ",
+                  "hi": "इन्द्रियाँ उच्च कहते हैं इन्द्रियों से मन श्रेष्ठ मन से पर बुद्धि परा जो पर बुद्धि से पर वह है"
+                }
               }
             }
           ]
@@ -7235,6 +8823,56 @@
                 "en": "“Knowing the Self beyond the intellect, steadying yourself by yourself, kill the hard-to-conquer enemy of desire, Arjuna.”",
                 "ne": "“बुद्धिभन्दा परको आत्मालाई चिनेर, आफैंलाई आफैंले स्थिर गरेर, जित्न कठिन कामनारूपी शत्रुलाई मार, अर्जुन।”",
                 "hi": "“बुद्धि से परे की आत्मा को पहचानकर, स्वयं को स्वयं से स्थिर करके, जीतना कठिन कामना-रूपी शत्रु को मार, अर्जुन।”"
+              },
+              "anv": {
+                "d": "हे महाबाहो! एवम् (आत्मानं) बुद्धेः परम् बुद्ध्वा आत्मना आत्मानम् संस्तभ्य\\, कामरूपम् दुरासदम् शत्रुम् जहि।",
+                "t": "he mahābāho! evam (ātmānaṃ) buddheḥ param buddhvā ātmanā ātmānam saṃstabhya\\, kāma-rūpam durāsadam śatrum jahi|",
+                "w": [
+                  {
+                    "t": "हे",
+                    "i": "he",
+                    "sup": "he"
+                  },
+                  {
+                    "r": [
+                      9,
+                      10
+                    ],
+                    "t": "महाबाहो"
+                  },
+                  0,
+                  5,
+                  1,
+                  2,
+                  3,
+                  6,
+                  {
+                    "t": "आत्मानम्",
+                    "i": "ātmānam"
+                  },
+                  4,
+                  {
+                    "r": [
+                      11,
+                      12
+                    ],
+                    "t": "काम-रूपम्"
+                  },
+                  {
+                    "r": [
+                      13,
+                      14
+                    ],
+                    "t": "दुरासदम्"
+                  },
+                  8,
+                  7
+                ],
+                "lit": {
+                  "en": "O, great O armed one, thus, the self, than the intellect, beyond, having known, by the Self, having steadied / restrained, of desire in the form, to overcome hard, the enemy, slay",
+                  "ne": "हे महान् हे बाहु यसरी आत्मालाई बुद्धिभन्दा पर बुझेर आत्माद्वारा दृढ गरेर कामना रूप गाह्रो पार गर्न शत्रुलाई मार",
+                  "hi": "हे महान् हे बाहु इस प्रकार आत्मा को बुद्धि से परे समझकर आत्मा से दृढ़ करके कामना रूप कठिन पार करना शत्रु को मार"
+                }
               }
             }
           ]

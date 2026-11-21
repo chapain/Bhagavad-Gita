@@ -62,6 +62,9 @@ FUNCTION_WORDS = {
 def _tokens(text):
     text = PAREN.sub(" ", text)
     text = text.replace("\u200c", "").replace("\u200d", "")
+    # the reference escapes punctuation it wants printed — "cet\," — and the
+    # backslash is part of the mark, not of the word
+    text = text.replace("\\", "")
     return [t for t in re.split(r"[\s,;.!?।॥\[\]'\"–—-]+", text) if t]
 
 
