@@ -17,10 +17,34 @@ what `source/anvaya.py` reads. It is a *labour*, not a translation: it adds no
 interpretation of its own, which is what makes it usable as a check on the
 verse rather than as a source of doctrine.
 
-**Its licence forbids redistribution.** The transcription under
-`source/reference/` is kept for provenance and for the build; it is not
-republished in `docs/` or in the generated site. Anyone reusing this repository
-must not lift it out and republish it either.
+**The licence is narrower than "forbids redistribution", and it has to be read
+exactly.** The file's header says the text is
+
+> prepared by volunteers and is to be used for personal study and research. The
+> file is not to be copied or reposted for promotion of any website or
+> individuals or for commercial purpose without permission.
+
+Three things follow, and they are not the same thing:
+
+* **Not commercial use without permission.** This app is free and carries no
+  advertising, so it is inside the permission-free space — but it is, on the
+  plain words of the notice, *reposting* the file, which is the act the notice
+  names. The permission clause exists precisely for this case, and the notice
+  gives an address for corrections that also serves as the route to ask.
+* **Not reposting "for promotion of any website or individuals".** The clause
+  is aimed at people who lift the file to promote their own site. We are not
+  doing that, but the wording is broad enough that we should not lean on our
+  own reading of it.
+* **Therefore: ask.** The transcription under `source/reference/` is kept for
+  provenance and build input, it is never rendered into `docs/` or the
+  generated site, and every anvaya in the app is stored as our own Devanagari
+  inside `source/ch<N>.json` rather than served from the `.itx`.
+
+**The right next step is a permission request to sanskritdocuments.org** (the
+address in the file is `sanskrit at cheerful dot com`) before the anvaya of all
+700 verses is published. If permission is refused, the anvaya layer cannot ship
+as prose and the fallback is to keep it out of the built site while the word
+rows remain — a decision for the owner, not for the build.
 
 ## Gita Press, *Gita-Padachchheda-Anvaya* (book code 17)
 
