@@ -389,6 +389,9 @@ SUPPLIED_COPULAS = {"santi", "asti", "sati", "bhavati", "bhavanti", "syāt",
 # as supplied wherever it is shown. Gita Press does the same in its word
 # columns — "(सन्ति) = हैं" — and the parentheses are the mark.
 SUPPLIED_GLOSS = {
+    # the vocative particle: a word the anvaya prints around a name, not a word
+    # the verse carries on its own
+    "he":    {"en": "O",    "ne": "हे",      "hi": "हे"},
     "idam":  {"en": "this",  "ne": "यो",   "hi": "यह"},
     "idaṃ":  {"en": "this",  "ne": "यो",   "hi": "यह"},
     "imam":  {"en": "this",  "ne": "यो",   "hi": "यह"},

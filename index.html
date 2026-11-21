@@ -1468,10 +1468,18 @@
   .m-anvaya .av-pairs-label{ display:block; font-size:.68rem; font-weight:700;
     letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);
     opacity:.85; margin-bottom:6px; }
-  .m-anvaya .av-pair-list{ display:flex; flex-wrap:wrap; gap:6px 14px;
+  /* One pair per line, as the reader asked: the verse's words down the page in
+     the order they run, each with its meaning beside it. A grid row keeps the
+     three parts of a pair on one line while the rows stay aligned. */
+  .m-anvaya .av-pair-list{ display:flex; flex-direction:column;
     margin:0; padding:0; list-style:none; }
-  .m-anvaya .av-pair{ display:flex; flex-direction:column; gap:1px;
-    min-width:0; padding:2px 0; }
+  .m-anvaya .av-pair{ display:grid; align-items:baseline;
+    grid-template-columns:minmax(4.5em,auto) minmax(0,auto) minmax(0,1fr);
+    gap:2px 10px; padding:3px 0; border-bottom:1px solid var(--line); }
+  .m-anvaya .av-pair:last-child{ border-bottom:0; }
+  /* a supplied word borrows no grid cell of its own, so the gloss still lands
+     in the third column even when there is no IAST to show */
+  .m-anvaya .av-pair > .av-gloss{ grid-column:3; }
   .m-anvaya .av-word{ font-family:"Noto Serif Devanagari",Georgia,serif;
     color:var(--ink); font-size:calc(.95rem * var(--reader-scale,1));
     line-height:1.4; }
@@ -1481,9 +1489,18 @@
     line-height:1.3; }
   .m-anvaya .av-gloss{ color:var(--ink-soft);
     font-size:calc(.8rem * var(--reader-scale,1)); line-height:1.35; }
-  /* The construed literal reads as one line of plain sense, marked apart from
-     the Reading because it makes a different claim: no word beyond the rows. */
-  .m-line.construed .lt{ font-style:normal; }
+  /* The construed literal closes the box: the word list above it, spoken. */
+  .m-anvaya .av-construed{ margin:12px 0 0; padding-top:10px;
+    border-top:1px solid var(--line); }
+  .m-anvaya .av-construed-label{ display:block; font-size:.68rem; font-weight:700;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);
+    opacity:.85; margin-bottom:4px; }
+  .m-anvaya .av-construed-text{ display:block; color:var(--ink);
+    font-family:"Noto Serif Devanagari",Georgia,serif;
+    font-size:calc(.92rem * var(--reader-scale,1)); line-height:1.6; }
+  .m-anvaya .av-body{ margin:10px 0 0; padding:10px 12px; border-radius:10px;
+    background:var(--teal-soft); border:1px solid var(--line); }
+  .m-anvaya .av-pairs{ margin:0; }
   /* ---- Phase 3.3 bottom tab bar (phones only) ---- */
   .tabbar{ display:none; }
   .m-search{ display:none; }
@@ -5070,30 +5087,33 @@ function anvayaHtml(s){
     ? `<span class="av-iast" lang="sa-Latn">${a.t.split('\n').filter(x=>x.trim())
         .map(x => `<span class="av-line">${esc(x)}</span>`).join('')}</span>`
     : '';
-  /* The words in anvaya order are the same anvaya read word by word, so they
-     live on the block rather than beside it: one control, two depths. The
-     tokens address the verse's own word rows, so each gloss shown here is the
-     gloss the pāda boxes show — there is no second copy of any meaning. */
+  /* One box, one control. Closed it is the anvaya as a sentence; opened it is
+     that same sentence word by word, then the construed literal underneath —
+     which belongs here because it is the word-by-word reading spoken, not a
+     second opinion about the verse. */
   const pairs = anvayaPairsHtml(s);
-  const hasPairs = !!pairs;
-  const id = `anv-words-${String(s.n).replace('.', '-')}`;
-  const head = hasPairs
-    ? `<button type="button" class="av-toggle" aria-expanded="false" aria-controls="${id}"
+  const construed = construedInAnvayaHtml(s);
+  const hasMore = !!(pairs || construed);
+  const id = `anv-body-${String(s.n).replace('.', '-')}`;
+  if(!hasMore){
+    return `<section class="m-anvaya" aria-label="${esc(L('anvaya_of'))}">`
+      + `<span class="av-label" aria-hidden="true">${esc(L('anvaya'))}</span>`
+      + `<div class="av-text" lang="sa">${body}</div>${iast}</section>`;
+  }
+  return `<section class="m-anvaya" aria-label="${esc(L('anvaya_of'))}">`
+    + `<button type="button" class="av-toggle" aria-expanded="false" aria-controls="${id}"
          aria-label="${esc(L('anvaya_words_show'))}"
          onclick="App.reader.toggleAnvayaWords(this)">
          <span class="av-label" aria-hidden="true">${esc(L('anvaya'))}</span>
          <span class="av-chev" aria-hidden="true">▾</span>
        </button>`
-    : `<span class="av-label" aria-hidden="true">${esc(L('anvaya'))}</span>`;
-  return `<section class="m-anvaya" aria-label="${esc(L('anvaya_of'))}">`
-    + head
     + `<div class="av-text" lang="sa">${body}</div>`
     + iast
-    + pairs
+    + `<div class="av-body" id="${id}" hidden>${pairs}${construed}</div>`
     + `</section>`;
 }
 
-/* The anvaya's tokens as word-meaning pairs in prose order.
+/* The anvaya's tokens as word-meaning pairs, in prose order, one pair per line.
 
    anv.w holds row references, not glosses: an int is one row, {r:[i,j]} is a
    compound fused out of several, {t:...} alone is a word the anvaya supplies
@@ -5123,13 +5143,11 @@ function anvayaPairsHtml(s){
       items.push(pairHtml(deva, parts.map(w => w[1]).join(''), gloss));
     }else if(tok.t){
       /* supplied by the anvaya, with no row of the verse behind it */
-      const g = suppliedGloss(tok.sup);
-      items.push(pairHtml(tok.t, '', g, true));
+      items.push(pairHtml(tok.t, '', suppliedGloss(tok.sup), true));
     }
   });
   if(!items.length) return '';
-  const id = `anv-words-${String(s.n).replace('.', '-')}`;
-  return `<div class="av-pairs" id="${id}" hidden>`
+  return `<div class="av-pairs">`
     + `<span class="av-pairs-label">${esc(L('anvaya_words'))}</span>`
     + `<ol class="av-pair-list">${items.map(x => `<li class="av-pair">${x}</li>`).join('')}</ol>`
     + `</div>`;
@@ -5143,10 +5161,24 @@ function pairHtml(deva, iast, gloss, supplied){
     + `<span class="av-gloss">${esc(gloss || '')}</span>`;
 }
 
+/* The construed literal, inside the anvaya box: the same words in the same
+   order, spoken as one line. It sits here rather than with the Reading because
+   it is the word list above it put into a sentence — the two should be read
+   together, and a reader who wants the smooth sense reaches the Reading next. */
+function construedInAnvayaHtml(s){
+  const lit = s && s.anv && s.anv.lit;
+  if(!lit) return '';
+  const text = T(lit);
+  if(!text) return '';
+  return `<div class="av-construed"><span class="av-construed-label">${esc(L('construed'))}</span>`
+    + `<span class="av-construed-text">${esc(text)}</span></div>`;
+}
+
 /* The declared gloss of a supplied word, mirrored from
    source/anvaya.py SUPPLIED_GLOSS. Kept tiny on purpose: these are the words
    the grammar needs and the verse does not print, and there are a handful. */
 const SUPPLIED_GLOSS = {
+  he:     ['O', 'हे', 'हे'],            // vocative particle: printed, not a word of the verse
   idam:   ['this', 'यो', 'यह'],
   imam:   ['this', 'यो', 'यह'],
   imām:   ['this', 'यी', 'यह'],
@@ -5170,7 +5202,7 @@ function suppliedGloss(sup){
 
 function toggleAnvayaWords(btn){
   const sec = btn.closest('.m-anvaya');
-  const box = sec && sec.querySelector('.av-pairs');
+  const box = sec && sec.querySelector('.av-body');
   if(!box) return;
   const open = btn.getAttribute('aria-expanded') !== 'true';
   btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -5585,17 +5617,6 @@ function fillModal(){
        overwritten by whichever rendered last. */
     return `<div class="words" id="${id}" data-words="${esc(JSON.stringify(ws))}">${ws.map((w,i)=>`<div class="wrow" role="button" tabindex="0" data-wi="${i}" aria-expanded="false"><span class="wdeva" lang="sa">${w[0]}</span><span class="wiast" lang="sa-Latn">${esc(w[1])}</span><span class="wmean">${esc(w[2+LI] || w[2])}</span></div>`).join('')}</div>`;
   }
-  /* The construed literal: the anvaya's glosses as one line, in the reader's
-     language. It sits above the Reading because it is the checkable one — every
-     word of it is a gloss the reader has just seen in the pāda boxes. */
-  function construedHtml(s){
-    const lit = s && s.anv && s.anv.lit;
-    if(!lit) return '';
-    const text = T(lit);
-    if(!text) return '';
-    return `<div class="m-line construed"><span class="lb">${esc(L('construed'))}</span>`
-      + `<div class="lt">${esc(text)}</div></div>`;
-  }
   function spkHtml(list){
     return list.map(x=>{
       const id = `words-speaker-${speakerId++}`;
@@ -5688,7 +5709,6 @@ function fillModal(){
         </div>
       </div>
       ${anvayaHtml(s)}
-      ${construedHtml(s)}
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
       <details class="m-note"${noteText ? ' open' : ''}>
@@ -5914,7 +5934,8 @@ App.reader = Object.freeze({
   navigate: navSutra,
   shareText: verseShareText,
   padaBlock: padaBlockDeva,
-  toggleVerseExpansion: toggleVerseExpansion
+  toggleVerseExpansion: toggleVerseExpansion,
+  toggleAnvayaWords: toggleAnvayaWords
 });
 /* Keep a lightweight, per-tab checkpoint current. In addition to explicit
    route changes this catches disclosure toggles, search text, modal controls,
