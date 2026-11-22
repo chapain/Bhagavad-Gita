@@ -22,7 +22,13 @@ semantic audit. Coverage below records only work actually done in this pass.
 | 10.01–10.42 | Read against Sanskrit, rows and the literals; Besant 1896 | 10.13 corrected in all three literals, and its ne/hi paraphrases rewritten. 10.05, 10.12, 10.16 and 10.36 examined and left. |
 | 11.01–11.55 | Read against Sanskrit, rows and the literals; Besant 1896 | 11.26, 11.31, 11.37 and 11.42 corrected, plus a chapter-wide Nepali spelling class. 11.01, 11.15 and 11.16 examined and left. |
 | 12.01–12.20 | Read against Sanskrit, rows and the literals; Besant 1896 | 12.09 and 12.11 corrected. |
-| All other verses | Not yet reviewed in this pass | Whole-book targeted screens do not constitute a verse-by-verse review. |
+| 13.01–13.34 | Read against Sanskrit, rows and the literals; Besant 1896 | 13.07 and 13.23 corrected. |
+| 14.01–14.27 | Read against Sanskrit, rows and the literals; Besant 1896 | 14.24 corrected. |
+| 15.01–15.20 | Read against Sanskrit, rows and the literals; Besant 1896 | 15.16 corrected. |
+| 16.01–16.24 | Read against Sanskrit, rows and the literals; Besant 1896 | No change. |
+| 17.01–17.28 | Read against Sanskrit, rows and the literals; Besant 1896 | 17.03 corrected. |
+| 18.01–18.78 | Read against Sanskrit, rows and the literals; Besant 1896 | 18.42 (with 13.07), 18.45, 18.46, 18.59, 18.30 and 18.33 corrected. |
+| All 700 verses | Read in this pass | Whole-book targeted screens do not constitute a verse-by-verse review; the reading above does. |
 
 ## Findings and whole-book class screens
 
@@ -308,12 +314,67 @@ Candidates examined and **deliberately left**, so they are not re-reported:
 * **12.20** `धर्म्यामृतम्` split as `धर्म्य` + `अमृतम्` in the rows; the
   literals' "immortal dharma" is the sense and Besant reads "Amrita-Dharma".
 
+### Shot 3 (chapters 13–18): what was read and what was not changed
+
+Chapters 13 to 18 were read verse by verse against the Sanskrit and the rows,
+with Besant in hand. Seven repairs, one of them the second half of a pair.
+
+The **क्षान्ति/धृति collision** is the class defect of this shot. `धृतिः` is
+fortitude and the house gives it धैर्य in every one of its rows (10.34, 13.06,
+16.03, 18.33–18.35, 18.43). `क्षान्तिः` is forbearance and had been given the
+same धैर्य at 13.07 and 18.42, so two distinct items in a list of virtues read
+as one word — and at 13.07 the row then contradicted its own literal, which
+already said क्षमा. Both now read क्षमा in the rows and in the literals. Found
+by screening every क्षान्ति/क्षमा/धृति row in the book; that screen returns
+nothing else.
+
+The rest are single-word slips of the kind a reading finds and no vocabulary
+screen would:
+
+* **13.23** ne/hi — the verb वेत्ति was not rendered; both read "knows prakṛti
+  with the guṇas" where the verse says "knows puruṣa and prakṛti with its
+  guṇas". The rows were already right.
+* **14.24** en/ne/hi — आत्मसंस्तुति is blame and *self*-praise; all three
+  literals flattened it to plain praise, contradicting their own rows.
+* **15.16** ne/hi — supplied "आत्मा" where the verse says only कूटस्थः अक्षर
+  उच्यते.
+* **17.03** en/ne/hi — सत्त्वानुरूपा is "according to his sattva"; all three
+  said "nature", the word the verse does not use (that is 17.02's स्वभावजा).
+* **18.30** ne/hi — कार्याकार्ये is "what is to be done and not done"; all three
+  carried "right and wrong" from 18.31–18.32's धर्म-अधर्म, collapsing two of
+  the four pairs into one.
+* **18.33** hi — धारयते is holding the activities, not suppressing them, and
+  अव्यभिचारिण्या is unwavering, not "firm".
+* **18.45 / 18.46 / 18.59** ne/hi — a repeated verb where the verse names the
+  work twice (18.45), यतः and येन merged so that the pervasion was said to come
+  *from* him (18.46), and a Hindi protasis with no subject where the apodosis
+  says "your resolve" (18.59).
+
+Left, and recorded so they are not re-reported:
+
+* **18.12** ne/hi use the singular "the non-renouncer / त्यागी" for the plural
+  अत्यागिनाम्, and 18.51 hi "शब्द आदि विषयों" for शब्दादीन् — number and
+  collectivity expressed differently, no change of sense.
+* **18.71** ne "निन्दा बिना" for अनसूयः, where the row says ईर्ष्यारहित and en
+  says "without carping". Besant also reads "without carping"; the Nepali is
+  the same avoidance, less exactly named.
+* **13.10** ne/hi "एकान्तमा रुचि" for विविक्तदेशसेवित्वम् — the word is
+  "frequenting a solitary place", the idiom is the same.
+* **16.13** "अझ बढी/और भी" folds पुनः धनम् ("wealth again") into "more"; the
+  verse's own repetition is carried by the sense.
+* **16.22** "from these" (एतैः) rendered "by these" — the sense is identical in
+  the sentence.
+* **13.15** ne/hi and **17.17** ne "दृढ व्यक्तिहरू" for युक्तैः ("the steadfast");
+  the row says युक्त, the literal says firm — the same person, named from the
+  attribute rather than the word.
+
 ### Coverage and what is still owed
 
 Read against the Sanskrit, the rows and a public-domain translation:
-**1.01–1.47, 2.01–2.72, 3.01–3.43, 4.01–4.42, 5.01–5.29, 6.01–6.47,
-7.01–7.30, 8.01–8.28, 9.01–9.34, 10.01–10.42, 11.01–11.55, 12.01–12.20
-(489 verses)**. Not yet read in this pass: chapters 13–18 (211 verses). The
+**all 700 verses** — 1.01–1.47, 2.01–2.72, 3.01–3.43, 4.01–4.42, 5.01–5.29,
+6.01–6.47, 7.01–7.30, 8.01–8.28, 9.01–9.34, 10.01–10.42, 11.01–11.55,
+12.01–12.20, 13.01–13.34, 14.01–14.27, 15.01–15.20, 16.01–16.24,
+17.01–17.28, 18.01–18.78. The
 finding rate so far is about one repaired verse in sixteen, and the repairs
 above include three that a vocabulary screen cannot reach (a supplied
 comparison, a hypothetical turned into a prediction, a conjunction turned into
