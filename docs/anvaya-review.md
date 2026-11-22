@@ -12,6 +12,8 @@ The uploaded draft has 700 unique verse identifiers, exactly matching the 700 id
 
 **4.01–4.42** have received an initial comparison and been added with IAST. Corrections include both अपि occurrences in 4.06, इति in 4.03 and 4.14, ज्ञानावस्थितचेतसः in 4.23, retaining ब्रह्मार्पणम् as a compound in 4.24, अपरे in 4.25 and 4.27, and removing supplied सन्ति in 4.28. The review is fallible.
 
-The remaining **496 entries** have not been reviewed or published. For example, the draft of 18.77 supplies अस्ति in parentheses, absent from that verse; do not automatically publish supplied words. Before adding each entry, check its words and repetitions against the canonical verse and padaccheda, allowed compound transformations, sandhi, and grammatical ordering. Include each speaker heading in its appropriate position, including within a verse, and supply matching IAST for English mode. Mechanical comparison alone cannot establish correctness.
+**5.01–5.29** have received an initial comparison and been added with IAST. The draft duplicated शंससि in 5.01 and तत् in 5.16, replaced इव with यथा in 5.10, omitted च in 5.20 and a यः in 5.24, and supplied कृत्वा in 5.27; these have been corrected. The review is fallible.
+
+The remaining **467 entries** have not been reviewed or published. For example, the draft of 18.77 supplies अस्ति in parentheses, absent from that verse; do not automatically publish supplied words. Before adding each entry, check its words and repetitions against the canonical verse and padaccheda, allowed compound transformations, sandhi, and grammatical ordering. Include each speaker heading in its appropriate position, including within a verse, and supply matching IAST for English mode. Mechanical comparison alone cannot establish correctness.
 
 The translation audit is tracked separately in `literal-review-2026-11.md`; this draft is an aid, not a substitute for checking the Sanskrit.
