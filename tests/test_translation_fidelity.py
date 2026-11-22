@@ -252,7 +252,10 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # Chapters 7–10 read the same day (992 → 991): 8.19 अवशः "helpless". The
 # 7.21, 9.01, 9.11, 9.27 and 10.13 repairs moved no row, and again the miss
 # list was diffed before and after to confirm it.
-ROW_LITERAL_CENSUS = 991
+# 2026-11-22: the 11.26 boundary repair carries सह "together" into
+# the English literal (991 → 990); a before/after miss-list diff found no
+# other changes. The entry into the mouths belongs to 11.27, not 11.26.
+ROW_LITERAL_CENSUS = 990
 
 
 def _fold_diacritics(word):
@@ -614,7 +617,9 @@ class Verse207Literal(unittest.TestCase):
         verse = load_verse("2.07")
         self.assertEqual([row[0] for row in verse["flow"][0]["words"]],
                          ["कार्पण्य", "दोष", "उपहत", "स्वभावः"])
-        self.assertIn("कायरतारूपी दोषले स्वभाव आहत भएको र धर्म (कर्तव्य) बारे चित्त भ्रमित भएको म तपाईंलाई सोध्छु", verse["lits"]["ne"])
+        # 2026-11-22: धर्म is rendered as कर्तव्य, without a duplicate
+        # explanatory parenthetical; the owner's participial construction stays.
+        self.assertIn("कायरतारूपी दोषले स्वभाव आहत भएको र कर्तव्य बारे चित्त भ्रमित भएको म तपाईंलाई सोध्छु", verse["lits"]["ne"])
         for lang, weakness, defect, mind in (
             ("en", "weakness", "defect", "mind is confused about duty"),
             ("ne", "कायरता", "दोष", "चित्त भ्रमित"),

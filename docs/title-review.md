@@ -556,7 +556,7 @@ want them to survive a regeneration.
 |  | 11.23 | Seeing your fearsome form, I tremble | Seeing your immense form, O mighty-armed one, with many mouths and eyes, many arms, thighs and feet, many bellies, many fearsome fangs, the worlds tremble — and so do I. | ☐ | ☐ | ☐ |
 |  | 11.24 | Touching the sky, blazing with many colours | Touching the sky, blazing, of many colours, with gaping mouths and blazing wide eyes — seeing you, my inmost heart trembles; I find no firmness or peace, O Viṣṇu. | ☐ | ☐ | ☐ |
 |  | 11.25 | Like the fire at the end of time | Seeing your terrible mouths with their fearful fangs, like the fire of the end of time, I do not know the directions, nor do I find peace; be gracious, O Lord of gods, abode of the world. | ☐ | ☐ | ☐ |
-|  | 11.26 | The sons of Dhṛtarāṣṭra enter your mouths | All these sons of Dhṛtarāṣṭra, with the hosts of kings, enter your mouths — Bhīṣma, Droṇa, Karṇa, and the chief warriors of our side, | ☐ | ☐ | ☐ |
+|  | 11.26 | The sons of Dhṛtarāṣṭra enter your mouths | All these sons of Dhṛtarāṣṭra, together with the hosts of kings — Bhīṣma, Droṇa and that charioteer's son too, together with our chief warriors — you … | ☐ | ☐ | ☐ |
 |  | 11.27 | Heads crushed between your teeth | hurrying, they enter your mouths, terrible and frightful with fangs; some are seen stuck between the teeth, their heads crushed. | ☐ | ☐ | ☐ |
 |  | 11.28 | As rivers rush into the ocean | As the many rushing currents of rivers pour into the ocean, so these heroes of the mortal world enter your blazing mouths. | ☐ | ☐ | ☐ |
 |  | 11.29 | As moths fly into a blazing fire | As moths fly with full speed into a blazing fire for their destruction, so these worlds fly into your mouths for their destruction. | ☐ | ☐ | ☐ |
