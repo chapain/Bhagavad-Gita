@@ -683,7 +683,7 @@ want them to survive a regeneration.
 |  | 14.21 | The marks of the transcendent | Arjuna said: By what marks is he who has transcended these three guṇas known, O Lord? What is his conduct, and how does he transcend them? | ☐ | ☐ | ☐ |
 |  | 14.22 | Neither hates them nor longs for them | The Blessed Lord said: He who neither hates illumination, activity and delusion when they arise, nor longs for them when they cease, O Pāṇḍava, | ☐ | ☐ | ☐ |
 |  | 14.23 | Seated like a witness | — seated as one indifferent, unshaken by the guṇas, thinking 'the guṇas act' and abiding unmoved — | ☐ | ☐ | ☐ |
-|  | 14.24 | Even in pleasure and pain; clod, stone and gold alike | — equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in praise and blame — | ☐ | ☐ | ☐ |
+|  | 14.24 | Even in pleasure and pain; clod, stone and gold alike | — equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in blame and self-praise — | ☐ | ☐ | ☐ |
 |  | 14.25 | Equal in honour and dishonour | — equal in honour and dishonour, equal to friend and foe, renouncing all undertakings — he is said to have transcended the guṇas. | ☐ | ☐ | ☐ |
 |  | 14.26 | Unwavering devotion carries one beyond | He who serves me with the unwavering yoga of devotion — transcending these guṇas, he becomes fit for Brahman. | ☐ | ☐ | ☐ |
 |  | 14.27 | I am the support | For I am the support of Brahman, of immortality and the imperishable, of eternal dharma and of absolute bliss. | ☐ | ☐ | ☐ |
@@ -756,7 +756,7 @@ want them to survive a regeneration.
 |---|---|---|---|:-:|:-:|:-:|
 |  | 17.01 | Faithful worship while setting aside scripture's rule | Arjuna said: Those who, casting aside the ordinance of scripture, worship with faith — what is their state, O Kṛṣṇa? Is it sattva, rajas or tamas? | ☐ | ☐ | ☐ |
 |  | 17.02 | The threefold faith | The Blessed Lord said: The faith of embodied beings is threefold, born of their own nature — sāttvic, rājasic and tāmasic; hear of it. | ☐ | ☐ | ☐ |
-|  | 17.03 | Faith shapes the person | The faith of each is according to his nature, O Bhārata; a man is made of his faith — as is his faith, so is he. | ☐ | ☐ | ☐ |
+|  | 17.03 | Faith shapes the person | The faith of each is in accord with his own being, O Bhārata; a man is made of his faith — as is his faith, so is he. | ☐ | ☐ | ☐ |
 |  | 17.04 | Whom each worships | The sāttvic worship the gods; the rājasic the yakṣas and rākṣasas; and others — the tāmasic — worship ghosts and the hosts of spirits. | ☐ | ☐ | ☐ |
 |  | 17.05 | Austerity not prescribed by scripture | The men who practise terrible austerities not ordained by scripture, full of hypocrisy and ego, impelled by the force of desire and attachment, | ☐ | ☐ | ☐ |
 |  | 17.06 | Torturing me within | — foolishly tormenting the elements of the body and also me dwelling within the body — know them as of demoniac resolves. | ☐ | ☐ | ☐ |
