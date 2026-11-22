@@ -391,7 +391,7 @@ want them to survive a regeneration.
 |  | 7.18 | The wise one is my very Self | Noble are all these; but the wise one is my very self, in my opinion; for he, self-possessed, is established in me, the supreme goal. | ☐ | ☐ | ☐ |
 |  | 7.19 | At the end of many births | At the end of many births, the man of wisdom resorts to me, thinking 'Vāsudeva is all'; that great soul is very rare. | ☐ | ☐ | ☐ |
 |  | 7.20 | Deprived of discernment | Those whose knowledge is stolen by desires resort to other deities, following this or that rite, constrained by their own nature. | ☐ | ☐ | ☐ |
-|  | 7.21 | I make a devotee's faith unshakeable | Whatever divine form a devotee desires to worship with faith, I render that very faith of his steady. | ☐ | ☐ | ☐ |
+|  | 7.21 | I make a devotee's faith unshakeable | Whatever form a devotee desires to worship with faith, I render that very faith of his steady. | ☐ | ☐ | ☐ |
 |  | 7.22 | The desires are granted | United with that faith, he engages in the worship of that deity, and from it obtains his desires — which are verily ordained by me. | ☐ | ☐ | ☐ |
 |  | 7.23 | Finite fruit for the finite-minded | But the fruit of those worshippers is limited; the fruit belongs to the small-minded. The worshippers of the gods go to the gods; my devotees come to me. | ☐ | ☐ | ☐ |
 |  | 7.24 | The unwise think me manifest | The unintelligent, not knowing my higher nature — imperishable and unsurpassed — think of me, the unmanifest, as one who has taken on manifestation. | ☐ | ☐ | ☐ |
@@ -425,7 +425,7 @@ want them to survive a regeneration.
 |  | 8.16 | Even Brahmā's world returns | From the world of Brahmā down, all worlds return again, O Arjuna; but reaching me, O Kaunteya, there is no rebirth. | ☐ | ☐ | ☐ |
 |  | 8.17 | A thousand ages are one day | Those who know Brahmā's day to end in a thousand yugas, and the night to end in a thousand — they know day and night. | ☐ | ☐ | ☐ |
 |  | 8.18 | At daybreak all emerge, at nightfall dissolve | From the unmanifest all manifest things arise at the coming of day; at the coming of night they dissolve into the unmanifest. | ☐ | ☐ | ☐ |
-|  | 8.19 | At Brahmā's dawn, beings rise; at night, they dissolve | This same host of beings, arising again and again, dissolves at the coming of night, O Pārtha, and arises at the coming of day. | ☐ | ☐ | ☐ |
+|  | 8.19 | At Brahmā's dawn, beings rise; at night, they dissolve | This same host of beings, arising again and again, dissolves helpless at the coming of night, O Pārtha, and arises at the coming of day. | ☐ | ☐ | ☐ |
 |  | 8.20 | Another unmanifest, eternal | But beyond this unmanifest is another unmanifest, eternal — which, when all beings perish, does not perish. | ☐ | ☐ | ☐ |
 |  | 8.21 | Reaching it, they do not return | That unmanifest is called the imperishable; they call it the supreme goal; reaching which they do not return — that is my supreme abode. | ☐ | ☐ | ☐ |
 |  | 8.22 | Attained by devotion alone | That supreme Person, O Pārtha, is attainable by devotion to him alone; in him all beings dwell, and by him all this is pervaded. | ☐ | ☐ | ☐ |
@@ -453,7 +453,7 @@ want them to survive a regeneration.
 |  | 9.08 | Again and again I create | Taking hold of my own prakṛti, I send forth again and again this whole host of beings, helpless under the power of nature. | ☐ | ☐ | ☐ |
 |  | 9.09 | Unbound by action | These actions do not bind me, O Dhanañjaya, for I sit as one indifferent, unattached to these actions. | ☐ | ☐ | ☐ |
 |  | 9.10 | Under my direction | Under my supervision, prakṛti brings forth the moving and the unmoving; for this reason, O son of Kuntī, the world revolves. | ☐ | ☐ | ☐ |
-|  | 9.11 | The deluded despise me | The deluded, not knowing my supreme being, despise me wearing a human form. | ☐ | ☐ | ☐ |
+|  | 9.11 | The deluded despise me | The deluded, not knowing my supreme being, the great Lord of beings, despise me wearing a human form. | ☐ | ☐ | ☐ |
 |  | 9.12 | Vain hopes, vain works, vain knowledge | Of vain hopes, vain works and vain knowledge, senseless — they cling to the deluding, demoniac and asuric nature. | ☐ | ☐ | ☐ |
 |  | 9.13 | The great souls know me as imperishable | But the great souls, O Pārtha, taking refuge in the divine nature, worship me with undivided mind, knowing me as the imperishable source of beings. | ☐ | ☐ | ☐ |
 |  | 9.14 | Ever glorifying me, firm in vows | Always glorifying me, striving with firm vows, bowing to me with devotion, ever united — they worship me. | ☐ | ☐ | ☐ |
@@ -495,7 +495,7 @@ want them to survive a regeneration.
 |  | 10.10 | To them I give the yoga of understanding | To them, ever devoted, worshipping me with love, I give the yoga of discernment, by which they come to me. | ☐ | ☐ | ☐ |
 |  | 10.11 | I destroy the darkness with the lamp of knowledge | Out of compassion for them, dwelling in their hearts, I destroy the darkness born of ignorance with the shining lamp of knowledge. | ☐ | ☐ | ☐ |
 |  | 10.12 | You are the supreme Brahman | Arjuna said: You are the supreme Brahman, the supreme light, the supreme purifier; the eternal divine Person, the primal God, unborn and all-pervading. | ☐ | ☐ | ☐ |
-|  | 10.13 | All the sages say so | Thus the seers call you — Nārada the divine sage, Asita, Devala, Vyāsa — and you yourself tell me. | ☐ | ☐ | ☐ |
+|  | 10.13 | All the sages say so | All the seers call you — Nārada the divine sage, Asita, Devala, Vyāsa — and you yourself tell me. | ☐ | ☐ | ☐ |
 |  | 10.14 | Neither gods nor demons know your manifestation | I hold all this you tell me as true, Keśava; indeed, neither gods nor demons, O Lord, know your manifestation. | ☐ | ☐ | ☐ |
 |  | 10.15 | You alone know yourself by yourself | You yourself know yourself by yourself, O supreme Person — O source of beings, Lord of beings, God of gods, Lord of the world! | ☐ | ☐ | ☐ |
 |  | 10.16 | Tell me of your divine glories | Tell me without omission your divine glories, by which you abide, pervading these worlds. | ☐ | ☐ | ☐ |

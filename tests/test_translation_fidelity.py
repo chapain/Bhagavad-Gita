@@ -247,7 +247,12 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # "deluded in all knowledge" ("deprived of all wisdom" was a substitution; the
 # ज्ञान row now travels into the literal with it). No row was added or removed
 # for the 3.31, 3.24, 4.15, 5.11 or 5.14 literal repairs, and none moved.
-ROW_LITERAL_CENSUS = 992
+# 5.14 was then reverted: "गर्छे" is the book's feminine agreement for
+# प्रकृति (see 9.10), so it was never a defect.
+# Chapters 7–10 read the same day (992 → 991): 8.19 अवशः "helpless". The
+# 7.21, 9.01, 9.11, 9.27 and 10.13 repairs moved no row, and again the miss
+# list was diffed before and after to confirm it.
+ROW_LITERAL_CENSUS = 991
 
 
 def _fold_diacritics(word):
