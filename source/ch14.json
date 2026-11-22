@@ -1739,9 +1739,9 @@
                 "hi": "जब इस शरीर के सब द्वारों से ज्ञान का प्रकाश चमकता है, तब समझ कि सत्त्व बढ़ गया है।"
               },
               "paras": {
-                "en": "“When light streams through every gate of the body, know that sattva prevails.”",
-                "ne": "“जब शरीरका हरेक ढोकाबाट प्रकाश आउँछ, तब बुझ कि सत्त्व प्रबल छ।”",
-                "hi": "“जब शरीर के हर द्वार से प्रकाश आता है, तब समझ कि सत्त्व प्रबल है।”"
+                "en": "“When knowledge shines through every opening of the body, it shows that sattva has grown strong.”",
+                "ne": "“जब शरीरका हरेक ढोकाबाट ज्ञानको प्रकाश आउँछ, तब बुझ कि सत्त्व प्रबल छ।”",
+                "hi": "“जब देह के सारे द्वारों से ज्ञान की ज्योति फूटती है, समझ लो कि सत्त्व बढ़ा है।”"
               },
               "anvaya": "यदा अस्मिन् देहे सर्वद्वारेषु ज्ञानं प्रकाशः उपजायते, तदा सत्त्वं विवृद्धम् इति उत विद्यात्।",
               "anvaya_iast": "yadā asmin dehe sarvadvāreṣu jñānaṃ prakāśaḥ upajāyate, tadā sattvaṃ vivṛddham iti uta vidyāt."
@@ -2784,7 +2784,7 @@
               },
               "paras": {
                 "en": "“The sāttvic rise; the rājasic remain in the middle; the tāmasic, bound to the lowest qualities, sink down.”",
-                "ne": "सत्त्वमा टिकेकाहरू उकालो लाग्छन्; रजोगुणीहरू जहाँका तहीँ; तमोगुणमा डुबेकाहरू ओरालो झर्छन्।",
+                "ne": "सत्त्वमा टिकेकाहरू उकालो लाग्छन्; रजोगुणीहरू बीचमै रहन्छन्; तमोगुणमा डुबेकाहरू ओरालो झर्छन्।",
                 "hi": "सत्त्व वाले ऊपर उठते हैं, रजस वाले बीच में ही अटके रहते हैं, और तमस वाले सबसे नीचे उतरते चले जाते हैं।"
               },
               "anvaya": "सत्त्वस्थाः ऊर्ध्वं गच्छन्ति, राजसाः मध्ये तिष्ठन्ति, जघन्यगुणवृत्तस्थाः तामसाः अधः गच्छन्ति।",
@@ -3769,9 +3769,9 @@
                 "hi": "— सुख-दुःख में समान, आत्मा में ही स्थित, जिसके लिए मिट्टी, पत्थर और सोना समान हैं, प्रिय-अप्रिय में समान, दृढ़, अपनी निन्दा और प्रशंसा में समान —"
               },
               "paras": {
-                "en": "“— equal in joy and sorrow, content in himself, seeing mud, stone, and gold alike, steady through likes and dislikes, unmoved by praise or blame —”",
-                "ne": "“— सुख-शोकमा समान, आफूभित्रै सन्तुष्ट, माटो, ढुङ्गा र सुनलाई एकै देख्ने, मनपर्ने-नपर्नेमा नडगमगाउने, धीर, प्रशंसा-निन्दाले नचल्ने —”",
-                "hi": "“— सुख-शोक में समान, अपने में ही संतुष्ट, मिट्टी, पत्थर और सोने को एक-सा देखने वाला, पसन्द-नापसन्द में न डिगने वाला, धीर, प्रशंसा-निन्दा से न चलने वाला —”"
+                "en": "“— equal in joy and sorrow, content in himself, seeing mud, stone, and gold alike, steady through likes and dislikes, unmoved by praise or blame directed at him —”",
+                "ne": "“— सुख-शोकमा समान, आफूभित्रै सन्तुष्ट, माटो, ढुङ्गा र सुनलाई एकै देख्ने, मनपर्ने-नपर्नेमा नडगमगाउने, धीर, आफ्नो प्रशंसा वा निन्दाले नचल्ने —”",
+                "hi": "“— सुख-शोक में समान, अपने में ही संतुष्ट, मिट्टी, पत्थर और सोने को एक-सा देखने वाला, पसन्द-नापसन्द में न डिगने वाला, धीर, अपनी प्रशंसा या निन्दा से न डिगने वाला —”"
               },
               "anvaya": "समदुःखसुखः, स्वस्थः, समलोष्टाश्मकाञ्चनः, तुल्यप्रियाप्रियः, धीरः, तुल्यनिन्दात्मसंस्तुतिः।",
               "anvaya_iast": "samaduḥkhasukhaḥ, svasthaḥ, samaloṣṭāśmakāñcanaḥ, tulyapriyāpriyaḥ, dhīraḥ, tulyanindātmasaṃstutiḥ."
@@ -3891,9 +3891,9 @@
                 "hi": "— मान-अपमान में समान, मित्र और शत्रु के दोनों पक्षों के प्रति समान, सब आरम्भों का त्यागी — वह गुणों से परे हुआ कहा जाता है।"
               },
               "paras": {
-                "en": "“— the same in honour and disgrace, the same to friend and foe, one who has let every undertaking go — he is called beyond the qualities.”",
-                "ne": "“— मान र अपमान, मित्र र शत्रु — दुवैमा उस्तै; सबै आरम्भ त्याग्ने व्यक्ति गुणहरूभन्दा पर भनिन्छ।”",
-                "hi": "“— मान और अपमान में एक-सा, मित्र और शत्रु में एक-सा, जो सब आरम्भों को छोड़ चुका — वह गुणों से परे कहा जाता है।”"
+                "en": "“— the same in honour and disgrace, the same to the sides of friend and foe, one who has let every undertaking go — he is called beyond the qualities.”",
+                "ne": "“— मान र अपमान, मित्र र शत्रुका पक्ष — दुवैप्रति उस्तै; सबै आरम्भ त्याग्ने व्यक्ति गुणहरूभन्दा पर भनिन्छ।”",
+                "hi": "“— मान और अपमान में एक-सा, मित्र और शत्रु के पक्षों में एक-सा, जो सब आरम्भों को छोड़ चुका — वह गुणों से परे कहा जाता है।”"
               },
               "anvaya": "मानापमानयोः तुल्यः, मित्रारिपक्षयोः तुल्यः, सर्वारम्भपरित्यागी — सः गुणातीतः उच्यते।",
               "anvaya_iast": "mānāpamānayoḥ tulyaḥ, mitrāripakṣayoḥ tulyaḥ, sarvārambhaparityāgī — saḥ guṇātītaḥ ucyate."
@@ -4056,7 +4056,7 @@
                 "hi": "जो अविचलित भक्ति-योग से मेरी सेवा करता है — इन गुणों को पार करके, वह ब्रह्म होने योग्य हो जाता है।"
               },
               "paras": {
-                "en": "“Whoever serves me with steadfast devotion — crossing these qualities — becomes worthy of Brahman.”",
+                "en": "“Whoever serves me with steadfast devotion — crossing these qualities — becomes fit to become Brahman.”",
                 "ne": "जसले नडगमगाई मायाले मेरो सेवा गर्छ, ऊ यी गुणहरू नाघेर ब्रह्म हुन लायक बन्छ।",
                 "hi": "जो डिगे बिना प्रेम से मेरी सेवा में लगा रहता है, वह इन तीनों को पार कर जाता है और ब्रह्म होने लायक बन जाता है।"
               },

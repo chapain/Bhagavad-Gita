@@ -1168,7 +1168,7 @@
               "paras": {
                 "en": "“Humility, modesty, harmlessness, patience, honesty, serving one's teacher, purity, firmness, self-mastery,”",
                 "ne": "“आफूलाई ठूलो नठान्नु, देखावटी नहुनु, कसैलाई चोट नदिनु, सहनशील र सोझो हुनु, गुरुको सेवा गर्नु, शुद्ध रहनु, अडिग रहनु र आफूलाई वशमा राख्नु,”",
-                "hi": "“नम्रता, विनम्रता, अहिंसा, धैर्य, ईमानदारी, गुरु की सेवा, शुद्धता, दृढ़ता, आत्म-संयम,”"
+                "hi": "“नम्रता, दिखावे से दूर रहना, अहिंसा, धैर्य, ईमानदारी, गुरु की सेवा, शुद्धता, दृढ़ता, आत्म-संयम,”"
               },
               "anvaya": "अमानित्वम्, अदम्भित्वम्, अहिंसा, क्षान्तिः, आर्जवम्, आचार्योपासनं, शौचं, स्थैर्यम्, आत्मविनिग्रहः।",
               "anvaya_iast": "amānitvam, adambhitvam, ahiṃsā, kṣāntiḥ, ārjavam, ācāryopāsanaṃ, śaucaṃ, sthairyam, ātmavinigrahaḥ."
@@ -2304,9 +2304,9 @@
                 "hi": "यह सब प्राणियों के भीतर और बाहर है; यह अचल भी है और चल भी; सूक्ष्म होने से यह जाना नहीं जा सकता — यह दूर भी है, और निकट भी।"
               },
               "paras": {
-                "en": "“It is inside and outside all beings; unmoving and moving; too subtle to grasp — far away, and yet close at hand.”",
-                "ne": "“यो सबै प्राणीको भित्र र बाहिर छ; अचल र चल दुवै; यति सूक्ष्म कि समात्न गाह्रो — टाढा पनि, र हातै अगाडि पनि।”",
-                "hi": "“यह सब प्राणियों के भीतर और बाहर है; अचल और चल दोनों; इतना सूक्ष्म कि पकड़ में न आए — दूर भी, और हाथों हाथ भी।”"
+                "en": "“It is inside and outside all beings; unmoving and moving; so subtle that it cannot be known — far away, and yet close at hand.”",
+                "ne": "“यो सबै प्राणीको भित्र र बाहिर छ; अचल र चल दुवै; यति सूक्ष्म कि जान्न सकिँदैन — टाढा पनि, र हातै अगाडि पनि।”",
+                "hi": "“वह प्राणियों के बाहर भी है, भीतर भी; स्थिर भी, गतिमान भी। सूक्ष्मता के कारण उसे जाना नहीं जा सकता — वह दूर भी है और पास भी।”"
               },
               "anvaya": "भूतानां बहिः अन्तः च, अचरं चरम् एव च, सूक्ष्मत्वात् तत् अविज्ञेयं, दूरस्थं च अन्तिके च तत्।",
               "anvaya_iast": "bhūtānāṃ bahiḥ antaḥ ca, acaraṃ caram eva ca, sūkṣmatvāt tat avijñeyaṃ, dūrasthaṃ ca antike ca tat."
@@ -2468,7 +2468,7 @@
                 "hi": "यह अविभाजित है, फिर भी प्राणियों में विभाजित-सा दिखता है; वह प्राणियों का धर्ता, संहारकर्ता और स्रष्टा जानने योग्य है।"
               },
               "paras": {
-                "en": "“Look at beings and you see many; look again and there is one. It holds them up, takes them back, and puts them forth once more.”",
+                "en": "“Undivided, it appears as though divided among beings. Know it as their sustainer, devourer, and source.”",
                 "ne": "“अविभाजित, यो प्राणीहरूमा विभाजितझैं देखिन्छ; यसलाई सबैको धान्ने, आफैँमा लीन गराउने र स्रोत जान।”",
                 "hi": "“अविभाजित, यह प्राणियों में विभाजित-सा दिखता है; इसे सबका धारण करने वाला, अपने में लीन करने वाला और स्रोत जान।”"
               },
@@ -3925,9 +3925,9 @@
                 "hi": "अन्य, इस प्रकार न जानकर, दूसरों से सुनकर पूजा करते हैं; और वे भी, सुनी हुई बात में समर्पित होकर, मृत्यु से पार हो जाते हैं।"
               },
               "paras": {
-                "en": "“Others, not knowing directly, worship after hearing from teachers — and they too cross beyond death by faith in the heard teaching.”",
-                "ne": "“अरू, प्रत्यक्ष नजानेर, गुरुहरूबाट सुनेर पूजा गर्छन् — र तिनीहरू पनि सुनेको शिक्षाप्रतिको श्रद्धाले मृत्यु पार गर्छन्।”",
-                "hi": "“अन्य, प्रत्यक्ष न जानकर, गुरुओं से सुनकर पूजा करते हैं — और वे भी सुने गए उपदेश में श्रद्धा से मृत्यु पार कर जाते हैं।”"
+                "en": "“Still others worship after listening to others, though they do not know in this way; devoted to what they have heard, they too cross beyond death.”",
+                "ne": "“यसरी नजानेका कतिपयले अरूको कुरा सुनेर पूजा गर्छन्; सुनेको शिक्षामा समर्पित भएर तिनीहरू पनि मृत्यु पार गर्छन्।”",
+                "hi": "“अन्य, इस तरह न जानकर, दूसरों से सुनकर पूजा करते हैं — और वे भी सुने गए उपदेश में श्रद्धा से मृत्यु पार कर जाते हैं।”"
               },
               "anvaya": "अन्ये तु एवम् अजानन्तः अन्येभ्यः श्रुत्वा उपासते; श्रुतिपरायणाः ते अपि च एव मृत्युम् अतितरन्ति।",
               "anvaya_iast": "anye tu evam ajānantaḥ anyebhyaḥ śrutvā upāsate; śrutiparāyaṇāḥ te api ca eva mṛtyum atitaranti."
@@ -4361,9 +4361,9 @@
                 "hi": "क्योंकि सर्वत्र समान स्थित स्वामी को देखकर, वह आत्मा द्वारा आत्मा को हानि नहीं पहुँचाता; इसलिए वह परम लक्ष्य को प्राप्त होता है।"
               },
               "paras": {
-                "en": "“Seeing the Lord equally in all, he never degrades his Self; and so he reaches the highest goal.”",
-                "ne": "“सबैमा समान रहेको स्वामीलाई देखेर, ऊ आफ्नो आत्मालाई कहिल्यै होच्याउँदैन; र त्यसैले सर्वोच्च लक्ष्यमा पुग्छ।”",
-                "hi": "“सब में समान स्थित स्वामी को देखकर, वह अपनी आत्मा को कभी नीचा नहीं करता; और इसलिए सर्वोच्च लक्ष्य तक पहुँचता है।”"
+                "en": "“Seeing the Lord equally in all, he does not harm the Self by the self; and so he reaches the highest goal.”",
+                "ne": "“जताततै स्वामीलाई एकनास देख्नेले आत्माद्वारा आफ्नो आत्माको अहित गर्दैन; त्यसैले ऊ सर्वोच्च लक्ष्यमा पुग्छ।”",
+                "hi": "“सब में समान स्थित स्वामी को देखकर, वह आत्मा से आत्मा को हानि नहीं पहुँचाता; और इसलिए सर्वोच्च लक्ष्य तक पहुँचता है।”"
               },
               "anvaya": "हि सर्वत्र समवस्थितम् ईश्वरं समं पश्यन् आत्मना आत्मानं न हिनस्ति, ततः परां गतिं याति।",
               "anvaya_iast": "hi sarvatra samavasthitam īśvaraṃ samaṃ paśyan ātmanā ātmānaṃ na hinasti, tataḥ parāṃ gatiṃ yāti."
@@ -4983,7 +4983,7 @@
                 "hi": "जैसे सर्वव्यापी आकाश, सूक्ष्म होने के कारण, लिप्त नहीं होता, वैसे ही हर शरीर में स्थित आत्मा लिप्त नहीं होती।"
               },
               "paras": {
-                "en": "“As space, though pervading all, is never tainted, so the Self present in every body is never tainted.”",
+                "en": "“Space pervades everything yet, because it is subtle, nothing can stain it; likewise the Self in every body remains untouched.”",
                 "ne": "“जसरी व्यापक आकाश, सूक्ष्म हुँदै, कहिल्यै लिप्त हुँदैन, त्यसरी हरेक शरीरमा रहेको आत्मा कहिल्यै लिप्त हुँदैन।”",
                 "hi": "आकाश हर जगह फैला है, पर इतना सूक्ष्म है कि उस पर कोई मैल नहीं लगता; देह में बसी आत्मा भी इसी तरह अछूती रहती है।"
               },
@@ -5283,9 +5283,9 @@
                 "hi": "जो इस प्रकार ज्ञान के नेत्र से क्षेत्र और क्षेत्रज्ञ का भेद, और प्राणियों की प्रकृति से मुक्ति जानते हैं — वे परम तत्त्व को प्राप्त होते हैं।"
               },
               "paras": {
-                "en": "“Those who, with the eye of wisdom, discern the difference between the field and its knower, and the freedom from nature — they attain the highest.”",
-                "ne": "“जसले ज्ञानको आँखाले क्षेत्र र त्यसका ज्ञाताको अन्तर, र प्रकृतिबाट स्वतन्त्रता देख्छन् — तिनीहरू सर्वोच्चमा पुग्छन्।”",
-                "hi": "“जो ज्ञान के नेत्र से क्षेत्र और उसके ज्ञाता का अन्तर, और प्रकृति से स्वतंत्रता देखते हैं — वे सर्वोच्च तक पहुँचते हैं।”"
+                "en": "“Those who, with the eye of wisdom, discern the difference between the field and its knower, and the liberation of beings from nature — they attain the highest.”",
+                "ne": "“जसले ज्ञानको आँखाले क्षेत्र र त्यसका ज्ञाताको अन्तर, र प्रकृतिबाट प्राणीहरूको मुक्ति देख्छन् — तिनीहरू सर्वोच्चमा पुग्छन्।”",
+                "hi": "“जो ज्ञान के नेत्र से क्षेत्र और उसके ज्ञाता का अन्तर, और प्रकृति से प्राणियों की मुक्ति देखते हैं — वे सर्वोच्च तक पहुँचते हैं।”"
               },
               "anvaya": "ये एवं ज्ञानचक्षुषा क्षेत्रक्षेत्रज्ञयोः अन्तरं भूतप्रकृतिमोक्षं च विदुः, ते परं यान्ति।",
               "anvaya_iast": "ye evaṃ jñānacakṣuṣā kṣetrakṣetrajñayoḥ antaraṃ bhūtaprakṛtimokṣaṃ ca viduḥ, te paraṃ yānti."

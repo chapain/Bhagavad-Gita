@@ -17,11 +17,14 @@
 
 ## 1. Where we are (concise)
 
-- **Paraphrase review in progress (2026-11-22).** Two six-chapter batches,
-  Chapters 1–6 and 7–12, **489/700 verses read** against Sanskrit and the
-  reviewed literals in all three languages, except 2.05 reserved for Dhruba.
-  A few targeted class follow-ups reach 13–18; those chapters still need the
-  third batch. See `docs/paraphrase-review-2026-11.md` for findings and limits.
+- **Paraphrase review completed (2026-11-22).** All three six-chapter batches,
+  Chapters 1–18, were read against Sanskrit and the reviewed literals in all
+  three languages; **2.05 remains unchanged and reserved for Dhruba's decision**.
+  Targeted whole-book class screens and focused regressions do not prove semantic
+  completeness. See `docs/paraphrase-review-2026-11.md` for corrections,
+  retained readings, 2.05 alternatives and verification limits. The local build
+  skips browser checks without Playwright/Chromium and share-art repaint without
+  Pillow. Commit locally; push only with owner approval.
 
 - **Word-row/literal follow-up completed (2026-11-22).** This renewed pass read
   Chapters 1–18, **700/700 verses**, including all three requested batches.

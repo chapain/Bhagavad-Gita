@@ -181,9 +181,9 @@
                 "hi": "श्री भगवान् ने कहा: अभय, हृदय की शुद्धि, ज्ञान और योग में स्थिरता, दान, दम, यज्ञ, शास्त्र-अध्ययन, तपस्या और सरलता,"
               },
               "paras": {
-                "en": "Kṛṣṇa said: “Fearlessness, purity of heart, firmness in knowledge and meditation, charity, self-restraint, sacrifice, study, austerity, and honesty,”",
-                "ne": "कृष्णले भन्नुभयो: “निर्भयता, हृदयको शुद्धता, ज्ञान र ध्यानमा दृढता, दान, आत्मसंयम, यज्ञ, अध्ययन, तपस्या र इमानदारी,”",
-                "hi": "कृष्ण ने कहा: “निर्भयता, हृदय की शुद्धता, ज्ञान और ध्यान में दृढ़ता, दान, आत्म-संयम, यज्ञ, अध्ययन, तपस्या और ईमानदारी,”"
+                "en": "Kṛṣṇa said: “Fearlessness, purity of heart, firmness in knowledge and yoga, charity, self-restraint, sacrifice, study, austerity, and honesty,”",
+                "ne": "कृष्णले भन्नुभयो: “निडरता, निर्मल हृदय, ज्ञान र योगमा अडिग रहनु; दान दिनु, आफूलाई सम्हाल्नु, यज्ञ गर्नु, अध्ययन, तप र सोझोपन,”",
+                "hi": "कृष्ण ने कहा: “निर्भयता, हृदय की शुद्धता, ज्ञान और योग में दृढ़ता, दान, आत्म-संयम, यज्ञ, अध्ययन, तपस्या और ईमानदारी,”"
               },
               "anvaya": "श्रीभगवानुवाच — अभयं, सत्त्वसंशुद्धिः, ज्ञानयोगव्यवस्थितिः, दानं, दमः च, यज्ञः च, स्वाध्यायः, तपः, आर्जवम्।",
               "anvaya_iast": "śrībhagavānuvāca — abhayaṃ, sattvasaṃśuddhiḥ, jñānayogavyavasthitiḥ, dānaṃ, damaḥ ca, yajñaḥ ca, svādhyāyaḥ, tapaḥ, ārjavam."
@@ -2619,9 +2619,9 @@
                 "hi": "आत्म-श्लाघी, हठी, धन के मद से भरे वे दम्भ से, विधि के अनुसार नहीं, नाम-मात्र के यज्ञ करते हैं।"
               },
               "paras": {
-                "en": "“Self-important and obstinate, drunk with the pride of riches, they offer sacrifices only in show — hypocritical, not as scripture bids.”",
-                "ne": "“आत्म-महत्त्व र हठले भरिएका, धनको घमण्डमा मात्तिएर, तिनीहरू केवल देखाउन — ढोंगले, शास्त्रअनुसार नभई — यज्ञ गर्छन्।”",
-                "hi": "“आत्म-महत्त्व और हठ से भरे, धन के घमण्ड में माते हुए, वे केवल दिखावे के लिए — ढोंग से, शास्त्र के अनुसार नहीं — यज्ञ करते हैं।”"
+                "en": "“Self-important and obstinate, drunk with the pride of riches, they perform sacrifices in name only — hypocritically, not as scripture bids.”",
+                "ne": "“आत्म-महत्त्व र हठले भरिएका, धनको घमण्डमा मात्तिएर, तिनीहरू ढोंगले, शास्त्रअनुसार नभई, नाममात्रका यज्ञ गर्छन्।”",
+                "hi": "“आत्म-महत्त्व और हठ से भरे, धन के घमण्ड में माते हुए, वे ढोंग से, शास्त्र के अनुसार नहीं, नाम के ही यज्ञ करते हैं।”"
               },
               "anvaya": "आत्मसम्भाविताः, स्तब्धाः, धनमानमदान्विताः ते दम्भेन अविधिपूर्वकं नामयज्ञैः यजन्ते।",
               "anvaya_iast": "ātmasambhāvitāḥ, stabdhāḥ, dhanamānamadānvitāḥ te dambhena avidhipūrvakaṃ nāmayajñaiḥ yajante."
@@ -2762,9 +2762,9 @@
                 "hi": "अहंकार, बल, दर्प, कामना और क्रोध से भरे, अपने और दूसरों के शरीरों में स्थित मुझसे द्वेष रखने वाले ये दुष्ट प्राणी —"
               },
               "paras": {
-                "en": "“Full of ego, might, arrogance, lust, and rage, they despise me dwelling in their own and others' hearts —”",
-                "ne": "“अहंकार, शक्ति, घमण्ड, कामना र क्रोधले भरिएर, आफ्नो र अरूको हृदयमा बसेको मलाई तुच्छ ठान्ने —”",
-                "hi": "“अहंकार, शक्ति, घमण्ड, कामना और क्रोध से भरकर, अपने और दूसरों के हृदयों में बसे मुझे तुच्छ समझने वाले —”"
+                "en": "“Full of ego, might, arrogance, lust, and rage, they despise me dwelling in their own and others' bodies —”",
+                "ne": "“अहंकार, शक्ति, घमण्ड, कामना र क्रोधले भरिएर, आफ्नो र अरूको शरीरमा बसेको मलाई तुच्छ ठान्ने —”",
+                "hi": "“अहंकार, शक्ति, घमण्ड, कामना और क्रोध से भरकर, अपने और दूसरों के शरीरों में बसे मुझे तुच्छ समझने वाले —”"
               },
               "anvaya": "अहङ्कारं, बलं, दर्पं, कामं, क्रोधं च संश्रिताः, अभ्यसूयकाः आत्मपरदेहेषु मां प्रद्विषन्तः।",
               "anvaya_iast": "ahaṅkāraṃ, balaṃ, darpaṃ, kāmaṃ, krodhaṃ ca saṃśritāḥ, abhyasūyakāḥ ātmaparadeheṣu māṃ pradviṣantaḥ."

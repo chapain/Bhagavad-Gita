@@ -14,8 +14,9 @@ not differences of wording for their own sake. Earlier work is recorded in
 **Batch 1: Chapters 1–6 (280 verses) read**, with the exception that 2.05's
 interpretation is Dhruba's reserved decision: no part of that verse was
 changed. **Batch 2: Chapters 7–12 (209 verses) read** in all three languages
-against Sanskrit and reviewed literals. **Chapters 13–18 remain to be read**
-in this pass; targeted checks in those chapters do not make them reviewed.
+against Sanskrit and reviewed literals. **Batch 3: Chapters 13–18 (211 verses) read** in all three languages.
+Thus all 700 verses were considered, with 2.05 reserved for Dhruba and
+unchanged.
 This is a human review, not proof of perfect semantic fidelity. Different
 translations and contextual readings remain possible.
 
@@ -131,7 +132,7 @@ Only paraphrases changed; no Sanskrit, word rows or literals were edited.
   `selfish`/स्वार्थ test was strengthened after the 3.09 exemption was removed.
 - At the end of batch 1, **10.28**'s “among procreators” and **13.15**'s
   “hard to grasp” versus unknowable were noted for later review. Batch 2
-  resolves 10.28 below; 13.15 remains a lead for batch 3.
+  resolves 10.28 below; batch 3 resolves 13.15 below.
 
 Regressions in `tests/test_paraphrase_review_2026_11.py` pin selected
 relationships, conditionals, negatives, timing and verse boundaries. The
@@ -213,3 +214,79 @@ paraphrase leaves changed. 2.05 is unchanged from the session base; the
 previously sensitive 6.13, 6.29, 8.10, 9.34, 11.44, 12.19, 16.05 and 18.66
 are unchanged in this batch. Browser checks require Playwright/Chromium and
 were skipped locally; Pillow was absent so share art was not repainted.
+
+## Batch 3 — corrections and retained readings
+
+The 211 verses of chapters 13–18 were read in English, Nepali and Hindi
+against Sanskrit and the reviewed literals. Only paraphrase leaves changed:
+
+- **13.07** Hindi distinguishes absence of pretence from humility. **13.15**
+  retains unknowability, not merely difficulty grasping. **13.16** retains
+  undivided yet *as if* divided. **13.25** says those who do not know *in
+  this way* hear from others, without assuming direct knowledge or teachers.
+  **13.28** retains harm to the self *by the self*; **13.32** includes the
+  subtlety explaining space's unstained quality. **13.34** retains the
+  liberation of beings from nature, following this edition's reviewed literal.
+- **14.11** restores knowledge as the light; **14.18** puts rajas in the
+  middle. **14.24** concerns praise and blame directed at oneself, not
+  self-praise; **14.25** retains the sides of friend and foe. **14.26**
+  says fit to become Brahman, not merely worthy of Brahman.
+- **15.10** Nepali connects the guṇas with all three conditions rather than
+  listing a fourth. **15.11** en/hi retain lack of self-discipline and
+  understanding. **15.14** en/ne distinguish incoming and outgoing breath.
+  **16.01** retains knowledge and yoga; **16.17** sacrifice in name only;
+  **16.18** one's own and others' bodies rather than hearts.
+- **17.10** preserves long-kept, tasteless, rotten/stale, meal remnants and
+  impure food as distinct categories, within this edition's interpretation;
+  commentators differ over यातयामम्. **17.19** retains destruction of another
+  and English joins foolish stubbornness with self-torment. **17.20** does
+  not add that repayment can *never* be made. **17.22** retains both lack
+  of respect and disdain.
+- **18.08** keeps fear of bodily suffering and the fruit of renunciation;
+  **18.10** freedom from doubt; **18.15** body rather than hands; **18.20**
+  the undivided in divided beings; **18.24** desire-seeking rather than
+  necessarily result-seeking; **18.25** consequence, loss, injury and
+  capacity. The 18.08 English lag baseline was removed after the paraphrase
+  was expanded; the clause-count heuristic is not a fidelity proof. **18.44**
+  makes the natural origin apply to both occupations.
+  **18.49** ne/hi distinguish craving from greed. **18.51** keeps purified
+  understanding and self-restraint by resolve; **18.52** meditation-yoga
+  and readiness; **18.53** fitness *to become* Brahman. The latter preserves
+  the separate grasping (परिग्रह) and non-possessiveness (निर्मम) clauses;
+  only its affected paraphrases changed in the reference-conflict fixture.
+
+Retained after consideration: **13.09**'s success/failure; **14.20**'s
+established guṇas-as-cause-of-body reading (alternative body-origin readings
+exist); **18.37**'s “Self-knowledge”; and **18.44** Nepali “गोठालो” for
+herding. **18.66** and the previously owner-sensitive verses were not changed.
+The 14.24 and Brahman decisions are consistent with the documented literal
+review; e.g. <https://gitajourney.com/2013/03/01/bhagavad-gita-verse-24-chapter-14/>
+and <https://shlokam.org/gita/gita-18-53.htm>. The food categories were also
+checked against <https://www.bhagavad-gita.us/bhagavad-gita-17-10/>.
+
+### Whole-book targeted follow-ups and verification limits
+
+Exact substring screens of all word rows for representative classes from the
+batch (including आत्मना, unknowability, delusion, praise, Brahman, breath,
+bodies, food, charity, action and self-restraint) supplied candidates whose
+paraphrases were inspected. These screens are spelling-limited, include false
+positives, and miss synonyms, inflections and classes not queried. Four
+follow-ups outside the batch: **2.55** English restores satisfaction *through*
+the self; **2.56** Nepali changes delusion to craving in pleasure; **5.27**
+restores both breaths and the nostrils; **7.28** English restores delusion
+of the pairs, not release from the pairs themselves. The adjacency candidate
+screen was rerun: 700 verses, 682 pairs, 74 ne / 43 hi lexical candidates.
+These screens and focused regressions are not semantic completeness proofs.
+
+**2.05 remains entirely unchanged** for Dhruba's decision on अर्थकामान्.
+The current literal attaches “for wealth and desires” to killing the teachers;
+other published readings attach desire for wealth to the teachers, or wealth
+and desired things to the bloodstained enjoyments. Compare
+<https://www.bhagavad-gita.us/bhagavad-gita-2-5/> and
+<https://www.yugalsarkar.com/bhagwad-gita-chapter-2-shlok-5-english>.
+These are interpretive alternatives, not a silent change to the word rows,
+literals or paraphrases. Final `python3 build.py` passed 174 Python tests,
+949 document assertions, 560 site-health checks, 10 SEO checks and 9,658
+study checks; all 2,100 paraphrase pairs passed the mechanical overlap guard.
+Browser checks were skipped without Playwright/Chromium and Pillow share-art
+repaint was skipped. Further defects and defensible alternatives may remain.

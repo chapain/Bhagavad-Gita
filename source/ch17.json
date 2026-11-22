@@ -1682,9 +1682,9 @@
                 "hi": "बहुत देर रखा, बेस्वाद, सड़ा, बासी, जूठा और अपवित्र भोजन — ऐसा भोजन तामस को प्रिय होता है।"
               },
               "paras": {
-                "en": "“Food that is stale, flavourless, spoiled, or leftover, and unclean remnants — that is loved by the tāmasic.”",
-                "ne": "“बासी, बेस्वाद, बिग्रेको वा जुठो खाना, र फोहोर बचेखुचेको खानेकुरा — यस्तो खाना तामसलाई मनपर्छ।”",
-                "hi": "रात का रखा, स्वाद खोया, सड़ता हुआ, किसी का जूठा और गन्दा बचा-खुचा — तमस वाले को यही भाता है।"
+                "en": "“The tāmasic relish food kept too long, food without taste, rotting or stale food, leavings from a meal, and whatever is impure.”",
+                "ne": "“लामो समय थन्केको, रस हराएको, कुहिएको, बासी, अरूले खाएको उब्रेको र अपवित्र खाना तामसलाई मनपर्छ।”",
+                "hi": "बहुत देर रखा, स्वाद खोया, सड़ा, बासी, किसी का जूठा या अशुद्ध भोजन — तमस वाले को यही भाता है।"
               },
               "anvaya": "यातयामं, गतरसं, पूति, पर्युषितं च यत्, उच्छिष्टम् अपि च अमेध्यं भोजनं तामसप्रियम्।",
               "anvaya_iast": "yātayāmaṃ, gatarasaṃ, pūti, paryuṣitaṃ ca yat, ucchiṣṭam api ca amedhyaṃ bhojanaṃ tāmasapriyam."
@@ -3070,9 +3070,9 @@
                 "hi": "मूर्खतापूर्ण हठ से, आत्म-पीड़न से, या दूसरे को नष्ट करने के लिए की गई तपस्या — तामस कही गई है।"
               },
               "paras": {
-                "en": "“Penance done out of foolish stubbornness, self-torment, or to hurt others — that is tāmasic.”",
-                "ne": "“मूर्ख हठले, आफैंलाई यातना दिएर, वा अरूलाई हानि पुर्‍याउनका निम्ति गरिएको तप — त्यो तामस हो।”",
-                "hi": "“मूर्ख हठ से, स्वयं को यातना देकर, या दूसरों को हानि पहुँचाने के लिए की गई तप — वह तामस है।”"
+                "en": "“Penance done through foolish stubbornness and self-torment, or to ruin another — that is tāmasic.”",
+                "ne": "“मूर्ख हठले, आफैंलाई यातना दिएर, वा अरूलाई नष्ट गर्नका निम्ति गरिएको तप — त्यो तामस हो।”",
+                "hi": "“मूर्ख हठ से, स्वयं को यातना देकर, या दूसरों को नष्ट करने के लिए की गई तप — वह तामस है।”"
               },
               "anvaya": "मूढग्राहेण आत्मनः पीडया वा परस्य उत्सादनार्थं यत् तपः क्रियते, तत् तामसम् उदाहृतम्।",
               "anvaya_iast": "mūḍhagrāheṇa ātmanaḥ pīḍayā vā parasya utsādanārthaṃ yat tapaḥ kriyate, tat tāmasam udāhṛtam."
@@ -3256,8 +3256,8 @@
                 "hi": "देना ही चाहिए — इस भाव से, बदले में कुछ न कर सकने वाले को, उचित स्थान और समय पर, योग्य व्यक्ति को दिया गया दान — सात्त्विक माना गया है।"
               },
               "paras": {
-                "en": "“A gift given because it is right to give, to one who can never repay, at the proper place and time, to a deserving person — that is sāttvic.”",
-                "ne": "“दिनु नै सही हो भनेर, कहिल्यै फर्काउन नसक्नेलाई, उचित ठाउँ-समयमा, योग्य व्यक्तिलाई दिइएको दान — त्यो सात्त्विक हो।”",
+                "en": "“A gift given because it is right to give, to one who cannot repay, at the proper place and time, to a deserving person — that is sāttvic.”",
+                "ne": "“दिनुपर्छ भन्ने भावले, केही प्रतिफल दिन नसक्नेलाई, ठीक ठाउँ र बेलामा, सुयोग्य पात्रलाई दिइएको उपहार सात्त्विक हो।”",
                 "hi": "'देना चाहिए' — बस इतने भाव से, ऐसे को जो बदले में कुछ लौटा न सके, सही जगह और सही समय पर, सही पात्र को दिया जाए — वह दान सात्त्विक है।"
               },
               "anvaya": "दातव्यम् इति यत् दानम् अनुपकारिणे देशे काले च पात्रे च दीयते, तत् दानं सात्त्विकं स्मृतम्।",
@@ -3563,9 +3563,9 @@
                 "hi": "गलत स्थान और समय पर, अयोग्य व्यक्ति को, बिना आदर के और तिरस्कार के साथ दिया गया दान — तामस कहा गया है।"
               },
               "paras": {
-                "en": "“A gift given at the wrong time and place, to the undeserving, without respect or with disdain — that is tāmasic.”",
-                "ne": "“गलत समय-स्थानमा, अयोग्यलाई, बिना सम्मान वा तिरस्कारसहित दिइएको दान — त्यो तामस हो।”",
-                "hi": "“गलत समय-स्थान पर, अयोग्य को, बिना सम्मान के या तिरस्कार के साथ दिया गया दान — वह तामस है।”"
+                "en": "“A gift given at the wrong time and place, to the undeserving, without respect and with disdain — that is tāmasic.”",
+                "ne": "“गलत समय-स्थानमा, अयोग्यलाई, बिना सम्मान र तिरस्कारसहित दिइएको दान — त्यो तामस हो।”",
+                "hi": "“गलत समय-स्थान पर, अयोग्य को, बिना सम्मान के और तिरस्कार के साथ दिया गया दान — वह तामस है।”"
               },
               "anvaya": "अदेशकाले अपात्रेभ्यः च असत्कृतम् अवज्ञातं यत् दानं दीयते, तत् तामसम् उदाहृतम्।",
               "anvaya_iast": "adeśakāle apātrebhyaḥ ca asatkṛtam avajñātaṃ yat dānaṃ dīyate, tat tāmasam udāhṛtam."
