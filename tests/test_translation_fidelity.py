@@ -243,7 +243,11 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # स्थितः/गुरुणा/विचाल्यते (the 6.23 clause taken out of 6.22), 6.23 निश्चयेन,
 # 6.46 तपस्विभ्यः/कर्मिभ्यः now carry their own gloss; 6.21's rewrite first
 # *raised* its miss from 2 to 4 and was refined before this number was set.
-ROW_LITERAL_CENSUS = 994
+# Chapters 3–5 read the same day (994 → 992): 3.32 सर्वज्ञानविमूढान्
+# "deluded in all knowledge" ("deprived of all wisdom" was a substitution; the
+# ज्ञान row now travels into the literal with it). No row was added or removed
+# for the 3.31, 3.24, 4.15, 5.11 or 5.14 literal repairs, and none moved.
+ROW_LITERAL_CENSUS = 992
 
 
 def _fold_diacritics(word):

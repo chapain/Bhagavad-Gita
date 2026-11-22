@@ -12,9 +12,9 @@ semantic audit. Coverage below records only work actually done in this pass.
 | 6.01–6.47 | Read against Sanskrit, rows, Besant 1896 and Telang 1882 | 6.08, 6.21, 6.22, 6.23, 6.44 and 6.46 corrected. 6.07 reads परमात्मा as a separate term; Besant takes it as the man's own higher Self — the app's reading is kept, see below. |
 | 1.01–1.47 | Read against Sanskrit and en/ne/hi literals | 1.10, 1.11, 1.13, 1.30 and 1.45 corrected. Contextual names in 1.12/1.15/1.26 still require a book-wide name/epithet review. |
 | 2.01–2.72 | Read against Sanskrit and en/ne/hi literals | 2.01, 2.02, 2.07, 2.08, 2.42–2.43, 2.59 and 2.65 corrected. The syntax and interpretation of अर्थकामान् in 2.05 remains open: it may qualify the teachers or their enjoyments. |
-| 3.01–3.43 | Read against Sanskrit and en/ne/hi literals | 3.02, 3.04, 3.23 and 3.38 corrected. 3.39 अनलेन rendered as “like fire” remains to evaluate; the 3.02 word-row gloss for the second इव is also open. |
-| 4.01–4.42 | Read against Sanskrit and en/ne/hi literals | 4.16 ne/hi corrected; 4.34 ne/hi appears to omit the knowledge being taught and remains open. |
-| 5.01–5.29 | Read against Sanskrit and en/ne/hi literals | Candidates include 5.10 added “all” and 5.11's “or” between instruments. These require class screens and decisions; no claim that other verses are error-free. |
+| 3.01–3.43 | Read against Sanskrit, rows and Besant 1896 | 3.02, 3.04, 3.23, 3.31, 3.32, 3.37 and 3.38 corrected. 3.39 reads “like fire” for अनलेन and that reading is **settled**: Besant has “insatiable as a flame”, i.e. the same supplied comparison. The 3.02 word-row gloss for the second इव is still open. |
+| 4.01–4.42 | Read against Sanskrit, rows and Besant 1896 | 4.15 and 4.16 corrected. 4.34 ne/hi appears to omit the knowledge being taught and remains open. |
+| 5.01–5.29 | Read against Sanskrit, rows and Besant 1896 | 5.11 and 5.14 corrected. The 5.10 “all” candidate was examined and left: the verse has a bare plural कर्माणि, and Besant independently renders the same phrase “all actions”. No claim that other verses are error-free. |
 | 18.38 | Read specifically for इव | Corrected below; not a reading of the rest of the chapter. |
 | All other verses | Not yet reviewed in this pass | Whole-book targeted screens do not constitute a verse-by-verse review. |
 
@@ -185,6 +185,13 @@ contradict a *sense*, never to supply wording.
 | 6.23 | en | Same leak, seen from the other side: the verse's तं विद्यात् was not rendered | "Know that as yoga, called the disconnection of union with sorrow; that yoga should be practised …" |
 | 6.44 | hi | "जानने की इच्छा मात्र करने वाला" reads "one who merely wishes", not "even one who wishes to know" | "योग को केवल जानना चाहने वाला भी" |
 | 6.46 | en | कर्मिभ्यः "than men of action" rendered "than the man of rites" (the rows say कर्मी) | "than the men of action" |
+| 3.24 | ne/hi | The two optatives (स्याम्, उपहन्याम्) were future indicatives: "म हुनेछु … नष्ट गर्नेछु" | "हुन्थें … नष्ट गर्थें" (subjunctive) |
+| 3.31 | en/ne/hi | कर्मभिः "by/from actions" rendered "the bondage of action / कर्मबन्धन" in all three | "from actions / कर्महरूबाट" |
+| 3.32 | en/ne/hi + row | सर्वज्ञानविमूढान् "deluded in all knowledge" rendered as "deprived of all wisdom / वञ्चित". Besant: "deluded in all knowledge" | "deluded in all knowledge / सबै ज्ञानमा मोहित"; the विमूढान् row too |
+| 3.37 | ne/hi + row | महाशनः rows split महा + अशनः, but the gloss "insatiable / नतृप्त / अतृप्त" sat on अशनः while the literals said "all-devouring" | row "eating, devouring"; ne "महाखाने", hi "बहुत खाने वाला" |
+| 4.15 | hi | पूर्वतरम् "in earlier times" dropped ("जैसा पूर्वजों ने किया था") | "जैसा पूर्वजों ने पहले किया था" |
+| 5.11 | en/ne/hi | No वा in the verse: कायेन मनसा बुद्ध्या … अपि is cumulative, but all three said "or / वा / या" | "and / र / और" |
+| 5.14 | ne | "प्रकृति नै कर्म गर्छे" — not a Nepali verb form | "कर्म गर्छ" |
 
 Two of these are class defects worth naming. **6.22/6.23 is a boundary
 leak** — the same class as the 2.42–2.43 draft error recorded in
@@ -193,19 +200,64 @@ are internally plausible. **2.05 is a row/literal contradiction in the
 reverse direction**: here the *rows* were wrong and the literals right, which
 is the case `semantic-audit.md` rule 1 warns is possible.
 
+### Shot 1 (chapters 3–5): what was read and what was not changed
+
+All of 3.23–3.43, chapter 4 and chapter 5 were read line by line against the
+Sanskrit and the rows, with Besant in hand. That closes chapters 1–6 except
+3.02's second-इव row gloss, which stays open as recorded above.
+
+Six candidate defects were looked at and **deliberately left**, so they are not
+re-reported later:
+
+* **3.28** — the ने/हि rows for बाहो read "हे बाहु" while महा's row is a bare
+  "महान्". Reading the two rows together does give "O mighty-armed", and the
+  vocative row must start with हे for the address convention the tests encode.
+  The split is how the compound is glossed, not a defect. Editing it broke
+  `test_every_vocative_baseline_verse_still_has_an_address`; the edit was
+  reverted, and the test is right.
+* **3.24** `सङ्करस्य` "of chaos, mixture" — Besant's "confusion of castes" is her
+  gloss on the mixture; "mixture" is the literal sense of the word.
+* **3.39** `अनलेन` with no इव in the verse — "like fire" supplies a comparison
+  the Sanskrit only implies, but Besant renders it "insatiable as a flame".
+  Settled, not changed.
+* **3.42/3.43** — "He (the Self)" is the house's parenthetical marker for a
+  pronoun whose referent the verse leaves implicit; ने/हि carry आत्मा the same
+  way. Consistent with 3.38's treatment of parentheticals, where the added
+  nouns were removed but the marker itself was kept as house style.
+* **4.30** `नियताहाराः` "whose food is regulated" glossed as "आहारहरू" in ने/हि
+  — a bahuvrīhi rendered as a plain noun, but the literals say "with regulated
+  diet" in all three. Row phrasing only.
+* **5.10** "all" in "offering all actions to Brahman" — कर्माणि is a bare
+  plural; Besant independently reads "all actions" here.
+
+One class screen was run for the 3.32 defect: every विमूढ/मूढ row in the book
+(3.06, 3.27, 3.32, 7.15, 9.11, 15.10, 16.20). Only 3.32 carried सर्वज्ञान with
+it. The Hindi gloss "मूढ़" in 15.10, 16.20, 7.15, 9.11 and the Nepali "मोहित" in
+3.06/3.27 are the plain sense of मूढ, not the compound, so nothing else moved.
+
 ### Pinned numbers moved
 
 `ROW_LITERAL_CENSUS` in `tests/test_translation_fidelity.py` went 1007 → 994
 in two steps, each recomputed, each row read before the number moved. It fell
 in every step except 6.21, whose first rewrite raised its own miss count from
-2 to 4 and was refined before the pin was touched. `docs/title-review.md` was
+2 to 4 and was refined before the pin was touched. Chapters 3–5 took it
+994 → 992: exactly two rows, 3.32's ज्ञान and विमूढान्, now travel into the
+literal. No row was added or removed for the 3.24, 3.31, 3.37, 4.15, 5.11 or
+5.14 repairs, and the diff of the miss list before and after showed no other
+movement. `docs/title-review.md` was
 regenerated, never hand-edited, and the 2.19 snapshot in
 `tests/test_padachheda_ch1_6.py` was amended with its reason.
 
 ### Coverage and what is still owed
 
-Read against the Sanskrit, the rows and both translations: **1.01–1.47,
-2.01–2.72, 3.01–3.22, 6.01–6.47 (188 verses)**. Not yet read in this pass:
-3.23–3.43 and chapters 4, 5, 7–18 (512 verses). The finding rate is roughly
-one every twelve verses, so the remaining reading should be expected to
-produce more, not fewer. Nothing above claims the unread chapters are clean.
+Read against the Sanskrit, the rows and a public-domain translation:
+**1.01–1.47, 2.01–2.72, 3.01–3.43, 4.01–4.42, 5.01–5.29, 6.01–6.47
+(280 verses)**. Not yet read in this pass: chapters 7–18 (420 verses). The
+finding rate so far is about one repaired verse in sixteen, and the repairs
+above include three that a vocabulary screen cannot reach (a supplied
+comparison, a hypothetical turned into a prediction, a conjunction turned into
+a choice), so the remaining reading should be expected to produce more, not
+fewer. Nothing above claims the unread chapters are clean.
+
+Set aside from chapter 6 and still owed: the two named class defects stand —
+the **6.22/6.23 boundary leak** and **2.05's reverse-direction row defect**.

@@ -216,8 +216,8 @@ want them to survive a regeneration.
 |  | 3.28 | Qualities act on qualities | But the knower of truth, O mighty-armed, knowing the distinction of the guṇas and actions, and that the guṇas move among the guṇas, does not become attached. | ☐ | ☐ | ☐ |
 |  | 3.29 | Let the knower not disturb them | Those deluded by the guṇas of prakṛti cling to actions born of the guṇas; the one of complete knowledge should not unsettle the dull-witted, partial knowers. | ☐ | ☐ | ☐ |
 |  | 3.30 | Renouncing all actions in me, fight | Renouncing all actions in me, with the mind fixed on the Self, being free from desire and from possessiveness, fight — free from fever. | ☐ | ☐ | ☐ |
-|  | 3.31 | Those who follow it are freed | Those men who always follow this teaching of mine with faith, without finding fault, are released even from the bondage of action. | ☐ | ☐ | ☐ |
-|  | 3.32 | Those who find fault and do not follow are lost | But those who, finding fault, do not follow this teaching of mine — know them as deprived of all wisdom, ruined, and without understanding. | ☐ | ☐ | ☐ |
+|  | 3.31 | Those who follow it are freed | Those men who always follow this teaching of mine with faith, without finding fault, are released even from actions. | ☐ | ☐ | ☐ |
+|  | 3.32 | Those who find fault and do not follow are lost | But those who, finding fault, do not follow this teaching of mine — know them as deluded in all knowledge, ruined, and without understanding. | ☐ | ☐ | ☐ |
 |  | 3.33 | Even the wise follow their nature | Even a man of knowledge acts according to his own nature; beings follow their nature — what will forcible suppression accomplish? | ☐ | ☐ | ☐ |
 |  | 3.34 | Attraction and aversion lie in wait | Attachment and aversion are fixed regarding the object of each sense; let one not come under their power, for they are one's waylayers. | ☐ | ☐ | ☐ |
 |  | 3.35 | Better one's own dharma, though flawed | Better is one's own dharma, though defective, than another's well-performed; death in one's own dharma is better — another's dharma brings fear. | ☐ | ☐ | ☐ |
@@ -293,7 +293,7 @@ want them to survive a regeneration.
 |  | 5.08 | “I do nothing at all” | “I do nothing at all” — thus should the knower of truth established in yoga think, while seeing, hearing, touching, smelling, eating, moving, sleeping, breathing, | ☐ | ☐ | ☐ |
 |  | 5.09 | The senses among their objects | speaking, giving up, holding, opening and closing the eyes — holding that the senses move among the objects of the senses. | ☐ | ☐ | ☐ |
 |  | 5.10 | The lotus leaf | He who acts, offering all actions to Brahman and abandoning attachment, is not stained by sin, just as a lotus leaf is not wetted by water. | ☐ | ☐ | ☐ |
-|  | 5.11 | Action for self-purification | The yogis perform action by body, mind, intellect, or even by the senses alone, having abandoned attachment, for the purification of the self. | ☐ | ☐ | ☐ |
+|  | 5.11 | Action for self-purification | The yogis perform action by body, mind, intellect, and even by the senses alone, having abandoned attachment, for the purification of the self. | ☐ | ☐ | ☐ |
 |  | 5.12 | Peace through giving up the fruit | The one established in yoga, giving up the fruit of action, attains lasting peace; the one not established, impelled by desire, attached to the fruit, becomes bound. | ☐ | ☐ | ☐ |
 |  | 5.13 | The city of nine gates | Having mentally renounced all actions, the self-controlled embodied one dwells happily in the city of nine gates, neither acting nor causing others to act. | ☐ | ☐ | ☐ |
 |  | 5.14 | The Lord creates no doership | The Lord neither creates agency nor actions for the world, nor the connection of action with its fruit; it is nature that acts. | ☐ | ☐ | ☐ |
