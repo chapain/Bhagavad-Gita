@@ -1,5 +1,6 @@
 """Regression checks for the incrementally reviewed anvaya display."""
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -7,6 +8,17 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AnvayaTests(unittest.TestCase):
+    def test_replacement_reference_has_all_canonical_verse_ids(self):
+        text = (ROOT / 'docs/reference/anvaya-draft.txt').read_text(encoding='utf-8-sig')
+        ids = [(int(c), int(v)) for c, v in re.findall(r'(?m)^(\d+)\.(\d+)\s*$', text)]
+        expected = []
+        for num in range(1, 19):
+            chapter = json.loads((ROOT / f'source/ch{num}.json').read_text(encoding='utf-8'))
+            expected.extend((num, int(v['n'].split('.')[1])) for t in chapter['themes']
+                            for p in t['parts'] for v in p['sutras'])
+        self.assertEqual(ids, expected)
+        # Numbering alone does not validate Sanskrit or authorize publication.
+
     def test_reviewed_first_verse_and_unreviewed_verse(self):
         chapter = json.loads((ROOT / 'source/ch1.json').read_text(encoding='utf-8'))
         verses = [v for t in chapter['themes'] for p in t['parts'] for v in p['sutras']]
