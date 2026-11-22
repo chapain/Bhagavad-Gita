@@ -41,6 +41,8 @@
           "sutras": [
             {
               "n": "1.01",
+              "anvaya": "धृतराष्ट्र उवाच — सञ्जय! धर्मक्षेत्रे कुरुक्षेत्रे युयुत्सवः समवेताः मामकाः पाण्डवाः च एव किम् अकुर्वत?",
+              "anvaya_iast": "dhṛtarāṣṭra uvāca — sañjaya! dharmakṣetre kurukṣetre yuyutsavaḥ samavetāḥ māmakāḥ pāṇḍavāḥ ca eva kim akurvata?",
               "d": "धृतराष्ट्र उवाच । धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः । मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय",
               "t": "dhṛtarāṣṭra uvāca । dharmakṣetre kurukṣetre samavetā yuyutsavaḥ । māmakāḥ pāṇḍavāścaiva kimakurvata sañjaya",
               "flow": [
@@ -217,6 +219,8 @@
           "sutras": [
             {
               "n": "1.02",
+              "anvaya": "सञ्जय उवाच — तदा राजा दुर्योधनः तु व्यूढं पाण्डवानीकं दृष्ट्वा आचार्यम् उपसङ्गम्य वचनम् अब्रवीत्।",
+              "anvaya_iast": "sañjaya uvāca — tadā rājā duryodhanaḥ tu vyūḍhaṃ pāṇḍavānīkaṃ dṛṣṭvā ācāryam upasaṅgamya vacanam abravīt.",
               "d": "सञ्जय उवाच । दृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा । आचार्यमुपसङ्गम्य राजा वचनमब्रवीत्",
               "t": "sañjaya uvāca । dṛṣṭvā tu pāṇḍavānīkaṃ vyūḍhaṃ duryodhanastadā । ācāryamupasaṅgamya rājā vacanamabravīt",
               "flow": [
@@ -386,6 +390,8 @@
           "sutras": [
             {
               "n": "1.03",
+              "anvaya": "आचार्य! तव धीमता शिष्येण द्रुपदपुत्रेण व्यूढां पाण्डुपुत्राणाम् एतां महतीं चमूं पश्य।",
+              "anvaya_iast": "ācārya! tava dhīmatā śiṣyeṇa drupadaputreṇa vyūḍhāṃ pāṇḍuputrāṇām etāṃ mahatīṃ camūṃ paśya.",
               "d": "पश्यैतां पाण्डुपुत्राणामाचार्य महतीं चमूम् । व्यूढां द्रुपदपुत्रेण तव शिष्येण धीमता",
               "t": "paśyaitāṃ pāṇḍuputrāṇāmācārya mahatīṃ camūm । vyūḍhāṃ drupadaputreṇa tava śiṣyeṇa dhīmatā",
               "flow": [
@@ -556,6 +562,8 @@
           "sutras": [
             {
               "n": "1.04",
+              "anvaya": "अत्र युधि भीमार्जुनसमाः शूराः महेष्वासाः युयुधानः, विराटः च, महारथः द्रुपदः च।",
+              "anvaya_iast": "atra yudhi bhīmārjunasamāḥ śūrāḥ maheṣvāsāḥ yuyudhānaḥ, virāṭaḥ ca, mahārathaḥ drupadaḥ ca.",
               "d": "अत्र शूरा महेष्वासाः भीमार्जुनसमा युधि । युयुधानो विराटश्च द्रुपदश्च महारथः",
               "t": "atra śūrā maheṣvāsāḥ bhīmārjunasamā yudhi । yuyudhāno virāṭaśca drupadaśca mahārathaḥ",
               "flow": [
@@ -725,6 +733,8 @@
           "sutras": [
             {
               "n": "1.05",
+              "anvaya": "धृष्टकेतुः, चेकितानः, वीर्यवान् काशिराजः च, पुरुजित्, कुन्तिभोजः च, नरपुङ्गवः शैब्यः च।",
+              "anvaya_iast": "dhṛṣṭaketuḥ, cekitānaḥ, vīryavān kāśirājaḥ ca, purujit, kuntibhojaḥ ca, narapuṅgavaḥ śaibyaḥ ca.",
               "d": "धृष्टकेतुश्चेकितानः काशिराजश्च वीर्यवान् । पुरुजित्कुन्तिभोजश्च शैब्यश्च नरपुङ्गवः",
               "t": "dhṛṣṭaketuścekitānaḥ kāśirājaśca vīryavān । purujitkuntibhojaśca śaibyaśca narapuṅgavaḥ",
               "flow": [
@@ -866,6 +876,8 @@
           "sutras": [
             {
               "n": "1.06",
+              "anvaya": "विक्रान्तः युधामन्युः च, वीर्यवान् उत्तमौजाः च, सौभद्रः, द्रौपदेयाः च सर्वे एव महारथाः।",
+              "anvaya_iast": "vikrāntaḥ yudhāmanyuḥ ca, vīryavān uttamaujāḥ ca, saubhadraḥ, draupadeyāḥ ca sarve eva mahārathāḥ.",
               "d": "युधामन्युश्च विक्रान्त उत्तमौजाश्च वीर्यवान् । सौभद्रो द्रौपदेयाश्च सर्व एव महारथाः",
               "t": "yudhāmanyuśca vikrānta uttamaujāśca vīryavān । saubhadro draupadeyāśca sarva eva mahārathāḥ",
               "flow": [
@@ -1014,6 +1026,8 @@
           "sutras": [
             {
               "n": "1.07",
+              "anvaya": "द्विजोत्तम! अस्माकं तु ये विशिष्टाः मम सैन्यस्य नायकाः तान् निबोध; संज्ञार्थं तान् ते ब्रवीमि।",
+              "anvaya_iast": "dvijottama! asmākaṃ tu ye viśiṣṭāḥ mama sainyasya nāyakāḥ tān nibodha; saṃjñārthaṃ tān te bravīmi.",
               "d": "अस्माकं तु विशिष्टा ये तान्निबोध द्विजोत्तम । नायका मम सैन्यस्य संज्ञार्थं तान्ब्रवीमि ते",
               "t": "asmākaṃ tu viśiṣṭā ye tānnibodha dvijottama । nāyakā mama sainyasya saṃjñārthaṃ tānbravīmi te",
               "flow": [
@@ -1190,6 +1204,8 @@
           "sutras": [
             {
               "n": "1.08",
+              "anvaya": "भवान्, भीष्मः च, कर्णः च, समितिञ्जयः कृपः च, अश्वत्थामा, विकर्णः च, तथा एव च सौमदत्तिः।",
+              "anvaya_iast": "bhavān, bhīṣmaḥ ca, karṇaḥ ca, samitiñjayaḥ kṛpaḥ ca, aśvatthāmā, vikarṇaḥ ca, tathā eva ca saumadattiḥ.",
               "d": "भवान्भीष्मश्च कर्णश्च कृपश्च समितिञ्जयः । अश्वत्थामा विकर्णश्च सौमदत्तिस्तथैव च",
               "t": "bhavānbhīṣmaśca karṇaśca kṛpaśca samitiñjayaḥ । aśvatthāmā vikarṇaśca saumadattistathaiva ca",
               "flow": [
@@ -1359,6 +1375,8 @@
           "sutras": [
             {
               "n": "1.09",
+              "anvaya": "मदर्थे त्यक्तजीविताः, नानाशस्त्रप्रहरणाः, सर्वे युद्धविशारदाः अन्ये च बहवः शूराः।",
+              "anvaya_iast": "madarthe tyaktajīvitāḥ, nānāśastrapraharaṇāḥ, sarve yuddhaviśāradāḥ anye ca bahavaḥ śūrāḥ.",
               "d": "अन्ये च बहवः शूराः मदर्थे त्यक्तजीविताः । नानाशस्त्रप्रहरणाः सर्वे युद्धविशारदाः",
               "t": "anye ca bahavaḥ śūrāḥ madarthe tyaktajīvitāḥ । nānāśastrapraharaṇāḥ sarve yuddhaviśāradāḥ",
               "flow": [
@@ -1529,6 +1547,8 @@
           "sutras": [
             {
               "n": "1.10",
+              "anvaya": "भीष्माभिरक्षितम् अस्माकं तत् बलम् अपर्याप्तम्; भीमाभिरक्षितम् एतेषाम् इदं बलं तु पर्याप्तम्।",
+              "anvaya_iast": "bhīṣmābhirakṣitam asmākaṃ tat balam aparyāptam; bhīmābhirakṣitam eteṣām idaṃ balaṃ tu paryāptam.",
               "d": "अपर्याप्तं तदस्माकं बलं भीष्माभिरक्षितम् । पर्याप्तं त्विदमेतेषां बलं भीमाभिरक्षितम्",
               "t": "aparyāptaṃ tadasmākaṃ balaṃ bhīṣmābhirakṣitam । paryāptaṃ tvidameteṣāṃ balaṃ bhīmābhirakṣitam",
               "flow": [
@@ -1658,8 +1678,8 @@
               ],
               "lits": {
                 "en": "Insufficient is that strength of ours, guarded by Bhīṣma; sufficient is this strength of theirs, guarded by Bhīma.",
-                "ne": "हाम्रो त्यो शक्ति, भीष्मले रक्षा गरे पनि, अपर्याप्त छ; तिनीहरूको यो शक्ति, भीमले रक्षा गरेको, पर्याप्त छ।",
-                "hi": "हमारी वह शक्ति, भीष्म से रक्षित होकर भी, अपर्याप्त है; उनकी यह शक्ति, भीम से रक्षित, पर्याप्त है।"
+                "ne": "हाम्रो त्यो शक्ति, भीष्मले रक्षा गरेको, अपर्याप्त छ; तिनीहरूको यो शक्ति, भीमले रक्षा गरेको, पर्याप्त छ।",
+                "hi": "हमारी वह शक्ति, भीष्म से रक्षित, अपर्याप्त है; उनकी यह शक्ति, भीम से रक्षित, पर्याप्त है।"
               },
               "paras": {
                 "en": "“Our force, though shielded by Bhīṣma, is not enough; theirs, protected by Bhīma, is more than sufficient.”",
@@ -1684,6 +1704,8 @@
           "sutras": [
             {
               "n": "1.11",
+              "anvaya": "सर्वेषु च अयनेषु यथाभागम् अवस्थिताः भवन्तः सर्वे एव हि भीष्मम् एव अभिरक्षन्तु।",
+              "anvaya_iast": "sarveṣu ca ayaneṣu yathābhāgam avasthitāḥ bhavantaḥ sarve eva hi bhīṣmam eva abhirakṣantu.",
               "d": "अयनेषु च सर्वेषु यथाभागमवस्थिताः । भीष्ममेवाभिरक्षन्तु भवन्तः सर्व एव हि",
               "t": "ayaneṣu ca sarveṣu yathābhāgamavasthitāḥ । bhīṣmamevābhirakṣantu bhavantaḥ sarva eva hi",
               "flow": [
@@ -1812,9 +1834,9 @@
                 }
               ],
               "lits": {
-                "en": "Stationed at all the approaches, take your places in your divisions — and above all, protect Bhīṣma alone, all of you.",
-                "ne": "सबै दिशाहरूमा खडा भएर, आ-आफ्ना विभागमा स्थान लिनुहोस् — र सबैभन्दा माथि, सबैले भीष्मकै रक्षा गर्नुहोस्।",
-                "hi": "सब मोर्चों पर खड़े होकर, अपने-अपने विभाग में स्थान लो — और सबसे बढ़कर, सब मिलकर भीष्म की ही रक्षा करो।"
+                "en": "Stationed at all the approaches according to your divisions, all of you protect Bhīṣma alone.",
+                "ne": "सबै मोर्चाहरूमा आ-आफ्ना विभागअनुसार खडा भएका तपाईंहरू सबैले भीष्मकै रक्षा गर्नुहोस्।",
+                "hi": "सब मोर्चों पर अपने-अपने विभाग के अनुसार खड़े आप सब भीष्म की ही रक्षा करें।"
               },
               "paras": {
                 "en": "“Take your positions at every approach, each in your assigned place — and you must all protect Bhīṣma above all.”",
@@ -1854,6 +1876,8 @@
           "sutras": [
             {
               "n": "1.12",
+              "anvaya": "तस्य हर्षं सञ्जनयन् प्रतापवान् कुरुवृद्धः पितामहः उच्चैः सिंहनादं विनद्य शङ्खं दध्मौ।",
+              "anvaya_iast": "tasya harṣaṃ sañjanayan pratāpavān kuruvṛddhaḥ pitāmahaḥ uccaiḥ siṃhanādaṃ vinadya śaṅkhaṃ dadhmau.",
               "d": "तस्य सञ्जनयन्हर्षं कुरुवृद्धः पितामहः । सिंहनादं विनद्योच्चैः शङ्खं दध्मौ प्रतापवान्",
               "t": "tasya sañjanayanharṣaṃ kuruvṛddhaḥ pitāmahaḥ । siṃhanādaṃ vinadyoccaiḥ śaṅkhaṃ dadhmau pratāpavān",
               "flow": [
@@ -2009,6 +2033,8 @@
           "sutras": [
             {
               "n": "1.13",
+              "anvaya": "ततः शङ्खाः च भेर्यः च पणवानकगोमुखाः सहसा एव अभ्यहन्यन्त; सः शब्दः तुमुलः अभवत्।",
+              "anvaya_iast": "tataḥ śaṅkhāḥ ca bheryaḥ ca paṇavānakagomukhāḥ sahasā eva abhyahanyanta; saḥ śabdaḥ tumulaḥ abhavat.",
               "d": "ततः शङ्खाश्च भेर्यश्च पणवानकगोमुखाः । सहसैवाभ्यहन्यन्त स शब्दस्तुमुलोऽभवत्",
               "t": "tataḥ śaṅkhāśca bheryaśca paṇavānakagomukhāḥ । sahasaivābhyahanyanta sa śabdastumulo’bhavat",
               "flow": [
@@ -2152,8 +2178,8 @@
               ],
               "lits": {
                 "en": "Then conches, drums, kettledrums, tabors and horns were suddenly struck together — that sound became tumultuous.",
-                "ne": "त्यसपछि शङ्ख, नगारा, ढोल, मृदङ्ग र गोमुखहरू एकैसाथ बजे — त्यो ध्वनि भयङ्कर बन्यो।",
-                "hi": "तब शंख, नगाड़े, ढोल, मृदंग और तुरहियाँ एक साथ बज उठीं — वह ध्वनि भयानक हो गई।"
+                "ne": "त्यसपछि शङ्ख, नगारा, ढोल, मृदङ्ग र गोमुखहरू अचानक बजे — त्यो ध्वनि भयङ्कर बन्यो।",
+                "hi": "तब शंख, नगाड़े, ढोल, मृदंग और तुरहियाँ अचानक बज उठीं — वह ध्वनि भयानक हो गई।"
               },
               "paras": {
                 "en": "At once conches and kettledrums, tabors and trumpets crashed together, and the din swelled into a tremendous clamour.",
@@ -2193,6 +2219,8 @@
           "sutras": [
             {
               "n": "1.14",
+              "anvaya": "ततः श्वेतैः हयैः युक्ते महति स्यन्दने स्थितौ माधवः पाण्डवः च एव दिव्यौ शङ्खौ प्रदध्मतुः।",
+              "anvaya_iast": "tataḥ śvetaiḥ hayaiḥ yukte mahati syandane sthitau mādhavaḥ pāṇḍavaḥ ca eva divyau śaṅkhau pradadhmatuḥ.",
               "d": "ततः श्वेतैर्हयैर्युक्ते महति स्यन्दने स्थितौ । माधवः पाण्डवश्चैव दिव्यौ शङ्खौ प्रदध्मतुः",
               "t": "tataḥ śvetairhayairyukte mahati syandane sthitau । mādhavaḥ pāṇḍavaścaiva divyau śaṅkhau pradadhmatuḥ",
               "flow": [
@@ -2355,6 +2383,8 @@
           "sutras": [
             {
               "n": "1.15",
+              "anvaya": "हृषीकेशः पाञ्चजन्यम्, धनञ्जयः देवदत्तम्, भीमकर्मा वृकोदरः पौण्ड्रं महाशङ्खं दध्मौ।",
+              "anvaya_iast": "hṛṣīkeśaḥ pāñcajanyam, dhanañjayaḥ devadattam, bhīmakarmā vṛkodaraḥ pauṇḍraṃ mahāśaṅkhaṃ dadhmau.",
               "d": "पाञ्चजन्यं हृषीकेशो देवदत्तं धनञ्जयः । पौण्ड्रं दध्मौ महाशङ्खं भीमकर्मा वृकोदरः",
               "t": "pāñcajanyaṃ hṛṣīkeśo devadattaṃ dhanañjayaḥ । pauṇḍraṃ dadhmau mahāśaṅkhaṃ bhīmakarmā vṛkodaraḥ",
               "flow": [
@@ -2496,6 +2526,8 @@
           "sutras": [
             {
               "n": "1.16",
+              "anvaya": "कुन्तीपुत्रः राजा युधिष्ठिरः अनन्तविजयम्, नकुलः सहदेवः च सुघोषमणिपुष्पकौ।",
+              "anvaya_iast": "kuntīputraḥ rājā yudhiṣṭhiraḥ anantavijayam, nakulaḥ sahadevaḥ ca sughoṣamaṇipuṣpakau.",
               "d": "अनन्तविजयं राजा कुन्तीपुत्रो युधिष्ठिरः । नकुलः सहदेवश्च सुघोषमणिपुष्पकौ",
               "t": "anantavijayaṃ rājā kuntīputro yudhiṣṭhiraḥ । nakulaḥ sahadevaśca sughoṣamaṇipuṣpakau",
               "flow": [
@@ -2623,6 +2655,8 @@
           "sutras": [
             {
               "n": "1.17",
+              "anvaya": "परमेष्वासः काश्यः च, महारथः शिखण्डी च, धृष्टद्युम्नः, विराटः च, अपराजितः सात्यकिः च।",
+              "anvaya_iast": "parameṣvāsaḥ kāśyaḥ ca, mahārathaḥ śikhaṇḍī ca, dhṛṣṭadyumnaḥ, virāṭaḥ ca, aparājitaḥ sātyakiḥ ca.",
               "d": "काश्यश्च परमेष्वासः शिखण्डी च महारथः । धृष्टद्युम्नो विराटश्च सात्यकिश्चापराजितः",
               "t": "kāśyaśca parameṣvāsaḥ śikhaṇḍī ca mahārathaḥ । dhṛṣṭadyumno virāṭaśca sātyakiścāparājitaḥ",
               "flow": [
@@ -2785,6 +2819,8 @@
           "sutras": [
             {
               "n": "1.18",
+              "anvaya": "पृथिवीपते! द्रुपदः, द्रौपदेयाः च, महाबाहुः सौभद्रः च सर्वशः पृथक् पृथक् शङ्खान् दध्मुः।",
+              "anvaya_iast": "pṛthivīpate! drupadaḥ, draupadeyāḥ ca, mahābāhuḥ saubhadraḥ ca sarvaśaḥ pṛthak pṛthak śaṅkhān dadhmuḥ.",
               "d": "द्रुपदो द्रौपदेयाश्च सर्वशः पृथिवीपते । सौभद्रश्च महाबाहुः शङ्खान्दध्मुः पृथक्पृथक्",
               "t": "drupado draupadeyāśca sarvaśaḥ pṛthivīpate । saubhadraśca mahābāhuḥ śaṅkhāndadhmuḥ pṛthakpṛthak",
               "flow": [
@@ -2947,6 +2983,8 @@
           "sutras": [
             {
               "n": "1.19",
+              "anvaya": "सः तुमुलः घोषः नभः च पृथिवीं च एव व्यनुनादयन् धार्तराष्ट्राणां हृदयानि व्यदारयत्।",
+              "anvaya_iast": "saḥ tumulaḥ ghoṣaḥ nabhaḥ ca pṛthivīṃ ca eva vyanunādayan dhārtarāṣṭrāṇāṃ hṛdayāni vyadārayat.",
               "d": "स घोषो धार्तराष्ट्राणां हृदयानि व्यदारयत् । नभश्च पृथिवीं चैव तुमुलो व्यनुनादयन्",
               "t": "sa ghoṣo dhārtarāṣṭrāṇāṃ hṛdayāni vyadārayat । nabhaśca pṛthivīṃ caiva tumulo vyanunādayan",
               "flow": [
@@ -3110,6 +3148,8 @@
           "sutras": [
             {
               "n": "1.20",
+              "anvaya": "अथ कपिध्वजः पाण्डवः व्यवस्थितान् धार्तराष्ट्रान् दृष्ट्वा, शस्त्रसम्पाते प्रवृत्ते धनुः उद्यम्य।",
+              "anvaya_iast": "atha kapidhvajaḥ pāṇḍavaḥ vyavasthitān dhārtarāṣṭrān dṛṣṭvā, śastrasampāte pravṛtte dhanuḥ udyamya.",
               "d": "अथ व्यवस्थितान्दृष्ट्वा धार्तराष्ट्रान् कपिध्वजः । प्रवृत्ते शस्त्रसम्पाते धनुरुद्यम्य पाण्डवः",
               "t": "atha vyavasthitāndṛṣṭvā dhārtarāṣṭrān kapidhvajaḥ । pravṛtte śastrasampāte dhanurudyamya pāṇḍavaḥ",
               "flow": [
@@ -3258,6 +3298,8 @@
           "sutras": [
             {
               "n": "1.21",
+              "anvaya": "महीपते! तदा हृषीकेशम् इदं वाक्यम् आह — अर्जुन उवाच — अच्युत! उभयोः सेनयोः मध्ये मे रथं स्थापय।",
+              "anvaya_iast": "mahīpate! tadā hṛṣīkeśam idaṃ vākyam āha — arjuna uvāca — acyuta! ubhayoḥ senayoḥ madhye me rathaṃ sthāpaya.",
               "d": "हृषीकेशं तदा वाक्यमिदमाह महीपते । अर्जुन उवाच । सेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत",
               "t": "hṛṣīkeśaṃ tadā vākyamidamāha mahīpate । arjuna uvāca । senayorubhayormadhye rathaṃ sthāpaya me’cyuta",
               "flow": [
@@ -3434,6 +3476,8 @@
           "sutras": [
             {
               "n": "1.22",
+              "anvaya": "यावत् अहं योद्धुकामान् अवस्थितान् एतान् निरीक्षे, अस्मिन् रणसमुद्यमे मया कैः सह योद्धव्यम्।",
+              "anvaya_iast": "yāvat ahaṃ yoddhukāmān avasthitān etān nirīkṣe, asmin raṇasamudyame mayā kaiḥ saha yoddhavyam.",
               "d": "यावदेतान्निरीक्षेऽहं योद्धुकामानवस्थितान् । कैर्मया सह योद्धव्यमस्मिन् रणसमुद्यमे",
               "t": "yāvadetānnirīkṣe’haṃ yoddhukāmānavasthitān । kairmayā saha yoddhavyamasmin raṇasamudyame",
               "flow": [
@@ -3596,6 +3640,8 @@
           "sutras": [
             {
               "n": "1.23",
+              "anvaya": "दुर्बुद्धेः धार्तराष्ट्रस्य युद्धे प्रियचिकीर्षवः ये एते अत्र समागताः योत्स्यमानान् अहम् अवेक्षे।",
+              "anvaya_iast": "durbuddheḥ dhārtarāṣṭrasya yuddhe priyacikīrṣavaḥ ye ete atra samāgatāḥ yotsyamānān aham avekṣe.",
               "d": "योत्स्यमानानवेक्षेऽहं य एतेऽत्र समागताः । धार्तराष्ट्रस्य दुर्बुद्धेर्युद्धे प्रियचिकीर्षवः",
               "t": "yotsyamānānavekṣe’haṃ ya ete’tra samāgatāḥ । dhārtarāṣṭrasya durbuddheryuddhe priyacikīrṣavaḥ",
               "flow": [
@@ -3744,6 +3790,8 @@
           "sutras": [
             {
               "n": "1.24",
+              "anvaya": "सञ्जय उवाच — भारत! गुडाकेशेन एवम् उक्तः हृषीकेशः उभयोः सेनयोः मध्ये रथोत्तमं स्थापयित्वा।",
+              "anvaya_iast": "sañjaya uvāca — bhārata! guḍākeśena evam uktaḥ hṛṣīkeśaḥ ubhayoḥ senayoḥ madhye rathottamaṃ sthāpayitvā.",
               "d": "सञ्जय उवाच । एवमुक्तो हृषीकेशो गुडाकेशेन भारत । सेनयोरुभयोर्मध्ये स्थापयित्वा रथोत्तमम्",
               "t": "sañjaya uvāca । evamukto hṛṣīkeśo guḍākeśena bhārata । senayorubhayormadhye sthāpayitvā rathottamam",
               "flow": [
@@ -3906,6 +3954,8 @@
           "sutras": [
             {
               "n": "1.25",
+              "anvaya": "भीष्मद्रोणप्रमुखतः सर्वेषां च महीक्षिताम् उवाच — पार्थ! समवेतान् एतान् कुरून् पश्य इति।",
+              "anvaya_iast": "bhīṣmadroṇapramukhataḥ sarveṣāṃ ca mahīkṣitām uvāca — pārtha! samavetān etān kurūn paśya iti.",
               "d": "भीष्मद्रोणप्रमुखतः सर्वेषां च महीक्षिताम् । उवाच पार्थ पश्यैतान्समवेतान्कुरूनिति",
               "t": "bhīṣmadroṇapramukhataḥ sarveṣāṃ ca mahīkṣitām । uvāca pārtha paśyaitānsamavetānkurūniti",
               "flow": [
@@ -4083,6 +4133,8 @@
           "sutras": [
             {
               "n": "1.26",
+              "anvaya": "अथ पार्थः तत्र स्थितान् पितॄन्, पितामहान्, आचार्यान्, मातुलान्, भ्रातॄन्, पुत्रान्, पौत्रान् तथा सखीन् अपश्यत्।",
+              "anvaya_iast": "atha pārthaḥ tatra sthitān pitṝn, pitāmahān, ācāryān, mātulān, bhrātṝn, putrān, pautrān tathā sakhīn apaśyat.",
               "d": "तत्रापश्यत्स्थितान्पार्थः पितॄनथ पितामहान् । आचार्यान्मातुलान्भ्रातॄन्पुत्रान्पौत्रान्सखींस्तथा",
               "t": "tatrāpaśyatsthitānpārthaḥ pitṝnatha pitāmahān । ācāryānmātulānbhrātṝnputrānpautrānsakhīṃstathā",
               "flow": [
@@ -4245,6 +4297,8 @@
           "sutras": [
             {
               "n": "1.27",
+              "anvaya": "उभयोः अपि सेनयोः श्वशुरान् सुहृदः च एव; सः कौन्तेयः अवस्थितान् सर्वान् तान् बन्धून् समीक्ष्य।",
+              "anvaya_iast": "ubhayoḥ api senayoḥ śvaśurān suhṛdaḥ ca eva; saḥ kaunteyaḥ avasthitān sarvān tān bandhūn samīkṣya.",
               "d": "श्वशुरान्सुहृदश्चैव सेनयोरुभयोरपि । तान्समीक्ष्य स कौन्तेयः सर्वान्बन्धूनवस्थितान्",
               "t": "śvaśurānsuhṛdaścaiva senayorubhayorapi । tānsamīkṣya sa kaunteyaḥ sarvānbandhūnavasthitān",
               "flow": [
@@ -4414,6 +4468,8 @@
           "sutras": [
             {
               "n": "1.28",
+              "anvaya": "परया कृपया आविष्टः विषीदन् इदम् अब्रवीत् — अर्जुन उवाच — कृष्ण! युयुत्सुं समुपस्थितम् इमं स्वजनं दृष्ट्वा।",
+              "anvaya_iast": "parayā kṛpayā āviṣṭaḥ viṣīdan idam abravīt — arjuna uvāca — kṛṣṇa! yuyutsuṃ samupasthitam imaṃ svajanaṃ dṛṣṭvā.",
               "d": "कृपया परयाविष्टो विषीदन्निदमब्रवीत् । अर्जुन उवाच । दृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम्",
               "t": "kṛpayā parayāviṣṭo viṣīdannidamabravīt । arjuna uvāca । dṛṣṭvemaṃ svajanaṃ kṛṣṇa yuyutsuṃ samupasthitam",
               "flow": [
@@ -4590,6 +4646,8 @@
           "sutras": [
             {
               "n": "1.29",
+              "anvaya": "मम गात्राणि सीदन्ति, मुखं च परिशुष्यति, मे शरीरे वेपथुः च रोमहर्षः च जायते।",
+              "anvaya_iast": "mama gātrāṇi sīdanti, mukhaṃ ca pariśuṣyati, me śarīre vepathuḥ ca romaharṣaḥ ca jāyate.",
               "d": "सीदन्ति मम गात्राणि मुखं च परिशुष्यति । वेपथुश्च शरीरे मे रोमहर्षश्च जायते",
               "t": "sīdanti mama gātrāṇi mukhaṃ ca pariśuṣyati । vepathuśca śarīre me romaharṣaśca jāyate",
               "flow": [
@@ -4752,6 +4810,8 @@
           "sutras": [
             {
               "n": "1.30",
+              "anvaya": "हस्तात् गाण्डीवं स्रंसते, त्वक् च एव परिदह्यते, अवस्थातुं च न शक्नोमि, मे मनः च भ्रमति इव।",
+              "anvaya_iast": "hastāt gāṇḍīvaṃ sraṃsate, tvak ca eva paridahyate, avasthātuṃ ca na śaknomi, me manaḥ ca bhramati iva.",
               "d": "गाण्डीवं स्रंसते हस्तात्त्वक्चैव परिदह्यते । न च शक्नोम्यवस्थातुं भ्रमतीव च मे मनः",
               "t": "gāṇḍīvaṃ sraṃsate hastāttvakcaiva paridahyate । na ca śaknomyavasthātuṃ bhramatīva ca me manaḥ",
               "flow": [
@@ -4901,9 +4961,9 @@
                 }
               ],
               "lits": {
-                "en": "“The Gāṇḍīva slips from my hand, my skin burns; I cannot stand still, and my mind reels.”",
-                "ne": "“गाण्डीव मेरो हातबाट चिप्लिन्छ, छाला बल्छ; म उभिन सक्दिनँ, र मेरो मन भड्किन्छ।”",
-                "hi": "“गांडीव मेरे हाथ से गिर जाता है, मेरी त्वचा जलती है; मैं खड़ा नहीं रह पाता, और मेरा मन घूम जाता है।”"
+                "en": "“The Gāṇḍīva slips from my hand, my skin burns; I cannot stand still, and my mind seems to reel.”",
+                "ne": "“गाण्डीव मेरो हातबाट चिप्लिन्छ, छाला बल्छ; म उभिन सक्दिनँ, र मेरो मन भड्किएझैं हुन्छ।”",
+                "hi": "“गांडीव मेरे हाथ से फिसलता है, मेरी त्वचा जलती है; मैं खड़ा नहीं रह पाता, और मेरा मन मानो घूम रहा है।”"
               },
               "paras": {
                 "en": "“Gāṇḍīva falls from my hand, my skin burns; I can hardly stand, and my mind is spinning out of control.”",
@@ -4943,6 +5003,8 @@
           "sutras": [
             {
               "n": "1.31",
+              "anvaya": "केशव! विपरीतानि निमित्तानि च पश्यामि, आहवे स्वजनं हत्वा श्रेयः न च अनुपश्यामि।",
+              "anvaya_iast": "keśava! viparītāni nimittāni ca paśyāmi, āhave svajanaṃ hatvā śreyaḥ na ca anupaśyāmi.",
               "d": "निमित्तानि च पश्यामि विपरीतानि केशव । न च श्रेयोऽनुपश्यामि हत्वा स्वजनमाहवे",
               "t": "nimittāni ca paśyāmi viparītāni keśava । na ca śreyo’nupaśyāmi hatvā svajanamāhave",
               "flow": [
@@ -5098,6 +5160,8 @@
           "sutras": [
             {
               "n": "1.32",
+              "anvaya": "कृष्ण! विजयं न काङ्क्षे, राज्यं च सुखानि च न; गोविन्द! नः राज्येन किम्, भोगैः जीवितेन वा किम्?",
+              "anvaya_iast": "kṛṣṇa! vijayaṃ na kāṅkṣe, rājyaṃ ca sukhāni ca na; govinda! naḥ rājyena kim, bhogaiḥ jīvitena vā kim?",
               "d": "न काङ्क्षे विजयं कृष्ण न च राज्यं सुखानि च । किं नो राज्येन गोविन्द किं भोगैर्जीवितेन वा",
               "t": "na kāṅkṣe vijayaṃ kṛṣṇa na ca rājyaṃ sukhāni ca । kiṃ no rājyena govinda kiṃ bhogairjīvitena vā",
               "flow": [
@@ -5281,6 +5345,8 @@
           "sutras": [
             {
               "n": "1.33",
+              "anvaya": "येषाम् अर्थे नः राज्यं भोगाः सुखानि च काङ्क्षितम्, ते इमे प्राणान् धनानि च त्यक्त्वा युद्धे अवस्थिताः।",
+              "anvaya_iast": "yeṣām arthe naḥ rājyaṃ bhogāḥ sukhāni ca kāṅkṣitam, te ime prāṇān dhanāni ca tyaktvā yuddhe avasthitāḥ.",
               "d": "येषामर्थे काङ्क्षितं नो राज्यं भोगाः सुखानि च । त इमेऽवस्थिता युद्धे प्राणांस्त्यक्त्वा धनानि च",
               "t": "yeṣāmarthe kāṅkṣitaṃ no rājyaṃ bhogāḥ sukhāni ca । ta ime’vasthitā yuddhe prāṇāṃstyaktvā dhanāni ca",
               "flow": [
@@ -5457,6 +5523,8 @@
           "sutras": [
             {
               "n": "1.34",
+              "anvaya": "आचार्याः, पितरः, पुत्राः तथा एव च पितामहाः, मातुलाः, श्वशुराः, पौत्राः, श्यालाः तथा सम्बन्धिनः।",
+              "anvaya_iast": "ācāryāḥ, pitaraḥ, putrāḥ tathā eva ca pitāmahāḥ, mātulāḥ, śvaśurāḥ, pautrāḥ, śyālāḥ tathā sambandhinaḥ.",
               "d": "आचार्याः पितरः पुत्रास्तथैव च पितामहाः । मातुलाः श्वशुराः पौत्राः श्यालाः सम्बन्धिनस्तथा",
               "t": "ācāryāḥ pitaraḥ putrāstathaiva ca pitāmahāḥ । mātulāḥ śvaśurāḥ pautrāḥ śyālāḥ sambandhinastathā",
               "flow": [
@@ -5612,6 +5680,8 @@
           "sutras": [
             {
               "n": "1.35",
+              "anvaya": "मधुसूदन! त्रैलोक्यराज्यस्य हेतोः अपि घ्नतः अपि एतान् हन्तुं न इच्छामि, महीकृते नु किम्?",
+              "anvaya_iast": "madhusūdana! trailokyarājyasya hetoḥ api ghnataḥ api etān hantuṃ na icchāmi, mahīkṛte nu kim?",
               "d": "एतान्न हन्तुमिच्छामि घ्नतोऽपि मधुसूदन । अपि त्रैलोक्यराज्यस्य हेतोः किं नु महीकृते",
               "t": "etānna hantumicchāmi ghnato’pi madhusūdana । api trailokyarājyasya hetoḥ kiṃ nu mahīkṛte",
               "flow": [
@@ -5781,6 +5851,8 @@
           "sutras": [
             {
               "n": "1.36",
+              "anvaya": "जनार्दन! धार्तराष्ट्रान् निहत्य नः का प्रीतिः स्यात्? एतान् आततायिनः हत्वा पापम् एव अस्मान् आश्रयेत्।",
+              "anvaya_iast": "janārdana! dhārtarāṣṭrān nihatya naḥ kā prītiḥ syāt? etān ātatāyinaḥ hatvā pāpam eva asmān āśrayet.",
               "d": "निहत्य धार्तराष्ट्रान्नः का प्रीतिः स्याज्जनार्दन । पापमेवाश्रयेदस्मान्हत्वैतानाततायिनः",
               "t": "nihatya dhārtarāṣṭrānnaḥ kā prītiḥ syājjanārdana । pāpamevāśrayedasmānhatvaitānātatāyinaḥ",
               "flow": [
@@ -5943,6 +6015,8 @@
           "sutras": [
             {
               "n": "1.37",
+              "anvaya": "तस्मात् स्वबान्धवान् धार्तराष्ट्रान् हन्तुं वयं न अर्हाः; माधव! स्वजनं हि हत्वा कथं सुखिनः स्याम?",
+              "anvaya_iast": "tasmāt svabāndhavān dhārtarāṣṭrān hantuṃ vayaṃ na arhāḥ; mādhava! svajanaṃ hi hatvā kathaṃ sukhinaḥ syāma?",
               "d": "तस्मान्नार्हा वयं हन्तुं धार्तराष्ट्रान्स्वबान्धवान् । स्वजनं हि कथं हत्वा सुखिनः स्याम माधव",
               "t": "tasmānnārhā vayaṃ hantuṃ dhārtarāṣṭrānsvabāndhavān । svajanaṃ hi kathaṃ hatvā sukhinaḥ syāma mādhava",
               "flow": [
@@ -6134,6 +6208,8 @@
           "sutras": [
             {
               "n": "1.38",
+              "anvaya": "यद्यपि लोभोपहतचेतसः एते कुलक्षयकृतं दोषं मित्रद्रोहे च पातकं न पश्यन्ति।",
+              "anvaya_iast": "yadyapi lobhopahatacetasaḥ ete kulakṣayakṛtaṃ doṣaṃ mitradrohe ca pātakaṃ na paśyanti.",
               "d": "यद्यप्येते न पश्यन्ति लोभोपहतचेतसः । कुलक्षयकृतं दोषं मित्रद्रोहे च पातकम्",
               "t": "yadyapyete na paśyanti lobhopahatacetasaḥ । kulakṣayakṛtaṃ doṣaṃ mitradrohe ca pātakam",
               "flow": [
@@ -6296,6 +6372,8 @@
           "sutras": [
             {
               "n": "1.39",
+              "anvaya": "जनार्दन! कुलक्षयकृतं दोषं प्रपश्यद्भिः अस्माभिः अस्मात् पापात् निवर्तितुं कथं न ज्ञेयम्?",
+              "anvaya_iast": "janārdana! kulakṣayakṛtaṃ doṣaṃ prapaśyadbhiḥ asmābhiḥ asmāt pāpāt nivartituṃ kathaṃ na jñeyam?",
               "d": "कथं न ज्ञेयमस्माभिः पापादस्मान्निवर्तितुम् । कुलक्षयकृतं दोषं प्रपश्यद्भिर्जनार्दन",
               "t": "kathaṃ na jñeyamasmābhiḥ pāpādasmānnivartitum । kulakṣayakṛtaṃ doṣaṃ prapaśyadbhirjanārdana",
               "flow": [
@@ -6444,6 +6522,8 @@
           "sutras": [
             {
               "n": "1.40",
+              "anvaya": "कुलक्षये सनातनाः कुलधर्माः प्रणश्यन्ति; धर्मे नष्टे उत अधर्मः कृत्स्नं कुलम् अभिभवति।",
+              "anvaya_iast": "kulakṣaye sanātanāḥ kuladharmāḥ praṇaśyanti; dharme naṣṭe uta adharmaḥ kṛtsnaṃ kulam abhibhavati.",
               "d": "कुलक्षये प्रणश्यन्ति कुलधर्माः सनातनाः । धर्मे नष्टे कुलं कृत्स्नमधर्मोऽभिभवत्युत",
               "t": "kulakṣaye praṇaśyanti kuladharmāḥ sanātanāḥ । dharme naṣṭe kulaṃ kṛtsnamadharmo’bhibhavatyuta",
               "flow": [
@@ -6599,6 +6679,8 @@
           "sutras": [
             {
               "n": "1.41",
+              "anvaya": "कृष्ण! अधर्माभिभवात् कुलस्त्रियः प्रदुष्यन्ति; वार्ष्णेय! स्त्रीषु दुष्टासु वर्णसङ्करः जायते।",
+              "anvaya_iast": "kṛṣṇa! adharmābhibhavāt kulastriyaḥ praduṣyanti; vārṣṇeya! strīṣu duṣṭāsu varṇasaṅkaraḥ jāyate.",
               "d": "अधर्माभिभवात्कृष्ण प्रदुष्यन्ति कुलस्त्रियः । स्त्रीषु दुष्टासु वार्ष्णेय जायते वर्णसङ्करः",
               "t": "adharmābhibhavātkṛṣṇa praduṣyanti kulastriyaḥ । strīṣu duṣṭāsu vārṣṇeya jāyate varṇasaṅkaraḥ",
               "flow": [
@@ -6747,6 +6829,8 @@
           "sutras": [
             {
               "n": "1.42",
+              "anvaya": "सङ्करः कुलघ्नानां कुलस्य च नरकाय एव; एषां पितरः हि लुप्तपिण्डोदकक्रियाः पतन्ति।",
+              "anvaya_iast": "saṅkaraḥ kulaghnānāṃ kulasya ca narakāya eva; eṣāṃ pitaraḥ hi luptapiṇḍodakakriyāḥ patanti.",
               "d": "सङ्करो नरकायैव कुलघ्नानां कुलस्य च । पतन्ति पितरो ह्येषां लुप्तपिण्डोदकक्रियाः",
               "t": "saṅkaro narakāyaiva kulaghnānāṃ kulasya ca । patanti pitaro hyeṣāṃ luptapiṇḍodakakriyāḥ",
               "flow": [
@@ -6916,6 +7000,8 @@
           "sutras": [
             {
               "n": "1.43",
+              "anvaya": "कुलघ्नानां वर्णसङ्करकारकैः एतैः दोषैः शाश्वताः जातिधर्माः कुलधर्माः च उत्साद्यन्ते।",
+              "anvaya_iast": "kulaghnānāṃ varṇasaṅkarakārakaiḥ etaiḥ doṣaiḥ śāśvatāḥ jātidharmāḥ kuladharmāḥ ca utsādyante.",
               "d": "दोषैरेतैः कुलघ्नानां वर्णसङ्करकारकैः । उत्साद्यन्ते जातिधर्माः कुलधर्माश्च शाश्वताः",
               "t": "doṣairetaiḥ kulaghnānāṃ varṇasaṅkarakārakaiḥ । utsādyante jātidharmāḥ kuladharmāśca śāśvatāḥ",
               "flow": [
@@ -7071,6 +7157,8 @@
           "sutras": [
             {
               "n": "1.44",
+              "anvaya": "जनार्दन! उत्सन्नकुलधर्माणां मनुष्याणां नरके नियतं वासः भवति इति अनुशुश्रुम।",
+              "anvaya_iast": "janārdana! utsannakuladharmāṇāṃ manuṣyāṇāṃ narake niyataṃ vāsaḥ bhavati iti anuśuśruma.",
               "d": "उत्सन्नकुलधर्माणां मनुष्याणां जनार्दन । नरके नियतं वासो भवतीत्यनुशुश्रुम",
               "t": "utsannakuladharmāṇāṃ manuṣyāṇāṃ janārdana । narake niyataṃ vāso bhavatītyanuśuśruma",
               "flow": [
@@ -7227,6 +7315,8 @@
           "sutras": [
             {
               "n": "1.45",
+              "anvaya": "अहो बत! वयं महत्पापं कर्तुं व्यवसिताः, यत् राज्यसुखलोभेन स्वजनं हन्तुम् उद्यताः।",
+              "anvaya_iast": "aho bata! vayaṃ mahatpāpaṃ kartuṃ vyavasitāḥ, yat rājyasukhalobhena svajanaṃ hantum udyatāḥ.",
               "d": "अहो बत महत्पापं कर्तुं व्यवसिता वयम् । यद्राज्यसुखलोभेन हन्तुं स्वजनमुद्यताः",
               "t": "aho bata mahatpāpaṃ kartuṃ vyavasitā vayam । yadrājyasukhalobhena hantuṃ svajanamudyatāḥ",
               "flow": [
@@ -7370,8 +7460,8 @@
               ],
               "lits": {
                 "en": "“Alas! What a great sin we have resolved to commit — driven by greed for kingdom and pleasure, we are ready to kill our own kin.”",
-                "ne": "“हाय! हामीले कस्तो ठूलो पाप गर्ने निश्चय गरेका छौं — राज्य र सुखको लोभले अन्धा भएर, हामी आफ्नै कुटुम्ब मार्न तयार छौं।”",
-                "hi": "“हाय! हमने कितना बड़ा पाप करने का निश्चय किया है — राज्य और सुख के लोभ से अंधे होकर, हम अपने ही कुटुंब को मारने को तैयार हैं।”"
+                "ne": "“हाय! हामीले कस्तो ठूलो पाप गर्ने निश्चय गरेका छौं — राज्य र सुखको लोभले, हामी आफ्नै कुटुम्ब मार्न तयार छौं।”",
+                "hi": "“हाय! हमने कितना बड़ा पाप करने का निश्चय किया है — राज्य और सुख के लोभ से, हम अपने ही कुटुंब को मारने को तैयार हैं।”"
               },
               "paras": {
                 "en": "“What terrible wrong are we about to do! Blinded by the craving for a throne and its pleasures, we are prepared to kill our own family.”",
@@ -7396,6 +7486,8 @@
           "sutras": [
             {
               "n": "1.46",
+              "anvaya": "यदि शस्त्रपाणयः धार्तराष्ट्राः अप्रतीकारम् अशस्त्रं माम् रणे हन्युः, तत् मे क्षेमतरं भवेत्।",
+              "anvaya_iast": "yadi śastrapāṇayaḥ dhārtarāṣṭrāḥ apratīkāram aśastraṃ mām raṇe hanyuḥ, tat me kṣemataraṃ bhavet.",
               "d": "यदि मामप्रतीकारमशस्त्रं शस्त्रपाणयः । धार्तराष्ट्रा रणे हन्युस्तन्मे क्षेमतरं भवेत्",
               "t": "yadi māmapratīkāramaśastraṃ śastrapāṇayaḥ । dhārtarāṣṭrā raṇe hanyustanme kṣemataraṃ bhavet",
               "flow": [
@@ -7565,6 +7657,8 @@
           "sutras": [
             {
               "n": "1.47",
+              "anvaya": "सञ्जय उवाच — संख्ये एवम् उक्त्वा शोकसंविग्नमानसः अर्जुनः सशरं चापं विसृज्य रथोपस्थे उपाविशत्।",
+              "anvaya_iast": "sañjaya uvāca — saṃkhye evam uktvā śokasaṃvignamānasaḥ arjunaḥ saśaraṃ cāpaṃ visṛjya rathopasthe upāviśat.",
               "d": "सञ्जय उवाच । एवमुक्त्वार्जुनः सङ्ख्ये रथोपस्थ उपाविशत् । विसृज्य सशरं चापं शोकसंविग्नमानसः",
               "t": "sañjaya uvāca । evamuktvārjunaḥ saṅkhye rathopastha upāviśat । visṛjya saśaraṃ cāpaṃ śokasaṃvignamānasaḥ",
               "flow": [

@@ -136,7 +136,6 @@ LITERAL_NAME_BASELINE = {
     ("1.20", "Pāṇḍava"),        # कपिध्वजः row: the ape-bannered Pāṇḍava
     ("1.21", "Acyuta"),         # अच्युत row is the same address
     ("2.02", "Āryan"),          # आर्य row ("noble"); the reading keeps the name
-    ("2.42", "Vedas"),          # वेदवादरताः row carries वेद
     ("2.72", "Brāhmī"),         # ब्राह्मी स्थितिः row
     ("8.16", "Kaunteya"),       # कौन्तेय row
     ("10.28", "Kāmadhuk"),      # कामधुक् row, the cow of wishes
@@ -232,7 +231,10 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # read. It may fall as the house normalises a gloss, never rise silently.
 # Reviewed 2026-11-20: 3.26 encourage, 4.10 absorbed, and both
 # external/outside in 5.27 now appear in the literal as well as the rows.
-ROW_LITERAL_CENSUS = 1018
+# 2.07 adds weakness and defect; 18.38 adds इव; 2.08 and 2.65 align
+# further literal alignment carries according to, compassion, agitated, grieving,
+# abstaining, embodied and speech; synonyms change other rows (1018 → 1007).
+ROW_LITERAL_CENSUS = 1007
 
 
 def _fold_diacritics(word):
@@ -508,6 +510,103 @@ def address_survives(core, literal):
                 token.startswith(core[:-1]) or core.startswith(token[:-1])):
             return True
     return False
+
+
+class LiteralBlindnessAudit(unittest.TestCase):
+    def test_no_literal_adds_blindness_without_a_blindness_row(self):
+        # Screen all 700 for actual blindness, not अन्धकार (darkness).
+        blind = {"en": re.compile(r"\bblind(?:ness|ed)?\b", re.I),
+                 "ne": re.compile(r"अन्ध(?:ा|ो|ी|ापन)"),
+                 "hi": re.compile(r"अंध(?:ा|े|ी|ापन)")}
+        source_blind = re.compile(r"अन्ध|अंध|blind", re.I)
+        for verse in all_verses():
+            evidence = " ".join(" ".join(row[:3]) for row in rows_of(verse))
+            for lang, pattern in blind.items():
+                with self.subTest(verse=verse["n"], lang=lang):
+                    if pattern.search(verse["lits"][lang]):
+                        self.assertRegex(evidence, source_blind)
+
+
+class IvaLiteralAudit(unittest.TestCase):
+    def test_qualifiers_survive_in_reviewed_verses(self):
+        # 1.30 and 3.02 express seeming; 18.38 compares happiness to poison.
+        for ref, expected in {
+            "1.30": {"en": "seems to reel", "ne": "भड्किएझैं", "hi": "मानो"},
+            "3.02": {"en": "seem to confuse", "ne": "मानौँ", "hi": "मानो"},
+            "18.38": {"en": "like poison", "ne": "विषझैं", "hi": "विष के समान"},
+        }.items():
+            verse = load_verse(ref)
+            self.assertIn("इव", [row[0] for row in rows_of(verse)])
+            for lang, phrase in expected.items():
+                with self.subTest(verse=ref, lang=lang):
+                    self.assertIn(phrase, verse["lits"][lang])
+
+
+class LiteralChapter2Regression(unittest.TestCase):
+    def test_208_prosperity_and_both_attainments(self):
+        v = load_verse("2.08")
+        self.assertIn("ऋद्धम्", [r[0] for r in rows_of(v)])
+        for lang, terms in {"en": ("prosperous", " and sovereignty"),
+                            "ne": ("समृद्ध", " र देवताहरू"),
+                            "hi": ("समृद्ध", " और देवताओं")}.items():
+            for term in terms:
+                with self.subTest(lang=lang, term=term):
+                    self.assertIn(term, v["lits"][lang])
+
+    def test_265_distinguishes_mind_and_intellect(self):
+        v = load_verse("2.65")
+        for term in ("mind", "intellect"):
+            self.assertIn(term, v["lits"]["en"])
+
+
+class Verse323Literal(unittest.TestCase):
+    def test_independent_present_is_not_consequent(self):
+        v = load_verse("3.23")
+        self.assertIn("For people follow my path", v["lits"]["en"])
+        self.assertNotIn("then people would follow", v["lits"]["en"])
+        self.assertIn("अनुसरण गर्छन्", v["lits"]["ne"])
+        self.assertIn("अनुसरण करते हैं", v["lits"]["hi"])
+
+
+class LiteralReview1234(unittest.TestCase):
+    def test_reviewed_corrections_in_each_language(self):
+        expected = {
+            "1.11": {"en": "according to your divisions", "ne": "विभागअनुसार", "hi": "विभाग के अनुसार"},
+            "1.13": {"en": "suddenly", "ne": "अचानक", "hi": "अचानक"},
+            "1.30": {"en": "slips", "ne": "चिप्लिन्छ", "hi": "फिसलता"},
+            "2.01": {"en": "To him", "ne": "उनलाई", "hi": "उसे"},
+            "2.02": {"en": "not leading to heaven", "ne": "स्वर्ग नदिने", "hi": "स्वर्ग न देने"},
+            "2.59": {"en": "abstains", "ne": "आहारबाट विरत", "hi": "आहार से विरत"},
+            "3.04": {"en": "freedom from action", "ne": "कर्मरहित अवस्था", "hi": "कर्मरहित अवस्था"},
+            "4.16": {"en": "from evil", "ne": "अशुभबाट", "hi": "अशुभ से"},
+        }
+        for ref, languages in expected.items():
+            v = load_verse(ref)
+            for lang, term in languages.items():
+                with self.subTest(verse=ref, lang=lang):
+                    self.assertIn(term, v["lits"][lang])
+        self.assertNotIn("above all", load_verse("1.11")["lits"]["en"])
+        self.assertNotIn(" होकर भी", load_verse("1.10")["lits"]["hi"])
+        for lang in LANGUAGES:
+            self.assertNotIn("(", load_verse("3.38")["lits"][lang])
+
+
+class Verse207Literal(unittest.TestCase):
+    def test_weakness_and_confusion_are_distinct_in_all_languages(self):
+        verse = load_verse("2.07")
+        self.assertEqual([row[0] for row in verse["flow"][0]["words"]],
+                         ["कार्पण्य", "दोष", "उपहत", "स्वभावः"])
+        self.assertIn("कायरतारूपी दोषले स्वभाव आहत भएको र धर्म (कर्तव्य) बारे चित्त भ्रमित भएको म तपाईंलाई सोध्छु", verse["lits"]["ne"])
+        for lang, weakness, defect, mind in (
+            ("en", "weakness", "defect", "mind is confused about duty"),
+            ("ne", "कायरता", "दोष", "चित्त भ्रमित"),
+            ("hi", "कायरता", "दोष", "चित्त भ्रमित"),
+        ):
+            with self.subTest(lang=lang):
+                literal = verse["lits"][lang]
+                self.assertIn(weakness, literal)
+                self.assertIn(defect, literal)
+                self.assertIn(mind, literal)
 
 
 class WholeBookFidelity(unittest.TestCase):

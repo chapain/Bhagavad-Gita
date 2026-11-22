@@ -328,10 +328,11 @@ function fillModal(){
         <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
              aria-expanded="false"
              onclick="App.reader.toggleVerseExpansion(event)"
-             onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();event.stopPropagation();App.reader.toggleVerseExpansion(event)}">
+             onkeydown="if((event.key==='Enter'||event.key===' ')&&event.target===this&&!verseViewState.isExpanded){event.preventDefault();event.stopPropagation();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}
         </div>
       </div>
+      ${s.anvaya ? `<section class="m-anvaya" aria-label="${esc(L('anvaya'))}"><div class="m-anvaya-label">${esc(L('anvaya'))}</div><div lang="sa">${esc(s.anvaya)}</div>${state.lang === 'en' && s.anvaya_iast ? `<div class="m-anvaya-iast" lang="sa-Latn">${esc(s.anvaya_iast)}</div>` : ''}</section>` : ''}
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
       <details class="m-note"${noteText ? ' open' : ''}>

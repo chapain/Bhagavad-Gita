@@ -48,6 +48,20 @@ class CanonicalSourceSchemaTests(unittest.TestCase):
         self.changed(lambda d: d[0]["themes"][0]["parts"][0]["sutras"][0]["flow"][1].__setitem__("legacy", 1),
                      "verse 1.flow 2: invalid keys (unexpected ['legacy'])")
 
+    def test_optional_anvaya_must_be_nonempty_sanskrit_text(self):
+        verse = lambda d: d[0]["themes"][0]["parts"][0]["sutras"][0]
+        self.changed(lambda d: verse(d).__setitem__("anvaya", ""),
+                     "anvaya: must be a non-empty string")
+        self.changed(lambda d: verse(d).__setitem__("anvaya", "<script>"),
+                     "anvaya: must contain Sanskrit text and punctuation only")
+        data = copy.deepcopy(self.chapters)
+        del verse(data)["anvaya"]
+        self.assertIn('anvaya and anvaya_iast must be supplied together', '\n'.join(validate_chapters(data)))
+        del verse(data)["anvaya_iast"]
+        self.assertEqual(validate_chapters(data), [])
+        self.changed(lambda d: verse(d).__setitem__('anvaya_iast', '<script>'),
+                     'anvaya_iast: must contain IAST text and punctuation only')
+
     def test_boolean_is_not_a_chapter_number(self):
         self.changed(lambda d: d[0].__setitem__("num", True), "chapter 1.num: must be integer 1")
         self.changed(lambda d: d[0].__setitem__("verses", True),

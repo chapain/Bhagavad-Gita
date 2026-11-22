@@ -191,7 +191,9 @@
                 "en": "Kṛṣṇa said: “Because you do not find fault, Arjuna, I will teach you the deepest secret — wisdom with its direct realization. Knowing it, you will be free of all evil.”",
                 "ne": "कृष्णले भन्नुभयो: “किनकि तिमी दोष देख्दैनौ, अर्जुन, म तिमीलाई सबैभन्दा गहिरो रहस्य सिकाउनेछु — ज्ञान यसको प्रत्यक्ष अनुभवसहित। यो जानेर तिमी सबै पापबाट मुक्त हुनेछौ।”",
                 "hi": "कृष्ण ने कहा: “क्योंकि तू दोष नहीं निकालता, अर्जुन, मैं तुझे सबसे गहरा रहस्य सिखाऊँगा — ज्ञान अपने प्रत्यक्ष अनुभव के साथ। इसे जानकर तू सब पाप से मुक्त हो जाएगा।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — अनसूयवे ते इदं गुह्यतमं विज्ञानसहितं ज्ञानं तु प्रवक्ष्यामि, यत् ज्ञात्वा अशुभात् मोक्ष्यसे।",
+              "anvaya_iast": "śrībhagavānuvāca — anasūyave te idaṃ guhyatamaṃ vijñānasahitaṃ jñānaṃ tu pravakṣyāmi, yat jñātvā aśubhāt mokṣyase."
             }
           ]
         },
@@ -325,7 +327,9 @@
                 "en": "“This is the king of knowledge and of secrets — the purest, seen directly, in accord with dharma, easy to follow, and eternal.”",
                 "ne": "“यो ज्ञान र रहस्यको राजा हो — सबैभन्दा शुद्ध, प्रत्यक्ष देखिने, धर्मसँग मेल खाने, पछ्याउन सजिलो र नित्य।”",
                 "hi": "“यह ज्ञान और रहस्य का राजा है — सबसे शुद्ध, प्रत्यक्ष दिखने वाला, धर्म के अनुकूल, अपनाने में सरल और नित्य।”"
-              }
+              },
+              "anvaya": "इदं राजविद्या, राजगुह्यम्, उत्तमं पवित्रम्, प्रत्यक्षावगमं, धर्म्यं, कर्तुं सुसुखम्, अव्ययम्।",
+              "anvaya_iast": "idaṃ rājavidyā, rājaguhyam, uttamaṃ pavitram, pratyakṣāvagamaṃ, dharmyaṃ, kartuṃ susukham, avyayam."
             }
           ]
         },
@@ -452,7 +456,9 @@
                 "en": "“Those without faith in this teaching turn back on the path of death and rebirth, never reaching me.”",
                 "ne": "“यस शिक्षामा श्रद्धा नराख्नेहरू मृत्यु र पुनर्जन्मको बाटोमा फर्कन्छन्, कहिल्यै मकहाँ पुग्दैनन्।”",
                 "hi": "“इस शिक्षा में श्रद्धा न रखने वाले मृत्यु और पुनर्जन्म के मार्ग पर लौट जाते हैं, कभी मुझ तक नहीं पहुँचते।”"
-              }
+              },
+              "anvaya": "परन्तप! अस्य धर्मस्य अश्रद्दधानाः पुरुषाः माम् अप्राप्य मृत्युसंसारवर्त्मनि निवर्तन्ते।",
+              "anvaya_iast": "parantapa! asya dharmasya aśraddadhānāḥ puruṣāḥ mām aprāpya mṛtyusaṃsāravartmani nivartante."
             }
           ]
         }
@@ -622,7 +628,9 @@
                 "en": "“I pervade this entire world in my unmanifest form. All beings dwell in me, yet I do not dwell in them.”",
                 "ne": "देखिँदैन, तर सारा जगत् मैले नै ढाकेको छु। सबै प्राणी ममा अडेका छन्; म भने तिनमा अडेको छैन।",
                 "hi": "“मैं अपने अव्यक्त रूप से इस सम्पूर्ण संसार को व्याप्त करता हूँ। सब प्राणी मुझ में रहते हैं, फिर भी मैं उनमें नहीं रहता।”"
-              }
+              },
+              "anvaya": "अव्यक्तमूर्तिना मया इदं सर्वं जगत् ततम्; सर्वभूतानि मत्स्थानि, अहं च तेषु न अवस्थितः।",
+              "anvaya_iast": "avyaktamūrtinā mayā idaṃ sarvaṃ jagat tatam; sarvabhūtāni matsthāni, ahaṃ ca teṣu na avasthitaḥ."
             }
           ]
         },
@@ -791,7 +799,9 @@
                 "en": "“Beings do not truly rest in me — see my divine power! I support all beings, yet remain separate; I am their source.”",
                 "ne": "तर हेर, ती ममा अडेका पनि छैनन् — यही मेरो योगको अचम्म हो। धान्ने म, छुट्टिएर बस्ने पनि म, अनि तिनको मूल पनि म नै।",
                 "hi": "“प्राणी सचमुच मुझ में नहीं रहते — मेरी दिव्य शक्ति देख! मैं सब प्राणियों को धारण करता हूँ, फिर भी अलग रहता हूँ; मैं ही उनका स्रोत हूँ।”"
-              }
+              },
+              "anvaya": "भूतानि च मत्स्थानि न; मे ऐश्वरं योगं पश्य — मम आत्मा भूतभृत्, भूतस्थः च न, भूतभावनः।",
+              "anvaya_iast": "bhūtāni ca matsthāni na; me aiśvaraṃ yogaṃ paśya — mama ātmā bhūtabhṛt, bhūtasthaḥ ca na, bhūtabhāvanaḥ."
             }
           ]
         },
@@ -939,7 +949,9 @@
                 "en": "“As the great wind moves everywhere and yet lives in space, so all beings live in me — understand this.”",
                 "ne": "“जसरी ठूलो हावा जताततै चल्छ तैपनि आकाशमै बस्छ, त्यसरी सबै प्राणी ममा बस्छन् — यो बुझ।”",
                 "hi": "“जैसे बड़ी हवा हर जगह चलती है फिर भी आकाश में ही रहती है, वैसे ही सब प्राणी मुझ में रहते हैं — यह समझ।”"
-              }
+              },
+              "anvaya": "यथा सर्वत्रगः महान् वायुः नित्यम् आकाशस्थितः, तथा सर्वाणि भूतानि मत्स्थानि इति उपधारय।",
+              "anvaya_iast": "yathā sarvatragaḥ mahān vāyuḥ nityam ākāśasthitaḥ, tathā sarvāṇi bhūtāni matsthāni iti upadhāraya."
             }
           ]
         },
@@ -1080,7 +1092,9 @@
                 "en": "“At the end of the cosmic age, all beings merge back into my nature; at the dawn of the age, I send them out again.”",
                 "ne": "“ब्रह्माण्डीय युगको अन्त्यमा सबै प्राणी मेरो प्रकृतिमा विलीन हुन्छन्; युगको उदयमा म तिनलाई फेरि पठाउँछु।”",
                 "hi": "“ब्रह्माण्डीय युग के अन्त में सब प्राणी मेरी प्रकृति में विलीन हो जाते हैं; युग के उदय पर मैं उन्हें फिर भेजता हूँ।”"
-              }
+              },
+              "anvaya": "कौन्तेय! कल्पक्षये सर्वाणि भूतानि मामिकां प्रकृतिं यान्ति; कल्पादौ अहं तानि पुनः विसृजामि।",
+              "anvaya_iast": "kaunteya! kalpakṣaye sarvāṇi bhūtāni māmikāṃ prakṛtiṃ yānti; kalpādau ahaṃ tāni punaḥ visṛjāmi."
             }
           ]
         },
@@ -1228,7 +1242,9 @@
                 "en": "“Through my own nature I project this entire multitude of beings again and again — creatures helpless under nature's sway.”",
                 "ne": "“आफ्नै प्रकृतिद्वारा म यो सम्पूर्ण प्राणी-समूहलाई बारम्बार प्रकट गर्छु — प्रकृतिको अधीनमा असहाय प्राणीहरू।”",
                 "hi": "“अपनी प्रकृति से ही मैं इस सम्पूर्ण प्राणी-समूह को बार-बार प्रकट करता हूँ — प्रकृति के अधीन असहाय प्राणी।”"
-              }
+              },
+              "anvaya": "स्वां प्रकृतिम् अवष्टभ्य प्रकृतेः वशात् अवशम् इमं कृत्स्नं भूतग्रामं पुनः पुनः विसृजामि।",
+              "anvaya_iast": "svāṃ prakṛtim avaṣṭabhya prakṛteḥ vaśāt avaśam imaṃ kṛtsnaṃ bhūtagrāmaṃ punaḥ punaḥ visṛjāmi."
             }
           ]
         }
@@ -1391,7 +1407,9 @@
                 "en": "“None of this binds me, Arjuna — I remain detached and indifferent, like an unconcerned onlooker.”",
                 "ne": "“यी सबैले मलाई बाँध्दैनन्, अर्जुन — म आसक्तिरहित, बेपरवाह दर्शकझैं अलग बस्छु।”",
                 "hi": "“ये सब मुझे नहीं बाँधते, अर्जुन — मैं आसक्ति-रहित, बेपरवाह दर्शक की तरह अलग बैठा हूँ।”"
-              }
+              },
+              "anvaya": "धनञ्जय! तानि कर्माणि च मां न निबध्नन्ति — तेषु कर्मसु उदासीनवत् आसीनम् असक्तम्।",
+              "anvaya_iast": "dhanañjaya! tāni karmāṇi ca māṃ na nibadhnanti — teṣu karmasu udāsīnavat āsīnam asaktam."
             }
           ]
         },
@@ -1525,7 +1543,9 @@
                 "en": "“Under my direction nature produces everything moving and still; that is why the world turns.”",
                 "ne": "“मेरो निर्देशनमा प्रकृतिले चल र अचल — सबै उत्पादन गर्छे; त्यसैले संसार घुमिरहन्छ।”",
                 "hi": "“मेरे निर्देशन में प्रकृति चल और अचल — सबका उत्पादन करती है; इसीलिए संसार घूमता रहता है।”"
-              }
+              },
+              "anvaya": "कौन्तेय! अध्यक्षेण मया प्रकृतिः सचराचरं सूयते; अनेन हेतुना जगत् विपरिवर्तते।",
+              "anvaya_iast": "kaunteya! adhyakṣeṇa mayā prakṛtiḥ sacarācaraṃ sūyate; anena hetunā jagat viparivartate."
             }
           ]
         },
@@ -1666,7 +1686,9 @@
                 "en": "“Fools, blind to my higher nature, look down on me when I take a human body.”",
                 "ne": "“मूर्खहरू, मेरो उच्च प्रकृति नदेखेर, मानव शरीर लिएको मलाई तुच्छ ठान्छन्।”",
                 "hi": "“मूर्ख, मेरी उच्च प्रकृति को न देखकर, मानव शरीर लिए हुए मुझे नीची दृष्टि से देखते हैं।”"
-              }
+              },
+              "anvaya": "मम भूतमहेश्वरं परं भावम् अजानन्तः मूढाः मानुषीं तनुम् आश्रितं माम् अवजानन्ति।",
+              "anvaya_iast": "mama bhūtamaheśvaraṃ paraṃ bhāvam ajānantaḥ mūḍhāḥ mānuṣīṃ tanum āśritaṃ mām avajānanti."
             }
           ]
         },
@@ -1807,7 +1829,9 @@
                 "en": "“Their hopes, deeds and learning are all in vain; confused and lost, they follow a deluded, demonic nature.”",
                 "ne": "“तिनका आशा, कर्म र विद्या सबै व्यर्थ हुन्छन्; अलमलिएर हराएर ती भ्रमित, आसुरी प्रकृतिलाई पछ्याउँछन्।”",
                 "hi": "“उनकी आशाएँ, कर्म और विद्या सब व्यर्थ हैं; उलझकर खोकर वे भ्रमित, आसुरी प्रकृति का अनुसरण करते हैं।”"
-              }
+              },
+              "anvaya": "मोघाशाः मोघकर्माणः मोघज्ञानाः विचेतसः मोहिनीं राक्षसीम् आसुरीं च एव प्रकृतिं श्रिताः।",
+              "anvaya_iast": "moghāśāḥ moghakarmāṇaḥ moghajñānāḥ vicetasaḥ mohinīṃ rākṣasīm āsurīṃ ca eva prakṛtiṃ śritāḥ."
             }
           ]
         }
@@ -1970,7 +1994,9 @@
                 "en": "“The noble souls, Arjuna, turn to the divine nature and worship me single-mindedly, knowing me as the eternal source of all.”",
                 "ne": "“तर उदार आत्माहरू, अर्जुन, दैवी प्रकृतितिर फर्केर एकचित्त भई, सबैको शाश्वत स्रोत मलाई जानेर मेरो पूजा गर्छन्।”",
                 "hi": "“किन्तु उदार आत्माएँ, अर्जुन, दैवी प्रकृति की ओर फिरकर एकचित्त होकर, सबके शाश्वत स्रोत मुझे जानकर मेरी पूजा करती हैं।”"
-              }
+              },
+              "anvaya": "पार्थ! दैवीं प्रकृतिम् आश्रिताः महात्मानः तु भूतादिम् अव्ययं मां ज्ञात्वा अनन्यमनसः भजन्ति।",
+              "anvaya_iast": "pārtha! daivīṃ prakṛtim āśritāḥ mahātmānaḥ tu bhūtādim avyayaṃ māṃ jñātvā ananyamanasaḥ bhajanti."
             }
           ]
         },
@@ -2118,7 +2144,9 @@
                 "en": "“Always singing my praise, striving with steady resolve, bowing to me in devotion — the ever-united worship me.”",
                 "ne": "“सधैं मेरो प्रशंसा गाउँदै, दृढ संकल्पले प्रयास गर्दै, भक्तिमा मलाई निहुरेर — सधैं एक भएकाहरूले मेरो पूजा गर्छन्।”",
                 "hi": "“सदा मेरी प्रशंसा गाते हुए, दृढ़ संकल्प से प्रयास करते हुए, भक्ति में मुझे झुककर — सदा एक होकर वे मेरी पूजा करते हैं।”"
-              }
+              },
+              "anvaya": "सततं मां कीर्तयन्तः, दृढव्रताः यतन्तः च, भक्त्या मां नमस्यन्तः च नित्ययुक्ताः उपासते।",
+              "anvaya_iast": "satataṃ māṃ kīrtayantaḥ, dṛḍhavratāḥ yatantaḥ ca, bhaktyā māṃ namasyantaḥ ca nityayuktāḥ upāsate."
             }
           ]
         },
@@ -2259,7 +2287,9 @@
                 "en": "“Others offer the sacrifice of wisdom — worshipping me as one, as many, as the all-facing divine.”",
                 "ne": "“अरूले ज्ञानको अर्पण चढाउँछन् — मलाई एक, अनेक, र सबैतिर फैलिएको दिव्य रूपमा पूजेर।”",
                 "hi": "“और अन्य ज्ञान का अर्पण चढ़ाते हैं — मुझे एक, अनेक, और सब ओर फैले दिव्य रूप में पूजकर।”"
-              }
+              },
+              "anvaya": "अन्ये च अपि ज्ञानयज्ञेन एकत्वेन पृथक्त्वेन बहुधा विश्वतोमुखं मां यजन्तः उपासते।",
+              "anvaya_iast": "anye ca api jñānayajñena ekatvena pṛthaktvena bahudhā viśvatomukhaṃ māṃ yajantaḥ upāsate."
             }
           ]
         }
@@ -2457,7 +2487,9 @@
                 "en": "“I am the ritual, the offering, the ancestral oblation, the healing herb, the chant, the ghee, the fire, and the gift.”",
                 "ne": "“म अनुष्ठान, अर्पण, पितृ-तर्पण, औषधि, मन्त्र, घिउ, आगो र दान — सबै हुँ।”",
                 "hi": "“मैं अनुष्ठान, अर्पण, पितृ-तर्पण, औषधि, मन्त्र, घी, अग्नि और दान — सब कुछ हूँ।”"
-              }
+              },
+              "anvaya": "अहं क्रतुः, अहं यज्ञः, अहं स्वधा, अहम् औषधम्, अहं मन्त्रः, अहम् एव आज्यम्, अहम् अग्निः, अहं हुतम्।",
+              "anvaya_iast": "ahaṃ kratuḥ, ahaṃ yajñaḥ, ahaṃ svadhā, aham auṣadham, ahaṃ mantraḥ, aham eva ājyam, aham agniḥ, ahaṃ hutam."
             }
           ]
         },
@@ -2626,7 +2658,9 @@
                 "en": "“I am the father and mother of the world, its support and grandsire; I am what is to be known, the purifier, the Om, and the three Vedas.”",
                 "ne": "“म संसारको पिता र माता, यसको आधार र पितामह हुँ; म जान्नयोग्य, पवित्रकर्ता, ॐ र तीनै वेद हुँ।”",
                 "hi": "“मैं संसार का पिता और माता, उसका आधार और पितामह हूँ; मैं जानने-योग्य, पवित्रकर्ता, ॐ और तीनों वेद हूँ।”"
-              }
+              },
+              "anvaya": "अहम् अस्य जगतः पिता, माता, धाता, पितामहः, वेद्यं, पवित्रम्, ओङ्कारः, ऋक्, साम, यजुः एव च।",
+              "anvaya_iast": "aham asya jagataḥ pitā, mātā, dhātā, pitāmahaḥ, vedyaṃ, pavitram, oṅkāraḥ, ṛk, sāma, yajuḥ eva ca."
             }
           ]
         },
@@ -2781,7 +2815,9 @@
                 "en": "“I am the goal, the bearer, the master, the witness, the home, the refuge, and the friend — the source, end, resting-place, store, and deathless seed of all.”",
                 "ne": "“म लक्ष्य, वाहक, स्वामी, साक्षी, घर, शरण र मित्र हुँ — सबैको स्रोत, अन्त्य, विश्राम, भण्डार र अमर बीज।”",
                 "hi": "“मैं लक्ष्य, वाहक, स्वामी, साक्षी, घर, शरण और मित्र हूँ — सबका स्रोत, अन्त, विश्राम-स्थान, भण्डार और अमर बीज।”"
-              }
+              },
+              "anvaya": "गतिः, भर्ता, प्रभुः, साक्षी, निवासः, शरणं, सुहृत्, प्रभवः, प्रलयः, स्थानं, निधानम्, अव्ययं बीजम्।",
+              "anvaya_iast": "gatiḥ, bhartā, prabhuḥ, sākṣī, nivāsaḥ, śaraṇaṃ, suhṛt, prabhavaḥ, pralayaḥ, sthānaṃ, nidhānam, avyayaṃ bījam."
             }
           ]
         },
@@ -2964,7 +3000,9 @@
                 "en": "“I radiate warmth; I hold back the rain and release it. I am life and death, being and non-being, Arjuna.”",
                 "ne": "“म ताप दिन्छु; म वर्षा रोक्छु र बर्साउँछु। म अमरत्व र मृत्यु, सत्ता र असत्ता हुँ, अर्जुन।”",
                 "hi": "“मैं गर्मी देता हूँ; मैं वर्षा रोकता और बरसाता हूँ। मैं जीवन और मृत्यु, सत्ता और असत्ता हूँ, अर्जुन।”"
-              }
+              },
+              "anvaya": "अर्जुन! अहं तपामि, अहं वर्षं निगृह्णामि उत्सृजामि च; अहम् अमृतं च एव मृत्युः च, सत् असत् च।",
+              "anvaya_iast": "arjuna! ahaṃ tapāmi, ahaṃ varṣaṃ nigṛhṇāmi utsṛjāmi ca; aham amṛtaṃ ca eva mṛtyuḥ ca, sat asat ca."
             }
           ]
         }
@@ -3155,7 +3193,9 @@
                 "en": "“The Vedic ritualists, drinking soma and cleansed of sin, worship me through sacrifice to gain heaven; they enjoy the celestial delights of Indra's world.”",
                 "ne": "“वेदका अनुष्ठानीहरू, सोम पिएर र पापबाट शुद्ध भएर, यज्ञद्वारा मेरो पूजा गरी स्वर्ग पाउँछन्; इन्द्रको लोकमा दिव्य आनन्द भोग्छन्।”",
                 "hi": "“वेदों के अनुष्ठानी, सोम पीकर और पाप से शुद्ध होकर, यज्ञ से मेरी पूजा करके स्वर्ग पाते हैं; इन्द्र के लोक में दिव्य आनन्द भोगते हैं।”"
-              }
+              },
+              "anvaya": "त्रैविद्याः सोमपाः पूतपापाः यज्ञैः माम् इष्ट्वा स्वर्गतिं प्रार्थयन्ते; ते पुण्यं सुरेन्द्रलोकम् आसाद्य दिवि दिव्यान् देवभोगान् अश्नन्ति।",
+              "anvaya_iast": "traividyāḥ somapāḥ pūtapāpāḥ yajñaiḥ mām iṣṭvā svargatiṃ prārthayante; te puṇyaṃ surendralokam āsādya divi divyān devabhogān aśnanti."
             }
           ]
         },
@@ -3324,7 +3364,9 @@
                 "en": "“When their merit is spent after enjoying vast heavenly bliss, they fall back into the mortal world — ever going and returning, bound by desire.”",
                 "ne": "“पुण्य सकिएपछि, विशाल स्वर्गीय सुख भोगेर, तिनीहरू मर्त्य संसारमा फर्कन्छन् — कामनाले बाँधिएर सधैं आउने-जाने गर्छन्।”",
                 "hi": "“पुण्य समाप्त होने पर, विशाल स्वर्गीय सुख भोगकर, वे मर्त्य संसार में लौट आते हैं — कामना से बँधकर सदा आने-जाने वाले।”"
-              }
+              },
+              "anvaya": "ते तं विशालं स्वर्गलोकं भुक्त्वा क्षीणे पुण्ये मर्त्यलोकं विशन्ति; एवं त्रयीधर्मम् अनुप्रपन्नाः कामकामाः गतागतं लभन्ते।",
+              "anvaya_iast": "te taṃ viśālaṃ svargalokaṃ bhuktvā kṣīṇe puṇye martyalokaṃ viśanti; evaṃ trayīdharmam anuprapannāḥ kāmakāmāḥ gatāgataṃ labhante."
             }
           ]
         },
@@ -3465,7 +3507,9 @@
                 "en": "“For those who worship me with single-minded devotion, ever united to me, I myself supply what they lack and keep safe what they have.”",
                 "ne": "“जसले एकनिष्ठ भक्तिले, सधैं मसँग एक भएर मेरो पूजा गर्छन् — तिनलाई चाहिएको कुरा म आफैं पुर्‍याउँछु र तिनले पाएको कुरा जोगाउँछु।”",
                 "hi": "“जो एकनिष्ठ भक्ति से, सदा मुझ से एक होकर मेरी पूजा करते हैं — उनकी कमी मैं स्वयं पूरी करता हूँ और जो उनके पास है उसकी रक्षा करता हूँ।”"
-              }
+              },
+              "anvaya": "ये अनन्याः जनाः मां चिन्तयन्तः पर्युपासते, तेषां नित्याभियुक्तानां योगक्षेमम् अहं वहामि।",
+              "anvaya_iast": "ye ananyāḥ janāḥ māṃ cintayantaḥ paryupāsate, teṣāṃ nityābhiyuktānāṃ yogakṣemam ahaṃ vahāmi."
             }
           ]
         },
@@ -3620,7 +3664,9 @@
                 "en": "“Even devotees of other gods, worshipping them in faith, are really worshipping me — though not in the proper manner.”",
                 "ne": "“अरू देवताका भक्तहरू पनि, श्रद्धाले तिनको पूजा गर्दा, वास्तवमा मेरै पूजा गर्छन् — यद्यपि उचित विधिबाट होइन।”",
                 "hi": "“दूसरे देवताओं के भक्त भी, श्रद्धा से उनकी पूजा करते हुए, वास्तव में मेरी ही पूजा करते हैं — यद्यपि उचित विधि से नहीं।”"
-              }
+              },
+              "anvaya": "कौन्तेय! ये अपि अन्यदेवताभक्ताः श्रद्धया अन्विताः यजन्ते, ते अपि माम् एव अविधिपूर्वकं यजन्ते।",
+              "anvaya_iast": "kaunteya! ye api anyadevatābhaktāḥ śraddhayā anvitāḥ yajante, te api mām eva avidhipūrvakaṃ yajante."
             }
           ]
         },
@@ -3796,7 +3842,9 @@
                 "en": "“I alone am the receiver and lord of every offering. But they do not truly know me, and so they fall away.”",
                 "ne": "“म नै हरेक अर्पणको ग्रहणकर्ता र स्वामी हुँ। तर तिनीहरू मलाई साँच्चै चिन्दैनन्, र त्यसैले पतन हुन्छन्।”",
                 "hi": "हर आहुति का भोक्ता और स्वामी मैं ही हूँ। पर वे यह पहचानते नहीं, इसीलिए फिसल जाते हैं।"
-              }
+              },
+              "anvaya": "अहं हि सर्वयज्ञानां भोक्ता च प्रभुः एव च; ते तु मां तत्त्वेन न अभिजानन्ति, अतः च्यवन्ति।",
+              "anvaya_iast": "ahaṃ hi sarvayajñānāṃ bhoktā ca prabhuḥ eva ca; te tu māṃ tattvena na abhijānanti, ataḥ cyavanti."
             }
           ]
         },
@@ -3951,7 +3999,9 @@
                 "en": "“God-worshippers reach the gods, ancestor-worshippers the ancestors, spirit-worshippers the spirits — but my devotees come to me.”",
                 "ne": "“देव-पूजक देवतामा, पितृ-पूजक पितृमा, भूत-पूजक भूतमा पुग्छन् — तर मेरा भक्तहरू मकहाँ आउँछन्।”",
                 "hi": "“देव-पूजक देवताओं तक, पितृ-पूजक पितरों तक, भूत-पूजक भूतों तक पहुँचते हैं — किन्तु मेरे भक्त मुझ तक आते हैं।”"
-              }
+              },
+              "anvaya": "देवव्रताः देवान् यान्ति, पितृव्रताः पितॄन् यान्ति, भूतेज्याः भूतानि यान्ति, मद्याजिनः अपि मां यान्ति।",
+              "anvaya_iast": "devavratāḥ devān yānti, pitṛvratāḥ pitṝn yānti, bhūtejyāḥ bhūtāni yānti, madyājinaḥ api māṃ yānti."
             }
           ]
         }
@@ -4121,7 +4171,9 @@
                 "en": "“Give me with love even a leaf, a flower, a fruit, or water — I accept it from one whose heart is pure.”",
                 "ne": "“मलाई प्रेमले एउटा पात, फूल, फल वा पानी देऊ — शुद्ध हृदयको त्यो अर्पण म ग्रहण गर्छु।”",
                 "hi": "“मुझे प्रेम से एक पत्ता, फूल, फल या जल दे — शुद्ध हृदय का वह अर्पण मैं ग्रहण करता हूँ।”"
-              }
+              },
+              "anvaya": "यः मे भक्त्या पत्रं पुष्पं फलं तोयं प्रयच्छति, प्रयतात्मनः तत् भक्त्युपहृतम् अहम् अश्नामि।",
+              "anvaya_iast": "yaḥ me bhaktyā patraṃ puṣpaṃ phalaṃ toyaṃ prayacchati, prayatātmanaḥ tat bhaktyupahṛtam aham aśnāmi."
             }
           ]
         },
@@ -4283,7 +4335,9 @@
                 "en": "“Whatever you do, eat, offer, give, or practise as austerity — offer it all to me.”",
                 "ne": "“जे-जे गर्छौ, खान्छौ, चढाउँछौ, दान दिन्छौ वा तप गर्छौ — सबै मलाई अर्पण गर।”",
                 "hi": "“जो-जो करता है, खाता है, चढ़ाता है, दान देता है या तप करता है — सब मुझे अर्पण कर।”"
-              }
+              },
+              "anvaya": "कौन्तेय! यत् करोषि, यत् अश्नासि, यत् जुहोषि, यत् ददासि, यत् तपस्यसि, तत् मदर्पणं कुरुष्व।",
+              "anvaya_iast": "kaunteya! yat karoṣi, yat aśnāsi, yat juhoṣi, yat dadāsi, yat tapasyasi, tat madarpaṇaṃ kuruṣva."
             }
           ]
         },
@@ -4403,7 +4457,9 @@
                 "en": "“Doing this, you are freed from the ties of karma and their fruits of good and evil; renouncing in yoga, liberated, you come to me.”",
                 "ne": "“यसो गरेर तिमी कर्म र यसका असल-नराम्रो फलका बन्धनबाट मुक्त हुन्छौ; योगमा त्याग गरेर, स्वतन्त्र भएर — तिमी मकहाँ आउँछौ।”",
                 "hi": "“ऐसा करके तू कर्म और उसके शुभ-अशुभ फलों के बन्धन से मुक्त हो जाता है; योग में त्याग करके, स्वतंत्र होकर — तू मुझ तक आता है।”"
-              }
+              },
+              "anvaya": "एवं शुभाशुभफलैः कर्मबन्धनैः मोक्ष्यसे; संन्यासयोगयुक्तात्मा विमुक्तः माम् उपैष्यसि।",
+              "anvaya_iast": "evaṃ śubhāśubhaphalaiḥ karmabandhanaiḥ mokṣyase; saṃnyāsayogayuktātmā vimuktaḥ mām upaiṣyasi."
             }
           ]
         },
@@ -4607,7 +4663,9 @@
                 "en": "“I play no favourites. Nobody is dearer to me than anyone else. But love me, and you will find you are living in me, and I in you.”",
                 "ne": "मेरो कोही मन पर्ने वा नपर्ने छैन; सबै बराबर। तर जसले माया लगाएर पुकार्छ, ऊ ममा हुन्छ र म उसमा।",
                 "hi": "मेरा कोई चहेता या पराया नहीं; सब बराबर। पर जो प्रेम से पुकारता है, वह मुझ में बसता है और मैं उसमें।"
-              }
+              },
+              "anvaya": "अहं सर्वभूतेषु समः, मे द्वेष्यः न अस्ति, प्रियः न; ये तु मां भक्त्या भजन्ति ते मयि, तेषु च अपि अहम्।",
+              "anvaya_iast": "ahaṃ sarvabhūteṣu samaḥ, me dveṣyaḥ na asti, priyaḥ na; ye tu māṃ bhaktyā bhajanti te mayi, teṣu ca api aham."
             }
           ]
         }
@@ -4784,7 +4842,9 @@
                 "en": "“Even a most wicked person who worships me with undivided love must be counted among the good — for his resolve is right.”",
                 "ne": "“सबैभन्दा दुष्ट व्यक्तिले पनि यदि अविभाजित प्रेमले मेरो पूजा गर्छ भने, उसलाई असलमै गनिनुपर्छ — किनकि उसको संकल्प सही छ।”",
                 "hi": "“सबसे दुष्ट व्यक्ति भी यदि अविभाजित प्रेम से मेरी पूजा करता है, तो उसे साधुओं में ही गिनना चाहिए — क्योंकि उसका संकल्प सही है।”"
-              }
+              },
+              "anvaya": "अपि चेत् सुदुराचारः अनन्यभाक् मां भजते, सः साधुः एव मन्तव्यः; सः हि सम्यक् व्यवसितः।",
+              "anvaya_iast": "api cet sudurācāraḥ ananyabhāk māṃ bhajate, saḥ sādhuḥ eva mantavyaḥ; saḥ hi samyak vyavasitaḥ."
             }
           ]
         },
@@ -4932,7 +4992,9 @@
                 "en": "“He soon becomes righteous and reaches enduring peace. Know it for certain: my devotee never comes to ruin.”",
                 "ne": "“ऊ चाँडै धार्मिक बन्छ र दिगो शान्तिमा पुग्छ। निश्चय जान: मेरो भक्त कहिल्यै बरबाद हुँदैन।”",
                 "hi": "“वह शीघ्र ही धार्मिक बनता है और स्थायी शान्ति तक पहुँचता है। निश्चय जान: मेरा भक्त कभी बरबाद नहीं होता।”"
-              }
+              },
+              "anvaya": "क्षिप्रं धर्मात्मा भवति, शश्वत् शान्तिं निगच्छति; कौन्तेय! प्रतिजानीहि — मे भक्तः न प्रणश्यति।",
+              "anvaya_iast": "kṣipraṃ dharmātmā bhavati, śaśvat śāntiṃ nigacchati; kaunteya! pratijānīhi — me bhaktaḥ na praṇaśyati."
             }
           ]
         },
@@ -5115,7 +5177,9 @@
                 "en": "“All who come to me for refuge — even the low-born, women, merchants, and workers — reach the highest goal.”",
                 "ne": "“मेरो शरणमा आउने सबै — नीच जन्मका, स्त्री, व्यापारी र मजदुर पनि — सर्वोच्च लक्ष्यमा पुग्छन्।”",
                 "hi": "“मेरी शरण में आने वाले सब — नीच जन्म वाले, स्त्रियाँ, व्यापारी और मज़दूर भी — सर्वोच्च लक्ष्य तक पहुँचते हैं।”"
-              }
+              },
+              "anvaya": "पार्थ! ये अपि पापयोनयः स्त्रियः वैश्याः तथा शूद्राः स्युः, ते अपि मां हि व्यपाश्रित्य परां गतिं यान्ति।",
+              "anvaya_iast": "pārtha! ye api pāpayonayaḥ striyaḥ vaiśyāḥ tathā śūdrāḥ syuḥ, te api māṃ hi vyapāśritya parāṃ gatiṃ yānti."
             }
           ]
         },
@@ -5277,7 +5341,9 @@
                 "en": "“How much more the pure brāhmaṇas and devoted sage-kings! In this fleeting, sorrowful world, worship me.”",
                 "ne": "“शुद्ध ब्राह्मण र समर्पित राजा-ऋषिहरूको त कुरै के! यस क्षणभंगुर, शोकमय संसारमा, मेरो पूजा गर।”",
                 "hi": "“तो शुद्ध ब्राह्मण और समर्पित राजा-ऋषि — उनकी बात ही क्या! इस क्षणभंगुर, शोकमय संसार में मेरी पूजा कर।”"
-              }
+              },
+              "anvaya": "पुण्याः ब्राह्मणाः भक्ताः राजर्षयः तथा किं पुनः? अनित्यम् असुखम् इमं लोकं प्राप्य मां भजस्व।",
+              "anvaya_iast": "puṇyāḥ brāhmaṇāḥ bhaktāḥ rājarṣayaḥ tathā kiṃ punaḥ? anityam asukham imaṃ lokaṃ prāpya māṃ bhajasva."
             }
           ]
         },
@@ -5432,7 +5498,9 @@
                 "en": "“Fix your thought on me, be my devotee, worship me, bow to me — devoted wholly to me, you will surely reach me.”",
                 "ne": "“मन ममा राख, मेरो भक्त बन, मेरो पूजा गर, मलाई नमस्कार गर — पूर्ण रूपमा ममै समर्पित भएर, तिमी निश्चय मकहाँ पुग्नेछौ।”",
                 "hi": "“मन मुझ पर रख, मेरा भक्त बन, मेरी पूजा कर, मुझे प्रणाम कर — पूर्ण रूप से मुझ में समर्पित होकर, तू निश्चय मुझ तक पहुँचेगा।”"
-              }
+              },
+              "anvaya": "मन्मनाः भव, मद्भक्तः, मद्याजी, मां नमस्कुरु; एवम् आत्मानं युक्त्वा मत्परायणः माम् एव एष्यसि।",
+              "anvaya_iast": "manmanāḥ bhava, madbhaktaḥ, madyājī, māṃ namaskuru; evam ātmānaṃ yuktvā matparāyaṇaḥ mām eva eṣyasi."
             }
           ]
         }

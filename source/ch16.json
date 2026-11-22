@@ -184,7 +184,9 @@
                 "en": "Kṛṣṇa said: “Fearlessness, purity of heart, firmness in knowledge and meditation, charity, self-restraint, sacrifice, study, austerity, and honesty,”",
                 "ne": "कृष्णले भन्नुभयो: “निर्भयता, हृदयको शुद्धता, ज्ञान र ध्यानमा दृढता, दान, आत्मसंयम, यज्ञ, अध्ययन, तपस्या र इमानदारी,”",
                 "hi": "कृष्ण ने कहा: “निर्भयता, हृदय की शुद्धता, ज्ञान और ध्यान में दृढ़ता, दान, आत्म-संयम, यज्ञ, अध्ययन, तपस्या और ईमानदारी,”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — अभयं, सत्त्वसंशुद्धिः, ज्ञानयोगव्यवस्थितिः, दानं, दमः च, यज्ञः च, स्वाध्यायः, तपः, आर्जवम्।",
+              "anvaya_iast": "śrībhagavānuvāca — abhayaṃ, sattvasaṃśuddhiḥ, jñānayogavyavasthitiḥ, dānaṃ, damaḥ ca, yajñaḥ ca, svādhyāyaḥ, tapaḥ, ārjavam."
             }
           ]
         },
@@ -332,7 +334,9 @@
                 "en": "“— harmlessness, truth, freedom from anger, letting go, calm, no backbiting, compassion, no greed, gentleness, humility, and firmness —”",
                 "ne": "“— अहिंसा, सत्य, क्रोधबाट मुक्ति, त्याग, शान्ति, अरूको निन्दा नगर्ने, करुणा, लोभरहितता, कोमलता, नम्रता र दृढता —”",
                 "hi": "“— अहिंसा, सत्य, क्रोध से मुक्ति, त्याग, शान्ति, चुगली न करना, करुणा, लोभ-रहितता, कोमलता, विनम्रता और दृढ़ता —”"
-              }
+              },
+              "anvaya": "अहिंसा, सत्यम्, अक्रोधः, त्यागः, शान्तिः, अपैशुनं, भूतेषु दया, अलोलुप्त्वं, मार्दवं, ह्रीः, अचापलम्।",
+              "anvaya_iast": "ahiṃsā, satyam, akrodhaḥ, tyāgaḥ, śāntiḥ, apaiśunaṃ, bhūteṣu dayā, aloluptvaṃ, mārdavaṃ, hrīḥ, acāpalam."
             }
           ]
         },
@@ -480,7 +484,9 @@
                 "en": "“— energy, patience, resolve, purity, and freedom from spite and vanity — these are the marks of one born to the divine nature.”",
                 "ne": "“— ऊर्जा, धैर्य, दृढता, शुद्धता, र द्वेष र अहंकारबाट मुक्ति — यी दैवी प्रकृतिका चिह्न हुन्।”",
                 "hi": "“— ऊर्जा, धैर्य, दृढ़ता, शुद्धता, और द्वेष तथा अहंकार से मुक्ति — ये दैवी प्रकृति के चिह्न हैं।”"
-              }
+              },
+              "anvaya": "भारत! तेजः, क्षमा, धृतिः, शौचम्, अद्रोहः, नातिमानिता दैवीं सम्पदम् अभिजातस्य भवन्ति।",
+              "anvaya_iast": "bhārata! tejaḥ, kṣamā, dhṛtiḥ, śaucam, adrohaḥ, nātimānitā daivīṃ sampadam abhijātasya bhavanti."
             }
           ]
         },
@@ -642,7 +648,9 @@
                 "en": "“Hypocrisy, haughtiness, self-conceit, anger, rudeness, and ignorance — these mark the demonic nature.”",
                 "ne": "“दम्भ, अहंकार, घमण्ड, क्रोध, कठोरता र अज्ञान — यी आसुरी प्रकृतिका चिह्न हुन्।”",
                 "hi": "“दम्भ, अहंकार, घमण्ड, क्रोध, रूखापन और अज्ञान — ये आसुरी प्रकृति के चिह्न हैं।”"
-              }
+              },
+              "anvaya": "पार्थ! दम्भः, दर्पः, अभिमानः च, क्रोधः, पारुष्यम् एव च, अज्ञानं च आसुरीं सम्पदम् अभिजातस्य।",
+              "anvaya_iast": "pārtha! dambhaḥ, darpaḥ, abhimānaḥ ca, krodhaḥ, pāruṣyam eva ca, ajñānaṃ ca āsurīṃ sampadam abhijātasya."
             }
           ]
         },
@@ -797,7 +805,9 @@
                 "en": "“The divine nature frees you; the demonic binds you. Do not grieve, Arjuna — you are born with the divine nature.”",
                 "ne": "“दैवी प्रकृतिले मुक्त गर्छ; आसुरीले बाँध्छ। शोक नगर, अर्जुन — तिमी दैवी प्रकृतिसँग जन्मेका छौ।”",
                 "hi": "“दैवी प्रकृति मुक्त करती है; आसुरी बाँधती है। शोक मत कर, अर्जुन — तू दैवी प्रकृति के साथ जन्मा है।”"
-              }
+              },
+              "anvaya": "दैवी सम्पत् विमोक्षाय, आसुरी निबन्धाय मता; पाण्डव! मा शुचः, दैवीं सम्पदम् अभिजातः असि।",
+              "anvaya_iast": "daivī sampat vimokṣāya, āsurī nibandhāya matā; pāṇḍava! mā śucaḥ, daivīṃ sampadam abhijātaḥ asi."
             }
           ]
         }
@@ -981,7 +991,9 @@
                 "en": "“Two kinds of beings exist in this world — divine and demonic. I have described the divine; now hear of the demonic.”",
                 "ne": "“यस संसारमा दुई किसिमका प्राणी छन् — दैवी र आसुरी। दैवीको वर्णन मैले गरें; अब आसुरीको सुन।”",
                 "hi": "“इस संसार में दो प्रकार के प्राणी हैं — दैवी और आसुरी। दैवी का वर्णन मैंने किया; अब आसुरी का सुन।”"
-              }
+              },
+              "anvaya": "पार्थ! अस्मिन् लोके द्वौ भूतसर्गौ — दैवः आसुरः एव च; दैवः विस्तरशः प्रोक्तः, आसुरं मे शृणु।",
+              "anvaya_iast": "pārtha! asmin loke dvau bhūtasargau — daivaḥ āsuraḥ eva ca; daivaḥ vistaraśaḥ proktaḥ, āsuraṃ me śṛṇu."
             }
           ]
         },
@@ -1171,7 +1183,9 @@
                 "en": "“The demonic do not know what should be done or renounced — they have no purity, no good conduct, no truth.”",
                 "ne": "के गर्नुपर्ने र के छोड्नुपर्ने — आसुरी स्वभावकाले यो छुट्याउनै सक्दैनन्। न सफाइ हुन्छ, न चालचलन, न सत्य।",
                 "hi": "“आसुरी लोग क्या करना चाहिए और क्या त्यागना चाहिए — यह नहीं जानते; उनमें न शुद्धता है, न अच्छा आचरण, न सत्य।”"
-              }
+              },
+              "anvaya": "आसुराः जनाः प्रवृत्तिं च निवृत्तिं च न विदुः; तेषु न शौचं, न अपि च आचारः, न सत्यं विद्यते।",
+              "anvaya_iast": "āsurāḥ janāḥ pravṛttiṃ ca nivṛttiṃ ca na viduḥ; teṣu na śaucaṃ, na api ca ācāraḥ, na satyaṃ vidyate."
             }
           ]
         },
@@ -1305,7 +1319,9 @@
                 "en": "“They claim the world is false, without ground, without God — arising from sexual union driven by desire.”",
                 "ne": "“तिनीहरू दाबी गर्छन्: संसार झूटो छ, आधार बिनाको छ, ईश्वर बिनाको छ — स्त्री-पुरुषको संयोग र कामनाबाट उठेको।”",
                 "hi": "“वे दावा करते हैं: संसार झूठा है, बिना आधार, बिना ईश्वर — स्त्री-पुरुष के संयोग और कामना से उठा हुआ।”"
-              }
+              },
+              "anvaya": "ते जगत् असत्यम्, अप्रतिष्ठम्, अनीश्वरम्, अपरस्परसम्भूतं, कामहैतुकम् अन्यत् किम् आहुः।",
+              "anvaya_iast": "te jagat asatyam, apratiṣṭham, anīśvaram, aparasparasambhūtaṃ, kāmahaitukam anyat kim āhuḥ."
             }
           ]
         },
@@ -1439,7 +1455,9 @@
                 "en": "“With this view, the lost, dull-witted souls do brutal things — enemies of the world, bent on ruining it.”",
                 "ne": "“यस दृष्टिकोणले, हराएका मन्दबुद्धि आत्माहरूले, संसारका शत्रु बनेर, यसलाई बर्बाद गर्न निर्दयी काम गर्छन्।”",
                 "hi": "“इस दृष्टिकोण से, खोई हुई मन्द-बुद्धि आत्माएँ, संसार की शत्रु बनकर, उसे बरबाद करने के लिए निर्दयी काम करती हैं।”"
-              }
+              },
+              "anvaya": "एतां दृष्टिम् अवष्टभ्य नष्टात्मानः अल्पबुद्धयः उग्रकर्माणः अहिताः जगतः क्षयाय प्रभवन्ति।",
+              "anvaya_iast": "etāṃ dṛṣṭim avaṣṭabhya naṣṭātmānaḥ alpabuddhayaḥ ugrakarmāṇaḥ ahitāḥ jagataḥ kṣayāya prabhavanti."
             }
           ]
         },
@@ -1587,7 +1605,9 @@
                 "en": "“Slaves of never-satisfied craving, full of pretence, vanity and arrogance, they cling to wrong ideas out of delusion and act with impure intentions.”",
                 "ne": "“कहिल्यै नमेटिने कामनाका दास, ढोंग, घमण्ड र अहंकारले फुलेका, तिनीहरू भ्रमले गलत विचारमा टाँसिएर अशुद्ध मनसायले काम गर्छन्।”",
                 "hi": "“कभी न मिटने वाली कामना के दास, ढोंग, घमण्ड और अहंकार से फूले, वे भ्रम के कारण गलत विचारों से चिपककर अशुद्ध इरादों से काम करते हैं।”"
-              }
+              },
+              "anvaya": "दुष्पूरं कामम् आश्रित्य दम्भमानमदान्विताः मोहात् असद्ग्राहान् गृहीत्वा अशुचिव्रताः प्रवर्तन्ते।",
+              "anvaya_iast": "duṣpūraṃ kāmam āśritya dambhamānamadānvitāḥ mohāt asadgrāhān gṛhītvā aśucivratāḥ pravartante."
             }
           ]
         }
@@ -1729,7 +1749,9 @@
                 "en": "“Consumed by endless worries that end only at death, living for pleasure, they think, 'this is all there is' —”",
                 "ne": "“मृत्युमा मात्र सकिने असीम चिन्तामा डुबेर, भोगमा बाँच्ने, तिनीहरू सोच्छन्, 'यही नै सबै छ' —”",
                 "hi": "“मृत्यु पर ही समाप्त होने वाली अनन्त चिन्ताओं से खपकर, भोग में जीने वाले, वे सोचते हैं, 'यही सब कुछ है' —”"
-              }
+              },
+              "anvaya": "प्रलयान्ताम् अपरिमेयां चिन्तां च उपाश्रिताः, कामोपभोगपरमाः एतावत् इति निश्चिताः।",
+              "anvaya_iast": "pralayāntām aparimeyāṃ cintāṃ ca upāśritāḥ, kāmopabhogaparamāḥ etāvat iti niścitāḥ."
             }
           ]
         },
@@ -1842,7 +1864,9 @@
                 "en": "“— tied by a hundred ropes of hope, devoted to desire and anger, they pile up wealth by wrongful means for their pleasures.”",
                 "ne": "“— सयौं आशाका डोरीले बाँधिएर, इच्छा र क्रोधमा समर्पित, तिनीहरू आफ्ना सुखका निम्ति गलत बाटोबाट धन थुपार्छन्।”",
                 "hi": "“— सैकड़ों आशाओं की रस्सियों से बँधकर, इच्छा और क्रोध में समर्पित, वे अपने सुखों के लिए गलत रास्तों से धन जोड़ते हैं।”"
-              }
+              },
+              "anvaya": "आशापाशशतैः बद्धाः, कामक्रोधपरायणाः, कामभोगार्थम् अन्यायेन अर्थसञ्चयान् ईहन्ते।",
+              "anvaya_iast": "āśāpāśaśataiḥ baddhāḥ, kāmakrodhaparāyaṇāḥ, kāmabhogārtham anyāyena arthasañcayān īhante."
             }
           ]
         },
@@ -2011,7 +2035,9 @@
                 "en": "‘This I got today; that wish too I shall obtain; this is mine, and more will be mine,’ they boast —",
                 "ne": "मनमनै हिसाब गर्छन् — 'आज यत्ति हात लाग्यो; अर्को इच्छा पनि पूरा गर्छु; यति सम्पत्ति मेरो भइसक्यो, अझै थपिन्छ।'",
                 "hi": "मन ही मन हिसाब लगाते हैं — ‘आज इतना हाथ लगा; यह अरमान भी पूरा कर लूँगा; इतना मेरा हो चुका, और भी होगा।’"
-              }
+              },
+              "anvaya": "मया अद्य इदं लब्धम्, इमं मनोरथं प्राप्स्ये; इदम् अस्ति, इदम् अपि मे पुनः धनं भविष्यति।",
+              "anvaya_iast": "mayā adya idaṃ labdham, imaṃ manorathaṃ prāpsye; idam asti, idam api me punaḥ dhanaṃ bhaviṣyati."
             }
           ]
         },
@@ -2187,7 +2213,9 @@
                 "en": "‘I have killed that foe, and I will kill the rest; I am the master, the enjoyer, successful, mighty, and happy,’",
                 "ne": "'त्यो शत्रु सिध्याएँ, बाँकीलाई पनि सिध्याउँछु। मालिक म, भोग्ने म; सफल छु, बलियो छु, सुखी छु।'",
                 "hi": "“'मैंने उस शत्रु को मारा, और बाकियों को भी मारूँगा; मैं स्वामी, भोगी, सफल, शक्तिशाली और सुखी हूँ,'”"
-              }
+              },
+              "anvaya": "असौ शत्रुः मया हतः, अपरान् अपि च हनिष्ये; अहम् ईश्वरः, अहं भोगी, अहं सिद्धः, बलवान्, सुखी।",
+              "anvaya_iast": "asau śatruḥ mayā hataḥ, aparān api ca haniṣye; aham īśvaraḥ, ahaṃ bhogī, ahaṃ siddhaḥ, balavān, sukhī."
             }
           ]
         },
@@ -2342,7 +2370,9 @@
                 "en": "“‘I am wealthy and noble; who can equal me? I will offer, give, and enjoy’ — so the ignorant delude themselves.”",
                 "ne": "“'म धनी र कुलीन छु; मेरो बराबरी को हुन सक्छ? म अर्पण गर्नेछु, दान दिनेछु, आनन्द लिनेछु' — यसरी अज्ञानीहरूले आफैंलाई धोका दिन्छन्।”",
                 "hi": "“'मैं धनी और कुलीन हूँ; मेरे बराबर कौन हो सकता है? मैं अर्पण करूँगा, दान दूँगा, आनन्द लूँगा' — इस प्रकार अज्ञानी अपने आपको धोखा देते हैं।”"
-              }
+              },
+              "anvaya": "आढ्यः अभिजनवान् अस्मि; अन्यः कः मया सदृशः अस्ति? यक्ष्ये, दास्यामि, मोदिष्ये इति अज्ञानविमोहिताः।",
+              "anvaya_iast": "āḍhyaḥ abhijanavān asmi; anyaḥ kaḥ mayā sadṛśaḥ asti? yakṣye, dāsyāmi, modiṣye iti ajñānavimohitāḥ."
             }
           ]
         },
@@ -2455,7 +2485,9 @@
                 "en": "“Torn by countless thoughts, caught in the web of delusion, addicted to pleasure — they plunge into a foul hell.”",
                 "ne": "“अगणित विचारले च्यातिएर, भ्रमको जालमा परेर, सुखको लतमा डुबेर — तिनीहरू घृणित नरकमा खस्छन्।”",
                 "hi": "“अगणित विचारों से टूटकर, भ्रम के जाल में फँसकर, सुख की लत में डूबकर — वे घृणित नरक में गिरते हैं।”"
-              }
+              },
+              "anvaya": "अनेकचित्तविभ्रान्ताः, मोहजालसमावृताः, कामभोगेषु प्रसक्ताः अशुचौ नरके पतन्ति।",
+              "anvaya_iast": "anekacittavibhrāntāḥ, mohajālasamāvṛtāḥ, kāmabhogeṣu prasaktāḥ aśucau narake patanti."
             }
           ]
         }
@@ -2590,7 +2622,9 @@
                 "en": "“Self-important and obstinate, drunk with the pride of riches, they offer sacrifices only in show — hypocritical, not as scripture bids.”",
                 "ne": "“आत्म-महत्त्व र हठले भरिएका, धनको घमण्डमा मात्तिएर, तिनीहरू केवल देखाउन — ढोंगले, शास्त्रअनुसार नभई — यज्ञ गर्छन्।”",
                 "hi": "“आत्म-महत्त्व और हठ से भरे, धन के घमण्ड में माते हुए, वे केवल दिखावे के लिए — ढोंग से, शास्त्र के अनुसार नहीं — यज्ञ करते हैं।”"
-              }
+              },
+              "anvaya": "आत्मसम्भाविताः, स्तब्धाः, धनमानमदान्विताः ते दम्भेन अविधिपूर्वकं नामयज्ञैः यजन्ते।",
+              "anvaya_iast": "ātmasambhāvitāḥ, stabdhāḥ, dhanamānamadānvitāḥ te dambhena avidhipūrvakaṃ nāmayajñaiḥ yajante."
             }
           ]
         },
@@ -2731,7 +2765,9 @@
                 "en": "“Full of ego, might, arrogance, lust, and rage, they despise me dwelling in their own and others' hearts —”",
                 "ne": "“अहंकार, शक्ति, घमण्ड, कामना र क्रोधले भरिएर, आफ्नो र अरूको हृदयमा बसेको मलाई तुच्छ ठान्ने —”",
                 "hi": "“अहंकार, शक्ति, घमण्ड, कामना और क्रोध से भरकर, अपने और दूसरों के हृदयों में बसे मुझे तुच्छ समझने वाले —”"
-              }
+              },
+              "anvaya": "अहङ्कारं, बलं, दर्पं, कामं, क्रोधं च संश्रिताः, अभ्यसूयकाः आत्मपरदेहेषु मां प्रद्विषन्तः।",
+              "anvaya_iast": "ahaṅkāraṃ, balaṃ, darpaṃ, kāmaṃ, krodhaṃ ca saṃśritāḥ, abhyasūyakāḥ ātmaparadeheṣu māṃ pradviṣantaḥ."
             }
           ]
         },
@@ -2879,7 +2915,9 @@
                 "en": "“— these evil, cruel, hateful, lowest of men I hurl into demonic wombs, again and again, through the cycles of rebirth.”",
                 "ne": "“यी दुष्ट र निर्दयी द्वेषीहरू मानिसमध्ये सबैभन्दा नीच हुन्। जन्ममरणको फेरो चलिरहँदा म तिनलाई फेरि-फेरि आसुरी गर्भमा पठाउँछु।”",
                 "hi": "“— इन दुष्ट, क्रूर, घृणा से भरे, सबसे नीच मनुष्यों को मैं पुनर्जन्म के चक्रों में बार-बार आसुरी योनियों में फेंकता हूँ।”"
-              }
+              },
+              "anvaya": "द्विषतः क्रूरान् संसारेषु नराधमान् तान् अशुभान् अहम् अजस्रम् आसुरीषु एव योनिषु क्षिपामि।",
+              "anvaya_iast": "dviṣataḥ krūrān saṃsāreṣu narādhamān tān aśubhān aham ajasram āsurīṣu eva yoniṣu kṣipāmi."
             }
           ]
         },
@@ -3041,7 +3079,9 @@
                 "en": "“Born into demonic wombs, deluded life after life, never attaining me, they fall to the lowest state.”",
                 "ne": "“आसुरी योनिमा जन्मेर, जीवन-जीवन भ्रममा रहेर, कहिल्यै मलाई नपाएर, तिनीहरू सबैभन्दा नीच अवस्थामा खस्छन्।”",
                 "hi": "“आसुरी योनि में जन्मकर, जीवन-जीवन भ्रम में रहकर, कभी मुझे न पाकर, वे निम्नतम अवस्था में गिरते हैं।”"
-              }
+              },
+              "anvaya": "कौन्तेय! आसुरीं योनिम् आपन्नाः जन्मनि जन्मनि मूढाः माम् अप्राप्य एव ततः अधमां गतिं यान्ति।",
+              "anvaya_iast": "kaunteya! āsurīṃ yonim āpannāḥ janmani janmani mūḍhāḥ mām aprāpya eva tataḥ adhamāṃ gatiṃ yānti."
             }
           ]
         }
@@ -3218,7 +3258,9 @@
                 "en": "“Three doors lead to hell and ruin the soul: lust, anger, and greed. Give up all three.”",
                 "ne": "“नरकतिर जाने र आत्मालाई नष्ट गर्ने तीन ढोका छन्: कामना, क्रोध र लोभ। तीनै छोड।”",
                 "hi": "“नरक की ओर ले जाने वाले और आत्मा को नष्ट करने वाले तीन द्वार हैं: काम, क्रोध और लोभ। तीनों छोड़ दे।”"
-              }
+              },
+              "anvaya": "कामः, क्रोधः, तथा लोभः — इदं त्रिविधं नरकस्य द्वारम् आत्मनः नाशनम्; तस्मात् एतत् त्रयं त्यजेत्।",
+              "anvaya_iast": "kāmaḥ, krodhaḥ, tathā lobhaḥ — idaṃ trividhaṃ narakasya dvāram ātmanaḥ nāśanam; tasmāt etat trayaṃ tyajet."
             }
           ]
         },
@@ -3373,7 +3415,9 @@
                 "en": "“One who escapes these three dark gates, Arjuna, works for his own welfare and reaches the highest goal.”",
                 "ne": "“जो यी तीन अन्धकारमय ढोकाबाट बच्छ, अर्जुन, ऊ आफ्नै कल्याणका निम्ति काम गर्छ र सर्वोच्च लक्ष्यमा पुग्छ।”",
                 "hi": "“जो इन तीन अन्धकारमय द्वारों से बचता है, अर्जुन, वह अपने कल्याण के लिए काम करता है और सर्वोच्च लक्ष्य तक पहुँचता है।”"
-              }
+              },
+              "anvaya": "कौन्तेय! एतैः त्रिभिः तमोद्वारैः विमुक्तः नरः आत्मनः श्रेयः आचरति, ततः परां गतिं याति।",
+              "anvaya_iast": "kaunteya! etaiḥ tribhiḥ tamodvāraiḥ vimuktaḥ naraḥ ātmanaḥ śreyaḥ ācarati, tataḥ parāṃ gatiṃ yāti."
             }
           ]
         },
@@ -3535,7 +3579,9 @@
                 "en": "“One who ignores the scripture's rule and acts on whim gains neither perfection, nor joy, nor the supreme end.”",
                 "ne": "“जसले शास्त्रको नियमलाई बेवास्ता गरेर आफ्नो मनोमानीले काम गर्छ — उसलाई न सिद्धि मिल्छ, न आनन्द, न परम लक्ष्य।”",
                 "hi": "“जो शास्त्र के नियम की अवहेलना करके मनमानी से काम करता है — उसे न सिद्धि मिलती है, न आनन्द, न परम लक्ष्य।”"
-              }
+              },
+              "anvaya": "यः शास्त्रविधिम् उत्सृज्य कामकारतः वर्तते, सः न सिद्धिम् अवाप्नोति, न सुखं, न परां गतिम्।",
+              "anvaya_iast": "yaḥ śāstravidhim utsṛjya kāmakārataḥ vartate, saḥ na siddhim avāpnoti, na sukhaṃ, na parāṃ gatim."
             }
           ]
         },
@@ -3676,7 +3722,9 @@
                 "en": "“So let scripture be your guide in deciding right and wrong; knowing its command, do your work here accordingly.”",
                 "ne": "“त्यसैले असल-नराम्रो छुट्याउन शास्त्रलाई नै आफ्नो मार्गदर्शक बनाऊ; यसको आज्ञा जानेर, यहाँ सोहीअनुसार काम गर।”",
                 "hi": "“इसलिए अच्छे-बुरे का निर्णय करने में शास्त्र को ही अपना मार्गदर्शक बना; उसकी आज्ञा जानकर, यहाँ उसी के अनुसार काम कर।”"
-              }
+              },
+              "anvaya": "तस्मात् कार्याकार्यव्यवस्थितौ शास्त्रं ते प्रमाणम्; इह शास्त्रविधानोक्तं कर्म ज्ञात्वा कर्तुम् अर्हसि।",
+              "anvaya_iast": "tasmāt kāryākāryavyavasthitau śāstraṃ te pramāṇam; iha śāstravidhānoktaṃ karma jñātvā kartum arhasi."
             }
           ]
         }

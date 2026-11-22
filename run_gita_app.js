@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 946;      // keep in step with the printed total (941 + 5 defect-regression locks)
+const TOTAL_ASSERTIONS = 949;      // keep in step with the printed total
 const TOTAL_BROWSER_CHECKS = 357;   // browser_checks.py, http run (348 over file://); error capture + responsive/theme axe
 const path = require('path');
 
@@ -97,6 +97,40 @@ ok(UI && typeof UI === 'object', 'UI extracted');
      'gitaBoot assembles the available data and paints the shell in the restored language');
 }
 
+// Exercise the emitted reader state owner and its independent word disclosures.
+{
+  const vm = require('node:vm');
+  const start = scriptBody.indexOf('let verseViewState = null;');
+  const end = scriptBody.indexOf('function setReaderSize(', start);
+  const wordsStart = scriptBody.indexOf('function toggleWords(el){');
+  const wordsEnd = scriptBody.indexOf('/* The master hide/show switch', wordsStart);
+  let passed = false;
+  try {
+    if (start < 0 || end < 0 || wordsStart < 0 || wordsEnd < 0) throw Error('reader functions missing');
+    const classes = () => { const s = new Set(); return {toggle(k, v) { if(v === undefined) v = !s.has(k); v ? s.add(k) : s.delete(k); return v; }, contains:k => s.has(k)}; };
+    const content = {classList:classes(), contains:()=>true, removeAttribute(){}, setAttribute(){}, querySelector:()=>null};
+    const container = {classList:classes()};
+    const word1 = {classList:classes()}, word2 = {classList:classes()};
+    const els = {verseContent:content, verseContainer:container, one:word1, two:word2};
+    const ctx = vm.createContext({document:{getElementById:id=>els[id], activeElement:null}, App:{reader:{closePeek(){}}}, fitWholeVerse(){}, refreshWordsBtn(){}});
+    vm.runInContext(scriptBody.slice(start,end) + scriptBody.slice(wordsStart,wordsEnd), ctx);
+    vm.runInContext("verseViewState = {whole:'whole', expanded:'expanded', isExpanded:false}", ctx);
+    const target = selector => ({closest:query => selector && query.includes(selector) ? {} : null});
+    ctx.toggleVerseExpansion({target:target(null)});
+    const button = id => ({getAttribute:()=>id, setAttribute(){}});
+    ctx.toggleWords(button('one'));
+    ctx.toggleVerseExpansion({target:target('.pada-toggle')}); // bubbling click
+    const independent = word1.classList.contains('open') && !word2.classList.contains('open');
+    ctx.toggleVerseExpansion({target:target(null)}); // background inside card
+    const remainsExpanded = container.classList.contains('expanded-mode');
+    ctx.toggleVerseExpansion({target:target('.m-verse-back')});
+    const explicitBack = !container.classList.contains('expanded-mode');
+    const noStretch = /\.m-verse \.pada-row\{[^}]*align-items:flex-start/.test(html);
+    passed = independent && remainsExpanded && explicitBack && noStretch;
+  } catch (e) { console.error('reader regression:', e.message); }
+  ok(passed, 'pāda disclosures stay independent, rows do not stretch, and only explicit back exits');
+}
+
 // ---------- i18n ----------
 group('i18n');
 const LANGS = ['en', 'ne', 'hi'];
@@ -123,7 +157,8 @@ const enKeys = Object.keys(UI.en);
 // search_suggest_hint and search_recent (2) → 230. The overlay is gone; its two
 // strings went with it.
 // The mobile search tab uses its own short label (one key, two parity checks).
-ok(enKeys.length === 231, `UI has 231 keys (got ${enKeys.length})`);
+// The anvaya heading adds one localized key and two parity checks.
+ok(enKeys.length === 232, `UI has 232 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;

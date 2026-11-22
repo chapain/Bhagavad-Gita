@@ -1,0 +1,35 @@
+# Anvaya draft review
+
+The user supplied `Bhagavad Gita — 700-Verse Sanskrit Anvaya.txt` in November 2026 and authorized its use. The user reports that Gemini generated it in response to instructions to avoid copyrighted sources. The draft says it was constructed from the public-domain Gita without copied commentaries; these claims about the model's sources cannot be independently verified. Gita Press and Sanskrit Documents material must not be used.
+
+The replacement working draft, supplied as `Bhagavad Gita — 700-Verse Sanskrit Anvaya (1).txt`, is preserved as `docs/reference/anvaya-draft.txt` (SHA-256 `bfcaa495b4edb77315a04ba57ea422137202ec6662779a84b396099a78d0cf5b`). It supersedes the previous uploaded draft as editorial reference; it is not canonical app data. It has 700 unique verse identifiers exactly matching the 700 canonical JSON identifiers, and retains all speaker headings. This is a numbering and speaker-presence check, not a textual or grammatical verification. It updates 175 entries relative to the original, including moving कामात्मानः and स्वर्गपराः to 2.43, and has no parenthesized supplied words. The earlier `anvaya-draft-issues.md` refers to the original and must not be presented as an audit of this replacement.
+
+The replacement has now been applied to the app's existing entries in chapters 1–6, with targeted corrections including 2.08 अधिपत्यम्, 2.09 परन्तप, 3.04 सन्न्यसनात्, and 3.08 प्रसिध्येत्. The earlier reviewed wording is retained for 3.38 and 4.24 pending closer comparison. In 6.02 the replacement correctly restores कश्चन, which the earlier app wording had changed to कश्चित्; similarly the earlier app had incorrectly duplicated यत्र in 6.21. The revised wording is still a fallible editorial pass, not a complete proof of textual fidelity. Chapters 7–18 have since been imported after an initial comparison. All 700 entries are now present, but the comparisons are fallible and do not establish full grammatical fidelity. For example, the replacement's 18.34 includes पार्थ in addition to the verse's अर्जुन; check entries against the verse before publication.
+
+**1.01–1.47** have been compared against the app's verse text and added to the reader, with speaker headings and IAST. Speaker changes in 1.21 and 1.28 remain within their verses. In 1.31 the second च was kept with the negation; in 1.42 हि was placed after एषाम्; in 1.45 महत्पापं was retained as a compound; and in 1.47 सङ्ख्ये follows the app's spelling. In 1.01 एव is present in पाण्डवाश्चैव: an earlier suggestion that it was extra was mistaken. These checks are an editorial pass, not a guarantee against errors.
+
+**2.01–2.72** have also received an initial verse-by-verse comparison against the app's text and been added with IAST; this is an editorial pass, not a guarantee. The draft needed particular care: 2.42–43 had transferred words between verses and supplied प्रवदन्ति, 2.08 and 2.13 supplied words absent from their own verses, 2.09 misread the vocative and omitted ह, 2.20 changed भविता, 2.55 misplaced एव, 2.67 replaced इव with यथा, and 2.70 replaced यद्वत् with यथा. The published entries retain the app's verse wording and verse boundaries.
+
+**3.01–3.43** have received an initial comparison and been added with IAST. Corrections include the printed सन्न्यसनात् in 3.04, removing supplied words in 3.11 and 3.27, restoring चेत् in 3.24, and preserving the two यथा clauses and आवृतः in 3.38. The review remains fallible and further Sanskrit editorial checking is welcome.
+
+**4.01–4.42** have received an initial comparison and been added with IAST. Corrections include both अपि occurrences in 4.06, इति in 4.03 and 4.14, ज्ञानावस्थितचेतसः in 4.23, retaining ब्रह्मार्पणम् as a compound in 4.24, अपरे in 4.25 and 4.27, and removing supplied सन्ति in 4.28. The review is fallible.
+
+**5.01–5.29** have received an initial comparison and been added with IAST. The draft duplicated शंससि in 5.01 and तत् in 5.16, replaced इव with यथा in 5.10, omitted च in 5.20 and a यः in 5.24, and supplied कृत्वा in 5.27; these have been corrected. The review is fallible.
+
+**6.01–6.47** have received an initial comparison and been added with IAST. Corrections include the two एव occurrences in 6.06, एकाकी in 6.10, keeping स्वम् separate in 6.13, एतत् and यत् in 6.42, and सः in 6.44. An earlier review mistakenly added a second यत्र in 6.21; the replacement correctly has one. This editorial pass is fallible.
+
+**7.01–7.30 and 8.01–8.28** have received an initial comparison and been added with IAST. In 7.22, the draft's तस्याः was corrected to तस्य; in 8.08, 8.16, 8.18 and 8.19 word and compound boundaries were retained as printed or as in the app's padaccheda; in 8.22 तु was restored. These are editorial checks, not proof of complete grammatical or textual accuracy.
+
+**9.01–9.34 and 10.01–10.42** have received an initial comparison and been added with IAST. The 9.24 position of एव and the original compound आत्मविभूतयः in 10.19 were retained, and the spurious avagraha in 10.41 was removed. A previous report wrongly claimed 10.06 should use लोकः; the app's word row reads लोके, and the replacement draft's लोके was retained. The comparison remains fallible.
+
+**11.01–11.55** received an initial comparison and were added with IAST. The two occurrences of सर्वान् were restored in 11.15; an extra न was removed in 11.24 and च restored in 11.50. The previous issue report incorrectly claimed the draft's first सखा इति in 11.41 was wrong; the app's word row also reads सखा + इति. This review remains fallible.
+
+**12.01–13.34** received an initial comparison and were added with IAST. Corrections include सन्न्यस्य (12.06), preserving compounds in 13.13 and 13.28, and यावत् in 13.26. This initial comparison is not a guarantee of grammatical fidelity.
+
+**14.01–15.20** received an initial comparison and were added with IAST. In 14.18 the draft's जघन्यगुणवृत्तिस्थाः was corrected to जघन्यगुणवृत्तस्थाः in accordance with the app's verse and word row. Review remains fallible.
+
+**16.01–17.28** received an initial comparison and were added with IAST. Removed an added इति in 16.08 and restored उ in 17.28; 17.23 uses the app's ओम् spelling for transliteration. Review remains fallible.
+
+**18.01–18.78** received an initial comparison and were added with IAST. Corrected the compound in 18.44, removed an added त्वम् in 18.58, restored इमम् in 18.68, and adjusted the negation in 18.69. This is an initial, fallible review, not a comprehensive grammatical certification. The original draft of 18.77 supplied अस्ति in parentheses; the replacement has removed it. Do not automatically publish supplied words. Before adding each entry, check its words and repetitions against the canonical verse and padaccheda, allowed compound transformations, sandhi, and grammatical ordering. Include each speaker heading in its appropriate position, including within a verse, and supply matching IAST for English mode. Mechanical comparison alone cannot establish correctness.
+
+The translation audit is tracked separately in `literal-review-2026-11.md`; this draft is an aid, not a substitute for checking the Sanskrit.

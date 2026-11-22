@@ -205,7 +205,9 @@
                 "en": "Arjuna asks: “Which are the greater yogis — those who worship you with devotion, or those who worship the formless, imperishable Absolute?”",
                 "ne": "अर्जुन सोध्छन्: “कुन ठूला योगी हुन् — भक्तिले तपाईंको पूजा गर्ने, वा निराकार, अविनाशी परमात्माको पूजा गर्ने?”",
                 "hi": "अर्जुन पूछते हैं: “कौन बड़े योगी हैं — भक्ति से आपकी पूजा करने वाले, या निराकार, अविनाशी परमात्मा की पूजा करने वाले?”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — ये भक्ताः एवं सततयुक्ताः त्वां पर्युपासते, ये च अपि अक्षरम् अव्यक्तम्, तेषां के योगवित्तमाः?",
+              "anvaya_iast": "arjuna uvāca — ye bhaktāḥ evaṃ satatayuktāḥ tvāṃ paryupāsate, ye ca api akṣaram avyaktam, teṣāṃ ke yogavittamāḥ?"
             }
           ]
         },
@@ -388,7 +390,9 @@
                 "en": "Kṛṣṇa said: “Those who fix their minds on me, ever devoted, worshipping me with supreme faith — they are the greatest yogis in my view.”",
                 "ne": "कृष्णले भन्नुभयो: “जसले मन ममा राखेर, सधैं समर्पित भएर, परम श्रद्धाले मेरो पूजा गर्छन् — मेरो दृष्टिमा तिनै महान् योगी हुन्।”",
                 "hi": "कृष्ण ने कहा: “जो मन मुझ पर रखकर, सदा समर्पित होकर, परम श्रद्धा से मेरी पूजा करते हैं — मेरी दृष्टि में वे ही महान् योगी हैं।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — ये मयि मनः आवेश्य नित्ययुक्ताः परया श्रद्धया उपेताः माम् उपासते, ते मे युक्ततमाः मताः।",
+              "anvaya_iast": "śrībhagavānuvāca — ye mayi manaḥ āveśya nityayuktāḥ parayā śraddhayā upetāḥ mām upāsate, te me yuktatamāḥ matāḥ."
             }
           ]
         },
@@ -536,7 +540,9 @@
                 "en": "“Others there are, who worship the unmanifest: that which does not perish, that which no word can point to — filling all space, beyond thought, never shifting, never stirring, forever the same —”",
                 "ne": "अरू छन्, जो नदेखिनेलाई पुज्छन् — जो नष्ट हुँदैन, जसलाई शब्दले भ्याउँदैन, जो जताततै छ, जसलाई सोचले छुन सक्दैन, जो न बदलिन्छ न हल्लिन्छ, सधैँको।",
                 "hi": "और कुछ लोग उस अव्यक्त की उपासना करते हैं — जो नष्ट नहीं होता, जिसे शब्द नहीं बाँध सकते, जो हर जगह है, जिसे सोचा नहीं जा सकता, जो कभी नहीं बदलता, जो हिलता नहीं, जो सदा एक-सा रहता है।"
-              }
+              },
+              "anvaya": "ये तु अनिर्देश्यम्, अव्यक्तं, सर्वत्रगम्, अचिन्त्यं च, कूटस्थम्, अचलं, ध्रुवम् अक्षरं पर्युपासते।",
+              "anvaya_iast": "ye tu anirdeśyam, avyaktaṃ, sarvatragam, acintyaṃ ca, kūṭastham, acalaṃ, dhruvam akṣaraṃ paryupāsate."
             }
           ]
         },
@@ -670,7 +676,9 @@
                 "en": "“— who restrain the senses, see all equally, and delight in the good of all beings — they also reach me.”",
                 "ne": "“— जसले इन्द्रियलाई रोकेर, सबैलाई समान देखेर, सबै प्राणीको हितमा रम्छन् — तिनीहरू पनि मकहाँ पुग्छन्।”",
                 "hi": "“— जो इन्द्रियों को रोककर, सबको समान देखकर, सब प्राणियों के हित में रमते हैं — वे भी मुझ तक पहुँचते हैं।”"
-              }
+              },
+              "anvaya": "इन्द्रियग्रामं संनियम्य सर्वत्र समबुद्धयः सर्वभूतहिते रताः ते माम् एव प्राप्नुवन्ति।",
+              "anvaya_iast": "indriyagrāmaṃ saṃniyamya sarvatra samabuddhayaḥ sarvabhūtahite ratāḥ te mām eva prāpnuvanti."
             }
           ]
         },
@@ -818,7 +826,9 @@
                 "en": "“But their struggle is greater, for the formless Absolute is hard to reach for those who dwell in bodies.”",
                 "ne": "“तर तिनको संघर्ष ठूलो छ, किनकि निराकार परमात्मा शरीरमा बस्नेहरूका निम्ति पुग्न कठिन छ।”",
                 "hi": "“किन्तु उनका संघर्ष बड़ा है, क्योंकि निराकार परमात्मा शरीर में रहने वालों के लिए दुर्लभ है।”"
-              }
+              },
+              "anvaya": "अव्यक्तासक्तचेतसां तेषां क्लेशः अधिकतरः; हि देहवद्भिः अव्यक्ता गतिः दुःखम् अवाप्यते।",
+              "anvaya_iast": "avyaktāsaktacetasāṃ teṣāṃ kleśaḥ adhikataraḥ; hi dehavadbhiḥ avyaktā gatiḥ duḥkham avāpyate."
             }
           ]
         }
@@ -988,7 +998,9 @@
                 "en": "“But those who offer all their actions to me, take me as supreme, and worship me with single-minded meditation,”",
                 "ne": "“तर जसले आफ्ना सबै कर्म मलाई अर्पण गर्छन्, मलाई परम मान्छन्, र एकाग्र ध्यानले मेरो पूजा गर्छन्,”",
                 "hi": "“किन्तु जो अपने सब कर्म मुझे अर्पण करते हैं, मुझे परम मानते हैं, और एकाग्र ध्यान से मेरी पूजा करते हैं,”"
-              }
+              },
+              "anvaya": "ये तु सर्वाणि कर्माणि मयि सन्न्यस्य मत्पराः अनन्येन एव योगेन मां ध्यायन्तः उपासते।",
+              "anvaya_iast": "ye tu sarvāṇi karmāṇi mayi sannyasya matparāḥ ananyena eva yogena māṃ dhyāyantaḥ upāsate."
             }
           ]
         },
@@ -1129,7 +1141,9 @@
                 "en": "“— for them, whose hearts rest in me, I quickly become their saviour from the ocean of birth and death.”",
                 "ne": "“— जसका हृदय ममा विश्राम गर्छन्, तिनका निम्ति म चाँडै जन्म-मृत्युको सागरबाट उद्धारकर्ता बन्छु।”",
                 "hi": "“— जिनका हृदय मुझ में विश्राम करता है, उनके लिए मैं शीघ्र ही जन्म-मृत्यु के सागर से उद्धारकर्ता बन जाता हूँ।”"
-              }
+              },
+              "anvaya": "पार्थ! मयि आवेशितचेतसां तेषाम् अहं न चिरात् मृत्युसंसारसागरात् समुद्धर्ता भवामि।",
+              "anvaya_iast": "pārtha! mayi āveśitacetasāṃ teṣām ahaṃ na cirāt mṛtyusaṃsārasāgarāt samuddhartā bhavāmi."
             }
           ]
         },
@@ -1291,7 +1305,9 @@
                 "en": "“Rest your mind and understanding on me alone — and you will surely live in me; of this there is no doubt.”",
                 "ne": "“आफ्नो मन र समझ केवल ममा राख — र तिमी निश्चय ममै बाँच्नेछौ; यसमा कुनै सन्देह छैन।”",
                 "hi": "“अपना मन और समझ केवल मुझ पर रख — और तू निश्चय मुझ में ही रहेगा; इसमें कोई सन्देह नहीं।”"
-              }
+              },
+              "anvaya": "मयि एव मनः आधत्स्व, मयि बुद्धिं निवेशय; अतः ऊर्ध्वं मयि एव निवसिष्यसि, न संशयः।",
+              "anvaya_iast": "mayi eva manaḥ ādhatsva, mayi buddhiṃ niveśaya; ataḥ ūrdhvaṃ mayi eva nivasiṣyasi, na saṃśayaḥ."
             }
           ]
         }
@@ -1461,7 +1477,9 @@
                 "en": "“If you cannot fix your mind on me steadily, then use repeated practice to reach me, Arjuna.”",
                 "ne": "“यदि तिमी मन ममा स्थिर राख्न सक्दैनौ भने, बारम्बार अभ्यासले मकहाँ पुग्ने प्रयास गर, अर्जुन।”",
                 "hi": "“यदि तू मन को मुझ पर स्थिर नहीं रख सकता, तो बार-बार के अभ्यास से मुझ तक पहुँचने का प्रयास कर, अर्जुन।”"
-              }
+              },
+              "anvaya": "अथ धनञ्जय! चित्तं मयि स्थिरं समाधातुं न शक्नोषि, ततः अभ्यासयोगेन माम् आप्तुम् इच्छ।",
+              "anvaya_iast": "atha dhanañjaya! cittaṃ mayi sthiraṃ samādhātuṃ na śaknoṣi, tataḥ abhyāsayogena mām āptum iccha."
             }
           ]
         },
@@ -1609,7 +1627,9 @@
                 "en": "“If even that is beyond you, devote yourself to working for me — doing your work for my sake, you will reach perfection.”",
                 "ne": "त्यति पनि नसके, मेरै काममा लागिपर। मेरा लागि गरेको कामले पनि तिमी पुग्नुपर्ने ठाउँमा पुग्छौ।",
                 "hi": "“यदि वह भी सम्भव नहीं, तो मेरे लिए काम करने में लग जा — मेरे ही लिए कर्म करके भी तू सिद्धि तक पहुँचेगा।”"
-              }
+              },
+              "anvaya": "अभ्यासे अपि असमर्थः असि, मत्कर्मपरमः भव; मदर्थम् अपि कर्माणि कुर्वन् सिद्धिम् अवाप्स्यसि।",
+              "anvaya_iast": "abhyāse api asamarthaḥ asi, matkarmaparamaḥ bhava; madartham api karmāṇi kurvan siddhim avāpsyasi."
             }
           ]
         },
@@ -1757,7 +1777,9 @@
                 "en": "“If you cannot do even that, then surrender the fruits of all your actions to me — with a self-controlled mind.”",
                 "ne": "“यदि त्यो पनि गर्न सक्दैनौ भने, आत्म-संयमित मनले, आफ्ना सबै कर्मको फल मलाई समर्पण गर।”",
                 "hi": "“यदि वह भी नहीं कर सकता, तो आत्म-संयमित मन से, अपने सब कर्मों का फल मुझे समर्पण कर दे।”"
-              }
+              },
+              "anvaya": "अथ मद्योगम् आश्रितः एतत् अपि कर्तुम् अशक्तः असि, ततः यतात्मवान् सर्वकर्मफलत्यागं कुरु।",
+              "anvaya_iast": "atha madyogam āśritaḥ etat api kartum aśaktaḥ asi, tataḥ yatātmavān sarvakarmaphalatyāgaṃ kuru."
             }
           ]
         },
@@ -1905,7 +1927,9 @@
                 "en": "“Knowledge is better than practice; meditation is better than knowledge; and better still is renouncing the fruits of work — for that brings peace at once.”",
                 "ne": "अभ्यासभन्दा बुझाइ ठूलो, बुझाइभन्दा ध्यान; ती सबैभन्दा माथि — फलको आस छोड्नु। आस छुट्यो कि शान्ति त्यहीँ।",
                 "hi": "अभ्यास से समझ बेहतर, समझ से ध्यान बेहतर; पर सबसे बेहतर है नतीजे की चाह छोड़ देना — वहीं से चैन तुरन्त शुरू होता है।"
-              }
+              },
+              "anvaya": "हि अभ्यासात् ज्ञानं श्रेयः, ज्ञानात् ध्यानं विशिष्यते, ध्यानात् कर्मफलत्यागः, त्यागात् अनन्तरं शान्तिः।",
+              "anvaya_iast": "hi abhyāsāt jñānaṃ śreyaḥ, jñānāt dhyānaṃ viśiṣyate, dhyānāt karmaphalatyāgaḥ, tyāgāt anantaraṃ śāntiḥ."
             }
           ]
         }
@@ -2054,7 +2078,9 @@
                 "en": "“One who hates no one, is kind and compassionate, free of 'mine' and 'I', even in joy and sorrow, patient —”",
                 "ne": "“जो कसैसँग घृणा गर्दैन, दयालु र करुणामय छ, 'मेरो' र 'म' बाट मुक्त छ, सुख-दुःखमा एकनास छ, धैर्यवान् छ —”",
                 "hi": "“जो किसी से घृणा नहीं करता, दयालु और करुणामय है, 'मेरा' और 'मैं' से मुक्त है, सुख-दुःख में एक-सा है, धैर्यवान् है —”"
-              }
+              },
+              "anvaya": "सर्वभूतानाम् अद्वेष्टा, मैत्रः, करुणः एव च, निर्ममः, निरहङ्कारः, समदुःखसुखः, क्षमी।",
+              "anvaya_iast": "sarvabhūtānām adveṣṭā, maitraḥ, karuṇaḥ eva ca, nirmamaḥ, nirahaṅkāraḥ, samaduḥkhasukhaḥ, kṣamī."
             }
           ]
         },
@@ -2209,7 +2235,9 @@
                 "en": "“— always content, self-mastered, resolute, with mind and heart given to me — such a devotee is dear to me.”",
                 "ne": "“— सधैं सन्तोषी, आत्मविजयी, संकल्पवान्, मन र बुद्धि मलाई सुम्पेको — यस्तो भक्त मलाई प्रिय छ।”",
                 "hi": "“— सदा संतोषी, आत्म-विजयी, संकल्पवान्, मन और हृदय मुझे दिए — ऐसा भक्त मुझे प्रिय है।”"
-              }
+              },
+              "anvaya": "सततं सन्तुष्टः योगी, यतात्मा, दृढनिश्चयः, मयि अर्पितमनोबुद्धिः यः मद्भक्तः, सः मे प्रियः।",
+              "anvaya_iast": "satataṃ santuṣṭaḥ yogī, yatātmā, dṛḍhaniścayaḥ, mayi arpitamanobuddhiḥ yaḥ madbhaktaḥ, saḥ me priyaḥ."
             }
           ]
         },
@@ -2406,7 +2434,9 @@
                 "en": "“One who disturbs no one and is disturbed by no one, free from joy, anger, fear, and worry — he is dear to me.”",
                 "ne": "जसबाट कसैलाई पीर पर्दैन, र जो आफैँ कसैबाट पीरोलिँदैन; हर्ष, रिस, डर र सन्तापले नछोएको — त्यो मान्छे मलाई प्यारो छ।",
                 "hi": "जिससे किसी को तकलीफ़ नहीं होती, और जिसे किसी से तकलीफ़ नहीं होती; जो न फूलता है, न भड़कता, न डरता, न घबराता — वह मुझे प्यारा है।"
-              }
+              },
+              "anvaya": "यस्मात् लोकः न उद्विजते, यः च लोकात् न उद्विजते, हर्षामर्षभयोद्वेगैः मुक्तः यः, सः च मे प्रियः।",
+              "anvaya_iast": "yasmāt lokaḥ na udvijate, yaḥ ca lokāt na udvijate, harṣāmarṣabhayodvegaiḥ muktaḥ yaḥ, saḥ ca me priyaḥ."
             }
           ]
         },
@@ -2547,7 +2577,9 @@
                 "en": "“One who is detached, pure, skilled, neutral, worry-free, and gives up every undertaking — that devotee is dear to me.”",
                 "ne": "“जो आसक्तिरहित, शुद्ध, निपुण, तटस्थ, चिन्तामुक्त, र सबै आरम्भ छोड्ने — त्यो भक्त मलाई प्रिय छ।”",
                 "hi": "“जो आसक्ति-रहित, शुद्ध, निपुण, तटस्थ, चिन्ता-मुक्त, और सब आरम्भों को छोड़ने वाला — वह भक्त मुझे प्रिय है।”"
-              }
+              },
+              "anvaya": "अनपेक्षः, शुचिः, दक्षः, उदासीनः, गतव्यथः, सर्वारम्भपरित्यागी यः मद्भक्तः, सः मे प्रियः।",
+              "anvaya_iast": "anapekṣaḥ, śuciḥ, dakṣaḥ, udāsīnaḥ, gatavyathaḥ, sarvārambhaparityāgī yaḥ madbhaktaḥ, saḥ me priyaḥ."
             }
           ]
         }
@@ -2731,7 +2763,9 @@
                 "en": "“One who neither delights nor despairs, neither mourns nor craves, letting go of good and evil — such a devotee is dear to me.”",
                 "ne": "“जो न हर्षले मातिन्छ न द्वेष राख्छ, न शोक गर्छ न लालसा, असल-नराम्रो दुवै छोड्ने — यस्तो भक्त मलाई प्रिय छ।”",
                 "hi": "“जो न हर्षित होता है न निराश, न शोक करता है न लालसा, शुभ-अशुभ दोनों छोड़ने वाला — ऐसा भक्त मुझे प्रिय है।”"
-              }
+              },
+              "anvaya": "यः न हृष्यति, न द्वेष्टि, न शोचति, न काङ्क्षति, शुभाशुभपरित्यागी, भक्तिमान् यः, सः मे प्रियः।",
+              "anvaya_iast": "yaḥ na hṛṣyati, na dveṣṭi, na śocati, na kāṅkṣati, śubhāśubhaparityāgī, bhaktimān yaḥ, saḥ me priyaḥ."
             }
           ]
         },
@@ -2879,7 +2913,9 @@
                 "en": "“Equal toward friend and enemy, praise and blame, cold and heat, joy and sorrow, free from clinging —”",
                 "ne": "“मित्र र शत्रु, प्रशंसा र निन्दा, जाडो-गर्मी, सुख-शोकमा समान, आसक्तिबाट मुक्त —”",
                 "hi": "“मित्र और शत्रु, प्रशंसा और निन्दा, सर्दी-गर्मी, सुख-शोक में समान, आसक्ति से मुक्त —”"
-              }
+              },
+              "anvaya": "शत्रौ च मित्रे च समः, तथा मानापमानयोः, शीतोष्णसुखदुःखेषु समः, सङ्गविवर्जितः।",
+              "anvaya_iast": "śatrau ca mitre ca samaḥ, tathā mānāpamānayoḥ, śītoṣṇasukhaduḥkheṣu samaḥ, saṅgavivarjitaḥ."
             }
           ]
         },
@@ -3034,7 +3070,9 @@
                 "en": "“— the same in blame and praise, silent, satisfied with whatever comes, unattached to place, steady-minded, devoted — such a person is dear to me.”",
                 "ne": "“— निन्दा र प्रशंसामा समान, मौन, जे आइपर्छ त्यसैमा सन्तुष्ट, ठाउँप्रति आसक्तिरहित, स्थिर मन, समर्पित — यस्तो व्यक्ति मलाई प्रिय छ।”",
                 "hi": "“— निन्दा और प्रशंसा में समान, मौन, जो मिले उसी में संतुष्ट, स्थान से आसक्ति-रहित, स्थिर मन, समर्पित — ऐसा व्यक्ति मुझे प्रिय है।”"
-              }
+              },
+              "anvaya": "तुल्यनिन्दास्तुतिः, मौनी, येन केनचित् सन्तुष्टः, अनिकेतः, स्थिरमतिः, भक्तिमान् नरः मे प्रियः।",
+              "anvaya_iast": "tulyanindāstutiḥ, maunī, yena kenacit santuṣṭaḥ, aniketaḥ, sthiramatiḥ, bhaktimān naraḥ me priyaḥ."
             }
           ]
         },
@@ -3196,7 +3234,9 @@
                 "en": "“But those who follow this deathless dharma with faith, holding me as the highest goal — such devotees are most dear to me of all.”",
                 "ne": "“तर जसले यो अमर धर्मलाई श्रद्धाले, मलाई सर्वोच्च लक्ष्य मानेर पछ्याउँछन् — यस्ता भक्तहरू सबैभन्दा प्रिय छन्।”",
                 "hi": "“किन्तु जो इस अमर धर्म का श्रद्धा से, मुझे सर्वोच्च लक्ष्य मानकर अनुसरण करते हैं — ऐसे भक्त सबसे अधिक प्रिय हैं।”"
-              }
+              },
+              "anvaya": "ये तु श्रद्धधानाः मत्परमाः भक्ताः यथोक्तम् इदं धर्म्यामृतं पर्युपासते, ते मे अतीव प्रियाः।",
+              "anvaya_iast": "ye tu śraddhadhānāḥ matparamāḥ bhaktāḥ yathoktam idaṃ dharmyāmṛtaṃ paryupāsate, te me atīva priyāḥ."
             }
           ]
         }

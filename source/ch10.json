@@ -198,7 +198,9 @@
                 "en": "Kṛṣṇa said: “Listen once more, mighty-armed Arjuna, to my highest teaching — which I give you out of love, for your welfare.”",
                 "ne": "कृष्णले भन्नुभयो: “फेरि सुन, महाबाहु अर्जुन, मेरो सर्वोच्च शिक्षा — जुन म प्रेमले, तिम्रो कल्याणका निम्ति दिन्छु।”",
                 "hi": "कृष्ण ने कहा: “फिर सुन, महाबाहु अर्जुन, मेरी सर्वोच्च शिक्षा — जो मैं प्रेम से, तेरे कल्याण के लिए देता हूँ।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — महाबाहो! भूयः एव मे परमं वचः शृणु, यत् अहं ते प्रीयमाणाय हितकाम्यया वक्ष्यामि।",
+              "anvaya_iast": "śrībhagavānuvāca — mahābāho! bhūyaḥ eva me paramaṃ vacaḥ śṛṇu, yat ahaṃ te prīyamāṇāya hitakāmyayā vakṣyāmi."
             }
           ]
         },
@@ -360,7 +362,9 @@
                 "en": "“Neither the gods nor the great sages know where I come from — I am the very source of them all.”",
                 "ne": "“न देवताहरू न महान् ऋषिहरूले म कहाँबाट आएँ भनी जान्दछन् — म नै ती सबैको स्रोत हुँ।”",
                 "hi": "“न देवता न महान् ऋषि जानते हैं कि मैं कहाँ से आया — मैं ही उन सबका स्रोत हूँ।”"
-              }
+              },
+              "anvaya": "सुरगणाः न मे प्रभवं विदुः, महर्षयः न; हि अहं सर्वशः देवानां महर्षीणां च आदिः।",
+              "anvaya_iast": "suragaṇāḥ na me prabhavaṃ viduḥ, maharṣayaḥ na; hi ahaṃ sarvaśaḥ devānāṃ maharṣīṇāṃ ca ādiḥ."
             }
           ]
         },
@@ -508,7 +512,9 @@
                 "en": "“One who knows me as unborn, beginningless, the Lord of all worlds — he is no longer confused, and all his sins fall away.”",
                 "ne": "“जसले मलाई अजन्मा, आदिरहित, सबै लोकका स्वामी जान्दछ — ऊ फेरि कहिल्यै अलमलिँदैन, र उसका सबै पाप झर्छन्।”",
                 "hi": "“जो मुझे अजन्मा, आदि-रहित, सब लोकों का स्वामी जानता है — वह फिर कभी नहीं उलझता, और उसके सब पाप झड़ जाते हैं।”"
-              }
+              },
+              "anvaya": "यः माम् अजम् अनादिं च लोकमहेश्वरं वेत्ति, सः मर्त्येषु असम्मूढः सर्वपापैः प्रमुच्यते।",
+              "anvaya_iast": "yaḥ mām ajam anādiṃ ca lokamaheśvaraṃ vetti, saḥ martyeṣu asammūḍhaḥ sarvapāpaiḥ pramucyate."
             }
           ]
         }
@@ -699,7 +705,9 @@
                 "en": "“Understanding, wisdom, clarity, patience, truth, self-mastery, peace — joy, sorrow, coming-to-be, ceasing, fear, and courage,”",
                 "ne": "“समझ, ज्ञान, स्पष्टता, धैर्य, सत्य, आत्मसंयम, शान्ति — सुख, शोक, जन्म, मृत्यु, डर र साहस,”",
                 "hi": "“समझ, ज्ञान, स्पष्टता, धैर्य, सत्य, आत्म-संयम, शान्ति — सुख, शोक, जन्म, मृत्यु, भय और साहस,”"
-              }
+              },
+              "anvaya": "बुद्धिः, ज्ञानम्, असम्मोहः, क्षमा, सत्यं, दमः, शमः, सुखं, दुःखं, भवः, अभावः, भयं च अभयम् एव च।",
+              "anvaya_iast": "buddhiḥ, jñānam, asammohaḥ, kṣamā, satyaṃ, damaḥ, śamaḥ, sukhaṃ, duḥkhaṃ, bhavaḥ, abhāvaḥ, bhayaṃ ca abhayam eva ca."
             }
           ]
         },
@@ -854,7 +862,9 @@
                 "en": "“— harmlessness, even-mindedness, contentment, tapas, giving, renown and disgrace — all these qualities of beings come from me alone.”",
                 "ne": "“— अहिंसा, समदृष्टि, सन्तोष, तपस्या, दान, प्रसिद्धि र अपमान — प्राणीका यी सबै गुणहरू मबाटै आउँछन्।”",
                 "hi": "“— अहिंसा, समदृष्टि, संतोष, तपस्या, दान, प्रसिद्धि और अपमान — प्राणियों के ये सब गुण मुझसे ही आते हैं।”"
-              }
+              },
+              "anvaya": "अहिंसा, समता, तुष्टिः, तपः, दानं, यशः, अयशः — भूतानां पृथग्विधाः भावाः मत्तः एव भवन्ति।",
+              "anvaya_iast": "ahiṃsā, samatā, tuṣṭiḥ, tapaḥ, dānaṃ, yaśaḥ, ayaśaḥ — bhūtānāṃ pṛthagvidhāḥ bhāvāḥ mattaḥ eva bhavanti."
             }
           ]
         },
@@ -1009,7 +1019,9 @@
                 "en": "“The seven ancient sages and the four Manus, born of my thought — from them all the creatures of this world descend.”",
                 "ne": "सात ऋषि र चार पुराना मनु — सबै मेरो सङ्कल्पबाट जन्मे। संसारका सारा प्राणी तिनैको सन्तान हुन्।",
                 "hi": "“सात प्राचीन ऋषि और चार मनु — मेरे ही विचार से जन्मे — उन्हीं से इस संसार के सब प्राणी उत्पन्न होते हैं।”"
-              }
+              },
+              "anvaya": "पूर्वे सप्त महर्षयः तथा चत्वारः मनवः मद्भावाः मानसाः जाताः, येषां लोके इमाः प्रजाः।",
+              "anvaya_iast": "pūrve sapta maharṣayaḥ tathā catvāraḥ manavaḥ madbhāvāḥ mānasāḥ jātāḥ, yeṣāṃ loke imāḥ prajāḥ."
             }
           ]
         },
@@ -1178,7 +1190,9 @@
                 "en": "“Whoever truly knows my glories and my power is joined to me with unshakable yoga — of this there is no doubt.”",
                 "ne": "“जसले साँच्चै मेरा विभूतिहरू र मेरो शक्ति चिन्छ, ऊ अटल योगले मसँग जोडिन्छ — यसमा कुनै सन्देह छैन।”",
                 "hi": "“जो सचमुच मेरी विभूतियों और मेरी शक्ति को जानता है, वह अटल योग से मुझ से जुड़ जाता है — इसमें कोई सन्देह नहीं।”"
-              }
+              },
+              "anvaya": "यः मम एतां विभूतिं योगं च तत्त्वतः वेत्ति, सः अविकम्पेन योगेन युज्यते, अत्र संशयः न अस्ति।",
+              "anvaya_iast": "yaḥ mama etāṃ vibhūtiṃ yogaṃ ca tattvataḥ vetti, saḥ avikampena yogena yujyate, atra saṃśayaḥ na asti."
             }
           ]
         }
@@ -1341,7 +1355,9 @@
                 "en": "“I am the origin of everything; all flows from me. The wise, knowing this, worship me with love.”",
                 "ne": "“म सबैको उत्पत्ति हुँ; सबै मबाटै बग्छ। ज्ञानीहरू, यो जानेर, प्रेमसाथ मेरो पूजा गर्छन्।”",
                 "hi": "“मैं सबकी उत्पत्ति हूँ; सब मुझसे ही बहता है। ज्ञानी, यह जानकर, प्रेम से मेरी पूजा करते हैं।”"
-              }
+              },
+              "anvaya": "अहं सर्वस्य प्रभवः, मत्तः सर्वं प्रवर्तते; इति मत्वा भावसमन्विताः बुधाः मां भजन्ते।",
+              "anvaya_iast": "ahaṃ sarvasya prabhavaḥ, mattaḥ sarvaṃ pravartate; iti matvā bhāvasamanvitāḥ budhāḥ māṃ bhajante."
             }
           ]
         },
@@ -1489,7 +1505,9 @@
                 "en": "“With minds on me, lives devoted to me, teaching each other and always talking of me — they are satisfied and delighted.”",
                 "ne": "“मन ममा, जीवन मप्रति समर्पित, एक-अर्कालाई सिकाउँदै र सधैं मेरै कुरा गर्दै — तिनीहरू तृप्त र प्रसन्न हुन्छन्।”",
                 "hi": "“मन मुझ पर, जीवन मुझे समर्पित, एक-दूसरे को सिखाते और सदा मेरी बातें करते हुए — वे तृप्त और प्रसन्न होते हैं।”"
-              }
+              },
+              "anvaya": "मच्चित्ताः मद्गतप्राणाः परस्परं बोधयन्तः मां नित्यं कथयन्तः च तुष्यन्ति च रमन्ति च।",
+              "anvaya_iast": "maccittāḥ madgataprāṇāḥ parasparaṃ bodhayantaḥ māṃ nityaṃ kathayantaḥ ca tuṣyanti ca ramanti ca."
             }
           ]
         },
@@ -1630,7 +1648,9 @@
                 "en": "“To those ever united, worshipping me with devotion, I give the wisdom-yoga by which they reach me.”",
                 "ne": "“सधैं एक भएर भक्तिले मेरो पूजा गर्नेहरूलाई म विवेकयोग दिन्छु — जसद्वारा तिनीहरू मकहाँ पुग्छन्।”",
                 "hi": "“सदा एक होकर भक्ति से मेरी पूजा करने वालों को मैं विवेक-योग देता हूँ — जिससे वे मुझ तक पहुँचते हैं।”"
-              }
+              },
+              "anvaya": "सततयुक्तानां प्रीतिपूर्वकं भजतां तेषां तं बुद्धियोगं ददामि, येन ते माम् उपयान्ति।",
+              "anvaya_iast": "satatayuktānāṃ prītipūrvakaṃ bhajatāṃ teṣāṃ taṃ buddhiyogaṃ dadāmi, yena te mām upayānti."
             }
           ]
         },
@@ -1764,7 +1784,9 @@
                 "en": "“Out of compassion, dwelling within them, I dispel their darkness of ignorance with the radiant lamp of wisdom.”",
                 "ne": "“करुणाले, तिनीभित्र बसेर, म तिनको अज्ञानको अन्धकारलाई ज्ञानको उज्यालो बत्तीले मेटाउँछु।”",
                 "hi": "“करुणा से, उनके भीतर रहकर, मैं उनके अज्ञान के अन्धकार को ज्ञान के उज्ज्वल दीपक से मिटा देता हूँ।”"
-              }
+              },
+              "anvaya": "तेषाम् एव अनुकम्पार्थम् अहम् आत्मभावस्थः भास्वता ज्ञानदीपेन अज्ञानजं तमः नाशयामि।",
+              "anvaya_iast": "teṣām eva anukampārtham aham ātmabhāvasthaḥ bhāsvatā jñānadīpena ajñānajaṃ tamaḥ nāśayāmi."
             }
           ]
         }
@@ -1955,7 +1977,9 @@
                 "en": "Arjuna says: “You are the supreme Brahman, the highest abode, the purest; the eternal divine Person, the first God, unborn and everywhere.”",
                 "ne": "अर्जुन भन्छन्: “तपाईं परम ब्रह्म, सर्वोच्च आश्रय, सबैभन्दा शुद्ध हुनुहुन्छ; नित्य दिव्य पुरुष, पहिलो देवता, अजन्मा र सर्वत्र।”",
                 "hi": "अर्जुन कहते हैं: “आप परम ब्रह्म, सर्वोच्च आश्रय, सबसे शुद्ध हैं; नित्य दिव्य पुरुष, पहले देवता, अजन्मा और सर्वत्र।”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — भवान् परं ब्रह्म, परं धाम, परमं पवित्रम्; शाश्वतं दिव्यं पुरुषम्, आदिदेवम्, अजं, विभुम्।",
+              "anvaya_iast": "arjuna uvāca — bhavān paraṃ brahma, paraṃ dhāma, paramaṃ pavitram; śāśvataṃ divyaṃ puruṣam, ādidevam, ajaṃ, vibhum."
             }
           ]
         },
@@ -2124,7 +2148,9 @@
                 "en": "“All the sages say so — Nārada, Asita, Devala, Vyāsa — and you yourself confirm it to me.”",
                 "ne": "“सबै ऋषिहरू यसरी भन्छन् — नारद, असित, देवल, व्यास — र तपाईं आफैंले पनि मलाई पुष्टि गर्नुहुन्छ।”",
                 "hi": "“सब ऋषि ऐसा कहते हैं — नारद, असित, देवल, व्यास — और आप स्वयं भी मुझे इसकी पुष्टि करते हैं।”"
-              }
+              },
+              "anvaya": "सर्वे ऋषयः देवर्षिः नारदः तथा असितः देवलः व्यासः त्वाम् आहुः, स्वयं च एव मे ब्रवीषि।",
+              "anvaya_iast": "sarve ṛṣayaḥ devarṣiḥ nāradaḥ tathā asitaḥ devalaḥ vyāsaḥ tvām āhuḥ, svayaṃ ca eva me bravīṣi."
             }
           ]
         },
@@ -2307,7 +2333,9 @@
                 "en": "“I believe everything you say, Keśava. Neither gods nor demons can know how you appear, O Lord.”",
                 "ne": "“तपाईंले भन्नुभएको सबै म विश्वास गर्छु, केशव। न देवता न दानवले, हे प्रभु, तपाईं कसरी प्रकट हुनुहुन्छ भनी जान्न सक्छन्।”",
                 "hi": "“आपके कहे सब पर मैं विश्वास करता हूँ, केशव। न देवता न दानव, हे प्रभु, जान सकते हैं कि आप कैसे प्रकट होते हैं।”"
-              }
+              },
+              "anvaya": "केशव! यत् मां वदसि तत् सर्वम् एतत् ऋतं मन्ये; भगवन्! हि न देवाः न दानवाः ते व्यक्तिं विदुः।",
+              "anvaya_iast": "keśava! yat māṃ vadasi tat sarvam etat ṛtaṃ manye; bhagavan! hi na devāḥ na dānavāḥ te vyaktiṃ viduḥ."
             }
           ]
         },
@@ -2448,7 +2476,9 @@
                 "en": "“Only you know yourself, O highest Person — creator of all, God of gods, Lord of the universe!”",
                 "ne": "“केवल तपाईं आफैंले आफूलाई चिन्नुहुन्छ, हे सर्वोच्च पुरुष — सबैका सृष्टिकर्ता, देवताका देवता, ब्रह्माण्डका स्वामी!”",
                 "hi": "“केवल आप ही अपने आपको जानते हैं, हे सर्वोच्च पुरुष — सबके सृष्टिकर्ता, देवों के देव, ब्रह्माण्ड के स्वामी!”"
-              }
+              },
+              "anvaya": "भूतभावन! भूतेश! देवदेव! जगत्पते! पुरुषोत्तम! त्वं स्वयम् एव आत्मना आत्मानं वेत्थ।",
+              "anvaya_iast": "bhūtabhāvana! bhūteśa! devadeva! jagatpate! puruṣottama! tvaṃ svayam eva ātmanā ātmānaṃ vettha."
             }
           ]
         }
@@ -2618,7 +2648,9 @@
                 "en": "“Please tell me fully your divine glories — through which you stand pervading all these worlds.”",
                 "ne": "“कृपया तपाईंका दिव्य विभूतिहरू पूरै भन्नुहोस् — जसद्वारा तपाईं यी सबै लोकलाई व्याप्त गरेर रहनुहुन्छ।”",
                 "hi": "“कृपया अपनी दिव्य विभूतियाँ पूरी बताइए — जिनसे आप इन सब लोकों को व्याप्त करके रहते हैं।”"
-              }
+              },
+              "anvaya": "दिव्याः हि आत्मविभूतयः अशेषेण वक्तुम् अर्हसि, याभिः विभूतिभिः त्वम् इमान् लोकान् व्याप्य तिष्ठसि।",
+              "anvaya_iast": "divyāḥ hi ātmavibhūtayaḥ aśeṣeṇa vaktum arhasi, yābhiḥ vibhūtibhiḥ tvam imān lokān vyāpya tiṣṭhasi."
             }
           ]
         },
@@ -2787,7 +2819,9 @@
                 "en": "“How can I know you, thinking of you always? In which forms, O Lord, should I meditate on you?”",
                 "ne": "“सधैं तपाईंलाई सम्झेर म तपाईंलाई कसरी जान्न सक्छु? कुन-कुन रूपमा, हे प्रभु, म तपाईंको ध्यान गरूँ?”",
                 "hi": "“सदा आपको स्मरण करते हुए मैं आपको कैसे जान सकता हूँ? किन-किन रूपों में, हे प्रभु, मैं आपका ध्यान करूँ?”"
-              }
+              },
+              "anvaya": "योगिन्! सदा परिचिन्तयन् अहं त्वां कथं विद्याम्? भगवन्! केषु केषु च भावेषु मया चिन्त्यः असि?",
+              "anvaya_iast": "yogin! sadā paricintayan ahaṃ tvāṃ kathaṃ vidyām? bhagavan! keṣu keṣu ca bhāveṣu mayā cintyaḥ asi?"
             }
           ]
         },
@@ -2956,7 +2990,9 @@
                 "en": "“Tell me again at length of your power and glories, Janārdana — I never tire of drinking in this nectar.”",
                 "ne": "“तपाईंको शक्ति र विभूतिहरू फेरि, विस्तृत रूपमा भन्नुहोस्, जनार्दन — यो अमृत पिउँदा म कहिल्यै अघाउँदिनँ।”",
                 "hi": "“अपनी शक्ति और विभूतियाँ फिर, विस्तृत रूप से बताइए, जनार्दन — यह अमृत पीते-पीते मैं कभी नहीं अघाता।”"
-              }
+              },
+              "anvaya": "जनार्दन! आत्मनः योगं विभूतिं च भूयः विस्तरेण कथय; हि अमृतं शृण्वतः मे तृप्तिः न अस्ति।",
+              "anvaya_iast": "janārdana! ātmanaḥ yogaṃ vibhūtiṃ ca bhūyaḥ vistareṇa kathaya; hi amṛtaṃ śṛṇvataḥ me tṛptiḥ na asti."
             }
           ]
         }
@@ -3147,7 +3183,9 @@
                 "en": "Kṛṣṇa said: “I will tell you of my divine glories — the chief among them, Arjuna; for my extent has no end.”",
                 "ne": "कृष्णले भन्नुभयो: “सुन, आफ्ना विभूतिमध्ये मुख्य-मुख्य म भन्छु — किनकि पूरै भन्न थाल्यो भने कहिल्यै सकिँदैन।”",
                 "hi": "कृष्ण ने कहा: “मैं तुझे अपनी दिव्य विभूतियाँ बताऊँगा — मुख्य-मुख्य, अर्जुन; क्योंकि मेरे विस्तार का कोई अन्त नहीं है।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — कुरुश्रेष्ठ! हन्त, ते प्राधान्यतः दिव्याः हि आत्मविभूतयः कथयिष्यामि; मे विस्तरस्य अन्तः न अस्ति।",
+              "anvaya_iast": "śrībhagavānuvāca — kuruśreṣṭha! hanta, te prādhānyataḥ divyāḥ hi ātmavibhūtayaḥ kathayiṣyāmi; me vistarasya antaḥ na asti."
             }
           ]
         },
@@ -3302,7 +3340,9 @@
                 "en": "“I am the Self seated in the hearts of all beings; I am their beginning, middle, and end.”",
                 "ne": "हरेक प्राणीको छातीभित्र बसेको आत्मा म हुँ। सुरु म, बीच म, अन्त्य पनि म नै।",
                 "hi": "“मैं सब प्राणियों के हृदय में बैठा आत्मा हूँ; मैं ही उनका आदि, मध्य और अन्त हूँ।”"
-              }
+              },
+              "anvaya": "गुडाकेश! अहं सर्वभूताशयस्थितः आत्मा; अहं भूतानाम् आदिः च मध्यं च अन्तः एव च।",
+              "anvaya_iast": "guḍākeśa! ahaṃ sarvabhūtāśayasthitaḥ ātmā; ahaṃ bhūtānām ādiḥ ca madhyaṃ ca antaḥ eva ca."
             }
           ]
         },
@@ -3450,7 +3490,9 @@
                 "en": "“Of the Ādityas I am Viṣṇu; of lights, the blazing sun; of winds, Marīci; of stars, the moon.”",
                 "ne": "“आदित्यहरूमा म विष्णु; ज्योतिहरूमा दनदनाउने सूर्य; हावाहरूमा मरीचि; ताराहरूमा चन्द्रमा।”",
                 "hi": "“आदित्यों में मैं विष्णु; ज्योतियों में दहकता सूर्य; वायुओं में मरीचि; तारों में चन्द्रमा।”"
-              }
+              },
+              "anvaya": "आदित्यानाम् अहं विष्णुः, ज्योतिषां अंशुमान् रविः, मरुतां मरीचिः अस्मि, नक्षत्राणाम् अहं शशी।",
+              "anvaya_iast": "ādityānām ahaṃ viṣṇuḥ, jyotiṣāṃ aṃśumān raviḥ, marutāṃ marīciḥ asmi, nakṣatrāṇām ahaṃ śaśī."
             }
           ]
         },
@@ -3605,7 +3647,9 @@
                 "en": "“Of the Vedas I am the Sāma; of gods, Indra; of the senses, the mind; of beings, consciousness.”",
                 "ne": "वेदमध्ये सामवेद मै हुँ। देवतामध्ये इन्द्र, इन्द्रियमध्ये मन, र प्राणीभित्रको चेतना — सबै म नै।",
                 "hi": "वेदों में सामवेद मैं हूँ। देवताओं में इन्द्र, इन्द्रियों में मन, और प्राणियों के भीतर की चेतना — सब मैं।"
-              }
+              },
+              "anvaya": "वेदानां सामवेदः अस्मि, देवानाम् अस्मि वासवः, इन्द्रियाणां मनः च अस्मि, भूतानां चेतना अस्मि।",
+              "anvaya_iast": "vedānāṃ sāmavedaḥ asmi, devānām asmi vāsavaḥ, indriyāṇāṃ manaḥ ca asmi, bhūtānāṃ cetanā asmi."
             }
           ]
         },
@@ -3760,7 +3804,9 @@
                 "en": "“Of the Rudras I am Śiva; of the yakṣas and demons, Kubera; of the Vasus, fire; of mountains, Meru.”",
                 "ne": "रुद्रमध्ये शिव मै हुँ; धनका मालिक कुबेर पनि म; वसुमध्ये आगो; अनि पहाडमध्ये मेरु।",
                 "hi": "रुद्रों में शिव मैं हूँ; धन के स्वामी कुबेर भी मैं; वसुओं में आग; और पहाड़ों में मेरु।"
-              }
+              },
+              "anvaya": "रुद्राणां शङ्करः च अस्मि, यक्षरक्षसां वित्तेशः, वसूनां पावकः च अस्मि, शिखरिणाम् अहं मेरुः।",
+              "anvaya_iast": "rudrāṇāṃ śaṅkaraḥ ca asmi, yakṣarakṣasāṃ vitteśaḥ, vasūnāṃ pāvakaḥ ca asmi, śikhariṇām ahaṃ meruḥ."
             }
           ]
         }
@@ -3930,7 +3976,9 @@
                 "en": "“Know me as Bṛhaspati among priests, Skanda among commanders, the ocean among bodies of water.”",
                 "ne": "“पुरोहितहरूका अग्रणी बृहस्पतिमा मलाई चिन। सेनाको नेतृत्व गर्नेहरूमा स्कन्द र जलराशिहरूमा समुद्र म नै हुँ।”",
                 "hi": "“पुरोहितों में मुझे बृहस्पति जान; सेनापतियों में स्कन्द; जल-निकायों में सागर।”"
-              }
+              },
+              "anvaya": "पार्थ! पुरोधसां च मुख्यं बृहस्पतिं मां विद्धि; सेनानीनाम् अहं स्कन्दः, सरसाम् अस्मि सागरः।",
+              "anvaya_iast": "pārtha! purodhasāṃ ca mukhyaṃ bṛhaspatiṃ māṃ viddhi; senānīnām ahaṃ skandaḥ, sarasām asmi sāgaraḥ."
             }
           ]
         },
@@ -4078,7 +4126,9 @@
                 "en": "“Of the great sages I am Bhṛgu; of speech, the sacred Om; of sacrifices, silent repetition; of the immovable, the Himalaya.”",
                 "ne": "“महर्षिहरूमा म भृगु; शब्दमा पवित्र ॐ; यज्ञहरूमा मौन जप; स्थिरहरूमा हिमालय।”",
                 "hi": "“महर्षियों में मैं भृगु; वाणी में पवित्र ॐ; यज्ञों में मौन जप; स्थिरों में हिमालय।”"
-              }
+              },
+              "anvaya": "महर्षीणां भृगुः अहं, गिराम् अस्मि एकम् अक्षरम्, यज्ञानां जपयज्ञः अस्मि, स्थावराणां हिमालयः।",
+              "anvaya_iast": "maharṣīṇāṃ bhṛguḥ ahaṃ, girām asmi ekam akṣaram, yajñānāṃ japayajñaḥ asmi, sthāvarāṇāṃ himālayaḥ."
             }
           ]
         },
@@ -4212,7 +4262,9 @@
                 "en": "“Of trees I am the sacred fig; of divine sages, Nārada; of celestial musicians, Citraratha; of the perfected, Kapila.”",
                 "ne": "“रूखहरूमा म पवित्र पीपल; देवर्षिहरूमा नारद; दिव्य गायकहरूमा चित्ररथ; सिद्धहरूमा कपिल।”",
                 "hi": "सब पेड़ों में पीपल मैं हूँ। ऋषियों में नारद, आकाश के गायकों में चित्ररथ, और सिद्ध पुरुषों में कपिल।"
-              }
+              },
+              "anvaya": "सर्ववृक्षाणाम् अश्वत्थः, देवर्षीणां च नारदः, गन्धर्वाणां चित्ररथः, सिद्धानां कपिलः मुनिः।",
+              "anvaya_iast": "sarvavṛkṣāṇām aśvatthaḥ, devarṣīṇāṃ ca nāradaḥ, gandharvāṇāṃ citrarathaḥ, siddhānāṃ kapilaḥ muniḥ."
             }
           ]
         }
@@ -4361,7 +4413,9 @@
                 "en": "“The white horse that rose from the churning of the ocean — that is me. So is Indra's elephant, and so is the king among men.”",
                 "ne": "“घोडाहरूमा म उच्चैःश्रवा — अमृतबाट जन्मेको; हात्तीहरूमा ऐरावत; मानिसहरूमा तिनको राजा।”",
                 "hi": "“घोड़ों में मैं उच्चैःश्रवा — अमृत से जन्मा; हाथियों में ऐरावत; मनुष्यों में उनका राजा।”"
-              }
+              },
+              "anvaya": "अश्वानां माम् अमृतोद्भवम् उच्चैःश्रवसं विद्धि, गजेन्द्राणाम् ऐरावतं, नराणां च नराधिपम्।",
+              "anvaya_iast": "aśvānāṃ mām amṛtodbhavam uccaiḥśravasaṃ viddhi, gajendrāṇām airāvataṃ, narāṇāṃ ca narādhipam."
             }
           ]
         },
@@ -4516,7 +4570,9 @@
                 "en": "“Of weapons I am the thunderbolt; of cows, the wish-fulfilling cow; of procreators, Kāma; of serpents, Vāsuki.”",
                 "ne": "“हतियारहरूमा म वज्र; गाईहरूमा इच्छापूरक गाई; जन्म दिनेहरूमा कामदेव; सर्पहरूमा वासुकि।”",
                 "hi": "“अस्त्रों में मैं वज्र; गौओं में इच्छापूर्ति करने वाली गौ; जन्म देने वालों में कामदेव; सर्पों में वासुकि।”"
-              }
+              },
+              "anvaya": "आयुधानाम् अहं वज्रं, धेनूनाम् अस्मि कामधुक्, प्रजनः च अस्मि कन्दर्पः, सर्पाणाम् अस्मि वासुकिः।",
+              "anvaya_iast": "āyudhānām ahaṃ vajraṃ, dhenūnām asmi kāmadhuk, prajanaḥ ca asmi kandarpaḥ, sarpāṇām asmi vāsukiḥ."
             }
           ]
         },
@@ -4678,7 +4734,9 @@
                 "en": "“Of serpents I am the endless Ananta; of sea-creatures, Varuṇa; of ancestors, Aryaman; of punishers, Yama.”",
                 "ne": "“सर्पहरूमा म अनन्त; समुद्रका प्राणीहरूमा वरुण; पितृहरूमा अर्यमा; दण्ड दिनेहरूमा यम।”",
                 "hi": "साँपों में शेषनाग मैं हूँ; पानी के जीवों में वरुण; पितरों में अर्यमा; और दण्ड देने वालों में यम।"
-              }
+              },
+              "anvaya": "नागानाम् अनन्तः च अस्मि, यादसां वरुणः अहं, पितॄणाम् अर्यमा च अस्मि, संयमतां यमः अहम्।",
+              "anvaya_iast": "nāgānām anantaḥ ca asmi, yādasāṃ varuṇaḥ ahaṃ, pitṝṇām aryamā ca asmi, saṃyamatāṃ yamaḥ aham."
             }
           ]
         },
@@ -4840,7 +4898,9 @@
                 "en": "“Of the demons I am Prahlāda; of reckoners, time; of beasts, the lion; of birds, Garuḍa.”",
                 "ne": "दैत्यकुलमा प्रह्लाद मै हुँ; गन्ने कुरामा समय; जनावरमध्ये सिंह; अनि चराचुरुङ्गीमा गरुड।",
                 "hi": "दैत्यों में प्रह्लाद मैं हूँ; गिनती में समय; जानवरों में सिंह; और पंछियों में गरुड़।"
-              }
+              },
+              "anvaya": "दैत्यानां प्रह्लादः च अस्मि, कलयतां कालः अहं, मृगाणां च मृगेन्द्रः अहं, पक्षिणां वैनतेयः च।",
+              "anvaya_iast": "daityānāṃ prahlādaḥ ca asmi, kalayatāṃ kālaḥ ahaṃ, mṛgāṇāṃ ca mṛgendraḥ ahaṃ, pakṣiṇāṃ vainateyaḥ ca."
             }
           ]
         },
@@ -4995,7 +5055,9 @@
                 "en": "“Of purifiers I am the wind; of weapon-bearers, Rāma; of fish, the makara; of rivers, the Ganges.”",
                 "ne": "सफा गर्नेमध्ये बतास मै हुँ; अस्त्रधारीमध्ये राम; पानीका जीवमध्ये मकर; नदीमध्ये गङ्गा।",
                 "hi": "“पवित्र करने वालों में मैं वायु; हथियार उठाने वालों में राम; मछलियों में मकर; नदियों में गंगा।”"
-              }
+              },
+              "anvaya": "पवतां पवनः अस्मि, शस्त्रभृताम् अहं रामः, झषाणां मकरः च अस्मि, स्रोतसाम् अस्मि जाह्नवी।",
+              "anvaya_iast": "pavatāṃ pavanaḥ asmi, śastrabhṛtām ahaṃ rāmaḥ, jhaṣāṇāṃ makaraḥ ca asmi, srotasām asmi jāhnavī."
             }
           ]
         }
@@ -5172,7 +5234,9 @@
                 "en": "“Of all creations I am the beginning, middle, and end; of sciences, the science of the Self; of debates, sound reasoning.”",
                 "ne": "“सबै सृष्टिहरूमा म आदि, मध्य र अन्त्य हुँ; विद्याहरूमा आत्मविद्या; वाद-विवादमा ठोस तर्क।”",
                 "hi": "“सब सृष्टियों में मैं आदि, मध्य और अन्त हूँ; विद्याओं में आत्म-विद्या; वाद-विवाद में ठोस तर्क।”"
-              }
+              },
+              "anvaya": "अर्जुन! सर्गाणाम् आदिः अन्तः च मध्यं च एव अहं, विद्यानाम् अध्यात्मविद्या, प्रवदतां वादः अहम्।",
+              "anvaya_iast": "arjuna! sargāṇām ādiḥ antaḥ ca madhyaṃ ca eva ahaṃ, vidyānām adhyātmavidyā, pravadatāṃ vādaḥ aham."
             }
           ]
         },
@@ -5327,7 +5391,9 @@
                 "en": "“Of letters I am the A; of compounds, the dvandva; I am endless time; I am the all-facing creator.”",
                 "ne": "“अक्षरहरूमा म 'अ'; समासहरूमा द्वन्द्व; म अनन्त काल हुँ; म सबैतिर फर्केको सृष्टिकर्ता हुँ।”",
                 "hi": "“अक्षरों में मैं 'अ'; समासों में द्वन्द्व; मैं अनन्त काल हूँ; मैं हर ओर मुख किए हुए सृष्टिकर्ता हूँ।”"
-              }
+              },
+              "anvaya": "अक्षराणाम् अकारः अस्मि, सामासिकस्य च द्वन्द्वः, अहम् एव अक्षयः कालः, विश्वतोमुखः धाता अहम्।",
+              "anvaya_iast": "akṣarāṇām akāraḥ asmi, sāmāsikasya ca dvandvaḥ, aham eva akṣayaḥ kālaḥ, viśvatomukhaḥ dhātā aham."
             }
           ]
         },
@@ -5503,7 +5569,9 @@
                 "en": "“I am death that carries all away, and the source of all that comes to be; among women, fame, fortune, eloquence, memory, wisdom, steadiness, and patience.”",
                 "ne": "“म सबै लैजाने मृत्यु र आउने सबैको स्रोत हुँ; स्त्रीहरूमा कीर्ति, समृद्धि, वाक्पटुता, स्मरण, बुद्धि, स्थिरता र धैर्य।”",
                 "hi": "“मैं सब बहा ले जाने वाला मृत्यु और आने वाली वस्तुओं का स्रोत हूँ; स्त्रियों में कीर्ति, समृद्धि, वाक्पटुता, स्मरण, बुद्धि, स्थिरता और धैर्य।”"
-              }
+              },
+              "anvaya": "अहं सर्वहरः मृत्युः च, भविष्यतां च उद्भवः, नारीणां कीर्तिः, श्रीः, वाक् च, स्मृतिः, मेधा, धृतिः, क्षमा।",
+              "anvaya_iast": "ahaṃ sarvaharaḥ mṛtyuḥ ca, bhaviṣyatāṃ ca udbhavaḥ, nārīṇāṃ kīrtiḥ, śrīḥ, vāk ca, smṛtiḥ, medhā, dhṛtiḥ, kṣamā."
             }
           ]
         }
@@ -5659,7 +5727,9 @@
                 "en": "“Of the Sāma hymns I am the greatest, the Bṛhat-sāma; of metres, the Gāyatrī; of the twelve months, the one when the harvest ripens; of the seasons, spring in flower.”",
                 "ne": "सामगानमध्ये बृहत्साम मै हुँ; छन्दमध्ये गायत्री; बाह्र महिनामध्ये अन्न पाक्ने महिना; ऋतुमध्ये फुल्ने वसन्त।",
                 "hi": "साम-गानों में सबसे बड़ा मैं हूँ; छन्दों में गायत्री; बारह महीनों में फ़सल पकने वाला; ऋतुओं में फूलता वसन्त।"
-              }
+              },
+              "anvaya": "तथा साम्नां बृहत्साम, छन्दसाम् अहं गायत्री, मासानां मार्गशीर्षः अहम्, ऋतूनां कुसुमाकरः।",
+              "anvaya_iast": "tathā sāmnāṃ bṛhatsāma, chandasām ahaṃ gāyatrī, māsānāṃ mārgaśīrṣaḥ aham, ṛtūnāṃ kusumākaraḥ."
             }
           ]
         },
@@ -5814,7 +5884,9 @@
                 "en": "“I am the craft of the gambler, the glory of the glorious; I am victory and resolve; I am the virtue of the virtuous.”",
                 "ne": "“म जुवाडीको कला, तेजस्वीको तेज; म विजय र संकल्प हुँ; म सज्जनको सद्गुण हुँ।”",
                 "hi": "“मैं जुआरी की कला, तेजस्वी का तेज; मैं विजय और संकल्प हूँ; मैं सज्जन का सद्गुण हूँ।”"
-              }
+              },
+              "anvaya": "छलयतां द्यूतम् अस्मि, तेजस्विनां तेजः अहं, जयः अस्मि, व्यवसायः अस्मि, सत्त्ववतां सत्त्वम् अहम्।",
+              "anvaya_iast": "chalayatāṃ dyūtam asmi, tejasvināṃ tejaḥ ahaṃ, jayaḥ asmi, vyavasāyaḥ asmi, sattvavatāṃ sattvam aham."
             }
           ]
         },
@@ -5962,7 +6034,9 @@
                 "en": "“Of the Vṛṣṇis I am Vāsudeva; of the Pāṇḍavas, Arjuna; of sages, Vyāsa; of poets, Uśanas.”",
                 "ne": "वृष्णिवंशमा वासुदेव मै हुँ; पाण्डवमध्ये अर्जुन; मुनिमध्ये व्यास; अनि कविमध्ये उशना।",
                 "hi": "यादवों में कृष्ण मैं ही हूँ, और पाँच भाइयों में अर्जुन। मननशीलों में व्यास, और कवियों में उशना।"
-              }
+              },
+              "anvaya": "वृष्णीनां वासुदेवः अस्मि, पाण्डवानां धनञ्जयः, मुनीनाम् अपि अहं व्यासः, कवीनाम् उशना कविः।",
+              "anvaya_iast": "vṛṣṇīnāṃ vāsudevaḥ asmi, pāṇḍavānāṃ dhanañjayaḥ, munīnām api ahaṃ vyāsaḥ, kavīnām uśanā kaviḥ."
             }
           ]
         },
@@ -6124,7 +6198,9 @@
                 "en": "“I am the sceptre of rulers and the statesmanship of the victorious; I am the silence of mysteries; of the wise, wisdom.”",
                 "ne": "“म शासकहरूको राजदण्ड र विजयीहरूको कूटनीति हुँ; म रहस्यहरूको मौनता हुँ; ज्ञानीहरूमा ज्ञान।”",
                 "hi": "“मैं शासकों का राजदण्ड और विजयी की कूटनीति हूँ; मैं रहस्यों का मौन हूँ; ज्ञानियों में ज्ञान।”"
-              }
+              },
+              "anvaya": "दमयतां दण्डः अस्मि, जिगीषतां नीतिः अस्मि, गुह्यानां मौनं च एव अस्मि, ज्ञानवतां ज्ञानम् अहम्।",
+              "anvaya_iast": "damayatāṃ daṇḍaḥ asmi, jigīṣatāṃ nītiḥ asmi, guhyānāṃ maunaṃ ca eva asmi, jñānavatāṃ jñānam aham."
             }
           ]
         }
@@ -6322,7 +6398,9 @@
                 "en": "“Whatever seed gives rise to all beings — that is I. Nothing moving or still exists apart from me.”",
                 "ne": "“जुन बीजले सबै प्राणीलाई जन्म दिन्छ — त्यो म नै हुँ। चल होस् वा अचल, मबिना केही अस्तित्वमा छैन।”",
                 "hi": "“जो बीज सब प्राणियों को जन्म देता है — वह मैं हूँ। चल हो या अचल, मुझसे अलग कुछ अस्तित्व में नहीं है।”"
-              }
+              },
+              "anvaya": "अर्जुन! यत् च अपि सर्वभूतानां बीजं तत् अहम्; तत् चराचरं भूतं न अस्ति, यत् मया विना स्यात्।",
+              "anvaya_iast": "arjuna! yat ca api sarvabhūtānāṃ bījaṃ tat aham; tat carācaraṃ bhūtaṃ na asti, yat mayā vinā syāt."
             }
           ]
         },
@@ -6484,7 +6562,9 @@
                 "en": "“My divine glories have no end, Arjuna — this is only a brief statement of their vast extent.”",
                 "ne": "“मेरा दिव्य विभूतिहरूको अन्त्य छैन, अर्जुन — तिनको विशाल विस्तारको यो केवल छोटो बयान हो।”",
                 "hi": "“मेरी दिव्य विभूतियों का अन्त नहीं है, अर्जुन — उनके विशाल विस्तार का यह केवल छोटा-सा बयान है।”"
-              }
+              },
+              "anvaya": "परन्तप! मम दिव्यानां विभूतीनाम् अन्तः न अस्ति; मया एषः विभूतेः विस्तरः तु उद्देशतः प्रोक्तः।",
+              "anvaya_iast": "parantapa! mama divyānāṃ vibhūtīnām antaḥ na asti; mayā eṣaḥ vibhūteḥ vistaraḥ tu uddeśataḥ proktaḥ."
             }
           ]
         },
@@ -6653,7 +6733,9 @@
                 "en": "“Whatever is splendid, shining, or mighty — know it springs from a spark of my glory.”",
                 "ne": "“जे-जे भव्य, चम्किलो वा शक्तिशाली छ — त्यो मेरो तेजको एउटा कणबाट उठेको जान।”",
                 "hi": "“जो-जो भव्य, चमकीला या शक्तिशाली है — उसे मेरे तेज के एक कण से उठा हुआ जान।”"
-              }
+              },
+              "anvaya": "यत् यत् विभूतिमत् श्रीमत् ऊर्जितम् एव वा सत्त्वम्, तत् तत् एव त्वं मम तेजोंशसम्भवम् अवगच्छ।",
+              "anvaya_iast": "yat yat vibhūtimat śrīmat ūrjitam eva vā sattvam, tat tat eva tvaṃ mama tejoṃśasambhavam avagaccha."
             }
           ]
         },
@@ -6815,7 +6897,9 @@
                 "en": "“But why know all this in detail, Arjuna? With a single part of myself I sustain this entire universe.”",
                 "ne": "“तर यो सबै विस्तृत जान्नुको के अर्थ, अर्जुन? म आफ्नो एक अंशले यो सम्पूर्ण ब्रह्माण्डलाई धानिरहेको छु।”",
                 "hi": "“किन्तु यह सब विस्तृत जानने से क्या अर्थ, अर्जुन? मैं अपने एक अंश से इस सम्पूर्ण ब्रह्माण्ड को धारण किए हुए हूँ।”"
-              }
+              },
+              "anvaya": "अर्जुन! अथवा एतेन बहुना ज्ञातेन तव किम्? अहम् इदं कृत्स्नं जगत् एकांशेन विष्टभ्य स्थितः।",
+              "anvaya_iast": "arjuna! athavā etena bahunā jñātena tava kim? aham idaṃ kṛtsnaṃ jagat ekāṃśena viṣṭabhya sthitaḥ."
             }
           ]
         }
