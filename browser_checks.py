@@ -1005,6 +1005,7 @@ def run(pw, url, offline_capable=False):
       const copy = document.querySelector('#modal .reader-copy');
       const container = document.querySelector('#modal #verseContainer');
       const content = document.querySelector('#modal #verseContent');
+      const anvaya = copy?.querySelector('.m-anvaya');
       const kids = copy ? [...copy.children] : [];
       const visible = el => !!(el && el.getClientRects().length
         && getComputedStyle(el).visibility !== 'hidden'
@@ -1016,11 +1017,15 @@ def run(pw, url, offline_capable=False):
         '.m-verse-action,.m-words-section,details,summary,.m-pada-hint')]
         .some(el => visible(el) && !el.closest('.m-note'));
       return {
-        order: !!(kids[0] === container && kids[1]?.matches('.m-line.lit')
-          && kids[2]?.matches('.m-line.para')),
+        order: !!(kids[0] === container && kids[1] === anvaya
+          && kids[2]?.matches('.m-line.lit') && kids[3]?.matches('.m-line.para')),
         soleVisibleChild: !!(container && content && [...container.children].filter(visible).length === 1
           && [...container.children].filter(visible)[0] === content),
-        directLiteral: !!(container && container.nextElementSibling?.matches('.m-line.lit')),
+        directAnvayaAndLiteral: !!(container && anvaya && visible(anvaya)
+          && container.nextElementSibling === anvaya
+          && anvaya.nextElementSibling?.matches('.m-line.lit')
+          && anvaya.querySelector('[lang="sa"]')?.textContent.trim()
+          && !anvaya.querySelector('.m-anvaya-iast')),
         forbidden: !!forbidden,
         noAction: !document.querySelector('#modal .m-verse-action'),
         noMeaningDisclosure: [...document.querySelectorAll(
@@ -1031,10 +1036,10 @@ def run(pw, url, offline_capable=False):
       };
     }""")
     ok(bool(structure and structure["order"] and structure["soleVisibleChild"]
-            and structure["directLiteral"] and not structure["forbidden"]
+            and structure["directAnvayaAndLiteral"] and not structure["forbidden"]
             and structure["noAction"] and structure["noMeaningDisclosure"]
             and structure["noteField"] and structure["noHintCard"]),
-       f"the single verse card is followed directly by literal and paraphrase, with no action/disclosure card ({structure})")
+       f"the single verse card is followed directly by anvaya, literal and paraphrase, with no action/disclosure card ({structure})")
 
     # The whole-verse shape explains itself: a short localized instruction sits
     # INSIDE the clickable card (not a terse "▾ ४ पाद" corner tag, not a sibling
@@ -1203,17 +1208,42 @@ def run(pw, url, offline_capable=False):
     ok(word_state,
        "a pāda opens its own words without collapsing, and the master hide/show switch still works")
 
-    # Padding/background is a click-to-collapse area; then verify the corner
-    # button's keyboard activation is also an explicit way back.
-    pg.locator("#modal #verseContent").click(position={"x": 3, "y": 3})
-    pg.wait_for_timeout(250)
-    background_back = pg.evaluate("""() => {
-      const c = document.querySelector('#modal #verseContent');
-      return c.classList.contains('m-whole-verse') && !c.classList.contains('m-verse')
-        && c.getAttribute('role') === 'button' && c.getAttribute('tabindex') === '0'
-        && c.getAttribute('aria-expanded') === 'false';
+    # Once in pāda view, padding/background clicks keep the quarters open so
+    # accidental taps do not collapse open word rows; only explicit ↩ exits.
+    # Keep #modal at scrollTop=0 first: with four word rows open at 390x844,
+    # auto-scrolling the tall #verseContent card slides its top edge up against
+    # the sticky .m-head bar where #mMoreBtn sits in the same top-right column.
+    pad_pt = pg.evaluate("""() => {
+      document.querySelector('#modal').scrollTop = 0;
+      const r = document.querySelector('#modal #verseContent').getBoundingClientRect();
+      return {x: Math.round(r.left + 20), y: Math.round(r.top + 14)};
     }""")
-    ok(background_back, "clicking the expanded card background returns it to the accessible whole-verse control")
+    pg.mouse.click(pad_pt["x"], pad_pt["y"])
+    pg.wait_for_timeout(250)
+    stays_expanded = pg.evaluate("""() => {
+      const c = document.querySelector('#modal #verseContent');
+      const box = document.querySelector('#modal #verseContainer');
+      const words = document.querySelector('#modal #words-pada-0');
+      return {
+        mVerse: !!(c && c.classList.contains('m-verse') && !c.classList.contains('m-whole-verse')),
+        expandedMode: !!(box && box.classList.contains('expanded-mode')),
+        wordsOpen: !!(words && words.classList.contains('open'))
+      };
+    }""")
+    pg.evaluate("document.querySelector('#modal').scrollTop = 0")
+    pg.locator("#modal .m-verse-back").click()
+    pg.wait_for_timeout(250)
+    explicit_back = pg.evaluate("""() => {
+      const c = document.querySelector('#modal #verseContent');
+      return {
+        wholeVerse: !!(c && c.classList.contains('m-whole-verse') && !c.classList.contains('m-verse')),
+        a11y: !!(c && c.getAttribute('role') === 'button' && c.getAttribute('tabindex') === '0'
+          && c.getAttribute('aria-expanded') === 'false')
+      };
+    }""")
+    back_state = {**(stays_expanded or {}), **(explicit_back or {})}
+    ok(bool(back_state and all(back_state.values())),
+       f"clicking the expanded card background keeps pāda view open, and clicking ↩ returns it to the accessible whole-verse control ({back_state})")
 
     pg.locator("#modal #verseContent").click()
     pg.wait_for_timeout(250)
@@ -1231,12 +1261,14 @@ def run(pw, url, offline_capable=False):
     pg.keyboard.press("Space")
     pg.wait_for_timeout(150)
     space_back = pg.evaluate("document.querySelector('#modal #verseContent').classList.contains('m-whole-verse')")
-    pg.locator("#modal #verseContent").click()
+    pg.locator("#modal #verseContent").focus()
+    pg.keyboard.press("Enter")
     pg.wait_for_timeout(150)
+    whole_key_open = pg.evaluate("document.querySelector('#modal #verseContent').classList.contains('m-verse')")
     pg.locator("#modal #verseContent").evaluate("el => el.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true}))")
-    box_key_back = pg.evaluate("document.querySelector('#modal #verseContent').classList.contains('m-whole-verse')")
-    ok(enter_back and space_back and box_key_back,
-       "the inner ↩ button returns on Enter and Space, and Enter on the expanded card works without an inner control focused")
+    box_key_stays = pg.evaluate("document.querySelector('#modal #verseContent').classList.contains('m-verse')")
+    ok(enter_back and space_back and whole_key_open and box_key_stays,
+       "the inner ↩ button returns on Enter and Space, Enter opens the whole-verse card, and Enter on the expanded card keeps pāda view open")
     pg.evaluate("setLang('en')")
     pg.wait_for_timeout(400)
     pg.keyboard.press("Escape")
