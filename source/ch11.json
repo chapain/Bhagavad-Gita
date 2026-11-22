@@ -2930,9 +2930,9 @@
                 "hi": "आप अविनाशी, जानने योग्य परम वस्तु हैं; आप इस ब्रह्माण्ड के परम आश्रय हैं; आप अव्यय, शाश्वत धर्म के रक्षक — सनातन पुरुष हैं, मैं ऐसा आपको मानता हूँ।"
               },
               "paras": {
-                "en": "“You are the eternal, the highest to be known; you are the universe's supreme treasure, the changeless guardian of dharma — the original Person.”",
-                "ne": "“तपाईं नित्य, जान्नयोग्य सर्वोच्च हुनुहुन्छ; तपाईं ब्रह्माण्डको परम धाम, धर्मका अपरिवर्तनीय रक्षक — आदि पुरुष हुनुहुन्छ।”",
-                "hi": "“आप नित्य, जानने योग्य सर्वोच्च हैं; आप ब्रह्माण्ड के परम धाम, धर्म के अपरिवर्तनीय रक्षक — आदि पुरुष हैं।”"
+                "en": "“You are the eternal, the highest to be known; you are the universe's supreme treasure, the changeless guardian of eternal dharma — the everlasting Person, as I see you.”",
+                "ne": "“तपाईं नित्य, जान्नयोग्य सर्वोच्च हुनुहुन्छ; तपाईं ब्रह्माण्डको परम धाम, शाश्वत धर्मका अविनाशी रक्षक — सनातन पुरुष हुनुहुन्छ, म यसरी मान्छु।”",
+                "hi": "“आप नित्य, जानने योग्य सर्वोच्च हैं; आप ब्रह्माण्ड के परम धाम, शाश्वत धर्म के अविनाशी रक्षक — सनातन पुरुष हैं, मैं ऐसा मानता हूँ।”"
               },
               "anvaya": "त्वं परमं वेदितव्यम् अक्षरं, त्वम् अस्य विश्वस्य परं निधानं, त्वम् अव्ययः शाश्वतधर्मगोप्ता, त्वं सनातनः पुरुषः मे मतः।",
               "anvaya_iast": "tvaṃ paramaṃ veditavyam akṣaraṃ, tvam asya viśvasya paraṃ nidhānaṃ, tvam avyayaḥ śāśvatadharmagoptā, tvaṃ sanātanaḥ puruṣaḥ me mataḥ."
@@ -3073,9 +3073,9 @@
                 "hi": "आदि, मध्य और अन्त से रहित, अनन्त शक्ति वाले, असंख्य बाहुओं वाले, सूर्य-चन्द्र नेत्रों वाले — मैं आपको जलती अग्नि-जैसे मुखों वाला, अपने तेज से सम्पूर्ण जगत् को जलाते देखता हूँ।"
               },
               "paras": {
-                "en": "“Without beginning or end, infinite in might, countless-armed, sun-and-moon-eyed — I see you, fire-mouthed, burning up the world with your brilliance.”",
-                "ne": "न सुरु देखिन्छ, न अन्त्य। पाखुरा गन्नै सकिन्न, आँखा त सूर्य र चन्द्रमा। मुखबाट आगो निस्किरहेछ, र त्यही तापले सारा जगत् तातिरहेछ।",
-                "hi": "“आदि-अन्त से रहित, असीम शक्ति, अगणित बाहु, सूर्य-चन्द्र नेत्र — मैं आपको अग्नि-जैसे मुखों से अपने तेज से संसार को जलाते देखता हूँ।”"
+                "en": "“Without beginning, middle, or end, infinite in might, countless-armed, sun-and-moon-eyed — I see you, fire-mouthed, burning up the world with your brilliance.”",
+                "ne": "न सुरु देखिन्छ, न बीच, न अन्त्य। शक्ति असीम छ, पाखुरा गन्नै सकिन्न, आँखा त सूर्य र चन्द्रमा। मुख बलेको आगोजस्तै छ, र तपाईंको तेजले सारा जगत् तातिरहेछ।",
+                "hi": "“न आदि दिखता है, न मध्य, न अन्त। आपकी शक्ति असीम है, बाहुएँ अनगिनत और आँखें सूर्य-चन्द्र हैं। आपके मुख जलती आग जैसे हैं; आपके तेज से जगत् तप रहा है।”"
               },
               "anvaya": "अनादिमध्यान्तम्, अनन्तवीर्यम्, अनन्तबाहुं, शशिसूर्यनेत्रं, दीप्तहुताशवक्त्रं, स्वतेजसा इदं विश्वं तपन्तं त्वां पश्यामि।",
               "anvaya_iast": "anādimadhyāntam, anantavīryam, anantabāhuṃ, śaśisūryanetraṃ, dīptahutāśavaktraṃ, svatejasā idaṃ viśvaṃ tapantaṃ tvāṃ paśyāmi."
@@ -5061,7 +5061,7 @@
                 "hi": "आप अपने जलते मुखों से सब लोकों को चाटते हैं, चारों ओर से निगलते हैं; हे विष्णु, आपकी भयंकर किरणें तेज से सम्पूर्ण ब्रह्माण्ड को भरकर जलती हैं।"
               },
               "paras": {
-                "en": "“You lap up the worlds with your burning jaws, swallowing them wholly; your fierce glory fills the universe, O Viṣṇu.”",
+                "en": "“You lap up the worlds with your burning jaws, swallowing them wholly; your fierce rays fill the universe and scorch it, O Viṣṇu.”",
                 "ne": "बलिरहेका मुखले तपाईं लोकहरूलाई जिब्रोले सोहोर्दै चारैतिरबाट निल्दै हुनुहुन्छ; तपाईंको उग्र तापले सारा ब्रह्माण्ड पोलिरहेको छ, हे विष्णु।",
                 "hi": "जलते हुए मुँह से आप लोकों को जीभ से समेटते हुए चारों ओर से निगल रहे हैं; आपकी उग्र आँच से सारा ब्रह्माण्ड तप रहा है, हे विष्णु।"
               },
@@ -5687,9 +5687,9 @@
                 "hi": "इसलिए उठ और कीर्ति जीत; शत्रुओं को जीत और फलते-फूलते राज्य का भोग कर — वे मेरे द्वारा पहले ही मारे जा चुके हैं; हे सव्यसाची, तू केवल साधन बन।"
               },
               "paras": {
-                "en": "“So stand up and win renown; defeat the foe and enjoy the flourishing realm. I have already killed them — you are merely the means, Arjuna.”",
-                "ne": "“त्यसैले उठ र प्रसिद्धि कमाऊ; शत्रुलाई हराऊ र समृद्ध राज्यको आनन्द लेऊ। मैले तिनलाई पहिल्यै मारिसकेको छु — तिमी केवल माध्यम हौ, अर्जुन।”",
-                "hi": "“इसलिए उठ और यश कमा; शत्रु को हरा और समृद्ध राज्य का आनन्द ले। मैंने उन्हें पहले ही मार दिया है — तू केवल माध्यम है, अर्जुन।”"
+                "en": "“So stand up and win renown; defeat the foe and enjoy the flourishing realm. I have already killed them — be merely the instrument, Arjuna.”",
+                "ne": "“त्यसैले उठ र प्रसिद्धि कमाऊ; शत्रुलाई हराऊ र समृद्ध राज्यको आनन्द लेऊ। मैले तिनलाई पहिल्यै मारिसकेको छु — तिमी केवल माध्यम बन, अर्जुन।”",
+                "hi": "“इसलिए उठ और यश कमा; शत्रु को हरा और समृद्ध राज्य का आनन्द ले। मैंने उन्हें पहले ही मार दिया है — तू केवल माध्यम बन, अर्जुन।”"
               },
               "anvaya": "तस्मात् त्वम् उत्तिष्ठ, यशः लभस्व, शत्रून् जित्वा समृद्धं राज्यं भुङ्क्ष्व; एते मया एव पूर्वम् एव निहताः; सव्यसाचिन्! निमित्तमात्रं भव।",
               "anvaya_iast": "tasmāt tvam uttiṣṭha, yaśaḥ labhasva, śatrūn jitvā samṛddhaṃ rājyaṃ bhuṅkṣva; ete mayā eva pūrvam eva nihatāḥ; savyasācin! nimittamātraṃ bhava."
@@ -5900,9 +5900,9 @@
                 "hi": "द्रोण, भीष्म, जयद्रथ, कर्ण और अन्य वीर-योद्धाओं को मार — जिन्हें मैंने पहले ही मार दिया है; व्यथित मत हो, युद्ध कर — तू रण में अपने प्रतिद्वंद्वियों को जीतेगा।"
               },
               "paras": {
-                "en": "“Kill Droṇa, Bhīṣma, Jayadratha, and Karṇa — I have already destroyed them. Strike without hesitation and fight; you will triumph in battle.”",
-                "ne": "“द्रोण, भीष्म, जयद्रथ र कर्णलाई मार — मैले तिनलाई पहिल्यै नष्ट गरिसकेको छु। हिचकिचाहट बिना प्रहार गर र लड; तिमी युद्धमा विजयी हुनेछौ।”",
-                "hi": "“द्रोण, भीष्म, जयद्रथ और कर्ण को मार — मैंने उन्हें पहले ही नष्ट कर दिया है। बिना हिचक प्रहार कर और युद्ध कर; तू रण में विजयी होगा।”"
+                "en": "“Kill Droṇa, Bhīṣma, Jayadratha, Karṇa and the other warrior-heroes — I have already destroyed them. Do not be distressed; fight; you will triumph in battle.”",
+                "ne": "“द्रोण, भीष्म, जयद्रथ, कर्ण र अरू वीर योद्धाहरूलाई मार — मैले तिनलाई पहिल्यै नष्ट गरिसकेको छु। व्यथित नहोऊ, लड; तिमी युद्धमा विजयी हुनेछौ।”",
+                "hi": "“द्रोण, भीष्म, जयद्रथ, कर्ण और दूसरे वीर योद्धाओं को मार — मैंने उन्हें पहले ही नष्ट कर दिया है। व्यथित मत हो, युद्ध कर; तू रण में विजयी होगा।”"
               },
               "anvaya": "मया हतान् द्रोणं च, भीष्मं च, जयद्रथं च, कर्णं तथा अन्यान् अपि योधवीरान् त्वं जहि, मा व्यथिष्ठाः; युध्यस्व, रणे सपत्नान् जेतासि।",
               "anvaya_iast": "mayā hatān droṇaṃ ca, bhīṣmaṃ ca, jayadrathaṃ ca, karṇaṃ tathā anyān api yodhavīrān tvaṃ jahi, mā vyathiṣṭhāḥ; yudhyasva, raṇe sapatnān jetāsi."
@@ -6718,9 +6718,9 @@
                 "hi": "आप आदि देव, प्राचीन पुरुष, इस ब्रह्माण्ड के परम शरण हैं; आप ज्ञाता और ज्ञेय, परम धाम हैं; हे अनन्त रूप, आपसे ही यह ब्रह्माण्ड व्याप्त है।"
               },
               "paras": {
-                "en": "“You are the first God, the ancient Person, the universe's highest refuge; you are the knower and the known, the supreme home — and all is spread through you.”",
-                "ne": "“तपाईं पहिलो देवता, प्राचीन पुरुष, ब्रह्माण्डको सर्वोच्च आश्रय हुनुहुन्छ; तपाईं जान्ने र जानिने, परम घर हुनुहुन्छ — र सबै तपाईंमै फैलिएको छ।”",
-                "hi": "“आप पहले देव, प्राचीन पुरुष, ब्रह्माण्ड के सर्वोच्च आश्रय हैं; आप जानने वाले और जानने योग्य, परम घर हैं — और सब आप में ही फैला है।”"
+                "en": "“You are the first God, the ancient Person, the universe's highest refuge; you are the knower and the known, the supreme home — and you pervade the entire universe.”",
+                "ne": "“तपाईं पहिलो देवता, प्राचीन पुरुष, ब्रह्माण्डको सर्वोच्च आश्रय हुनुहुन्छ; तपाईं जान्ने र जानिने, परम घर हुनुहुन्छ — र तपाईंले सम्पूर्ण ब्रह्माण्ड व्याप्त गर्नुभएको छ।”",
+                "hi": "“आप पहले देव, प्राचीन पुरुष, ब्रह्माण्ड के सर्वोच्च आश्रय हैं; आप जानने वाले और जानने योग्य, परम घर हैं — और आप पूरे ब्रह्माण्ड में व्याप्त हैं।”"
               },
               "anvaya": "त्वम् आदिदेवः, पुराणः पुरुषः, त्वम् अस्य विश्वस्य परं निधानं, वेत्ता असि वेद्यं च परं च धाम; अनन्तरूप! त्वया विश्वं ततम्।",
               "anvaya_iast": "tvam ādidevaḥ, purāṇaḥ puruṣaḥ, tvam asya viśvasya paraṃ nidhānaṃ, vettā asi vedyaṃ ca paraṃ ca dhāma; anantarūpa! tvayā viśvaṃ tatam."
@@ -7564,9 +7564,9 @@
                 "hi": "और खेल में, विश्राम में, बैठते या भोजन करते समय, अकेले या दूसरों के सामने मज़ाक के लिए आपके प्रति जो-जो अनादर किया — हे अच्युत, हे अप्रमेय, वह सब क्षमा कीजिए।"
               },
               "paras": {
-                "en": "“— and however I slighted you in play, in rest, at meals, alone or in company — forgive all that, O changeless, measureless Lord.”",
-                "ne": "“— र खेल, आराम, भोजन वा अरूको संगतमा, तपाईंलाई जे-जे हेला गरें — हे अपरिवर्तनीय, अमापनीय प्रभु, त्यो सबै क्षमा गर्नुहोस्।”",
-                "hi": "“— और खेल, आराम, भोजन या दूसरों की संगति में, आपके प्रति जो-जो हेला की — हे अपरिवर्तनीय, अमापनीय प्रभु, वह सब क्षमा कीजिए।”"
+                "en": "“— and however I slighted you in jest, in play, in rest, at meals, alone or in company — forgive all that, O changeless, measureless Lord.”",
+                "ne": "“— र खेल्दा, आराम गर्दा, बस्दा वा भोजनमा, एक्लै वा अरूका सामु, मजाकमा तपाईंलाई जे-जे अनादर गरें — हे अपरिवर्तनीय, अमापनीय प्रभु, त्यो सबै क्षमा गर्नुहोस्।”",
+                "hi": "“— और खेलते, आराम करते, बैठते या भोजन में, अकेले या दूसरों के सामने, मज़ाक में आपका जो अनादर किया — हे अपरिवर्तनीय, अमापनीय प्रभु, वह सब क्षमा कीजिए।”"
               },
               "anvaya": "अच्युत! विहारशय्यासनभोजनेषु एकः अथवा अपि तत्समक्षम् अवहासार्थं यत् च असत्कृतः असि, तत् अहम् अप्रमेयं त्वां क्षामये।",
               "anvaya_iast": "acyuta! vihāraśayyāsanabhojaneṣu ekaḥ athavā api tatsamakṣam avahāsārthaṃ yat ca asatkṛtaḥ asi, tat aham aprameyaṃ tvāṃ kṣāmaye."
@@ -8176,9 +8176,9 @@
                 "hi": "पहले कभी न देखा यह देखकर मैं प्रसन्न हूँ, फिर भी मेरा मन भय से काँपता है; हे देव, मुझे वही रूप दिखाइए — हे देवेश, हे जगन्निवास, कृपा कीजिए।"
               },
               "paras": {
-                "en": "“Having seen this wonder I rejoice, yet my heart quakes with fear; show me your gentle form, O Lord — have mercy.”",
-                "ne": "“यो आश्चर्य देखेर म रमाउँछु, तर मेरो हृदय डरले काँप्छ; हे प्रभु, आफ्नो कोमल रूप देखाउनुहोस् — कृपा गर्नुहोस्।”",
-                "hi": "“यह आश्चर्य देखकर मैं हर्षित हूँ, किन्तु मेरा हृदय भय से काँपता है; हे प्रभु, अपना कोमल रूप दिखाइए — कृपा कीजिए।”"
+                "en": "“Having seen this wonder I rejoice, yet my heart quakes with fear; show me that form of yours, O Lord — have mercy.”",
+                "ne": "“यो आश्चर्य देखेर म रमाउँछु, तर मेरो हृदय डरले काँप्छ; हे प्रभु, आफ्नो त्यो रूप देखाउनुहोस् — कृपा गर्नुहोस्।”",
+                "hi": "“यह आश्चर्य देखकर मैं हर्षित हूँ, किन्तु मेरा हृदय भय से काँपता है; हे प्रभु, अपना वह रूप दिखाइए — कृपा कीजिए।”"
               },
               "anvaya": "अदृष्टपूर्वं दृष्ट्वा हृषितः अस्मि, भयेन च मे मनः प्रव्यथितम्; देव! मे तत् एव रूपं दर्शय; देवेश! जगन्निवास! प्रसीद।",
               "anvaya_iast": "adṛṣṭapūrvaṃ dṛṣṭvā hṛṣitaḥ asmi, bhayena ca me manaḥ pravyathitam; deva! me tat eva rūpaṃ darśaya; deveśa! jagannivāsa! prasīda."
@@ -9001,9 +9001,9 @@
                 "hi": "मेरे इस भयंकर रूप को देखकर न डर, न मोहित हो; भय हटाकर, प्रसन्न हृदय से, मेरा यह वही रूप फिर देख।"
               },
               "paras": {
-                "en": "“Fear not, nor be confused, at this dread vision of mine. With fear gone and heart at ease, look again upon my gentle form.”",
-                "ne": "यो डरलाग्दो दृश्यले तर्सिनु पर्दैन, अलमलिनु पनि पर्दैन। मन थामेर, ढुक्क भएर, अब मेरो त्यही मायालु रूप हेर।",
-                "hi": "“मेरे इस भयानक दृश्य को देखकर न डर, न उलझन में पड़। भय जाने पर, सहज हृदय से, मेरा कोमल रूप फिर देख।”"
+                "en": "“Fear not, nor be confused, at this dread vision of mine. With fear gone and heart at ease, look again upon that form of mine again.”",
+                "ne": "यो डरलाग्दो दृश्यले तर्सिनु पर्दैन, अलमलिनु पनि पर्दैन। मन थामेर, ढुक्क भएर, अब मेरो त्यही रूप फेरि हेर।",
+                "hi": "“मेरे इस भयानक दृश्य को देखकर न डर, न उलझन में पड़। भय जाने पर, सहज हृदय से, मेरा वही रूप फिर देख।”"
               },
               "anvaya": "मम इदम् ईदृशं घोरं रूपं दृष्ट्वा ते व्यथा मा, विमूढभावः च मा; व्यपेतभीः प्रीतमनाः त्वं पुनः तत् एव मे इदं रूपं प्रपश्य।",
               "anvaya_iast": "mama idam īdṛśaṃ ghoraṃ rūpaṃ dṛṣṭvā te vyathā mā, vimūḍhabhāvaḥ ca mā; vyapetabhīḥ prītamanāḥ tvaṃ punaḥ tat eva me idaṃ rūpaṃ prapaśya."
@@ -9763,8 +9763,8 @@
                 "hi": "तूने मुझे जिस प्रकार देखा, इस रूप में मैं न वेदों से, न तपस्या से, न दान से, न पूजा से देखा जा सकता हूँ।"
               },
               "paras": {
-                "en": "“This vision is not won by Vedic study, austerity, charity, or ritual — I am seen thus only as you have seen me.”",
-                "ne": "“वेदको अध्ययन, तप, दान वा यज्ञ गरेर मात्र तिमीले देखेको मेरो यो रूप देख्न सकिँदैन।”",
+                "en": "“This vision is not won by Vedic study, austerity, charity, or ritual — I cannot be seen in the way you have seen me through these means.”",
+                "ne": "“वेदको अध्ययन, तप, दान वा यज्ञ गरेर तिमीले देखेको मेरो यो रूप देख्न सकिँदैन।”",
                 "hi": "“यह दर्शन न वेद-अध्ययन से, न तप से, न दान से, न अनुष्ठान से मिलता है — मैं वैसे ही दिखता हूँ, जैसे तूने मुझे देखा।”"
               },
               "anvaya": "यथा मां दृष्टवान् असि, अहं न वेदैः, न तपसा, न दानेन, न च इज्यया एवंविधः द्रष्टुं शक्यः।",
@@ -9929,7 +9929,7 @@
               "paras": {
                 "en": "“Yet by undivided devotion I may be truly known, seen, and entered, Arjuna — in this very form.”",
                 "ne": "“तर अविभाजित भक्तिले, अर्जुन, मानिसले मलाई साँच्चै चिन्न सक्छ, मेरो यो रूप देख्न सक्छ र ममा प्रवेश गर्न सक्छ।”",
-                "hi": "पर अर्जुन, जिसका मन कहीं और बँटा नहीं — वही मुझे इस रूप में सचमुच जान पाता है, देख पाता है, और मुझ में समा जाता है।"
+                "hi": "पर अर्जुन, अनन्य भक्ति से कोई मुझे इस रूप में सचमुच जान पाता है, देख पाता है, और मुझ में समा जाता है।"
               },
               "anvaya": "परन्तप! अर्जुन! अनन्यया भक्त्या तु अहम् एवंविधः तत्त्वेन ज्ञातुं द्रष्टुं च प्रवेष्टुं च शक्यः।",
               "anvaya_iast": "parantapa! arjuna! ananyayā bhaktyā tu aham evaṃvidhaḥ tattvena jñātuṃ draṣṭuṃ ca praveṣṭuṃ ca śakyaḥ."

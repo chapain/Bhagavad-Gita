@@ -13,10 +13,11 @@ not differences of wording for their own sake. Earlier work is recorded in
 
 **Batch 1: Chapters 1–6 (280 verses) read**, with the exception that 2.05's
 interpretation is Dhruba's reserved decision: no part of that verse was
-changed. **Chapters 7–18 remain to be read in this pass**, except for the
-specific whole-book follow-ups listed below; those targeted checks do not make
-those chapters reviewed. This is a human review, not proof of perfect semantic
-fidelity. Different translations and contextual readings remain possible.
+changed. **Batch 2: Chapters 7–12 (209 verses) read** in all three languages
+against Sanskrit and reviewed literals. **Chapters 13–18 remain to be read**
+in this pass; targeted checks in those chapters do not make them reviewed.
+This is a human review, not proof of perfect semantic fidelity. Different
+translations and contextual readings remain possible.
 
 ## Batch 1 — corrections
 
@@ -128,13 +129,87 @@ Only paraphrases changed; no Sanskrit, word rows or literals were edited.
   paraphrases. This is a targeted correction, not a complete Chapter 13 review.
   3.03 and 5.02 were similarly narrowed to the words of their verses; the
   `selfish`/स्वार्थ test was strengthened after the 3.09 exemption was removed.
-- Other previously noted paraphrase leads, including **10.28**'s “among
-  procreators” and **13.15**'s “hard to grasp” versus unknowable, remain for
-  the later six-chapter batches. Their presence illustrates the limit of this
-  first batch and its screens; no later chapter is marked complete.
+- At the end of batch 1, **10.28**'s “among procreators” and **13.15**'s
+  “hard to grasp” versus unknowable were noted for later review. Batch 2
+  resolves 10.28 below; 13.15 remains a lead for batch 3.
 
 Regressions in `tests/test_paraphrase_review_2026_11.py` pin selected
 relationships, conditionals, negatives, timing and verse boundaries. The
 reference-conflict fixture changes only the affected paraphrases of 3.30, 4.28
 and 6.09; prior word-row/literal decisions remain. The overlap guard is a
 format/independence check, not semantic validation.
+
+## Batch 2 — corrections and retained readings
+
+Only paraphrase fields were changed. The 209 verses of chapters 7–12 were
+read in en/ne/hi with the Sanskrit and reviewed literals. Main fixes:
+
+- **7.16–17** distinguish a seeker of wealth from generic ambition and the
+  wise person from “the wisest”. **8.02** restores both who and how the
+  adhiyajña is in the body; **8.06** retains the ever-cultivated state rather
+  than making a single last thought the whole cause. **8.09–10** remain one
+  sentence; 8.09 now retains the seer/ruler and the sun comparison, while
+  8.10's owner-sensitive text was not edited. **8.11** restores the pursuit
+  of the goal through brahmacarya.
+- **9.02** retains the purifying function, **9.12** the nature's *deluding*
+  force rather than describing the nature as deluded, and **9.19** immortality
+  rather than mere life. **10.06** retains both sharing the divine nature and
+  mind-born origin, without changing the edition's debated grouping of four
+  Manus. **10.12** keeps the purifier; dhāma as abode remains a legitimate
+  paraphrase interpretation, not a revision of the literal “light”.
+- **10.28** calls Kandarpa procreative, not one among a class of procreators;
+  **10.35** identifies Mārgaśīrṣa and Bṛhat-sāma rather than replacing the
+  names with a seasonal description or a superlative. **10.36** specifies
+  gambling rather than gambling skill; **10.38** concerns those *seeking*
+  victory, not those who have already won.
+- **11.18–19** retain eternal dharma and person, the middle, limitless power
+  and fire-like mouths; **11.30** English retains scorching. **11.33** is an
+  imperative to become the instrument, and **11.34** retains the other
+  warrior-heroes without inventing an extra strike. **11.38** the universe
+  is pervaded *by* the divine, not merely spread in it. **11.42** retains
+  jest and both private and public situations. **11.45/49** use the neutral
+  demonstrative “that form”, instead of introducing a gracious form before
+  the description at 11.50–51. **11.53** English no longer says that only
+  Arjuna's vision can be thus; Nepali no longer adds “only” to the listed
+  means. **11.54** Hindi explicitly keeps undivided devotion.
+- **12.11** retains refuge in Kṛṣṇa's yoga and relinquishment of all action's
+  fruits, rather than substituting an offering to him for this step.
+  **12.13** keeps friendliness and forgiveness and preserves the earlier
+  non-possessiveness resolution; its conflict fixture updates only paraphrases.
+
+Retained: **9.32**'s owner-sensitive “low-born” and **10.12** dhāma
+interpretation; **12.19**'s contextual “unattached to place” and its earlier
+word-row decision; **12.20** “deathless dharma” as a defensible compressed
+rendering of the dharma-nectar compound, not a new literal decision.
+**11.45/49** do not decide whether “that form” is gracious in context; the
+paraphrase leaves the demonstrative open. Routine omitted vocatives and
+contextual explanations were not automatically treated as defects.
+
+### Whole-book class checks, limits and follow-ups
+
+A spelling-limited scan of all 700 word-row sets grouped representative forms
+for seekers/wise, adhiyajña, constancy, ruler/brahmacarya/purifier/immortality,
+divine nature/procreation/month/gambling/victory-seeking, devotion and fruit
+renunciation, imperatives/descriptions, pervasion and friendliness/forbearance.
+Each matched verse's three paraphrases was read; substring matches include
+false positives (e.g. तत् in सततम्), and inflections, synonyms, unlisted
+classes and Sanskrit words split across rows are not exhaustive. The scan
+prompted three targeted follow-ups: **6.10** restores constant practice;
+**14.20** English now says the three guṇas give rise to the body, following
+this edition's settled reading rather than the opposite causal direction;
+**18.57** restores always in all languages and Hindi बुद्धियोग rather than
+substituting ज्ञानयोग. These are targeted checks, not batch 3 review.
+10.04/10.34/16.03's “patience” remains an allowable forbearance rendering;
+12.20 is retained as described above. The selected-word screen is not a
+semantic guarantee or a comprehensive defect-class census.
+
+The existing boundary screen was rerun across all 682 within-chapter pairs
+(73 Nepali, 43 Hindi candidates); it is a lexical lead list, not proof against
+cross-verse leakage. Batch 2's reading also checked the 8.09–10, 11.26–27,
+11.45–50, 11.53–54 and 12.03–04 transitions in context. Focused regressions
+pin selected meanings and the established 14.20 causality; they do not verify
+all 209 verses. A structural comparison to batch 1 verifies that only
+paraphrase leaves changed. 2.05 is unchanged from the session base; the
+previously sensitive 6.13, 6.29, 8.10, 9.34, 11.44, 12.19, 16.05 and 18.66
+are unchanged in this batch. Browser checks require Playwright/Chromium and
+were skipped locally; Pillow was absent so share art was not repainted.
