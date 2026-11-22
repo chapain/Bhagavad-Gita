@@ -217,7 +217,7 @@
   .words-bar .wb-btn:disabled:hover{ background:var(--teal); }
   /* four pāda boxes in a 2x2 grid */
   .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
-  .m-verse .pada-row{ display:flex; gap:12px;}
+  .m-verse .pada-row{ display:flex; align-items:flex-start; gap:12px;}
   .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; transition:border-color .15s, background .15s;}
   .m-verse .pada-box .pada-toggle{ display:block; width:100%; padding:0; margin:0; border:0;
       background:transparent; color:inherit; text-align:left; font:inherit; cursor:pointer; }

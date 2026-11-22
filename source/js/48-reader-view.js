@@ -109,11 +109,11 @@ function setVerseView(expanded){
   }
 }
 function toggleVerseExpansion(ev){
-  const content = document.getElementById('verseContent');
   const t = ev && ev.target;
-  if(ev && verseViewState && verseViewState.isExpanded && content
-     && content.contains(t) && t && t.closest
-     && t.closest('.pada-toggle,.spk-line,.words')) return;
+  // Once in pāda view, only the dedicated back control can change shape.
+  // All other clicks (including whitespace and word rows) stay in this view.
+  if(verseViewState && verseViewState.isExpanded &&
+     !(t && t.closest && t.closest('.m-verse-back'))) return;
   setVerseView(!(verseViewState && verseViewState.isExpanded));
 }
 function setReaderSize(size){

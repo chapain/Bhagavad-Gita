@@ -328,7 +328,7 @@ function fillModal(){
         <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
              aria-expanded="false"
              onclick="App.reader.toggleVerseExpansion(event)"
-             onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();event.stopPropagation();App.reader.toggleVerseExpansion(event)}">
+             onkeydown="if((event.key==='Enter'||event.key===' ')&&event.target===this&&!verseViewState.isExpanded){event.preventDefault();event.stopPropagation();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}
         </div>
       </div>

@@ -89,7 +89,7 @@ source/                 ← edit here
 
 tests/                   mutation and regression checks
 rebuild.sh              delegates to build.py (the same full validations)
-run_gita_app.js         946 assertions on the built document
+run_gita_app.js         947 assertions on the built document
 browser_checks.py       357 live-browser checks over http (348 over file://): Learn/Play,
                         refresh, storage, i18n, touch, offline, per-context error capture,
                         and mobile + desktop/light-dark axe-core accessibility sweeps

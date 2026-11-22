@@ -1227,7 +1227,7 @@
   .words-bar .wb-btn:disabled:hover{ background:var(--teal); }
   /* four pāda boxes in a 2x2 grid */
   .m-verse .pada-grid{ display:flex; flex-direction:column; gap:12px;}
-  .m-verse .pada-row{ display:flex; gap:12px;}
+  .m-verse .pada-row{ display:flex; align-items:flex-start; gap:12px;}
   .m-verse .pada-box{ flex:1 1 0; min-width:0; max-width:100%; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:10px 14px; transition:border-color .15s, background .15s;}
   .m-verse .pada-box .pada-toggle{ display:block; width:100%; padding:0; margin:0; border:0;
       background:transparent; color:inherit; text-align:left; font:inherit; cursor:pointer; }
@@ -5047,11 +5047,11 @@ function setVerseView(expanded){
   }
 }
 function toggleVerseExpansion(ev){
-  const content = document.getElementById('verseContent');
   const t = ev && ev.target;
-  if(ev && verseViewState && verseViewState.isExpanded && content
-     && content.contains(t) && t && t.closest
-     && t.closest('.pada-toggle,.spk-line,.words')) return;
+  // Once in pāda view, only the dedicated back control can change shape.
+  // All other clicks (including whitespace and word rows) stay in this view.
+  if(verseViewState && verseViewState.isExpanded &&
+     !(t && t.closest && t.closest('.m-verse-back'))) return;
   setVerseView(!(verseViewState && verseViewState.isExpanded));
 }
 function setReaderSize(size){
@@ -5458,7 +5458,7 @@ function fillModal(){
         <div id="verseContent" class="m-whole-verse" lang="sa" role="button" tabindex="0"
              aria-expanded="false"
              onclick="App.reader.toggleVerseExpansion(event)"
-             onkeydown="if((event.key==='Enter'||event.key===' ')&&(event.target===this||!event.target.closest('.pada-toggle,.spk-line,.words,.m-verse-back'))){event.preventDefault();event.stopPropagation();App.reader.toggleVerseExpansion(event)}">
+             onkeydown="if((event.key==='Enter'||event.key===' ')&&event.target===this&&!verseViewState.isExpanded){event.preventDefault();event.stopPropagation();App.reader.toggleVerseExpansion(event)}">
           ${wholeVerseHtml}
         </div>
       </div>
