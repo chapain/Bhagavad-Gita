@@ -205,7 +205,7 @@ regenerated, never hand-edited, and the 2.19 snapshot in
 ### Coverage and what is still owed
 
 Read against the Sanskrit, the rows and both translations: **1.01–1.47,
-2.01–2.72, 3.01–3.22, 6.01–6.47 (189 verses)**. Not yet read in this pass:
-3.23–3.43 and chapters 4, 5, 7–18 (511 verses). The finding rate is roughly
+2.01–2.72, 3.01–3.22, 6.01–6.47 (188 verses)**. Not yet read in this pass:
+3.23–3.43 and chapters 4, 5, 7–18 (512 verses). The finding rate is roughly
 one every twelve verses, so the remaining reading should be expected to
 produce more, not fewer. Nothing above claims the unread chapters are clean.
