@@ -41,6 +41,7 @@
           "sutras": [
             {
               "n": "1.01",
+              "anvaya": "सञ्जय! धर्मक्षेत्रे कुरुक्षेत्रे युयुत्सवः समवेताः मामकाः पाण्डवाः च एव किम् अकुर्वत?",
               "d": "धृतराष्ट्र उवाच । धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः । मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय",
               "t": "dhṛtarāṣṭra uvāca । dharmakṣetre kurukṣetre samavetā yuyutsavaḥ । māmakāḥ pāṇḍavāścaiva kimakurvata sañjaya",
               "flow": [
@@ -1658,8 +1659,8 @@
               ],
               "lits": {
                 "en": "Insufficient is that strength of ours, guarded by Bhīṣma; sufficient is this strength of theirs, guarded by Bhīma.",
-                "ne": "हाम्रो त्यो शक्ति, भीष्मले रक्षा गरे पनि, अपर्याप्त छ; तिनीहरूको यो शक्ति, भीमले रक्षा गरेको, पर्याप्त छ।",
-                "hi": "हमारी वह शक्ति, भीष्म से रक्षित होकर भी, अपर्याप्त है; उनकी यह शक्ति, भीम से रक्षित, पर्याप्त है।"
+                "ne": "हाम्रो त्यो शक्ति, भीष्मले रक्षा गरेको, अपर्याप्त छ; तिनीहरूको यो शक्ति, भीमले रक्षा गरेको, पर्याप्त छ।",
+                "hi": "हमारी वह शक्ति, भीष्म से रक्षित, अपर्याप्त है; उनकी यह शक्ति, भीम से रक्षित, पर्याप्त है।"
               },
               "paras": {
                 "en": "“Our force, though shielded by Bhīṣma, is not enough; theirs, protected by Bhīma, is more than sufficient.”",
@@ -1812,9 +1813,9 @@
                 }
               ],
               "lits": {
-                "en": "Stationed at all the approaches, take your places in your divisions — and above all, protect Bhīṣma alone, all of you.",
-                "ne": "सबै दिशाहरूमा खडा भएर, आ-आफ्ना विभागमा स्थान लिनुहोस् — र सबैभन्दा माथि, सबैले भीष्मकै रक्षा गर्नुहोस्।",
-                "hi": "सब मोर्चों पर खड़े होकर, अपने-अपने विभाग में स्थान लो — और सबसे बढ़कर, सब मिलकर भीष्म की ही रक्षा करो।"
+                "en": "Stationed at all the approaches according to your divisions, all of you protect Bhīṣma alone.",
+                "ne": "सबै मोर्चाहरूमा आ-आफ्ना विभागअनुसार खडा भएका तपाईंहरू सबैले भीष्मकै रक्षा गर्नुहोस्।",
+                "hi": "सब मोर्चों पर अपने-अपने विभाग के अनुसार खड़े आप सब भीष्म की ही रक्षा करें।"
               },
               "paras": {
                 "en": "“Take your positions at every approach, each in your assigned place — and you must all protect Bhīṣma above all.”",
@@ -2152,8 +2153,8 @@
               ],
               "lits": {
                 "en": "Then conches, drums, kettledrums, tabors and horns were suddenly struck together — that sound became tumultuous.",
-                "ne": "त्यसपछि शङ्ख, नगारा, ढोल, मृदङ्ग र गोमुखहरू एकैसाथ बजे — त्यो ध्वनि भयङ्कर बन्यो।",
-                "hi": "तब शंख, नगाड़े, ढोल, मृदंग और तुरहियाँ एक साथ बज उठीं — वह ध्वनि भयानक हो गई।"
+                "ne": "त्यसपछि शङ्ख, नगारा, ढोल, मृदङ्ग र गोमुखहरू अचानक बजे — त्यो ध्वनि भयङ्कर बन्यो।",
+                "hi": "तब शंख, नगाड़े, ढोल, मृदंग और तुरहियाँ अचानक बज उठीं — वह ध्वनि भयानक हो गई।"
               },
               "paras": {
                 "en": "At once conches and kettledrums, tabors and trumpets crashed together, and the din swelled into a tremendous clamour.",
@@ -4901,9 +4902,9 @@
                 }
               ],
               "lits": {
-                "en": "“The Gāṇḍīva slips from my hand, my skin burns; I cannot stand still, and my mind reels.”",
-                "ne": "“गाण्डीव मेरो हातबाट चिप्लिन्छ, छाला बल्छ; म उभिन सक्दिनँ, र मेरो मन भड्किन्छ।”",
-                "hi": "“गांडीव मेरे हाथ से गिर जाता है, मेरी त्वचा जलती है; मैं खड़ा नहीं रह पाता, और मेरा मन घूम जाता है।”"
+                "en": "“The Gāṇḍīva slips from my hand, my skin burns; I cannot stand still, and my mind seems to reel.”",
+                "ne": "“गाण्डीव मेरो हातबाट चिप्लिन्छ, छाला बल्छ; म उभिन सक्दिनँ, र मेरो मन भड्किएझैं हुन्छ।”",
+                "hi": "“गांडीव मेरे हाथ से फिसलता है, मेरी त्वचा जलती है; मैं खड़ा नहीं रह पाता, और मेरा मन मानो घूम रहा है।”"
               },
               "paras": {
                 "en": "“Gāṇḍīva falls from my hand, my skin burns; I can hardly stand, and my mind is spinning out of control.”",
@@ -7370,8 +7371,8 @@
               ],
               "lits": {
                 "en": "“Alas! What a great sin we have resolved to commit — driven by greed for kingdom and pleasure, we are ready to kill our own kin.”",
-                "ne": "“हाय! हामीले कस्तो ठूलो पाप गर्ने निश्चय गरेका छौं — राज्य र सुखको लोभले अन्धा भएर, हामी आफ्नै कुटुम्ब मार्न तयार छौं।”",
-                "hi": "“हाय! हमने कितना बड़ा पाप करने का निश्चय किया है — राज्य और सुख के लोभ से अंधे होकर, हम अपने ही कुटुंब को मारने को तैयार हैं।”"
+                "ne": "“हाय! हामीले कस्तो ठूलो पाप गर्ने निश्चय गरेका छौं — राज्य र सुखको लोभले, हामी आफ्नै कुटुम्ब मार्न तयार छौं।”",
+                "hi": "“हाय! हमने कितना बड़ा पाप करने का निश्चय किया है — राज्य और सुख के लोभ से, हम अपने ही कुटुंब को मारने को तैयार हैं।”"
               },
               "paras": {
                 "en": "“What terrible wrong are we about to do! Blinded by the craving for a throne and its pleasures, we are prepared to kill our own family.”",

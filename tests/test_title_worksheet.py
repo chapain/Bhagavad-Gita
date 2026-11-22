@@ -90,10 +90,11 @@ class TitleWorksheetTests(unittest.TestCase):
         got = sorted(r[1] for r in rows() if r[0])
         self.assertEqual(got, want)
 
-    def test_still_50_advisories_and_nothing_blocking(self):
+    def test_advisories_include_contextual_201_and_nothing_blocking(self):
         blocking = [x for x in self.findings if x["kind"] in audit_titles.STRICT]
         self.assertEqual(blocking, [])
-        self.assertEqual(len(self.findings), 50)
+        self.assertEqual(len(self.findings), 51)
+        self.assertTrue(any(x["ref"] == "2.01" and "Arjuna" in x.get("message", str(x)) for x in self.findings))
 
     def test_every_chapter_appears_once_with_a_heading(self):
         heads = re.findall(r"^### Chapter (\d+) — ", snapshot_text(), re.M)

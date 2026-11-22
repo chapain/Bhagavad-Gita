@@ -367,8 +367,8 @@
               ],
               "lits": {
                 "en": "With words that appear equivocal you seem to confuse my intellect. Tell me one thing decisively, by which I may attain the good.",
-                "ne": "मिश्रित वचनले तपाईंले मेरो बुद्धिलाई अलमल्याउनुभएको छ। एउटै कुरा निश्चय गरेर भन्नुहोस्, जसद्वारा म हित प्राप्त गरूँ।",
-                "hi": "मिलते-जुलते प्रतीत होने वाले वचनों से आप मेरी बुद्धि को उलझा रहे हैं। एक ही बात निश्चय करके कहिए, जिससे मैं कल्याण को प्राप्त करूँ।"
+                "ne": "मानौँ मिश्रित वचनले तपाईं मेरो बुद्धिलाई अलमल्याउँदै हुनुहुन्छ। एउटै कुरा निश्चय गरेर भन्नुहोस्, जसद्वारा म हित प्राप्त गरूँ।",
+                "hi": "मानो मिले-जुले वचनों से आप मेरी बुद्धि को उलझा रहे हैं। एक ही बात निश्चय करके कहिए, जिससे मैं कल्याण को प्राप्त करूँ।"
               },
               "paras": {
                 "en": "“Your words seem mixed and contradictory — they only confuse me. Tell me plainly the single path by which I can reach what is truly good.”",
@@ -684,8 +684,8 @@
               ],
               "lits": {
                 "en": "Not by the non-performance of actions does one attain freedom from action, nor by mere renunciation alone does one reach perfection.",
-                "ne": "कर्म नगर्दैमा मानिस कर्मबन्धनबाट मुक्त हुँदैन, न त संन्यास लिँदैमा सिद्धि पाउँछ।",
-                "hi": "कर्मों के न करने से मनुष्य कर्म के बंधन से मुक्त नहीं होता, और न केवल संन्यास से ही सिद्धि मिलती है।"
+                "ne": "कर्म सुरु नगर्दैमा मानिस कर्मरहित अवस्था प्राप्त गर्दैन, न त संन्यास लिँदैमा सिद्धि पाउँछ।",
+                "hi": "कर्मों का आरम्भ न करने से मनुष्य कर्मरहित अवस्था प्राप्त नहीं करता, और न केवल संन्यास से ही सिद्धि पाता है।"
               },
               "paras": {
                 "en": "“You do not become free of action by refusing to act, nor does giving up the world by itself bring perfection.”",
@@ -3941,9 +3941,9 @@
                 }
               ],
               "lits": {
-                "en": "If I did not engage in action ever, untiringly, then people would follow my path in all respects, O Pārtha.",
-                "ne": "यदि म कुनै बेला कर्ममा तत्परतापूर्वक लागिनँ भने, हे पार्थ, मानिसहरूले सबै कुरामा मेरै मार्ग अनुसरण गर्नेछन्।",
-                "hi": "यदि मैं कभी तत्परता से कर्म में न लगूँ, तो हे पार्थ, लोग सब बातों में मेरा ही मार्ग अपनाएँगे।"
+                "en": "If I did not ever engage in action untiringly ... For people follow my path in all respects, O Pārtha.",
+                "ne": "यदि म कुनै बेला कर्ममा तत्परतापूर्वक लागिनँ भने... हे पार्थ, मानिसहरू सबै प्रकारले मेरो मार्गको अनुसरण गर्छन्।",
+                "hi": "यदि मैं कभी तत्परतापूर्वक कर्म में न लगूँ... हे पार्थ, मनुष्य सब प्रकार से मेरे मार्ग का अनुसरण करते हैं।"
               },
               "paras": {
                 "en": "“If I ever stopped working, everyone would follow my example and give up their duties too.”",
@@ -6416,9 +6416,9 @@
                 }
               ],
               "lits": {
-                "en": "As fire is enveloped by smoke, and a mirror by dust, and an embryo by its membrane, so is this covered by that (desire).",
-                "ne": "जसरी आगो धुवाँले ढाकिन्छ, ऐना धुलोले, र भ्रूण झिल्लीले ढाकिन्छ — त्यसरी नै यो (ज्ञान) त्यस (कामना)ले ढाकिएको छ।",
-                "hi": "जैसे अग्नि धूम से आच्छादित होती है, दर्पण धूल से, और गर्भ झिल्ली से — वैसे ही यह (ज्ञान) उस (कामना) से आच्छादित है।"
+                "en": "As fire is enveloped by smoke, and a mirror by dust, and an embryo by its membrane, so is this covered by that.",
+                "ne": "जसरी आगो धुवाँले ढाकिन्छ, ऐना धुलोले र भ्रूण झिल्लीले ढाकिन्छ — त्यसरी नै यो त्यसले ढाकिएको छ।",
+                "hi": "जैसे अग्नि धुएँ से, दर्पण धूल से और गर्भ झिल्ली से ढका होता है — वैसे ही यह उससे ढका है।"
               },
               "paras": {
                 "en": "“Desire obscures wisdom the way smoke hides fire, dust hides a mirror, and a membrane hides an embryo.”",

@@ -1,6 +1,6 @@
 # Title and description advisories — review worksheet
 
-Snapshot of 2026-11-20, from `python3 source/audit_titles.py --markdown`. Re-run it after
+Snapshot of 2026-11-22, from `python3 source/audit_titles.py --markdown`. Re-run it after
 any change to `source/ch*.json`; this file is a worklist, not site content.
 
 **An advisory is a candidate for review, not a finding of error.** Sanskrit
@@ -59,7 +59,7 @@ want them to survive a regeneration.
 |  | 1.08 | Bhīṣma, Karṇa, Kṛpa, Aśvatthāmā and others | You yourself, Bhīṣma, Karṇa, Kṛpa the conqueror in battle, Aśvatthāmā, Vikarṇa, and the son of Somadatta as well. | ☐ | ☐ | ☐ |
 | ⚑ | 1.09 | Warriors ready to die for Duryodhana | And many other heroes, ready to give up their lives for my sake, armed with various weapons, all skilled in war. | ☐ | ☐ | ☐ |
 |  | 1.10 | Bhīṣma guards our army; Bhīma guards theirs | Insufficient is that strength of ours, guarded by Bhīṣma; sufficient is this strength of theirs, guarded by Bhīma. | ☐ | ☐ | ☐ |
-|  | 1.11 | Protect Bhīṣma above all | Stationed at all the approaches, take your places in your divisions — and above all, protect Bhīṣma alone, all of you. | ☐ | ☐ | ☐ |
+|  | 1.11 | Protect Bhīṣma above all | Stationed at all the approaches according to your divisions, all of you protect Bhīṣma alone. | ☐ | ☐ | ☐ |
 |  | 1.12 | Bhīṣma roars and blows his conch | To gladden him, the grandsire of the Kurus, the glorious Bhīṣma, roared a lion's roar and blew his conch loudly. | ☐ | ☐ | ☐ |
 |  | 1.13 | Conches, drums and horns together | Then conches, drums, kettledrums, tabors and horns were suddenly struck together — that sound became tumultuous. | ☐ | ☐ | ☐ |
 |  | 1.14 | Kṛṣṇa and Arjuna sound their conches | Then, standing in a great chariot yoked with white horses, Mādhava and the son of Pāṇḍu blew their divine conches. | ☐ | ☐ | ☐ |
@@ -78,7 +78,7 @@ want them to survive a regeneration.
 |  | 1.27 | Kinsmen and friends stand on both sides | Fathers-in-law and well-wishers in both armies — seeing all these kinsmen stationed there, the son of Kuntī… | ☐ | ☐ | ☐ |
 |  | 1.28 | My own kin stand ready to fight | Overwhelmed with profound compassion and grieving, he spoke — Arjuna said: “Seeing these my own people, O Kṛṣṇa, standing here eager for battle…” | ☐ | ☐ | ☐ |
 |  | 1.29 | My limbs fail | “My limbs fail, my mouth dries up, trembling runs through my body, and my hair stands on end.” | ☐ | ☐ | ☐ |
-|  | 1.30 | The Gāṇḍīva slips from my hand | “The Gāṇḍīva slips from my hand, my skin burns; I cannot stand still, and my mind reels.” | ☐ | ☐ | ☐ |
+|  | 1.30 | The Gāṇḍīva slips from my hand | “The Gāṇḍīva slips from my hand, my skin burns; I cannot stand still, and my mind seems to reel.” | ☐ | ☐ | ☐ |
 |  | 1.31 | No good comes from killing one's kin | “And I see inauspicious omens, O Keśava; nor do I see any good in killing my own kinsmen in battle.” | ☐ | ☐ | ☐ |
 |  | 1.32 | Of what use is a kingdom? | “I do not desire victory, O Kṛṣṇa, nor kingdom nor pleasures. Of what use is a kingdom to us, O Govinda — what use are enjoyments, or even life?” | ☐ | ☐ | ☐ |
 |  | 1.33 | Those he sought a kingdom for stand in battle | “Those for whose sake we desired kingdom, enjoyments and pleasures — they stand here in battle, having given up their lives and wealth.” | ☐ | ☐ | ☐ |
@@ -102,18 +102,18 @@ want them to survive a regeneration.
 * ⚑ **1.15** — number unsupported. Advisory text: “Three conches: Pāñcajanya, Devadatta, Pauṇḍra”
 
 
-### Chapter 2 — Sāṅkhya Yoga · verses 2.01–2.72 · 72 titles, 0 flagged
+### Chapter 2 — Sāṅkhya Yoga · verses 2.01–2.72 · 72 titles, 1 flagged
 
 | ☐ | Verse | Title | The verse says (literal) | keep | revise | fix |
 |---|---|---|---|:-:|:-:|:-:|
-|  | 2.01 | Seeing Arjuna in tears | Sañjaya said: Seeing him thus overcome with pity, his eyes filled with tears and agitation — the sorrowing Arjuna — Madhusūdana spoke these words. | ☐ | ☐ | ☐ |
-|  | 2.02 | Where has this weakness come from? | The Blessed Lord said: Whence has come upon you, in this hour of peril, this dejection — unworthy of an Āryan, closing the door of heaven, and bringing disgrace, O Arjuna? | ☐ | ☐ | ☐ |
+| ⚑ | 2.01 | Seeing Arjuna in tears | Sañjaya said: To him, thus overcome with compassion, his eyes filled with tears and agitated, and grieving, Madhusūdana spoke these words. | ☐ | ☐ | ☐ |
+|  | 2.02 | Where has this weakness come from? | The Blessed Lord said: Whence has this dejection come upon you in this peril, O Arjuna — unworthy of an Āryan, not leading to heaven, and bringing disgrace? | ☐ | ☐ | ☐ |
 |  | 2.03 | Cast off this faintness and arise | Yield not to unmanliness, O Pārtha — it does not become you. Cast off this petty faintness of heart and arise, O scorcher of foes! | ☐ | ☐ | ☐ |
 |  | 2.04 | How can I strike Bhīṣma and Droṇa? | Arjuna said: How shall I strike Bhīṣma and Droṇa in battle with my arrows, O Madhusūdana — they who are worthy of worship, O slayer of foes? | ☐ | ☐ | ☐ |
 |  | 2.05 | Better to beg than kill revered teachers | Better to eat alms-food even here in this world than to slay these noble, great-souled teachers. Killing these very teachers — even for the sake of wealth and desires — I would taste pleasures … | ☐ | ☐ | ☐ |
 |  | 2.06 | Victory or defeat—which is better? | Nor do we know which is better for us — to conquer them or be conquered. The very sons of Dhṛtarāṣṭra stand before us; killing them, we should not care to live. | ☐ | ☐ | ☐ |
-|  | 2.07 | Teach me, I am your disciple | My nature is overcome by confusion; my mind is confused about duty. I ask you: tell me for certain what is good — I am your disciple; teach me, I have taken refuge in you. | ☐ | ☐ | ☐ |
-|  | 2.08 | This grief no kingdom could drive away | I do not see what could drive away this grief that dries up my senses — even if I won an unrivaled kingdom on earth or lordship over the gods. | ☐ | ☐ | ☐ |
+|  | 2.07 | Teach me, I am your disciple | My nature is overcome by the defect of weakness; my mind is confused about duty. I ask you: tell me for certain what is good. I am your disciple; teach me, who have taken refuge in you. | ☐ | ☐ | ☐ |
+|  | 2.08 | This grief no kingdom could drive away | I do not see what could drive away this grief that dries up my senses, even if I obtained a prosperous, unrivaled kingdom on earth and sovereignty even over the gods. | ☐ | ☐ | ☐ |
 |  | 2.09 | I will not fight, he said | Sañjaya said: O scorcher of foes, having spoken thus to Hṛṣīkeśa, Arjuna said to Govinda, 'I will not fight' — and fell silent. | ☐ | ☐ | ☐ |
 |  | 2.10 | Kṛṣṇa speaks as if smiling | To him, as he grieved between the two armies, Hṛṣīkeśa, as if smiling, spoke these words, O descendant of Bharata. | ☐ | ☐ | ☐ |
 |  | 2.11 | You grieve where no grief is due | The Blessed Lord said: You grieve for those who should not be grieved for, yet speak words of wisdom. The wise grieve neither for the living nor for the dead. | ☐ | ☐ | ☐ |
@@ -147,8 +147,8 @@ want them to survive a regeneration.
 |  | 2.39 | Now hear the wisdom of yoga | This wisdom of sāṅkhya has been declared to you, O Pārtha. Now hear the wisdom of yoga; joined with it, you will cast off the bondage of karma. | ☐ | ☐ | ☐ |
 |  | 2.40 | No effort is ever lost | Here there is no loss of effort, nor any contrary result. Even a little of this dharma protects one from great fear. | ☐ | ☐ | ☐ |
 |  | 2.41 | A resolute intellect has one aim | The intellect of the resolute is single and one-pointed here, O joy of the Kurus; but the intellects of the irresolute branch out endlessly. | ☐ | ☐ | ☐ |
-|  | 2.42 | The flowery words of the Vedas | The unwise, delighting in the flowery words of the Vedas, declare that there is nothing else — addicted to ritual and enjoyment, O Pārtha. | ☐ | ☐ | ☐ |
-|  | 2.43 | Full of craving, longing for heaven | Desire-filled, heaven-seeking, they promise birth and karma as their fruit, and preach many special rites for the sake of pleasure and power. | ☐ | ☐ | ☐ |
+|  | 2.42 | The flowery words of the Vedas | The unwise, delighting in Vedic pronouncements, O Pārtha, saying “there is nothing else,” speak this flowery speech — | ☐ | ☐ | ☐ |
+|  | 2.43 | Full of craving, longing for heaven | — desire-filled and seeking heaven, they speak of what gives birth as the fruit of action and abounds in special rites directed toward enjoyment and power. | ☐ | ☐ | ☐ |
 |  | 2.44 | No samādhi for the scattered | For those attached to pleasure and power, whose minds are carried away by such words, the one-pointed intellect of samādhi does not arise. | ☐ | ☐ | ☐ |
 |  | 2.45 | Rise above the three guṇas | The Vedas deal with the three guṇas; rise above the three guṇas, O Arjuna — free from the pairs of opposites, ever established in sattva, beyond gain and keeping, self-possessed. | ☐ | ☐ | ☐ |
 |  | 2.46 | The well and the flood | As much use as a well is when water floods everywhere, so much is all the Veda for a brāhmaṇa of understanding. | ☐ | ☐ | ☐ |
@@ -164,13 +164,13 @@ want them to survive a regeneration.
 |  | 2.56 | The muni of steady wisdom | One whose mind is untroubled in sorrow and free from longing in joy, from whom passion, fear and anger have departed — that one is the steady-minded sage. | ☐ | ☐ | ☐ |
 |  | 2.57 | Neither rejoicing nor recoiling | One who is everywhere free from attachment, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.58 | Like a tortoise drawing in its limbs | When, like a tortoise drawing in its limbs from all sides, one withdraws the senses from their objects — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
-|  | 2.59 | Craving ends when the Supreme is seen | The objects fall away from the self-controlled one, but the taste for them remains; and when the Supreme is seen, even that taste departs. | ☐ | ☐ | ☐ |
+|  | 2.59 | Craving ends when the Supreme is seen | Sense objects fall away from the embodied one who abstains, except for the taste; having seen the Supreme, even that taste departs. | ☐ | ☐ | ☐ |
 |  | 2.60 | The mind following the senses loses its wisdom | Even for the striving sage, O son of Kuntī, the turbulent senses forcibly carry away the mind. | ☐ | ☐ | ☐ |
 |  | 2.61 | Reining in the senses | Having restrained them all, the disciplined one should sit intent on Me; for one whose senses are under control, wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.62 | Brooding breeds desire, desire breeds anger | Brooding on sense objects breeds attachment to them; from attachment arises desire; from desire arises anger. | ☐ | ☐ | ☐ |
 |  | 2.63 | Anger brings delusion and ruin | From anger comes delusion; from delusion, confusion of memory; from broken memory, the ruin of understanding; and from that ruin, one is destroyed. | ☐ | ☐ | ☐ |
 |  | 2.64 | The self-controlled attain serenity | But one who moves among objects with the senses mastered, free from attraction and aversion, self-controlled — that one attains serenity. | ☐ | ☐ | ☐ |
-|  | 2.65 | In peace, all suffering ends | In serenity, all sorrows cease for that one; for the mind of the serene is quickly established in steadiness. | ☐ | ☐ | ☐ |
+|  | 2.65 | In peace, all suffering ends | In serenity, all sorrows cease for that one; for the intellect of one whose mind is serene quickly becomes steady. | ☐ | ☐ | ☐ |
 |  | 2.66 | No peace, no happiness | There is no wisdom for the undisciplined, no meditation for the unsteady; and without meditation there is no peace — how can there be happiness without peace? | ☐ | ☐ | ☐ |
 |  | 2.67 | As wind carries a boat | For the mind that follows the wandering senses carries away the understanding, as the wind carries a boat on the waters. | ☐ | ☐ | ☐ |
 |  | 2.68 | The senses fully drawn back | Therefore, O mighty-armed one, one whose senses are wholly withdrawn from their objects — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
@@ -178,6 +178,8 @@ want them to survive a regeneration.
 |  | 2.70 | As waters enter the ocean | As the waters enter the ocean, which remains unmoved though filled from every side, so the sage whom all desires enter remains at peace — not the one who lusts for desires. | ☐ | ☐ | ☐ |
 |  | 2.71 | Without longing, without ego | The man who casts off all desires and moves without longing, without possessiveness, without ego — that one attains peace. | ☐ | ☐ | ☐ |
 |  | 2.72 | The Brāhmī state ends delusion | This is the Brāhmī state, O Pārtha; attaining it, one is no longer deluded. Resting in it even at the end, one reaches Brahman-nirvāṇa. | ☐ | ☐ | ☐ |
+
+* ⚑ **2.01** — name not in verse. Advisory text: “Seeing Arjuna in tears”
 
 
 ### Chapter 3 — Karma Yoga · verses 3.01–3.43 · 43 titles, 0 flagged
@@ -206,7 +208,7 @@ want them to survive a regeneration.
 |  | 3.20 | Janaka attained perfection by action | Indeed by action alone did Janaka and others attain perfection; even having regard for the welfare of the world, you should act. | ☐ | ☐ | ☐ |
 |  | 3.21 | As the great one does, so do others | Whatever the best person does, that indeed the common person does; whatever he makes the standard, the world follows. | ☐ | ☐ | ☐ |
 |  | 3.22 | Nothing I need, yet I act | For me, O Pārtha, there is nothing to be done in the three worlds, nothing unattained to be attained — yet I continue to act. | ☐ | ☐ | ☐ |
-|  | 3.23 | All would follow my example | If I did not engage in action ever, untiringly, then people would follow my path in all respects, O Pārtha. | ☐ | ☐ | ☐ |
+|  | 3.23 | All would follow my example | If I did not ever engage in action untiringly ... For people follow my path in all respects, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 3.24 | These worlds would perish | These worlds would perish if I did not perform action; I would be the maker of chaos and would destroy these creatures. | ☐ | ☐ | ☐ |
 |  | 3.25 | Act as the unwise do—but without attachment | As the unwise act, attached to action, O Bhārata, so should the wise act, unattached, desiring the welfare of the world. | ☐ | ☐ | ☐ |
 |  | 3.26 | Do not unsettle the ignorant | Let him not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him encourage them to carry out their duties. | ☐ | ☐ | ☐ |
@@ -221,7 +223,7 @@ want them to survive a regeneration.
 |  | 3.35 | Better one's own dharma, though flawed | Better is one's own dharma, though defective, than another's well-performed; death in one's own dharma is better — another's dharma brings fear. | ☐ | ☐ | ☐ |
 |  | 3.36 | Arjuna asks what drives a man to sin | Arjuna said: Then, impelled by what, O Vārṣṇeya, does a man commit evil, even against his will, as though forced by power? | ☐ | ☐ | ☐ |
 |  | 3.37 | Desire and anger, the all-consuming enemy | The Blessed Lord said: It is desire, it is anger, born of the rajo-guṇa; all-devouring, greatly sinful — know this as the enemy here. | ☐ | ☐ | ☐ |
-|  | 3.38 | Smoke, dust, and the embryo's covering | As fire is enveloped by smoke, and a mirror by dust, and an embryo by its membrane, so is this covered by that (desire). | ☐ | ☐ | ☐ |
+|  | 3.38 | Smoke, dust, and the embryo's covering | As fire is enveloped by smoke, and a mirror by dust, and an embryo by its membrane, so is this covered by that. | ☐ | ☐ | ☐ |
 |  | 3.39 | Desire, insatiable as fire, covers wisdom | Wisdom is covered by this constant enemy of the wise, having the form of desire, which is insatiable, O son of Kuntī, like fire. | ☐ | ☐ | ☐ |
 |  | 3.40 | Its seat: senses, mind, intellect | The senses, the mind and the intellect are said to be its seat; covering wisdom by these, it deludes the embodied soul. | ☐ | ☐ | ☐ |
 |  | 3.41 | Rein in the senses first | Therefore, O bull of the Bhāratas, first controlling the senses, cast off this sinner, the destroyer of knowledge and discrimination. | ☐ | ☐ | ☐ |
@@ -823,7 +825,7 @@ want them to survive a regeneration.
 |  | 18.35 | Holds on to sleep and fear | The fortitude by which a dull man does not give up sleep, fear, grief, despair and arrogance — that, O Pārtha, is tāmasic. | ☐ | ☐ | ☐ |
 |  | 18.36 | The threefold happiness | Hear now from me, O bull of the Bhāratas, the threefold happiness — that in which one rejoices by practice and reaches the end of suffering. | ☐ | ☐ | ☐ |
 |  | 18.37 | Poison at first, nectar at the end | That which is like poison at first and nectar at the end — born of the clarity of the intellect concerning the Self — is declared sāttvic happiness. | ☐ | ☐ | ☐ |
-|  | 18.38 | Sweet at first, poison at last | The happiness from the contact of the senses with their objects, nectar at first and poison at the end — is declared rājasic. | ☐ | ☐ | ☐ |
+|  | 18.38 | Sweet at first, poison at last | The happiness from the contact of the senses with their objects, like nectar at first and like poison at the end — is declared rājasic. | ☐ | ☐ | ☐ |
 |  | 18.39 | Delusive from beginning to end | The happiness that deludes the soul at first and at the end, born of sleep, sloth and heedlessness — is declared tāmasic. | ☐ | ☐ | ☐ |
 |  | 18.40 | No one free of the guṇas | There is no being on earth, nor among the gods in heaven, free from these three guṇas born of prakṛti. | ☐ | ☐ | ☐ |
 |  | 18.41 | The fourfold duties | The duties of brāhmaṇas, kṣatriyas, vaiśyas and śūdras are divided according to the qualities born of their own nature, O scorcher of foes. | ☐ | ☐ | ☐ |
@@ -959,6 +961,17 @@ evidence for each verdict.
 > Warriors ready to die for Duryodhana
 
 *the verse says:* And many other heroes, ready to give up their lives for my sake, armed with various weapons, all skilled in war.
+
+☐ keep   ☐ revise   ☐ fix
+
+
+## name-not-in-verse — no first person in the verse: read by hand (1)
+
+### 2.01 · title names Arjuna, absent from the verse
+
+> Seeing Arjuna in tears
+
+*the verse says:* Sañjaya said: To him, thus overcome with compassion, his eyes filled with tears and agitated, and grieving, Madhusūdana spoke these words.
 
 ☐ keep   ☐ revise   ☐ fix
 

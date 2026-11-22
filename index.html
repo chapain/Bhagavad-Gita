@@ -1143,6 +1143,8 @@
 
   /* Meaning blocks follow straight after the hero verse, no extra paper
      card around them — the content should breathe. */
+  .m-anvaya{ margin-top:18px; color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.8; }
+  .m-anvaya-label{ font-weight:600; color:var(--saffron-text); }
   .m-line{ margin-top:18px; }
   .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
                letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; margin-bottom:6px;}
@@ -5462,6 +5464,7 @@ function fillModal(){
           ${wholeVerseHtml}
         </div>
       </div>
+      ${s.anvaya ? `<section class="m-anvaya" lang="sa" aria-label="अन्वयः"><div class="m-anvaya-label">अन्वयः</div><div>${esc(s.anvaya)}</div></section>` : ''}
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
       <details class="m-note"${noteText ? ' open' : ''}>
