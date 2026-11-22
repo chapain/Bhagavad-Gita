@@ -133,14 +133,26 @@
 
   /* Meaning blocks follow straight after the hero verse, no extra paper
      card around them — the content should breathe. */
+  /* Anvaya, literal and paraphrase are three readings of one verse, so they
+     carry ONE label grammar: a quiet accent-coloured line, no fill (owner
+     2026-11-22: "literal and paraphrase have blue and yellow like button bg or
+     something and anvaya is plain"). A filled pill is this app's grammar for a
+     *control* — the mode chips, the nav buttons — so two of them beside a plain
+     anvaya read as two buttons and some text. The Learn card's .lr-mean label
+     already used the quieter form; the sheet now matches it. Colour survives as
+     lettering only: teal for the literal, saffron for the paraphrase and for
+     anvaya, the same split as before, one weight down. No uppercase and no
+     letter-spacing: two of the three labels are Devanagari in नेपाली/हिन्दी and
+     tracking strains the mātrā flow (the same rule the breadcrumb chips carry).
+     One definition only — the duplicate block further down used to re-declare
+     these and silently shadow half of them. */
   .m-anvaya{ margin-top:18px; color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.8; }
-  .m-anvaya-label{ font-weight:600; color:var(--saffron-text); }
+  .m-anvaya-label, .m-line .lb{ display:block; color:var(--saffron-text);
+               font-size:.8rem; font-weight:700; line-height:1.4; margin-bottom:3px; }
+  .m-line.lit .lb{ color:var(--teal); }
   .m-anvaya-iast{ color:var(--ink-soft); font-style:italic; font-size:calc(.9rem * var(--reader-scale,1)); overflow-wrap:anywhere; }
   .m-line{ margin-top:18px; }
-  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
-               letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; margin-bottom:6px;}
   .m-line .lt{ color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.6;}
-  .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
   .m-line.lit .lt{ font-size:calc(1rem * var(--reader-scale,1)); }
 
   /* Option 1 keeps the verse and its expanded pāda grid in one card. */
@@ -236,11 +248,11 @@
       font-size:calc(1.05rem * var(--reader-scale,1)); cursor:pointer; text-align:left;
       border-radius:6px; padding:4px;}
   .m-verse .spk-line .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
+  /* The sheet's own type scale for the three reading blocks. The label colour
+     and weight live once, in the meaning-blocks block above — do not re-declare
+     .lb here (that is how literal and paraphrase drifted apart once already). */
   .m-line{ margin-top:14px;}
-  .m-line .lb{ display:inline-block; background:var(--teal); color:var(--on-accent); font-size:.72rem; font-weight:600;
-               padding:3px 10px; border-radius:999px; margin-bottom:5px;}
   .m-line .lt{ color:var(--ink); font-size:calc(1rem * var(--reader-scale,1));}
-  .m-line.para .lb{ background:var(--saffron); color:var(--on-saffron);}
   .m-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; gap:10px;}
   .m-tail{ display:none;}   /* only needed where .m-nav is sticky (phones) */
   .m-nav button{ background:var(--teal); color:var(--on-accent); border:none; padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:600; font-size:.9rem;}
