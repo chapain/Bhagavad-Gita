@@ -212,7 +212,9 @@
                 "en": "Arjuna says: “Because you graciously spoke to me of the highest secret of the Self, my confusion has vanished.”",
                 "ne": "अर्जुन भन्छन्: “आत्माको सर्वोच्च रहस्यबारे तपाईंले कृपा गरेर बोल्नुभयो — त्यसैले मेरो भ्रम हराएको छ।”",
                 "hi": "अर्जुन कहते हैं: “आत्मा के सर्वोच्च रहस्य पर आपने कृपा करके कहा — उसी से मेरा भ्रम दूर हुआ।”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — त्वया मदनुग्रहाय यत् परमं गुह्यम् अध्यात्मसंज्ञितं वचः उक्तं, तेन मम अयं मोहः विगतः।",
+              "anvaya_iast": "arjuna uvāca — tvayā madanugrahāya yat paramaṃ guhyam adhyātmasaṃjñitaṃ vacaḥ uktaṃ, tena mama ayaṃ mohaḥ vigataḥ."
             }
           ]
         },
@@ -367,7 +369,9 @@
                 "en": "“I have heard from you, O lotus-eyed Lord, of the birth and passing of all beings, and of your endless majesty.”",
                 "ne": "“हे कमलनयन प्रभु, सबै प्राणीको जन्म र नाश, र तपाईंको असीम महिमा — सबै मैले तपाईंबाट सुनेँ।”",
                 "hi": "“हे कमल-नयन प्रभु, सब प्राणियों का जन्म और नाश, और आपकी असीम महिमा — सब मैंने आपसे सुना।”"
-              }
+              },
+              "anvaya": "कमलपत्राक्ष! मया हि त्वत्तः भूतानां भवाप्ययौ विस्तरशः श्रुतौ, अव्ययं माहात्म्यम् अपि च।",
+              "anvaya_iast": "kamalapatrākṣa! mayā hi tvattaḥ bhūtānāṃ bhavāpyayau vistaraśaḥ śrutau, avyayaṃ māhātmyam api ca."
             }
           ]
         },
@@ -522,7 +526,9 @@
                 "en": "“Just as you have described yourself, O highest Lord, I want to see your universal form.”",
                 "ne": "“तपाईंले आफूलाई जसरी बताउनुभयो, हे सर्वोच्च प्रभु, म त्यही विश्वरूप हेर्न चाहन्छु।”",
                 "hi": "“जैसे आपने अपना वर्णन किया, हे सर्वोच्च प्रभु, मैं वही विश्व-रूप देखना चाहता हूँ।”"
-              }
+              },
+              "anvaya": "परमेश्वर! यथा त्वम् आत्मानम् आत्थ एतत् एवम्; पुरुषोत्तम! ते ऐश्वरं रूपं द्रष्टुम् इच्छामि।",
+              "anvaya_iast": "parameśvara! yathā tvam ātmānam āttha etat evam; puruṣottama! te aiśvaraṃ rūpaṃ draṣṭum icchāmi."
             }
           ]
         },
@@ -691,7 +697,9 @@
                 "en": "“If you judge that I am able to see it, O Lord of yoga, reveal to me your eternal Self.”",
                 "ne": "“यदि म यो देख्न सक्छु भनी तपाईं ठान्नुहुन्छ भने, हे योगेश्वर, मलाई आफ्नो नित्य स्वरूप प्रकट गर्नुहोस्।”",
                 "hi": "“यदि आप मानते हैं कि मैं इसे देख सकता हूँ, तो हे योगेश्वर, मुझे अपना नित्य स्वरूप प्रकट कीजिए।”"
-              }
+              },
+              "anvaya": "प्रभो! यदि तत् मया द्रष्टुं शक्यम् इति मन्यसे, ततः योगेश्वर! त्वं मे अव्ययम् आत्मानं दर्शय।",
+              "anvaya_iast": "prabho! yadi tat mayā draṣṭuṃ śakyam iti manyase, tataḥ yogeśvara! tvaṃ me avyayam ātmānaṃ darśaya."
             }
           ]
         }
@@ -868,7 +876,9 @@
                 "en": "Kṛṣṇa said: “See now, Arjuna, my hundreds and thousands of forms — of many kinds and many colors.”",
                 "ne": "कृष्णले भन्नुभयो: “अब हेर, अर्जुन, मेरा सयौं-हजारौं रूपहरू — अनेक प्रकारका र अनेक रङ्गका।”",
                 "hi": "कृष्ण ने कहा: “अब देख, अर्जुन, मेरे सैकड़ों-हज़ारों रूप — अनेक प्रकार के और अनेक रंगों के।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — पार्थ! मे शतशः अथ सहस्रशः नानाविधानि दिव्यानि नानावर्णाकृतीनि च रूपाणि पश्य।",
+              "anvaya_iast": "śrībhagavānuvāca — pārtha! me śataśaḥ atha sahasraśaḥ nānāvidhāni divyāni nānāvarṇākṛtīni ca rūpāṇi paśya."
             }
           ]
         },
@@ -1016,7 +1026,9 @@
                 "en": "“See the sun-gods, the Vasus, the Rudras, the twin Aśvins, the storm-winds — wonders you have never seen, Arjuna.”",
                 "ne": "“सूर्यदेवताहरू, वसुहरू, रुद्रहरू, जुम्ल्याहा अश्विनहरू, आँधी-हावाहरू हेर — तिमीले कहिल्यै नदेखेका आश्चर्यहरू, अर्जुन।”",
                 "hi": "“सूर्य-देवताओं, वसुओं, रुद्रों, जुड़वाँ अश्विनों, आँधी-हवाओं को देख — तूने कभी न देखे आश्चर्य, अर्जुन।”"
-              }
+              },
+              "anvaya": "भारत! आदित्यान्, वसून्, रुद्रान्, अश्विनौ तथा मरुतः पश्य; बहूनि अदृष्टपूर्वाणि आश्चर्याणि पश्य।",
+              "anvaya_iast": "bhārata! ādityān, vasūn, rudrān, aśvinau tathā marutaḥ paśya; bahūni adṛṣṭapūrvāṇi āścaryāṇi paśya."
             }
           ]
         },
@@ -1185,7 +1197,9 @@
                 "en": "“See the entire universe — moving and still — all at once within my body, and whatever else you desire to see.”",
                 "ne": "“मेरो शरीरभित्र सम्पूर्ण ब्रह्माण्ड — चल र अचल — एकै पटक हेर, र जे-जे पनि तिमी देख्न चाहन्छौ।”",
                 "hi": "“मेरे शरीर में सम्पूर्ण ब्रह्माण्ड — चल और अचल — एक साथ देख, और जो-जो भी तू देखना चाहे।”"
-              }
+              },
+              "anvaya": "गुडाकेश! अद्य मम देहे एकस्थं सचराचरं कृत्स्नं जगत् इह पश्य, यत् च अन्यत् द्रष्टुम् इच्छसि।",
+              "anvaya_iast": "guḍākeśa! adya mama dehe ekasthaṃ sacarācaraṃ kṛtsnaṃ jagat iha paśya, yat ca anyat draṣṭum icchasi."
             }
           ]
         },
@@ -1361,7 +1375,9 @@
                 "en": "“Your mortal eye cannot see me — take this divine eye and behold my cosmic power.”",
                 "ne": "“तिम्रो मर्त्य आँखाले मलाई देख्न सक्दैन — यो दिव्य दृष्टि लेऊ र मेरो विश्वरूपी शक्ति हेर।”",
                 "hi": "“तेरी मर्त्य आँख मुझे नहीं देख सकती — यह दिव्य दृष्टि ले और मेरी विश्व-रूपी शक्ति देख।”"
-              }
+              },
+              "anvaya": "अनेन एव स्वचक्षुषा तु मां द्रष्टुं न शक्यसे; ते दिव्यं चक्षुः ददामि; मे ऐश्वरं योगं पश्य।",
+              "anvaya_iast": "anena eva svacakṣuṣā tu māṃ draṣṭuṃ na śakyase; te divyaṃ cakṣuḥ dadāmi; me aiśvaraṃ yogaṃ paśya."
             }
           ]
         }
@@ -1538,7 +1554,9 @@
                 "en": "Sañjaya narrates: “Having said this, O king, the great Lord of yoga, Kṛṣṇa, revealed to Arjuna his supreme cosmic form.”",
                 "ne": "सञ्जय वर्णन गर्छन्: “यसरी भनेर, हे राजा, महान् योगेश्वर कृष्णले अर्जुनलाई आफ्नो सर्वोच्च विश्वरूप प्रकट गरे।”",
                 "hi": "संजय वर्णन करते हैं: “ऐसा कहकर, हे राजा, महान् योगेश्वर कृष्ण ने अर्जुन को अपना सर्वोच्च विश्व-रूप प्रकट किया।”"
-              }
+              },
+              "anvaya": "सञ्जय उवाच — राजन्! ततः महायोगेश्वरः हरिः एवम् उक्त्वा पार्थाय परमम् ऐश्वरं रूपं दर्शयामास।",
+              "anvaya_iast": "sañjaya uvāca — rājan! tataḥ mahāyogeśvaraḥ hariḥ evam uktvā pārthāya paramam aiśvaraṃ rūpaṃ darśayāmāsa."
             }
           ]
         },
@@ -1630,7 +1648,9 @@
                 "en": "“— with innumerable faces and eyes, marvels beyond count, celestial ornaments, and weapons raised on every side —”",
                 "ne": "“— अगणित मुख र आँखा, गन्न नसकिने आश्चर्य, दिव्य आभूषण र चारैतिर उठेका हतियारहरूसहित —”",
                 "hi": "“— अगणित मुख और नेत्र, गिनती से परे आश्चर्य, दिव्य आभूषण और चारों ओर उठे हुए अस्त्र सहित —”"
-              }
+              },
+              "anvaya": "अनेकवक्त्रनयनम्, अनेकाद्भुतदर्शनम्, अनेकदिव्याभरणं, दिव्यानेकोद्यतायुधम्।",
+              "anvaya_iast": "anekavaktranayanam, anekādbhutadarśanam, anekadivyābharaṇaṃ, divyānekodyatāyudham."
             }
           ]
         },
@@ -1736,7 +1756,9 @@
                 "en": "“— adorned with heavenly garlands and garments, anointed with divine fragrances, the limitless God with faces in every direction.”",
                 "ne": "“— दिव्य माला र वस्त्रले सजिएको, दिव्य सुगन्धले विभूषित, हरेक दिशामा मुख भएको असीम देवता।”",
                 "hi": "“— दिव्य मालाओं और वस्त्रों से सजा, दिव्य सुगन्ध से विभूषित, हर दिशा में मुख वाला असीम देव।”"
-              }
+              },
+              "anvaya": "दिव्यमाल्याम्बरधरं, दिव्यगन्धानुलेपनं, सर्वाश्चर्यमयं, देवम्, अनन्तं, विश्वतोमुखम्।",
+              "anvaya_iast": "divyamālyāmbaradharaṃ, divyagandhānulepanaṃ, sarvāścaryamayaṃ, devam, anantaṃ, viśvatomukham."
             }
           ]
         },
@@ -1891,7 +1913,9 @@
                 "en": "“Imagine a thousand suns blazing together: their light might offer a likeness of the radiance of that mighty form.”",
                 "ne": "“हजार सूर्य एकसाथ बलेको कल्पना गर: तिनको ज्योतिले त्यो विराट् रूपको कान्तिको झल्को दिन सक्ला।”",
                 "hi": "“कल्पना करो कि हज़ार सूर्य एकसाथ चमक उठें: उनकी रोशनी शायद उस विराट् रूप की आभा की एक झलक दे सके।”"
-              }
+              },
+              "anvaya": "यदि दिवि युगपत् उत्थिता सूर्यसहस्रस्य भाः भवेत्, सा तस्य महात्मनः भासः सदृशी स्यात्।",
+              "anvaya_iast": "yadi divi yugapat utthitā sūryasahasrasya bhāḥ bhavet, sā tasya mahātmanaḥ bhāsaḥ sadṛśī syāt."
             }
           ]
         },
@@ -2032,7 +2056,9 @@
                 "en": "“There Arjuna saw the entire universe — united yet infinitely varied — within the body of the God of gods.”",
                 "ne": "“त्यहाँ अर्जुनले देवताका देवताको शरीरभित्र सम्पूर्ण ब्रह्माण्ड — एक तर असीम रूपले विविध — देखे।”",
                 "hi": "“वहाँ अर्जुन ने देवों के देव के शरीर में सम्पूर्ण ब्रह्माण्ड — एक किन्तु असीम रूप से विविध — देखा।”"
-              }
+              },
+              "anvaya": "तदा पाण्डवः देवदेवस्य शरीरे तत्र अनेकधा प्रविभक्तं कृत्स्नं जगत् एकस्थम् अपश्यत्।",
+              "anvaya_iast": "tadā pāṇḍavaḥ devadevasya śarīre tatra anekadhā pravibhaktaṃ kṛtsnaṃ jagat ekastham apaśyat."
             }
           ]
         },
@@ -2166,7 +2192,9 @@
                 "en": "“Then, overwhelmed with wonder, hair on end, Arjuna bowed down and, folding his hands, spoke.”",
                 "ne": "“त्यसपछि, आश्चर्यले अभिभूत, रौं ठाडो भएको अर्जुनले निहुरेर, हात जोडेर बोल्यो।”",
                 "hi": "“तब, आश्चर्य से अभिभूत, रोंगटे खड़े अर्जुन ने झुककर, हाथ जोड़कर कहा।”"
-              }
+              },
+              "anvaya": "ततः विस्मयाविष्टः हृष्टरोमा सः धनञ्जयः देवं शिरसा प्रणम्य कृताञ्जलिः अभाषत।",
+              "anvaya_iast": "tataḥ vismayāviṣṭaḥ hṛṣṭaromā saḥ dhanañjayaḥ devaṃ śirasā praṇamya kṛtāñjaliḥ abhāṣata."
             }
           ]
         }
@@ -2385,7 +2413,9 @@
                 "en": "“In your body I see all the gods and every class of being — Brahmā on his lotus throne, the sages, and the celestial serpents.”",
                 "ne": "“तपाईंको शरीरमा म सबै देवता र हरेक प्रकारका प्राणी देख्छु — कमलासनमा बसेका ब्रह्मा, ऋषिहरू र दिव्य सर्पहरू।”",
                 "hi": "“आपके शरीर में मैं सब देवों और हर प्रकार के प्राणियों को देखता हूँ — कमल-आसन पर बैठे ब्रह्मा को, मुनियों और दिव्य सर्पों को।”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — देव! तव देहे देवान् तथा सर्वान् भूतविशेषसङ्घान्, कमलासनस्थम् ईशं ब्रह्माणं, ऋषीन् च सर्वान् दिव्यान् उरगान् च पश्यामि।",
+              "anvaya_iast": "arjuna uvāca — deva! tava dehe devān tathā sarvān bhūtaviśeṣasaṅghān, kamalāsanastham īśaṃ brahmāṇaṃ, ṛṣīn ca sarvān divyān uragān ca paśyāmi."
             }
           ]
         },
@@ -2561,7 +2591,9 @@
                 "en": "“I see you, O universal form, with numberless arms, bellies, faces and eyes — infinite on all sides; you have no beginning, middle, or end.”",
                 "ne": "“हे विश्वरूप, म तपाईंलाई गन्न नसकिने बाहु, पेट, मुख र आँखासहित देख्छु — सबै दिशामा असीम; तपाईंको न आदि, न मध्य, न अन्त्य।”",
                 "hi": "“हे विश्व-रूप, मैं आपको गिनती से परे बाहुओं, पेटों, मुखों और नेत्रों सहित देखता हूँ — सब दिशाओं में असीम; आपका न आदि, न मध्य, न अन्त।”"
-              }
+              },
+              "anvaya": "विश्वेश्वर! विश्वरूप! अनेकबाहूदरवक्त्रनेत्रं सर्वतः अनन्तरूपं त्वां पश्यामि; तव न अन्तं, न मध्यं, न पुनः आदिं पश्यामि।",
+              "anvaya_iast": "viśveśvara! viśvarūpa! anekabāhūdaravaktranetraṃ sarvataḥ anantarūpaṃ tvāṃ paśyāmi; tava na antaṃ, na madhyaṃ, na punaḥ ādiṃ paśyāmi."
             }
           ]
         },
@@ -2716,7 +2748,9 @@
                 "en": "“I see you with crown, mace, and discus — a blaze of light, too dazzling to look upon, like fire and sun, measureless.”",
                 "ne": "“म तपाईंलाई मुकुट, गदा र चक्रसहित देख्छु — प्रकाशको ज्वाला, हेर्न नसकिने गरी दैदिप्यमान, आगो र सूर्यजस्तै, अमापनीय।”",
                 "hi": "“मैं आपको मुकुट, गदा और चक्र सहित देखता हूँ — प्रकाश की ज्वाला, देख न सकने की हद तक दैदीप्यमान, अग्नि और सूर्य जैसा, अमापनीय।”"
-              }
+              },
+              "anvaya": "किरीटिनं, गदिनं, चक्रिणं च, सर्वतोदीप्तिमन्तं तेजोराशिं, समन्तात् दीप्तानलार्कद्युतिम् अप्रमेयं दुर्निरीक्ष्यं त्वां पश्यामि।",
+              "anvaya_iast": "kirīṭinaṃ, gadinaṃ, cakriṇaṃ ca, sarvatodīptimantaṃ tejorāśiṃ, samantāt dīptānalārkadyutim aprameyaṃ durnirīkṣyaṃ tvāṃ paśyāmi."
             }
           ]
         },
@@ -2899,7 +2933,9 @@
                 "en": "“You are the eternal, the highest to be known; you are the universe's supreme treasure, the changeless guardian of dharma — the original Person.”",
                 "ne": "“तपाईं नित्य, जान्नयोग्य सर्वोच्च हुनुहुन्छ; तपाईं ब्रह्माण्डको परम धाम, धर्मका अपरिवर्तनीय रक्षक — आदि पुरुष हुनुहुन्छ।”",
                 "hi": "“आप नित्य, जानने योग्य सर्वोच्च हैं; आप ब्रह्माण्ड के परम धाम, धर्म के अपरिवर्तनीय रक्षक — आदि पुरुष हैं।”"
-              }
+              },
+              "anvaya": "त्वं परमं वेदितव्यम् अक्षरं, त्वम् अस्य विश्वस्य परं निधानं, त्वम् अव्ययः शाश्वतधर्मगोप्ता, त्वं सनातनः पुरुषः मे मतः।",
+              "anvaya_iast": "tvaṃ paramaṃ veditavyam akṣaraṃ, tvam asya viśvasya paraṃ nidhānaṃ, tvam avyayaḥ śāśvatadharmagoptā, tvaṃ sanātanaḥ puruṣaḥ me mataḥ."
             }
           ]
         },
@@ -3040,7 +3076,9 @@
                 "en": "“Without beginning or end, infinite in might, countless-armed, sun-and-moon-eyed — I see you, fire-mouthed, burning up the world with your brilliance.”",
                 "ne": "न सुरु देखिन्छ, न अन्त्य। पाखुरा गन्नै सकिन्न, आँखा त सूर्य र चन्द्रमा। मुखबाट आगो निस्किरहेछ, र त्यही तापले सारा जगत् तातिरहेछ।",
                 "hi": "“आदि-अन्त से रहित, असीम शक्ति, अगणित बाहु, सूर्य-चन्द्र नेत्र — मैं आपको अग्नि-जैसे मुखों से अपने तेज से संसार को जलाते देखता हूँ।”"
-              }
+              },
+              "anvaya": "अनादिमध्यान्तम्, अनन्तवीर्यम्, अनन्तबाहुं, शशिसूर्यनेत्रं, दीप्तहुताशवक्त्रं, स्वतेजसा इदं विश्वं तपन्तं त्वां पश्यामि।",
+              "anvaya_iast": "anādimadhyāntam, anantavīryam, anantabāhuṃ, śaśisūryanetraṃ, dīptahutāśavaktraṃ, svatejasā idaṃ viśvaṃ tapantaṃ tvāṃ paśyāmi."
             }
           ]
         },
@@ -3237,7 +3275,9 @@
                 "en": "“Heaven and earth and every direction between them are filled by you alone — and the three worlds are shaken by the sight of your awesome form.”",
                 "ne": "“स्वर्ग र पृथ्वी र तिनका बीचका सबै दिशा तपाईं एक्लैले भर्नुभएको छ — र तीनै लोक तपाईंको भयानक रूप देखेर व्याकुल छन्।”",
                 "hi": "“स्वर्ग और पृथ्वी तथा उनके बीच की सब दिशाएँ आप अकेले ही भरे हुए हैं — और तीनों लोक आपके भयंकर रूप को देखकर व्याकुल हो रहे हैं।”"
-              }
+              },
+              "anvaya": "महात्मन्! द्यावापृथिव्योः इदम् अन्तरं सर्वाः दिशः च त्वया एकेन हि व्याप्तम्; तव इदम् अद्भुतम् उग्रं रूपं दृष्ट्वा लोकत्रयं प्रव्यथितम्।",
+              "anvaya_iast": "mahātman! dyāvāpṛthivyoḥ idam antaraṃ sarvāḥ diśaḥ ca tvayā ekena hi vyāptam; tava idam adbhutam ugraṃ rūpaṃ dṛṣṭvā lokatrayaṃ pravyathitam."
             }
           ]
         }
@@ -3435,7 +3475,9 @@
                 "en": "“The troops of gods stream into you; some, terrified, glorify you with joined palms; the great seers and perfected ones, crying ‘may all be well’, praise you with abundant hymns.”",
                 "ne": "“देवताहरूका सेनाहरू तपाईंभित्र बग्छन्; कोही, त्रसित भएर, जोडिएका हातले तपाईंको महिमा गाउँछन्; ऋषि र सिद्धहरू, कल्याणको कामना गर्दै, प्रशस्त स्तोत्रले तपाईंको प्रशंसा गर्छन्।”",
                 "hi": "“देवताओं की सेनाएँ आप में बहती हैं; कोई, त्रस्त होकर, जुड़े हाथों से आपकी महिमा गाते हैं; ऋषि और सिद्ध, कल्याण की कामना करते हुए, प्रचुर स्तोत्रों से आपकी प्रशंसा करते हैं।”"
-              }
+              },
+              "anvaya": "अमी सुरसङ्घाः हि त्वां विशन्ति, केचित् भीताः प्राञ्जलयः गृणन्ति; महर्षिसिद्धसङ्घाः स्वस्ति इति उक्त्वा पुष्कलाभिः स्तुतिभिः त्वां स्तुवन्ति।",
+              "anvaya_iast": "amī surasaṅghāḥ hi tvāṃ viśanti, kecit bhītāḥ prāñjalayaḥ gṛṇanti; maharṣisiddhasaṅghāḥ svasti iti uktvā puṣkalābhiḥ stutibhiḥ tvāṃ stuvanti."
             }
           ]
         },
@@ -3625,7 +3667,9 @@
                 "en": "“All the orders of gods — the Rudras, sun-gods, Vasus, and the rest — together with celestial singers and spirits, gaze upon you astonished.”",
                 "ne": "“देवताहरूका सबै वर्ग — रुद्र, सूर्यदेवता, वसु र बाँकी — दिव्य गायक र आत्माहरूसँगै — सबै छक्क परेर तपाईंलाई हेर्छन्।”",
                 "hi": "“देवताओं के सब वर्ग — रुद्र, सूर्य-देवता, वसु और शेष — दिव्य गायकों और आत्माओं के साथ — सब चकित होकर आपको देखते हैं।”"
-              }
+              },
+              "anvaya": "रुद्रादित्याः, वसवः, ये च साध्याः, विश्वे, अश्विनौ, मरुतः च, ऊष्मपाः च, गन्धर्वयक्षासुरसिद्धसङ्घाः सर्वे विस्मिताः च एव त्वां वीक्षन्ते।",
+              "anvaya_iast": "rudrādityāḥ, vasavaḥ, ye ca sādhyāḥ, viśve, aśvinau, marutaḥ ca, ūṣmapāḥ ca, gandharvayakṣāsurasiddhasaṅghāḥ sarve vismitāḥ ca eva tvāṃ vīkṣante."
             }
           ]
         },
@@ -3780,7 +3824,9 @@
                 "en": "“At the sight of your colossal form, mighty-armed one — with its many faces and eyes, its countless arms and legs, its many bellies and terrible jaws — the worlds tremble, and I too.”",
                 "ne": "“तपाईंको विशाल रूप — अनेक मुख र आँखा, अनेक बाहु, जांघ र खुट्टा, अनेक पेट र भयानक बङ्गारासहित — देखेर लोकहरू काम्छन्, हे महाबाहो, र म पनि।”",
                 "hi": "“आपके विशाल रूप — अनेक मुख, नेत्र, बाहु, जाँघ और पैर, पेट और भयानक दाँतों सहित — को देखकर लोक काँपते हैं, हे महाबाहो, और मैं भी।”"
-              }
+              },
+              "anvaya": "महाबाहो! बहुवक्त्रनेत्रं, बहुबाहूरुपादं, बहूदरं, बहुदंष्ट्राकरालं ते महत् रूपं दृष्ट्वा लोकाः प्रव्यथिताः तथा अहम्।",
+              "anvaya_iast": "mahābāho! bahuvaktranetraṃ, bahubāhūrupādaṃ, bahūdaraṃ, bahudaṃṣṭrākarālaṃ te mahat rūpaṃ dṛṣṭvā lokāḥ pravyathitāḥ tathā aham."
             }
           ]
         },
@@ -3949,7 +3995,9 @@
                 "en": "Beholding your sky-touching, blazing, many-coloured form — gaping mouths, wide flaming eyes — my heart is shaken; I find no steadiness or calm, O Viṣṇu.",
                 "ne": "आकाश छुने, दनदनी बलेको, अनेक रङ्गको रूप — खुला मुख, फराकिला बलेका आँखा — देखेर मेरो हृदय काम्छ; मलाई न स्थिरता भेटिन्छ न शान्ति, हे विष्णु।",
                 "hi": "आकाश को छूते, देदीप्यमान, अनेक रंगों वाले रूप को — खुले मुख, चौड़ी जलती आँखें — देखकर मेरा हृदय काँप उठता है; मुझे न स्थिरता मिलती है न शान्ति, हे विष्णु।"
-              }
+              },
+              "anvaya": "विष्णो! नभःस्पृशं दीप्तम् अनेकवर्णं व्यात्ताननं दीप्तविशालनेत्रं त्वां हि दृष्ट्वा प्रव्यथितान्तरात्मा धृतिं न विन्दामि शमं च।",
+              "anvaya_iast": "viṣṇo! nabhaḥspṛśaṃ dīptam anekavarṇaṃ vyāttānanaṃ dīptaviśālanetraṃ tvāṃ hi dṛṣṭvā pravyathitāntarātmā dhṛtiṃ na vindāmi śamaṃ ca."
             }
           ]
         },
@@ -4132,7 +4180,9 @@
                 "en": "Beholding your dreadful fanged mouths, blazing like the fire of destruction, I lose all bearings and find no comfort; have mercy, Lord of gods.",
                 "ne": "विनाशकालको आगोजस्तै दनदनी बलेका, भयानक दाँत भएका मुखहरू देखेर, म दिशा नै चिन्दिनँ र मनमा चैन पाउँदिनँ; कृपा गर्नुहोस्, हे देवताका स्वामी।",
                 "hi": "विनाश-काल की अग्नि की तरह दहकते, भयानक दाँतों वाले मुख देखकर, मैं दिशा ही नहीं पहचानता और न मुझे चैन मिलता है; कृपा कीजिए, हे देवों के स्वामी।"
-              }
+              },
+              "anvaya": "देवेश! जगन्निवास! कालानलसन्निभानि दंष्ट्राकरालानि च ते मुखानि दृष्ट्वा एव दिशः न जाने, शर्म च न लभे; प्रसीद।",
+              "anvaya_iast": "deveśa! jagannivāsa! kālānalasannibhāni daṃṣṭrākarālāni ca te mukhāni dṛṣṭvā eva diśaḥ na jāne, śarma ca na labhe; prasīda."
             }
           ]
         }
@@ -4337,7 +4387,9 @@
                 "en": "“These sons of Dhṛtarāṣṭra, together with their kings, are rushing into your mouths — Bhīṣma, Droṇa, Karṇa, and our foremost warriors,”",
                 "ne": "धृतराष्ट्रका छोराहरू, तिनका पक्षका राजाहरूसमेत, तपाईंको मुखतिर हुत्तिँदै छन् — भीष्म पनि, द्रोण पनि, कर्ण पनि, हाम्रातिरका ठूला योद्धा पनि,",
                 "hi": "धृतराष्ट्र के बेटे, अपने साथ के राजाओं समेत, आपके मुँह की ओर खिंचे चले जा रहे हैं — भीष्म भी, द्रोण भी, कर्ण भी, और हमारी ओर के बड़े योद्धा भी,"
-              }
+              },
+              "anvaya": "अमी च सर्वे धृतराष्ट्रस्य पुत्राः अवनिपालसङ्घैः सह एव, भीष्मः, द्रोणः, तथा असौ सूतपुत्रः अस्मदीयैः अपि योधमुख्यैः सह त्वाम्।",
+              "anvaya_iast": "amī ca sarve dhṛtarāṣṭrasya putrāḥ avanipālasaṅghaiḥ saha eva, bhīṣmaḥ, droṇaḥ, tathā asau sūtaputraḥ asmadīyaiḥ api yodhamukhyaiḥ saha tvām."
             }
           ]
         },
@@ -4485,7 +4537,9 @@
                 "en": "“— hurrying, they plunge into your frightful, fanged mouths; some are seen wedged between your teeth, their heads ground to powder.”",
                 "ne": "“— हतारिँदै तिनीहरू तपाईंका भयानक मुखभित्र पस्छन्; कोही दाँतहरूका बीचमा अड्किएर, टाउका पिसिएका अवस्थामा देखिन्छन्।”",
                 "hi": "वे वेग से आपके डरावने मुखों में घुस रहे हैं; कुछ सिर चूर हुए, दाँतों की दरारों में फँसे दिखते हैं।"
-              }
+              },
+              "anvaya": "दंष्ट्राकरालानि भयानकानि ते वक्त्राणि त्वरमाणाः विशन्ति; केचित् दशनान्तरेषु विलग्नाः चूर्णितैः उत्तमाङ्गैः सन्दृश्यन्ते।",
+              "anvaya_iast": "daṃṣṭrākarālāni bhayānakāni te vaktrāṇi tvaramāṇāḥ viśanti; kecit daśanāntareṣu vilagnāḥ cūrṇitaiḥ uttamāṅgaiḥ sandṛśyante."
             }
           ]
         },
@@ -4654,7 +4708,9 @@
                 "en": "“As rivers pour their countless waters into the sea, so these champions of men stream into your blazing mouths.”",
                 "ne": "“जसरी नदीहरू आफ्ना असंख्य जलधारासहित समुद्रमा बग्छन्, त्यसरी यी मानव योद्धाहरू तपाईंका बलेका मुखहरूमा बग्छन्।”",
                 "hi": "“जैसे नदियाँ अपने असंख्य जल-प्रवाहों सहित समुद्र में बहती हैं, वैसे ही ये मानव-वीर आपके जलते मुखों में बहते हैं।”"
-              }
+              },
+              "anvaya": "यथा नदीनां बहवः अम्बुवेगाः समुद्रम् एव अभिमुखाः द्रवन्ति, तथा तव अभिविज्वलन्ति वक्त्राणि अमी नरलोकवीराः विशन्ति।",
+              "anvaya_iast": "yathā nadīnāṃ bahavaḥ ambuvegāḥ samudram eva abhimukhāḥ dravanti, tathā tava abhivijvalanti vaktrāṇi amī naralokavīrāḥ viśanti."
             }
           ]
         },
@@ -4830,7 +4886,9 @@
                 "en": "“As moths hurl themselves into the flame to perish, so these worlds rush into your mouths to be destroyed.”",
                 "ne": "“जसरी पुतलीहरू नष्ट हुनका निम्ति ज्वालामा हाम फाल्छन्, त्यसरी यी लोकहरू नष्ट हुनका निम्ति तपाईंका मुखहरूमा दौडिन्छन्।”",
                 "hi": "“जैसे पतंगे नष्ट होने के लिए ज्वाला में कूद पड़ते हैं, वैसे ही ये लोक नष्ट होने के लिए आपके मुखों में दौड़ते हैं।”"
-              }
+              },
+              "anvaya": "यथा पतङ्गाः समृद्धवेगाः नाशाय प्रदीप्तं ज्वलनं विशन्ति, तथा एव लोकाः समृद्धवेगाः नाशाय तव अपि वक्त्राणि विशन्ति।",
+              "anvaya_iast": "yathā pataṅgāḥ samṛddhavegāḥ nāśāya pradīptaṃ jvalanaṃ viśanti, tathā eva lokāḥ samṛddhavegāḥ nāśāya tava api vaktrāṇi viśanti."
             }
           ]
         },
@@ -5006,7 +5064,9 @@
                 "en": "“You lap up the worlds with your burning jaws, swallowing them wholly; your fierce glory fills the universe, O Viṣṇu.”",
                 "ne": "बलिरहेका मुखले तपाईं लोकहरूलाई जिब्रोले सोहोर्दै चारैतिरबाट निल्दै हुनुहुन्छ; तपाईंको उग्र तापले सारा ब्रह्माण्ड पोलिरहेको छ, हे विष्णु।",
                 "hi": "जलते हुए मुँह से आप लोकों को जीभ से समेटते हुए चारों ओर से निगल रहे हैं; आपकी उग्र आँच से सारा ब्रह्माण्ड तप रहा है, हे विष्णु।"
-              }
+              },
+              "anvaya": "विष्णो! ज्वलद्भिः वदनैः समन्तात् समग्रान् लोकान् ग्रसमानः लेलिह्यसे; तव उग्राः भासः समग्रं जगत् तेजोभिः आपूर्य प्रतपन्ति।",
+              "anvaya_iast": "viṣṇo! jvaladbhiḥ vadanaiḥ samantāt samagrān lokān grasamānaḥ lelihyase; tava ugrāḥ bhāsaḥ samagraṃ jagat tejobhiḥ āpūrya pratapanti."
             }
           ]
         }
@@ -5218,7 +5278,9 @@
                 "en": "“Tell me who you are in this dreadful form; I bow to you — have mercy, Lord. I want to know you, the Ancient One, for I cannot grasp your ways.”",
                 "ne": "“यस भयानक रूपमा तपाईं को हुनुहुन्छ, भन्नुहोस्; म तपाईंलाई प्रणाम गर्छु — कृपा गर्नुहोस्, प्रभु। म तपाईंलाई, आदिम पुरुषलाई, चिन्न चाहन्छु, किनकि तपाईंका बाटो म बुझ्न सक्दिनँ।”",
                 "hi": "“इस भयानक रूप में आप कौन हैं, बताइए; मैं आपको प्रणाम करता हूँ — कृपा कीजिए, प्रभु। मैं आपको, आदिम पुरुष को, जानना चाहता हूँ, क्योंकि आपके मार्ग मैं नहीं समझ सकता।”"
-              }
+              },
+              "anvaya": "मे आख्याहि — उग्ररूपः भवान् कः? देववर! ते नमः अस्तु, प्रसीद; आद्यं भवन्तं विज्ञातुम् इच्छामि, हि तव प्रवृत्तिं न प्रजानामि।",
+              "anvaya_iast": "me ākhyāhi — ugrarūpaḥ bhavān kaḥ? devavara! te namaḥ astu, prasīda; ādyaṃ bhavantaṃ vijñātum icchāmi, hi tava pravṛttiṃ na prajānāmi."
             }
           ]
         },
@@ -5429,7 +5491,9 @@
                 "en": "Kṛṣṇa said: “I am Time, ripened to destroy the worlds. Even without your striking, none of these warriors will survive.”",
                 "ne": "कृष्णले भन्नुभयो: “म काल हुँ — लोक नष्ट गर्न परिपक्व भएको। तिमीले प्रहार नगरे पनि यी योद्धाहरूमध्ये कोही बाँच्नेछैन।”",
                 "hi": "कृष्ण ने कहा: “मैं काल हूँ — लोकों को नष्ट करने के लिए परिपक्व। तेरे आघात के बिना भी इन योद्धाओं में से कोई नहीं बचेगा।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — लोकक्षयकृत् प्रवृद्धः कालः अस्मि, इह लोकान् समाहर्तुं प्रवृत्तः; त्वाम् ऋते अपि प्रत्यनीकेषु ये योधाः अवस्थिताः सर्वे न भविष्यन्ति।",
+              "anvaya_iast": "śrībhagavānuvāca — lokakṣayakṛt pravṛddhaḥ kālaḥ asmi, iha lokān samāhartuṃ pravṛttaḥ; tvām ṛte api pratyanīkeṣu ye yodhāḥ avasthitāḥ sarve na bhaviṣyanti."
             }
           ]
         },
@@ -5626,7 +5690,9 @@
                 "en": "“So stand up and win renown; defeat the foe and enjoy the flourishing realm. I have already killed them — you are merely the means, Arjuna.”",
                 "ne": "“त्यसैले उठ र प्रसिद्धि कमाऊ; शत्रुलाई हराऊ र समृद्ध राज्यको आनन्द लेऊ। मैले तिनलाई पहिल्यै मारिसकेको छु — तिमी केवल माध्यम हौ, अर्जुन।”",
                 "hi": "“इसलिए उठ और यश कमा; शत्रु को हरा और समृद्ध राज्य का आनन्द ले। मैंने उन्हें पहले ही मार दिया है — तू केवल माध्यम है, अर्जुन।”"
-              }
+              },
+              "anvaya": "तस्मात् त्वम् उत्तिष्ठ, यशः लभस्व, शत्रून् जित्वा समृद्धं राज्यं भुङ्क्ष्व; एते मया एव पूर्वम् एव निहताः; सव्यसाचिन्! निमित्तमात्रं भव।",
+              "anvaya_iast": "tasmāt tvam uttiṣṭha, yaśaḥ labhasva, śatrūn jitvā samṛddhaṃ rājyaṃ bhuṅkṣva; ete mayā eva pūrvam eva nihatāḥ; savyasācin! nimittamātraṃ bhava."
             }
           ]
         },
@@ -5837,7 +5903,9 @@
                 "en": "“Kill Droṇa, Bhīṣma, Jayadratha, and Karṇa — I have already destroyed them. Strike without hesitation and fight; you will triumph in battle.”",
                 "ne": "“द्रोण, भीष्म, जयद्रथ र कर्णलाई मार — मैले तिनलाई पहिल्यै नष्ट गरिसकेको छु। हिचकिचाहट बिना प्रहार गर र लड; तिमी युद्धमा विजयी हुनेछौ।”",
                 "hi": "“द्रोण, भीष्म, जयद्रथ और कर्ण को मार — मैंने उन्हें पहले ही नष्ट कर दिया है। बिना हिचक प्रहार कर और युद्ध कर; तू रण में विजयी होगा।”"
-              }
+              },
+              "anvaya": "मया हतान् द्रोणं च, भीष्मं च, जयद्रथं च, कर्णं तथा अन्यान् अपि योधवीरान् त्वं जहि, मा व्यथिष्ठाः; युध्यस्व, रणे सपत्नान् जेतासि।",
+              "anvaya_iast": "mayā hatān droṇaṃ ca, bhīṣmaṃ ca, jayadrathaṃ ca, karṇaṃ tathā anyān api yodhavīrān tvaṃ jahi, mā vyathiṣṭhāḥ; yudhyasva, raṇe sapatnān jetāsi."
             }
           ]
         }
@@ -6042,7 +6110,9 @@
                 "en": "Sañjaya narrates: “Hearing Kṛṣṇa's words, Arjuna, shaking, joined his palms, bowed once more, and spoke in a stammering voice.”",
                 "ne": "सञ्जय वर्णन गर्छन्: “कृष्णका वचन सुनेर, काँपिरहेका अर्जुनले हात जोडे, फेरि शिर झुकाए र अवरुद्ध स्वरमा बोले।”",
                 "hi": "संजय वर्णन करते हैं: “कृष्ण के वचन सुनकर, काँपते हुए अर्जुन ने हाथ जोड़े, फिर झुका, और लड़खड़ाते स्वर में बोला।”"
-              }
+              },
+              "anvaya": "सञ्जय उवाच — केशवस्य एतत् वचनं श्रुत्वा वेपमानः किरीटी कृताञ्जलिः नमस्कृत्वा सगद्गदं भीतभीतः प्रणम्य कृष्णं भूयः एव आह।",
+              "anvaya_iast": "sañjaya uvāca — keśavasya etat vacanaṃ śrutvā vepamānaḥ kirīṭī kṛtāñjaliḥ namaskṛtvā sagadgadaṃ bhītabhītaḥ praṇamya kṛṣṇaṃ bhūyaḥ eva āha."
             }
           ]
         },
@@ -6239,7 +6309,9 @@
                 "en": "“Rightly, O Kṛṣṇa, the world delights in praising you; the demons flee in terror, and the perfected ones bow to you.”",
                 "ne": "“ठीकै हो, हे कृष्ण, संसार तपाईंको प्रशंसामा रम्छ; दानवहरू त्रासमा भाग्छन्, र सिद्धहरू तपाईंलाई प्रणाम गर्छन्।”",
                 "hi": "“ठीक ही है, हे कृष्ण, कि संसार आपकी प्रशंसा में रमता है; दानव त्रास में भागते हैं, और सिद्ध आपको प्रणाम करते हैं।”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — हृषीकेश! तव प्रकीर्त्या जगत् प्रहृष्यति अनुरज्यते च स्थाने; भीतानि रक्षांसि दिशः द्रवन्ति, सर्वे सिद्धसङ्घाः च नमस्यन्ति।",
+              "anvaya_iast": "arjuna uvāca — hṛṣīkeśa! tava prakīrtyā jagat prahṛṣyati anurajyate ca sthāne; bhītāni rakṣāṃsi diśaḥ dravanti, sarve siddhasaṅghāḥ ca namasyanti."
             }
           ]
         },
@@ -6443,7 +6515,9 @@
                 "en": "“Who would not bow to you, O great one, superior even to Brahmā, the first creator? You are the eternal, the real and the unreal, and what lies beyond.”",
                 "ne": "“हे महान्, पहिलो सृष्टिकर्ता ब्रह्माभन्दा पनि श्रेष्ठ तपाईंलाई को नझुक्ला? तपाईं नित्य, सत् र असत्, र तिनभन्दा पर — सबै हुनुहुन्छ।”",
                 "hi": "“हे महान्, पहले सृष्टिकर्ता ब्रह्मा से भी श्रेष्ठ आपको कौन न झुकेगा? आप नित्य, सत् और असत्, और उनसे परे — सब कुछ हैं।”"
-              }
+              },
+              "anvaya": "महात्मन्! ब्रह्मणः अपि आदिकर्त्रे गरीयसे ते कस्मात् च न नमेरन्? अनन्त! देवेश! जगन्निवास! त्वम् अक्षरं, सत्, असत्, तत् परं यत्।",
+              "anvaya_iast": "mahātman! brahmaṇaḥ api ādikartre garīyase te kasmāt ca na nameran? ananta! deveśa! jagannivāsa! tvam akṣaraṃ, sat, asat, tat paraṃ yat."
             }
           ]
         },
@@ -6647,7 +6721,9 @@
                 "en": "“You are the first God, the ancient Person, the universe's highest refuge; you are the knower and the known, the supreme home — and all is spread through you.”",
                 "ne": "“तपाईं पहिलो देवता, प्राचीन पुरुष, ब्रह्माण्डको सर्वोच्च आश्रय हुनुहुन्छ; तपाईं जान्ने र जानिने, परम घर हुनुहुन्छ — र सबै तपाईंमै फैलिएको छ।”",
                 "hi": "“आप पहले देव, प्राचीन पुरुष, ब्रह्माण्ड के सर्वोच्च आश्रय हैं; आप जानने वाले और जानने योग्य, परम घर हैं — और सब आप में ही फैला है।”"
-              }
+              },
+              "anvaya": "त्वम् आदिदेवः, पुराणः पुरुषः, त्वम् अस्य विश्वस्य परं निधानं, वेत्ता असि वेद्यं च परं च धाम; अनन्तरूप! त्वया विश्वं ततम्।",
+              "anvaya_iast": "tvam ādidevaḥ, purāṇaḥ puruṣaḥ, tvam asya viśvasya paraṃ nidhānaṃ, vettā asi vedyaṃ ca paraṃ ca dhāma; anantarūpa! tvayā viśvaṃ tatam."
             }
           ]
         },
@@ -6858,7 +6934,9 @@
                 "en": "“You are air, death, fire, Varuṇa, the moon — the father and the great ancestor. Salutations to you a thousand-fold — again and again, I bow.”",
                 "ne": "“तपाईं वायु, मृत्यु, अग्नि, वरुण, चन्द्रमा — पिता र महान् पूर्वज हुनुहुन्छ। तपाईंलाई हजारौं प्रणाम — बारम्बार, म झुक्छु।”",
                 "hi": "“आप वायु, मृत्यु, अग्नि, वरुण, चन्द्रमा — पिता और महान् पूर्वज हैं। आपको हज़ारों प्रणाम — बार-बार, मैं झुकता हूँ।”"
-              }
+              },
+              "anvaya": "त्वं वायुः, यमः, अग्निः, वरुणः, शशाङ्कः, प्रजापतिः, प्रपितामहः च; ते सहस्रकृत्वः नमः नमः अस्तु, ते पुनः च भूयः अपि नमः नमः।",
+              "anvaya_iast": "tvaṃ vāyuḥ, yamaḥ, agniḥ, varuṇaḥ, śaśāṅkaḥ, prajāpatiḥ, prapitāmahaḥ ca; te sahasrakṛtvaḥ namaḥ namaḥ astu, te punaḥ ca bhūyaḥ api namaḥ namaḥ."
             }
           ]
         },
@@ -7055,7 +7133,9 @@
                 "en": "“I bow to you before and behind; I bow to you on every side, O All. Your power is endless — you are everything, for you fill everything.”",
                 "ne": "“म तपाईंलाई अगाडि र पछाडि प्रणाम गर्छु; हे सर्वव्यापी, म चारैतिरबाट तपाईंलाई नमस्कार गर्छु। तपाईंको शक्ति अनन्त छ — तपाईं सबै हुनुहुन्छ, किनकि तपाईंले सबै भर्नुभएको छ।”",
                 "hi": "“मैं आपको आगे और पीछे प्रणाम करता हूँ; हे सर्वव्यापी, मैं चारों ओर से आपको प्रणाम करता हूँ। आपकी शक्ति अनन्त है — आप सब कुछ हैं, क्योंकि आपने सब कुछ भरा है।”"
-              }
+              },
+              "anvaya": "ते पुरस्तात् अथ पृष्ठतः नमः, सर्व! ते सर्वतः एव नमः अस्तु; अनन्तवीर्यामितविक्रमः त्वं सर्वं समाप्नोषि, ततः सर्वः असि।",
+              "anvaya_iast": "te purastāt atha pṛṣṭhataḥ namaḥ, sarva! te sarvataḥ eva namaḥ astu; anantavīryāmitavikramaḥ tvaṃ sarvaṃ samāpnoṣi, tataḥ sarvaḥ asi."
             }
           ]
         }
@@ -7288,7 +7368,9 @@
                 "en": "“Whatever I said to you boldly and thoughtlessly — calling you Kṛṣṇa, Yādava, my friend — ignorant of your greatness, whether carelessly or in love,”",
                 "ne": "“तपाईंको महानता नजानेर, हिम्मत र हतारले तपाईंलाई कृष्ण, यादव, मेरो मित्र भनेर जे-जे भनेँ — लापरवाहीमा वा मायामा,”",
                 "hi": "“आपकी महानता न जानकर, हिम्मत और जल्दबाज़ी में — आपको कृष्ण, यादव, मेरा मित्र कहकर — लापरवाही में या ममता में जो-जो कहा,”"
-              }
+              },
+              "anvaya": "तव इदं महिमानम् अजानता मया प्रमादात् प्रणयेन वा अपि सखा इति मत्वा हे कृष्ण, हे यादव, हे सखे इति यत् प्रसभम् उक्तम्।",
+              "anvaya_iast": "tava idaṃ mahimānam ajānatā mayā pramādāt praṇayena vā api sakhā iti matvā he kṛṣṇa, he yādava, he sakhe iti yat prasabham uktam."
             }
           ]
         },
@@ -7485,7 +7567,9 @@
                 "en": "“— and however I slighted you in play, in rest, at meals, alone or in company — forgive all that, O changeless, measureless Lord.”",
                 "ne": "“— र खेल, आराम, भोजन वा अरूको संगतमा, तपाईंलाई जे-जे हेला गरें — हे अपरिवर्तनीय, अमापनीय प्रभु, त्यो सबै क्षमा गर्नुहोस्।”",
                 "hi": "“— और खेल, आराम, भोजन या दूसरों की संगति में, आपके प्रति जो-जो हेला की — हे अपरिवर्तनीय, अमापनीय प्रभु, वह सब क्षमा कीजिए।”"
-              }
+              },
+              "anvaya": "अच्युत! विहारशय्यासनभोजनेषु एकः अथवा अपि तत्समक्षम् अवहासार्थं यत् च असत्कृतः असि, तत् अहम् अप्रमेयं त्वां क्षामये।",
+              "anvaya_iast": "acyuta! vihāraśayyāsanabhojaneṣu ekaḥ athavā api tatsamakṣam avahāsārthaṃ yat ca asatkṛtaḥ asi, tat aham aprameyaṃ tvāṃ kṣāmaye."
             }
           ]
         },
@@ -7682,7 +7766,9 @@
                 "en": "“You are the father of all that moves and stands; you are the supreme object of reverence, the greatest teacher. In the three worlds nothing equals you — let alone surpasses you.”",
                 "ne": "चल्ने-नचल्ने सबैका बुबा तपाईं नै; पुज्नुपर्ने सबैभन्दा ठूला गुरु पनि तपाईं नै। तीन लोक खोज्दा तपाईंको जोडी भेटिन्न — माथिको कुरा त परै जाओस्।",
                 "hi": "“आप चल और अचल — सबके पिता हैं; आप परम पूज्य और सबसे बड़े गुरु हैं। तीनों लोकों में आपके बराबर कुछ नहीं — आपसे ऊपर तो कुछ कैसे हो सकता है?”"
-              }
+              },
+              "anvaya": "अप्रतिमप्रभाव! अस्य चराचरस्य लोकस्य पिता असि, त्वं पूज्यः च गरीयान् गुरुः; लोकत्रये अपि त्वत्समः न अस्ति, अन्यः अभ्यधिकः कुतः?",
+              "anvaya_iast": "apratimaprabhāva! asya carācarasya lokasya pitā asi, tvaṃ pūjyaḥ ca garīyān guruḥ; lokatraye api tvatsamaḥ na asti, anyaḥ abhyadhikaḥ kutaḥ?"
             }
           ]
         },
@@ -7886,7 +7972,9 @@
                 "en": "“So I bow low before you and implore your grace. As a father pardons a son, a friend a friend, a lover the beloved — forgive me, O Lord.”",
                 "ne": "“त्यसैले म तपाईंको अगाडि लम्पसार परेर प्रार्थना गर्छु र कृपा माग्छु। जसरी पिता छोरालाई, मित्र मित्रलाई, प्रेमी आफ्नी प्रियतमालाई क्षमा गर्छ — त्यसरी मलाई क्षमा गर्नुहोस्, हे प्रभु।”",
                 "hi": "इसीलिए मैं ज़मीन पर लेटकर आपसे विनती करता हूँ। जैसे पिता बेटे को, दोस्त दोस्त को, प्रेमी अपनी प्रियतमा को माफ़ कर देता है — वैसे ही मुझे माफ़ कीजिए।"
-              }
+              },
+              "anvaya": "तस्मात् कायं प्रणिधाय प्रणम्य ईड्यम् ईशं त्वाम् अहं प्रसादये; देव! पिता पुत्रस्य इव, सखा सख्युः इव, प्रियः प्रियायाः सोढुम् अर्हसि।",
+              "anvaya_iast": "tasmāt kāyaṃ praṇidhāya praṇamya īḍyam īśaṃ tvām ahaṃ prasādaye; deva! pitā putrasya iva, sakhā sakhyuḥ iva, priyaḥ priyāyāḥ soḍhum arhasi."
             }
           ]
         }
@@ -8091,7 +8179,9 @@
                 "en": "“Having seen this wonder I rejoice, yet my heart quakes with fear; show me your gentle form, O Lord — have mercy.”",
                 "ne": "“यो आश्चर्य देखेर म रमाउँछु, तर मेरो हृदय डरले काम्छ; हे प्रभु, आफ्नो कोमल रूप देखाउनुहोस् — कृपा गर्नुहोस्।”",
                 "hi": "“यह आश्चर्य देखकर मैं हर्षित हूँ, किन्तु मेरा हृदय भय से काँपता है; हे प्रभु, अपना कोमल रूप दिखाइए — कृपा कीजिए।”"
-              }
+              },
+              "anvaya": "अदृष्टपूर्वं दृष्ट्वा हृषितः अस्मि, भयेन च मे मनः प्रव्यथितम्; देव! मे तत् एव रूपं दर्शय; देवेश! जगन्निवास! प्रसीद।",
+              "anvaya_iast": "adṛṣṭapūrvaṃ dṛṣṭvā hṛṣitaḥ asmi, bhayena ca me manaḥ pravyathitam; deva! me tat eva rūpaṃ darśaya; deveśa! jagannivāsa! prasīda."
             }
           ]
         },
@@ -8267,7 +8357,9 @@
                 "en": "“I wish to see you again as before — with crown, mace, and discus; appear in that four-armed shape, O cosmic form.”",
                 "ne": "फेरि पहिलेकै रूपमा हेर्न मन छ — शिरमा मुकुट, हातमा गदा र चक्र। हे विश्वरूप, त्यही चार हातवाला रूप देखाइदिनुहोस्।",
                 "hi": "फिर वही पुराना रूप देखने को जी करता है — सिर पर मुकुट, हाथ में गदा और चक्र। हे विश्वरूप, वही चार भुजाओं वाला रूप दिखा दीजिए।"
-              }
+              },
+              "anvaya": "सहस्रबाहो! विश्वमूर्ते! अहं त्वां तथा एव किरीटिनं गदिनं चक्रहस्तं द्रष्टुम् इच्छामि; तेन एव चतुर्भुजेन रूपेण भव।",
+              "anvaya_iast": "sahasrabāho! viśvamūrte! ahaṃ tvāṃ tathā eva kirīṭinaṃ gadinaṃ cakrahastaṃ draṣṭum icchāmi; tena eva caturbhujena rūpeṇa bhava."
             }
           ]
         }
@@ -8500,7 +8592,9 @@
                 "en": "Kṛṣṇa said: “Out of grace, Arjuna, I have revealed to you through my own power this supreme, radiant, universal, infinite, primal form — seen before by no one other than you.”",
                 "ne": "कृष्णले भन्नुभयो: “कृपाले, अर्जुन, मैले आफ्नै शक्तिले तिमीलाई यो सर्वोच्च, दैदिप्यमान, विश्वरूपी, असीम, आदिम रूप देखाएँ — तिमीबाहेक अरू कसैले पहिले नदेखेको।”",
                 "hi": "कृष्ण ने कहा: “कृपा से, अर्जुन, मैंने अपनी शक्ति से तुझे यह सर्वोच्च, दैदीप्यमान, विश्व-रूपी, असीम, आदिम रूप दिखाया — तेरे सिवा पहले किसी ने नहीं देखा।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — अर्जुन! प्रसन्नेन मया आत्मयोगात् तव इदं परं तेजोमयं विश्वम् अनन्तम् आद्यं रूपं दर्शितं, यत् मे त्वत् अन्येन न दृष्टपूर्वम्।",
+              "anvaya_iast": "śrībhagavānuvāca — arjuna! prasannena mayā ātmayogāt tava idaṃ paraṃ tejomayaṃ viśvam anantam ādyaṃ rūpaṃ darśitaṃ, yat me tvat anyena na dṛṣṭapūrvam."
             }
           ]
         },
@@ -8690,7 +8784,9 @@
                 "en": "“Neither by Vedic study, sacrifice, charity, ritual, nor harsh austerity can this form be seen in the mortal world — by anyone but you.”",
                 "ne": "“न वेद-अध्ययन, न यज्ञ, न दान, न अनुष्ठान, न कठोर तप — यस रूपलाई मर्त्य संसारमा तिमीबाहेक कोही देख्न सक्दैन।”",
                 "hi": "“न वेद-अध्ययन से, न यज्ञ से, न दान से, न अनुष्ठान से, न घोर तप से — इस रूप को मर्त्य लोक में तुझे छोड़कर कोई नहीं देख सकता।”"
-              }
+              },
+              "anvaya": "कुरुप्रवीर! न वेदयज्ञाध्ययनैः, न दानैः, न च क्रियाभिः, न उग्रैः तपोभिः नृलोके त्वत् अन्येन अहम् एवंरूपः द्रष्टुं शक्यः।",
+              "anvaya_iast": "kurupravīra! na vedayajñādhyayanaiḥ, na dānaiḥ, na ca kriyābhiḥ, na ugraiḥ tapobhiḥ nṛloke tvat anyena aham evaṃrūpaḥ draṣṭuṃ śakyaḥ."
             }
           ]
         },
@@ -8908,7 +9004,9 @@
                 "en": "“Fear not, nor be confused, at this dread vision of mine. With fear gone and heart at ease, look again upon my gentle form.”",
                 "ne": "यो डरलाग्दो दृश्यले तर्सिनु पर्दैन, अलमलिनु पनि पर्दैन। मन थामेर, ढुक्क भएर, अब मेरो त्यही मायालु रूप हेर।",
                 "hi": "“मेरे इस भयानक दृश्य को देखकर न डर, न उलझन में पड़। भय जाने पर, सहज हृदय से, मेरा कोमल रूप फिर देख।”"
-              }
+              },
+              "anvaya": "मम इदम् ईदृशं घोरं रूपं दृष्ट्वा ते व्यथा मा, विमूढभावः च मा; व्यपेतभीः प्रीतमनाः त्वं पुनः तत् एव मे इदं रूपं प्रपश्य।",
+              "anvaya_iast": "mama idam īdṛśaṃ ghoraṃ rūpaṃ dṛṣṭvā te vyathā mā, vimūḍhabhāvaḥ ca mā; vyapetabhīḥ prītamanāḥ tvaṃ punaḥ tat eva me idaṃ rūpaṃ prapaśya."
             }
           ]
         },
@@ -9112,7 +9210,9 @@
                 "en": "Sañjaya narrates: “So saying, Kṛṣṇa again assumed his gentle form, and the great soul comforted the terrified Arjuna.”",
                 "ne": "सञ्जय वर्णन गर्छन्: “यसरी भनेर, कृष्णले फेरि आफ्नो कोमल रूप धारण गरे, र महात्माले त्रसित अर्जुनलाई सान्त्वना दिए।”",
                 "hi": "संजय वर्णन करते हैं: “ऐसा कहकर, कृष्ण ने फिर अपना कोमल रूप धारण किया, और महात्मा ने त्रस्त अर्जुन को सान्त्वना दी।”"
-              }
+              },
+              "anvaya": "सञ्जय उवाच — वासुदेवः अर्जुनं तथा उक्त्वा इति स्वकं रूपं भूयः दर्शयामास; महात्मा सौम्यवपुः भूत्वा भीतम् एनं पुनः च आश्वासयामास।",
+              "anvaya_iast": "sañjaya uvāca — vāsudevaḥ arjunaṃ tathā uktvā iti svakaṃ rūpaṃ bhūyaḥ darśayāmāsa; mahātmā saumyavapuḥ bhūtvā bhītam enaṃ punaḥ ca āśvāsayāmāsa."
             }
           ]
         }
@@ -9303,7 +9403,9 @@
                 "en": "Arjuna says: “Seeing your gentle human form, O Janārdana, I am calm again, and my mind has returned to itself.”",
                 "ne": "अर्जुन भन्छन्: “तपाईंको कोमल मानव रूप देखेर, हे जनार्दन, म फेरि शान्त भएँ, र मेरो मन आफैंमा फर्कियो।”",
                 "hi": "अर्जुन कहते हैं: “आपका कोमल मानव रूप देखकर, हे जनार्दन, मैं फिर शान्त हूँ, और मेरा मन अपने आप में लौट आया है।”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — जनार्दन! तव इदं सौम्यं मानुषं रूपं दृष्ट्वा इदानीं सचेताः प्रकृतिं गतः संवृत्तः अस्मि।",
+              "anvaya_iast": "arjuna uvāca — janārdana! tava idaṃ saumyaṃ mānuṣaṃ rūpaṃ dṛṣṭvā idānīṃ sacetāḥ prakṛtiṃ gataḥ saṃvṛttaḥ asmi."
             }
           ]
         },
@@ -9479,7 +9581,9 @@
                 "en": "Kṛṣṇa said: “The form you have seen is exceedingly hard to behold — even the gods always yearn for a sight of it.”",
                 "ne": "कृष्णले भन्नुभयो: “तिमीले देखेको यो रूप हेर्न अत्यन्त कठिन छ — देवताहरू पनि यसको दर्शनका निम्ति सधैं तरस्छन्।”",
                 "hi": "कृष्ण ने कहा: “जो तूने अभी देखा, वह किसी को कभी-कभार ही दिखता है। देवता तक इस झलक के लिए तरसते रह जाते हैं।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — मम यत् इदं सुदुर्दर्शं रूपं दृष्टवान् असि, देवाः अपि अस्य रूपस्य नित्यं दर्शनकाङ्क्षिणः।",
+              "anvaya_iast": "śrībhagavānuvāca — mama yat idaṃ sudurdarśaṃ rūpaṃ dṛṣṭavān asi, devāḥ api asya rūpasya nityaṃ darśanakāṅkṣiṇaḥ."
             }
           ]
         },
@@ -9662,7 +9766,9 @@
                 "en": "“This vision is not won by Vedic study, austerity, charity, or ritual — I am seen thus only as you have seen me.”",
                 "ne": "“वेदको अध्ययन, तप, दान वा यज्ञ गरेर मात्र तिमीले देखेको मेरो यो रूप देख्न सकिँदैन।”",
                 "hi": "“यह दर्शन न वेद-अध्ययन से, न तप से, न दान से, न अनुष्ठान से मिलता है — मैं वैसे ही दिखता हूँ, जैसे तूने मुझे देखा।”"
-              }
+              },
+              "anvaya": "यथा मां दृष्टवान् असि, अहं न वेदैः, न तपसा, न दानेन, न च इज्यया एवंविधः द्रष्टुं शक्यः।",
+              "anvaya_iast": "yathā māṃ dṛṣṭavān asi, ahaṃ na vedaiḥ, na tapasā, na dānena, na ca ijyayā evaṃvidhaḥ draṣṭuṃ śakyaḥ."
             }
           ]
         },
@@ -9824,7 +9930,9 @@
                 "en": "“Yet by undivided devotion I may be truly known, seen, and entered, Arjuna — in this very form.”",
                 "ne": "“तर अविभाजित भक्तिले, अर्जुन, मानिसले मलाई साँच्चै चिन्न सक्छ, मेरो यो रूप देख्न सक्छ र ममा प्रवेश गर्न सक्छ।”",
                 "hi": "पर अर्जुन, जिसका मन कहीं और बँटा नहीं — वही मुझे इस रूप में सचमुच जान पाता है, देख पाता है, और मुझ में समा जाता है।"
-              }
+              },
+              "anvaya": "परन्तप! अर्जुन! अनन्यया भक्त्या तु अहम् एवंविधः तत्त्वेन ज्ञातुं द्रष्टुं च प्रवेष्टुं च शक्यः।",
+              "anvaya_iast": "parantapa! arjuna! ananyayā bhaktyā tu aham evaṃvidhaḥ tattvena jñātuṃ draṣṭuṃ ca praveṣṭuṃ ca śakyaḥ."
             }
           ]
         },
@@ -9965,7 +10073,9 @@
                 "en": "“One who works for me, making me his supreme goal, devoted to me, free of clinging and of enmity toward all — he reaches me, Arjuna.”",
                 "ne": "“जो मेरा निम्ति काम गर्छ, मलाई आफ्नो परम लक्ष्य बनाउँछ, मप्रति समर्पित छ, आसक्ति र द्वेषबाट मुक्त छ — ऊ मकहाँ पुग्छ, अर्जुन।”",
                 "hi": "“जो मेरे लिए काम करता है, मुझे अपना परम लक्ष्य बनाता है, मुझ में समर्पित है, आसक्ति और द्वेष से मुक्त है — वह मुझ तक पहुँचता है, अर्जुन।”"
-              }
+              },
+              "anvaya": "पाण्डव! यः मत्कर्मकृत्, मत्परमः, मद्भक्तः, सङ्गवर्जितः, सर्वभूतेषु निर्वैरः, सः माम् एति।",
+              "anvaya_iast": "pāṇḍava! yaḥ matkarmakṛt, matparamaḥ, madbhaktaḥ, saṅgavarjitaḥ, sarvabhūteṣu nirvairaḥ, saḥ mām eti."
             }
           ]
         }
