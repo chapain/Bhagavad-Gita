@@ -19,7 +19,7 @@
 
 - **Paraphrase review completed (2026-11-22).** All three six-chapter batches,
   Chapters 1–18, were read against Sanskrit and the reviewed literals in all
-  three languages; **2.05 remains unchanged and reserved for Dhruba's decision**.
+  three languages; **Dhruba approved retaining the current 2.05 reading**.
   Targeted whole-book class screens and focused regressions do not prove semantic
   completeness. See `docs/paraphrase-review-2026-11.md` for corrections,
   retained readings, 2.05 alternatives and verification limits. The local build
@@ -32,7 +32,8 @@
   further defects or legitimate alternative readings may remain. Findings and
   limits, including the contextual
   resolution of 2.16 अन्तः, are in `docs/padachheda-literal-review-2026-11.md`.
-  Leave 2.05 अर्थकामान् for Dhruba. The earlier literal follow-up is in
+  Dhruba approved the current 2.05 अर्थकामान् reading; the verse is unchanged.
+  The earlier literal follow-up is in
   `docs/literal-review-2026-11.md`.
 
 - **The 50 title advisories are closed, and the outreach kit is publish-ready (2026-11-20, `arena/ae0fff95-bhagavad-gita`).** Verified all 50 mechanical advisories against the verses themselves — the 10 verse-level `⚑` items (8 “number-unsupported”, 2 “name-not-in-verse”) and the 40 theme-level items (37 first-person summaries, 1.t4, 4.t10, 18.t4) — reading each against its own Devanagari, IAST, en/ne/hi literal and description. **All 50 upheld; no canonical title changed**, so no verse text, translation, generated file or count moved. Per-item evidence: `docs/title-audit.md` → “Advisory closure, 2026-11-20”. Separately, `docs/outreach.md` §0 was factually stale — it claimed two local-only commits, no live `method/`, and 937/560/68 counts. The Pages build for base `ac7e50e` reports `built`, so the live site *is* the audited commit; §0 is now a live-state checklist carrying the measured 122 Python / 946 assertions / 560 health / 10 SEO / 9,658 study counts. The missing **r/Nepal Nepali body** and the **adapted r/Hinduism body** are drafted there, with a prepared “why not an app store app?” reply. Lighthouse was attempted and is **not runnable here** (`pip` is PEP 668-locked; `cdn.playwright.dev` and `storage.googleapis.com` are blocked, so no Chromium), so a static preflight of all 21 built pages was done instead: titles, descriptions, canonical, `<html lang>`, image `alt`/`width`/`height`, font preload + `font-display:swap`, and `theme-color` all check out, with no render-blocking request to remove; scores remain CI/owner territory. GitHub topics are unchanged and still need the UI: `triligual` → `trilingual`, add `hindi` (API read 2026-11-20).

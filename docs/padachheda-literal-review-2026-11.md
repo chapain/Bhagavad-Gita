@@ -12,7 +12,9 @@ every unchanged gloss. The canonical data remains `source/ch<N>.json`.
 Read this pass: **Chapters 1–18 (700 verses)**, Sanskrit, four pādas,
 word rows and three literals, with the qualifications below. Requested batches
 1 (3–8), 2 (9–13) and 3 (14–18) have been read. The 2.05
-अर्थकामान् interpretation is reserved for Dhruba: **no part of 2.05 was edited**.
+अर्थकामान् interpretation was reserved for Dhruba: **no part of 2.05 was edited**.
+After this pass Dhruba approved the current reading; historical references to
+the hold below describe its status during review.
 The whole-book screens below are targeted checks, not a substitute for reading
 those verses. Literal and word glosses need not share the same surface words;
 idiom, inflection and compound composition are not automatic defects.

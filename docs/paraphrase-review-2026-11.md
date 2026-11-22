@@ -12,11 +12,11 @@ not differences of wording for their own sake. Earlier work is recorded in
 `padachheda-literal-review-2026-11.md`.
 
 **Batch 1: Chapters 1–6 (280 verses) read**, with the exception that 2.05's
-interpretation is Dhruba's reserved decision: no part of that verse was
-changed. **Batch 2: Chapters 7–12 (209 verses) read** in all three languages
+interpretation was reserved for Dhruba during review: no part of that verse was
+changed, and he subsequently approved retaining the current reading. **Batch 2: Chapters 7–12 (209 verses) read** in all three languages
 against Sanskrit and reviewed literals. **Batch 3: Chapters 13–18 (211 verses) read** in all three languages.
-Thus all 700 verses were considered, with 2.05 reserved for Dhruba and
-unchanged.
+Thus all 700 verses were considered, with 2.05 unchanged and subsequently
+approved as it stands by Dhruba.
 This is a human review, not proof of perfect semantic fidelity. Different
 translations and contextual readings remain possible.
 
@@ -278,7 +278,8 @@ of the pairs, not release from the pairs themselves. The adjacency candidate
 screen was rerun: 700 verses, 682 pairs, 74 ne / 43 hi lexical candidates.
 These screens and focused regressions are not semantic completeness proofs.
 
-**2.05 remains entirely unchanged** for Dhruba's decision on अर्थकामान्.
+**2.05 remains entirely unchanged.** Dhruba approved the current reading
+after being shown alternatives for अर्थकामान्.
 The current literal attaches “for wealth and desires” to killing the teachers;
 other published readings attach desire for wealth to the teachers, or wealth
 and desired things to the bloodstained enjoyments. Compare
