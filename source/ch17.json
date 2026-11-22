@@ -212,7 +212,9 @@
                 "en": "Arjuna asks: “Those who worship with faith but ignore the scriptural rules — what is their standing, Kṛṣṇa? Are they sāttvic, rājasic, or tāmasic?”",
                 "ne": "अर्जुन सोध्छन्: “जसले श्रद्धाले पूजा गर्छन् तर शास्त्रका नियम बेवास्ता गर्छन् — तिनको स्थिति के हो, कृष्ण? तिनीहरू सात्त्विक, राजस वा तामस?”",
                 "hi": "अर्जुन पूछते हैं: “जो श्रद्धा से पूजा करते हैं किन्तु शास्त्र के नियमों की अवहेलना करते हैं — उनकी स्थिति क्या है, कृष्ण? वे सात्त्विक, राजस या तामस?”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — कृष्ण! ये शास्त्रविधिम् उत्सृज्य श्रद्धया अन्विताः यजन्ते, तेषां तु का निष्ठा — सत्त्वम्, आहो रजः, तमः?",
+              "anvaya_iast": "arjuna uvāca — kṛṣṇa! ye śāstravidhim utsṛjya śraddhayā anvitāḥ yajante, teṣāṃ tu kā niṣṭhā — sattvam, āho rajaḥ, tamaḥ?"
             }
           ]
         },
@@ -402,7 +404,9 @@
                 "en": "Kṛṣṇa said: “Faith comes in three kinds, born of one's own nature: sāttvic, rājasic, and tāmasic. Listen.”",
                 "ne": "कृष्णले भन्नुभयो: “श्रद्धा तीन किसिमको हुन्छ, आफ्नै प्रकृतिबाट जन्मेको: सात्त्विक, राजस र तामस। सुन।”",
                 "hi": "कृष्ण ने कहा: “श्रद्धा तीन प्रकार की होती है, अपनी प्रकृति से जन्मी: सात्त्विक, राजस और तामस। सुन।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — देहिनां सा स्वभावजा श्रद्धा त्रिविधा भवति — सात्त्विकी, राजसी च एव, तामसी च इति; तां शृणु।",
+              "anvaya_iast": "śrībhagavānuvāca — dehināṃ sā svabhāvajā śraddhā trividhā bhavati — sāttvikī, rājasī ca eva, tāmasī ca iti; tāṃ śṛṇu."
             }
           ]
         },
@@ -564,7 +568,9 @@
                 "en": "“Faith follows nature, Arjuna. A person is what his faith makes him — as he believes, so he becomes.”",
                 "ne": "“श्रद्धा प्रकृतिलाई पछ्याउँछ, अर्जुन। मानिस आफ्नो श्रद्धाले बन्छ — जसरी विश्वास गर्छ, त्यस्तै बन्छ।”",
                 "hi": "“श्रद्धा प्रकृति का अनुसरण करती है, अर्जुन। मनुष्य अपनी श्रद्धा से बनता है — जैसा विश्वास करता है, वैसा बन जाता है।”"
-              }
+              },
+              "anvaya": "भारत! सर्वस्य श्रद्धा सत्त्वानुरूपा भवति; अयं पुरुषः श्रद्धामयः — यः यच्छ्रद्धः सः एव सः।",
+              "anvaya_iast": "bhārata! sarvasya śraddhā sattvānurūpā bhavati; ayaṃ puruṣaḥ śraddhāmayaḥ — yaḥ yacchraddhaḥ saḥ eva saḥ."
             }
           ]
         }
@@ -727,7 +733,9 @@
                 "en": "“The sāttvic adore the gods; the rājasic the demigods and demons; the tāmasic worship ghosts and spirits.”",
                 "ne": "“सात्त्विकहरू देवतालाई पुज्छन्; राजसहरू यक्ष र राक्षसलाई; तामसहरू भूत-प्रेत पुज्छन्।”",
                 "hi": "“सात्त्विक देवताओं को पूजते हैं; राजस देव-योनियों और राक्षसों को; तामस भूत-प्रेत पूजते हैं।”"
-              }
+              },
+              "anvaya": "सात्त्विकाः देवान् यजन्ते, राजसाः यक्षरक्षांसि, अन्ये तामसाः जनाः प्रेतान् भूतगणान् च यजन्ते।",
+              "anvaya_iast": "sāttvikāḥ devān yajante, rājasāḥ yakṣarakṣāṃsi, anye tāmasāḥ janāḥ pretān bhūtagaṇān ca yajante."
             }
           ]
         }
@@ -862,7 +870,9 @@
                 "en": "“Those who put on a show of holiness and swell with ego, driven by desire and clinging, practise harsh penances that scripture does not prescribe,”",
                 "ne": "“जो ढोंग र अहंकारले भरिएर, कामना र आसक्तिले चलाइएर, शास्त्रले नबताएका कठोर तपस्या गर्छन्,”",
                 "hi": "“जो ढोंग और अहंकार से भरकर, कामना और आसक्ति से प्रेरित होकर, शास्त्र में न बताई गई कठोर तपस्या करते हैं,”"
-              }
+              },
+              "anvaya": "ये जनाः दम्भाहङ्कारसंयुक्ताः कामरागबलान्विताः अशास्त्रविहितं घोरं तपः तप्यन्ते।",
+              "anvaya_iast": "ye janāḥ dambhāhaṅkārasaṃyuktāḥ kāmarāgabalānvitāḥ aśāstravihitaṃ ghoraṃ tapaḥ tapyante."
             }
           ]
         },
@@ -1003,7 +1013,9 @@
                 "en": "“— foolishly torturing the body's constituents and me within the body — know them as demonic in their intentions.”",
                 "ne": "अविवेकी बनेर शरीरका तत्त्वलाई मात्रै होइन, भित्रै बसेको मलाई पनि दुःख दिन्छन्। यस्ताको निधो नै आसुरी हो भनी बुझ।",
                 "hi": "विवेक खोकर देह के तत्त्वों को ही नहीं, भीतर बैठे मुझे भी वे सताते हैं। ऐसे लोगों का इरादा ही आसुरी समझ।"
-              }
+              },
+              "anvaya": "अचेतसः शरीरस्थं भूतग्रामं मां च एव अन्तःशरीरस्थं कर्शयन्तः — तान् आसुरनिश्चयान् विद्धि।",
+              "anvaya_iast": "acetasaḥ śarīrasthaṃ bhūtagrāmaṃ māṃ ca eva antaḥśarīrasthaṃ karśayantaḥ — tān āsuraniścayān viddhi."
             }
           ]
         }
@@ -1187,7 +1199,9 @@
                 "en": "“Food, sacrifice, austerity, and charity each have three forms, dear according to one's nature. Hear the difference.”",
                 "ne": "“खाना, यज्ञ, तपस्या र दान — प्रत्येकका तीन रूप हुन्छन्, स्वभावअनुसार प्रिय। भेद सुन।”",
                 "hi": "“भोजन, यज्ञ, तपस्या और दान — प्रत्येक के तीन रूप होते हैं, स्वभाव के अनुसार प्रिय। भेद सुन।”"
-              }
+              },
+              "anvaya": "सर्वस्य आहारः तु अपि त्रिविधः प्रियः भवति, तथा यज्ञः, तपः, दानम्; तेषाम् इमं भेदं शृणु।",
+              "anvaya_iast": "sarvasya āhāraḥ tu api trividhaḥ priyaḥ bhavati, tathā yajñaḥ, tapaḥ, dānam; teṣām imaṃ bhedaṃ śṛṇu."
             }
           ]
         }
@@ -1357,7 +1371,9 @@
                 "en": "“Foods that promote life, clarity, strength, health, joy, and contentment — juicy, smooth, nourishing, and pleasant — are loved by the sāttvic.”",
                 "ne": "“जीवन, स्पष्टता, बल, स्वास्थ्य, आनन्द र सन्तोष बढाउने — रसदार, कोमल, पोषक र रमाइलो — यस्ता खाना सात्त्विकलाई मनपर्छ।”",
                 "hi": "“जीवन, स्पष्टता, बल, स्वास्थ्य, आनन्द और संतोष बढ़ाने वाले — रसदार, कोमल, पुष्टिकर और सुखद — ऐसे भोजन सात्त्विक को प्रिय हैं।”"
-              }
+              },
+              "anvaya": "आयुःसत्त्वबलारोग्यसुखप्रीतिविवर्धनाः, रस्याः, स्निग्धाः, स्थिराः, हृद्याः आहाराः सात्त्विकप्रियाः।",
+              "anvaya_iast": "āyuḥsattvabalārogyasukhaprītivivardhanāḥ, rasyāḥ, snigdhāḥ, sthirāḥ, hṛdyāḥ āhārāḥ sāttvikapriyāḥ."
             }
           ]
         },
@@ -1519,7 +1535,9 @@
                 "en": "“Bitter, sour, salty, fiery, pungent, dry, and burning foods — which bring pain, sorrow, and sickness — are dear to the rājasic.”",
                 "ne": "“तितो, अमिलो, नुनिलो, झन्डै बल्ने, पिरो, सुक्खा र जलन दिने — दुःख, शोक र रोग ल्याउने — यस्ता खाना राजसलाई मनपर्छ।”",
                 "hi": "“कड़वे, खट्टे, नमकीन, प्रचण्ड गरम, तीखे, सूखे और जलन देने वाले — दुःख, शोक और रोग लाने वाले — ऐसे भोजन राजस को प्रिय हैं।”"
-              }
+              },
+              "anvaya": "कट्वम्ललवणात्युष्णतीक्ष्णरूक्षविदाहिनः, दुःखशोकामयप्रदाः आहाराः राजसस्य इष्टाः।",
+              "anvaya_iast": "kaṭvamlalavaṇātyuṣṇatīkṣṇarūkṣavidāhinaḥ, duḥkhaśokāmayapradāḥ āhārāḥ rājasasya iṣṭāḥ."
             }
           ]
         },
@@ -1667,7 +1685,9 @@
                 "en": "“Food that is stale, flavourless, spoiled, or leftover, and unclean remnants — that is loved by the tāmasic.”",
                 "ne": "“बासी, बेस्वाद, बिग्रेको वा जुठो खाना, र फोहोर बचेखुचेको खानेकुरा — यस्तो खाना तामसलाई मनपर्छ।”",
                 "hi": "रात का रखा, स्वाद खोया, सड़ता हुआ, किसी का जूठा और गन्दा बचा-खुचा — तमस वाले को यही भाता है।"
-              }
+              },
+              "anvaya": "यातयामं, गतरसं, पूति, पर्युषितं च यत्, उच्छिष्टम् अपि च अमेध्यं भोजनं तामसप्रियम्।",
+              "anvaya_iast": "yātayāmaṃ, gatarasaṃ, pūti, paryuṣitaṃ ca yat, ucchiṣṭam api ca amedhyaṃ bhojanaṃ tāmasapriyam."
             }
           ]
         }
@@ -1830,7 +1850,9 @@
                 "en": "“A sacrifice offered according to scripture, without seeking reward, with the conviction that it must be done — that is sāttvic.”",
                 "ne": "“शास्त्रअनुसार, फलको आशा नगरी, 'यो गर्नैपर्छ' भन्ने विश्वासले गरिएको यज्ञ — त्यो सात्त्विक हो।”",
                 "hi": "“शास्त्र के अनुसार, फल की आशा के बिना, 'यह करना ही चाहिए' — इस विश्वास से किया गया यज्ञ — वह सात्त्विक है।”"
-              }
+              },
+              "anvaya": "अफलाकाङ्क्षिभिः यष्टव्यम् एव इति मनः समाधाय विधिदृष्टः यः यज्ञः इज्यते, सः सात्त्विकः।",
+              "anvaya_iast": "aphalākāṅkṣibhiḥ yaṣṭavyam eva iti manaḥ samādhāya vidhidṛṣṭaḥ yaḥ yajñaḥ ijyate, saḥ sāttvikaḥ."
             }
           ]
         },
@@ -1992,7 +2014,9 @@
                 "en": "“But a sacrifice offered for results or for show — know that as rājasic.”",
                 "ne": "“तर फलका निम्ति वा देखाउनका निम्ति गरिएको यज्ञ — त्यसलाई राजस जान।”",
                 "hi": "“किन्तु फल के लिए या दिखाने के लिए किया गया यज्ञ — उसे राजस जानो।”"
-              }
+              },
+              "anvaya": "भरतश्रेष्ठ! फलं तु अभिसन्धाय दम्भार्थम् अपि च एव यत् इज्यते, तं यज्ञं राजसं विद्धि।",
+              "anvaya_iast": "bharataśreṣṭha! phalaṃ tu abhisandhāya dambhārtham api ca eva yat ijyate, taṃ yajñaṃ rājasaṃ viddhi."
             }
           ]
         },
@@ -2112,7 +2136,9 @@
                 "en": "“A sacrifice with no proper rite, no food shared, no sacred chants, no payment to the officiants and no faith is tāmasic.”",
                 "ne": "“विधि नमानेर, अरूलाई खाना नबाँडी, मन्त्र नपढी, पुरोहितलाई दक्षिणा नदिई र श्रद्धा नराखी गरिने यज्ञ तामस हो।”",
                 "hi": "“विधि न मानकर, भोजन न बाँटकर, मन्त्र न पढ़कर, पुरोहित को दक्षिणा न देकर और श्रद्धा न रखकर किया गया यज्ञ तामस है।”"
-              }
+              },
+              "anvaya": "विधिहीनम्, असृष्टान्नं, मन्त्रहीनम्, अदक्षिणं, श्रद्धाविरहितं यज्ञं तामसं परिचक्षते।",
+              "anvaya_iast": "vidhihīnam, asṛṣṭānnaṃ, mantrahīnam, adakṣiṇaṃ, śraddhāvirahitaṃ yajñaṃ tāmasaṃ paricakṣate."
             }
           ]
         }
@@ -2282,7 +2308,9 @@
                 "en": "“Honouring the gods, the learned, teachers, and sages; purity, honesty, celibacy, and non-violence — this is bodily austerity.”",
                 "ne": "देवता, विद्वान्, गुरु र ज्ञानीलाई आदर; सफा रहनु, सोझो हुनु, ब्रह्मचर्य पालनु, कसैलाई नदुखाउनु — शरीरले गर्ने तप यही हो।",
                 "hi": "“देवताओं, विद्वानों, गुरुओं और मुनियों का सम्मान; शुद्धता, ईमानदारी, ब्रह्मचर्य और अहिंसा — यह शारीरिक तपस्या है।”"
-              }
+              },
+              "anvaya": "देवद्विजगुरुप्राज्ञपूजनं, शौचम्, आर्जवं, ब्रह्मचर्यम्, अहिंसा च शारीरं तपः उच्यते।",
+              "anvaya_iast": "devadvijaguruprājñapūjanaṃ, śaucam, ārjavaṃ, brahmacaryam, ahiṃsā ca śārīraṃ tapaḥ ucyate."
             }
           ]
         },
@@ -2430,7 +2458,9 @@
                 "en": "“Speech that is gentle, true, pleasant, and helpful, along with the daily recitation of scripture — this is the austerity of speech.”",
                 "ne": "“कोमल, सत्य, रमाइलो र हितकारी बोली, साथै दैनिक शास्त्र पाठ — यो वाणीको तपस्या हो।”",
                 "hi": "“कोमल, सत्य, सुखद और हितकारी वाणी, साथ ही दैनिक शास्त्र-पाठ — यह वाणी की तपस्या है।”"
-              }
+              },
+              "anvaya": "अनुद्वेगकरं, सत्यं, प्रियहितं च यत् वाक्यं, स्वाध्यायाभ्यसनं च एव वाङ्मयं तपः उच्यते।",
+              "anvaya_iast": "anudvegakaraṃ, satyaṃ, priyahitaṃ ca yat vākyaṃ, svādhyāyābhyasanaṃ ca eva vāṅmayaṃ tapaḥ ucyate."
             }
           ]
         },
@@ -2564,7 +2594,9 @@
                 "en": "“A calm mind, kindness, silence, self-restraint, and inner purity — this is mental austerity.”",
                 "ne": "“शान्त मन, दयालुता, मौन, आत्मसंयम र भित्री शुद्धता — यो मानसिक तपस्या हो।”",
                 "hi": "“शान्त मन, दयालुता, मौन, आत्म-संयम और भीतरी शुद्धता — यह मानसिक तपस्या है।”"
-              }
+              },
+              "anvaya": "मनःप्रसादः, सौम्यत्वं, मौनम्, आत्मविनिग्रहः, भावसंशुद्धिः इति एतत् मानसं तपः उच्यते।",
+              "anvaya_iast": "manaḥprasādaḥ, saumyatvaṃ, maunam, ātmavinigrahaḥ, bhāvasaṃśuddhiḥ iti etat mānasaṃ tapaḥ ucyate."
             }
           ]
         }
@@ -2720,7 +2752,9 @@
                 "en": "“This threefold discipline, practised with great faith by the resolute, expecting nothing in return — is called sāttvic.”",
                 "ne": "“यो त्रिविध साधना, दृढ संकल्प भएकाहरूद्वारा ठूलो श्रद्धाले, बदलामा केही नचाहेर गरिएको — सात्त्विक भनिन्छ।”",
                 "hi": "“यह त्रिविध साधना, दृढ़ संकल्प वालों द्वारा बड़ी श्रद्धा से, बदले में कुछ न चाहकर की गई — सात्त्विक कहलाती है।”"
-              }
+              },
+              "anvaya": "अफलाकाङ्क्षिभिः युक्तैः नरैः परया श्रद्धया तप्तं तत् त्रिविधं तपः सात्त्विकं परिचक्षते।",
+              "anvaya_iast": "aphalākāṅkṣibhiḥ yuktaiḥ naraiḥ parayā śraddhayā taptaṃ tat trividhaṃ tapaḥ sāttvikaṃ paricakṣate."
             }
           ]
         },
@@ -2889,7 +2923,9 @@
                 "en": "“Penance done for fame, respect, and praise, and with hypocrisy — that is rājasic: unstable and fleeting.”",
                 "ne": "“प्रसिद्धि, सम्मान र प्रशंसाका निम्ति, र ढोंगले गरिएको तप — त्यो राजस हो: अस्थिर र क्षणभंगुर।”",
                 "hi": "“यश, सम्मान और प्रशंसा के लिए, और ढोंग से की गई तप — वह राजस है: अस्थिर और क्षणभंगुर।”"
-              }
+              },
+              "anvaya": "सत्कारमानपूजार्थं दम्भेन च एव यत् तपः क्रियते, तत् इह चलम् अध्रुवं राजसं प्रोक्तम्।",
+              "anvaya_iast": "satkāramānapūjārthaṃ dambhena ca eva yat tapaḥ kriyate, tat iha calam adhruvaṃ rājasaṃ proktam."
             }
           ]
         },
@@ -3037,7 +3073,9 @@
                 "en": "“Penance done out of foolish stubbornness, self-torment, or to hurt others — that is tāmasic.”",
                 "ne": "“मूर्ख हठले, आफैंलाई यातना दिएर, वा अरूलाई हानि पुर्‍याउनका निम्ति गरिएको तप — त्यो तामस हो।”",
                 "hi": "“मूर्ख हठ से, स्वयं को यातना देकर, या दूसरों को हानि पहुँचाने के लिए की गई तप — वह तामस है।”"
-              }
+              },
+              "anvaya": "मूढग्राहेण आत्मनः पीडया वा परस्य उत्सादनार्थं यत् तपः क्रियते, तत् तामसम् उदाहृतम्।",
+              "anvaya_iast": "mūḍhagrāheṇa ātmanaḥ pīḍayā vā parasya utsādanārthaṃ yat tapaḥ kriyate, tat tāmasam udāhṛtam."
             }
           ]
         }
@@ -3221,7 +3259,9 @@
                 "en": "“A gift given because it is right to give, to one who can never repay, at the proper place and time, to a deserving person — that is sāttvic.”",
                 "ne": "“दिनु नै सही हो भनेर, कहिल्यै फर्काउन नसक्नेलाई, उचित ठाउँ-समयमा, योग्य व्यक्तिलाई दिइएको दान — त्यो सात्त्विक हो।”",
                 "hi": "'देना चाहिए' — बस इतने भाव से, ऐसे को जो बदले में कुछ लौटा न सके, सही जगह और सही समय पर, सही पात्र को दिया जाए — वह दान सात्त्विक है।"
-              }
+              },
+              "anvaya": "दातव्यम् इति यत् दानम् अनुपकारिणे देशे काले च पात्रे च दीयते, तत् दानं सात्त्विकं स्मृतम्।",
+              "anvaya_iast": "dātavyam iti yat dānam anupakāriṇe deśe kāle ca pātre ca dīyate, tat dānaṃ sāttvikaṃ smṛtam."
             }
           ]
         },
@@ -3383,7 +3423,9 @@
                 "en": "“A gift given expecting something back, seeking reward, or given grudgingly — that is rājasic.”",
                 "ne": "“केही फर्कने आशाले, पुरस्कार खोजेर, वा मन नलागी दिइएको दान — त्यो राजस हो।”",
                 "hi": "“किन्तु कुछ वापस मिलने की आशा से, पुरस्कार चाहकर, या जी न लगाकर दिया गया दान — वह राजस है।”"
-              }
+              },
+              "anvaya": "यत् तु प्रत्युपकारार्थं वा पुनः फलम् उद्दिश्य परिक्लिष्टं च दीयते, तत् दानं राजसं स्मृतम्।",
+              "anvaya_iast": "yat tu pratyupakārārthaṃ vā punaḥ phalam uddiśya parikliṣṭaṃ ca dīyate, tat dānaṃ rājasaṃ smṛtam."
             }
           ]
         },
@@ -3524,7 +3566,9 @@
                 "en": "“A gift given at the wrong time and place, to the undeserving, without respect or with disdain — that is tāmasic.”",
                 "ne": "“गलत समय-स्थानमा, अयोग्यलाई, बिना सम्मान वा तिरस्कारसहित दिइएको दान — त्यो तामस हो।”",
                 "hi": "“गलत समय-स्थान पर, अयोग्य को, बिना सम्मान के या तिरस्कार के साथ दिया गया दान — वह तामस है।”"
-              }
+              },
+              "anvaya": "अदेशकाले अपात्रेभ्यः च असत्कृतम् अवज्ञातं यत् दानं दीयते, तत् तामसम् उदाहृतम्।",
+              "anvaya_iast": "adeśakāle apātrebhyaḥ ca asatkṛtam avajñātaṃ yat dānaṃ dīyate, tat tāmasam udāhṛtam."
             }
           ]
         }
@@ -3715,7 +3759,9 @@
                 "en": "“Om Tat Sat: three syllables that stand for Brahman. From them, in the beginning, came the brāhmaṇas, the Vedas and the rites.”",
                 "ne": "ॐ तत् सत् — यी तीन अक्षरले ब्रह्मलाई जनाउँछन्। सुरुमा यिनैबाट ब्राह्मण, वेद र यज्ञ ठडिएका हुन्।",
                 "hi": "“ॐ तत् सत् — ब्रह्म का यह त्रिविध नाम है। इसी से बहुत पहले ब्राह्मण, वेद और यज्ञों की सृष्टि हुई।”"
-              }
+              },
+              "anvaya": "ओम् तत् सत् इति त्रिविधः ब्रह्मणः निर्देशः स्मृतः; तेन पुरा ब्राह्मणाः वेदाः च यज्ञाः च विहिताः।",
+              "anvaya_iast": "om tat sat iti trividhaḥ brahmaṇaḥ nirdeśaḥ smṛtaḥ; tena purā brāhmaṇāḥ vedāḥ ca yajñāḥ ca vihitāḥ."
             }
           ]
         },
@@ -3842,7 +3888,9 @@
                 "en": "“So the knowers of Brahman begin every act of sacrifice, charity, and penance — as scripture ordains — uttering Om.”",
                 "ne": "“त्यसैले ब्रह्मज्ञहरू ॐ उच्चारण गरेर — शास्त्रले विधान गरेअनुसार — हरेक यज्ञ, दान र तपस्या सुरु गर्छन्।”",
                 "hi": "“इसलिए ब्रह्म-ज्ञाता ॐ का उच्चारण करके — शास्त्र के विधान के अनुसार — हर यज्ञ, दान और तपस्या आरम्भ करते हैं।”"
-              }
+              },
+              "anvaya": "तस्मात् ब्रह्मवादिनां विधानोक्ताः यज्ञदानतपःक्रियाः सततम् ओम् इति उदाहृत्य प्रवर्तन्ते।",
+              "anvaya_iast": "tasmāt brahmavādināṃ vidhānoktāḥ yajñadānatapaḥkriyāḥ satatam om iti udāhṛtya pravartante."
             }
           ]
         },
@@ -3976,7 +4024,9 @@
                 "en": "“Seekers of freedom perform sacrifice, penance, and charity of every kind — saying Tat, seeking no reward.”",
                 "ne": "“मुक्ति चाहनेहरू — 'तत्' भनेर, कुनै पुरस्कार नचाहेर — यज्ञ, तपस्या र हरेक किसिमको दान गर्छन्।”",
                 "hi": "“मुक्ति के खोजी — 'तत्' कहकर, कोई पुरस्कार न चाहकर — यज्ञ, तपस्या और हर प्रकार का दान करते हैं।”"
-              }
+              },
+              "anvaya": "मोक्षकाङ्क्षिभिः फलम् अनभिसन्धाय तत् इति विविधाः यज्ञतपःक्रियाः दानक्रियाः च क्रियन्ते।",
+              "anvaya_iast": "mokṣakāṅkṣibhiḥ phalam anabhisandhāya tat iti vividhāḥ yajñatapaḥkriyāḥ dānakriyāḥ ca kriyante."
             }
           ]
         },
@@ -4138,7 +4188,9 @@
                 "en": "“Sat means reality and goodness; it is also used of noble deeds, Arjuna.”",
                 "ne": "“'सत्' को अर्थ सत्य र असलपन हो; यो श्रेष्ठ कर्महरूमा पनि प्रयोग हुन्छ, अर्जुन।”",
                 "hi": "“'सत्' का अर्थ सत्य और सद्भाव है; यह श्रेष्ठ कर्मों में भी प्रयुक्त होता है, अर्जुन।”"
-              }
+              },
+              "anvaya": "पार्थ! सद्भावे साधुभावे च सत् इति एतत् प्रयुज्यते, तथा प्रशस्ते कर्मणि सच्छब्दः युज्यते।",
+              "anvaya_iast": "pārtha! sadbhāve sādhubhāve ca sat iti etat prayujyate, tathā praśaste karmaṇi sacchabdaḥ yujyate."
             }
           ]
         },
@@ -4321,7 +4373,9 @@
                 "en": "“Firmness in sacrifice, penance, and charity is called Sat; so is any action done for its sake.”",
                 "ne": "यज्ञमा, तपमा, दानमा अडिग रहनु — त्यो 'सत्'। अनि तिनकै निम्ति गरिने जुनसुकै काम पनि 'सत्' नै।",
                 "hi": "यज्ञ में, तप में, दान में टिके रहना — यही 'सत्'। और इन्हीं के लिए किया गया हर काम भी 'सत्'।"
-              }
+              },
+              "anvaya": "यज्ञे तपसि दाने च स्थितिः सत् इति च उच्यते, तदर्थीयं कर्म च एव सत् इति एव अभिधीयते।",
+              "anvaya_iast": "yajñe tapasi dāne ca sthitiḥ sat iti ca ucyate, tadarthīyaṃ karma ca eva sat iti eva abhidhīyate."
             }
           ]
         }
@@ -4533,7 +4587,9 @@
                 "en": "“Without faith, an offering, a gift, an act of penance or any other deed is Asat — of no use in this life or after death.”",
                 "ne": "श्रद्धा नभई चढाइयो, दिइयो, तपिइयो वा गरियो भने त्यो 'असत्' — यहाँ पनि केही होइन, गएपछि पनि केही होइन।",
                 "hi": "श्रद्धा न हो तो चढ़ावा, दान, तप, कोई भी काम — सब 'असत्'। न यहाँ किसी काम का, न जाने के बाद।"
-              }
+              },
+              "anvaya": "पार्थ! अश्रद्धया हुतं, दत्तं, तप्तं तपः, यत् च कृतं, तत् असत् इति उच्यते; तत् न च प्रेत्य न उ इह।",
+              "anvaya_iast": "pārtha! aśraddhayā hutaṃ, dattaṃ, taptaṃ tapaḥ, yat ca kṛtaṃ, tat asat iti ucyate; tat na ca pretya na u iha."
             }
           ]
         }
