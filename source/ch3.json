@@ -870,8 +870,8 @@
               ],
               "lits": {
                 "en": "Indeed no one ever remains actionless even for a moment; everyone is made to act, helpless, by the guṇas born of prakṛti.",
-                "ne": "निश्चय नै कोही पनि एक क्षण पनि अकर्मी रहँदैन; प्रकृतिबाट जन्मेका गुणहरूले सबैलाई असहाय भई कर्म गराउँछन्।",
-                "hi": "निश्चय ही कोई भी एक क्षण भी अकर्मी नहीं रहता; प्रकृति से उत्पन्न गुण सबको असहाय होकर कर्म कराते हैं।"
+                "ne": "निश्चय नै कोही पनि एक क्षण पनि अकर्मी रहँदैन; सबै जना असहाय भई प्रकृतिबाट जन्मेका गुणहरूद्वारा कर्म गर्न लगाइन्छन्।",
+                "hi": "निश्चय ही कोई भी एक क्षण भी अकर्मी नहीं रहता; सब असहाय होकर प्रकृति से उत्पन्न गुणों द्वारा कर्म करने को बाध्य किए जाते हैं।"
               },
               "paras": {
                 "en": "“Nobody can sit idle even for a second — the forces of nature (the guṇas) compel everyone, willing or not, to act.”",
@@ -2076,8 +2076,8 @@
               ],
               "lits": {
                 "en": "Nourished by sacrifice, the gods will give you the joys you desire; he who enjoys what they have given without offering back to them is verily a thief.",
-                "ne": "यज्ञले पोषित देवताहरूले तिमीलाई चाहेका भोगहरू दिनेछन्; तिनले दिएको उपभोग गर्ने तर बदलामा नदिने व्यक्ति चोर नै हो।",
-                "hi": "यज्ञ से पोषित देवता तुम्हें वांछित भोग देंगे; उनके दिए का उपभोग करके बदले में न देने वाला निश्चय चोर है।"
+                "ne": "यज्ञले पोषित देवताहरूले तिमीलाई चाहेका भोगहरू दिनेछन्; तिनले दिएको उपभोग गर्ने तर तिनीहरूलाई बदलामा नदिने व्यक्ति चोर नै हो।",
+                "hi": "यज्ञ से पोषित देवता तुम्हें वांछित भोग देंगे; उनके दिए का उपभोग करके उन्हें बदले में न देने वाला निश्चय चोर है।"
               },
               "paras": {
                 "en": "“The gods, pleased by your offering, grant you the good things of life. Enjoy their gifts without giving back and you are a thief.”",
@@ -3415,14 +3415,14 @@
                     [
                       "एव",
                       "eva",
-                      "even",
+                      "indeed",
                       "नै",
                       "ही"
                     ],
                     [
                       "अपि",
                       "api",
-                      "also",
+                      "even",
                       "पनि",
                       "भी"
                     ]
@@ -4316,8 +4316,8 @@
               ],
               "lits": {
                 "en": "As the unwise act, attached to action, O Bhārata, so should the wise act, unattached, desiring the welfare of the world.",
-                "ne": "हे भारत, जसरी अज्ञानीहरू आसक्त भई कर्म गर्छन्, त्यसरी नै ज्ञानीले पनि आसक्ति रहित भई, लोकसंग्रहका निम्ति कर्म गर्नुपर्छ।",
-                "hi": "हे भारत, जैसे अज्ञानी आसक्त होकर कर्म करते हैं, वैसे ही ज्ञानी को भी आसक्ति रहित होकर, लोकसंग्रह के लिए कर्म करना चाहिए।"
+                "ne": "हे भारत, जसरी अज्ञानीहरू आसक्त भई कर्म गर्छन्, त्यसरी नै लोकसंग्रह गर्न चाहने ज्ञानीले आसक्ति रहित भई कर्म गर्नुपर्छ।",
+                "hi": "हे भारत, जैसे अज्ञानी आसक्त होकर कर्म करते हैं, वैसे ही लोकसंग्रह करना चाहने वाले ज्ञानी को आसक्ति रहित होकर कर्म करना चाहिए।"
               },
               "paras": {
                 "en": "“The ignorant cling to their work; the wise work just as much but without clinging — for the good of everyone.”",
@@ -4472,9 +4472,9 @@
                 }
               ],
               "lits": {
-                "en": "Let him not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him encourage them to carry out their duties.",
-                "ne": "कर्ममा आसक्त अज्ञानीहरूको बुद्धिमा खलल नपारोस्; आफैं योगयुक्त भएर कर्म गर्दै उनीहरूलाई पनि सबै कर्म गर्न उत्साहित गरोस्।",
-                "hi": "कर्म में आसक्त अज्ञानियों की बुद्धि में खलल न डाले; स्वयं योगयुक्त होकर कर्म करता हुआ उन्हें सभी कर्म करने के लिए प्रेरित करे।"
+                "en": "Let the wise one not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him encourage them to perform all actions.",
+                "ne": "ज्ञानीले कर्ममा आसक्त अज्ञानीहरूको बुद्धिमा खलल नपारोस्; आफैं योगयुक्त भएर कर्म गर्दै उनीहरूलाई पनि सबै कर्म गर्न उत्साहित गरोस्।",
+                "hi": "ज्ञानी कर्म में आसक्त अज्ञानियों की बुद्धि में खलल न डाले; स्वयं योगयुक्त होकर कर्म करता हुआ उन्हें सभी कर्म करने के लिए प्रेरित करे।"
               },
               "paras": {
                 "en": "“Don't confuse people who are attached to their duties. Do your own work with devotion — and let them learn from your example.”",
@@ -4878,14 +4878,14 @@
                     [
                       "गुण",
                       "guṇa",
-                      "to the actions",
+                      "of the guṇas",
                       "गुण",
                       "गुण"
                     ],
                     [
                       "कर्मसु",
                       "karmasu",
-                      "of the guṇas",
+                      "in actions",
                       "कर्महरूमा",
                       "कर्मों में"
                     ]
@@ -6634,9 +6634,9 @@
                     [
                       "अनलेन",
                       "analena",
-                      "by fire",
-                      "आगोले",
-                      "अग्नि से"
+                      "by fire (like fire here)",
+                      "आगोले (यहाँ आगोजस्तै)",
+                      "अग्नि से (यहाँ अग्नि के समान)"
                     ],
                     [
                       "च",

@@ -221,8 +221,9 @@ TERM_NOTE_NOT_EXPLANATION = {
 # Sanskrit's own compound: अनार्यजुष्टम् is "practised by the un-Āryan", and the
 # English literal reads "unworthy of an Āryan" — जुष्टम् ("resorted to, practised
 # by") is carried by "unworthy of", not by a separate word. The Nepali and Hindi
-# carry it twice over (आर्य-अयोग्य / अनार्य-अयोग्य, अभ्यास गरिएको / सेवित); the
-# English is the one that compresses, and its compression was read here.
+# carry it twice over (आर्य-अयोग्य, अभ्यास गरिएको / सेवित); the English is the
+# one that compresses, and its compression was read here. 2026-11-22: the Hindi
+# अनार्य-अयोग्य was corrected to आर्य-अयोग्य; the former inverted the sense.
 TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 
 # Rows whose own head gloss the English literal does not carry, measured over all
@@ -255,7 +256,17 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # 2026-11-22: the 11.26 boundary repair carries सह "together" into
 # the English literal (991 → 990); a before/after miss-list diff found no
 # other changes. The entry into the mouths belongs to 11.27, not 11.26.
-ROW_LITERAL_CENSUS = 990
+# 2026-11-22 word-row follow-up: 2.57 द्वेष्टि is "hates" in the row
+# and literal, replacing "reviles" / "recoils". At 2.69 "awake" is now
+# explicit; the lexical census counts it for both जागर्ति and जाग्रति even
+# though the second clause uses "waking". No other misses moved (990 → 987).
+# Batch 1: 2.16 अन्तः now glosses contextual truth rather than end; 3.26
+# explicitly includes the wise person and all actions (987 → 984). The
+# 3.26 action wording also mechanically matches समाचरन् across clauses,
+# rather than recording a further independent repair. Later changes net to
+# zero through 8.10 (including synonym and compound-token false matches);
+# 6.13 straight and 7.23 indeed then removed two misses (984 → 982).
+ROW_LITERAL_CENSUS = 982
 
 
 def _fold_diacritics(word):

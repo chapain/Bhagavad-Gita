@@ -418,7 +418,7 @@
                     [
                       "अद्य",
                       "adya",
-                      "now",
+                      "today",
                       "आज",
                       "आज"
                     ]
@@ -541,7 +541,7 @@
                 }
               ],
               "lits": {
-                "en": "This same ancient yoga is now declared to you by me, because you are my devotee and friend — truly, this is the supreme secret.",
+                "en": "This same ancient yoga is declared to you by me today, because you are my devotee and friend — truly, this is the supreme secret.",
                 "ne": "यही प्राचीन योग आज म तिमीलाई बताउँछु, किनकि तिमी मेरो भक्त र मित्र हौ — साँच्चै, यो परम गोप्य हो।",
                 "hi": "यही प्राचीन योग आज मैं तुझसे कहता हूँ, क्योंकि तू मेरा भक्त और मित्र है — सचमुच, यह परम गुह्य है।"
               },
@@ -1391,8 +1391,8 @@
               ],
               "lits": {
                 "en": "For the protection of the good, for the destruction of the evil-doers, for the establishment of dharma, I take birth age after age.",
-                "ne": "असलहरूको रक्षा, दुष्टहरूको विनाश, र धर्मको स्थापनाका निम्ति म हरेक युगमा जन्म लिन्छु।",
-                "hi": "साधुओं की रक्षा, दुष्टों का विनाश, और धर्म की स्थापना के लिए मैं युग-युग में जन्म लेता हूँ।"
+                "ne": "असलहरूको रक्षा, दुष्कर्मीहरूको विनाश, र धर्मको स्थापनाका निम्ति म हरेक युगमा जन्म लिन्छु।",
+                "hi": "साधुओं की रक्षा, दुष्कर्मियों का विनाश, और धर्म की स्थापना के लिए मैं युग-युग में जन्म लेता हूँ।"
               },
               "paras": {
                 "en": "“To protect the righteous, to destroy the wicked, and to restore righteousness, I am born in every age.”",
@@ -1823,7 +1823,7 @@
                     [
                       "प्रपद्यन्ते",
                       "prapadyante",
-                      "approach",
+                      "take refuge in",
                       "शरण लिन्छन्",
                       "शरण लेते हैं"
                     ]
@@ -1932,9 +1932,9 @@
                 }
               ],
               "lits": {
-                "en": "In whatever way men approach me, in that same way I favour them; people follow my path in every way, O Pārtha.",
-                "ne": "मानिसहरू जसरी जसरी मकहाँ आउँछन्, त्यसरी नै म उनीहरूलाई स्वीकार गर्छु; हे पार्थ, मानिसहरू सबै तरिकाले मेरो मार्ग अनुसरण गर्छन्।",
-                "hi": "मनुष्य जिस-जिस प्रकार मुझे प्राप्त होते हैं, उसी-उसी प्रकार मैं उनका सत्कार करता हूँ; हे पार्थ, लोग सब प्रकार से मेरे ही मार्ग का अनुसरण करते हैं।"
+                "en": "In whatever way people take refuge in me, in that same way I favour them; people follow my path in every way, O Pārtha.",
+                "ne": "मानिसहरू जसरी जसरी मेरो शरण लिन्छन्, त्यसरी नै म उनीहरूलाई अनुग्रह गर्छु; हे पार्थ, मानिसहरू सबै तरिकाले मेरो मार्ग अनुसरण गर्छन्।",
+                "hi": "मनुष्य जिस-जिस प्रकार मेरी शरण लेते हैं, उसी-उसी प्रकार मैं उन पर अनुग्रह करता हूँ; हे पार्थ, लोग सब प्रकार से मेरे ही मार्ग का अनुसरण करते हैं।"
               },
               "paras": {
                 "en": "“Whoever comes to me, I welcome them in the very way they approach. People follow my path in many ways, Arjuna.”",
@@ -3296,7 +3296,7 @@
               ],
               "lits": {
                 "en": "Whose undertakings are all free from desire and resolve, and whose actions are burnt by the fire of knowledge — him the wise call a man of learning.",
-                "ne": "जसका सबै आरम्भहरू इच्छा र सङ्कल्परहित छन्, र जसका कर्महरू ज्ञानाग्निले बालिएका छन् — उसलाई नै ज्ञानीहरू पण्डित भन्छन्।",
+                "ne": "जसका सबै आरम्भहरू इच्छा र सङ्कल्परहित छन्, र जसका कर्महरू ज्ञानाग्निले जलेका छन् — उसलाई नै ज्ञानीहरू पण्डित भन्छन्।",
                 "hi": "जिसके सब आरम्भ इच्छा और संकल्प से रहित हैं, और जिसके कर्म ज्ञानाग्नि से दग्ध हो गए हैं — उसे ही ज्ञानी पण्डित कहते हैं।"
               },
               "paras": {

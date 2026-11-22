@@ -1,5 +1,12 @@
 # Literal-to-Sanskrit review (2026-11-22)
 
+> **Later the same day:** This is the historical literal pass. The subsequent
+> word-row/literal pass revised the attachment of 6.21's beyond-senses, aligned
+> 6.46 ne/hi with men of action, and rewrote 7.23 while explicitly preserving
+> अपि in all literals. Its 2.16 and other decisions are documented in
+> [the follow-up ledger](padachheda-literal-review-2026-11.md). The 2.05 hold
+> and the other deliberate-left decisions below are unchanged.
+
 Scope: each verse's printed Sanskrit and all three literals, with word rows as
 an aid, not an independent authority. Do not mark a verse reviewed merely
 because a mechanical check passes. This is a new review, not the earlier

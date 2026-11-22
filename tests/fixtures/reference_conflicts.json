@@ -1226,8 +1226,8 @@
           "सुहृत्",
           "suhṛt",
           "well-wisher",
-          "मित्र",
-          "मित्र"
+          "हितैषी",
+          "हितैषी"
         ],
         [
           "मित्र",
@@ -1262,7 +1262,7 @@
         [
           "द्वेष्य",
           "dveṣya",
-          "hateful",
+          "one who is hated",
           "घृणित",
           "घृणित"
         ],
@@ -1322,9 +1322,9 @@
       ]
     ],
     "lits": {
-      "en": "He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen, the righteous and even sinners — he excels.",
-      "ne": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा गर्ने, नातेदार, सज्जन र पापी — सबैप्रति समान छ, ऊ नै श्रेष्ठ हुन्छ।",
-      "hi": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा करने वाले, नातेदार, सज्जन और पापी — सबके प्रति समान है, वही श्रेष्ठ है।"
+      "en": "He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, those hated, kinsmen, the righteous and even sinners — he excels.",
+      "ne": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा गरिएका व्यक्ति, नातेदार, सज्जन र पापी — सबैप्रति समान छ, ऊ नै श्रेष्ठ हुन्छ।",
+      "hi": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, जिनसे घृणा की जाती है, नातेदार, सज्जन और पापी — सबके प्रति समान है, वही श्रेष्ठ है।"
     },
     "paras": {
       "en": "“Equal to friends and enemies, the neutral and the hostile, kin, the righteous and the unrighteous — such a one stands highest.”",

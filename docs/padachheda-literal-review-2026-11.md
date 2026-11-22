@@ -1,0 +1,252 @@
+# Padachheda word meanings against literals — follow-up (2026-11-22)
+
+## Scope and progress
+
+Dhruba asked for a renewed word-row/literal comparison after the literal review.
+This is a **new, incomplete pass**, not a claim that all 700 verses have been
+re-reviewed or that no further defects exist. The earlier whole-book semantic
+review is in `semantic-audit.md`; the boundary review is in
+`padachheda-verse-review.md`. The latter was not a semantic certification of
+every unchanged gloss. The canonical data remains `source/ch<N>.json`.
+
+Read this pass: **Chapters 1–8 (338 verses)**, Sanskrit, four pādas,
+word rows and three literals, with the qualifications below. This completes
+the reading of requested batch 1 (3–8), subject to the checks recorded below.
+Targeted checks of 9.29 and 11.24 are not chapter reviews. Requested batches
+2 (9–13) and 3 (14–18), **362 verses**, remain to be read. The 2.05
+अर्थकामान् interpretation is reserved for Dhruba: **no part of 2.05 was edited**.
+The whole-book screens below are targeted checks, not a substitute for reading
+those verses. Literal and word glosses need not share the same surface words;
+idiom, inflection and compound composition are not automatic defects.
+
+## Findings
+
+### 1.20/1.21 and 1.24/1.25 — participles across verse boundaries
+
+1.20 उद्यम्य is “having raised” (the rows say that); its finite verb आह “said”
+comes in 1.21. 1.24 स्थापयित्वा is “having placed”; its finite उवाच “said”
+comes in 1.25. All three literals had made each participle an independent
+completed sentence. They now retain the subordinate action and continue across
+the verse break. The 1.24 correction preserves the established decision that
+Hṛṣīkeśa **placed**, rather than drove, the chariot and that भारत is addressed;
+it does not alter the paraphrase. The 1.24 literal pin in
+`tests/test_semantic_audit.py` is amended with a 2026-11-22 explanation.
+
+Whole-book candidate screen: `python3 source/audit_pada_literal_candidates.py`
+lists **32 verses** whose last pāda contains a row with an English gloss
+starting `having `. Compared each candidate with its Sanskrit, next verse where
+relevant, and literal. 1.20 and 1.24 were the cross-boundary completed-sentence
+cases found. Some others do have finite verbs in their own verse (e.g. 2.03
+उत्तिष्ठ, 2.59 निवर्तते, 5.11 कुर्वन्ति); 6.24 and 15.03 already continue
+across the boundary, as do 18.51–18.52. This screen misses absolutives in other
+pādas, different English glosses and other grammatical forms; it cannot prove
+all such boundary errors absent.
+
+### 1.32 — सुखानि and भोगैः collapsed in ne/hi
+
+The first list names सुखानि (pleasures); the later question names भोगैः
+(enjoyments). The word rows distinguish सुख and भोग, as does English. Nepali
+and Hindi literals used भोग for both. The first occurrence now reads सुख;
+the later भोग remains. A scan of all rows for verses containing both सुख and
+भोग found **1.32, 1.33 and 16.14**. 1.33 distinguishes भोग and सुख, and
+16.14 distinguishes भोक्ता and सुखी. This is a co-occurrence screen, not a
+search for every possible synonym or split compound.
+
+### 1.44 — नियतम् in context
+
+In नरके नियतं वासः … अनुशुश्रुम the existing English and Nepali literals
+express certainty, not a rule prescribing conduct. The ne/hi row gloss विहित
+(“prescribed”) was the sense used for **नियतं कर्म** elsewhere. The 1.44
+row now says निश्चित रूपमा / निश्चित रूप से, with English “certainly”
+unchanged. Hindi literal नियत was ambiguous between fixed and prescribed; it
+now explicitly says निश्चित रूप से, retaining “we have heard”.
+
+A whole-book row-prefix scan for नियत found **1.44, 3.08, 4.30, 6.15, 7.20,
+8.02, 18.07, 18.09 and 18.23**. Prescribed action in 3.08/18.07/18.09/18.23,
+regulated diet in 4.30, controlled mind/self in 6.15/8.02 and constrained by
+nature in 7.20 are contextually distinct; none should be mechanically changed
+to “certainly”. The prefix scan cannot find different spellings or synonyms.
+
+### 2.02 — Hindi reversal in the अनार्य row
+
+The compound अनार्यजुष्टम् is understood in the existing literal as not
+befitting an Āryan; the following जुष्टम् row carries “practised”. The Hindi
+row “अनार्य-अयोग्य” instead suggests unworthy of the **non**-Āryan and
+reverses that contrast. It now reads आर्य-अयोग्य, consistent with the Nepali
+row and the Hindi literal आर्य को न शोभने वाली. The split rows retain their
+existing compound-gloss convention; no claim is made that each half by itself
+is a complete translation. The `TERM_IN_COMPOUND` test comment is updated with
+the date, not removed.
+
+A whole-book scan of ne/hi row glosses containing अयोग्य returned just 2.02
+and 17.22. The latter's अपात्रेभ्यः explicitly means to unworthy recipients,
+and its literal agrees; it remains unchanged. That exact-string scan cannot
+find other ways of expressing a reversal.
+
+### 2.17 and 2.21 — two attributes collapsed in the rows
+
+अविनाशि / अविनाशिनम् and अव्ययस्य / अव्ययम् occur together in these
+verses. English distinguishes “imperishable” and “inexhaustible”, and both
+Devanagari literals distinguish अविनाशी and अक्षय. The 2.17 ne/hi अव्ययस्य
+rows repeated अविनाशी instead of the second attribute; they now say अक्षयको /
+अक्षय का. The 2.21 Hindi अव्ययम् row now says अक्षय; its Nepali अव्यय
+already distinguishes it. No literal changed.
+
+The exact-form co-occurrence screen across all 700 found **only 2.17 and 2.21**.
+अव्यय can overlap with “imperishable” in contexts where it is the only such
+attribute, so we did not globally replace that gloss. The 23 verses containing
+an अव्यय row were also printed and compared; the other instances have no
+co-occurring अविनाश row. This screen cannot establish that other near-synonyms
+in the book are always distinguished.
+
+### 2.30, 2.32 and 2.36 — language and quantity
+
+* 2.30 Hindi **तू ... शोक नहीं करना चाहिए** is ungrammatical; changed तू to
+  तुझे. Screened all Hindi literals and paraphrases for standalone तू followed
+  within 90 characters by चाहिए: 2.26 literal and paraphrase, and 2.30 literal.
+  In 2.26 तू is subject of मानता है, while the चाहिए clause either uses तुझे
+  or has an implicit subject; neither is the same error. The search cannot
+  detect other grammatical mistakes.
+* 2.32 Hindi used the Nepali word आफैं for यदृच्छया; changed to अनायास,
+  which the Hindi row already gives. A whole-book literal/para/word-row search
+  for आफै in the Hindi lane found only 2.32. It is not a complete Hindi
+  vocabulary review.
+* 2.36 बहून् “many” is present in the rows and en/hi literals but was absent
+  from the Nepali literal. Restored धेरै. Across all 700, a बहु/बहू/बहव
+  row-prefix screen restricted to the exact English gloss “many” or “of many”
+  found 1.09, 2.36, 4.05, 4.10, 7.19, 11.06 and 11.28; the others express
+  धेरै in Nepali. Compounds, alternative glosses and synonyms are outside that
+  narrow screen.
+
+### 2.41 — an irresolute person, not simply a restless one
+
+अव्यवसायिनाम् is the genitive plural “of the irresolute”; both rows give
+अनिश्चयी and the Hindi literal agrees. The Nepali literal had चञ्चल (restless),
+which does not express the contrast with determination. It now says
+अनिश्चयीहरूका. A whole-book search for व्यवसाय in row forms found 2.41,
+2.44, 10.36 and 18.59. Only 2.41 has the negative अव्यवसायिनाम्; 2.44
+and 18.59 carry firmness or resolve, while 10.36's उद्यम is a contextual
+rendering of enterprise and was not mechanically replaced.
+
+### 2.57 — द्वेष्टि
+
+The verse contrasts न अभिनन्दति with न द्वेष्टि, “neither rejoices nor
+hates”. The ne/hi rows already had घृणा / द्वेष, but the three literals had
+“recoils / रिसाउँछ / विमुख”, while the English row had “reviles” (speaks
+abusively) rather than “hates”. The row and all three literals now express
+hating. A scan of every exact द्वेष्टि row found 2.57, 5.03, 12.17, 14.22 and
+18.10; the other four English rows and all their literals already say hate or
+घृणा/द्वेष. This exact-form scan does not cover other inflections.
+
+### 1.36 and 2.59 — English participle attachment
+
+In 1.36 the introductory “Slaying …, what pleasure would be ours” left the
+slayer grammatically dangling; “what pleasure would be ours in slaying …”
+retains the question and action. In 2.59 “having seen the Supreme, even that
+taste departs” could make the taste the seer; “when one has seen the Supreme,
+even that taste departs” identifies the implied seer. Neither Sanskrit nor the
+word rows changed.
+
+A whole-book English literal screen for an introductory `-ing` word after the
+start, semicolon or dash finds **80 candidate clauses** after these fixes,
+including false positives such as “King” and cross-verse continuations. The
+screen is reproducible in `audit_pada_literal_candidates.py` but is **not yet
+fully resolved**. The implied subjects at 7.02 and 11.24 have since been
+corrected; the remaining candidate clauses still need adjudication. It misses
+non-initial participles, other syntax, and Nepali/Hindi;
+no claim is made that dangling attachments are exhausted.
+
+### 2.69 — who is awake
+
+The first clause says that **संयमी जागर्ति** (the disciplined one is awake)
+in what is night for all beings. The second speaks of **पश्यतः मुनेः** (the
+seeing sage). The three literals had transferred “sage / मुनि” into the first
+clause and recast the act of waking as “waking time”. They now keep the first
+subject and its verb, and reserve the sage for the second clause. A row-form
+co-occurrence screen for संयमी and मुनि/मुने returned only 2.69 in all 700;
+it does not catch other titles or inflected spellings.
+
+### Batch 1 addendum (2026-11-22): Chapters 3–8 and targeted leads
+
+* 2.16 अन्तः denotes the truth/conclusion about the two in context, not their
+  cessation. All three rows now say truth/conclusion and the Nepali literal
+  says तत्त्व; English/Hindi already did. Besant's Discourse 2 and
+  bhagavadgita.io 2.16 corroborate the contextual conclusion reading. This
+  supersedes the earlier open note, not the separate 2.05 hold.
+* 3.05 attaches helplessness to the compelled actor; 3.12 restores offering
+  back **to the gods**; 3.20 separates एव/अपि senses; 3.25 restores desire
+  for world welfare; 3.26 keeps the wise actor and all actions; 3.29 corrects
+  the गुण/कर्मसु English row reversal; 3.39 marks fire as a comparison.
+* 4.03 restores today; 4.08 identifies evil-doers; 4.11 aligns refuge and
+  favour; 4.19 retains burnt actions. 5.07 has the self become the self of all
+  beings, in the compound and three literals; this relationship is also
+  supported by Besant's Discourse 5 and Rajagopalachari's rendering.
+* 6.09 distinguishes well-wisher, friend and hated persons, keeping sinners;
+  the related 9.29 ne/hi literals now say hated. 6.13 English restores straight;
+  6.15 restores supreme nirvāṇa; 6.20 adds mind-restraint; 6.21 attaches
+  beyond-senses to joy, not the intellect. 6.26 makes the from-where/to-there
+  relation spatial; 6.31 removes an unsupported extra phrase; 6.39 uses the
+  respectful Hindi register; 6.42 keeps the comparative; 6.46 uses कर्मी
+  rather than specifying ritualists. The 6.09 reference fixture is amended.
+* 7.02 and targeted 11.24 repair dangling English participles; 7.03 retains
+  perfected strivers; 7.13 distinguishes एभ्यः and परम्; 7.23 attributes the
+  finite fruit to those of little understanding without inventing a clause,
+  and preserves अपि. 7.30 keeps the technical adhibhūta, adhidaiva and
+  adhiyajña, as 8.01–8.04 define them; the paraphrases remain interpretive.
+* 8.03 ne/hi say the imperishable is supreme Brahman, not that imperishable
+  Brahman is a separate supreme principle. 8.08 Hindi चेतसा is मन, not बुद्धि;
+  8.09 पुराणम् alone supplies ancient; 8.10 सम्यक् properly qualifies fixing
+  breath. 8.20 separates परः beyond and तस्मात् than that; 8.26 retains
+  मते (held to be); 8.28 ne/hi distinguish knowing **this** from transcending
+  **that** merit. 8.16's worlds coming and going is an established contextual
+  reading (cf. Besant's Discourse 8), not a literal actor-change fix.
+
+Targeted whole-book row searches were made for अवश, गुण/कर्म, अनल, अन्तः,
+एव/अपि, दग्ध, भजामि, प्रपद्यन्ते, दुष्कृत, सुहृत्/मित्र, द्वेष्य,
+निरुद्ध, निर्वाणपरम, यतः, अतीन्द्रियम्, सिद्धानाम्/यतताम्, दुर्लभ,
+कर्मिभ्यः, अधिभूत/अधिदैव/अधियज्ञ and सम्यक्. They provide leads only;
+forms, compounds and other senses can escape each narrow search. No claim of
+whole-book coverage for each semantic defect follows.
+
+## Deliberately not changed or not settled in this pass
+
+* 1.13 and 1.19: तुमुलः rows say tumultuous/कोलाहलपूर्ण and the ne/hi
+  literals use भयङ्कर/भयानक of the sound. Both are established contextual
+  renderings of an overwhelming sound; a lexical difference alone does not
+  warrant replacing a prior translation. The exact तुमुल row occurs only in
+  those two verses. This is not a verdict on every synonym in the book.
+* Contextual names in 1.12, 1.15 and 1.26 remain as recorded in
+  `literal-review-2026-11.md`; the wider name/epithet review is still owed.
+  Some rows use parenthetical contextual identifications; their mere presence
+  is not a contradiction with a literal that keeps the Sanskrit epithet.
+* 2.05 अर्थकामान् and its two competing syntactic attachments remain Dhruba's
+  decision. This follow-up makes no change to that verse.
+* 2.16 अन्तः, previously open here, was resolved contextually on 2026-11-22:
+  see the dated addendum below. This is distinct from the untouched 2.05 hold.
+
+## Checks and limitations
+
+`tests/test_padachheda_literal_followup.py` pins selected findings and Sanskrit
+rows, including the contrasting 3.08 use of नियतम्. The English row-to-literal
+census moved **990 → 987 → 984 → 982**. Some movements are mechanical, not
+independent repairs: 2.69's “awake” matches both waking rows across clauses,
+and 3.26's action wording likewise matches across clauses. The later net zero
+includes restored 6.20 restraint, 7.03 perfected strivers and 8.10 properly,
+but also new misses for synonyms and split-compound prepositions in 6.26,
+7.23 and 7.30. The final two removed misses are 6.13 straight and 7.23 indeed.
+`ROW_LITERAL_CENSUS` records the changes; lexical matching is not a semantic
+validator. Historical snapshots have dated explanations. The generated title
+worksheet was regenerated for the English literal changes. Data edits used
+uniquely matched values, without a regex rewrite of JSON.
+
+Full `python3 build.py` passed locally on 2026-11-22: **164 Python tests**,
+949 app assertions, 560 site-health checks, 10 SEO checks and 9,658 study
+checks. The title audit has 51 non-blocking advisories, one more than the
+historical 50 because 2.01 now keeps the pronoun in its literal; Arjuna is
+identified by context in 1.47. Browser tests were skipped because
+Playwright/Chromium is unavailable; Pillow was unavailable, so share art was
+not repainted. `git diff --check` passed.
+
+These tests and screens guard particular patterns, not translation accuracy.
+The remainder of this 700-verse follow-up has not been read and must not be
+reported as complete.

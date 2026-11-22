@@ -1,5 +1,12 @@
 # Independent title audit — themes and verse titles
 
+> **2026-11-22:** A later literal-only review removed the contextual name
+> Arjuna from 2.01's literal, so the mechanical title audit now reports 51
+> rather than 50 advisories. Its new 2.01 flag is a contextual name, not an
+> unsupported identity: 1.47 identifies Arjuna as the person in distress, and
+> 2.01's तम् refers to him. No title change is needed. The 2026-11-20
+> closure below remains a historical count.
+
 **Status: Chapters 1–18 reviewed; the expanded audit and required regression/build proofs are complete.** This is a second, independent reading of every theme title and every verse title in en/ne/hi against its full theme span / own verse, descriptions, and surrounding part structure. `source/ch<N>.json` remains canonical. Browser/live verification was not run.
 
 **Coverage so far:** Chapters 1–18 complete — 169/169 themes and 700/700 verse titles (869 title records, each read in English, Nepali and Hindi). Twenty-two title records were corrected after their verdict tables; 50 advisories / 0 blocking remain locked. Full regression/build results and limits are in the final summary below.

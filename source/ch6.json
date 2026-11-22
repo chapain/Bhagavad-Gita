@@ -1383,8 +1383,8 @@
                       "सुहृत्",
                       "suhṛt",
                       "well-wisher",
-                      "मित्र",
-                      "मित्र"
+                      "हितैषी",
+                      "हितैषी"
                     ],
                     [
                       "मित्र",
@@ -1425,7 +1425,7 @@
                     [
                       "द्वेष्य",
                       "dveṣya",
-                      "hateful",
+                      "one who is hated",
                       "घृणित",
                       "घृणित"
                     ],
@@ -1498,9 +1498,9 @@
                 }
               ],
               "lits": {
-                "en": "He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen, the righteous and even sinners — he excels.",
-                "ne": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा गर्ने, नातेदार, सज्जन र पापी — सबैप्रति समान छ, ऊ नै श्रेष्ठ हुन्छ।",
-                "hi": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा करने वाले, नातेदार, सज्जन और पापी — सबके प्रति समान है, वही श्रेष्ठ है।"
+                "en": "He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, those hated, kinsmen, the righteous and even sinners — he excels.",
+                "ne": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा गरिएका व्यक्ति, नातेदार, सज्जन र पापी — सबैप्रति समान छ, ऊ नै श्रेष्ठ हुन्छ।",
+                "hi": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, जिनसे घृणा की जाती है, नातेदार, सज्जन और पापी — सबके प्रति समान है, वही श्रेष्ठ है।"
               },
               "paras": {
                 "en": "“Equal to friends and enemies, the neutral and the hostile, kin, the righteous and the unrighteous — such a one stands highest.”",
@@ -2141,7 +2141,7 @@
                 }
               ],
               "lits": {
-                "en": "Holding body, head and neck steady and unmoving, gazing at the tip of his own nose, not looking about,",
+                "en": "Steady, holding body, head and neck straight and unmoving, gazing at the tip of his own nose, not looking about,",
                 "ne": "शरीर, शिर र घाँटीलाई सीधा र अचल राखेर, आफ्नै नासिकाको अग्रभागमा दृष्टि स्थिर गरेर, वरिपरि नहेरी,",
                 "hi": "शरीर, सिर और गर्दन को सीधा और अचल रखकर, अपनी नासिका के अग्र भाग पर दृष्टि स्थिर कर, चारों ओर न देखता हुआ,"
               },
@@ -2413,9 +2413,9 @@
                 }
               ],
               "lits": {
-                "en": "Thus disciplining himself always, the yogi of controlled mind attains the peace of nirvāṇa that abides in me.",
-                "ne": "यसरी सधैं आत्मालाई संयत गर्दै, संयत मनको योगीले ममा अवस्थित निर्वाणको शान्ति प्राप्त गर्छ।",
-                "hi": "इस प्रकार सदा आत्मा को संयत करते हुए, वश में किए मन वाला योगी मुझ में स्थित निर्वाण की शान्ति को प्राप्त होता है।"
+                "en": "Thus disciplining himself always, the yogi of controlled mind attains the peace of supreme nirvāṇa that abides in me.",
+                "ne": "यसरी सधैं आत्मालाई संयत गर्दै, संयत मनको योगीले ममा अवस्थित परम निर्वाणको शान्ति प्राप्त गर्छ।",
+                "hi": "इस प्रकार सदा आत्मा को संयत करते हुए, वश में किए मन वाला योगी मुझ में स्थित परम निर्वाण की शान्ति को प्राप्त होता है।"
               },
               "paras": {
                 "en": "“Practising thus, the yogi with a stilled mind reaches the peace of liberation that rests in me.”",
@@ -3277,9 +3277,9 @@
                 }
               ],
               "lits": {
-                "en": "That in which, by the practice of yoga, the mind comes to rest, and beholding the Self by the self, one is content in the Self alone —",
-                "ne": "जसमा योगाभ्यासले मन शान्त हुन्छ, र आत्माद्वारा आत्मालाई देखेर मानिस आत्मामै सन्तुष्ट हुन्छ —",
-                "hi": "जिसमें योगाभ्यास से मन शान्त हो जाता है, और आत्मा द्वारा आत्मा को देखकर पुरुष आत्मा में ही संतुष्ट होता है —"
+                "en": "That in which the mind, restrained by the practice of yoga, comes to rest, and beholding the Self by the self, one is content in the Self alone —",
+                "ne": "जसमा योगाभ्यासले संयत मन शान्त हुन्छ, र आत्माद्वारा आत्मालाई देखेर मानिस आत्मामै सन्तुष्ट हुन्छ —",
+                "hi": "जिसमें योगाभ्यास से संयत मन शान्त हो जाता है, और आत्मा द्वारा आत्मा को देखकर पुरुष आत्मा में ही संतुष्ट होता है —"
               },
               "paras": {
                 "en": "“When the practised mind grows still, and seeing the Self within, you delight in your own Self —”",
@@ -3456,8 +3456,8 @@
               ],
               "lits": {
                 "en": "— that joy, boundless, to be grasped by the intellect, beyond the senses, which one knows; and established in it, this one never moves from the truth —",
-                "ne": "— जसलाई इन्द्रियभन्दा परको बुद्धिले ग्रहण गरेर अनन्त सुखको रूपमा जानिन्छ, र जसमा स्थित भएर मानिस सत्यबाट चल्दैन —",
-                "hi": "— जिसे इन्द्रियों से परे बुद्धि द्वारा ग्रहण करके अनन्त सुख के रूप में जाना जाता है, और जिसमें स्थित होकर पुरुष सत्य से विचलित नहीं होता —"
+                "ne": "— जुन अनन्त सुख इन्द्रियभन्दा पर र बुद्धिले ग्रहण गर्न सकिने छ, त्यसलाई मानिस जान्दछ; र जसमा स्थित भएर ऊ सत्यबाट चल्दैन —",
+                "hi": "— जो अनन्त सुख इन्द्रियों से परे और बुद्धि से ग्रहण करने योग्य है, उसे मनुष्य जानता है; और जिसमें स्थित होकर वह सत्य से विचलित नहीं होता —"
               },
               "paras": {
                 "en": "“— when you taste that boundless joy the intellect grasps, beyond the senses, and are established in it, so that nothing shakes you from the truth —”",
@@ -4248,9 +4248,9 @@
                 }
               ],
               "lits": {
-                "en": "From whatever cause the wavering, unsteady mind wanders away, from that alone let him withdraw it and bring it under the control of the Self.",
-                "ne": "चञ्चल, अस्थिर मन जुन-जुन कारणले भट्किएर जान्छ, त्यहीबाट फर्काएर आत्माको वशमा ल्याओस्।",
-                "hi": "चंचल, अस्थिर मन जिस-जिस कारण से भटककर जाता है, उसी से उसे लौटाकर आत्मा के वश में लाए।"
+                "en": "Wherever the restless, unsteady mind wanders, let him restrain it from there and bring it under the control of the Self.",
+                "ne": "चञ्चल, अस्थिर मन जहाँ-जहाँ भट्किन्छ, त्यहाँ-त्यहाँबाट त्यसलाई रोकेर आत्माको वशमा ल्याओस्।",
+                "hi": "चंचल, अस्थिर मन जहाँ-जहाँ भटकता है, वहाँ-वहाँ से उसे रोककर आत्मा के वश में लाए।"
               },
               "paras": {
                 "en": "“Wherever the restless mind strays, bring it back, again and again, under the Self's control.”",
@@ -5027,9 +5027,9 @@
                 }
               ],
               "lits": {
-                "en": "Established in unity, the yogi who worships me abiding in all beings — abiding in that, he lives in me, whatever his way of life.",
-                "ne": "एकत्वमा स्थित, सबै प्राणीमा विद्यमान मेरो नै पूजा गर्ने योगी — त्यसैमा रहेर, जस्तोसुकै जीवनशैली भए पनि, ऊ ममै बाँच्छ।",
-                "hi": "एकत्व में स्थित, सब प्राणियों में विद्यमान मेरी ही पूजा करने वाला योगी — उसी में रहकर, जैसी भी जीवन-शैली हो, वह मुझ में ही रहता है।"
+                "en": "The yogi who, established in unity, worships me abiding in all beings lives in me, whatever his way of life.",
+                "ne": "एकत्वमा स्थित, सबै प्राणीमा विद्यमान मेरो पूजा गर्ने योगी जस्तोसुकै जीवनशैली भए पनि ममै बाँच्छ।",
+                "hi": "एकत्व में स्थित, सब प्राणियों में विद्यमान मेरी पूजा करने वाला योगी जैसी भी जीवन-शैली हो, मुझ में ही रहता है।"
               },
               "paras": {
                 "en": "“The yogi who sees me in all beings and worships me there — he lives in me, whatever he does.”",
@@ -6320,7 +6320,7 @@
                       "tvat",
                       "than you",
                       "तपाईंबाहेक",
-                      "तुझसे"
+                      "आपसे"
                     ],
                     [
                       "अन्यः",
@@ -6853,7 +6853,7 @@
                     [
                       "दुर्लभतरम्",
                       "durlabhataram",
-                      "very hard to obtain",
+                      "harder to obtain",
                       "पाउन अझ गाह्रो",
                       "और दुर्लभ"
                     ]
@@ -6897,9 +6897,9 @@
                 }
               ],
               "lits": {
-                "en": "Or he is born into a family of wise yogis; truly a birth like this is very hard to obtain in this world.",
-                "ne": "वा ऊ बुद्धिमान् योगीहरूको घरमा जन्मिन्छ; साँच्चै, यस्तो जन्म यस संसारमा पाउन धेरै कठिन छ।",
-                "hi": "अथवा वह बुद्धिमान् योगियों के घर में जन्म लेता है; सचमुच, ऐसा जन्म इस लोक में बहुत कठिनता से मिलता है।"
+                "en": "Or he is born into a family of wise yogis; truly a birth like this is harder to obtain in this world.",
+                "ne": "वा ऊ बुद्धिमान् योगीहरूको घरमा जन्मिन्छ; साँच्चै, यस्तो जन्म यस संसारमा पाउन अझ कठिन छ।",
+                "hi": "अथवा वह बुद्धिमान् योगियों के घर में जन्म लेता है; सचमुच, ऐसा जन्म इस लोक में और भी दुर्लभ है।"
               },
               "paras": {
                 "en": "“Or else he is born into a household of seasoned yogis — and that is the rarest birth of all.”",
@@ -7534,8 +7534,8 @@
               ],
               "lits": {
                 "en": "The yogi is greater than the ascetics, deemed greater than even the men of knowledge, and greater than the men of action; therefore be a yogi, O Arjuna.",
-                "ne": "योगी तपस्वीभन्दा श्रेष्ठ छ, ज्ञानीभन्दा पनि श्रेष्ठ मानिन्छ, र कर्मकाण्डीभन्दा पनि श्रेष्ठ; त्यसैले हे अर्जुन, योगी बन।",
-                "hi": "योगी तपस्वी से श्रेष्ठ है, ज्ञानी से भी श्रेष्ठ माना जाता है, और कर्मकाण्डी से भी श्रेष्ठ; इसलिए हे अर्जुन, योगी बन।"
+                "ne": "योगी तपस्वीभन्दा श्रेष्ठ छ, ज्ञानीभन्दा पनि श्रेष्ठ मानिन्छ, र कर्मीभन्दा पनि श्रेष्ठ; त्यसैले हे अर्जुन, योगी बन।",
+                "hi": "योगी तपस्वी से श्रेष्ठ है, ज्ञानी से भी श्रेष्ठ माना जाता है, और कर्मियों से भी श्रेष्ठ; इसलिए हे अर्जुन, योगी बन।"
               },
               "paras": {
                 "en": "“The yogi surpasses the ascetic, the scholar, and the ritualist — so become a yogi, Arjuna.”",

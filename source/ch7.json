@@ -368,7 +368,7 @@
                 }
               ],
               "lits": {
-                "en": "I shall declare to you this knowledge together with its realization, without remainder; knowing which, nothing further remains to be known here.",
+                "en": "I shall declare to you this knowledge together with its realization, without remainder; when one knows it, nothing further remains to be known here.",
                 "ne": "म तिमीलाई यो ज्ञान र यसको विज्ञान नि:शेष रूपमा बताउनेछु; यसलाई जानेपछि यहाँ जान्न बाँकी अरू केही रहनेछैन।",
                 "hi": "मैं तुझे यह ज्ञान और इसका विज्ञान निःशेष रूप से बताऊँगा; इसे जानकर यहाँ जानने को और कुछ नहीं रह जाएगा।"
               },
@@ -518,9 +518,9 @@
                 }
               ],
               "lits": {
-                "en": "Among thousands of men, one perchance strives for perfection; and among those who strive, one perchance knows me in truth.",
-                "ne": "हजारौं मानिसमध्ये कोही एकले सिद्धिका निम्ति प्रयत्न गर्छ; र प्रयत्न गर्नेहरूमध्ये कोही एकले मलाई साँच्चै जान्दछ।",
-                "hi": "हज़ारों मनुष्यों में से कोई एक सिद्धि के लिए प्रयत्न करता है; और प्रयत्न करने वालों में से कोई एक मुझे सचमुच जानता है।"
+                "en": "Among thousands of men, one perchance strives for perfection; even among the perfected who strive, one perchance knows me in truth.",
+                "ne": "हजारौं मानिसमध्ये कोही एकले सिद्धिका निम्ति प्रयत्न गर्छ; प्रयत्न गर्ने सिद्धहरूमध्ये पनि कोही एकले मलाई साँच्चै जान्दछ।",
+                "hi": "हज़ारों मनुष्यों में से कोई एक सिद्धि के लिए प्रयत्न करता है; प्रयत्न करने वाले सिद्धों में भी कोई एक मुझे सचमुच जानता है।"
               },
               "paras": {
                 "en": "“Out of thousands, one seeks perfection; and of those perfected, one truly knows me.”",
@@ -2181,9 +2181,9 @@
                     [
                       "एभ्यः",
                       "ebhyaḥ",
-                      "beyond them",
-                      "तीभन्दा पर",
-                      "इनसे परे"
+                      "than these",
+                      "तीभन्दा",
+                      "इनसे"
                     ],
                     [
                       "परम्",
@@ -3887,9 +3887,9 @@
                 }
               ],
               "lits": {
-                "en": "But the fruit of those worshippers is limited; the fruit belongs to the small-minded. The worshippers of the gods go to the gods; my devotees come to me.",
-                "ne": "तर ती पूजकहरूको फल सीमित हुन्छ; त्यो फल अल्पबुद्धिहरूकै हुन्छ। देवताका पूजकहरू देवतामा जान्छन्; मेरा भक्तहरू मकहाँ आउँछन्।",
-                "hi": "किन्तु उन पूजकों का फल सीमित है; वह फल अल्प-बुद्धि वालों का है। देवताओं के पूजक देवताओं को प्राप्त होते हैं; मेरे भक्त मुझे प्राप्त होते हैं।"
+                "en": "But the fruit of those of little understanding comes to an end; the worshippers of the gods go to the gods, and my devotees indeed come to me.",
+                "ne": "तर ती अल्पबुद्धिहरूको फलको अन्त्य हुन्छ; देवताका पूजकहरू देवतामा जान्छन्, र मेरा भक्तहरू पनि मकहाँ आउँछन्।",
+                "hi": "किन्तु उन अल्प-बुद्धि वालों के फल का अन्त होता है; देवताओं के पूजक देवताओं को प्राप्त होते हैं, और मेरे भक्त भी मुझे प्राप्त होते हैं।"
               },
               "paras": {
                 "en": "“But such worship bears only limited fruit. God-worshippers reach the gods; my devotees reach me.”",
@@ -4900,14 +4900,14 @@
                     [
                       "अधिभूत",
                       "adhibhūta",
-                      "the elements",
+                      "adhibhūta",
                       "अधिभूत",
                       "अधिभूत"
                     ],
                     [
                       "अधिदैवम्",
                       "adhidaivam",
-                      "the deities",
+                      "adhidaiva",
                       "अधिदैव",
                       "अधिदैव"
                     ],
@@ -4936,7 +4936,7 @@
                     [
                       "अधियज्ञम्",
                       "adhiyajñam",
-                      "the sacrifice",
+                      "adhiyajña",
                       "अधियज्ञ",
                       "अधियज्ञ"
                     ],
@@ -5030,9 +5030,9 @@
                 }
               ],
               "lits": {
-                "en": "Those who know me along with the elements, the deities and the sacrifice — even at the time of death, with minds established, they know me.",
+                "en": "Those who know me together with adhibhūta, adhidaiva and adhiyajña — even at the time of death, with minds established, they know me.",
                 "ne": "जसले मलाई अधिभूत, अधिदैव र अधियज्ञसहित जान्दछन् — तिनीहरू मृत्युकालमा पनि, स्थिर मन भएर, मलाई नै चिन्छन्।",
-                "hi": "जो मुझे भूत, देवता और यज्ञ के साथ जानते हैं — वे मृत्यु-काल में भी, स्थिर मन से, मुझे ही जानते हैं।"
+                "hi": "जो मुझे अधिभूत, अधिदैव और अधियज्ञ सहित जानते हैं — वे मृत्यु-काल में भी, स्थिर मन से, मुझे ही जानते हैं।"
               },
               "paras": {
                 "en": "“Those who know me as pervading all beings, all gods, and all sacrifice — even at death's hour, with steady minds, they know me.”",

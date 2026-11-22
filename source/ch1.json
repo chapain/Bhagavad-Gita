@@ -3271,9 +3271,9 @@
                 }
               ],
               "lits": {
-                "en": "Then, seeing the Dhārtarāṣṭras stationed in array, as the clash of weapons was about to begin, the Pāṇḍava, whose banner bore the ape, raised his bow.",
-                "ne": "त्यसपछि, धार्तराष्ट्रहरूलाई व्यूहमा खडा देखेर, हतियार ठोक्किनै लाग्दा, बाँदर-ध्वज भएका पाण्डवले धनुष उठाए।",
-                "hi": "तब, धार्तराष्ट्रों को व्यूह में खड़ा देखकर, शस्त्र टकराने ही वाले समय, वानर-ध्वज वाले पांडव ने धनुष उठाया।"
+                "en": "Then the Pāṇḍava, whose banner bore the ape, seeing the Dhārtarāṣṭras stationed in array as the clash of weapons was about to begin, and raising his bow —",
+                "ne": "त्यसपछि, धार्तराष्ट्रहरूलाई व्यूहमा खडा देखेर, हतियार ठोक्किनै लाग्दा, बाँदर-ध्वज भएका पाण्डवले धनुष उठाएर —",
+                "hi": "तब, धार्तराष्ट्रों को व्यूह में खड़ा देखकर, शस्त्र टकराने ही वाले समय, वानर-ध्वज वाले पांडव ने धनुष उठाकर —"
               },
               "paras": {
                 "en": "As the battle was about to erupt, Arjuna — whose banner bore the emblem of Hanumān — looked at the enemy host and lifted his bow.",
@@ -3927,9 +3927,9 @@
                 }
               ],
               "lits": {
-                "en": "Sañjaya said: Thus addressed by Guḍākeśa, Hṛṣīkeśa, O descendant of Bharata, placed that best of chariots between the two armies.",
-                "ne": "सञ्जयले भने: गुडाकेशद्वारा यसरी सम्बोधित भएर, हृषीकेशले, हे भरतवंशी, त्यो उत्तम रथ दुवै सेनाको बीचमा राखे।",
-                "hi": "संजय ने कहा: गुडाकेश द्वारा ऐसा कहे जाने पर, हृषीकेश ने, हे भरतवंशी, उस उत्तम रथ को दोनों सेनाओं के बीच रखा।"
+                "en": "Sañjaya said: Thus addressed by Guḍākeśa, O descendant of Bharata, Hṛṣīkeśa, having placed that best of chariots between the two armies —",
+                "ne": "सञ्जयले भने: गुडाकेशद्वारा यसरी सम्बोधित भएका हृषीकेशले, हे भरतवंशी, त्यो उत्तम रथ दुवै सेनाको बीचमा राखेर —",
+                "hi": "संजय ने कहा: गुडाकेश द्वारा ऐसा कहे जाने पर, हृषीकेश ने, हे भरतवंशी, उस उत्तम रथ को दोनों सेनाओं के बीच रखकर —"
               },
               "paras": {
                 "en": "Sañjaya continues: “So ordered by Arjuna, O descendant of Bharata, Kṛṣṇa placed the finest chariot between the two armies.”",
@@ -5319,8 +5319,8 @@
               ],
               "lits": {
                 "en": "“I do not desire victory, O Kṛṣṇa, nor kingdom nor pleasures. Of what use is a kingdom to us, O Govinda — what use are enjoyments, or even life?”",
-                "ne": "“म विजय चाहन्नँ, हे कृष्ण, न राज्य, न भोगहरू। हामीलाई राज्यको के काम, हे गोविन्द — भोगको के काम, वा जीवनकै के काम?”",
-                "hi": "“मैं विजय नहीं चाहता, हे कृष्ण, न राज्य, न भोग। हमें राज्य से क्या, हे गोविंद — भोगों से क्या, या जीवन से ही क्या?”"
+                "ne": "“म विजय चाहन्नँ, हे कृष्ण, न राज्य, न सुखहरू। हामीलाई राज्यको के काम, हे गोविन्द — भोगको के काम, वा जीवनकै के काम?”",
+                "hi": "“मैं विजय नहीं चाहता, हे कृष्ण, न राज्य, न सुख। हमें राज्य से क्या, हे गोविंद — भोगों से क्या, या जीवन से ही क्या?”"
               },
               "paras": {
                 "en": "“I want no victory, Kṛṣṇa — no kingdom, no pleasures. What are a kingdom, delights, or life itself to us now, Govinda?”",
@@ -5988,7 +5988,7 @@
                 }
               ],
               "lits": {
-                "en": "“Slaying the sons of Dhṛtarāṣṭra, what pleasure would be ours, O Janārdana? Sin alone would take hold of us for killing these aggressors.”",
+                "en": "“What pleasure would be ours in slaying the sons of Dhṛtarāṣṭra, O Janārdana? Sin alone would take hold of us for killing these aggressors.”",
                 "ne": "“धृतराष्ट्रका छोराहरूलाई मारेर हामीलाई के खुसी मिल्नेछ, हे जनार्दन? यी आक्रमणकारीहरूलाई मारेको पाप नै हामीलाई लाग्नेछ।”",
                 "hi": "“धृतराष्ट्र के पुत्रों को मारकर हमें क्या प्रसन्नता होगी, हे जनार्दन? इन आक्रमणकारियों को मारने का पाप ही हमें लगेगा।”"
               },
@@ -7230,8 +7230,8 @@
                       "नियतम्",
                       "niyatam",
                       "certainly",
-                      "विहित",
-                      "विहित"
+                      "निश्चित रूपमा",
+                      "निश्चित रूप से"
                     ],
                     [
                       "वासः",
@@ -7275,7 +7275,7 @@
               "lits": {
                 "en": "“For men whose family-duties are destroyed, O Janārdana, there is said to be a certain abode in hell — thus have we heard.”",
                 "ne": "“जसका कुलधर्म नष्ट भएका छन्, ती मानिसहरूको, हे जनार्दन, नरकमा निश्चित बास हुन्छ भन्ने हामीले सुनेका छौं।”",
-                "hi": "“जिनके कुलधर्म नष्ट हो गए हैं, उन मनुष्यों का, हे जनार्दन, नरक में नियत वास बताया गया है — ऐसा हमने सुना है।”"
+                "hi": "“जिनके कुलधर्म नष्ट हो गए हैं, उन मनुष्यों का, हे जनार्दन, नरक में निश्चित रूप से वास होता है — ऐसा हमने सुना है।”"
               },
               "paras": {
                 "en": "“And, Janārdana, we have heard it said that those whose family-rites are destroyed must dwell in hell.”",

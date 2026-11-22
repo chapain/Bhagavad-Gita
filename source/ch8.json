@@ -512,8 +512,8 @@
               ],
               "lits": {
                 "en": "The Blessed Lord said: The imperishable is the supreme Brahman; one's own nature is called adhyātma; the creative impulse that brings forth beings is called karma.",
-                "ne": "श्रीभगवान्ले भन्नुभयो: अविनाशी ब्रह्म नै परम तत्त्व हो; आफ्नो स्वभाव अध्यात्म भनिन्छ; प्राणीहरूलाई जन्माउने सृष्टि-प्रेरणा कर्म भनिन्छ।",
-                "hi": "श्री भगवान् ने कहा: अविनाशी ब्रह्म ही परम तत्त्व है; अपना स्वभाव अध्यात्म कहलाता है; प्राणियों को उत्पन्न करने वाली सृष्टि-प्रेरणा कर्म कहलाती है।"
+                "ne": "श्रीभगवान्ले भन्नुभयो: अविनाशी नै परम ब्रह्म हो; आफ्नो स्वभाव अध्यात्म भनिन्छ; प्राणीहरूलाई जन्माउने सृष्टि-प्रेरणा कर्म भनिन्छ।",
+                "hi": "श्री भगवान् ने कहा: अविनाशी ही परम ब्रह्म है; अपना स्वभाव अध्यात्म कहलाता है; प्राणियों को उत्पन्न करने वाली सृष्टि-प्रेरणा कर्म कहलाती है।"
               },
               "paras": {
                 "en": "Kṛṣṇa said: “The imperishable is the supreme Brahman; one's own being is adhyātma; and the impulse of creation is karma.”",
@@ -1341,7 +1341,7 @@
               "lits": {
                 "en": "United with the yoga of practice, with a mind that goes nowhere else, O Pārtha — one reaches the supreme divine Person, contemplating him.",
                 "ne": "हे पार्थ, अभ्यासयोगले युक्त, अरू कतै नजाने एकाग्र मनले — परम दिव्य पुरुषको चिन्तन गर्दै — ऊ त्यहाँ पुग्छ।",
-                "hi": "हे पार्थ, अभ्यास-योग से युक्त, और कहीं न जाने वाली एकाग्र बुद्धि से — परम दिव्य पुरुष का चिन्तन करता हुआ — वह उसे प्राप्त होता है।"
+                "hi": "हे पार्थ, अभ्यास-योग से युक्त, और कहीं न जाने वाले एकाग्र मन से — परम दिव्य पुरुष का चिन्तन करता हुआ — वह उसे प्राप्त होता है।"
               },
               "paras": {
                 "en": "“Practising with a one-pointed mind, meditating on the supreme divine Person, the yogi reaches him.”",
@@ -1380,9 +1380,9 @@
                     [
                       "कविम्",
                       "kavim",
-                      "the ancient seer",
-                      "प्राचीन ऋषिलाई",
-                      "प्राचीन ऋषि को"
+                      "the seer",
+                      "ऋषिलाई",
+                      "ऋषि को"
                     ],
                     [
                       "पुराणम्",
@@ -1695,9 +1695,9 @@
                 }
               ],
               "lits": {
-                "en": "— at the time of death, with an unwavering mind, united with devotion and the power of yoga, breath fixed between the brows — he reaches that supreme divine Person.",
-                "ne": "— मृत्युकालमा अविचलित मन, भक्ति र योगशक्तिले युक्त, भ्रूमध्यमा प्राण स्थिर गरेर — ऊ त्यो परम दिव्य पुरुषमा पुग्छ।",
-                "hi": "— मृत्यु-काल में अविचलित मन, भक्ति और योग-शक्ति से युक्त, भ्रूमध्य में प्राण को स्थिर करके — वह उस परम दिव्य पुरुष को प्राप्त होता है।"
+                "en": "— at the time of death, with an unwavering mind, united with devotion and the power of yoga, breath properly fixed between the brows — he reaches that supreme divine Person.",
+                "ne": "— मृत्युकालमा अविचलित मन, भक्ति र योगशक्तिले युक्त, भ्रूमध्यमा प्राण राम्ररी स्थिर गरेर — ऊ त्यो परम दिव्य पुरुषमा पुग्छ।",
+                "hi": "— मृत्यु-काल में अविचलित मन, भक्ति और योग-शक्ति से युक्त, भ्रूमध्य में प्राण को भली-भाँति स्थिर करके — वह उस परम दिव्य पुरुष को प्राप्त होता है।"
               },
               "paras": {
                 "en": "“— at death, with a steady mind, devotion, and yogic power, breath held between the brows — reaches that supreme divine Person.”",
@@ -3166,14 +3166,14 @@
                     [
                       "परः",
                       "paraḥ",
-                      "other",
+                      "beyond",
                       "पर",
                       "परे"
                     ],
                     [
                       "तस्मात्",
                       "tasmāt",
-                      "beyond that",
+                      "than that",
                       "त्यसभन्दा",
                       "उससे"
                     ],
@@ -4281,9 +4281,9 @@
                 }
               ],
               "lits": {
-                "en": "These two paths, bright and dark, are the eternal paths of the world; by one, one goes without return, by the other one returns again.",
-                "ne": "यी दुई बाटो — शुक्ल र कृष्ण — संसारका सनातन मार्ग हुन्; एउटाबाट बिना फिर्ती जान्छ, अर्कोबाट फेरि फर्कन्छ।",
-                "hi": "ये दो मार्ग — शुक्ल और कृष्ण — संसार के सनातन मार्ग हैं; एक से बिना लौटे जाता है, दूसरे से फिर लौटता है।"
+                "en": "These two paths, bright and dark, are held to be the eternal paths of the world; by one, one goes without return, by the other one returns again.",
+                "ne": "यी दुई बाटो — शुक्ल र कृष्ण — संसारका सनातन मार्ग मानिन्छन्; एउटाबाट बिना फिर्ती जान्छ, अर्कोबाट फेरि फर्कन्छ।",
+                "hi": "ये दो मार्ग — शुक्ल और कृष्ण — संसार के सनातन मार्ग माने जाते हैं; एक से बिना लौटे जाता है, दूसरे से फिर लौटता है।"
               },
               "paras": {
                 "en": "“These two paths — bright and dark — are eternal in this world. One leads to no-return, the other brings return.”",
@@ -4667,8 +4667,8 @@
               ],
               "lits": {
                 "en": "Whatever fruit of merit is declared in the Vedas, sacrifices, austerities and gifts — the yogi, knowing all this, transcends it all and reaches the supreme primeval abode.",
-                "ne": "वेद, यज्ञ, तपस्या र दानमा जति पुण्यफल भनिएको छ — ती सबै जान्ने योगी त्यो सबैभन्दा माथि उठेर परम आदिम धाममा पुग्छ।",
-                "hi": "वेदों, यज्ञों, तप और दान में जितना पुण्य-फल कहा गया है — उस सबको जानने वाला योगी उस सबसे ऊपर उठकर परम आदि धाम को प्राप्त होता है।"
+                "ne": "वेद, यज्ञ, तपस्या र दानमा जति पुण्यफल भनिएको छ — यो सबै जानेर योगी त्यस सबैभन्दा माथि उठ्छ र परम आदिम धाममा पुग्छ।",
+                "hi": "वेदों, यज्ञों, तप और दान में जितना पुण्य-फल कहा गया है — यह सब जानकर योगी उस सबसे ऊपर उठता है और परम आदि धाम को प्राप्त होता है।"
               },
               "paras": {
                 "en": "“The yogi who knows this truth surpasses all the merit of Vedas, sacrifice, austerity and charity — and reaches the supreme, primeval abode.”",

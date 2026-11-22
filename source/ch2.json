@@ -307,7 +307,7 @@
                       "anārya",
                       "unworthy of the noble",
                       "आर्य-अयोग्य",
-                      "अनार्य-अयोग्य"
+                      "आर्य-अयोग्य"
                     ],
                     [
                       "जुष्टम्",
@@ -2948,9 +2948,9 @@
                     [
                       "अन्तः",
                       "antaḥ",
-                      "the end",
-                      "अन्त्य",
-                      "अंत"
+                      "the truth (conclusion)",
+                      "तत्त्व (निष्कर्ष)",
+                      "तत्त्व (निष्कर्ष)"
                     ]
                   ]
                 },
@@ -2986,7 +2986,7 @@
               ],
               "lits": {
                 "en": "The unreal has no being; the real never ceases to be. The truth of both is seen by the seers of the essence.",
-                "ne": "असत्को अस्तित्व हुँदैन; सत् कहिल्यै अस्तित्वहीन हुँदैन। दुवैको अन्त्य तत्त्वदर्शीहरूले देखेका छन्।",
+                "ne": "असत्को अस्तित्व हुँदैन; सत् कहिल्यै अस्तित्वहीन हुँदैन। दुवैको तत्त्व तत्त्वदर्शीहरूले देखेका छन्।",
                 "hi": "असत् का अस्तित्व नहीं है; सत् कभी अस्तित्वहीन नहीं होता। दोनों का यह तत्त्व तत्त्वदर्शियों ने देखा है।"
               },
               "paras": {
@@ -3106,8 +3106,8 @@
                       "अव्ययस्य",
                       "avyayasya",
                       "of the inexhaustible",
-                      "अविनाशीको",
-                      "अविनाशी का"
+                      "अक्षयको",
+                      "अक्षय का"
                     ],
                     [
                       "अस्य",
@@ -3812,7 +3812,7 @@
                       "avyayam",
                       "inexhaustible",
                       "अव्यय",
-                      "अविनाशी"
+                      "अक्षय"
                     ]
                   ]
                 },
@@ -5489,7 +5489,7 @@
               "lits": {
                 "en": "The embodied Self in the body of everyone is eternally inviolable, O Bhārata. Therefore you should not grieve for any being.",
                 "ne": "सबैको शरीरमा रहने देहधारी आत्मा सधैं अवध्य हुन्छ, हे भारत। त्यसैले तिमीले कुनै पनि प्राणीका निम्ति शोक गर्नु हुँदैन।",
-                "hi": "सबके शरीर में रहने वाली देहधारी आत्मा सदा अवध्य है, हे भारत। इसलिए तू किसी भी प्राणी के लिए शोक नहीं करना चाहिए।"
+                "hi": "सबके शरीर में रहने वाली देहधारी आत्मा सदा अवध्य है, हे भारत। इसलिए तुझे किसी भी प्राणी के लिए शोक नहीं करना चाहिए।"
               },
               "paras": {
                 "en": "“The Self dwelling in every body is forever indestructible, Arjuna. So you should grieve for no one at all.”",
@@ -5818,7 +5818,7 @@
               "lits": {
                 "en": "Happy are the kṣatriyas, O Pārtha, who obtain such a war — come of its own accord, an open door to heaven.",
                 "ne": "हे पार्थ, सुखी हुन् ती क्षत्रियहरू — जसलाई आफैं प्राप्त यस्तो युद्ध, स्वर्गको खुला ढोका, मिल्छ।",
-                "hi": "हे पार्थ, सुखी हैं वे क्षत्रिय, जिन्हें आफैं प्राप्त ऐसा युद्ध — स्वर्ग का खुला द्वार — मिलता है।"
+                "hi": "हे पार्थ, सुखी हैं वे क्षत्रिय, जिन्हें अनायास प्राप्त ऐसा युद्ध — स्वर्ग का खुला द्वार — मिलता है।"
               },
               "paras": {
                 "en": "“Fortunate are the warriors, Arjuna, who meet a war like this — it comes to them unsought, and it is an open gate to heaven.”",
@@ -6474,7 +6474,7 @@
               ],
               "lits": {
                 "en": "Your enemies will speak many unutterable words, slandering your strength. What could be more painful than that?",
-                "ne": "तिम्रा शत्रुहरूले तिम्रो शक्तिको निन्दा गर्दै नभन्नुपर्ने कुराहरू बोल्नेछन्। त्योभन्दा कठोर अरू के हुन सक्छ?",
+                "ne": "तिम्रा शत्रुहरूले तिम्रो शक्तिको निन्दा गर्दै धेरै नभन्नुपर्ने कुराहरू बोल्नेछन्। त्योभन्दा कठोर अरू के हुन सक्छ?",
                 "hi": "तेरे शत्रु तेरी शक्ति की निन्दा करते हुए बहुत-सी अकथनीय बातें कहेंगे। उससे अधिक पीड़ादायक क्या होगा?"
               },
               "paras": {
@@ -7302,7 +7302,7 @@
               ],
               "lits": {
                 "en": "The intellect of the resolute is single and one-pointed here, O joy of the Kurus; but the intellects of the irresolute branch out endlessly.",
-                "ne": "हे कुरुनन्दन, यहाँ दृढनिश्चयीहरूको बुद्धि एक, एकाग्र हुन्छ; तर चञ्चलहरूका बुद्धिहरू अनन्त शाखामा फैलिन्छन्।",
+                "ne": "हे कुरुनन्दन, यहाँ दृढनिश्चयीहरूको बुद्धि एक, एकाग्र हुन्छ; तर अनिश्चयीहरूका बुद्धिहरू अनन्त शाखामा फैलिन्छन्।",
                 "hi": "हे कुरुनन्दन, यहाँ दृढ़निश्चयी की बुद्धि एक, एकाग्र होती है; किन्तु अनिश्चयी की बुद्धियाँ अनन्त शाखाओं में फैलती हैं।"
               },
               "paras": {
@@ -9780,7 +9780,7 @@
                     [
                       "द्वेष्टि",
                       "dveṣṭi",
-                      "reviles",
+                      "hates",
                       "घृणा गर्दछ",
                       "द्वेष करता है"
                     ]
@@ -9817,9 +9817,9 @@
                 }
               ],
               "lits": {
-                "en": "One who is everywhere free from attachment, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set.",
-                "ne": "जो सर्वत्र आसक्तिरहित छ, शुभ वा अशुभ पाएर न रम्छ न रिसाउँछ — त्यसको बुद्धि दृढ स्थापित हुन्छ।",
-                "hi": "जो सर्वत्र आसक्तिरहित है, शुभ या अशुभ पाकर न हर्षित होता है न विमुख — उसकी बुद्धि दृढ़ स्थापित है।"
+                "en": "One who is everywhere free from attachment, who neither rejoices nor hates on meeting good or evil — that one's wisdom is firmly set.",
+                "ne": "जो सर्वत्र आसक्तिरहित छ, शुभ वा अशुभ पाएर न रम्छ न द्वेष गर्छ — त्यसको बुद्धि दृढ स्थापित हुन्छ।",
+                "hi": "जो सर्वत्र आसक्तिरहित है, शुभ या अशुभ पाकर न हर्षित होता है न द्वेष करता है — उसकी बुद्धि दृढ़ स्थापित है।"
               },
               "paras": {
                 "en": "“One who clings to nothing, who is neither elated by the good nor upset by the bad — that person's understanding stands firm.”",
@@ -10132,7 +10132,7 @@
                 }
               ],
               "lits": {
-                "en": "Sense objects fall away from the embodied one who abstains, except for the taste; having seen the Supreme, even that taste departs.",
+                "en": "Sense objects fall away from the embodied one who abstains, except for the taste; when one has seen the Supreme, even that taste departs.",
                 "ne": "आहारबाट विरत देहधारीबाट विषयहरू टाढिन्छन्, तर रस रहन्छ; परमलाई देखेपछि त्यो रस पनि हट्छ।",
                 "hi": "आहार से विरत देहधारी से विषय दूर हो जाते हैं, पर रस बना रहता है; परम को देखकर वह रस भी दूर हो जाता है।"
               },
@@ -11670,9 +11670,9 @@
                 }
               ],
               "lits": {
-                "en": "What is night for all beings is the waking time for the disciplined sage; what is waking for beings is night for the sage who sees.",
-                "ne": "सबै प्राणीहरूका निम्ति जो रात हो, संयमी मुनिका निम्ति त्यो जागरण हो; प्राणीहरू जाग्ने जो कुरा हो, दर्शी मुनिका निम्ति त्यो रात हो।",
-                "hi": "सब प्राणियों के लिए जो रात है, संयमी मुनि के लिए वह जागरण है; प्राणी जिसमें जागते हैं, वह दर्शी मुनि के लिए रात है।"
+                "en": "In what is night for all beings, the disciplined one is awake; what is waking for beings is night for the sage who sees.",
+                "ne": "सबै प्राणीहरूका निम्ति जुन रात हो, त्यसमा संयमी जाग्छ; जसमा प्राणीहरू जाग्छन्, त्यो देख्ने मुनिका निम्ति रात हो।",
+                "hi": "सब प्राणियों के लिए जो रात है, उसमें संयमी जागता है; जिसमें प्राणी जागते हैं, वह देखने वाले मुनि के लिए रात है।"
               },
               "paras": {
                 "en": "“What is night to the ordinary world is waking for the self-controlled sage; and what the world calls day is night to the seer.”",
