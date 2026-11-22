@@ -905,15 +905,11 @@ class WholeBookFidelity(unittest.TestCase):
         not "selfish undertakings". The old house gloss asserted the motive
         anyway; eighteen strings were corrected.
 
-        The check that found the remaining four was this rule's own class
-        sweep, not a reading of those verses: 3.15 निःस्वार्थ for a verse with
-        no काम, and निःस्वार्थ / "selfish" added to the bare कर्मयोग of 3.03,
-        5.02 and 13.24. Paraphrases of verses that DO say काम keep the sense
-        (3.09 names the alternative to यज्ञ; 18.02 काम्यानाम्); the short
-        exemptions below are exactly those, listed so a later pass does not
-        delete a reading the Sanskrit supports."""
-        # Paraphrases whose Sanskrit names desire outright, so the paraphrase may.
-        kama_allowed = {("3.09", "en"), ("3.09", "ne"), ("3.09", "hi")}
+        The historical sweep removed unsupported selfishness in 3.15, 3.03,
+        5.02 and 13.24. The later paraphrase review removed 3.09's exemption:
+        the alternative to sacrificial action is not necessarily limited to
+        explicitly selfish action. 18.02 has काम्यानाम् and expresses desire,
+        not selfishness. See docs/paraphrase-review-2026-11.md."""
         hits = set()
         for verse in self.verses:
             for kind in ("lits", "paras"):
@@ -921,14 +917,8 @@ class WholeBookFidelity(unittest.TestCase):
                     text = verse[kind][language]
                     if ("selfish" in text) if language == "en" else ("स्वार्थ" in text):
                         hits.add((verse["n"], language))
-        self.assertEqual(sorted(hits - kama_allowed), [],
+        self.assertEqual(sorted(hits), [],
                          "a lane asserts a selfish motive no word of the verse states")
-        for number, language in sorted(kama_allowed):
-            # 3.09 is the one verse where the paraphrase's contrast is the
-            # Sanskrit's own: "except action for the sake of sacrifice" says the
-            # alternative is desire-led action, and काम appears in no row of it,
-            # so the exemption is the यज्ञ row plus a reading, not a token.
-            self.assertIn("यज्ञ", [r[0] for r in rows_of(load_verse(number))])
         # one consistent house gloss for सङ्कल्प, and the rows carry no motive
         for number in ("6.02", "4.19", "6.04", "6.24"):
             for row in rows_of(load_verse(number)):

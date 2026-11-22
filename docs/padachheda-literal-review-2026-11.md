@@ -96,7 +96,9 @@ regressions pin the changes and the repeated 18.44 qualifier. 14.20 remains
 in the previously researched owner-settled direction “giving rise to the
 body”, although other traditions read the compound differently. 18.01's
 “difference” reading of पृथक् is also attested, alongside “separately”; it
-was not changed. Existing 2.05 hold and batch-2 paraphrase questions remain.
+was not changed. The 2.05 hold remains. A subsequent paraphrase pass has started; consult
+`paraphrase-review-2026-11.md` for progress and any resolution of earlier
+paraphrase questions.
 
 ## Batch 2: Chapters 9–13 (2026-11-22)
 
@@ -154,11 +156,12 @@ speeds and 13.30's distinct ततः/तदा.
 **Decisions and follow-up:** 9.31 प्रतिजानीहि can be translated “declare”
 or “know for certain”; retained the existing latter reading pending editorial
 choice. 10.01 प्रीयमाणाय remains “dear”; other interpretations exist. The
-paraphrases were not generally revised in this word-row/literal pass: 10.28
-still says “among procreators”, 13.24 English says “selfless action”, and
-11.26 anticipates the next verse. These are visible candidates for the owner or
-an explicitly scoped paraphrase review, not evidence that those lanes were
-resolved here. Previously recorded deliberate holds, including 2.05, stand.
+paraphrases were not generally revised in this word-row/literal pass: it noted
+10.28 “among procreators”, 13.24 English “selfless action”, and 11.26's
+anticipation of the next verse. The subsequent paraphrase review corrected
+13.24 and 11.26; 10.28 remains a lead for a later batch. See
+`paraphrase-review-2026-11.md`. Previously recorded deliberate holds,
+including 2.05, stand.
 
 ## Findings
 

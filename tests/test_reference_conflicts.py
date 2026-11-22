@@ -29,6 +29,9 @@ The prior restoration of sinners and all other rows remain.
 The 11.44 त्वाम् Hindi row now also uses the respectful आपको.
 In 18.53 ब्रह्मभूयाय and the three literals now retain becoming Brahman;
 the settled nirmamaḥ / परिग्रह wording remains untouched.
+The later paraphrase review clarifies 3.30 ne non-possessiveness, preserves
+4.28 yoga alongside study and knowledge, and distinguishes the relationships
+in all 6.09 paraphrases; their word rows and literals are unchanged.
 """
 import json
 from pathlib import Path
