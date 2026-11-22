@@ -234,7 +234,25 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # 2.07 adds weakness and defect; 18.38 adds इव; 2.08 and 2.65 align
 # further literal alignment carries according to, compassion, agitated, grieving,
 # abstaining, embodied and speech; synonyms change other rows (1018 → 1007).
-ROW_LITERAL_CENSUS = 1007
+# Reviewed 2026-11-22 against Besant's public-domain 1896 translation, five rows
+# moved into their own literal (1007 → 1002), each read first: 2.02 कश्मलम्
+# "faintness" → the literal's "dejection"; 2.32 सुखिनः "happy" and लभन्ते
+# "they obtain" → "Happy … obtain"; 2.44 विधीयते "is established" → "is
+# established" (was "arise"); 3.02 इव "indeed" → "as if" (matches "seem").
+# Chapter 6 read the same day (1002 → 994): 6.08 समलोष्ट/तृप्तात्मा, 6.22
+# स्थितः/गुरुणा/विचाल्यते (the 6.23 clause taken out of 6.22), 6.23 निश्चयेन,
+# 6.46 तपस्विभ्यः/कर्मिभ्यः now carry their own gloss; 6.21's rewrite first
+# *raised* its miss from 2 to 4 and was refined before this number was set.
+# Chapters 3–5 read the same day (994 → 992): 3.32 सर्वज्ञानविमूढान्
+# "deluded in all knowledge" ("deprived of all wisdom" was a substitution; the
+# ज्ञान row now travels into the literal with it). No row was added or removed
+# for the 3.31, 3.24, 4.15, 5.11 or 5.14 literal repairs, and none moved.
+# 5.14 was then reverted: "गर्छे" is the book's feminine agreement for
+# प्रकृति (see 9.10), so it was never a defect.
+# Chapters 7–10 read the same day (992 → 991): 8.19 अवशः "helpless". The
+# 7.21, 9.01, 9.11, 9.27 and 10.13 repairs moved no row, and again the miss
+# list was diffed before and after to confirm it.
+ROW_LITERAL_CENSUS = 991
 
 
 def _fold_diacritics(word):

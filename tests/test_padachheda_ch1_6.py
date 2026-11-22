@@ -7,6 +7,9 @@ See docs/padachheda-verse-review.md for grammatical and trilingual reasoning.
 Amended 2026-11-21 (PR #89, honorific-address pass): at 6.39 Arjuna addresses
 Kṛṣṇa, so the त्वत् Nepali gloss follows the verse literal's honorific
 तपाईंबाहेक (was तिमीभन्दा). No other snapshot entry moved.
+Amended 2026-11-22 (public-domain cross-check, Besant 1896): 2.19 snapshot
+literal now carries उभौ तौ ("both of them") and no longer says "truly"; the
+rows were already correct. No other snapshot entry moved.
 """
 import json
 from pathlib import Path
@@ -160,7 +163,7 @@ REVIEWED = json.loads(r'''{
       ]
     ],
     "lits": {
-      "en": "Whoever thinks the Self is the killer, and whoever thinks it is killed — neither truly knows: it does not kill, nor is it killed.",
+      "en": "Whoever regards this as the killer, and whoever thinks it is killed — both of them do not know: it does not kill, nor is it killed.",
       "ne": "जसले आत्माले मार्छ भनी ठान्छ र जसले आत्मा मारिन्छ भनी ठान्छ — दुवै साँच्चै बुझ्दैनन्: यसले न मार्छ न मारिन्छ।",
       "hi": "जो आत्मा को मारने वाला समझता है, और जो आत्मा मारा जाता है समझता है — दोनों सचमुच नहीं जानते: यह न मारता है, न मारा जाता है।"
     },

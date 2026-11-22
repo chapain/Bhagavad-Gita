@@ -283,7 +283,7 @@
                     [
                       "इव",
                       "iva",
-                      "indeed",
+                      "as if",
                       "झैँ",
                       "के समान"
                     ],
@@ -4159,8 +4159,8 @@
               ],
               "lits": {
                 "en": "These worlds would perish if I did not perform action; I would be the maker of chaos and would destroy these creatures.",
-                "ne": "यदि मैले कर्म नगरें भने यी लोकहरू नष्ट हुन्छन्; म सङ्करको कर्ता हुनेछु र यी प्राणीहरूलाई नष्ट गर्नेछु।",
-                "hi": "यदि मैं कर्म न करूँ तो ये लोक नष्ट हो जाएँ; मैं संकर का कर्ता बनूँगा और इन प्राणियों को नष्ट करूँगा।"
+                "ne": "यदि मैले कर्म नगरें भने यी लोकहरू नष्ट हुन्थे; म सङ्करको कर्ता हुन्थें र यी प्राणीहरूलाई नष्ट गर्थें।",
+                "hi": "यदि मैं कर्म न करूँ तो ये लोक नष्ट हो जाएँ; मैं संकर का कर्ता बनूँ और इन प्राणियों को नष्ट करूँ।"
               },
               "paras": {
                 "en": "“If I stopped acting, the worlds would collapse — and I would be the one who ruined them.”",
@@ -5280,9 +5280,9 @@
                 }
               ],
               "lits": {
-                "en": "Those men who always follow this teaching of mine with faith, without finding fault, are released even from the bondage of action.",
-                "ne": "जसले मेरो यो उपदेशलाई सधैं श्रद्धापूर्वक, दोष नदेखी अनुसरण गर्छन् — ती मानिसहरू कर्मबन्धनबाट पनि मुक्त हुन्छन्।",
-                "hi": "जो पुरुष सदा श्रद्धापूर्वक, दोष न देखकर मेरे इस उपदेश का अनुसरण करते हैं — वे कर्म-बन्धन से भी मुक्त हो जाते हैं।"
+                "en": "Those men who always follow this teaching of mine with faith, without finding fault, are released even from actions.",
+                "ne": "जसले मेरो यो उपदेशलाई सधैं श्रद्धापूर्वक, दोष नदेखी अनुसरण गर्छन् — ती मानिसहरू कर्महरूबाट पनि मुक्त हुन्छन्।",
+                "hi": "जो पुरुष सदा श्रद्धापूर्वक, दोष न देखकर मेरे इस उपदेश का अनुसरण करते हैं — वे कर्मों से भी मुक्त हो जाते हैं।"
               },
               "paras": {
                 "en": "“Whoever follows my teaching with trust and no resentment is freed from the grip of karma.”",
@@ -5407,7 +5407,7 @@
                     [
                       "विमूढान्",
                       "vimūḍhān",
-                      "deluded",
+                      "deluded in all knowledge",
                       "मोहित",
                       "मूढ़"
                     ],
@@ -5451,9 +5451,9 @@
                 }
               ],
               "lits": {
-                "en": "But those who, finding fault, do not follow this teaching of mine — know them as deprived of all wisdom, ruined, and without understanding.",
-                "ne": "तर जसले दोष देखेर मेरो यो उपदेश अनुसरण गर्दैनन् — तिनलाई सबै ज्ञानबाट वञ्चित, नष्ट र अविवेकी जान।",
-                "hi": "किन्तु जो दोष देखकर मेरे इस उपदेश का अनुसरण नहीं करते — उन्हें सब ज्ञान से वंचित, नष्ट और अविवेकी जान।"
+                "en": "But those who, finding fault, do not follow this teaching of mine — know them as deluded in all knowledge, ruined, and without understanding.",
+                "ne": "तर जसले दोष देखेर मेरो यो उपदेश अनुसरण गर्दैनन् — तिनलाई सबै ज्ञानमा मोहित, नष्ट र अविवेकी जान।",
+                "hi": "किन्तु जो दोष देखकर मेरे इस उपदेश का अनुसरण नहीं करते — उन्हें सब ज्ञान में मोहित, नष्ट और अविवेकी जानो।"
               },
               "paras": {
                 "en": "“Those who resent and reject my teaching are lost — bereft of wisdom, they destroy themselves.”",
@@ -6263,9 +6263,9 @@
                     [
                       "अशनः",
                       "aśanaḥ",
-                      "devourer, insatiable",
-                      "नतृप्त हुने",
-                      "अतृप्त"
+                      "eating, devouring",
+                      "खाने",
+                      "खाने वाला"
                     ],
                     [
                       "महा",
@@ -6322,8 +6322,8 @@
               ],
               "lits": {
                 "en": "The Blessed Lord said: It is desire, it is anger, born of the rajo-guṇa; all-devouring, greatly sinful — know this as the enemy here.",
-                "ne": "श्रीभगवान्ले भन्नुभयो: यो कामना हो, यो क्रोध हो — रजोगुणबाट जन्मेको; सबै निल्ने, महापापी — यसलाई नै यहाँ शत्रु जान।",
-                "hi": "श्री भगवान् ने कहा: यह कामना है, यह क्रोध है — रजोगुण से उत्पन्न; सब कुछ खा जाने वाला, महापापी — इसे ही यहाँ शत्रु जान।"
+                "ne": "श्रीभगवान्ले भन्नुभयो: यो कामना हो, यो क्रोध हो — रजोगुणबाट जन्मेको; महाखाने, महापापी — यसलाई नै यहाँ शत्रु जान।",
+                "hi": "श्री भगवान् ने कहा: यह कामना है, यह क्रोध है — रजोगुण से उत्पन्न; बहुत खाने वाला, महापापी — इसे ही यहाँ शत्रु जान।"
               },
               "paras": {
                 "en": "Kṛṣṇa said: “It is desire — and the anger born of it — springing from passion. Insatiable and immensely sinful: know this as your real enemy.”",
