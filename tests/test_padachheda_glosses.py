@@ -2,6 +2,8 @@
 
 Semantic reasoning is in docs/padachheda-review.md; these snapshots detect
 changes to either side of that review, not semantic equivalence by algorithm.
+2026-11-22: 2.57's literals now render द्वेष्टि as hating, not merely
+recoiling or becoming angry; the pinned तत् rows are unchanged.
 """
 import json
 from pathlib import Path
@@ -89,9 +91,9 @@ REVIEWED = json.loads(r'''{
       ]
     ],
     "lits": {
-      "en": "One who is everywhere free from attachment, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set.",
-      "ne": "जो सर्वत्र आसक्तिरहित छ, शुभ वा अशुभ पाएर न रम्छ न रिसाउँछ — त्यसको बुद्धि दृढ स्थापित हुन्छ।",
-      "hi": "जो सर्वत्र आसक्तिरहित है, शुभ या अशुभ पाकर न हर्षित होता है न विमुख — उसकी बुद्धि दृढ़ स्थापित है।"
+      "en": "One who is everywhere free from attachment, who neither rejoices nor hates on meeting good or evil — that one's wisdom is firmly set.",
+      "ne": "जो सर्वत्र आसक्तिरहित छ, शुभ वा अशुभ पाएर न रम्छ न द्वेष गर्छ — त्यसको बुद्धि दृढ स्थापित हुन्छ।",
+      "hi": "जो सर्वत्र आसक्तिरहित है, शुभ या अशुभ पाकर न हर्षित होता है न द्वेष करता है — उसकी बुद्धि दृढ़ स्थापित है।"
     }
   },
   "9.30": {

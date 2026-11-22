@@ -10,6 +10,14 @@ Kṛṣṇa, so the त्वत् Nepali gloss follows the verse literal's hon
 Amended 2026-11-22 (public-domain cross-check, Besant 1896): 2.19 snapshot
 literal now carries उभौ तौ ("both of them") and no longer says "truly"; the
 rows were already correct. No other snapshot entry moved.
+Amended 2026-11-22 (word-row/literal follow-up): 2.41 Nepali now keeps
+अव्यवसायिनाम् “of the irresolute” rather than substituting restlessness;
+the pinned rows and other languages are unchanged.
+Amended 2026-11-22 (contextual अन्तः review): 2.16 Nepali now says
+तत्त्व, the truth about the two, rather than their cessation. The तु/अनयोः
+boundary and the English and Hindi literals remain unchanged.
+Amended 2026-11-22 (batch 1): 6.39 त्वत् Hindi is आपसे, matching the
+honorific in Arjuna's own literal; the verse text and literal are unchanged.
 """
 import json
 from pathlib import Path
@@ -121,7 +129,7 @@ REVIEWED = json.loads(r'''{
     ],
     "lits": {
       "en": "The unreal has no being; the real never ceases to be. The truth of both is seen by the seers of the essence.",
-      "ne": "असत्को अस्तित्व हुँदैन; सत् कहिल्यै अस्तित्वहीन हुँदैन। दुवैको अन्त्य तत्त्वदर्शीहरूले देखेका छन्।",
+      "ne": "असत्को अस्तित्व हुँदैन; सत् कहिल्यै अस्तित्वहीन हुँदैन। दुवैको तत्त्व तत्त्वदर्शीहरूले देखेका छन्।",
       "hi": "असत् का अस्तित्व नहीं है; सत् कभी अस्तित्वहीन नहीं होता। दोनों का यह तत्त्व तत्त्वदर्शियों ने देखा है।"
     },
     "flow_text": [
@@ -293,7 +301,7 @@ REVIEWED = json.loads(r'''{
     ],
     "lits": {
       "en": "The intellect of the resolute is single and one-pointed here, O joy of the Kurus; but the intellects of the irresolute branch out endlessly.",
-      "ne": "हे कुरुनन्दन, यहाँ दृढनिश्चयीहरूको बुद्धि एक, एकाग्र हुन्छ; तर चञ्चलहरूका बुद्धिहरू अनन्त शाखामा फैलिन्छन्।",
+      "ne": "हे कुरुनन्दन, यहाँ दृढनिश्चयीहरूको बुद्धि एक, एकाग्र हुन्छ; तर अनिश्चयीहरूका बुद्धिहरू अनन्त शाखामा फैलिन्छन्।",
       "hi": "हे कुरुनन्दन, यहाँ दृढ़निश्चयी की बुद्धि एक, एकाग्र होती है; किन्तु अनिश्चयी की बुद्धियाँ अनन्त शाखाओं में फैलती हैं।"
     },
     "flow_text": [
@@ -504,7 +512,7 @@ REVIEWED = json.loads(r'''{
           "tvat",
           "than you",
           "तपाईंबाहेक",
-          "तुझसे"
+          "आपसे"
         ],
         [
           "अन्यः",

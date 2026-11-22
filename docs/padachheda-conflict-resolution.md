@@ -1,5 +1,9 @@
 # Research-backed resolution of the flagged conflicts
 
+> **2026-11-22:** The later [word-row/literal follow-up](padachheda-literal-review-2026-11.md)
+> changes 6.09's relationship glosses and literals, while preserving the
+> restoration of sinners described here. Earlier evidence remains historical.
+
 Owner authorization: after completion of the boundary pass, Dhruba asked to research the conflicts and correct the site, using editorial judgment (2026-11-04). This explicitly extends the earlier word-row-only scope to affected literals/paraphrases and one corroborated Sanskrit reading. Earlier ledger entries preserve the pre-resolution findings; this document supersedes their open status.
 
 ## Sources and provenance

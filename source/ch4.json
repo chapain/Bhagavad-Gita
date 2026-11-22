@@ -418,7 +418,7 @@
                     [
                       "अद्य",
                       "adya",
-                      "now",
+                      "today",
                       "आज",
                       "आज"
                     ]
@@ -541,7 +541,7 @@
                 }
               ],
               "lits": {
-                "en": "This same ancient yoga is now declared to you by me, because you are my devotee and friend — truly, this is the supreme secret.",
+                "en": "This same ancient yoga is declared to you by me today, because you are my devotee and friend — truly, this is the supreme secret.",
                 "ne": "यही प्राचीन योग आज म तिमीलाई बताउँछु, किनकि तिमी मेरो भक्त र मित्र हौ — साँच्चै, यो परम गोप्य हो।",
                 "hi": "यही प्राचीन योग आज मैं तुझसे कहता हूँ, क्योंकि तू मेरा भक्त और मित्र है — सचमुच, यह परम गुह्य है।"
               },
@@ -612,7 +612,7 @@
                       "bhavataḥ",
                       "your",
                       "तपाईंको",
-                      "तेरा"
+                      "आपका"
                     ],
                     [
                       "जन्म",
@@ -692,7 +692,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "आदौ",
@@ -721,7 +721,7 @@
               "lits": {
                 "en": "Arjuna said: Later is your birth, and earlier the birth of Vivasvān; how then am I to understand that you taught it in the beginning?",
                 "ne": "अर्जुनले भने: तपाईंको जन्म पछि, र विवस्वान्को जन्म पहिले; तब तपाईंले सुरुमा यो सिकाउनुभएको भनी म कसरी बुझूँ?",
-                "hi": "अर्जुन ने कहा: तेरा जन्म पीछे है, और विवस्वान् का जन्म पहले; तो मैं कैसे समझूँ कि तूने आदि में इसे सिखाया था?"
+                "hi": "अर्जुन ने कहा: आपका जन्म पीछे है, और विवस्वान् का जन्म पहले; तो मैं कैसे समझूँ कि आपने आदि में इसे सिखाया था?"
               },
               "paras": {
                 "en": "Arjuna asks: “You were born long after the sun-god Vivasvān. How could you have taught him this yoga at the very beginning?”",
@@ -1391,8 +1391,8 @@
               ],
               "lits": {
                 "en": "For the protection of the good, for the destruction of the evil-doers, for the establishment of dharma, I take birth age after age.",
-                "ne": "असलहरूको रक्षा, दुष्टहरूको विनाश, र धर्मको स्थापनाका निम्ति म हरेक युगमा जन्म लिन्छु।",
-                "hi": "साधुओं की रक्षा, दुष्टों का विनाश, और धर्म की स्थापना के लिए मैं युग-युग में जन्म लेता हूँ।"
+                "ne": "असलहरूको रक्षा, दुष्कर्मीहरूको विनाश, र धर्मको स्थापनाका निम्ति म हरेक युगमा जन्म लिन्छु।",
+                "hi": "साधुओं की रक्षा, दुष्कर्मियों का विनाश, और धर्म की स्थापना के लिए मैं युग-युग में जन्म लेता हूँ।"
               },
               "paras": {
                 "en": "“To protect the righteous, to destroy the wicked, and to restore righteousness, I am born in every age.”",
@@ -1747,13 +1747,13 @@
               ],
               "lits": {
                 "en": "Free from attachment, fear and anger, absorbed in me, taking refuge in me, many — purified by the austerity of knowledge — have attained my state.",
-                "ne": "आसक्ति, भय र क्रोधबाट मुक्त, ममा लीन भएका, मेरो शरण लिने धेरै — ज्ञानरूपी तपस्या (तप)ले शुद्ध भएर — मेरो अवस्था प्राप्त गरेका छन्।",
+                "ne": "आसक्ति, भय र क्रोधबाट मुक्त, ममा लीन भएका, मेरो शरण लिने धेरै — ज्ञानरूपी तपस्याले शुद्ध भएर — मेरो अवस्था प्राप्त गरेका छन्।",
                 "hi": "आसक्ति, भय और क्रोध से मुक्त, मुझमें मग्न, मेरी शरण लेने वाले अनेकों — ज्ञान-तप से शुद्ध होकर — मेरी अवस्था को प्राप्त हुए हैं।"
               },
               "paras": {
-                "en": "“Those free of craving, fear and anger, who take shelter in me, are purified by the discipline of knowledge and reach my very being.”",
-                "ne": "“जो मोह, डर र क्रोधबाट मुक्त छन्, जसले मेरो शरण लिन्छन् — तिनीहरू ज्ञानरूपी तपस्याले शुद्ध भएर मेरै स्वरूपमा पुग्छन्।”",
-                "hi": "“जो मोह, भय और क्रोध से मुक्त हैं, जो मेरी शरण लेते हैं — वे ज्ञानरूपी तप से शुद्ध होकर मेरे ही स्वरूप तक पहुँचते हैं।”"
+                "en": "“Many, free of attachment, fear and anger, absorbed in me and taking shelter in me, were purified by the discipline of knowledge and reached my state.”",
+                "ne": "“अनेकले राग, भय र क्रोध छोडी, ममै मग्न भएर मेरो आश्रय लिए। ज्ञानको तपले पवित्र भएर तिनीहरू मेरो भावमा पुगे।”",
+                "hi": "“अनेक जन राग, भय और क्रोध छोड़कर मुझमें मग्न हुए और मेरी शरण आए। ज्ञान की तपस्या से पवित्र होकर वे मेरे भाव को पहुँचे।”"
               }
             }
           ]
@@ -1823,7 +1823,7 @@
                     [
                       "प्रपद्यन्ते",
                       "prapadyante",
-                      "approach",
+                      "take refuge in",
                       "शरण लिन्छन्",
                       "शरण लेते हैं"
                     ]
@@ -1932,9 +1932,9 @@
                 }
               ],
               "lits": {
-                "en": "In whatever way men approach me, in that same way I favour them; people follow my path in every way, O Pārtha.",
-                "ne": "मानिसहरू जसरी जसरी मकहाँ आउँछन्, त्यसरी नै म उनीहरूलाई स्वीकार गर्छु; हे पार्थ, मानिसहरू सबै तरिकाले मेरो मार्ग अनुसरण गर्छन्।",
-                "hi": "मनुष्य जिस-जिस प्रकार मुझे प्राप्त होते हैं, उसी-उसी प्रकार मैं उनका सत्कार करता हूँ; हे पार्थ, लोग सब प्रकार से मेरे ही मार्ग का अनुसरण करते हैं।"
+                "en": "In whatever way people take refuge in me, in that same way I favour them; people follow my path in every way, O Pārtha.",
+                "ne": "मानिसहरू जसरी जसरी मेरो शरण लिन्छन्, त्यसरी नै म उनीहरूलाई अनुग्रह गर्छु; हे पार्थ, मानिसहरू सबै तरिकाले मेरो मार्ग अनुसरण गर्छन्।",
+                "hi": "मनुष्य जिस-जिस प्रकार मेरी शरण लेते हैं, उसी-उसी प्रकार मैं उन पर अनुग्रह करता हूँ; हे पार्थ, लोग सब प्रकार से मेरे ही मार्ग का अनुसरण करते हैं।"
               },
               "paras": {
                 "en": "“Whoever comes to me, I welcome them in the very way they approach. People follow my path in many ways, Arjuna.”",
@@ -2800,9 +2800,9 @@
                 "hi": "क्या कर्म, क्या अकर्म — यहाँ ज्ञानी भी उलझन में हैं; मैं तुझे वह कर्म बताऊँगा, जिसे जानकर तू अशुभ से मुक्त हो जाएगा।"
               },
               "paras": {
-                "en": "“What is truly action, and what is inaction? Even the learned are confused. I will teach you the truth of action — knowing it, you will be free of all harm.”",
-                "ne": "“साँच्चै के कर्म हो, के अकर्म? विद्वान्हरू पनि अलमलमा छन्। म तिमीलाई कर्मको सत्य सिकाउनेछु — यो जानेर तिमी सबै हानिबाट मुक्त हुनेछौ।”",
-                "hi": "“सचमुच कर्म क्या है, और अकर्म क्या? विद्वान भी उलझन में हैं। मैं तुझे कर्म का सत्य सिखाऊँगा — यह जानकर तू सब हानि से मुक्त हो जाएगा।”"
+                "en": "“What is truly action, and what is inaction? Even the learned are confused. I will teach you the truth of action — knowing it, you will be free of evil.”",
+                "ne": "“साँच्चै के कर्म हो, के अकर्म? विद्वान्हरू पनि अलमलमा छन्। म तिमीलाई कर्मको सत्य सिकाउनेछु — यो जानेर तिमी अशुभबाट मुक्त हुनेछौ।”",
+                "hi": "“सचमुच कर्म क्या है, और अकर्म क्या? विद्वान भी उलझन में हैं। मैं तुझे कर्म का सत्य सिखाऊँगा — यह जानकर तू अशुभ से मुक्त हो जाएगा।”"
               }
             }
           ]
@@ -3296,7 +3296,7 @@
               ],
               "lits": {
                 "en": "Whose undertakings are all free from desire and resolve, and whose actions are burnt by the fire of knowledge — him the wise call a man of learning.",
-                "ne": "जसका सबै आरम्भहरू इच्छा र सङ्कल्परहित छन्, र जसका कर्महरू ज्ञानाग्निले बालिएका छन् — उसलाई नै ज्ञानीहरू पण्डित भन्छन्।",
+                "ne": "जसका सबै आरम्भहरू इच्छा र सङ्कल्परहित छन्, र जसका कर्महरू ज्ञानाग्निले जलेका छन् — उसलाई नै ज्ञानीहरू पण्डित भन्छन्।",
                 "hi": "जिसके सब आरम्भ इच्छा और संकल्प से रहित हैं, और जिसके कर्म ज्ञानाग्नि से दग्ध हो गए हैं — उसे ही ज्ञानी पण्डित कहते हैं।"
               },
               "paras": {
@@ -3778,9 +3778,9 @@
                 "hi": "अनायास प्राप्त में संतुष्ट, द्वन्द्वों से परे, ईर्ष्या से रहित, सिद्धि-असिद्धि में समान — कर्म करते हुए भी वह बँधता नहीं।"
               },
               "paras": {
-                "en": "“Happy with whatever comes, beyond heat and cold, win and loss, free of jealousy — his actions never bind him.”",
-                "ne": "“जे आइपर्छ त्यसैमा खुसी, जाडो-गर्मी र जित-हारभन्दा पर, ईर्ष्यारहित — उसका कर्मले उसलाई कहिल्यै बाँध्दैन।”",
-                "hi": "“जो कुछ मिले उसी में सुखी, गर्मी-सर्दी और जीत-हार से परे, ईर्ष्या-रहित — उसके कर्म उसे कभी नहीं बाँधते।”"
+                "en": "“Happy with whatever comes, beyond opposites, free of jealousy, the same in success and failure — his actions never bind him.”",
+                "ne": "“जे आइपर्छ त्यसैमा खुसी, द्वन्द्वभन्दा पर, ईर्ष्यारहित, सफलता र असफलतामा समान — उसका कर्मले उसलाई कहिल्यै बाँध्दैन।”",
+                "hi": "“जो कुछ मिले उसी में सुखी, द्वन्द्व से परे, ईर्ष्या-रहित, सफलता और असफलता में समान — उसके कर्म उसे कभी नहीं बाँधते।”"
               }
             }
           ]
@@ -4107,7 +4107,7 @@
                 "hi": "ब्रह्म ही आहुति देने का साधन है, ब्रह्म ही हवन की सामग्री है; ब्रह्म-रूप अग्नि में ब्रह्म द्वारा आहुति दी जाती है; ब्रह्म-कर्म में लीन होने वाला ब्रह्म को ही प्राप्त करता है।"
               },
               "paras": {
-                "en": "“When the ladle, the oblation, the fire and the one who offers are all seen as Brahman, the act of sacrifice itself becomes the path to Brahman.”",
+                "en": "“The ladle, the offering, the fire and the one who offers are Brahman; one absorbed in the action of Brahman reaches Brahman.”",
                 "ne": "“आहुति चढाउने साधन, हवनको सामग्री, अग्नि र आहुति चढाउने व्यक्ति — सबै ब्रह्म हुन्; यस्तो दृष्टिले कर्म गर्नेले ब्रह्म नै प्राप्त गर्छ।”",
                 "hi": "“आहुति देने का साधन, हवन की सामग्री, अग्नि और आहुति देने वाला — सब ब्रह्म ही हैं; ऐसी दृष्टि से कर्म करने वाला ब्रह्म को ही प्राप्त करता है।”"
               }
@@ -4749,9 +4749,9 @@
                 "hi": "अन्य लोग द्रव्य-यज्ञ, तपो-यज्ञ, योग-यज्ञ और स्वाध्याय तथा ज्ञान-यज्ञ करते हैं — दृढ़ व्रत वाले तपस्वी।"
               },
               "paras": {
-                "en": "“Some sacrifice by giving wealth, by austerities, by meditation, or through scriptural learning and knowledge — all are seekers steadfast in their vows.”",
-                "ne": "“कोही धन दान गरेर, कोही तपस्या, कोही ध्यान, कोही शास्त्र अध्ययन र ज्ञानद्वारा यज्ञ गर्छन् — यी सबै आफ्नो व्रतमा दृढ साधक हुन्।”",
-                "hi": "“कोई धन-दान से, कोई तप से, कोई ध्यान से, कोई शास्त्र-अध्ययन और ज्ञान से यज्ञ करते हैं — सब अपने व्रत में दृढ़ साधक हैं।”"
+                "en": "“Some sacrifice by giving wealth, by austerities, by yoga, or through scriptural learning and knowledge — all are seekers steadfast in their vows.”",
+                "ne": "“कोही धन दान गरेर, कोही तपस्या, कोही योग, कोही शास्त्र अध्ययन र ज्ञानद्वारा यज्ञ गर्छन् — यी सबै आफ्नो व्रतमा दृढ साधक हुन्।”",
+                "hi": "“कोई धन-दान से, कोई तप से, कोई योग से, कोई शास्त्र-अध्ययन और ज्ञान से यज्ञ करते हैं — सब अपने व्रत में दृढ़ साधक हैं।”"
               }
             }
           ]
@@ -5696,7 +5696,7 @@
               ],
               "lits": {
                 "en": "Know that wisdom through prostration, by questioning, and by service; the knowers of truth who have seen reality will instruct you.",
-                "ne": "तत्त्वज्ञानलाई प्रणिपात, प्रश्न र सेवाद्वारा जान; सत्य देखेका तत्त्वदर्शीहरूले तिमीलाई उपदेश गर्नेछन्।",
+                "ne": "त्यो तत्त्वज्ञानलाई प्रणिपात, प्रश्न र सेवाद्वारा जान; सत्य देखेका तत्त्वदर्शीहरूले तिमीलाई उपदेश गर्नेछन्।",
                 "hi": "उस तत्त्व-ज्ञान को प्रणिपात, प्रश्न और सेवा से जान; सत्य को देख चुके तत्त्वदर्शी तुझे उपदेश देंगे।"
               },
               "paras": {
@@ -6357,9 +6357,9 @@
                 "hi": "निश्चय ही यहाँ ज्ञान के समान पवित्र करने वाला और कुछ नहीं है; योग में सिद्ध व्यक्ति उसे समय पर स्वयं, अपनी आत्मा में पाता है।"
               },
               "paras": {
-                "en": "“Nothing purifies like wisdom. The yogi who is ready finds it arising within himself, in due time.”",
-                "ne": "“ज्ञानजस्तो पवित्र गर्ने अरू केही छैन। तयार योगीले समयमा यसलाई आफूभित्रै उठेको पाउँछ।”",
-                "hi": "“ज्ञान के समान पवित्र करने वाला कुछ नहीं है। तैयार योगी उसे समय पर अपने भीतर ही उठता हुआ पाता है।”"
+                "en": "“Nothing purifies like wisdom. The yogi perfected in practice finds it arising within himself, in due time.”",
+                "ne": "“ज्ञानजस्तो पवित्र गर्ने अरू केही छैन। योगमा सिद्ध योगीले समयमा यसलाई आफूभित्रै उठेको पाउँछ।”",
+                "hi": "“ज्ञान के समान पवित्र करने वाला कुछ नहीं है। योग में सिद्ध योगी उसे समय पर अपने भीतर ही उठता हुआ पाता है।”"
               }
             }
           ]

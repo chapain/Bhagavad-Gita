@@ -1,5 +1,12 @@
 # Verse-by-verse padachheda review
 
+> **2026-11-22 follow-up:** The entries below preserve boundary-pass history,
+> not current literal wording. In particular 2.16 अन्तः is now contextual
+> truth/conclusion, 4.11 refuge/favour, 5.07 the self of all beings, 6.09
+> hated persons (sinners remain restored), 6.21 suprasensory joy, 6.42 the
+> comparative, and 6.46 men of action rather than specifically ritualists.
+> See [the follow-up ledger](padachheda-literal-review-2026-11.md).
+
 ## Scope and progress
 
 **Boundary review complete: 1.01–18.78 (700/700 verses).**

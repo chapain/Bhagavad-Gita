@@ -1,5 +1,13 @@
 # Literal-to-Sanskrit review (2026-11-22)
 
+> **Later the same day:** This is the historical literal pass. The subsequent
+> word-row/literal pass revised the attachment of 6.21's beyond-senses, aligned
+> 6.46 ne/hi with men of action, and rewrote 7.23 while explicitly preserving
+> अपि in all literals. Its 2.16 and other decisions are documented in
+> [the follow-up ledger](padachheda-literal-review-2026-11.md). The 2.05 hold
+> described below was subsequently resolved: Dhruba approved retaining the
+> current reading without edits. Other deliberate-left decisions remain as noted.
+
 Scope: each verse's printed Sanskrit and all three literals, with word rows as
 an aid, not an independent authority. Do not mark a verse reviewed merely
 because a mechanical check passes. This is a new review, not the earlier
@@ -12,8 +20,8 @@ semantic audit. Coverage below records only work actually done in this pass.
 | 6.01–6.47 | Read against Sanskrit, rows, Besant 1896 and Telang 1882 | 6.08, 6.21, 6.22, 6.23, 6.44 and 6.46 corrected. 6.07 reads परमात्मा as a separate term; Besant takes it as the man's own higher Self — the app's reading is kept, see below. |
 | 1.01–1.47 | Read against Sanskrit and en/ne/hi literals | 1.10, 1.11, 1.13, 1.30 and 1.45 corrected. Contextual names in 1.12/1.15/1.26 still require a book-wide name/epithet review. |
 | 2.01–2.72 | Read against Sanskrit and en/ne/hi literals | 2.01, 2.02, 2.07, 2.08, 2.42–2.43, 2.59 and 2.65 corrected. The syntax and interpretation of अर्थकामान् in 2.05 remains open: it may qualify the teachers or their enjoyments. |
-| 3.01–3.43 | Read against Sanskrit, rows and Besant 1896 | 3.02, 3.04, 3.23, 3.31, 3.32, 3.37 and 3.38 corrected. 3.39 reads “like fire” for अनलेन and that reading is **settled**: Besant has “insatiable as a flame”, i.e. the same supplied comparison. The 3.02 word-row gloss for the second इव is still open. |
-| 4.01–4.42 | Read against Sanskrit, rows and Besant 1896 | 4.15 and 4.16 corrected. 4.34 ne/hi appears to omit the knowledge being taught and remains open. |
+| 3.01–3.43 | Read against Sanskrit, rows and Besant 1896 | 3.02, 3.04, 3.23, 3.31, 3.32, 3.37 and 3.38 corrected. 3.39 reads “like fire” for अनलेन and that reading is **settled**: Besant has “insatiable as a flame”, i.e. the same supplied comparison. The second इव row is now closed (see below). |
+| 4.01–4.42 | Read against Sanskrit, rows and Besant 1896 | 4.15 and 4.16 corrected. 4.34 ne pointer restored; hi already has उस. |
 | 5.01–5.29 | Read against Sanskrit, rows and Besant 1896 | 5.11 and 5.14 corrected. The 5.10 “all” candidate was examined and left: the verse has a bare plural कर्माणि, and Besant independently renders the same phrase “all actions”. No claim that other verses are error-free. |
 | 18.38 | Read specifically for इव | Corrected below; not a reading of the rest of the chapter. |
 | 7.01–7.30 | Read against Sanskrit, rows and the literals; Besant 1896 | 7.21 corrected. 7.23 `अपि` and 7.16 `सुकृतिनः` examined and left. |
@@ -69,7 +77,8 @@ be found by it.
 * 3.02 has इव twice: “apparently mixed words” and “you seem to confuse”.
   Nepali had neither qualification; Hindi had the first but not the second.
   Both now use मानौँ/मानो to qualify the sentence. The second word-row gloss
-  says “indeed”; that gloss is a separate issue, not silently changed here.
+  was separately corrected and now reads “as if / झैँ / के समान”; both इव
+  rows carry the comparison. Closed.
 * 18.38 `viṣam iva` — “like poison”; English had a bare metaphor. Added
   “like” for both nectar (उपमम्) and poison; ne/hi already express comparison.
 
@@ -149,7 +158,7 @@ changed. This is not a comprehensive conditional-logic proof.
   exact row नैष्कर्म्यम् is unique in the 700.
 * 3.38: removed contextual parentheticals “desire” and “knowledge” from the
   literal in all three languages; they remain available in the paraphrase. A
-  book-wide survey of parenthetical contextual expansions remains outstanding.
+  book-wide survey of literal parentheticals was subsequently completed below.
 * 4.16: ne/hi rendered अशुभात् as sorrow instead of the inauspicious/evil;
   changed to अशुभ. The only other exact-row अशुभात् is 9.01, where en reads
   evil and ne/hi read पाप; the latter narrower rendering remains to evaluate.
@@ -157,8 +166,9 @@ changed. This is not a comprehensive conditional-logic proof.
 The exact-row screens above are deliberately bounded: a compound or variant
 may contain the same meaning without having the same row form. They do not
 close an entire semantic error class. Full 700-verse class checks remain owed
-for the contextual name/participle and parenthetical changes, and for similar
-concessions and participles beyond the exact forms searched.
+for the contextual name/participle changes and for similar concessions and
+participles beyond the exact forms searched. The parenthetical screen is
+recorded separately below.
 
 ## Cross-check against public-domain English translations (2026-11-22)
 
@@ -208,15 +218,15 @@ contradict a *sense*, never to supply wording.
 Two of these are class defects worth naming. **6.22/6.23 is a boundary
 leak** — the same class as the 2.42–2.43 draft error recorded in
 `docs/anvaya-review.md` — and only a reading finds it, because both strings
-are internally plausible. **2.05 is a row/literal contradiction in the
-reverse direction**: here the *rows* were wrong and the literals right, which
-is the case `semantic-audit.md` rule 1 warns is possible.
+are internally plausible. **2.05** was previously described as a row/literal
+contradiction in the reverse direction; that conclusion is provisional because
+the syntax of अर्थकामान् remains for Dhruba to decide (see below).
 
 ### Shot 1 (chapters 3–5): what was read and what was not changed
 
 All of 3.23–3.43, chapter 4 and chapter 5 were read line by line against the
-Sanskrit and the rows, with Besant in hand. That closes chapters 1–6 except
-3.02's second-इव row gloss, which stays open as recorded above.
+Sanskrit and the rows, with Besant in hand. At that point the 3.02 second-इव
+row gloss remained open; it is now closed as recorded above.
 
 Six candidate defects were looked at and **deliberately left**, so they are not
 re-reported later:
@@ -381,5 +391,139 @@ comparison, a hypothetical turned into a prediction, a conjunction turned into
 a choice), so the remaining reading should be expected to produce more, not
 fewer. Nothing above claims the unread chapters are clean.
 
-Set aside from chapter 6 and still owed: the two named class defects stand —
-the **6.22/6.23 boundary leak** and **2.05's reverse-direction row defect**.
+The **6.22/6.23 boundary leak** is closed in all three languages below.
+**2.05's अर्थकामान् syntax** remains reserved for Dhruba; the previous claim
+that the literals were unambiguously right on that construction is withdrawn.
+
+## Deferred items: follow-up (2026-11-22)
+
+### Boundary leaks — 6.22/6.23 and 11.26/11.27
+
+* 6.22 contains यं लब्ध्वा … यस्मिन्स्थितः … दुःखेन गुरुणापि विचाल्यते:
+  having gained it, one considers no gain greater, and established in it is
+  not shaken even by great sorrow. Ne/hi no longer append the separate 6.23
+  definition. Both now also explicitly carry स्थितः and the comparison ततः.
+  6.23's तम् विद्यात् दुःखसंयोगवियोगम् योगसंज्ञितम् says to **know that**
+  disconnection of union with sorrow as what is called yoga; सः … योक्तव्यः
+  is a separate instruction to practise that yoga. Ne/hi now carry both
+  clauses, like the previously corrected English.
+* The screen also found **11.26**: all three literals inserted “enter your
+  mouths” ahead of the end of the list, although वक्त्राणि ते … विशन्ति is
+  in 11.27. 11.26 lists the sons, kings, Bhīṣma, Droṇa, the charioteer's son
+  and the chief warriors, with त्वाम् (“you”) as the object of the verb in
+  11.27. Removed the premature clause in all three literals, kept त्वाम्,
+  and left an unfinished continuation. 11.27 retains the entry into the mouths.
+  The 11.26 paraphrases were not part of this literal-only screen; its title
+  also anticipates entry and was left unchanged under this literal scope.
+
+Screen: `python3 source/audit_literal_boundaries.py --revision a2f43ed`
+examines all 700 verses, with 682 within-chapter adjacent pairs and 18 chapter
+ends with no next verse in the chapter. It compares the final 14 Devanagari
+literal tokens with next-verse ne/hi row-gloss tokens of at least four code
+points occurring in at most 12 verses, excluding exact tokens in the current
+verse's own glosses. A **single** candidate match flags a pair: 76 ne and 43 hi
+candidates before edits. Read the candidate literals against both verses; the
+clear clause leaks were 6.22 and 11.26. Examples of false positives: 5.15/5.16
+both mention ज्ञान and अज्ञान; 6.21/6.22 both have being established and
+movement, but 6.21 says न चलति तत्त्वतः and 6.22 says न दुःखेन … विचाल्यते;
+11.37/11.38 repeats the idea of a cosmic abode, but 11.37 itself has
+जगन्निवास; 17.20/17.21 contrast a gift without expectation of return with
+one seeking return; 18.01/18.02 repeat संन्यास and त्याग. After edits the
+same screen returns 74 ne and 41 hi candidates. This is a lexical **screen**,
+not proof of absence: inflection, synonyms, uncommon row splits and meanings
+without exact matching glosses can hide leaks, and shared vocabulary is not by
+itself a misplaced clause. No independent English whole-book boundary screen
+is claimed.
+
+### 4.34 — demonstrative (ne fixed, hi retained)
+
+तत् विद्धि is “know that”; ज्ञानम् belongs grammatically to the later verb
+उपदेक्ष्यन्ति (“they will teach you knowledge”), and the opening तत् points
+back to knowledge in the context. The Nepali “तत्त्वज्ञानलाई” did not retain
+its demonstrative; it now begins “त्यो तत्त्वज्ञानलाई”. Hindi already begins
+“उस तत्त्व-ज्ञान को”: **उस is a demonstrative**, so no Hindi edit was needed.
+The two are not evidence that ज्ञानम् is a separate noun in the opening
+Sanskrit clause.
+
+Class screen: scanned all rows for exact तत्: 71 verses, including 4.34.
+An approximate pronoun-token scan flagged 14 ne and 19 hi readings after the
+repair, including false positives such as 2.07's “what is good … tell” and
+17.25's quoted sacred syllable तत्. Other flagged examples such as the
+यत् … तत् classificatory constructions in 17.19–17.22 and 18.23–18.25 fold
+“that” into a subject followed by its predicate. These were not silently
+rewritten: retaining a natural relative/correlative construction is distinct
+from dropping the 4.34 pointer to an antecedent. This exact-row/token scan
+misses inflected forms, pronoun synonyms and a token that occurs elsewhere in
+a sentence; it is not a complete semantic guarantee.
+
+### Parenthetical literals — all 13 instances examined
+
+A scan for either parenthesis in every en/ne/hi literal found exactly 13
+instances before edits, all compared with the printed Sanskrit and word rows:
+
+| Verse and language | Sanskrit evidence and decision |
+|---|---|
+| 2.07 ne | धर्म is duty in this context. Removed the duplicate parenthetical and translated it as कर्तव्य. |
+| 3.42 en/ne/hi | यः … सः is the implicit referent. Kept “He (the Self)” / उही (आत्मा) / वही (आत्मा): the settled house pronoun marker, not a new asserted word. 3.43 is the relevant context but has no literal parenthesis. |
+| 4.10 ne | तपसा is austerity; “तप” duplicated तपस्या. Kept तपस्याले without brackets. |
+| 6.03 ne/hi | शमः is quiescence; उपरम is an explanatory synonym, not a second Sanskrit word. Kept शान्ति without the added bracket. |
+| 7.02 ne/hi | सविज्ञानम् is with vijñāna; साक्षात्कार is an explanatory rendering, not an additional word. Kept विज्ञान without the explanatory bracket. |
+| 8.04 ne/hi | क्षरः means perishable. Replaced “क्षर (विनाशशील)” with the translation विनाशशील, not two distinct claims. |
+| 18.13 ne/hi | सांख्ये is actually in the verse, while “शास्त्र” is supplied. Retained साङ्ख्यमा / सांख्य में explicitly alongside the existing rendering of कृतान्ते, without the added शास्त्र or brackets. |
+
+Afterwards the only literal parentheses are the three 3.42 pronoun markers.
+The audit does not extend to paraphrases or parentheses expressed without
+parenthesis characters.
+
+### Quote integrity
+
+`tests/test_literal_quotes.py` checks all 4,200 lits/paras strings in 700
+verses: curly quotes may be absent or paired around a span (not necessarily
+around the whole sentence); order must be opening then closing, with no nested
+or doubled marks. Mutation examples cover missing, reversed, nested and doubled
+marks as well as valid embedded and multiple spans. At this base, 11.45's six
+strings and the whole canonical corpus already have no doubled or unmatched
+curly marks; there was no surviving doubled mark to remove from the source.
+The test prevents its recurrence rather than claiming a source edit.
+
+### 3.02 and 2.05
+
+Both इव rows in 3.02 now have the comparison in all three glosses; the second
+is `as if / झैँ / के समान`. This deferred row issue is **closed**; no data
+edit was needed in this follow-up.
+
+For 2.05, अर्थकामान् can be read with गुरून् as teachers **desiring wealth**
+(“having slain the wealth-desiring teachers, I would enjoy blood-smeared
+pleasures”), or with भोगान् as **wealth-and-desire enjoyments** (“having
+slain the teachers, I would enjoy wealth-and-desire pleasures, smeared with
+blood”). The present “for the sake of wealth and desires” is another way of
+connecting the phrase; the syntax and chosen rendering remain Dhruba's decision.
+No 2.05 source or row was changed here. The former ledger's categorical claim
+that the literals were right is not a resolution of that question.
+
+### Census and snapshots
+
+The English row-to-literal miss list was saved before edits and compared after.
+Only 11.26 सह “together” cleared: **991 → 990**. It is now explicitly in the
+literal; no other row miss changed. The pinned `ROW_LITERAL_CENSUS` carries a
+dated explanation. The pinned 2.07 Nepali opening was also amended with a
+2026-11-22 note: it retains the owner's participial construction while the
+parenthetical duplication becomes कर्तव्य. The generated `docs/title-review.md`
+snapshot was regenerated on 2026-11-22 for the changed 11.26 English literal;
+its title was not edited. The boundary, parenthetical, pointer and quote tests
+add regressions without treating a passing lexical check as proof of Sanskrit
+fidelity.
+
+
+### Subsequent word-row/literal pass — batch 2 (2026-11-22)
+
+The historical per-chapter findings above describe the earlier review, not a
+claim that those verses were unchanged thereafter. The renewed pass has since
+read Chapters 9–18 and corrected additional rows/literals, listed in
+`padachheda-literal-review-2026-11.md` under “Batch 2” and “Batch 3”. The
+renewed pass now covers all 700 verses; 2.05 remains reserved for Dhruba.
+In particular, its Batch 3 entry revises the 14.24 self-praise claim above:
+the praise is of oneself, not necessarily by oneself. In 15.16 the later
+Hindi reintroduction of आत्मा was removed again. The established 18.53
+nirmamaḥ/परिग्रह reading is unchanged; the separate ब्रह्मभूयाय gloss now
+retains becoming Brahman.

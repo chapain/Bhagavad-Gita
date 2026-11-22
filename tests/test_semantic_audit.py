@@ -107,14 +107,16 @@ REVIEWED = {
     "1.24": {
         # F5: the three paraphrases named a different addressee from the
         # literal, and the English one said the chariot was driven, not placed.
+        # 2026-11-22: the literal now leaves स्थापयित्वा dependent on 1.25's
+        # उवाच; the address and the placing (not driving) remain intact.
         "rows": [
             ["भारत", "bhārata", "O descendant of Bharata", "हे भारत", "हे भारत"],
             ["स्थापयित्वा", "sthāpayitvā", "having placed", "राखेर", "रखकर"],
         ],
         "lits": {
-            "en": "Sañjaya said: Thus addressed by Guḍākeśa, Hṛṣīkeśa, O descendant of Bharata, placed that best of chariots between the two armies.",
-            "ne": "सञ्जयले भने: गुडाकेशद्वारा यसरी सम्बोधित भएर, हृषीकेशले, हे भरतवंशी, त्यो उत्तम रथ दुवै सेनाको बीचमा राखे।",
-            "hi": "संजय ने कहा: गुडाकेश द्वारा ऐसा कहे जाने पर, हृषीकेश ने, हे भरतवंशी, उस उत्तम रथ को दोनों सेनाओं के बीच रखा।",
+            "en": "Sañjaya said: Thus addressed by Guḍākeśa, O descendant of Bharata, Hṛṣīkeśa, having placed that best of chariots between the two armies —",
+            "ne": "सञ्जयले भने: गुडाकेशद्वारा यसरी सम्बोधित भएका हृषीकेशले, हे भरतवंशी, त्यो उत्तम रथ दुवै सेनाको बीचमा राखेर —",
+            "hi": "संजय ने कहा: गुडाकेश द्वारा ऐसा कहे जाने पर, हृषीकेश ने, हे भरतवंशी, उस उत्तम रथ को दोनों सेनाओं के बीच रखकर —",
         },
         "paras": {
             "en": "Sañjaya continues: “So ordered by Arjuna, O descendant of Bharata, Kṛṣṇa placed the finest chariot between the two armies.”",
@@ -215,6 +217,8 @@ REVIEWED_SAME_GLOSS = {
     ("3.15", ("उद्भवम्", "समुद्भवम्"), "arising"),
     ("3.17", ("आत्म", "आत्मनि"), "in the self"),
     ("3.18", ("कश्चन", "कश्चित्"), "any"),
+    # 2026-11-22: 3.20 एव is emphatic, as is हि in context.
+    ("3.20", ("एव", "हि"), "indeed"),
     ("3.24", ("इमाः", "इमे"), "these"),
     ("3.37", ("एनम्", "एषः"), "this"),
     ("3.38", ("आवृतः", "आवृतम्"), "covered"),
@@ -261,7 +265,6 @@ REVIEWED_SAME_GLOSS = {
     ("13.01", ("इदम्", "एतत्"), "this"),
     ("13.18", ("च", "तथा"), "and"),
     ("13.19", ("अपि", "एव"), "indeed"),
-    ("13.30", ("ततः", "तदा"), "then"),
     ("15.10", ("अनुपश्यन्ति", "पश्यन्ति"), "they see"),
     ("15.20", ("इदम्", "एतत्"), "this"),
     ("16.06", ("आसुरः", "आसुरम्"), "the demoniac"),
@@ -321,7 +324,7 @@ ADDRESS_PINS = {
     },
     "11.45": {
         "rows": ["देव", "देवेश", "जगन्निवास"],
-        "lit": {"en": ["O God", "O Lord of gods", "O Lord of the universe"],
+        "lit": {"en": ["O God", "O Lord of gods", "O abode of the universe"],
                 "ne": ["हे देवता", "हे देवेश", "हे जगन्निवास"],
                 "hi": ["हे देव", "हे देवेश", "हे जगन्निवास"]},
     },

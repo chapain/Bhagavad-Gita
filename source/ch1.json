@@ -499,8 +499,8 @@
                       "तव",
                       "tava",
                       "your",
-                      "तिम्रो",
-                      "तुम्हारा"
+                      "तपाईंको",
+                      "आपका"
                     ],
                     [
                       "शिष्येण",
@@ -1682,9 +1682,9 @@
                 "hi": "हमारी वह शक्ति, भीष्म से रक्षित, अपर्याप्त है; उनकी यह शक्ति, भीम से रक्षित, पर्याप्त है।"
               },
               "paras": {
-                "en": "“Our force, though shielded by Bhīṣma, is not enough; theirs, protected by Bhīma, is more than sufficient.”",
-                "ne": "“भीष्मले रक्षा गरे पनि हाम्रो सेना पर्याप्त छैन; भीमले रक्षा गरेको तिनीहरूको सेना अझ बढी छ।”",
-                "hi": "“भीष्म से सुरक्षित होकर भी हमारी सेना पर्याप्त नहीं; भीम से रक्षित उनकी सेना अधिक है।”"
+                "en": "“Our force, guarded by Bhīṣma, is not enough; theirs, protected by Bhīma, is sufficient.”",
+                "ne": "“भीष्मले रक्षा गरेको हाम्रो सेना अपर्याप्त छ; भीमले रक्षा गरेको तिनीहरूको सेना पर्याप्त छ।”",
+                "hi": "“भीष्म से रक्षित हमारी सेना अपर्याप्त है; भीम से रक्षित उनकी सेना पर्याप्त है।”"
               }
             }
           ]
@@ -1839,9 +1839,9 @@
                 "hi": "सब मोर्चों पर अपने-अपने विभाग के अनुसार खड़े आप सब भीष्म की ही रक्षा करें।"
               },
               "paras": {
-                "en": "“Take your positions at every approach, each in your assigned place — and you must all protect Bhīṣma above all.”",
-                "ne": "“हरेक मोर्चामा आ-आफ्नो स्थान लिनुहोस् — र सबैले भीष्मको विशेष रक्षा गर्नुहोस्।”",
-                "hi": "“हर मोर्चे पर अपना-अपना स्थान लो — और तुम सबको विशेष रूप से भीष्म की रक्षा करनी है।”"
+                "en": "“Stationed at every approach in your assigned places, all of you must guard Bhīṣma.”",
+                "ne": "“हरेक बाटोमा आ-आफ्ना तोकिएका ठाउँमा खडा रहनुभएका तपाईंहरू सबैले भीष्मलाई नै जोगाउनुहोस्।”",
+                "hi": "“अपने-अपने हिस्से के हर रास्ते पर तैनात रहकर, आप सब भीष्म को ही बचाइए।”"
               }
             }
           ]
@@ -2961,7 +2961,7 @@
                 "hi": "द्रुपद और द्रौपदी के पुत्र, हे पृथ्वीपति, और महाबाहु सुभद्रा-पुत्र — सब ने अपने-अपने शंख बजाए।"
               },
               "paras": {
-                "en": "Drupada, Draupadī's sons, and the strong-armed son of Subhadrā — each, O king, blew his own conch in turn.",
+                "en": "Drupada, Draupadī's sons, and the strong-armed son of Subhadrā — each, O king, blew his own conch.",
                 "ne": "द्रुपद, द्रौपदीका छोरा, र बलशाली सुभद्रापुत्र — प्रत्येकले, हे राजा, आफ्नो शङ्ख बजाए।",
                 "hi": "द्रुपद, द्रौपदी के पुत्र, और बलशाली सुभद्रा-पुत्र — प्रत्येक ने, हे राजा, अपना शंख बजाया।"
               }
@@ -3111,9 +3111,9 @@
                 "hi": "उस कोलाहल ने धृतराष्ट्र के पुत्रों के हृदय चीर दिए, आकाश और पृथ्वी में गूँजती भयानक ध्वनि से।"
               },
               "paras": {
-                "en": "The deafening blast tore into the hearts of Dhṛtarāṣṭra's sons and echoed across both heaven and earth.",
-                "ne": "बहिरो बनाउने त्यो ध्वनिले धृतराष्ट्रका छोराहरूको हृदय चिर्यो र स्वर्ग र पृथ्वी दुवैमा प्रतिध्वनित भयो।",
-                "hi": "बहरा कर देने वाली उस ध्वनि ने धृतराष्ट्र के पुत्रों के हृदय तोड़ दिए और स्वर्ग तथा पृथ्वी दोनों में गूँज उठी।"
+                "en": "The deafening blast tore into the hearts of Dhṛtarāṣṭra's sons and echoed across both sky and earth.",
+                "ne": "बहिरो बनाउने त्यो ध्वनिले धृतराष्ट्रका छोराहरूको हृदय चिर्यो र आकाश र पृथ्वी दुवैमा प्रतिध्वनित भयो।",
+                "hi": "बहरा कर देने वाली उस ध्वनि ने धृतराष्ट्र के पुत्रों के हृदय तोड़ दिए और आकाश तथा पृथ्वी दोनों में गूँज उठी।"
               }
             }
           ]
@@ -3271,14 +3271,14 @@
                 }
               ],
               "lits": {
-                "en": "Then, seeing the Dhārtarāṣṭras stationed in array, as the clash of weapons was about to begin, the Pāṇḍava, whose banner bore the ape, raised his bow.",
-                "ne": "त्यसपछि, धार्तराष्ट्रहरूलाई व्यूहमा खडा देखेर, हतियार ठोक्किनै लाग्दा, बाँदर-ध्वज भएका पाण्डवले धनुष उठाए।",
-                "hi": "तब, धार्तराष्ट्रों को व्यूह में खड़ा देखकर, शस्त्र टकराने ही वाले समय, वानर-ध्वज वाले पांडव ने धनुष उठाया।"
+                "en": "Then the Pāṇḍava, whose banner bore the ape, seeing the Dhārtarāṣṭras stationed in array as the clash of weapons was about to begin, and raising his bow —",
+                "ne": "त्यसपछि, धार्तराष्ट्रहरूलाई व्यूहमा खडा देखेर, हतियार ठोक्किनै लाग्दा, बाँदर-ध्वज भएका पाण्डवले धनुष उठाएर —",
+                "hi": "तब, धार्तराष्ट्रों को व्यूह में खड़ा देखकर, शस्त्र टकराने ही वाले समय, वानर-ध्वज वाले पांडव ने धनुष उठाकर —"
               },
               "paras": {
                 "en": "As the battle was about to erupt, Arjuna — whose banner bore the emblem of Hanumān — looked at the enemy host and lifted his bow.",
                 "ne": "युद्ध सुरु हुनै लाग्दा, हनुमानको चिह्न भएको ध्वज लिएका अर्जुनले शत्रु सेना हेरे र आफ्नो धनुष उठाए।",
-                "hi": "युद्ध शुरू होते ही, हनुमान-चिह्न वाले ध्वज के नीचे अर्जुन ने शत्रु सेना देखी और अपना धनुष उठा लिया।"
+                "hi": "युद्ध शुरू होने को था कि, हनुमान-चिह्न वाले ध्वज के नीचे अर्जुन ने शत्रु सेना देखी और अपना धनुष उठा लिया।"
               }
             }
           ]
@@ -3927,9 +3927,9 @@
                 }
               ],
               "lits": {
-                "en": "Sañjaya said: Thus addressed by Guḍākeśa, Hṛṣīkeśa, O descendant of Bharata, placed that best of chariots between the two armies.",
-                "ne": "सञ्जयले भने: गुडाकेशद्वारा यसरी सम्बोधित भएर, हृषीकेशले, हे भरतवंशी, त्यो उत्तम रथ दुवै सेनाको बीचमा राखे।",
-                "hi": "संजय ने कहा: गुडाकेश द्वारा ऐसा कहे जाने पर, हृषीकेश ने, हे भरतवंशी, उस उत्तम रथ को दोनों सेनाओं के बीच रखा।"
+                "en": "Sañjaya said: Thus addressed by Guḍākeśa, O descendant of Bharata, Hṛṣīkeśa, having placed that best of chariots between the two armies —",
+                "ne": "सञ्जयले भने: गुडाकेशद्वारा यसरी सम्बोधित भएका हृषीकेशले, हे भरतवंशी, त्यो उत्तम रथ दुवै सेनाको बीचमा राखेर —",
+                "hi": "संजय ने कहा: गुडाकेश द्वारा ऐसा कहे जाने पर, हृषीकेश ने, हे भरतवंशी, उस उत्तम रथ को दोनों सेनाओं के बीच रखकर —"
               },
               "paras": {
                 "en": "Sañjaya continues: “So ordered by Arjuna, O descendant of Bharata, Kṛṣṇa placed the finest chariot between the two armies.”",
@@ -4096,9 +4096,9 @@
                 "hi": "भीष्म, द्रोण, और पृथ्वी के सब राजाओं के सामने उन्होंने कहा: “हे पार्थ, यहाँ एकत्र हुए इन कुरुओं को देखो।”"
               },
               "paras": {
-                "en": "Before Bhīṣma, Droṇa, and all the world's kings, Kṛṣṇa said: “Look, Arjuna — the whole Kuru clan gathered before you.”",
-                "ne": "भीष्म, द्रोण, र संसारका सबै राजाहरूका अगाडि कृष्णले भने: “हेर, अर्जुन — तिम्रा अगाडि सम्पूर्ण कुरु वंश भेला भएको।”",
-                "hi": "भीष्म, द्रोण, और संसार के सब राजाओं के सामने कृष्ण ने कहा: “देखो, अर्जुन — तुम्हारे सामने सम्पूर्ण कुरु वंश एकत्र है।”"
+                "en": "Before Bhīṣma, Droṇa, and all the world's kings, Kṛṣṇa said: “Look, Arjuna — these Kurus gathered before you.”",
+                "ne": "भीष्म, द्रोण, र संसारका सबै राजाहरूका अगाडि कृष्णले भने: “हेर, अर्जुन — तिम्रा अगाडि यी कुरुहरू भेला भएका।”",
+                "hi": "भीष्म, द्रोण, और संसार के सब राजाओं के सामने कृष्ण ने कहा: “देखो, अर्जुन — तुम्हारे सामने ये कुरु एकत्र हैं।”"
               }
             }
           ]
@@ -4788,9 +4788,9 @@
                 "hi": "“मेरे अंग शिथिल होते हैं, मेरा मुँह सूखता है, मेरे शरीर में कंपन होता है, और मेरे रोंगटे खड़े हो जाते हैं।”"
               },
               "paras": {
-                "en": "“My legs give way, my mouth goes dry, my whole body trembles, and my hair bristles with dread.”",
-                "ne": "“मेरा खुट्टा लर्कन्छन्, मुख सुक्छ, सारा शरीर काँप्छ, र डरले रौँ ठाडो हुन्छ।”",
-                "hi": "“मेरे पैर लड़खड़ाते हैं, मुँह सूख जाता है, सारा शरीर काँपता है, और डर से रोंगटे खड़े हो जाते हैं।”"
+                "en": "“My limbs give way, my mouth goes dry, my whole body trembles, and my hair bristles with dread.”",
+                "ne": "“सारा जीउ गलेको छ, मुख सुकेको छ, शरीरभरि कम्पन फैलिन्छ र डरले रौँ ठाडो हुन्छ।”",
+                "hi": "“सारा बदन ढीला पड़ गया है, मुँह सूख रहा है, शरीर थरथरा रहा है और डर से रोंगटे उठ रहे हैं।”"
               }
             }
           ]
@@ -5319,8 +5319,8 @@
               ],
               "lits": {
                 "en": "“I do not desire victory, O Kṛṣṇa, nor kingdom nor pleasures. Of what use is a kingdom to us, O Govinda — what use are enjoyments, or even life?”",
-                "ne": "“म विजय चाहन्नँ, हे कृष्ण, न राज्य, न भोगहरू। हामीलाई राज्यको के काम, हे गोविन्द — भोगको के काम, वा जीवनकै के काम?”",
-                "hi": "“मैं विजय नहीं चाहता, हे कृष्ण, न राज्य, न भोग। हमें राज्य से क्या, हे गोविंद — भोगों से क्या, या जीवन से ही क्या?”"
+                "ne": "“म विजय चाहन्नँ, हे कृष्ण, न राज्य, न सुखहरू। हामीलाई राज्यको के काम, हे गोविन्द — भोगको के काम, वा जीवनकै के काम?”",
+                "hi": "“मैं विजय नहीं चाहता, हे कृष्ण, न राज्य, न सुख। हमें राज्य से क्या, हे गोविंद — भोगों से क्या, या जीवन से ही क्या?”"
               },
               "paras": {
                 "en": "“I want no victory, Kṛṣṇa — no kingdom, no pleasures. What are a kingdom, delights, or life itself to us now, Govinda?”",
@@ -5988,14 +5988,14 @@
                 }
               ],
               "lits": {
-                "en": "“Slaying the sons of Dhṛtarāṣṭra, what pleasure would be ours, O Janārdana? Sin alone would take hold of us for killing these aggressors.”",
+                "en": "“What pleasure would be ours in slaying the sons of Dhṛtarāṣṭra, O Janārdana? Sin alone would take hold of us for killing these aggressors.”",
                 "ne": "“धृतराष्ट्रका छोराहरूलाई मारेर हामीलाई के खुसी मिल्नेछ, हे जनार्दन? यी आक्रमणकारीहरूलाई मारेको पाप नै हामीलाई लाग्नेछ।”",
                 "hi": "“धृतराष्ट्र के पुत्रों को मारकर हमें क्या प्रसन्नता होगी, हे जनार्दन? इन आक्रमणकारियों को मारने का पाप ही हमें लगेगा।”"
               },
               "paras": {
                 "en": "“Even if we destroyed the sons of Dhṛtarāṣṭra, what joy would we feel, Janārdana? Only sin would cling to us for murdering these would-be killers.”",
-                "ne": "“यदि हामीले धृतराष्ट्रका छोराहरूलाई नष्ट गर्यौं भने पनि, जनार्दन, हामीलाई के आनन्द हुनेछ? यी हत्याराहरूलाई मारेको पाप मात्र हामीसँग टाँसिनेछ।”",
-                "hi": "“भले ही हम धृतराष्ट्र के पुत्रों को नष्ट कर दें, जनार्दन, हमें क्या आनंद मिलेगा? इन हत्यारों को मारने का पाप ही हमसे चिपक जाएगा।”"
+                "ne": "“यदि हामीले धृतराष्ट्रका छोराहरूलाई नष्ट गर्यौं भने पनि, जनार्दन, हामीलाई के आनन्द हुनेछ? यी आक्रमणकारीहरूलाई मारेको पाप मात्र हामीसँग टाँसिनेछ।”",
+                "hi": "“भले ही हम धृतराष्ट्र के पुत्रों को नष्ट कर दें, जनार्दन, हमें क्या आनंद मिलेगा? इन आक्रमणकारियों को मारने का पाप ही हमसे चिपक जाएगा।”"
               }
             }
           ]
@@ -7230,8 +7230,8 @@
                       "नियतम्",
                       "niyatam",
                       "certainly",
-                      "विहित",
-                      "विहित"
+                      "निश्चित रूपमा",
+                      "निश्चित रूप से"
                     ],
                     [
                       "वासः",
@@ -7275,7 +7275,7 @@
               "lits": {
                 "en": "“For men whose family-duties are destroyed, O Janārdana, there is said to be a certain abode in hell — thus have we heard.”",
                 "ne": "“जसका कुलधर्म नष्ट भएका छन्, ती मानिसहरूको, हे जनार्दन, नरकमा निश्चित बास हुन्छ भन्ने हामीले सुनेका छौं।”",
-                "hi": "“जिनके कुलधर्म नष्ट हो गए हैं, उन मनुष्यों का, हे जनार्दन, नरक में नियत वास बताया गया है — ऐसा हमने सुना है।”"
+                "hi": "“जिनके कुलधर्म नष्ट हो गए हैं, उन मनुष्यों का, हे जनार्दन, नरक में निश्चित रूप से वास होता है — ऐसा हमने सुना है।”"
               },
               "paras": {
                 "en": "“And, Janārdana, we have heard it said that those whose family-rites are destroyed must dwell in hell.”",
@@ -7635,9 +7635,9 @@
                 "hi": "“यदि धृतराष्ट्र के पुत्र, हाथ में शस्त्र लिए, युद्ध में मुझे मारें — मुझे निहत्थे और बिना प्रतिरोध — वह मेरे लिए बेहतर होगा।”"
               },
               "paras": {
-                "en": "“If Dhṛtarāṣṭra's sons should strike me down — me defenceless and unarmed — that would be far better than to fight.”",
-                "ne": "“यदि धृतराष्ट्रका छोराहरूले मलाई — निःशस्त्र र रक्षारहित — ढालिदिए भने, त्यो लड्नुभन्दा कैयौं गुणा राम्रो हुनेछ।”",
-                "hi": "“यदि धृतराष्ट्र के पुत्र मुझे — निहत्थे और रक्षाहीन — गिरा दें, तो वह लड़ने से कहीं अच्छा होगा।”"
+                "en": "“If Dhṛtarāṣṭra's sons, weapons in hand, should strike me down — me unarmed and offering no resistance — that would be far better than to fight.”",
+                "ne": "“यदि हतियार लिएर धृतराष्ट्रका छोराहरूले मलाई — निःशस्त्र र प्रतिरोध नगरेको — ढालिदिए भने, त्यो लड्नुभन्दा कैयौं गुणा राम्रो हुनेछ।”",
+                "hi": "“यदि शस्त्र लिए धृतराष्ट्र के पुत्र मुझे — निहत्थे और प्रतिरोध न करते हुए — गिरा दें, तो वह लड़ने से कहीं अच्छा होगा।”"
               }
             }
           ]

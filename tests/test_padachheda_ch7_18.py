@@ -154,9 +154,9 @@ REVIEWED = json.loads(r'''{
       ]
     ],
     "lits": {
-      "en": "— vigour, forgiveness, fortitude, purity, freedom from malice and from pride — these belong to one born to the divine destiny, O Bhārata.",
-      "ne": "— तेज, क्षमा, धैर्य, शुद्धता, द्वेषरहितता र अभिमानरहितता — यी हे भारत, दैवी सम्पत्ति भएर जन्मेकाका चिह्न हुन्।",
-      "hi": "— तेज, क्षमा, धैर्य, शुद्धता, द्वेष-रहितता और अभिमान-रहितता — ये, हे भारत, दैवी सम्पदा से जन्मे की पहचान हैं।"
+      "en": "— vigour, forgiveness, fortitude, purity, freedom from malice and from excessive pride — these belong to one born to the divine destiny, O Bhārata.",
+      "ne": "— तेज, क्षमा, धैर्य, शुद्धता, द्वेषरहितता र अत्यधिक अभिमानरहितता — यी हे भारत, दैवी सम्पत्ति भएर जन्मेकाका चिह्न हुन्।",
+      "hi": "— तेज, क्षमा, धैर्य, शुद्धता, द्वेष-रहितता और अत्यधिक अभिमान-रहितता — ये, हे भारत, दैवी सम्पदा से जन्मे की पहचान हैं।"
     },
     "flow_text": [
       [
@@ -250,9 +250,9 @@ REVIEWED = json.loads(r'''{
       ]
     ],
     "lits": {
-      "en": "Better is one's own dharma, though imperfect, than another's well-performed; doing the work born of his own nature, a man incurs no sin.",
-      "ne": "आफ्नो धर्म, यद्यपि दोषपूर्ण, पराया सुसम्पन्न धर्मभन्दा राम्रो; आफ्नै स्वभावबाट जन्मेको काम गर्दा मानिस पापमा लाग्दैन।",
-      "hi": "अपना धर्म, यद्यपि दोषयुक्त, पराए सुसम्पन्न धर्म से अच्छा है; अपने स्वभाव से उत्पन्न कर्म करने से मनुष्य पाप नहीं करता।"
+      "en": "Better is one's own dharma, though imperfect, than another's well-performed; doing the work determined by his own nature, a man incurs no sin.",
+      "ne": "आफ्नो धर्म, यद्यपि दोषपूर्ण, पराया सुसम्पन्न धर्मभन्दा राम्रो; आफ्नै स्वभावले निर्धारित काम गर्दा मानिस पापमा लाग्दैन।",
+      "hi": "अपना धर्म, यद्यपि दोषयुक्त, पराए सुसम्पन्न धर्म से अच्छा है; अपने स्वभाव से नियत कर्म करने से मनुष्य पाप नहीं करता।"
     },
     "flow_text": [
       [

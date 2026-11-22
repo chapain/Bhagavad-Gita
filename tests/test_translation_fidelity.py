@@ -166,7 +166,6 @@ PARAPHRASE_NAME_BASELINE = {
     ("9.20", "Vedic"),        # वेद row
     ("10.23", "Kubera"),      # धनेश row = "the lord of wealth"
     ("10.25", "Himalaya"),    # हिमालय row in the Nepali/Hindi, not the English
-    ("10.29", "Ananta"),      # अनन्त row in the Sanskrit word itself
     ("12.01", "Absolute"),    # ब्रह्म — interpretive noun, as 3.15
     ("12.05", "Absolute"),    # as 12.01
     ("13.23", "Person"),      # पुरुष glossed "person"; capitalised by the sentence
@@ -221,8 +220,9 @@ TERM_NOTE_NOT_EXPLANATION = {
 # Sanskrit's own compound: अनार्यजुष्टम् is "practised by the un-Āryan", and the
 # English literal reads "unworthy of an Āryan" — जुष्टम् ("resorted to, practised
 # by") is carried by "unworthy of", not by a separate word. The Nepali and Hindi
-# carry it twice over (आर्य-अयोग्य / अनार्य-अयोग्य, अभ्यास गरिएको / सेवित); the
-# English is the one that compresses, and its compression was read here.
+# carry it twice over (आर्य-अयोग्य, अभ्यास गरिएको / सेवित); the English is the
+# one that compresses, and its compression was read here. 2026-11-22: the Hindi
+# अनार्य-अयोग्य was corrected to आर्य-अयोग्य; the former inverted the sense.
 TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 
 # Rows whose own head gloss the English literal does not carry, measured over all
@@ -252,7 +252,20 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # Chapters 7–10 read the same day (992 → 991): 8.19 अवशः "helpless". The
 # 7.21, 9.01, 9.11, 9.27 and 10.13 repairs moved no row, and again the miss
 # list was diffed before and after to confirm it.
-ROW_LITERAL_CENSUS = 991
+# 2026-11-22: the 11.26 boundary repair carries सह "together" into
+# the English literal (991 → 990); a before/after miss-list diff found no
+# other changes. The entry into the mouths belongs to 11.27, not 11.26.
+# 2026-11-22 word-row follow-up: 2.57 द्वेष्टि is "hates" in the row
+# and literal, replacing "reviles" / "recoils". At 2.69 "awake" is now
+# explicit; the lexical census counts it for both जागर्ति and जाग्रति even
+# though the second clause uses "waking". No other misses moved (990 → 987).
+# Batch 1: 2.16 अन्तः now glosses contextual truth rather than end; 3.26
+# explicitly includes the wise person and all actions (987 → 984). The
+# 3.26 action wording also mechanically matches समाचरन् across clauses,
+# rather than recording a further independent repair. Later changes net to
+# zero through 8.10 (including synonym and compound-token false matches);
+# 6.13 straight and 7.23 indeed then removed two misses (984 → 982).
+ROW_LITERAL_CENSUS = 960
 
 
 def _fold_diacritics(word):
@@ -342,7 +355,6 @@ LAG_BASELINE = {
     ("10.27", "en"),
     ("10.39", "en"),
     ("11.20", "en"),
-    ("18.08", "en"),
     ("18.71", "en"),
 }
 
@@ -384,7 +396,7 @@ NE_NEG_VERB = {
     "नसुन्यौ",         # "if you do not listen" (18.58)
     "नचाहेको",         # "what you do not wish" (18.60)
     "नजाने",           # "a mind that goes nowhere else" (8.08)
-    "नडराइकन",         # "without fearing" (11.34)
+    "नहोऊ",           # "do not be" (11.34)
 }
 HI_STANDING = {"न", "नहीं", "मत", "बिना", "विना", "बगैर", "रहित", "कभी",
                "कदापि", "अभाव", "निर्"}
@@ -614,7 +626,9 @@ class Verse207Literal(unittest.TestCase):
         verse = load_verse("2.07")
         self.assertEqual([row[0] for row in verse["flow"][0]["words"]],
                          ["कार्पण्य", "दोष", "उपहत", "स्वभावः"])
-        self.assertIn("कायरतारूपी दोषले स्वभाव आहत भएको र धर्म (कर्तव्य) बारे चित्त भ्रमित भएको म तपाईंलाई सोध्छु", verse["lits"]["ne"])
+        # 2026-11-22: धर्म is rendered as कर्तव्य, without a duplicate
+        # explanatory parenthetical; the owner's participial construction stays.
+        self.assertIn("कायरतारूपी दोषले स्वभाव आहत भएको र कर्तव्य बारे चित्त भ्रमित भएको म तपाईंलाई सोध्छु", verse["lits"]["ne"])
         for lang, weakness, defect, mind in (
             ("en", "weakness", "defect", "mind is confused about duty"),
             ("ne", "कायरता", "दोष", "चित्त भ्रमित"),
@@ -890,15 +904,11 @@ class WholeBookFidelity(unittest.TestCase):
         not "selfish undertakings". The old house gloss asserted the motive
         anyway; eighteen strings were corrected.
 
-        The check that found the remaining four was this rule's own class
-        sweep, not a reading of those verses: 3.15 निःस्वार्थ for a verse with
-        no काम, and निःस्वार्थ / "selfish" added to the bare कर्मयोग of 3.03,
-        5.02 and 13.24. Paraphrases of verses that DO say काम keep the sense
-        (3.09 names the alternative to यज्ञ; 18.02 काम्यानाम्); the short
-        exemptions below are exactly those, listed so a later pass does not
-        delete a reading the Sanskrit supports."""
-        # Paraphrases whose Sanskrit names desire outright, so the paraphrase may.
-        kama_allowed = {("3.09", "en"), ("3.09", "ne"), ("3.09", "hi")}
+        The historical sweep removed unsupported selfishness in 3.15, 3.03,
+        5.02 and 13.24. The later paraphrase review removed 3.09's exemption:
+        the alternative to sacrificial action is not necessarily limited to
+        explicitly selfish action. 18.02 has काम्यानाम् and expresses desire,
+        not selfishness. See docs/paraphrase-review-2026-11.md."""
         hits = set()
         for verse in self.verses:
             for kind in ("lits", "paras"):
@@ -906,14 +916,8 @@ class WholeBookFidelity(unittest.TestCase):
                     text = verse[kind][language]
                     if ("selfish" in text) if language == "en" else ("स्वार्थ" in text):
                         hits.add((verse["n"], language))
-        self.assertEqual(sorted(hits - kama_allowed), [],
+        self.assertEqual(sorted(hits), [],
                          "a lane asserts a selfish motive no word of the verse states")
-        for number, language in sorted(kama_allowed):
-            # 3.09 is the one verse where the paraphrase's contrast is the
-            # Sanskrit's own: "except action for the sake of sacrifice" says the
-            # alternative is desire-led action, and काम appears in no row of it,
-            # so the exemption is the यज्ञ row plus a reading, not a token.
-            self.assertIn("यज्ञ", [r[0] for r in rows_of(load_verse(number))])
         # one consistent house gloss for सङ्कल्प, and the rows carry no motive
         for number in ("6.02", "4.19", "6.04", "6.24"):
             for row in rows_of(load_verse(number)):

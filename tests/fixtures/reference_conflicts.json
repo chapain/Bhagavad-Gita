@@ -1044,7 +1044,7 @@
     },
     "paras": {
       "en": "“Offer every action to me, keep the mind on the Self, drop all craving and possessiveness — and fight without agitation.”",
-      "ne": "“हरेक कर्म मलाई अर्पण गर, मन आत्मामा राख, सबै लोभ र मोह छोड — र बिना आवेग युद्ध गर।”",
+      "ne": "“हरेक कर्म मलाई अर्पण गर, मन आत्मामा राख, सबै लोभ र मेरोपन छोड — र बिना आवेग युद्ध गर।”",
       "hi": "“हर कर्म मुझे अर्पण कर, मन को आत्मा पर रख, सब लोभ और ममता छोड़ — और बिना आवेग युद्ध कर।”"
     }
   },
@@ -1192,9 +1192,9 @@
       "hi": "अन्य लोग द्रव्य-यज्ञ, तपो-यज्ञ, योग-यज्ञ और स्वाध्याय तथा ज्ञान-यज्ञ करते हैं — दृढ़ व्रत वाले तपस्वी।"
     },
     "paras": {
-      "en": "“Some sacrifice by giving wealth, by austerities, by meditation, or through scriptural learning and knowledge — all are seekers steadfast in their vows.”",
-      "ne": "“कोही धन दान गरेर, कोही तपस्या, कोही ध्यान, कोही शास्त्र अध्ययन र ज्ञानद्वारा यज्ञ गर्छन् — यी सबै आफ्नो व्रतमा दृढ साधक हुन्।”",
-      "hi": "“कोई धन-दान से, कोई तप से, कोई ध्यान से, कोई शास्त्र-अध्ययन और ज्ञान से यज्ञ करते हैं — सब अपने व्रत में दृढ़ साधक हैं।”"
+      "en": "“Some sacrifice by giving wealth, by austerities, by yoga, or through scriptural learning and knowledge — all are seekers steadfast in their vows.”",
+      "ne": "“कोही धन दान गरेर, कोही तपस्या, कोही योग, कोही शास्त्र अध्ययन र ज्ञानद्वारा यज्ञ गर्छन् — यी सबै आफ्नो व्रतमा दृढ साधक हुन्।”",
+      "hi": "“कोई धन-दान से, कोई तप से, कोई योग से, कोई शास्त्र-अध्ययन और ज्ञान से यज्ञ करते हैं — सब अपने व्रत में दृढ़ साधक हैं।”"
     }
   },
   "6.09": {
@@ -1226,8 +1226,8 @@
           "सुहृत्",
           "suhṛt",
           "well-wisher",
-          "मित्र",
-          "मित्र"
+          "हितैषी",
+          "हितैषी"
         ],
         [
           "मित्र",
@@ -1262,7 +1262,7 @@
         [
           "द्वेष्य",
           "dveṣya",
-          "hateful",
+          "one who is hated",
           "घृणित",
           "घृणित"
         ],
@@ -1322,14 +1322,14 @@
       ]
     ],
     "lits": {
-      "en": "He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen, the righteous and even sinners — he excels.",
-      "ne": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा गर्ने, नातेदार, सज्जन र पापी — सबैप्रति समान छ, ऊ नै श्रेष्ठ हुन्छ।",
-      "hi": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा करने वाले, नातेदार, सज्जन और पापी — सबके प्रति समान है, वही श्रेष्ठ है।"
+      "en": "He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, those hated, kinsmen, the righteous and even sinners — he excels.",
+      "ne": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, घृणा गरिएका व्यक्ति, नातेदार, सज्जन र पापी — सबैप्रति समान छ, ऊ नै श्रेष्ठ हुन्छ।",
+      "hi": "जो हितैषी, मित्र, शत्रु, उदासीन, मध्यस्थ, जिनसे घृणा की जाती है, नातेदार, सज्जन और पापी — सबके प्रति समान है, वही श्रेष्ठ है।"
     },
     "paras": {
-      "en": "“Equal to friends and enemies, the neutral and the hostile, kin, the righteous and the unrighteous — such a one stands highest.”",
-      "ne": "“मित्र र शत्रु, तटस्थ र विरोधी, आफन्त, सदाचारी र दुराचारी — सबैलाई समान हेर्ने — यस्तो व्यक्ति सबैभन्दा उच्च हुन्छ।”",
-      "hi": "“मित्र और शत्रु, तटस्थ और विरोधी, संबंधियों, सदाचारी और दुराचारी — सबको समान देखने वाला — ऐसा व्यक्ति सबसे ऊँचा है।”"
+      "en": "“Equal toward well-wishers, friends and enemies, the indifferent, the neutral, those who are hated, kin, the righteous and the unrighteous — such a one stands highest.”",
+      "ne": "“हितैषी, मित्र र शत्रु, उदासीन र मध्यस्थ, घृणा गरिएका व्यक्ति, आफन्त, सदाचारी र दुराचारी — सबैलाई समान हेर्ने — यस्तो व्यक्ति सबैभन्दा उच्च हुन्छ।”",
+      "hi": "“हितैषी, मित्र और शत्रु, उदासीन और मध्यस्थ, जिनसे द्वेष किया जाता है, संबंधियों, सदाचारी और दुराचारी — सबको समान देखने वाला — ऐसा व्यक्ति सबसे ऊँचा है।”"
     }
   },
   "6.19": {
@@ -2074,7 +2074,7 @@
           "tvām",
           "of you",
           "तपाईंलाई",
-          "तुम्हें"
+          "आपको"
         ],
         [
           "अहम्",
@@ -2497,9 +2497,9 @@
       "hi": "जो किसी प्राणी से द्वेष नहीं करता, मित्र-भाव और करुणा रखता है, ममता और अहंकार से मुक्त है, सुख-दुःख में समान है, क्षमाशील है —"
     },
     "paras": {
-      "en": "“One who hates no one, is kind and compassionate, free of 'mine' and 'I', even in joy and sorrow, patient —”",
-      "ne": "“जो कसैसँग घृणा गर्दैन, दयालु र करुणामय छ, 'मेरो' र 'म' बाट मुक्त छ, सुख-दुःखमा एकनास छ, धैर्यवान् छ —”",
-      "hi": "“जो किसी से घृणा नहीं करता, दयालु और करुणामय है, 'मेरा' और 'मैं' से मुक्त है, सुख-दुःख में एक-सा है, धैर्यवान् है —”"
+      "en": "“One who hates no one, is friendly and compassionate, free of 'mine' and 'I', even in joy and sorrow, forgiving —”",
+      "ne": "“जो कसैसँग घृणा गर्दैन, मित्रवत् र करुणामय छ, 'मेरो' र 'म' बाट मुक्त छ, सुख-दुःखमा एकनास छ, क्षमाशील छ —”",
+      "hi": "“जो किसी से बैर नहीं रखता, सबका मित्र और करुणामय है, जिसे न ममता है न अहंकार, जो सुख-दुःख में सम रहता है और क्षमा करता है —”"
     }
   },
   "18.53": {
@@ -2599,9 +2599,9 @@
         [
           "ब्रह्मभूयाय",
           "brahmabhūyāya",
-          "for Brahman",
-          "ब्रह्मका निम्ति",
-          "ब्रह्म के लिए"
+          "for becoming Brahman",
+          "ब्रह्म हुनका निम्ति",
+          "ब्रह्म होने के लिए"
         ],
         [
           "कल्पते",
@@ -2613,14 +2613,14 @@
       ]
     ],
     "lits": {
-      "en": "— free from ego, power, pride, desire, anger and possessiveness, tranquil, no longer claiming 'mine' — such a one becomes fit for Brahman.",
-      "ne": "— अहंकार, बल, घमण्ड, कामना, क्रोध र सङ्ग्रहप्रतिको आसक्ति त्यागेर, शान्त, 'मेरो' भन्न छोड्ने — यस्तो व्यक्ति ब्रह्मको योग्य बन्छ।",
-      "hi": "— अहंकार, बल, दर्प, काम, क्रोध और संग्रह की आसक्ति को त्यागकर, शान्त, 'मेरा' कहना छोड़ने वाला — ऐसा व्यक्ति ब्रह्म का योग्य हो जाता है।"
+      "en": "— free from ego, power, pride, desire, anger and possessiveness, tranquil, no longer claiming 'mine' — such a one becomes fit to become Brahman.",
+      "ne": "— अहंकार, बल, घमण्ड, कामना, क्रोध र सङ्ग्रहप्रतिको आसक्ति त्यागेर, शान्त, 'मेरो' भन्न छोड्ने — यस्तो व्यक्ति ब्रह्म हुन योग्य बन्छ।",
+      "hi": "— अहंकार, बल, दर्प, काम, क्रोध और संग्रह की आसक्ति को त्यागकर, शान्त, 'मेरा' कहना छोड़ने वाला — ऐसा व्यक्ति ब्रह्म होने योग्य हो जाता है।"
     },
     "paras": {
-      "en": "“— freed from ego, force, pride, lust, anger, and grasping, calm and without possessiveness — such a one becomes worthy of Brahman.”",
+      "en": "“— freed from ego, force, pride, lust, anger, and grasping, calm and without possessiveness — such a one becomes fit to become Brahman.”",
       "ne": "हाँकबाजी, बल देखाउने बानी, घमण्ड, कामना, रिस र लोभ — यी सबै फालेर, शान्त भई 'मेरो' भन्न छोडेपछि मान्छे ब्रह्म हुन लायक हुन्छ।",
-      "hi": "“— अहंकार, शक्ति, घमण्ड, चाहत, क्रोध और संग्रह की आसक्ति को तजकर, शान्त और 'मेरा' भाव से मुक्त — वह ब्रह्म-प्राप्ति का पात्र बनता है।”"
+      "hi": "“— अहंकार, शक्ति, घमण्ड, चाहत, क्रोध और संग्रह की आसक्ति को तजकर, शान्त और 'मेरा' भाव से मुक्त — वह ब्रह्म होने योग्य बनता है।”"
     }
   }
 }

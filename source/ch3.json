@@ -99,7 +99,7 @@
                       "te",
                       "by you",
                       "तपाईंको",
-                      "तुम्हारा"
+                      "आपके द्वारा"
                     ]
                   ]
                 },
@@ -375,9 +375,9 @@
                 "hi": "मानो मिले-जुले वचनों से आप मेरी बुद्धि को उलझा रहे हैं। एक ही बात निश्चय करके कहिए, जिससे मैं कल्याण को प्राप्त करूँ।"
               },
               "paras": {
-                "en": "“Your words seem mixed and contradictory — they only confuse me. Tell me plainly the single path by which I can reach what is truly good.”",
-                "ne": "“तपाईंका वचन मिश्रित र विरोधाभासी लाग्छन् — तीले मलाई मात्र अलमल्याउँछन्। साँचो हितमा पुर्‍याउने एउटै मार्ग स्पष्ट भन्नुहोस्।”",
-                "hi": "“आपके वचन मिश्रित और विरोधाभासी लगते हैं — वे मुझे ही उलझाते हैं। सच्चे कल्याण तक पहुँचाने वाला एक ही मार्ग स्पष्ट बताइए।”"
+                "en": "“Your words seem mixed and contradictory — they seem to confuse me. Tell me plainly the single path by which I can reach what is truly good.”",
+                "ne": "“तपाईंका वचन मिश्रित र विरोधाभासी लाग्छन् — तिनले मलाई अलमल्याएझैं लाग्छ। साँचो हितमा पुर्‍याउने एउटै मार्ग स्पष्ट भन्नुहोस्।”",
+                "hi": "“आपके वचन मिश्रित और विरोधाभासी लगते हैं — वे मुझे उलझाते से लगते हैं। सच्चे कल्याण तक पहुँचाने वाला एक ही मार्ग स्पष्ट बताइए।”"
               }
             }
           ]
@@ -546,7 +546,7 @@
                 "hi": "श्री भगवान् ने कहा: हे निष्पाप, इस लोक में पहले ही मैंने दो प्रकार की निष्ठाएँ कही हैं: सांख्यों के लिए ज्ञान-योग और योगियों के लिए कर्म-योग।"
               },
               "paras": {
-                "en": "Kṛṣṇa said: “Long ago I taught two paths, blameless one: the way of knowledge for the contemplative, the way of selfless action for the active yogi.”",
+                "en": "Kṛṣṇa said: “Long ago I taught two paths, blameless one: the way of knowledge for the contemplative, the way of action for the active yogi.”",
                 "ne": "कृष्णले भन्नुभयो: “धेरै अघि मैले दुई मार्ग सिकाएको थिएँ, हे निष्पाप: चिन्तनशीलका निम्ति ज्ञानको मार्ग, र क्रियाशील योगीका निम्ति कर्मयोगको मार्ग।”",
                 "hi": "कृष्ण ने कहा: “बहुत पहले मैंने दो मार्ग सिखाए थे, हे निष्पाप: चिन्तनशील के लिए ज्ञान का मार्ग, और क्रियाशील योगी के लिए कर्मयोग का मार्ग।”"
               }
@@ -870,8 +870,8 @@
               ],
               "lits": {
                 "en": "Indeed no one ever remains actionless even for a moment; everyone is made to act, helpless, by the guṇas born of prakṛti.",
-                "ne": "निश्चय नै कोही पनि एक क्षण पनि अकर्मी रहँदैन; प्रकृतिबाट जन्मेका गुणहरूले सबैलाई असहाय भई कर्म गराउँछन्।",
-                "hi": "निश्चय ही कोई भी एक क्षण भी अकर्मी नहीं रहता; प्रकृति से उत्पन्न गुण सबको असहाय होकर कर्म कराते हैं।"
+                "ne": "निश्चय नै कोही पनि एक क्षण पनि अकर्मी रहँदैन; सबै जना असहाय भई प्रकृतिबाट जन्मेका गुणहरूद्वारा कर्म गर्न लगाइन्छन्।",
+                "hi": "निश्चय ही कोई भी एक क्षण भी अकर्मी नहीं रहता; सब असहाय होकर प्रकृति से उत्पन्न गुणों द्वारा कर्म करने को बाध्य किए जाते हैं।"
               },
               "paras": {
                 "en": "“Nobody can sit idle even for a second — the forces of nature (the guṇas) compel everyone, willing or not, to act.”",
@@ -1559,9 +1559,9 @@
                 "hi": "यज्ञ के लिए किए गए कर्म को छोड़कर, यह संसार कर्म से बँधा हुआ है; इसलिए हे कुन्तीपुत्र, आसक्ति रहित होकर यज्ञ के लिए कर्म कर।"
               },
               "paras": {
-                "en": "“Action done for selfish gain binds you; only action offered as sacrifice frees you. So act for that purpose, unattached, Arjuna.”",
-                "ne": "“स्वार्थका निम्ति गरिएको कर्मले बाँध्छ; यज्ञका रूपमा अर्पित कर्मले मुक्त गर्छ। त्यसैले, अर्जुन, आसक्ति बिना यसैका निम्ति कर्म गर।”",
-                "hi": "“स्वार्थ के लिए किया कर्म बाँधता है; यज्ञ के रूप में अर्पित कर्म मुक्त करता है। इसलिए, अर्जुन, बिना आसक्ति उसी के लिए कर्म कर।”"
+                "en": "“Actions other than those offered for sacrifice bind the world. So act for that purpose, unattached, Arjuna.”",
+                "ne": "“यज्ञका निम्ति गरिएको बाहेकका कर्मले संसारलाई बाँध्छ। त्यसैले, अर्जुन, आसक्ति बिना यसैका निम्ति कर्म गर।”",
+                "hi": "“यज्ञ के लिए किए कर्म को छोड़कर, कर्म संसार को बाँधते हैं। इसलिए, अर्जुन, बिना आसक्ति उसी के लिए कर्म कर।”"
               }
             }
           ]
@@ -1745,9 +1745,9 @@
                 "hi": "प्रजापति ने आदि में प्राणियों को यज्ञ के साथ सृष्ट करके कहा: “इससे तुम फलो-फूलो; यह तुम्हारी इच्छापूर्ति करने वाली गाय हो।”"
               },
               "paras": {
-                "en": "“In the beginning the Creator gave humanity the practice of sacrifice: ‘Through this you will flourish; it will grant you all your needs.’”",
-                "ne": "“सृष्टिकर्ताले सुरुमै मानवतालाई यज्ञको विधि दिए: ‘यसबाट तिमी फस्टाउनेछौ; यसले तिम्रा सबै आवश्यकता पूरा गर्नेछ।’”",
-                "hi": "“सृष्टिकर्ता ने आदि में मानवता को यज्ञ की विधि दी: ‘इससे तुम फलोगे-फूलोगे; यह तुम्हारी सब आवश्यकताएँ पूरी करेगा।’”"
+                "en": "“In the beginning the Creator brought beings into existence together with sacrifice: ‘Through this you will flourish; it will grant you your desires.’”",
+                "ne": "“सृष्टिकर्ताले सुरुमै प्राणीहरूलाई यज्ञसँगै सृष्टि गरे र भने: ‘यसबाट तिमी फस्टाउनेछौ; यसले तिम्रा इच्छाहरू पूरा गर्नेछ।’”",
+                "hi": "“सृष्टिकर्ता ने आदि में प्राणियों को यज्ञ के साथ रचकर कहा: ‘इससे तुम फलोगे-फूलोगे; यह तुम्हारी इच्छाएँ पूरी करेगा।’”"
               }
             }
           ]
@@ -2076,8 +2076,8 @@
               ],
               "lits": {
                 "en": "Nourished by sacrifice, the gods will give you the joys you desire; he who enjoys what they have given without offering back to them is verily a thief.",
-                "ne": "यज्ञले पोषित देवताहरूले तिमीलाई चाहेका भोगहरू दिनेछन्; तिनले दिएको उपभोग गर्ने तर बदलामा नदिने व्यक्ति चोर नै हो।",
-                "hi": "यज्ञ से पोषित देवता तुम्हें वांछित भोग देंगे; उनके दिए का उपभोग करके बदले में न देने वाला निश्चय चोर है।"
+                "ne": "यज्ञले पोषित देवताहरूले तिमीलाई चाहेका भोगहरू दिनेछन्; तिनले दिएको उपभोग गर्ने तर तिनीहरूलाई बदलामा नदिने व्यक्ति चोर नै हो।",
+                "hi": "यज्ञ से पोषित देवता तुम्हें वांछित भोग देंगे; उनके दिए का उपभोग करके उन्हें बदले में न देने वाला निश्चय चोर है।"
               },
               "paras": {
                 "en": "“The gods, pleased by your offering, grant you the good things of life. Enjoy their gifts without giving back and you are a thief.”",
@@ -2587,7 +2587,7 @@
                 "hi": "कर्म ब्रह्म से और ब्रह्म अक्षर से उत्पन्न होता है, यह जान; इसलिए सर्वव्यापी ब्रह्म सदा यज्ञ में प्रतिष्ठित है।"
               },
               "paras": {
-                "en": "“All action springs from the eternal Brahman; hence the all-pervading Absolute is ever present in selfless offering.”",
+                "en": "“Action is born of Brahman, Brahman itself of the Imperishable; therefore in every sacrifice the all-pervading Brahman abides.”",
                 "ne": "“हरेक कर्मको मूल ब्रह्म हो, र ब्रह्मको मूल अक्षर; त्यसैले सर्वव्यापी ब्रह्म सधैं यज्ञमा रहन्छ।”",
                 "hi": "“हर कर्म का मूल ब्रह्म है, और ब्रह्म का मूल अक्षर; इसलिए सर्वव्यापी ब्रह्म सदा यज्ञ में स्थित है।”"
               }
@@ -3415,14 +3415,14 @@
                     [
                       "एव",
                       "eva",
-                      "even",
+                      "indeed",
                       "नै",
                       "ही"
                     ],
                     [
                       "अपि",
                       "api",
-                      "also",
+                      "even",
                       "पनि",
                       "भी"
                     ]
@@ -3992,9 +3992,9 @@
                 "hi": "यदि मैं कभी तत्परतापूर्वक कर्म में न लगूँ... हे पार्थ, मनुष्य सब प्रकार से मेरे मार्ग का अनुसरण करते हैं।"
               },
               "paras": {
-                "en": "“If I ever stopped working, everyone would follow my example and give up their duties too.”",
-                "ne": "“यदि मैले कहिल्यै काम गर्न छोडें भने, सबैले मेरै उदाहरण पछ्याएर आफ्ना कर्तव्य पनि छोडिदिनेछन्।”",
-                "hi": "“यदि मैं कभी काम करना छोड़ दूँ, तो सब मेरा ही उदाहरण अपनाकर अपने कर्तव्य भी छोड़ देंगे।”"
+                "en": "“If I were ever to cease my tireless work ... For people follow my path in every way, Arjuna.”",
+                "ne": "“यदि म कहिल्यै थाकी नथाकी कर्ममा लागिनँ भने... किनकि मानिसहरू सबै प्रकारले मेरो बाटो पछ्याउँछन्, अर्जुन।”",
+                "hi": "“यदि मैं कभी बिना आलस्य कर्म में न लगूँ... क्योंकि लोग हर प्रकार से मेरा मार्ग अपनाते हैं, अर्जुन।”"
               }
             }
           ]
@@ -4163,9 +4163,9 @@
                 "hi": "यदि मैं कर्म न करूँ तो ये लोक नष्ट हो जाएँ; मैं संकर का कर्ता बनूँ और इन प्राणियों को नष्ट करूँ।"
               },
               "paras": {
-                "en": "“If I stopped acting, the worlds would collapse — and I would be the one who ruined them.”",
-                "ne": "“यदि मैले कर्म गर्न छोडें भने संसार भत्किनेछ — र त्यसको विनाश गर्ने म नै हुनेछु।”",
-                "hi": "“यदि मैं कर्म करना छोड़ दूँ तो संसार ढह जाएगा — और उसके विनाश का कारण मैं ही बनूँगा।”"
+                "en": "“If I stopped acting, the worlds would collapse — I would cause confusion and bring these beings to ruin.”",
+                "ne": "“म कर्ममा नलागेको भए यी सबै लोक तहसनहस हुन्थे; सङ्करको कारण म बन्थें र प्राणीहरूको विनाश पनि मबाटै हुन्थ्यो।”",
+                "hi": "“मैं कर्म में न लगा होता तो ये सारे लोक मिट जाते; संकर का कारण मैं बनता और प्राणियों का विनाश भी मुझसे ही होता।”"
               }
             }
           ]
@@ -4316,8 +4316,8 @@
               ],
               "lits": {
                 "en": "As the unwise act, attached to action, O Bhārata, so should the wise act, unattached, desiring the welfare of the world.",
-                "ne": "हे भारत, जसरी अज्ञानीहरू आसक्त भई कर्म गर्छन्, त्यसरी नै ज्ञानीले पनि आसक्ति रहित भई, लोकसंग्रहका निम्ति कर्म गर्नुपर्छ।",
-                "hi": "हे भारत, जैसे अज्ञानी आसक्त होकर कर्म करते हैं, वैसे ही ज्ञानी को भी आसक्ति रहित होकर, लोकसंग्रह के लिए कर्म करना चाहिए।"
+                "ne": "हे भारत, जसरी अज्ञानीहरू आसक्त भई कर्म गर्छन्, त्यसरी नै लोकसंग्रह गर्न चाहने ज्ञानीले आसक्ति रहित भई कर्म गर्नुपर्छ।",
+                "hi": "हे भारत, जैसे अज्ञानी आसक्त होकर कर्म करते हैं, वैसे ही लोकसंग्रह करना चाहने वाले ज्ञानी को आसक्ति रहित होकर कर्म करना चाहिए।"
               },
               "paras": {
                 "en": "“The ignorant cling to their work; the wise work just as much but without clinging — for the good of everyone.”",
@@ -4472,9 +4472,9 @@
                 }
               ],
               "lits": {
-                "en": "Let him not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him encourage them to carry out their duties.",
-                "ne": "कर्ममा आसक्त अज्ञानीहरूको बुद्धिमा खलल नपारोस्; आफैं योगयुक्त भएर कर्म गर्दै उनीहरूलाई पनि सबै कर्म गर्न उत्साहित गरोस्।",
-                "hi": "कर्म में आसक्त अज्ञानियों की बुद्धि में खलल न डाले; स्वयं योगयुक्त होकर कर्म करता हुआ उन्हें सभी कर्म करने के लिए प्रेरित करे।"
+                "en": "Let the wise one not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him encourage them to perform all actions.",
+                "ne": "ज्ञानीले कर्ममा आसक्त अज्ञानीहरूको बुद्धिमा खलल नपारोस्; आफैं योगयुक्त भएर कर्म गर्दै उनीहरूलाई पनि सबै कर्म गर्न उत्साहित गरोस्।",
+                "hi": "ज्ञानी कर्म में आसक्त अज्ञानियों की बुद्धि में खलल न डाले; स्वयं योगयुक्त होकर कर्म करता हुआ उन्हें सभी कर्म करने के लिए प्रेरित करे।"
               },
               "paras": {
                 "en": "“Don't confuse people who are attached to their duties. Do your own work with devotion — and let them learn from your example.”",
@@ -4806,9 +4806,9 @@
                 "hi": "किन्तु हे महाबाहो, गुणों और कर्मों के विभाग को तथा गुणों के गुणों में विचरण करने को जानने वाला तत्त्वज्ञ आसक्त नहीं होता।"
               },
               "paras": {
-                "en": "“The wise understand that qualities interact with qualities — they never identify themselves with the action.”",
-                "ne": "“ज्ञानीहरू बुझ्छन् कि गुणहरू गुणहरूसँगै क्रियाशील हुन्छन् — तिनीहरू आफूलाई कर्मसँग कहिल्यै जोड्दैनन्।”",
-                "hi": "“ज्ञानी समझते हैं कि गुण गुणों के साथ ही क्रियाशील होते हैं — वे कभी अपने आपको कर्म से नहीं जोड़ते।”"
+                "en": "“The wise understand that qualities interact with qualities — knowing the distinction between qualities and actions, they do not cling.”",
+                "ne": "“ज्ञानीहरू बुझ्छन् कि गुणहरू गुणहरूसँगै क्रियाशील हुन्छन् — गुण र कर्मको भेद बुझेर तिनीहरू आसक्त हुँदैनन्।”",
+                "hi": "“ज्ञानी समझते हैं कि गुण गुणों के साथ ही क्रियाशील होते हैं — गुण और कर्म का भेद जानकर वे आसक्त नहीं होते।”"
               }
             }
           ]
@@ -4878,14 +4878,14 @@
                     [
                       "गुण",
                       "guṇa",
-                      "to the actions",
+                      "of the guṇas",
                       "गुण",
                       "गुण"
                     ],
                     [
                       "कर्मसु",
                       "karmasu",
-                      "of the guṇas",
+                      "in actions",
                       "कर्महरूमा",
                       "कर्मों में"
                     ]
@@ -5114,7 +5114,7 @@
               },
               "paras": {
                 "en": "“Offer every action to me, keep the mind on the Self, drop all craving and possessiveness — and fight without agitation.”",
-                "ne": "“हरेक कर्म मलाई अर्पण गर, मन आत्मामा राख, सबै लोभ र मोह छोड — र बिना आवेग युद्ध गर।”",
+                "ne": "“हरेक कर्म मलाई अर्पण गर, मन आत्मामा राख, सबै लोभ र मेरोपन छोड — र बिना आवेग युद्ध गर।”",
                 "hi": "“हर कर्म मुझे अर्पण कर, मन को आत्मा पर रख, सब लोभ और ममता छोड़ — और बिना आवेग युद्ध कर।”"
               }
             }
@@ -6135,7 +6135,7 @@
               },
               "paras": {
                 "en": "Arjuna asks: “What force makes a person sin even when he doesn't want to, as if dragged into it against his will?”",
-                "ne": "अर्जुन सोध्छन्: “के शक्तिले मानिसलाई नचाहँदा नचाहँदै पनि, जबरजस्ती तानेर, पाप गराउँछ?”",
+                "ne": "अर्जुन सोध्छन्: “के शक्तिले मानिसलाई नचाहँदा नचाहँदै पनि, मानौँ जबरजस्ती तानेझैं, पाप गराउँछ?”",
                 "hi": "अर्जुन पूछते हैं: “कौन-सी शक्ति व्यक्ति से, न चाहते हुए भी, मानो ज़बरदस्ती खींचकर पाप कराती है?”"
               }
             }
@@ -6634,9 +6634,9 @@
                     [
                       "अनलेन",
                       "analena",
-                      "by fire",
-                      "आगोले",
-                      "अग्नि से"
+                      "by fire (like fire here)",
+                      "आगोले (यहाँ आगोजस्तै)",
+                      "अग्नि से (यहाँ अग्नि के समान)"
                     ],
                     [
                       "च",

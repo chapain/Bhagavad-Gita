@@ -68,11 +68,11 @@ want them to survive a regeneration.
 |  | 1.17 | Kāśī’s king, Śikhaṇḍī and other heroes | And the king of Kāśī, the supreme archer, Śikhaṇḍī the great chariot-warrior, Dhṛṣṭadyumna, Virāṭa, and the unconquered Sātyaki. | ☐ | ☐ | ☐ |
 |  | 1.18 | Drupada, Draupadī’s sons, and Abhimanyu sound theirs | Drupada and the sons of Draupadī, O lord of the earth, and the mighty-armed son of Subhadrā — all blew their conches, each his own. | ☐ | ☐ | ☐ |
 |  | 1.19 | The uproar shatters Kaurava hearts | That uproar shattered the hearts of the sons of Dhṛtarāṣṭra, resounding tumultuously through the sky and the earth. | ☐ | ☐ | ☐ |
-|  | 1.20 | Arjuna raises his bow as battle nears | Then, seeing the Dhārtarāṣṭras stationed in array, as the clash of weapons was about to begin, the Pāṇḍava, whose banner bore the ape, raised his bow. | ☐ | ☐ | ☐ |
+|  | 1.20 | Arjuna raises his bow as battle nears | Then the Pāṇḍava, whose banner bore the ape, seeing the Dhārtarāṣṭras stationed in array as the clash of weapons was about to begin, and raising his bow — | ☐ | ☐ | ☐ |
 |  | 1.21 | Place my chariot between the armies | O lord of the earth, he then spoke this word to Hṛṣīkeśa: “Place my chariot between the two armies, O Acyuta.” | ☐ | ☐ | ☐ |
 |  | 1.22 | Let me see whom I must fight | “So that I may see those standing here eager for battle — with whom I must contend in this great enterprise of war.” | ☐ | ☐ | ☐ |
 |  | 1.23 | Those who came to please Duryodhana | “I wish to see those who are to fight, who have gathered here — desiring to please the evil-minded son of Dhṛtarāṣṭra in battle.” | ☐ | ☐ | ☐ |
-|  | 1.24 | Kṛṣṇa places the chariot between the armies | Sañjaya said: Thus addressed by Guḍākeśa, Hṛṣīkeśa, O descendant of Bharata, placed that best of chariots between the two armies. | ☐ | ☐ | ☐ |
+|  | 1.24 | Kṛṣṇa places the chariot between the armies | Sañjaya said: Thus addressed by Guḍākeśa, O descendant of Bharata, Hṛṣīkeśa, having placed that best of chariots between the two armies — | ☐ | ☐ | ☐ |
 |  | 1.25 | Behold the assembled Kurus | Before Bhīṣma, Droṇa, and all the rulers of the earth, he said: “O Pārtha, behold these Kurus assembled here.” | ☐ | ☐ | ☐ |
 |  | 1.26 | Arjuna sees teachers and relatives | There Arjuna saw stationed: fathers, grandfathers, teachers, maternal uncles, brothers, sons, grandsons, and friends as well. | ☐ | ☐ | ☐ |
 |  | 1.27 | Kinsmen and friends stand on both sides | Fathers-in-law and well-wishers in both armies — seeing all these kinsmen stationed there, the son of Kuntī… | ☐ | ☐ | ☐ |
@@ -84,7 +84,7 @@ want them to survive a regeneration.
 |  | 1.33 | Those he sought a kingdom for stand in battle | “Those for whose sake we desired kingdom, enjoyments and pleasures — they stand here in battle, having given up their lives and wealth.” | ☐ | ☐ | ☐ |
 |  | 1.34 | Teachers, fathers, sons | “Teachers, fathers, sons, and likewise grandfathers, maternal uncles, fathers-in-law, grandsons, brothers-in-law and other relatives.” | ☐ | ☐ | ☐ |
 |  | 1.35 | Not even for the three worlds | “I do not wish to kill them, even if they kill me, O Madhusūdana — not even for the sovereignty of the three worlds, let alone for the sake of this earth.” | ☐ | ☐ | ☐ |
-|  | 1.36 | Only sin would follow | “Slaying the sons of Dhṛtarāṣṭra, what pleasure would be ours, O Janārdana? Sin alone would take hold of us for killing these aggressors.” | ☐ | ☐ | ☐ |
+|  | 1.36 | Only sin would follow | “What pleasure would be ours in slaying the sons of Dhṛtarāṣṭra, O Janārdana? Sin alone would take hold of us for killing these aggressors.” | ☐ | ☐ | ☐ |
 |  | 1.37 | We should not kill our own kin | “Therefore we should not kill our kinsmen, the sons of Dhṛtarāṣṭra; for how, having slain our own people, could we be happy, O Mādhava?” | ☐ | ☐ | ☐ |
 |  | 1.38 | Greed blinds them to the crime | “Though these men, their minds overcome by greed, see no fault in destroying the family and no crime in treachery toward friends…” | ☐ | ☐ | ☐ |
 |  | 1.39 | Seeing family ruin, turn away from sin | “How can we not know — we who see the fault of family-destruction — that we must turn back from this sin, O Janārdana?” | ☐ | ☐ | ☐ |
@@ -162,9 +162,9 @@ want them to survive a regeneration.
 |  | 2.54 | Arjuna asks the marks of steady wisdom | Arjuna said: What is the description of the man of steady wisdom, established in samādhi, O Keśava? How does the steady-minded one speak, how sit, how move? | ☐ | ☐ | ☐ |
 |  | 2.55 | Content in the Self alone | The Blessed Lord said: When one casts off all desires of the mind, O Pārtha, and is content in the Self alone through the Self — then one is called steady in wisdom. | ☐ | ☐ | ☐ |
 |  | 2.56 | The muni of steady wisdom | One whose mind is untroubled in sorrow and free from longing in joy, from whom passion, fear and anger have departed — that one is the steady-minded sage. | ☐ | ☐ | ☐ |
-|  | 2.57 | Neither rejoicing nor recoiling | One who is everywhere free from attachment, who neither rejoices nor recoils on meeting good or evil — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
+|  | 2.57 | Neither rejoicing nor recoiling | One who is everywhere free from attachment, who neither rejoices nor hates on meeting good or evil — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.58 | Like a tortoise drawing in its limbs | When, like a tortoise drawing in its limbs from all sides, one withdraws the senses from their objects — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
-|  | 2.59 | Craving ends when the Supreme is seen | Sense objects fall away from the embodied one who abstains, except for the taste; having seen the Supreme, even that taste departs. | ☐ | ☐ | ☐ |
+|  | 2.59 | Craving ends when the Supreme is seen | Sense objects fall away from the embodied one who abstains, except for the taste; when one has seen the Supreme, even that taste departs. | ☐ | ☐ | ☐ |
 |  | 2.60 | The mind following the senses loses its wisdom | Even for the striving sage, O son of Kuntī, the turbulent senses forcibly carry away the mind. | ☐ | ☐ | ☐ |
 |  | 2.61 | Reining in the senses | Having restrained them all, the disciplined one should sit intent on Me; for one whose senses are under control, wisdom is firmly set. | ☐ | ☐ | ☐ |
 |  | 2.62 | Brooding breeds desire, desire breeds anger | Brooding on sense objects breeds attachment to them; from attachment arises desire; from desire arises anger. | ☐ | ☐ | ☐ |
@@ -174,7 +174,7 @@ want them to survive a regeneration.
 |  | 2.66 | No peace, no happiness | There is no wisdom for the undisciplined, no meditation for the unsteady; and without meditation there is no peace — how can there be happiness without peace? | ☐ | ☐ | ☐ |
 |  | 2.67 | As wind carries a boat | For the mind that follows the wandering senses carries away the understanding, as the wind carries a boat on the waters. | ☐ | ☐ | ☐ |
 |  | 2.68 | The senses fully drawn back | Therefore, O mighty-armed one, one whose senses are wholly withdrawn from their objects — that one's wisdom is firmly set. | ☐ | ☐ | ☐ |
-|  | 2.69 | Night for all beings | What is night for all beings is the waking time for the disciplined sage; what is waking for beings is night for the sage who sees. | ☐ | ☐ | ☐ |
+|  | 2.69 | Night for all beings | In what is night for all beings, the disciplined one is awake; what is waking for beings is night for the sage who sees. | ☐ | ☐ | ☐ |
 |  | 2.70 | As waters enter the ocean | As the waters enter the ocean, which remains unmoved though filled from every side, so the sage whom all desires enter remains at peace — not the one who lusts for desires. | ☐ | ☐ | ☐ |
 |  | 2.71 | Without longing, without ego | The man who casts off all desires and moves without longing, without possessiveness, without ego — that one attains peace. | ☐ | ☐ | ☐ |
 |  | 2.72 | The Brāhmī state ends delusion | This is the Brāhmī state, O Pārtha; attaining it, one is no longer deluded. Resting in it even at the end, one reaches Brahman-nirvāṇa. | ☐ | ☐ | ☐ |
@@ -211,7 +211,7 @@ want them to survive a regeneration.
 |  | 3.23 | All would follow my example | If I did not ever engage in action untiringly ... For people follow my path in all respects, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 3.24 | These worlds would perish | These worlds would perish if I did not perform action; I would be the maker of chaos and would destroy these creatures. | ☐ | ☐ | ☐ |
 |  | 3.25 | Act as the unwise do—but without attachment | As the unwise act, attached to action, O Bhārata, so should the wise act, unattached, desiring the welfare of the world. | ☐ | ☐ | ☐ |
-|  | 3.26 | Do not unsettle the ignorant | Let him not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him encourage them to carry out their duties. | ☐ | ☐ | ☐ |
+|  | 3.26 | Do not unsettle the ignorant | Let the wise one not create disturbance in the minds of the ignorant who are attached to action; acting himself with devotion, let him encourage them to perform all actions. | ☐ | ☐ | ☐ |
 |  | 3.27 | The guṇas are the doers | All actions are performed by the guṇas of prakṛti in every way; the one deluded by egoism thinks, “I am the doer.” | ☐ | ☐ | ☐ |
 |  | 3.28 | Qualities act on qualities | But the knower of truth, O mighty-armed, knowing the distinction of the guṇas and actions, and that the guṇas move among the guṇas, does not become attached. | ☐ | ☐ | ☐ |
 |  | 3.29 | Let the knower not disturb them | Those deluded by the guṇas of prakṛti cling to actions born of the guṇas; the one of complete knowledge should not unsettle the dull-witted, partial knowers. | ☐ | ☐ | ☐ |
@@ -237,7 +237,7 @@ want them to survive a regeneration.
 |---|---|---|---|:-:|:-:|:-:|
 |  | 4.01 | Taught to Vivasvān | The Blessed Lord said: I declared this imperishable yoga to Vivasvān; Vivasvān communicated it to Manu; Manu proclaimed it to Ikṣvāku. | ☐ | ☐ | ☐ |
 |  | 4.02 | In time this yoga was lost | Thus received in succession, the royal sages came to know it; but in the long course of time, this yoga was lost, O scorcher of foes. | ☐ | ☐ | ☐ |
-|  | 4.03 | I declare that ancient yoga to you | This same ancient yoga is now declared to you by me, because you are my devotee and friend — truly, this is the supreme secret. | ☐ | ☐ | ☐ |
+|  | 4.03 | I declare that ancient yoga to you | This same ancient yoga is declared to you by me today, because you are my devotee and friend — truly, this is the supreme secret. | ☐ | ☐ | ☐ |
 |  | 4.04 | Arjuna asks how that can be | Arjuna said: Later is your birth, and earlier the birth of Vivasvān; how then am I to understand that you taught it in the beginning? | ☐ | ☐ | ☐ |
 |  | 4.05 | I know all our past births | The Blessed Lord said: Many births of mine have passed, and of yours too, O Arjuna; I know them all, but you do not know them, O scorcher of foes. | ☐ | ☐ | ☐ |
 |  | 4.06 | I come into being by my own māyā | Though unborn, though the imperishable Self, though the Lord of beings — resorting to my own prakṛti, I come into being through my own māyā. | ☐ | ☐ | ☐ |
@@ -245,7 +245,7 @@ want them to survive a regeneration.
 |  | 4.08 | To protect the righteous | For the protection of the good, for the destruction of the evil-doers, for the establishment of dharma, I take birth age after age. | ☐ | ☐ | ☐ |
 |  | 4.09 | Knowing this, one is not reborn | He who thus knows in truth my divine birth and action — having abandoned the body, he is not born again; he comes to me, O Arjuna. | ☐ | ☐ | ☐ |
 |  | 4.10 | Free from attachment, fear and anger | Free from attachment, fear and anger, absorbed in me, taking refuge in me, many — purified by the austerity of knowledge — have attained my state. | ☐ | ☐ | ☐ |
-|  | 4.11 | As they approach me, so I respond | In whatever way men approach me, in that same way I favour them; people follow my path in every way, O Pārtha. | ☐ | ☐ | ☐ |
+|  | 4.11 | As they approach me, so I respond | In whatever way people take refuge in me, in that same way I favour them; people follow my path in every way, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 4.12 | Those who want quick fruit worship gods | Those who desire the success of actions worship the gods here; indeed, in this human world success born of action comes quickly. | ☐ | ☐ | ☐ |
 |  | 4.13 | The fourfold order was created by me | The fourfold order was created by me according to the distinction of guṇas and actions; though I am its author, know me as the non-doer and imperishable. | ☐ | ☐ | ☐ |
 |  | 4.14 | Actions do not taint me | Actions do not stain me, nor have I any longing for the fruit of action; he who knows me thus is not bound by actions. | ☐ | ☐ | ☐ |
@@ -289,7 +289,7 @@ want them to survive a regeneration.
 |  | 5.04 | Only children call sāṅkhya and yoga different | The childish, not the wise, speak of sāṅkhya and yoga as different; one who is rightly established in even one of them attains the fruit of both. | ☐ | ☐ | ☐ |
 |  | 5.05 | The same goal | The state attained by the sāṅkhyas is also reached by the yogis; he who sees sāṅkhya and yoga as one — he truly sees. | ☐ | ☐ | ☐ |
 |  | 5.06 | Renunciation is hard without yoga | But renunciation, O mighty-armed one, is hard to attain without yoga; the sage endowed with yoga reaches Brahman before long. | ☐ | ☐ | ☐ |
-|  | 5.07 | The Self of all beings | Devoted to karma-yoga, of pure soul, self-conquered, senses conquered, the Self of all beings — though acting, he is not stained. | ☐ | ☐ | ☐ |
+|  | 5.07 | The Self of all beings | Devoted to karma-yoga, of pure soul, self-conquered, senses conquered, whose self has become the self of all beings — though acting, he is not stained. | ☐ | ☐ | ☐ |
 |  | 5.08 | “I do nothing at all” | “I do nothing at all” — thus should the knower of truth established in yoga think, while seeing, hearing, touching, smelling, eating, moving, sleeping, breathing, | ☐ | ☐ | ☐ |
 |  | 5.09 | The senses among their objects | speaking, giving up, holding, opening and closing the eyes — holding that the senses move among the objects of the senses. | ☐ | ☐ | ☐ |
 |  | 5.10 | The lotus leaf | He who acts, offering all actions to Brahman and abandoning attachment, is not stained by sin, just as a lotus leaf is not wetted by water. | ☐ | ☐ | ☐ |
@@ -326,29 +326,29 @@ want them to survive a regeneration.
 |  | 6.06 | Friend if conquered, enemy if not | For him who has conquered the self by the Self, the Self is a friend; but for him who has not conquered the self, the Self abides as an enemy, hostile. | ☐ | ☐ | ☐ |
 |  | 6.07 | The self-conquered is at peace | The self-conquered, tranquil one is established in the Self — equal in cold and heat, pleasure and pain, honour and dishonour. | ☐ | ☐ | ☐ |
 |  | 6.08 | A clod, a stone, and gold alike | He who is satisfied with knowledge and realization, whose self is steadfast, whose senses are conquered, to whom a clod of earth, a stone and gold are the same — he is called yoked. | ☐ | ☐ | ☐ |
-|  | 6.09 | Equal to friend and foe | He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen, the righteous and even sinners — he excels. | ☐ | ☐ | ☐ |
+|  | 6.09 | Equal to friend and foe | He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, those hated, kinsmen, the righteous and even sinners — he excels. | ☐ | ☐ | ☐ |
 |  | 6.10 | Alone, in solitude | Let the yogi constantly discipline himself, abiding in a solitary place, alone, with mind and self controlled, free from desire and possessiveness. | ☐ | ☐ | ☐ |
 |  | 6.11 | A clean place, neither too high nor too low | Establishing in a pure spot a steady seat for himself, neither too high nor too low, covered with cloth, a deer-skin and kuśa grass, | ☐ | ☐ | ☐ |
 |  | 6.12 | Calm the mind and senses | making the mind one-pointed, restraining the activities of the mind and the senses, seated on that seat, let him practise yoga for the purification of the self. | ☐ | ☐ | ☐ |
-|  | 6.13 | Body, head and neck erect | Holding body, head and neck steady and unmoving, gazing at the tip of his own nose, not looking about, | ☐ | ☐ | ☐ |
+|  | 6.13 | Body, head and neck erect | Steady, holding body, head and neck straight and unmoving, gazing at the tip of his own nose, not looking about, | ☐ | ☐ | ☐ |
 |  | 6.14 | Calm and fearless | with a serene mind, fearless, firm in the vow of brahmacarya, the mind controlled, thoughts resting on me — let the yoked one sit, devoted to me. | ☐ | ☐ | ☐ |
-|  | 6.15 | The yogi attains the peace that rests in me | Thus disciplining himself always, the yogi of controlled mind attains the peace of nirvāṇa that abides in me. | ☐ | ☐ | ☐ |
+|  | 6.15 | The yogi attains the peace that rests in me | Thus disciplining himself always, the yogi of controlled mind attains the peace of supreme nirvāṇa that abides in me. | ☐ | ☐ | ☐ |
 |  | 6.16 | Yoga is not attained through extremes | Verily yoga is not attained by him who eats too much nor by him who does not eat at all, nor by him who sleeps too much nor by him who keeps awake too much, O Arjuna. | ☐ | ☐ | ☐ |
 |  | 6.17 | Moderate in food, sleep and work | For him who is temperate in food and recreation, temperate in his efforts, temperate in sleep and waking, yoga becomes the destroyer of sorrow. | ☐ | ☐ | ☐ |
 |  | 6.18 | When the mind rests in the Self | When the well-trained mind rests in the Self alone, free from longing for all objects of desire — then one is said to be yoked. | ☐ | ☐ | ☐ |
 |  | 6.19 | As a lamp in a windless place | As a lamp placed in a windless spot does not flicker — this simile is declared of a yogi of controlled mind, practising yoga of the Self. | ☐ | ☐ | ☐ |
-|  | 6.20 | Beholding the Self, content in the Self | That in which, by the practice of yoga, the mind comes to rest, and beholding the Self by the self, one is content in the Self alone — | ☐ | ☐ | ☐ |
+|  | 6.20 | Beholding the Self, content in the Self | That in which the mind, restrained by the practice of yoga, comes to rest, and beholding the Self by the self, one is content in the Self alone — | ☐ | ☐ | ☐ |
 |  | 6.21 | A joy the senses cannot reach | — that joy, boundless, to be grasped by the intellect, beyond the senses, which one knows; and established in it, this one never moves from the truth — | ☐ | ☐ | ☐ |
 |  | 6.22 | No gain is counted greater than this | — having gained which one deems no other gain greater, and established in which one is not shaken even by heavy sorrow — | ☐ | ☐ | ☐ |
 |  | 6.23 | Practise with resolve and an undiscouraged mind | Know that as yoga, called the disconnection of union with sorrow; that yoga should be practised with firm resolve and an undiscouraged mind. | ☐ | ☐ | ☐ |
 |  | 6.24 | Abandon all desires born of intention | Abandoning without exception all desires born of resolve, restraining the whole group of senses on every side by the mind alone — | ☐ | ☐ | ☐ |
 |  | 6.25 | Slowly, gradually, let him come to rest | — slowly, gradually, let him come to rest through the intellect held firm by resolve; and fixing the mind on the Self alone, let him think of nothing else. | ☐ | ☐ | ☐ |
-|  | 6.26 | Wherever the mind wanders, bring it back | From whatever cause the wavering, unsteady mind wanders away, from that alone let him withdraw it and bring it under the control of the Self. | ☐ | ☐ | ☐ |
+|  | 6.26 | Wherever the mind wanders, bring it back | Wherever the restless, unsteady mind wanders, let him restrain it from there and bring it under the control of the Self. | ☐ | ☐ | ☐ |
 |  | 6.27 | Supreme bliss comes to the stainless | Supreme bliss verily comes to this yogi whose mind is peaceful, whose passion is stilled, who is become Brahman, free from stain. | ☐ | ☐ | ☐ |
 |  | 6.28 | The purified reach bliss | Thus constantly disciplining the self, the yogi, freed from stain, easily attains the endless joy of union with Brahman. | ☐ | ☐ | ☐ |
 |  | 6.29 | The Self in all beings | The one whose mind is united in yoga, seeing equally everywhere, sees the Self dwelling in all beings and all beings in the Self. | ☐ | ☐ | ☐ |
 |  | 6.30 | I am never lost to him | He who sees me everywhere and sees everything in me — for him I am not lost, and he is not lost to me. | ☐ | ☐ | ☐ |
-|  | 6.31 | He lives in me, whatever his way | Established in unity, the yogi who worships me abiding in all beings — abiding in that, he lives in me, whatever his way of life. | ☐ | ☐ | ☐ |
+|  | 6.31 | He lives in me, whatever his way | The yogi who, established in unity, worships me abiding in all beings lives in me, whatever his way of life. | ☐ | ☐ | ☐ |
 |  | 6.32 | He who feels all as his own | He who, through the likeness of the self, sees the same everywhere, in pleasure and in pain — he is deemed the supreme yogi, O Arjuna. | ☐ | ☐ | ☐ |
 |  | 6.33 | Arjuna: the mind is too restless for this | Arjuna said: This yoga of equanimity declared by you, O Madhusūdana — I see no firm foundation for it, because of restlessness. | ☐ | ☐ | ☐ |
 |  | 6.34 | The mind is restless as the wind | Verily the mind is restless, turbulent, strong and unyielding, O Kṛṣṇa; I think it is as hard to restrain as the wind. | ☐ | ☐ | ☐ |
@@ -359,7 +359,7 @@ want them to survive a regeneration.
 |  | 6.39 | This doubt you must dispel | This doubt of mine you should dispel wholly, O Kṛṣṇa; no other than you is found to destroy this doubt. | ☐ | ☐ | ☐ |
 |  | 6.40 | No doer of good comes to grief | The Blessed Lord said: O Pārtha, neither in this world nor in the next is there destruction for him; for none who does good, my son, goes to evil. | ☐ | ☐ | ☐ |
 |  | 6.41 | Born again in a pure house | Having attained the worlds of the righteous and dwelt there for immemorial years, he who fell from yoga is born again in the house of the pure and prosperous. | ☐ | ☐ | ☐ |
-|  | 6.42 | Or in a family of yogis | Or he is born into a family of wise yogis; truly a birth like this is very hard to obtain in this world. | ☐ | ☐ | ☐ |
+|  | 6.42 | Or in a family of yogis | Or he is born into a family of wise yogis; truly a birth like this is harder to obtain in this world. | ☐ | ☐ | ☐ |
 |  | 6.43 | He regains spiritual insight from a past life | There he regains the understanding of his former body, O son of the Kurus, and from there he strives again for perfection. | ☐ | ☐ | ☐ |
 |  | 6.44 | Carried onward by former practice | By that very former practice he is carried along, even in spite of himself; even the one who merely wishes to know yoga transcends the word-Brahman. | ☐ | ☐ | ☐ |
 |  | 6.45 | Perfected through many births | But the yogi who strives with effort, purified of sin, perfected gradually through many births, then reaches the highest state. | ☐ | ☐ | ☐ |
@@ -372,8 +372,8 @@ want them to survive a regeneration.
 | ☐ | Verse | Title | The verse says (literal) | keep | revise | fix |
 |---|---|---|---|:-:|:-:|:-:|
 |  | 7.01 | Hear how to know me fully | The Blessed Lord said: With the mind attached to me, O Pārtha, practising yoga and taking refuge in me — how, without doubt, you will know me in full, that listen. | ☐ | ☐ | ☐ |
-|  | 7.02 | Realization, not mere knowledge | I shall declare to you this knowledge together with its realization, without remainder; knowing which, nothing further remains to be known here. | ☐ | ☐ | ☐ |
-|  | 7.03 | One in thousands strives | Among thousands of men, one perchance strives for perfection; and among those who strive, one perchance knows me in truth. | ☐ | ☐ | ☐ |
+|  | 7.02 | Realization, not mere knowledge | I shall declare to you this knowledge together with its realization, without remainder; when one knows it, nothing further remains to be known here. | ☐ | ☐ | ☐ |
+|  | 7.03 | One in thousands strives | Among thousands of men, one perchance strives for perfection; even among the perfected who strive, one perchance knows me in truth. | ☐ | ☐ | ☐ |
 |  | 7.04 | My nature divided eightfold | Earth, water, fire, air, ether, mind, intellect and egoism — thus is my nature divided eightfold. | ☐ | ☐ | ☐ |
 |  | 7.05 | The higher nature that sustains the world | This is the lower nature; but know my other nature, higher than this, O mighty-armed one — the life-element, by which the world is upheld. | ☐ | ☐ | ☐ |
 |  | 7.06 | The womb of all beings | Know that these two natures are the womb of all beings; I am the origin and also the dissolution of the whole world. | ☐ | ☐ | ☐ |
@@ -393,14 +393,14 @@ want them to survive a regeneration.
 |  | 7.20 | Deprived of discernment | Those whose knowledge is stolen by desires resort to other deities, following this or that rite, constrained by their own nature. | ☐ | ☐ | ☐ |
 |  | 7.21 | I make a devotee's faith unshakeable | Whatever form a devotee desires to worship with faith, I render that very faith of his steady. | ☐ | ☐ | ☐ |
 |  | 7.22 | The desires are granted | United with that faith, he engages in the worship of that deity, and from it obtains his desires — which are verily ordained by me. | ☐ | ☐ | ☐ |
-|  | 7.23 | Finite fruit for the finite-minded | But the fruit of those worshippers is limited; the fruit belongs to the small-minded. The worshippers of the gods go to the gods; my devotees come to me. | ☐ | ☐ | ☐ |
+|  | 7.23 | Finite fruit for the finite-minded | But the fruit of those of little understanding comes to an end; the worshippers of the gods go to the gods, and my devotees indeed come to me. | ☐ | ☐ | ☐ |
 |  | 7.24 | The unwise think me manifest | The unintelligent, not knowing my higher nature — imperishable and unsurpassed — think of me, the unmanifest, as one who has taken on manifestation. | ☐ | ☐ | ☐ |
 |  | 7.25 | Veiled by my Yoga-Māyā | I am not manifest to all, being enveloped by yoga-māyā; this deluded world does not know me, the unborn, the imperishable. | ☐ | ☐ | ☐ |
 |  | 7.26 | I know all beings; none knows me | I know, O Arjuna, the beings that have passed, that exist now, and that are to come; but no one knows me. | ☐ | ☐ | ☐ |
 |  | 7.27 | Deluded by the pairs of opposites | By the delusion of the pairs of opposites, arising from desire and aversion, O Bhārata, all beings go to delusion at birth, O scorcher of foes. | ☐ | ☐ | ☐ |
 |  | 7.28 | Whose sin has ended, freed from the pairs | But those men of good deeds whose sins have come to an end — freed from the delusion of the pairs of opposites — worship me with firm vows. | ☐ | ☐ | ☐ |
 |  | 7.29 | Striving for freedom, they know Brahman | Those who, striving for freedom from old age and death, take refuge in me — they know Brahman, the entire adhyātma, and all action. | ☐ | ☐ | ☐ |
-|  | 7.30 | They know me even at the hour of death | Those who know me along with the elements, the deities and the sacrifice — even at the time of death, with minds established, they know me. | ☐ | ☐ | ☐ |
+|  | 7.30 | They know me even at the hour of death | Those who know me together with adhibhūta, adhidaiva and adhiyajña — even at the time of death, with minds established, they know me. | ☐ | ☐ | ☐ |
 
 
 ### Chapter 8 — Akṣara-Brahma Yoga · verses 8.01–8.28 · 28 titles, 1 flagged
@@ -416,7 +416,7 @@ want them to survive a regeneration.
 |  | 8.07 | Therefore remember me and fight | Therefore remember me at all times and fight; with mind and intellect offered to me, you will surely come to me, without doubt. | ☐ | ☐ | ☐ |
 |  | 8.08 | With mind unwavering | United with the yoga of practice, with a mind that goes nowhere else, O Pārtha — one reaches the supreme divine Person, contemplating him. | ☐ | ☐ | ☐ |
 |  | 8.09 | The ancient seer, subtler than the atom | He who meditates on the ancient seer, the ruler, subtler than the subtle, the support of all, of inconceivable form, radiant as the sun, beyond darkness — | ☐ | ☐ | ☐ |
-|  | 8.10 | At death, with the breath between the brows | — at the time of death, with an unwavering mind, united with devotion and the power of yoga, breath fixed between the brows — he reaches that supreme divine Person. | ☐ | ☐ | ☐ |
+|  | 8.10 | At death, with the breath between the brows | — at the time of death, with an unwavering mind, united with devotion and the power of yoga, breath properly fixed between the brows — he reaches that supreme divine Person. | ☐ | ☐ | ☐ |
 |  | 8.11 | That which the Vedas call imperishable | That which the knowers of the Vedas call the imperishable, which the desireless ascetics enter, desiring which they practise celibacy — that goal I shall declare to you briefly. | ☐ | ☐ | ☐ |
 |  | 8.12 | Closing the gates, fixing the breath | Restraining all the gates of the body, confining the mind in the heart, fixing the life-breath in the head, established in yogic concentration — | ☐ | ☐ | ☐ |
 |  | 8.13 | Uttering Om, the single syllable | — uttering the single syllable Om, the Brahman, and remembering me — he who departs, giving up the body, reaches the supreme goal. | ☐ | ☐ | ☐ |
@@ -432,7 +432,7 @@ want them to survive a regeneration.
 | ⚑ | 8.23 | The two times of departure | Now I shall declare, O bull of the Bhāratas, the time in which yogis, departing, do not return, and the time in which they return. | ☐ | ☐ | ☐ |
 |  | 8.24 | Fire, light, day, the bright fortnight | Fire, light, day, the bright fortnight, the six months of the northern course — departing by that path, the knowers of Brahman go to Brahman. | ☐ | ☐ | ☐ |
 |  | 8.25 | Smoke, night, the dark fortnight | Smoke, night, the dark fortnight, the six months of the southern course — attaining the lunar light by that path, the yogi returns. | ☐ | ☐ | ☐ |
-|  | 8.26 | The two eternal paths | These two paths, bright and dark, are the eternal paths of the world; by one, one goes without return, by the other one returns again. | ☐ | ☐ | ☐ |
+|  | 8.26 | The two eternal paths | These two paths, bright and dark, are held to be the eternal paths of the world; by one, one goes without return, by the other one returns again. | ☐ | ☐ | ☐ |
 |  | 8.27 | Knowing both, no yogi is deluded | Knowing these two paths, O Pārtha, the yogi is never deluded; therefore, at all times be united in yoga, O Arjuna. | ☐ | ☐ | ☐ |
 |  | 8.28 | Beyond fruits of Vedas, sacrifice, austerity and gifts | Whatever fruit of merit is declared in the Vedas, sacrifices, austerities and gifts — the yogi, knowing all this, transcends it all and reaches the supreme primeval abode. | ☐ | ☐ | ☐ |
 
@@ -448,7 +448,7 @@ want them to survive a regeneration.
 |  | 9.03 | The faithless return to death and rebirth | The men without faith in this dharma, O scorcher of foes, not reaching me, return to the path of death and rebirth. | ☐ | ☐ | ☐ |
 |  | 9.04 | All pervaded by me | By me this whole world is pervaded in my unmanifest form; all beings rest in me, but I am not contained in them. | ☐ | ☐ | ☐ |
 |  | 9.05 | The divine yoga | And beings do not rest in me — behold my divine yoga! I sustain all beings yet stand apart, and my self is the origin of beings. | ☐ | ☐ | ☐ |
-|  | 9.06 | As wind in space | As the vast wind, ever moving, abides in space, so all beings abide in me — know this. | ☐ | ☐ | ☐ |
+|  | 9.06 | As wind in space | As the vast wind, moving everywhere, always abides in space, so all beings abide in me — know this. | ☐ | ☐ | ☐ |
 |  | 9.07 | The revolving creation | All beings, O son of Kuntī, return to my prakṛti at the end of a kalpa; at the beginning of a kalpa I send them forth again. | ☐ | ☐ | ☐ |
 |  | 9.08 | Again and again I create | Taking hold of my own prakṛti, I send forth again and again this whole host of beings, helpless under the power of nature. | ☐ | ☐ | ☐ |
 |  | 9.09 | Unbound by action | These actions do not bind me, O Dhanañjaya, for I sit as one indifferent, unattached to these actions. | ☐ | ☐ | ☐ |
@@ -457,17 +457,17 @@ want them to survive a regeneration.
 |  | 9.12 | Vain hopes, vain works, vain knowledge | Of vain hopes, vain works and vain knowledge, senseless — they cling to the deluding, demoniac and asuric nature. | ☐ | ☐ | ☐ |
 |  | 9.13 | The great souls know me as imperishable | But the great souls, O Pārtha, taking refuge in the divine nature, worship me with undivided mind, knowing me as the imperishable source of beings. | ☐ | ☐ | ☐ |
 |  | 9.14 | Ever glorifying me, firm in vows | Always glorifying me, striving with firm vows, bowing to me with devotion, ever united — they worship me. | ☐ | ☐ | ☐ |
-|  | 9.15 | The sacrifice of knowledge | And others worship me with the sacrifice of knowledge, worshipping me as the one, as the distinct, as the manifold facing everywhere. | ☐ | ☐ | ☐ |
+|  | 9.15 | The sacrifice of knowledge | And others, worshipping with the sacrifice of knowledge, adore me as one, as distinct, and in many ways as facing everywhere. | ☐ | ☐ | ☐ |
 |  | 9.16 | I am the sacrifice | I am the rite, I am the sacrifice, I am the oblation to the ancestors, I am the herb; I am the mantra, I am the butter, I am the fire, I am the offering. | ☐ | ☐ | ☐ |
 |  | 9.17 | I am father and mother | I am the father and mother of this world, its supporter and grandsire; I am the object of knowledge, the purifier, the syllable Om, and the Ṛk, Sāma and Yajus. | ☐ | ☐ | ☐ |
 |  | 9.18 | I am everything | I am the goal, the sustainer, the lord, the witness, the abode, the refuge and the friend; the origin, dissolution, ground, treasure and eternal seed. | ☐ | ☐ | ☐ |
 |  | 9.19 | I send and withhold the rain | I give heat; I send and withhold the rain; I am immortality and also death; I am the real and the unreal, O Arjuna. | ☐ | ☐ | ☐ |
-|  | 9.20 | Soma drinkers seek heaven | The knowers of the three Vedas, drinking soma, purified of sin, worshipping me by sacrifice, pray for the path to heaven; attaining the world of Indra, they enjoy the divine pleasures of the gods … | ☐ | ☐ | ☐ |
+|  | 9.20 | Soma drinkers seek heaven | The knowers of the three Vedas, drinking soma, purified of sin, worshipping me by sacrifice, pray for the path to heaven; attaining the holy world of Indra, they enjoy the divine pleasures of the … | ☐ | ☐ | ☐ |
 |  | 9.21 | Merit spent, they fall back to earth | Having enjoyed the vast world of heaven, when their merit is exhausted they return to the world of mortals; thus, following the dharma of the three Vedas, desiring desires, they come and go. | ☐ | ☐ | ☐ |
 |  | 9.22 | I bear the welfare of my devotees | To those who worship me, ever united, thinking of me alone — for them, ever devoted, I myself carry what they lack and preserve what they have. | ☐ | ☐ | ☐ |
 |  | 9.23 | Even those who worship other gods | Even those who, devoted to other deities, worship them with faith — they worship me alone, O son of Kuntī, though not in the prescribed way. | ☐ | ☐ | ☐ |
 |  | 9.24 | I am the enjoyer of all sacrifices | For I alone am the enjoyer and lord of all sacrifices; but they do not know me in truth, and so they fall. | ☐ | ☐ | ☐ |
-|  | 9.25 | Each reaches the object they worship | The worshippers of the gods go to the gods; the worshippers of the ancestors go to the ancestors; the worshippers of the spirits go to the spirits; but my worshippers come to me. | ☐ | ☐ | ☐ |
+|  | 9.25 | Each reaches the object they worship | The worshippers of the gods go to the gods; the worshippers of the ancestors go to the ancestors; the worshippers of the spirits go to the spirits; and my worshippers too come to me. | ☐ | ☐ | ☐ |
 |  | 9.26 | A leaf, a flower, fruit or water | Whoever offers me with devotion a leaf, a flower, a fruit or water — I accept that offering of the pure-hearted. | ☐ | ☐ | ☐ |
 |  | 9.27 | Whatever you do, offer it to me | Whatever you do, whatever you eat, whatever you offer, whatever you give, whatever austerity you perform, O son of Kuntī — do it as an offering to me. | ☐ | ☐ | ☐ |
 |  | 9.28 | The fruit of renunciation | Thus you shall be freed from the bonds of actions, which bear good and evil fruit; with the self yoked in renunciation, liberated, you shall come to me. | ☐ | ☐ | ☐ |
@@ -483,12 +483,12 @@ want them to survive a regeneration.
 
 | ☐ | Verse | Title | The verse says (literal) | keep | revise | fix |
 |---|---|---|---|:-:|:-:|:-:|
-|  | 10.01 | Hear again my supreme word | The Blessed Lord said: Hear again, O mighty-armed one, my supreme words, which I speak to you who are dear, wishing your good. | ☐ | ☐ | ☐ |
+|  | 10.01 | Hear again my supreme word | The Blessed Lord said: Hear again, O mighty-armed one, my supreme words, which I shall speak to you who are dear, wishing your good. | ☐ | ☐ | ☐ |
 |  | 10.02 | Neither gods nor seers know my origin | Neither the hosts of gods nor the great seers know my origin; for I am the beginning of the gods and the great seers in every way. | ☐ | ☐ | ☐ |
 |  | 10.03 | He who knows me unborn and beginningless | He who knows me as unborn, without beginning, the great Lord of the world — undeluded among mortals, he is freed from all sins. | ☐ | ☐ | ☐ |
 |  | 10.04 | Intellect, knowledge, non-delusion | Intellect, knowledge, freedom from delusion, forbearance, truth, self-control, calm — pleasure, pain, birth, death, fear and fearlessness, | ☐ | ☐ | ☐ |
 |  | 10.05 | All these states arise from me | non-violence, equanimity, contentment, austerity, generosity, fame and infamy — these various states of beings arise from me alone. | ☐ | ☐ | ☐ |
-|  | 10.06 | The seven great seers | The seven great seers, the four ancient Manus, born of my mind — from them come the beings of this world. | ☐ | ☐ | ☐ |
+|  | 10.06 | The seven great seers | The seven great seers, and the four ancient Manus, of my nature, born of my mind — from them come the beings of this world. | ☐ | ☐ | ☐ |
 |  | 10.07 | He who knows this glory is joined to me | He who knows in truth this glory and power of mine is united to me by unwavering yoga — of this there is no doubt. | ☐ | ☐ | ☐ |
 |  | 10.08 | I am the origin of all; the wise worship me | I am the source of all; everything proceeds from me. Knowing this, the wise worship me, filled with devotion. | ☐ | ☐ | ☐ |
 |  | 10.09 | Speaking of me, my devotees rejoice | Their thoughts on me, their lives given to me, enlightening one another, always speaking of me — they are content and rejoice. | ☐ | ☐ | ☐ |
@@ -510,8 +510,8 @@ want them to survive a regeneration.
 |  | 10.25 | Among words, the syllable Om | Among the great seers I am Bhṛgu; among words I am the single syllable Om; among sacrifices I am the japa-sacrifice; among the immovable I am the Himālaya. | ☐ | ☐ | ☐ |
 |  | 10.26 | The aśvattha, Nārada, Kapila | Among all trees I am the aśvattha; among the divine sages, Nārada; among the gandharvas, Citraratha; among the perfected, the sage Kapila. | ☐ | ☐ | ☐ |
 |  | 10.27 | Uccaiḥśravas, Airāvata, the king | Among horses know me as Uccaiḥśravas, born of nectar; among lordly elephants, Airāvata; among men, the king. | ☐ | ☐ | ☐ |
-|  | 10.28 | The thunderbolt, Kāmadhuk, Vāsuki | Among weapons I am the thunderbolt; among cows I am Kāmadhuk; I am the lord of love among procreators; among serpents, Vāsuki. | ☐ | ☐ | ☐ |
-|  | 10.29 | Ananta, Varuṇa, Aryaman, Yama | I am the infinite among serpents; Varuṇa among the waters; among the ancestors I am Aryaman; among rulers, Yama. | ☐ | ☐ | ☐ |
+|  | 10.28 | The thunderbolt, Kāmadhuk, Vāsuki | Among weapons I am the thunderbolt; among cows I am Kāmadhuk; I am Kandarpa, the procreator; among serpents, Vāsuki. | ☐ | ☐ | ☐ |
+|  | 10.29 | Ananta, Varuṇa, Aryaman, Yama | I am Ananta among serpents; Varuṇa among aquatic beings; among the ancestors I am Aryaman; among rulers, Yama. | ☐ | ☐ | ☐ |
 |  | 10.30 | Prahlāda, time, the lion, Garuḍa | Among the demons I am Prahlāda; among the calculators, time; among beasts I am the lion; among birds, Garuḍa. | ☐ | ☐ | ☐ |
 |  | 10.31 | The wind, Rāma, the Ganges | Among purifiers I am the wind; among warriors I am Rāma; among fishes I am the makara; among streams I am the Ganges. | ☐ | ☐ | ☐ |
 |  | 10.32 | The beginning, middle and end of all | Of creations I am the beginning, the middle, and also the end, O Arjuna; among the sciences I am the science of the Self; among debaters, the argument. | ☐ | ☐ | ☐ |
@@ -535,55 +535,55 @@ want them to survive a regeneration.
 |  | 11.02 | I have heard how beings arise and pass | The origin and dissolution of beings have I heard from you in detail, O lotus-eyed one, and your infinite glory. | ☐ | ☐ | ☐ |
 |  | 11.03 | I want to see your form | Even as you have described yourself, O supreme Lord, I long to see your cosmic form, O best of persons. | ☐ | ☐ | ☐ |
 |  | 11.04 | If you think I can see it, show me | If you think it can be seen by me, O Lord, then show me your imperishable self, O Lord of yoga. | ☐ | ☐ | ☐ |
-|  | 11.05 | Behold my hundreds and thousands of forms | The Blessed Lord said: Behold, O Pārtha, my forms by the hundred and thousand, of various kinds and colors. | ☐ | ☐ | ☐ |
+|  | 11.05 | Behold my hundreds and thousands of forms | The Blessed Lord said: Behold, O Pārtha, my divine forms by the hundred and thousand, of various kinds, colors and shapes. | ☐ | ☐ | ☐ |
 |  | 11.06 | The Vasus, Rudras, Aśvins | Behold the Ādityas, the Vasus, the Rudras, the Aśvins and the Maruts; behold many wonders never seen before, O Bhārata. | ☐ | ☐ | ☐ |
 |  | 11.07 | See the whole world in my body | Behold now the whole universe, moving and unmoving, gathered in one body here in mine, O Guḍākeśa — and whatever else you wish to see. | ☐ | ☐ | ☐ |
 |  | 11.08 | I give you a divine eye | But you cannot see me with your own eye; I give you the divine eye — behold my divine sovereignty. | ☐ | ☐ | ☐ |
 |  | 11.09 | The great Lord of yoga showed his form | Sañjaya said: Having spoken thus, O king, the great Lord of yoga, Hari, showed Pārtha his supreme divine form. | ☐ | ☐ | ☐ |
-|  | 11.10 | Marvels beyond count | With countless faces and eyes, with countless wondrous sights, with countless divine ornaments and uplifted weapons, | ☐ | ☐ | ☐ |
+|  | 11.10 | Marvels beyond count | With countless faces and eyes, with countless wondrous sights, with countless divine ornaments and uplifted divine weapons, | ☐ | ☐ | ☐ |
 |  | 11.11 | Infinite, facing everywhere, full of wonders | wearing divine garlands and robes, anointed with divine perfumes, full of all wonders — the infinite God, facing everywhere. | ☐ | ☐ | ☐ |
 |  | 11.12 | Brighter than a thousand suns at once | If the splendour of a thousand suns were to rise at once in the sky, it might resemble the splendour of that great being. | ☐ | ☐ | ☐ |
-|  | 11.13 | The whole universe in one place | There, in the body of the God of gods, the son of Pāṇḍu saw the whole universe, one yet divided into manifold forms. | ☐ | ☐ | ☐ |
+|  | 11.13 | The whole universe in one place | There, in the body of the God of gods, the son of Pāṇḍu then saw the whole universe, gathered in one place yet divided in many ways. | ☐ | ☐ | ☐ |
 |  | 11.14 | Hair on end, bowing with folded hands | Then, filled with wonder, his hair standing on end, Dhanañjaya bowed his head to the God and spoke with joined palms. | ☐ | ☐ | ☐ |
-|  | 11.15 | I see all beings in your body | I see all the gods in your body, O God, and all the hosts of beings; Brahmā the Lord seated on the lotus, and all the seers and divine serpents. | ☐ | ☐ | ☐ |
+|  | 11.15 | I see all beings in your body | Arjuna said: I see all the gods in your body, O God, and the hosts of various beings; Brahmā the Lord seated on the lotus, and all the seers and divine serpents. | ☐ | ☐ | ☐ |
 |  | 11.16 | Infinite arms, no beginning, middle or end | I see you with countless arms, bellies, mouths and eyes — of endless form on every side; I see no end, no middle, no beginning of you, O Lord of the universe, O cosmic form. | ☐ | ☐ | ☐ |
 |  | 11.17 | A blazing mass of radiance | I see you crowned, wielding mace and discus, a mass of light shining everywhere — hard to gaze upon, blazing like fire and sun, immeasurable. | ☐ | ☐ | ☐ |
-|  | 11.18 | You are the imperishable, the supreme to be known | You are the imperishable, the supreme object of knowledge; you are the supreme refuge of this universe; you are the eternal guardian of dharma — the primal Person, so I deem you. | ☐ | ☐ | ☐ |
+|  | 11.18 | You are the imperishable, the supreme to be known | You are the imperishable, the supreme object of knowledge; you are the supreme refuge of this universe; you are the inexhaustible guardian of eternal dharma — the eternal Person, so I deem you. | ☐ | ☐ | ☐ |
 |  | 11.19 | Sun and moon for eyes | Without beginning, middle or end, of infinite power, with countless arms, with sun and moon for eyes — I see you blazing with fire-like mouths, scorching the whole world with your radiance. | ☐ | ☐ | ☐ |
 |  | 11.20 | The three worlds tremble | The space between earth and heaven is filled by you alone, and all the directions; seeing your wondrous, terrible form, the three worlds are in anguish, O great soul. | ☐ | ☐ | ☐ |
 |  | 11.21 | The hosts of gods enter you | The hosts of gods enter you; some, afraid, praise you with folded hands; the hosts of great seers and siddhas, saying 'may all be well', extol you with abundant hymns. | ☐ | ☐ | ☐ |
 |  | 11.22 | Rudras, Ādityas, Vasus gaze in wonder | The Rudras, Ādityas, Vasus, Sādhyas, Viśve-devas, Aśvins, Maruts and the ancestors — the gandharvas, yakṣas, demons and siddhas — all gaze on you in wonder. | ☐ | ☐ | ☐ |
 |  | 11.23 | Seeing your fearsome form, I tremble | Seeing your immense form, O mighty-armed one, with many mouths and eyes, many arms, thighs and feet, many bellies, many fearsome fangs, the worlds tremble — and so do I. | ☐ | ☐ | ☐ |
-|  | 11.24 | Touching the sky, blazing with many colours | Touching the sky, blazing, of many colours, with gaping mouths and blazing wide eyes — seeing you, my inmost heart trembles; I find no firmness or peace, O Viṣṇu. | ☐ | ☐ | ☐ |
+|  | 11.24 | Touching the sky, blazing with many colours | Seeing you touching the sky, blazing, of many colours, with gaping mouths and blazing wide eyes, I find no firmness or peace, my inmost self trembling, O Viṣṇu. | ☐ | ☐ | ☐ |
 |  | 11.25 | Like the fire at the end of time | Seeing your terrible mouths with their fearful fangs, like the fire of the end of time, I do not know the directions, nor do I find peace; be gracious, O Lord of gods, abode of the world. | ☐ | ☐ | ☐ |
-|  | 11.26 | The sons of Dhṛtarāṣṭra enter your mouths | All these sons of Dhṛtarāṣṭra, with the hosts of kings, enter your mouths — Bhīṣma, Droṇa, Karṇa, and the chief warriors of our side, | ☐ | ☐ | ☐ |
+|  | 11.26 | The sons of Dhṛtarāṣṭra enter your mouths | All these sons of Dhṛtarāṣṭra, together with the hosts of kings — Bhīṣma, Droṇa and that charioteer's son too, together with our chief warriors — you … | ☐ | ☐ | ☐ |
 |  | 11.27 | Heads crushed between your teeth | hurrying, they enter your mouths, terrible and frightful with fangs; some are seen stuck between the teeth, their heads crushed. | ☐ | ☐ | ☐ |
 |  | 11.28 | As rivers rush into the ocean | As the many rushing currents of rivers pour into the ocean, so these heroes of the mortal world enter your blazing mouths. | ☐ | ☐ | ☐ |
-|  | 11.29 | As moths fly into a blazing fire | As moths fly with full speed into a blazing fire for their destruction, so these worlds fly into your mouths for their destruction. | ☐ | ☐ | ☐ |
-|  | 11.30 | You lick up all the worlds | You lick up all the worlds with your flaming mouths, devouring them on every side; your terrible rays fill the whole universe, O Viṣṇu. | ☐ | ☐ | ☐ |
+|  | 11.29 | As moths fly into a blazing fire | As moths fly with full speed into a blazing fire for their destruction, so these worlds fly with full speed into your mouths for their destruction. | ☐ | ☐ | ☐ |
+|  | 11.30 | You lick up all the worlds | You lick up all the worlds with your flaming mouths, devouring them on every side; your terrible rays blaze, filling the whole universe with radiance, O Viṣṇu. | ☐ | ☐ | ☐ |
 |  | 11.31 | Tell me who you are | Tell me who you are, O terrible form; I bow to you — be gracious, O best of gods! I long to know you, the primeval one; I do not understand your workings. | ☐ | ☐ | ☐ |
 |  | 11.32 | I am time, destroyer of worlds | The Blessed Lord said: I am Time, the world-destroyer, grown mature; I have come to destroy these worlds — even without you, none of these warriors arrayed against you will remain. | ☐ | ☐ | ☐ |
 |  | 11.33 | Be my instrument | Therefore arise and win glory; conquer your enemies and enjoy the thriving kingdom — they are already slain by me; be only the instrument, O Sāvyasācin. | ☐ | ☐ | ☐ |
-|  | 11.34 | They are already slain by me | Slay Droṇa, Bhīṣma, Jayadratha, Karṇa and the other warrior-heroes — already killed by me; strike without fear, fight — you shall conquer your rivals in battle. | ☐ | ☐ | ☐ |
-|  | 11.35 | Trembling, with faltering voice | Sañjaya said: Hearing these words of Keśava, the crowned Arjuna, trembling, folded his palms and, bowing again, spoke to Kṛṣṇa with faltering voice. | ☐ | ☐ | ☐ |
-|  | 11.36 | The world rejoices in your glory | It is fitting, Hṛṣīkeśa, that the world rejoices and delights in your glory; the rākṣasas flee in fear in all directions, and the hosts of siddhas bow to you. | ☐ | ☐ | ☐ |
+|  | 11.34 | They are already slain by me | Slay Droṇa, Bhīṣma, Jayadratha, Karṇa and the other warrior-heroes — already killed by me; do not be distressed, fight — you shall conquer your rivals in battle. | ☐ | ☐ | ☐ |
+|  | 11.35 | Trembling, with faltering voice | Sañjaya said: Hearing these words of Keśava, the crowned Arjuna, trembling and greatly afraid, folded his palms and, bowing again, spoke to Kṛṣṇa with faltering voice. | ☐ | ☐ | ☐ |
+|  | 11.36 | The world rejoices in your glory | Arjuna said: It is fitting, Hṛṣīkeśa, that the world rejoices and delights in your glory; the rākṣasas flee in fear in all directions, and the hosts of siddhas bow to you. | ☐ | ☐ | ☐ |
 |  | 11.37 | Why should they not bow to you? | Why should they not bow to you, O great soul, greater than Brahmā, the primal creator — O infinite Lord of gods, abode of the universe; you are the imperishable, and that which is being, non-being … | ☐ | ☐ | ☐ |
 |  | 11.38 | You are the primal God, the ancient person | You are the primal God, the ancient Person, the supreme refuge of this universe; you are the knower and the known, the supreme abode; by you this universe is pervaded, O infinite form. | ☐ | ☐ | ☐ |
 |  | 11.39 | You are Vāyu, Yama, Agni, the moon | You are wind, death, fire, Varuṇa, the moon, and the progenitor — and the great grandsire; I bow to you a thousand times — again and yet again I bow to you. | ☐ | ☐ | ☐ |
 |  | 11.40 | Salutation on every side | I bow to you from the front and from behind; I bow to you on every side, O all! You are of infinite might and measureless vigour; you pervade all, and so you are all. | ☐ | ☐ | ☐ |
 |  | 11.41 | Whatever I said, calling you “friend” | Whatever I said in rash familiarity — 'O Kṛṣṇa, O Yādava, O friend' — not knowing your majesty, whether in carelessness or in love, | ☐ | ☐ | ☐ |
-|  | 11.42 | Whatever disrespect I showed in sport | and whatever disrespect I showed you in sport, rest, sitting or at meals, alone or before others, O Acyuta — that I beg you to forgive, O immeasurable one. | ☐ | ☐ | ☐ |
+|  | 11.42 | Whatever disrespect I showed in sport | and whatever disrespect I showed you for the sake of jest in sport, rest, sitting or at meals, alone or before others, O Acyuta — that I beg you to forgive, O immeasurable one. | ☐ | ☐ | ☐ |
 |  | 11.43 | Father of the world, teacher beyond compare | You are the father of this world, moving and unmoving; you are its supreme object of worship and the most venerable teacher; none equals you in the three worlds, how then could any surpass you, O … | ☐ | ☐ | ☐ |
 |  | 11.44 | Forgive as a father forgives his son | Therefore, bowing and prostrating my body, I implore you, the adorable Lord, to forgive me as a father forgives his son, a friend his friend, and a lover his beloved, O God. | ☐ | ☐ | ☐ |
-|  | 11.45 | Delighted, yet my mind trembles | Having seen what I never saw before, I am delighted, yet my mind trembles with fear; show me, O God, your gracious form — be merciful, O Lord of gods, O Lord of the universe. | ☐ | ☐ | ☐ |
+|  | 11.45 | Delighted, yet my mind trembles | Having seen what I never saw before, I am delighted, yet my mind trembles with fear; show me, O God, that very form — be merciful, O Lord of gods, O abode of the universe. | ☐ | ☐ | ☐ |
 |  | 11.46 | I long to see you crowned, with mace and discus | I long to see you as before — crowned, with mace and discus in hand; appear in that four-armed form, O thousand-armed, universal form. | ☐ | ☐ | ☐ |
 |  | 11.47 | By my grace you have seen it | The Blessed Lord said: By my grace, Arjuna, I have shown you this supreme form by my own power — the luminous, universal, infinite, primeval form that none but you has ever seen. | ☐ | ☐ | ☐ |
 |  | 11.48 | Not by Vedas or austerities can it be seen | Not by the study of the Vedas and sacrifices, nor by gifts, rites or fierce austerities, can I be seen in this form in the world of men — by any but you, O prince of the Kurus. | ☐ | ☐ | ☐ |
-|  | 11.49 | Be not afraid or bewildered | Do not be afraid or bewildered at the sight of this terrible form of mine; free from fear, with a glad heart, behold once more this gracious form of mine. | ☐ | ☐ | ☐ |
+|  | 11.49 | Be not afraid or bewildered | Do not be afraid or bewildered at the sight of this terrible form of mine; free from fear, with a glad heart, behold once more this very form of mine. | ☐ | ☐ | ☐ |
 |  | 11.50 | Vāsudeva shows his own form again | Sañjaya said: Having spoken thus to Arjuna, Vāsudeva again showed his own form, and the great soul comforted the frightened Arjuna, once more in his gracious appearance. | ☐ | ☐ | ☐ |
 |  | 11.51 | Now I am composed and restored | Arjuna said: Seeing this your gracious human form, O Janārdana, I am now composed and restored to my own nature. | ☐ | ☐ | ☐ |
 |  | 11.52 | Even the gods long to see this form | The Blessed Lord said: This form of mine that you have seen is very hard to see; even the gods ever long to see this form. | ☐ | ☐ | ☐ |
-|  | 11.53 | Not by Vedas, austerity or gifts | I am not to be seen in this way through the Vedas, nor through austerity, nor through gifts, nor through worship; only in the way you have seen me can I be seen. | ☐ | ☐ | ☐ |
+|  | 11.53 | Not by Vedas, austerity or gifts | Neither through the Vedas, nor austerity, nor gifts, nor worship can I be seen in this form, as you have seen me. | ☐ | ☐ | ☐ |
 |  | 11.54 | By undivided devotion alone | But through single-pointed devotion I can be known, seen and entered in truth, O Arjuna, in this very form, O scorcher of foes. | ☐ | ☐ | ☐ |
 |  | 11.55 | He who works for me comes to me | He who does my work, who holds me as the supreme goal, who is devoted to me, free from attachment, without enmity toward any being — he comes to me, O Pāṇḍava. | ☐ | ☐ | ☐ |
 
@@ -596,7 +596,7 @@ want them to survive a regeneration.
 |  | 12.02 | Those ever-united in me are best in yoga | The Blessed Lord said: Those who, fixing their minds on me, ever united, worship me with supreme faith — them I deem the most yoked. | ☐ | ☐ | ☐ |
 |  | 12.03 | Some worship the imperishable unmanifest | But those who worship the imperishable, the indefinable, the unmanifest — the all-pervading, unthinkable, unchanging, immovable, eternal — | ☐ | ☐ | ☐ |
 |  | 12.04 | They too reach me | — controlling all the senses, of equal mind everywhere, rejoicing in the welfare of all beings — they too reach me. | ☐ | ☐ | ☐ |
-|  | 12.05 | Greater is the toil of those set on the unmanifest | Greater is the toil of those whose minds are attached to the unmanifest; the unmanifest is hard to attain by embodied beings. | ☐ | ☐ | ☐ |
+|  | 12.05 | Greater is the toil of those set on the unmanifest | Greater is the toil of those whose minds are attached to the unmanifest; the unmanifest goal is hard to attain by embodied beings. | ☐ | ☐ | ☐ |
 |  | 12.06 | Those who surrender all actions to me | But those who surrender all actions to me, intent on me, worshipping me with undivided yoga and meditating on me, | ☐ | ☐ | ☐ |
 |  | 12.07 | I become their deliverer from the ocean of death | — for them, whose minds are fixed on me, O Pārtha, I swiftly become the deliverer from the ocean of death and rebirth. | ☐ | ☐ | ☐ |
 |  | 12.08 | Fix your mind on me alone | Fix your mind on me alone; establish your intellect in me; then you shall live in me alone — of this there is no doubt. | ☐ | ☐ | ☐ |
@@ -623,17 +623,17 @@ want them to survive a regeneration.
 |  | 13.03 | Hear in brief what the field is | What the field is, what it is like, what its modifications, from what it arises, and who he is and what his powers — hear all this from me in brief. | ☐ | ☐ | ☐ |
 |  | 13.04 | Sung by the seers | Sung by the seers in many ways, in diverse meters, and in the aphorisms of Brahman, with reasons, well-decided — | ☐ | ☐ | ☐ |
 |  | 13.05 | The elements of the field | — the great elements, ego, intellect, the unmanifest, the ten senses and the one, the five objects of the senses, | ☐ | ☐ | ☐ |
-|  | 13.06 | Desire and aversion | — desire, aversion, pleasure, pain, the body, consciousness and constancy: this is the field, in brief, with its modifications. | ☐ | ☐ | ☐ |
+|  | 13.06 | Desire and aversion | — desire, aversion, pleasure, pain, the body, consciousness and constancy: this field, with its modifications, has been declared in brief. | ☐ | ☐ | ☐ |
 |  | 13.07 | Humility, non-violence, service to the teacher | Humility, modesty, non-violence, forbearance, uprightness, service to the teacher, purity, steadfastness, self-control, | ☐ | ☐ | ☐ |
 |  | 13.08 | Seeing the misery of birth | — dispassion toward the objects of the senses, absence of ego, and the perception of the evil of suffering in birth, death, old age and disease, | ☐ | ☐ | ☐ |
-|  | 13.09 | Non-attachment and evenness | — non-attachment, non-clinging to son, wife and home, constant even-mindedness toward the pleasant and unpleasant, | ☐ | ☐ | ☐ |
+|  | 13.09 | Non-attachment and evenness | — non-attachment, non-clinging to son, wife, home and the like, constant even-mindedness toward the pleasant and unpleasant, | ☐ | ☐ | ☐ |
 |  | 13.10 | Unwavering devotion, delight in solitude | — unwavering devotion to me through undivided yoga, delight in solitude, distaste for the company of men, | ☐ | ☐ | ☐ |
 |  | 13.11 | The aim of truth-knowledge | — constant commitment to Self-knowledge, and insight into the purpose of the knowledge of truth: this is declared knowledge; what is other than this is ignorance. | ☐ | ☐ | ☐ |
 |  | 13.12 | The knowable declared | I shall declare the object of knowledge, knowing which one tastes immortality — the beginningless supreme Brahman, which is called neither being nor non-being. | ☐ | ☐ | ☐ |
 |  | 13.13 | All hands, all feet | With hands and feet everywhere, with eyes, heads and faces everywhere, with ears everywhere — it stands, pervading all in the world. | ☐ | ☐ | ☐ |
 |  | 13.14 | Without senses, yet the enjoyer | Appearing with all the attributes of the senses, yet devoid of all senses; unattached, yet upholding all; without guṇas, yet enjoying the guṇas. | ☐ | ☐ | ☐ |
 |  | 13.15 | Within and without, far and near | It is within and without all beings; it is unmoving and moving; being subtle, it is unknowable — it is far away, and yet near. | ☐ | ☐ | ☐ |
-|  | 13.16 | Undivided in the divided | It is undivided, yet appears as if divided among beings; know it as the supporter of beings, the devourer and the creator. | ☐ | ☐ | ☐ |
+|  | 13.16 | Undivided in the divided | It is undivided, yet appears as if divided among beings; that is to be known as the supporter of beings, the devourer and the creator. | ☐ | ☐ | ☐ |
 |  | 13.17 | The light of lights | It is the light of lights, declared beyond darkness — knowledge, the object of knowledge, and the goal of knowledge, seated in the heart of all. | ☐ | ☐ | ☐ |
 |  | 13.18 | The field, knowledge and the knowable | Thus the field, knowledge and the knowable have been declared in brief; my devotee, knowing this, attains my being. | ☐ | ☐ | ☐ |
 |  | 13.19 | Both prakṛti and puruṣa are beginningless | Know prakṛti and puruṣa both as beginningless; and know the modifications and the guṇas as born of prakṛti. | ☐ | ☐ | ☐ |
@@ -641,8 +641,8 @@ want them to survive a regeneration.
 |  | 13.21 | Attachment to the guṇas causes birth | Puruṣa, seated in prakṛti, enjoys the guṇas born of prakṛti; attachment to the guṇas is the cause of birth in good and evil wombs. | ☐ | ☐ | ☐ |
 |  | 13.22 | The witness and Lord | The witness, the approver, the sustainer, the enjoyer, the great Lord — and called the supreme Self: this supreme puruṣa in the body. | ☐ | ☐ | ☐ |
 |  | 13.23 | Knowing these two, he is not born again | He who thus knows puruṣa and prakṛti with its guṇas — whatever his way of life, he is not born again. | ☐ | ☐ | ☐ |
-| ⚑ | 13.24 | The three paths | Some see the Self within themselves by meditation, through their own mind; others by the yoga of knowledge; still others by the yoga of action. | ☐ | ☐ | ☐ |
-|  | 13.25 | The path of hearing | Others, not knowing, worship after hearing from others; and they too cross beyond death, devoted to what they have heard. | ☐ | ☐ | ☐ |
+| ⚑ | 13.24 | The three paths | Some see the Self within the self by the self through meditation; others by the yoga of knowledge; still others by the yoga of action. | ☐ | ☐ | ☐ |
+|  | 13.25 | The path of hearing | Others, not knowing thus, worship after hearing from others; and they too cross beyond death, devoted to what they have heard. | ☐ | ☐ | ☐ |
 |  | 13.26 | All beings arise from union of field and its knower | Whatever being is born, moving or unmoving — know it, O bull of the Bhāratas, to be from the union of the field and its knower. | ☐ | ☐ | ☐ |
 |  | 13.27 | Seeing the Lord alike in all, he truly sees | He who sees the supreme Lord standing equally in all beings, not perishing as they perish — he truly sees. | ☐ | ☐ | ☐ |
 |  | 13.28 | He does not harm the Self by the self | For seeing the Lord equally established everywhere, he does not harm the Self by the self; therefore he attains the supreme goal. | ☐ | ☐ | ☐ |
@@ -651,7 +651,7 @@ want them to survive a regeneration.
 |  | 13.31 | Without beginning or guṇas, it does not act | O son of Kuntī, because it is beginningless and without guṇas, this supreme Self is imperishable — though dwelling in the body, it neither acts nor is stained. | ☐ | ☐ | ☐ |
 |  | 13.32 | As space is unstained | As the all-pervading space is not stained, being subtle, so the Self, present in every body, is not stained. | ☐ | ☐ | ☐ |
 |  | 13.33 | The sun and the field | As the one sun illumines this whole world, so the knower of the field illumines the whole field, O Bhārata. | ☐ | ☐ | ☐ |
-|  | 13.34 | Seeing field and knower apart brings freedom | Those who, with the eye of knowledge, see the distinction between the field and its knower, and the liberation from prakṛti — they reach the supreme. | ☐ | ☐ | ☐ |
+|  | 13.34 | Seeing field and knower apart brings freedom | Those who thus know, with the eye of knowledge, the distinction between the field and its knower, and the liberation of beings from prakṛti — they reach the supreme. | ☐ | ☐ | ☐ |
 
 * ⚑ **13.24** — number unsupported. Advisory text: “The three paths”
 
@@ -683,9 +683,9 @@ want them to survive a regeneration.
 |  | 14.21 | The marks of the transcendent | Arjuna said: By what marks is he who has transcended these three guṇas known, O Lord? What is his conduct, and how does he transcend them? | ☐ | ☐ | ☐ |
 |  | 14.22 | Neither hates them nor longs for them | The Blessed Lord said: He who neither hates illumination, activity and delusion when they arise, nor longs for them when they cease, O Pāṇḍava, | ☐ | ☐ | ☐ |
 |  | 14.23 | Seated like a witness | — seated as one indifferent, unshaken by the guṇas, thinking 'the guṇas act' and abiding unmoved — | ☐ | ☐ | ☐ |
-|  | 14.24 | Even in pleasure and pain; clod, stone and gold alike | — equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in blame and self-praise — | ☐ | ☐ | ☐ |
-|  | 14.25 | Equal in honour and dishonour | — equal in honour and dishonour, equal to friend and foe, renouncing all undertakings — he is said to have transcended the guṇas. | ☐ | ☐ | ☐ |
-|  | 14.26 | Unwavering devotion carries one beyond | He who serves me with the unwavering yoga of devotion — transcending these guṇas, he becomes fit for Brahman. | ☐ | ☐ | ☐ |
+|  | 14.24 | Even in pleasure and pain; clod, stone and gold alike | — equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in blame and praise of oneself — | ☐ | ☐ | ☐ |
+|  | 14.25 | Equal in honour and dishonour | — equal in honour and dishonour, equal to the sides of friend and foe, renouncing all undertakings — he is said to have transcended the guṇas. | ☐ | ☐ | ☐ |
+|  | 14.26 | Unwavering devotion carries one beyond | He who serves me with the unwavering yoga of devotion — transcending these guṇas, he becomes fit to become Brahman. | ☐ | ☐ | ☐ |
 |  | 14.27 | I am the support | For I am the support of Brahman, of immortality and the imperishable, of eternal dharma and of absolute bliss. | ☐ | ☐ | ☐ |
 
 * ⚑ **14.05** — number unsupported. Advisory text: “The three qualities”
@@ -699,13 +699,13 @@ want them to survive a regeneration.
 |  | 15.01 | The aśvattha tree | The Blessed Lord said: They speak of the imperishable aśvattha with its root above and branches below; the Vedas are its leaves — he who knows it is a knower of the Vedas. | ☐ | ☐ | ☐ |
 |  | 15.02 | Branches spread above and below | Its branches spread above and below, nourished by the guṇas, with sense-objects as their shoots; and below its roots stretch down, binding to action in the world of men. | ☐ | ☐ | ☐ |
 |  | 15.03 | Cut this rooted tree with detachment | Its true form is not perceived here, nor its end, nor its beginning, nor its support; having cut this firmly-rooted aśvattha with the strong axe of detachment, | ☐ | ☐ | ☐ |
-|  | 15.04 | Seek the supreme goal | — then that state must be sought, going to which none returns; I take refuge in that primal Person from whom flows the ancient course. | ☐ | ☐ | ☐ |
+|  | 15.04 | Seek the supreme goal | — then that state must be sought, going to which none returns again; and I take refuge in that primal Person from whom flows the ancient course. | ☐ | ☐ | ☐ |
 |  | 15.05 | Free of pride and delusion, they reach it | Free from pride and delusion, having conquered the fault of attachment, ever established in the Self, desires turned away — freed from the pairs known as pleasure and pain, the undeluded reach … | ☐ | ☐ | ☐ |
 |  | 15.06 | The supreme abode | Neither the sun nor the moon nor fire illumines that abode of mine; having gone there, none returns — that is my supreme abode. | ☐ | ☐ | ☐ |
 |  | 15.07 | As if an eternal portion | An eternal portion of myself, become a living soul in the world of life, draws around itself the senses, of which the mind is the sixth, which abide in prakṛti. | ☐ | ☐ | ☐ |
 |  | 15.08 | The wandering soul | When the lord of the body takes up a body, and when he departs from it, he goes taking these with him, as the wind carries fragrance from its seat. | ☐ | ☐ | ☐ |
 |  | 15.09 | Enjoying through the senses | Presiding over hearing, touch, sight, taste and smell, and the mind, he enjoys the sense-objects. | ☐ | ☐ | ☐ |
-|  | 15.10 | Who sees the soul, and who does not? | The deluded do not see him as he departs, dwells, or enjoys, or as he is joined with the guṇas; but those with the eye of knowledge see him. | ☐ | ☐ | ☐ |
+|  | 15.10 | Who sees the soul, and who does not? | The deluded do not see him as he departs, dwells, or enjoys, joined with the guṇas; but those with the eye of knowledge see him. | ☐ | ☐ | ☐ |
 |  | 15.11 | The striving yogis | The striving yogis see him established in the Self; but the undisciplined, though striving, do not see him, lacking true understanding. | ☐ | ☐ | ☐ |
 |  | 15.12 | I am the light | The light in the sun, which illumines the whole world, and that in the moon and in fire — know that light as mine. | ☐ | ☐ | ☐ |
 |  | 15.13 | I sustain all | Entering the earth I sustain all beings with my energy; becoming the sap-laden moon I nourish all herbs. | ☐ | ☐ | ☐ |
@@ -724,13 +724,13 @@ want them to survive a regeneration.
 |---|---|---|---|:-:|:-:|:-:|
 |  | 16.01 | Fearlessness and purity | The Blessed Lord said: Fearlessness, purity of heart, steadfastness in knowledge and yoga, charity, self-control, sacrifice, study of scripture, austerity and uprightness, | ☐ | ☐ | ☐ |
 |  | 16.02 | Non-violence and truth | — non-violence, truth, freedom from anger, renunciation, peace, absence of slander, compassion toward beings, non-covetousness, gentleness, modesty and steadiness — | ☐ | ☐ | ☐ |
-|  | 16.03 | Vigour and forgiveness | — vigour, forgiveness, fortitude, purity, freedom from malice and from pride — these belong to one born to the divine destiny, O Bhārata. | ☐ | ☐ | ☐ |
+|  | 16.03 | Vigour and forgiveness | — vigour, forgiveness, fortitude, purity, freedom from malice and from excessive pride — these belong to one born to the divine destiny, O Bhārata. | ☐ | ☐ | ☐ |
 | ⚑ | 16.04 | Six marks of the demoniac | Hypocrisy, arrogance, self-conceit, anger, harshness and ignorance belong to one born to the demoniac destiny, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 16.05 | Liberation and bondage | The divine endowment leads to liberation, the demoniac to bondage — grieve not, O Pāṇḍava, for you are born to the divine destiny. | ☐ | ☐ | ☐ |
 |  | 16.06 | The two creations | There are two creations of beings in this world — the divine and the demoniac; the divine has been described at length — now hear from me of the demoniac, O Pārtha. | ☐ | ☐ | ☐ |
 |  | 16.07 | Without truth or purity | The demoniac do not know right action or renunciation; there is no purity, no conduct, no truth in them. | ☐ | ☐ | ☐ |
 |  | 16.08 | The godless world-view | They say the world is unreal, without foundation, without a Lord — produced by mutual union, born of lust — what else? | ☐ | ☐ | ☐ |
-|  | 16.09 | The ruined souls | Holding this view, these ruined souls of little understanding perform cruel deeds, enemies of the world, for its destruction. | ☐ | ☐ | ☐ |
+|  | 16.09 | The ruined souls | Holding this view, these ruined souls of little understanding arise as enemies of the world, performing cruel deeds for its destruction. | ☐ | ☐ | ☐ |
 |  | 16.10 | Insatiable desire, hypocrisy and pride | Given to insatiable desire, full of hypocrisy, pride and arrogance, holding false views through delusion, they act with impure resolves. | ☐ | ☐ | ☐ |
 |  | 16.11 | Cares that end only in death | Given to boundless cares ending only in death, intent on the enjoyment of desires, thinking 'this is all' — | ☐ | ☐ | ☐ |
 |  | 16.12 | The fetters of hope | — bound by hundreds of fetters of hope, given to desire and anger, they strive to amass wealth by unjust means for the gratification of lust. | ☐ | ☐ | ☐ |
@@ -763,7 +763,7 @@ want them to survive a regeneration.
 |  | 17.07 | Food, sacrifice, austerity and giving are threefold | Food, too, dear to each, is threefold; and sacrifice, austerity and gifts — hear their distinction. | ☐ | ☐ | ☐ |
 |  | 17.08 | The sāttvic food | Foods that increase life, purity, strength, health, joy and cheer — savoury, smooth, firm and agreeable — are dear to the sāttvic. | ☐ | ☐ | ☐ |
 |  | 17.09 | The rājasic food | Foods that are bitter, sour, salty, very hot, pungent, dry and burning — causing pain, grief and disease — are dear to the rājasic. | ☐ | ☐ | ☐ |
-|  | 17.10 | The tāmasic food | Stale, tasteless, putrid and leftover food, and impure leavings — such food is dear to the tāmasic. | ☐ | ☐ | ☐ |
+|  | 17.10 | The tāmasic food | Food that is long-kept, tasteless, putrid, stale, left over from a meal and impure — such food is dear to the tāmasic. | ☐ | ☐ | ☐ |
 |  | 17.11 | The sāttvic sacrifice | The sacrifice ordained by scripture, offered without desire for fruit by those who think 'this must be performed' — that is sāttvic. | ☐ | ☐ | ☐ |
 |  | 17.12 | The rājasic sacrifice | But the sacrifice offered seeking fruit and for the sake of display, O best of the Bhāratas — know that as rājasic. | ☐ | ☐ | ☐ |
 |  | 17.13 | The tāmasic sacrifice | The sacrifice without rule, without food-gifts, without mantra, without fees, devoid of faith — is declared tāmasic. | ☐ | ☐ | ☐ |
@@ -817,7 +817,7 @@ want them to survive a regeneration.
 |  | 18.27 | The rājasic agent | The agent full of passion, longing for the fruit of action, greedy, cruel, impure, moved by joy and sorrow — is declared rājasic. | ☐ | ☐ | ☐ |
 |  | 18.28 | Deceitful, lazy, stubborn | The agent undisciplined, vulgar, obstinate, deceitful, malicious, lazy, despondent and procrastinating — is declared tāmasic. | ☐ | ☐ | ☐ |
 | ⚑ | 18.29 | Three kinds of intellect and fortitude | Hear the threefold distinction of intellect and fortitude, declared fully and separately, by the guṇas, O Dhanañjaya. | ☐ | ☐ | ☐ |
-|  | 18.30 | The sāttvic intellect | O Pārtha, the intellect that knows action and inaction, right and wrong, fear and fearlessness, bondage and liberation — is sāttvic. | ☐ | ☐ | ☐ |
+|  | 18.30 | The sāttvic intellect | O Pārtha, the intellect that knows action and inaction, what ought and ought not to be done, fear and fearlessness, bondage and liberation — is sāttvic. | ☐ | ☐ | ☐ |
 |  | 18.31 | The rājasic intellect | The intellect by which one understands dharma and adharma, and what ought and ought not to be done, incorrectly — that, O Pārtha, is rājasic. | ☐ | ☐ | ☐ |
 |  | 18.32 | Wrapped in darkness | O Pārtha, the intellect that, enveloped in darkness, takes wrong for right and sees all things perversely — is tāmasic. | ☐ | ☐ | ☐ |
 |  | 18.33 | The sāttvic fortitude | The unwavering fortitude by which one holds, through yoga, the activities of the mind, breath and senses — that, O Pārtha, is sāttvic. | ☐ | ☐ | ☐ |
@@ -831,18 +831,18 @@ want them to survive a regeneration.
 |  | 18.41 | The fourfold duties | The duties of brāhmaṇas, kṣatriyas, vaiśyas and śūdras are divided according to the qualities born of their own nature, O scorcher of foes. | ☐ | ☐ | ☐ |
 |  | 18.42 | The brāhmaṇa's duty, born of his nature | Tranquillity, self-control, austerity, purity, patience, uprightness, knowledge, wisdom and faith — the duty of the brāhmaṇa, born of his nature. | ☐ | ☐ | ☐ |
 |  | 18.43 | The kṣatriya's duty, born of his nature | Valour, splendour, fortitude, skill, not fleeing in battle, generosity and lordship — the duty of the kṣatriya, born of his nature. | ☐ | ☐ | ☐ |
-|  | 18.44 | The vaiśya's and the śūdra's duty | Agriculture, cattle-rearing and trade — the duty of the vaiśya, born of his nature; and service — the duty of the śūdra. | ☐ | ☐ | ☐ |
+|  | 18.44 | The vaiśya's and the śūdra's duty | Agriculture, cattle-rearing and trade — the duty of the vaiśya, born of his nature; and service — the duty of the śūdra, also born of his nature. | ☐ | ☐ | ☐ |
 |  | 18.45 | Perfection through duty | Devoted to his own duty, a man attains perfection — hear how one who delights in his own work attains perfection. | ☐ | ☐ | ☐ |
 |  | 18.46 | Worship the source through one's own work | Worshipping, through his own duty, the source of all beings, by whom all this is pervaded — a man attains perfection. | ☐ | ☐ | ☐ |
-|  | 18.47 | One's own duty is better | Better is one's own dharma, though imperfect, than another's well-performed; doing the work born of his own nature, a man incurs no sin. | ☐ | ☐ | ☐ |
+|  | 18.47 | One's own duty is better | Better is one's own dharma, though imperfect, than another's well-performed; doing the work determined by his own nature, a man incurs no sin. | ☐ | ☐ | ☐ |
 |  | 18.48 | All undertakings have defects | One should not abandon one's natural work, O son of Kuntī, though it be faulty; for all undertakings are covered with fault, as fire with smoke. | ☐ | ☐ | ☐ |
 |  | 18.49 | Attaining freedom from action | With intellect unattached everywhere, self-conquered and free from desire, one attains the supreme perfection of freedom from action through renunciation. | ☐ | ☐ | ☐ |
 |  | 18.50 | How one reaches Brahman | Learn from me in brief, O son of Kuntī, how one who has attained this perfection reaches Brahman — that supreme state of knowledge. | ☐ | ☐ | ☐ |
 |  | 18.51 | Renouncing sense-objects, desire and aversion | Endowed with pure intellect, restraining the self with fortitude, giving up sound and the other objects, casting aside desire and aversion, | ☐ | ☐ | ☐ |
-|  | 18.52 | Solitude, little food, restrained speech | — dwelling in solitude, eating little, controlling speech, body and mind, ever engaged in meditation and contemplation, taking refuge in dispassion, | ☐ | ☐ | ☐ |
-|  | 18.53 | Freed from ego, power and possessiveness | — free from ego, power, pride, desire, anger and possessiveness, tranquil, no longer claiming 'mine' — such a one becomes fit for Brahman. | ☐ | ☐ | ☐ |
+|  | 18.52 | Solitude, little food, restrained speech | — dwelling in solitude, eating little, controlling speech, body and mind, ever devoted to meditation-yoga, taking refuge in dispassion, | ☐ | ☐ | ☐ |
+|  | 18.53 | Freed from ego, power and possessiveness | — free from ego, power, pride, desire, anger and possessiveness, tranquil, no longer claiming 'mine' — such a one becomes fit to become Brahman. | ☐ | ☐ | ☐ |
 |  | 18.54 | The Brahman-realised one neither grieves nor desires | Become Brahman, serene of soul, he neither grieves nor desires; equal to all beings, he attains supreme devotion to me. | ☐ | ☐ | ☐ |
-|  | 18.55 | Devotion reveals me in truth | By that devotion he knows me in truth, who and what I am; knowing me in truth, he enters me immediately. | ☐ | ☐ | ☐ |
+|  | 18.55 | Devotion reveals me in truth | By that devotion he knows me in truth, who and what I am; then, knowing me in truth, he enters me immediately. | ☐ | ☐ | ☐ |
 |  | 18.56 | By my grace, the eternal state | Performing all actions ever, taking refuge in me, he attains the eternal, imperishable state by my grace. | ☐ | ☐ | ☐ |
 |  | 18.57 | Surrender all actions to me | Surrendering all actions to me in thought, making me supreme, resorting to the yoga of discernment, always fix your mind on me. | ☐ | ☐ | ☐ |
 |  | 18.58 | If from ego you will not listen, you perish | With your mind on me, you shall cross all difficulties by my grace; but if from ego you will not listen, you shall be destroyed. | ☐ | ☐ | ☐ |
@@ -851,18 +851,18 @@ want them to survive a regeneration.
 |  | 18.61 | The Lord in every heart | The Lord dwells in the heart of all beings, O Arjuna, causing all beings to revolve by his māyā, as if mounted on a machine. | ☐ | ☐ | ☐ |
 |  | 18.62 | Take refuge in him with all your being | Take refuge in him alone with all your being, O Bhārata; by his grace you shall attain supreme peace and the eternal abode. | ☐ | ☐ | ☐ |
 |  | 18.63 | Reflect on it fully, then do as you will | Thus I have declared to you the knowledge, more secret than the secret; reflect on it fully, and do as you will. | ☐ | ☐ | ☐ |
-|  | 18.64 | The most secret | Hear again my supreme word, the most secret of all: you are dearly loved by me, so I speak for your good. | ☐ | ☐ | ☐ |
+|  | 18.64 | The most secret | Hear again my supreme word, the most secret of all: you are dearly loved by me, so I shall speak for your good. | ☐ | ☐ | ☐ |
 |  | 18.65 | Fix your mind on me, be my devotee | Fix your mind on me, be my devotee, offer to me, bow to me — you shall surely come to me; I promise you truly, for you are dear to me. | ☐ | ☐ | ☐ |
 |  | 18.66 | Abandon all dharmas | Abandon all dharmas and take refuge in me alone; I will free you from all sins — grieve not. | ☐ | ☐ | ☐ |
 |  | 18.67 | Who should not receive this teaching | This is never to be spoken by you to one without austerity, nor to the faithless, nor to one who does not serve, nor to one who reviles me. | ☐ | ☐ | ☐ |
-|  | 18.68 | The teacher's reward | He who teaches this supreme secret to my devotees with supreme devotion — having given me his highest love, he shall without doubt come to me alone. | ☐ | ☐ | ☐ |
+|  | 18.68 | The teacher's reward | He who teaches this supreme secret among my devotees, having offered supreme devotion to me, shall come to me alone, without doubt. | ☐ | ☐ | ☐ |
 |  | 18.69 | No one dearer | None among men does me greater service than he; and none shall be dearer to me on earth than he. | ☐ | ☐ | ☐ |
 |  | 18.70 | The reward of studying | And he who studies this sacred dialogue of ours — by him I am worshipped with the sacrifice of knowledge; so I deem. | ☐ | ☐ | ☐ |
 |  | 18.71 | The faithful listener is freed | Even the man who hears it with faith, without carping — freed, he attains the auspicious worlds of the virtuous. | ☐ | ☐ | ☐ |
-|  | 18.72 | The Lord's question | Has this been heard by you, O Pārtha, with a one-pointed mind? Has the delusion of ignorance been destroyed, O Dhanañjaya? | ☐ | ☐ | ☐ |
+|  | 18.72 | The Lord's question | Has this been heard by you, O Pārtha, with a one-pointed mind? Has your delusion of ignorance been destroyed, O Dhanañjaya? | ☐ | ☐ | ☐ |
 |  | 18.73 | My delusion is gone; I will do your word | Arjuna said: Destroyed is my delusion; I have gained memory by your grace, O Acyuta; I stand firm, my doubt gone — I will do your word. | ☐ | ☐ | ☐ |
 |  | 18.74 | Thus I heard this wondrous dialogue | Sañjaya said: Thus I heard the wondrous, thrilling dialogue of Vāsudeva and the great-souled Pārtha. | ☐ | ☐ | ☐ |
-|  | 18.75 | The grace of Vyāsa | By the grace of Vyāsa I heard this supreme secret, this yoga, from Kṛṣṇa, the Lord of yoga, as he himself spoke. | ☐ | ☐ | ☐ |
+|  | 18.75 | The grace of Vyāsa | By the grace of Vyāsa I heard this supreme secret, this yoga, directly from Kṛṣṇa, the Lord of yoga, as he himself spoke. | ☐ | ☐ | ☐ |
 |  | 18.76 | The joy of remembering | Remembering again and again this wondrous, holy dialogue of Keśava and Arjuna, O king, I rejoice again and again. | ☐ | ☐ | ☐ |
 |  | 18.77 | Remembering that form, I rejoice again | And remembering again and again that most wondrous form of Hari, my wonder is great, O king — and I rejoice again and again. | ☐ | ☐ | ☐ |
 |  | 18.78 | Where Kṛṣṇa and Arjuna are | Wherever Kṛṣṇa, the Lord of yoga, and Pārtha, the archer, are — there are prosperity, victory, glory and unfailing prudence; so I deem. | ☐ | ☐ | ☐ |
@@ -998,7 +998,7 @@ evidence for each verdict.
 
 > The three paths
 
-*the verse says:* Some see the Self within themselves by meditation, through their own mind; others by the yoga of knowledge; still others by the yoga of action.
+*the verse says:* Some see the Self within the self by the self through meditation; others by the yoga of knowledge; still others by the yoga of action.
 
 ☐ keep   ☐ revise   ☐ fix
 

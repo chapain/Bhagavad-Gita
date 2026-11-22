@@ -1,5 +1,10 @@
 # Semantic audit — the verses, read against the Sanskrit
 
+> **2026-11-22:** This ledger records the earlier pass, not a guarantee against
+> later findings. The renewed comparison corrects, among others, 2.16, 4.11,
+> 5.07, 6.09, 6.21, 6.42, 6.46 and 7.23; its coverage and current decisions
+> are in [the follow-up ledger](padachheda-literal-review-2026-11.md).
+
 **Started 2026-11-04.** One chapter at a time, beginning with 1.01–1.20.
 **All 700 verses of all 18 chapters are now read, decided and applied.**
 The first pass (2026-11-04) produced nine findings, F1–F9, in seven verses —

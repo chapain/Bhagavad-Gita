@@ -21,6 +21,17 @@ Amended 2026-11-21 by PR #89 (Arjuna addresses Kṛṣṇa with honorific तप
 not तिमी): the 11.44 त्वाम् Nepali gloss in the snapshot now reads तपाईंलाई
 to match source/ch11.json. The 11.47 entry is Kṛṣṇa speaking to Arjuna and
 deliberately keeps तिमीलाई — the honorific pass does not run in that direction.
+
+Amended 2026-11-22 by the word-row/literal follow-up: at 6.09 द्वेष्य is
+one who is hated, not one who hates. The English gloss and three literals
+are clarified; सुहृत् also gets हितैषी to distinguish the neighbouring मित्र.
+The prior restoration of sinners and all other rows remain.
+The 11.44 त्वाम् Hindi row now also uses the respectful आपको.
+In 18.53 ब्रह्मभूयाय and the three literals now retain becoming Brahman;
+the settled nirmamaḥ / परिग्रह wording remains untouched.
+The later paraphrase review clarifies 3.30 ne non-possessiveness, preserves
+4.28 yoga alongside study and knowledge, and distinguishes the relationships
+in all 6.09 paraphrases; their word rows and literals are unchanged.
 """
 import json
 from pathlib import Path
