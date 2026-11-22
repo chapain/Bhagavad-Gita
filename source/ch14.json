@@ -3756,17 +3756,17 @@
                     [
                       "तुल्यनिन्दात्मसंस्तुतिः",
                       "tulyanindātmasaṁstutiḥ",
-                      "equal in blame and self-praise",
-                      "निन्दा र आत्म-प्रशंसामा समान",
-                      "निन्दा और आत्म-प्रशंसा में समान"
+                      "equal in blame and praise of oneself",
+                      "आफ्नो निन्दा र प्रशंसामा समान",
+                      "अपनी निन्दा और प्रशंसा में समान"
                     ]
                   ]
                 }
               ],
               "lits": {
-                "en": "— equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in blame and self-praise —",
-                "ne": "— सुख-दुःखमा समान, आत्मामै स्थित, जसलाई माटो, ढुङ्गा र सुन समान, प्रिय-अप्रियमा समान, दृढ, निन्दा र आत्म-प्रशंसामा समान —",
-                "hi": "— सुख-दुःख में समान, आत्मा में ही स्थित, जिसके लिए मिट्टी, पत्थर और सोना समान हैं, प्रिय-अप्रिय में समान, दृढ़, निन्दा और आत्म-प्रशंसा में समान —"
+                "en": "— equal in pleasure and pain, self-abiding, to whom a clod, stone and gold are alike, equal to the pleasant and unpleasant, firm, equal in blame and praise of oneself —",
+                "ne": "— सुख-दुःखमा समान, आत्मामै स्थित, जसलाई माटो, ढुङ्गा र सुन समान, प्रिय-अप्रियमा समान, दृढ, आफ्नो निन्दा र प्रशंसामा समान —",
+                "hi": "— सुख-दुःख में समान, आत्मा में ही स्थित, जिसके लिए मिट्टी, पत्थर और सोना समान हैं, प्रिय-अप्रिय में समान, दृढ़, अपनी निन्दा और प्रशंसा में समान —"
               },
               "paras": {
                 "en": "“— equal in joy and sorrow, content in himself, seeing mud, stone, and gold alike, steady through likes and dislikes, unmoved by praise or blame —”",
@@ -3834,9 +3834,9 @@
                     [
                       "मित्रारिपक्षयोः",
                       "mitrāripakṣayoḥ",
-                      "to friend and foe",
-                      "मित्र-शत्रुमा",
-                      "मित्र-शत्रु में"
+                      "to the sides of friend and foe",
+                      "मित्र र शत्रुका दुवै पक्षप्रति",
+                      "मित्र और शत्रु के दोनों पक्षों के प्रति"
                     ]
                   ]
                 },
@@ -3886,9 +3886,9 @@
                 }
               ],
               "lits": {
-                "en": "— equal in honour and dishonour, equal to friend and foe, renouncing all undertakings — he is said to have transcended the guṇas.",
-                "ne": "— मान-अपमानमा समान, मित्र-शत्रुमा समान, सबै आरम्भ त्याग्ने — ऊ गुणभन्दा पर गएको भनिन्छ।",
-                "hi": "— मान-अपमान में समान, मित्र-शत्रु में समान, सब आरम्भों का त्यागी — वह गुणों से परे हुआ कहा जाता है।"
+                "en": "— equal in honour and dishonour, equal to the sides of friend and foe, renouncing all undertakings — he is said to have transcended the guṇas.",
+                "ne": "— मान-अपमानमा समान, मित्र र शत्रुका दुवै पक्षप्रति समान, सबै आरम्भ त्याग्ने — ऊ गुणभन्दा पर गएको भनिन्छ।",
+                "hi": "— मान-अपमान में समान, मित्र और शत्रु के दोनों पक्षों के प्रति समान, सब आरम्भों का त्यागी — वह गुणों से परे हुआ कहा जाता है।"
               },
               "paras": {
                 "en": "“— the same in honour and disgrace, the same to friend and foe, one who has let every undertaking go — he is called beyond the qualities.”",
@@ -4036,9 +4036,9 @@
                     [
                       "ब्रह्मभूयाय",
                       "brahmabhūyāya",
-                      "for Brahman",
-                      "ब्रह्मका निम्ति",
-                      "ब्रह्म के लिए"
+                      "for becoming Brahman",
+                      "ब्रह्म हुनका निम्ति",
+                      "ब्रह्म होने के लिए"
                     ],
                     [
                       "कल्पते",
@@ -4051,9 +4051,9 @@
                 }
               ],
               "lits": {
-                "en": "He who serves me with the unwavering yoga of devotion — transcending these guṇas, he becomes fit for Brahman.",
-                "ne": "जसले अविचलित भक्तियोगले मेरो सेवा गर्छ — यी गुणहरूलाई पार गरेर, ऊ ब्रह्मको योग्य बन्छ।",
-                "hi": "जो अविचलित भक्ति-योग से मेरी सेवा करता है — इन गुणों को पार करके, वह ब्रह्म का योग्य हो जाता है।"
+                "en": "He who serves me with the unwavering yoga of devotion — transcending these guṇas, he becomes fit to become Brahman.",
+                "ne": "जसले अविचलित भक्तियोगले मेरो सेवा गर्छ — यी गुणहरूलाई पार गरेर, ऊ ब्रह्म हुन योग्य बन्छ।",
+                "hi": "जो अविचलित भक्ति-योग से मेरी सेवा करता है — इन गुणों को पार करके, वह ब्रह्म होने योग्य हो जाता है।"
               },
               "paras": {
                 "en": "“Whoever serves me with steadfast devotion — crossing these qualities — becomes worthy of Brahman.”",

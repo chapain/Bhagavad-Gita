@@ -4633,8 +4633,8 @@
                       "निवृत्तिम्",
                       "nivṛttim",
                       "inaction",
-                      "अकर्म",
-                      "अकर्म"
+                      "निवृत्ति",
+                      "निवृत्ति"
                     ],
                     [
                       "च",
@@ -4654,7 +4654,7 @@
                     [
                       "कार्याकार्ये",
                       "kāryākārye",
-                      "right and wrong",
+                      "what ought and ought not to be done",
                       "कर्तव्य-अकर्तव्य",
                       "कर्तव्य-अकर्तव्य"
                     ],
@@ -4748,7 +4748,7 @@
                 }
               ],
               "lits": {
-                "en": "O Pārtha, the intellect that knows action and inaction, right and wrong, fear and fearlessness, bondage and liberation — is sāttvic.",
+                "en": "O Pārtha, the intellect that knows action and inaction, what ought and ought not to be done, fear and fearlessness, bondage and liberation — is sāttvic.",
                 "ne": "हे पार्थ, जसले प्रवृत्ति र निवृत्ति, कर्तव्य र अकर्तव्य, भय र अभय, बन्धन र मुक्ति जान्दछ — त्यो बुद्धि सात्विकी हो।",
                 "hi": "हे पार्थ, जो प्रवृत्ति और निवृत्ति, कर्तव्य और अकर्तव्य, भय और अभय, बन्धन और मुक्ति को जानता है — वह बुद्धि सात्त्विकी है।"
               },
@@ -6935,9 +6935,9 @@
                 }
               ],
               "lits": {
-                "en": "Agriculture, cattle-rearing and trade — the duty of the vaiśya, born of his nature; and service — the duty of the śūdra.",
-                "ne": "खेती, गाईपालन र व्यापार — स्वभावबाट जन्मेको वैश्यको कर्तव्य; र सेवा — शूद्रको कर्तव्य।",
-                "hi": "कृषि, गो-रक्षा और वाणिज्य — स्वभाव से उत्पन्न वैश्य का कर्तव्य; और सेवा — शूद्र का कर्तव्य।"
+                "en": "Agriculture, cattle-rearing and trade — the duty of the vaiśya, born of his nature; and service — the duty of the śūdra, also born of his nature.",
+                "ne": "खेती, गाईपालन र व्यापार — स्वभावबाट जन्मेको वैश्यको कर्तव्य; र सेवा — स्वभावबाटै जन्मेको शूद्रको कर्तव्य पनि।",
+                "hi": "कृषि, गो-रक्षा और वाणिज्य — स्वभाव से उत्पन्न वैश्य का कर्तव्य; और सेवा — शूद्र का कर्तव्य भी स्वभाव से उत्पन्न है।"
               },
               "paras": {
                 "en": "“Farming, herding, and trade are the natural work of the vaiśya; service, that of the śūdra.”",
@@ -7265,7 +7265,7 @@
               ],
               "lits": {
                 "en": "Worshipping, through his own duty, the source of all beings, by whom all this is pervaded — a man attains perfection.",
-                "ne": "जसबाट प्राणीहरूको स्रोत आउँछ, र जसद्वारा यो सबै व्याप्त छ — त्यसको पूजा आफ्नै कर्तव्यद्वारा गरेर, मानिस सिद्धि पाउँछ।",
+                "ne": "जसबाट प्राणीहरूको उत्पत्ति हुन्छ, र जसद्वारा यो सबै व्याप्त छ — त्यसको पूजा आफ्नै कर्तव्यद्वारा गरेर, मानिस सिद्धि पाउँछ।",
                 "hi": "जिससे प्राणियों का स्रोत है, और जिससे यह सब व्याप्त है — उसकी पूजा अपने कर्तव्य द्वारा करके, मनुष्य सिद्धि को प्राप्त होता है।"
               },
               "paras": {
@@ -7407,9 +7407,9 @@
                 }
               ],
               "lits": {
-                "en": "Better is one's own dharma, though imperfect, than another's well-performed; doing the work born of his own nature, a man incurs no sin.",
-                "ne": "आफ्नो धर्म, यद्यपि दोषपूर्ण, पराया सुसम्पन्न धर्मभन्दा राम्रो; आफ्नै स्वभावबाट जन्मेको काम गर्दा मानिस पापमा लाग्दैन।",
-                "hi": "अपना धर्म, यद्यपि दोषयुक्त, पराए सुसम्पन्न धर्म से अच्छा है; अपने स्वभाव से उत्पन्न कर्म करने से मनुष्य पाप नहीं करता।"
+                "en": "Better is one's own dharma, though imperfect, than another's well-performed; doing the work determined by his own nature, a man incurs no sin.",
+                "ne": "आफ्नो धर्म, यद्यपि दोषपूर्ण, पराया सुसम्पन्न धर्मभन्दा राम्रो; आफ्नै स्वभावले निर्धारित काम गर्दा मानिस पापमा लाग्दैन।",
+                "hi": "अपना धर्म, यद्यपि दोषयुक्त, पराए सुसम्पन्न धर्म से अच्छा है; अपने स्वभाव से नियत कर्म करने से मनुष्य पाप नहीं करता।"
               },
               "paras": {
                 "en": "“Better to do your own duty poorly than another's perfectly. Following the work natural to you, you gather no sin.”",
@@ -8114,7 +8114,7 @@
                     [
                       "ध्यानयोगपरः",
                       "dhyānayogaparaḥ",
-                      "ever engaged in meditation",
+                      "devoted to meditation-yoga",
                       "ध्यानयोगमा तत्पर",
                       "ध्यान-योग में तत्पर"
                     ],
@@ -8151,9 +8151,9 @@
                 }
               ],
               "lits": {
-                "en": "— dwelling in solitude, eating little, controlling speech, body and mind, ever engaged in meditation and contemplation, taking refuge in dispassion,",
-                "ne": "— एकान्तमा बस्दै, थोरै खाँदै, वाणी, शरीर र मन संयत गरेर, सधैं ध्यान र चिन्तनमा लागेर, वैराग्यको आश्रय लिएर,",
-                "hi": "— एकान्त में रहकर, थोड़ा खाकर, वाणी, शरीर और मन को वश में करके, सदा ध्यान और चिन्तन में लगकर, वैराग्य का आश्रय लेकर,"
+                "en": "— dwelling in solitude, eating little, controlling speech, body and mind, ever devoted to meditation-yoga, taking refuge in dispassion,",
+                "ne": "— एकान्तमा बस्दै, थोरै खाँदै, वाणी, शरीर र मन संयत गरेर, सधैं ध्यानयोगमा तत्पर भएर, वैराग्यको आश्रय लिएर,",
+                "hi": "— एकान्त में रहकर, थोड़ा खाकर, वाणी, शरीर और मन को वश में करके, सदा ध्यान-योग में तत्पर होकर, वैराग्य का आश्रय लेकर,"
               },
               "paras": {
                 "en": "“— living apart, eating lightly, master of speech, body, and mind, ever intent on meditation, relying on detachment,”",
@@ -8279,9 +8279,9 @@
                     [
                       "ब्रह्मभूयाय",
                       "brahmabhūyāya",
-                      "for Brahman",
-                      "ब्रह्मका निम्ति",
-                      "ब्रह्म के लिए"
+                      "for becoming Brahman",
+                      "ब्रह्म हुनका निम्ति",
+                      "ब्रह्म होने के लिए"
                     ],
                     [
                       "कल्पते",
@@ -8294,9 +8294,9 @@
                 }
               ],
               "lits": {
-                "en": "— free from ego, power, pride, desire, anger and possessiveness, tranquil, no longer claiming 'mine' — such a one becomes fit for Brahman.",
-                "ne": "— अहंकार, बल, घमण्ड, कामना, क्रोध र सङ्ग्रहप्रतिको आसक्ति त्यागेर, शान्त, 'मेरो' भन्न छोड्ने — यस्तो व्यक्ति ब्रह्मको योग्य बन्छ।",
-                "hi": "— अहंकार, बल, दर्प, काम, क्रोध और संग्रह की आसक्ति को त्यागकर, शान्त, 'मेरा' कहना छोड़ने वाला — ऐसा व्यक्ति ब्रह्म का योग्य हो जाता है।"
+                "en": "— free from ego, power, pride, desire, anger and possessiveness, tranquil, no longer claiming 'mine' — such a one becomes fit to become Brahman.",
+                "ne": "— अहंकार, बल, घमण्ड, कामना, क्रोध र सङ्ग्रहप्रतिको आसक्ति त्यागेर, शान्त, 'मेरो' भन्न छोड्ने — यस्तो व्यक्ति ब्रह्म हुन योग्य बन्छ।",
+                "hi": "— अहंकार, बल, दर्प, काम, क्रोध और संग्रह की आसक्ति को त्यागकर, शान्त, 'मेरा' कहना छोड़ने वाला — ऐसा व्यक्ति ब्रह्म होने योग्य हो जाता है।"
               },
               "paras": {
                 "en": "“— freed from ego, force, pride, lust, anger, and grasping, calm and without possessiveness — such a one becomes worthy of Brahman.”",
@@ -8573,8 +8573,8 @@
                       "ततः",
                       "tataḥ",
                       "then",
-                      "त्यसैले",
-                      "इसलिए"
+                      "त्यसपछि",
+                      "तब"
                     ],
                     [
                       "माम्",
@@ -8630,9 +8630,9 @@
                 }
               ],
               "lits": {
-                "en": "By that devotion he knows me in truth, who and what I am; knowing me in truth, he enters me immediately.",
-                "ne": "त्यो भक्तिले ऊ मलाई साँच्चै जान्दछ — म को र के हुँ; मलाई साँच्चै जानेर, ऊ तुरुन्तै ममा प्रवेश गर्छ।",
-                "hi": "उस भक्ति से वह मुझे सचमुच जानता है — मैं क्या और कौन हूँ; और मुझे सचमुच जानकर, वह तुरन्त मुझ में प्रवेश करता है।"
+                "en": "By that devotion he knows me in truth, who and what I am; then, knowing me in truth, he enters me immediately.",
+                "ne": "त्यो भक्तिले ऊ मलाई साँच्चै जान्दछ — म को र के हुँ; त्यसपछि मलाई साँच्चै जानेर, ऊ तुरुन्तै ममा प्रवेश गर्छ।",
+                "hi": "उस भक्ति से वह मुझे सचमुच जानता है — मैं क्या और कौन हूँ; फिर मुझे सचमुच जानकर, वह तुरन्त मुझ में प्रवेश करता है।"
               },
               "paras": {
                 "en": "“Through that devotion he truly knows me — what and who I am; and knowing me truly, he enters me at once.”",
@@ -10032,9 +10032,9 @@
                 }
               ],
               "lits": {
-                "en": "Hear again my supreme word, the most secret of all: you are dearly loved by me, so I speak for your good.",
-                "ne": "फेरि सुन मेरो परम वचन — सबैभन्दा गोप्य: तिमी मलाई अत्यन्त प्रिय छौ, त्यसैले म तिम्रो हितका निम्ति बोल्छु।",
-                "hi": "फिर सुन मेरा परम वचन — सबसे गुह्य: तू मुझे अत्यन्त प्रिय है, इसलिए मैं तेरे हित के लिए बोलता हूँ।"
+                "en": "Hear again my supreme word, the most secret of all: you are dearly loved by me, so I shall speak for your good.",
+                "ne": "फेरि सुन मेरो परम वचन — सबैभन्दा गोप्य: तिमी मलाई अत्यन्त प्रिय छौ, त्यसैले म तिम्रो हितका निम्ति भन्नेछु।",
+                "hi": "फिर सुन मेरा परम वचन — सबसे गुह्य: तू मुझे अत्यन्त प्रिय है, इसलिए मैं तेरे हित के लिए कहूँगा।"
               },
               "paras": {
                 "en": "“Now hear my final, most hidden word: you are very dear to me, so I speak this for your good.”",
@@ -10710,9 +10710,9 @@
                 }
               ],
               "lits": {
-                "en": "He who teaches this supreme secret to my devotees with supreme devotion — having given me his highest love, he shall without doubt come to me alone.",
-                "ne": "जसले मेरा भक्तहरूलाई परम भक्तिसाथ यो परम गोप्य सिकाउँछ — मलाई आफ्नो उच्चतम प्रेम दिएर — ऊ निस्सन्देह मकहाँ नै आउनेछ।",
-                "hi": "जो मेरे भक्तों को परम भक्ति से यह परम गुह्य सिखाता है — मुझे अपना उच्चतम प्रेम देकर — वह निःसन्देह मुझे ही प्राप्त होगा।"
+                "en": "He who teaches this supreme secret among my devotees, having offered supreme devotion to me, shall come to me alone, without doubt.",
+                "ne": "जसले मप्रति परम भक्ति गरेर मेरा भक्तहरूलाई यो परम गोप्य सिकाउँछ — ऊ निस्सन्देह मकहाँ नै आउनेछ।",
+                "hi": "जो मुझमें परम भक्ति करके मेरे भक्तों को यह परम गुह्य सिखाता है — वह निःसन्देह मुझे ही प्राप्त होगा।"
               },
               "paras": {
                 "en": "“One who shares this supreme secret with my devotees, out of love for me — giving me his deepest devotion — will certainly reach me alone.”",
@@ -11381,9 +11381,9 @@
                 }
               ],
               "lits": {
-                "en": "Has this been heard by you, O Pārtha, with a one-pointed mind? Has the delusion of ignorance been destroyed, O Dhanañjaya?",
-                "ne": "हे पार्थ, के यो तिमीले एकाग्र मनले सुन्यौ? के अज्ञानको मोह नष्ट भयो, हे धनञ्जय?",
-                "hi": "हे पार्थ, क्या यह तूने एकाग्र मन से सुना? क्या अज्ञान का मोह नष्ट हुआ, हे धनंजय?"
+                "en": "Has this been heard by you, O Pārtha, with a one-pointed mind? Has your delusion of ignorance been destroyed, O Dhanañjaya?",
+                "ne": "हे पार्थ, के यो तिमीले एकाग्र मनले सुन्यौ? के तिम्रो अज्ञानको मोह नष्ट भयो, हे धनञ्जय?",
+                "hi": "हे पार्थ, क्या यह तूने एकाग्र मन से सुना? क्या तेरा अज्ञान का मोह नष्ट हुआ, हे धनंजय?"
               },
               "paras": {
                 "en": "“Did you hear this with full attention, Arjuna? Has the confusion of ignorance been dispelled?”",
@@ -11481,7 +11481,7 @@
                       "tvatprasādāt",
                       "by your grace",
                       "तपाईंको कृपाले",
-                      "तेरी कृपा से"
+                      "आपकी कृपा से"
                     ],
                     [
                       "मया",
@@ -11888,14 +11888,14 @@
                 }
               ],
               "lits": {
-                "en": "By the grace of Vyāsa I heard this supreme secret, this yoga, from Kṛṣṇa, the Lord of yoga, as he himself spoke.",
-                "ne": "व्यासको कृपाले मैले यो परम गोप्य योग — योगेश्वर कृष्ण आफैं बोलेको — सुनेँ।",
-                "hi": "व्यास की कृपा से मैंने यह परम गुह्य योग — योगेश्वर कृष्ण स्वयं बोले — सुना।"
+                "en": "By the grace of Vyāsa I heard this supreme secret, this yoga, directly from Kṛṣṇa, the Lord of yoga, as he himself spoke.",
+                "ne": "व्यासको कृपाले मैले यो परम गोप्य योग — योगेश्वर कृष्ण आफैंले भन्नुभएको — प्रत्यक्ष सुनेँ।",
+                "hi": "व्यास की कृपा से मैंने यह परम गुह्य योग योगेश्वर कृष्ण को स्वयं कहते हुए प्रत्यक्ष सुना।"
               },
               "paras": {
                 "en": "“It was Vyāsa’s kindness that let me hear this highest mystery of yoga straight from Kṛṣṇa, the master of yogis, as he spoke.”",
                 "ne": "“व्यासको अनुग्रहले यो परम गोप्य योग मैले सुन्न पाएँ — योगेश्वर कृष्णकै मुखबाट।”",
-                "hi": "“व्यास की कृपा से मैंने यह परम गोप्य योग स्वयं योगेश्वर कृष्ण के मुख से, कहते हुए सुना।”"
+                "hi": "“व्यास का अनुग्रह था कि योग के स्वामी कृष्ण से यह सर्वोच्च रहस्य, योग, मुझे उनके अपने मुख से सुनने को मिला।”"
               },
               "anvaya": "व्यासप्रसादात् अहं साक्षात् स्वयं कथयतः योगेश्वरात् कृष्णात् एतत् परं गुह्यं योगं श्रुतवान्।",
               "anvaya_iast": "vyāsaprasādāt ahaṃ sākṣāt svayaṃ kathayataḥ yogeśvarāt kṛṣṇāt etat paraṃ guhyaṃ yogaṃ śrutavān."

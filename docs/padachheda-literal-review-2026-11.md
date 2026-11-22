@@ -3,20 +3,100 @@
 ## Scope and progress
 
 Dhruba asked for a renewed word-row/literal comparison after the literal review.
-This is a **new, incomplete pass**, not a claim that all 700 verses have been
-re-reviewed or that no further defects exist. The earlier whole-book semantic
-review is in `semantic-audit.md`; the boundary review is in
+This renewed pass is complete through all 700 verses, with the qualifications
+below; it is not a claim that no further defects exist. The earlier whole-book
+semantic review is in `semantic-audit.md`; the boundary review is in
 `padachheda-verse-review.md`. The latter was not a semantic certification of
 every unchanged gloss. The canonical data remains `source/ch<N>.json`.
 
-Read this pass: **Chapters 1–13 (523 verses)**, Sanskrit, four pādas,
+Read this pass: **Chapters 1–18 (700 verses)**, Sanskrit, four pādas,
 word rows and three literals, with the qualifications below. Requested batches
-1 (3–8) and 2 (9–13) have been read; batch 3 (14–18), **177 verses**,
-remains unread in this renewed pass except for targeted checks. The 2.05
+1 (3–8), 2 (9–13) and 3 (14–18) have been read. The 2.05
 अर्थकामान् interpretation is reserved for Dhruba: **no part of 2.05 was edited**.
 The whole-book screens below are targeted checks, not a substitute for reading
 those verses. Literal and word glosses need not share the same surface words;
 idiom, inflection and compound composition are not automatic defects.
+
+## Batch 3: Chapters 14–18 (2026-11-22)
+
+Read all 177 verses in this batch against their Sanskrit, pādas, word rows and
+three literals. We found and corrected the following; the review and the
+mechanical screens do not establish the absence of further errors.
+
+- **14.24** तुल्यनिन्दात्मसंस्तुतिः: “blame and praise of oneself”, not
+  “self-praise” as though the person praised himself. This *revises* the
+  earlier literal-review note that had treated आत्मसंस्तुति as self-praise;
+  Śaṅkara's commentary identifies “his own praise” as the praise received,
+  in the same comparison with censure (https://www.yugalsarkar.com/bhagwad-gita-chapter-14-shlok-24-sanskrit-translation;
+  https://gitajourney.com/2013/03/01/bhagavad-gita-verse-24-chapter-14/).
+  **14.25** retains the sides/parties of friends and enemies in पक्षयोः.
+- **14.26 and 18.53** ब्रह्मभूयाय retains “becoming Brahman”, while कल्पते
+  still expresses fitness, not an assertion that this has already occurred
+  (https://shlokam.org/gita/gita-14-26.htm;
+  https://shlokam.org/gita/gita-18-53.htm). Both occurrences corrected in rows
+  and literals; the earlier 18.53 nirmamaḥ/परिग्रह decision is untouched,
+  and only the Brahman wording is amended in its reference snapshot.
+- **15.04** यस्मिन् is locative (“in which”), not “from which”; पुराणी is
+  ancient and भूयः “again” in all three literals, and the connective च is
+  retained. **15.10** गुणान्वितम् qualifies the person in all three states,
+  not a fourth alternative; the unnecessary “or” in en/ne is removed.
+  **15.16** aligns the कूटस्थः row to
+  “unchanging” in ne/hi and removes the extra आत्मा from the Hindi literal:
+  an earlier pass had already removed this addition, but it had returned.
+- **16.03** न अतिमानिता is absence of *excessive* pride, not necessarily
+  absence of all pride; the reviewed row snapshot and the literal now agree.
+  **16.09** retains प्रभवन्ति “arise” as well as the adjective describing
+  cruel deeds.
+- **17.03** the row now retains सत्त्व, as the earlier literal correction
+  already did, rather than replacing it with स्वभाव from 17.02. **17.04**
+  ne/hi now place “groups” with भूतगण, not प्रेत. **17.10** distinguishes
+  long-kept food, stale food, remnants of a meal and impurity rather than
+  assigning जुठो to the stale-food row and leftover to impurity. Different
+  commentaries interpret यातयामम् in different ways; the long-kept reading
+  and other options are documented at https://www.bhagavad-gita.us/bhagavad-gita-17-10/.
+- **18.30** English distinguishes the pair of what ought/ought not to be
+  done from the धर्म/अधर्म pair in the following verses, as ne/hi already
+  did; the निवृत्ति ne/hi row no longer calls withdrawal अकर्म. **18.44**
+  repeats “born of nature” for the śūdra as well as the vaiśya, matching the
+  two स्वभावजम् rows; it does not change the established गाईपालन decision.
+  **18.46** Nepali says beings originate from him, not “their source comes”.
+  **18.47** preserves “determined by nature”, distinct from “born of nature”,
+  and the restored न remains. **18.52** says meditation-yoga rather than
+  adding a separate contemplation. **18.55** ततः is “then”, not “therefore”
+  in its ne/hi rows; all three literals now retain that sequence. **18.64**
+  keeps the future वक्ष्यामि. **18.68** expresses one supreme devotion to
+  Kṛṣṇa, rather than saying it twice. **18.72** retains “your” delusion;
+  **18.73**'s त्वत्प्रसादात् Hindi row is respectful; **18.75** includes
+  साक्षात् “directly” without changing the earlier grammatical participle fix.
+  Its Hindi paraphrase was rephrased to preserve that meaning while remaining
+  distinct from the corrected literal under the overlap guard.
+
+Exact-term whole-book screens: ब्रह्मभूयाय appears only in 14.26/18.53;
+कूटस्थ has three occurrences (6.08 contextually “steadfast”; 12.03 and
+15.16 “unchanging”); प्रभवन्ति appears in 8.18 and 16.09; स्वभावज* appears
+in 17.02, 18.42–44 and 18.60, twice in 18.44; स्वभावनियत* only in 18.47.
+गुणान्वित* occurs only in 15.10. The 12 भूयः occurrences were inspected;
+7.02 uses “further/अरू/और” rather than temporal “again”, and 15.04 was
+the omission corrected.
+The words यातयाम*, पर्युषित*, उच्छिष्ट*, प्रेतान्, भूतगण*, सत्त्वानुरूप*,
+अतिमानिता, मित्रारिपक्ष*, पुराणी, कार्याकार्ये, ध्यानयोग*, साक्षात्,
+त्वत्प्रसाद* and अज्ञानसंमोह* have one affected verse each. A वक्ष्यामि /
+प्रवक्ष्यामि / अभिधास्यति screen found nine verses: 18.64 was the missed
+future; 18.68's present relative “who teaches” is an idiomatic general
+condition with a future main verb. A speaker-state screen of Arjuna's
+second-person and त्वत्/भवत् compound rows found no remaining informal leads
+in that narrow vocabulary. A ततः screen found contextual “from”, “then”,
+“therefore” and comparison senses; no blanket substitution was made. Screens
+are spelling- and vocabulary-limited, and context still has to be read.
+
+The English lexical census moves **961 → 960** after these changes; the
+comparison was inspected, including “leavings” and “alone” lexical leads.
+This is a noisy candidate count, not a measure of semantic accuracy. Focused
+regressions pin the changes and the repeated 18.44 qualifier. 14.20 remains
+in the previously researched owner-settled direction “giving rise to the
+body”, although other traditions read the compound differently. 18.01's
+“difference” reading of पृथक् is also attested, alongside “separately”; it
+was not changed. Existing 2.05 hold and batch-2 paraphrase questions remain.
 
 ## Batch 2: Chapters 9–13 (2026-11-22)
 
@@ -42,7 +122,8 @@ are in canonical source, not a claim of perfect translations. The changes are:
   the unmanifest goal; do not attach immortal to धर्म्य rather than अमृतम्.
 - **13.06, 13.09, 13.15–17, 13.24–25, 13.30, 13.34:** declared; “and the
   like”; cannot be known; “to be known” rather than an imperative; “than
-  darkness”; self as instrument rather than supplied mind; “thus”; ततः “from
+  darkness”; the self as instrument (the earlier “mind” is a contextual
+  interpretation, not the literal noun); “thus”; ततः “from
   that” distinct from तदा “then”; and the liberation **of beings** from
   prakṛti, with एवम् and विदुः retained. The last compound admits other
   readings, including nature as the cause of beings; this chooses an attested

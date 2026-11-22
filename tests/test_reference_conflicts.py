@@ -27,6 +27,8 @@ one who is hated, not one who hates. The English gloss and three literals
 are clarified; सुहृत् also gets हितैषी to distinguish the neighbouring मित्र.
 The prior restoration of sinners and all other rows remain.
 The 11.44 त्वाम् Hindi row now also uses the respectful आपको.
+In 18.53 ब्रह्मभूयाय and the three literals now retain becoming Brahman;
+the settled nirmamaḥ / परिग्रह wording remains untouched.
 """
 import json
 from pathlib import Path

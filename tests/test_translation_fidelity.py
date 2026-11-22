@@ -265,7 +265,7 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # rather than recording a further independent repair. Later changes net to
 # zero through 8.10 (including synonym and compound-token false matches);
 # 6.13 straight and 7.23 indeed then removed two misses (984 → 982).
-ROW_LITERAL_CENSUS = 961
+ROW_LITERAL_CENSUS = 960
 
 
 def _fold_diacritics(word):

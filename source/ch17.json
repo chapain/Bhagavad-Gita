@@ -437,9 +437,9 @@
                     [
                       "सत्त्वानुरूपा",
                       "sattvānurūpā",
-                      "according to one's nature",
-                      "स्वभावअनुसार",
-                      "स्वभाव के अनुसार"
+                      "according to one's sattva",
+                      "सत्त्वअनुसार",
+                      "सत्त्व के अनुसार"
                     ],
                     [
                       "सर्वस्य",
@@ -726,8 +726,8 @@
               ],
               "lits": {
                 "en": "The sāttvic worship the gods; the rājasic the yakṣas and rākṣasas; and others — the tāmasic — worship ghosts and the hosts of spirits.",
-                "ne": "सात्त्विकहरू देवताहरूको पूजा गर्छन्; राजसहरू यक्ष र राक्षसहरूको; र अरूहरू — तामसहरू — भूत र प्रेतहरूका समूहको पूजा गर्छन्।",
-                "hi": "सात्त्विक देवताओं की पूजा करते हैं; राजस यक्षों और राक्षसों की; और अन्य — तामस — भूतों और प्रेतों के समूहों की पूजा करते हैं।"
+                "ne": "सात्त्विकहरू देवताहरूको पूजा गर्छन्; राजसहरू यक्ष र राक्षसहरूको; र अरूहरू — तामसहरू — प्रेतहरू र भूतहरूका समूहको पूजा गर्छन्।",
+                "hi": "सात्त्विक देवताओं की पूजा करते हैं; राजस यक्षों और राक्षसों की; और अन्य — तामस — प्रेतों और भूतों के समूहों की पूजा करते हैं।"
               },
               "paras": {
                 "en": "“The sāttvic adore the gods; the rājasic the demigods and demons; the tāmasic worship ghosts and spirits.”",
@@ -1568,9 +1568,9 @@
                     [
                       "यातयामम्",
                       "yātayāmam",
-                      "stale",
-                      "बासी",
-                      "बासी"
+                      "long-kept",
+                      "धेरै बेर राखिएको",
+                      "बहुत देर रखा हुआ"
                     ],
                     [
                       "गतरसम्",
@@ -1597,7 +1597,7 @@
                     [
                       "पर्युषितम्",
                       "paryuṣitam",
-                      "leftover",
+                      "stale",
                       "बासी",
                       "बासी"
                     ],
@@ -1677,9 +1677,9 @@
                 }
               ],
               "lits": {
-                "en": "Stale, tasteless, putrid and leftover food, and impure leavings — such food is dear to the tāmasic.",
-                "ne": "बासी, स्वादहीन, गलेको र जुठो खाना, र अशुद्ध बचेखुचेको भोजन — यस्तो खाना तामसहरूलाई प्रिय हुन्छ।",
-                "hi": "बासी, बेस्वाद, सड़ा और जूठा भोजन, और अपवित्र बचा हुआ — ऐसा भोजन तामस को प्रिय होता है।"
+                "en": "Food that is long-kept, tasteless, putrid, stale, left over from a meal and impure — such food is dear to the tāmasic.",
+                "ne": "धेरै बेर राखिएको, स्वादहीन, गलेको, बासी, जुठो र अशुद्ध भोजन — यस्तो खाना तामसहरूलाई प्रिय हुन्छ।",
+                "hi": "बहुत देर रखा, बेस्वाद, सड़ा, बासी, जूठा और अपवित्र भोजन — ऐसा भोजन तामस को प्रिय होता है।"
               },
               "paras": {
                 "en": "“Food that is stale, flavourless, spoiled, or leftover, and unclean remnants — that is loved by the tāmasic.”",

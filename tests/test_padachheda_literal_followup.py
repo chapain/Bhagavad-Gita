@@ -67,6 +67,61 @@ class PadachhedaLiteralFollowup(unittest.TestCase):
         self.assertIn('Arjuna said:', verse('11.15')['lits']['en'])
         self.assertIn('Arjuna said:', verse('11.36')['lits']['en'])
 
+    def test_batch_three_compounds_keep_their_meaning(self):
+        self.assertEqual(row(verse('14.24'), 'तुल्यनिन्दात्मसंस्तुतिः')[2:],
+                         ['equal in blame and praise of oneself',
+                          'आफ्नो निन्दा र प्रशंसामा समान', 'अपनी निन्दा और प्रशंसा में समान'])
+        self.assertIn('the sides of friend and foe', verse('14.25')['lits']['en'])
+        for number in ('14.26', '18.53'):
+            with self.subTest(verse=number):
+                self.assertEqual(row(verse(number), 'ब्रह्मभूयाय')[2], 'for becoming Brahman')
+                self.assertIn('fit to become Brahman', verse(number)['lits']['en'])
+                self.assertIn('ब्रह्म हुन योग्य', verse(number)['lits']['ne'])
+                self.assertIn('ब्रह्म होने योग्य', verse(number)['lits']['hi'])
+        self.assertEqual(row(verse('15.04'), 'यस्मिन्')[2], 'in which')
+        self.assertIn('पुरातन प्रवाह', verse('15.04')['lits']['ne'])
+        self.assertIn('none returns again', verse('15.04')['lits']['en'])
+        self.assertIn('कोही फेरि फर्कदैन', verse('15.04')['lits']['ne'])
+        self.assertIn('कोई फिर नहीं लौटता', verse('15.04')['lits']['hi'])
+        self.assertIn('or enjoys, joined with the guṇas', verse('15.10')['lits']['en'])
+        self.assertIn('वा भोग्दा, गुणहरूसँग जोडिएको', verse('15.10')['lits']['ne'])
+        self.assertEqual(row(verse('15.16'), 'कूटस्थः')[3:],
+                         ['अपरिवर्तनीय', 'अपरिवर्तनीय'])
+        self.assertNotIn('आत्मा', verse('15.16')['lits']['hi'])
+        self.assertEqual(row(verse('17.03'), 'सत्त्वानुरूपा')[2:],
+                         ["according to one's sattva", 'सत्त्वअनुसार', 'सत्त्व के अनुसार'])
+        self.assertIn('प्रेतों और भूतों के समूहों', verse('17.04')['lits']['hi'])
+        self.assertIn('प्रेतहरू र भूतहरूका समूह', verse('17.04')['lits']['ne'])
+        self.assertEqual(row(verse('17.10'), 'यातयामम्')[2], 'long-kept')
+        self.assertEqual(row(verse('17.10'), 'पर्युषितम्')[2], 'stale')
+        self.assertEqual(row(verse('17.10'), 'उच्छिष्टम्')[2], 'leavings')
+        self.assertIn('left over from a meal and impure', verse('17.10')['lits']['en'])
+
+    def test_batch_three_literals_preserve_grammar_and_repetition(self):
+        for lang, phrase in (('en', 'excessive pride'), ('ne', 'अत्यधिक अभिमान'),
+                             ('hi', 'अत्यधिक अभिमान')):
+            self.assertIn(phrase, verse('16.03')['lits'][lang])
+        self.assertIn('arise as enemies', verse('16.09')['lits']['en'])
+        self.assertIn('what ought and ought not to be done', verse('18.30')['lits']['en'])
+        self.assertEqual(row(verse('18.30'), 'निवृत्तिम्')[3:], ['निवृत्ति', 'निवृत्ति'])
+        v = verse('18.44')
+        rows = [r for f in v['flow'] for r in f['words'] if r[0] == 'स्वभावजम्']
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(v['lits']['en'].count('born of his nature'), 2)
+        self.assertEqual(v['lits']['ne'].count('स्वभावबाट'), 2)
+        self.assertEqual(v['lits']['hi'].count('स्वभाव से उत्पन्न'), 2)
+        self.assertIn('प्राणीहरूको उत्पत्ति हुन्छ', verse('18.46')['lits']['ne'])
+        self.assertIn('determined by his own nature', verse('18.47')['lits']['en'])
+        self.assertIn('meditation-yoga', verse('18.52')['lits']['en'])
+        self.assertIn('then, knowing', verse('18.55')['lits']['en'])
+        self.assertEqual(row(verse('18.55'), 'ततः')[3:], ['त्यसपछि', 'तब'])
+        self.assertIn('shall speak', verse('18.64')['lits']['en'])
+        self.assertEqual(verse('18.68')['lits']['en'].count('supreme devotion'), 1)
+        self.assertIn('come to me alone, without doubt', verse('18.68')['lits']['en'])
+        self.assertIn('your delusion', verse('18.72')['lits']['en'])
+        self.assertEqual(row(verse('18.73'), 'त्वत्प्रसादात्')[4], 'आपकी कृपा से')
+        self.assertIn('directly from Kṛṣṇa', verse('18.75')['lits']['en'])
+
     def test_cross_verse_absolutives_remain_dependent(self):
         for n, word, following in (('1.20', 'उद्यम्य', '1.21'),
                                    ('1.24', 'स्थापयित्वा', '1.25')):

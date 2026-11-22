@@ -518,6 +518,11 @@ fidelity.
 
 The historical per-chapter findings above describe the earlier review, not a
 claim that those verses were unchanged thereafter. The renewed pass has since
-read Chapters 9–13 and corrected additional rows/literals, listed in
-`padachheda-literal-review-2026-11.md` under “Batch 2”. Chapters 14–18 remain
-to be read in that renewed pass; 2.05 remains reserved for Dhruba.
+read Chapters 9–18 and corrected additional rows/literals, listed in
+`padachheda-literal-review-2026-11.md` under “Batch 2” and “Batch 3”. The
+renewed pass now covers all 700 verses; 2.05 remains reserved for Dhruba.
+In particular, its Batch 3 entry revises the 14.24 self-praise claim above:
+the praise is of oneself, not necessarily by oneself. In 15.16 the later
+Hindi reintroduction of आत्मा was removed again. The established 18.53
+nirmamaḥ/परिग्रह reading is unchanged; the separate ब्रह्मभूयाय gloss now
+retains becoming Brahman.
