@@ -5,6 +5,7 @@ UI = {
  "en": {
   "app_sub": "श्रीमद्भगवद्गीता · chapters → themes → verses · each verse in its 4 quarters",
   "app_title": "Bhagavad Gita — an Interactive Study",
+  "anvaya": "Anvaya",
   "back_chapter_one": "← Back to chapter",
   "back_chapters": "← Back to chapters",
   "back_to_theme": "← Back to theme",
@@ -236,6 +237,7 @@ UI = {
   "wip": "A work in progress — still building, still fixing, and dedicated to making the Gītā easier to study.",
  },
  "ne": {
+  "anvaya": "अन्वयः",
   "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक यसका ४ पादमा",
   "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन",
   "back_chapter_one": "← अध्यायमा फर्कनुहोस्",
@@ -469,6 +471,7 @@ UI = {
   "wip": "निर्माणाधीन — अझै बन्दै, सुधार्दै; गीताको अध्ययन सजिलो बनाउनु नै लक्ष्य।",
  },
  "hi": {
+  "anvaya": "अन्वयः",
   "app_sub": "श्रीमद्भगवद्गीता · अध्याय → विषय → श्लोक · प्रत्येक श्लोक अपने ४ पादों में",
   "app_title": "भगवद्गीता — एक अन्तरक्रियात्मक अध्ययन",
   "back_chapter_one": "← अध्याय पर लौटें",

@@ -332,7 +332,7 @@ function fillModal(){
           ${wholeVerseHtml}
         </div>
       </div>
-      ${s.anvaya ? `<section class="m-anvaya" lang="sa" aria-label="अन्वयः"><div class="m-anvaya-label">अन्वयः</div><div>${esc(s.anvaya)}</div></section>` : ''}
+      ${s.anvaya ? `<section class="m-anvaya" aria-label="${esc(L('anvaya'))}"><div class="m-anvaya-label">${esc(L('anvaya'))}</div><div lang="sa">${esc(s.anvaya)}</div>${state.lang === 'en' && s.anvaya_iast ? `<div class="m-anvaya-iast" lang="sa-Latn">${esc(s.anvaya_iast)}</div>` : ''}</section>` : ''}
       <div class="m-line lit"><span class="lb">${L('literal')}</span><div class="lt">${esc(T(s.lits))}</div></div>
       <div class="m-line para"><span class="lb">${L('in_other_words')}</span><div class="lt">${esc(T(s.paras))}</div></div>
       <details class="m-note"${noteText ? ' open' : ''}>

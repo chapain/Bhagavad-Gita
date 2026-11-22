@@ -167,12 +167,17 @@ def validate_chapters(chapters):
                 for vi, verse in enumerate(sutras, 1):
                     vw = f"{pw} verse {vi}"
                     # Reviewed anvaya is optional while the draft is checked verse by verse.
-                    keys = VERSE_KEYS | ({"anvaya"} if isinstance(verse, dict) and "anvaya" in verse else set())
+                    keys = VERSE_KEYS | (set(verse) & {"anvaya", "anvaya_iast"} if isinstance(verse, dict) else set())
                     if not exact_object(verse, keys, vw):
                         continue
                     if "anvaya" in verse:
                         if nonempty_text(verse["anvaya"], f"{vw}.anvaya") and not re.fullmatch(r"[\u0900-\u097f\s।॥,;!?—]+", verse["anvaya"]):
                             fail(f"{vw}.anvaya", "must contain Sanskrit text and punctuation only")
+                    if ("anvaya" in verse) != ("anvaya_iast" in verse):
+                        fail(vw, "anvaya and anvaya_iast must be supplied together")
+                    if "anvaya_iast" in verse:
+                        if nonempty_text(verse["anvaya_iast"], f"{vw}.anvaya_iast") and not re.fullmatch(r"[a-zA-ZāīūṛṝḷḹṅñṭḍṇśṣṃṁḥĀĪŪṚṜḶḸṄÑṬḌṆŚṢṂṀḤ\s,;!?—.]+", verse["anvaya_iast"]):
+                            fail(f"{vw}.anvaya_iast", "must contain IAST text and punctuation only")
                     verse_id = verse_number(verse.get("n"),
                                             (chapter_num, expected_verse), f"{vw}.n")
                     expected_verse += 1

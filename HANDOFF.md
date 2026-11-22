@@ -79,7 +79,7 @@ Everything browser loads is **generated** by `source/build_gita.py`. Never hand-
 ```bash
 python3 build.py          # build + all checks (122 Python, 947 doc, 560 health, 9658 study, 19 migration, 15 search, 700 cards, backup, offline, 357 browser)
 python3 build.py --fast   # build only
-node run_gita_app.js      # 947 assertions
+node run_gita_app.js      # 949 assertions
 node tests/test_data_backup.js
 ```
 

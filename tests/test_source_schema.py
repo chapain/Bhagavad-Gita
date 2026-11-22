@@ -56,7 +56,11 @@ class CanonicalSourceSchemaTests(unittest.TestCase):
                      "anvaya: must contain Sanskrit text and punctuation only")
         data = copy.deepcopy(self.chapters)
         del verse(data)["anvaya"]
+        self.assertIn('anvaya and anvaya_iast must be supplied together', '\n'.join(validate_chapters(data)))
+        del verse(data)["anvaya_iast"]
         self.assertEqual(validate_chapters(data), [])
+        self.changed(lambda d: verse(d).__setitem__('anvaya_iast', '<script>'),
+                     'anvaya_iast: must contain IAST text and punctuation only')
 
     def test_boolean_is_not_a_chapter_number(self):
         self.changed(lambda d: d[0].__setitem__("num", True), "chapter 1.num: must be integer 1")

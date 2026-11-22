@@ -11,7 +11,9 @@ class AnvayaTests(unittest.TestCase):
         chapter = json.loads((ROOT / 'source/ch1.json').read_text(encoding='utf-8'))
         verses = [v for t in chapter['themes'] for p in t['parts'] for v in p['sutras']]
         self.assertEqual(verses[0]['anvaya'],
-                         'सञ्जय! धर्मक्षेत्रे कुरुक्षेत्रे युयुत्सवः समवेताः मामकाः पाण्डवाः च एव किम् अकुर्वत?')
+                         'धृतराष्ट्र उवाच — सञ्जय! धर्मक्षेत्रे कुरुक्षेत्रे युयुत्सवः समवेताः मामकाः पाण्डवाः च एव किम् अकुर्वत?')
+        self.assertEqual(verses[0]['anvaya_iast'],
+                         'dhṛtarāṣṭra uvāca — sañjaya! dharmakṣetre kurukṣetre yuyutsavaḥ samavetāḥ māmakāḥ pāṇḍavāḥ ca eva kim akurvata?')
         self.assertNotIn('anvaya', verses[1])
 
     def test_reader_places_optional_unboxed_sanskrit_before_literal(self):
@@ -23,6 +25,27 @@ class AnvayaTests(unittest.TestCase):
         self.assertLess(anvaya, literal)
         self.assertIn('lang="sa"', reader[anvaya:literal])
         self.assertIn('esc(s.anvaya)', reader[anvaya:literal])
+        self.assertIn("L('anvaya')", reader[anvaya:literal])
+        self.assertIn("state.lang === 'en' && s.anvaya_iast", reader[anvaya:literal])
+        self.assertIn('lang="sa-Latn"', reader[anvaya:literal])
+        self.assertIn('esc(s.anvaya_iast)', reader[anvaya:literal])
+
+    def test_heading_localized_and_speaker_kept(self):
+        import sys
+        sys.path.insert(0, str(ROOT / 'source'))
+        from i18n_ui import UI
+        self.assertEqual(UI['en']['anvaya'], 'Anvaya')
+        self.assertEqual(UI['ne']['anvaya'], 'अन्वयः')
+        self.assertEqual(UI['hi']['anvaya'], 'अन्वयः')
+        for num in range(1, 19):
+            chapter = json.loads((ROOT / f'source/ch{num}.json').read_text(encoding='utf-8'))
+            for theme in chapter['themes']:
+                for part in theme['parts']:
+                    for verse in part['sutras']:
+                        if 'anvaya' in verse:
+                            for row in verse['flow']:
+                                if row['k'] == 's':
+                                    self.assertIn(row['d'].rstrip('। '), verse['anvaya'], verse['n'])
 
 
 if __name__ == '__main__':

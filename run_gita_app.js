@@ -11,7 +11,7 @@
 'use strict';
 
 const fs = require('fs');
-const TOTAL_ASSERTIONS = 947;      // keep in step with the printed total (941 + 5 defect-regression locks)
+const TOTAL_ASSERTIONS = 949;      // keep in step with the printed total
 const TOTAL_BROWSER_CHECKS = 357;   // browser_checks.py, http run (348 over file://); error capture + responsive/theme axe
 const path = require('path');
 
@@ -157,7 +157,8 @@ const enKeys = Object.keys(UI.en);
 // search_suggest_hint and search_recent (2) → 230. The overlay is gone; its two
 // strings went with it.
 // The mobile search tab uses its own short label (one key, two parity checks).
-ok(enKeys.length === 231, `UI has 231 keys (got ${enKeys.length})`);
+// The anvaya heading adds one localized key and two parity checks.
+ok(enKeys.length === 232, `UI has 232 keys (got ${enKeys.length})`);
 for (const k of enKeys) ok(k in UI.ne, `UI key '${k}' present in नेपाली`);
 for (const k of enKeys) ok(k in UI.hi, `UI key '${k}' present in हिन्दी`);
 const LATIN = /[A-Za-zÀ-ɏḀ-ỿ]/;
