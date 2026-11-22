@@ -137,6 +137,21 @@ class AnvayaTests(unittest.TestCase):
                 self.assertIn('यावत् किञ्चित्', verses[25]['anvaya'])
                 self.assertIn('समवस्थितम्', verses[27]['anvaya'])
 
+    def test_complete_coverage_and_final_chapter_corrections(self):
+        all_verses = []
+        for chapter in range(1, 19):
+            data = json.loads((ROOT / f'source/ch{chapter}.json').read_text(encoding='utf-8'))
+            all_verses.extend(v for t in data['themes'] for p in t['parts'] for v in p['sutras'])
+        self.assertEqual(len(all_verses), 700)
+        self.assertTrue(all(v.get('anvaya') and v.get('anvaya_iast') for v in all_verses))
+        by_id = {v['n']: v['anvaya'] for v in all_verses}
+        self.assertIn('जघन्यगुणवृत्तस्थाः', by_id['14.18'])
+        self.assertNotIn('किम् इति आहुः', by_id['16.08'])
+        self.assertIn('न उ इह', by_id['17.28'])
+        self.assertIn('कृषिगौरक्ष्यवाणिज्यं', by_id['18.44'])
+        self.assertNotIn('त्वं', by_id['18.58'])
+        self.assertIn('इमं परमं गुह्यम्', by_id['18.68'])
+
     def test_reader_places_optional_unboxed_sanskrit_before_literal(self):
         reader = (ROOT / 'source/js/50-reader.js').read_text(encoding='utf-8')
         container = reader.index('class="m-verse-box-container"')
