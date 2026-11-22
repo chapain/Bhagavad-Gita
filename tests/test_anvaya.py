@@ -125,6 +125,18 @@ class AnvayaTests(unittest.TestCase):
         self.assertIn('च आश्वासयामास', verses[49]['anvaya'])
         self.assertIn('योधमुख्यैः', verses[25]['anvaya'])
 
+    def test_chapters_twelve_and_thirteen_corrections(self):
+        for chapter, total in [(12, 20), (13, 34)]:
+            data = json.loads((ROOT / f'source/ch{chapter}.json').read_text(encoding='utf-8'))
+            verses = [v for t in data['themes'] for p in t['parts'] for v in p['sutras']]
+            self.assertEqual(sum('anvaya' in v for v in verses), total)
+            if chapter == 12:
+                self.assertIn('सन्न्यस्य', verses[5]['anvaya'])
+            else:
+                self.assertIn('सर्वतःपाणिपादं', verses[12]['anvaya'])
+                self.assertIn('यावत् किञ्चित्', verses[25]['anvaya'])
+                self.assertIn('समवस्थितम्', verses[27]['anvaya'])
+
     def test_reader_places_optional_unboxed_sanskrit_before_literal(self):
         reader = (ROOT / 'source/js/50-reader.js').read_text(encoding='utf-8')
         container = reader.index('class="m-verse-box-container"')

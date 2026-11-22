@@ -205,7 +205,9 @@
                 "en": "Kṛṣṇa said: “This body is called the field; one who knows it is called the knower of the field.”",
                 "ne": "कृष्णले भन्नुभयो: “यो शरीर क्षेत्र भनिन्छ; जसले यसलाई चिन्छ, ऊ क्षेत्रज्ञ भनिन्छ।”",
                 "hi": "कृष्ण ने कहा: “यह शरीर क्षेत्र कहलाता है; जो इसे जानता है, वह क्षेत्रज्ञ कहलाता है।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — कौन्तेय! इदं शरीरं क्षेत्रम् इति अभिधीयते; यः एतत् वेत्ति तं तद्विदः क्षेत्रज्ञः इति प्राहुः।",
+              "anvaya_iast": "śrībhagavānuvāca — kaunteya! idaṃ śarīraṃ kṣetram iti abhidhīyate; yaḥ etat vetti taṃ tadvidaḥ kṣetrajñaḥ iti prāhuḥ."
             }
           ]
         },
@@ -367,7 +369,9 @@
                 "en": "“Know me as the knower of the field in every body; the wisdom of the field and its knower is what I call real knowledge.”",
                 "ne": "“मलाई हरेक शरीरको क्षेत्रज्ञ जान; क्षेत्र र त्यसका ज्ञाताको विवेक नै म साँचो ज्ञान भन्छु।”",
                 "hi": "“मुझे हर शरीर का क्षेत्रज्ञ जान; क्षेत्र और उसके ज्ञाता का विवेक ही मैं सच्चा ज्ञान कहता हूँ।”"
-              }
+              },
+              "anvaya": "भारत! सर्वक्षेत्रेषु माम् अपि च क्षेत्रज्ञं विद्धि; क्षेत्रक्षेत्रज्ञयोः यत् ज्ञानं तत् ज्ञानं मम मतम्।",
+              "anvaya_iast": "bhārata! sarvakṣetreṣu mām api ca kṣetrajñaṃ viddhi; kṣetrakṣetrajñayoḥ yat jñānaṃ tat jñānaṃ mama matam."
             }
           ]
         },
@@ -571,7 +575,9 @@
                 "en": "“Hear from me, in brief, what the field is, its nature, its changes, its source — and who the knower is and what his powers are.”",
                 "ne": "“क्षेत्र के हो, यसको स्वरूप, यसका परिवर्तन, यसको स्रोत — र ज्ञाता को हो र उसका शक्तिहरू के हुन् — यो सब मबाट छोटकरीमा सुन।”",
                 "hi": "“क्षेत्र क्या है, उसका स्वरूप, उसके परिवर्तन, उसका स्रोत — और ज्ञाता कौन है और उसकी शक्तियाँ क्या हैं — यह सब मुझसे संक्षेप में सुन।”"
-              }
+              },
+              "anvaya": "तत् क्षेत्रं यत् च, यादृक् च, यद्विकारि, यतः च यत्, सः च यः, यत्प्रभावः च, तत् मे समासेन शृणु।",
+              "anvaya_iast": "tat kṣetraṃ yat ca, yādṛk ca, yadvikāri, yataḥ ca yat, saḥ ca yaḥ, yatprabhāvaḥ ca, tat me samāsena śṛṇu."
             }
           ]
         },
@@ -712,7 +718,9 @@
                 "en": "“The sages have sung it in many ways, in varied meters, and in the Brahman-sūtras, with reasoning, decisively —”",
                 "ne": "“ऋषिहरूले यसलाई अनेक तरिकाले, विभिन्न छन्दमा, र ब्रह्मसूत्रमा — तर्कसहित, निश्चित रूपमा — गाएका छन्,”",
                 "hi": "ऋषियों ने यह बात कई ढंग से गाई है — अलग-अलग छन्दों में, और ब्रह्मसूत्रों में भी, पूरे तर्क के साथ, दो-टूक।"
-              }
+              },
+              "anvaya": "ऋषिभिः बहुधा विविधैः पृथक् छन्दोभिः गीतम्, हेतुमद्भिः विनिश्चितैः ब्रह्मसूत्रपदैः च एव।",
+              "anvaya_iast": "ṛṣibhiḥ bahudhā vividhaiḥ pṛthak chandobhiḥ gītam, hetumadbhiḥ viniścitaiḥ brahmasūtrapadaiḥ ca eva."
             }
           ]
         },
@@ -867,7 +875,9 @@
                 "en": "“Break it down and you get: the five elements, the sense of 'I', the reasoning mind, unformed nature, the ten senses with mind as the eleventh, and the five things the senses reach for.”",
                 "ne": "फुकाएर हेर्दा यति हुन्: पाँच महाभूत, 'म' भन्ने भाव, बुद्धि, नदेखिने मूल प्रकृति, दश इन्द्रिय र एघारौँ मन, अनि इन्द्रियले खोज्ने पाँच विषय।",
                 "hi": "गिनाऊँ तो: पाँच महाभूत, 'मैं' का भाव, बुद्धि, और वह अनदेखा मूल; दस इन्द्रियाँ, मन, और इन्द्रियों के पाँच विषय —"
-              }
+              },
+              "anvaya": "महाभूतानि, अहङ्कारः, बुद्धिः, अव्यक्तम् एव च, दश एकं च इन्द्रियाणि, पञ्च च इन्द्रियगोचराः।",
+              "anvaya_iast": "mahābhūtāni, ahaṅkāraḥ, buddhiḥ, avyaktam eva ca, daśa ekaṃ ca indriyāṇi, pañca ca indriyagocarāḥ."
             }
           ]
         },
@@ -1015,7 +1025,9 @@
                 "en": "“— desire, dislike, joy, sorrow, the body itself, awareness and steadiness: this, briefly, is the field with all its changes.”",
                 "ne": "“— इच्छा, अरुचि, आनन्द, शोक, शरीर नै, चेतना र स्थिरता: यो नै क्षेत्र हो, छोटकरीमा, यसका सबै परिवर्तनसहित।”",
                 "hi": "“— इच्छा, अरुचि, आनन्द, शोक, शरीर ही, चेतना और स्थिरता: यही क्षेत्र है, संक्षेप में, अपने सब परिवर्तनों सहित।”"
-              }
+              },
+              "anvaya": "इच्छा, द्वेषः, सुखं, दुःखं, सङ्घातः, चेतना, धृतिः — एतत् क्षेत्रं सविकारं समासेन उदाहृतम्।",
+              "anvaya_iast": "icchā, dveṣaḥ, sukhaṃ, duḥkhaṃ, saṅghātaḥ, cetanā, dhṛtiḥ — etat kṣetraṃ savikāraṃ samāsena udāhṛtam."
             }
           ]
         }
@@ -1157,7 +1169,9 @@
                 "en": "“Humility, modesty, harmlessness, patience, honesty, serving one's teacher, purity, firmness, self-mastery,”",
                 "ne": "“आफूलाई ठूलो नठान्नु, देखावटी नहुनु, कसैलाई चोट नदिनु, सहनशील र सोझो हुनु, गुरुको सेवा गर्नु, शुद्ध रहनु, अडिग रहनु र आफूलाई वशमा राख्नु,”",
                 "hi": "“नम्रता, विनम्रता, अहिंसा, धैर्य, ईमानदारी, गुरु की सेवा, शुद्धता, दृढ़ता, आत्म-संयम,”"
-              }
+              },
+              "anvaya": "अमानित्वम्, अदम्भित्वम्, अहिंसा, क्षान्तिः, आर्जवम्, आचार्योपासनं, शौचं, स्थैर्यम्, आत्मविनिग्रहः।",
+              "anvaya_iast": "amānitvam, adambhitvam, ahiṃsā, kṣāntiḥ, ārjavam, ācāryopāsanaṃ, śaucaṃ, sthairyam, ātmavinigrahaḥ."
             }
           ]
         },
@@ -1270,7 +1284,9 @@
                 "en": "“— disinterest in sense-pleasures, no ego, and the clear seeing of the misery of birth, death, age, and sickness,”",
                 "ne": "“— इन्द्रिय-सुखमा अनासक्ति, अहंकार नहुनु, र जन्म, मृत्यु, बुढ्यौली र रोगको पीडा स्पष्ट देख्नु,”",
                 "hi": "“— इन्द्रिय-सुखों में अनासक्ति, अहंकार का न होना, और जन्म, मृत्यु, बुढ़ापे और रोग की पीड़ा को स्पष्ट देखना,”"
-              }
+              },
+              "anvaya": "इन्द्रियार्थेषु वैराग्यम्, अनहङ्कारः एव च, जन्ममृत्युजराव्याधिदुःखदोषानुदर्शनम्।",
+              "anvaya_iast": "indriyārtheṣu vairāgyam, anahaṅkāraḥ eva ca, janmamṛtyujarāvyādhiduḥkhadoṣānudarśanam."
             }
           ]
         },
@@ -1383,7 +1399,9 @@
                 "en": "“— detachment, no clinging to family and home, steady even-mindedness in success and failure,”",
                 "ne": "“— आसक्ति नहुनु, परिवार र घरमा मोह नहुनु, सफलता-असफलतामा स्थिर समत्व,”",
                 "hi": "“— आसक्ति न होना, परिवार और घर में मोह न होना, सफलता-असफलता में स्थिर समत्व,”"
-              }
+              },
+              "anvaya": "असक्तिः, पुत्रदारगृहादिषु अनभिष्वङ्गः, इष्टानिष्टोपपत्तिषु नित्यं समचित्तत्वं च।",
+              "anvaya_iast": "asaktiḥ, putradāragṛhādiṣu anabhiṣvaṅgaḥ, iṣṭāniṣṭopapattiṣu nityaṃ samacittatvaṃ ca."
             }
           ]
         },
@@ -1503,7 +1521,9 @@
                 "en": "“— unwavering devotion to me with single-pointed yoga, fondness for solitude, distaste for worldly crowds,”",
                 "ne": "“— एकनिष्ठ योगले मप्रति अटल भक्ति, एकान्तप्रति प्रेम, सांसारिक भीडप्रति अरुचि,”",
                 "hi": "“— एकनिष्ठ योग से मुझ में अटल भक्ति, एकान्त में प्रेम, सांसारिक भीड़ से अरुचि,”"
-              }
+              },
+              "anvaya": "मयि च अनन्ययोगेन अव्यभिचारिणी भक्तिः, विविक्तदेशसेवित्वम्, जनसंसदि अरतिः।",
+              "anvaya_iast": "mayi ca ananyayogena avyabhicāriṇī bhaktiḥ, viviktadeśasevitvam, janasaṃsadi aratiḥ."
             }
           ]
         },
@@ -1637,7 +1657,9 @@
                 "en": "“— constant pursuit of knowledge of the Self, and seeing the aim of truth-knowledge: this is called knowledge; anything else is ignorance.”",
                 "ne": "“— आत्मज्ञानको निरन्तर खोज, र सत्यज्ञानको उद्देश्य देख्नु: यसलाई ज्ञान भनिन्छ; अरू जे छ त्यो अज्ञान हो।”",
                 "hi": "“— आत्म-ज्ञान की निरन्तर खोज, और सत्य-ज्ञान का उद्देश्य देखना: इसे ज्ञान कहते हैं; इससे अलग जो है वह अज्ञान है।”"
-              }
+              },
+              "anvaya": "अध्यात्मज्ञाननित्यत्वं, तत्त्वज्ञानार्थदर्शनम् — एतत् ज्ञानम् इति प्रोक्तम्; यत् अतः अन्यथा अज्ञानम्।",
+              "anvaya_iast": "adhyātmajñānanityatvaṃ, tattvajñānārthadarśanam — etat jñānam iti proktam; yat ataḥ anyathā ajñānam."
             }
           ]
         }
@@ -1835,7 +1857,9 @@
                 "en": "“I will tell you of the knowable, knowing which you taste immortality — the beginningless supreme Brahman, beyond being and non-being.”",
                 "ne": "“म तिमीलाई जान्नयोग्य वस्तु बताउँछु, जसलाई जानेर तिमी अमरत्व चाख्नेछौ — आदिरहित परम ब्रह्म, सत् र असत् दुवैभन्दा पर।”",
                 "hi": "“मैं तुझे जानने-योग्य वस्तु बताता हूँ, जिसे जानकर तू अमरत्व चखेगा — आदि-रहित परम ब्रह्म, सत् और असत् दोनों से परे।”"
-              }
+              },
+              "anvaya": "यत् ज्ञेयं तत् प्रवक्ष्यामि, यत् ज्ञात्वा अमृतम् अश्नुते — अनादिमत् परं ब्रह्म न सत् न असत् तत् उच्यते।",
+              "anvaya_iast": "yat jñeyaṃ tat pravakṣyāmi, yat jñātvā amṛtam aśnute — anādimat paraṃ brahma na sat na asat tat ucyate."
             }
           ]
         },
@@ -1976,7 +2000,9 @@
                 "en": "“Wherever you look there are hands and feet, eyes and heads and faces, ears without number. Nothing in the world falls outside it.”",
                 "ne": "“यसका हात-खुट्टा सबै दिशामा छन्, आँखा, शिर र मुख सबैतिर, कान सबैतिर — यो सबैलाई अँगालेर उभिएको छ।”",
                 "hi": "“इसके हाथ-पैर सब दिशाओं में हैं, नेत्र, सिर और मुख सब ओर, कान सब ओर — यह सबको आलिंगन किए खड़ा है।”"
-              }
+              },
+              "anvaya": "तत् सर्वतःपाणिपादं, सर्वतोक्षिशिरोमुखं, सर्वतःश्रुतिमत्, लोके सर्वम् आवृत्य तिष्ठति।",
+              "anvaya_iast": "tat sarvataḥpāṇipādaṃ, sarvatokṣiśiromukhaṃ, sarvataḥśrutimat, loke sarvam āvṛtya tiṣṭhati."
             }
           ]
         },
@@ -2103,7 +2129,9 @@
                 "en": "“It appears to have all the senses' qualities, yet has no senses; it is unattached, yet supports all; beyond the guṇas, yet enjoys them.”",
                 "ne": "“यो इन्द्रियका सबै गुण भएको देखिन्छ, तर यसका इन्द्रियहरू छैनन्; यो आसक्तिरहित छ, तैपनि सबैलाई धान्छ; गुणभन्दा पर, तैपनि गुणको भोग गर्छ।”",
                 "hi": "“यह इन्द्रियों के सब गुणों वाला दिखता है, किन्तु इसकी इन्द्रियाँ नहीं हैं; यह आसक्ति-रहित है, फिर भी सबको धारण करता है; गुणों से परे, फिर भी उनका भोग करता है।”"
-              }
+              },
+              "anvaya": "सर्वेन्द्रियगुणाभासं, सर्वेन्द्रियविवर्जितम्, असक्तं, सर्वभृत् च एव, निर्गुणं, गुणभोक्तृ च।",
+              "anvaya_iast": "sarvendriyaguṇābhāsaṃ, sarvendriyavivarjitam, asaktaṃ, sarvabhṛt ca eva, nirguṇaṃ, guṇabhoktṛ ca."
             }
           ]
         },
@@ -2279,7 +2307,9 @@
                 "en": "“It is inside and outside all beings; unmoving and moving; too subtle to grasp — far away, and yet close at hand.”",
                 "ne": "“यो सबै प्राणीको भित्र र बाहिर छ; अचल र चल दुवै; यति सूक्ष्म कि समात्न गाह्रो — टाढा पनि, र हातै अगाडि पनि।”",
                 "hi": "“यह सब प्राणियों के भीतर और बाहर है; अचल और चल दोनों; इतना सूक्ष्म कि पकड़ में न आए — दूर भी, और हाथों हाथ भी।”"
-              }
+              },
+              "anvaya": "भूतानां बहिः अन्तः च, अचरं चरम् एव च, सूक्ष्मत्वात् तत् अविज्ञेयं, दूरस्थं च अन्तिके च तत्।",
+              "anvaya_iast": "bhūtānāṃ bahiḥ antaḥ ca, acaraṃ caram eva ca, sūkṣmatvāt tat avijñeyaṃ, dūrasthaṃ ca antike ca tat."
             }
           ]
         },
@@ -2441,7 +2471,9 @@
                 "en": "“Look at beings and you see many; look again and there is one. It holds them up, takes them back, and puts them forth once more.”",
                 "ne": "“अविभाजित, यो प्राणीहरूमा विभाजितझैं देखिन्छ; यसलाई सबैको धान्ने, आफैँमा लीन गराउने र स्रोत जान।”",
                 "hi": "“अविभाजित, यह प्राणियों में विभाजित-सा दिखता है; इसे सबका धारण करने वाला, अपने में लीन करने वाला और स्रोत जान।”"
-              }
+              },
+              "anvaya": "भूतेषु अविभक्तं च विभक्तम् इव च स्थितम्; तत् ज्ञेयं भूतभर्तृ च, ग्रसिष्णु, प्रभविष्णु च।",
+              "anvaya_iast": "bhūteṣu avibhaktaṃ ca vibhaktam iva ca sthitam; tat jñeyaṃ bhūtabhartṛ ca, grasiṣṇu, prabhaviṣṇu ca."
             }
           ]
         },
@@ -2596,7 +2628,9 @@
                 "en": "“It is the light of all lights, beyond darkness — wisdom itself, its object, and its goal, dwelling in every heart.”",
                 "ne": "“यो सबै ज्योतिको ज्योति, अन्धकारभन्दा पर — ज्ञान नै, यसको विषय, र यसको लक्ष्य — हरेक हृदयमा बस्ने।”",
                 "hi": "“यह सब ज्योतियों की ज्योति, अन्धकार से परे — ज्ञान ही, उसका विषय, और उसका लक्ष्य — हर हृदय में निवास करने वाला।”"
-              }
+              },
+              "anvaya": "तत् ज्योतिषाम् अपि ज्योतिः, तमसः परम् उच्यते; ज्ञानं, ज्ञेयं, ज्ञानगम्यं, सर्वस्य हृदि विष्ठितम्।",
+              "anvaya_iast": "tat jyotiṣām api jyotiḥ, tamasaḥ param ucyate; jñānaṃ, jñeyaṃ, jñānagamyaṃ, sarvasya hṛdi viṣṭhitam."
             }
           ]
         },
@@ -2751,7 +2785,9 @@
                 "en": "“So I have told you, in brief, of the field, knowledge, and the knowable; my devotee who understands this reaches my state.”",
                 "ne": "“त्यसैले मैले क्षेत्र, ज्ञान र ज्ञेय छोटकरीमा भनेँ; मेरो भक्त, यो बुझेर, मेरो अवस्थामा पुग्छ।”",
                 "hi": "इतना ही है — खेत, ज्ञान, और जो जानने योग्य है। जो मुझसे जुड़ा है वह यह पकड़ लेता है, और मेरे जैसा हो जाता है।"
-              }
+              },
+              "anvaya": "इति क्षेत्रं तथा ज्ञानं ज्ञेयं च समासतः उक्तम्; मद्भक्तः एतत् विज्ञाय मद्भावाय उपपद्यते।",
+              "anvaya_iast": "iti kṣetraṃ tathā jñānaṃ jñeyaṃ ca samāsataḥ uktam; madbhaktaḥ etat vijñāya madbhāvāya upapadyate."
             }
           ]
         }
@@ -2935,7 +2971,9 @@
                 "en": "“Know that nature and the person are both beginningless; and that all changes and qualities arise from nature.”",
                 "ne": "“जान कि प्रकृति र पुरुष दुवै आदिरहित छन्; र सबै परिवर्तन र गुणहरू प्रकृतिबाट उठ्छन्।”",
                 "hi": "“जान कि प्रकृति और पुरुष दोनों आदि-रहित हैं; और सब परिवर्तन तथा गुण प्रकृति से उठते हैं।”"
-              }
+              },
+              "anvaya": "प्रकृतिं पुरुषं च एव उभौ अपि अनादी विद्धि; विकारान् च गुणान् च एव प्रकृतिसम्भवान् विद्धि।",
+              "anvaya_iast": "prakṛtiṃ puruṣaṃ ca eva ubhau api anādī viddhi; vikārān ca guṇān ca eva prakṛtisambhavān viddhi."
             }
           ]
         },
@@ -3062,7 +3100,9 @@
                 "en": "“Nature accounts for effect and cause; the person accounts for the tasting of joy and sorrow.”",
                 "ne": "“प्रकृति कार्य र कारणको हेतु हो; पुरुष सुख-दुःख भोग्ने हेतु हो।”",
                 "hi": "“प्रकृति कार्य और कारण की हेतु है; पुरुष सुख-दुःख भोगने का हेतु है।”"
-              }
+              },
+              "anvaya": "कार्यकारणकर्तृत्वे प्रकृतिः हेतुः उच्यते; पुरुषः सुखदुःखानां भोक्तृत्वे हेतुः उच्यते।",
+              "anvaya_iast": "kāryakāraṇakartṛtve prakṛtiḥ hetuḥ ucyate; puruṣaḥ sukhaduḥkhānāṃ bhoktṛtve hetuḥ ucyate."
             }
           ]
         },
@@ -3217,7 +3257,9 @@
                 "en": "“The person, resting in nature, tastes the qualities born of nature; clinging to those qualities causes birth in high or low wombs.”",
                 "ne": "“प्रकृतिमा विश्राम गर्ने पुरुषले प्रकृतिबाट जन्मेका गुणहरू चाख्छ; ती गुणमा टाँसिनु नै उच्च वा नीच योनिमा जन्मको कारण हो।”",
                 "hi": "“प्रकृति में विश्राम करने वाला पुरुष प्रकृति से जन्मे गुणों को चखता है; उन गुणों से चिपकना ही ऊँची या नीची योनियों में जन्म का कारण है।”"
-              }
+              },
+              "anvaya": "हि प्रकृतिस्थः पुरुषः प्रकृतिजान् गुणान् भुङ्क्ते; अस्य गुणसङ्गः सदसद्योनिजन्मसु कारणम्।",
+              "anvaya_iast": "hi prakṛtisthaḥ puruṣaḥ prakṛtijān guṇān bhuṅkte; asya guṇasaṅgaḥ sadasadyonijanmasu kāraṇam."
             }
           ]
         },
@@ -3386,7 +3428,9 @@
                 "en": "“Within this body sits one who watches, permits, upholds and enjoys — the great Lord, the highest Self.”",
                 "ne": "“साक्षी, स्वीकर्ता, धान्ने, भोग्ने, महान् स्वामी — जसलाई परम आत्मा भनिन्छ: शरीरभित्रको यही सर्वोच्च पुरुष।”",
                 "hi": "“साक्षी, स्वीकर्ता, धारण करने वाला, भोगने वाला, महान् स्वामी — जिसे परम आत्मा कहते हैं: शरीर में स्थित यही सर्वोच्च पुरुष।”"
-              }
+              },
+              "anvaya": "अस्मिन् देहे परः पुरुषः उपद्रष्टा, अनुमन्ता च, भर्ता, भोक्ता, महेश्वरः, परमात्मा इति च अपि उक्तः।",
+              "anvaya_iast": "asmin dehe paraḥ puruṣaḥ upadraṣṭā, anumantā ca, bhartā, bhoktā, maheśvaraḥ, paramātmā iti ca api uktaḥ."
             }
           ]
         },
@@ -3555,7 +3599,9 @@
                 "en": "“One who knows this Person and nature with its qualities — however he lives, he is never reborn.”",
                 "ne": "“जसले यो पुरुष र गुणसहितको प्रकृतिलाई चिन्छ — जसरी बाँचे पनि — ऊ फेरि कहिल्यै जन्मिँदैन।”",
                 "hi": "जो प्रकृति और उसके गुणों के साथ पुरुष को इस तरह पहचान लेता है — चाहे वह जैसे भी जिए — उसका दोबारा जन्म नहीं होता।"
-              }
+              },
+              "anvaya": "यः एवं पुरुषं गुणैः सह प्रकृतिं च वेत्ति, सः सर्वथा वर्तमानः अपि भूयः न अभिजायते।",
+              "anvaya_iast": "yaḥ evaṃ puruṣaṃ guṇaiḥ saha prakṛtiṃ ca vetti, saḥ sarvathā vartamānaḥ api bhūyaḥ na abhijāyate."
             }
           ]
         }
@@ -3718,7 +3764,9 @@
                 "en": "“Some see the Self within by meditation; others by wisdom; still others by selfless action.”",
                 "ne": "“कोही आत्मालाई ध्यानले भित्रै देख्छन्; कोही ज्ञानले; अरू कोही कर्मयोगले।”",
                 "hi": "कोई भीतर बैठकर आत्मा को निहारता है; कोई सोच-विचार के रास्ते पहुँचता है; कोई कर्मयोग से।"
-              }
+              },
+              "anvaya": "केचित् ध्यानेन आत्मना आत्मनि आत्मानं पश्यन्ति, अन्ये साङ्ख्येन योगेन, अपरे च कर्मयोगेन।",
+              "anvaya_iast": "kecit dhyānena ātmanā ātmani ātmānaṃ paśyanti, anye sāṅkhyena yogena, apare ca karmayogena."
             }
           ]
         },
@@ -3880,7 +3928,9 @@
                 "en": "“Others, not knowing directly, worship after hearing from teachers — and they too cross beyond death by faith in the heard teaching.”",
                 "ne": "“अरू, प्रत्यक्ष नजानेर, गुरुहरूबाट सुनेर पूजा गर्छन् — र तिनीहरू पनि सुनेको शिक्षाप्रतिको श्रद्धाले मृत्यु पार गर्छन्।”",
                 "hi": "“अन्य, प्रत्यक्ष न जानकर, गुरुओं से सुनकर पूजा करते हैं — और वे भी सुने गए उपदेश में श्रद्धा से मृत्यु पार कर जाते हैं।”"
-              }
+              },
+              "anvaya": "अन्ये तु एवम् अजानन्तः अन्येभ्यः श्रुत्वा उपासते; श्रुतिपरायणाः ते अपि च एव मृत्युम् अतितरन्ति।",
+              "anvaya_iast": "anye tu evam ajānantaḥ anyebhyaḥ śrutvā upāsate; śrutiparāyaṇāḥ te api ca eva mṛtyum atitaranti."
             }
           ]
         },
@@ -4007,7 +4057,9 @@
                 "en": "“Whatever comes into being, moving or still — know it arises from the union of the field and its knower, Arjuna.”",
                 "ne": "“जे-जे अस्तित्वमा आउँछ, चल होस् वा स्थिर — त्यो क्षेत्र र त्यसका ज्ञाताको मिलनबाट उठेको जान, अर्जुन।”",
                 "hi": "“जो-जो अस्तित्व में आता है, चल हो या स्थिर — उसे क्षेत्र और उसके ज्ञाता के मिलन से उठा जान, अर्जुन।”"
-              }
+              },
+              "anvaya": "भरतर्षभ! स्थावरजङ्गमं यावत् किञ्चित् सत्त्वं सञ्जायते, तत् क्षेत्रक्षेत्रज्ञसंयोगात् विद्धि।",
+              "anvaya_iast": "bharatarṣabha! sthāvarajaṅgamaṃ yāvat kiñcit sattvaṃ sañjāyate, tat kṣetrakṣetrajñasaṃyogāt viddhi."
             }
           ]
         },
@@ -4148,7 +4200,9 @@
                 "en": "“One who sees the supreme Lord equally present in all beings, undying among the dying — he truly sees.”",
                 "ne": "“जसले सबै प्राणीमा समान रूपमा विद्यमान, मर्नेहरूका बीचमा नमर्ने परम स्वामीलाई देख्छ — उसैले साँच्चै देख्छ।”",
                 "hi": "मिटने वाले सब जीवों के बीच जो नहीं मिटता — उसे हर जगह एक-सा देख लेना ही सचमुच देखना है।"
-              }
+              },
+              "anvaya": "यः सर्वेषु भूतेषु विनश्यत्सु अविनश्यन्तं समं तिष्ठन्तं परमेश्वरं पश्यति, सः पश्यति।",
+              "anvaya_iast": "yaḥ sarveṣu bhūteṣu vinaśyatsu avinaśyantaṃ samaṃ tiṣṭhantaṃ parameśvaraṃ paśyati, saḥ paśyati."
             }
           ]
         },
@@ -4310,7 +4364,9 @@
                 "en": "“Seeing the Lord equally in all, he never degrades his Self; and so he reaches the highest goal.”",
                 "ne": "“सबैमा समान रहेको स्वामीलाई देखेर, ऊ आफ्नो आत्मालाई कहिल्यै होच्याउँदैन; र त्यसैले सर्वोच्च लक्ष्यमा पुग्छ।”",
                 "hi": "“सब में समान स्थित स्वामी को देखकर, वह अपनी आत्मा को कभी नीचा नहीं करता; और इसलिए सर्वोच्च लक्ष्य तक पहुँचता है।”"
-              }
+              },
+              "anvaya": "हि सर्वत्र समवस्थितम् ईश्वरं समं पश्यन् आत्मना आत्मानं न हिनस्ति, ततः परां गतिं याति।",
+              "anvaya_iast": "hi sarvatra samavasthitam īśvaraṃ samaṃ paśyan ātmanā ātmānaṃ na hinasti, tataḥ parāṃ gatiṃ yāti."
             }
           ]
         }
@@ -4480,7 +4536,9 @@
                 "en": "“Nature does the work, not you. See that clearly and you have seen the truth.”",
                 "ne": "काम गर्ने त प्रकृति हो, आत्मा होइन। यति प्रस्ट देख्यो भने देख्नुपर्ने देखियो।",
                 "hi": "करती तो प्रकृति है, आत्मा कुछ नहीं करती — जिसे यह दिख गया, उसे ही सही दिखा।"
-              }
+              },
+              "anvaya": "यः च कर्माणि प्रकृत्या एव सर्वशः क्रियमाणानि तथा आत्मानम् अकर्तारं पश्यति, सः पश्यति।",
+              "anvaya_iast": "yaḥ ca karmāṇi prakṛtyā eva sarvaśaḥ kriyamāṇāni tathā ātmānam akartāraṃ paśyati, saḥ paśyati."
             }
           ]
         },
@@ -4621,7 +4679,9 @@
                 "en": "“The moment the endless variety of things is seen resting in one root and branching out from it, Brahman is reached.”",
                 "ne": "“जब ऊ सबै प्राणीका विविध अवस्थाहरू एकमा टिकेको र एकैबाट उठेको देख्छ — तब ऊ ब्रह्म हुन्छ।”",
                 "hi": "“जब वह सब प्राणियों की विविध अवस्थाओं को एक में टिकी और एक ही से उठी देखता है — तब वह ब्रह्म हो जाता है।”"
-              }
+              },
+              "anvaya": "यदा भूतपृथग्भावम् एकस्थम् अनुपश्यति, ततः एव च विस्तारं, तदा ब्रह्म सम्पद्यते।",
+              "anvaya_iast": "yadā bhūtapṛthagbhāvam ekastham anupaśyati, tataḥ eva ca vistāraṃ, tadā brahma sampadyate."
             }
           ]
         },
@@ -4769,7 +4829,9 @@
                 "en": "“Being beginningless and beyond all qualities, the supreme Self is eternal — though it dwells in the body, it neither acts nor is tainted.”",
                 "ne": "न यसको सुरु छ, न कुनै गुणले यसलाई छुन्छ — त्यसैले परमात्मा कहिल्यै नासिँदैन। शरीरभित्र बसे पनि यो न केही गर्छ, न केहीले टाँसिन्छ।",
                 "hi": "जिसका न आरम्भ है न कोई गुण, वह परम आत्मा कभी घटती नहीं। देह में रहकर भी वह न कुछ करती है, न उसमें कुछ चिपकता है।"
-              }
+              },
+              "anvaya": "कौन्तेय! अनादित्वात् निर्गुणत्वात् अयं परमात्मा अव्ययः शरीरस्थः अपि न करोति न लिप्यते।",
+              "anvaya_iast": "kaunteya! anāditvāt nirguṇatvāt ayaṃ paramātmā avyayaḥ śarīrasthaḥ api na karoti na lipyate."
             }
           ]
         },
@@ -4924,7 +4986,9 @@
                 "en": "“As space, though pervading all, is never tainted, so the Self present in every body is never tainted.”",
                 "ne": "“जसरी व्यापक आकाश, सूक्ष्म हुँदै, कहिल्यै लिप्त हुँदैन, त्यसरी हरेक शरीरमा रहेको आत्मा कहिल्यै लिप्त हुँदैन।”",
                 "hi": "आकाश हर जगह फैला है, पर इतना सूक्ष्म है कि उस पर कोई मैल नहीं लगता; देह में बसी आत्मा भी इसी तरह अछूती रहती है।"
-              }
+              },
+              "anvaya": "यथा सर्वगतम् आकाशं सौक्ष्म्यात् न उपलिप्यते, तथा सर्वत्र देहे अवस्थितः आत्मा न उपलिप्यते।",
+              "anvaya_iast": "yathā sarvagatam ākāśaṃ saukṣmyāt na upalipyate, tathā sarvatra dehe avasthitaḥ ātmā na upalipyate."
             }
           ]
         },
@@ -5079,7 +5143,9 @@
                 "en": "“A single sun lights the whole world. In just that way, the one who knows the field lights up the field entire.”",
                 "ne": "एउटै सूर्यले सारा जगत् उज्यालो पार्छ। क्षेत्र चिन्नेले पनि त्यसरी नै पूरै क्षेत्र उज्यालो पार्छ।",
                 "hi": "एक ही सूरज पूरी दुनिया को रोशन कर देता है, अर्जुन; उसी तरह खेत को जानने वाला पूरे खेत को रोशन करता है।"
-              }
+              },
+              "anvaya": "भारत! यथा एकः रविः इमं कृत्स्नं लोकं प्रकाशयति, तथा क्षेत्री कृत्स्नं क्षेत्रं प्रकाशयति।",
+              "anvaya_iast": "bhārata! yathā ekaḥ raviḥ imaṃ kṛtsnaṃ lokaṃ prakāśayati, tathā kṣetrī kṛtsnaṃ kṣetraṃ prakāśayati."
             }
           ]
         },
@@ -5220,7 +5286,9 @@
                 "en": "“Those who, with the eye of wisdom, discern the difference between the field and its knower, and the freedom from nature — they attain the highest.”",
                 "ne": "“जसले ज्ञानको आँखाले क्षेत्र र त्यसका ज्ञाताको अन्तर, र प्रकृतिबाट स्वतन्त्रता देख्छन् — तिनीहरू सर्वोच्चमा पुग्छन्।”",
                 "hi": "“जो ज्ञान के नेत्र से क्षेत्र और उसके ज्ञाता का अन्तर, और प्रकृति से स्वतंत्रता देखते हैं — वे सर्वोच्च तक पहुँचते हैं।”"
-              }
+              },
+              "anvaya": "ये एवं ज्ञानचक्षुषा क्षेत्रक्षेत्रज्ञयोः अन्तरं भूतप्रकृतिमोक्षं च विदुः, ते परं यान्ति।",
+              "anvaya_iast": "ye evaṃ jñānacakṣuṣā kṣetrakṣetrajñayoḥ antaraṃ bhūtaprakṛtimokṣaṃ ca viduḥ, te paraṃ yānti."
             }
           ]
         }
