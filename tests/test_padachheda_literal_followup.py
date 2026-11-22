@@ -20,6 +20,53 @@ def row(v, word):
 
 
 class PadachhedaLiteralFollowup(unittest.TestCase):
+    def test_batch_two_literal_and_row_corrections(self):
+        expected = {
+            ('9.02', 'en'): 'purifier',
+            ('9.06', 'en'): 'always',
+            ('10.01', 'en'): 'shall speak',
+            ('10.06', 'en'): 'of my nature, born of my mind',
+            ('10.28', 'en'): 'Kandarpa, the procreator',
+            ('10.29', 'en'): 'Varuṇa among aquatic beings',
+            ('11.15', 'en'): 'Arjuna said:',
+            ('11.36', 'en'): 'Arjuna said:',
+            ('11.45', 'en'): 'O abode of the universe',
+            ('11.49', 'en'): 'this very form of mine',
+            ('12.05', 'en'): 'the unmanifest goal',
+            ('13.06', 'en'): 'has been declared',
+            ('13.09', 'hi'): 'घर आदि',
+            ('13.15', 'ne'): 'जान्न सकिँदैन',
+            ('13.16', 'en'): 'to be known',
+            ('13.24', 'en'): 'within the self by the self',
+            ('13.24', 'ne'): 'आत्मालाई आत्माद्वारा',
+            ('13.24', 'hi'): 'आत्मा को आत्मा द्वारा',
+            ('13.25', 'en'): 'thus',
+            ('13.34', 'en'): 'liberation of beings from prakṛti',
+            ('13.34', 'ne'): 'प्राणीहरूको प्रकृतिबाट मुक्ति',
+            ('13.34', 'hi'): 'प्राणियों की प्रकृति से मुक्ति',
+        }
+        for (number, language), phrase in expected.items():
+            with self.subTest(verse=number, language=language):
+                self.assertIn(phrase, verse(number)['lits'][language])
+        self.assertEqual(row(verse('13.30'), 'ततः')[2], 'from that')
+        self.assertEqual(row(verse('13.30'), 'तदा')[2], 'then')
+        self.assertEqual(row(verse('11.46'), 'भव')[3:], ['हुनुहोस्', 'हों'])
+        self.assertEqual(row(verse('4.04'), 'भवतः')[4], 'आपका')
+        self.assertEqual(row(verse('4.04'), 'त्वम्')[4], 'आप')
+        self.assertIn('आपने', verse('4.04')['lits']['hi'])
+        self.assertEqual(row(verse('12.03'), 'कूटस्थम्')[3:],
+                         ['अपरिवर्तनीय', 'अपरिवर्तनीय'])
+
+    def test_repeated_speed_and_flame_have_their_own_actors(self):
+        v = verse('11.29')
+        for lang, phrase in (('en', 'with full speed'), ('ne', 'पूरै वेगले'),
+                             ('hi', 'पूरे वेग से')):
+            self.assertEqual(v['lits'][lang].count(phrase), 2)
+        v = verse('11.30')
+        self.assertIn('your terrible rays blaze', v['lits']['en'])
+        self.assertIn('Arjuna said:', verse('11.15')['lits']['en'])
+        self.assertIn('Arjuna said:', verse('11.36')['lits']['en'])
+
     def test_cross_verse_absolutives_remain_dependent(self):
         for n, word, following in (('1.20', 'उद्यम्य', '1.21'),
                                    ('1.24', 'स्थापयित्वा', '1.25')):

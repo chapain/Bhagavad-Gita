@@ -18,9 +18,9 @@
 ## 1. Where we are (concise)
 
 - **Word-row/literal follow-up is in progress (2026-11-22).** This new pass has
-  read Chapters 1–8, 338/700 verses, including requested batch 1 (3–8).
-  Requested batches 2 (9–13) and 3 (14–18), **362 verses**, remain. Targeted
-  checks of 9.29 and 11.24 are not chapter reviews; whole-book screens are not
+  read Chapters 1–13, 523/700 verses, including batches 1 and 2 (3–13).
+  Batch 3 (14–18), **177 verses**, remains except targeted checks. Whole-book
+  screens are not
   a substitute for reading. Findings and limits, including the contextual
   resolution of 2.16 अन्तः, are in `docs/padachheda-literal-review-2026-11.md`.
   Leave 2.05 अर्थकामान् for Dhruba. The earlier literal follow-up is in
@@ -59,11 +59,12 @@
 
 - **Shell size:** 334,897 (Phase A–E) → 350,392 → 363,141 → 373,731 → **365,940 chars / 388,595 bytes / 105,978 gzip**, cap **375,000** — **9,060 chars of room**. The cap was the binding constraint (1,269 left) until 2026-11-04, when the floating suggestion listbox was withdrawn: it cost 7,852 characters and freed the room again. D1 (rich copy) and D2 (word peek) are what closed it; their long explanations live in `PROJECT.md`, not in the shipped shell. The cap moved twice on 2026-11-04 for real features (A5 + C3, then C2) and then stopped moving: measured, not assumed, the binding constraint is the 700-line module guard, not this number. **Shell headroom item is done (2026-11-04):** the search screen moved into `12-search.js` and free practice into `27-learn-free.js`, so `10-library.js` is 477 lines (was 677) and `20-learn.js` 589 (was 686). The reader got the same split on 2026-11-04 (eighth batch): the presentation half moved to `48-reader-view.js` (184 lines), so `50-reader.js` is 426 and the next tightest is `20-learn.js` (589). Still never lazy-load `45-data.js` (13,228 chars, changes boot order + SW precache for less than the trouble).
 
-- **Current build (2026-11-22):** `python3 build.py` passed — 164 Python tests,
+- **Current build (2026-11-22):** `python3 build.py` passed — 166 Python tests,
   **949 document assertions**, 560 site-health, 10 SEO, 9,658 study, 19
   migration/drill, 15 search, 700 theme-cards, backup and offline routing.
-  Playwright/Chromium were unavailable, so browser checks did not run here;
-  Pillow was missing, so share art was not repainted. Title audit reports 51
+  Playwright/Chromium were unavailable, so the browser suite (357 checks over
+  http, 348 over file://) did not run here; Pillow was missing, so share art
+  was not repainted. Title audit reports 51
   non-blocking advisories, including the contextual 2.01 flag documented in
   `docs/title-audit.md`.
 

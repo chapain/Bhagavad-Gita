@@ -9,15 +9,75 @@ review is in `semantic-audit.md`; the boundary review is in
 `padachheda-verse-review.md`. The latter was not a semantic certification of
 every unchanged gloss. The canonical data remains `source/ch<N>.json`.
 
-Read this pass: **Chapters 1–8 (338 verses)**, Sanskrit, four pādas,
-word rows and three literals, with the qualifications below. This completes
-the reading of requested batch 1 (3–8), subject to the checks recorded below.
-Targeted checks of 9.29 and 11.24 are not chapter reviews. Requested batches
-2 (9–13) and 3 (14–18), **362 verses**, remain to be read. The 2.05
+Read this pass: **Chapters 1–13 (523 verses)**, Sanskrit, four pādas,
+word rows and three literals, with the qualifications below. Requested batches
+1 (3–8) and 2 (9–13) have been read; batch 3 (14–18), **177 verses**,
+remains unread in this renewed pass except for targeted checks. The 2.05
 अर्थकामान् interpretation is reserved for Dhruba: **no part of 2.05 was edited**.
 The whole-book screens below are targeted checks, not a substitute for reading
 those verses. Literal and word glosses need not share the same surface words;
 idiom, inflection and compound composition are not automatic defects.
+
+## Batch 2: Chapters 9–13 (2026-11-22)
+
+Read all 185 verses against their word rows and the three literals; corrections
+are in canonical source, not a claim of perfect translations. The changes are:
+
+- **9.02, 9.06, 9.09, 9.12, 9.15, 9.20, 9.25:** purifier; wind always
+  situated in space; indifference; deluding nature; distinct worship modes;
+  the holy world of Indra and the gods' pleasures; “also”.
+- **10.01, 10.06, 10.11, 10.12, 10.28, 10.29, 10.40:** future “shall
+  speak”; मद्भावाः “of my nature” distinguished from मानसाः “born of my
+  mind”; shining lamp; purifier; Kandarpa as procreator; Ananta and aquatic
+  beings; the summary declared by me. At 10.06 the established grouping of
+  four Manus was retained: readings differ, so this pass did not resolve it.
+- **11.05, 11.10, 11.13, 11.15, 11.18–19, 11.29–30, 11.33–36, 11.42,
+  11.45, 11.49, 11.52–53:** divine colours/shapes and weapons; the universe
+  together in one place; speaker and beings; eternal dharma and Person;
+  flaming mouths; full speed in both sides of the comparison and the rays'
+  blazing; imperative “be”; no invented second strike; fear; speaker; jest;
+  abode of the universe and demonstrative form; “this very form” rather than
+  an added “gracious”; Hindi “my”; and no unsupported exclusivity in 11.53.
+- **12.03, 12.05, 12.20:** distinguish unchanging from immovable; retain
+  the unmanifest goal; do not attach immortal to धर्म्य rather than अमृतम्.
+- **13.06, 13.09, 13.15–17, 13.24–25, 13.30, 13.34:** declared; “and the
+  like”; cannot be known; “to be known” rather than an imperative; “than
+  darkness”; self as instrument rather than supplied mind; “thus”; ततः “from
+  that” distinct from तदा “then”; and the liberation **of beings** from
+  prakṛti, with एवम् and विदुः retained. The last compound admits other
+  readings, including nature as the cause of beings; this chooses an attested
+  interpretation without claiming a unique resolution. See
+  https://ocoy.org/dharma-for-christians/sacred-texts/bhagavad-gita/bhagavad-gita-chapter-thirteen-yoga-distinction-field-knower-field/
+  and https://gitajourney.com/category/13-34/.
+
+Respectful address: Arjuna's rows were aligned to the established respectful
+register in 1.03, 3.01, 4.04, 6.33, 11.01–11.46, 11.51, 12.01 and 18.73
+where applicable; 4.04 Hindi literal also uses आप. 11.46 भव is an honorific
+imperative. Kṛṣṇa's address to Arjuna is not changed. The 11.44 reference
+snapshot is amended only for the Hindi object pronoun. A whole-book speaker-
+state screen for the exact त्वम्/त्वाम्/त्वया/त्वत्तः/तव/ते forms in Arjuna's
+speeches inspected 57 rows and found 4.04 as one additional informal lead;
+other forms, quotations and mixed speakers need separate review.
+
+Whole-book exact-row screens: 63 उवाच occurrences were checked by a literal
+speaker/verb candidate search across all three languages; its one remaining
+lead, 2.10 English, uses “spoke” and is not an omission. The two occurrences
+of समृद्धवेगाः are both in 11.29; the only प्रतपन्ति is in 11.30. This is
+not a general search for all omitted verbs. There are eight exact आत्मना
+rows; the 13.24 change does not license replacing the contextual senses at
+other occurrences. The word-to-literal token census moved 982 to 961; its
+inflections, synonyms and compounds are noisy leads, not semantic proof. The
+new targeted regressions pin the most consequential changes, including both
+speeds and 13.30's distinct ततः/तदा.
+
+**Decisions and follow-up:** 9.31 प्रतिजानीहि can be translated “declare”
+or “know for certain”; retained the existing latter reading pending editorial
+choice. 10.01 प्रीयमाणाय remains “dear”; other interpretations exist. The
+paraphrases were not generally revised in this word-row/literal pass: 10.28
+still says “among procreators”, 13.24 English says “selfless action”, and
+11.26 anticipates the next verse. These are visible candidates for the owner or
+an explicitly scoped paraphrase review, not evidence that those lanes were
+resolved here. Previously recorded deliberate holds, including 2.05, stand.
 
 ## Findings
 

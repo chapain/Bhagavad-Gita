@@ -141,7 +141,7 @@
                       "tvayā",
                       "by you",
                       "तपाईंद्वारा",
-                      "तुमसे"
+                      "आपसे"
                     ],
                     [
                       "उक्तम्",
@@ -312,7 +312,7 @@
                       "tvattaḥ",
                       "from you",
                       "तपाईंबाट",
-                      "तुझसे"
+                      "आपसे"
                     ],
                     [
                       "कमलपत्राक्ष",
@@ -424,7 +424,7 @@
                       "आत्थ",
                       "āttha",
                       "you have said",
-                      "भन्यौ",
+                      "भन्नुभयो",
                       "कहा"
                     ],
                     [
@@ -432,7 +432,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ]
                   ]
                 },
@@ -483,7 +483,7 @@
                       "te",
                       "your",
                       "तपाईंको",
-                      "तुम्हारा"
+                      "आपका"
                     ],
                     [
                       "रूपम्",
@@ -560,8 +560,8 @@
                       "मन्यसे",
                       "manyase",
                       "you think",
-                      "सोच्छौ",
-                      "सोचते हो"
+                      "सोच्नुहुन्छ",
+                      "सोचते हैं"
                     ],
                     [
                       "यदि",
@@ -654,7 +654,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ]
                   ]
                 },
@@ -668,8 +668,8 @@
                       "दर्शय",
                       "darśaya",
                       "show",
-                      "देखाऊ",
-                      "दिखा"
+                      "देखाउनुहोस्",
+                      "दिखाइए"
                     ],
                     [
                       "आत्मानम्",
@@ -868,9 +868,9 @@
                 }
               ],
               "lits": {
-                "en": "The Blessed Lord said: Behold, O Pārtha, my forms by the hundred and thousand, of various kinds and colors.",
-                "ne": "श्रीभगवान्ले भन्नुभयो: हे पार्थ, हेर — मेरा सयौं र हजारौं रूपहरू, विभिन्न प्रकारका र विभिन्न रङ्गका।",
-                "hi": "श्री भगवान् ने कहा: हे पार्थ, देख — मेरे सैकड़ों और हज़ारों रूप, अनेक प्रकार के और अनेक रंगों वाले।"
+                "en": "The Blessed Lord said: Behold, O Pārtha, my divine forms by the hundred and thousand, of various kinds, colors and shapes.",
+                "ne": "श्रीभगवान्ले भन्नुभयो: हे पार्थ, हेर — मेरा सयौं र हजारौं दिव्य रूपहरू, विभिन्न प्रकार, रङ्ग र आकारका।",
+                "hi": "श्री भगवान् ने कहा: हे पार्थ, देख — मेरे सैकड़ों और हज़ारों दिव्य रूप, अनेक प्रकार, रंग और आकार वाले।"
               },
               "paras": {
                 "en": "Kṛṣṇa said: “See now, Arjuna, my hundreds and thousands of forms — of many kinds and many colors.”",
@@ -1640,9 +1640,9 @@
                 }
               ],
               "lits": {
-                "en": "With countless faces and eyes, with countless wondrous sights, with countless divine ornaments and uplifted weapons,",
-                "ne": "असंख्य मुख र आँखाहरू, असंख्य आश्चर्यमय दृश्यहरू, असंख्य दिव्य आभूषणहरू र उठाइएका हतियारहरूसहित,",
-                "hi": "असंख्य मुख और नेत्र, असंख्य आश्चर्यमय दृश्य, असंख्य दिव्य आभूषण और उठाए हुए अस्त्र-शस्त्र सहित,"
+                "en": "With countless faces and eyes, with countless wondrous sights, with countless divine ornaments and uplifted divine weapons,",
+                "ne": "असंख्य मुख र आँखाहरू, असंख्य आश्चर्यमय दृश्यहरू, असंख्य दिव्य आभूषणहरू र उठाइएका दिव्य हतियारहरूसहित,",
+                "hi": "असंख्य मुख और नेत्र, असंख्य आश्चर्यमय दृश्य, असंख्य दिव्य आभूषण और उठाए हुए दिव्य अस्त्र-शस्त्र सहित,"
               },
               "paras": {
                 "en": "“— with innumerable faces and eyes, marvels beyond count, celestial ornaments, and weapons raised on every side —”",
@@ -2048,9 +2048,9 @@
                 }
               ],
               "lits": {
-                "en": "There, in the body of the God of gods, the son of Pāṇḍu saw the whole universe, one yet divided into manifold forms.",
-                "ne": "त्यहाँ, देवताका देवताको शरीरमा, पाण्डुपुत्रले सम्पूर्ण ब्रह्माण्डलाई — एक तर अनन्त रूपमा विभाजित — देखे।",
-                "hi": "वहाँ, देवों के देव के शरीर में, पाण्डुपुत्र ने सम्पूर्ण ब्रह्माण्ड को — एक किन्तु अनन्त रूपों में विभाजित — देखा।"
+                "en": "There, in the body of the God of gods, the son of Pāṇḍu then saw the whole universe, gathered in one place yet divided in many ways.",
+                "ne": "त्यहाँ, देवताका देवताको शरीरमा, पाण्डुपुत्रले तब सम्पूर्ण ब्रह्माण्डलाई — एकै ठाउँमा स्थित तर अनेक तरिकाले विभाजित — देखे।",
+                "hi": "वहाँ, देवों के देव के शरीर में, पाण्डुपुत्र ने तब सम्पूर्ण ब्रह्माण्ड को — एक स्थान में स्थित किन्तु अनेक प्रकार से विभाजित — देखा।"
               },
               "paras": {
                 "en": "“There Arjuna saw the entire universe — united yet infinitely varied — within the body of the God of gods.”",
@@ -2277,7 +2277,7 @@
                       "tava",
                       "your",
                       "तपाईंको",
-                      "तुम्हारा"
+                      "आपका"
                     ],
                     [
                       "देव",
@@ -2405,9 +2405,9 @@
                 }
               ],
               "lits": {
-                "en": "I see all the gods in your body, O God, and all the hosts of beings; Brahmā the Lord seated on the lotus, and all the seers and divine serpents.",
-                "ne": "हे देवता, म तपाईंको शरीरमा सबै देवता र प्राणीहरूका समूहहरू देख्छु; कमलमा बसेका ब्रह्मा, र सबै ऋषि र दिव्य सर्पहरू देख्छु।",
-                "hi": "हे देव, मैं आपके शरीर में सब देवों और प्राणियों के समूहों को देखता हूँ; कमल पर बैठे ब्रह्मा को, और सब मुनियों और दिव्य सर्पों को देखता हूँ।"
+                "en": "Arjuna said: I see all the gods in your body, O God, and the hosts of various beings; Brahmā the Lord seated on the lotus, and all the seers and divine serpents.",
+                "ne": "अर्जुनले भने: हे देवता, म तपाईंको शरीरमा सबै देवता र विविध प्राणीहरूका समूहहरू देख्छु; कमलमा बसेका प्रभु ब्रह्मा, र सबै ऋषि र दिव्य सर्पहरू देख्छु।",
+                "hi": "अर्जुन ने कहा: हे देव, मैं आपके शरीर में सब देवों और विविध प्राणियों के समूहों को देखता हूँ; कमल पर बैठे प्रभु ब्रह्मा को, और सब ऋषियों और दिव्य सर्पों को देखता हूँ।"
               },
               "paras": {
                 "en": "“In your body I see all the gods and every class of being — Brahmā on his lotus throne, the sages, and the celestial serpents.”",
@@ -2470,7 +2470,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "सर्वतः",
@@ -2541,7 +2541,7 @@
                       "tava",
                       "your",
                       "तपाईंको",
-                      "तुम्हारा"
+                      "आपका"
                     ],
                     [
                       "आदिम्",
@@ -2698,7 +2698,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "दुर्निरीक्ष्यम्",
@@ -2783,7 +2783,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "अक्षरम्",
@@ -2819,7 +2819,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "अस्य",
@@ -2862,7 +2862,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "अव्ययः",
@@ -2898,7 +2898,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "पुरुषः",
@@ -2925,9 +2925,9 @@
                 }
               ],
               "lits": {
-                "en": "You are the imperishable, the supreme object of knowledge; you are the supreme refuge of this universe; you are the eternal guardian of dharma — the primal Person, so I deem you.",
-                "ne": "तपाईं अविनाशी, जान्नुपर्ने परम वस्तु हुनुहुन्छ; तपाईं यस ब्रह्माण्डको परम आश्रय हुनुहुन्छ; तपाईं धर्मका शाश्वत रक्षक — आदि पुरुष, म यसरी तपाईंलाई ठान्छु।",
-                "hi": "आप अविनाशी, जानने योग्य परम वस्तु हैं; आप इस ब्रह्माण्ड के परम आश्रय हैं; आप धर्म के शाश्वत रक्षक — आदि पुरुष हैं, मैं ऐसा आपको मानता हूँ।"
+                "en": "You are the imperishable, the supreme object of knowledge; you are the supreme refuge of this universe; you are the inexhaustible guardian of eternal dharma — the eternal Person, so I deem you.",
+                "ne": "तपाईं अविनाशी, जान्नुपर्ने परम वस्तु हुनुहुन्छ; तपाईं यस ब्रह्माण्डको परम आश्रय हुनुहुन्छ; तपाईं अव्यय, शाश्वत धर्मका रक्षक — सनातन पुरुष, म यसरी तपाईंलाई ठान्छु।",
+                "hi": "आप अविनाशी, जानने योग्य परम वस्तु हैं; आप इस ब्रह्माण्ड के परम आश्रय हैं; आप अव्यय, शाश्वत धर्म के रक्षक — सनातन पुरुष हैं, मैं ऐसा आपको मानता हूँ।"
               },
               "paras": {
                 "en": "“You are the eternal, the highest to be known; you are the universe's supreme treasure, the changeless guardian of dharma — the original Person.”",
@@ -3019,7 +3019,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "दीप्तहुताशवक्त्रम्",
@@ -3069,8 +3069,8 @@
               ],
               "lits": {
                 "en": "Without beginning, middle or end, of infinite power, with countless arms, with sun and moon for eyes — I see you blazing with fire-like mouths, scorching the whole world with your radiance.",
-                "ne": "आदि, मध्य र अन्त्यरहित, अनन्त शक्ति भएको, असंख्य बाहु भएको, सूर्य-चन्द्र आँखा भएको — म तपाईंलाई आगोजस्तै मुखले, आफ्नो तेजले सम्पूर्ण संसार पोलिरहेको देख्छु।",
-                "hi": "आदि, मध्य और अन्त से रहित, अनन्त शक्ति वाले, असंख्य बाहुओं वाले, सूर्य-चन्द्र नेत्रों वाले — मैं आपको अग्नि-जैसे मुखों से, अपने तेज से सम्पूर्ण जगत् को जलाते देखता हूँ।"
+                "ne": "आदि, मध्य र अन्त्यरहित, अनन्त शक्ति भएको, असंख्य बाहु भएको, सूर्य-चन्द्र आँखा भएको — म तपाईंलाई बलेको आगोजस्तै मुख भएको, आफ्नो तेजले सम्पूर्ण संसार पोलिरहेको देख्छु।",
+                "hi": "आदि, मध्य और अन्त से रहित, अनन्त शक्ति वाले, असंख्य बाहुओं वाले, सूर्य-चन्द्र नेत्रों वाले — मैं आपको जलती अग्नि-जैसे मुखों वाला, अपने तेज से सम्पूर्ण जगत् को जलाते देखता हूँ।"
               },
               "paras": {
                 "en": "“Without beginning or end, infinite in might, countless-armed, sun-and-moon-eyed — I see you, fire-mouthed, burning up the world with your brilliance.”",
@@ -3154,7 +3154,7 @@
                       "tvayā",
                       "by you",
                       "तपाईंद्वारा",
-                      "तुमसे"
+                      "आपसे"
                     ],
                     [
                       "एकेन",
@@ -3225,7 +3225,7 @@
                       "tava",
                       "your",
                       "तपाईंको",
-                      "तुम्हारा"
+                      "आपका"
                     ],
                     [
                       "इदम्",
@@ -3339,7 +3339,7 @@
                       "tvām",
                       "into you",
                       "तपाईंमा",
-                      "तुममें"
+                      "आपमें"
                     ],
                     [
                       "सुरसंघाः",
@@ -3447,7 +3447,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "स्तुतिभिः",
@@ -3625,7 +3625,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "विस्मिताः",
@@ -3715,8 +3715,8 @@
                       "ते",
                       "te",
                       "your",
-                      "तिम्रो",
-                      "तुम्हारा"
+                      "तपाईंको",
+                      "आपका"
                     ],
                     [
                       "बहुवक्त्रनेत्रम्",
@@ -3924,7 +3924,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "प्रव्यथितान्तरात्मा",
@@ -4043,8 +4043,8 @@
                       "ते",
                       "te",
                       "your",
-                      "तिम्रो",
-                      "तुम्हारा"
+                      "तपाईंको",
+                      "आपका"
                     ],
                     [
                       "मुखानि",
@@ -4152,7 +4152,7 @@
                       "prasīda",
                       "be gracious",
                       "कृपा गर्नुहोस्",
-                      "कृपा करो"
+                      "कृपा कीजिए"
                     ],
                     [
                       "देवेश",
@@ -4243,8 +4243,8 @@
                       "त्वाम्",
                       "tvām",
                       "you",
-                      "तपाईंमा",
-                      "तुममें"
+                      "तपाईंलाई",
+                      "आपको"
                     ],
                     [
                       "धृतराष्ट्रस्य",
@@ -4428,8 +4428,8 @@
                       "ते",
                       "te",
                       "your",
-                      "तिम्रो",
-                      "तुम्हारा"
+                      "तपाईंको",
+                      "आपका"
                     ],
                     [
                       "त्वरमाणाः",
@@ -4650,8 +4650,8 @@
                       "तव",
                       "tava",
                       "your",
-                      "तिम्रो",
-                      "तुम्हारा"
+                      "तपाईंको",
+                      "आपका"
                     ],
                     [
                       "अमी",
@@ -4850,8 +4850,8 @@
                       "तव",
                       "tava",
                       "your",
-                      "तिम्रो",
-                      "तुम्हारा"
+                      "तपाईंको",
+                      "आपका"
                     ],
                     [
                       "अपि",
@@ -4878,9 +4878,9 @@
                 }
               ],
               "lits": {
-                "en": "As moths fly with full speed into a blazing fire for their destruction, so these worlds fly into your mouths for their destruction.",
-                "ne": "जसरी पुतलीहरू आफ्नो विनाशका निम्ति पूरै वेगले बलेको आगोमा उड्छन्, त्यसरी नै यी लोकहरू आफ्नो विनाशका निम्ति तपाईंका मुखहरूमा उड्छन्।",
-                "hi": "जैसे पतंगे अपने विनाश के लिए पूरे वेग से जलती अग्नि में उड़ते हैं, वैसे ही ये लोक अपने विनाश के लिए आपके मुखों में उड़ते हैं।"
+                "en": "As moths fly with full speed into a blazing fire for their destruction, so these worlds fly with full speed into your mouths for their destruction.",
+                "ne": "जसरी पुतलीहरू आफ्नो विनाशका निम्ति पूरै वेगले बलेको आगोमा उड्छन्, त्यसरी नै यी लोकहरू पनि आफ्नो विनाशका निम्ति पूरै वेगले तपाईंका मुखहरूमा उड्छन्।",
+                "hi": "जैसे पतंगे अपने विनाश के लिए पूरे वेग से जलती अग्नि में उड़ते हैं, वैसे ही ये लोक भी अपने विनाश के लिए पूरे वेग से आपके मुखों में उड़ते हैं।"
               },
               "paras": {
                 "en": "“As moths hurl themselves into the flame to perish, so these worlds rush into your mouths to be destroyed.”",
@@ -5028,8 +5028,8 @@
                       "तव",
                       "tava",
                       "your",
-                      "तिम्रो",
-                      "तुम्हारा"
+                      "तपाईंको",
+                      "आपका"
                     ],
                     [
                       "उग्राः",
@@ -5056,9 +5056,9 @@
                 }
               ],
               "lits": {
-                "en": "You lick up all the worlds with your flaming mouths, devouring them on every side; your terrible rays fill the whole universe, O Viṣṇu.",
-                "ne": "तपाईं आफ्ना बलेका मुखहरूले सबै लोकलाई चाट्नुहुन्छ, चारैतिरबाट निल्नुहुन्छ; तपाईंका भयानक किरणहरूले सम्पूर्ण ब्रह्माण्ड भरिन्छ, हे विष्णु।",
-                "hi": "आप अपने जलते मुखों से सब लोकों को चाटते हैं, चारों ओर से निगलते हैं; आपकी भयंकर किरणें सम्पूर्ण ब्रह्माण्ड को भर देती हैं, हे विष्णु।"
+                "en": "You lick up all the worlds with your flaming mouths, devouring them on every side; your terrible rays blaze, filling the whole universe with radiance, O Viṣṇu.",
+                "ne": "तपाईं आफ्ना बलेका मुखहरूले सबै लोकलाई चाट्नुहुन्छ, चारैतिरबाट निल्नुहुन्छ; हे विष्णु, तपाईंका भयानक किरणहरू तेजले सम्पूर्ण ब्रह्माण्ड भरेर बल्छन्।",
+                "hi": "आप अपने जलते मुखों से सब लोकों को चाटते हैं, चारों ओर से निगलते हैं; हे विष्णु, आपकी भयंकर किरणें तेज से सम्पूर्ण ब्रह्माण्ड को भरकर जलती हैं।"
               },
               "paras": {
                 "en": "“You lap up the worlds with your burning jaws, swallowing them wholly; your fierce glory fills the universe, O Viṣṇu.”",
@@ -5113,8 +5113,8 @@
                       "आख्याहि",
                       "ākhyāhi",
                       "tell",
-                      "भन",
-                      "कह"
+                      "भन्नुहोस्",
+                      "कहिए"
                     ],
                     [
                       "मे",
@@ -5171,7 +5171,7 @@
                       "te",
                       "to you",
                       "तपाईंलाई",
-                      "तुझे"
+                      "आपको"
                     ],
                     [
                       "देववर",
@@ -5185,7 +5185,7 @@
                       "prasīda",
                       "be gracious",
                       "कृपा गर्नुहोस्",
-                      "कृपा करो"
+                      "कृपा कीजिए"
                     ]
                   ]
                 },
@@ -5257,7 +5257,7 @@
                       "tava",
                       "your",
                       "तपाईंको",
-                      "तुम्हारा"
+                      "आपका"
                     ],
                     [
                       "प्रवृत्तिम्",
@@ -5683,8 +5683,8 @@
               ],
               "lits": {
                 "en": "Therefore arise and win glory; conquer your enemies and enjoy the thriving kingdom — they are already slain by me; be only the instrument, O Sāvyasācin.",
-                "ne": "त्यसैले उठ र कीर्ति जित; शत्रुहरूलाई जित र फस्टाउँदो राज्यको भोग गर — तिनीहरू मैले नै मारिसकेको छु; हे सव्यसाची, तिमी त निमित्त मात्र हौ।",
-                "hi": "इसलिए उठ और कीर्ति जीत; शत्रुओं को जीत और फलते-फूलते राज्य का भोग कर — वे मेरे द्वारा पहले ही मारे जा चुके हैं; हे सव्यसाची, तू केवल साधन है।"
+                "ne": "त्यसैले उठ र कीर्ति जित; शत्रुहरूलाई जित र फस्टाउँदो राज्यको भोग गर — तिनीहरू मैले नै मारिसकेको छु; हे सव्यसाची, तिमी निमित्त मात्र बन।",
+                "hi": "इसलिए उठ और कीर्ति जीत; शत्रुओं को जीत और फलते-फूलते राज्य का भोग कर — वे मेरे द्वारा पहले ही मारे जा चुके हैं; हे सव्यसाची, तू केवल साधन बन।"
               },
               "paras": {
                 "en": "“So stand up and win renown; defeat the foe and enjoy the flourishing realm. I have already killed them — you are merely the means, Arjuna.”",
@@ -5895,9 +5895,9 @@
                 }
               ],
               "lits": {
-                "en": "Slay Droṇa, Bhīṣma, Jayadratha, Karṇa and the other warrior-heroes — already killed by me; strike without fear, fight — you shall conquer your rivals in battle.",
-                "ne": "द्रोण, भीष्म, जयद्रथ, कर्ण र अरू वीर-योद्धाहरूलाई मार — जसलाई मैले पहिल्यै मारिसकेको छु; नडराइकन प्रहार गर, लड — तिमी युद्धमा आफ्ना प्रतिद्वन्द्वीहरूलाई जित्नेछौ।",
-                "hi": "द्रोण, भीष्म, जयद्रथ, कर्ण और अन्य वीर-योद्धाओं को मार — जिन्हें मैंने पहले ही मार दिया है; बिना भय के प्रहार कर, युद्ध कर — तू रण में अपने प्रतिद्वंद्वियों को जीतेगा।"
+                "en": "Slay Droṇa, Bhīṣma, Jayadratha, Karṇa and the other warrior-heroes — already killed by me; do not be distressed, fight — you shall conquer your rivals in battle.",
+                "ne": "द्रोण, भीष्म, जयद्रथ, कर्ण र अरू वीर-योद्धाहरूलाई मार — जसलाई मैले पहिल्यै मारिसकेको छु; व्यथित नहोऊ, लड — तिमी युद्धमा आफ्ना प्रतिद्वन्द्वीहरूलाई जित्नेछौ।",
+                "hi": "द्रोण, भीष्म, जयद्रथ, कर्ण और अन्य वीर-योद्धाओं को मार — जिन्हें मैंने पहले ही मार दिया है; व्यथित मत हो, युद्ध कर — तू रण में अपने प्रतिद्वंद्वियों को जीतेगा।"
               },
               "paras": {
                 "en": "“Kill Droṇa, Bhīṣma, Jayadratha, and Karṇa — I have already destroyed them. Strike without hesitation and fight; you will triumph in battle.”",
@@ -6102,9 +6102,9 @@
                 }
               ],
               "lits": {
-                "en": "Sañjaya said: Hearing these words of Keśava, the crowned Arjuna, trembling, folded his palms and, bowing again, spoke to Kṛṣṇa with faltering voice.",
-                "ne": "सञ्जयले भने: केशवका यी वचन सुनेर, मुकुटधारी अर्जुन, काँप्दै, हात जोडेर, फेरि झुकेर, अवरुद्ध स्वरमा कृष्णलाई भने।",
-                "hi": "संजय ने कहा: केशव के ये वचन सुनकर, मुकुट-धारी अर्जुन, काँपते हुए, हाथ जोड़कर, फिर झुककर, रुके हुए स्वर में कृष्ण से बोला।"
+                "en": "Sañjaya said: Hearing these words of Keśava, the crowned Arjuna, trembling and greatly afraid, folded his palms and, bowing again, spoke to Kṛṣṇa with faltering voice.",
+                "ne": "सञ्जयले भने: केशवका यी वचन सुनेर, मुकुटधारी अर्जुन, काँप्दै र धेरै डराएर, हात जोडेर, फेरि झुकेर, अवरुद्ध स्वरमा कृष्णलाई भने।",
+                "hi": "संजय ने कहा: केशव के ये वचन सुनकर, मुकुट-धारी अर्जुन, काँपते और बहुत डरते हुए, हाथ जोड़कर, फिर झुककर, रुके हुए स्वर में कृष्ण से बोला।"
               },
               "paras": {
                 "en": "Sañjaya narrates: “Hearing Kṛṣṇa's words, Arjuna, shaking, joined his palms, bowed once more, and spoke in a stammering voice.”",
@@ -6180,7 +6180,7 @@
                       "tava",
                       "your",
                       "तपाईंको",
-                      "तुम्हारा"
+                      "आपका"
                     ],
                     [
                       "प्रकीर्त्या",
@@ -6301,9 +6301,9 @@
                 }
               ],
               "lits": {
-                "en": "It is fitting, Hṛṣīkeśa, that the world rejoices and delights in your glory; the rākṣasas flee in fear in all directions, and the hosts of siddhas bow to you.",
-                "ne": "हे हृषीकेश, संसार तपाईंको महिमामा रम्छ र आनन्दित हुन्छ भनी उचित नै हो; राक्षसहरू डरले चारै दिशामा भाग्छन्, र सिद्धहरूका समूहहरू तपाईंलाई नमस्कार गर्छन्।",
-                "hi": "हे हृषीकेश, उचित ही है कि संसार आपके वैभव में प्रसन्न और आनन्दित हो; राक्षस भय से चारों दिशाओं में भागते हैं, और सिद्धों के समूह आपको प्रणाम करते हैं।"
+                "en": "Arjuna said: It is fitting, Hṛṣīkeśa, that the world rejoices and delights in your glory; the rākṣasas flee in fear in all directions, and the hosts of siddhas bow to you.",
+                "ne": "अर्जुनले भने: हे हृषीकेश, संसार तपाईंको महिमामा रम्छ र आनन्दित हुन्छ भनी उचित नै हो; राक्षसहरू डरले चारै दिशामा भाग्छन्, र सिद्धहरूका समूहहरू तपाईंलाई नमस्कार गर्छन्।",
+                "hi": "अर्जुन ने कहा: हे हृषीकेश, उचित ही है कि संसार आपके वैभव में प्रसन्न और आनन्दित हो; राक्षस भय से चारों दिशाओं में भागते हैं, और सिद्धों के समूह आपको प्रणाम करते हैं।"
               },
               "paras": {
                 "en": "“Rightly, O Kṛṣṇa, the world delights in praising you; the demons flee in terror, and the perfected ones bow to you.”",
@@ -6358,7 +6358,7 @@
                       "te",
                       "to you",
                       "तपाईंलाई",
-                      "तुझे"
+                      "आपको"
                     ],
                     [
                       "न",
@@ -6459,7 +6459,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "अक्षरम्",
@@ -6550,7 +6550,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "आदिदेवः",
@@ -6586,7 +6586,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "अस्य",
@@ -6686,7 +6686,7 @@
                       "tvayā",
                       "by you",
                       "तपाईंद्वारा",
-                      "तुमसे"
+                      "आपसे"
                     ],
                     [
                       "ततम्",
@@ -6806,7 +6806,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "प्रपितामहः",
@@ -6849,7 +6849,7 @@
                       "te",
                       "to you",
                       "तपाईंलाई",
-                      "तुझे"
+                      "आपको"
                     ],
                     [
                       "अस्तु",
@@ -6920,7 +6920,7 @@
                       "te",
                       "to you",
                       "तपाईंलाई",
-                      "तुझे"
+                      "आपको"
                     ]
                   ]
                 }
@@ -6997,7 +6997,7 @@
                       "te",
                       "to you",
                       "तपाईंलाई",
-                      "तुझे"
+                      "आपको"
                     ]
                   ]
                 },
@@ -7026,7 +7026,7 @@
                       "te",
                       "to you",
                       "तपाईंलाई",
-                      "तुझे"
+                      "आपको"
                     ],
                     [
                       "सर्वतः",
@@ -7076,7 +7076,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ]
                   ]
                 },
@@ -7303,8 +7303,8 @@
                       "तव",
                       "tava",
                       "your",
-                      "तिम्रो",
-                      "तुम्हारा"
+                      "तपाईंको",
+                      "आपका"
                     ],
                     [
                       "इदम्",
@@ -7539,7 +7539,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "अहम्",
@@ -7559,9 +7559,9 @@
                 }
               ],
               "lits": {
-                "en": "and whatever disrespect I showed you in sport, rest, sitting or at meals, alone or before others, O Acyuta — that I beg you to forgive, O immeasurable one.",
-                "ne": "र खेलमा, विश्राममा, बस्दा वा भोजनमा, एक्लै वा अरूको अगाडि तपाईंप्रति जे-जे अनादर भयो — हे अच्युत, हे अप्रमेय, त्यो सबै क्षमा गर्नुहोस्।",
-                "hi": "और खेल में, विश्राम में, बैठते या भोजन करते समय, अकेले या दूसरों के सामने आपके प्रति जो-जो अनादर किया — हे अच्युत, हे अप्रमेय, वह सब क्षमा कीजिए।"
+                "en": "and whatever disrespect I showed you for the sake of jest in sport, rest, sitting or at meals, alone or before others, O Acyuta — that I beg you to forgive, O immeasurable one.",
+                "ne": "र खेलमा, विश्राममा, बस्दा वा भोजनमा, एक्लै वा अरूको अगाडि मजाकका निम्ति तपाईंप्रति जे-जे अनादर भयो — हे अच्युत, हे अप्रमेय, त्यो सबै क्षमा गर्नुहोस्।",
+                "hi": "और खेल में, विश्राम में, बैठते या भोजन करते समय, अकेले या दूसरों के सामने मज़ाक के लिए आपके प्रति जो-जो अनादर किया — हे अच्युत, हे अप्रमेय, वह सब क्षमा कीजिए।"
               },
               "paras": {
                 "en": "“— and however I slighted you in play, in rest, at meals, alone or in company — forgive all that, O changeless, measureless Lord.”",
@@ -7638,7 +7638,7 @@
                       "tvam",
                       "you",
                       "तपाईं",
-                      "तुम"
+                      "आप"
                     ],
                     [
                       "अस्य",
@@ -7695,7 +7695,7 @@
                       "tvatsamaḥ",
                       "equal to you",
                       "तपाईंसरह",
-                      "तेरे समान"
+                      "आपके समान"
                     ],
                     [
                       "अस्ति",
@@ -7844,7 +7844,7 @@
                       "tvām",
                       "of you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "अहम्",
@@ -8121,8 +8121,8 @@
                       "दर्शय",
                       "darśaya",
                       "show",
-                      "देखाऊ",
-                      "दिखा"
+                      "देखाउनुहोस्",
+                      "दिखाइए"
                     ],
                     [
                       "देव",
@@ -8151,7 +8151,7 @@
                       "prasīda",
                       "be gracious",
                       "कृपा गर्नुहोस्",
-                      "कृपा करो"
+                      "कृपा कीजिए"
                     ],
                     [
                       "देवेश",
@@ -8171,9 +8171,9 @@
                 }
               ],
               "lits": {
-                "en": "Having seen what I never saw before, I am delighted, yet my mind trembles with fear; show me, O God, your gracious form — be merciful, O Lord of gods, O Lord of the universe.",
-                "ne": "पहिले कहिल्यै नदेखेको यो देखेर म प्रसन्न छु, तैपनि मेरो मन डरले काँप्छ; हे देवता, तपाईंको मनोहर रूप देखाउनुहोस् — हे देवेश, हे जगन्निवास, कृपा गर्नुहोस्।",
-                "hi": "पहले कभी न देखा यह देखकर मैं प्रसन्न हूँ, फिर भी मेरा मन भय से काँपता है; हे देव, अपना मनोहर रूप दिखाइए — हे देवेश, हे जगन्निवास, कृपा कीजिए।"
+                "en": "Having seen what I never saw before, I am delighted, yet my mind trembles with fear; show me, O God, that very form — be merciful, O Lord of gods, O abode of the universe.",
+                "ne": "पहिले कहिल्यै नदेखेको यो देखेर म प्रसन्न छु, तैपनि मेरो मन डरले काँप्छ; हे देवता, मलाई त्यही रूप देखाउनुहोस् — हे देवेश, हे जगन्निवास, कृपा गर्नुहोस्।",
+                "hi": "पहले कभी न देखा यह देखकर मैं प्रसन्न हूँ, फिर भी मेरा मन भय से काँपता है; हे देव, मुझे वही रूप दिखाइए — हे देवेश, हे जगन्निवास, कृपा कीजिए।"
               },
               "paras": {
                 "en": "“Having seen this wonder I rejoice, yet my heart quakes with fear; show me your gentle form, O Lord — have mercy.”",
@@ -8250,7 +8250,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "द्रष्टुम्",
@@ -8335,8 +8335,8 @@
                       "भव",
                       "bhava",
                       "be",
-                      "होऊ",
-                      "बनो"
+                      "हुनुहोस्",
+                      "हों"
                     ],
                     [
                       "विश्वमूर्ते",
@@ -8996,9 +8996,9 @@
                 }
               ],
               "lits": {
-                "en": "Do not be afraid or bewildered at the sight of this terrible form of mine; free from fear, with a glad heart, behold once more this gracious form of mine.",
-                "ne": "मेरो यो भयानक रूप देखेर नडराऊ, न अलमल; डर हटाएर, प्रसन्न हृदयले, मेरो यो मनोहर रूप फेरि हेर।",
-                "hi": "मेरे इस भयंकर रूप को देखकर न डर, न मोहित हो; भय हटाकर, प्रसन्न हृदय से, मेरा यह मनोहर रूप फिर देख।"
+                "en": "Do not be afraid or bewildered at the sight of this terrible form of mine; free from fear, with a glad heart, behold once more this very form of mine.",
+                "ne": "मेरो यो भयानक रूप देखेर नडराऊ, न अलमल; डर हटाएर, प्रसन्न हृदयले, मेरो यो त्यही रूप फेरि हेर।",
+                "hi": "मेरे इस भयंकर रूप को देखकर न डर, न मोहित हो; भय हटाकर, प्रसन्न हृदय से, मेरा यह वही रूप फिर देख।"
               },
               "paras": {
                 "en": "“Fear not, nor be confused, at this dread vision of mine. With fear gone and heart at ease, look again upon my gentle form.”",
@@ -9317,7 +9317,7 @@
                       "tava",
                       "your",
                       "तपाईंको",
-                      "तुम्हारा"
+                      "आपका"
                     ],
                     [
                       "सौम्यम्",
@@ -9575,7 +9575,7 @@
               "lits": {
                 "en": "The Blessed Lord said: This form of mine that you have seen is very hard to see; even the gods ever long to see this form.",
                 "ne": "श्रीभगवान्ले भन्नुभयो: तिमीले देखेको मेरो यो रूप हेर्न अत्यन्तै कठिन छ; देवताहरूले पनि यो रूपको दर्शन सधैं चाहन्छन्।",
-                "hi": "श्री भगवान् ने कहा: तूने जो रूप देखा, उसे देखना अत्यन्त कठिन है; देवता भी इस रूप के दर्शन की सदा इच्छा करते हैं।"
+                "hi": "श्री भगवान् ने कहा: तूने मेरा जो यह रूप देखा, उसे देखना अत्यन्त कठिन है; देवता भी इस रूप के दर्शन की सदा इच्छा करते हैं।"
               },
               "paras": {
                 "en": "Kṛṣṇa said: “The form you have seen is exceedingly hard to behold — even the gods always yearn for a sight of it.”",
@@ -9758,9 +9758,9 @@
                 }
               ],
               "lits": {
-                "en": "I am not to be seen in this way through the Vedas, nor through austerity, nor through gifts, nor through worship; only in the way you have seen me can I be seen.",
-                "ne": "न वेदद्वारा, न तपस्याद्वारा, न दानद्वारा, न पूजाद्वारा म यस रूपमा देखिन सक्छु; तिमीले मलाई जसरी देख्यौ, त्यसरी नै मात्र म देखिन्छु।",
-                "hi": "न वेदों से, न तपस्या से, न दान से, न पूजा से मैं इस रूप में देखा जा सकता हूँ; केवल उसी प्रकार, जिस प्रकार तूने मुझे देखा, मैं देखा जाता हूँ।"
+                "en": "Neither through the Vedas, nor austerity, nor gifts, nor worship can I be seen in this form, as you have seen me.",
+                "ne": "तिमीले मलाई जसरी देख्यौ, यस रूपमा म न वेदद्वारा, न तपस्याद्वारा, न दानद्वारा, न पूजाद्वारा देखिन सक्छु।",
+                "hi": "तूने मुझे जिस प्रकार देखा, इस रूप में मैं न वेदों से, न तपस्या से, न दान से, न पूजा से देखा जा सकता हूँ।"
               },
               "paras": {
                 "en": "“This vision is not won by Vedic study, austerity, charity, or ritual — I am seen thus only as you have seen me.”",

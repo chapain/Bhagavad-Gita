@@ -112,7 +112,7 @@
                       "tvām",
                       "you",
                       "तपाईंलाई",
-                      "तुम्हें"
+                      "आपको"
                     ],
                     [
                       "पर्युपासते",
@@ -511,8 +511,8 @@
                       "कूटस्थम्",
                       "kūṭastham",
                       "unchanging",
-                      "अचल",
-                      "अचल"
+                      "अपरिवर्तनीय",
+                      "अपरिवर्तनीय"
                     ],
                     [
                       "अचलम्",
@@ -781,7 +781,7 @@
                     [
                       "गतिः",
                       "gatiḥ",
-                      "the path",
+                      "the goal",
                       "गति",
                       "गति"
                     ],
@@ -818,9 +818,9 @@
                 }
               ],
               "lits": {
-                "en": "Greater is the toil of those whose minds are attached to the unmanifest; the unmanifest is hard to attain by embodied beings.",
-                "ne": "जसका मन अव्यक्तमा आसक्त छन्, तिनको परिश्रम बढी हुन्छ; देहधारीहरूका निम्ति अव्यक्त पुग्न गाह्रो छ।",
-                "hi": "जिनके मन अव्यक्त में आसक्त हैं, उनका परिश्रम अधिक है; देहधारियों के लिए अव्यक्त की प्राप्ति कठिन है।"
+                "en": "Greater is the toil of those whose minds are attached to the unmanifest; the unmanifest goal is hard to attain by embodied beings.",
+                "ne": "जसका मन अव्यक्तमा आसक्त छन्, तिनको परिश्रम बढी हुन्छ; देहधारीहरूका निम्ति अव्यक्त गति प्राप्त गर्न गाह्रो छ।",
+                "hi": "जिनके मन अव्यक्त में आसक्त हैं, उनका परिश्रम अधिक है; देहधारियों के लिए अव्यक्त गति की प्राप्ति कठिन है।"
               },
               "paras": {
                 "en": "“But their struggle is greater, for the formless Absolute is hard to reach for those who dwell in bodies.”",
@@ -3117,14 +3117,14 @@
                     [
                       "धर्म्य",
                       "dharmya",
-                      "righteous, immortal",
+                      "righteous, of dharma",
                       "धार्मिक",
                       "धार्मिक"
                     ],
                     [
                       "अमृतम्",
                       "amṛtam",
-                      "nectar",
+                      "nectar, immortality",
                       "अमृत",
                       "अमृत"
                     ],

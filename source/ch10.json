@@ -190,9 +190,9 @@
                 }
               ],
               "lits": {
-                "en": "The Blessed Lord said: Hear again, O mighty-armed one, my supreme words, which I speak to you who are dear, wishing your good.",
-                "ne": "श्रीभगवान्ले भन्नुभयो: हे महाबाहो, फेरि सुन मेरा परम वचनहरू, जुन म तिमीलाई, प्रिय, तिम्रो हित चाहेर भन्छु।",
-                "hi": "श्री भगवान् ने कहा: हे महाबाहो, फिर सुन मेरे परम वचन, जो मैं तुझसे, जो मुझे प्रिय है, तेरे कल्याण की इच्छा से कहता हूँ।"
+                "en": "The Blessed Lord said: Hear again, O mighty-armed one, my supreme words, which I shall speak to you who are dear, wishing your good.",
+                "ne": "श्रीभगवान्ले भन्नुभयो: हे महाबाहो, फेरि सुन मेरा परम वचनहरू, जुन म तिमीलाई, प्रिय, तिम्रो हित चाहेर भन्नेछु।",
+                "hi": "श्री भगवान् ने कहा: हे महाबाहो, फिर सुन मेरे परम वचन, जो मैं तुझसे, जो मुझे प्रिय है, तेरे कल्याण की इच्छा से कहूँगा।"
               },
               "paras": {
                 "en": "Kṛṣṇa said: “Listen once more, mighty-armed Arjuna, to my highest teaching — which I give you out of love, for your welfare.”",
@@ -953,9 +953,9 @@
                     [
                       "मद्भावाः",
                       "madbhāvāḥ",
-                      "born of my mind",
-                      "मेरो मनबाट जन्मेका",
-                      "मेरे मन से उत्पन्न"
+                      "of my nature",
+                      "मेरो स्वभाव भएका",
+                      "मेरे स्वभाव वाले"
                     ],
                     [
                       "मानसाः",
@@ -1011,9 +1011,9 @@
                 }
               ],
               "lits": {
-                "en": "The seven great seers, the four ancient Manus, born of my mind — from them come the beings of this world.",
-                "ne": "सात महर्षिहरू, चार प्राचीन मनुहरू — मेरो मनबाट जन्मेका — तिनीहरूबाट यस संसारका प्राणीहरू उत्पन्न हुन्छन्।",
-                "hi": "सात महर्षि, चार प्राचीन मनु — मेरे मन से उत्पन्न — उन्हीं से इस जगत् के प्राणी उत्पन्न होते हैं।"
+                "en": "The seven great seers, and the four ancient Manus, of my nature, born of my mind — from them come the beings of this world.",
+                "ne": "सात महर्षिहरू र चार प्राचीन मनुहरू — मेरो स्वभाव भएका, मेरो मनबाट जन्मेका — तिनीहरूबाट यस संसारका प्राणीहरू उत्पन्न हुन्छन्।",
+                "hi": "सात महर्षि और चार प्राचीन मनु — मेरे स्वभाव वाले, मेरे मन से उत्पन्न — उन्हीं से इस जगत् के प्राणी उत्पन्न होते हैं।"
               },
               "paras": {
                 "en": "“The seven ancient sages and the four Manus, born of my thought — from them all the creatures of this world descend.”",
@@ -1778,7 +1778,7 @@
               "lits": {
                 "en": "Out of compassion for them, dwelling in their hearts, I destroy the darkness born of ignorance with the shining lamp of knowledge.",
                 "ne": "तिनीहरूप्रति दयाले, तिनको हृदयमा बसेर, म तिनको हृदयको अज्ञानजन्य अन्धकारलाई ज्ञानरूपी चम्किलो बत्तीले नष्ट गर्छु।",
-                "hi": "उन पर दया करके, उनके हृदय में रहकर, मैं उनके अज्ञान-जन्य अन्धकार को ज्ञान के दीपक से नष्ट कर देता हूँ।"
+                "hi": "उन पर दया करके, उनके हृदय में रहकर, मैं उनके अज्ञान-जन्य अन्धकार को ज्ञान के चमकते दीपक से नष्ट कर देता हूँ।"
               },
               "paras": {
                 "en": "“Out of compassion, dwelling within them, I dispel their darkness of ignorance with the radiant lamp of wisdom.”",
@@ -1970,8 +1970,8 @@
               ],
               "lits": {
                 "en": "Arjuna said: You are the supreme Brahman, the supreme light, the supreme purifier; the eternal divine Person, the primal God, unborn and all-pervading.",
-                "ne": "अर्जुनले भने: तपाईं परम ब्रह्म, परम ज्योति, परम पवित्र हुनुहुन्छ; नित्य दिव्य पुरुष, आदि देवता, अजन्मा र सर्वव्यापी।",
-                "hi": "अर्जुन ने कहा: आप परम ब्रह्म, परम ज्योति, परम पवित्र हैं; नित्य दिव्य पुरुष, आदि देवता, अजन्मा और सर्वव्यापी।"
+                "ne": "अर्जुनले भने: तपाईं परम ब्रह्म, परम ज्योति, परम पवित्रकर्ता हुनुहुन्छ; नित्य दिव्य पुरुष, आदि देवता, अजन्मा र सर्वव्यापी।",
+                "hi": "अर्जुन ने कहा: आप परम ब्रह्म, परम ज्योति, परम पवित्र करने वाले हैं; नित्य दिव्य पुरुष, आदि देवता, अजन्मा और सर्वव्यापी।"
               },
               "paras": {
                 "en": "Arjuna says: “You are the supreme Brahman, the highest abode, the purest; the eternal divine Person, the first God, unborn and everywhere.”",
@@ -4525,7 +4525,7 @@
                     [
                       "कन्दर्पः",
                       "kandarpaḥ",
-                      "Kāma",
+                      "Kandarpa (Kāma)",
                       "कन्दर्प",
                       "कन्दर्प"
                     ]
@@ -4562,9 +4562,9 @@
                 }
               ],
               "lits": {
-                "en": "Among weapons I am the thunderbolt; among cows I am Kāmadhuk; I am the lord of love among procreators; among serpents, Vāsuki.",
-                "ne": "हतियारहरूमा म वज्र हुँ; गाईहरूमा म कामधेनु हुँ; प्रजननकर्ताहरूमा म कामदेव हुँ; सर्पहरूमा वासुकि।",
-                "hi": "अस्त्रों में मैं वज्र हूँ; गौओं में मैं कामधेनु हूँ; प्रजनन-कर्ताओं में मैं काम हूँ; सर्पों में वासुकि।"
+                "en": "Among weapons I am the thunderbolt; among cows I am Kāmadhuk; I am Kandarpa, the procreator; among serpents, Vāsuki.",
+                "ne": "हतियारहरूमा म वज्र हुँ; गाईहरूमा म कामधेनु हुँ; म प्रजनन गराउने कन्दर्प हुँ; सर्पहरूमा वासुकि।",
+                "hi": "अस्त्रों में मैं वज्र हूँ; गौओं में मैं कामधेनु हूँ; मैं प्रजनन कराने वाला कन्दर्प हूँ; सर्पों में वासुकि।"
               },
               "paras": {
                 "en": "“Of weapons I am the thunderbolt; of cows, the wish-fulfilling cow; of procreators, Kāma; of serpents, Vāsuki.”",
@@ -4603,7 +4603,7 @@
                     [
                       "अनन्तः",
                       "anantaḥ",
-                      "the infinite",
+                      "Ananta (the infinite)",
                       "अनन्त",
                       "अनन्त"
                     ],
@@ -4646,7 +4646,7 @@
                     [
                       "यादसाम्",
                       "yādasām",
-                      "among the waters",
+                      "among aquatic beings",
                       "जलचरहरूमा",
                       "जलचरों में"
                     ],
@@ -4726,8 +4726,8 @@
                 }
               ],
               "lits": {
-                "en": "I am the infinite among serpents; Varuṇa among the waters; among the ancestors I am Aryaman; among rulers, Yama.",
-                "ne": "सर्पहरूमा म अनन्त हुँ; जलमा वरुण; पितृहरूमा अर्यमा; नियन्त्रकहरूमा यम।",
+                "en": "I am Ananta among serpents; Varuṇa among aquatic beings; among the ancestors I am Aryaman; among rulers, Yama.",
+                "ne": "सर्पहरूमा म अनन्त हुँ; जलचरहरूमा वरुण; पितृहरूमा अर्यमा; नियन्त्रकहरूमा यम।",
                 "hi": "सर्पों में मैं अनन्त हूँ; जलचरों में वरुण; पितरों में अर्यमा; नियन्ता-शासकों में यम।"
               },
               "paras": {
@@ -6555,8 +6555,8 @@
               ],
               "lits": {
                 "en": "There is no end to my divine glories, O scorcher of foes; this is but a summary declared by me of the extent of my glory.",
-                "ne": "हे शत्रुतापन, मेरा दिव्य विभूतिहरूको अन्त्य छैन; मेरो विभूतिको विस्तारको यो केवल संक्षिप्त वर्णन हो।",
-                "hi": "हे परंतप, मेरी दिव्य विभूतियों का अन्त नहीं है; मेरी विभूति के विस्तार का यह केवल संक्षेप में कहा गया वर्णन है।"
+                "ne": "हे शत्रुतापन, मेरा दिव्य विभूतिहरूको अन्त्य छैन; मेरो विभूतिको विस्तारको यो केवल मैले गरेको संक्षिप्त वर्णन हो।",
+                "hi": "हे परंतप, मेरी दिव्य विभूतियों का अन्त नहीं है; मेरी विभूति के विस्तार का यह केवल मेरे द्वारा संक्षेप में कहा गया वर्णन है।"
               },
               "paras": {
                 "en": "“My divine glories have no end, Arjuna — this is only a brief statement of their vast extent.”",

@@ -512,3 +512,12 @@ snapshot was regenerated on 2026-11-22 for the changed 11.26 English literal;
 its title was not edited. The boundary, parenthetical, pointer and quote tests
 add regressions without treating a passing lexical check as proof of Sanskrit
 fidelity.
+
+
+### Subsequent word-row/literal pass — batch 2 (2026-11-22)
+
+The historical per-chapter findings above describe the earlier review, not a
+claim that those verses were unchanged thereafter. The renewed pass has since
+read Chapters 9–13 and corrected additional rows/literals, listed in
+`padachheda-literal-review-2026-11.md` under “Batch 2”. Chapters 14–18 remain
+to be read in that renewed pass; 2.05 remains reserved for Dhruba.

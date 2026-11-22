@@ -1017,9 +1017,9 @@
                 }
               ],
               "lits": {
-                "en": "— desire, aversion, pleasure, pain, the body, consciousness and constancy: this is the field, in brief, with its modifications.",
-                "ne": "— इच्छा, द्वेष, सुख, दुःख, शरीर, चेतना र धृति: यो नै क्षेत्र हो, संक्षेपमा, यसका विकारहरूसहित।",
-                "hi": "— इच्छा, द्वेष, सुख, दुःख, शरीर, चेतना और धृति: यही क्षेत्र है, संक्षेप में, अपने विकारों सहित।"
+                "en": "— desire, aversion, pleasure, pain, the body, consciousness and constancy: this field, with its modifications, has been declared in brief.",
+                "ne": "— इच्छा, द्वेष, सुख, दुःख, शरीर, चेतना र धृति: यो क्षेत्र यसका विकारहरूसहित संक्षेपमा भनिएको छ।",
+                "hi": "— इच्छा, द्वेष, सुख, दुःख, शरीर, चेतना और धृति: यह क्षेत्र अपने विकारों सहित संक्षेप में कहा गया है।"
               },
               "paras": {
                 "en": "“— desire, dislike, joy, sorrow, the body itself, awareness and steadiness: this, briefly, is the field with all its changes.”",
@@ -1391,9 +1391,9 @@
                 }
               ],
               "lits": {
-                "en": "— non-attachment, non-clinging to son, wife and home, constant even-mindedness toward the pleasant and unpleasant,",
-                "ne": "— आसक्तिरहितता, छोरा, पत्नी र घरमा नटाँसिनु, इष्ट-अनिष्टमा निरन्तर समानता,",
-                "hi": "— आसक्ति-रहितता, पुत्र, पत्नी और घर में ममता न रखना, इष्ट-अनिष्ट में निरन्तर समता,"
+                "en": "— non-attachment, non-clinging to son, wife, home and the like, constant even-mindedness toward the pleasant and unpleasant,",
+                "ne": "— आसक्तिरहितता, छोरा, पत्नी, घर आदिमा नटाँसिनु, इष्ट-अनिष्टमा निरन्तर समानता,",
+                "hi": "— आसक्ति-रहितता, पुत्र, पत्नी, घर आदि में ममता न रखना, इष्ट-अनिष्ट में निरन्तर समता,"
               },
               "paras": {
                 "en": "“— detachment, no clinging to family and home, steady even-mindedness in success and failure,”",
@@ -2300,7 +2300,7 @@
               ],
               "lits": {
                 "en": "It is within and without all beings; it is unmoving and moving; being subtle, it is unknowable — it is far away, and yet near.",
-                "ne": "यो सबै प्राणीको भित्र र बाहिर छ; यो अचल पनि छ र चल पनि; सूक्ष्म भएकोले यो जान्न गाह्रो छ — यो टाढा पनि छ, र नजिक पनि।",
+                "ne": "यो सबै प्राणीको भित्र र बाहिर छ; यो अचल पनि छ र चल पनि; सूक्ष्म भएकोले यो जान्न सकिँदैन — यो टाढा पनि छ, र नजिक पनि।",
                 "hi": "यह सब प्राणियों के भीतर और बाहर है; यह अचल भी है और चल भी; सूक्ष्म होने से यह जाना नहीं जा सकता — यह दूर भी है, और निकट भी।"
               },
               "paras": {
@@ -2463,9 +2463,9 @@
                 }
               ],
               "lits": {
-                "en": "It is undivided, yet appears as if divided among beings; know it as the supporter of beings, the devourer and the creator.",
-                "ne": "यो अविभाजित छ, तैपनि प्राणीहरूमा विभाजितझैं देखिन्छ; यसलाई प्राणीहरूको धर्ता, संहारकर्ता र स्रष्टा जान।",
-                "hi": "यह अविभाजित है, फिर भी प्राणियों में विभाजित-सा दिखता है; इसे प्राणियों का धर्ता, संहारकर्ता और स्रष्टा जान।"
+                "en": "It is undivided, yet appears as if divided among beings; that is to be known as the supporter of beings, the devourer and the creator.",
+                "ne": "यो अविभाजित छ, तैपनि प्राणीहरूमा विभाजितझैं देखिन्छ; त्यो प्राणीहरूको धर्ता, संहारकर्ता र स्रष्टा भनेर जान्नुपर्ने छ।",
+                "hi": "यह अविभाजित है, फिर भी प्राणियों में विभाजित-सा दिखता है; वह प्राणियों का धर्ता, संहारकर्ता और स्रष्टा जानने योग्य है।"
               },
               "paras": {
                 "en": "“Look at beings and you see many; look again and there is one. It holds them up, takes them back, and puts them forth once more.”",
@@ -2540,7 +2540,7 @@
                     [
                       "तमसः",
                       "tamasaḥ",
-                      "beyond darkness",
+                      "than darkness",
                       "अन्धकारभन्दा",
                       "अन्धकार से"
                     ],
@@ -3756,9 +3756,9 @@
                 }
               ],
               "lits": {
-                "en": "Some see the Self within themselves by meditation, through their own mind; others by the yoga of knowledge; still others by the yoga of action.",
-                "ne": "कोही आफूभित्रको आत्मालाई आफ्नै मनले ध्यानद्वारा देख्छन्; कोही ज्ञानयोगद्वारा; अरू कोही कर्मयोगद्वारा।",
-                "hi": "कोई भीतर की आत्मा को अपने ही मन से ध्यान द्वारा देखते हैं; कोई ज्ञान-योग से; अन्य कोई कर्म-योग से।"
+                "en": "Some see the Self within the self by the self through meditation; others by the yoga of knowledge; still others by the yoga of action.",
+                "ne": "कोही आत्माभित्र आत्मालाई आत्माद्वारा ध्यानले देख्छन्; कोही ज्ञानयोगद्वारा; अरू कोही कर्मयोगद्वारा।",
+                "hi": "कोई आत्मा में आत्मा को आत्मा द्वारा ध्यान से देखते हैं; कोई ज्ञान-योग से; अन्य कोई कर्म-योग से।"
               },
               "paras": {
                 "en": "“Some see the Self within by meditation; others by wisdom; still others by selfless action.”",
@@ -3920,9 +3920,9 @@
                 }
               ],
               "lits": {
-                "en": "Others, not knowing, worship after hearing from others; and they too cross beyond death, devoted to what they have heard.",
-                "ne": "अरूहरू, नजानेर, अरूबाट सुनेर पूजा गर्छन्; तिनीहरू पनि, सुनिएको कुराप्रति समर्पित भएर, मृत्युलाई पार गर्छन्।",
-                "hi": "अन्य, न जानकर, दूसरों से सुनकर पूजा करते हैं; और वे भी, सुनी हुई बात में समर्पित होकर, मृत्यु से पार हो जाते हैं।"
+                "en": "Others, not knowing thus, worship after hearing from others; and they too cross beyond death, devoted to what they have heard.",
+                "ne": "अरूहरू, यसरी नजानेर, अरूबाट सुनेर पूजा गर्छन्; तिनीहरू पनि, सुनिएको कुराप्रति समर्पित भएर, मृत्युलाई पार गर्छन्।",
+                "hi": "अन्य, इस प्रकार न जानकर, दूसरों से सुनकर पूजा करते हैं; और वे भी, सुनी हुई बात में समर्पित होकर, मृत्यु से पार हो जाते हैं।"
               },
               "paras": {
                 "en": "“Others, not knowing directly, worship after hearing from teachers — and they too cross beyond death by faith in the heard teaching.”",
@@ -4613,7 +4613,7 @@
                     [
                       "ततः",
                       "tataḥ",
-                      "then",
+                      "from that",
                       "त्यहीबाट",
                       "उसी से"
                     ],
@@ -5220,9 +5220,9 @@
                     [
                       "भूतप्रकृतिमोक्षम्",
                       "bhūtaprakṛtimokṣam",
-                      "the liberation from prakṛti",
-                      "प्रकृतिबाट मुक्ति",
-                      "प्रकृति से मुक्ति"
+                      "the liberation of beings from prakṛti",
+                      "प्राणीहरूको प्रकृतिबाट मुक्ति",
+                      "प्राणियों की प्रकृति से मुक्ति"
                     ],
                     [
                       "च",
@@ -5278,9 +5278,9 @@
                 }
               ],
               "lits": {
-                "en": "Those who, with the eye of knowledge, see the distinction between the field and its knower, and the liberation from prakṛti — they reach the supreme.",
-                "ne": "जसले ज्ञानको आँखाले क्षेत्र र क्षेत्रज्ञको भेद, र प्रकृतिबाट मुक्ति देख्छन् — तिनीहरू परम तत्त्वमा पुग्छन्।",
-                "hi": "जो ज्ञान के नेत्र से क्षेत्र और क्षेत्रज्ञ का भेद, और प्रकृति से मुक्ति देखते हैं — वे परम तत्त्व को प्राप्त होते हैं।"
+                "en": "Those who thus know, with the eye of knowledge, the distinction between the field and its knower, and the liberation of beings from prakṛti — they reach the supreme.",
+                "ne": "जसले यसरी ज्ञानको आँखाले क्षेत्र र क्षेत्रज्ञको भेद, र प्राणीहरूको प्रकृतिबाट मुक्ति जान्दछन् — तिनीहरू परम तत्त्वमा पुग्छन्।",
+                "hi": "जो इस प्रकार ज्ञान के नेत्र से क्षेत्र और क्षेत्रज्ञ का भेद, और प्राणियों की प्रकृति से मुक्ति जानते हैं — वे परम तत्त्व को प्राप्त होते हैं।"
               },
               "paras": {
                 "en": "“Those who, with the eye of wisdom, discern the difference between the field and its knower, and the freedom from nature — they attain the highest.”",

@@ -166,7 +166,6 @@ PARAPHRASE_NAME_BASELINE = {
     ("9.20", "Vedic"),        # वेद row
     ("10.23", "Kubera"),      # धनेश row = "the lord of wealth"
     ("10.25", "Himalaya"),    # हिमालय row in the Nepali/Hindi, not the English
-    ("10.29", "Ananta"),      # अनन्त row in the Sanskrit word itself
     ("12.01", "Absolute"),    # ब्रह्म — interpretive noun, as 3.15
     ("12.05", "Absolute"),    # as 12.01
     ("13.23", "Person"),      # पुरुष glossed "person"; capitalised by the sentence
@@ -266,7 +265,7 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # rather than recording a further independent repair. Later changes net to
 # zero through 8.10 (including synonym and compound-token false matches);
 # 6.13 straight and 7.23 indeed then removed two misses (984 → 982).
-ROW_LITERAL_CENSUS = 982
+ROW_LITERAL_CENSUS = 961
 
 
 def _fold_diacritics(word):
@@ -398,7 +397,7 @@ NE_NEG_VERB = {
     "नसुन्यौ",         # "if you do not listen" (18.58)
     "नचाहेको",         # "what you do not wish" (18.60)
     "नजाने",           # "a mind that goes nowhere else" (8.08)
-    "नडराइकन",         # "without fearing" (11.34)
+    "नहोऊ",           # "do not be" (11.34)
 }
 HI_STANDING = {"न", "नहीं", "मत", "बिना", "विना", "बगैर", "रहित", "कभी",
                "कदापि", "अभाव", "निर्"}

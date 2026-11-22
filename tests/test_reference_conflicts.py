@@ -26,6 +26,7 @@ Amended 2026-11-22 by the word-row/literal follow-up: at 6.09 द्वेष्
 one who is hated, not one who hates. The English gloss and three literals
 are clarified; सुहृत् also gets हितैषी to distinguish the neighbouring मित्र.
 The prior restoration of sinners and all other rows remain.
+The 11.44 त्वाम् Hindi row now also uses the respectful आपको.
 """
 import json
 from pathlib import Path
