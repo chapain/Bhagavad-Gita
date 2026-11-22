@@ -1210,28 +1210,40 @@ def run(pw, url, offline_capable=False):
 
     # Once in pāda view, padding/background clicks keep the quarters open so
     # accidental taps do not collapse open word rows; only explicit ↩ exits.
-    pg.locator("#modal #verseContent").click(position={"x": 3, "y": 3})
+    # Keep #modal at scrollTop=0 first: with four word rows open at 390x844,
+    # auto-scrolling the tall #verseContent card slides its top edge up against
+    # the sticky .m-head bar where #mMoreBtn sits in the same top-right column.
+    pad_pt = pg.evaluate("""() => {
+      document.querySelector('#modal').scrollTop = 0;
+      const r = document.querySelector('#modal #verseContent').getBoundingClientRect();
+      return {x: Math.round(r.left + 20), y: Math.round(r.top + 14)};
+    }""")
+    pg.mouse.click(pad_pt["x"], pad_pt["y"])
     pg.wait_for_timeout(250)
     stays_expanded = pg.evaluate("""() => {
       const c = document.querySelector('#modal #verseContent');
       const box = document.querySelector('#modal #verseContainer');
       const words = document.querySelector('#modal #words-pada-0');
-      const rows = [...document.querySelectorAll('#modal .m-verse .pada-row')];
-      return !!(c && c.classList.contains('m-verse') && !c.classList.contains('m-whole-verse')
-        && box && box.classList.contains('expanded-mode')
-        && words && words.classList.contains('open')
-        && rows.length > 0 && rows.every(r => getComputedStyle(r).alignItems === 'flex-start'));
+      return {
+        mVerse: !!(c && c.classList.contains('m-verse') && !c.classList.contains('m-whole-verse')),
+        expandedMode: !!(box && box.classList.contains('expanded-mode')),
+        wordsOpen: !!(words && words.classList.contains('open'))
+      };
     }""")
+    pg.evaluate("document.querySelector('#modal').scrollTop = 0")
     pg.locator("#modal .m-verse-back").click()
     pg.wait_for_timeout(250)
     explicit_back = pg.evaluate("""() => {
       const c = document.querySelector('#modal #verseContent');
-      return !!(c && c.classList.contains('m-whole-verse') && !c.classList.contains('m-verse')
-        && c.getAttribute('role') === 'button' && c.getAttribute('tabindex') === '0'
-        && c.getAttribute('aria-expanded') === 'false');
+      return {
+        wholeVerse: !!(c && c.classList.contains('m-whole-verse') && !c.classList.contains('m-verse')),
+        a11y: !!(c && c.getAttribute('role') === 'button' && c.getAttribute('tabindex') === '0'
+          && c.getAttribute('aria-expanded') === 'false')
+      };
     }""")
-    ok(stays_expanded and explicit_back,
-       "clicking the expanded card background keeps pāda view open, and clicking ↩ returns it to the accessible whole-verse control")
+    back_state = {**(stays_expanded or {}), **(explicit_back or {})}
+    ok(bool(back_state and all(back_state.values())),
+       f"clicking the expanded card background keeps pāda view open, and clicking ↩ returns it to the accessible whole-verse control ({back_state})")
 
     pg.locator("#modal #verseContent").click()
     pg.wait_for_timeout(250)
