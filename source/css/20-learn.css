@@ -120,8 +120,11 @@
   .lr-word .m{ display:block; font-size:.84rem; line-height:1.4;}
   .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:12px;
             background:var(--saffron-soft); border:1px solid var(--line);}
-  .lr-mean .lb{ display:block; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase;
-                color:var(--saffron-text); margin-bottom:5px;}
+  /* Same three-reading-block label as the verse sheet's .m-line .lb, so a
+     paraphrase is labelled identically wherever it appears. No uppercase: the
+     label is "सरल अर्थमा" / "सरल शब्दों में" for most readers. */
+  .lr-mean .lb{ display:block; font-size:.8rem; font-weight:700; line-height:1.4;
+                color:var(--saffron-text); margin-bottom:3px;}
 
   .lr-nav{ display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-top:20px;}
   .lr-hint{ flex:1; text-align:center; font-size:.78rem; color:var(--ink-soft);}

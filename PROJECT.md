@@ -11,6 +11,43 @@ the start of every session.
 
 ---
 
+### 2026-11-22 — three readings, one label grammar (owner: "literal and paraphrase have blue and yellow like button bg or something and anvaya is plain. what do you think we should do?")
+
+* **The observation was exact, and it was a grammar bug, not a taste
+  question.** Literal carried a solid teal pill and "In other words" a solid
+  saffron pill, while anvaya sat as plain prose. A filled pill is this app's
+  grammar for a **control** — the mode segments, `.m-nav` buttons, the
+  Enter-the-Gita CTA — so two of them beside an unlabelled block read as two
+  buttons and some text. Three siblings of equal weight had three different
+  visual ranks.
+* **Fixed by demoting the label, not by promoting anvaya.** Adding a third
+  pill would have made the noise symmetrical and kept the wrong hierarchy.
+  `.m-anvaya-label` and `.m-line .lb` are now one rule: `display:block`,
+  `.8rem`, `700`, `--saffron-text` (teal for the literal), **no background, no
+  padding, no radius**. Colour survives as lettering only, so the teal/saffron
+  split that distinguishes the two translations is kept one weight down.
+  The Learn card's `.lr-mean .lb` already used this quieter form; it now shares
+  the same numbers so a paraphrase is labelled identically in both places.
+* **Two recorded rules were honoured rather than rediscovered.** (1)
+  **No uppercase and no letter-spacing** — two of the three labels are
+  Devanagari for most readers (अन्वयः, शाब्दिक अनुवाद, सरल अर्थमा) and tracking
+  strains the mātrā flow, the same ruling the breadcrumb chips carry
+  (2026-08-30). (2) **`.72rem` is too small for Devanagari** — the doors pass
+  had already said so (see the 2026-08-30 choice-page entry); the label is
+  `.8rem` instead.
+* **A duplicate block was the root cause, and it is gone.** `.m-line .lb` was
+  declared twice in `50-reader-shell.css` (the meaning-blocks block and the
+  sheet-typography block further down); the second silently shadowed half the
+  first, which is exactly how literal and paraphrase drifted apart. There is
+  now one definition of the label and one comment saying not to re-declare it.
+* **No content, no markup, no JS changed.** The class names and the order
+  `verse → anvaya → literal → paraphrase` are untouched, so
+  `tests/test_anvaya.py` and the browser suite's structure checks still hold.
+  `python3 build.py` ALL GREEN: 144 Python tests, 949 document assertions, 560
+  site-health, 9,658 study. Browser/axe suite skipped — Playwright and Chromium
+  are unavailable in this sandbox, so the **visual result is unverified by
+  screenshot**; the owner's eye on the live preview is the proof here.
+
 ## 0. Handoff snapshot (keep current; last touched 2026-11-04)
 
 For a brand-new session: read §1–§10, then this box, then build.
