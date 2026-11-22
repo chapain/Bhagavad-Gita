@@ -205,7 +205,9 @@
                 "en": "Kṛṣṇa said: “I will now tell you the highest knowledge, the best of all — knowing which, the sages reached the supreme perfection.”",
                 "ne": "कृष्णले भन्नुभयो: “अब म तिमीलाई सर्वोच्च ज्ञान बताउँछु — सबैभन्दा उत्तम; जसलाई जानेर ऋषिहरू परम सिद्धिमा पुगे।”",
                 "hi": "कृष्ण ने कहा: “अब मैं तुझे सर्वोच्च ज्ञान बताता हूँ — सबसे उत्तम; जिसे जानकर मुनि परम सिद्धि तक पहुँचे।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — ज्ञानानाम् उत्तमं परं ज्ञानं भूयः प्रवक्ष्यामि, यत् ज्ञात्वा सर्वे मुनयः इतः परां सिद्धिं गताः।",
+              "anvaya_iast": "śrībhagavānuvāca — jñānānām uttamaṃ paraṃ jñānaṃ bhūyaḥ pravakṣyāmi, yat jñātvā sarve munayaḥ itaḥ parāṃ siddhiṃ gatāḥ."
             }
           ]
         },
@@ -367,7 +369,9 @@
                 "en": "“Resting on this knowledge, they become one with me; they are not born at the dawn of creation, nor disturbed at its end.”",
                 "ne": "“यस ज्ञानमा विश्राम गरेर, तिनीहरू मसँग एक हुन्छन्; सृष्टिको उदयमा जन्मँदैनन्, न अन्त्यमा विचलित हुन्छन्।”",
                 "hi": "“इस ज्ञान में विश्राम करके, वे मुझ से एक हो जाते हैं; सृष्टि के उदय पर जन्मते नहीं, न अन्त में विचलित होते हैं।”"
-              }
+              },
+              "anvaya": "इदं ज्ञानम् उपाश्रित्य मम साधर्म्यम् आगताः सर्गे अपि न उपजायन्ते प्रलये च न व्यथन्ति।",
+              "anvaya_iast": "idaṃ jñānam upāśritya mama sādharmyam āgatāḥ sarge api na upajāyante pralaye ca na vyathanti."
             }
           ]
         },
@@ -522,7 +526,9 @@
                 "en": "“The great Brahman is my womb; I place the seed in it, and from that all beings are born.”",
                 "ne": "“महान् ब्रह्म मेरो गर्भ हो; म त्यसमा बीज राख्छु, र त्यसबाट सबै प्राणी जन्मिन्छन्।”",
                 "hi": "“महान् ब्रह्म मेरा गर्भ है; मैं उसमें बीज रखता हूँ, और उसी से सब प्राणी जन्मते हैं।”"
-              }
+              },
+              "anvaya": "भारत! मम महद्ब्रह्म योनिः, तस्मिन् अहं गर्भं दधामि; ततः सर्वभूतानां सम्भवः भवति।",
+              "anvaya_iast": "bhārata! mama mahadbrahma yoniḥ, tasmin ahaṃ garbhaṃ dadhāmi; tataḥ sarvabhūtānāṃ sambhavaḥ bhavati."
             }
           ]
         },
@@ -670,7 +676,9 @@
                 "en": "“Every womb that ever bore a creature — great Nature is that womb, and the seed is mine.”",
                 "ne": "“जुन-जुन योनिमा जुन-जुन रूप देखा पर्छन् — त्यो योनि महान् ब्रह्म हो, र बीज रोप्ने पिता म हुँ।”",
                 "hi": "“जिस-जिस योनि में जो-जो रूप प्रकट होते हैं — वह योनि महान् ब्रह्म है, और बीज बोने वाला पिता मैं हूँ।”"
-              }
+              },
+              "anvaya": "कौन्तेय! सर्वयोनिषु याः मूर्तयः सम्भवन्ति, तासां महत् ब्रह्म योनिः, अहं बीजप्रदः पिता।",
+              "anvaya_iast": "kaunteya! sarvayoniṣu yāḥ mūrtayaḥ sambhavanti, tāsāṃ mahat brahma yoniḥ, ahaṃ bījapradaḥ pitā."
             }
           ]
         }
@@ -826,7 +834,9 @@
                 "en": "“Sattva, rajas, and tamas — the qualities of nature — bind the deathless Self in the body.”",
                 "ne": "“प्रकृतिका गुणहरू — सत्त्व, रज र तम — ले अमर आत्मालाई शरीरमा बाँध्छन्।”",
                 "hi": "“प्रकृति के गुण — सत्त्व, रज और तम — अमर आत्मा को शरीर में बाँधते हैं।”"
-              }
+              },
+              "anvaya": "महाबाहो! सत्त्वं, रजः, तमः इति प्रकृतिसम्भवाः गुणाः देहे अव्ययं देहिनं निबध्नन्ति।",
+              "anvaya_iast": "mahābāho! sattvaṃ, rajaḥ, tamaḥ iti prakṛtisambhavāḥ guṇāḥ dehe avyayaṃ dehinaṃ nibadhnanti."
             }
           ]
         },
@@ -960,7 +970,9 @@
                 "en": "“Sattva is pure, luminous, and healthy — yet it binds through attachment to joy and to knowledge.”",
                 "ne": "“सत्त्व शुद्ध, प्रकाशमय र स्वस्थ छ — तैपनि यसले आनन्द र ज्ञानप्रतिको आसक्तिले बाँध्छ।”",
                 "hi": "“सत्त्व शुद्ध, प्रकाशमय और स्वस्थ है — फिर भी यह आनन्द और ज्ञान की आसक्ति से बाँधता है।”"
-              }
+              },
+              "anvaya": "अनघ! तत्र निर्मलत्वात् प्रकाशकम् अनामयं सत्त्वं सुखसङ्गेन ज्ञानसङ्गेन च बध्नाति।",
+              "anvaya_iast": "anagha! tatra nirmalatvāt prakāśakam anāmayaṃ sattvaṃ sukhasaṅgena jñānasaṅgena ca badhnāti."
             }
           ]
         },
@@ -1087,7 +1099,9 @@
                 "en": "“Rajas is passion, born of craving and clinging; it binds the embodied soul through attachment to action.”",
                 "ne": "“रज भनेको राग हो, तृष्णा र आसक्तिबाट जन्मेको; यसले कर्मप्रतिको आसक्तिले देहधारीलाई बाँध्छ।”",
                 "hi": "“रज राग है, तृष्णा और आसक्ति से जन्मा; यह कर्म की आसक्ति से देहधारी को बाँधता है।”"
-              }
+              },
+              "anvaya": "कौन्तेय! तृष्णासङ्गसमुद्भवं रजः रागात्मकं विद्धि; तत् कर्मसङ्गेन देहिनं निबध्नाति।",
+              "anvaya_iast": "kaunteya! tṛṣṇāsaṅgasamudbhavaṃ rajaḥ rāgātmakaṃ viddhi; tat karmasaṅgena dehinaṃ nibadhnāti."
             }
           ]
         },
@@ -1221,7 +1235,9 @@
                 "en": "“Tamas is born of ignorance, deluding all beings; it binds through carelessness, laziness, and sleep.”",
                 "ne": "“तम अज्ञानबाट जन्मेको, सबै प्राणीलाई मोहित गर्ने हो; यसले लापरवाही, अल्छीपन र निद्राले बाँध्छ।”",
                 "hi": "“तम अज्ञान से जन्मा, सब प्राणियों को मोहित करने वाला है; यह लापरवाही, आलस्य और नींद से बाँधता है।”"
-              }
+              },
+              "anvaya": "भारत! सर्वदेहिनां मोहनं तमः तु अज्ञानजं विद्धि; तत् प्रमादालस्यनिद्राभिः निबध्नाति।",
+              "anvaya_iast": "bhārata! sarvadehināṃ mohanaṃ tamaḥ tu ajñānajaṃ viddhi; tat pramādālasyanidrābhiḥ nibadhnāti."
             }
           ]
         },
@@ -1376,7 +1392,9 @@
                 "en": "“Sattva ties you to joy, rajas to action, and tamas — veiling wisdom — to carelessness.”",
                 "ne": "“सत्त्वले तिमीलाई आनन्दसँग, रजले कर्मसँग, र तम — ज्ञान छोपेर — लापरवाहीसँग जोड्छ।”",
                 "hi": "“सत्त्व तुझे आनन्द से, रज कर्म से, और तम — ज्ञान छिपाकर — लापरवाही से जोड़ता है।”"
-              }
+              },
+              "anvaya": "भारत! सत्त्वं सुखे सञ्जयति, रजः कर्मणि, तमः तु ज्ञानम् आवृत्य प्रमादे उत सञ्जयति।",
+              "anvaya_iast": "bhārata! sattvaṃ sukhe sañjayati, rajaḥ karmaṇi, tamaḥ tu jñānam āvṛtya pramāde uta sañjayati."
             }
           ]
         }
@@ -1567,7 +1585,9 @@
                 "en": "“Sattva rises by dominating rajas and tamas; rajas rises by dominating sattva and tamas; and tamas likewise rises over both.”",
                 "ne": "“रज र तममाथि हावी भएर सत्त्व उठ्छ; सत्त्व र तममाथि हावी भएर रज उठ्छ; र दुवैमाथि हावी भएर तम पनि उठ्छ।”",
                 "hi": "“रज और तम पर हावी होकर सत्त्व उठता है; सत्त्व और तम पर हावी होकर रज उठता है; और दोनों पर हावी होकर तम भी उठता है।”"
-              }
+              },
+              "anvaya": "भारत! रजः तमः च अभिभूय सत्त्वं भवति, सत्त्वं तमः च एव रजः, तथा सत्त्वं रजः तमः।",
+              "anvaya_iast": "bhārata! rajaḥ tamaḥ ca abhibhūya sattvaṃ bhavati, sattvaṃ tamaḥ ca eva rajaḥ, tathā sattvaṃ rajaḥ tamaḥ."
             }
           ]
         },
@@ -1722,7 +1742,9 @@
                 "en": "“When light streams through every gate of the body, know that sattva prevails.”",
                 "ne": "“जब शरीरका हरेक ढोकाबाट प्रकाश आउँछ, तब बुझ कि सत्त्व प्रबल छ।”",
                 "hi": "“जब शरीर के हर द्वार से प्रकाश आता है, तब समझ कि सत्त्व प्रबल है।”"
-              }
+              },
+              "anvaya": "यदा अस्मिन् देहे सर्वद्वारेषु ज्ञानं प्रकाशः उपजायते, तदा सत्त्वं विवृद्धम् इति उत विद्यात्।",
+              "anvaya_iast": "yadā asmin dehe sarvadvāreṣu jñānaṃ prakāśaḥ upajāyate, tadā sattvaṃ vivṛddham iti uta vidyāt."
             }
           ]
         },
@@ -1863,7 +1885,9 @@
                 "en": "“Greed, busy-ness, starting projects, restlessness, and craving appear when rajas prevails.”",
                 "ne": "“लोभ, व्यस्तता, परियोजना सुरु गर्नु, बेचैनी र लालसा — यी सबै रज प्रबल हुँदा देखा पर्छन्।”",
                 "hi": "“लोभ, व्यस्तता, काम शुरू करना, बेचैनी और लालसा — ये सब रज के प्रबल होने पर दिखते हैं।”"
-              }
+              },
+              "anvaya": "भरतर्षभ! रजसि विवृद्धे लोभः, प्रवृत्तिः, कर्मणाम् आरम्भः, अशमः, स्पृहा एतानि जायन्ते।",
+              "anvaya_iast": "bharatarṣabha! rajasi vivṛddhe lobhaḥ, pravṛttiḥ, karmaṇām ārambhaḥ, aśamaḥ, spṛhā etāni jāyante."
             }
           ]
         },
@@ -2011,7 +2035,9 @@
                 "en": "“Dullness, inactivity, carelessness, and confusion arise when tamas prevails.”",
                 "ne": "“सुस्ती, अकर्मण्यता, लापरवाही र भ्रम — यी तम प्रबल हुँदा उठ्छन्।”",
                 "hi": "“सुस्ती, अकर्मण्यता, लापरवाही और भ्रम — ये तम के प्रबल होने पर उठते हैं।”"
-              }
+              },
+              "anvaya": "कुरुनन्दन! तमसि विवृद्धे अप्रकाशः, अप्रवृत्तिः च, प्रमादः, मोहः एव च एतानि जायन्ते।",
+              "anvaya_iast": "kurunandana! tamasi vivṛddhe aprakāśaḥ, apravṛttiḥ ca, pramādaḥ, mohaḥ eva ca etāni jāyante."
             }
           ]
         }
@@ -2174,7 +2200,9 @@
                 "en": "“Dying while sattva prevails, one reaches the pure realms of those who know the highest.”",
                 "ne": "“सत्त्व प्रबल हुँदा मर्ने व्यक्ति परम जान्नेहरूका शुद्ध लोकमा पुग्छ।”",
                 "hi": "“सत्त्व के प्रबल होने पर मरने वाला परम जानने वालों के शुद्ध लोकों तक पहुँचता है।”"
-              }
+              },
+              "anvaya": "यदा सत्त्वे प्रवृद्धे तु देहभृत् प्रलयं याति, तदा उत्तमविदाम् अमलान् लोकान् प्रतिपद्यते।",
+              "anvaya_iast": "yadā sattve pravṛddhe tu dehabhṛt pralayaṃ yāti, tadā uttamavidām amalān lokān pratipadyate."
             }
           ]
         },
@@ -2308,7 +2336,9 @@
                 "en": "“Dying in rajas, one is reborn among the action-bound; dying in tamas, among the deluded.”",
                 "ne": "“रजमा मर्दा कर्ममा बाँधिएकाहरूका बीच पुनर्जन्म हुन्छ; तममा मर्दा मोहितहरूका बीच।”",
                 "hi": "“रज में मरकर कर्म से बँधे लोगों के बीच पुनर्जन्म होता है; तम में मरकर मोहित लोगों के बीच।”"
-              }
+              },
+              "anvaya": "रजसि प्रलयं गत्वा कर्मसङ्गिषु जायते; तथा तमसि प्रलीनः मूढयोनिषु जायते।",
+              "anvaya_iast": "rajasi pralayaṃ gatvā karmasaṅgiṣu jāyate; tathā tamasi pralīnaḥ mūḍhayoniṣu jāyate."
             }
           ]
         },
@@ -2463,7 +2493,9 @@
                 "en": "“Good deeds bear the pure fruit of sattva; rajas bears sorrow; tamas bears ignorance.”",
                 "ne": "“असल कर्मले सत्त्वको शुद्ध फल दिन्छ; रजले दुःख; तमले अज्ञान।”",
                 "hi": "“शुभ कर्म सत्त्व का शुद्ध फल देता है; रज दुःख देता है; तम अज्ञान देता है।”"
-              }
+              },
+              "anvaya": "सुकृतस्य कर्मणः सात्त्विकं निर्मलं फलम् आहुः; रजसः तु फलं दुःखं, तमसः फलम् अज्ञानम्।",
+              "anvaya_iast": "sukṛtasya karmaṇaḥ sāttvikaṃ nirmalaṃ phalam āhuḥ; rajasaḥ tu phalaṃ duḥkhaṃ, tamasaḥ phalam ajñānam."
             }
           ]
         },
@@ -2618,7 +2650,9 @@
                 "en": "“Knowledge comes from sattva; greed from rajas; carelessness, confusion, and ignorance from tamas.”",
                 "ne": "“सत्त्वबाट ज्ञान; रजबाट लोभ; तमबाट लापरवाही, भ्रम र अज्ञान आउँछ।”",
                 "hi": "“सत्त्व से ज्ञान; रज से लोभ; तम से लापरवाही, भ्रम और अज्ञान आते हैं।”"
-              }
+              },
+              "anvaya": "सत्त्वात् ज्ञानं सञ्जायते, रजसः लोभः एव च, तमसः प्रमादमोहौ भवतः, अज्ञानम् एव च।",
+              "anvaya_iast": "sattvāt jñānaṃ sañjāyate, rajasaḥ lobhaḥ eva ca, tamasaḥ pramādamohau bhavataḥ, ajñānam eva ca."
             }
           ]
         },
@@ -2752,7 +2786,9 @@
                 "en": "“The sāttvic rise; the rājasic remain in the middle; the tāmasic, bound to the lowest qualities, sink down.”",
                 "ne": "सत्त्वमा टिकेकाहरू उकालो लाग्छन्; रजोगुणीहरू जहाँका तहीँ; तमोगुणमा डुबेकाहरू ओरालो झर्छन्।",
                 "hi": "सत्त्व वाले ऊपर उठते हैं, रजस वाले बीच में ही अटके रहते हैं, और तमस वाले सबसे नीचे उतरते चले जाते हैं।"
-              }
+              },
+              "anvaya": "सत्त्वस्थाः ऊर्ध्वं गच्छन्ति, राजसाः मध्ये तिष्ठन्ति, जघन्यगुणवृत्तस्थाः तामसाः अधः गच्छन्ति।",
+              "anvaya_iast": "sattvasthāḥ ūrdhvaṃ gacchanti, rājasāḥ madhye tiṣṭhanti, jaghanyaguṇavṛttasthāḥ tāmasāḥ adhaḥ gacchanti."
             }
           ]
         }
@@ -2929,7 +2965,9 @@
                 "en": "“When the wise one sees that only the guṇas act, and knows what is beyond them, he reaches my own being.”",
                 "ne": "“जब ज्ञानीले केवल गुणहरूले काम गर्छन् भनी देख्छ, र तिनभन्दा परको तत्त्व चिन्छ — तब ऊ मेरै स्वरूपमा पुग्छ।”",
                 "hi": "“जब ज्ञानी देखता है कि केवल गुण ही काम करते हैं, और उनसे परे के तत्त्व को पहचानता है — तब वह मेरे ही स्वरूप तक पहुँचता है।”"
-              }
+              },
+              "anvaya": "यदा द्रष्टा गुणेभ्यः अन्यं कर्तारं न अनुपश्यति, गुणेभ्यः च परं वेत्ति, सः मद्भावम् अधिगच्छति।",
+              "anvaya_iast": "yadā draṣṭā guṇebhyaḥ anyaṃ kartāraṃ na anupaśyati, guṇebhyaḥ ca paraṃ vetti, saḥ madbhāvam adhigacchati."
             }
           ]
         },
@@ -3063,7 +3101,9 @@
                 "en": "“Rise clear of the three strands the body is woven from, and birth, death, old age and grief lose their hold; what is left is deathless.”",
                 "ne": "शरीरको उत्पत्तिका कारण यी तीन गुण पार गरेपछि देहधारी जन्म, मृत्यु, बुढ्यौली र दुःखबाट मुक्त हुन्छ र अमरत्वको अनुभव गर्छ।",
                 "hi": "देह को उत्पन्न करने वाले इन तीनों को लाँघ जाए तो देहधारी जन्म, मौत, बुढ़ापे और दर्द से छूट जाता है — और अमरता का स्वाद पा लेता है।"
-              }
+              },
+              "anvaya": "देही देहसमुद्भवान् एतान् त्रीन् गुणान् अतीत्य जन्ममृत्युजरादुःखैः विमुक्तः अमृतम् अश्नुते।",
+              "anvaya_iast": "dehī dehasamudbhavān etān trīn guṇān atītya janmamṛtyujarāduḥkhaiḥ vimuktaḥ amṛtam aśnute."
             }
           ]
         },
@@ -3260,7 +3300,9 @@
                 "en": "Arjuna asks: “How can one tell who has gone beyond the three qualities, O Lord? How does he live, and how does he cross them?”",
                 "ne": "अर्जुन सोध्छन्: “हे प्रभु, तीन गुणभन्दा पर गएको मानिसलाई कसरी चिन्न सकिन्छ? ऊ कसरी बाँच्छ, र तिनलाई कसरी पार गर्छ?”",
                 "hi": "अर्जुन पूछते हैं: “जो इन तीनों से पार जा चुका है, उसे पहचानूँ कैसे? वह उठता-बैठता कैसे है, और यह पार जाना होता कैसे है?”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — प्रभो! एतान् त्रीन् गुणान् अतीतः कैः लिङ्गैः भवति? किम् आचारः? कथं च एतान् त्रीन् गुणान् अतिवर्तते?",
+              "anvaya_iast": "arjuna uvāca — prabho! etān trīn guṇān atītaḥ kaiḥ liṅgaiḥ bhavati? kim ācāraḥ? kathaṃ ca etān trīn guṇān ativartate?"
             }
           ]
         }
@@ -3458,7 +3500,9 @@
                 "en": "Kṛṣṇa said: “One who neither resents light, activity, and delusion when they appear, nor yearns for them when they fade,”",
                 "ne": "कृष्णले भन्नुभयो: “जो न प्रकाश, क्रिया र भ्रम देखा पर्दा तिनप्रति रिसाउँछ, न हराउँदा तिनका लागि तरस्छ,”",
                 "hi": "कृष्ण ने कहा: “जो न प्रकाश, क्रिया और भ्रम के प्रकट होने पर उनसे चिढ़ता है, न हटने पर उनके लिए तरसता है,”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — पाण्डव! प्रकाशं च प्रवृत्तिं च मोहम् एव च सम्प्रवृत्तानि न द्वेष्टि, निवृत्तानि न काङ्क्षति।",
+              "anvaya_iast": "śrībhagavānuvāca — pāṇḍava! prakāśaṃ ca pravṛttiṃ ca moham eva ca sampravṛttāni na dveṣṭi, nivṛttāni na kāṅkṣati."
             }
           ]
         },
@@ -3620,7 +3664,9 @@
                 "en": "“— seated like an unconcerned onlooker, unshaken by the qualities, thinking ‘the qualities act,’ and standing firm —”",
                 "ne": "“— बेपरवाह दर्शकझैं बसेको, गुणहरूले नहल्लिएको, 'गुणहरू नै काम गर्छन्' भनी सोचेर दृढ उभिने —”",
                 "hi": "“— मानो कोई तटस्थ दर्शक बैठा हो: गुण उसे डिगाते नहीं। वह समझता है कि चल रहे हैं तो बस गुण, और खुद स्थिर बना रहता है —”"
-              }
+              },
+              "anvaya": "यः उदासीनवत् आसीनः गुणैः न विचाल्यते, यः गुणाः वर्तन्ते इति एव अवतिष्ठति, न इङ्गते।",
+              "anvaya_iast": "yaḥ udāsīnavat āsīnaḥ guṇaiḥ na vicālyate, yaḥ guṇāḥ vartante iti eva avatiṣṭhati, na iṅgate."
             }
           ]
         },
@@ -3726,7 +3772,9 @@
                 "en": "“— equal in joy and sorrow, content in himself, seeing mud, stone, and gold alike, steady through likes and dislikes, unmoved by praise or blame —”",
                 "ne": "“— सुख-शोकमा समान, आफूभित्रै सन्तुष्ट, माटो, ढुङ्गा र सुनलाई एकै देख्ने, मनपर्ने-नपर्नेमा नडगमगाउने, धीर, प्रशंसा-निन्दाले नचल्ने —”",
                 "hi": "“— सुख-शोक में समान, अपने में ही संतुष्ट, मिट्टी, पत्थर और सोने को एक-सा देखने वाला, पसन्द-नापसन्द में न डिगने वाला, धीर, प्रशंसा-निन्दा से न चलने वाला —”"
-              }
+              },
+              "anvaya": "समदुःखसुखः, स्वस्थः, समलोष्टाश्मकाञ्चनः, तुल्यप्रियाप्रियः, धीरः, तुल्यनिन्दात्मसंस्तुतिः।",
+              "anvaya_iast": "samaduḥkhasukhaḥ, svasthaḥ, samaloṣṭāśmakāñcanaḥ, tulyapriyāpriyaḥ, dhīraḥ, tulyanindātmasaṃstutiḥ."
             }
           ]
         },
@@ -3846,7 +3894,9 @@
                 "en": "“— the same in honour and disgrace, the same to friend and foe, one who has let every undertaking go — he is called beyond the qualities.”",
                 "ne": "“— मान र अपमान, मित्र र शत्रु — दुवैमा उस्तै; सबै आरम्भ त्याग्ने व्यक्ति गुणहरूभन्दा पर भनिन्छ।”",
                 "hi": "“— मान और अपमान में एक-सा, मित्र और शत्रु में एक-सा, जो सब आरम्भों को छोड़ चुका — वह गुणों से परे कहा जाता है।”"
-              }
+              },
+              "anvaya": "मानापमानयोः तुल्यः, मित्रारिपक्षयोः तुल्यः, सर्वारम्भपरित्यागी — सः गुणातीतः उच्यते।",
+              "anvaya_iast": "mānāpamānayoḥ tulyaḥ, mitrāripakṣayoḥ tulyaḥ, sarvārambhaparityāgī — saḥ guṇātītaḥ ucyate."
             }
           ]
         }
@@ -4009,7 +4059,9 @@
                 "en": "“Whoever serves me with steadfast devotion — crossing these qualities — becomes worthy of Brahman.”",
                 "ne": "जसले नडगमगाई मायाले मेरो सेवा गर्छ, ऊ यी गुणहरू नाघेर ब्रह्म हुन लायक बन्छ।",
                 "hi": "जो डिगे बिना प्रेम से मेरी सेवा में लगा रहता है, वह इन तीनों को पार कर जाता है और ब्रह्म होने लायक बन जाता है।"
-              }
+              },
+              "anvaya": "यः च अव्यभिचारेण भक्तियोगेन मां सेवते, सः एतान् गुणान् समतीत्य ब्रह्मभूयाय कल्पते।",
+              "anvaya_iast": "yaḥ ca avyabhicāreṇa bhaktiyogena māṃ sevate, saḥ etān guṇān samatītya brahmabhūyāya kalpate."
             }
           ]
         },
@@ -4164,7 +4216,9 @@
                 "en": "“For I am the ground of Brahman, of immortality and the eternal — of everlasting dharma and of perfect bliss.”",
                 "ne": "“किनकि म नै ब्रह्मको, अमरत्व र नित्यको — शाश्वत धर्म र परम आनन्दको — आधार हुँ।”",
                 "hi": "“क्योंकि मैं ही ब्रह्म का, अमरत्व और नित्य का — शाश्वत धर्म और परम आनन्द का — आधार हूँ।”"
-              }
+              },
+              "anvaya": "अहं हि अमृतस्य अव्ययस्य च ब्रह्मणः, शाश्वतस्य च धर्मस्य, ऐकान्तिकस्य च सुखस्य प्रतिष्ठा।",
+              "anvaya_iast": "ahaṃ hi amṛtasya avyayasya ca brahmaṇaḥ, śāśvatasya ca dharmasya, aikāntikasya ca sukhasya pratiṣṭhā."
             }
           ]
         }

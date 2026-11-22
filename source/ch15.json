@@ -212,7 +212,9 @@
                 "en": "Kṛṣṇa said: “They call it the eternal sacred fig — the world-tree with its root above, branches below. The Vedas are its leaves; one who knows it knows the Vedas.”",
                 "ne": "कृष्णले भन्नुभयो: “यसलाई नित्य पीपल भनिन्छ — संसार-वृक्ष, जरा माथि, हाँगा तल। यसका पात वेदहरू हुन्; जसले यसलाई चिन्छ, ऊ वेद चिन्छ।”",
                 "hi": "कृष्ण ने कहा: “इसे नित्य पीपल कहते हैं — जगत्-वृक्ष, जड़ ऊपर, शाखाएँ नीचे। इसके पत्ते वेद हैं; जो इसे जानता है, वह वेदों को जानता है।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — ऊर्ध्वमूलम् अधःशाखम् अव्ययम् अश्वत्थं प्राहुः, यस्य छन्दांसि पर्णानि; यः तं वेद सः वेदवित्।",
+              "anvaya_iast": "śrībhagavānuvāca — ūrdhvamūlam adhaḥśākham avyayam aśvatthaṃ prāhuḥ, yasya chandāṃsi parṇāni; yaḥ taṃ veda saḥ vedavit."
             }
           ]
         },
@@ -374,7 +376,9 @@
                 "en": "“Its branches spread everywhere, fed by the three qualities, with the objects of the senses as sprouts; its roots, reaching below, bind one to action in the human world.”",
                 "ne": "“यसका हाँगा जताततै फैलिन्छन्, तीन गुणले पोषित, इन्द्रियविषयहरू टुसा भएर; तलका जराहरू मानव संसारमा कर्मसँग बाँध्छन्।”",
                 "hi": "“इसकी शाखाएँ हर ओर फैलती हैं, तीन गुणों से पोषित, इन्द्रिय-विषयों को अंकुर बनाए; नीचे की जड़ें मानव-लोक में कर्म से बाँधती हैं।”"
-              }
+              },
+              "anvaya": "गुणप्रवृद्धाः विषयप्रवालाः तस्य शाखाः अधः च ऊर्ध्वं प्रसृताः; मनुष्यलोके कर्मानुबन्धीनि मूलानि अधः च अनुसन्ततानि।",
+              "anvaya_iast": "guṇapravṛddhāḥ viṣayapravālāḥ tasya śākhāḥ adhaḥ ca ūrdhvaṃ prasṛtāḥ; manuṣyaloke karmānubandhīni mūlāni adhaḥ ca anusantatāni."
             }
           ]
         },
@@ -592,7 +596,9 @@
                 "en": "“Its true nature cannot be seen here, nor its end, beginning, or base. Cut down this deep-rooted fig tree with the strong axe of dispassion,”",
                 "ne": "यहाँबाट यसको साँचो आकार देखिँदैन — न टुप्पो, न फेद, न अडेस। जरा गाडिएको यो पीपललाई अनासक्तिको धारिलो बन्चरोले काटेर,",
                 "hi": "यहाँ खड़े-खड़े इस पेड़ का असली रूप नहीं सूझता — न इसका सिरा, न जड़, न ठिकाना। गहरी पकड़ वाले इस पीपल पर अनासक्ति की मज़बूत कुल्हाड़ी चलानी पड़ती है,"
-              }
+              },
+              "anvaya": "इह अस्य रूपं तथा न उपलभ्यते, न अन्तः, न च आदिः, न च सम्प्रतिष्ठा; सुविरूढमूलम् एनम् अश्वत्थं दृढेन असङ्गशस्त्रेण छित्त्वा।",
+              "anvaya_iast": "iha asya rūpaṃ tathā na upalabhyate, na antaḥ, na ca ādiḥ, na ca sampratiṣṭhā; suvirūḍhamūlam enam aśvatthaṃ dṛḍhena asaṅgaśastreṇa chittvā."
             }
           ]
         },
@@ -789,7 +795,9 @@
                 "en": "“— and then seek that goal from which no one returns. I surrender to that primeval Person, the source of the eternal stream.”",
                 "ne": "“— र अनि त्यो लक्ष्य खोज्नुपर्छ, जहाँबाट कोही फर्कदैन। म त्यो आदिम पुरुषमा समर्पण गर्छु — शाश्वत धाराको स्रोत।”",
                 "hi": "“— और फिर उस लक्ष्य की खोज करो, जहाँ से कोई नहीं लौटता। मैं उस आदिम पुरुष में समर्पण करता हूँ — शाश्वत धारा का स्रोत।”"
-              }
+              },
+              "anvaya": "ततः तत् पदं परिमार्गितव्यं यस्मिन् गताः भूयः न निवर्तन्ति — यतः पुराणी प्रवृत्तिः प्रसृता तम् एव च आद्यं पुरुषं प्रपद्ये।",
+              "anvaya_iast": "tataḥ tat padaṃ parimārgitavyaṃ yasmin gatāḥ bhūyaḥ na nivartanti — yataḥ purāṇī pravṛttiḥ prasṛtā tam eva ca ādyaṃ puruṣaṃ prapadye."
             }
           ]
         }
@@ -952,7 +960,9 @@
                 "en": "“Freed from pride and confusion, conquering the taint of clinging, ever dwelling in the Self, desireless — beyond joy and sorrow — the wise reach that eternal abode.”",
                 "ne": "“अभिमान र भ्रमबाट मुक्त, आसक्तिको दाग जितेर, सधैं आत्मामा बस्ने, इच्छारहित — सुख-शोकभन्दा पर — ज्ञानीहरू त्यो नित्य धाममा पुग्छन्।”",
                 "hi": "“अभिमान और भ्रम से मुक्त, आसक्ति के दाग को जीतकर, सदा आत्मा में रहने वाला, इच्छा-रहित — सुख-शोक से परे — ज्ञानी उस नित्य धाम तक पहुँचते हैं।”"
-              }
+              },
+              "anvaya": "निर्मानमोहाः, जितसङ्गदोषाः, अध्यात्मनित्याः, विनिवृत्तकामाः, सुखदुःखसंज्ञैः द्वन्द्वैः विमुक्ताः अमूढाः तत् अव्ययं पदं गच्छन्ति।",
+              "anvaya_iast": "nirmānamohāḥ, jitasaṅgadoṣāḥ, adhyātmanityāḥ, vinivṛttakāmāḥ, sukhaduḥkhasaṃjñaiḥ dvandvaiḥ vimuktāḥ amūḍhāḥ tat avyayaṃ padaṃ gacchanti."
             }
           ]
         },
@@ -1128,7 +1138,9 @@
                 "en": "“My highest home is not lit by sun, moon, or fire; once reached, no one ever returns — that is my supreme abode.”",
                 "ne": "“मेरो परमधामलाई न सूर्यले उज्यालो पार्छ, न चन्द्रमाले, न आगोले; एकपटक पुगेपछि कोही फर्कदैन — त्यही मेरो परम धाम हो।”",
                 "hi": "“मेरा सर्वोच्च घर सूर्य, चन्द्रमा या अग्नि से प्रकाशित नहीं होता; एक बार पहुँचकर कोई नहीं लौटता — वही मेरा परम धाम है।”"
-              }
+              },
+              "anvaya": "न सूर्यः तत् भासयते, न शशाङ्कः, न पावकः; यत् गत्वा न निवर्तन्ते तत् मम परमं धाम।",
+              "anvaya_iast": "na sūryaḥ tat bhāsayate, na śaśāṅkaḥ, na pāvakaḥ; yat gatvā na nivartante tat mama paramaṃ dhāma."
             }
           ]
         }
@@ -1277,7 +1289,9 @@
                 "en": "“As if an eternal portion of myself, the living soul in this world draws to itself the five senses and the mind, which rest in nature.”",
                 "ne": "“यस संसारको जीवात्मा मानौं मेरै नित्य अंश हो; यसले प्रकृतिमा रहने पाँच इन्द्रिय र मनलाई आफूतिर तान्छ।”",
                 "hi": "“इस संसार का जीवात्मा मानो मेरा ही नित्य अंश है; यह प्रकृति में रहने वाली पाँच इन्द्रियों और मन को अपनी ओर खींचता है।”"
-              }
+              },
+              "anvaya": "जीवलोके मम एव सनातनः अंशः जीवभूतः प्रकृतिस्थानि मनःषष्ठानि इन्द्रियाणि कर्षति।",
+              "anvaya_iast": "jīvaloke mama eva sanātanaḥ aṃśaḥ jīvabhūtaḥ prakṛtisthāni manaḥṣaṣṭhāni indriyāṇi karṣati."
             }
           ]
         },
@@ -1446,7 +1460,9 @@
                 "en": "“When this lord of the body enters a body, and when he leaves it, he carries the senses along — as the wind carries a scent from its source.”",
                 "ne": "शरीरको मालिक जब नयाँ शरीरमा पस्छ वा पुरानो छोड्छ, इन्द्रियहरू सँगै लैजान्छ — जसरी बतासले फूलबाट बास्ना बोकेर हिँड्छ।",
                 "hi": "देह का मालिक जब नया शरीर लेता है और जब उसे छोड़ता है, तब इन्द्रियों को साथ लेता जाता है — जैसे हवा फूल से गन्ध उठा ले जाती है।"
-              }
+              },
+              "anvaya": "ईश्वरः यत् शरीरम् अवाप्नोति, यत् च अपि उत्क्रामति, एतानि गृहीत्वा संयाति, वायुः आशयात् गन्धान् इव।",
+              "anvaya_iast": "īśvaraḥ yat śarīram avāpnoti, yat ca api utkrāmati, etāni gṛhītvā saṃyāti, vāyuḥ āśayāt gandhān iva."
             }
           ]
         },
@@ -1608,7 +1624,9 @@
                 "en": "“Using hearing, touch, sight, taste, smell, and the mind, he delights in the objects of the senses.”",
                 "ne": "“सुन्ने, छुने, देख्ने, चाख्ने, सुँघ्ने र मनको प्रयोग गरेर, ऊ इन्द्रियका विषयहरूमा रम्छ।”",
                 "hi": "“सुनने, छूने, देखने, चखने, सूँघने और मन का उपयोग करके, वह इन्द्रियों के विषयों में रमता है।”"
-              }
+              },
+              "anvaya": "अयं श्रोत्रं, चक्षुः, स्पर्शनं च, रसनं, घ्राणम् एव च, मनः च अधिष्ठाय विषयान् उपसेवते।",
+              "anvaya_iast": "ayaṃ śrotraṃ, cakṣuḥ, sparśanaṃ ca, rasanaṃ, ghrāṇam eva ca, manaḥ ca adhiṣṭhāya viṣayān upasevate."
             }
           ]
         },
@@ -1756,7 +1774,9 @@
                 "en": "“Fools do not see him leaving, abiding, or enjoying, bound by the qualities; but those with the eye of wisdom see him.”",
                 "ne": "ऊ जाँदा, बस्दा, भोग्दा वा गुणसँग जोडिँदा — भ्रममा परेकाले केही देख्दैनन्। ज्ञानको आँखा उघ्रेकाले चाहिँ देख्छन्।",
                 "hi": "वह जाता है, ठहरता है, भोगता है, गुणों के बीच रहता है — पर भ्रम में पड़े लोगों को कुछ नहीं दिखता। जिनकी आँख में समझ है, वे देख लेते हैं।"
-              }
+              },
+              "anvaya": "उत्क्रामन्तं, स्थितं वा अपि, भुञ्जानं वा गुणान्वितं विमूढाः न अनुपश्यन्ति, ज्ञानचक्षुषः पश्यन्ति।",
+              "anvaya_iast": "utkrāmantaṃ, sthitaṃ vā api, bhuñjānaṃ vā guṇānvitaṃ vimūḍhāḥ na anupaśyanti, jñānacakṣuṣaḥ paśyanti."
             }
           ]
         },
@@ -1918,7 +1938,9 @@
                 "en": "“Striving yogis see him dwelling within; but those not yet purified — however hard they try — cannot see him.”",
                 "ne": "मिहिनेत गर्ने योगीले उसलाई आफ्नै भित्र भेट्टाउँछ। मन नबाँधेकाले जति कोसिस गरे पनि भेट्टाउँदैनन् — बुझाइ नै पुगेको हुँदैन।",
                 "hi": "“प्रयासशील योगी उसे भीतर रहते देखते हैं; किन्तु जो अभी शुद्ध नहीं हुए — कितनी भी कोशिश करें — उसे नहीं देख पाते।”"
-              }
+              },
+              "anvaya": "यतन्तः योगिनः च आत्मनि अवस्थितम् एनं पश्यन्ति; अकृतात्मानः अचेतसः यतन्तः अपि एनं न पश्यन्ति।",
+              "anvaya_iast": "yatantaḥ yoginaḥ ca ātmani avasthitam enaṃ paśyanti; akṛtātmānaḥ acetasaḥ yatantaḥ api enaṃ na paśyanti."
             }
           ]
         }
@@ -2102,7 +2124,9 @@
                 "en": "“The light of the sun that lights the whole world, the light of the moon and of fire — know it all as mine.”",
                 "ne": "“सूर्यको प्रकाश, जसले सम्पूर्ण संसार उज्यालो बनाउँछ, र चन्द्रमा र आगोको प्रकाश — ती सबै मेरै हुन् भनी जान।”",
                 "hi": "“सूर्य का प्रकाश, जो सम्पूर्ण संसार को उजाला करता है, और चन्द्रमा तथा अग्नि का प्रकाश — उसे सब मेरा ही जान।”"
-              }
+              },
+              "anvaya": "यत् आदित्यगतं तेजः अखिलं जगत् भासयते, यत् चन्द्रमसि, यत् च अग्नौ, तत् तेजः मामकं विद्धि।",
+              "anvaya_iast": "yat ādityagataṃ tejaḥ akhilaṃ jagat bhāsayate, yat candramasi, yat ca agnau, tat tejaḥ māmakaṃ viddhi."
             }
           ]
         },
@@ -2264,7 +2288,9 @@
                 "en": "“I enter the earth and hold up all beings with my power; becoming the nourishing moon, I feed all plants.”",
                 "ne": "म पृथ्वीमा पसेर आफ्नै बलले प्राणीहरू थाम्छु; रसिलो चन्द्रमा भएर सबै बोट-बिरुवा हुर्काउँछु।",
                 "hi": "“मैं पृथ्वी में प्रवेश करके अपनी शक्ति से सब प्राणी धारण करता हूँ; पोषक चन्द्रमा बनकर, मैं सब पौधों को सींचता हूँ।”"
-              }
+              },
+              "anvaya": "अहं गां च आविश्य ओजसा भूतानि धारयामि, रसात्मकः सोमः भूत्वा सर्वाः ओषधीः च पुष्णामि।",
+              "anvaya_iast": "ahaṃ gāṃ ca āviśya ojasā bhūtāni dhārayāmi, rasātmakaḥ somaḥ bhūtvā sarvāḥ oṣadhīḥ ca puṣṇāmi."
             }
           ]
         },
@@ -2398,7 +2424,9 @@
                 "en": "“I become the digestive fire in all living bodies; united with the breath, I digest the four kinds of food.”",
                 "ne": "“सबै जीवित शरीरमा पाचक अग्नि बनेर, श्वाससँग एक भएर, म चार किसिमको अन्न पचाउँछु।”",
                 "hi": "हर देह में पाचन की आग बनकर, साँसों के आने-जाने के साथ जुड़कर, मैं ही चारों तरह का अन्न पचाता हूँ।"
-              }
+              },
+              "anvaya": "अहं वैश्वानरः भूत्वा प्राणिनां देहम् आश्रितः प्राणापानसमायुक्तः चतुर्विधम् अन्नं पचामि।",
+              "anvaya_iast": "ahaṃ vaiśvānaraḥ bhūtvā prāṇināṃ deham āśritaḥ prāṇāpānasamāyuktaḥ caturvidham annaṃ pacāmi."
             }
           ]
         },
@@ -2609,7 +2637,9 @@
                 "en": "“I dwell in every heart; from me come memory, wisdom, and also their loss. I am what all the Vedas teach — the source of Vedānta and the knower of the Vedas.”",
                 "ne": "“म हरेक हृदयमा बस्छु; मबाटै स्मरण, ज्ञान र तिनको हानि आउँछ। सबै वेदले सिकाउने म नै हुँ — वेदान्तका कर्ता र वेदका ज्ञाता।”",
                 "hi": "“मैं हर हृदय में रहता हूँ; मुझसे ही स्मरण, ज्ञान और उनकी हानि आती है। सब वेद जो सिखाते हैं वह मैं ही हूँ — वेदान्त का कर्ता और वेदों का ज्ञाता।”"
-              }
+              },
+              "anvaya": "अहं च सर्वस्य हृदि सन्निविष्टः; मत्तः स्मृतिः, ज्ञानम्, अपोहनं च; सर्वैः वेदैः च अहम् एव वेद्यः, अहं च वेदान्तकृत् वेदवित् एव।",
+              "anvaya_iast": "ahaṃ ca sarvasya hṛdi sanniviṣṭaḥ; mattaḥ smṛtiḥ, jñānam, apohanaṃ ca; sarvaiḥ vedaiḥ ca aham eva vedyaḥ, ahaṃ ca vedāntakṛt vedavit eva."
             }
           ]
         }
@@ -2793,7 +2823,9 @@
                 "en": "“Two persons exist in the world: the perishable and the imperishable. All beings are the perishable; the unchanging Self is the imperishable.”",
                 "ne": "संसारमा दुई किसिमका पुरुष छन् — नासिने र ननासिने। जति प्राणी छन् ती नासिने; नबदलिने आत्मा चाहिँ अक्षर।",
                 "hi": "दुनिया में दो तरह के पुरुष हैं — एक जो बीत जाता है, दूसरा जो नहीं बीतता। सब जीव पहले वाले हैं; न बदलने वाली आत्मा दूसरी।"
-              }
+              },
+              "anvaya": "लोके इमौ द्वौ पुरुषौ — क्षरः च अक्षरः एव च; क्षरः सर्वाणि भूतानि, कूटस्थः अक्षरः उच्यते।",
+              "anvaya_iast": "loke imau dvau puruṣau — kṣaraḥ ca akṣaraḥ eva ca; kṣaraḥ sarvāṇi bhūtāni, kūṭasthaḥ akṣaraḥ ucyate."
             }
           ]
         },
@@ -2948,7 +2980,9 @@
                 "en": "“Yet beyond both is the highest Person, called the supreme Self — the changeless Lord who enters the three worlds and supports them.”",
                 "ne": "यी दुवैभन्दा पर अझ एउटा छ — परमात्मा। नबदलिने त्यो स्वामी तीनै लोकभित्र पसेर तिनलाई थामिरहेको छ।",
                 "hi": "पर इन दोनों से ऊपर एक और है, जिसे परमात्मा कहते हैं — वह अटल स्वामी जो तीनों लोकों में घुसकर उन्हें थामे हुए है।"
-              }
+              },
+              "anvaya": "उत्तमः पुरुषः तु अन्यः परमात्मा इति उदाहृतः, यः अव्ययः ईश्वरः लोकत्रयम् आविश्य बिभर्ति।",
+              "anvaya_iast": "uttamaḥ puruṣaḥ tu anyaḥ paramātmā iti udāhṛtaḥ, yaḥ avyayaḥ īśvaraḥ lokatrayam āviśya bibharti."
             }
           ]
         },
@@ -3117,7 +3151,9 @@
                 "en": "“Because I am beyond the perishable and above the imperishable, I am celebrated in the world and in the Veda as Puruṣottama — the highest Person.”",
                 "ne": "“किनकि म क्षरभन्दा पर र अक्षरभन्दा माथि छु, संसारमा र वेदमा म पुरुषोत्तम — सर्वोच्च पुरुष — भनेर प्रसिद्ध छु।”",
                 "hi": "बीतने वाले से आगे, न बीतने वाले से भी ऊपर — इसीलिए दुनिया में और वेद में मुझे पुरुषोत्तम कहकर पुकारा जाता है।"
-              }
+              },
+              "anvaya": "यस्मात् अहं क्षरम् अतीतः, अक्षरात् अपि च उत्तमः, अतः लोके वेदे च पुरुषोत्तमः प्रथितः अस्मि।",
+              "anvaya_iast": "yasmāt ahaṃ kṣaram atītaḥ, akṣarāt api ca uttamaḥ, ataḥ loke vede ca puruṣottamaḥ prathitaḥ asmi."
             }
           ]
         },
@@ -3265,7 +3301,9 @@
                 "en": "“One who, free of delusion, knows me as the Supreme Person — knowing everything, he worships me with his whole heart, Arjuna.”",
                 "ne": "“जो, मोहबाट मुक्त भएर, मलाई परम पुरुष चिन्छ — सबै जानेर, ऊ पूरा हृदयले मेरो पूजा गर्छ, अर्जुन।”",
                 "hi": "भ्रम हट जाने पर जो मुझे उस सर्वोच्च पुरुष के रूप में जान लेता है, अर्जुन, वह सब कुछ जान गया — और पूरे मन से मुझे पूजता है।"
-              }
+              },
+              "anvaya": "भारत! यः असम्मूढः माम् एवं पुरुषोत्तमं जानाति, सः सर्ववित् सर्वभावेन मां भजति।",
+              "anvaya_iast": "bhārata! yaḥ asammūḍhaḥ mām evaṃ puruṣottamaṃ jānāti, saḥ sarvavit sarvabhāvena māṃ bhajati."
             }
           ]
         },
@@ -3427,7 +3465,9 @@
                 "en": "“So I have taught you this most secret scripture, blameless one. One who grasps it becomes wise and fulfils all his purpose, Arjuna.”",
                 "ne": "“त्यसैले मैले तिमीलाई यो सबैभन्दा गोप्य शास्त्र सिकाएँ, हे निष्पाप। जसले यसलाई बुझ्छ, ऊ ज्ञानी हुन्छ र आफ्नो सबै उद्देश्य पूरा गर्छ, अर्जुन।”",
                 "hi": "“इसलिए मैंने तुझे यह सबसे गुह्य शास्त्र सिखाया, हे निष्पाप। जो इसे समझता है, वह ज्ञानी होता है और अपना सब उद्देश्य पूरा कर लेता है, अर्जुन।”"
-              }
+              },
+              "anvaya": "अनघ! इति इदं गुह्यतमं शास्त्रं मया उक्तम्; भारत! एतत् बुद्ध्वा बुद्धिमान् कृतकृत्यः च स्यात्।",
+              "anvaya_iast": "anagha! iti idaṃ guhyatamaṃ śāstraṃ mayā uktam; bhārata! etat buddhvā buddhimān kṛtakṛtyaḥ ca syāt."
             }
           ]
         }
