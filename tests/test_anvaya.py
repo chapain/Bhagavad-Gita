@@ -14,7 +14,13 @@ class AnvayaTests(unittest.TestCase):
                          'धृतराष्ट्र उवाच — सञ्जय! धर्मक्षेत्रे कुरुक्षेत्रे युयुत्सवः समवेताः मामकाः पाण्डवाः च एव किम् अकुर्वत?')
         self.assertEqual(verses[0]['anvaya_iast'],
                          'dhṛtarāṣṭra uvāca — sañjaya! dharmakṣetre kurukṣetre yuyutsavaḥ samavetāḥ māmakāḥ pāṇḍavāḥ ca eva kim akurvata?')
-        self.assertNotIn('anvaya', verses[1])
+        self.assertEqual(verses[1]['anvaya'],
+                         'सञ्जय उवाच — तदा राजा दुर्योधनः तु व्यूढं पाण्डवानीकं दृष्ट्वा आचार्यम् उपसङ्गम्य वचनम् अब्रवीत्।')
+        self.assertEqual(len([v for v in verses if 'anvaya' in v]), 47)
+        self.assertLess(verses[20]['anvaya'].index('आह'), verses[20]['anvaya'].index('अर्जुन उवाच'))
+        self.assertLess(verses[27]['anvaya'].index('अब्रवीत्'), verses[27]['anvaya'].index('अर्जुन उवाच'))
+        self.assertIn('महत्पापं', verses[44]['anvaya'])
+        self.assertIn('सङ्ख्ये', verses[46]['anvaya'])
 
     def test_reader_places_optional_unboxed_sanskrit_before_literal(self):
         reader = (ROOT / 'source/js/50-reader.js').read_text(encoding='utf-8')
