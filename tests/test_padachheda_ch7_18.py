@@ -27,9 +27,9 @@ REVIEWED = json.loads(r'''{
       ]
     ],
     "lits": {
-      "en": "Why should they not bow to you, O great soul, greater than Brahmā, the primal creator — O infinite Lord of gods, abode of the universe, you are the imperishable, being and non-being and beyond both.",
-      "ne": "हे महात्मा, आदि सृष्टिकर्ता ब्रह्माभन्दा पनि ठूलो तपाईंलाई तिनीहरूले किन नझुकून् — हे देवताहरूका अनन्त स्वामी, ब्रह्माण्डका आश्रय, तपाईं नै अविनाशी, सत् र असत् र दुवैभन्दा पर हुनुहुन्छ?",
-      "hi": "हे महात्मा, आदि सृष्टिकर्ता ब्रह्मा से भी श्रेष्ठ आपको वे क्यों न झुकें — हे देवों के अनन्त स्वामी, जगत् के आश्रय, आप ही अविनाशी, सत् और असत् और दोनों से परे हैं?"
+      "en": "Why should they not bow to you, O great soul, greater than Brahmā, the primal creator — O infinite Lord of gods, abode of the universe; you are the imperishable, and that which is being, non-being and beyond both.",
+      "ne": "हे महात्मा, आदि सृष्टिकर्ता ब्रह्माभन्दा पनि ठूलो तपाईंलाई तिनीहरूले किन नझुकून् — हे देवताहरूका अनन्त स्वामी, ब्रह्माण्डका आश्रय; तपाईं नै अविनाशी हुनुहुन्छ, र सत्, असत् र त्यसभन्दा पर जुन छ, त्यो पनि तपाईं हुनुहुन्छ।",
+      "hi": "हे महात्मा, आदि सृष्टिकर्ता ब्रह्मा से भी श्रेष्ठ आपको वे क्यों न झुकें — हे देवों के अनन्त स्वामी, जगत् के आश्रय; आप ही अविनाशी हैं, और जो सत्, असत् और उनसे परे है, वह भी आप ही हैं।"
     },
     "flow_text": [
       [
@@ -314,8 +314,7 @@ REVIEWED = json.loads(r'''{
       ]
     ]
   }
-}
-''')
+}''')
 
 
 class RemainingPadachhedaTests(unittest.TestCase):
