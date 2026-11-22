@@ -600,7 +600,7 @@ want them to survive a regeneration.
 |  | 12.06 | Those who surrender all actions to me | But those who surrender all actions to me, intent on me, worshipping me with undivided yoga and meditating on me, | ☐ | ☐ | ☐ |
 |  | 12.07 | I become their deliverer from the ocean of death | — for them, whose minds are fixed on me, O Pārtha, I swiftly become the deliverer from the ocean of death and rebirth. | ☐ | ☐ | ☐ |
 |  | 12.08 | Fix your mind on me alone | Fix your mind on me alone; establish your intellect in me; then you shall live in me alone — of this there is no doubt. | ☐ | ☐ | ☐ |
-|  | 12.09 | Then seek me by repeated practice | If you cannot fix your mind steadily on me, then practise the yoga of repetition — seek to reach me by practice, O Dhanañjaya. | ☐ | ☐ | ☐ |
+|  | 12.09 | Then seek me by repeated practice | If you cannot fix your mind steadily on me, then by the yoga of practice seek to reach me, O Dhanañjaya. | ☐ | ☐ | ☐ |
 |  | 12.10 | If not, work for my sake | If you are unable to practise even that, be devoted to working for me; even performing actions for my sake, you shall attain perfection. | ☐ | ☐ | ☐ |
 |  | 12.11 | If not even that, renounce the fruit | If you cannot do even this, then, taking refuge in my yoga, renounce the fruit of all actions — with the self controlled. | ☐ | ☐ | ☐ |
 |  | 12.12 | Fruit-renunciation beats meditation; peace follows | Better indeed is knowledge than practice; better than knowledge is meditation; better than meditation is renunciation of the fruit of action — for from renunciation comes peace, immediately. | ☐ | ☐ | ☐ |

@@ -16,6 +16,12 @@ semantic audit. Coverage below records only work actually done in this pass.
 | 4.01–4.42 | Read against Sanskrit, rows and Besant 1896 | 4.15 and 4.16 corrected. 4.34 ne/hi appears to omit the knowledge being taught and remains open. |
 | 5.01–5.29 | Read against Sanskrit, rows and Besant 1896 | 5.11 and 5.14 corrected. The 5.10 “all” candidate was examined and left: the verse has a bare plural कर्माणि, and Besant independently renders the same phrase “all actions”. No claim that other verses are error-free. |
 | 18.38 | Read specifically for इव | Corrected below; not a reading of the rest of the chapter. |
+| 7.01–7.30 | Read against Sanskrit, rows and the literals; Besant 1896 | 7.21 corrected. 7.23 `अपि` and 7.16 `सुकृतिनः` examined and left. |
+| 8.01–8.28 | Read against Sanskrit, rows and the literals; Besant 1896 | 8.19 corrected, and 8.10's printed verse line repaired (see below). |
+| 9.01–9.34 | Read against Sanskrit, rows and the literals; Besant 1896 | 9.01, 9.11 and 9.27 corrected. |
+| 10.01–10.42 | Read against Sanskrit, rows and the literals; Besant 1896 | 10.13 corrected in all three literals, and its ne/hi paraphrases rewritten. 10.05, 10.12, 10.16 and 10.36 examined and left. |
+| 11.01–11.55 | Read against Sanskrit, rows and the literals; Besant 1896 | 11.26, 11.31, 11.37 and 11.42 corrected, plus a chapter-wide Nepali spelling class. 11.01, 11.15 and 11.16 examined and left. |
+| 12.01–12.20 | Read against Sanskrit, rows and the literals; Besant 1896 | 12.09 and 12.11 corrected. |
 | All other verses | Not yet reviewed in this pass | Whole-book targeted screens do not constitute a verse-by-verse review. |
 
 ## Findings and whole-book class screens
@@ -248,11 +254,66 @@ movement. `docs/title-review.md` was
 regenerated, never hand-edited, and the 2.19 snapshot in
 `tests/test_padachheda_ch1_6.py` was amended with its reason.
 
+### Shot 2 (chapters 7–12): what was read and what was not changed
+
+Chapters 7, 8, 9, 10, 11 and 12 were read verse by verse against the Sanskrit
+and the rows, with Besant in hand. Six literal repairs (7.21, 8.19, 9.01,
+9.11, 9.27, 10.13) landed in the first commit and five more (11.26, 11.31,
+11.37, 11.42, 12.09, 12.11) in the second and third.
+
+Two are class defects rather than single slips. **8.10's printed verse line
+was broken**: the `d` and `t` fields read `सम्य क्स्` where the verse has
+`सम्यक्सञ्जयते`, and the two halves of the line disagreed with each other.
+Found by comparing `''.join(flow[].d)` with `d` across all 700 verses and
+then flagging whitespace-separated tokens of three characters or fewer that
+contain a virama; that screen returns 8.10 and nothing else. **11.42 was the
+only `असि` row in the book glossed "you were/थियौं"** — the other fifteen read
+"you are/छौ/हो" — and `थियौं` is first person plural, which no form of `असि`
+can bear. That screen (list every occurrence of a copula row with its three
+glosses, look for the outlier) is the one that found it.
+
+A Nepali spelling class also turned up in chapter 11: `काम्छ` and `कामेको`
+for √kamp lack the candrabindu that every other form of the verb in the book
+carries (`काँप्छ`, `काँपेको`). Corrected at 11.23, 11.24, 11.45 and in one
+theme description. 11.37 is the one repair that needed a pinned snapshot
+amended: its `lits` in `tests/test_padachheda_ch7_18.py` now keep the verse's
+own predication (`त्वम् अक्षरं … सत् असत् तत् परम्`) instead of asserting that
+he *is* being and non-being, and ne/hi no longer pose a statement as a
+question.
+
+Candidates examined and **deliberately left**, so they are not re-reported:
+
+* **7.23** `अपि` "indeed" — the row is right and the literals carry it.
+* **7.16** `सुकृतिनः` rendered "सत्कर्मीहरू" in Nepali: the plain sense of
+  "doers of good", not a distortion.
+* **8.19** `भूत्वा भूत्वा` "again and again" is carried by one row, not two;
+  the row split is the house's, and the literal says "again" as the rows do.
+* **9.20** `पुण्यम्` — the literals' "holy/meritorious" is the word's sense.
+* **10.05** `तपः` ne, **10.12** `धाम` glossed twice, **10.16** hi word order,
+  **10.36** `छलयताम्` — translator's latitude, read and kept.
+* **11.01** "compassionate words" for `मदनुग्रहाय`: the verse asks for
+  favour; "compassionate" is the same address, and Besant reads it the same
+  way.
+* **11.15** ne `ईशम्` "the Lord" is lightly weakened; en and hi are sound, and
+  the row carries it.
+* **11.16** `पुनः` "again" has a row of its own but all three literals drop
+  it, each writing the three negations as one list. Read and left: the
+  repetition is the row's granularity, and the verse's point is the list.
+* **11.24/11.25** `काम्छ` beside `काँपते` in the rows is the row text, not the
+  literal; the row is a bare gloss and the candrabindu fix above covers the
+  literals.
+* **12.01–12.08, 12.13–12.20** — read clean. 12.02's `उपेताः` "endowed" folded
+  into "with supreme faith" reads correctly given `श्रद्धया परया` are its
+  instrument; 12.03/12.04 carry across the verse break as the verse does.
+* **12.20** `धर्म्यामृतम्` split as `धर्म्य` + `अमृतम्` in the rows; the
+  literals' "immortal dharma" is the sense and Besant reads "Amrita-Dharma".
+
 ### Coverage and what is still owed
 
 Read against the Sanskrit, the rows and a public-domain translation:
-**1.01–1.47, 2.01–2.72, 3.01–3.43, 4.01–4.42, 5.01–5.29, 6.01–6.47
-(280 verses)**. Not yet read in this pass: chapters 7–18 (420 verses). The
+**1.01–1.47, 2.01–2.72, 3.01–3.43, 4.01–4.42, 5.01–5.29, 6.01–6.47,
+7.01–7.30, 8.01–8.28, 9.01–9.34, 10.01–10.42, 11.01–11.55, 12.01–12.20
+(489 verses)**. Not yet read in this pass: chapters 13–18 (211 verses). The
 finding rate so far is about one repaired verse in sixteen, and the repairs
 above include three that a vocabulary screen cannot reach (a supplied
 comparison, a hypothetical turned into a prediction, a conjunction turned into
