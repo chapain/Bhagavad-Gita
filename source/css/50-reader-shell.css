@@ -134,22 +134,25 @@
   /* Meaning blocks follow straight after the hero verse, no extra paper
      card around them — the content should breathe. */
   /* Anvaya, literal and paraphrase are three readings of one verse, so they
-     carry ONE label grammar: a quiet accent-coloured line, no fill (owner
-     2026-11-22: "literal and paraphrase have blue and yellow like button bg or
-     something and anvaya is plain"). A filled pill is this app's grammar for a
-     *control* — the mode chips, the nav buttons — so two of them beside a plain
-     anvaya read as two buttons and some text. The Learn card's .lr-mean label
-     already used the quieter form; the sheet now matches it. Colour survives as
-     lettering only: teal for the literal, saffron for the paraphrase and for
-     anvaya, the same split as before, one weight down. No uppercase and no
-     letter-spacing: two of the three labels are Devanagari in नेपाली/हिन्दी and
-     tracking strains the mātrā flow (the same rule the breadcrumb chips carry).
-     One definition only — the duplicate block further down used to re-declare
+     carry ONE label grammar: a soft pill each, anvaya included. The owner
+     reversed the plain-label verdict of 2026-11-22 — "the pills looks better.
+     without pills, it looks like a lot of letters/words which the user is
+     disinclined to read, while with pills, it's clear what's what." A
+     scanning problem, not a decoration problem. The pills are soft, not
+     solid: the accent stays legible as text — 7.24:1 teal-on-teal-soft and
+     5.04:1 saffron-on-saffron-soft in light mode, dark theme checked too.
+     .72rem raised to .8rem (the project has recorded .72rem as too small for
+     Devanagari), and no uppercase and no letter-spacing: two of the three
+     labels are Devanagari (अन्वयः, शाब्दिक अनुवाद, सरल अर्थमा), and tracking
+     strains the mātrā flow (the same rule the breadcrumb chips carry). One
+     definition only — the duplicate block further down used to re-declare
      these and silently shadow half of them. */
   .m-anvaya{ margin-top:18px; color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.8; }
-  .m-anvaya-label, .m-line .lb{ display:block; color:var(--saffron-text);
-               font-size:.8rem; font-weight:700; line-height:1.4; margin-bottom:3px; }
-  .m-line.lit .lb{ color:var(--teal); }
+  .m-anvaya-label, .m-line .lb{ display:inline-block; color:var(--saffron-text);
+               background:var(--saffron-soft); font-size:.8rem; font-weight:700;
+               line-height:1.4; padding:3px 10px; border-radius:999px;
+               margin-bottom:5px; }
+  .m-line.lit .lb{ color:var(--teal); background:var(--teal-soft); }
   .m-anvaya-iast{ color:var(--ink-soft); font-style:italic; font-size:calc(.9rem * var(--reader-scale,1)); overflow-wrap:anywhere; }
   .m-line{ margin-top:18px; }
   .m-line .lt{ color:var(--ink); font-size:calc(1.02rem * var(--reader-scale,1)); line-height:1.6;}

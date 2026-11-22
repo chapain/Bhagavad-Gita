@@ -120,11 +120,18 @@
   .lr-word .m{ display:block; font-size:.84rem; line-height:1.4;}
   .lr-mean{ margin-top:14px; padding:14px 16px; border-radius:12px;
             background:var(--saffron-soft); border:1px solid var(--line);}
-  /* Same three-reading-block label as the verse sheet's .m-line .lb, so a
-     paraphrase is labelled identically wherever it appears. No uppercase: the
-     label is "सरल अर्थमा" / "सरल शब्दों में" for most readers. */
-  .lr-mean .lb{ display:block; font-size:.8rem; font-weight:700; line-height:1.4;
-                color:var(--saffron-text); margin-bottom:3px;}
+  /* Same three-reading-block label grammar as the verse sheet's .m-line .lb —
+     one soft pill, so a paraphrase is labelled identically wherever it
+     appears. No uppercase and no letter-spacing: the label is
+     "सरल अर्थमा" / "सरल शब्दों में" for most readers, and tracking strains the
+     mātrā flow (same ruling as the breadcrumb chips, 2026-08-30). The
+     saffron-soft fill coincides with this card's own background, so here the
+     pill's shape is carried by its lettering; the grammar stays one rule
+     with the sheet (2026-11-22 reversal). */
+  .lr-mean .lb{ display:inline-block; font-size:.8rem; font-weight:700;
+                line-height:1.4; padding:3px 10px; border-radius:999px;
+                color:var(--saffron-text); background:var(--saffron-soft);
+                margin-bottom:5px;}
 
   .lr-nav{ display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-top:20px;}
   .lr-hint{ flex:1; text-align:center; font-size:.78rem; color:var(--ink-soft);}
