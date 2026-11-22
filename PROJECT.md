@@ -514,7 +514,7 @@ method page is checked at 1440x900 with prefers-color-scheme: dark.
   says nothing about layout, touch or the phone tab bar; those still need the
   browser suite, which cannot run in this sandbox, so 302 browser checks remain
   CI's to prove.
-* **Counts:** 934 assertions, 302 browser checks, 232 UI strings unchanged; the
+* **Counts:** 934 assertions, 302 browser checks, 231 UI strings unchanged; the
   shell grew 1,471 characters to 364,612 chars / 387,326 bytes / 105,412 gzip,
   all of it comments and accessors, and 13 source modules are now listed.
 
@@ -529,7 +529,7 @@ method page is checked at 1440x900 with prefers-color-scheme: dark.
 * `tests/test_offline_navigation.js` executes the generated worker with simulated
   network and cache; two browser checks cover a real visited and unvisited chapter
   offline. These browser checks are not locally verified without Playwright.
-  Counts: 934 assertions, 302 browser checks, 232 UI strings; the shell is
+  Counts: 934 assertions, 302 browser checks, 231 UI strings; the shell is
   unchanged at 363,141 chars / 385,851 bytes / 105,035 gzip.
 
 ### 2026-11-04 (second batch) — the furniture behind the sheet, and the share art
@@ -576,7 +576,7 @@ method page is checked at 1440x900 with prefers-color-scheme: dark.
   new module reading `VERSES` by name — correctly, by the same rule that keeps
   `LV`, `PL` and `LQ` from leaking between modules. `10-library.js` now offers
   `versesForChapter(ci)` and the suggestions go through it.
-* **Counts:** 934 assertions, 300 browser checks, 232 UI strings, shell 363,141
+* **Counts:** 934 assertions, 300 browser checks, 231 UI strings, shell 363,141
   chars / 385,851 bytes / 105,035 gzip. Both totals keep their drift locks, so a
   stale number fails the run instead of quietly blessing three documents.
 
@@ -597,7 +597,7 @@ method page is checked at 1440x900 with prefers-color-scheme: dark.
   `<ul role="listbox">`, and `aria-expanded` kept in step by the code that
   shows and hides it. The active row is announced through
   `aria-activedescendant` + `aria-selected`, never by a CSS class alone. One
-  new string (`search_suggest_hint`, ×3 → 232 UI strings) describes the keys;
+  new string (`search_suggest_hint`, ×3 → 231 UI strings) describes the keys;
   the row kinds reuse `search_recent`, `chapters` and `verses` rather than
   adding three more. ne/hi say एन्टर/एस्केप as words, not Latin key names — the
   Latin-residue check caught my first attempt using “Enter” and “Escape”.
@@ -626,7 +626,7 @@ method page is checked at 1440x900 with prefers-color-scheme: dark.
   then the cap went 370,000 → 375,000 for a real 12.5KB reserve. No module
   split: the lazy-load candidates need the browser suite re-locked, and that
   suite cannot run here.
-* **Counts:** 934 assertions, 300 browser checks, 232 UI strings, shell 363,141
+* **Counts:** 934 assertions, 300 browser checks, 231 UI strings, shell 363,141
   chars / 385,851 bytes / 105,035 gzip. Search regressions 12 → 13.
 
 ### 2026-11-04 — the backup nobody found; the vowel that found nothing
