@@ -261,7 +261,7 @@
                     [
                       "कश्मलम्",
                       "kaśmalam",
-                      "faintness",
+                      "dejection",
                       "मोह",
                       "मोह"
                     ],
@@ -834,15 +834,15 @@
                       "अर्थ",
                       "artha",
                       "for wealth",
-                      "प्रयोजनको",
-                      "प्रयोजन का"
+                      "धनको",
+                      "धन का"
                     ],
                     [
                       "कामान्",
                       "kāmān",
                       "and desires",
-                      "कामनाहरू",
-                      "कामनाएँ"
+                      "र कामनाहरू",
+                      "और कामनाएँ"
                     ],
                     [
                       "तु",
@@ -913,7 +913,7 @@
               ],
               "lits": {
                 "en": "Better to eat alms-food even here in this world than to slay these noble, great-souled teachers. Killing these very teachers — even for the sake of wealth and desires — I would taste pleasures smeared with blood.",
-                "ne": "यसै संसारमा यी महानुभाव गुरुहरूलाई मार्नुभन्दा भिक्षाको अन्न भोग्नु नै राम्रो। यी गुरुहरूलाई नै — धन र कामनाका निम्ति भए पनि — मारेर म रगतले लतपतिएका सुख मात्र भोग्नेछु।",
+                "ne": "यसै संसारमा यी महानुभाव गुरुहरूलाई नमारेर भिक्षाको अन्न पनि भोग्नु नै राम्रो। तर यी गुरुहरूलाई नै — धन र कामनाका निम्ति पनि — मारेर म रगतले लतपतिएका सुख मात्र भोग्नेछु।",
                 "hi": "इसी लोक में इन महानुभाव गुरुओं को मारने से भिक्षान्न भोगना ही अच्छा है। इन्हीं गुरुओं को — धन और कामनाओं के लिए भी — मारकर मैं रक्त से सने हुए सुख ही भोगूँगा।"
               },
               "paras": {
@@ -3506,7 +3506,7 @@
                 }
               ],
               "lits": {
-                "en": "Whoever thinks the Self is the killer, and whoever thinks it is killed — neither truly knows: it does not kill, nor is it killed.",
+                "en": "Whoever regards this as the killer, and whoever thinks it is killed — both of them do not know: it does not kill, nor is it killed.",
                 "ne": "जसले आत्माले मार्छ भनी ठान्छ र जसले आत्मा मारिन्छ भनी ठान्छ — दुवै साँच्चै बुझ्दैनन्: यसले न मार्छ न मारिन्छ।",
                 "hi": "जो आत्मा को मारने वाला समझता है, और जो आत्मा मारा जाता है समझता है — दोनों सचमुच नहीं जानते: यह न मारता है, न मारा जाता है।"
               },
@@ -5816,9 +5816,9 @@
                 }
               ],
               "lits": {
-                "en": "Blessed are the kṣatriyas, O Pārtha, who find such a war — come to them of its own accord — an open door to heaven.",
-                "ne": "हे पार्थ, धन्य ती क्षत्रियहरू — जसलाई यस्तो युद्ध आफैं प्राप्त हुन्छ — स्वर्गको खुला ढोका।",
-                "hi": "हे पार्थ, धन्य हैं वे क्षत्रिय, जिन्हें ऐसा युद्ध स्वयं मिलता है — स्वर्ग का खुला द्वार।"
+                "en": "Happy are the kṣatriyas, O Pārtha, who obtain such a war — come of its own accord, an open door to heaven.",
+                "ne": "हे पार्थ, सुखी हुन् ती क्षत्रियहरू — जसलाई आफैं प्राप्त यस्तो युद्ध, स्वर्गको खुला ढोका, मिल्छ।",
+                "hi": "हे पार्थ, सुखी हैं वे क्षत्रिय, जिन्हें आफैं प्राप्त ऐसा युद्ध — स्वर्ग का खुला द्वार — मिलता है।"
               },
               "paras": {
                 "en": "“Fortunate are the warriors, Arjuna, who meet a war like this — it comes to them unsought, and it is an open gate to heaven.”",
@@ -7773,9 +7773,9 @@
                 }
               ],
               "lits": {
-                "en": "For those attached to pleasure and power, whose minds are carried away by such words, the one-pointed intellect of samādhi does not arise.",
-                "ne": "भोग र ऐश्वर्यमा आसक्त, त्यस्ता वचनले मन हराएकाहरूमा समाधिमा दृढ एकाग्र बुद्धि उत्पन्न हुँदैन।",
-                "hi": "भोग और ऐश्वर्य में आसक्त, ऐसे वचनों से मन हरे हुए लोगों में समाधि में दृढ़ एकाग्र बुद्धि नहीं उत्पन्न होती।"
+                "en": "For those attached to pleasure and power, whose minds are carried away by such words, the one-pointed intellect of samādhi is not established.",
+                "ne": "भोग र ऐश्वर्यमा आसक्त, त्यस्ता वचनले मन हराएकाहरूमा समाधिमा दृढ एकाग्र बुद्धि स्थापित हुँदैन।",
+                "hi": "भोग और ऐश्वर्य में आसक्त, ऐसे वचनों से मन हरे हुए लोगों में समाधि में दृढ़ एकाग्र बुद्धि स्थापित नहीं होती।"
               },
               "paras": {
                 "en": "“For those bewitched by pleasure and power, whose hearts these promises have stolen, the steady intellect of absorption never takes root.”",

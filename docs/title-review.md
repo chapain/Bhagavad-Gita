@@ -87,7 +87,7 @@ want them to survive a regeneration.
 |  | 1.36 | Only sin would follow | “Slaying the sons of Dhṛtarāṣṭra, what pleasure would be ours, O Janārdana? Sin alone would take hold of us for killing these aggressors.” | ☐ | ☐ | ☐ |
 |  | 1.37 | We should not kill our own kin | “Therefore we should not kill our kinsmen, the sons of Dhṛtarāṣṭra; for how, having slain our own people, could we be happy, O Mādhava?” | ☐ | ☐ | ☐ |
 |  | 1.38 | Greed blinds them to the crime | “Though these men, their minds overcome by greed, see no fault in destroying the family and no crime in treachery toward friends…” | ☐ | ☐ | ☐ |
-|  | 1.39 | Seeing family ruin, turn away from sin | “But how can we not know — we who see the fault of family-destruction — that we must turn back from this sin, O Janārdana?” | ☐ | ☐ | ☐ |
+|  | 1.39 | Seeing family ruin, turn away from sin | “How can we not know — we who see the fault of family-destruction — that we must turn back from this sin, O Janārdana?” | ☐ | ☐ | ☐ |
 |  | 1.40 | When dharma is lost | “With the destruction of the family, the eternal family-duties are lost; and when dharma is lost, adharma overwhelms the whole family.” | ☐ | ☐ | ☐ |
 |  | 1.41 | Adharma leads to varṇa mixing | “From the rise of adharma, O Kṛṣṇa, the women of the family become corrupted; and from corrupted women, O Vārṣṇeya, arises the mixing of classes.” | ☐ | ☐ | ☐ |
 |  | 1.42 | Hell for the family and its ancestors | “This mixing leads to hell for the destroyers of the family and for the family itself; their ancestors fall, deprived of the offerings of rice and water.” | ☐ | ☐ | ☐ |
@@ -124,7 +124,7 @@ want them to survive a regeneration.
 |  | 2.16 | The unreal has no being | The unreal has no being; the real never ceases to be. The truth of both is seen by the seers of the essence. | ☐ | ☐ | ☐ |
 |  | 2.17 | The imperishable pervades all | Know that to be imperishable by which all this is pervaded. No one can bring about the destruction of that inexhaustible one. | ☐ | ☐ | ☐ |
 |  | 2.18 | The bodies end, the Self does not | These bodies of the eternal, indestructible, immeasurable embodied Self are said to have an end; therefore fight, O Bhārata. | ☐ | ☐ | ☐ |
-|  | 2.19 | The Self neither kills nor is killed | Whoever thinks the Self is the killer, and whoever thinks it is killed — neither truly knows: it does not kill, nor is it killed. | ☐ | ☐ | ☐ |
+|  | 2.19 | The Self neither kills nor is killed | Whoever regards this as the killer, and whoever thinks it is killed — both of them do not know: it does not kill, nor is it killed. | ☐ | ☐ | ☐ |
 |  | 2.20 | The Self is never born and never dies | It is never born, never dies; having been, it will never again cease to be. Unborn, eternal, everlasting and ancient — it is not slain when the body is slain. | ☐ | ☐ | ☐ |
 |  | 2.21 | Who then can kill, or cause killing? | Knowing this Self to be imperishable, eternal, unborn and inexhaustible — how, O Pārtha, can any man cause another to be killed, or kill? | ☐ | ☐ | ☐ |
 |  | 2.22 | As one casts off worn-out clothes | As a man casts off worn-out clothes and puts on new ones, so the embodied Self casts off worn-out bodies and enters new ones. | ☐ | ☐ | ☐ |
@@ -137,7 +137,7 @@ want them to survive a regeneration.
 |  | 2.29 | The Self is wondrous, yet hard to know | One sees the Self as a wonder, another speaks of it as a wonder, another hears of it as a wonder — and even having heard, no one truly knows it. | ☐ | ☐ | ☐ |
 |  | 2.30 | Grieve for no being | The embodied Self in the body of everyone is eternally inviolable, O Bhārata. Therefore you should not grieve for any being. | ☐ | ☐ | ☐ |
 |  | 2.31 | Nothing better than a righteous war | Considering also your own dharma, you should not waver; for a kṣatriya, nothing is better than a righteous war. | ☐ | ☐ | ☐ |
-|  | 2.32 | An open gate to heaven | Blessed are the kṣatriyas, O Pārtha, who find such a war — come to them of its own accord — an open door to heaven. | ☐ | ☐ | ☐ |
+|  | 2.32 | An open gate to heaven | Happy are the kṣatriyas, O Pārtha, who obtain such a war — come of its own accord, an open door to heaven. | ☐ | ☐ | ☐ |
 |  | 2.33 | Abandoning dharma you incur sin | But if you do not wage this righteous war, then, abandoning your own dharma and your glory, you will incur sin. | ☐ | ☐ | ☐ |
 |  | 2.34 | Your lasting shame | People will speak of your everlasting disgrace; and for one held in honour, disgrace is worse than death. | ☐ | ☐ | ☐ |
 |  | 2.35 | Warriors will mistake retreat for fear | The great warriors will think you fled the battle out of fear; and those who held you in high regard will think little of you. | ☐ | ☐ | ☐ |
@@ -149,7 +149,7 @@ want them to survive a regeneration.
 |  | 2.41 | A resolute intellect has one aim | The intellect of the resolute is single and one-pointed here, O joy of the Kurus; but the intellects of the irresolute branch out endlessly. | ☐ | ☐ | ☐ |
 |  | 2.42 | The flowery words of the Vedas | The unwise, delighting in Vedic pronouncements, O Pārtha, saying “there is nothing else,” speak this flowery speech — | ☐ | ☐ | ☐ |
 |  | 2.43 | Full of craving, longing for heaven | — desire-filled and seeking heaven, they speak of what gives birth as the fruit of action and abounds in special rites directed toward enjoyment and power. | ☐ | ☐ | ☐ |
-|  | 2.44 | No samādhi for the scattered | For those attached to pleasure and power, whose minds are carried away by such words, the one-pointed intellect of samādhi does not arise. | ☐ | ☐ | ☐ |
+|  | 2.44 | No samādhi for the scattered | For those attached to pleasure and power, whose minds are carried away by such words, the one-pointed intellect of samādhi is not established. | ☐ | ☐ | ☐ |
 |  | 2.45 | Rise above the three guṇas | The Vedas deal with the three guṇas; rise above the three guṇas, O Arjuna — free from the pairs of opposites, ever established in sattva, beyond gain and keeping, self-possessed. | ☐ | ☐ | ☐ |
 |  | 2.46 | The well and the flood | As much use as a well is when water floods everywhere, so much is all the Veda for a brāhmaṇa of understanding. | ☐ | ☐ | ☐ |
 |  | 2.47 | Your right: action, not fruit; don’t cling to inaction | Your right is to action alone, never to its fruits. Let not the fruits of action be your motive, nor let your attachment be to inaction. | ☐ | ☐ | ☐ |
@@ -325,7 +325,7 @@ want them to survive a regeneration.
 |  | 6.05 | The Self is the friend and the enemy of the Self | Let one raise the self by the Self and not degrade the self; for the Self alone is the friend of the self, and the Self alone is the enemy of the self. | ☐ | ☐ | ☐ |
 |  | 6.06 | Friend if conquered, enemy if not | For him who has conquered the self by the Self, the Self is a friend; but for him who has not conquered the self, the Self abides as an enemy, hostile. | ☐ | ☐ | ☐ |
 |  | 6.07 | The self-conquered is at peace | The self-conquered, tranquil one is established in the Self — equal in cold and heat, pleasure and pain, honour and dishonour. | ☐ | ☐ | ☐ |
-|  | 6.08 | A clod, a stone, and gold alike | He who is satisfied with knowledge and realization, unmoved, with senses conquered, to whom a lump of earth, a stone and gold are alike — he is called a yoked one. | ☐ | ☐ | ☐ |
+|  | 6.08 | A clod, a stone, and gold alike | He who is satisfied with knowledge and realization, whose self is steadfast, whose senses are conquered, to whom a clod of earth, a stone and gold are the same — he is called yoked. | ☐ | ☐ | ☐ |
 |  | 6.09 | Equal to friend and foe | He who is the same toward well-wishers, friends, foes, the indifferent, neutrals, the hateful, kinsmen, the righteous and even sinners — he excels. | ☐ | ☐ | ☐ |
 |  | 6.10 | Alone, in solitude | Let the yogi constantly discipline himself, abiding in a solitary place, alone, with mind and self controlled, free from desire and possessiveness. | ☐ | ☐ | ☐ |
 |  | 6.11 | A clean place, neither too high nor too low | Establishing in a pure spot a steady seat for himself, neither too high nor too low, covered with cloth, a deer-skin and kuśa grass, | ☐ | ☐ | ☐ |
@@ -338,9 +338,9 @@ want them to survive a regeneration.
 |  | 6.18 | When the mind rests in the Self | When the well-trained mind rests in the Self alone, free from longing for all objects of desire — then one is said to be yoked. | ☐ | ☐ | ☐ |
 |  | 6.19 | As a lamp in a windless place | As a lamp placed in a windless spot does not flicker — this simile is declared of a yogi of controlled mind, practising yoga of the Self. | ☐ | ☐ | ☐ |
 |  | 6.20 | Beholding the Self, content in the Self | That in which, by the practice of yoga, the mind comes to rest, and beholding the Self by the self, one is content in the Self alone — | ☐ | ☐ | ☐ |
-|  | 6.21 | A joy the senses cannot reach | — that which, being apprehended by the intellect beyond the senses, one knows as boundless joy, and established in which one never departs from the truth — | ☐ | ☐ | ☐ |
-|  | 6.22 | No gain is counted greater than this | — having gained which one deems no other gain superior, in which one is not disturbed even by great sorrow — that state is known as yoga, the sundering of union with sorrow. | ☐ | ☐ | ☐ |
-|  | 6.23 | Practise with resolve and an undiscouraged mind | That yoga, the disconnection of union with sorrow, should be practised with determination, with an undiscouraged mind. | ☐ | ☐ | ☐ |
+|  | 6.21 | A joy the senses cannot reach | — that joy, boundless, to be grasped by the intellect, beyond the senses, which one knows; and established in it, this one never moves from the truth — | ☐ | ☐ | ☐ |
+|  | 6.22 | No gain is counted greater than this | — having gained which one deems no other gain greater, and established in which one is not shaken even by heavy sorrow — | ☐ | ☐ | ☐ |
+|  | 6.23 | Practise with resolve and an undiscouraged mind | Know that as yoga, called the disconnection of union with sorrow; that yoga should be practised with firm resolve and an undiscouraged mind. | ☐ | ☐ | ☐ |
 |  | 6.24 | Abandon all desires born of intention | Abandoning without exception all desires born of resolve, restraining the whole group of senses on every side by the mind alone — | ☐ | ☐ | ☐ |
 |  | 6.25 | Slowly, gradually, let him come to rest | — slowly, gradually, let him come to rest through the intellect held firm by resolve; and fixing the mind on the Self alone, let him think of nothing else. | ☐ | ☐ | ☐ |
 |  | 6.26 | Wherever the mind wanders, bring it back | From whatever cause the wavering, unsteady mind wanders away, from that alone let him withdraw it and bring it under the control of the Self. | ☐ | ☐ | ☐ |
@@ -363,7 +363,7 @@ want them to survive a regeneration.
 |  | 6.43 | He regains spiritual insight from a past life | There he regains the understanding of his former body, O son of the Kurus, and from there he strives again for perfection. | ☐ | ☐ | ☐ |
 |  | 6.44 | Carried onward by former practice | By that very former practice he is carried along, even in spite of himself; even the one who merely wishes to know yoga transcends the word-Brahman. | ☐ | ☐ | ☐ |
 |  | 6.45 | Perfected through many births | But the yogi who strives with effort, purified of sin, perfected gradually through many births, then reaches the highest state. | ☐ | ☐ | ☐ |
-|  | 6.46 | The yogi is greater than the ascetic | The yogi is greater than the ascetic, deemed greater than the man of knowledge, and greater than the man of rites; therefore be a yogi, O Arjuna. | ☐ | ☐ | ☐ |
+|  | 6.46 | The yogi is greater than the ascetic | The yogi is greater than the ascetics, deemed greater than even the men of knowledge, and greater than the men of action; therefore be a yogi, O Arjuna. | ☐ | ☐ | ☐ |
 |  | 6.47 | Most yoked: he who worships me with faith | And among all yogis, he who, full of faith, worships me with his inmost self established in me — him I deem the most yoked, in my view. | ☐ | ☐ | ☐ |
 
 

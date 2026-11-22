@@ -234,7 +234,16 @@ TERM_IN_COMPOUND = {("2.02", "जुष्टम्")}
 # 2.07 adds weakness and defect; 18.38 adds इव; 2.08 and 2.65 align
 # further literal alignment carries according to, compassion, agitated, grieving,
 # abstaining, embodied and speech; synonyms change other rows (1018 → 1007).
-ROW_LITERAL_CENSUS = 1007
+# Reviewed 2026-11-22 against Besant's public-domain 1896 translation, five rows
+# moved into their own literal (1007 → 1002), each read first: 2.02 कश्मलम्
+# "faintness" → the literal's "dejection"; 2.32 सुखिनः "happy" and लभन्ते
+# "they obtain" → "Happy … obtain"; 2.44 विधीयते "is established" → "is
+# established" (was "arise"); 3.02 इव "indeed" → "as if" (matches "seem").
+# Chapter 6 read the same day (1002 → 994): 6.08 समलोष्ट/तृप्तात्मा, 6.22
+# स्थितः/गुरुणा/विचाल्यते (the 6.23 clause taken out of 6.22), 6.23 निश्चयेन,
+# 6.46 तपस्विभ्यः/कर्मिभ्यः now carry their own gloss; 6.21's rewrite first
+# *raised* its miss from 2 to 4 and was refined before this number was set.
+ROW_LITERAL_CENSUS = 994
 
 
 def _fold_diacritics(word):
