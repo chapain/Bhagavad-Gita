@@ -562,8 +562,8 @@
           "sutras": [
             {
               "n": "2.04",
-              "anvaya": "अर्जुन उवाच — मधुसूदन! अरिसूदन! पूजार्हौ भीष्मं द्रोणं च अहं सङ्ख्ये इषुभिः कथं प्रतियोत्स्यामि?",
-              "anvaya_iast": "arjuna uvāca — madhusūdana! arisūdana! pūjārhau bhīṣmaṃ droṇaṃ ca ahaṃ saṅkhye iṣubhiḥ kathaṃ pratiyotsyāmi?",
+              "anvaya": "अर्जुन उवाच — मधुसूदन! अरिसूदन! अहं संख्ये पूजार्हौ भीष्मं द्रोणं च इषुभिः कथं प्रतियोत्स्यामि?",
+              "anvaya_iast": "arjuna uvāca — madhusūdana! arisūdana! ahaṃ saṃkhye pūjārhau bhīṣmaṃ droṇaṃ ca iṣubhiḥ kathaṃ pratiyotsyāmi?",
               "d": "अर्जुन उवाच  ।  कथं भीष्ममहं सङ्ख्ये द्रोणं च मधुसूदन  ।  इषुभिः प्रतियोत्स्यामि पूजार्हावरिसूदन",
               "t": "arjuna uvāca । kathaṃ bhīṣmamahaṃ saṅkhye droṇaṃ ca madhusūdana । iṣubhiḥ pratiyotsyāmi pūjārhāvarisūdana",
               "flow": [
@@ -726,8 +726,8 @@
           "sutras": [
             {
               "n": "2.05",
-              "anvaya": "महानुभावान् गुरून् हि अहत्वा इह लोके भैक्ष्यम् अपि भोक्तुं श्रेयः; अर्थकामान् तु गुरून् हत्वा इह एव रुधिरप्रदिग्धान् भोगान् भुञ्जीय।",
-              "anvaya_iast": "mahānubhāvān gurūn hi ahatvā iha loke bhaikṣyam api bhoktuṃ śreyaḥ; arthakāmān tu gurūn hatvā iha eva rudhirapradigdhān bhogān bhuñjīya.",
+              "anvaya": "महानुभावान् गुरून् अहत्वा हि इह लोके भैक्ष्यम् अपि भोक्तुं श्रेयः; अर्थकामान् गुरून् तु हत्वा इह एव रुधिरप्रदिग्धान् भोगान् भुञ्जीय।",
+              "anvaya_iast": "mahānubhāvān gurūn ahatvā hi iha loke bhaikṣyam api bhoktuṃ śreyaḥ; arthakāmān gurūn tu hatvā iha eva rudhirapradigdhān bhogān bhuñjīya.",
               "d": "गुरूनहत्वा हि महानुभावान् श्रेयो भोक्तुं भैक्ष्यमपीह लोके । हत्वार्थकामांस्तु गुरूनिहैव भुञ्जीय भोगान् रुधिरप्रदिग्धान्",
               "t": "gurūnahatvā hi mahānubhāvān śreyo bhoktuṃ bhaikṣyamapīha loke । hatvārthakāmāṃstu gurūnihaiva bhuñjīya bhogān rudhirapradigdhān",
               "flow": [
@@ -1181,8 +1181,8 @@
           "sutras": [
             {
               "n": "2.07",
-              "anvaya": "कार्पण्यदोषोपहतस्वभावः धर्मसम्मूढचेताः त्वां पृच्छामि — यत् निश्चितं श्रेयः स्यात् तत् मे ब्रूहि; अहं ते शिष्यः, त्वां प्रपन्नं मां शाधि।",
-              "anvaya_iast": "kārpaṇyadoṣopahatasvabhāvaḥ dharmasammūḍhacetāḥ tvāṃ pṛcchāmi — yat niścitaṃ śreyaḥ syāt tat me brūhi; ahaṃ te śiṣyaḥ, tvāṃ prapannaṃ māṃ śādhi.",
+              "anvaya": "कार्पण्यदोषोपहतस्वभावः धर्मसंमूढचेताः त्वां पृच्छामि — यत् निश्चितं श्रेयः स्यात् तत् मे ब्रूहि; अहं ते शिष्यः, त्वां प्रपन्नं मां शाधि।",
+              "anvaya_iast": "kārpaṇyadoṣopahatasvabhāvaḥ dharmasaṃmūḍhacetāḥ tvāṃ pṛcchāmi — yat niścitaṃ śreyaḥ syāt tat me brūhi; ahaṃ te śiṣyaḥ, tvāṃ prapannaṃ māṃ śādhi.",
               "d": "कार्पण्यदोषोपहतस्वभावः पृच्छामि त्वां धर्मसम्मूढचेताः  ।  यच्छ्रेयः स्यान्निश्चितं ब्रूहि तन्मे शिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम्",
               "t": "kārpaṇyadoṣopahatasvabhāvaḥ pṛcchāmi tvāṃ dharmasammūḍhacetāḥ । yacchreyaḥ syānniścitaṃ brūhi tanme śiṣyaste’haṃ śādhi māṃ tvāṃ prapannam",
               "flow": [
@@ -1408,8 +1408,8 @@
           "sutras": [
             {
               "n": "2.08",
-              "anvaya": "हि भूमौ असपत्नम् ऋद्धं राज्यं सुराणाम् अपि च अधिपत्यम् अवाप्य मम इन्द्रियाणाम् उच्छोषणं शोकं यत् अपनुद्यात् न प्रपश्यामि।",
-              "anvaya_iast": "hi bhūmau asapatnam ṛddhaṃ rājyaṃ surāṇām api ca adhipatyam avāpya mama indriyāṇām ucchoṣaṇaṃ śokaṃ yat apanudyāt na prapaśyāmi.",
+              "anvaya": "भूमौ असपत्नम् ऋद्धं राज्यं सुराणाम् अपि च अधिपत्यम् अवाप्य मम इन्द्रियाणाम् उच्छोषणं शोकं यत् अपनुद्यात् न हि प्रपश्यामि।",
+              "anvaya_iast": "bhūmau asapatnam ṛddhaṃ rājyaṃ surāṇām api ca adhipatyam avāpya mama indriyāṇām ucchoṣaṇaṃ śokaṃ yat apanudyāt na hi prapaśyāmi.",
               "d": "न हि प्रपश्यामि ममापनुद्यात् यच्छोकमुच्छोषणमिन्द्रियाणाम्  ।  अवाप्य भूमावसपत्नमृद्धं राज्यं सुराणामपि चाधिपत्यम्",
               "t": "na hi prapaśyāmi mamāpanudyāt yacchokamucchoṣaṇamindriyāṇām । avāpya bhūmāvasapatnamṛddhaṃ rājyaṃ surāṇāmapi cādhipatyam",
               "flow": [
@@ -2114,8 +2114,8 @@
           "sutras": [
             {
               "n": "2.12",
-              "anvaya": "न तु एव अहं जातु न आसम्, न त्वम्, न इमे जनाधिपाः; अतः परं वयं सर्वे च न एव न भविष्यामः।",
-              "anvaya_iast": "na tu eva ahaṃ jātu na āsam, na tvam, na ime janādhipāḥ; ataḥ paraṃ vayaṃ sarve ca na eva na bhaviṣyāmaḥ.",
+              "anvaya": "अहं जातु न आसम् न तु एव, न त्वं, न इमे जनाधिपाः; अतः परं सर्वे वयं न भविष्यामः न च एव।",
+              "anvaya_iast": "ahaṃ jātu na āsam na tu eva, na tvaṃ, na ime janādhipāḥ; ataḥ paraṃ sarve vayaṃ na bhaviṣyāmaḥ na ca eva.",
               "d": "न त्वेवाहं जातु नासं न त्वं नेमे जनाधिपाः  ।  न चैव न भविष्यामः सर्वे वयमतः परम्",
               "t": "na tvevāhaṃ jātu nāsaṃ na tvaṃ neme janādhipāḥ । na caiva na bhaviṣyāmaḥ sarve vayamataḥ param",
               "flow": [
@@ -3533,8 +3533,8 @@
           "sutras": [
             {
               "n": "2.20",
-              "anvaya": "अयं कदाचित् न जायते म्रियते वा; न भूत्वा भूयः भविता वा न; अयं अजः नित्यः शाश्वतः पुराणः शरीरे हन्यमाने न हन्यते।",
-              "anvaya_iast": "ayaṃ kadācit na jāyate mriyate vā; na bhūtvā bhūyaḥ bhavitā vā na; ayaṃ ajaḥ nityaḥ śāśvataḥ purāṇaḥ śarīre hanyamāne na hanyate.",
+              "anvaya": "अयं कदाचित् न जायते म्रियते वा, न भूत्वा भूयः भविता वा न; अयं अजः नित्यः शाश्वतः पुराणः शरीरे हन्यमाने न हन्यते।",
+              "anvaya_iast": "ayaṃ kadācit na jāyate mriyate vā, na bhūtvā bhūyaḥ bhavitā vā na; ayaṃ ajaḥ nityaḥ śāśvataḥ purāṇaḥ śarīre hanyamāne na hanyate.",
               "d": "न जायते म्रियते वा कदाचिन्नायं भूत्वा भविता वा न भूयः  ।  अजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे",
               "t": "na jāyate mriyate vā kadācin nāyaṃ bhūtvā bhavitā vā na bhūyaḥ । ajo nityaḥ śāśvato’yaṃ purāṇo na hanyate hanyamāne śarīre",
               "flow": [
@@ -4452,8 +4452,8 @@
           "sutras": [
             {
               "n": "2.25",
-              "anvaya": "अयम् अव्यक्तः, अयम् अचिन्त्यः, अयम् अविकार्यः उच्यते; तस्मात् एनम् एवं विदित्वा अनुशोचितुं न अर्हसि।",
-              "anvaya_iast": "ayam avyaktaḥ, ayam acintyaḥ, ayam avikāryaḥ ucyate; tasmāt enam evaṃ viditvā anuśocituṃ na arhasi.",
+              "anvaya": "अयम् अव्यक्तः, अयम् अचिन्त्यः, अयम् अविकार्यः उच्यते; तस्मात् एनम् एवं विदित्वा न अनुशोचितुम् अर्हसि।",
+              "anvaya_iast": "ayam avyaktaḥ, ayam acintyaḥ, ayam avikāryaḥ ucyate; tasmāt enam evaṃ viditvā na anuśocitum arhasi.",
               "d": "अव्यक्तोऽयमचिन्त्योऽयमविकार्योऽयमुच्यते  ।  तस्मादेवं विदित्वैनं नानुशोचितुमर्हसि",
               "t": "avyakto’yamacintyo’yamavikāryo’yamucyate । tasmādevaṃ viditvainaṃ nānuśocitumarhasi",
               "flow": [
@@ -4631,8 +4631,8 @@
           "sutras": [
             {
               "n": "2.26",
-              "anvaya": "अथ च एनं नित्यजातं वा नित्यं मृतं मन्यसे, तथापि महाबाहो! त्वम् एवं शोचितुं न अर्हसि।",
-              "anvaya_iast": "atha ca enaṃ nityajātaṃ vā nityaṃ mṛtaṃ manyase, tathāpi mahābāho! tvam evaṃ śocituṃ na arhasi.",
+              "anvaya": "अथ च एनं नित्यजातं नित्यं मृतं वा मन्यसे, तथापि महाबाहो! त्वम् एवं न शोचितुम् अर्हसि।",
+              "anvaya_iast": "atha ca enaṃ nityajātaṃ nityaṃ mṛtaṃ vā manyase, tathāpi mahābāho! tvam evaṃ na śocitum arhasi.",
               "d": "अथ चैनं नित्यजातं नित्यं वा मन्यसे मृतम्  ।  तथापि त्वं महाबाहो नैवं शोचितुमर्हसि",
               "t": "atha cainaṃ nityajātaṃ nityaṃ vā manyase mṛtam । tathāpi tvaṃ mahābāho naivaṃ śocitumarhasi",
               "flow": [
@@ -4802,8 +4802,8 @@
           "sutras": [
             {
               "n": "2.27",
-              "anvaya": "जातस्य हि मृत्युः ध्रुवः, मृतस्य च जन्म ध्रुवम्; तस्मात् अपरिहार्ये अर्थे त्वं शोचितुं न अर्हसि।",
-              "anvaya_iast": "jātasya hi mṛtyuḥ dhruvaḥ, mṛtasya ca janma dhruvam; tasmāt aparihārye arthe tvaṃ śocituṃ na arhasi.",
+              "anvaya": "जातस्य हि मृत्युः ध्रुवः, मृतस्य च जन्म ध्रुवम्; तस्मात् अपरिहार्ये अर्थे त्वं न शोचितुम् अर्हसि।",
+              "anvaya_iast": "jātasya hi mṛtyuḥ dhruvaḥ, mṛtasya ca janma dhruvam; tasmāt aparihārye arthe tvaṃ na śocitum arhasi.",
               "d": "जातस्य हि ध्रुवो मृत्युर्ध्रुवं जन्म मृतस्य च  ।  तस्मादपरिहार्येऽर्थे न त्वं शोचितुमर्हसि",
               "t": "jātasya hi dhruvo mṛtyurdhruvaṃ janma mṛtasya ca । tasmādaparihārye’rthe na tvaṃ śocitumarhasi",
               "flow": [
@@ -5123,8 +5123,8 @@
           "sutras": [
             {
               "n": "2.29",
-              "anvaya": "कश्चित् एनम् आश्चर्यवत् पश्यति, तथा एव च अन्यः आश्चर्यवत् वदति, अन्यः च एनम् आश्चर्यवत् शृणोति; श्रुत्वा अपि च एनं कश्चित् न एव वेद।",
-              "anvaya_iast": "kaścit enam āścaryavat paśyati, tathā eva ca anyaḥ āścaryavat vadati, anyaḥ ca enam āścaryavat śṛṇoti; śrutvā api ca enaṃ kaścit na eva veda.",
+              "anvaya": "कश्चित् एनम् आश्चर्यवत् पश्यति, तथा एव च अन्यः आश्चर्यवत् वदति, अन्यः च एनम् आश्चर्यवत् शृणोति; श्रुत्वा अपि एनं कश्चित् न च एव वेद।",
+              "anvaya_iast": "kaścit enam āścaryavat paśyati, tathā eva ca anyaḥ āścaryavat vadati, anyaḥ ca enam āścaryavat śṛṇoti; śrutvā api enaṃ kaścit na ca eva veda.",
               "d": "आश्चर्यवत्पश्यति कश्चिदेनमाश्चर्यवद्वदति तथैव चान्यः  ।  आश्चर्यवच्चैनमन्यः शृणोति श्रुत्वाप्येनं वेद न चैव कश्चित्",
               "t": "āścaryavatpaśyati kaścidenamāścaryavadvadati tathaiva cānyaḥ । āścaryavaccainamanyaḥ śṛṇoti śrutvāpyenaṃ veda na caiva kaścit",
               "flow": [
@@ -5350,8 +5350,8 @@
           "sutras": [
             {
               "n": "2.30",
-              "anvaya": "भारत! सर्वस्य देहे अयं देही नित्यम् अवध्यः; तस्मात् त्वं सर्वाणि भूतानि शोचितुं न अर्हसि।",
-              "anvaya_iast": "bhārata! sarvasya dehe ayaṃ dehī nityam avadhyaḥ; tasmāt tvaṃ sarvāṇi bhūtāni śocituṃ na arhasi.",
+              "anvaya": "भारत! सर्वस्य देहे अयं देही नित्यम् अवध्यः; तस्मात् त्वं सर्वाणि भूतानि न शोचितुम् अर्हसि।",
+              "anvaya_iast": "bhārata! sarvasya dehe ayaṃ dehī nityam avadhyaḥ; tasmāt tvaṃ sarvāṇi bhūtāni na śocitum arhasi.",
               "d": "देही नित्यमवध्योऽयं देहे सर्वस्य भारत  ।  तस्मात्सर्वाणि भूतानि न त्वं शोचितुमर्हसि",
               "t": "dehī nityamavadhyo’yaṃ dehe sarvasya bhārata । tasmātsarvāṇi bhūtāni na tvaṃ śocitumarhasi",
               "flow": [
@@ -5529,8 +5529,8 @@
           "sutras": [
             {
               "n": "2.31",
-              "anvaya": "स्वधर्मम् अपि च अवेक्ष्य विकम्पितुं न अर्हसि; हि क्षत्रियस्य धर्म्यात् युद्धात् अन्यत् श्रेयः न विद्यते।",
-              "anvaya_iast": "svadharmam api ca avekṣya vikampituṃ na arhasi; hi kṣatriyasya dharmyāt yuddhāt anyat śreyaḥ na vidyate.",
+              "anvaya": "स्वधर्मम् अपि च अवेक्ष्य न विकम्पितुम् अर्हसि; धर्म्यात् हि युद्धात् अन्यत् श्रेयः क्षत्रियस्य न विद्यते।",
+              "anvaya_iast": "svadharmam api ca avekṣya na vikampitum arhasi; dharmyāt hi yuddhāt anyat śreyaḥ kṣatriyasya na vidyate.",
               "d": "स्वधर्ममपि चावेक्ष्य न विकम्पितुमर्हसि  ।  धर्म्याद्धि युद्धाच्छ्रेयोऽन्यत्क्षत्रियस्य न विद्यते",
               "t": "svadharmamapi cāvekṣya na vikampitumarhasi । dharmyāddhi yuddhācchreyo’nyatkṣatriyasya na vidyate",
               "flow": [
@@ -6014,8 +6014,8 @@
           "sutras": [
             {
               "n": "2.34",
-              "anvaya": "भूतानि च अपि ते अव्ययाम् अकीर्तिं कथयिष्यन्ति; सम्भावितस्य च अकीर्तिः मरणात् अतिरिच्यते।",
-              "anvaya_iast": "bhūtāni ca api te avyayām akīrtiṃ kathayiṣyanti; sambhāvitasya ca akīrtiḥ maraṇāt atiricyate.",
+              "anvaya": "भूतानि च अपि ते अव्ययाम् अकीर्तिं कथयिष्यन्ति; सम्भावितस्य अकीर्तिः च मरणात् अतिरिच्यते।",
+              "anvaya_iast": "bhūtāni ca api te avyayām akīrtiṃ kathayiṣyanti; sambhāvitasya akīrtiḥ ca maraṇāt atiricyate.",
               "d": "अकीर्तिं चापि भूतानि कथयिष्यन्ति तेऽव्ययाम्  ।  सम्भावितस्य चाकीर्तिर्मरणादतिरिच्यते",
               "t": "akīrtiṃ cāpi bhūtāni kathayiṣyanti te’vyayām । sambhāvitasya cākīrtirmaraṇādatiricyate",
               "flow": [
@@ -7343,8 +7343,8 @@
           "sutras": [
             {
               "n": "2.42",
-              "anvaya": "पार्थ! वेदवादरताः अन्यत् न अस्ति इति वादिनः अविपश्चितः याम् इमां पुष्पितां वाचं प्रवदन्ति।",
-              "anvaya_iast": "pārtha! vedavādaratāḥ anyat na asti iti vādinaḥ avipaścitaḥ yām imāṃ puṣpitāṃ vācaṃ pravadanti.",
+              "anvaya": "पार्थ! वेदवादरताः न अन्यत् अस्ति इति वादिनः अविपश्चितः याम् इमां पुष्पितां वाचं प्रवदन्ति,",
+              "anvaya_iast": "pārtha! vedavādaratāḥ na anyat asti iti vādinaḥ avipaścitaḥ yām imāṃ puṣpitāṃ vācaṃ pravadanti,",
               "d": "यामिमां पुष्पितां वाचं प्रवदन्त्यविपश्चितः  ।  वेदवादरताः पार्थ नान्यदस्तीति वादिनः",
               "t": "yāmimāṃ puṣpitāṃ vācaṃ pravadantyavipaścitaḥ । vedavādaratāḥ pārtha nānyadastīti vādinaḥ",
               "flow": [
@@ -7936,8 +7936,8 @@
           "sutras": [
             {
               "n": "2.46",
-              "anvaya": "सर्वतः सम्प्लुतोदके उदपाने यावान् अर्थः, विजानतः ब्राह्मणस्य सर्वेषु वेदेषु तावान्।",
-              "anvaya_iast": "sarvataḥ samplutodake udapāne yāvān arthaḥ, vijānataḥ brāhmaṇasya sarveṣu vedeṣu tāvān.",
+              "anvaya": "सर्वतः संप्लुतोदके उदपाने यावान् अर्थः, विजानतः ब्राह्मणस्य सर्वेषु वेदेषु तावान्।",
+              "anvaya_iast": "sarvataḥ saṃplutodake udapāne yāvān arthaḥ, vijānataḥ brāhmaṇasya sarveṣu vedeṣu tāvān.",
               "d": "यावानर्थ उदपाने सर्वतः सम्प्लुतोदके  ।  तावान्सर्वेषु वेदेषु ब्राह्मणस्य विजानतः",
               "t": "yāvānartha udapāne sarvataḥ samplutodake । tāvānsarveṣu vedeṣu brāhmaṇasya vijānataḥ",
               "flow": [
@@ -8723,8 +8723,8 @@
           "sutras": [
             {
               "n": "2.51",
-              "anvaya": "बुद्धियुक्ताः हि मनीषिणः कर्मजं फलं त्यक्त्वा जन्मबन्धविनिर्मुक्ताः अनामयं पदं गच्छन्ति।",
-              "anvaya_iast": "buddhiyuktāḥ hi manīṣiṇaḥ karmajaṃ phalaṃ tyaktvā janmabandhavinirmuktāḥ anāmayaṃ padaṃ gacchanti.",
+              "anvaya": "बुद्धियुक्ताः मनीषिणः हि कर्मजं फलं त्यक्त्वा जन्मबन्धविनिर्मुक्ताः अनामयं पदं गच्छन्ति।",
+              "anvaya_iast": "buddhiyuktāḥ manīṣiṇaḥ hi karmajaṃ phalaṃ tyaktvā janmabandhavinirmuktāḥ anāmayaṃ padaṃ gacchanti.",
               "d": "कर्मजं बुद्धियुक्ता हि फलं त्यक्त्वा मनीषिणः  ।  जन्मबन्धविनिर्मुक्ताः पदं गच्छन्त्यनामयम्",
               "t": "karmajaṃ buddhiyuktā hi phalaṃ tyaktvā manīṣiṇaḥ । janmabandhavinirmuktāḥ padaṃ gacchantyanāmayam",
               "flow": [
@@ -9345,8 +9345,8 @@
           "sutras": [
             {
               "n": "2.55",
-              "anvaya": "श्रीभगवानुवाच — पार्थ! यदा मनोगतान् सर्वान् कामान् प्रजहाति, आत्मनि एव आत्मना तुष्टः, तदा स्थितप्रज्ञः उच्यते।",
-              "anvaya_iast": "śrībhagavānuvāca — pārtha! yadā manogatān sarvān kāmān prajahāti, ātmani eva ātmanā tuṣṭaḥ, tadā sthitaprajñaḥ ucyate.",
+              "anvaya": "श्रीभगवानुवाच — पार्थ! यदा मनोगतान् सर्वान् कामान् प्रजहाति, आत्मना आत्मनि एव तुष्टः, तदा स्थितप्रज्ञः उच्यते।",
+              "anvaya_iast": "śrībhagavānuvāca — pārtha! yadā manogatān sarvān kāmān prajahāti, ātmanā ātmani eva tuṣṭaḥ, tadā sthitaprajñaḥ ucyate.",
               "d": "श्रीभगवानुवाच  ।  प्रजहाति यदा कामान्सर्वान्पार्थ मनोगतान्  ।  आत्मन्येवात्मना तुष्टः स्थितप्रज्ञस्तदोच्यते",
               "t": "śrībhagavānuvāca । prajahāti yadā kāmānsarvānpārtha manogatān । ātmanyevātmanā tuṣṭaḥ sthitaprajñastadocyate",
               "flow": [
@@ -10302,8 +10302,8 @@
           "sutras": [
             {
               "n": "2.61",
-              "anvaya": "तानि सर्वाणि संयम्य मत्परः युक्तः आसीत; यस्य हि इन्द्रियाणि वशे, तस्य प्रज्ञा प्रतिष्ठिता।",
-              "anvaya_iast": "tāni sarvāṇi saṃyamya matparaḥ yuktaḥ āsīta; yasya hi indriyāṇi vaśe, tasya prajñā pratiṣṭhitā.",
+              "anvaya": "तानि सर्वाणि संयम्य युक्तः मत्परः आसीत; यस्य हि इन्द्रियाणि वशे, तस्य प्रज्ञा प्रतिष्ठिता।",
+              "anvaya_iast": "tāni sarvāṇi saṃyamya yuktaḥ matparaḥ āsīta; yasya hi indriyāṇi vaśe, tasya prajñā pratiṣṭhitā.",
               "d": "तानि सर्वाणि संयम्य युक्त आसीत मत्परः  ।  वशे हि यस्येन्द्रियाणि तस्य प्रज्ञा प्रतिष्ठिता",
               "t": "tāni sarvāṇi saṃyamya yukta āsīta matparaḥ । vaśe hi yasyendriyāṇi tasya prajñā pratiṣṭhitā",
               "flow": [
@@ -11225,8 +11225,8 @@
           "sutras": [
             {
               "n": "2.67",
-              "anvaya": "चरताम् इन्द्रियाणां हि यत् मनः अनुविधीयते, तत् अस्य प्रज्ञां हरति, वायुः अम्भसि नावम् इव।",
-              "anvaya_iast": "caratām indriyāṇāṃ hi yat manaḥ anuvidhīyate, tat asya prajñāṃ harati, vāyuḥ ambhasi nāvam iva.",
+              "anvaya": "चरताम् इन्द्रियाणां हि यत् मनः अनुविधीयते, तत् अस्य प्रज्ञां हरति, अम्भसि वायुः नावम् इव।",
+              "anvaya_iast": "caratām indriyāṇāṃ hi yat manaḥ anuvidhīyate, tat asya prajñāṃ harati, ambhasi vāyuḥ nāvam iva.",
               "d": "इन्द्रियाणां हि चरतां यन्मनोऽनुविधीयते  ।  तदस्य हरति प्रज्ञां वायुर्नावमिवाम्भसि",
               "t": "indriyāṇāṃ hi caratāṃ yanmano’nuvidhīyate । tadasya harati prajñāṃ vāyurnāvamivāmbhasi",
               "flow": [
@@ -11697,8 +11697,8 @@
           "sutras": [
             {
               "n": "2.70",
-              "anvaya": "यद्वत् आपूर्यमाणम् अचलप्रतिष्ठं समुद्रम् आपः प्रविशन्ति, तद्वत् यं सर्वे कामाः प्रविशन्ति सः शान्तिम् आप्नोति, न कामकामी।",
-              "anvaya_iast": "yadvat āpūryamāṇam acalapratiṣṭhaṃ samudram āpaḥ praviśanti, tadvat yaṃ sarve kāmāḥ praviśanti saḥ śāntim āpnoti, na kāmakāmī.",
+              "anvaya": "यद्वत् आपः आपूर्यमाणम् अचलप्रतिष्ठं समुद्रं प्रविशन्ति, तद्वत् सर्वे कामाः यं प्रविशन्ति, सः शान्तिम् आप्नोति, न कामकामी।",
+              "anvaya_iast": "yadvat āpaḥ āpūryamāṇam acalapratiṣṭhaṃ samudraṃ praviśanti, tadvat sarve kāmāḥ yaṃ praviśanti, saḥ śāntim āpnoti, na kāmakāmī.",
               "d": "आपूर्यमाणमचलप्रतिष्ठं समुद्रमापः प्रविशन्ति यद्वत्  ।  तद्वत्कामा यं प्रविशन्ति सर्वे स शान्तिमाप्नोति न कामकामी",
               "t": "āpūryamāṇamacalapratiṣṭhaṃ samudramāpaḥ praviśanti yadvat । tadvatkāmā yaṃ praviśanti sarve sa śāntimāpnoti na kāmakāmī",
               "flow": [

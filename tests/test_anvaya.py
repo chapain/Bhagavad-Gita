@@ -32,7 +32,7 @@ class AnvayaTests(unittest.TestCase):
         self.assertLess(verses[20]['anvaya'].index('आह'), verses[20]['anvaya'].index('अर्जुन उवाच'))
         self.assertLess(verses[27]['anvaya'].index('अब्रवीत्'), verses[27]['anvaya'].index('अर्जुन उवाच'))
         self.assertIn('महत्पापं', verses[44]['anvaya'])
-        self.assertIn('सङ्ख्ये', verses[46]['anvaya'])
+        self.assertIn('संख्ये', verses[46]['anvaya'])
 
     def test_chapter_two_keeps_each_verse_and_its_own_words(self):
         chapter = json.loads((ROOT / 'source/ch2.json').read_text(encoding='utf-8'))
@@ -41,7 +41,9 @@ class AnvayaTests(unittest.TestCase):
         self.assertNotIn('कामात्मानः', verses[41]['anvaya'])
         self.assertIn('कामात्मानः', verses[42]['anvaya'])
         self.assertNotIn('प्रवदन्ति', verses[42]['anvaya'])
-        self.assertIn('आत्मनि एव आत्मना', verses[54]['anvaya'])
+        self.assertIn('आत्मना आत्मनि एव', verses[54]['anvaya'])
+        self.assertIn('परन्तप!', verses[8]['anvaya'])
+        self.assertIn('अधिपत्यम्', verses[7]['anvaya'])
         self.assertIn('इव', verses[66]['anvaya'])
         self.assertIn('यद्वत्', verses[69]['anvaya'])
 
@@ -50,6 +52,8 @@ class AnvayaTests(unittest.TestCase):
         verses = [v for t in chapter['themes'] for p in t['parts'] for v in p['sutras']]
         self.assertEqual(len([v for v in verses if 'anvaya' in v]), 43)
         self.assertIn('सन्न्यसनात्', verses[3]['anvaya'])
+        self.assertIn('प्रसिध्येत्', verses[7]['anvaya'])
+        self.assertIn('परं श्रेयः', verses[10]['anvaya'])
         self.assertNotIn('सन्ति', verses[26]['anvaya'])
         self.assertIn('चेत्', verses[23]['anvaya'])
         self.assertEqual(verses[37]['anvaya'].count('यथा'), 2)
@@ -71,7 +75,7 @@ class AnvayaTests(unittest.TestCase):
         self.assertEqual(len([v for v in verses if 'anvaya' in v]), 29)
         self.assertEqual(verses[0]['anvaya'].count('शंससि'), 1)
         self.assertIn('इव', verses[9]['anvaya'])
-        self.assertIn('अक्षयम्', verses[20]['anvaya'])
+        self.assertIn('अक्षयं', verses[20]['anvaya'])
         self.assertEqual(verses[23]['anvaya'].count('यः'), 2)
         self.assertEqual(verses[26]['anvaya'].count('कृत्वा'), 2)
 
@@ -79,13 +83,26 @@ class AnvayaTests(unittest.TestCase):
         chapter = json.loads((ROOT / 'source/ch6.json').read_text(encoding='utf-8'))
         verses = [v for t in chapter['themes'] for p in t['parts'] for v in p['sutras']]
         self.assertEqual(len([v for v in verses if 'anvaya' in v]), 47)
-        self.assertIn('असन्न्यस्तसङ्कल्पः', verses[1]['anvaya'])
+        self.assertIn('असंन्यस्तसङ्कल्पः कश्चन', verses[1]['anvaya'])
         self.assertEqual(verses[5]['anvaya'].count('एव'), 2)
         self.assertIn('एकाकी', verses[9]['anvaya'])
         self.assertIn('स्वं नासिकाग्रं', verses[12]['anvaya'])
-        self.assertEqual(verses[20]['anvaya'].count('यत्र'), 2)
+        self.assertEqual(verses[20]['anvaya'].count('यत्र'), 1)
         self.assertIn('एतत् हि', verses[41]['anvaya'])
         self.assertIn('सः', verses[43]['anvaya'])
+
+    def test_chapters_seven_and_eight_draft_corrections(self):
+        def verses(num):
+            chapter = json.loads((ROOT / f'source/ch{num}.json').read_text(encoding='utf-8'))
+            return [v for t in chapter['themes'] for p in t['parts'] for v in p['sutras']]
+        seven, eight = verses(7), verses(8)
+        self.assertEqual(sum('anvaya' in v for v in seven), 30)
+        self.assertEqual(sum('anvaya' in v for v in eight), 28)
+        self.assertIn('तस्य आराधनम्', seven[21]['anvaya'])
+        self.assertIn('न अन्यगामिना', eight[7]['anvaya'])
+        self.assertIn('आ ब्रह्मभुवनात्', eight[15]['anvaya'])
+        self.assertIn('रात्र्यागमे', eight[17]['anvaya'])
+        self.assertIn('तु अनन्यया', eight[21]['anvaya'])
 
     def test_reader_places_optional_unboxed_sanskrit_before_literal(self):
         reader = (ROOT / 'source/js/50-reader.js').read_text(encoding='utf-8')

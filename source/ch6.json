@@ -41,8 +41,8 @@
           "sutras": [
             {
               "n": "6.01",
-              "anvaya": "श्रीभगवानुवाच — यः कर्मफलम् अनाश्रितः कार्यं कर्म करोति, सः सन्न्यासी च योगी च; न निरग्निः न च अक्रियः।",
-              "anvaya_iast": "śrībhagavānuvāca — yaḥ karmaphalam anāśritaḥ kāryaṃ karma karoti, saḥ sannyāsī ca yogī ca; na niragniḥ na ca akriyaḥ.",
+              "anvaya": "श्रीभगवानुवाच — यः कर्मफलम् अनाश्रितः कार्यं कर्म करोति, सः संन्यासी च योगी च; न निरग्निः न च अक्रियः।",
+              "anvaya_iast": "śrībhagavānuvāca — yaḥ karmaphalam anāśritaḥ kāryaṃ karma karoti, saḥ saṃnyāsī ca yogī ca; na niragniḥ na ca akriyaḥ.",
               "d": "श्रीभगवानुवाच । अनाश्रितः कर्मफलं कार्यं कर्म करोति यः । स सन्न्यासी च योगी च न निरग्निर्न चाक्रियः",
               "t": "śrībhagavānuvāca । anāśritaḥ karmaphalaṃ kāryaṃ karma karoti yaḥ । sa sannyāsī ca yogī ca na niragnirna cākriyaḥ",
               "flow": [
@@ -240,8 +240,8 @@
           "sutras": [
             {
               "n": "6.02",
-              "anvaya": "पाण्डव! यं सन्न्यासम् इति प्राहुः तं योगं विद्धि; हि असन्न्यस्तसङ्कल्पः कश्चित् योगी न भवति।",
-              "anvaya_iast": "pāṇḍava! yaṃ sannyāsam iti prāhuḥ taṃ yogaṃ viddhi; hi asannyastasaṅkalpaḥ kaścit yogī na bhavati.",
+              "anvaya": "पाण्डव! यं संन्यासम् इति प्राहुः तं योगं विद्धि; असंन्यस्तसङ्कल्पः कश्चन हि योगी न भवति।",
+              "anvaya_iast": "pāṇḍava! yaṃ saṃnyāsam iti prāhuḥ taṃ yogaṃ viddhi; asaṃnyastasaṅkalpaḥ kaścana hi yogī na bhavati.",
               "d": "यं सन्न्यासमिति प्राहुर्योगं तं विद्धि पाण्डव । न ह्यसन्न्यस्तसङ्कल्पो योगी भवति कश्चन",
               "t": "yaṃ sannyāsamiti prāhuryogaṃ taṃ viddhi pāṇḍava । na hyasannyastasaṅkalpo yogī bhavati kaścana",
               "flow": [
@@ -561,8 +561,8 @@
           "sutras": [
             {
               "n": "6.04",
-              "anvaya": "यदा हि न इन्द्रियार्थेषु न कर्मसु अनुषज्जते, सर्वसङ्कल्पसन्न्यासी तदा योगारूढः उच्यते।",
-              "anvaya_iast": "yadā hi na indriyārtheṣu na karmasu anuṣajjate, sarvasaṅkalpasannyāsī tadā yogārūḍhaḥ ucyate.",
+              "anvaya": "यदा हि न इन्द्रियार्थेषु न कर्मसु अनुषज्जते, सर्वसङ्कल्पसंन्यासी तदा योगारूढः उच्यते।",
+              "anvaya_iast": "yadā hi na indriyārtheṣu na karmasu anuṣajjate, sarvasaṅkalpasaṃnyāsī tadā yogārūḍhaḥ ucyate.",
               "d": "यदा हि नेन्द्रियार्थेषु न कर्मस्वनुषज्जते । सर्वसङ्कल्पसन्न्यासी योगारूढस्तदोच्यते",
               "t": "yadā hi nendriyārtheṣu na karmasvanuṣajjate । sarvasaṅkalpasannyāsī yogārūḍhastadocyate",
               "flow": [
@@ -3304,8 +3304,8 @@
           "sutras": [
             {
               "n": "6.21",
-              "anvaya": "बुद्धिग्राह्यम् अतीन्द्रियं यत् तत् आत्यन्तिकं सुखं यत्र वेत्ति, यत्र च स्थितः अयं तत्त्वतः न एव चलति।",
-              "anvaya_iast": "buddhigrāhyam atīndriyaṃ yat tat ātyantikaṃ sukhaṃ yatra vetti, yatra ca sthitaḥ ayaṃ tattvataḥ na eva calati.",
+              "anvaya": "यत्र बुद्धिग्राह्यम् अतीन्द्रियं यत् तत् आत्यन्तिकं सुखं वेत्ति, स्थितः अयं तत्त्वतः न च एव चलति।",
+              "anvaya_iast": "yatra buddhigrāhyam atīndriyaṃ yat tat ātyantikaṃ sukhaṃ vetti, sthitaḥ ayaṃ tattvataḥ na ca eva calati.",
               "d": "सुखमात्यन्तिकं यत्तद्बुद्धिग्राह्यमतीन्द्रियम् । वेत्ति यत्र न चैवायं स्थितश्चलति तत्त्वतः",
               "t": "sukhamātyantikaṃ yattadbuddhigrāhyamatīndriyam । vetti yatra na caivāyaṃ sthitaścalati tattvataḥ",
               "flow": [
@@ -6767,8 +6767,8 @@
           "sutras": [
             {
               "n": "6.42",
-              "anvaya": "अथवा धीमतां योगिनाम् एव कुले भवति; एतत् हि लोके दुर्लभतरं जन्म यत् ईदृशम्।",
-              "anvaya_iast": "athavā dhīmatāṃ yoginām eva kule bhavati; etat hi loke durlabhataraṃ janma yat īdṛśam.",
+              "anvaya": "अथवा धीमतां योगिनाम् एव कुले भवति; एतत् हि यत् ईदृशं जन्म, लोके दुर्लभतरम्।",
+              "anvaya_iast": "athavā dhīmatāṃ yoginām eva kule bhavati; etat hi yat īdṛśaṃ janma, loke durlabhataram.",
               "d": "अथवा योगिनामेव कुले भवति धीमताम् । एतद्धि दुर्लभतरं लोके जन्म यदीदृशम्",
               "t": "athavā yogināmeva kule bhavati dhīmatām । etaddhi durlabhataraṃ loke janma yadīdṛśam",
               "flow": [
@@ -7067,8 +7067,8 @@
           "sutras": [
             {
               "n": "6.44",
-              "anvaya": "हि तेन एव पूर्वाभ्यासेन अवशः अपि सः ह्रियते; योगस्य जिज्ञासुः अपि शब्दब्रह्म अतिवर्तते।",
-              "anvaya_iast": "hi tena eva pūrvābhyāsena avaśaḥ api saḥ hriyate; yogasya jijñāsuḥ api śabdabrahma ativartate.",
+              "anvaya": "सः तेन एव पूर्वाभ्यासेन हि अवशः अपि ह्रियते; योगस्य जिज्ञासुः अपि शब्दब्रह्म अतिवर्तते।",
+              "anvaya_iast": "saḥ tena eva pūrvābhyāsena hi avaśaḥ api hriyate; yogasya jijñāsuḥ api śabdabrahma ativartate.",
               "d": "पूर्वाभ्यासेन तेनैव ह्रियते ह्यवशोऽपि सः । जिज्ञासुरपि योगस्य शब्दब्रह्मातिवर्तते",
               "t": "pūrvābhyāsena tenaiva hriyate hyavaśo’pi saḥ । jijñāsurapi yogasya śabdabrahmātivartate",
               "flow": [

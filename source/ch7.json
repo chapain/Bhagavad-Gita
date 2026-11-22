@@ -205,7 +205,9 @@
                 "en": "Kṛṣṇa said: “Fix your mind on me, practise yoga, and take refuge in me — then you will know me completely. Listen to how.”",
                 "ne": "कृष्णले भन्नुभयो: “मन ममा लगाऊ, योगको अभ्यास गर, मेरो शरण लेऊ — तब तिमीले मलाई पूरै चिन्नेछौ। त्यो कसरी, सुन।”",
                 "hi": "कृष्ण ने कहा: “मन मुझ पर लगा, योग का अभ्यास कर, मेरी शरण ले — तब तू मुझे पूरा जानेगा। वह कैसे, सुन।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — पार्थ! मयि आसक्तमनाः योगं युञ्जन् मदाश्रयः असंशयं समग्रं मां यथा ज्ञास्यसि तत् शृणु।",
+              "anvaya_iast": "śrībhagavānuvāca — pārtha! mayi āsaktamanāḥ yogaṃ yuñjan madāśrayaḥ asaṃśayaṃ samagraṃ māṃ yathā jñāsyasi tat śṛṇu."
             }
           ]
         },
@@ -374,7 +376,9 @@
                 "en": "“I'll teach you this wisdom fully — together with its direct realization. Once you know it, nothing else remains to learn.”",
                 "ne": "“म तिमीलाई यो ज्ञान — यसको प्रत्यक्ष अनुभवसँगै — पूरा सिकाउनेछु। यो जानेपछि सिक्न बाँकी अरू केही रहँदैन।”",
                 "hi": "“मैं तुझे यह ज्ञान — इसके प्रत्यक्ष अनुभव के साथ — पूरा सिखाऊँगा। इसे जानकर सीखने को और कुछ नहीं बचता।”"
-              }
+              },
+              "anvaya": "अहं ते इदं सविज्ञानं ज्ञानम् अशेषतः वक्ष्यामि, यत् ज्ञात्वा इह भूयः अन्यत् ज्ञातव्यं न अवशिष्यते।",
+              "anvaya_iast": "ahaṃ te idaṃ savijñānaṃ jñānam aśeṣataḥ vakṣyāmi, yat jñātvā iha bhūyaḥ anyat jñātavyaṃ na avaśiṣyate."
             }
           ]
         },
@@ -522,7 +526,9 @@
                 "en": "“Out of thousands, one seeks perfection; and of those perfected, one truly knows me.”",
                 "ne": "“हजारौंमध्ये एकले सिद्धि खोज्छ; र सिद्ध हुनेहरूमध्ये एकले साँच्चै मलाई चिन्छ।”",
                 "hi": "“हज़ारों में से एक सिद्धि खोजता है; और सिद्ध होने वालों में से एक सचमुच मुझे जानता है।”"
-              }
+              },
+              "anvaya": "मनुष्याणां सहस्रेषु कश्चित् सिद्धये यतति; यतताम् अपि सिद्धानां कश्चित् मां तत्त्वतः वेत्ति।",
+              "anvaya_iast": "manuṣyāṇāṃ sahasreṣu kaścit siddhaye yatati; yatatām api siddhānāṃ kaścit māṃ tattvataḥ vetti."
             }
           ]
         }
@@ -713,7 +719,9 @@
                 "en": "“Earth, water, fire, air, ether, mind, intellect, and ego — these eight make up my lower nature.”",
                 "ne": "माटो, पानी, आगो, हावा, आकाश; अनि मन, बुद्धि र 'म' भन्ने भाव। यी आठ मेरो तल्लो प्रकृति हुन्।",
                 "hi": "मिट्टी, पानी, आग, हवा, आकाश; और मन, बुद्धि तथा 'मैं' का भाव — ये आठ मेरी निचली प्रकृति हैं।"
-              }
+              },
+              "anvaya": "भूमिः, आपः, अनलः, वायुः, खम्, मनः, बुद्धिः एव च, अहङ्कारः इति इयं मे अष्टधा भिन्ना प्रकृतिः।",
+              "anvaya_iast": "bhūmiḥ, āpaḥ, analaḥ, vāyuḥ, kham, manaḥ, buddhiḥ eva ca, ahaṅkāraḥ iti iyaṃ me aṣṭadhā bhinnā prakṛtiḥ."
             }
           ]
         },
@@ -882,7 +890,9 @@
                 "en": "“That is my lower nature. But I have a higher nature — the living soul — by which this whole world is sustained.”",
                 "ne": "“त्यो मेरो अपर प्रकृति हो। तर मेरो अझ उच्च प्रकृति पनि छ — जीवात्मा — जसद्वारा यो सम्पूर्ण संसार टिकेको छ।”",
                 "hi": "“वह मेरी अपर प्रकृति है। किन्तु मेरी और भी उच्च प्रकृति है — जीवात्मा — जिससे यह सम्पूर्ण संसार टिका हुआ है।”"
-              }
+              },
+              "anvaya": "इयम् अपरा; महाबाहो! इतः तु अन्यां मे परां प्रकृतिं जीवभूतां विद्धि, यया इदं जगत् धार्यते।",
+              "anvaya_iast": "iyam aparā; mahābāho! itaḥ tu anyāṃ me parāṃ prakṛtiṃ jīvabhūtāṃ viddhi, yayā idaṃ jagat dhāryate."
             }
           ]
         },
@@ -1030,7 +1040,9 @@
                 "en": "“Everything is born from these two natures of mine. I am the source and the end of the entire universe.”",
                 "ne": "“सबै कुरा मेरा यी दुई प्रकृतिबाट जन्मिन्छन्। म नै सम्पूर्ण ब्रह्माण्डको स्रोत र अन्त्य हुँ।”",
                 "hi": "“सब कुछ मेरी इन्हीं दो प्रकृतियों से जन्मता है। मैं ही सम्पूर्ण ब्रह्माण्ड का स्रोत और अन्त हूँ।”"
-              }
+              },
+              "anvaya": "सर्वाणि भूतानि एतद्योनीनि इति उपधारय; अहं कृत्स्नस्य जगतः प्रभवः तथा प्रलयः।",
+              "anvaya_iast": "sarvāṇi bhūtāni etadyonīni iti upadhāraya; ahaṃ kṛtsnasya jagataḥ prabhavaḥ tathā pralayaḥ."
             }
           ]
         },
@@ -1192,7 +1204,9 @@
                 "en": "“Nothing exists beyond me. All this is strung on me, like jewels threaded on a string.”",
                 "ne": "“मभन्दा पर केही छैन। यो सबै ममा गाँसिएको छ, जसरी डोरीमा उनेका मणिहरू।”",
                 "hi": "“मुझसे परे कुछ नहीं है। यह सब मुझ पर गुँथा है, जैसे डोरी में पिरोए मणि।”"
-              }
+              },
+              "anvaya": "धनञ्जय! मत्तः परतरम् अन्यत् किञ्चित् न अस्ति; सूत्रे मणिगणाः इव इदं सर्वं मयि प्रोतम्।",
+              "anvaya_iast": "dhanañjaya! mattaḥ parataram anyat kiñcit na asti; sūtre maṇigaṇāḥ iva idaṃ sarvaṃ mayi protam."
             }
           ]
         }
@@ -1362,7 +1376,9 @@
                 "en": "“I am the taste of water, the light of moon and sun, the Om in the Vedas, the sound in space, the strength of manhood.”",
                 "ne": "“म पानीको स्वाद हुँ, चन्द्रमा र सूर्यको प्रकाश, वेदहरूमा ॐ, आकाशमा ध्वनि, पुरुषत्वको शक्ति।”",
                 "hi": "“मैं पानी का स्वाद हूँ, चन्द्रमा और सूर्य का प्रकाश, वेदों में ॐ, आकाश में ध्वनि, पुरुषत्व की शक्ति।”"
-              }
+              },
+              "anvaya": "कौन्तेय! अहम् अप्सु रसः, शशिसूर्ययोः प्रभा अस्मि, सर्ववेदेषु प्रणवः, खे शब्दः, नृषु पौरुषम्।",
+              "anvaya_iast": "kaunteya! aham apsu rasaḥ, śaśisūryayoḥ prabhā asmi, sarvavedeṣu praṇavaḥ, khe śabdaḥ, nṛṣu pauruṣam."
             }
           ]
         },
@@ -1524,7 +1540,9 @@
                 "en": "“I am the fragrance of earth, the warmth of fire, the life in all beings, the tapas of ascetics.”",
                 "ne": "“म पृथ्वीको सुगन्ध हुँ, आगोको ताप, सबै प्राणीको जीवन, तपस्वीहरूको तपस्या।”",
                 "hi": "“मैं पृथ्वी की सुगन्ध हूँ, आग की गर्मी, सब प्राणियों का जीवन, तपस्वियों की तपस्या।”"
-              }
+              },
+              "anvaya": "पृथिव्यां पुण्यः गन्धः च, विभावसौ तेजः च अस्मि, सर्वभूतेषु जीवनं, तपस्विषु तपः च अस्मि।",
+              "anvaya_iast": "pṛthivyāṃ puṇyaḥ gandhaḥ ca, vibhāvasau tejaḥ ca asmi, sarvabhūteṣu jīvanaṃ, tapasviṣu tapaḥ ca asmi."
             }
           ]
         },
@@ -1672,7 +1690,9 @@
                 "en": "“Know me as the eternal seed of everything — the wisdom of the wise, the brilliance of the brilliant.”",
                 "ne": "“मलाई सबैको शाश्वत बीज जान — ज्ञानीहरूको ज्ञान, तेजस्वीहरूको तेज।”",
                 "hi": "“मुझे सबका शाश्वत बीज जान — ज्ञानियों का ज्ञान, तेजस्वियों का तेज।”"
-              }
+              },
+              "anvaya": "पार्थ! मां सर्वभूतानां सनातनं बीजं विद्धि; बुद्धिमतां बुद्धिः अस्मि, तेजस्विनां तेजः अहम्।",
+              "anvaya_iast": "pārtha! māṃ sarvabhūtānāṃ sanātanaṃ bījaṃ viddhi; buddhimatāṃ buddhiḥ asmi, tejasvināṃ tejaḥ aham."
             }
           ]
         },
@@ -1806,7 +1826,9 @@
                 "en": "“I am the strength of the strong, free of craving; and in beings I am the desire that accords with righteousness.”",
                 "ne": "“म बलियाहरूको बल हुँ — कामना र आसक्तिबाट मुक्त; र प्राणीहरूमा धर्मसँग मेल खाने इच्छा।”",
                 "hi": "“मैं बलवानों का बल हूँ — कामना और आसक्ति से मुक्त; और प्राणियों में धर्म से मेल खाने वाली इच्छा।”"
-              }
+              },
+              "anvaya": "बलवतां कामरागविवर्जितं बलं च अहम्; भरतर्षभ! भूतेषु धर्माविरुद्धः कामः अस्मि।",
+              "anvaya_iast": "balavatāṃ kāmarāgavivarjitaṃ balaṃ ca aham; bharatarṣabha! bhūteṣu dharmāviruddhaḥ kāmaḥ asmi."
             }
           ]
         }
@@ -2025,7 +2047,9 @@
                 "en": "“All the qualities — sattva, rajas, tamas — come from me. Yet I am beyond them, though they rest in me.”",
                 "ne": "“सबै गुण — सत्त्व, रज, तम — मबाटै आउँछन्। तैपनि म तिनभन्दा पर छु, यद्यपि ती ममा विश्राम गर्छन्।”",
                 "hi": "“सब गुण — सत्त्व, रज, तम — मुझसे ही आते हैं। फिर भी मैं उनसे परे हूँ, यद्यपि वे मुझ में विश्राम करते हैं।”"
-              }
+              },
+              "anvaya": "ये च एव सात्त्विकाः भावाः, ये राजसाः तामसाः च, तान् मत्तः एव इति विद्धि; अहं तु तेषु न, ते मयि।",
+              "anvaya_iast": "ye ca eva sāttvikāḥ bhāvāḥ, ye rājasāḥ tāmasāḥ ca, tān mattaḥ eva iti viddhi; ahaṃ tu teṣu na, te mayi."
             }
           ]
         },
@@ -2187,7 +2211,9 @@
                 "en": "“Bewildered by the three qualities, the world fails to know me — who stand beyond them, eternal.”",
                 "ne": "“तीन गुणले मोहित भएर संसार मलाई चिन्दैन — जो तिनभन्दा पर, नित्य छु।”",
                 "hi": "“तीन गुणों से मोहित होकर संसार मुझे नहीं जानता — जो उनसे परे, नित्य हूँ।”"
-              }
+              },
+              "anvaya": "गुणमयैः एभिः त्रिभिः भावैः इदं सर्वं जगत् मोहितम् एभ्यः परम् अव्ययं मां न अभिजानाति।",
+              "anvaya_iast": "guṇamayaiḥ ebhiḥ tribhiḥ bhāvaiḥ idaṃ sarvaṃ jagat mohitam ebhyaḥ param avyayaṃ māṃ na abhijānāti."
             }
           ]
         },
@@ -2356,7 +2382,9 @@
                 "en": "“My divine power of māyā is hard to cross — but those who surrender to me alone pass beyond it.”",
                 "ne": "“मेरो दिव्य माया पार गर्न गाह्रो छ — तर जो केवल ममै समर्पण हुन्छन्, ती यसभन्दा पर जान्छन्।”",
                 "hi": "“मेरी दिव्य माया पार करना कठिन है — किन्तु जो केवल मुझ में समर्पण करते हैं, वे इससे परे जाते हैं।”"
-              }
+              },
+              "anvaya": "हि एषा गुणमयी मम दैवी माया दुरत्यया; ये माम् एव प्रपद्यन्ते ते एतां मायां तरन्ति।",
+              "anvaya_iast": "hi eṣā guṇamayī mama daivī māyā duratyayā; ye mām eva prapadyante te etāṃ māyāṃ taranti."
             }
           ]
         },
@@ -2497,7 +2525,9 @@
                 "en": "“The wicked, the deluded, the degraded — robbed of wisdom by māyā and demonic in nature — do not turn to me.”",
                 "ne": "“दुष्ट, मोहित, पतितहरू — मायाले ज्ञान खोसेका र आसुरी स्वभावका — मतिर फर्कदैनन्।”",
                 "hi": "“दुष्ट, मोहित, पतित — माया से ज्ञान खोए और आसुरी स्वभाव वाले — मेरी ओर नहीं मुड़ते।”"
-              }
+              },
+              "anvaya": "मायया अपहृतज्ञानाः आसुरं भावम् आश्रिताः नराधमाः दुष्कृतिनः मूढाः मां न प्रपद्यन्ते।",
+              "anvaya_iast": "māyayā apahṛtajñānāḥ āsuraṃ bhāvam āśritāḥ narādhamāḥ duṣkṛtinaḥ mūḍhāḥ māṃ na prapadyante."
             }
           ]
         }
@@ -2660,7 +2690,9 @@
                 "en": "“Four kinds of good people worship me: the suffering, the curious, the ambitious, and the wise.”",
                 "ne": "“चार किसिमका असल मानिसहरूले मेरो पूजा गर्छन्: दुःखी, जिज्ञासु, सम्पत्ति चाहने र ज्ञानी।”",
                 "hi": "“चार प्रकार के अच्छे लोग मेरी पूजा करते हैं: दुःखी, जिज्ञासु, महत्त्वाकांक्षी और ज्ञानी।”"
-              }
+              },
+              "anvaya": "भरतर्षभ! अर्जुन! चतुर्विधाः सुकृतिनः जनाः मां भजन्ते — आर्तः, जिज्ञासुः, अर्थार्थी, ज्ञानी च।",
+              "anvaya_iast": "bharatarṣabha! arjuna! caturvidhāḥ sukṛtinaḥ janāḥ māṃ bhajante — ārtaḥ, jijñāsuḥ, arthārthī, jñānī ca."
             }
           ]
         },
@@ -2822,7 +2854,9 @@
                 "en": "“The wisest — ever united to me, single-hearted — is the best. I am deeply dear to him, and he to me.”",
                 "ne": "“तीमध्ये सबैभन्दा ज्ञानी — सधैं मसँग एक, एकचित्त — उत्तम हो। म उसलाई अत्यन्त प्यारो छु, र ऊ मलाई।”",
                 "hi": "“उनमें सबसे ज्ञानी — सदा मुझसे एक, एकचित्त — उत्तम है। मैं उसे अत्यन्त प्यारा हूँ, और वह मुझे।”"
-              }
+              },
+              "anvaya": "तेषां नित्ययुक्तः एकभक्तिः ज्ञानी विशिष्यते; हि ज्ञानिनः अहम् अत्यर्थं प्रियः, सः च मम प्रियः।",
+              "anvaya_iast": "teṣāṃ nityayuktaḥ ekabhaktiḥ jñānī viśiṣyate; hi jñāninaḥ aham atyarthaṃ priyaḥ, saḥ ca mama priyaḥ."
             }
           ]
         },
@@ -3012,7 +3046,9 @@
                 "en": "“All four are noble, but the wise one is my very self — established in me, the highest goal.”",
                 "ne": "“चारै जना श्रेष्ठ छन्, तर ज्ञानी मेरै स्वरूप हो — ममै, जो परम लक्ष्य हुँ, स्थापित भएर।”",
                 "hi": "“चारों श्रेष्ठ हैं, किन्तु ज्ञानी मेरा ही स्वरूप है — मुझमें ही, जो परम लक्ष्य हूँ, स्थापित होकर।”"
-              }
+              },
+              "anvaya": "एते सर्वे एव उदाराः, ज्ञानी तु मे आत्मा एव मतम्; हि सः युक्तात्मा अनुत्तमां गतिं माम् एव आस्थितः।",
+              "anvaya_iast": "ete sarve eva udārāḥ, jñānī tu me ātmā eva matam; hi saḥ yuktātmā anuttamāṃ gatiṃ mām eva āsthitaḥ."
             }
           ]
         },
@@ -3160,7 +3196,9 @@
                 "en": "“After many lives, the wise come to me, knowing that Vāsudeva is all — such a great soul is extremely rare.”",
                 "ne": "“धेरै जीवनपछि, ज्ञानीहरू 'वासुदेव नै सबै हुन्' जानेर मकहाँ आउँछन् — यस्तो महात्मा अत्यन्त दुर्लभ हुन्छ।”",
                 "hi": "“अनेक जन्मों के बाद, ज्ञानी 'वासुदेव ही सब है' जानकर मेरे पास आते हैं — ऐसा महात्मा अत्यन्त दुर्लभ होता है।”"
-              }
+              },
+              "anvaya": "बहूनां जन्मनाम् अन्ते ज्ञानवान् वासुदेवः सर्वम् इति मां प्रपद्यते; सः महात्मा सुदुर्लभः।",
+              "anvaya_iast": "bahūnāṃ janmanām ante jñānavān vāsudevaḥ sarvam iti māṃ prapadyate; saḥ mahātmā sudurlabhaḥ."
             }
           ]
         }
@@ -3330,7 +3368,9 @@
                 "en": "“Carried away by craving, people worship other gods, following various rules set by their own nature.”",
                 "ne": "“कामनाले बगाइएका मानिसहरू, आफ्नै प्रकृतिले बाँधिएर, विभिन्न नियम पछ्याउँदै अरू देवताको पूजा गर्छन्।”",
                 "hi": "“कामनाओं से बहाए गए लोग, अपनी प्रकृति से बँधकर, विभिन्न नियमों का पालन करते हुए दूसरे देवताओं की पूजा करते हैं।”"
-              }
+              },
+              "anvaya": "तैः तैः कामैः हृतज्ञानाः स्वया प्रकृत्या नियताः तं तं नियमम् आस्थाय अन्यदेवताः प्रपद्यन्ते।",
+              "anvaya_iast": "taiḥ taiḥ kāmaiḥ hṛtajñānāḥ svayā prakṛtyā niyatāḥ taṃ taṃ niyamam āsthāya anyadevatāḥ prapadyante."
             }
           ]
         },
@@ -3513,7 +3553,9 @@
                 "en": "“Whatever form a devotee wants to honour with faith, I make that faith firm and steady.”",
                 "ne": "“भक्तले जुन पनि रूपलाई श्रद्धाले पूज्न चाहन्छ, म त्यही श्रद्धालाई दृढ र स्थिर बनाउँछु।”",
                 "hi": "जो जिस रूप को श्रद्धा से पूजना चाहे, उसी श्रद्धा को मैं मज़बूत कर देता हूँ।"
-              }
+              },
+              "anvaya": "यः यः भक्तः यां यां तनुं श्रद्धया अर्चितुम् इच्छति, तस्य तस्य अहं ताम् एव अचलां श्रद्धां विदधामि।",
+              "anvaya_iast": "yaḥ yaḥ bhaktaḥ yāṃ yāṃ tanuṃ śraddhayā arcitum icchati, tasya tasya ahaṃ tām eva acalāṃ śraddhāṃ vidadhāmi."
             }
           ]
         },
@@ -3689,7 +3731,9 @@
                 "en": "“With that faith he worships, and his desires are granted — though the granting comes from me.”",
                 "ne": "“त्यो श्रद्धाले उसले पूजा गर्छ, र उसका इच्छाहरू पूरा हुन्छन् — यद्यपि पूरा गर्ने म नै हुँ।”",
                 "hi": "“उस श्रद्धा से वह पूजा करता है, और उसकी इच्छाएँ पूरी होती हैं — यद्यपि पूरी करने वाला मैं ही हूँ।”"
-              }
+              },
+              "anvaya": "सः तया श्रद्धया युक्तः तस्य आराधनम् ईहते, ततः च मया एव विहितान् तान् हि कामान् लभते।",
+              "anvaya_iast": "saḥ tayā śraddhayā yuktaḥ tasya ārādhanam īhate, tataḥ ca mayā eva vihitān tān hi kāmān labhate."
             }
           ]
         },
@@ -3851,7 +3895,9 @@
                 "en": "“But such worship bears only limited fruit. God-worshippers reach the gods; my devotees reach me.”",
                 "ne": "“तर यस्तो पूजाले सीमित फल मात्र दिन्छ। देवपूजक देवतामा पुग्छन्; मेरा भक्तहरू मकहाँ पुग्छन्।”",
                 "hi": "“किन्तु ऐसी पूजा केवल सीमित फल देती है। देव-पूजक देवताओं तक पहुँचते हैं; मेरे भक्त मुझ तक पहुँचते हैं।”"
-              }
+              },
+              "anvaya": "तेषाम् अल्पमेधसां तत् फलं तु अन्तवत् भवति; देवयजः देवान् यान्ति, मद्भक्ताः अपि मां यान्ति।",
+              "anvaya_iast": "teṣām alpamedhasāṃ tat phalaṃ tu antavat bhavati; devayajaḥ devān yānti, madbhaktāḥ api māṃ yānti."
             }
           ]
         }
@@ -4014,7 +4060,9 @@
                 "en": "“Fools think of me — the unmanifest — as merely a manifested being, not knowing my higher, eternal nature.”",
                 "ne": "“मूर्खहरू मलाई — अव्यक्त — केवल प्रकट रूप मात्र ठान्छन्, मेरो उच्च, नित्य प्रकृति नजानेर।”",
                 "hi": "“मूर्ख मुझे — अव्यक्त — केवल प्रकट रूप मानते हैं, मेरी उच्च, नित्य प्रकृति को न जानकर।”"
-              }
+              },
+              "anvaya": "अबुद्धयः मम परम् अव्ययम् अनुत्तमं भावम् अजानन्तः अव्यक्तं मां व्यक्तिम् आपन्नं मन्यन्ते।",
+              "anvaya_iast": "abuddhayaḥ mama param avyayam anuttamaṃ bhāvam ajānantaḥ avyaktaṃ māṃ vyaktim āpannaṃ manyante."
             }
           ]
         },
@@ -4176,7 +4224,9 @@
                 "en": "“Hidden by my divine power, I am not visible to all; the deluded world fails to know me — unborn, eternal.”",
                 "ne": "“मेरो दिव्य शक्तिले लुकेको, म सबैलाई देखिँदिनँ; मोहित संसार मलाई — अजन्मा, नित्य — चिन्न असफल हुन्छ।”",
                 "hi": "“अपनी दिव्य शक्ति से छिपा हुआ, मैं सबको दिखाई नहीं देता; मोहित संसार मुझे — अजन्मा, नित्य — जानने में असफल रहता है।”"
-              }
+              },
+              "anvaya": "अहं योगमायासमावृतः सर्वस्य प्रकाशः न; अयं मूढः लोकः अजम् अव्ययं मां न अभिजानाति।",
+              "anvaya_iast": "ahaṃ yogamāyāsamāvṛtaḥ sarvasya prakāśaḥ na; ayaṃ mūḍhaḥ lokaḥ ajam avyayaṃ māṃ na abhijānāti."
             }
           ]
         },
@@ -4338,7 +4388,9 @@
                 "en": "“I know all beings — past, present, and future. But no one truly knows me.”",
                 "ne": "“म सबै प्राणीलाई जान्दछु — विगत, वर्तमान र भविष्य। तर मलाई साँच्चै कोही चिन्दैन।”",
                 "hi": "“मैं सब प्राणियों को जानता हूँ — भूत, वर्तमान और भविष्य। किन्तु मुझे सचमुच कोई नहीं जानता।”"
-              }
+              },
+              "anvaya": "अर्जुन! अहं समतीतानि वर्तमानानि च भविष्याणि च भूतानि वेद, मां तु कश्चन न वेद।",
+              "anvaya_iast": "arjuna! ahaṃ samatītāni vartamānāni ca bhaviṣyāṇi ca bhūtāni veda, māṃ tu kaścana na veda."
             }
           ]
         },
@@ -4472,7 +4524,9 @@
                 "en": "“Born of liking and disliking, the pairs of opposites delude all beings from birth.”",
                 "ne": "“रुचि र अरुचिबाट जन्मेका द्वन्द्वहरूले सबै प्राणीलाई जन्मदेखि नै मोहित पार्छन्।”",
                 "hi": "“रुचि और अरुचि से जन्मे द्वन्द्व सब प्राणियों को जन्म से ही मोहित कर देते हैं।”"
-              }
+              },
+              "anvaya": "भारत! परन्तप! सर्गे सर्वभूतानि इच्छाद्वेषसमुत्थेन द्वन्द्वमोहेन सम्मोहं यान्ति।",
+              "anvaya_iast": "bhārata! parantapa! sarge sarvabhūtāni icchādveṣasamutthena dvandvamohena sammohaṃ yānti."
             }
           ]
         }
@@ -4628,7 +4682,9 @@
                 "en": "“Those whose sins are spent, whose deeds are good, freed from the pairs of opposites, worship me with firm resolve.”",
                 "ne": "“जसका पाप सकिएका छन्, जसका कर्म असल छन् — द्वन्द्वको मोहबाट मुक्त ती दृढ संकल्पले मेरो पूजा गर्छन्।”",
                 "hi": "“जिनके पाप समाप्त हैं, जिनके कर्म शुभ हैं — द्वन्द्वों के मोह से मुक्त वे दृढ़ संकल्प से मेरी पूजा करते हैं।”"
-              }
+              },
+              "anvaya": "येषां पुण्यकर्मणां जनानां पापं तु अन्तगतं, ते द्वन्द्वमोहनिर्मुक्ताः दृढव्रताः मां भजन्ते।",
+              "anvaya_iast": "yeṣāṃ puṇyakarmaṇāṃ janānāṃ pāpaṃ tu antagataṃ, te dvandvamohanirmuktāḥ dṛḍhavratāḥ māṃ bhajante."
             }
           ]
         },
@@ -4804,7 +4860,9 @@
                 "en": "“Those who seek freedom from age and death, taking refuge in me, come to know Brahman, the Self, and the whole of karma.”",
                 "ne": "“जो बुढ्यौली र मृत्युबाट मुक्ति खोज्दै मेरो शरण लिन्छन् — तिनीहरू ब्रह्म, आत्मा र सम्पूर्ण कर्म चिन्न पुग्छन्।”",
                 "hi": "“जो बुढ़ापे और मृत्यु से मुक्ति चाहते हुए मेरी शरण लेते हैं — वे ब्रह्म, आत्मा और सम्पूर्ण कर्म को जानने लगते हैं।”"
-              }
+              },
+              "anvaya": "ये माम् आश्रित्य जरामरणमोक्षाय यतन्ति, ते तत् ब्रह्म कृत्स्नम् अध्यात्मं अखिलं कर्म च विदुः।",
+              "anvaya_iast": "ye mām āśritya jarāmaraṇamokṣāya yatanti, te tat brahma kṛtsnam adhyātmaṃ akhilaṃ karma ca viduḥ."
             }
           ]
         },
@@ -4980,7 +5038,9 @@
                 "en": "“Those who know me as pervading all beings, all gods, and all sacrifice — even at death's hour, with steady minds, they know me.”",
                 "ne": "“जसले मलाई सबै प्राणी, सबै देवता र सबै यज्ञमा व्याप्त जान्दछन् — मृत्युको घडीमा पनि, स्थिर मनले, तिनीहरू मलाई चिन्छन्।”",
                 "hi": "“जो मुझे सब प्राणियों, सब देवताओं और सब यज्ञों में व्याप्त जानते हैं — मृत्यु की घड़ी में भी, स्थिर मन से, वे मुझे जानते हैं।”"
-              }
+              },
+              "anvaya": "ये साधिभूताधिदैवं साधियज्ञं च मां विदुः, ते युक्तचेतसः प्रयाणकाले अपि च मां विदुः।",
+              "anvaya_iast": "ye sādhibhūtādhidaivaṃ sādhiyajñaṃ ca māṃ viduḥ, te yuktacetasaḥ prayāṇakāle api ca māṃ viduḥ."
             }
           ]
         }

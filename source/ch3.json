@@ -1239,8 +1239,8 @@
           "sutras": [
             {
               "n": "3.08",
-              "anvaya": "त्वं नियतं कर्म कुरु, हि अकर्मणः कर्म ज्यायः; अकर्मणः ते शरीरयात्रा अपि च न प्रसिध्येत्।",
-              "anvaya_iast": "tvaṃ niyataṃ karma kuru, hi akarmaṇaḥ karma jyāyaḥ; akarmaṇaḥ te śarīrayātrā api ca na prasidhyet.",
+              "anvaya": "त्वं नियतं कर्म कुरु, अकर्मणः हि कर्म ज्यायः; अकर्मणः ते शरीरयात्रा अपि च न प्रसिध्येत्।",
+              "anvaya_iast": "tvaṃ niyataṃ karma kuru, akarmaṇaḥ hi karma jyāyaḥ; akarmaṇaḥ te śarīrayātrā api ca na prasidhyet.",
               "d": "नियतं कुरु कर्म त्वं कर्म ज्यायो ह्यकर्मणः । शरीरयात्रापि च ते न प्रसिध्येदकर्मणः",
               "t": "niyataṃ kuru karma tvaṃ karma jyāyo hyakarmaṇaḥ । śarīrayātrāpi ca te na prasidhyedakarmaṇaḥ",
               "flow": [
@@ -1767,8 +1767,8 @@
           "sutras": [
             {
               "n": "3.11",
-              "anvaya": "अनेन देवान् भावयत, ते देवाः वः भावयन्तु; परस्परं भावयन्तः परमं श्रेयः अवाप्स्यथ।",
-              "anvaya_iast": "anena devān bhāvayata, te devāḥ vaḥ bhāvayantu; parasparaṃ bhāvayantaḥ paramaṃ śreyaḥ avāpsyatha.",
+              "anvaya": "अनेन देवान् भावयत, ते देवाः वः भावयन्तु; परस्परं भावयन्तः परं श्रेयः अवाप्स्यथ।",
+              "anvaya_iast": "anena devān bhāvayata, te devāḥ vaḥ bhāvayantu; parasparaṃ bhāvayantaḥ paraṃ śreyaḥ avāpsyatha.",
               "d": "देवान्भावयतानेन ते देवा भावयन्तु वः । परस्परं भावयन्तः श्रेयः परमवाप्स्यथ",
               "t": "devānbhāvayatānena te devā bhāvayantu vaḥ । parasparaṃ bhāvayantaḥ śreyaḥ paramavāpsyatha",
               "flow": [
@@ -2987,8 +2987,8 @@
           "sutras": [
             {
               "n": "3.18",
-              "anvaya": "तस्य इह कृतेन अर्थः न एव, अकृतेन कश्चन न; अस्य सर्वभूतेषु कश्चित् अर्थव्यपाश्रयः च न।",
-              "anvaya_iast": "tasya iha kṛtena arthaḥ na eva, akṛtena kaścana na; asya sarvabhūteṣu kaścit arthavyapāśrayaḥ ca na.",
+              "anvaya": "इह तस्य कृतेन अर्थः न एव, अकृतेन कश्चन न; अस्य सर्वभूतेषु कश्चित् अर्थव्यपाश्रयः न च।",
+              "anvaya_iast": "iha tasya kṛtena arthaḥ na eva, akṛtena kaścana na; asya sarvabhūteṣu kaścit arthavyapāśrayaḥ na ca.",
               "d": "नैव तस्य कृतेनार्थो नाकृतेनेह कश्चन । न चास्य सर्वभूतेषु कश्चिदर्थव्यपाश्रयः",
               "t": "naiva tasya kṛtenārtho nākṛteneha kaścana । na cāsya sarvabhūteṣu kaścidarthavyapāśrayaḥ",
               "flow": [
@@ -3329,8 +3329,8 @@
           "sutras": [
             {
               "n": "3.20",
-              "anvaya": "हि जनकादयः कर्मणा एव संसिद्धिम् आस्थिताः; लोकसङ्ग्रहम् अपि एव सम्पश्यन् कर्तुम् अर्हसि।",
-              "anvaya_iast": "hi janakādayaḥ karmaṇā eva saṃsiddhim āsthitāḥ; lokasaṅgraham api eva sampaśyan kartum arhasi.",
+              "anvaya": "जनकादयः कर्मणा एव हि संसिद्धिम् आस्थिताः; लोकसङ्ग्रहम् एव अपि सम्पश्यन् कर्तुम् अर्हसि।",
+              "anvaya_iast": "janakādayaḥ karmaṇā eva hi saṃsiddhim āsthitāḥ; lokasaṅgraham eva api sampaśyan kartum arhasi.",
               "d": "कर्मणैव हि संसिद्धिमास्थिता जनकादयः । लोकसङ्ग्रहमेवापि सम्पश्यन्कर्तुमर्हसि",
               "t": "karmaṇaiva hi saṃsiddhimāsthitā janakādayaḥ । lokasaṅgrahamevāpi sampaśyankartumarhasi",
               "flow": [
@@ -3486,8 +3486,8 @@
           "sutras": [
             {
               "n": "3.21",
-              "anvaya": "श्रेष्ठः यत् यत् आचरति इतरः जनः तत् तत् एव ; सः यत् प्रमाणं कुरुते लोकः तत् अनुवर्तते।",
-              "anvaya_iast": "śreṣṭhaḥ yat yat ācarati itaraḥ janaḥ tat tat eva ; saḥ yat pramāṇaṃ kurute lokaḥ tat anuvartate.",
+              "anvaya": "श्रेष्ठः यत् यत् आचरति इतरः जनः तत् तत् एव; सः यत् प्रमाणं कुरुते लोकः तत् अनुवर्तते।",
+              "anvaya_iast": "śreṣṭhaḥ yat yat ācarati itaraḥ janaḥ tat tat eva; saḥ yat pramāṇaṃ kurute lokaḥ tat anuvartate.",
               "d": "यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः । स यत्प्रमाणं कुरुते लोकस्तदनुवर्तते",
               "t": "yadyadācarati śreṣṭhastattadevetaro janaḥ । sa yatpramāṇaṃ kurute lokastadanuvartate",
               "flow": [
@@ -4014,8 +4014,8 @@
           "sutras": [
             {
               "n": "3.24",
-              "anvaya": "अहं कर्म न कुर्याम् चेत् इमे लोकाः उत्सीदेयुः; सङ्करस्य च कर्ता स्याम्, इमाः प्रजाः उपहन्याम्।",
-              "anvaya_iast": "ahaṃ karma na kuryām cet ime lokāḥ utsīdeyuḥ; saṅkarasya ca kartā syām, imāḥ prajāḥ upahanyām.",
+              "anvaya": "अहं चेत् कर्म न कुर्याम् इमे लोकाः उत्सीदेयुः; सङ्करस्य च कर्ता स्याम्, इमाः प्रजाः उपहन्याम्।",
+              "anvaya_iast": "ahaṃ cet karma na kuryām ime lokāḥ utsīdeyuḥ; saṅkarasya ca kartā syām, imāḥ prajāḥ upahanyām.",
               "d": "उत्सीदेयुरिमे लोका न कुर्यां कर्म चेदहम् । सङ्करस्य च कर्ता स्यामुपहन्यामिमाः प्रजाः",
               "t": "utsīdeyurime lokā na kuryāṃ karma cedaham । saṅkarasya ca kartā syāmupahanyāmimāḥ prajāḥ",
               "flow": [
@@ -4985,8 +4985,8 @@
           "sutras": [
             {
               "n": "3.30",
-              "anvaya": "अध्यात्मचेतसा सर्वाणि कर्माणि मयि सन्न्यस्य निराशीः निर्ममः भूत्वा विगतज्वरः युध्यस्व।",
-              "anvaya_iast": "adhyātmacetasā sarvāṇi karmāṇi mayi sannyasya nirāśīḥ nirmamaḥ bhūtvā vigatajvaraḥ yudhyasva.",
+              "anvaya": "अध्यात्मचेतसा सर्वाणि कर्माणि मयि संन्यस्य निराशीः निर्ममः भूत्वा विगतज्वरः युध्यस्व।",
+              "anvaya_iast": "adhyātmacetasā sarvāṇi karmāṇi mayi saṃnyasya nirāśīḥ nirmamaḥ bhūtvā vigatajvaraḥ yudhyasva.",
               "d": "मयि सर्वाणि कर्माणि सन्न्यस्याध्यात्मचेतसा । निराशीर्निर्ममो भूत्वा युध्यस्व विगतज्वरः",
               "t": "mayi sarvāṇi karmāṇi sannyasyādhyātmacetasā । nirāśīrnirmamo bhūtvā yudhyasva vigatajvaraḥ",
               "flow": [

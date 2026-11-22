@@ -212,7 +212,9 @@
                 "en": "Arjuna asks: “What is Brahman? What is the Self? What is action, Kṛṣṇa? What are adhibhūta and adhidaiva?”",
                 "ne": "अर्जुन सोध्छन्: “ब्रह्म के हो? आत्मा के हो? कर्म के हो, कृष्ण? अधिभूत र अधिदैव के हुन्?”",
                 "hi": "अर्जुन पूछते हैं: “ब्रह्म क्या है? आत्मा क्या है? कर्म क्या है, कृष्ण? अधिभूत और अधिदैव क्या हैं?”"
-              }
+              },
+              "anvaya": "अर्जुन उवाच — पुरुषोत्तम! तत् ब्रह्म किम्, अध्यात्मं किम्, कर्म किम्? अधिभूतं च किं प्रोक्तम्, अधिदैवं किम् उच्यते?",
+              "anvaya_iast": "arjuna uvāca — puruṣottama! tat brahma kim, adhyātmaṃ kim, karma kim? adhibhūtaṃ ca kiṃ proktam, adhidaivaṃ kim ucyate?"
             }
           ]
         },
@@ -367,7 +369,9 @@
                 "en": "“And what is adhiyajña in this body — and how can those of steady mind know you at the hour of death?”",
                 "ne": "“र यस शरीरमा अधियज्ञ के हो — र स्थिर मन भएकाहरूले मृत्युको घडीमा तपाईंलाई कसरी चिन्न सक्छन्?”",
                 "hi": "“और इस शरीर में अधियज्ञ क्या है — और स्थिर मन वाले मृत्यु की घड़ी में आपको कैसे जान सकते हैं?”"
-              }
+              },
+              "anvaya": "मधुसूदन! अत्र अस्मिन् देहे अधियज्ञः कः कथम्? नियतात्मभिः प्रयाणकाले च कथं ज्ञेयः असि?",
+              "anvaya_iast": "madhusūdana! atra asmin dehe adhiyajñaḥ kaḥ katham? niyatātmabhiḥ prayāṇakāle ca kathaṃ jñeyaḥ asi?"
             }
           ]
         },
@@ -515,7 +519,9 @@
                 "en": "Kṛṣṇa said: “The imperishable is the supreme Brahman; one's own being is adhyātma; and the impulse of creation is karma.”",
                 "ne": "कृष्णले भन्नुभयो: “अविनाशी नै परम ब्रह्म हो; आफ्नो अस्तित्व अध्यात्म हो; र सृष्टिको प्रेरणा कर्म हो।”",
                 "hi": "कृष्ण ने कहा: “अविनाशी ही परम ब्रह्म है; अपना अस्तित्व अध्यात्म है; और सृष्टि की प्रेरणा कर्म है।”"
-              }
+              },
+              "anvaya": "श्रीभगवानुवाच — परमम् अक्षरं ब्रह्म, स्वभावः अध्यात्मम् उच्यते; भूतभावोद्भवकरः विसर्गः कर्मसंज्ञितः।",
+              "anvaya_iast": "śrībhagavānuvāca — paramam akṣaraṃ brahma, svabhāvaḥ adhyātmam ucyate; bhūtabhāvodbhavakaraḥ visargaḥ karmasaṃjñitaḥ."
             }
           ]
         },
@@ -670,7 +676,9 @@
                 "en": "“The perishable world is adhibhūta; the Puruṣa is adhidaiva; and I myself am adhiyajña in the body.”",
                 "ne": "“विनाशशील संसार अधिभूत हो; पुरुष अधिदैव हो; र यस शरीरमा म आफैं अधियज्ञ हुँ।”",
                 "hi": "“विनाशशील संसार अधिभूत है; पुरुष अधिदैव है; और इस शरीर में मैं स्वयं अधियज्ञ हूँ।”"
-              }
+              },
+              "anvaya": "क्षरः भावः अधिभूतम्, पुरुषः च अधिदैवतम्; देहभृतां वर! अत्र देहे अहम् एव अधियज्ञः।",
+              "anvaya_iast": "kṣaraḥ bhāvaḥ adhibhūtam, puruṣaḥ ca adhidaivatam; dehabhṛtāṃ vara! atra dehe aham eva adhiyajñaḥ."
             }
           ]
         }
@@ -861,7 +869,9 @@
                 "en": "“Whoever leaves the body thinking of me alone comes to my very being — of this there is no doubt.”",
                 "ne": "“जसले केवल मलाई सम्झेर शरीर छोड्छ, ऊ मेरै स्वरूपमा आउँछ — यसमा कुनै सन्देह छैन।”",
                 "hi": "“जो केवल मुझे स्मरण करके शरीर छोड़ता है, वह मेरे ही स्वरूप में आता है — इसमें कोई सन्देह नहीं।”"
-              }
+              },
+              "anvaya": "यः च अन्तकाले माम् एव स्मरन् कलेवरं मुक्त्वा प्रयाति, सः मद्भावं याति, अत्र संशयः न अस्ति।",
+              "anvaya_iast": "yaḥ ca antakāle mām eva smaran kalevaraṃ muktvā prayāti, saḥ madbhāvaṃ yāti, atra saṃśayaḥ na asti."
             }
           ]
         },
@@ -1037,7 +1047,9 @@
                 "en": "“Whatever you think of at the final hour — that is what you become, shaped by that last thought.”",
                 "ne": "“अन्तिम घडीमा तिमी जे सोच्छौ, त्यही बन्छौ — त्यही अन्तिम विचारले ढालेर।”",
                 "hi": "“अन्तिम घड़ी में तू जो सोचता है, वही बन जाता है — उसी अन्तिम विचार से ढलकर।”"
-              }
+              },
+              "anvaya": "कौन्तेय! अन्ते यं यं वा अपि भावं स्मरन् कलेवरं त्यजति, सदा तद्भावभावितः तं तम् एव एति।",
+              "anvaya_iast": "kaunteya! ante yaṃ yaṃ vā api bhāvaṃ smaran kalevaraṃ tyajati, sadā tadbhāvabhāvitaḥ taṃ tam eva eti."
             }
           ]
         },
@@ -1199,7 +1211,9 @@
                 "en": "“So remember me always and fight! With mind and heart given to me, you will surely reach me.”",
                 "ne": "“युद्ध गरिरह, तर मलाई कहिल्यै नबिर्स। आफ्नो मन र बुद्धि दुवै मलाई सुम्प्यौ भने तिमी मकहाँ नै पुग्छौ।”",
                 "hi": "“इसलिए सदा मुझे स्मरण करके युद्ध कर! मन और हृदय मुझे देकर, तू निश्चय मुझ तक पहुँचेगा।”"
-              }
+              },
+              "anvaya": "तस्मात् सर्वेषु कालेषु माम् अनुस्मर युध्य च; मयि अर्पितमनोबुद्धिः असंशयं माम् एव एष्यसि।",
+              "anvaya_iast": "tasmāt sarveṣu kāleṣu mām anusmara yudhya ca; mayi arpitamanobuddhiḥ asaṃśayaṃ mām eva eṣyasi."
             }
           ]
         },
@@ -1333,7 +1347,9 @@
                 "en": "“Practising with a one-pointed mind, meditating on the supreme divine Person, the yogi reaches him.”",
                 "ne": "“एकाग्र मनले अभ्यास गर्दै, परम दिव्य पुरुषको ध्यान गर्दै, योगी उहाँसम्म पुग्छ।”",
                 "hi": "“एकाग्र मन से अभ्यास करते हुए, परम दिव्य पुरुष का ध्यान करते हुए, योगी उन तक पहुँचता है।”"
-              }
+              },
+              "anvaya": "पार्थ! अभ्यासयोगयुक्तेन न अन्यगामिना चेतसा अनुचिन्तयन् परमं दिव्यं पुरुषं याति।",
+              "anvaya_iast": "pārtha! abhyāsayogayuktena na anyagāminā cetasā anucintayan paramaṃ divyaṃ puruṣaṃ yāti."
             }
           ]
         },
@@ -1488,7 +1504,9 @@
                 "en": "“Hold your mind on the ancient one: finer than anything fine, the ground that carries everything, past imagining, glowing like the sun on the far side of all darkness —”",
                 "ne": "“जो प्राचीन द्रष्टा — सूक्ष्मभन्दा सूक्ष्म, सबैको आधार, अचिन्त्य रूप, अन्धकारभन्दा पर चम्कने — उहाँको चिन्तन गर्ने —”",
                 "hi": "“जो प्राचीन द्रष्टा — सूक्ष्म से सूक्ष्म, सबका आधार, अचिन्त्य रूप, अन्धकार से परे चमकने वाला — उसका चिन्तन करने वाला —”"
-              }
+              },
+              "anvaya": "यः कविं, पुराणम्, अनुशासितारम्, अणोः अणीयांसं, सर्वस्य धातारम्, अचिन्त्यरूपम्, आदित्यवर्णं, तमसः परस्तात् अनुस्मरेत्।",
+              "anvaya_iast": "yaḥ kaviṃ, purāṇam, anuśāsitāram, aṇoḥ aṇīyāṃsaṃ, sarvasya dhātāram, acintyarūpam, ādityavarṇaṃ, tamasaḥ parastāt anusmaret."
             }
           ]
         },
@@ -1685,7 +1703,9 @@
                 "en": "“— at death, with a steady mind, devotion, and yogic power, breath held between the brows — reaches that supreme divine Person.”",
                 "ne": "“— मृत्युमा स्थिर मन, भक्ति र योगशक्तिले, भौंको बीचमा श्वास रोकेर — त्यो परम दिव्य पुरुषसम्म पुग्छ।”",
                 "hi": "“— मृत्यु में स्थिर मन, भक्ति और योग-शक्ति से, भौंहों के बीच श्वास को रोककर — उस परम दिव्य पुरुष तक पहुँचता है।”"
-              }
+              },
+              "anvaya": "प्रयाणकाले अचलेन मनसा भक्त्या योगबलेन च एव युक्तः भ्रुवोः मध्ये प्राणं सम्यक् आवेश्य सः तं परं दिव्यं पुरुषम् उपैति।",
+              "anvaya_iast": "prayāṇakāle acalena manasā bhaktyā yogabalena ca eva yuktaḥ bhruvoḥ madhye prāṇaṃ samyak āveśya saḥ taṃ paraṃ divyaṃ puruṣam upaiti."
             }
           ]
         }
@@ -1883,7 +1903,9 @@
                 "en": "“The imperishable that the Vedic sages declare, which desireless ascetics enter — that goal I will now tell you briefly.”",
                 "ne": "“वेदका ज्ञानीहरूले घोषणा गरेको अविनाशी, इच्छारहित तपस्वीहरू प्रवेश गर्ने — त्यो लक्ष्य अब म तिमीलाई छोटकरीमा भन्छु।”",
                 "hi": "“वेदों के ज्ञानी जिसे घोषित करते हैं, इच्छा-रहित तपस्वी जिसमें प्रवेश करते हैं — उस लक्ष्य को अब मैं तुझे संक्षेप में बताता हूँ।”"
-              }
+              },
+              "anvaya": "वेदविदः यत् अक्षरं वदन्ति, वीतरागाः यतयः यत् विशन्ति, यत् इच्छन्तः ब्रह्मचर्यं चरन्ति, तत् पदं ते सङ्ग्रहेण प्रवक्ष्ये।",
+              "anvaya_iast": "vedavidaḥ yat akṣaraṃ vadanti, vītarāgāḥ yatayaḥ yat viśanti, yat icchantaḥ brahmacaryaṃ caranti, tat padaṃ te saṅgraheṇa pravakṣye."
             }
           ]
         },
@@ -2031,7 +2053,9 @@
                 "en": "“Shutting the body's gates, holding the mind in the heart, breath rising to the crown — established in yogic absorption —”",
                 "ne": "“शरीरका ढोकाहरू बन्द गरेर, मनलाई हृदयमा राखेर, श्वास शिरसम्म उठाएर — योग समाधिमा स्थित भएर —”",
                 "hi": "“शरीर के द्वार बंद करके, मन को हृदय में रखकर, श्वास को शिखर तक उठाकर — योग-समाधि में स्थित होकर —”"
-              }
+              },
+              "anvaya": "सर्वद्वाराणि संयम्य, मनः हृदि निरुध्य च, आत्मनः प्राणं मूर्ध्नि आधाय, योगधारणाम् आस्थितः।",
+              "anvaya_iast": "sarvadvārāṇi saṃyamya, manaḥ hṛdi nirudhya ca, ātmanaḥ prāṇaṃ mūrdhni ādhāya, yogadhāraṇām āsthitaḥ."
             }
           ]
         },
@@ -2200,7 +2224,9 @@
                 "en": "“— chanting the single syllable Om, remembering me — whoever leaves the body thus reaches the supreme goal.”",
                 "ne": "“— एकाक्षर ॐ जप गर्दै, मलाई सम्झँदै — जो यसरी शरीर छोड्छ, ऊ परम लक्ष्यमा पुग्छ।”",
                 "hi": "“— एकाक्षर ॐ का जप करते हुए, मुझे स्मरण करते हुए — जो इस प्रकार शरीर छोड़ता है, वह परम लक्ष्य तक पहुँचता है।”"
-              }
+              },
+              "anvaya": "ओम् इति एकाक्षरं ब्रह्म व्याहरन् माम् अनुस्मरन् यः देहं त्यजन् प्रयाति, सः परमां गतिं याति।",
+              "anvaya_iast": "om iti ekākṣaraṃ brahma vyāharan mām anusmaran yaḥ dehaṃ tyajan prayāti, saḥ paramāṃ gatiṃ yāti."
             }
           ]
         },
@@ -2348,7 +2374,9 @@
                 "en": "“One who remembers me always, with undivided mind — I am easy to reach for that ever-yoked yogi.”",
                 "ne": "“जो सधैं, अविभाजित मनले, मलाई सम्झिरहन्छ — त्यो सदा-युक्त योगीका निम्ति म सजिलै पाइन्छु।”",
                 "hi": "जो मन बाँटे बिना दिन-रात मुझे याद रखता है, उस सधे हुए योगी को मैं सहज ही मिल जाता हूँ।"
-              }
+              },
+              "anvaya": "पार्थ! यः अनन्यचेताः सततं नित्यशः मां स्मरति, तस्य नित्ययुक्तस्य योगिनः अहं सुलभः।",
+              "anvaya_iast": "pārtha! yaḥ ananyacetāḥ satataṃ nityaśaḥ māṃ smarati, tasya nityayuktasya yoginaḥ ahaṃ sulabhaḥ."
             }
           ]
         },
@@ -2496,7 +2524,9 @@
                 "en": "“Reaching me, the great souls never return to this world of sorrow and change — they have reached the highest perfection.”",
                 "ne": "“मसम्म पुगेर, महात्माहरू दुःख र परिवर्तनको यस संसारमा फेरि फर्कदैनन् — तिनीहरू परम सिद्धिमा पुगेका हुन्छन्।”",
                 "hi": "“मुझ तक पहुँचकर, महात्मा दुःख और परिवर्तन के इस संसार में फिर नहीं लौटते — वे परम सिद्धि तक पहुँच चुके हैं।”"
-              }
+              },
+              "anvaya": "परमां संसिद्धिं गताः महात्मानः माम् उपेत्य दुःखालयम् अशाश्वतं पुनर्जन्म न आप्नुवन्ति।",
+              "anvaya_iast": "paramāṃ saṃsiddhiṃ gatāḥ mahātmānaḥ mām upetya duḥkhālayam aśāśvataṃ punarjanma na āpnuvanti."
             }
           ]
         }
@@ -2666,7 +2696,9 @@
                 "en": "“All worlds, even up to Brahmā's, revolve and return; but one who reaches me is never reborn.”",
                 "ne": "“ब्रह्माको लोकसम्मै पुगे पनि फेरि जन्मनुपर्छ; तर जो मसम्म पुग्छ, ऊ फेरि जन्मिँदैन।”",
                 "hi": "“ब्रह्मा के लोक तक के सब संसार घूमकर लौटते हैं; किन्तु जो मुझ तक पहुँचता है, वह फिर जन्म नहीं लेता।”"
-              }
+              },
+              "anvaya": "अर्जुन! आ ब्रह्मभुवनात् लोकाः पुनरावर्तिनः; कौन्तेय! माम् उपेत्य तु पुनर्जन्म न विद्यते।",
+              "anvaya_iast": "arjuna! ā brahmabhuvanāt lokāḥ punarāvartinaḥ; kaunteya! mām upetya tu punarjanma na vidyate."
             }
           ]
         },
@@ -2800,7 +2832,9 @@
                 "en": "“Those who know that a thousand ages make Brahmā's day, and a thousand his night — they know the divine measure of time.”",
                 "ne": "“जसले हजार युग ब्रह्माको दिन र हजार युग उनको रात हुन्छ भनी जान्दछन् — तिनीहरू दिव्य समयको माप जान्दछन्।”",
                 "hi": "“जो जानते हैं कि हज़ार युग ब्रह्मा का दिन और हज़ार युग उनकी रात है — वे दिव्य समय का माप जानते हैं।”"
-              }
+              },
+              "anvaya": "यत् सहस्रयुगपर्यन्तं ब्रह्मणः अहः, युगसहस्रान्तां रात्रिं विदुः, ते अहोरात्रविदः जनाः।",
+              "anvaya_iast": "yat sahasrayugaparyantaṃ brahmaṇaḥ ahaḥ, yugasahasrāntāṃ rātriṃ viduḥ, te ahorātravidaḥ janāḥ."
             }
           ]
         },
@@ -2934,7 +2968,9 @@
                 "en": "“At the dawn of Brahmā's day, all beings arise from the unmanifest; at his night, they dissolve back into it.”",
                 "ne": "“ब्रह्माको दिनको उदयमा सबै प्राणी अव्यक्तबाट उठ्छन्; उनको रातमा फेरि त्यसैमा विलीन हुन्छन्।”",
                 "hi": "“ब्रह्मा के दिन के उदय पर सब प्राणी अव्यक्त से उठते हैं; उनकी रात में फिर उसी में विलीन हो जाते हैं।”"
-              }
+              },
+              "anvaya": "अहरागमे सर्वाः व्यक्तयः अव्यक्तात् प्रभवन्ति; रात्र्यागमे तत्र एव अव्यक्तसंज्ञके प्रलीयन्ते।",
+              "anvaya_iast": "aharāgame sarvāḥ vyaktayaḥ avyaktāt prabhavanti; rātryāgame tatra eva avyaktasaṃjñake pralīyante."
             }
           ]
         },
@@ -3082,7 +3118,9 @@
                 "en": "“This multitude of beings, born again and again, melts away at night and reappears at daybreak.”",
                 "ne": "“यो प्राणी-समूह बारम्बार जन्मेर रातमा पग्लिन्छ र दिनको उदयमा फेरि देखा पर्छ।”",
                 "hi": "“यह प्राणी-समूह बार-बार जन्मकर रात में पिघल जाता है और दिन के उदय पर फिर प्रकट होता है।”"
-              }
+              },
+              "anvaya": "पार्थ! सः एव अयं भूतग्रामः भूत्वा भूत्वा रात्र्यागमे अवशः प्रलीयते, अहरागमे प्रभवति।",
+              "anvaya_iast": "pārtha! saḥ eva ayaṃ bhūtagrāmaḥ bhūtvā bhūtvā rātryāgame avaśaḥ pralīyate, aharāgame prabhavati."
             }
           ]
         }
@@ -3266,7 +3304,9 @@
                 "en": "“Yet beyond this unmanifest is another, eternal unmanifest — which remains when all beings pass away.”",
                 "ne": "“तर यस अव्यक्तभन्दा पर अर्को, नित्य अव्यक्त छ — जो सबै प्राणी बिते पनि रहिरहन्छ।”",
                 "hi": "इस अनदेखे से भी परे एक और है, सदा रहने वाला — सब कुछ मिट जाए तब भी जो नहीं मिटता।"
-              }
+              },
+              "anvaya": "तस्मात् अव्यक्तात् परः तु अन्यः सनातनः अव्यक्तः भावः, यः सः सर्वेषु भूतेषु नश्यत्सु न विनश्यति।",
+              "anvaya_iast": "tasmāt avyaktāt paraḥ tu anyaḥ sanātanaḥ avyaktaḥ bhāvaḥ, yaḥ saḥ sarveṣu bhūteṣu naśyatsu na vinaśyati."
             }
           ]
         },
@@ -3442,7 +3482,9 @@
                 "en": "“That is the imperishable, the supreme goal. Reaching it, none returns — it is my highest abode.”",
                 "ne": "“त्यही अविनाशी हो, परम लक्ष्य। त्यसमा पुगेर कोही फर्कदैन — त्यो मेरो सर्वोच्च निवास हो।”",
                 "hi": "“वही अविनाशी है, परम लक्ष्य। उसमें पहुँचकर कोई नहीं लौटता — वह मेरा सर्वोच्च निवास है।”"
-              }
+              },
+              "anvaya": "अव्यक्तः अक्षरः इति उक्तः, तं परमां गतिम् आहुः; यं प्राप्य न निवर्तन्ते तत् मम परमं धाम।",
+              "anvaya_iast": "avyaktaḥ akṣaraḥ iti uktaḥ, taṃ paramāṃ gatim āhuḥ; yaṃ prāpya na nivartante tat mama paramaṃ dhāma."
             }
           ]
         },
@@ -3611,7 +3653,9 @@
                 "en": "“That supreme Person is reached by single-pointed devotion; all beings dwell in him, and he pervades everything.”",
                 "ne": "“त्यो परम पुरुष एकनिष्ठ भक्तिले पुगिन्छ; सबै प्राणी उहाँमा बस्छन्, र उहाँले सबै व्याप्त गर्नुहुन्छ।”",
                 "hi": "“वह परम पुरुष एकनिष्ठ भक्ति से पहुँचा जाता है; सब प्राणी उनमें रहते हैं, और वे सबको व्याप्त करते हैं।”"
-              }
+              },
+              "anvaya": "पार्थ! सः परः पुरुषः तु अनन्यया भक्त्या लभ्यः, यस्य अन्तःस्थानि भूतानि, येन इदं सर्वं ततम्।",
+              "anvaya_iast": "pārtha! saḥ paraḥ puruṣaḥ tu ananyayā bhaktyā labhyaḥ, yasya antaḥsthāni bhūtāni, yena idaṃ sarvaṃ tatam."
             }
           ]
         }
@@ -3788,7 +3832,9 @@
                 "en": "“Now I will tell you, Arjuna, the times of departing — the path of no-return and the path of return.”",
                 "ne": "“अब म तिमीलाई, अर्जुन, प्रस्थानका समय बताउँछु — नफर्कने बाटो र फर्कने बाटो।”",
                 "hi": "“अब मैं तुझे, अर्जुन, प्रस्थान के समय बताता हूँ — न लौटने का मार्ग और लौटने का मार्ग।”"
-              }
+              },
+              "anvaya": "भरतर्षभ! यत्र काले तु प्रयाताः योगिनः अनावृत्तिम् आवृत्तिं च एव यान्ति, तं कालं वक्ष्यामि।",
+              "anvaya_iast": "bharatarṣabha! yatra kāle tu prayātāḥ yoginaḥ anāvṛttim āvṛttiṃ ca eva yānti, taṃ kālaṃ vakṣyāmi."
             }
           ]
         },
@@ -3936,7 +3982,9 @@
                 "en": "“By the path of fire and light, of day and the bright fortnight and the northern course, the knowers of Brahman go to Brahman.”",
                 "ne": "“अग्नि र प्रकाशको बाटो, दिन र शुक्ल पक्ष र उत्तरायणको — ब्रह्मज्ञहरू यस बाटोबाट ब्रह्ममा जान्छन्।”",
                 "hi": "“अग्नि और प्रकाश के मार्ग से, दिन और शुक्ल पक्ष और उत्तरायण के — ब्रह्म-ज्ञाता इस मार्ग से ब्रह्म तक जाते हैं।”"
-              }
+              },
+              "anvaya": "अग्निः, ज्योतिः, अहः, शुक्लः, षण्मासाः उत्तरायणं — तत्र प्रयाताः ब्रह्मविदः जनाः ब्रह्म गच्छन्ति।",
+              "anvaya_iast": "agniḥ, jyotiḥ, ahaḥ, śuklaḥ, ṣaṇmāsāḥ uttarāyaṇaṃ — tatra prayātāḥ brahmavidaḥ janāḥ brahma gacchanti."
             }
           ]
         },
@@ -4084,7 +4132,9 @@
                 "en": "“By the path of smoke and night, of the dark fortnight and the southern course, the yogi reaches the lunar light and returns.”",
                 "ne": "“धुवाँ र रातको बाटो, कृष्ण पक्ष र दक्षिणायनको — यस बाटोबाट योगी चन्द्रलोकको ज्योतिमा पुगेर फर्कन्छ।”",
                 "hi": "“धूम और रात्रि के मार्ग से, कृष्ण पक्ष और दक्षिणायन के — इस मार्ग से योगी चन्द्र-लोक की ज्योति में पहुँचकर लौटता है।”"
-              }
+              },
+              "anvaya": "धूमः, रात्रिः, तथा कृष्णः, षण्मासाः दक्षिणायनं — तत्र योगी चान्द्रमसं ज्योतिः प्राप्य निवर्तते।",
+              "anvaya_iast": "dhūmaḥ, rātriḥ, tathā kṛṣṇaḥ, ṣaṇmāsāḥ dakṣiṇāyanaṃ — tatra yogī cāndramasaṃ jyotiḥ prāpya nivartate."
             }
           ]
         },
@@ -4239,7 +4289,9 @@
                 "en": "“These two paths — bright and dark — are eternal in this world. One leads to no-return, the other brings return.”",
                 "ne": "“यी दुई बाटो — उज्यालो र अन्धकार — संसारमा सनातन छन्। एउटा नफर्किनेतिर लैजान्छ, अर्कोले फर्काउँछ।”",
                 "hi": "“ये दो मार्ग — उजला और अन्धकार — संसार में सनातन हैं। एक बिना लौटे ले जाता है, दूसरा लौटा लाता है।”"
-              }
+              },
+              "anvaya": "हि जगतः एते शुक्लकृष्णे गती शाश्वते मते; एकया अनावृत्तिं याति, अन्यया पुनः आवर्तते।",
+              "anvaya_iast": "hi jagataḥ ete śuklakṛṣṇe gatī śāśvate mate; ekayā anāvṛttiṃ yāti, anyayā punaḥ āvartate."
             }
           ]
         }
@@ -4416,7 +4468,9 @@
                 "en": "“Knowing both paths, the yogi is never confused — so remain steadfast in yoga at all times, Arjuna.”",
                 "ne": "“दुवै बाटो जानेर योगी कहिल्यै भ्रमित हुँदैन — त्यसैले, अर्जुन, सधैं योगमा स्थिर रह।”",
                 "hi": "“दोनों मार्गों को जानकर योगी कभी भ्रमित नहीं होता — इसलिए, अर्जुन, सदा योग में स्थिर रह।”"
-              }
+              },
+              "anvaya": "पार्थ! एते सृती जानन् कश्चन योगी न मुह्यति; तस्मात् अर्जुन! सर्वेषु कालेषु योगयुक्तः भव।",
+              "anvaya_iast": "pārtha! ete sṛtī jānan kaścana yogī na muhyati; tasmāt arjuna! sarveṣu kāleṣu yogayuktaḥ bhava."
             }
           ]
         },
@@ -4620,7 +4674,9 @@
                 "en": "“The yogi who knows this truth surpasses all the merit of Vedas, sacrifice, austerity and charity — and reaches the supreme, primeval abode.”",
                 "ne": "“यो सत्य जान्ने योगी वेद, यज्ञ, तप र दानका सबै पुण्यभन्दा माथि उठ्छ — र परम, आदिम निवासमा पुग्छ।”",
                 "hi": "“इस सत्य को जानने वाला योगी वेद, यज्ञ, तप और दान के सब पुण्यों से ऊपर उठता है — और परम, आदि निवास तक पहुँचता है।”"
-              }
+              },
+              "anvaya": "वेदेषु, यज्ञेषु, तपःसु च एव दानेषु यत् पुण्यफलं प्रदिष्टं, तत् सर्वम् इदं विदित्वा योगी अत्येति आद्यं परं स्थानं च उपैति।",
+              "anvaya_iast": "vedeṣu, yajñeṣu, tapaḥsu ca eva dāneṣu yat puṇyaphalaṃ pradiṣṭaṃ, tat sarvam idaṃ viditvā yogī atyeti ādyaṃ paraṃ sthānaṃ ca upaiti."
             }
           ]
         }

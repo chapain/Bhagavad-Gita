@@ -369,8 +369,8 @@
           "sutras": [
             {
               "n": "4.03",
-              "anvaya": "सः एव अयं पुरातनः योगः अद्य मया ते प्रोक्तः; मे भक्तः सखा च असि इति; एतत् हि उत्तमं रहस्यम्।",
-              "anvaya_iast": "saḥ eva ayaṃ purātanaḥ yogaḥ adya mayā te proktaḥ; me bhaktaḥ sakhā ca asi iti; etat hi uttamaṃ rahasyam.",
+              "anvaya": "सः एव अयं पुरातनः योगः अद्य मया ते प्रोक्तः, मे भक्तः सखा च असि इति; एतत् हि उत्तमं रहस्यम्।",
+              "anvaya_iast": "saḥ eva ayaṃ purātanaḥ yogaḥ adya mayā te proktaḥ, me bhaktaḥ sakhā ca asi iti; etat hi uttamaṃ rahasyam.",
               "d": "स एवायं मया तेऽद्य योगः प्रोक्तः पुरातनः । भक्तोऽसि मे सखा चेति रहस्यं ह्येतदुत्तमम्",
               "t": "sa evāyaṃ mayā te’dya yogaḥ proktaḥ purātanaḥ । bhakto’si me sakhā ceti rahasyaṃ hyetaduttamam",
               "flow": [
@@ -568,8 +568,8 @@
           "sutras": [
             {
               "n": "4.04",
-              "anvaya": "अर्जुन उवाच — भवतः जन्म अपरं, विवस्वतः जन्म परम्; त्वम् आदौ प्रोक्तवान् इति एतत् कथं विजानीयाम्?",
-              "anvaya_iast": "arjuna uvāca — bhavataḥ janma aparaṃ, vivasvataḥ janma param; tvam ādau proktavān iti etat kathaṃ vijānīyām?",
+              "anvaya": "अर्जुन उवाच — भवतः जन्म अपरं, विवस्वतः जन्म परम्; एतत् कथं विजानीयां त्वम् आदौ प्रोक्तवान् इति?",
+              "anvaya_iast": "arjuna uvāca — bhavataḥ janma aparaṃ, vivasvataḥ janma param; etat kathaṃ vijānīyāṃ tvam ādau proktavān iti?",
               "d": "अर्जुन उवाच । अपरं भवतो जन्म परं जन्म विवस्वतः । कथमेतद्विजानीयां त्वमादौ प्रोक्तवानिति",
               "t": "arjuna uvāca । aparaṃ bhavato janma paraṃ janma vivasvataḥ । kathametadvijānīyāṃ tvamādau proktavāniti",
               "flow": [
@@ -953,8 +953,8 @@
           "sutras": [
             {
               "n": "4.06",
-              "anvaya": "अजः अपि सन् अव्ययात्मा भूतानाम् ईश्वरः अपि सन्, स्वां प्रकृतिम् अधिष्ठाय आत्ममायया सम्भवामि।",
-              "anvaya_iast": "ajaḥ api san avyayātmā bhūtānām īśvaraḥ api san, svāṃ prakṛtim adhiṣṭhāya ātmamāyayā sambhavāmi.",
+              "anvaya": "अजः अपि सन्, अव्ययात्मा, भूतानाम् ईश्वरः अपि सन्, स्वां प्रकृतिम् अधिष्ठाय आत्ममायया सम्भवामि।",
+              "anvaya_iast": "ajaḥ api san, avyayātmā, bhūtānām īśvaraḥ api san, svāṃ prakṛtim adhiṣṭhāya ātmamāyayā sambhavāmi.",
               "d": "अजोऽपि सन्नव्ययात्मा भूतानामीश्वरोऽपि सन् । प्रकृतिं स्वामधिष्ठाय सम्भवाम्यात्ममायया",
               "t": "ajo’pi sannavyayātmā bhūtānāmīśvaro’pi san । prakṛtiṃ svāmadhiṣṭhāya sambhavāmyātmamāyayā",
               "flow": [
@@ -1117,8 +1117,8 @@
           "sutras": [
             {
               "n": "4.07",
-              "anvaya": "भारत! यदा यदा हि धर्मस्य ग्लानिः अधर्मस्य अभ्युत्थानं भवति, तदा अहम् आत्मानं सृजामि।",
-              "anvaya_iast": "bhārata! yadā yadā hi dharmasya glāniḥ adharmasya abhyutthānaṃ bhavati, tadā aham ātmānaṃ sṛjāmi.",
+              "anvaya": "भारत! यदा यदा हि धर्मस्य ग्लानिः, अधर्मस्य अभ्युत्थानं भवति, तदा अहम् आत्मानं सृजामि।",
+              "anvaya_iast": "bhārata! yadā yadā hi dharmasya glāniḥ, adharmasya abhyutthānaṃ bhavati, tadā aham ātmānaṃ sṛjāmi.",
               "d": "यदा यदा हि धर्मस्य ग्लानिर्भवति भारत । अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्",
               "t": "yadā yadā hi dharmasya glānirbhavati bhārata । abhyutthānamadharmasya tadātmānaṃ sṛjāmyaham",
               "flow": [
@@ -2979,8 +2979,8 @@
           "sutras": [
             {
               "n": "4.18",
-              "anvaya": "यः कर्मणि अकर्म पश्येत्, अकर्मणि च कर्म यः, सः मनुष्येषु बुद्धिमान्, सः युक्तः कृत्स्नकर्मकृत्।",
-              "anvaya_iast": "yaḥ karmaṇi akarma paśyet, akarmaṇi ca karma yaḥ, saḥ manuṣyeṣu buddhimān, saḥ yuktaḥ kṛtsnakarmakṛt.",
+              "anvaya": "यः कर्मणि अकर्म पश्येत्, यः अकर्मणि च कर्म, सः मनुष्येषु बुद्धिमान्, सः युक्तः कृत्स्नकर्मकृत्।",
+              "anvaya_iast": "yaḥ karmaṇi akarma paśyet, yaḥ akarmaṇi ca karma, saḥ manuṣyeṣu buddhimān, saḥ yuktaḥ kṛtsnakarmakṛt.",
               "d": "कर्मण्यकर्म यः पश्येदकर्मणि च कर्म यः । स बुद्धिमान्मनुष्येषु स युक्तः कृत्स्नकर्मकृत्",
               "t": "karmaṇyakarma yaḥ paśyedakarmaṇi ca karma yaḥ । sa buddhimānmanuṣyeṣu sa yuktaḥ kṛtsnakarmakṛt",
               "flow": [
@@ -4600,8 +4600,8 @@
           "sutras": [
             {
               "n": "4.28",
-              "anvaya": "संशितव्रताः यतयः अपरे द्रव्ययज्ञाः, तपोयज्ञाः, योगयज्ञाः तथा स्वाध्यायज्ञानयज्ञाः च।",
-              "anvaya_iast": "saṃśitavratāḥ yatayaḥ apare dravyayajñāḥ, tapoyajñāḥ, yogayajñāḥ tathā svādhyāyajñānayajñāḥ ca.",
+              "anvaya": "अपरे संशितव्रताः यतयः द्रव्ययज्ञाः, तपोयज्ञाः, योगयज्ञाः तथा स्वाध्यायज्ञानयज्ञाः च।",
+              "anvaya_iast": "apare saṃśitavratāḥ yatayaḥ dravyayajñāḥ, tapoyajñāḥ, yogayajñāḥ tathā svādhyāyajñānayajñāḥ ca.",
               "d": "द्रव्ययज्ञास्तपोयज्ञा योगयज्ञास्तथापरे । स्वाध्यायज्ञानयज्ञाश्च यतयः संशितव्रताः",
               "t": "dravyayajñāstapoyajñā yogayajñāstathāpare । svādhyāyajñānayajñāśca yatayaḥ saṃśitavratāḥ",
               "flow": [
@@ -5893,8 +5893,8 @@
           "sutras": [
             {
               "n": "4.36",
-              "anvaya": "सर्वेभ्यः पापेभ्यः अपि पापकृत्तमः असि चेत्, सर्वं ज्ञानप्लवेन एव वृजिनं सन्तरिष्यसि।",
-              "anvaya_iast": "sarvebhyaḥ pāpebhyaḥ api pāpakṛttamaḥ asi cet, sarvaṃ jñānaplavena eva vṛjinaṃ santariṣyasi.",
+              "anvaya": "अपि चेत् सर्वेभ्यः पापेभ्यः पापकृत्तमः असि, सर्वं वृजिनं ज्ञानप्लवेन एव सन्तरिष्यसि।",
+              "anvaya_iast": "api cet sarvebhyaḥ pāpebhyaḥ pāpakṛttamaḥ asi, sarvaṃ vṛjinaṃ jñānaplavena eva santariṣyasi.",
               "d": "अपि चेदसि पापेभ्यः सर्वेभ्यः पापकृत्तमः । सर्वं ज्ञानप्लवेनैव वृजिनं सन्तरिष्यसि",
               "t": "api cedasi pāpebhyaḥ sarvebhyaḥ pāpakṛttamaḥ । sarvaṃ jñānaplavenaiva vṛjinaṃ santariṣyasi",
               "flow": [
@@ -6537,8 +6537,8 @@
           "sutras": [
             {
               "n": "4.40",
-              "anvaya": "अज्ञः च अश्रद्दधानः च संशयात्मा विनश्यति; संशयात्मनः अयं लोकः न अस्ति, परः न, सुखं न।",
-              "anvaya_iast": "ajñaḥ ca aśraddadhānaḥ ca saṃśayātmā vinaśyati; saṃśayātmanaḥ ayaṃ lokaḥ na asti, paraḥ na, sukhaṃ na.",
+              "anvaya": "अज्ञः च अश्रद्दधानः च संशयात्मा विनश्यति; संशयात्मनः अयं लोकः न अस्ति, न परः, न सुखम्।",
+              "anvaya_iast": "ajñaḥ ca aśraddadhānaḥ ca saṃśayātmā vinaśyati; saṃśayātmanaḥ ayaṃ lokaḥ na asti, na paraḥ, na sukham.",
               "d": "अज्ञश्चाश्रद्दधानश्च संशयात्मा विनश्यति । नायं लोकोऽस्ति न परो न सुखं संशयात्मनः",
               "t": "ajñaścāśraddadhānaśca saṃśayātmā vinaśyati । nāyaṃ loko’sti na paro na sukhaṃ saṃśayātmanaḥ",
               "flow": [
@@ -6708,8 +6708,8 @@
           "sutras": [
             {
               "n": "4.41",
-              "anvaya": "धनञ्जय! योगसन्न्यस्तकर्माणं ज्ञानसञ्छिन्नसंशयम् आत्मवन्तं कर्माणि न निबध्नन्ति।",
-              "anvaya_iast": "dhanañjaya! yogasannyastakarmāṇaṃ jñānasañchinnasaṃśayam ātmavantaṃ karmāṇi na nibadhnanti.",
+              "anvaya": "धनञ्जय! योगसंन्यस्तकर्माणं ज्ञानसञ्छिन्नसंशयम् आत्मवन्तं कर्माणि न निबध्नन्ति।",
+              "anvaya_iast": "dhanañjaya! yogasaṃnyastakarmāṇaṃ jñānasañchinnasaṃśayam ātmavantaṃ karmāṇi na nibadhnanti.",
               "d": "योगसन्न्यस्तकर्माणं ज्ञानसञ्छिन्नसंशयम् । आत्मवन्तं न कर्माणि निबध्नन्ति धनञ्जय",
               "t": "yogasannyastakarmāṇaṃ jñānasañchinnasaṃśayam । ātmavantaṃ na karmāṇi nibadhnanti dhanañjaya",
               "flow": [
