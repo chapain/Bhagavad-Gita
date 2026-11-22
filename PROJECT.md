@@ -48,6 +48,40 @@ the start of every session.
   are unavailable in this sandbox, so the **visual result is unverified by
   screenshot**; the owner's eye on the live preview is the proof here.
 
+### 2026-11-22 — follow-up: soft pills restored (owner reversed the entry above)
+
+The owner looked at the plain labels and reversed the verdict of the entry
+above. His words: **"the pills looks better. without pills, it looks like a
+lot of letters/words which the user is disinclined to read, while with pills,
+it's clear what's what."** This is a scanning problem, not a decoration
+problem — without pills the three reading blocks merge into wall of text and
+the user's eye refuses to enter it. So the pills are back, anvaya included,
+but as **soft** ones this time, because the original solid pills had three
+real defects worth fixing:
+
+* **(a) Solid fill demoted to soft** — the accent stays legible as lettering
+  alone: **7.24:1** teal-on-teal-soft and **5.04:1** saffron-on-saffron-soft in
+  light mode; dark theme checked too, **6.93:1** and **5.77:1** (both AA).
+* **(b) `.72rem` raised to `.8rem`** — the project has already recorded
+  `.72rem` as too small for Devanagari.
+* **(c) Uppercase/letter-spacing dropped** — two of the three labels are
+  Devanagari (अन्वयः, शाब्दिक अनुवाद, सरल अर्थमा) and tracking strains the
+  mātrā flow; the same ruling the breadcrumb chips carry (2026-08-30).
+
+One rule governs all three labels (`.m-anvaya-label, .m-line .lb`, with the
+`.m-line.lit .lb` teal variant) so they cannot drift apart again, and
+`.lr-mean .lb` in the Learn card was brought into the identical grammar — a
+paraphrase is labelled identically in the Learn card and the verse sheet. The
+one-definition promise of the type-scale block further down still holds;
+no content, markup, JS, class names or the `verse → anvaya → literal →
+paraphrase` order were touched. `python3 build.py` ALL GREEN: 144 Python
+tests, 949 document assertions, 560 site-health, 9,658 study. Browser/axe
+suite skipped — Playwright/Chromium unavailable in this sandbox, so the
+**visual result is still unverified by screenshot**; the owner's eye on the
+live site is the proof here. (Note: on the Learn card the saffron-soft fill
+coincides with the card's own background, so there the pill's shape is
+carried by its lettering — the grammar is still one rule with the sheet.)
+
 ## 0. Handoff snapshot (keep current; last touched 2026-11-04)
 
 For a brand-new session: read §1–§10, then this box, then build.
