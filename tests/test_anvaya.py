@@ -33,6 +33,16 @@ class AnvayaTests(unittest.TestCase):
         self.assertIn('इव', verses[66]['anvaya'])
         self.assertIn('यद्वत्', verses[69]['anvaya'])
 
+    def test_chapter_three_draft_corrections(self):
+        chapter = json.loads((ROOT / 'source/ch3.json').read_text(encoding='utf-8'))
+        verses = [v for t in chapter['themes'] for p in t['parts'] for v in p['sutras']]
+        self.assertEqual(len([v for v in verses if 'anvaya' in v]), 43)
+        self.assertIn('सन्न्यसनात्', verses[3]['anvaya'])
+        self.assertNotIn('सन्ति', verses[26]['anvaya'])
+        self.assertIn('चेत्', verses[23]['anvaya'])
+        self.assertEqual(verses[37]['anvaya'].count('यथा'), 2)
+        self.assertIn('आवृतः', verses[37]['anvaya'])
+
     def test_reader_places_optional_unboxed_sanskrit_before_literal(self):
         reader = (ROOT / 'source/js/50-reader.js').read_text(encoding='utf-8')
         container = reader.index('class="m-verse-box-container"')
