@@ -10,8 +10,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Full history, not the default depth-1. build_gita.py stamps each
+      # sitemap <lastmod> with the date of the commit that last touched that
+      # page (`git log -1 --format=%cs`), so a shallow clone writes "today" for
+      # every page with uncommitted edits and the artifact stops being a
+      # function of the commit. The drift guard reads only the checked-out tree
+      # and survives shallow clones, but the SEO proof worth running in CI is
+      # `SEO_LIVE=1` (byte-compare the published sitemap with the build), and
+      # that comparison is meaningless with invented dates. 16 MB, 184 commits.
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -58,9 +68,21 @@ jobs:
         shell: bash
         run: |
           tail -40 build.log || true
-          grep -E '✗ FAIL|FAILED|Error|Traceback|Exception|drifted|^  - ' build.log \
+          grep -E '✗ FAIL|FAILED|Error|Traceback|Exception|drifted|artifact drift|^  - ' build.log \
             | head -40 | while IFS= read -r line; do
             echo "::error::${line}"
+          done
+
+      # The one failure a reader would feel rather than see in a diff: a stale
+      # data/ch*.js means the app and the static chapter page show different
+      # scripture. Name it explicitly so it is not buried in a 40-line tail.
+      - name: Report stale generated artifacts
+        if: failure()
+        shell: bash
+        run: |
+          sed -n '/--- generated artifacts match their commit ---/,/^--- /p' build.log \
+            | head -20 | while IFS= read -r line; do
+            [ -n "$line" ] && echo "::error::artifact drift: ${line}"
           done
 
       # The step log and the artifact both live on hosts some networks cannot
