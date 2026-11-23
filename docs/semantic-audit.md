@@ -557,7 +557,7 @@ found two defects in the Hindi renderings and nothing else.
 |---|---|---|
 | IAST is a transliteration of its own Devanagari | 700 verses, 2,800 pādas | 0 mismatches. `check_padas.py` already enforced this; an independent transliterator was written to confirm the enforcement itself rather than trust it. |
 | Word-row IAST vs its Sanskrit word | 9,389 rows | 0 after the project's anusvāra convention is applied: `ṁ`/`ṃ`/`ṅ` are one sound (`strict_key`), and `saṃgha` may be written `saṅgha` before a velar. Without that convention 130 rows differ, all in that one class — a spelling style, not a wrong word. |
-| Vocative rows rendered or dropped consistently across the three languages | 175 address rows | 3 apparent splits, all false: "O best of men/persons" for पुरुषोत्तम (8.01, 11.03) and शत्रुतापन/परंतप (2.09). Dropping a vocative in all three languages is house style; dropping it in one is what the check hunts. |
+| Vocative rows rendered or dropped consistently across the three languages | 175 address rows | 3 apparent splits, all false: "O best of men/persons" for पुरुषोत्तम (8.01, 11.03) and शत्रुतापक/परंतप (2.09). Dropping a vocative in all three languages is house style; dropping it in one is what the check hunts. |
 | Numeral rows rendered or dropped consistently | 40 numeral rows | 5 apparent splits, all false: केवल (18.66), एउटाबाट (8.26), दुवैको (2.16), तीनै (3.22), "neither" for उभौ (2.19). |
 | Negation present in all three or none | 306 negation rows | 0 real splits. The apparent Hindi gaps were the bare particle न, which the detector's word-boundary guard was rejecting because the Devanagari danda `।` sits inside the same Unicode block. |
 | Locked negation pairs (the blind spot, 2026-11-12) | 26 row pairs + 6 two-lane pairs | **20 row pairs and 5 two-lane pairs cleared; 6 row pairs and 1 two-lane pair kept.** See the section below. |
@@ -582,8 +582,8 @@ pride"), which the book keeps and which is not in dispute.
 
 `परन्तप` is how this book addresses Arjuna as "scorcher of foes". The Hindi
 column has it at 4.02, 4.05 and 4.33. The Nepali column renders the same word
-as `शत्रुतापन` — 2.03, 4.05, 4.33, 7.27, 9.03, 10.40, 18.41. At 2.09 the Hindi
-cell read `हे शत्रुतापन, …`, the Nepali form in the Hindi column. The IAST row
+as `शत्रुतापक` — 2.03, 4.05, 4.33, 7.27, 9.03, 10.40, 18.41. At 2.09 the Hindi
+cell read `हे शत्रुतापक, …`, the Nepali form in the Hindi column. The IAST row
 was never wrong (`parantapa`), so only the Hindi literal moved.
 
 ### F11 — 13.05, the Hindi literal dropped the count the verse is making — **fixed**
@@ -612,7 +612,7 @@ wanting.
 | Class | Scope | Result |
 |---|---|---|
 | Vocative / address coverage | 9,389 pāda word rows, all 700 verses; every row whose en gloss begins `O ` and every row whose ne/hi gloss begins `हे ` | **10 verses defective, 31 strings — F12–F16, all fixed** |
-| Address parity across the three literals | all 700 × 3 | the same ten verses; every other difference was a legitimate translation of the epithet (परन्तप → शत्रुतापन in Nepali, जगन्निवास → "abode of the world", पार्थ → "Arjuna", etc.) |
+| Address parity across the three literals | all 700 × 3 | the same ten verses; every other difference was a legitimate translation of the epithet (परन्तप → शत्रुतापक in Nepali, जगन्निवास → "abode of the world", पार्थ → "Arjuna", etc.) |
 | Nothing added — names | every capitalised token in all 700 English literals, against that verse's row glosses | 30 candidates, all read: every one is either the person the Sanskrit describes (1.12 Bhīṣma from `pitāmahaḥ`, 1.20 Dhārtarāṣṭras from `dhārtarāṣṭrān`), the same epithet under its Sanskrit name (Acyuta for "infallible one"), or a row's own alternative form (Kāmadhuk/Kāmadhenu, Uśanā/Uśanas). None added a new actor. |
 | Nothing added — numbers | all 700 × 3 literals; number words and numerals against row glosses | no added or dropped number. The flagged cases were the indefinite article ("one"), `छ` = "is", or a number the Sanskrit carries in a compound (`navadvāre` 5.13, `trividhaḥ` 18.04). |
 | Nothing added — motive | all 700 × 3 literals and paraphrases, for "selfish" / स्वार्थ and निःस्वार्थ | **28 strings in 11 verses carried a motive no word of the verse states; all corrected (2026-11-12)** — 6.02 4.19 6.04 6.24 18.02 (सङ्कल्प / काम्य, "selfish resolve" and "selfish actions"), 12.16 14.25 (सर्वारम्भ, "selfish undertakings"), 3.15 (निःस्वार्थ for a verse with no काम), 3.03 5.02 13.24 (निःस्वार्थ added to a bare कर्मयोग). One kept: 3.09, whose own contrast `यज्ञार्थात्कर्मणोऽन्यत्र` names desire-led action as the alternative. Pinned by `test_nothing_added_no_lane_asserts_selfishness_the_sanskrit_lacks`. This row is narrower than "no added motive anywhere": it searches one motive, in one vocabulary. |
