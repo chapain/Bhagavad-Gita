@@ -35,6 +35,10 @@ the settled nirmamaḥ / परिग्रह wording remains untouched.
 The later paraphrase review clarifies 3.30 ne non-possessiveness, preserves
 4.28 yoga alongside study and knowledge, and distinguishes the relationships
 in all 6.09 paraphrases; their word rows and literals are unchanged.
+
+Amended 2026-11-23 by the honorific-agreement pass: the 2.09 बभूव Nepali
+gloss now reads भए, matching the literal's मौन भए (was भयो). The Hindi row
+(हुआ) and the literal already agreed, so only the Nepali column moved.
 """
 import json
 from pathlib import Path

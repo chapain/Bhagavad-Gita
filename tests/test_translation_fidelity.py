@@ -648,6 +648,89 @@ class Verse207Literal(unittest.TestCase):
                 self.assertIn(mind, literal)
 
 
+class HonorificAgreement(unittest.TestCase):
+    """2026-11-23: a word gloss must carry the same honorific level as the
+    literal it explains. PR #100 set the direction at 2.07 (भन→भन्नुहोस्,
+    सिकाऊ→सिकाउनुहोस्, बताऊ→बताउनुहोस्); this locks the rest of the book.
+
+    Reading all 700 verses against their literals found two shapes:
+
+      * a plain past where the literal is honorific — 2.09 बभूव "भयो" against
+        "मौन भए", and 1.26/11.13 अपश्यत् "देख्यो" against "देखे". The
+        padachheda then shows a different verb form than the literal.
+      * a bare imperative or pronoun where the addressee is honoured — 1.07
+        निबोध "जान" and ते "तिमीलाई", 1.11 भवन्तः "तिमीहरू", 3.02 वद "भन",
+        5.01 ब्रूहि "भन". The corpus already honours these addressees
+        elsewhere (1.03 पश्य=हेर्नुहोस्, 10.18 कथय=भन्नुहोस्, 11.04
+        दर्शय=देखाउनुहोस्, 11.46 भव=हुनुहोस्, 1.08/10.12 भवान्=तपाईं).
+
+    Deliberately untouched: उवाच=भने (a reporting verb keeps its base form
+    even where the literal says भन्नुभयो), the तिमी forms of Kṛṣṇa→Arjuna,
+    and the Sanskrit-singular → Nepali-plural present at 4.23, 5.14 and 5.15
+    (हुन्छ/गर्छ against हुन्छन्/गर्छन्), which is number agreement, not
+    honorific level."""
+
+    CHANGED = {
+        "1.07": [("निबोध", "जान्नुहोस्"), ("ते", "तपाईंलाई")],
+        "1.11": [("भवन्तः", "तपाईंहरू")],
+        "1.26": [("अपश्यत्", "देखे")],
+        "2.09": [("बभूव", "भए")],
+        "3.02": [("वद", "भन्नुहोस्")],
+        "5.01": [("ब्रूहि", "भन्नुहोस्")],
+        "11.13": [("अपश्यत्", "देखे")],
+    }
+
+    PLAIN_TO_HON = {
+        "भयो": "भए", "देख्यो": "देखे", "गर्यो": "गरे", "आयो": "आए",
+        "भन्यो": "भने",
+        "जान": "जान्नुहोस्", "भन": "भन्नुहोस्", "हेर": "हेर्नुहोस्",
+        "गर": "गर्नुहोस्", "सुन": "सुन्नुहोस्", "उठ": "उठ्नुहोस्",
+        "होऊ": "होउनुहोस्", "जाऊ": "जाउनुहोस्", "राख": "राख्नुहोस्",
+        "दे": "दिनुहोस्", "बन": "बन्नुहोस्",
+        "तिमीलाई": "तपाईंलाई", "तिमीहरू": "तपाईंहरू",
+        "तिमी": "तपाईं", "तिम्रो": "तपाईंको",
+    }
+
+    def test_reviewed_glosses_carry_the_literal_honorific(self):
+        for number, rows in self.CHANGED.items():
+            verse = load_verse(number)
+            for deva, gloss in rows:
+                with self.subTest(verse=number, word=deva):
+                    row = next(r for r in rows_of(verse) if r[0] == deva)
+                    self.assertEqual(row[3], gloss)
+
+    def test_no_plain_gloss_faces_an_honorific_literal(self):
+        """Whole-book: if the literal honours the form, the gloss must too.
+
+        Token-based, so जान inside जान्नुहोस् is not a match. Green across all
+        700 verses on 2026-11-23; a new hit is a regression."""
+        deva_word = re.compile(r"[\u0900-\u097F]+")
+        hits = []
+        for verse in all_verses():
+            literal_tokens = set(deva_word.findall(verse["lits"]["ne"]))
+            for row in rows_of(verse):
+                for token in set(deva_word.findall(row[3])):
+                    hon = self.PLAIN_TO_HON.get(token)
+                    if hon and hon in literal_tokens and token not in literal_tokens:
+                        hits.append((verse["n"], row[0], token, hon))
+        self.assertEqual(hits, [], f"plain gloss against an honorific literal: {hits}")
+
+
+class Verse126Survey(unittest.TestCase):
+    """2026-11-23: स्थितान् is glossed उपस्थित, and the literal reads
+    "उपस्थित देखे" rather than the colloquial "खडा देखे". अपश्यत् itself is
+    only "देखे" — उपस्थित belongs to स्थितान्, a separate row, so the
+    padachheda is स्थितान्(उपस्थित) … अपश्यत्(देखे)."""
+
+    def test_sthitan_is_upasthit_and_apashyat_is_only_dekhe(self):
+        verse = load_verse("1.26")
+        rows = {row[0]: row for row in rows_of(verse)}
+        self.assertEqual(rows["स्थितान्"][3], "उपस्थित")
+        self.assertEqual(rows["अपश्यत्"][3], "देखे")
+        self.assertIn("उपस्थित देखे", verse["lits"]["ne"])
+        self.assertNotIn("खडा", verse["lits"]["ne"])
+
+
 class WholeBookFidelity(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
