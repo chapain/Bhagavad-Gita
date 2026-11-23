@@ -629,7 +629,13 @@ class Verse207Literal(unittest.TestCase):
                          ["कार्पण्य", "दोष", "उपहत", "स्वभावः"])
         # 2026-11-22: धर्म is rendered as कर्तव्य, without a duplicate
         # explanatory parenthetical; the owner's participial construction stays.
-        self.assertIn("कायरतारूपी दोषले स्वभाव आहत भएको र कर्तव्य बारे चित्त भ्रमित भएको म तपाईंलाई सोध्छु", verse["lits"]["ne"])
+        self.assertIn("कायरतारूपी दोषले स्वभाव आहत भएको र कर्तव्यका बारेमा चित्त भ्रमित भएको म तपाईंलाई सोध्छु", verse["lits"]["ne"])
+        # 2026-11-23: Arjuna addresses Kṛṣṇa as तपाईं, so imperatives must be
+        # honorific (बताउनुहोस्/दिनुहोस्), not तिमी-level (बताऊ/देऊ).
+        self.assertIn("बताउनुहोस्", verse["lits"]["ne"])
+        self.assertIn("दिनुहोस्", verse["lits"]["ne"])
+        self.assertNotIn("बताऊ", verse["lits"]["ne"])
+        self.assertNotIn("देऊ", verse["lits"]["ne"])
         for lang, weakness, defect, mind in (
             ("en", "weakness", "defect", "mind is confused about duty"),
             ("ne", "कायरता", "दोष", "चित्त भ्रमित"),
