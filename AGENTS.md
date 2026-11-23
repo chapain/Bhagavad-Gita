@@ -67,6 +67,17 @@ output diff with its source. The provenance page's source is
 `source/method.html`; its numbers and quotations are checked against the data
 by `check_site_health.py`, so it cannot drift.
 
+`source/check_artifact_drift.py` enforces the "keep the output diff with its
+source" half, in `build.py` and in CI: after a build it compares every
+generated artifact with its committed copy, so a commit that cannot reproduce
+itself fails. PR #98 (2026-11-23) is the reason it exists — the source and the
+chapter pages were fixed to शत्रुतापक while `data/ch*.js` still shipped
+शत्रुतापन, and every check passed because they all inspected the freshly built
+tree rather than the commit. It skips itself when `source/` has uncommitted
+edits, so work in progress is never reported as drift. `sw.js` (a hash over the
+other artifacts) and `sitemap.xml` (commit dates that cannot exist before the
+commit) are excluded on purpose.
+
 The app is an inline shell plus 18 chapter payloads. The service worker
 precaches it for offline use. Static chapter pages are the crawler-facing full
 text and provide verse anchors; shares point to `/chapter/N/#vN.NN`. Do not

@@ -32,7 +32,10 @@ It runs, in order:
     3c. tests/test_theme_card_navigation.js  all 700 chapter cards open their own verses (needs node)
     4. browser_checks.py      357 live-browser checks over http (348 over file://): behaviour
                               plus per-context error capture and desktop/light-dark axe sweeps (needs playwright)
-    5. source/prove_data_only.py  (only with --prove, and always in CI) that the
+    5. source/check_artifact_drift.py  that the COMMIT reproduces itself: every
+                               generated artifact matches its committed copy, so
+                               the app and the static pages cannot disagree
+    6. source/prove_data_only.py  (only with --prove, and always in CI) that the
                                published site is the source as written
 
 Node-dependent checks (steps 3–3c) and the browser check (step 4) are
@@ -155,6 +158,15 @@ def main():
     except ImportError:
         print("\n--- browser tests ---")
         print("(skipped — pip install playwright && python3 -m playwright install chromium)")
+
+    # Does the COMMIT reproduce itself? The checks above all test the freshly
+    # built tree, which is why PR #98 passed while shipping stale data/ch*.js:
+    # the source and the chapter pages said शत्रुतापक and the app still said
+    # शत्रुतापन. This compares each generated artifact with its committed copy.
+    # It skips itself when source/ has uncommitted edits, so ordinary work in
+    # progress is never reported as drift.
+    ok &= run([PY, os.path.join("source", "check_artifact_drift.py")], ROOT,
+              "generated artifacts match their commit", tail=12)
 
     # The data-only proof edits source files, rebuilds, checks the marker
     # reached the published artifact and restores the bytes, so it is opt-in

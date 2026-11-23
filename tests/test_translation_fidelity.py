@@ -481,8 +481,9 @@ NUMBER_BASELINE = {
 #     *word* is not — so a strict substring test flags the paraphrase that is
 #     right. Those verses are locked here.
 #  2. The Nepali rows spell the address in its Sanskrit form (हे परन्तप) while
-#     the Nepali literal uses the natural form (शत्रुतापन). Same address, two
-#     spellings; also locked.
+#     the Nepali literal uses the natural form (शत्रुतापक since PR #98 on
+#     2026-11-23; शत्रुतापन before it). Same address, two spellings; also
+#     locked.
 #
 # The rule that found F12-F16 and 3.07 is the English one below, which compares
 # the row's own English address, and it is green with an 11-entry baseline of
