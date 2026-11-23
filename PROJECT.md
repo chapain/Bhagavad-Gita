@@ -11,6 +11,40 @@ the start of every session.
 
 ---
 
+### 2026-11-23 — the three ways run in order, not into each other (owner: "i think this is not correct. कर्म, भक्ति हुँदै ज्ञान..... what do you say?")
+
+* **The owner read the sentence and heard the wrong grammar.** `sections_sub`
+  said the eighteen chapters sit "in three ways … each ripening into the next",
+  and the Nepali said it worse: `एउटा अर्कोमा परिपक्व हुँदै` — *ripening one
+  into the other*, a reciprocal with no direction at all. Hindi's `एक अगले में
+  परिपक्व होते हुए` had the same defect one shade milder. The Gītā's arc is not
+  mutual: it is कर्म → भक्ति → ज्ञान, which is also exactly the chapter order
+  1–18. The fix is the owner's own phrasing, written out:
+  `कर्मबाट भक्ति हुँदै ज्ञानसम्म, क्रमैसँग परिपक्व हुँदै` /
+  `कर्म से भक्ति, और भक्ति से ज्ञान तक, क्रम से परिपक्व होते हुए` /
+  "action ripening into devotion, and devotion into knowledge".
+* **"How to explore" told the reader to choose, which contradicts the card
+  above it.** Its first step read "Choose a way — action, devotion, or
+  knowledge — to find a chapter", i.e. the three six-chapter groups offered as a
+  menu of three unrelated doors. It now says to begin at chapter 1 and go on in
+  order, one yoga after another — the ordering the subtitle now claims. The
+  three way cards remain jump-in points for search, revisitors and the static
+  chapter pages; what changed is that the **instruction** no longer presents
+  them as equivalents.
+* **Six values in `source/i18n_ui.py`, no key added or removed** (`guide_way`
+  and `sections_sub`, ×3 languages → 232 UI strings, unchanged). No verse text, no
+  title, no translation and no route changed; generated `index.html` and the
+  `sw.js` cache id were rebuilt, never hand-edited. `python3 build.py` ALL
+  GREEN: 174 Python tests, 949 document assertions, 560 site-health, 10 SEO,
+  9,658 study. Browser/axe suite skipped — Playwright/Chromium unavailable in
+  this sandbox, so the rendered result is the owner's eye on the preview.
+* **Not done, deliberately.** The chapter foot still carries only "← Back to
+  chapters"; there is no "next chapter →" at the end of a chapter (the verse
+  sheet's book mode does cross chapter boundaries, but only inside the sheet).
+  Ordered reading is therefore *recommended* by the copy but not yet the path of
+  least resistance. Adding a forward step at the chapter foot is a navigation
+  change, offered to the owner separately rather than folded into a wording fix.
+
 ### 2026-11-22 — three readings, one label grammar (owner: "literal and paraphrase have blue and yellow like button bg or something and anvaya is plain. what do you think we should do?")
 
 * **The observation was exact, and it was a grammar bug, not a taste
