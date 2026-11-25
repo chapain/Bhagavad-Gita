@@ -278,8 +278,8 @@ function fillModal(){
   const padaGridHtml = `<span class="sr-only" id="wordsHint">${esc(L('click_pada_meanings'))}</span>
       <span class="sr-only" id="padaHint">${esc(L('click_pada_meanings'))}</span>
       <button type="button" class="m-verse-back" aria-label="${esc(L('back_to_x').replace('{x}', L('verse')))}" title="${esc(L('back_to_x').replace('{x}', L('verse')))}" onclick="event.stopPropagation();App.reader.toggleVerseExpansion(event)">↩</button>
-      ${spkHtml(topS)}
       <p class="pada-meanings-hint">${esc(L('click_pada_meanings'))}</p>
+      ${spkHtml(topS)}
       <div class="pada-grid">
         <div class="pada-row">${boxHtml(pads[0],0,pads.length)}${boxHtml(pads[1],1,pads.length)}</div>
         ${midS.length ? `<div class="spk-mid">${spkHtml(midS)}</div>` : ''}

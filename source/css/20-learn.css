@@ -367,13 +367,13 @@
   .mini .m-topic, .w-day .m-topic{ font-family:Georgia,"Noto Serif Devanagari",serif; font-weight:600; color:var(--ink-soft); font-size:.9rem; margin-bottom:7px; line-height:1.35;}
   .mini .mt-lab, .w-day .mt-lab{ font-weight:400; font-style:italic; color:var(--ink-soft); font-size:.8rem; margin-right:2px;}
   .mini .padas, .w-day .padas{ font-family:"Noto Serif Devanagari", Georgia, serif; color:var(--teal); font-size:1.02rem; line-height:1.5; background:var(--cream); border-radius:8px; padding:7px 9px;}
-  .mini .padas .spk, .w-day .padas .spk{ display:block; color:var(--saffron-text); font-size:.82rem; font-style:italic; margin-bottom:2px;}
+  .mini .padas .spk, .w-day .padas .spk, .res-deva .spk{ display:block; color:var(--saffron-text); font-size:.82rem; font-style:italic; margin-bottom:2px;}
   .mini .padas, .w-day .padas, .res-deva{ overflow-wrap:anywhere; word-break:normal; }
   .mini .padas .gline, .w-day .padas .gline{ display:block; line-height:1.6;}
   .mini .padas .giast, .w-day .padas .giast, .res-deva .giast{
     display:block; font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic; font-size:.82rem;
     color:var(--ink-soft); line-height:1.45; margin:0 0 4px; }
-  .mini .padas .spk-iast, .w-day .padas .spk-iast{
+  .mini .padas .spk-iast, .w-day .padas .spk-iast, .res-deva .spk-iast{
     display:block; font-family:Georgia,"Noto Serif Devanagari",serif; font-style:italic; font-size:.78rem;
     color:var(--ink-soft); margin:0 0 4px; }
   .mini .padas .gp, .w-day .padas .gp{ display:inline;}

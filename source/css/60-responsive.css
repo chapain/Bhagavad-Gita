@@ -151,7 +151,7 @@
     .m-verse{ padding:12px 12px; }
     .words-bar .wb-btn{ min-height:34px; padding:6px 14px; }
     /* pādas stack one per row — two side by side is unreadable on a phone */
-    .m-verse .pada-row{ flex-direction:column; gap:10px; }
+    .m-verse .pada-row{ flex-direction:column; align-items:stretch; gap:10px; }
     .m-verse .pada-grid{ gap:10px; }
     .m-verse .pada-box{ padding:10px 12px; }
     .m-verse .pada-box .pb-deva{ font-size:calc(1.24rem * var(--reader-scale,1)); }
