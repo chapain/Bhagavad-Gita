@@ -1120,6 +1120,7 @@ def run(pw, url, offline_capable=False):
         setLang(code);
         const c = expand();
         const hint = c?.querySelector('.pada-meanings-hint');
+        const spk = c?.querySelector(':scope > .spk-line');
         const g = c?.querySelector('.pada-grid');
         const copy = document.querySelector('#modal .reader-copy');
         hints[code] = hint ? clean(hint) : null;
@@ -1127,10 +1128,12 @@ def run(pw, url, offline_capable=False):
            than the card contains the hint" — true only while #verseContent was a
            direct child of .reader-copy. It is now inside #verseContainer, so the
            promise is stated directly: the hint lives inside the card, inside
-           .reader-copy, and inside no action bar, card, line or disclosure. */
+           .reader-copy, above any top speaker and the pāda grid (so it never
+           splits a speaker from the verse), and inside no action bar, card,
+           line or disclosure. */
         hintOk[code] = !!(hint && c.contains(hint) && hint.getClientRects().length
           && hint.parentElement === c && g && g.parentElement === c
-          && hint.nextElementSibling === g
+          && (!spk || (hint.compareDocumentPosition(spk) & Node.DOCUMENT_POSITION_FOLLOWING))
           && (hint.compareDocumentPosition(g) & Node.DOCUMENT_POSITION_FOLLOWING)
           && copy && copy.contains(hint) && c.contains(hint)
           && !hint.closest('.m-verse-action, .m-words-section, details, summary,'

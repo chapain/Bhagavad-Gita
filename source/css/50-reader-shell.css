@@ -125,10 +125,19 @@
   .m-whole-verse .gl-tail{ position:absolute; top:0; left:calc(100% + .24em); white-space:nowrap; }
   .m-whole-verse .giast{ font-style:italic; font-family:Georgia,"Noto Serif Devanagari",serif;
     font-size:calc(.92rem * var(--reader-scale,1)); color:var(--ink-soft); text-align:center; margin-top:2px; }
-  .m-whole-verse .spk{ font-family:"Noto Serif Devanagari",Georgia,serif;
+  /* Speaker line: warm saffron italic, flush-left with the verse lines, no
+     underline (colour, slant and size separate it, and the collapsed card has
+     no speaker click action). Block display so vertical spacing works instead
+     of painting an inline border into the line below. */
+  .m-whole-verse .spk{ display:block; font-family:"Noto Serif Devanagari",Georgia,serif;
     color:var(--saffron-text); font-size:calc(1.05rem * var(--reader-scale,1));
-    font-style:italic; text-align:center; margin-bottom:10px; border-bottom:1px dashed var(--line); padding-bottom:8px; }
-  .m-whole-verse .spk .iast{ font-size:calc(.82rem * var(--reader-scale,1)); margin-left:10px; }
+    font-style:italic; line-height:1.45; text-align:left; margin:0 0 .1em; }
+  html[lang="ne"] .m-whole-verse .spk,
+  html[lang="hi"] .m-whole-verse .spk{ margin-bottom:.45em; }
+  .m-whole-verse .spk:not(:first-child){ margin-top:.45em; }
+  .m-whole-verse .spk-iast{ display:block; font-family:Georgia,"Noto Serif Devanagari",serif;
+    font-style:italic; font-size:calc(.84rem * var(--reader-scale,1)); line-height:1.4;
+    color:var(--ink-soft); text-align:left; margin:0 0 .55em; }
   .m-whole-verse .gl-n{ color:var(--saffron-text); font-size:1em; font-weight:700; }
 
   /* Meaning blocks follow straight after the hero verse, no extra paper
@@ -161,22 +170,24 @@
   /* Option 1 keeps the verse and its expanded pāda grid in one card. */
   .m-verse-box-container{ margin:0 0 2px; }
   .m-verse-box-container.expanded-mode #verseContent.m-verse{
-    position:relative; margin:0 0 10px; padding:46px 18px 16px; cursor:pointer;
+    position:relative; margin:0 0 10px; padding:12px 18px 16px; cursor:pointer;
     transition:border-color .15s, background .15s; }
   .m-verse-box-container.expanded-mode #verseContent.m-verse:hover{
     border-color:var(--teal-mid); background:var(--teal-soft); }
-  .m-verse-back{ position:absolute; z-index:1; top:8px; right:10px; display:grid;
+  .m-verse-back{ position:absolute; z-index:1; top:12px; right:12px; display:grid;
     place-items:center; width:34px; height:32px; padding:0; border:1px solid var(--line);
     border-radius:999px; background:var(--cream); color:var(--teal);
     font:700 1.1rem/1 system-ui,sans-serif; cursor:pointer; }
   .m-verse-back:hover{ border-color:var(--teal-mid); background:var(--teal-soft); }
   .m-verse-back:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; }
-  /* Expanded shape: the instruction sits inside the card, right above the
-     pāda grid, so it explains the boxes where the reader is looking. It is
-     a quiet line of text — not a button, a bar or a disclosure. */
-  .m-verse .pada-meanings-hint{ margin:0; padding:0 34px 10px 2px; color:var(--ink-soft);
-    font:600 .8rem/1.5 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
+  /* Expanded shape: the instruction shares the top row with ↩, above any
+     speaker line and the pāda grid, so it never splits a speaker from the
+     verse. Plain text — not a button, bar or disclosure. */
+  .m-verse .pada-meanings-hint{ display:flex; align-items:center; min-height:32px;
+    margin:0 0 10px; padding:0 42px 0 2px; color:var(--ink-soft);
+    font:600 .8rem/1.45 system-ui,-apple-system,"Segoe UI","Noto Serif Devanagari",serif;
     text-align:left; }
+  .m-verse .pada-meanings-hint + .spk-line{ margin-top:0; }
 
   .m-part{ font-family:Georgia,"Noto Serif Devanagari",serif; color:var(--teal); font-size:.95rem; font-weight:600;
            margin:0 52px 8px 0; line-height:1.4;}
@@ -209,7 +220,6 @@
   .m-verse tr.spkrow td.pd.spk{ font-family:'Noto Serif Devanagari', Georgia, serif; color:var(--saffron-text); font-style:italic; padding:8px 2px 10px; border-bottom:1px dashed var(--line); font-size:calc(1.1rem * var(--reader-scale,1));}
   .m-verse tr.spkrow td.pd.spk .iast{ font-family:Georgia,"Noto Serif Devanagari",serif; font-size:calc(.85rem * var(--reader-scale,1)); color:var(--ink-soft); margin-left:10px;}
   .m-verse .spk-line:hover{ background:var(--saffron-soft);}
-  .m-verse .spk-main{ border-bottom:1px dotted var(--saffron); }
   .m-verse .words{ display:none; margin-top:6px; background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:8px 12px; min-width:0; max-width:100%;}
   .m-verse .words.open{ display:block;}
   .m-verse .words.mean-off .wmean{ display:none;}
