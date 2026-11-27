@@ -39,6 +39,10 @@ in all 6.09 paraphrases; their word rows and literals are unchanged.
 Amended 2026-11-23 by the honorific-agreement pass: the 2.09 बभूव Nepali
 gloss now reads भए, matching the literal's मौन भए (was भयो). The Hindi row
 (हुआ) and the literal already agreed, so only the Nepali column moved.
+
+Amended 2026-11-27 by the whole-book word-gloss case-marker pass: stripped
+redundant modifier/appositive case postpositions in 6.19 (यतचित्तस्य), 11.12
+(तस्य), and 11.44 (ईशम्) so only the head noun/pronoun carries the postposition.
 """
 import json
 from pathlib import Path
