@@ -236,6 +236,7 @@ REVIEWED_SAME_GLOSS = {
     ("6.44", ("एव", "हि"), "indeed"),
     ("7.05", ("इदम्", "इयम्"), "this"),
     ("7.14", ("एताम्", "एषा"), "this"),
+    ("7.14", ("माया", "मायाम्"), "māyā"),
     ("7.18", ("एव", "हि"), "indeed"),
     ("8.15", ("उपेत्य", "गताः"), "having reached"),
     ("8.17", ("युगसहस्रान्ताम्", "सहस्रयुगपर्यन्तम्"), "ending in a thousand yugas"),
@@ -607,6 +608,92 @@ class SemanticAuditTests(unittest.TestCase):
         self.assertEqual(negation_count("म तिनीहरूलाई मार्न चाहन्नँ", "ne"), 1)
         self.assertEqual(negation_count("यदि मैले कर्म नगरें भने", "ne"), 1)
         self.assertEqual(negation_count("तर तिमी जान्दैनौ", "ne"), 1)
+
+    def test_the_two_one_nine_hantar_gloss(self):
+        """2.19 य एनं वेत्ति हन्तारम्: एनम् already carries the object marker
+        ('यसलाई' / 'इसे'), so predicate हन्तारम् stays unmarked ('मार्ने' /
+        'मारने वाला', matching lits.hi), not 'मार्नेलाई' / 'मारने वाले को'."""
+        verse = load_verse("2.19")
+        rows = [r for r in rows_of(verse) if r[0] == "हन्तारम्"]
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0][2:], ["the killer", "मार्ने", "मारने वाला"])
+        self.assertIn("मारने वाला", verse["lits"]["hi"])
+
+    def test_whole_book_case_marker_and_gloss_parity(self):
+        """Whole-book pass following 2.19:
+        1. Predicate/appositive accusatives & datives drop redundant -लाई/को when
+           the head object/referent already carries the case marker.
+        2. Demonstratives/quantifiers/adjectives modifying an already case-marked
+           noun drop duplicate postpositions; nouns carry the case marker rather
+           than having demonstratives baked into nouns (3.41, 6.39, 7.14, 9.10).
+        3. Missing postpositions/typos (हरु -> हरू in 1.20/1.36/1.37, 4.10 तपसा,
+           12.05 अव्यक्त, 17.27 तपसि) match the literals and sibling padas."""
+        # Zero short-u 'हरु' typos anywhere in word-row Nepali glosses
+        bad_plural = [
+            (v["n"], r[0], r[3])
+            for v in all_verses()
+            for r in rows_of(v)
+            if "हरु" in r[3]
+        ]
+        self.assertEqual(bad_plural, [])
+
+        expected = [
+            ("1.36", "एतान्", ["these", "यी", "इन"]),
+            ("1.36", "आततायिनः", ["aggressors", "आक्रमणकारीहरूलाई", "आक्रमणकारियों को"]),
+            ("1.37", "बान्धवान्", ["kinsmen", "नातेदार", "बन्धु"]),
+            ("3.37", "वैरिणम्", ["as the enemy", "शत्रु", "शत्रु"]),
+            ("3.41", "पाप्मानम्", ["evil one", "पापी", "पापी"]),
+            ("4.10", "तपसा", ["by austerity", "तपस्याले", "तपस्या से"]),
+            ("4.19", "पण्डितम्", ["a wise man, learned", "पण्डित", "पण्डित"]),
+            ("4.33", "द्रव्यमयात्", ["than the material", "द्रव्यमय", "द्रव्यमय"]),
+            ("4.33", "यज्ञात्", ["sacrifice", "यज्ञभन्दा", "यज्ञ से"]),
+            ("5.29", "भोक्तारम्", ["the enjoyer", "भोक्ता", "भोक्ता"]),
+            ("5.29", "महेश्वरम्", ["the great Lord", "महेश्वर", "महेश्वर"]),
+            ("5.29", "सुहृदम्", ["the friend", "मित्र", "मित्र"]),
+            ("6.39", "संशयस्य", ["of doubt", "सन्देहको", "सन्देह का"]),
+            ("6.39", "अस्य", ["this", "यस", "इस"]),
+            ("7.06", "योनीनि", ["the wombs", "योनि", "योनि"]),
+            ("7.14", "मायाम्", ["māyā", "माया", "माया को"]),
+            ("7.14", "एताम्", ["this", "यो", "इस"]),
+            ("8.06", "भावम्", ["state", "भावलाई", "भाव को"]),
+            ("8.09", "कविम्", ["the seer", "ऋषि", "ऋषि"]),
+            ("8.09", "अनुशासितारम्", ["the ruler", "शासक", "शासक"]),
+            ("8.09", "धातारम्", ["the support, sustainer", "धर्ता", "धर्ता"]),
+            ("9.10", "हेतुना", ["reason", "कारणले", "कारण से"]),
+            ("9.10", "अनेन", ["this", "यस", "इस"]),
+            ("10.12", "पुरुषम्", ["the Person", "पुरुष", "पुरुष"]),
+            ("10.12", "आदिदेवम्", ["the primal God", "आदि देवता", "आदि देव"]),
+            ("11.34", "अन्यान्", ["other", "अरू", "अन्य"]),
+            ("11.37", "गरीयसे", ["to the greater", "महान्", "महान्"]),
+            ("11.37", "आदिकर्त्रे", ["to the primal creator", "आदि सृष्टिकर्ता", "आदि सृष्टिकर्ता"]),
+            ("11.46", "तेन", ["in that", "त्यो", "उस"]),
+            ("11.46", "रूपेण", ["form", "रूपमा", "रूप में"]),
+            ("11.46", "चतुर्भुजेन", ["four-armed", "चतुर्भुज", "चतुर्भुज"]),
+            ("12.05", "अव्यक्त", ["to the unmanifest", "अव्यक्तमा", "अव्यक्त में"]),
+            ("13.02", "क्षेत्रज्ञम्", ["the knower of the field", "क्षेत्रज्ञ", "क्षेत्रज्ञ"]),
+            ("15.03", "अश्वत्थम्", ["the aśvattha", "अश्वत्थलाई", "अश्वत्थ को"]),
+            ("15.03", "एनम्", ["this", "यस", "इस"]),
+            ("15.19", "पुरुषोत्तमम्", ["the highest Person", "पुरुषोत्तम", "पुरुषोत्तम"]),
+            ("16.03", "सम्पदम्", ["the endowment", "सम्पत्ति", "सम्पदा"]),
+            ("16.05", "सम्पदम्", ["to the endowment", "सम्पत्ति", "सम्पदा"]),
+            ("16.19", "अशुभान्", ["the evil", "अशुभ", "अशुभ"]),
+            ("16.20", "अधमाम्", ["the lowest", "नीचतम", "निम्नतम"]),
+            ("16.20", "गतिम्", ["to state", "गतिमा", "गति को"]),
+            ("17.27", "तपसि", ["in austerity", "तपस्यामा", "तपस्या में"]),
+            ("18.17", "इमान्", ["these", "यी", "इन"]),
+            ("18.17", "लोकान्", ["worlds", "लोकहरूलाई", "लोकों को"]),
+            ("18.34", "धर्मकामार्थान्", ["duty, pleasure and wealth", "धर्म, काम र अर्थलाई", "धर्म, काम और अर्थ को"]),
+            ("18.40", "एभिः", ["from these", "यी", "इन"]),
+            ("18.40", "त्रिभिः", ["three", "तीन", "तीन"]),
+            ("18.40", "गुणैः", ["qualities", "गुणहरूबाट", "गुणों से"]),
+            ("18.70", "तेन", ["by him", "उसद्वारा", "उससे"]),
+            ("18.75", "योगेश्वरात्", ["from the Lord of yoga", "योगेश्वर", "योगेश्वर"]),
+        ]
+        for ref, word, tail in expected:
+            with self.subTest(verse=ref, word=word):
+                matches = [r for r in rows_of(load_verse(ref)) if r[0] == word]
+                self.assertEqual(len(matches), 1)
+                self.assertEqual(matches[0][2:], tail)
 
 
 if __name__ == "__main__":
